@@ -90,7 +90,7 @@
     endif
   endif
 
-  assign hotspot_popover_id = 'product-callout-popover-' | append: block.id
+  assign hotspot_popover_id = 'product-callout-popover-' | append: section.id | append: '-' | append: block.id
   assign hotspot_popover_class = 'product-callout__popover product-callout__popover--' | append: hotspot_popover_vertical
   assign hotspot_popover_label = hotspot_product_title
   if hotspot_type == 'content'

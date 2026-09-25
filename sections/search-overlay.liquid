@@ -332,7 +332,7 @@
   };
 
   const escapeHtml = (value = '') => String(value).replace(/[&<>'"]/g, (character) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', "'": '&#39;', '"': '&quot;' })[character]);
-  const money = (amount) => new Intl.NumberFormat(document.documentElement.lang || 'en', { style: 'currency', currency: window.Shopify?.currency?.active || 'USD' }).format(Number(amount || 0) / 100);
+  const money = (amount) => new Intl.NumberFormat(document.documentElement.lang || 'en', { style: 'currency', currency: window.Shopify?.currency?.active || 'USD' }).format(Number(amount || 0));
   const imageUrl = (item) => item?.featured_image?.url || item?.featured_image || item?.image?.url || item?.image || item?.featured_media?.preview_image?.url || '';
   const card = (item, showPrice = false) => {
     const image = imageUrl(item);
