@@ -878,6 +878,7 @@
   });
 
   document.addEventListener('submit', (event) => {
+    if (event.defaultPrevented) return;
     const form = event.target.closest?.('form[action*="/cart/add"]');
     if (!form || !state.drawer) return;
     event.preventDefault();
