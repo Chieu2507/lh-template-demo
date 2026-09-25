@@ -5,9 +5,16 @@
   @param {boolean} product_unavailable - Disables submission when no available variant is selected
 {% enddoc %}
 
-<div class="product-buy-buttons__add-to-cart" {{ block.shopify_attributes }}>
+{% liquid
+  assign button_label = label
+  if block.settings.show_price == false
+    assign button_label = 'products.add_to_cart' | t
+  endif
+%}
+
+<div class="product-buy-buttons__add-to-cart" data-add-to-cart-show-price="{% if block.settings.show_price == false %}false{% else %}true{% endif %}" {{ block.shopify_attributes }}>
   {% render 'theme-button',
-    label: label,
+    label: button_label,
     type: 'submit',
     class: 'product-form__submit',
     disabled: product_unavailable,
@@ -21,6 +28,7 @@
   "name": "t:general.add_to_cart",
   "tag": null,
   "settings": [
+    { "type": "checkbox", "id": "show_price", "label": "t:labels.show_price", "default": true },
     { "type": "select", "id": "style", "label": "t:labels.style", "options": [
       { "value": "primary", "label": "t:options.button_variant.primary" },
       { "value": "secondary", "label": "t:options.button_variant.secondary" }
