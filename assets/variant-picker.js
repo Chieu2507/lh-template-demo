@@ -312,16 +312,16 @@ class VariantPicker extends HTMLElement {
     }
   }
 
-  priceContainer() {
+  priceContainers() {
     const sectionId = this.dataset.sectionId;
 
-    return Array.from(this.sectionRoot?.querySelectorAll('[data-product-price-container]') || []).find(
+    return Array.from(this.sectionRoot?.querySelectorAll('[data-product-price-container]') || []).filter(
       (container) => container.dataset.sectionId === sectionId,
     );
   }
 
   updatePrice(variant) {
-    const container = this.priceContainer();
+    this.priceContainers().forEach((container) => {
     const currentPrice = container?.querySelector('[data-price-component]');
 
     if (!container || !currentPrice) {
@@ -341,10 +341,11 @@ class VariantPicker extends HTMLElement {
     }
 
     currentPrice.replaceWith(nextPrice.cloneNode(true));
+    });
   }
 
   updateSaleBadge(variant) {
-    const price = this.priceContainer();
+    this.priceContainers().forEach((price) => {
     const container = price?.querySelector('[data-variant-sale-badge-container]');
 
     if (!price || !container) {
@@ -357,6 +358,7 @@ class VariantPicker extends HTMLElement {
     );
 
     container.replaceChildren(template?.content.cloneNode(true) || document.createDocumentFragment());
+    });
   }
 
   updateLegacyMedia(variantId) {

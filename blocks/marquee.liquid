@@ -187,7 +187,7 @@
   }
 
   @media (prefers-reduced-motion: reduce) {
-    .marquee__track {
+    .marquee .marquee__track {
       animation: none;
       transform: none;
     }
@@ -198,6 +198,7 @@
   (() => {
     const instances = new WeakMap();
     const selector = '.marquee';
+    const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
 
     const setFocusableState = (element) => {
       element.setAttribute('aria-hidden', 'true');
@@ -207,7 +208,7 @@
     };
 
     const initialize = (marquee) => {
-      if (!marquee || instances.has(marquee)) return;
+      if (!marquee || instances.has(marquee) || reducedMotion.matches) return;
 
       const track = marquee.querySelector('.marquee__track');
       const viewport = marquee.querySelector('.marquee__viewport');
@@ -308,6 +309,11 @@
       if (root.matches?.(selector)) destroy(root);
       root.querySelectorAll?.(selector).forEach(destroy);
     };
+
+    reducedMotion.addEventListener('change', () => {
+      if (reducedMotion.matches) destroyRoot(document);
+      else initializeRoot();
+    });
 
     document.addEventListener('shopify:section:load', (event) => initializeRoot(event.target));
     document.addEventListener('shopify:section:unload', (event) => destroyRoot(event.target));

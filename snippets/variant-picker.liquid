@@ -183,7 +183,7 @@
         <select
           class="variant-picker__control variant-picker__control--select form__control"
           id="{{ option_id }}"
-          name="options[{{ product_option.name | escape }}]"
+          name="options[{{ picker_id }}-{{ product_option.name | escape }}]"
           form="{{ product_form_id }}"
           data-option-control
           data-option-index="{{ option_index }}"
@@ -264,7 +264,7 @@
                 id="{{ value_input_id }}"
                 class="variant-picker__control variant-picker__control--radio{% if option_uses_swatches %} swatch__input{% endif %}"
                 type="radio"
-                name="options[{{ product_option.name | escape }}]"
+                name="options[{{ picker_id }}-{{ product_option.name | escape }}]"
                 form="{{ product_form_id }}"
                 value="{{ option_value.name | escape }}"
                 data-option-value-id="{{ option_value_id }}"
