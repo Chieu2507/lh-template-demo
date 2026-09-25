@@ -234,9 +234,9 @@ class ProductBuyButtons extends HTMLElement {
 
     const value = Number(this.quantityInput.value || this.quantityInput.min || 1);
     const min = Number(this.quantityInput.min || 1);
-    const max = Number(this.quantityInput.max);
+    const max = this.quantityInput.max === '' ? null : Number(this.quantityInput.max);
     if (this.quantityDecrease) this.quantityDecrease.disabled = value <= min;
-    if (this.quantityIncrease) this.quantityIncrease.disabled = Number.isFinite(max) && value >= max;
+    if (this.quantityIncrease) this.quantityIncrease.disabled = max !== null && Number.isFinite(max) && value >= max;
   }
 
   syncGiftCardRecipient() {
