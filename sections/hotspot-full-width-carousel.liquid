@@ -183,8 +183,7 @@
     style="
       --hotspot-carousel-padding-top: {{ hotspot_carousel_padding_top }}px;
       --hotspot-carousel-padding-bottom: {{ hotspot_carousel_padding_bottom }}px;
-      {% if section.settings.customize_mobile_padding and hotspot_carousel_padding_top_mobile != hotspot_carousel_padding_top %}--hotspot-carousel-padding-top-mobile: {{ hotspot_carousel_padding_top_mobile }}px;{% endif %}
-      {% if section.settings.customize_mobile_padding and hotspot_carousel_padding_bottom_mobile != hotspot_carousel_padding_bottom %}--hotspot-carousel-padding-bottom-mobile: {{ hotspot_carousel_padding_bottom_mobile }}px;{% endif %}
+      {% if section.settings.customize_mobile_padding %}--hotspot-carousel-padding-top-mobile: {{ hotspot_carousel_padding_top_mobile }}px;--hotspot-carousel-padding-bottom-mobile: {{ hotspot_carousel_padding_bottom_mobile }}px;{% endif %}
       {% if section.settings.background_color != blank %}
         --hotspot-carousel-background: {{ section.settings.background_color | escape }};
       {% endif %}
@@ -593,7 +592,7 @@
     .hotspot-full-width-carousel {
       --page-margin-current: var(--page-margin-mobile);
       --hotspot-carousel-content-inline-padding: var(--page-margin-current);
-      padding-block: calc(var(--hotspot-carousel-padding-top-mobile, var(--hotspot-carousel-padding-top, 0px)) * 0.5) calc(var(--hotspot-carousel-padding-bottom-mobile, var(--hotspot-carousel-padding-bottom, 0px)) * 0.5);
+      padding-block: var(--hotspot-carousel-padding-top-mobile, calc(var(--hotspot-carousel-padding-top, 0px) * 0.5)) var(--hotspot-carousel-padding-bottom-mobile, calc(var(--hotspot-carousel-padding-bottom, 0px) * 0.5));
     }
 
     .hotspot-full-width-carousel--width-page .hotspot-full-width-carousel__container {
