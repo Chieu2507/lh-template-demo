@@ -267,7 +267,10 @@
             if (mutation.attributeName.startsWith('data-shopify-editor')) return false;
           }
           return !mutation.target.closest?.('[data-marquee-clone]');
-        })) syncClones();
+        })) {
+          syncClones();
+          updateDistance();
+        }
       });
 
       syncClones();
