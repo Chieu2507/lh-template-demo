@@ -732,6 +732,7 @@
     const query = new URLSearchParams({ 'shipping_address[country]': country, 'shipping_address[zip]': zip });
     const localeRoot = window.Shopify?.routes?.root || '/';
     const cartRoot = `${localeRoot.endsWith('/') ? localeRoot : `${localeRoot}/`}cart/`;
+    const unavailableMessage = state.drawer.dataset.cartShippingUnavailable || 'Shipping rates unavailable.';
     setLoading(true);
     try {
       const prepare = await fetch(`${cartRoot}prepare_shipping_rates.json?${query.toString()}`, {
@@ -739,7 +740,7 @@
         headers: { Accept: 'application/json' },
         credentials: 'same-origin',
       });
-      if (!prepare.ok) throw new Error('Shipping rates unavailable.');
+      if (!prepare.ok) throw new Error(unavailableMessage);
 
       let data = null;
       for (let attempt = 0; attempt < 8 && data == null; attempt += 1) {
@@ -748,10 +749,10 @@
           headers: { Accept: 'application/json' },
           credentials: 'same-origin',
         });
-        if (!response.ok) throw new Error('Shipping rates unavailable.');
+        if (!response.ok) throw new Error(unavailableMessage);
         data = await response.json();
       }
-      if (data == null) throw new Error('Shipping rates unavailable.');
+      if (data == null) throw new Error(unavailableMessage);
       const rates = data.shipping_rates || data.rates || [];
       if (!rates.length) throw new Error(state.drawer.dataset.cartShippingNoRates || 'No shipping rates found.');
       output.innerHTML = rates.map((rate) => `<p>${escapeHtml(rate.presentment_name || rate.name)}: ${formatMoney(Math.round(Number(rate.price || 0) * 100), state.drawer.dataset.currency || 'USD')}</p>`).join('');
