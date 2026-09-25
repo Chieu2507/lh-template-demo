@@ -2,7 +2,6 @@
   overflow: visible;
 }
 
-<<<<<<< HEAD
 .swiper-carousel--carousel > .swiper-wrapper {
   align-items: stretch;
 }
@@ -11,8 +10,6 @@
   height: auto;
 }
 
-=======
->>>>>>> origin/codex/spinel-chieutt-dev
 .swiper-carousel--grid > .swiper-wrapper {
   display: grid;
   grid-template-columns: repeat(var(--swiper-carousel-grid-columns, 1), minmax(0, 1fr));
@@ -29,13 +26,10 @@
 }
 
 @media (min-width: 768px) {
-<<<<<<< HEAD
   .shopify-section:has(.swiper-carousel--carousel[data-swiper-next-slide-preview='true']) {
     overflow-x: clip;
   }
 
-=======
->>>>>>> origin/codex/spinel-chieutt-dev
   .swiper:not(.swiper-carousel--grid)[data-swiper-next-slide-preview='true'] {
     --swiper-carousel-preview-size: 15%;
     overflow: visible;
@@ -49,13 +43,10 @@
 }
 
 @media (max-width: 767.98px) {
-<<<<<<< HEAD
   .shopify-section:has(.swiper-carousel--carousel[data-swiper-next-slide-preview-mobile='true']) {
     overflow-x: clip;
   }
 
-=======
->>>>>>> origin/codex/spinel-chieutt-dev
   .swiper:not(.swiper-carousel--grid)[data-swiper-next-slide-preview-mobile='true'] {
     --swiper-carousel-preview-size: 15%;
     overflow: visible;

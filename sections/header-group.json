@@ -13,19 +13,6 @@
   "sections": {
     "announcement-bar": {
       "type": "announcement-bar",
-      "blocks": {
-        "announcement-text": {
-          "type": "announcement-text",
-          "settings": {
-            "text": "Free shipping for all orders over $100.00",
-            "text_size": "sm",
-            "width": "fill"
-          }
-        }
-      },
-      "block_order": [
-        "announcement-text"
-      ],
       "settings": {
         "type": "slider",
         "speed": 1,
@@ -40,7 +27,18 @@
         "padding_right": 0,
         "padding_bottom": 8,
         "padding_left": 0
-      }
+      },
+      "blocks": {
+        "announcement-text": {
+          "type": "announcement-text",
+          "settings": {
+            "text": "Free shipping for all orders over $100.00",
+            "text_size": "sm",
+            "width": "fill"
+          }
+        }
+      },
+      "block_order": ["announcement-text"]
     },
     "header": {
       "type": "header",
