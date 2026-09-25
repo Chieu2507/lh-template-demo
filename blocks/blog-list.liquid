@@ -250,6 +250,7 @@
 {% endcapture %}
 {% assign blog_list_carousel_attributes = blog_list_carousel_attributes | strip %}
 
+{% if blog_list_items != blank %}
 {% render 'swiper-stylesheet' %}
 {% if blog_list_layout == 'carousel' %}
   <script type="module" src="{{ 'product-collection-carousel.js' | asset_url }}"></script>
@@ -282,6 +283,7 @@
     {% if blog_list_navigation_position != 'top' %}{{ blog_list_navigation }}{% endif %}
   </div>
 </div>
+{% endif %}
 
 {% stylesheet %}
   .blog-list {

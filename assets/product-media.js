@@ -68,7 +68,17 @@ class ProductMediaGallery extends HTMLElement {
       this.closeLightbox();
     }, { signal: this.signal });
     this.lightbox?.addEventListener('click', (event) => {
-      if (event.target === this.lightbox) this.closeLightbox();
+      const target = event.target;
+      if (target === this.lightbox) {
+        this.closeLightbox();
+        return;
+      }
+
+      const panel = target.closest?.('.product-media-lightbox__panel');
+      const protectedContent = target.closest?.(
+        '.product-media-lightbox__toolbar, .product-media-lightbox__thumbnails, .product-media-lightbox__slide, [data-product-lightbox-previous], [data-product-lightbox-next]',
+      );
+      if (panel && !protectedContent) this.closeLightbox();
     }, { signal: this.signal });
 
     this.applyVariantMediaFilter(this.dataset.currentVariantId);

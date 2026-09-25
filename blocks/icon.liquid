@@ -23,12 +23,15 @@
   if icon_source == 'library'
     if icon_label == blank
       assign icon_label_key = 'accessibility.icon_' | append: icon_name | replace: '-', '_'
+      if icon_name == 'four-stars' or icon_name == 'five-stars'
+        assign icon_label_key = 'accessibility.icon_' | append: icon_name
+      endif
       assign icon_label = icon_label_key | t
     endif
   endif
   assign icon_url = block.settings.icon_link
-  if icon_source == 'custom' and icon_label == blank
-    assign icon_url = blank
+  if icon_source == 'custom' and icon_label == blank and icon_url != blank
+    assign icon_label = 'accessibility.icon_link' | t
   endif
 
   assign icon_width = block.settings.icon_width | default: 24 | plus: 0
