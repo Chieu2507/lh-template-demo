@@ -425,7 +425,7 @@
 
 .product-buy-buttons__accelerated-checkout .shopify-payment-button__button,
 .product-buy-buttons__accelerated-checkout .shopify-payment-button button {
-  min-height: var(--product-buy-button-height, var(--button-height));
+  min-height: var(--button-height);
 }
 
 .product-buy-buttons__gift-card {
@@ -492,14 +492,6 @@
 
 .product-buy-buttons__placeholder .product-form__submit {
   width: 100%;
-}
-
-.product-buy-buttons .product-form__submit {
-  min-height: var(--product-buy-button-height, var(--button-height));
-}
-
-.product-buy-buttons .product-form__submit:is(.btn-tertiary, .btn--tertiary) {
-  min-height: 0;
 }
 
 .product-badges-block {
@@ -823,17 +815,9 @@
     margin-block-start: var(--product-buy-buttons-gap-mobile, var(--product-buy-buttons-gap, 12px));
   }
 
-  .product-buy-buttons .product-form__submit {
-    min-height: var(--product-buy-button-height-mobile, var(--button-height-mobile));
-  }
-
-  .product-buy-buttons .product-form__submit:is(.btn-tertiary, .btn--tertiary) {
-    min-height: 0;
-  }
-
   .product-buy-buttons__accelerated-checkout .shopify-payment-button__button,
   .product-buy-buttons__accelerated-checkout .shopify-payment-button button {
-    min-height: var(--product-buy-button-height-mobile, var(--button-height-mobile));
+    min-height: var(--button-height-mobile);
   }
 
   .product-badges-block {

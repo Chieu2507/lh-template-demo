@@ -44,41 +44,6 @@
     assign buy_gap_mobile = 12
   endif
 
-  assign buy_height_desktop = block.settings.button_height_desktop | default: 'medium'
-  assign buy_height_mobile = block.settings.button_height_mobile | default: 'small'
-  assign buy_height_desktop_value = blank
-  assign buy_height_mobile_value = blank
-  case buy_height_desktop
-    when 'extra_small'
-      assign buy_height_desktop_value = '40px'
-    when 'small'
-      assign buy_height_desktop_value = '44px'
-    when 'medium'
-      assign buy_height_desktop_value = '48px'
-    when 'large'
-      assign buy_height_desktop_value = '56px'
-    when 'extra_large'
-      assign buy_height_desktop_value = '64px'
-    else
-      assign buy_height_desktop = 'medium'
-      assign buy_height_desktop_value = '48px'
-  endcase
-  case buy_height_mobile
-    when 'extra_small'
-      assign buy_height_mobile_value = '40px'
-    when 'small'
-      assign buy_height_mobile_value = '44px'
-    when 'medium'
-      assign buy_height_mobile_value = '48px'
-    when 'large'
-      assign buy_height_mobile_value = '56px'
-    when 'extra_large'
-      assign buy_height_mobile_value = '64px'
-    else
-      assign buy_height_mobile = 'small'
-      assign buy_height_mobile_value = '44px'
-  endcase
-
   assign buy_padding_top = block.settings.padding_top | default: 0 | plus: 0
   assign buy_padding_bottom = block.settings.padding_bottom | default: 0 | plus: 0
   assign buy_padding_left = block.settings.padding_left | default: 0 | plus: 0
@@ -199,8 +164,6 @@
 {% capture buy_style %}
   {% if buy_gap_desktop != 12 %}--product-buy-buttons-gap: {{ buy_gap_desktop }}px;{% endif %}
   {% if buy_gap_mobile != buy_gap_desktop %}--product-buy-buttons-gap-mobile: {{ buy_gap_mobile }}px;{% endif %}
-  {% if buy_height_desktop_value != blank %}--product-buy-button-height: {{ buy_height_desktop_value }};{% endif %}
-  {% if buy_height_mobile_value != blank %}--product-buy-button-height-mobile: {{ buy_height_mobile_value }};{% endif %}
   {% if buy_padding_top != 0 %}--product-buy-buttons-padding-top: {{ buy_padding_top }}px;{% endif %}
   {% if buy_padding_bottom != 0 %}--product-buy-buttons-padding-bottom: {{ buy_padding_bottom }}px;{% endif %}
   {% if buy_padding_left != 0 %}--product-buy-buttons-padding-left: {{ buy_padding_left }}px;{% endif %}
@@ -438,36 +401,6 @@
       "label": "t:labels.show_gift_card_recipient",
       "info": "t:info.gift_card_recipient",
       "default": true
-    },
-    {
-      "type": "header",
-      "content": "t:general.button_height"
-    },
-    {
-      "type": "select",
-      "id": "button_height_desktop",
-      "label": "t:labels.button_height_desktop",
-      "options": [
-        { "value": "extra_small", "label": "t:options.product_button_height.extra_small" },
-        { "value": "small", "label": "t:options.product_button_height.small" },
-        { "value": "medium", "label": "t:options.product_button_height.medium" },
-        { "value": "large", "label": "t:options.product_button_height.large" },
-        { "value": "extra_large", "label": "t:options.product_button_height.extra_large" }
-      ],
-      "default": "medium"
-    },
-    {
-      "type": "select",
-      "id": "button_height_mobile",
-      "label": "t:labels.button_height_mobile",
-      "options": [
-        { "value": "extra_small", "label": "t:options.product_button_height.extra_small" },
-        { "value": "small", "label": "t:options.product_button_height.small" },
-        { "value": "medium", "label": "t:options.product_button_height.medium" },
-        { "value": "large", "label": "t:options.product_button_height.large" },
-        { "value": "extra_large", "label": "t:options.product_button_height.extra_large" }
-      ],
-      "default": "small"
     },
     {
       "type": "header",
