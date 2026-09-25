@@ -1004,10 +1004,7 @@ class ProductMediaGallery extends HTMLElement {
     // previously focused gallery item (pointer activation need not focus it).
     opener?.focus({ preventScroll: true });
     this.lightbox.showModal();
-    // Native <dialog> may autofocus the first control, which is the close
-    // button here. Keep the lightbox open without presenting that control as
-    // the active target; close still restores focus to the media opener.
-    this.lightbox.querySelector('[data-product-lightbox-close]')?.blur?.();
+    this.lightbox.querySelector('[data-product-lightbox-close]')?.focus({ preventScroll: true });
     document.documentElement.classList.add('product-media-lightbox-open');
 
     const viewport = this.querySelector('[data-product-lightbox-swiper]');
