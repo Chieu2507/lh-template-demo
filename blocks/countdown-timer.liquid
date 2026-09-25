@@ -110,7 +110,9 @@
   assign countdown_end_timestamp = 0
   if countdown_type == 'fixed_time'
     assign countdown_end_time = block.settings.end_time
-    assign countdown_end_timestamp = countdown_end_time | date: '%s' | plus: 0
+    if countdown_end_time != blank
+      assign countdown_end_timestamp = countdown_end_time | date: '%s' | plus: 0
+    endif
   endif
   assign countdown_now_timestamp = 'now' | date: '%s' | plus: 0
 
