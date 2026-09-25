@@ -322,42 +322,42 @@ class VariantPicker extends HTMLElement {
 
   updatePrice(variant) {
     this.priceContainers().forEach((container) => {
-    const currentPrice = container?.querySelector('[data-price-component]');
+      const currentPrice = container?.querySelector('[data-price-component]');
 
-    if (!container || !currentPrice) {
-      return;
-    }
+      if (!container || !currentPrice) {
+        return;
+      }
 
-    const variantId = variant?.id ? String(variant.id) : '';
-    const template = Array.from(container.querySelectorAll('[data-variant-price-template]')).find(
-      (priceTemplate) => priceTemplate.dataset.variantPriceTemplate === variantId,
-    );
-    const nextPrice = template?.content.querySelector('[data-price-component]');
+      const variantId = variant?.id ? String(variant.id) : '';
+      const template = Array.from(container.querySelectorAll('[data-variant-price-template]')).find(
+        (priceTemplate) => priceTemplate.dataset.variantPriceTemplate === variantId,
+      );
+      const nextPrice = template?.content.querySelector('[data-price-component]');
 
-    if (!nextPrice) {
-      currentPrice.hidden = true;
-      currentPrice.setAttribute('aria-hidden', 'true');
-      return;
-    }
+      if (!nextPrice) {
+        currentPrice.hidden = true;
+        currentPrice.setAttribute('aria-hidden', 'true');
+        return;
+      }
 
-    currentPrice.replaceWith(nextPrice.cloneNode(true));
+      currentPrice.replaceWith(nextPrice.cloneNode(true));
     });
   }
 
   updateSaleBadge(variant) {
     this.priceContainers().forEach((price) => {
-    const container = price?.querySelector('[data-variant-sale-badge-container]');
+      const container = price?.querySelector('[data-variant-sale-badge-container]');
 
-    if (!price || !container) {
-      return;
-    }
+      if (!price || !container) {
+        return;
+      }
 
-    const variantId = variant?.id ? String(variant.id) : '';
-    const template = Array.from(price.querySelectorAll('[data-variant-sale-badge-template]')).find(
-      (badgeTemplate) => badgeTemplate.dataset.variantSaleBadgeTemplate === variantId,
-    );
+      const variantId = variant?.id ? String(variant.id) : '';
+      const template = Array.from(price.querySelectorAll('[data-variant-sale-badge-template]')).find(
+        (badgeTemplate) => badgeTemplate.dataset.variantSaleBadgeTemplate === variantId,
+      );
 
-    container.replaceChildren(template?.content.cloneNode(true) || document.createDocumentFragment());
+      container.replaceChildren(template?.content.cloneNode(true) || document.createDocumentFragment());
     });
   }
 

@@ -1011,6 +1011,7 @@
     },
     "countdown_style": {
       "with_labels": "With labels",
+      "numbers_only": "Numbers only",
       "inline": "Inline",
       "inline_superscript": "Inline (superscript)"
     },
