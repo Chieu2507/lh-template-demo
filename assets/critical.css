@@ -1794,6 +1794,15 @@ legend {
   border-color: var(--accent-color);
 }
 
+.variant-picker__option--native-color-swatches .swatch__input:checked + .swatch__label {
+  background: transparent;
+}
+
+.variant-picker__option--native-color-swatches .swatch__input:checked + .swatch__label .swatch {
+  outline: 1px solid var(--accent-color);
+  outline-offset: 2px;
+}
+
 .variant-picker__option--swatches .swatch__input:focus-visible + .swatch__label {
   outline: 2px solid var(--input-focus-color);
   outline-offset: 3px;
