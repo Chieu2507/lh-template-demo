@@ -18,7 +18,7 @@
     {% content_for 'blocks' %}
   {% elsif block.settings.answer != blank %}
     {{ block.settings.answer }}
-  {% else %}
+  {% elsif request.design_mode %}
     <p>Share the answer to this question here.</p>
   {% endif %}
 {% endcapture %}
@@ -39,7 +39,9 @@
   </span>
 {% endcapture %}
 
-{% render 'accordion-details', id: faq_item_id, content_id: faq_content_id, class: 'faq-item', summary_class: 'faq-item__summary', content_class: 'faq-item__content', content_inner_class: 'faq-item__content-inner', summary: faq_summary, content: faq_answer, initially_open: block.settings.initially_open, attributes: block.shopify_attributes %}
+{% if block.blocks.size > 0 or block.settings.answer != blank or request.design_mode %}
+  {% render 'accordion-details', id: faq_item_id, content_id: faq_content_id, class: 'faq-item', summary_class: 'faq-item__summary', content_class: 'faq-item__content', content_inner_class: 'faq-item__content-inner', summary: faq_summary, content: faq_answer, initially_open: block.settings.initially_open, attributes: block.shopify_attributes %}
+{% endif %}
 
 {% stylesheet %}
   .faq-item { min-width: 0; }
