@@ -1372,6 +1372,7 @@
     "product_quantity_default_style": "Edit input field styles in [theme settings](/editor?context=theme&category=input%20fields).",
     "product_add_to_cart_shared_style": "Edit primary and secondary button styles in [theme settings](/editor?context=theme&category=buttons).",
     "accelerated_checkout": "Shopify displays the payment methods enabled for this store.",
+    "accelerated_checkout_fallback_style": "Applies only to the unbranded Buy it now button when Shopify has no recommended payment method. Branded wallet buttons keep Shopify's styling.",
     "product_back_in_stock_button": "Shown when the selected variant is unavailable and the global back-in-stock alert is enabled.",
     "gift_card_recipient": "Shown only for gift-card products. Customers opt in before entering recipient details.",
     "product_buy_button_style": "This block chooses the button level; color, type, radius, and motion continue to follow [theme settings](/editor?context=theme&category=buttons).",
