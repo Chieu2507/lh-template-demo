@@ -150,24 +150,23 @@
       assign option_swatch_style = swatch_style
       assign option_selected_style = swatch_selected_style
       assign option_uses_native_color_swatches = false
-      if color_option_display != blank and option_is_color
-        if color_option_display == 'color' and all_values_have_color
+      if picker_type == 'button'
+        if color_option_display != blank and option_is_color
+          if color_option_display == 'color' and all_values_have_color
+            assign option_uses_swatches = true
+            assign option_swatch_style = 'color'
+            assign option_selected_style = 'border'
+            assign option_uses_native_color_swatches = true
+          endif
+        elsif option_has_swatch
           assign option_uses_swatches = true
-          assign option_swatch_style = 'color'
-          assign option_selected_style = 'border'
-          assign option_uses_native_color_swatches = true
+        elsif option_name_normalized == 'color' or option_name_normalized == 'colour'
+          assign option_uses_swatches = true
         endif
-      elsif option_has_swatch
-        assign option_uses_swatches = true
-      elsif option_name_normalized == 'color' or option_name_normalized == 'colour'
-        assign option_uses_swatches = true
       endif
       assign option_use_dropdown = false
       if picker_type == 'dropdown'
         assign option_use_dropdown = true
-        if color_option_display == 'color' and option_is_color and option_uses_swatches
-          assign option_use_dropdown = false
-        endif
       endif
       assign selected_option_value = blank
       for option_value in product_option.values
