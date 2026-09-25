@@ -461,6 +461,7 @@
     "ranking_color": "Ranking color",
     "show_swatches": "Show swatches",
     "swatch_style": "Swatch style",
+    "color_option_display": "Color option display",
     "sale_badge_background": "Sale badge background",
     "sale_badge_text": "Sale badge text",
     "sold_out_badge_background": "Sold-out badge background",
@@ -1230,6 +1231,10 @@
       "color": "Color",
       "variant_image": "Variant image"
     },
+    "color_option_display": {
+      "text": "Text",
+      "color": "Color"
+    },
     "sale_badge_type": {
       "text": "Text (eg: Sale)",
       "percentage": "Percentage (eg: 25% off)",
@@ -1335,6 +1340,7 @@
     "breadcrumb_collection_metafield": "Use the product metafield custom.breadcrumb_collection to override the collection shown in this breadcrumb.",
     "target_section_number": "Enter the one-based position of the destination section in this page's main content.",
     "variant_picker_swatches": "Choose whether product-page swatches use colors or selected variant images. Product cards have a separate swatch setting.",
+    "color_option_display": "Color requires Shopify color swatch data connected to every option value. Options without it appear as text.",
     "product_card_settings": "Edit card styling in [theme settings](/editor?context=theme&category=product%20cards).",
     "policy_links": "[Manage policies](https://admin.shopify.com/settings/legal)",
     "clear_for_transparent": "Clear to use a transparent background on hover.",
