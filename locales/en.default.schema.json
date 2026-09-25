@@ -213,6 +213,9 @@
     "description_options": "Description options",
     "picker_options": "Picker options",
     "purchase_options": "Purchase options",
+    "quantity": "Quantity",
+    "add_to_cart": "Add to cart",
+    "accelerated_checkout": "Accelerated checkout",
     "button_height": "Button height",
     "gift_card_options": "Gift card options",
     "badge_visibility": "Badge visibility",
@@ -674,6 +677,10 @@
     "initially_open": "Open by default"
   },
   "options": {
+    "product_quantity_style": {
+      "default": "Default",
+      "custom": "Custom"
+    },
     "hero_width": {
       "page": "Page",
       "full": "Full"
@@ -1362,6 +1369,8 @@
     "product_badges_manual_rules": "Configured badges use collection matches and product tags beginning with badge: (for example, badge:Limited edition).",
     "variant_picker_theme_settings": "Edit variant picker styles in [theme settings](/editor?context=theme&category=variant%20pickers).",
     "product_buy_buttons_theme_settings": "Price display follows [price settings](/editor?context=theme&category=prices); availability alerts follow [add-to-cart settings](/editor?context=theme&category=add%20to%20cart%20button).",
+    "product_quantity_default_style": "Edit input field styles in [theme settings](/editor?context=theme&category=input%20fields).",
+    "product_add_to_cart_shared_style": "Edit primary and secondary button styles in [theme settings](/editor?context=theme&category=buttons).",
     "accelerated_checkout": "Shopify displays the payment methods enabled for this store.",
     "product_back_in_stock_button": "Shown when the selected variant is unavailable and the global back-in-stock alert is enabled.",
     "gift_card_recipient": "Shown only for gift-card products. Customers opt in before entering recipient details.",
