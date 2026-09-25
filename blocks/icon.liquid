@@ -71,10 +71,12 @@
   --icon-block-padding-bottom: {{ padding_bottom }}px;
   --icon-block-padding-left: {{ padding_left }}px;
   --icon-block-padding-right: {{ padding_right }}px;
-  --icon-block-padding-top-mobile: {{ padding_top_mobile }}px;
-  --icon-block-padding-bottom-mobile: {{ padding_bottom_mobile }}px;
-  --icon-block-padding-left-mobile: {{ padding_left_mobile }}px;
-  --icon-block-padding-right-mobile: {{ padding_right_mobile }}px;
+  {% if block.settings.customize_mobile_padding %}
+    --icon-block-padding-top-mobile: {{ padding_top_mobile }}px;
+    --icon-block-padding-bottom-mobile: {{ padding_bottom_mobile }}px;
+    --icon-block-padding-left-mobile: {{ padding_left_mobile }}px;
+    --icon-block-padding-right-mobile: {{ padding_right_mobile }}px;
+  {% endif %}
 {% endcapture %}
 {% assign icon_style = icon_style | strip | replace: '\n', ' ' %}
 
