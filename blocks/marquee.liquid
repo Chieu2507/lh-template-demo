@@ -70,7 +70,7 @@
 {% endcapture %}
 {% assign marquee_style = marquee_style | strip | replace: '\n', ' ' %}
 
-{% assign marquee_class = 'section-spacing marquee marquee--' | append: marquee_direction | append: ' section-color-scope' %}
+{% assign marquee_class = 'section-spacing marquee marquee--block marquee--' | append: marquee_direction | append: ' section-color-scope' %}
 {% if marquee_speed == 0 %}
   {% assign marquee_class = marquee_class | append: ' marquee--static' %}
 {% endif %}
@@ -197,7 +197,7 @@
 {% javascript %}
   (() => {
     const instances = new WeakMap();
-    const selector = '.marquee';
+    const selector = '.marquee--block';
     const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
 
     const setFocusableState = (element) => {
