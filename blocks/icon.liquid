@@ -19,10 +19,16 @@
     assign icon_name = 'arrow-right'
   endunless
 
-  assign icon_label = blank
+  assign icon_label = block.settings.accessible_label
   if icon_source == 'library'
-    assign icon_label_key = 'accessibility.icon_' | append: icon_name
-    assign icon_label = icon_label_key | t
+    if icon_label == blank
+      assign icon_label_key = 'accessibility.icon_' | append: icon_name | replace: '-', '_'
+      assign icon_label = icon_label_key | t
+    endif
+  endif
+  assign icon_url = block.settings.icon_link
+  if icon_source == 'custom' and icon_label == blank
+    assign icon_url = blank
   endif
 
   assign icon_width = block.settings.icon_width | default: 24 | plus: 0
@@ -89,7 +95,7 @@
     icon: icon_name,
     source: icon_source,
     custom_icon: block.settings.custom_icon,
-    url: block.settings.icon_link,
+    url: icon_url,
     label: icon_label,
     open_in_new_tab: block.settings.open_in_new_tab,
     class: 'icon-block__icon'
@@ -197,6 +203,12 @@
       "type": "url",
       "id": "icon_link",
       "label": "t:labels.link"
+    },
+    {
+      "type": "text",
+      "id": "accessible_label",
+      "label": "t:labels.icon_accessible_label",
+      "visible_if": "{{ block.settings.icon_link != blank }}"
     },
     {
       "type": "checkbox",
