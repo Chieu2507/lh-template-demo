@@ -414,6 +414,7 @@ class VariantPicker extends HTMLElement {
   }
 
   updateUrl(variantId) {
+    if (this.sectionRoot?.hasAttribute('data-featured-product')) return;
     if (window.Shopify?.designMode || !window.history?.replaceState) return;
 
     const url = new URL(window.location.href);
@@ -434,6 +435,7 @@ class VariantPicker extends HTMLElement {
   }
 
   applyUrlVariant() {
+    if (this.sectionRoot?.hasAttribute('data-featured-product')) return;
     if (window.Shopify?.designMode) return;
 
     const url = new URL(window.location.href);
@@ -530,6 +532,7 @@ class VariantPicker extends HTMLElement {
   }
 
   handlePopState() {
+    if (this.sectionRoot?.hasAttribute('data-featured-product')) return;
     if (window.Shopify?.designMode) return;
 
     const url = new URL(window.location.href);

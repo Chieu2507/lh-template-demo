@@ -129,7 +129,7 @@
     assign hotspot_carousel_pagination_type = 'bullets'
   endunless
   assign hotspot_carousel_use_fraction = false
-  if hotspot_carousel_pagination_type == 'numbers'
+  if hotspot_carousel_show_pagination and hotspot_carousel_pagination_type == 'numbers'
     assign hotspot_carousel_use_fraction = true
   endif
 
