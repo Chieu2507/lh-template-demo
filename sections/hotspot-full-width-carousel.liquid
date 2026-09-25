@@ -82,27 +82,18 @@
   endif
 
   assign hotspot_carousel_product_callout_count = 0
-  assign hotspot_carousel_valid_slide_count = 0
   for hotspot_carousel_block in section.blocks
     if hotspot_carousel_block.type == 'product-callout' or hotspot_carousel_block.id contains 'product-callout'
       assign hotspot_carousel_product_callout_count = hotspot_carousel_product_callout_count | plus: 1
-      assign hotspot_carousel_block_image = hotspot_carousel_block.settings.image
-      assign hotspot_carousel_block_mobile_image = hotspot_carousel_block.settings.mobile_image
-      if hotspot_carousel_block_image != blank or hotspot_carousel_block_mobile_image != blank
-        assign hotspot_carousel_valid_slide_count = hotspot_carousel_valid_slide_count | plus: 1
-      endif
     endif
   endfor
 
   assign hotspot_carousel_render = false
-  if hotspot_carousel_valid_slide_count > 0 or request.design_mode and section.blocks.size > 0
+  if hotspot_carousel_product_callout_count > 0 or request.design_mode and section.blocks.size > 0
     assign hotspot_carousel_render = true
   endif
 
-  assign hotspot_carousel_slide_count = hotspot_carousel_valid_slide_count
-  if request.design_mode and hotspot_carousel_product_callout_count > hotspot_carousel_slide_count
-    assign hotspot_carousel_slide_count = hotspot_carousel_product_callout_count
-  endif
+  assign hotspot_carousel_slide_count = hotspot_carousel_product_callout_count
 
   assign hotspot_carousel_has_multiple_slides = false
   if hotspot_carousel_slide_count > 1
