@@ -162,6 +162,13 @@
       elsif option_name_normalized == 'color' or option_name_normalized == 'colour'
         assign option_uses_swatches = true
       endif
+      assign option_use_dropdown = false
+      if picker_type == 'dropdown'
+        assign option_use_dropdown = true
+        if color_option_display == 'color' and option_is_color and option_uses_swatches
+          assign option_use_dropdown = false
+        endif
+      endif
       assign selected_option_value = blank
       for option_value in product_option.values
         if option_value.selected
@@ -195,7 +202,7 @@
         </button>
       {% endif %}
 
-      {% if picker_type == 'dropdown' %}
+      {% if option_use_dropdown %}
         <select
           class="variant-picker__control variant-picker__control--select form__control"
           id="{{ option_id }}"
