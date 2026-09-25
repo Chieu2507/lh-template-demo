@@ -185,9 +185,7 @@
     <fieldset class="variant-picker__option{% if option_uses_swatches %} variant-picker__option--swatches{% endif %}{% if option_uses_native_color_swatches %} variant-picker__option--native-color-swatches{% endif %}" data-option-index="{{ option_index }}">
       <legend id="{{ option_id }}-label" class="variant-picker__label{% unless show_option_names %} visually-hidden{% endunless %}">
         <span class="variant-picker__option-name">{{ product_option.name | escape }}</span>
-        {% if option_uses_swatches %}
-          <span class="variant-picker__selected-value" data-variant-selected-value{% unless show_option_names %} aria-hidden="true"{% endunless %}>{% if selected_option_value != blank %}: {{ selected_option_value | escape }}{% endif %}</span>
-        {% endif %}
+        <span class="variant-picker__selected-value" data-variant-selected-value{% unless show_option_names %} aria-hidden="true"{% endunless %}>{% if selected_option_value != blank %}: {{ selected_option_value | escape }}{% endif %}</span>
       </legend>
       {% if show_size_chart %}
         <button
