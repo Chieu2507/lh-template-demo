@@ -1612,7 +1612,6 @@ legend {
   display: grid;
   grid-template-columns: minmax(0, 1fr) auto;
   min-inline-size: 0;
-  gap: var(--variant-label-spacing);
   padding: 0;
   border: 0;
 }
@@ -1624,6 +1623,7 @@ legend {
 .variant-picker__option > .variant-picker__controls,
 .variant-picker__option > .variant-picker__control--select {
   grid-column: 1 / -1;
+  margin-block-start: var(--variant-label-spacing);
 }
 
 .variant-picker__selected-value {
