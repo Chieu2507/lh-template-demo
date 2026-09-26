@@ -1,12 +1,42 @@
 {% doc %}
   Responsive column switcher. Choice is preserved when facets refresh.
 {% enddoc %}
-<fieldset class="collection-columns" {{ block.shopify_attributes }}><legend class="visually-hidden">{{ 'collection.grid_view' | t }}</legend><span aria-hidden="true">{{ 'collection.view' | t }}</span>
-{% for number in (1..5) %}<label class="collection-columns__option {% if number < 3 %}collection-columns__mobile{% else %}collection-columns__desktop{% endif %}"><input type="radio" name="columns-{{ section.id }}-{% if number < 3 %}mobile{% else %}desktop{% endif %}" value="{{ number }}" data-collection-columns data-device="{% if number < 3 %}mobile{% else %}desktop{% endif %}"><span>{{ number }}</span></label>{% endfor %}</fieldset>
+<fieldset class="collection-columns" data-desktop-type="{{ block.settings.desktop_type }}" data-desktop-style="{{ block.settings.desktop_style }}" data-mobile-type="{{ block.settings.mobile_type }}" data-mobile-style="{{ block.settings.mobile_style }}" {{ block.shopify_attributes }}>
+  <legend class="visually-hidden">{{ 'collection.grid_view' | t }}</legend>
+  <span class="collection-columns__label" aria-hidden="true">{{ 'collection.view' | t }}</span>
+  {% for number in (1..5) %}
+    {% assign switcher_device = 'desktop' %}
+    {% if number < 3 %}{% assign switcher_device = 'mobile' %}{% endif %}
+    <label class="collection-columns__option collection-columns__{{ switcher_device }}">
+      <input type="radio" name="columns-{{ section.id }}-{{ switcher_device }}" value="{{ number }}" aria-label="{{ number }} {{ 'collection.columns' | t }}" data-collection-columns data-device="{{ switcher_device }}">
+      <span class="collection-columns__option-content">
+        <span class="collection-columns__option-text" aria-hidden="true">{{ number }}</span>
+        <span class="collection-columns__option-icon" style="--switcher-columns:{{ number }}" aria-hidden="true">{% for tile in (1..number) %}<i></i>{% endfor %}</span>
+      </span>
+    </label>
+  {% endfor %}
+</fieldset>
 {% schema %}
 {
   "name": "Column switcher",
   "tag": null,
-  "settings": []
+  "settings": [
+    { "type": "header", "content": "Desktop" },
+    { "type": "select", "id": "desktop_type", "label": "Type", "options": [
+      { "value": "icon", "label": "Icon" }, { "value": "text", "label": "Text" }
+    ], "default": "text" },
+    { "type": "select", "id": "desktop_style", "label": "Style", "options": [
+      { "value": "primary", "label": "Primary" }, { "value": "secondary", "label": "Secondary" },
+      { "value": "outline", "label": "Outline" }, { "value": "subtle", "label": "Subtle" }
+    ], "default": "primary" },
+    { "type": "header", "content": "Mobile" },
+    { "type": "select", "id": "mobile_type", "label": "Type", "options": [
+      { "value": "icon", "label": "Icon" }, { "value": "text", "label": "Text" }
+    ], "default": "icon" },
+    { "type": "select", "id": "mobile_style", "label": "Style", "options": [
+      { "value": "primary", "label": "Primary" }, { "value": "secondary", "label": "Secondary" },
+      { "value": "outline", "label": "Outline" }, { "value": "subtle", "label": "Subtle" }
+    ], "default": "secondary" }
+  ]
 }
 {% endschema %}
