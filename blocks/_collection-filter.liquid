@@ -24,7 +24,7 @@
 {% if collection.filters.size > 0 %}
 <div class="collection-filter-block">
 {% if block.settings.desktop_layout == 'sidebar' and block.settings.sidebar_visibility == 'always' %}
-  <span class="main-collection__filter-label heading-text" aria-hidden="true">{{ 'collection.filter' | t }}</span>
+  <h2 class="main-collection__filter-label heading-text">{{ 'collection.filter' | t }}</h2>
 {% endif %}
 {% capture filter_button_attributes %}aria-controls="CollectionFilters-{{ section.id }}" aria-expanded="false" data-collection-filter-open{% endcapture %}
 {% render 'theme-button', label: filter_button_label, variant: block.settings.button_style, class: 'main-collection__filter-button', attributes: filter_button_attributes %}

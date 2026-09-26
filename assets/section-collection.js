@@ -98,8 +98,9 @@ if (!customElements.get('collection-sort-select')) {
     sync() {
       const selectedOption = this.options.find((option) => option.dataset.value === this.select.value);
       if (!selectedOption) return;
-      this.value.textContent = selectedOption.querySelector('span')?.textContent.trim() || '';
-      this.trigger.title = this.value.textContent;
+      const selectedLabel = selectedOption.querySelector('span')?.textContent.trim() || '';
+      this.value.textContent = this.dataset.staticLabel || selectedLabel;
+      this.trigger.title = selectedLabel;
       this.options.forEach((option) => {
         option.setAttribute('aria-selected', String(option === selectedOption));
       });
