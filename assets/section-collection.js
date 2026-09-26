@@ -665,10 +665,12 @@ if (!customElements.get('collection-facets')) {
           });
         } else {
           const nextProducts = nextFacets.querySelector('.main-collection__products');
+          customElements.upgrade(nextFacets);
           this.replaceWith(nextFacets);
           window.ThemeAnimations?.init(nextProducts);
-          this.syncColumns();
-          this.observePagination();
+          nextFacets.syncLayout?.();
+          nextFacets.syncColumns?.();
+          nextFacets.observePagination?.();
           nextProducts?.dispatchEvent(new CustomEvent('collection:products-loaded', { bubbles: true }));
         }
       } catch (error) {
