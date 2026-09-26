@@ -664,7 +664,12 @@ if (!customElements.get('collection-facets')) {
             }
           });
         } else {
-          const replacement = document.importNode(nextFacets, true);
+          const replacement = document.createElement('collection-facets');
+          for (const attribute of nextFacets.attributes) {
+            replacement.setAttribute(attribute.name, attribute.value);
+          }
+          replacement.classList.remove('is-enhanced');
+          replacement.innerHTML = nextFacets.innerHTML;
           const nextProducts = replacement.querySelector('.main-collection__products');
           this.replaceWith(replacement);
           window.ThemeAnimations?.init(nextProducts);
