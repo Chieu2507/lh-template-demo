@@ -9,7 +9,7 @@
   endunless
 %}
 <nav
-  class="collection-banner__breadcrumb body-{{ breadcrumb_size }}"
+  class="collection-banner__breadcrumb body-{{ breadcrumb_size }}{% if block.settings.customize_mobile_padding %} collection-banner__breadcrumb--custom-mobile-padding{% endif %}"
   aria-label="{{ 'breadcrumbs.navigation_label' | t }}"
   style="--breadcrumb-padding-top:{{ block.settings.padding_top | default: 0 }}px;--breadcrumb-padding-bottom:{{ block.settings.padding_bottom | default: 0 }}px;--breadcrumb-padding-top-mobile:{{ block.settings.padding_top_mobile | default: 0 }}px;--breadcrumb-padding-bottom-mobile:{{ block.settings.padding_bottom_mobile | default: 0 }}px"
   {{ block.shopify_attributes }}

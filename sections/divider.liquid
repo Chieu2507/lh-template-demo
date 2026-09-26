@@ -13,7 +13,7 @@
   endif
 %}
 <div
-  class="collection-divider{% if section.settings.width == 'page' %} container page-width{% elsif section.settings.width == 'full' %} container{% endif %}"
+  class="collection-divider color-scheme section-color-scope {{ section.settings.color_scheme }}{% if section.settings.width == 'page' %} container page-width{% elsif section.settings.width == 'full' %} container full-width{% endif %}"
   style="--divider-thickness:{{ section.settings.thickness }}px;--divider-width:{{ divider_width }};--divider-max-width:{{ divider_max_width }};--divider-color:{{ divider_color }};--divider-padding-top:{{ section.settings.padding_top }}px;--divider-padding-bottom:{{ section.settings.padding_bottom }}px;--divider-padding-top-mobile:{{ section.settings.padding_top_mobile }}px;--divider-padding-bottom-mobile:{{ section.settings.padding_bottom_mobile }}px"
 >
   <hr class="collection-divider__line" role="separator">
