@@ -11,10 +11,31 @@
   assign promo_alignment = block.settings.content_alignment | default: 'center'
   assign promo_position_y = block.settings.content_position | default: 'center'
   assign promo_media_type = block.settings.media_type | default: 'image'
+  assign promo_alignment_items = 'center'
+  assign promo_alignment_text = 'center'
+  assign promo_justify = 'center'
+  case promo_alignment
+    when 'left'
+      assign promo_alignment_items = 'flex-start'
+      assign promo_alignment_text = 'left'
+    when 'right'
+      assign promo_alignment_items = 'flex-end'
+      assign promo_alignment_text = 'right'
+  endcase
+  case promo_position_y
+    when 'top'
+      assign promo_justify = 'flex-start'
+    when 'bottom'
+      assign promo_justify = 'flex-end'
+  endcase
+  assign promo_padding_class = ''
+  if block.settings.customize_mobile_padding
+    assign promo_padding_class = ' main-collection__promotion--custom-mobile-padding'
+  endif
 %}
 <li
-  class="main-collection__promotion color-scheme section-color-scope {{ promo_scheme }}"
-  style="order:{{ promo_position | times: 10 | minus: 5 }};--promo-span:{{ promo_columns_desktop }};--promo-span-mobile:{{ promo_columns_mobile }};--promo-overlay:{{ block.settings.overlay_opacity | default: 20 | divided_by: 100.0 }};--promo-overlay-color:{{ block.settings.overlay_color | default: '#000000' }};--promo-content-gap:{{ block.settings.content_gap | default: 12 }}px;--promo-button-spacing:{{ block.settings.button_spacing | default: 24 }}px;--promo-padding-block:{{ block.settings.padding_top_bottom | default: 40 }}px;--promo-padding-inline:{{ block.settings.padding_left_right | default: 28 }}px;--promo-padding-block-mobile:{{ block.settings.padding_top_bottom_mobile | default: 24 }}px;--promo-padding-inline-mobile:{{ block.settings.padding_left_right_mobile | default: 16 }}px;--promo-alignment:{{ promo_alignment }};--promo-position:{{ promo_position_y }}"
+  class="main-collection__promotion color-scheme section-color-scope {{ promo_scheme }}{{ promo_padding_class }}"
+  style="order:{{ promo_position | times: 10 | minus: 5 }};--promo-span:{{ promo_columns_desktop }};--promo-span-mobile:{{ promo_columns_mobile }};--promo-overlay:{{ block.settings.overlay_opacity | default: 20 | divided_by: 100.0 }};--promo-overlay-color:{{ block.settings.overlay_color | default: '#000000' }};--promo-content-gap:{{ block.settings.content_gap | default: 12 }}px;--promo-button-spacing:{{ block.settings.button_spacing | default: 24 }}px;--promo-padding-block:{{ block.settings.padding_top_bottom | default: 40 }}px;--promo-padding-inline:{{ block.settings.padding_left_right | default: 28 }}px;--promo-padding-block-mobile:{{ block.settings.padding_top_bottom_mobile | default: 24 }}px;--promo-padding-inline-mobile:{{ block.settings.padding_left_right_mobile | default: 16 }}px;--promo-alignment-items:{{ promo_alignment_items }};--promo-alignment-text:{{ promo_alignment_text }};--promo-position:{{ promo_justify }}"
   {{ block.shopify_attributes }}
 >
   <div class="main-collection__promotion-card">
