@@ -4,6 +4,7 @@
 {% liquid
  assign sort_by = collection.sort_by | default: collection.default_sort_by
  assign sort_label = 'collection.sort_by' | t | remove: ':' | strip
+ assign apply_filters_label = 'collection.apply_filters' | t: count: collection.products_count
  assign active_filter_count = 0
  for filter in collection.filters
   assign active_filter_count = active_filter_count | plus: filter.active_values.size
@@ -13,12 +14,17 @@
    endif
   endif
  endfor
+ assign filter_button_label = 'collection.filter' | t
+ if active_filter_count > 0
+  assign filter_button_label = filter_button_label | append: ' (' | append: active_filter_count | append: ')'
+ endif
 %}
 {% if collection.filters.size > 0 %}
 <div class="collection-filter-block">
-<button class="main-collection__filter-button btn btn-{{ block.settings.button_style }}" type="button" aria-controls="CollectionFilters-{{ section.id }}" aria-expanded="false" data-collection-filter-open>{{ 'collection.filter' | t }}{% if active_filter_count > 0 %} ({{ active_filter_count }}){% endif %}</button>
+{% capture filter_button_attributes %}aria-controls="CollectionFilters-{{ section.id }}" aria-expanded="false" data-collection-filter-open{% endcapture %}
+{% render 'theme-button', label: filter_button_label, variant: block.settings.button_style, class: 'main-collection__filter-button', attributes: filter_button_attributes %}
       <dialog
-        class="main-collection__filter-dialog modal-drag-target" data-desktop-layout="{{ block.settings.desktop_layout }}" data-sidebar-visibility="{{ block.settings.sidebar_visibility }}" data-mobile-layout="{{ block.settings.mobile_layout }}" data-collapse-icon="{{ block.settings.collapse_icon }}" {{ block.shopify_attributes }}
+        class="main-collection__filter-dialog modal-drag-target" data-desktop-layout="{{ block.settings.desktop_layout }}" data-sidebar-visibility="{{ block.settings.sidebar_visibility }}" data-mobile-layout="{{ block.settings.mobile_layout }}" data-collapse-icon="{{ block.settings.collapse_icon }}" data-heading-size="{{ block.settings.heading_size }}" style="--collection-filter-right-padding:{{ block.settings.right_padding }}px" {{ block.shopify_attributes }}
         id="CollectionFilters-{{ section.id }}"
         aria-labelledby="CollectionFiltersTitle-{{ section.id }}"
         scroll-lock
@@ -204,10 +210,8 @@
           </div>
 
           <footer class="main-collection__filter-footer">
-            <button class="btn btn-primary btn--primary" type="submit">
-              {{ 'collection.apply_filters' | t: count: collection.products_count }}
-            </button>
-            <a class="btn btn-secondary btn--secondary" href="{{ collection.url | escape }}">{{ 'collection.clear_all' | t }}</a>
+            {% render 'theme-button', label: apply_filters_label, variant: 'primary', type: 'submit' %}
+            {% render 'theme-button', label: 'collection.clear_all' | t, url: collection.url, variant: 'secondary' %}
           </footer>
         </form>
       </dialog>
@@ -272,7 +276,7 @@
     {
       "type": "select",
       "id": "button_style",
-      "label": "Button style",
+      "label": "Filter button style",
       "options": [
         {
           "value": "primary",
@@ -283,7 +287,11 @@
           "label": "Secondary"
         },
         {
-          "value": "tertiary",
+          "value": "outline",
+          "label": "Outline"
+        },
+        {
+          "value": "text",
           "label": "Text"
         }
       ],
@@ -300,6 +308,28 @@
       "id": "collapse_filters",
       "label": "Collapse filters",
       "default": false
+    },
+    {
+      "type": "select",
+      "id": "heading_size",
+      "label": "Heading size",
+      "options": [
+        { "value": "h3", "label": "Heading 3" },
+        { "value": "h4", "label": "Heading 4" },
+        { "value": "h5", "label": "Heading 5" },
+        { "value": "h6", "label": "Heading 6" }
+      ],
+      "default": "h5"
+    },
+    {
+      "type": "range",
+      "id": "right_padding",
+      "label": "Right padding",
+      "min": 0,
+      "max": 120,
+      "step": 2,
+      "unit": "px",
+      "default": 50
     },
     {
       "type": "select",
@@ -320,7 +350,7 @@
     {
       "type": "range",
       "id": "items_limit",
-      "label": "Visible filter values",
+      "label": "Items limit",
       "min": 0,
       "max": 20,
       "step": 5,
