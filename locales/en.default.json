@@ -277,7 +277,11 @@
     "products_heading": "Products",
     "read_less": "Read less",
     "read_more": "Read more",
-    "sort_by": "Sort:"
+    "sort_by": "Sort:",
+    "grid_view": "Grid view",
+    "view": "View",
+    "view_more": "View more",
+    "load_more": "Load more"
   },
   "gift_card": {
     "add_to_apple_wallet": "Add to Apple Wallet",
