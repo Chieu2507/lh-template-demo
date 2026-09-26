@@ -1,16 +1,50 @@
 {% doc %}
-  Repeatable editorial card inside the collection product grid.
-  The card owns placement, media, overlay and content composition; text and CTA
-  are shared Theme Blocks so their styling and editor behavior stay consistent.
+  Repeatable editorial card in the collection product grid.
+  Content fields and media controls stay on this block so each promo card can be
+  added, removed, reordered and edited independently in the Theme Editor.
 {% enddoc %}
 {% liquid
-  assign promo_scheme = block.settings.color_scheme.id | default: block.settings.color_scheme | default: 'scheme-3'
+  assign promo_scheme = block.settings.color_scheme.id | default: block.settings.color_scheme | default: 'scheme-1'
   assign promo_position = block.settings.position | default: 5 | plus: 0
   assign promo_columns_desktop = block.settings.columns_desktop | default: '2'
   assign promo_columns_mobile = block.settings.columns_mobile | default: '2'
   assign promo_alignment = block.settings.content_alignment | default: 'center'
   assign promo_position_y = block.settings.content_position | default: 'center'
   assign promo_media_type = block.settings.media_type | default: 'image'
+  assign promo_text_size = block.settings.text_size | default: 'md'
+  assign promo_heading_size = block.settings.heading_size | default: 'h2'
+  assign promo_heading_scale = 'xl'
+  assign promo_heading_level = 2
+
+  case promo_heading_size
+    when 'h1'
+      assign promo_heading_scale = 'display'
+      assign promo_heading_level = 1
+    when 'h2'
+      assign promo_heading_scale = 'xl'
+      assign promo_heading_level = 2
+    when 'h3'
+      assign promo_heading_scale = 'lg'
+      assign promo_heading_level = 3
+    when 'h4'
+      assign promo_heading_scale = 'md'
+      assign promo_heading_level = 4
+    when 'h5'
+      assign promo_heading_scale = 'sm'
+      assign promo_heading_level = 5
+    when 'h6'
+      assign promo_heading_scale = 'xs'
+      assign promo_heading_level = 6
+    else
+      assign promo_heading_size = 'h2'
+      assign promo_heading_scale = 'xl'
+      assign promo_heading_level = 2
+  endcase
+
+  unless promo_text_size == 'xs' or promo_text_size == 'sm' or promo_text_size == 'md' or promo_text_size == 'lg' or promo_text_size == 'xl'
+    assign promo_text_size = 'md'
+  endunless
+
   assign promo_alignment_items = 'center'
   assign promo_alignment_text = 'center'
   assign promo_justify = 'center'
@@ -28,19 +62,60 @@
     when 'bottom'
       assign promo_justify = 'flex-end'
   endcase
+
   assign promo_padding_block_mobile = block.settings.padding_top_bottom | default: 40 | divided_by: 2
   assign promo_padding_inline_mobile = block.settings.padding_left_right | default: 28 | divided_by: 2
   if block.settings.customize_mobile_padding
     assign promo_padding_block_mobile = block.settings.padding_top_bottom_mobile | default: 24
     assign promo_padding_inline_mobile = block.settings.padding_left_right_mobile | default: 16
   endif
-  assign promo_padding_class = ''
-  if block.settings.customize_mobile_padding
-    assign promo_padding_class = ' main-collection__promotion--custom-mobile-padding'
+
+  assign promo_button_style = block.settings.button_style | default: 'primary'
+  assign promo_button_variant = 'primary'
+  case promo_button_style
+    when 'secondary', 'outline', 'subtle'
+      assign promo_button_variant = 'secondary'
+    when 'text'
+      assign promo_button_variant = 'tertiary'
+    when 'primary'
+      assign promo_button_variant = 'primary'
+    else
+      assign promo_button_style = 'primary'
+      assign promo_button_variant = 'primary'
+  endcase
+
+  assign promo_button_height = 'var(--button-height)'
+  assign promo_button_height_mobile = 'var(--button-height-mobile)'
+  case block.settings.button_height
+    when 'extra_small'
+      assign promo_button_height = '36px'
+      assign promo_button_height_mobile = '36px'
+    when 'small'
+      assign promo_button_height = '40px'
+      assign promo_button_height_mobile = '40px'
+    when 'medium'
+      assign promo_button_height = '48px'
+      assign promo_button_height_mobile = '48px'
+    when 'large'
+      assign promo_button_height = '56px'
+      assign promo_button_height_mobile = '56px'
+    when 'extra_large'
+      assign promo_button_height = '64px'
+      assign promo_button_height_mobile = '64px'
+  endcase
+
+  assign promo_button_class = 'main-collection__promotion-button main-collection__promotion-button--' | append: promo_button_style
+  assign promo_icon = blank
+  if block.settings.show_icon
+    assign promo_icon = block.settings.icon | default: 'arrow'
   endif
+
+  assign promo_subheading_text = block.settings.subheading | strip_html | strip
+  assign promo_heading_text = block.settings.heading | strip_html | strip
+  assign promo_body_text = block.settings.text | strip_html | strip
 %}
 <li
-  class="main-collection__promotion color-scheme section-color-scope {{ promo_scheme }}{{ promo_padding_class }}"
+  class="main-collection__promotion color-scheme section-color-scope {{ promo_scheme }}"
   style="order:{{ promo_position | times: 10 | minus: 5 }};--promo-span:{{ promo_columns_desktop }};--promo-span-mobile:{{ promo_columns_mobile }};--promo-overlay:{{ block.settings.overlay_opacity | default: 20 | divided_by: 100.0 }};--promo-overlay-color:{{ block.settings.overlay_color | default: '#000000' }};--promo-content-gap:{{ block.settings.content_gap | default: 12 }}px;--promo-button-spacing:{{ block.settings.button_spacing | default: 24 }}px;--promo-padding-block:{{ block.settings.padding_top_bottom | default: 40 }}px;--promo-padding-inline:{{ block.settings.padding_left_right | default: 28 }}px;--promo-padding-block-mobile:{{ promo_padding_block_mobile }}px;--promo-padding-inline-mobile:{{ promo_padding_inline_mobile }}px;--promo-alignment-items:{{ promo_alignment_items }};--promo-alignment-text:{{ promo_alignment_text }};--promo-position:{{ promo_justify }}"
   {{ block.shopify_attributes }}
 >
@@ -71,10 +146,93 @@
       ></a>
     {% endif %}
     <div class="main-collection__promotion-content">
-      {% content_for 'blocks' %}
+      {% if promo_subheading_text != blank %}
+        <div class="main-collection__promotion-subheading eyebrow-text body-text body-sm">{{ block.settings.subheading }}</div>
+      {% endif %}
+      {% if promo_heading_text != blank %}
+        <div class="main-collection__promotion-heading heading-text heading-{{ promo_heading_scale }}" role="heading" aria-level="{{ promo_heading_level }}">{{ block.settings.heading }}</div>
+      {% endif %}
+      {% if promo_body_text != blank %}
+        <div class="main-collection__promotion-text body-text body-{{ promo_text_size }}">{{ block.settings.text }}</div>
+      {% endif %}
+      {% if block.settings.button_label != blank %}
+        <div
+          class="main-collection__promotion-cta{% if block.settings.button_full_width %} main-collection__promotion-cta--full-width{% endif %}"
+          style="--promo-button-height:{{ promo_button_height }};--promo-button-height-mobile:{{ promo_button_height_mobile }}"
+        >
+          {% render 'theme-button',
+            label: block.settings.button_label,
+            url: block.settings.card_link,
+            open_in_new_tab: block.settings.open_in_new_tab,
+            variant: promo_button_variant,
+            icon: promo_icon,
+            class: promo_button_class
+          %}
+        </div>
+      {% endif %}
     </div>
   </div>
 </li>
+
+{% stylesheet %}
+  .main-collection__promotion-subheading,
+  .main-collection__promotion-heading,
+  .main-collection__promotion-text {
+    width: 100%;
+    margin: 0;
+  }
+
+  .main-collection__promotion-subheading :where(p),
+  .main-collection__promotion-heading :where(p),
+  .main-collection__promotion-text :where(p) {
+    margin: 0;
+  }
+
+  .main-collection__promotion-cta {
+    position: relative;
+    z-index: 3;
+    width: fit-content;
+    max-width: 100%;
+    margin-top: var(--promo-button-spacing, 24px);
+    pointer-events: auto;
+  }
+
+  .main-collection__promotion-cta .main-collection__promotion-button {
+    min-height: var(--promo-button-height, var(--button-height));
+  }
+
+  .main-collection__promotion-cta--full-width {
+    width: 100%;
+  }
+
+  .main-collection__promotion-cta--full-width .main-collection__promotion-button {
+    width: 100%;
+  }
+
+  .main-collection__promotion-button--outline {
+    --button-background: transparent;
+    --button-foreground: var(--button-secondary-text);
+    --button-border: var(--button-secondary-border);
+  }
+
+  .main-collection__promotion-button--subtle {
+    --button-background: color-mix(in srgb, var(--button-secondary-background) 40%, transparent);
+    --button-foreground: var(--button-secondary-text);
+    --button-border: transparent;
+    --button-hover-background: var(--button-secondary-background);
+  }
+
+  @media (max-width: 767.98px) {
+    .main-collection__promotion-cta {
+      margin-top: var(--promo-button-spacing, 16px);
+    }
+
+    .main-collection__promotion-cta .main-collection__promotion-button {
+      min-height: var(--promo-button-height-mobile, var(--button-height-mobile));
+    }
+  }
+{% endstylesheet %}
+
 {% schema %}
 {
   "name": "Promo card",
@@ -170,7 +328,25 @@
       "unit": "%",
       "visible_if": "{{ block.settings.show_overlay }}"
     },
-    { "type": "header", "content": "Content layout" },
+    { "type": "header", "content": "Content" },
+    {
+      "type": "richtext",
+      "id": "subheading",
+      "label": "Subheading",
+      "default": "<p>[ Save 20% off ]</p>"
+    },
+    {
+      "type": "richtext",
+      "id": "heading",
+      "label": "Heading",
+      "default": "<p>Curate Your Set</p>"
+    },
+    {
+      "type": "richtext",
+      "id": "text",
+      "label": "Text",
+      "default": "<p></p>"
+    },
     {
       "type": "select",
       "id": "content_alignment",
@@ -193,6 +369,92 @@
       ],
       "default": "center"
     },
+    { "type": "header", "content": "Typography" },
+    {
+      "type": "select",
+      "id": "heading_size",
+      "label": "Heading size",
+      "options": [
+        { "value": "h1", "label": "Heading 1" },
+        { "value": "h2", "label": "Heading 2" },
+        { "value": "h3", "label": "Heading 3" },
+        { "value": "h4", "label": "Heading 4" },
+        { "value": "h5", "label": "Heading 5" },
+        { "value": "h6", "label": "Heading 6" }
+      ],
+      "default": "h2"
+    },
+    {
+      "type": "select",
+      "id": "text_size",
+      "label": "Text size",
+      "options": [
+        { "value": "xs", "label": "Extra small" },
+        { "value": "sm", "label": "Small" },
+        { "value": "md", "label": "Medium" },
+        { "value": "lg", "label": "Large" },
+        { "value": "xl", "label": "Extra large" }
+      ],
+      "default": "md"
+    },
+    { "type": "header", "content": "Button" },
+    {
+      "type": "text",
+      "id": "button_label",
+      "label": "Label",
+      "default": "Curate now"
+    },
+    {
+      "type": "select",
+      "id": "button_style",
+      "label": "Style",
+      "options": [
+        { "value": "primary", "label": "Primary" },
+        { "value": "secondary", "label": "Secondary" },
+        { "value": "outline", "label": "Outline" },
+        { "value": "subtle", "label": "Subtle" },
+        { "value": "text", "label": "Text" }
+      ],
+      "default": "primary"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_icon",
+      "label": "Show icon",
+      "default": false
+    },
+    {
+      "type": "select",
+      "id": "icon",
+      "label": "Icon",
+      "options": [
+        { "value": "arrow", "label": "Arrow" },
+        { "value": "cart", "label": "Cart" }
+      ],
+      "default": "arrow",
+      "visible_if": "{{ block.settings.show_icon }}"
+    },
+    {
+      "type": "select",
+      "id": "button_height",
+      "label": "Height",
+      "options": [
+        { "value": "inherit", "label": "Inherit" },
+        { "value": "extra_small", "label": "Extra small" },
+        { "value": "small", "label": "Small" },
+        { "value": "medium", "label": "Medium" },
+        { "value": "large", "label": "Large" },
+        { "value": "extra_large", "label": "Extra large" }
+      ],
+      "default": "inherit"
+    },
+    {
+      "type": "checkbox",
+      "id": "button_full_width",
+      "label": "Full width",
+      "default": false
+    },
+    { "type": "header", "content": "Gap" },
     {
       "type": "range",
       "id": "content_gap",
@@ -218,7 +480,7 @@
       "type": "color_scheme",
       "id": "color_scheme",
       "label": "Color scheme",
-      "default": "scheme-3"
+      "default": "scheme-1"
     },
     { "type": "header", "content": "Padding" },
     {
@@ -270,39 +532,30 @@
       "visible_if": "{{ block.settings.customize_mobile_padding }}"
     }
   ],
-  "blocks": [
-    { "type": "eyebrow" },
-    { "type": "heading" },
-    { "type": "text" },
-    { "type": "button" }
-  ],
   "presets": [
     {
       "name": "Promo card",
-      "blocks": [
-        {
-          "type": "eyebrow",
-          "settings": { "text": "<p>[ Save 20% off ]</p>" }
-        },
-        {
-          "type": "heading",
-          "settings": {
-            "text": "<p>Curate Your Set</p>",
-            "heading_size": "lg"
-          }
-        },
-        {
-          "type": "text",
-          "settings": { "text": "" }
-        },
-        {
-          "type": "button",
-          "settings": {
-            "button_label": "Curate now",
-            "button_style": "primary"
-          }
-        }
-      ]
+      "settings": {
+        "position": 5,
+        "columns_desktop": "2",
+        "columns_mobile": "2",
+        "media_type": "image",
+        "show_overlay": true,
+        "overlay_color": "#000000",
+        "overlay_opacity": 20,
+        "subheading": "<p>[ Save 20% off ]</p>",
+        "heading": "<p>Curate Your Set</p>",
+        "heading_size": "h2",
+        "text_size": "md",
+        "button_label": "Curate now",
+        "button_style": "primary",
+        "color_scheme": "scheme-1",
+        "padding_top_bottom": 40,
+        "padding_left_right": 28,
+        "customize_mobile_padding": true,
+        "padding_top_bottom_mobile": 24,
+        "padding_left_right_mobile": 16
+      }
     }
   ]
 }
