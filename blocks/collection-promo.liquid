@@ -71,10 +71,7 @@
       ></a>
     {% endif %}
     <div class="main-collection__promotion-content">
-      {% content_for 'block', type: 'eyebrow', id: 'label' %}
-      {% content_for 'block', type: 'heading', id: 'heading' %}
-      {% content_for 'block', type: 'text', id: 'text' %}
-      {% content_for 'block', type: 'button', id: 'button' %}
+      {% content_for 'blocks' %}
     </div>
   </div>
 </li>
@@ -285,14 +282,10 @@
       "blocks": [
         {
           "type": "eyebrow",
-          "id": "label",
-          "static": true,
           "settings": { "text": "<p>[ Save 20% off ]</p>" }
         },
         {
           "type": "heading",
-          "id": "heading",
-          "static": true,
           "settings": {
             "text": "<p>Curate Your Set</p>",
             "heading_size": "lg"
@@ -300,14 +293,10 @@
         },
         {
           "type": "text",
-          "id": "text",
-          "static": true,
           "settings": { "text": "" }
         },
         {
           "type": "button",
-          "id": "button",
-          "static": true,
           "settings": {
             "button_label": "Curate now",
             "button_style": "primary"
