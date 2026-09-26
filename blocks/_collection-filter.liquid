@@ -4,6 +4,7 @@
 {% liquid
  assign sort_by = collection.sort_by | default: collection.default_sort_by
  assign sort_label = 'collection.sort_by' | t | remove: ':' | strip
+ assign clear_filters_label = 'collection.clear_all' | t
  assign filter_items_limit = block.settings.items_limit | default: 5 | plus: 0
  assign apply_filters_label = 'collection.apply_filters' | t: count: collection.products_count
  assign active_filter_count = 0
@@ -212,7 +213,7 @@
 
           <footer class="main-collection__filter-footer">
             {% render 'theme-button', label: apply_filters_label, variant: 'primary', type: 'submit' %}
-            {% render 'theme-button', label: 'collection.clear_all' | t, url: collection.url, variant: 'secondary' %}
+            {% render 'theme-button', label: clear_filters_label, url: collection.url, variant: 'secondary' %}
           </footer>
         </form>
       </dialog>

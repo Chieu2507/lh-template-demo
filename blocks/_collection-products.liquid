@@ -1,6 +1,7 @@
 {% doc %}
   Collection resource grid. Product card and pagination are fixed; promotional cards are repeatable. Native pagination remains usable without JavaScript.
 {% enddoc %}
+{% assign clear_collection_label = 'collection.clear_all' | t %}
 <div class="main-collection__products{% if block.settings.full_width %} main-collection__products--full-width{% endif %}" id="CollectionProducts-{{ section.id }}" data-columns-desktop="{{ block.settings.columns_desktop }}" data-columns-mobile="{{ block.settings.columns_mobile }}" style="--main-collection-columns-desktop:{{ block.settings.columns_desktop }};--main-collection-columns-tablet:{{ block.settings.columns_desktop }};--main-collection-columns-mobile:{{ block.settings.columns_mobile }};--main-collection-column-gap:{{ block.settings.column_gap_desktop }}px;--main-collection-row-gap:{{ block.settings.row_gap_desktop }}px;--main-collection-mobile-column-gap:{{ block.settings.column_gap_mobile }}px;--main-collection-mobile-row-gap:{{ block.settings.row_gap_mobile }}px;" {{ block.shopify_attributes }}>
 {% paginate collection.products by section.settings.products_per_page, window_size: 1 %}
 {% if collection.products_count > 0 %}
@@ -10,7 +11,7 @@
 {% if paginate.current_page == 1 %}{% content_for 'blocks' %}{% endif %}
 </ul>
 {% content_for 'block', type: '_collection-pagination', id: 'pagination', paginate: paginate %}
-{% else %}<div class="main-collection__empty"><h2 class="heading-text heading-md">{{ 'collection.empty' | t }}</h2><p>{{ 'collection.empty_help' | t }}</p>{% render 'theme-button', label: 'collection.clear_all' | t, url: collection.url, variant: 'primary' %}</div>{% endif %}
+{% else %}<div class="main-collection__empty"><h2 class="heading-text heading-md">{{ 'collection.empty' | t }}</h2><p>{{ 'collection.empty_help' | t }}</p>{% render 'theme-button', label: clear_collection_label, url: collection.url, variant: 'primary' %}</div>{% endif %}
 {% endpaginate %}
 </div>
 {% schema %}
