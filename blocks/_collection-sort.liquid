@@ -37,7 +37,7 @@
               {% endif %}
             {% endfor %}
             <label id="CollectionSortLabel-{{ section.id }}" for="CollectionSort-{{ section.id }}">{{ sort_label }}:</label>
-            <collection-sort-select class="main-collection__sort-select-wrap"{% if block.settings.style == 'text' %} data-static-label="{{ sort_label | escape }}"{% endif %}>
+            <collection-sort-select class="main-collection__sort-select-wrap"{% if block.settings.style == 'text' %} data-static-label="{{ 'collection.sort_trigger' | t | escape }}"{% endif %}>
               <select
                 id="CollectionSort-{{ section.id }}"
                 name="sort_by"
