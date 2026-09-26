@@ -1,0 +1,159 @@
+{% doc %}
+  Repeatable editorial card inside the collection result grid. Position is visual order relative to products; cards retain stable editor identity.
+{% enddoc %}
+<li class="main-collection__promotion color-scheme section-color-scope {{ block.settings.color_scheme }}" style="order:{{ block.settings.position | times: 10 | minus: 5 }};--promo-span:{{ block.settings.columns_desktop }};--promo-span-mobile:{{ block.settings.columns_mobile }};--main-collection-promotion-overlay:{{ block.settings.overlay_opacity | divided_by: 100.0 }};--text-align-default:{{ block.settings.content_alignment }}" {{ block.shopify_attributes }}>
+<div class="main-collection__promotion-card">
+<div class="main-collection__promotion-media">{% if block.settings.video != blank %}{{ block.settings.video | video_tag: autoplay: true, loop: true, muted: true, controls: false, class: 'main-collection__promotion-image' }}{% elsif block.settings.image != blank %}<picture>{% if block.settings.mobile_image != blank %}<source media="(max-width: 767.98px)" srcset="{{ block.settings.mobile_image | image_url: width: 900 }}">{% endif %}{{ block.settings.image | image_url: width: 1600 | image_tag: widths: '400,800,1200,1600', sizes: '(min-width:1150px) 50vw, 100vw', loading: 'lazy', class: 'main-collection__promotion-image' }}</picture>{% else %}{{ 'collection-1' | placeholder_svg_tag: 'main-collection__promotion-image' }}{% endif %}</div>
+<span class="main-collection__promotion-overlay" aria-hidden="true"></span>
+<div class="main-collection__promotion-content main-collection__promotion-content--{{ block.settings.content_position }}">
+{% content_for 'block', type: 'eyebrow', id: 'label' %}{% content_for 'block', type: 'heading', id: 'heading' %}{% content_for 'block', type: 'text', id: 'text' %}{% content_for 'block', type: 'button', id: 'button' %}
+</div></div></li>
+{% schema %}
+{
+  "name": "Promo card",
+  "tag": null,
+  "settings": [
+    {
+      "type": "range",
+      "id": "position",
+      "label": "Card position",
+      "min": 1,
+      "max": 40,
+      "step": 1,
+      "default": 5
+    },
+    {
+      "type": "select",
+      "id": "columns_desktop",
+      "label": "Desktop columns",
+      "options": [
+        {
+          "value": "1",
+          "label": "1"
+        },
+        {
+          "value": "2",
+          "label": "2"
+        }
+      ],
+      "default": "2"
+    },
+    {
+      "type": "select",
+      "id": "columns_mobile",
+      "label": "Mobile columns",
+      "options": [
+        {
+          "value": "1",
+          "label": "1"
+        },
+        {
+          "value": "2",
+          "label": "2"
+        }
+      ],
+      "default": "2"
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Image"
+    },
+    {
+      "type": "image_picker",
+      "id": "mobile_image",
+      "label": "Mobile image"
+    },
+    {
+      "type": "video",
+      "id": "video",
+      "label": "Video"
+    },
+    {
+      "type": "range",
+      "id": "overlay_opacity",
+      "label": "Overlay opacity",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "default": 20,
+      "unit": "%"
+    },
+    {
+      "type": "select",
+      "id": "content_alignment",
+      "label": "Content alignment",
+      "options": [
+        {
+          "value": "left",
+          "label": "Left"
+        },
+        {
+          "value": "center",
+          "label": "Center"
+        },
+        {
+          "value": "right",
+          "label": "Right"
+        }
+      ],
+      "default": "center"
+    },
+    {
+      "type": "select",
+      "id": "content_position",
+      "label": "Content position",
+      "options": [
+        {
+          "value": "top",
+          "label": "Top"
+        },
+        {
+          "value": "center",
+          "label": "Center"
+        },
+        {
+          "value": "bottom",
+          "label": "Bottom"
+        }
+      ],
+      "default": "center"
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "Color scheme",
+      "default": "scheme-3"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Promo card",
+      "blocks": {
+        "label": {
+          "type": "eyebrow",
+          "static": true,
+          "settings": {
+            "text": "<p>[ Save 20% off ]</p>"
+          }
+        },
+        "heading": {
+          "type": "heading",
+          "static": true,
+          "settings": {
+            "text": "<p>Curate Your Set</p>",
+            "heading_size": "lg"
+          }
+        },
+        "button": {
+          "type": "button",
+          "static": true,
+          "settings": {
+            "button_label": "Curate now"
+          }
+        }
+      }
+    }
+  ]
+}
+{% endschema %}
