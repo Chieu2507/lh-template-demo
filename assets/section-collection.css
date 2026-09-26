@@ -1186,6 +1186,7 @@
   gap: var(--promo-content-gap, 12px);
   padding: var(--promo-padding-block, 40px) var(--promo-padding-inline, 28px);
   text-align: var(--promo-alignment-text, center);
+  pointer-events: none;
 }
 
 .main-collection--blocks .main-collection__promotion-hit-area {
@@ -1194,10 +1195,15 @@
   inset: 0;
 }
 
+.main-collection--blocks .main-collection__promotion-card:has(.main-collection__promotion-hit-area:hover) .main-collection__promotion-image {
+  transform: scale(1.02);
+}
+
 .main-collection--blocks .main-collection__promotion-content > .button-block {
   position: relative;
   z-index: 3;
   margin-top: var(--promo-button-spacing, 24px);
+  pointer-events: auto;
 }
 
 .main-collection--blocks .main-collection__products--full-width {

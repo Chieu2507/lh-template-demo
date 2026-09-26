@@ -275,6 +275,7 @@
       "other": "{{ count }} products"
     },
     "products_heading": "Products",
+    "promo_link": "Open promotion",
     "read_less": "Read less",
     "read_more": "Read more",
     "sort_by": "Sort:",
