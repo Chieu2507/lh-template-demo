@@ -1,0 +1,331 @@
+{% doc %}
+  Fixed collection filter role. Owns sidebar/drawer behavior and native Shopify facets.
+{% enddoc %}
+{% liquid
+ assign sort_by = collection.sort_by | default: collection.default_sort_by
+ assign sort_label = 'collection.sort_by' | t | remove: ':' | strip
+ assign active_filter_count = 0
+ for filter in collection.filters
+  assign active_filter_count = active_filter_count | plus: filter.active_values.size
+  if filter.type == 'price_range'
+   if filter.min_value.value != nil or filter.max_value.value != nil
+    assign active_filter_count = active_filter_count | plus: 1
+   endif
+  endif
+ endfor
+%}
+{% if collection.filters.size > 0 %}
+<div class="collection-filter-block">
+<button class="main-collection__filter-button btn btn-{{ block.settings.button_style }}" type="button" aria-controls="CollectionFilters-{{ section.id }}" aria-expanded="false" data-collection-filter-open>{{ 'collection.filter' | t }}{% if active_filter_count > 0 %} ({{ active_filter_count }}){% endif %}</button>
+      <dialog
+        class="main-collection__filter-dialog modal-drag-target" data-desktop-layout="{{ block.settings.desktop_layout }}" data-sidebar-visibility="{{ block.settings.sidebar_visibility }}" data-mobile-layout="{{ block.settings.mobile_layout }}" data-collapse-icon="{{ block.settings.collapse_icon }}" {{ block.shopify_attributes }}
+        id="CollectionFilters-{{ section.id }}"
+        aria-labelledby="CollectionFiltersTitle-{{ section.id }}"
+        scroll-lock
+        data-collection-filter-dialog
+      >
+        <span class="main-collection__filter-backdrop-pointer modal-backdrop-pointer modal-close-button close-icon" aria-hidden="true"></span>
+        <form class="main-collection__filter-form" action="{{ collection.url | escape }}" method="get">
+          <div class="quick-view__handle main-collection__filter-handle" data-collection-filter-handle aria-hidden="true"></div>
+          <header class="main-collection__filter-header">
+            <h2 id="CollectionFiltersTitle-{{ section.id }}" class="heading-h2 heading-text">{{ 'collection.filters' | t }}</h2>
+            <button class="main-collection__filter-close" type="button" aria-label="{{ 'collection.close_filters' | t | escape }}" data-collection-filter-close>
+              {% render 'icon', icon: 'x-mark', bare: true %}
+            </button>
+          </header>
+
+          <div class="main-collection__filter-body">
+            {% if active_filter_count > 0 %}
+              <div class="main-collection__active-filters">
+              {% for filter in collection.filters %}
+                {% for value in filter.active_values %}
+                  <a href="{{ value.url_to_remove | escape }}">
+                    <span>{{ value.label | escape }}</span>
+                    <span aria-hidden="true">×</span>
+                  </a>
+                {% endfor %}
+                {% if filter.type == 'price_range' %}
+                  {% if filter.min_value.value != nil or filter.max_value.value != nil %}
+                    <a href="{{ filter.url_to_remove | escape }}">
+                      <span>{{ filter.label | escape }}</span>
+                      <span aria-hidden="true">×</span>
+                    </a>
+                  {% endif %}
+                {% endif %}
+              {% endfor %}
+              <a class="main-collection__clear-link" href="{{ collection.url | escape }}">{{ 'collection.clear_all' | t }}</a>
+              </div>
+            {% endif %}
+
+            <div class="main-collection__filter-groups">
+              {% if block.settings.enable_sorting %}
+                <details class="main-collection__mobile-sort main-collection__filter-group" open>
+                  <summary>
+                    <span>{{ sort_label }}</span>
+                    {% render 'icon', icon: 'chevron-down', bare: true %}
+                  </summary>
+                  <fieldset class="main-collection__sort-options">
+                    <legend class="visually-hidden">{{ sort_label }}</legend>
+                    {% for option in collection.sort_options %}
+                      <label class="main-collection__sort-option">
+                        <input
+                          type="radio"
+                          name="sort_by"
+                          value="{{ option.value }}"
+                          {% if option.value == sort_by %}checked{% endif %}
+                        >
+                        <span class="main-collection__sort-radio" aria-hidden="true"></span>
+                        <span class="main-collection__sort-option-label">{{ option.name }}</span>
+                      </label>
+                    {% endfor %}
+                  </fieldset>
+                </details>
+              {% endif %}
+
+              {% for filter in collection.filters %}
+                <details class="main-collection__filter-group" {% unless block.settings.collapse_filters %}open{% endunless %}>
+                <summary>
+                  <span>{{ filter.label | escape }}</span>
+                  {% render 'icon', icon: 'chevron-down', bare: true %}
+                </summary>
+
+                {% if filter.type == 'price_range' %}
+                  {% liquid
+                    assign price_range_max = filter.range_max | divided_by: 100.0
+                    assign price_range_min_value = 0
+                    assign price_range_max_value = price_range_max
+                    assign currency_symbol = cart.currency.symbol | default: localization.country.currency.symbol | default: '$'
+
+                    if filter.min_value.value != nil
+                      assign price_range_min_value = filter.min_value.value | divided_by: 100.0
+                    endif
+
+                    if filter.max_value.value != nil
+                      assign price_range_max_value = filter.max_value.value | divided_by: 100.0
+                    endif
+                  %}
+                  <collection-price-range class="main-collection__price-filter">
+                    <div class="main-collection__price-slider" data-price-range-slider>
+                      <input
+                        type="range"
+                        min="0"
+                        max="{{ price_range_max }}"
+                        step="0.01"
+                        value="{{ price_range_min_value }}"
+                        aria-label="{{ 'collection.price_from' | t | escape }}"
+                        data-price-range-min
+                      >
+                      <input
+                        type="range"
+                        min="0"
+                        max="{{ price_range_max }}"
+                        step="0.01"
+                        value="{{ price_range_max_value }}"
+                        aria-label="{{ 'collection.price_to' | t | escape }}"
+                        data-price-range-max
+                      >
+                    </div>
+
+                    <div class="main-collection__price-fields">
+                      <div class="main-collection__price-input">
+                        <label class="visually-hidden" for="Filter-{{ filter.label | handle }}-Min-{{ section.id }}">{{ 'collection.price_from' | t }}</label>
+                        <span aria-hidden="true">{{ currency_symbol }}</span>
+                        <input
+                          id="Filter-{{ filter.label | handle }}-Min-{{ section.id }}"
+                          type="number"
+                          name="{{ filter.min_value.param_name }}"
+                          min="0"
+                          max="{{ price_range_max }}"
+                          step="0.01"
+                          placeholder="0"
+                          data-price-number-min
+                          {% if filter.min_value.value != nil %}value="{{ price_range_min_value }}"{% endif %}
+                        >
+                      </div>
+                      <span class="main-collection__price-separator" aria-hidden="true">{{ 'collection.price_to' | t | downcase }}</span>
+                      <div class="main-collection__price-input">
+                        <label class="visually-hidden" for="Filter-{{ filter.label | handle }}-Max-{{ section.id }}">{{ 'collection.price_to' | t }}</label>
+                        <span aria-hidden="true">{{ currency_symbol }}</span>
+                        <input
+                          id="Filter-{{ filter.label | handle }}-Max-{{ section.id }}"
+                          type="number"
+                          name="{{ filter.max_value.param_name }}"
+                          min="0"
+                          max="{{ price_range_max }}"
+                          step="0.01"
+                          placeholder="{{ price_range_max }}"
+                          data-price-number-max
+                          {% if filter.max_value.value != nil %}value="{{ price_range_max_value }}"{% endif %}
+                        >
+                      </div>
+                    </div>
+                  </collection-price-range>
+                {% else %}
+                  {% liquid
+                    assign is_swatch_filter = false
+                    if filter.presentation == 'swatch'
+                      assign is_swatch_filter = true
+                    endif
+                  %}
+                  <ul class="main-collection__filter-values{% if is_swatch_filter %} main-collection__filter-values--swatches{% endif %}" role="list">
+                    {% for value in filter.values %}
+                      <li {% if block.settings.items_limit > 0 and forloop.index > block.settings.items_limit and value.active == false %}data-filter-overflow hidden{% endif %}>
+                        <label class="main-collection__filter-value{% if value.active %} is-active{% endif %}">
+                          <input
+                            type="checkbox"
+                            name="{{ value.param_name }}"
+                            value="{{ value.value }}"
+                            {% if value.active %}checked{% endif %}
+                            {% if value.count == 0 and value.active == false %}disabled{% endif %}
+                          >
+                          {% if is_swatch_filter %}
+                            {% liquid
+                              assign swatch_style = ''
+                              if value.swatch.image != blank
+                                assign swatch_image_url = value.swatch.image | image_url: width: 48
+                                assign swatch_style = '--main-collection-swatch-image: url(' | append: swatch_image_url | append: ');'
+                              elsif value.swatch.color != blank
+                                assign swatch_style = '--main-collection-swatch-color: ' | append: value.swatch.color | append: ';'
+                              endif
+                            %}
+                            <span class="main-collection__swatch"{% if swatch_style != blank %} style="{{ swatch_style }}"{% endif %}></span>
+                          {% endif %}
+                          <span>{{ value.label | escape }}</span>
+                          <span>({{ value.count }})</span>
+                        </label>
+                      </li>
+                    {% endfor %}
+                  </ul>
+                  {% if block.settings.items_limit > 0 and filter.values.size > block.settings.items_limit %}<button type="button" class="link-underline" data-filter-show-more aria-expanded="false">{{ 'collection.view_more' | t }}</button>{% endif %}
+                {% endif %}
+                </details>
+              {% endfor %}
+            </div>
+          </div>
+
+          <footer class="main-collection__filter-footer">
+            <button class="btn btn-primary btn--primary" type="submit">
+              {{ 'collection.apply_filters' | t: count: collection.products_count }}
+            </button>
+            <a class="btn btn-secondary btn--secondary" href="{{ collection.url | escape }}">{{ 'collection.clear_all' | t }}</a>
+          </footer>
+        </form>
+      </dialog>
+</div>{% endif %}
+{% schema %}
+{
+  "name": "Filter",
+  "tag": null,
+  "settings": [
+    {
+      "type": "select",
+      "id": "desktop_layout",
+      "label": "Desktop layout",
+      "options": [
+        {
+          "value": "sidebar",
+          "label": "Sidebar"
+        },
+        {
+          "value": "drawer",
+          "label": "Drawer"
+        }
+      ],
+      "default": "sidebar"
+    },
+    {
+      "type": "select",
+      "id": "sidebar_visibility",
+      "label": "Sidebar visibility",
+      "options": [
+        {
+          "value": "always",
+          "label": "Always open"
+        },
+        {
+          "value": "open",
+          "label": "Open by default"
+        },
+        {
+          "value": "closed",
+          "label": "Closed by default"
+        }
+      ],
+      "default": "always"
+    },
+    {
+      "type": "select",
+      "id": "mobile_layout",
+      "label": "Mobile layout",
+      "options": [
+        {
+          "value": "sheet",
+          "label": "Bottom sheet"
+        },
+        {
+          "value": "drawer",
+          "label": "Drawer"
+        }
+      ],
+      "default": "sheet"
+    },
+    {
+      "type": "select",
+      "id": "button_style",
+      "label": "Button style",
+      "options": [
+        {
+          "value": "primary",
+          "label": "Primary"
+        },
+        {
+          "value": "secondary",
+          "label": "Secondary"
+        },
+        {
+          "value": "tertiary",
+          "label": "Text"
+        }
+      ],
+      "default": "primary"
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_sorting",
+      "label": "Show sorting in drawer",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "collapse_filters",
+      "label": "Collapse filters",
+      "default": false
+    },
+    {
+      "type": "select",
+      "id": "collapse_icon",
+      "label": "Collapse icon",
+      "options": [
+        {
+          "value": "chevron",
+          "label": "Chevron"
+        },
+        {
+          "value": "plus",
+          "label": "Plus"
+        }
+      ],
+      "default": "plus"
+    },
+    {
+      "type": "range",
+      "id": "items_limit",
+      "label": "Visible filter values",
+      "min": 0,
+      "max": 20,
+      "step": 5,
+      "default": 5
+    }
+  ]
+}
+{% endschema %}

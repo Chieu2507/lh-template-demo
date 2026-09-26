@@ -1,0 +1,93 @@
+{% doc %}
+  Collection resource grid. Product card and pagination are fixed; promotional cards are repeatable. Native pagination remains usable without JavaScript.
+{% enddoc %}
+<div class="main-collection__products" id="CollectionProducts-{{ section.id }}" data-columns-desktop="{{ block.settings.columns_desktop }}" data-columns-mobile="{{ block.settings.columns_mobile }}" style="--main-collection-columns-desktop:{{ block.settings.columns_desktop }};--main-collection-columns-tablet:{{ block.settings.columns_desktop }};--main-collection-columns-mobile:{{ block.settings.columns_mobile }};--main-collection-column-gap:{{ block.settings.column_gap_desktop }}px;--main-collection-row-gap:{{ block.settings.row_gap_desktop }}px;--main-collection-mobile-column-gap:{{ block.settings.column_gap_mobile }}px;--main-collection-mobile-row-gap:{{ block.settings.row_gap_mobile }}px;" {{ block.shopify_attributes }}>
+{% paginate collection.products by section.settings.products_per_page, window_size: 1 %}
+{% if collection.products_count > 0 %}
+<h2 class="visually-hidden">{{ 'collection.products_heading' | t }}</h2>
+<ul class="main-collection__grid" role="list">
+{% for product in collection.products %}<li class="main-collection__product" style="order:{{ forloop.index | times: 10 }}">{% content_for 'block', type: 'product-card', id: 'product-card', closest.product: product %}</li>{% endfor %}
+{% content_for 'blocks' %}
+</ul>
+{% content_for 'block', type: '_collection-pagination', id: 'pagination', paginate: paginate %}
+{% else %}<div class="main-collection__empty"><h2 class="heading-text heading-md">{{ 'collection.empty' | t }}</h2><p>{{ 'collection.empty_help' | t }}</p><a class="btn btn-primary" href="{{ collection.url }}">{{ 'collection.clear_all' | t }}</a></div>{% endif %}
+{% endpaginate %}
+</div>
+{% schema %}
+{
+  "name": "Product list",
+  "tag": null,
+  "settings": [
+    {
+      "type": "range",
+      "id": "columns_desktop",
+      "label": "Desktop columns",
+      "min": 3,
+      "max": 5,
+      "step": 1,
+      "default": 3
+    },
+    {
+      "type": "select",
+      "id": "columns_mobile",
+      "label": "Mobile columns",
+      "options": [
+        {
+          "value": "1",
+          "label": "1"
+        },
+        {
+          "value": "2",
+          "label": "2"
+        }
+      ],
+      "default": "2"
+    },
+    {
+      "type": "range",
+      "id": "column_gap_desktop",
+      "label": "Desktop column gap",
+      "min": 0,
+      "max": 40,
+      "step": 2,
+      "default": 8,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "row_gap_desktop",
+      "label": "Desktop row gap",
+      "min": 0,
+      "max": 40,
+      "step": 2,
+      "default": 8,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "column_gap_mobile",
+      "label": "Mobile column gap",
+      "min": 0,
+      "max": 40,
+      "step": 2,
+      "default": 4,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "row_gap_mobile",
+      "label": "Mobile row gap",
+      "min": 0,
+      "max": 40,
+      "step": 2,
+      "default": 4,
+      "unit": "px"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "collection-promo"
+    }
+  ]
+}
+{% endschema %}

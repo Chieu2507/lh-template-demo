@@ -1,0 +1,75 @@
+{% doc %}
+  Fixed pagination role. @param {object} paginate - Native collection pagination object.
+{% enddoc %}
+<div class="collection-pagination-block" data-pagination-mode="{{ block.settings.pagination_type }}" {{ block.shopify_attributes }}>
+{% if paginate.pages > 1 %}<nav class="main-collection__pagination" aria-label="{{ 'collection.pagination' | t }}" style="padding-block:{{ block.settings.padding_top }}px {{ block.settings.padding_bottom }}px">
+{% if block.settings.pagination_type == 'pages' %}{{ paginate | default_pagination: previous: '‹', next: '›' }}{% elsif paginate.next %}<a href="{{ paginate.next.url }}" class="btn btn-{{ block.settings.button_style }}" data-collection-load-more>{{ 'collection.load_more' | t }}</a>{% endif %}
+</nav>{% endif %}</div>
+{% schema %}
+{
+  "name": "Pagination",
+  "tag": null,
+  "settings": [
+    {
+      "type": "select",
+      "id": "pagination_type",
+      "label": "Pagination type",
+      "options": [
+        {
+          "value": "pages",
+          "label": "Pages"
+        },
+        {
+          "value": "load_more",
+          "label": "Load more"
+        },
+        {
+          "value": "infinite",
+          "label": "Infinite scroll"
+        }
+      ],
+      "default": "pages"
+    },
+    {
+      "type": "select",
+      "id": "button_style",
+      "label": "Button style",
+      "options": [
+        {
+          "value": "primary",
+          "label": "Primary"
+        },
+        {
+          "value": "secondary",
+          "label": "Secondary"
+        },
+        {
+          "value": "tertiary",
+          "label": "Text"
+        }
+      ],
+      "default": "primary"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "label": "Top padding",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "default": 40,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "label": "Bottom padding",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "default": 0,
+      "unit": "px"
+    }
+  ]
+}
+{% endschema %}

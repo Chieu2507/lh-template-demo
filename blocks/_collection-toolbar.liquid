@@ -1,0 +1,16 @@
+{% doc %}
+  Fixed collection toolbar, with independently configurable filter, count, sort and column roles.
+{% enddoc %}
+<div class="main-collection__toolbar" {{ block.shopify_attributes }}>
+{% content_for 'block', type: '_collection-filter', id: 'filter' %}
+{% content_for 'block', type: '_collection-count', id: 'count' %}
+{% content_for 'block', type: '_collection-sort', id: 'sort' %}
+{% content_for 'block', type: '_collection-columns', id: 'columns' %}
+</div>
+{% schema %}
+{
+  "name": "Filter and sort",
+  "tag": null,
+  "settings": []
+}
+{% endschema %}

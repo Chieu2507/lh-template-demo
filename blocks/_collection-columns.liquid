@@ -1,0 +1,12 @@
+{% doc %}
+  Responsive column switcher. Choice is preserved when facets refresh.
+{% enddoc %}
+<fieldset class="collection-columns" {{ block.shopify_attributes }}><legend class="visually-hidden">{{ 'collection.grid_view' | t }}</legend><span aria-hidden="true">{{ 'collection.view' | t }}</span>
+{% for number in (1..5) %}<label class="collection-columns__option {% if number < 3 %}collection-columns__mobile{% else %}collection-columns__desktop{% endif %}"><input type="radio" name="columns-{{ section.id }}-{% if number < 3 %}mobile{% else %}desktop{% endif %}" value="{{ number }}" data-collection-columns data-device="{% if number < 3 %}mobile{% else %}desktop{% endif %}"><span>{{ number }}</span></label>{% endfor %}</fieldset>
+{% schema %}
+{
+  "name": "Column switcher",
+  "tag": null,
+  "settings": []
+}
+{% endschema %}

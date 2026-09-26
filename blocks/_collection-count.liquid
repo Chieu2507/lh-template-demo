@@ -1,0 +1,11 @@
+{% doc %}
+  Live collection result count.
+{% enddoc %}
+<span class="main-collection__product-count" aria-live="polite" {{ block.shopify_attributes }}>{{ 'collection.product_count' | t: count: collection.products_count }}</span>
+{% schema %}
+{
+  "name": "Product count",
+  "tag": null,
+  "settings": []
+}
+{% endschema %}
