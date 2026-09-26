@@ -622,6 +622,8 @@ if (!customElements.get('collection-facets')) {
             throw new Error('Collection response was missing dynamic content');
           }
 
+          // Keep the open dialog and its listeners while refreshing the toolbar.
+          nextDialog.replaceWith(this.dialog);
           currentToolbar.replaceWith(nextToolbar);
           currentProducts.replaceWith(nextProducts);
           window.ThemeAnimations?.init(nextProducts);
