@@ -664,13 +664,13 @@ if (!customElements.get('collection-facets')) {
             }
           });
         } else {
-          const nextProducts = nextFacets.querySelector('.main-collection__products');
-          customElements.upgrade(nextFacets);
-          this.replaceWith(nextFacets);
+          const replacement = document.importNode(nextFacets, true);
+          const nextProducts = replacement.querySelector('.main-collection__products');
+          this.replaceWith(replacement);
           window.ThemeAnimations?.init(nextProducts);
-          nextFacets.syncLayout?.();
-          nextFacets.syncColumns?.();
-          nextFacets.observePagination?.();
+          replacement.syncLayout?.();
+          replacement.syncColumns?.();
+          replacement.observePagination?.();
           nextProducts?.dispatchEvent(new CustomEvent('collection:products-loaded', { bubbles: true }));
         }
       } catch (error) {
