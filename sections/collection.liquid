@@ -1,6 +1,6 @@
 {{ 'section-collection.css' | asset_url | stylesheet_tag }}
 {% style %}#shopify-section-{{ section.id }}{background:{{ section.settings.background_color | default: section.settings.color_scheme.settings.background }}}{% endstyle %}
-<div class="main-collection main-collection--blocks section-spacing color-scheme section-color-scope {{ section.settings.color_scheme }}" style="--section-padding-top:{{ section.settings.padding_top }}px;--section-padding-bottom:{{ section.settings.padding_bottom }}px;--collection-gap:{{ section.settings.item_gap }}px">
+<div class="main-collection main-collection--blocks section-spacing color-scheme section-color-scope {{ section.settings.color_scheme }}" style="--section-padding-top:{{ section.settings.padding_top }}px;--section-padding-bottom:{{ section.settings.padding_bottom }}px;--section-padding-top-mobile:{{ section.settings.padding_top_mobile }}px;--section-padding-bottom-mobile:{{ section.settings.padding_bottom_mobile }}px;--collection-gap:{{ section.settings.item_gap }}px;--collection-gap-mobile:{{ section.settings.item_gap_mobile }}px">
 <collection-facets class="main-collection__facets container {% if section.settings.section_width == 'page' %}page-width{% else %}full-width{% endif %}" data-section-id="{{ section.id }}">
 {% content_for 'block', type: '_collection-toolbar', id: 'toolbar' %}
 {% content_for 'block', type: '_collection-products', id: 'products' %}
@@ -49,11 +49,21 @@
     {
       "type": "range",
       "id": "item_gap",
-      "label": "Item gap",
+      "label": "Desktop gap",
       "min": 0,
       "max": 100,
       "step": 2,
       "default": 50,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "item_gap_mobile",
+      "label": "Mobile gap",
+      "min": 0,
+      "max": 100,
+      "step": 2,
+      "default": 16,
       "unit": "px"
     },
     {
@@ -94,6 +104,34 @@
       "step": 4,
       "default": 120,
       "unit": "px"
+    },
+    {
+      "type": "checkbox",
+      "id": "customize_mobile_padding",
+      "label": "Custom for mobile",
+      "default": false
+    },
+    {
+      "type": "range",
+      "id": "padding_top_mobile",
+      "label": "Mobile top padding",
+      "min": 0,
+      "max": 120,
+      "step": 2,
+      "default": 30,
+      "unit": "px",
+      "visible_if": "{{ section.settings.customize_mobile_padding }}"
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_mobile",
+      "label": "Mobile bottom padding",
+      "min": 0,
+      "max": 120,
+      "step": 2,
+      "default": 50,
+      "unit": "px",
+      "visible_if": "{{ section.settings.customize_mobile_padding }}"
     }
   ]
 }
