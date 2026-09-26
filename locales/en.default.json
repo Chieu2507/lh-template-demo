@@ -1,3 +1,12 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin language editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "404": {
     "title": "404",
@@ -246,6 +255,29 @@
     "back_in_stock_success": "Thanks — we'll let you know when it's back in stock.",
     "read_more": "Read more",
     "read_less": "Read less"
+  },
+  "collection": {
+    "apply_filters": "Apply ({{ count }})",
+    "apply_sort": "Apply",
+    "clear_all": "Clear all",
+    "close_filters": "Close filters",
+    "empty": "No products found",
+    "empty_help": "Try removing a filter or explore another collection.",
+    "filter": "Filter",
+    "filters": "Filters",
+    "next_page": "Next page",
+    "pagination": "Collection pagination",
+    "previous_page": "Previous page",
+    "price_from": "From",
+    "price_to": "To",
+    "product_count": {
+      "one": "{{ count }} product",
+      "other": "{{ count }} products"
+    },
+    "products_heading": "Products",
+    "read_less": "Read less",
+    "read_more": "Read more",
+    "sort_by": "Sort:"
   },
   "gift_card": {
     "add_to_apple_wallet": "Add to Apple Wallet",

@@ -11,6 +11,9 @@
   @param {object} [color_scheme] - Optional block-level color scheme override
   @param {boolean} [placeholder] - Whether to render the styled placeholder card
   @param {string} [attributes] - Theme Editor attributes for the card root
+  @param {boolean} [show_media_actions] - Optional section override for quick actions
+  @param {boolean} [enable_quick_view] - Optional section override for quick view
+  @param {string} [heading_tag] - Optional heading tag for the product title
 
   @example
   {% render 'product-card', product: product %}
@@ -82,6 +85,12 @@
 
   assign quick_view_enabled = true
   if settings.product_card_quick_view_enabled == false
+    assign quick_view_enabled = false
+  endif
+  if show_media_actions == false
+    assign quick_add_enabled = false
+    assign quick_view_enabled = false
+  elsif enable_quick_view == false
     assign quick_view_enabled = false
   endif
   assign quick_view_mobile = false
@@ -254,7 +263,7 @@
       {% if show_type and product.type != blank %}
         <p class="product-card__type body-sm">{{ product.type | escape }}</p>
       {% endif %}
-      {% render 'product-card-title', product: product %}
+      {% render 'product-card-title', product: product, heading_tag: heading_tag %}
       {% render 'product-card-price', item: product %}
     </div>
 
