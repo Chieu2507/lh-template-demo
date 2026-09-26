@@ -30,7 +30,7 @@
           "type": "collection_card",
           "settings": {
             "collection": "dome-collection",
-            "title": "Dôme Collection",
+            "title": "D\u00f4me Collection",
             "show_product_count": true,
             "subheading": "",
             "button_label": "",
@@ -81,7 +81,8 @@
         "color_scheme": "scheme-1",
         "padding_top": 12,
         "padding_bottom": 12
-      }
+      },
+      "disabled": true
     },
     "collection_breadcrumb": {
       "type": "collection-page-breadcrumb",
@@ -100,58 +101,534 @@
         "padding_top": 20,
         "padding_bottom": 20,
         "color_scheme": "scheme-1"
-      }
+      },
+      "disabled": true
     },
     "main": {
       "type": "collection",
       "blocks": {
-        "promotion": {
-          "type": "promotion",
-          "disabled": true,
-          "settings": {
-            "subheading": "",
-            "heading": "A Curation Of Modern Classics",
-            "heading_size": "h3",
-            "heading_tag": "h2",
-            "button_label": "Shop now",
-            "link": "",
-            "content_position": "center",
-            "focal_point": "center center",
-            "color_scheme": "scheme-3",
-            "overlay_opacity": 20
+        "toolbar": {
+          "type": "_collection-toolbar",
+          "static": true,
+          "settings": {},
+          "blocks": {
+            "filter": {
+              "type": "_collection-filter",
+              "static": true,
+              "settings": {
+                "desktop_layout": "sidebar",
+                "sidebar_visibility": "always",
+                "mobile_layout": "sheet",
+                "items_limit": 5
+              }
+            },
+            "count": {
+              "type": "_collection-count",
+              "static": true,
+              "settings": {}
+            },
+            "sort": {
+              "type": "_collection-sort",
+              "static": true,
+              "settings": {}
+            },
+            "columns": {
+              "type": "_collection-columns",
+              "static": true,
+              "settings": {}
+            }
           }
+        },
+        "products": {
+          "type": "_collection-products",
+          "static": true,
+          "settings": {
+            "columns_desktop": 3,
+            "columns_mobile": "2",
+            "column_gap_desktop": 8,
+            "row_gap_desktop": 8,
+            "column_gap_mobile": 4,
+            "row_gap_mobile": 4
+          },
+          "blocks": {
+            "product-card": {
+              "type": "product-card",
+              "static": true,
+              "settings": {}
+            },
+            "pagination": {
+              "type": "_collection-pagination",
+              "static": true,
+              "settings": {}
+            },
+            "promotion": {
+              "type": "collection-promo",
+              "disabled": true,
+              "settings": {
+                "position": 5,
+                "columns_desktop": "2",
+                "columns_mobile": "2",
+                "image": "",
+                "content_position": "center",
+                "color_scheme": "scheme-3",
+                "overlay_opacity": 20
+              },
+              "blocks": {
+                "label": {
+                  "type": "eyebrow",
+                  "static": true,
+                  "settings": {
+                    "text": ""
+                  }
+                },
+                "heading": {
+                  "type": "heading",
+                  "static": true,
+                  "settings": {
+                    "text": "<p>A Curation Of Modern Classics</p>",
+                    "heading_size": "lg",
+                    "html_tag": "h2"
+                  }
+                },
+                "text": {
+                  "type": "text",
+                  "static": true,
+                  "settings": {
+                    "text": ""
+                  }
+                },
+                "button": {
+                  "type": "button",
+                  "static": true,
+                  "settings": {
+                    "button_label": "Shop now",
+                    "button_link": ""
+                  }
+                }
+              }
+            },
+            "reference_promo": {
+              "type": "collection-promo",
+              "settings": {
+                "position": 5,
+                "columns_desktop": "2",
+                "columns_mobile": "2"
+              },
+              "blocks": {
+                "label": {
+                  "type": "eyebrow",
+                  "static": true,
+                  "settings": {
+                    "text": "<p>[ Save 20% off ]</p>"
+                  }
+                },
+                "heading": {
+                  "type": "heading",
+                  "static": true,
+                  "settings": {
+                    "text": "<p>Curate Your Set</p>",
+                    "heading_size": "lg"
+                  }
+                },
+                "button": {
+                  "type": "button",
+                  "static": true,
+                  "settings": {
+                    "button_label": "Curate now"
+                  }
+                }
+              }
+            }
+          },
+          "block_order": [
+            "promotion",
+            "reference_promo"
+          ]
+        }
+      },
+      "settings": {
+        "products_per_page": 10,
+        "section_width": "full",
+        "item_gap": 50,
+        "padding_top": 100,
+        "padding_bottom": 120,
+        "color_scheme": "scheme-1"
+      }
+    },
+    "banner": {
+      "type": "collection-banner",
+      "settings": {},
+      "blocks": {
+        "breadcrumbs": {
+          "type": "_collection-breadcrumb",
+          "static": true,
+          "settings": {}
+        },
+        "title": {
+          "type": "heading",
+          "static": true,
+          "settings": {
+            "text": "<p>{{ collection.title }}</p>",
+            "html_tag": "h1",
+            "heading_size": "xl"
+          }
+        },
+        "description": {
+          "type": "text",
+          "static": true,
+          "settings": {
+            "text": "<p>{{ collection.description }}</p>"
+          }
+        }
+      }
+    },
+    "press": {
+      "type": "press",
+      "settings": {
+        "max_width": 1024,
+        "alignment": "center",
+        "gap_desktop": 12,
+        "gap_mobile": 12,
+        "color_scheme": "scheme-1",
+        "padding_top": 80,
+        "padding_bottom": 80,
+        "customize_mobile_padding": true,
+        "padding_top_mobile": 32,
+        "padding_bottom_mobile": 32
+      },
+      "blocks": {
+        "item_1": {
+          "type": "header",
+          "settings": {
+            "width": "fill",
+            "alignment": "center",
+            "gap_desktop": 8,
+            "gap_mobile": 8
+          },
+          "blocks": {
+            "eyebrow": {
+              "type": "eyebrow",
+              "settings": {
+                "text": "<p>[ In the press ]</p>"
+              }
+            }
+          },
+          "block_order": [
+            "eyebrow"
+          ]
+        },
+        "quotes": {
+          "type": "press-quotes",
+          "static": true,
+          "settings": {
+            "autoplay": true,
+            "pause_on_hover": true,
+            "autoplay_speed": 4,
+            "image_spacing_desktop": 32,
+            "image_spacing_mobile": 20,
+            "image_gap_desktop": 20,
+            "image_gap_mobile": 16
+          },
+          "blocks": {
+            "item_1": {
+              "type": "press-item",
+              "settings": {
+                "image_ratio": "original",
+                "corner_radius": "square",
+                "custom_corner_radius": 0,
+                "image_width_desktop": 100,
+                "image_width_mobile": 70
+              },
+              "blocks": {
+                "item_1": {
+                  "type": "heading",
+                  "settings": {
+                    "text": "<p>\u201cElvara redefines modern luxury with ethically crafted solitaires that speak to timeless elegance.\u201d</p>",
+                    "heading_size": "xs",
+                    "html_tag": "div",
+                    "width": "fill"
+                  }
+                }
+              },
+              "block_order": [
+                "item_1"
+              ]
+            },
+            "item_2": {
+              "type": "press-item",
+              "settings": {
+                "image_ratio": "original",
+                "corner_radius": "square",
+                "custom_corner_radius": 0,
+                "image_width_desktop": 100,
+                "image_width_mobile": 70
+              },
+              "blocks": {
+                "item_1": {
+                  "type": "heading",
+                  "settings": {
+                    "text": "<p>\u201cEffortless, brilliant, and impeccably detailed. The ultimate signature collection for every occasion.\u201d</p>",
+                    "heading_size": "xs",
+                    "html_tag": "div",
+                    "width": "fill"
+                  }
+                }
+              },
+              "block_order": [
+                "item_1"
+              ]
+            },
+            "item_3": {
+              "type": "press-item",
+              "settings": {
+                "image_ratio": "original",
+                "corner_radius": "square",
+                "custom_corner_radius": 0,
+                "image_width_desktop": 100,
+                "image_width_mobile": 70
+              },
+              "blocks": {
+                "item_1": {
+                  "type": "heading",
+                  "settings": {
+                    "text": "<p>\u201cA masterclass in fine jewelry\u2014pieces designed to be cherished today and passed down for generations.\u201d</p>",
+                    "heading_size": "xs",
+                    "html_tag": "div",
+                    "width": "fill"
+                  }
+                }
+              },
+              "block_order": [
+                "item_1"
+              ]
+            }
+          },
+          "block_order": [
+            "item_1",
+            "item_2",
+            "item_3"
+          ]
         }
       },
       "block_order": [
-        "promotion"
-      ],
+        "item_1"
+      ]
+    },
+    "image_cards": {
+      "type": "image-cards",
       "settings": {
-        "custom_heading": "",
-        "fallback_description": "<p>Explore our complete collection of thoughtfully crafted jewelry, from timeless everyday essentials to statement pieces designed to celebrate life's most meaningful moments. Discover necklaces, rings, earrings, bracelets, and more in one place.</p>",
-        "text_size": "medium",
-        "show_read_more": true,
-        "header_padding_top": 20,
-        "header_padding_bottom": 20,
-        "products_per_page": 24,
-        "columns_desktop": 4,
-        "column_gap": 20,
-        "row_gap": 8,
-        "promotion_after": 4,
-        "show_card_actions": true,
-        "enable_quick_view": true,
-        "enable_filtering": true,
-        "enable_sorting": true,
-        "columns_mobile": "2",
-        "mobile_column_gap": 12,
-        "mobile_row_gap": 8,
-        "padding_bottom": 56,
-        "color_scheme": "scheme-1"
+        "section_width": "full_width",
+        "height": "auto",
+        "custom_height": 100,
+        "direction": "horizontal",
+        "vertical_on_mobile": true,
+        "gap_desktop": 8,
+        "gap_mobile": 8,
+        "color_scheme": "scheme-1",
+        "customize_mobile_padding": false,
+        "padding_top": 0,
+        "padding_bottom": 0,
+        "padding_top_mobile": 0,
+        "padding_bottom_mobile": 0
+      },
+      "blocks": {
+        "item_1": {
+          "type": "image-card",
+          "settings": {
+            "padding_top": 32,
+            "padding_bottom": 32,
+            "padding_left": 32,
+            "padding_right": 32,
+            "height_desktop": "ratio_3_2",
+            "height_mobile": "ratio_4_5"
+          },
+          "blocks": {
+            "item_1": {
+              "type": "eyebrow",
+              "settings": {
+                "text": "<p>[ Oceanic glimmer ]</p>"
+              }
+            },
+            "item_2": {
+              "type": "heading",
+              "settings": {
+                "text": "<p>Sunlit Solitaires</p>",
+                "heading_size": "lg",
+                "html_tag": "h2"
+              }
+            },
+            "item_3": {
+              "type": "button",
+              "settings": {
+                "button_label": "Shop now",
+                "button_style": "primary",
+                "button_open_in_new_tab": false,
+                "show_icon": false,
+                "icon": "arrow",
+                "icon_position": "after",
+                "icon_size": "inherit",
+                "icon_width": 20,
+                "width": "fit",
+                "width_mobile": "fit",
+                "customize_mobile_padding": false
+              }
+            }
+          },
+          "block_order": [
+            "item_1",
+            "item_2",
+            "item_3"
+          ]
+        },
+        "item_2": {
+          "type": "image-card",
+          "settings": {
+            "padding_top": 32,
+            "padding_bottom": 32,
+            "padding_left": 32,
+            "padding_right": 32,
+            "height_desktop": "ratio_3_2",
+            "height_mobile": "ratio_4_5"
+          },
+          "blocks": {
+            "item_1": {
+              "type": "eyebrow",
+              "settings": {
+                "text": "<p>[ Artisanal shapes ]</p>"
+              }
+            },
+            "item_2": {
+              "type": "heading",
+              "settings": {
+                "text": "<p>Nature\u2019s Silhouette</p>",
+                "heading_size": "lg",
+                "html_tag": "h2"
+              }
+            },
+            "item_3": {
+              "type": "button",
+              "settings": {
+                "button_label": "Shop now",
+                "button_style": "primary",
+                "button_open_in_new_tab": false,
+                "show_icon": false,
+                "icon": "arrow",
+                "icon_position": "after",
+                "icon_size": "inherit",
+                "icon_width": 20,
+                "width": "fit",
+                "width_mobile": "fit",
+                "customize_mobile_padding": false
+              }
+            }
+          },
+          "block_order": [
+            "item_1",
+            "item_2",
+            "item_3"
+          ]
+        }
+      },
+      "block_order": [
+        "item_1",
+        "item_2"
+      ]
+    },
+    "featured": {
+      "type": "featured-collection",
+      "settings": {
+        "section_width": "page_width",
+        "desktop_alignment": "left",
+        "mobile_alignment": "left",
+        "gap_desktop": 32,
+        "gap_mobile": 24,
+        "color_scheme": "scheme-1",
+        "customize_mobile_padding": false
+      },
+      "blocks": {
+        "header": {
+          "type": "header",
+          "static": true,
+          "settings": {
+            "width": "fit",
+            "gap_desktop": 12,
+            "gap_mobile": 8
+          },
+          "blocks": {
+            "item_1": {
+              "type": "heading",
+              "settings": {
+                "text": "<p>You Might Also Like</p>",
+                "heading_size": "lg",
+                "html_tag": "h2"
+              }
+            }
+          },
+          "block_order": [
+            "item_1"
+          ]
+        },
+        "featured-collection-view-all": {
+          "type": "view-all-button",
+          "static": true,
+          "settings": {
+            "button_label": "View all",
+            "button_style": "text",
+            "button_style_mobile": "outline",
+            "button_height_mobile": "inherit",
+            "full_width_mobile": true,
+            "show_icon": false,
+            "show_icon_mobile": false
+          }
+        },
+        "product-list": {
+          "type": "product-list",
+          "static": true,
+          "settings": {
+            "collection": "",
+            "max_products": 6,
+            "layout_type": "carousel",
+            "columns_desktop": "4",
+            "columns_mobile": "1",
+            "show_next_slide_preview_on_desktop": false,
+            "product_gap_desktop": 4,
+            "product_gap_mobile": 4,
+            "show_navigation_on_desktop": true,
+            "navigation_position": "top",
+            "navigation_style": "secondary",
+            "navigation_icon": "chevron",
+            "show_pagination_on_desktop": true,
+            "pagination_type": "progress_bar",
+            "pagination_top_padding_desktop": 50,
+            "pagination_top_padding_mobile": 24,
+            "pagination_limit_width": true,
+            "pagination_max_width": 260,
+            "autoplay": false,
+            "autoplay_pause_on_hover": true,
+            "autoplay_speed": 4
+          },
+          "blocks": {
+            "product-card": {
+              "type": "product-card",
+              "static": true,
+              "settings": {
+                "show_ranking": false,
+                "color_type": "inherit",
+                "color_scheme": "scheme-1"
+              }
+            }
+          }
+        }
       }
     }
   },
   "order": [
     "collection_list_argTGR",
     "collection_breadcrumb",
-    "main"
+    "banner",
+    "main",
+    "press",
+    "image_cards",
+    "featured"
   ]
 }
