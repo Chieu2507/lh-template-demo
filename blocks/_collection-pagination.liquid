@@ -2,8 +2,16 @@
   Fixed pagination role. @param {object} paginate - Native collection pagination object.
 {% enddoc %}
 <div class="collection-pagination-block" data-pagination-mode="{{ block.settings.pagination_type }}" {{ block.shopify_attributes }}>
-{% if paginate.pages > 1 %}<nav class="main-collection__pagination" aria-label="{{ 'collection.pagination' | t }}" style="padding-block:{{ block.settings.padding_top }}px {{ block.settings.padding_bottom }}px">
-{% if block.settings.pagination_type == 'pages' %}{{ paginate | default_pagination: previous: '‹', next: '›' }}{% elsif paginate.next %}<a href="{{ paginate.next.url }}" class="btn btn-{{ block.settings.button_style }}" data-collection-load-more>{{ 'collection.load_more' | t }}</a>{% endif %}
+{% liquid
+  assign pagination_button_variant = block.settings.button_style
+  if pagination_button_variant == 'outline'
+    assign pagination_button_variant = 'secondary'
+  elsif pagination_button_variant == 'text'
+    assign pagination_button_variant = 'tertiary'
+  endif
+%}
+{% if paginate.pages > 1 %}<nav class="main-collection__pagination" aria-label="{{ 'collection.pagination' | t }}" data-style="{{ block.settings.button_style }}" data-height="{{ block.settings.button_height }}" style="--pagination-padding-top:{{ block.settings.padding_top }}px;--pagination-padding-bottom:{{ block.settings.padding_bottom }}px;{% if block.settings.customize_mobile_padding %}--pagination-padding-top-mobile:{{ block.settings.padding_top_mobile }}px;--pagination-padding-bottom-mobile:{{ block.settings.padding_bottom_mobile }}px;{% endif %}">
+{% if block.settings.pagination_type == 'pages' %}{{ paginate | default_pagination: previous: '‹', next: '›' }}{% elsif paginate.next %}<a href="{{ paginate.next.url }}" class="btn btn-{{ pagination_button_variant }}" data-collection-load-more>{{ 'collection.load_more' | t }}</a>{% endif %}
 </nav>{% endif %}</div>
 {% schema %}
 {
@@ -44,12 +52,31 @@
           "label": "Secondary"
         },
         {
-          "value": "tertiary",
+          "value": "outline",
+          "label": "Outline"
+        },
+        {
+          "value": "text",
           "label": "Text"
         }
       ],
       "default": "primary"
     },
+    {
+      "type": "select",
+      "id": "button_height",
+      "label": "Height",
+      "options": [
+        { "value": "inherit", "label": "Inherit" },
+        { "value": "extra_small", "label": "Extra small" },
+        { "value": "small", "label": "Small" },
+        { "value": "medium", "label": "Medium" },
+        { "value": "large", "label": "Large" },
+        { "value": "extra_large", "label": "Extra large" }
+      ],
+      "default": "inherit"
+    },
+    { "type": "header", "content": "Padding" },
     {
       "type": "range",
       "id": "padding_top",
@@ -69,6 +96,34 @@
       "step": 4,
       "default": 0,
       "unit": "px"
+    },
+    {
+      "type": "checkbox",
+      "id": "customize_mobile_padding",
+      "label": "Custom for mobile",
+      "default": false
+    },
+    {
+      "type": "range",
+      "id": "padding_top_mobile",
+      "label": "Mobile top padding",
+      "min": 0,
+      "max": 100,
+      "step": 2,
+      "default": 30,
+      "unit": "px",
+      "visible_if": "{{ block.settings.customize_mobile_padding }}"
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_mobile",
+      "label": "Mobile bottom padding",
+      "min": 0,
+      "max": 100,
+      "step": 2,
+      "default": 0,
+      "unit": "px",
+      "visible_if": "{{ block.settings.customize_mobile_padding }}"
     }
   ]
 }
