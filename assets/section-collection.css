@@ -430,6 +430,12 @@
     color: var(--color-text);
   }
 
+  .main-collection__pagination[data-style='outline'] [data-collection-load-more] {
+    --button-background: transparent;
+    --button-foreground: var(--button-secondary-text);
+    --button-border: var(--button-secondary-border);
+  }
+
   .main-collection__pagination[data-style='text'] .is-current {
     background: transparent;
     color: var(--color-text);
