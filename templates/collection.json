@@ -30,7 +30,7 @@
           "type": "collection_card",
           "settings": {
             "collection": "dome-collection",
-            "title": "D\u00f4me Collection",
+            "title": "Dôme Collection",
             "show_product_count": true,
             "subheading": "",
             "button_label": "",
@@ -75,21 +75,23 @@
         "collection_card_TXYgm4",
         "collection_card_hFAJVc"
       ],
+      "disabled": true,
       "name": "Collection list",
       "settings": {
         "column_gap": 20,
         "color_scheme": "scheme-1",
         "padding_top": 12,
         "padding_bottom": 12
-      },
-      "disabled": true
+      }
     },
     "collection_breadcrumb": {
       "type": "collection-page-breadcrumb",
+      "disabled": true,
       "settings": {
         "alignment": "flex-start",
         "section_width": "full",
         "text_case": "normal",
+        "item_gap": 8,
         "show_home_link": true,
         "home_label": "Home",
         "show_collections_link": true,
@@ -97,12 +99,10 @@
         "current_label_source": "collection",
         "current_label": "",
         "separator_style": "slash",
-        "item_gap": 8,
+        "color_scheme": "scheme-1",
         "padding_top": 20,
-        "padding_bottom": 20,
-        "color_scheme": "scheme-1"
-      },
-      "disabled": true
+        "padding_bottom": 20
+      }
     },
     "main": {
       "type": "collection",
@@ -118,9 +118,9 @@
               "settings": {
                 "desktop_layout": "sidebar",
                 "sidebar_visibility": "always",
+                "right_padding": 50,
                 "mobile_layout": "sheet",
                 "button_style": "primary",
-                "right_padding": 50,
                 "heading_size": "h5",
                 "items_limit": "5"
               }
@@ -165,121 +165,44 @@
               "static": true,
               "settings": {}
             },
-            "promotion": {
-              "type": "collection-promo",
-              "disabled": true,
-              "settings": {
-                "position": 5,
-                "columns_desktop": "2",
-                "columns_mobile": "2",
-                "image": "",
-                "mobile_image": "",
-                "media_type": "image",
-                "card_link": "",
-                "open_in_new_tab": false,
-                "show_overlay": true,
-                "overlay_color": "#000000",
-                "content_position": "center",
-                "content_alignment": "center",
-                "content_gap": 12,
-                "button_spacing": 24,
-                "padding_top_bottom": 40,
-                "padding_left_right": 28,
-                "customize_mobile_padding": true,
-                "padding_top_bottom_mobile": 24,
-                "padding_left_right_mobile": 16,
-                "color_scheme": "scheme-3",
-                "overlay_opacity": 20
-              },
-              "blocks": {
-                "label": {
-                  "type": "eyebrow",
-                  "static": true,
-                  "settings": {
-                    "text": ""
-                  }
-                },
-                "heading": {
-                  "type": "heading",
-                  "static": true,
-                  "settings": {
-                    "text": "<p>A Curation Of Modern Classics</p>",
-                    "heading_size": "lg",
-                    "html_tag": "h2"
-                  }
-                },
-                "text": {
-                  "type": "text",
-                  "static": true,
-                  "settings": {
-                    "text": ""
-                  }
-                },
-                "button": {
-                  "type": "button",
-                  "static": true,
-                  "settings": {
-                    "button_label": "Shop now",
-                    "button_link": ""
-                  }
-                }
-              }
-            },
             "reference_promo": {
               "type": "collection-promo",
               "settings": {
                 "position": 5,
                 "columns_desktop": "2",
                 "columns_mobile": "2",
-                "media_type": "image",
                 "card_link": "",
                 "open_in_new_tab": false,
+                "media_type": "image",
+                "image": "",
+                "mobile_image": "",
                 "show_overlay": true,
                 "overlay_color": "#000000",
                 "overlay_opacity": 20,
+                "subheading": "<p>[ Save 20% off ]</p>",
+                "heading": "<p>Curate Your Set</p>",
+                "text": "<p></p>",
                 "content_alignment": "center",
                 "content_position": "center",
+                "heading_size": "h2",
+                "text_size": "md",
+                "button_label": "Curate now",
+                "button_style": "primary",
+                "show_icon": false,
+                "button_height": "inherit",
+                "button_full_width": false,
                 "content_gap": 12,
                 "button_spacing": 24,
+                "color_scheme": "scheme-1",
                 "padding_top_bottom": 40,
                 "padding_left_right": 28,
                 "customize_mobile_padding": true,
                 "padding_top_bottom_mobile": 24,
-                "padding_left_right_mobile": 16,
-                "color_scheme": "scheme-3"
-              },
-              "blocks": {
-                "label": {
-                  "type": "eyebrow",
-                  "settings": {
-                    "text": "<p>[ Save 20% off ]</p>"
-                  }
-                },
-                "heading": {
-                  "type": "heading",
-                  "settings": {
-                    "text": "<p>Curate Your Set</p>",
-                    "heading_size": "lg"
-                  }
-                },
-                "text": {
-                  "type": "text",
-                  "settings": {
-                    "text": ""
-                  }
-                },
-                "button": {
-                  "type": "button",
-                  "settings": {
-                    "button_label": "Curate now"
-                  }
-                }
-              },
-              "block_order": ["label", "heading", "text", "button"]
+                "padding_left_right_mobile": 16
+              }
             }
           },
           "block_order": [
-            "promotion",
             "reference_promo"
           ]
         }
@@ -289,16 +212,48 @@
         "section_width": "full",
         "item_gap": 50,
         "item_gap_mobile": 16,
+        "color_scheme": "scheme-1",
         "padding_top": 100,
         "padding_bottom": 120,
         "customize_mobile_padding": true,
         "padding_top_mobile": 30,
-        "padding_bottom_mobile": 50,
-        "color_scheme": "scheme-1"
+        "padding_bottom_mobile": 50
       }
     },
     "banner": {
       "type": "collection-banner",
+      "blocks": {
+        "breadcrumbs": {
+          "type": "_collection-breadcrumb",
+          "settings": {
+            "show_home_link": true,
+            "home_label": "Home",
+            "show_collections_link": true,
+            "collections_label": "Shop",
+            "separator": "·",
+            "text_size": "sm"
+          }
+        },
+        "title": {
+          "type": "heading",
+          "settings": {
+            "text": "<p>{{ collection.title }}</p>",
+            "heading_size": "xl",
+            "html_tag": "h1"
+          }
+        },
+        "description": {
+          "type": "text",
+          "settings": {
+            "text": "<p>{{ collection.description }}</p>"
+          }
+        }
+      },
+      "block_order": [
+        "breadcrumbs",
+        "title",
+        "description"
+      ],
       "settings": {
         "image_source": "collection",
         "section_width": "full_bleed",
@@ -316,35 +271,7 @@
         "padding_top": 0,
         "padding_bottom": 0,
         "customize_mobile_padding": false
-      },
-      "blocks": {
-        "breadcrumbs": {
-          "type": "_collection-breadcrumb",
-          "settings": {
-            "show_home_link": true,
-            "home_label": "Home",
-            "show_collections_link": true,
-            "collections_label": "Shop",
-            "separator": "·",
-            "text_size": "sm"
-          }
-        },
-        "title": {
-          "type": "heading",
-          "settings": {
-            "text": "<p>{{ collection.title }}</p>",
-            "html_tag": "h1",
-            "heading_size": "xl"
-          }
-        },
-        "description": {
-          "type": "text",
-          "settings": {
-            "text": "<p>{{ collection.description }}</p>"
-          }
-        }
-      },
-      "block_order": ["breadcrumbs", "title", "description"]
+      }
     },
     "divider": {
       "type": "divider",
@@ -362,18 +289,6 @@
     },
     "press": {
       "type": "press",
-      "settings": {
-        "max_width": 1024,
-        "alignment": "center",
-        "gap_desktop": 12,
-        "gap_mobile": 12,
-        "color_scheme": "scheme-1",
-        "padding_top": 80,
-        "padding_bottom": 80,
-        "customize_mobile_padding": true,
-        "padding_top_mobile": 32,
-        "padding_bottom_mobile": 32
-      },
       "blocks": {
         "item_1": {
           "type": "header",
@@ -421,7 +336,7 @@
                 "item_1": {
                   "type": "heading",
                   "settings": {
-                    "text": "<p>\u201cElvara redefines modern luxury with ethically crafted solitaires that speak to timeless elegance.\u201d</p>",
+                    "text": "<p>“Elvara redefines modern luxury with ethically crafted solitaires that speak to timeless elegance.”</p>",
                     "heading_size": "xs",
                     "html_tag": "div",
                     "width": "fill"
@@ -445,7 +360,7 @@
                 "item_1": {
                   "type": "heading",
                   "settings": {
-                    "text": "<p>\u201cEffortless, brilliant, and impeccably detailed. The ultimate signature collection for every occasion.\u201d</p>",
+                    "text": "<p>“Effortless, brilliant, and impeccably detailed. The ultimate signature collection for every occasion.”</p>",
                     "heading_size": "xs",
                     "html_tag": "div",
                     "width": "fill"
@@ -469,7 +384,7 @@
                 "item_1": {
                   "type": "heading",
                   "settings": {
-                    "text": "<p>\u201cA masterclass in fine jewelry\u2014pieces designed to be cherished today and passed down for generations.\u201d</p>",
+                    "text": "<p>“A masterclass in fine jewelry—pieces designed to be cherished today and passed down for generations.”</p>",
                     "heading_size": "xs",
                     "html_tag": "div",
                     "width": "fill"
@@ -490,35 +405,32 @@
       },
       "block_order": [
         "item_1"
-      ]
+      ],
+      "settings": {
+        "max_width": 1024,
+        "alignment": "center",
+        "gap_desktop": 12,
+        "gap_mobile": 12,
+        "color_scheme": "scheme-1",
+        "padding_top": 80,
+        "padding_bottom": 80,
+        "customize_mobile_padding": true,
+        "padding_top_mobile": 32,
+        "padding_bottom_mobile": 32
+      }
     },
     "image_cards": {
       "type": "image-cards",
-      "settings": {
-        "section_width": "full_width",
-        "height": "auto",
-        "custom_height": 100,
-        "direction": "horizontal",
-        "vertical_on_mobile": true,
-        "gap_desktop": 8,
-        "gap_mobile": 8,
-        "color_scheme": "scheme-1",
-        "customize_mobile_padding": false,
-        "padding_top": 0,
-        "padding_bottom": 0,
-        "padding_top_mobile": 0,
-        "padding_bottom_mobile": 0
-      },
       "blocks": {
         "item_1": {
           "type": "image-card",
           "settings": {
+            "height_desktop": "ratio_3_2",
+            "height_mobile": "ratio_4_5",
             "padding_top": 32,
             "padding_bottom": 32,
             "padding_left": 32,
-            "padding_right": 32,
-            "height_desktop": "ratio_3_2",
-            "height_mobile": "ratio_4_5"
+            "padding_right": 32
           },
           "blocks": {
             "item_1": {
@@ -539,8 +451,8 @@
               "type": "button",
               "settings": {
                 "button_label": "Shop now",
-                "button_style": "primary",
                 "button_open_in_new_tab": false,
+                "button_style": "primary",
                 "show_icon": false,
                 "icon": "arrow",
                 "icon_position": "after",
@@ -561,12 +473,12 @@
         "item_2": {
           "type": "image-card",
           "settings": {
+            "height_desktop": "ratio_3_2",
+            "height_mobile": "ratio_4_5",
             "padding_top": 32,
             "padding_bottom": 32,
             "padding_left": 32,
-            "padding_right": 32,
-            "height_desktop": "ratio_3_2",
-            "height_mobile": "ratio_4_5"
+            "padding_right": 32
           },
           "blocks": {
             "item_1": {
@@ -578,7 +490,7 @@
             "item_2": {
               "type": "heading",
               "settings": {
-                "text": "<p>Nature\u2019s Silhouette</p>",
+                "text": "<p>Nature’s Silhouette</p>",
                 "heading_size": "lg",
                 "html_tag": "h2"
               }
@@ -587,8 +499,8 @@
               "type": "button",
               "settings": {
                 "button_label": "Shop now",
-                "button_style": "primary",
                 "button_open_in_new_tab": false,
+                "button_style": "primary",
                 "show_icon": false,
                 "icon": "arrow",
                 "icon_position": "after",
@@ -610,19 +522,25 @@
       "block_order": [
         "item_1",
         "item_2"
-      ]
+      ],
+      "settings": {
+        "section_width": "full_width",
+        "height": "auto",
+        "custom_height": 100,
+        "direction": "horizontal",
+        "vertical_on_mobile": true,
+        "gap_desktop": 8,
+        "gap_mobile": 8,
+        "color_scheme": "scheme-1",
+        "padding_top": 0,
+        "padding_bottom": 0,
+        "customize_mobile_padding": false,
+        "padding_top_mobile": 0,
+        "padding_bottom_mobile": 0
+      }
     },
     "featured": {
       "type": "featured-collection",
-      "settings": {
-        "section_width": "page_width",
-        "desktop_alignment": "left",
-        "mobile_alignment": "left",
-        "gap_desktop": 32,
-        "gap_mobile": 24,
-        "color_scheme": "scheme-1",
-        "customize_mobile_padding": false
-      },
       "blocks": {
         "header": {
           "type": "header",
@@ -652,10 +570,10 @@
           "settings": {
             "button_label": "View all",
             "button_style": "text",
+            "show_icon": false,
             "button_style_mobile": "outline",
             "button_height_mobile": "inherit",
             "full_width_mobile": true,
-            "show_icon": false,
             "show_icon_mobile": false
           }
         },
@@ -697,6 +615,15 @@
             }
           }
         }
+      },
+      "settings": {
+        "section_width": "page_width",
+        "desktop_alignment": "left",
+        "mobile_alignment": "left",
+        "gap_desktop": 32,
+        "gap_mobile": 24,
+        "color_scheme": "scheme-1",
+        "customize_mobile_padding": false
       }
     }
   },
