@@ -18,7 +18,7 @@
   assign image_card_size_desktop = '100vw'
   if image_card_width_desktop_mode == 'custom'
     assign image_card_width_desktop_value = media_card_block.settings.width_custom_desktop | default: 100 | plus: 0
-    if image_card_width_desktop_value < 1 or image_card_width_desktop_value > 100
+    if image_card_width_desktop_value < 10 or image_card_width_desktop_value > 100
       assign image_card_width_desktop_value = 100
     endif
     assign image_card_width_desktop = image_card_width_desktop_value | append: '%'
@@ -42,7 +42,7 @@
   assign image_card_size_mobile = '100vw'
   if image_card_width_mobile_mode == 'custom'
     assign image_card_width_mobile_value = media_card_block.settings.width_custom_mobile | default: 100 | plus: 0
-    if image_card_width_mobile_value < 1 or image_card_width_mobile_value > 100
+    if image_card_width_mobile_value < 10 or image_card_width_mobile_value > 100
       assign image_card_width_mobile_value = 100
     endif
     assign image_card_width_mobile = image_card_width_mobile_value | append: '%'
