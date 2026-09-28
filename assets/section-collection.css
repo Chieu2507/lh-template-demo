@@ -744,6 +744,14 @@
     list-style: none;
   }
 
+  .main-collection__filter-group summary,
+  .main-collection__filter-button,
+  .main-collection__filter-more {
+    -webkit-tap-highlight-color: transparent;
+    -webkit-user-select: none;
+    user-select: none;
+  }
+
   .main-collection__filter-group summary::-webkit-details-marker {
     display: none;
   }
