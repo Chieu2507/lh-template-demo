@@ -48,8 +48,8 @@
           <div class="quick-view__handle main-collection__filter-handle" data-collection-filter-handle aria-hidden="true"></div>
           <header class="main-collection__filter-header">
             <h2 id="CollectionFiltersTitle-{{ section.id }}" class="heading-h2 heading-text">{{ 'collection.filters' | t }}</h2>
-            <button class="main-collection__filter-close" type="button" aria-label="{{ 'collection.close_filters' | t | escape }}" data-collection-filter-close>
-              {% render 'icon', icon: 'x-mark', bare: true %}
+            <button class="main-collection__filter-close overlay-close" type="button" aria-label="{{ 'collection.close_filters' | t | escape }}" data-collection-filter-close>
+              {% render 'icon', icon: 'x-mark', bare: true, class: 'overlay-close__icon' %}
             </button>
           </header>
 
@@ -119,17 +119,17 @@
                 <div class="main-collection__filter-content">
                 {% if filter.type == 'price_range' %}
                   {% liquid
-                    assign price_range_max = filter.range_max | divided_by: 100.0
+                    assign price_range_max = filter.range_max | divided_by: 100.0 | ceil
                     assign price_range_min_value = 0
                     assign price_range_max_value = price_range_max
                     assign currency_symbol = cart.currency.symbol | default: localization.country.currency.symbol | default: '$'
 
                     if filter.min_value.value != nil
-                      assign price_range_min_value = filter.min_value.value | divided_by: 100.0
+                      assign price_range_min_value = filter.min_value.value | divided_by: 100.0 | round
                     endif
 
                     if filter.max_value.value != nil
-                      assign price_range_max_value = filter.max_value.value | divided_by: 100.0
+                      assign price_range_max_value = filter.max_value.value | divided_by: 100.0 | round
                     endif
                   %}
                   <collection-price-range class="main-collection__price-filter">
@@ -138,7 +138,7 @@
                         type="range"
                         min="0"
                         max="{{ price_range_max }}"
-                        step="0.01"
+                        step="1" inputmode="numeric"
                         value="{{ price_range_min_value }}"
                         aria-label="{{ 'collection.price_from' | t | escape }}"
                         data-price-range-min
@@ -147,7 +147,7 @@
                         type="range"
                         min="0"
                         max="{{ price_range_max }}"
-                        step="0.01"
+                        step="1" inputmode="numeric"
                         value="{{ price_range_max_value }}"
                         aria-label="{{ 'collection.price_to' | t | escape }}"
                         data-price-range-max
@@ -164,7 +164,7 @@
                           name="{{ filter.min_value.param_name }}"
                           min="0"
                           max="{{ price_range_max }}"
-                          step="0.01"
+                          step="1" inputmode="numeric"
                           placeholder="0"
                           data-price-number-min
                           {% if filter.min_value.value != nil %}value="{{ price_range_min_value }}"{% endif %}
@@ -180,7 +180,7 @@
                           name="{{ filter.max_value.param_name }}"
                           min="0"
                           max="{{ price_range_max }}"
-                          step="0.01"
+                          step="1" inputmode="numeric"
                           placeholder="{{ price_range_max }}"
                           data-price-number-max
                           {% if filter.max_value.value != nil %}value="{{ price_range_max_value }}"{% endif %}

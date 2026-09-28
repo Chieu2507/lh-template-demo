@@ -202,8 +202,8 @@ if (!customElements.get('collection-price-range')) {
       let minValue = this.minNumber.value === '' ? lower : Number(this.minNumber.value);
       let maxValue = this.maxNumber.value === '' ? upper : Number(this.maxNumber.value);
 
-      minValue = Math.min(Math.max(minValue, lower), upper);
-      maxValue = Math.min(Math.max(maxValue, lower), upper);
+      minValue = Math.min(Math.max(Math.round(minValue), lower), upper);
+      maxValue = Math.min(Math.max(Math.round(maxValue), lower), upper);
 
       if (minValue > maxValue) {
         if (changedNumber === this.minNumber) {
@@ -215,6 +215,8 @@ if (!customElements.get('collection-price-range')) {
         }
       }
 
+      if (this.minNumber.value !== '') this.minNumber.value = String(minValue);
+      if (this.maxNumber.value !== '') this.maxNumber.value = String(maxValue);
       this.minRange.value = String(minValue);
       this.maxRange.value = String(maxValue);
       this.updateTrack(minValue, maxValue);
@@ -305,59 +307,15 @@ if (!customElements.get('collection-facets')) {
       };
       this.onDialogClose = () => this.hideBackdropPointer();
 
-      this.resetHandleDrag = () => {
-        window.clearTimeout(this.handleDragTimer);
-        this.handleDragTimer = null;
-        if (this.handleDrag) {
-          try { this.handleDrag.handle.releasePointerCapture(this.handleDrag.pointerId); } catch (_) {}
-        }
-        this.handleDrag = null;
-        this.dialog?.classList.remove('is-handle-dragging', 'is-handle-settling', 'is-handle-closing');
-        this.dialog?.style.removeProperty('transform');
-        this.dialog?.style.removeProperty('opacity');
-        this.dialog?.style.removeProperty('transition');
-      };
-      this.onHandlePointerDown = (event) => {
-        const handle = event.target.closest('[data-collection-filter-handle]');
-        if (!handle || !this.dialog?.open || !this.mobileDialog.matches || !event.isPrimary || event.button > 0 || this.dialog.classList.contains('is-closing')) return;
-        event.preventDefault();
-        this.handleDrag = { handle, pointerId: event.pointerId, startY: event.clientY, lastY: event.clientY, lastTime: performance.now(), velocity: 0, distance: 0 };
-        this.dialog.style.transform = 'translate3d(0, 0, 0)';
-        this.dialog.style.opacity = '1';
-        this.dialog.classList.add('is-handle-dragging');
-        handle.setPointerCapture?.(event.pointerId);
-      };
-      this.onHandlePointerMove = (event) => {
-        const drag = this.handleDrag;
-        if (!drag || event.pointerId !== drag.pointerId) return;
-        event.preventDefault();
-        const distance = Math.max(0, event.clientY - drag.startY);
-        const now = performance.now();
-        drag.velocity = Math.max(0, (event.clientY - drag.lastY) / Math.max(1, now - drag.lastTime));
-        drag.lastY = event.clientY;
-        drag.lastTime = now;
-        drag.distance = distance;
-        this.dialog.style.transform = `translate3d(0, ${distance}px, 0)`;
-        this.dialog.style.opacity = String(Math.max(.35, 1 - distance / Math.max(1, this.dialog.offsetHeight)));
-      };
-      this.onHandlePointerUp = (event) => {
-        const drag = this.handleDrag;
-        if (!drag || event.pointerId !== drag.pointerId) return;
-        const shouldClose = drag.distance > Math.max(96, this.dialog.offsetHeight * .18) || drag.velocity > .75;
-        try { drag.handle.releasePointerCapture(event.pointerId); } catch (_) {}
-        this.handleDrag = null;
-        this.dialog.classList.remove('is-handle-dragging');
-        if (shouldClose) {
-          this.dialog.classList.add('is-handle-closing');
-          this.dialog.style.transform = `translate3d(0, ${Math.max(window.innerHeight, this.dialog.offsetHeight + 60)}px, 0)`;
-          this.dialog.style.opacity = '0';
-          this.handleDragTimer = window.setTimeout(() => this.finishCloseDialog(), 240);
-          return;
-        }
-        this.dialog.classList.add('is-handle-settling');
-        this.dialog.style.transform = 'translate3d(0, 0, 0)';
-        this.dialog.style.opacity = '1';
-      };
+      this.sheetGesture = this.dialog && window.ThemeOverlay?.SheetGesture
+        ? new window.ThemeOverlay.SheetGesture({
+          panel: this.dialog,
+          header: this.dialog.querySelector('.main-collection__filter-header'),
+          enabled: () => this.dialog.open && this.mobileDialog.matches && this.dialog.dataset.mobileLayout === 'bottom_sheet' && !this.dialog.classList.contains('is-closing'),
+          close: () => this.closeDialog({ fromGesture: true }),
+        }) : null;
+      if (this.sheetGesture) this.sheetGesture.scrollTarget = this.dialog.querySelector('.main-collection__filter-body');
+      this.resetHandleDrag = () => this.sheetGesture?.reset();
 
       this.onClick = (event) => {
         const more = event.target.closest('[data-filter-show-more]');
@@ -370,7 +328,7 @@ if (!customElements.get('collection-facets')) {
         if (event.target.closest('[data-collection-filter-open]')) {
           if (this.dialog?.classList.contains('is-sidebar')) {
             if (this.dialog.dataset.sidebarVisibility !== 'always') {
-              if (this.dialog.open) this.dialog.close(); else this.dialog.show();
+              if (this.dialog.open) this.dialog.close(); else this.dialog.setAttribute('open', '');
               this.sidebarOpen = this.dialog.open;
             }
           } else if (this.dialog && !this.dialog.open) this.dialog.showModal();
@@ -447,10 +405,6 @@ if (!customElements.get('collection-facets')) {
       this.addEventListener('submit', this.onSubmit);
       this.dialog?.addEventListener('cancel', this.onDialogCancel);
       this.dialog?.addEventListener('close', this.onDialogClose);
-      this.dialog?.addEventListener('pointerdown', this.onHandlePointerDown);
-      this.dialog?.addEventListener('pointermove', this.onHandlePointerMove);
-      this.dialog?.addEventListener('pointerup', this.onHandlePointerUp);
-      this.dialog?.addEventListener('pointercancel', this.onHandlePointerUp);
       window.addEventListener('popstate', this.onPopState);
       document.addEventListener('shopify:section:unload', this.onSectionUnload);
     }
@@ -504,15 +458,12 @@ if (!customElements.get('collection-facets')) {
       this.removeEventListener('input', this.onInput);
       this.removeEventListener('submit', this.onSubmit);
       this.desktopLayout?.removeEventListener('change', this.onLayoutChange);
+      this.sheetGesture?.destroy();
       this.paginationObserver?.disconnect();
       window.__themeAccordionDetailsController?.cleanupRoot(this);
       this.gridAnimations?.forEach(animation => animation.cancel());
       this.dialog?.removeEventListener('cancel', this.onDialogCancel);
       this.dialog?.removeEventListener('close', this.onDialogClose);
-      this.dialog?.removeEventListener('pointerdown', this.onHandlePointerDown);
-      this.dialog?.removeEventListener('pointermove', this.onHandlePointerMove);
-      this.dialog?.removeEventListener('pointerup', this.onHandlePointerUp);
-      this.dialog?.removeEventListener('pointercancel', this.onHandlePointerUp);
       window.removeEventListener('popstate', this.onPopState);
       document.removeEventListener('shopify:section:unload', this.onSectionUnload);
       window.clearTimeout(this.priceTimer);
@@ -532,7 +483,7 @@ if (!customElements.get('collection-facets')) {
       this.dialog.classList.toggle('is-sidebar', sidebar);
       if (sidebar) {
         this.dialog.removeAttribute('scroll-lock');
-        if (this.sidebarOpen ?? this.dialog.dataset.sidebarVisibility !== 'closed') this.dialog.show();
+        if (this.sidebarOpen ?? this.dialog.dataset.sidebarVisibility !== 'closed') this.dialog.setAttribute('open', '');
       } else this.dialog.setAttribute('scroll-lock', '');
       this.querySelector('[data-collection-filter-open]')?.setAttribute('aria-expanded', String(this.dialog.open));
     }
@@ -581,6 +532,7 @@ if (!customElements.get('collection-facets')) {
     }
 
     observePagination() {
+      this.sheetGesture?.destroy();
       this.paginationObserver?.disconnect();
       const link = this.querySelector('[data-pagination-mode="infinite"] [data-collection-load-more]');
       if (!link) return;
@@ -594,6 +546,7 @@ if (!customElements.get('collection-facets')) {
       if (this.loadingMore) return;
       this.loadingMore = true;
       link.setAttribute('aria-busy', 'true');
+      this.sheetGesture?.destroy();
       this.paginationObserver?.disconnect();
       try {
         const url = new URL(link.href); url.searchParams.set('section_id', this.sectionId);
@@ -638,10 +591,10 @@ if (!customElements.get('collection-facets')) {
       window.__themeAccordionDetailsController?.initializeRoot(this.dialog);
     }
 
-    closeDialog() {
+    closeDialog({ fromGesture = false } = {}) {
       if (!this.dialog?.open || this.dialog.classList.contains('is-sidebar')) return Promise.resolve();
       if (this.closePromise) return this.closePromise;
-      this.resetHandleDrag?.();
+      if (!fromGesture) this.resetHandleDrag?.();
       this.hideBackdropPointer();
 
       if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
@@ -649,6 +602,7 @@ if (!customElements.get('collection-facets')) {
         return Promise.resolve();
       }
 
+      this.dialog.classList.toggle('is-gesture-closing', fromGesture);
       this.dialog.classList.add('is-closing');
       this.closePromise = new Promise((resolve) => {
         this.resolveClose = resolve;
@@ -661,7 +615,7 @@ if (!customElements.get('collection-facets')) {
       window.clearTimeout(this.closeTimer);
       this.closeTimer = null;
       if (this.dialog?.open) this.dialog.close();
-      this.dialog?.classList.remove('is-closing');
+      this.dialog?.classList.remove('is-closing', 'is-gesture-closing');
       this.resetHandleDrag?.();
       this.hideBackdropPointer();
       const resolve = this.resolveClose;
