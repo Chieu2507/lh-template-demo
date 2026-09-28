@@ -186,6 +186,10 @@
             <div class="cart-drawer__shipping-progress-copy">
               <span class="cart-drawer__shipping-progress-icon" aria-hidden="true">
                 {% render 'icon', icon: 'truck', bare: true %}
+                <svg class="cart-drawer__shipping-progress-success-icon" viewBox="0 0 20 20" fill="none" focusable="false" aria-hidden="true">
+                  <circle cx="10" cy="10" r="9" fill="currentColor" />
+                  <path d="m6 10 2.5 2.5L14 7" stroke="var(--background-color)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" />
+                </svg>
               </span>
               <div class="cart-drawer__shipping-progress-details">
                 <p class="body-text body-sm"><span data-cart-drawer-shipping-message>{{ cart_drawer_shipping_message }}</span></p>
@@ -1037,8 +1041,9 @@
   }
 
   .cart-drawer__shipping-progress-copy { display: flex; min-width: 0; align-items: flex-start; gap: 0.875rem; }
-  .cart-drawer__shipping-progress-icon { --cart-drawer-shipping-icon-size: 3.2rem; position: relative; display: grid; width: var(--cart-drawer-shipping-icon-size); height: var(--cart-drawer-shipping-icon-size); flex: 0 0 var(--cart-drawer-shipping-icon-size); place-items: center; padding: 0.6rem; border-radius: 50%; background: color-mix(in srgb, var(--body-color) 12%, var(--background-color)); }
-  .cart-drawer__shipping-progress-icon svg { width: 100%; height: 100%; }
+  .cart-drawer__shipping-progress-icon { --cart-drawer-shipping-icon-size: 3.8rem; position: relative; display: grid; width: var(--cart-drawer-shipping-icon-size); height: var(--cart-drawer-shipping-icon-size); flex: 0 0 var(--cart-drawer-shipping-icon-size); place-items: center; padding: 0.7rem; border-radius: 50%; background: color-mix(in srgb, var(--body-color) 12%, var(--background-color)); }
+  .cart-drawer__shipping-progress-icon > svg:first-child { width: 100%; height: 100%; }
+  .cart-drawer__shipping-progress-success-icon { position: absolute; top: -0.3rem; right: -0.3rem; width: 1.35rem; height: 1.35rem; color: var(--cart-drawer-shipping-success-color); visibility: hidden; }
   .cart-drawer__shipping-progress-details { display: grid; width: 100%; min-width: 0; gap: 0.75rem; }
   .cart-drawer__shipping-progress p { margin: 0; color: var(--heading-color); font-weight: 500; line-height: 1.35; }
   .cart-drawer__shipping-progress-track { height: 0.3rem; border-radius: 0; background: color-mix(in srgb, var(--body-color) 14%, transparent); }
@@ -1049,8 +1054,7 @@
   .cart-drawer__shipping-progress[data-unlocked='true'] [data-cart-drawer-shipping-message],
   .cart-drawer__shipping-progress[data-unlocked='true'] .cart-drawer__shipping-progress-goal > span:last-child { color: var(--cart-drawer-shipping-success-color); font-weight: 500; }
   .cart-drawer__shipping-progress[data-unlocked='true'] .cart-drawer__shipping-progress-icon { border: 1px solid color-mix(in srgb, var(--cart-drawer-shipping-success-color) 24%, transparent); background: color-mix(in srgb, var(--cart-drawer-shipping-success-color) 18%, var(--background-color)); }
-  .cart-drawer__shipping-progress[data-unlocked='true'] .cart-drawer__shipping-progress-icon::before { position: absolute; top: -0.3rem; right: -0.3rem; width: 1.125rem; height: 1.125rem; border-radius: 50%; background: var(--cart-drawer-shipping-success-color); content: ''; }
-  .cart-drawer__shipping-progress[data-unlocked='true'] .cart-drawer__shipping-progress-icon::after { position: absolute; z-index: 1; top: 0; right: -0.05rem; width: 0.45rem; height: 0.25rem; border-bottom: 2px solid var(--background-color); border-left: 2px solid var(--background-color); content: ''; transform: rotate(-45deg); }
+  .cart-drawer__shipping-progress[data-unlocked='true'] .cart-drawer__shipping-progress-success-icon { visibility: visible; }
 
   .cart-drawer__promotion {
     display: flex;
@@ -1271,7 +1275,6 @@
 
   .cart-drawer.is-order-options-open .cart-drawer__order-options-backdrop {
     background-color: var(--overlay-backdrop-color);
-    opacity: calc(1 - (var(--sheet-drag-progress, 0) * 0.72));
     -webkit-backdrop-filter: blur(var(--overlay-backdrop-blur));
     backdrop-filter: blur(var(--overlay-backdrop-blur));
     pointer-events: auto;
