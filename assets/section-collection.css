@@ -720,13 +720,16 @@
     display: none;
   }
 
-  .main-collection__filter-group summary svg {
+  .main-collection__filter-icon svg {
     width: 16px;
     height: 16px;
+  }
+
+  .main-collection__filter-icon--chevron svg {
     transition: transform 180ms ease;
   }
 
-  .main-collection__filter-group[open] summary svg {
+  .main-collection__filter-group[open] .main-collection__filter-icon--chevron svg {
     transform: rotate(180deg);
   }
 
@@ -1172,9 +1175,13 @@
 .main-collection--blocks .main-collection__promotion-card{height:100%;min-height:350px}
 .main-collection__promotion-media picture{display:contents}
 .main-collection--blocks .main-collection__filter-group [hidden]{display:none}
-.main-collection__filter-dialog[data-collapse-icon="plus"] .main-collection__filter-group summary svg{display:none}
-.main-collection__filter-dialog[data-collapse-icon="plus"] .main-collection__filter-group summary:after{content:'+';font-family:var(--font-body-family);font-size:20px}
-.main-collection__filter-dialog[data-collapse-icon="plus"] .main-collection__filter-group[open] summary:after{content:'−'}
+.main-collection__filter-icon{display:inline-flex;flex:0 0 16px;align-items:center;justify-content:center}
+.main-collection__filter-icon--plus,
+.main-collection__filter-icon-open{display:none}
+.main-collection__filter-dialog[data-collapse-icon="plus"] .main-collection__filter-icon--chevron{display:none}
+.main-collection__filter-dialog[data-collapse-icon="plus"] .main-collection__filter-icon--plus{display:inline-flex}
+.main-collection__filter-group[open] .main-collection__filter-icon-closed{display:none}
+.main-collection__filter-group[open] .main-collection__filter-icon-open{display:inline-flex}
 @media(min-width:1150px){
 .main-collection--blocks .main-collection__filter-button .btn__icon{display:inline-flex}
 .main-collection--blocks .main-collection__facets:has(.main-collection__filter-dialog.is-sidebar[open]){grid-template-columns:minmax(200px,270px) minmax(0,1fr);column-gap:24px}
@@ -1193,10 +1200,12 @@
 .main-collection--blocks .main-collection__filter-dialog.is-sidebar .main-collection__filter-form{height:auto;overflow:visible;background:transparent}
 .main-collection--blocks .main-collection__filter-dialog.is-sidebar .main-collection__filter-body{padding:0;overflow:visible}
 .main-collection--blocks .main-collection__filter-dialog.is-sidebar .main-collection__filter-header,.main-collection--blocks .main-collection__filter-dialog.is-sidebar .main-collection__filter-footer,.main-collection--blocks .main-collection__filter-dialog.is-sidebar .main-collection__filter-backdrop-pointer{display:none}
-.main-collection--blocks .main-collection__filter-dialog.is-sidebar .main-collection__filter-group{border-block-end:1px solid var(--color-border);padding-block:20px 24px}
-.main-collection--blocks .main-collection__filter-dialog.is-sidebar .main-collection__filter-group:first-child,
-.main-collection--blocks .main-collection__filter-dialog.is-sidebar .main-collection__mobile-sort + .main-collection__filter-group{padding-block-start:0}
-.main-collection--blocks .main-collection__filter-dialog.is-sidebar .main-collection__filter-group summary{padding:0 0 16px;font-family:var(--font-heading-family);font-size:var(--font-heading-xs,20px)}
+.main-collection--blocks .main-collection__filter-dialog.is-sidebar .main-collection__filter-group{border-block-end:1px solid var(--color-border)}
+.main-collection--blocks .main-collection__filter-dialog.is-sidebar .main-collection__filter-group summary{box-sizing:border-box;min-height:0;padding-block:20px 24px;font-family:var(--font-heading-family);font-size:var(--font-heading-xs,20px)}
+.main-collection--blocks .main-collection__filter-dialog.is-sidebar .main-collection__filter-group:first-child summary,
+.main-collection--blocks .main-collection__filter-dialog.is-sidebar .main-collection__mobile-sort + .main-collection__filter-group summary{padding-block-start:0}
+.main-collection--blocks .main-collection__filter-dialog.is-sidebar .main-collection__filter-group[open] summary{padding-block-end:16px}
+.main-collection--blocks .main-collection__filter-dialog.is-sidebar .main-collection__filter-content{padding-block-end:24px}
 .main-collection--blocks .main-collection__filter-dialog.is-sidebar .main-collection__filter-values{padding:0}
 .main-collection--blocks .main-collection__facets:has([data-sidebar-visibility="always"].is-sidebar) .main-collection__filter-button{display:none}
 }

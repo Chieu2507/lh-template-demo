@@ -81,7 +81,11 @@
                 <details data-accordion-details class="main-collection__mobile-sort main-collection__filter-group" open>
                   <summary>
                     <span>{{ sort_label }}</span>
-                    {% render 'icon', icon: 'chevron-down', bare: true %}
+                    <span class="main-collection__filter-icon main-collection__filter-icon--chevron" aria-hidden="true">{% render 'icon', icon: 'chevron-down', bare: true %}</span>
+                    <span class="main-collection__filter-icon main-collection__filter-icon--plus" aria-hidden="true">
+                      <span class="main-collection__filter-icon-closed">{% render 'icon', icon: 'plus', bare: true %}</span>
+                      <span class="main-collection__filter-icon-open">{% render 'icon', icon: 'minus', bare: true %}</span>
+                    </span>
                   </summary>
                   <fieldset class="main-collection__sort-options">
                     <legend class="visually-hidden">{{ sort_label }}</legend>
@@ -105,7 +109,11 @@
                 <details data-accordion-details class="main-collection__filter-group" {% unless block.settings.collapse_filters %}open{% endunless %}>
                 <summary>
                   <span>{{ filter.label | escape }}</span>
-                  {% render 'icon', icon: 'chevron-down', bare: true %}
+                  <span class="main-collection__filter-icon main-collection__filter-icon--chevron" aria-hidden="true">{% render 'icon', icon: 'chevron-down', bare: true %}</span>
+                  <span class="main-collection__filter-icon main-collection__filter-icon--plus" aria-hidden="true">
+                    <span class="main-collection__filter-icon-closed">{% render 'icon', icon: 'plus', bare: true %}</span>
+                    <span class="main-collection__filter-icon-open">{% render 'icon', icon: 'minus', bare: true %}</span>
+                  </span>
                 </summary>
 
                 <div class="main-collection__filter-content">
@@ -187,7 +195,7 @@
                       assign is_swatch_filter = true
                     endif
                   %}
-                  <ul class="main-collection__filter-values{% if is_swatch_filter %} main-collection__filter-values--swatches{% endif %}" role="list">
+                  <ul id="FilterValues-{{ block.id }}-{{ forloop.index }}" class="main-collection__filter-values{% if is_swatch_filter %} main-collection__filter-values--swatches{% endif %}" role="list">
                     {% for value in filter.values %}
                       <li {% if filter_items_limit > 0 and forloop.index > filter_items_limit and value.active == false %}data-filter-overflow hidden{% endif %}>
                         <label class="main-collection__filter-value{% if value.active %} is-active{% endif %}">
@@ -216,7 +224,11 @@
                       </li>
                     {% endfor %}
                   </ul>
-                  {% if filter_items_limit > 0 and filter.values.size > filter_items_limit %}<button type="button" class="link-underline" data-filter-show-more aria-expanded="false">{{ 'collection.view_more' | t }}</button>{% endif %}
+                  {% if filter_items_limit > 0 and filter.values.size > filter_items_limit %}
+                    {% assign more_label = 'collection.view_more' | t %}
+                    {% capture more_attributes %}data-filter-show-more aria-expanded="false" aria-controls="FilterValues-{{ block.id }}-{{ forloop.index }}" data-more-label="{{ more_label | escape }}" data-less-label="{{ 'collection.view_less' | t | escape }}"{% endcapture %}
+                    {% render 'theme-button', label: more_label, variant: 'tertiary', class: 'main-collection__filter-more', attributes: more_attributes %}
+                  {% endif %}
                 {% endif %}
                 </div>
                 </details>
