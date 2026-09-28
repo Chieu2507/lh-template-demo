@@ -290,6 +290,7 @@ if (!customElements.get('collection-facets')) {
       this.onLayoutChange = () => this.syncLayout();
       this.desktopLayout.addEventListener('change', this.onLayoutChange);
       this.syncLayout();
+      this.initializeSidebarSticky();
       this.syncColumns();
       this.observePagination();
       this.backdropInteraction = this.dialog && window.SpinelModalBackdropPointer
@@ -449,6 +450,13 @@ if (!customElements.get('collection-facets')) {
     }
 
     disconnectedCallback() {
+      window.removeEventListener('scroll', this.onSidebarScroll);
+      window.removeEventListener('resize', this.onSidebarScroll);
+      this.sidebarResizeObserver?.disconnect();
+      this.sidebarMutationObserver?.disconnect();
+      cancelAnimationFrame(this.sidebarFrame);
+      this.sidebarPositioner?.style.removeProperty('--collection-sidebar-top');
+      this.sidebarPositioner?.removeAttribute('data-sticky-state');
       this.querySelectorAll('.main-collection__filter-values').forEach(list => {
         list._filterAnimationId = (list._filterAnimationId || 0) + 1;
         list._filterAnimations?.forEach(animation => animation.cancel());
@@ -472,6 +480,49 @@ if (!customElements.get('collection-facets')) {
       this.hideBackdropPointer();
       this.finishCloseDialog();
       this.requestController?.abort();
+    }
+
+    initializeSidebarSticky() {
+      this.sidebarPositioner = this.dialog?.closest('.main-collection__filter-panel-positioner');
+      if (!this.sidebarPositioner) return;
+      this.sidebarScrollY = window.scrollY;
+      this.onSidebarScroll = () => {
+        if (this.sidebarFrame) return;
+        this.sidebarFrame = requestAnimationFrame(() => {
+          this.sidebarFrame = 0;
+          this.updateSidebarSticky();
+        });
+      };
+      window.addEventListener('scroll', this.onSidebarScroll, { passive: true });
+      window.addEventListener('resize', this.onSidebarScroll, { passive: true });
+      this.sidebarResizeObserver = new ResizeObserver(this.onSidebarScroll);
+      this.sidebarResizeObserver.observe(this.sidebarPositioner);
+      this.sidebarResizeObserver.observe(this);
+      this.sidebarMutationObserver = new MutationObserver(this.onSidebarScroll);
+      this.sidebarMutationObserver.observe(this.dialog, { attributes: true, attributeFilter: ['open', 'class'] });
+      this.updateSidebarSticky();
+    }
+
+    updateSidebarSticky() {
+      const panel = this.sidebarPositioner;
+      const scrollY = window.scrollY;
+      const delta = scrollY - this.sidebarScrollY;
+      this.sidebarScrollY = scrollY;
+      if (!this.desktopLayout.matches || !this.dialog.open || !this.dialog.classList.contains('is-sidebar')) {
+        panel.style.removeProperty('--collection-sidebar-top');
+        panel.removeAttribute('data-sticky-state');
+        this.sidebarTop = null;
+        return;
+      }
+
+      const headerHeight = parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--header-height')) || 0;
+      const top = headerHeight + 16;
+      const bottom = Math.min(top, window.innerHeight - panel.offsetHeight - 16);
+      // A tall sidebar travels with the page between its top and bottom stops.
+      // On direction changes, retain its document position instead of jumping.
+      this.sidebarTop = Math.max(bottom, Math.min(top, (this.sidebarTop ?? top) - delta));
+      panel.style.setProperty('--collection-sidebar-top', `${this.sidebarTop}px`);
+      panel.dataset.stickyState = this.sidebarTop === top ? 'top' : this.sidebarTop === bottom ? 'bottom' : 'scrolling';
     }
 
     syncLayout() {
@@ -606,7 +657,8 @@ if (!customElements.get('collection-facets')) {
       this.dialog.classList.add('is-closing');
       this.closePromise = new Promise((resolve) => {
         this.resolveClose = resolve;
-        this.closeTimer = window.setTimeout(() => this.finishCloseDialog(), fromGesture ? 320 : 240);
+        const gestureDuration = parseFloat(getComputedStyle(this.dialog).transitionDuration) * 1000 || 280;
+        this.closeTimer = window.setTimeout(() => this.finishCloseDialog(), fromGesture ? gestureDuration + 16 : 240);
       });
       return this.closePromise;
     }
