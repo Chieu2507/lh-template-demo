@@ -362,9 +362,7 @@ if (!customElements.get('collection-facets')) {
       this.onClick = (event) => {
         const more = event.target.closest('[data-filter-show-more]');
         if (more) {
-          const expanded = more.getAttribute('aria-expanded') === 'true';
-          more.closest('details').querySelectorAll('[data-filter-overflow]').forEach(item => item.hidden = expanded);
-          more.setAttribute('aria-expanded', String(!expanded));
+          this.toggleFilterValues(more);
           return;
         }
         const load = event.target.closest('[data-collection-load-more]');
@@ -457,7 +455,50 @@ if (!customElements.get('collection-facets')) {
       document.addEventListener('shopify:section:unload', this.onSectionUnload);
     }
 
+    toggleFilterValues(button) {
+      const list = this.querySelector(`#${CSS.escape(button.getAttribute('aria-controls'))}`);
+      if (!list) return;
+      const items = [...list.querySelectorAll('[data-filter-overflow]')];
+      const expanded = button.getAttribute('aria-expanded') !== 'true';
+      const startHeight = list.getBoundingClientRect().height;
+      list._filterAnimations?.forEach(animation => animation.cancel());
+      list._filterAnimationId = (list._filterAnimationId || 0) + 1;
+      const animationId = list._filterAnimationId;
+      items.forEach(item => { item.hidden = !expanded; });
+      const endHeight = list.getBoundingClientRect().height;
+      button.setAttribute('aria-expanded', String(expanded));
+      button.querySelector('.btn__text').textContent = expanded ? button.dataset.lessLabel : button.dataset.moreLabel;
+      if (window.matchMedia('(prefers-reduced-motion: reduce)').matches || !list.animate) {
+        list.style.removeProperty('overflow');
+        return;
+      }
+      // Use the same height easing and content reveal as accordion-details (FAQ).
+      items.forEach(item => { item.hidden = false; });
+      list.style.overflow = 'hidden';
+      const animations = [list.animate(
+        [{ height: `${startHeight}px` }, { height: `${endHeight}px` }],
+        { duration: 250, easing: 'ease', fill: 'both' }
+      ), ...items.map(item => item.animate(
+        expanded
+          ? [{ opacity: 0, transform: 'translateY(10px)' }, { opacity: 1, transform: 'translateY(0)' }]
+          : [{ opacity: 1 }, { opacity: 0 }],
+        { duration: 150, fill: 'both' }
+      ))];
+      list._filterAnimations = animations;
+      Promise.allSettled(animations.map(animation => animation.finished)).then(() => {
+        if (list._filterAnimationId !== animationId) return;
+        items.forEach(item => { item.hidden = !expanded; });
+        animations.forEach(animation => animation.cancel());
+        list._filterAnimations = [];
+        list.style.removeProperty('overflow');
+      });
+    }
+
     disconnectedCallback() {
+      this.querySelectorAll('.main-collection__filter-values').forEach(list => {
+        list._filterAnimationId = (list._filterAnimationId || 0) + 1;
+        list._filterAnimations?.forEach(animation => animation.cancel());
+      });
       this.removeEventListener('click', this.onClick);
       this.removeEventListener('change', this.onChange);
       this.removeEventListener('input', this.onInput);

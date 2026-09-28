@@ -1362,3 +1362,16 @@
 
 .main-collection__sort-listbox { border-radius: var(--drawer-radius); box-shadow: 0 .75rem 1.5rem color-mix(in srgb, var(--shadow-color) 15%, transparent); }
 .main-collection__sort-option-button { border-radius: var(--radius-square); }
+
+/* Drawer gutters belong only to the dialog presentation, not the grid sidebar. */
+.main-collection--blocks .main-collection__filter-dialog.is-sidebar .main-collection__filter-groups {
+  padding: 0;
+}
+
+.main-collection--blocks .main-collection__filter-dialog.is-sidebar .main-collection__active-filters {
+  padding-inline: 0;
+}
+
+.main-collection__filter-more {
+  margin-block-start: 16px;
+}
