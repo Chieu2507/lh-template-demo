@@ -4,6 +4,7 @@
   const headerResizeObservers = new Map();
   const submenuCloseTimers = new WeakMap();
   const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+  const isMobileMenuViewport = () => window.matchMedia('(max-width: 991.98px)').matches;
   const submenuCloseGrace = 100;
   const submenuTransitionBuffer = 16;
   const menuToggleButtons = new WeakSet();
@@ -27,7 +28,7 @@
     drawer?.setAttribute('aria-hidden', String(!isOpen));
 
     if (syncOverlay) {
-      if (isOpen) overlay?.open({ opener: opener || document.activeElement, focus: true, restoreFocus: true, defer: window.matchMedia('(max-width: 767.98px)').matches });
+      if (isOpen) overlay?.open({ opener: opener || document.activeElement, focus: true, restoreFocus: true, defer: isMobileMenuViewport() });
       else overlay?.close({ restoreFocus });
     }
 
@@ -168,7 +169,7 @@
       scheduleUpdate();
     };
 
-    if (window.innerWidth <= 767 || reducedMotion.matches) {
+    if (isMobileMenuViewport() || reducedMotion.matches) {
       finish();
       return;
     }
@@ -190,7 +191,7 @@
     header.querySelectorAll('details[open], details.is-submenu-closing').forEach((details) => {
       if (details === active.details) return;
       if (details.classList.contains('header-localization__details')) {
-        if (window.innerWidth <= 767 || getLocalizationDialog(details)?.dataset.state !== 'closed') closeLocalizationSheet(details);
+        if ((details.closest('[data-header-mobile-drawer]') && isMobileMenuViewport()) || window.innerWidth <= 767 || getLocalizationDialog(details)?.dataset.state !== 'closed') closeLocalizationSheet(details);
         else closeHeaderDetails(details);
         return;
       }
@@ -288,7 +289,7 @@
       const isSearchOpen = header.classList.contains('header--search-open');
       const isCartOpen = header.classList.contains('header--cart-open');
       const headerTop = header.querySelector('.header-top');
-      if (window.innerWidth >= 1150 && headerTop?.classList.contains('header-top--menu-open')) {
+      if (!isMobileMenuViewport() && headerTop?.classList.contains('header-top--menu-open')) {
         setHeaderMenuState(header, false, { restoreFocus: false });
       }
       header.classList.toggle('header--is-scrolled', isScrolled);
@@ -425,7 +426,7 @@
   const initializeHeaderSubmenus = (header) => {
     const scheduleSubmenuClose = (details) => {
       clearSubmenuClose(details);
-      if (window.innerWidth <= 767) return;
+      if (isMobileMenuViewport()) return;
       if (!details.open) return;
       const trigger = details.dataset.headerSubmenuTrigger || 'click';
       details.classList.add('is-submenu-closing');
@@ -457,9 +458,9 @@
       // the chevron), which made the closing state flicker. These events only
       // fire when the pointer enters or leaves the complete details boundary.
       details.addEventListener('pointerenter', () => {
-        if (window.innerWidth <= 767) return;
+        if (isMobileMenuViewport()) return;
         if (trigger === 'hover') {
-          closeHeaderSurfaces(header, { details, menu: window.innerWidth < 1150 });
+          closeHeaderSurfaces(header, { details });
           details.open = true;
         }
         clearSubmenuClose(details);
@@ -467,15 +468,15 @@
       });
 
       details.addEventListener('pointerleave', () => {
-        if (window.innerWidth <= 767) return;
+        if (isMobileMenuViewport()) return;
         scheduleSubmenuClose(details);
         scheduleUpdate();
       });
 
       details.addEventListener('focusin', () => {
-        if (window.innerWidth <= 767) return;
+        if (isMobileMenuViewport()) return;
         if (trigger === 'hover') {
-          closeHeaderSurfaces(header, { details, menu: window.innerWidth < 1150 });
+          closeHeaderSurfaces(header, { details });
           details.open = true;
         }
         clearSubmenuClose(details);
@@ -483,19 +484,19 @@
       });
 
       details.addEventListener('focusout', (event) => {
-        if (window.innerWidth <= 767) return;
+        if (isMobileMenuViewport()) return;
         if (!details.contains(event.relatedTarget)) scheduleSubmenuClose(details);
         scheduleUpdate();
       });
 
       if (trigger === 'hover') {
         summary?.addEventListener('click', (event) => {
-          if (window.innerWidth <= 767) return;
+          if (isMobileMenuViewport()) return;
           if (event.defaultPrevented) return;
           // Keep the hover-mode dropdown open while the pointer remains inside;
           // otherwise the native details toggle would immediately close it.
           event.preventDefault();
-          closeHeaderSurfaces(header, { details, menu: window.innerWidth < 1150 });
+          closeHeaderSurfaces(header, { details });
           details.open = true;
           clearSubmenuClose(details);
           scheduleUpdate();
@@ -503,13 +504,13 @@
       }
 
       summary?.addEventListener('click', (event) => {
-        if (window.innerWidth <= 767 || trigger === 'hover' || !details.open) return;
+        if (isMobileMenuViewport() || trigger === 'hover' || !details.open) return;
         event.preventDefault();
         closeHeaderDetails(details);
       });
 
       summary?.addEventListener('click', (event) => {
-        if (window.innerWidth > 767) return;
+        if (!isMobileMenuViewport()) return;
         if (details.classList.contains('header-localization__details')) return;
 
         const menu = details.closest('.header-menu');
@@ -533,7 +534,7 @@
 
       details.addEventListener('toggle', () => {
         if (details.open) {
-          closeHeaderSurfaces(header, window.innerWidth < 1150 ? { details, menu: true } : { details });
+          closeHeaderSurfaces(header, { details });
         }
         scheduleUpdate();
       });
@@ -552,7 +553,7 @@
         owner: backdrop,
         root: header,
         colorSource: header,
-        isOpen: () => window.innerWidth >= 1150 && hasOpenMegaMenu(header),
+        isOpen: () => !isMobileMenuViewport() && hasOpenMegaMenu(header),
       });
       if (cursorBinding) backdropCursorBindings.set(backdrop, cursorBinding);
 
@@ -592,7 +593,7 @@
       owner: drawer,
       root: drawer,
       colorSource: drawer,
-      isOpen: () => window.innerWidth <= 767 && drawer.dataset.state === 'open',
+      isOpen: () => isMobileMenuViewport() && drawer.dataset.state === 'open',
     });
     if (cursorBinding) backdropCursorBindings.set(drawer, cursorBinding);
 
@@ -665,7 +666,7 @@
 
     drawer.querySelectorAll('[data-mobile-drawer-details] > summary').forEach((summary) => {
       summary.addEventListener('click', (event) => {
-        if (window.innerWidth > 767) return;
+        if (!isMobileMenuViewport()) return;
         event.preventDefault();
         resetSubmenu(false);
         const details = summary.parentElement;
@@ -683,7 +684,7 @@
 
     drawer.querySelectorAll('[data-mobile-drawer-submenu-details] > summary').forEach((summary) => {
       summary.addEventListener('click', (event) => {
-        if (window.innerWidth > 767) return;
+        if (!isMobileMenuViewport()) return;
         event.preventDefault();
 
         const details = summary.parentElement;
@@ -720,7 +721,7 @@
   };
 
   const restoreMobileMegaMenus = () => {
-    if (window.innerWidth <= 767) return;
+    if (isMobileMenuViewport()) return;
     mobileMegaMenuOrigins.forEach((origin, megaMenu) => {
       if (origin.featured?.isConnected && origin.featuredParent?.isConnected) {
         const nextSibling = origin.featuredNextSibling?.parentNode === origin.featuredParent
@@ -740,7 +741,7 @@
 
       const summary = details.querySelector(':scope > .header-localization__summary');
       summary?.addEventListener('click', (event) => {
-        if (window.innerWidth > 767) return;
+        if (window.innerWidth > 767 && !(details.closest('[data-header-mobile-drawer]') && isMobileMenuViewport())) return;
         event.preventDefault();
 
         const dialog = getLocalizationDialog(details);
@@ -866,7 +867,7 @@
         openAccountSheets.add(account);
         const headerTop = header.querySelector('.header-top') || header;
         const keepMobileMenuOpen =
-          window.innerWidth <= 767 && headerTop.classList.contains('header-top--menu-open');
+          isMobileMenuViewport() && headerTop.classList.contains('header-top--menu-open');
 
         closeHeaderSurfaces(header, { account, menu: keepMobileMenuOpen });
         scheduleUpdate();
