@@ -1168,6 +1168,7 @@
     }
 
     .main-collection__filter-form { border-radius: inherit; background: var(--color-background); }
+    .main-collection__filter-dialog[data-mobile-layout="sheet"] .main-collection__filter-form { width: 100%; max-width: 100%; }
     .main-collection__filter-dialog[open]:not(.is-closing) { transform: translateY(0); }
     .main-collection__filter-dialog[open]:not(.is-closing) { animation-name: main-collection-filter-drawer-in-mobile; }
     .main-collection__filter-dialog.is-closing { animation-name: main-collection-filter-drawer-out-mobile; }
