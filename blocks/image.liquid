@@ -84,10 +84,36 @@
     assign image_max_width_mobile = max_width_mobile | append: 'px'
   endif
 
-  assign image_corner_radius = block.settings.corner_radius | default: 0 | plus: 0
-  if image_corner_radius < 0 or image_corner_radius > 100
-    assign image_corner_radius = 0
+  assign image_corner_radius = block.settings.corner_radius | default: 'square'
+  assign image_custom_corner_radius = block.settings.custom_corner_radius | default: 0 | plus: 0
+  unless image_corner_radius == 'inherit' or image_corner_radius == 'square' or image_corner_radius == 'rounded' or image_corner_radius == 'full' or image_corner_radius == 'custom'
+    assign image_legacy_corner_radius = image_corner_radius | plus: 0
+    if image_legacy_corner_radius > 0
+      assign image_corner_radius = 'custom'
+      assign image_custom_corner_radius = image_legacy_corner_radius
+      if image_custom_corner_radius > 40
+        assign image_custom_corner_radius = 40
+      endif
+    else
+      assign image_corner_radius = 'square'
+    endif
+  endunless
+
+  if image_custom_corner_radius < 0 or image_custom_corner_radius > 40
+    assign image_custom_corner_radius = 0
   endif
+
+  assign image_radius_value = 'var(--media-radius, var(--radius-square))'
+  case image_corner_radius
+    when 'square'
+      assign image_radius_value = 'var(--radius-square)'
+    when 'rounded'
+      assign image_radius_value = 'var(--radius-rounded)'
+    when 'full'
+      assign image_radius_value = 'var(--radius-pill)'
+    when 'custom'
+      assign image_radius_value = image_custom_corner_radius | append: 'px'
+  endcase
 
   assign padding_top = block.settings.padding_top | default: 0 | plus: 0
   assign padding_bottom = block.settings.padding_bottom | default: 0 | plus: 0
@@ -125,7 +151,7 @@
     --image-block-padding-left-mobile: {{ padding_left_mobile }}px;
     --image-block-padding-right-mobile: {{ padding_right_mobile }}px;
   {% endif %}
-  --image-block-radius: {{ image_corner_radius }}px;
+  --image-block-radius: {{ image_radius_value }};
 {% endcapture %}
 {% assign image_style = image_style | strip | replace: '\n', ' ' %}
 
@@ -399,17 +425,31 @@
     },
     {
       "type": "header",
-      "content": "t:general.appearance"
+      "content": "t:general.border"
+    },
+    {
+      "type": "select",
+      "id": "corner_radius",
+      "label": "t:labels.corner_radius",
+      "options": [
+        { "value": "inherit", "label": "t:options.radius_preset.inherit" },
+        { "value": "square", "label": "t:options.radius_preset.square" },
+        { "value": "rounded", "label": "t:options.radius_preset.rounded" },
+        { "value": "full", "label": "t:options.radius_preset.full" },
+        { "value": "custom", "label": "t:options.radius_preset.custom" }
+      ],
+      "default": "square"
     },
     {
       "type": "range",
-      "id": "corner_radius",
-      "label": "t:labels.corner_radius",
+      "id": "custom_corner_radius",
+      "label": "t:labels.custom_corner_radius",
       "min": 0,
-      "max": 100,
+      "max": 40,
       "step": 1,
       "unit": "px",
-      "default": 0
+      "default": 0,
+      "visible_if": "{{ block.settings.corner_radius == 'custom' }}"
     },
     {
       "type": "header",
@@ -517,7 +557,8 @@
         "width_mobile": "fit",
         "limit_width_desktop": false,
         "limit_width_mobile": false,
-        "corner_radius": 0,
+        "corner_radius": "square",
+        "custom_corner_radius": 0,
         "customize_mobile_padding": false
       }
     }

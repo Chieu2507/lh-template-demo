@@ -3,7 +3,6 @@
 
   @param {object} media_card_block - The Theme block and its settings
   @param {string} [children] - Rendered child blocks
-  @param {boolean} [allow_sticky] - Whether this media card can opt into sticky behavior
   @param {string} [class_modifier] - Optional class added to the media card
   @param {boolean} [use_image_ratio] - Whether the caller supplies responsive image ratio settings
 {% enddoc %}
@@ -156,6 +155,13 @@
   endif
 
   assign image_card_radius = media_card_block.settings.corner_radius | default: 'square'
+  unless image_card_radius == 'inherit' or image_card_radius == 'square' or image_card_radius == 'slightly_rounded' or image_card_radius == 'rounded' or image_card_radius == 'pill' or image_card_radius == 'custom'
+    assign image_card_radius = 'square'
+  endunless
+  assign image_card_custom_radius = media_card_block.settings.custom_corner_radius | default: 0 | plus: 0
+  if image_card_custom_radius < 0 or image_card_custom_radius > 40
+    assign image_card_custom_radius = 0
+  endif
   assign image_card_scheme = media_card_block.settings.color_scheme | default: 'scheme-1'
   if media_card_block.settings.color_scheme.id != blank
     assign image_card_scheme = media_card_block.settings.color_scheme.id
@@ -186,9 +192,6 @@
   if media_card_block.settings.show_overlay
     assign image_card_class = image_card_class | append: ' image-card--has-overlay'
   endif
-  if media_card_block.settings.enable_sticky and allow_sticky != false
-    assign image_card_class = image_card_class | append: ' image-card--sticky'
-  endif
   if image_card_width_desktop_mode == 'custom'
     assign image_card_class = image_card_class | append: ' image-card--width-desktop-custom'
   endif
@@ -213,6 +216,7 @@
   {% if image_card_padding_bottom != 0 %}--image-card-padding-bottom: {{ image_card_padding_bottom }}px;{% endif %}
   {% if image_card_padding_left != 0 %}--image-card-padding-left: {{ image_card_padding_left }}px;{% endif %}
   {% if image_card_padding_right != 0 %}--image-card-padding-right: {{ image_card_padding_right }}px;{% endif %}
+  {% if image_card_radius == 'custom' %}--image-card-custom-radius: {{ image_card_custom_radius }}px;{% endif %}
   {% if image_card_width_mobile != image_card_width_desktop %}--image-card-width-mobile: {{ image_card_width_mobile }};{% endif %}
   {% if image_card_max_width_mobile != image_card_max_width_desktop %}--image-card-max-width-mobile: {{ image_card_max_width_mobile }};{% endif %}
   {% if use_image_ratio %}
@@ -338,6 +342,14 @@
     --image-card-radius: var(--radius-slight);
   }
 
+  .image-card--radius-inherit {
+    --image-card-radius: var(--media-radius, var(--radius-square));
+  }
+
+  .image-card--radius-custom {
+    --image-card-radius: var(--image-card-custom-radius, 0px);
+  }
+
   .image-card--radius-rounded {
     --image-card-radius: var(--radius-rounded);
   }
@@ -429,12 +441,6 @@
     pointer-events: auto;
   }
 
-  .image-card--sticky {
-    position: sticky;
-    top: var(--image-card-sticky-offset, 1rem);
-    align-self: start;
-  }
-
   @media (max-width: 767.98px) {
     .image-card {
       --image-card-ratio-mobile: 1;
@@ -516,11 +522,6 @@
     .image-card--position-mobile-bottom_center .image-card__content,
     .image-card--position-mobile-bottom_right .image-card__content {
       --image-card-content-justify: flex-end;
-    }
-
-    .image-card--sticky {
-      position: relative;
-      top: auto;
     }
   }
   @media (min-width: 768px) {

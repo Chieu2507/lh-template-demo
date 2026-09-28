@@ -13,7 +13,6 @@
 {% render 'media-card',
   media_card_block: block,
   children: banner_children,
-  allow_sticky: false,
   class_modifier: 'image-card--featured-collection-banner',
   use_image_ratio: true
 %}
@@ -306,23 +305,34 @@
       "label": "t:labels.corner_radius",
       "options": [
         {
-          "value": "square",
-          "label": "t:options.radius_preset.square"
+          "value": "inherit",
+          "label": "t:options.radius_preset.inherit"
         },
         {
-          "value": "slightly_rounded",
-          "label": "t:options.radius_preset.slightly_rounded"
+          "value": "square",
+          "label": "t:options.radius_preset.square"
         },
         {
           "value": "rounded",
           "label": "t:options.radius_preset.rounded"
         },
         {
-          "value": "pill",
-          "label": "t:options.radius_preset.pill"
+          "value": "custom",
+          "label": "t:options.radius_preset.custom"
         }
       ],
       "default": "square"
+    },
+    {
+      "type": "range",
+      "id": "custom_corner_radius",
+      "label": "t:labels.custom_corner_radius",
+      "min": 0,
+      "max": 40,
+      "step": 1,
+      "unit": "px",
+      "default": 0,
+      "visible_if": "{{ block.settings.corner_radius == 'custom' }}"
     },
     {
       "type": "header",
@@ -436,6 +446,9 @@
       "settings": {
         "image_ratio_desktop": "square",
         "image_ratio_mobile": "square",
+        "corner_radius": "square",
+        "custom_corner_radius": 0,
+        "color_scheme": "scheme-3",
         "position_desktop": "bottom_left",
         "position_mobile": "bottom_left",
         "padding_top": 32,
