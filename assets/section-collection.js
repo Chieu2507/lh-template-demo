@@ -286,7 +286,7 @@ if (!customElements.get('collection-facets')) {
       this.filterPanel = this.dialog?.querySelector('.main-collection__filter-form');
       this.backdropPointer = this.dialog?.querySelector('.main-collection__filter-backdrop-pointer');
       this.mobileDialog = window.matchMedia('(max-width: 767.98px)');
-      this.desktopLayout = window.matchMedia('(min-width: 1024px)');
+      this.desktopLayout = window.matchMedia('(min-width: 1200px)');
       this.onLayoutChange = () => this.syncLayout();
       this.desktopLayout.addEventListener('change', this.onLayoutChange);
       this.syncLayout();
