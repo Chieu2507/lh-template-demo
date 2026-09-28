@@ -1,0 +1,58 @@
+{% doc %}
+  Responsive column switcher. Choice is preserved when facets refresh.
+{% enddoc %}
+<fieldset class="collection-columns" data-desktop-type="{{ block.settings.desktop_type }}" data-desktop-style="{{ block.settings.desktop_style }}" data-mobile-type="{{ block.settings.mobile_type }}" data-mobile-style="{{ block.settings.mobile_style }}" {{ block.shopify_attributes }}>
+  <legend class="visually-hidden">{{ 'collection.grid_view' | t }}</legend>
+  <span class="collection-columns__label" aria-hidden="true">{{ 'collection.view' | t }}</span>
+  {% for number in (1..2) %}
+    <label class="collection-columns__option collection-columns__mobile">
+      <input type="radio" name="columns-{{ section.id }}-mobile" value="{{ number }}" aria-label="{{ number }} {{ 'collection.columns' | t }}" data-collection-columns data-device="mobile">
+      <span class="collection-columns__option-content">
+        <span class="collection-columns__option-text" aria-hidden="true">{{ number }}</span>
+        <span class="collection-columns__option-icon" style="--switcher-columns:{{ number }}" aria-hidden="true">{% for tile in (1..number) %}<i></i>{% endfor %}</span>
+      </span>
+    </label>
+  {% endfor %}
+  {% for number in (2..3) %}
+    <label class="collection-columns__option collection-columns__tablet">
+      <input type="radio" name="columns-{{ section.id }}-tablet" value="{{ number }}" aria-label="{{ number }} {{ 'collection.columns' | t }}" data-collection-columns data-device="tablet">
+      <span class="collection-columns__option-content">
+        <span class="collection-columns__option-text" aria-hidden="true">{{ number }}</span>
+        <span class="collection-columns__option-icon" style="--switcher-columns:{{ number }}" aria-hidden="true">{% for tile in (1..number) %}<i></i>{% endfor %}</span>
+      </span>
+    </label>
+  {% endfor %}
+  {% for number in (3..5) %}
+    <label class="collection-columns__option collection-columns__desktop">
+      <input type="radio" name="columns-{{ section.id }}-desktop" value="{{ number }}" aria-label="{{ number }} {{ 'collection.columns' | t }}" data-collection-columns data-device="desktop">
+      <span class="collection-columns__option-content">
+        <span class="collection-columns__option-text" aria-hidden="true">{{ number }}</span>
+        <span class="collection-columns__option-icon" style="--switcher-columns:{{ number }}" aria-hidden="true">{% for tile in (1..number) %}<i></i>{% endfor %}</span>
+      </span>
+    </label>
+  {% endfor %}
+</fieldset>
+{% schema %}
+{
+  "name": "Column switcher",
+  "tag": null,
+  "settings": [
+    { "type": "header", "content": "Desktop" },
+    { "type": "select", "id": "desktop_type", "label": "Type", "options": [
+      { "value": "icon", "label": "Icon" }, { "value": "text", "label": "Text" }
+    ], "default": "text" },
+    { "type": "select", "id": "desktop_style", "label": "Style", "options": [
+      { "value": "primary", "label": "Primary" }, { "value": "secondary", "label": "Secondary" },
+      { "value": "outline", "label": "Outline" }, { "value": "subtle", "label": "Subtle" }
+    ], "default": "primary" },
+    { "type": "header", "content": "Mobile" },
+    { "type": "select", "id": "mobile_type", "label": "Type", "options": [
+      { "value": "icon", "label": "Icon" }, { "value": "text", "label": "Text" }
+    ], "default": "icon" },
+    { "type": "select", "id": "mobile_style", "label": "Style", "options": [
+      { "value": "primary", "label": "Primary" }, { "value": "secondary", "label": "Secondary" },
+      { "value": "outline", "label": "Outline" }, { "value": "subtle", "label": "Subtle" }
+    ], "default": "secondary" }
+  ]
+}
+{% endschema %}
