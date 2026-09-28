@@ -510,7 +510,7 @@
       });
 
       summary?.addEventListener('click', (event) => {
-        if (window.innerWidth > 767 && !(details.closest('[data-header-mobile-drawer]') && isMobileMenuViewport())) return;
+        if (isMobileMenuViewport()) return;
         if (details.classList.contains('header-localization__details')) return;
 
         const menu = details.closest('.header-menu');
@@ -741,7 +741,7 @@
 
       const summary = details.querySelector(':scope > .header-localization__summary');
       summary?.addEventListener('click', (event) => {
-        if (!isMobileMenuViewport()) return;
+        if (window.innerWidth > 767 && !(details.closest('[data-header-mobile-drawer]') && isMobileMenuViewport())) return;
         event.preventDefault();
 
         const dialog = getLocalizationDialog(details);
