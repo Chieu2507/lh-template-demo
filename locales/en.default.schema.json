@@ -34,6 +34,8 @@
     "featured_product": "Featured product",
     "product_list": "Product list",
     "collection_tabs": "Collection tabs",
+    "timeline": "Timeline",
+    "timeline_list": "Timeline list",
     "press": "Press",
     "quotes": "Quotes",
     "shop_the_look": "Shop the look",
@@ -64,6 +66,7 @@
     "color": "Color",
     "column": "Column",
     "content": "Content",
+    "controls": "Controls",
     "custom_section": "Custom section",
     "item": "Item",
     "marquee": "Marquee",
@@ -216,6 +219,9 @@
     "description_options": "Description options",
     "picker_options": "Picker options",
     "purchase_options": "Purchase options",
+    "quantity": "Quantity",
+    "add_to_cart": "Add to cart",
+    "accelerated_checkout": "Accelerated checkout",
     "button_height": "Button height",
     "gift_card_options": "Gift card options",
     "badge_visibility": "Badge visibility",
@@ -228,6 +234,7 @@
     "icon_accessible_label": "Icon link accessible label",
     "alignment": "Alignment",
     "header_vertical_alignment": "Header vertical alignment",
+    "inherit_alignment": "Inherit parent alignment",
     "content_layout": "Content layout (desktop)",
     "content_position": "Content position",
     "content_padding": "Content padding",
@@ -464,6 +471,7 @@
     "ranking_color": "Ranking color",
     "show_swatches": "Show swatches",
     "swatch_style": "Swatch style",
+    "color_option_display": "Color option display",
     "sale_badge_background": "Sale badge background",
     "sale_badge_text": "Sale badge text",
     "sold_out_badge_background": "Sold-out badge background",
@@ -567,9 +575,11 @@
     "customize_mobile_alignment": "Customize for mobile",
     "customize_mobile_layout": "Customize for mobile",
     "mobile_alignment": "Mobile alignment",
+    "show_next_slide_preview": "Show next slide preview",
     "show_next_slide_preview_on_mobile": "Show next slide preview on mobile",
     "show_next_slide_preview_on_desktop": "Show next slide preview on desktop",
     "show_navigation_on_desktop": "Show navigation on desktop",
+    "show_navigation_on_mobile": "Show navigation on mobile",
     "show_arrows": "Show arrows",
     "show_slide_counter": "Show slide counter",
     "loop_slides": "Loop slides",
@@ -582,6 +592,10 @@
     "show_pagination": "Show pagination",
     "pagination_desktop_top_padding": "Desktop top padding",
     "pagination_mobile_top_padding": "Mobile top padding",
+    "timeline_controls_spacing_desktop": "Desktop controls spacing",
+    "timeline_controls_spacing_mobile": "Mobile controls spacing",
+    "active_color": "Active color",
+    "inactive_color": "Normal color",
     "behavior": "Behavior",
     "alignment_mobile": "Alignment (mobile)",
     "top_padding": "Top",
@@ -676,6 +690,10 @@
     "initially_open": "Open by default"
   },
   "options": {
+    "product_quantity_style": {
+      "default": "Default",
+      "custom": "Custom"
+    },
     "hero_width": {
       "page": "Page",
       "full": "Full"
@@ -831,6 +849,13 @@
     "collection_pagination": {
       "progress_bar": "Progress bar",
       "bullets": "Bullets"
+    },
+    "timeline_pagination": {
+      "dots": "Dots",
+      "dots_with_progress": "Dots with progress",
+      "progress": "Progress bar",
+      "progress_slider": "Sliding progress bar",
+      "tabs": "Tabs"
     },
     "product_list_layout": {
       "grid": "Grid",
@@ -1233,6 +1258,10 @@
       "color": "Color",
       "variant_image": "Variant image"
     },
+    "color_option_display": {
+      "text": "Text",
+      "color": "Color"
+    },
     "sale_badge_type": {
       "text": "Text (eg: Sale)",
       "percentage": "Percentage (eg: 25% off)",
@@ -1338,6 +1367,7 @@
     "breadcrumb_collection_metafield": "Use the product metafield custom.breadcrumb_collection to override the collection shown in this breadcrumb.",
     "target_section_number": "Enter the one-based position of the destination section in this page's main content.",
     "variant_picker_swatches": "Choose whether product-page swatches use colors or selected variant images. Product cards have a separate swatch setting.",
+    "color_option_display": "Color requires Shopify color swatch data connected to every option value. Options without it appear as text.",
     "product_card_settings": "Edit card styling in [theme settings](/editor?context=theme&category=product%20cards).",
     "policy_links": "[Manage policies](https://admin.shopify.com/settings/legal)",
     "clear_for_transparent": "Clear to use a transparent background on hover.",
@@ -1359,7 +1389,10 @@
     "product_badges_manual_rules": "Configured badges use collection matches and product tags beginning with badge: (for example, badge:Limited edition).",
     "variant_picker_theme_settings": "Edit variant picker styles in [theme settings](/editor?context=theme&category=variant%20pickers).",
     "product_buy_buttons_theme_settings": "Price display follows [price settings](/editor?context=theme&category=prices); availability alerts follow [add-to-cart settings](/editor?context=theme&category=add%20to%20cart%20button).",
+    "product_quantity_default_style": "Edit input field styles in [theme settings](/editor?context=theme&category=input%20fields).",
+    "product_add_to_cart_shared_style": "Edit primary and secondary button styles in [theme settings](/editor?context=theme&category=buttons).",
     "accelerated_checkout": "Shopify displays the payment methods enabled for this store.",
+    "accelerated_checkout_fallback_style": "Applies only to the unbranded Buy it now button when Shopify has no recommended payment method. Branded wallet buttons keep Shopify's styling.",
     "product_back_in_stock_button": "Shown when the selected variant is unavailable and the global back-in-stock alert is enabled.",
     "gift_card_recipient": "Shown only for gift-card products. Customers opt in before entering recipient details.",
     "product_buy_button_style": "This block chooses the button level; color, type, radius, and motion continue to follow [theme settings](/editor?context=theme&category=buttons).",
@@ -1381,5 +1414,11 @@
     "autoplay_video_muted": "Videos are muted when autoplay is enabled.",
     "back_in_stock_alert": "Collect customer emails to notify them when a product is back in stock.",
     "back_in_stock_alert_manual_notifications": "Note: Email notifications will not be sent automatically when the product becomes available — you will need to send them yourself."
+  },
+  "timeline": {
+    "year": "Year or date label",
+    "label": "Timeline label",
+    "navigation_spacing": "Gap",
+    "item_gap": "Content gap"
   }
 }

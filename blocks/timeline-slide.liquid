@@ -1,10 +1,14 @@
 {% doc %}
-  Renders one Carousel slide using the shared group layout contract.
+  Renders one Timeline List slide using the shared Carousel Slide layout contract.
 
-  Slide content is composed from Image, Heading, Text, and Button blocks.
+  Slide content is composed from the same theme blocks as Carousel Slide, with
+  an additional timeline label for the navigation rail.
 {% enddoc %}
 
 {% liquid
+  assign timeline_slide_label = block.settings.timeline_label | default: '' | strip
+  assign timeline_slide_id = 'TimelineSlide-' | append: section.id | append: '-' | append: block.id
+
   assign group_direction = block.settings.direction | default: block.settings.layout_direction | default: 'vertical'
   unless group_direction == 'horizontal' or group_direction == 'vertical' or group_direction == 'group--horizontal' or group_direction == 'group--vertical'
     assign group_direction = 'vertical'
@@ -241,7 +245,9 @@
 {% assign group_style = group_style | strip %}
 
 <div
+  id="{{ timeline_slide_id | escape }}"
   class="{{ group_class }} carousel-slide swiper-slide"
+  data-timeline-label="{{ timeline_slide_label | escape }}"
   {% if group_style != blank %}style="{{ group_style }}"{% endif %}
   {{ block.shopify_attributes }}
 >
@@ -476,6 +482,17 @@
     }
   ],
   "settings": [
+    {
+      "type": "header",
+      "content": "t:general.content"
+    },
+    {
+      "type": "text",
+      "id": "timeline_label",
+      "label": "t:timeline.label",
+      "placeholder": "2014",
+      "default": "Label"
+    },
     {
       "type": "header",
       "content": "t:general.layout"
@@ -956,17 +973,18 @@
       "name": "t:general.slide",
       "category": "t:general.carousel",
       "settings": {
-        "direction": "vertical",
-        "position": "top",
+        "timeline_label": "Label",
+        "direction": "horizontal",
+        "position_horizontal": "center",
         "horizontal_alignment": "left",
         "alignment": "left",
         "customize_mobile_alignment": false,
         "alignment_mobile": "left",
-        "gap_desktop": 16,
-        "gap_mobile": 12,
-        "width": "fit",
+        "gap_desktop": 24,
+        "gap_mobile": 16,
+        "width": "fill",
         "customize_mobile_size": false,
-        "width_mobile": "fit",
+        "width_mobile": "fill",
         "height": "fill",
         "appearance_type": "inherit",
         "color_scheme": "scheme-1",
@@ -977,46 +995,63 @@
       },
       "blocks": [
         {
+          "type": "group",
+          "settings": {
+            "direction": "vertical",
+            "alignment": "left",
+            "width": "fill",
+            "height": "fill",
+            "gap_desktop": 16,
+            "gap_mobile": 12,
+            "appearance_type": "inherit",
+            "border_type": "none",
+            "corner_radius": "square",
+            "shadow": "none"
+          },
+          "blocks": [
+            {
+              "type": "eyebrow",
+              "settings": {
+                "text": "<p>SECTION TAG</p>"
+              }
+            },
+            {
+              "type": "heading",
+              "settings": {
+                "text": "<p>The beginning</p>",
+                "heading_size": "lg",
+                "html_tag": "h3"
+              }
+            },
+            {
+              "type": "text",
+              "settings": {
+                "text": "<p>Share the moment that made this year important. Add a short story to support the heading above.</p>",
+                "text_size": "md"
+              }
+            },
+            {
+              "type": "buttons",
+              "settings": {
+                "button_1_label": "Button label",
+                "button_1_link": "/",
+                "button_1_style": "primary",
+                "direction": "row",
+                "width": "fit",
+                "gap": 12,
+                "gap_mobile": 12
+              }
+            }
+          ]
+        },
+        {
           "type": "image",
           "settings": {
-            "image_ratio_desktop": "square",
-            "image_ratio_mobile": "square",
-            "customize_mobile_size": true,
+            "image_ratio_desktop": "wide",
             "width_desktop": "fill",
-            "width_mobile": "fill",
-            "limit_width_desktop": false,
-            "limit_width_mobile": false,
-            "padding_bottom": 10
-          }
-        },
-        {
-          "type": "heading",
-          "settings": {
-            "text": "<p>Heading</p>",
-            "heading_size": "md",
-            "html_tag": "h3",
-            "width": "fill",
-            "customize_mobile_size": false,
+            "customize_mobile_size": true,
+            "image_ratio_mobile": "wide",
             "width_mobile": "fill"
-          }
-        },
-        {
-          "type": "text",
-          "settings": {
-            "text": "<p>Use this text to describe your product, collection, or feature. Share a few details to inform or inspire your customers.</p>",
-            "text_size": "sm",
-            "width": "fill",
-            "customize_mobile_size": false,
-            "width_mobile": "fill"
-          }
-        },
-        {
-          "type": "button",
-          "settings": {
-            "button_label": "Button label",
-            "button_style": "tertiary",
-            "width": "fit",
-            "width_mobile": "fit"
           }
         }
       ]
