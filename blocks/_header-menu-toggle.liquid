@@ -2,7 +2,7 @@
   class="header-menu-toggle btn btn--unstyled"
   type="button"
   aria-expanded="false"
-  aria-controls="HeaderMenu-{{ section.id }}"
+  aria-controls="HeaderMobileDrawer-{{ section.id }}"
   aria-label="Open menu"
   data-header-menu-toggle
   {{ block.shopify_attributes }}
@@ -52,7 +52,7 @@
     display: inline-flex !important;
   }
 
-  @media (max-width: 1149.98px) {
+  @media (max-width: 991.98px) {
     .header-menu-toggle.btn {
       display: inline-flex;
       width: var(--button-height-mobile);
@@ -61,7 +61,7 @@
     }
   }
 
-  @media (max-width: 767.98px) {
+  @media (max-width: 991.98px) {
     .header-menu-toggle.btn {
       width: 24px;
       min-width: 24px;
