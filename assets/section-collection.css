@@ -1374,7 +1374,6 @@
 }
 
 /* Shared sheet gesture owns transforms after the entrance animation finishes. */
-.main-collection__filter-dialog.is-sheet-dragging,
 .main-collection__filter-dialog.is-gesture-closing { animation: none !important; }
 .main-collection__filter-dialog.is-sheet-dragging { touch-action: none; }
 @media (max-width: 767.98px) {
