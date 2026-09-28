@@ -1274,48 +1274,18 @@
 .main-collection__filter-dialog[data-mobile-layout="drawer"] .main-collection__filter-handle{display:none}
 }
 
-/* Tablet and narrow desktop use a centered filter dialog; compact phones keep the configured sheet/drawer. */
+/* Tablet and narrow desktop use the existing side drawer; compact phones keep the configured sheet/drawer. */
 @media (min-width: 768px) and (max-width: 1199.98px) {
   .main-collection__filter-dialog:not(.is-sidebar) {
-    --dialog-container-index: 1;
-    --dialog-max-width: 40rem;
-    --dialog-max-height: min(85dvh, 720px);
     position: fixed;
-    inset: 0;
-    width: min(var(--dialog-max-width), calc(100vw - 48px));
-    max-width: calc(100vw - 48px);
-    height: var(--dialog-max-height);
-    max-height: calc(100dvh - 48px);
-    margin: auto;
-    overflow: hidden;
-    border-radius: var(--drawer-radius);
-    background: var(--color-background);
-    box-shadow: 0 1rem 3rem color-mix(in srgb, var(--shadow-color) 18%, transparent);
-    transform: translateY(8px) scale(.98);
-  }
-
-  .main-collection__filter-dialog:not(.is-sidebar) .main-collection__filter-form {
-    border-radius: inherit;
-    background: var(--color-background);
+    inset: 0 auto 0 0;
+    margin: 0;
+    transform: translateX(-100%);
   }
 
   .main-collection__filter-dialog:not(.is-sidebar)[open]:not(.is-closing) {
-    animation-name: main-collection-filter-modal-in;
+    transform: translateX(0);
   }
-
-  .main-collection__filter-dialog:not(.is-sidebar).is-closing {
-    animation-name: main-collection-filter-modal-out;
-  }
-}
-
-@keyframes main-collection-filter-modal-in {
-  from { opacity: 0; transform: translateY(8px) scale(.98); }
-  to { opacity: 1; transform: translateY(0) scale(1); }
-}
-
-@keyframes main-collection-filter-modal-out {
-  from { opacity: 1; transform: translateY(0) scale(1); }
-  to { opacity: 0; transform: translateY(8px) scale(.98); }
 }
 
 /* Tablet control is icon-only and manages a separate 2/3-column grid state. */
