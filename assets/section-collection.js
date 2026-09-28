@@ -785,6 +785,7 @@ if (!customElements.get('collection-facets')) {
         }
 
         await closePromise;
+        if (requestController.signal.aborted || !this.isConnected) return;
 
         let renderedFacets = this;
         if (keepDialogOpen) {
