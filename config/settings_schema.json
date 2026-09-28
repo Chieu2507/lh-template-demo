@@ -904,7 +904,7 @@
         "step": 1,
         "unit": "px",
         "label": "t:labels.mobile_horizontal_padding",
-        "default": 30
+        "default": 16
       },
       {
         "type": "range",

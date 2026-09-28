@@ -148,7 +148,7 @@
       "button_height_desktop": 45,
       "button_height_mobile": 45,
       "button_padding_inline_desktop": 30,
-      "button_padding_inline_mobile": 30,
+      "button_padding_inline_mobile": 16,
       "button_disabled_opacity": 60,
       "button_font_size": "13px",
       "button_letter_spacing": "reference",
