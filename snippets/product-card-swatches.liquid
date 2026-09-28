@@ -56,36 +56,37 @@
         assign swatch_url = option_value.product_url | default: product.url
         if option_value.product_url == blank and swatch_variant != blank
           assign swatch_url = product.url | append: '?variant=' | append: swatch_variant.id
-        elsif option_value.product_url == blank
-          capture swatch_option_value_ids
-            assign option_value_separator = ''
-            for product_option in product.options_with_values
-              if product_option.position == swatch_option.position
-                echo option_value_separator | append: option_value.id
-              else
-                assign selected_option_value = blank
-                for product_option_value in product_option.values
-                  if product_option_value.selected
-                    assign selected_option_value = product_option_value
-                    break
-                  endif
-                endfor
-                if selected_option_value == blank
-                  assign selected_option_value = product_option.values.first
-                endif
-                if selected_option_value != blank
-                  echo option_value_separator | append: selected_option_value.id
-                endif
-              endif
-              assign option_value_separator = ','
-            endfor
-          endcapture
-          assign swatch_option_value_ids = swatch_option_value_ids | strip
-          if swatch_option_value_ids != blank
-            assign swatch_url = product.url | append: '?option_values=' | append: swatch_option_value_ids
-          endif
         endif
       %}
+      {% if option_value.product_url == blank and swatch_variant == blank %}
+        {% capture swatch_option_value_ids %}
+          {%- assign option_value_separator = '' -%}
+          {%- for product_option in product.options_with_values -%}
+            {%- if product_option.position == swatch_option.position -%}
+              {{- option_value_separator -}}{{- option_value.id -}}
+            {%- else -%}
+              {%- assign selected_option_value = blank -%}
+              {%- for product_option_value in product_option.values -%}
+                {%- if product_option_value.selected -%}
+                  {%- assign selected_option_value = product_option_value -%}
+                  {%- break -%}
+                {%- endif -%}
+              {%- endfor -%}
+              {%- if selected_option_value == blank -%}
+                {%- assign selected_option_value = product_option.values.first -%}
+              {%- endif -%}
+              {%- if selected_option_value != blank -%}
+                {{- option_value_separator -}}{{- selected_option_value.id -}}
+              {%- endif -%}
+            {%- endif -%}
+            {%- assign option_value_separator = ',' -%}
+          {%- endfor -%}
+        {% endcapture %}
+        {% assign swatch_option_value_ids = swatch_option_value_ids | strip %}
+        {% if swatch_option_value_ids != blank %}
+          {% assign swatch_url = product.url | append: '?option_values=' | append: swatch_option_value_ids %}
+        {% endif %}
+      {% endif %}
       <a
         class="product-card__swatch-link{% if swatch_selected %} product-card__swatch-link--selected{% endif %}"
         href="{{ swatch_url }}"
