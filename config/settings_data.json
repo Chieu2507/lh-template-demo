@@ -179,7 +179,7 @@
       "product_card_title_font": "display",
       "product_card_title_size_desktop": 20,
       "product_card_title_size_mobile": 18,
-      "product_card_ratio": "natural",
+      "product_card_ratio": "portrait",
       "product_card_alignment": "left",
       "product_card_title_line_limit": "none",
       "product_card_gap_device": "desktop",

@@ -1304,7 +1304,7 @@
           { "value": "portrait", "label": "t:options.image_ratio.portrait" },
           { "value": "landscape", "label": "t:options.image_ratio.landscape" }
         ],
-        "default": "natural"
+        "default": "portrait"
       },
       {
         "type": "header",
