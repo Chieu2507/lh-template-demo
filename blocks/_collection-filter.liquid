@@ -21,15 +21,15 @@
   assign filter_button_label = filter_button_label | append: ' (' | append: active_filter_count | append: ')'
  endif
 %}
+<div class="collection-filter-block" {{ block.shopify_attributes }}>
 {% if collection.filters.size > 0 %}
-<div class="collection-filter-block">
 {% if block.settings.desktop_layout == 'sidebar' and block.settings.sidebar_visibility == 'always' %}
   <h2 class="main-collection__filter-label heading-text">{{ 'collection.filter' | t }}</h2>
 {% endif %}
 {% capture filter_button_attributes %}aria-controls="CollectionFilters-{{ section.id }}" aria-expanded="false" data-collection-filter-open{% endcapture %}
 {% render 'theme-button', label: filter_button_label, variant: block.settings.button_style, class: 'main-collection__filter-button', attributes: filter_button_attributes %}
       <dialog
-        class="main-collection__filter-dialog modal-drag-target" data-desktop-layout="{{ block.settings.desktop_layout }}" data-sidebar-visibility="{{ block.settings.sidebar_visibility }}" data-mobile-layout="{{ block.settings.mobile_layout }}" data-collapse-icon="{{ block.settings.collapse_icon }}" data-heading-size="{{ block.settings.heading_size }}" style="--collection-filter-right-padding:{{ block.settings.right_padding }}px" {{ block.shopify_attributes }}
+        class="main-collection__filter-dialog modal-drag-target" data-desktop-layout="{{ block.settings.desktop_layout }}" data-sidebar-visibility="{{ block.settings.sidebar_visibility }}" data-mobile-layout="{{ block.settings.mobile_layout }}" data-collapse-icon="{{ block.settings.collapse_icon }}" data-heading-size="{{ block.settings.heading_size }}" style="--collection-filter-right-padding:{{ block.settings.right_padding }}px"
         id="CollectionFilters-{{ section.id }}"
         aria-labelledby="CollectionFiltersTitle-{{ section.id }}"
         scroll-lock
@@ -220,7 +220,8 @@
           </footer>
         </form>
       </dialog>
-</div>{% endif %}
+{% endif %}
+</div>
 {% schema %}
 {
   "name": "Filter",
@@ -260,7 +261,8 @@
           "label": "Closed by default"
         }
       ],
-      "default": "always"
+      "default": "always",
+      "visible_if": "{{ block.settings.desktop_layout == 'sidebar' }}"
     },
     {
       "type": "range",
@@ -270,7 +272,8 @@
       "max": 120,
       "step": 2,
       "unit": "px",
-      "default": 50
+      "default": 50,
+      "visible_if": "{{ block.settings.desktop_layout == 'sidebar' }}"
     },
     {
       "type": "select",
