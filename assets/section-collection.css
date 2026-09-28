@@ -1185,7 +1185,8 @@
 .main-collection--blocks .main-collection__filter-dialog.is-sidebar .main-collection__filter-body{padding:0;overflow:visible}
 .main-collection--blocks .main-collection__filter-dialog.is-sidebar .main-collection__filter-header,.main-collection--blocks .main-collection__filter-dialog.is-sidebar .main-collection__filter-footer,.main-collection--blocks .main-collection__filter-dialog.is-sidebar .main-collection__filter-backdrop-pointer{display:none}
 .main-collection--blocks .main-collection__filter-dialog.is-sidebar .main-collection__filter-group{border-block-end:1px solid var(--color-border);padding-block:20px 24px}
-.main-collection--blocks .main-collection__filter-dialog.is-sidebar .main-collection__filter-group:first-child{padding-block-start:0}
+.main-collection--blocks .main-collection__filter-dialog.is-sidebar .main-collection__filter-group:first-child,
+.main-collection--blocks .main-collection__filter-dialog.is-sidebar .main-collection__mobile-sort + .main-collection__filter-group{padding-block-start:0}
 .main-collection--blocks .main-collection__filter-dialog.is-sidebar .main-collection__filter-group summary{padding:0 0 16px;font-family:var(--font-heading-family);font-size:var(--font-heading-xs,20px)}
 .main-collection--blocks .main-collection__filter-dialog.is-sidebar .main-collection__filter-values{padding:0}
 .main-collection--blocks .main-collection__facets:has([data-sidebar-visibility="always"].is-sidebar) .main-collection__filter-button{display:none}
