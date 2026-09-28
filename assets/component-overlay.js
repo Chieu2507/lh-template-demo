@@ -359,7 +359,7 @@
       }
 
       if (!restoreFocus) {
-        // Native dialog focus handling can run after close(). Clear the opener
+        // Browser focus fixup can run after the overlay hides. Clear the opener
         // again on the next task so pointer dismissal cannot leave :focus-within
         // active on the product card.
         const clearOpenerFocus = () => {

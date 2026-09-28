@@ -125,12 +125,12 @@ class QuickViewController {
     this.editorSelected = true;
     if (this.content?.dataset.quickViewHasProduct === 'true') {
       this.setStatus('content');
-      this.overlay?.open({ opener: null, restoreFocus: false });
+      this.overlay?.open({ opener: null, focus: false, restoreFocus: false });
       return;
     }
     if (this.openFirstProduct()) return;
     this.setStatus('idle');
-    this.overlay?.open({ opener: null, restoreFocus: false });
+    this.overlay?.open({ opener: null, focus: false, restoreFocus: false });
   }
 
   handleSectionDeselect(event) {
@@ -162,7 +162,7 @@ class QuickViewController {
   openFirstProduct() {
     const url = this.productUrl(this.firstProductTrigger());
     if (!url) return false;
-    this.open(url, null, { restoreFocus: false });
+    this.open(url, null, { focus: false, restoreFocus: false });
     return true;
   }
 
@@ -277,7 +277,7 @@ class QuickViewController {
     }
   }
 
-  async open(url, opener, { restoreFocus = true } = {}) {
+  async open(url, opener, { focus = true, restoreFocus = true } = {}) {
     if (!this.overlay || !this.content) return;
 
     let targetUrl;
@@ -319,7 +319,7 @@ class QuickViewController {
 
       this.dialog.removeAttribute('aria-busy');
       this.clearTriggerLoading();
-      this.overlay.open({ opener, defer: true, restoreFocus });
+      this.overlay.open({ opener, focus, defer: true, restoreFocus });
       window.requestAnimationFrame(() => {
         this.content.querySelectorAll('[data-product-media-gallery]').forEach((gallery) => gallery.refreshGallery?.());
       });
@@ -330,8 +330,8 @@ class QuickViewController {
       this.setStatus('error', this.dialog.dataset.quickViewErrorLabel || error.message);
       this.dialog.removeAttribute('aria-busy');
       this.clearTriggerLoading();
-      this.overlay.open({ opener, defer: true, restoreFocus });
-      this.dialog.querySelector('[data-quick-view-retry]')?.focus({ preventScroll: true });
+      this.overlay.open({ opener, focus, defer: true, restoreFocus });
+      if (focus) this.dialog.querySelector('[data-quick-view-retry]')?.focus({ preventScroll: true });
     } finally {
       if (this.requestController === requestController && !requestController.signal.aborted) {
         this.dialog.removeAttribute('aria-busy');

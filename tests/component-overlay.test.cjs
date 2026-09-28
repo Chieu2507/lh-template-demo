@@ -126,14 +126,14 @@ function fixture({ mobile = true, reduced = false, portal = false } = {}) {
   };
 }
 
-test('one controller per dialog; open without close autofocus and restore focus on close', () => {
+test('one controller per dialog; default open focuses close and restores focus on close', () => {
   const f = fixture();
   assert.equal(f.api.get(f.dialog), f.overlay);
   f.overlay.open({ opener: f.opener });
   assert.equal(f.dialog.dataset.state, 'open');
   assert.equal(f.opener.attributes['aria-expanded'], 'true');
-  assert.equal(f.closeButton.focusCount, undefined);
-  assert.equal(f.closeButton.blurCount, 1);
+  assert.equal(f.closeButton.focusCount, 1);
+  assert.equal(f.closeButton.blurCount, undefined);
   f.overlay.close();
   assert.equal(f.dialog.open, true);
   assert.equal(f.dialog.dataset.state, 'closing');
@@ -142,6 +142,15 @@ test('one controller per dialog; open without close autofocus and restore focus 
   assert.equal(f.dialog.open, false);
   assert.equal(f.opener.focusCount, 1);
   assert.equal(f.opener.attributes['aria-expanded'], 'false');
+});
+
+test('explicit focus opt-out keeps focus on the editor interaction', () => {
+  const f = fixture();
+  f.overlay.open({ opener: null, focus: false, restoreFocus: false });
+  assert.equal(f.dialog.dataset.state, 'open');
+  assert.equal(f.closeButton.focusCount, undefined);
+  assert.equal(f.closeButton.blurCount, 1);
+  assert.equal(f.document.activeElement, f.opener);
 });
 
 test('close waits for the slower panel or backdrop timeline', () => {
@@ -200,8 +209,8 @@ test('deferred opening lets the backdrop lead the panel by one frame', () => {
   assert.equal(f.closeButton.focusCount, undefined);
   f.flushFrames();
   assert.equal(f.dialog.dataset.state, 'open');
-  assert.equal(f.closeButton.focusCount, undefined);
-  assert.equal(f.closeButton.blurCount, 1);
+  assert.equal(f.closeButton.focusCount, 1);
+  assert.equal(f.closeButton.blurCount, undefined);
 });
 
 test('reopening cancels pending close and ignores old queued native close event', () => {
