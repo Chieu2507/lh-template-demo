@@ -601,7 +601,6 @@ if (!customElements.get('collection-facets')) {
     }
 
     observePagination() {
-      this.sheetGesture?.destroy();
       this.paginationObserver?.disconnect();
       const link = this.querySelector('[data-pagination-mode="infinite"] [data-collection-load-more]');
       if (!link) return;
@@ -615,7 +614,6 @@ if (!customElements.get('collection-facets')) {
       if (this.loadingMore) return;
       this.loadingMore = true;
       link.setAttribute('aria-busy', 'true');
-      this.sheetGesture?.destroy();
       this.paginationObserver?.disconnect();
       try {
         const url = new URL(link.href); url.searchParams.set('section_id', this.sectionId);
@@ -645,17 +643,33 @@ if (!customElements.get('collection-facets')) {
       const nextGroups = Array.from(nextDialog.querySelectorAll('.main-collection__filter-group'));
 
       currentGroups.forEach((currentGroup, index) => {
-        const nextGroup = nextGroups[index];
+        const nextGroup = nextGroups.find(group => group.dataset.filterKey === currentGroup.dataset.filterKey) || nextGroups[index];
         if (!nextGroup) return;
 
+        const expandedValues = currentGroup.querySelector('[data-filter-show-more]')?.getAttribute('aria-expanded') === 'true';
+        currentGroup.querySelectorAll('.main-collection__filter-values').forEach(list => {
+          list._filterAnimationId = (list._filterAnimationId || 0) + 1;
+          list._filterAnimations?.forEach(animation => animation.cancel());
+        });
         window.__themeAccordionDetailsController?.cleanupRoot(currentGroup);
         const currentSummary = currentGroup.firstElementChild;
+        const heading = currentSummary.querySelector('[data-filter-heading]');
+        const nextHeading = nextGroup.querySelector('[data-filter-heading]');
+        if (heading && nextHeading) heading.textContent = nextHeading.textContent;
         Array.from(currentGroup.children).forEach((child) => {
           if (child !== currentSummary) child.remove();
         });
         Array.from(nextGroup.children).forEach((child) => {
           if (child !== nextGroup.firstElementChild) currentGroup.append(child.cloneNode(true));
         });
+        if (expandedValues) {
+          currentGroup.querySelectorAll('[data-filter-overflow]').forEach(item => { item.hidden = false; });
+          const more = currentGroup.querySelector('[data-filter-show-more]');
+          if (more) {
+            more.setAttribute('aria-expanded', 'true');
+            more.querySelector('.btn__text').textContent = more.dataset.lessLabel;
+          }
+        }
       });
       window.__themeAccordionDetailsController?.initializeRoot(this.dialog);
     }
@@ -746,23 +760,25 @@ if (!customElements.get('collection-facets')) {
 
       const body = this.querySelector('.main-collection__filter-body');
       const dialogScrollTop = body?.scrollTop || 0;
-      const keepDialogOpen = options.reopenDialog && this.dialog?.open;
+      const keepDialogOpen = !options.closeDialog && this.dialog?.open;
       const closePromise = options.closeDialog ? this.closeDialog() : Promise.resolve();
 
       this.requestController?.abort();
-      this.requestController = new AbortController();
+      const requestController = new AbortController();
+      this.requestController = requestController;
       this.setAttribute('aria-busy', 'true');
 
       try {
         const response = await fetch(requestUrl, {
           headers: { 'X-Requested-With': 'XMLHttpRequest' },
-          signal: this.requestController.signal
+          signal: requestController.signal
         });
         if (!response.ok) throw new Error(`Collection request failed: ${response.status}`);
 
         const documentHtml = new DOMParser().parseFromString(await response.text(), 'text/html');
         const nextFacets = documentHtml.querySelector(`collection-facets[data-section-id="${this.sectionId}"]`);
         if (!nextFacets) throw new Error('Collection response did not contain facets');
+        if (requestController.signal.aborted || !this.isConnected) return;
 
         if (options.updateHistory !== false && navigationUrl.href !== window.location.href) {
           window.history.pushState({}, '', navigationUrl);
@@ -781,22 +797,20 @@ if (!customElements.get('collection-facets')) {
             throw new Error('Collection response was missing dynamic content');
           }
 
-          // Keep the open dialog and its listeners in the live toolbar.
+          // The live dialog must remain connected in its original positioner.
+          // Moving a modal dialog removes it from the top layer and restarts its CSS motion.
+          nextDialog.closest('.main-collection__filter-panel-positioner')?.remove();
           currentToolbar.replaceWith(nextToolbar);
-          nextDialog.replaceWith(this.dialog);
-          this.mountFilterPanel();
+          this.querySelector('[data-collection-filter-open]')?.setAttribute('aria-expanded', String(this.dialog.open));
           currentProducts.replaceWith(nextProducts);
           window.ThemeAnimations?.init(nextProducts);
           this.syncColumns();
           this.observePagination();
-          const currentHeader = this.dialog.querySelector('.main-collection__filter-header');
-          const nextHeader = nextDialog.querySelector('.main-collection__filter-header');
           const currentActiveFilters = this.dialog.querySelector('.main-collection__active-filters');
           const nextActiveFilters = nextDialog.querySelector('.main-collection__active-filters');
           const currentFooter = this.dialog.querySelector('.main-collection__filter-footer');
           const nextFooter = nextDialog.querySelector('.main-collection__filter-footer');
 
-          if (currentHeader && nextHeader) currentHeader.replaceWith(nextHeader);
           if (currentActiveFilters && nextActiveFilters) {
             currentActiveFilters.replaceWith(nextActiveFilters);
           } else if (currentActiveFilters) {
@@ -849,7 +863,7 @@ if (!customElements.get('collection-facets')) {
         if (error.name === 'AbortError') return;
         window.location.assign(navigationUrl);
       } finally {
-        this.removeAttribute('aria-busy');
+        if (this.requestController === requestController) this.removeAttribute('aria-busy');
       }
     }
   }

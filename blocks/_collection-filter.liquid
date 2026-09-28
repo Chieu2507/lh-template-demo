@@ -75,7 +75,7 @@
 
             <div class="main-collection__filter-groups">
               {% if block.settings.enable_sorting %}
-                <details data-accordion-details class="main-collection__mobile-sort main-collection__filter-group" open>
+                <details data-accordion-details class="main-collection__mobile-sort main-collection__filter-group" data-filter-key="sort_by" open>
                   <summary>
                     <span>{{ sort_label }}</span>
                     <span class="main-collection__filter-icon main-collection__filter-icon--chevron" aria-hidden="true">{% render 'icon', icon: 'chevron-down', bare: true %}</span>
@@ -103,9 +103,17 @@
               {% endif %}
 
               {% for filter in collection.filters %}
-                <details data-accordion-details class="main-collection__filter-group" {% unless block.settings.collapse_filters %}open{% endunless %}>
+                {% liquid
+                  assign selected_count = filter.active_values.size
+                  if filter.type == 'price_range'
+                    if filter.min_value.value != nil or filter.max_value.value != nil
+                      assign selected_count = 1
+                    endif
+                  endif
+                %}
+                <details data-accordion-details class="main-collection__filter-group" data-filter-key="{{ filter.param_name | default: filter.min_value.param_name | escape }}" {% unless block.settings.collapse_filters %}open{% endunless %}>
                 <summary>
-                  <span>{{ filter.label | escape }}</span>
+                  <span data-filter-heading>{{ filter.label | escape }}{% if selected_count > 0 %} ({{ selected_count }}){% endif %}</span>
                   <span class="main-collection__filter-icon main-collection__filter-icon--chevron" aria-hidden="true">{% render 'icon', icon: 'chevron-down', bare: true %}</span>
                   <span class="main-collection__filter-icon main-collection__filter-icon--plus" aria-hidden="true">
                     <span class="main-collection__filter-icon-closed">{% render 'icon', icon: 'plus', bare: true %}</span>
