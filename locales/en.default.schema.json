@@ -48,6 +48,7 @@
     "hotspot_product_callout": "Hotspot: Product callout",
     "hotspot_carousel": "Hotspot carousel",
     "image_card": "Image card",
+    "banner": "Banner",
     "image_comparison": "Image comparison",
     "before_image": "Before image",
     "after_image": "After image",
@@ -314,6 +315,7 @@
     "tab_label": "Tab label",
     "button_label": "Label",
     "banner_image": "Banner image",
+    "banner_position": "Banner position",
     "mobile_banner_image": "Mobile banner image",
     "mobile_image_optional": "Mobile image (optional)",
     "mobile_video_optional": "Mobile video (optional)",
@@ -747,6 +749,10 @@
       "center": "Center",
       "right": "Right",
       "space_between": "Space between"
+    },
+    "banner_position": {
+      "before": "Before",
+      "after": "After"
     },
     "logo_style": {
       "default": "Default",

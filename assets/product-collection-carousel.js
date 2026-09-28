@@ -148,7 +148,7 @@ const observeSize = (state) => {
   if (typeof ResizeObserver === 'undefined') return;
 
   state.resizeObserver = new ResizeObserver(() => {
-    if (isVisible(state.carousel)) state.swiper.update();
+    if (state.swiper && isVisible(state.carousel)) state.swiper.update();
   });
   state.resizeObserver.observe(state.carousel);
 };
@@ -157,18 +157,42 @@ const initialize = (carousel) => {
   if (!carousel || instances.has(carousel)) return;
 
   const scope = getCarouselScope(carousel);
-  const swiper = createSwiperCarousel(carousel, buildOptions(carousel, scope));
-  if (!swiper) return;
-
   const state = {
     carousel,
     scope,
-    swiper,
+    swiper: null,
     interval: null,
     resizeObserver: null,
     visibilityObserver: null,
+    mobileQuery: null,
+    mobileQueryHandler: null,
   };
   instances.set(carousel, state);
+
+  if (carousel.dataset.swiperMobileOnly === 'true') {
+    state.mobileQuery = window.matchMedia(`(max-width: ${desktopBreakpoint - 0.02}px)`);
+    state.mobileQueryHandler = () => {
+      if (state.mobileQuery.matches) {
+        if (!state.swiper) {
+          state.swiper = createSwiperCarousel(carousel, buildOptions(carousel, scope));
+        }
+      } else if (state.swiper) {
+        destroySwiperCarousel(state.swiper);
+        state.swiper = null;
+      }
+    };
+    state.mobileQuery.addEventListener('change', state.mobileQueryHandler);
+    observeSize(state);
+    state.mobileQueryHandler();
+    return;
+  }
+
+  const swiper = createSwiperCarousel(carousel, buildOptions(carousel, scope));
+  if (!swiper) {
+    instances.delete(carousel);
+    return;
+  }
+  state.swiper = swiper;
   startAutoplay(state);
   observeSize(state);
   observeVisibility(state);
@@ -186,7 +210,8 @@ const destroy = (carousel) => {
   if (state.interval) window.clearInterval(state.interval);
   state.resizeObserver?.disconnect();
   state.visibilityObserver?.disconnect();
-  destroySwiperCarousel(state.swiper);
+  state.mobileQuery?.removeEventListener('change', state.mobileQueryHandler);
+  if (state.swiper) destroySwiperCarousel(state.swiper);
   instances.delete(carousel);
 };
 
