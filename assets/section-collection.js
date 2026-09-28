@@ -714,7 +714,7 @@ if (!customElements.get('collection-facets')) {
         const top = Math.max(0, window.scrollY + collection.getBoundingClientRect().top - headerHeight - 20);
         window.scrollTo({
           top,
-          behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'instant' : 'smooth'
+          behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth'
         });
       });
     }
