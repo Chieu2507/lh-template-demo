@@ -1189,7 +1189,6 @@
 .main-collection--blocks .main-collection__filter-dialog.is-sidebar[data-sidebar-visibility="always"]{
   max-height:calc(100dvh - var(--header-height, 0px) - 32px);
   overflow-y:auto;
-  overscroll-behavior:contain;
 }
 .main-collection--blocks .main-collection__filter-dialog.is-sidebar .main-collection__filter-form{height:auto;overflow:visible;background:transparent}
 .main-collection--blocks .main-collection__filter-dialog.is-sidebar .main-collection__filter-body{padding:0;overflow:visible}
