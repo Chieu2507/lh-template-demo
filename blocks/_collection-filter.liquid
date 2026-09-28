@@ -44,7 +44,7 @@
         <form class="main-collection__filter-form" action="{{ collection.url | escape }}" method="get">
           <div class="quick-view__handle main-collection__filter-handle" data-collection-filter-handle aria-hidden="true"></div>
           <header class="main-collection__filter-header">
-            <h2 id="CollectionFiltersTitle-{{ section.id }}" class="heading-h2 heading-text">{{ 'collection.filters' | t }}</h2>
+            <h2 id="CollectionFiltersTitle-{{ section.id }}" class="heading-text heading-xl">{{ 'collection.filters' | t }}</h2>
             <button class="main-collection__filter-close overlay-close" type="button" aria-label="{{ 'collection.close_filters' | t | escape }}" data-collection-filter-close>
               {% render 'icon', icon: 'x-mark', bare: true, class: 'overlay-close__icon' %}
             </button>

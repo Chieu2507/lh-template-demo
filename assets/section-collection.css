@@ -621,12 +621,6 @@
     background: var(--color-background);
   }
 
-  .main-collection__filter-header h2 {
-    margin: 0;
-    font-family: var(--body-font-family);
-    font-size: var(--h5-size-md);
-  }
-
   .main-collection__filter-handle { display: none; }
 
   .main-collection__active-filters {
