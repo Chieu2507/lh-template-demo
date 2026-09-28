@@ -879,6 +879,8 @@
     --color-accent: var(--accent-color);
     --color-border: var(--border-color);
     --color-surface: color-mix(in srgb, var(--background-color) 94%, var(--body-color));
+    --placeholder-background-color: color-mix(in srgb, var(--background-color) 92%, var(--body-color));
+    --placeholder-fill-color: color-mix(in srgb, var(--body-color) 30%, transparent);
 
     --font-body-xs: {{ body_xs_size }}px;
     --font-body-sm: {{ body_sm_size }}px;
@@ -1259,6 +1261,8 @@
       --color-accent: var(--accent-color);
       --color-border: var(--border-color);
       --color-surface: color-mix(in srgb, var(--background-color) 94%, var(--body-color));
+      --placeholder-background-color: color-mix(in srgb, var(--background-color) 92%, var(--body-color));
+      --placeholder-fill-color: color-mix(in srgb, var(--body-color) 30%, transparent);
       --button-background: var(--button-{{ button_default_variant }}-background);
       --button-foreground: var(--button-{{ button_default_variant }}-text);
       --button-border: var(--button-{{ button_default_variant }}-border);

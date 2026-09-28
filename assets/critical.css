@@ -119,31 +119,15 @@ svg {
   }
 }
 
-/* Shared treatment for every Shopify SVG media fallback. The first layer
- * establishes a neutral canvas; the second uses the active scheme's text RGB
- * so a white scheme still receives a subtle gray surface. */
+/* Shared treatment for Shopify media fallbacks. The placeholder derives its
+ * colors from the inherited scheme so nested media stays in sync. */
 .placeholder-image {
+  --placeholder-background-color: color-mix(in srgb, var(--background-color) 92%, var(--body-color));
+  --placeholder-fill-color: color-mix(in srgb, var(--body-color) 30%, transparent);
   position: relative;
   isolation: isolate;
   overflow: hidden;
-  background-color: rgb(var(--color-foreground-rgb) / 8%);
-}
-
-.placeholder-image::before,
-.placeholder-image::after {
-  position: absolute;
-  inset: 0;
-  content: '';
-  pointer-events: none;
-}
-
-.placeholder-image::before {
-  background-color: #fff6;
-}
-
-.placeholder-image::after {
-  z-index: 1;
-  background-color: rgb(var(--color-foreground-rgb) / 8%);
+  background-color: var(--placeholder-background-color);
 }
 
 .placeholder-image > svg {
@@ -152,7 +136,8 @@ svg {
   display: flex;
   width: 100%;
   height: 100%;
-  fill: rgb(var(--color-foreground-rgb) / 30%);
+  color: var(--placeholder-fill-color);
+  fill: var(--placeholder-fill-color);
 }
 
 .icon {
@@ -1391,7 +1376,7 @@ legend {
 .product-card__placeholder > svg {
   width: 100%;
   height: 100%;
-  fill: var(--body-color);
+  fill: var(--placeholder-fill-color);
 }
 
 .product-card--placeholder .product-card__title {

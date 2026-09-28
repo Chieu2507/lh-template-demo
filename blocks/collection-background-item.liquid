@@ -25,7 +25,7 @@
     assign item_media_is_placeholder = true
   endif
   assign item_id = 'CollectionBackground-' | append: section.id | append: '-' | append: block.id
-  assign item_placeholder = 'lifestyle-1'
+  assign item_placeholder = 'collection-1'
   assign item_scheme = section.settings.collection_color_scheme | default: 'scheme-1'
   if section.settings.collection_color_scheme.id != blank
     assign item_scheme = section.settings.collection_color_scheme.id
