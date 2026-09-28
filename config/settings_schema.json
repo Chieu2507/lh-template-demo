@@ -933,7 +933,7 @@
       {
         "type": "select",
         "id": "button_font_size_mobile",
-        "label": "Button font size on mobile",
+        "label": "Button font size on tablet and mobile",
         "options": [
           { "value": "12px", "label": "12 px" },
           { "value": "13px", "label": "13 px" },
