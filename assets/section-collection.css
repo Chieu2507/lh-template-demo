@@ -1152,6 +1152,7 @@
 .main-collection--blocks .main-collection__facets{position:relative;display:grid;grid-template-columns:minmax(0,1fr);gap:var(--collection-gap,50px);align-items:start;padding-inline:var(--page-margin)}
 .main-collection--blocks .main-collection__toolbar{grid-column:1/-1;grid-row:1;display:grid;grid-template-columns:auto auto minmax(0,1fr) auto;align-items:center;column-gap:var(--collection-toolbar-gap,30px);min-height:var(--collection-toolbar-button-height,var(--button-height));padding:var(--collection-toolbar-padding-top,0px) 0 var(--collection-toolbar-padding-bottom,0px)}
 .main-collection--blocks .collection-filter-block{grid-column:1;grid-row:1;display:flex;align-items:center;min-width:0}
+.main-collection--blocks .main-collection__filter-panel-positioner{display:contents}
 .main-collection--blocks .main-collection__filter-button{margin:0;min-height:var(--collection-toolbar-button-height,var(--button-height))}
 .main-collection--blocks .main-collection__product-count{grid-column:2;grid-row:1}
 .main-collection--blocks .main-collection__sort-form{grid-column:3;grid-row:1;justify-self:end}
@@ -1179,7 +1180,8 @@
 @media(min-width:1150px){
 .main-collection--blocks .main-collection__facets:has(.main-collection__filter-dialog.is-sidebar[open]){grid-template-columns:minmax(200px,270px) minmax(0,1fr);column-gap:24px}
 .main-collection--blocks .main-collection__facets:has(.main-collection__filter-dialog.is-sidebar[open]) .main-collection__products{grid-column:2}
-.main-collection--blocks .main-collection__filter-dialog.is-sidebar{position:absolute;inset:calc(var(--collection-toolbar-padding-top,0px) + var(--collection-toolbar-button-height,var(--button-height)) + var(--collection-toolbar-padding-bottom,0px) + var(--collection-gap,50px)) auto auto 0);width:min(270px,calc(100% - 24px));height:auto;max-height:none;margin:0;overflow:visible;transform:none;animation:none;box-shadow:none;background:transparent}
+.main-collection--blocks .main-collection__filter-panel-positioner:has(.is-sidebar[open]){display:block;position:absolute;top:calc(var(--collection-toolbar-padding-top,0px) + var(--collection-toolbar-button-height,var(--button-height)) + var(--collection-toolbar-padding-bottom,0px) + var(--collection-gap,50px));left:0;width:270px}
+.main-collection--blocks .main-collection__filter-dialog.is-sidebar{position:static;width:100%;height:auto;max-height:none;margin:0;overflow:visible;transform:none;animation:none;box-shadow:none;background:transparent}
 .main-collection--blocks .main-collection__filter-dialog.is-sidebar .main-collection__filter-form{height:auto;overflow:visible;background:transparent}
 .main-collection--blocks .main-collection__filter-dialog.is-sidebar .main-collection__filter-body{padding:0;overflow:visible}
 .main-collection--blocks .main-collection__filter-dialog.is-sidebar .main-collection__filter-header,.main-collection--blocks .main-collection__filter-dialog.is-sidebar .main-collection__filter-footer,.main-collection--blocks .main-collection__filter-dialog.is-sidebar .main-collection__filter-backdrop-pointer{display:none}

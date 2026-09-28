@@ -28,6 +28,7 @@
 {% endif %}
 {% capture filter_button_attributes %}aria-controls="CollectionFilters-{{ section.id }}" aria-expanded="false" data-collection-filter-open{% endcapture %}
 {% render 'theme-button', label: filter_button_label, variant: block.settings.button_style, class: 'main-collection__filter-button', attributes: filter_button_attributes %}
+      <div class="main-collection__filter-panel-positioner">
       <dialog
         class="main-collection__filter-dialog modal-drag-target" data-desktop-layout="{{ block.settings.desktop_layout }}" data-sidebar-visibility="{{ block.settings.sidebar_visibility }}" data-mobile-layout="{{ block.settings.mobile_layout }}" data-collapse-icon="{{ block.settings.collapse_icon }}" data-heading-size="{{ block.settings.heading_size }}" style="--collection-filter-right-padding:{{ block.settings.right_padding }}px"
         id="CollectionFilters-{{ section.id }}"
@@ -220,6 +221,7 @@
           </footer>
         </form>
       </dialog>
+      </div>
 {% endif %}
 </div>
 {% schema %}
