@@ -35,12 +35,25 @@
       assign group_alignment = 'start'
   endcase
 
-  assign group_position_name = block.settings.position | default: 'top'
+  assign group_height_mode = block.settings.height | default: 'fit'
+  unless group_height_mode == 'fit' or group_height_mode == 'fill'
+    assign group_height_mode = 'fit'
+  endunless
+
+  assign group_position_source = 'top'
+  if group_direction == 'horizontal'
+    assign group_position_source = block.settings.position_horizontal | default: 'top'
+  elsif group_height_mode == 'fill'
+    assign group_position_source = block.settings.position | default: 'top'
+  endif
+  assign group_position_name = group_position_source
   case group_position_name
     when 'center'
       assign group_position_name = 'center'
     when 'bottom', 'flex-end'
       assign group_position_name = 'bottom'
+    when 'space-between'
+      assign group_position_name = 'space-between'
     else
       assign group_position_name = 'top'
   endcase
@@ -52,23 +65,25 @@
 
   assign group_alignment_mobile = group_alignment
   assign group_justify_mobile = group_justify
-  if group_vertical_on_mobile
-    case block.settings.alignment_mobile
+  assign group_mobile_alignment_enabled = false
+  if group_direction == 'vertical' or group_vertical_on_mobile
+    assign group_mobile_alignment_enabled = true
+  endif
+  assign group_alignment_mobile_source = block.settings.alignment_mobile | default: 'left'
+  unless group_alignment_mobile_source == 'left' or group_alignment_mobile_source == 'center' or group_alignment_mobile_source == 'right'
+    assign group_alignment_mobile_source = 'left'
+  endunless
+  if group_mobile_alignment_enabled
+    case group_alignment_mobile_source
       when 'center'
         assign group_alignment_mobile = 'center'
         assign group_justify_mobile = 'center'
-      when 'right', 'end', 'flex-end'
+      when 'right'
         assign group_alignment_mobile = 'end'
         assign group_justify_mobile = 'flex-end'
-      when 'left', 'start'
+      else
         assign group_alignment_mobile = 'start'
         assign group_justify_mobile = 'flex-start'
-      when 'space-between'
-        assign group_alignment_mobile = 'start'
-        assign group_justify_mobile = 'space-between'
-      else
-        assign group_alignment_mobile = group_alignment
-        assign group_justify_mobile = group_justify
     endcase
   endif
 
@@ -102,11 +117,6 @@
       assign group_max_width_mobile = 480
     endif
   endif
-
-  assign group_height_mode = block.settings.height | default: 'fit'
-  unless group_height_mode == 'fit' or group_height_mode == 'fill'
-    assign group_height_mode = 'fit'
-  endunless
 
   assign group_gap_desktop = block.settings.gap_desktop | default: 16 | plus: 0
   if group_gap_desktop < 0 or group_gap_desktop > 100
@@ -208,7 +218,7 @@
     {% endif %}
   {% endif %}
   {% if group_justify == 'space-between' %}--group-justify: {{ group_justify }};{% endif %}
-  {% if group_vertical_on_mobile and group_alignment_mobile != group_alignment %}--group-align-mobile: {{ group_alignment_mobile }};{% endif %}
+  {% if group_mobile_alignment_enabled and group_alignment_mobile != group_alignment %}--group-align-mobile: {{ group_alignment_mobile }};{% endif %}
   {% if group_vertical_on_mobile and group_justify_mobile != group_justify %}--group-justify-mobile: {{ group_justify_mobile }};{% endif %}
   {% if group_gap_desktop != 16 %}--group-gap-desktop: {{ group_gap_desktop }}px;{% endif %}
   {% if group_gap_mobile != 12 %}--group-gap-mobile: {{ group_gap_mobile }}px;{% endif %}
@@ -249,6 +259,7 @@
   }
   .carousel-slide.swiper-slide.carousel-slide-layout--vertical {
     flex-direction: column;
+    flex-wrap: nowrap;
   }
   .carousel-slide.swiper-slide.carousel-slide-layout--horizontal > * {
     flex: 1 1 0%;
@@ -357,6 +368,10 @@
     --group-position: flex-end;
   }
 
+  .carousel-slide-layout--position-space-between {
+    --group-position: space-between;
+  }
+
   .carousel-slide-layout--height-fill {
     --group-height: 100%;
   }
@@ -444,6 +459,7 @@
 
     .carousel-slide-layout--horizontal.carousel-slide-layout--mobile-vertical {
       flex-direction: column;
+      flex-wrap: nowrap;
       align-items: var(--group-align-mobile, var(--group-align));
       justify-content: var(--group-justify-mobile, flex-start);
       text-align: var(--group-align-mobile, var(--group-align));
@@ -497,6 +513,31 @@
         {
           "value": "bottom",
           "label": "t:options.position.bottom"
+        },
+        {
+          "value": "space-between",
+          "label": "t:options.alignment.space_between"
+        }
+      ],
+      "default": "top",
+      "visible_if": "{{ block.settings.direction == 'vertical' and block.settings.height == 'fill' }}"
+    },
+    {
+      "type": "select",
+      "id": "position_horizontal",
+      "label": "t:labels.position",
+      "options": [
+        {
+          "value": "top",
+          "label": "t:options.position.top"
+        },
+        {
+          "value": "center",
+          "label": "t:options.alignment.center"
+        },
+        {
+          "value": "bottom",
+          "label": "t:options.position.bottom"
         }
       ],
       "default": "top",
@@ -536,27 +577,6 @@
     },
     {
       "type": "select",
-      "id": "alignment_mobile",
-      "label": "t:labels.alignment_mobile",
-      "options": [
-        {
-          "value": "left",
-          "label": "t:options.alignment.left"
-        },
-        {
-          "value": "center",
-          "label": "t:options.alignment.center"
-        },
-        {
-          "value": "right",
-          "label": "t:options.alignment.right"
-        }
-      ],
-      "default": "left",
-      "visible_if": "{{ block.settings.direction == 'horizontal' and block.settings.customize_mobile_alignment }}"
-    },
-    {
-      "type": "select",
       "id": "alignment",
       "label": "t:labels.alignment",
       "options": [
@@ -575,6 +595,27 @@
       ],
       "default": "left",
       "visible_if": "{{ block.settings.direction == 'vertical' }}"
+    },
+    {
+      "type": "select",
+      "id": "alignment_mobile",
+      "label": "t:labels.alignment_mobile",
+      "options": [
+        {
+          "value": "left",
+          "label": "t:options.alignment.left"
+        },
+        {
+          "value": "center",
+          "label": "t:options.alignment.center"
+        },
+        {
+          "value": "right",
+          "label": "t:options.alignment.right"
+        }
+      ],
+      "default": "left",
+      "visible_if": "{{ block.settings.direction == 'vertical' or block.settings.customize_mobile_alignment }}"
     },
     {
       "type": "header",
