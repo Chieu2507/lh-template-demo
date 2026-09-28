@@ -149,15 +149,19 @@
   assign heading_6_letter_spacing = '0em'
 
   assign heading_1_size_desktop = settings.type_heading_1_size_desktop | default: 64
+  assign heading_1_size_tablet = settings.type_heading_1_size_tablet | default: 52
   assign heading_1_size_mobile = settings.type_heading_1_size_mobile | default: 40
   assign heading_2_size_desktop = settings.type_heading_2_size_desktop | default: 40
+  assign heading_2_size_tablet = settings.type_heading_2_size_tablet | default: 34
   assign heading_2_size_mobile = settings.type_heading_2_size_mobile | default: 32
   assign heading_3_size_desktop = settings.type_heading_3_size_desktop | default: 32
-  assign heading_3_size_mobile = settings.type_heading_3_size_mobile | default: 24
+  assign heading_3_size_tablet = settings.type_heading_3_size_tablet | default: 22
+  assign heading_3_size_mobile = settings.type_heading_3_size_mobile | default: 20
   assign heading_4_size_desktop = settings.type_heading_4_size_desktop | default: 24
-  assign heading_4_size_mobile = settings.type_heading_4_size_mobile | default: 20
+  assign heading_4_size_mobile = settings.type_heading_4_size_mobile | default: 18
   assign heading_5_size_desktop = settings.type_heading_5_size_desktop | default: 18
-  assign heading_5_size_mobile = settings.type_heading_5_size_mobile | default: 16
+  assign heading_5_size_tablet = settings.type_heading_5_size_tablet | default: 15
+  assign heading_5_size_mobile = settings.type_heading_5_size_mobile | default: 15
   assign heading_6_size_desktop = settings.type_heading_6_size_desktop | default: 16
   assign heading_6_size_mobile = settings.type_heading_6_size_mobile | default: 14
 
@@ -402,15 +406,20 @@
     assign icon_button_radius = 'var(--radius-pill)'
   endif
 
-  assign button_height_desktop = settings.button_height_desktop | default: 48
-  assign button_height_mobile = settings.button_height_mobile | default: 44
-  assign button_padding_inline_desktop = settings.button_padding_inline_desktop | default: 28
-  assign button_padding_inline_mobile = settings.button_padding_inline_mobile | default: 24
+  assign button_height_desktop = settings.button_height_desktop | default: 45
+  assign button_height_mobile = settings.button_height_mobile | default: 45
+  assign button_padding_inline_desktop = settings.button_padding_inline_desktop | default: 30
+  assign button_padding_inline_mobile = settings.button_padding_inline_mobile | default: 30
   assign button_disabled_opacity = settings.button_disabled_opacity | default: 60 | divided_by: 100.0
-  assign button_font_size = '12px'
+  assign button_font_size = '13px'
   case settings.button_font_size
-    when '10px', '12px', '14px', '16px'
+    when '10px', '12px', '13px', '14px', '15px', '16px'
       assign button_font_size = settings.button_font_size
+  endcase
+  assign button_font_size_mobile = '15px'
+  case settings.button_font_size_mobile
+    when '12px', '13px', '14px', '15px', '16px'
+      assign button_font_size_mobile = settings.button_font_size_mobile
   endcase
   assign button_letter_spacing = '0em'
   case settings.button_letter_spacing
@@ -418,6 +427,8 @@
       assign button_letter_spacing = '0.02em'
     when 'loose'
       assign button_letter_spacing = '0.08em'
+    when 'reference'
+      assign button_letter_spacing = '1.2px'
     when 'extra_loose'
       assign button_letter_spacing = '0.14em'
   endcase
@@ -1019,6 +1030,7 @@
     --button-padding-inline-mobile: {{ button_padding_inline_mobile }}px;
     --button-disabled-opacity: {{ button_disabled_opacity }};
     --button-font-size: {{ button_font_size }};
+    --button-font-size-mobile: {{ button_font_size_mobile }};
     --button-letter-spacing: {{ button_letter_spacing }};
     --button-font-weight: var(--font-body-weight);
     --button-font-family: {{ button_primary_font_family }};
@@ -1168,12 +1180,13 @@
 
   @media (min-width: 768px) and (max-width: 1149.98px) {
     :root {
-      --font-heading-xs: {{ heading_6_size_desktop | times: 0.875 }}px;
-      --font-heading-sm: {{ heading_5_size_desktop | times: 0.875 }}px;
-      --font-heading-md: {{ heading_4_size_desktop | times: 0.875 }}px;
-      --font-heading-lg: {{ heading_3_size_desktop | times: 0.875 }}px;
-      --font-heading-xl: {{ heading_2_size_desktop | times: 0.875 }}px;
-      --font-heading-display: {{ heading_1_size_desktop | times: 0.875 }}px;
+      --font-heading-xs: {{ heading_6_size_desktop }}px;
+      --font-heading-sm: {{ heading_5_size_tablet }}px;
+      --font-heading-md: {{ heading_4_size_desktop }}px;
+      --font-heading-lg: {{ heading_3_size_tablet }}px;
+      --font-heading-xl: {{ heading_2_size_tablet }}px;
+      --font-heading-display: {{ heading_1_size_tablet }}px;
+      --font-heading-xl-line-height: 1.3;
     }
   }
 

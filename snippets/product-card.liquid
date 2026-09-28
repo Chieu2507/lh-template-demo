@@ -52,12 +52,9 @@
       assign card_color_scheme = settings.product_card_color_scheme.id
     endif
     assign card_color_scheme = card_color_scheme | default: 'scheme-1'
-    if card_color_type == 'color_scheme' and color_scheme != blank
-      assign card_color_scheme = color_scheme
-      if color_scheme.id != blank
-        assign card_color_scheme = color_scheme.id
-      endif
-    endif
+  endif
+  if card_color_type == 'color_scheme' and color_scheme != blank
+    assign card_color_scheme = color_scheme.id | default: color_scheme
   endif
 
   assign quick_add_color_scheme = settings.product_card_quick_add_color_scheme
@@ -157,7 +154,7 @@
     assign card_class = card_class | append: ' product-card--quick-view-mobile'
   endif
   if card_color_scheme != blank
-    assign card_class = card_class | append: ' ' | append: card_color_scheme
+    assign card_class = card_class | append: ' color-scheme section-color-scope ' | append: card_color_scheme
   endif
   if class != blank
     assign card_class = card_class | append: ' ' | append: class

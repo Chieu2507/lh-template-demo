@@ -63,7 +63,7 @@
     {% if banner_subheading != blank %}<div class="header-mega-menu__banner-subheading">{{ banner_subheading }}</div>{% endif %}
   {% if banner_heading != blank %}<div class="header-mega-menu__banner-title {{ banner_heading_class }}">{{ banner_heading }}</div>{% endif %}
   {% if banner_text != blank %}<div class="header-mega-menu__banner-text {{ banner_text_class }}">{{ banner_text }}</div>{% endif %}
-    {% if block.settings.label != blank and block.settings.link != blank %}<a class="btn btn--{{ block.settings.button_style | default: 'primary' }}{% if block.settings.button_style == 'tertiary' %} link-underline{% endif %} header-mega-menu__banner-button{% if block.settings.full_width %} header-mega-menu__banner-button--full-width{% endif %}"{% if block.settings.button_style == 'tertiary' %} data-underline="persistent" data-underline-target="text"{% endif %} href="{{ block.settings.link | escape }}" target="{{ banner_target }}"{% if block.settings.open_new_tab %} rel="noopener noreferrer"{% endif %}>{% if block.settings.show_icon and block.settings.icon_position == 'left' %}{% render 'icon', icon: 'arrow-left', bare: true, class: 'header-mega-menu__banner-button-icon' %}{% endif %}<span class="btn__text">{{ block.settings.label | escape }}</span>{% if block.settings.show_icon and block.settings.icon_position == 'right' %}{% render 'icon', icon: 'arrow-right', bare: true, class: 'header-mega-menu__banner-button-icon' %}{% endif %}</a>{% endif %}
+    {% if block.settings.label != blank and block.settings.link != blank %}<a class="btn btn--{{ block.settings.button_style | default: 'primary' }}{% if block.settings.button_style == 'tertiary' %} link-underline{% endif %} header-mega-menu__banner-button{% if block.settings.full_width %} header-mega-menu__banner-button--full-width{% endif %}"{% if block.settings.button_style == 'tertiary' %} data-underline="persistent" data-underline-target="text"{% endif %} href="{{ block.settings.link | escape }}" target="{{ banner_target }}"{% if block.settings.open_new_tab %} rel="noopener noreferrer"{% endif %}>{% if block.settings.show_icon and block.settings.icon_position == 'left' %}{% render 'icon', icon: block.settings.icon, bare: true, class: 'header-mega-menu__banner-button-icon' %}{% endif %}<span class="btn__text">{{ block.settings.label | escape }}</span>{% if block.settings.show_icon and block.settings.icon_position == 'right' %}{% render 'icon', icon: block.settings.icon, bare: true, class: 'header-mega-menu__banner-button-icon' %}{% endif %}</a>{% endif %}
   </div>
 </article>
 {% stylesheet %}
@@ -104,7 +104,76 @@
     { "type": "text", "id": "label", "label": "t:labels.button_label" },
     { "type": "select", "id": "button_style", "label": "t:labels.style", "options": [{ "value": "primary", "label": "t:options.button_variant.primary" }, { "value": "secondary", "label": "t:options.button_variant.secondary" }, { "value": "tertiary", "label": "t:options.button_variant.tertiary" }], "default": "primary" },
     { "type": "checkbox", "id": "show_icon", "label": "t:labels.show_icon", "default": false },
-    { "type": "select", "id": "icon_position", "label": "t:labels.icon_position", "options": [{ "value": "left", "label": "Before label" }, { "value": "right", "label": "After label" }], "default": "right", "visible_if": "{{ block.settings.show_icon }}" },
+{
+  "type": "select",
+  "id": "icon",
+  "label": "t:labels.icon",
+  "options": [
+    {
+      "value": "arrow_right",
+      "label": "Arrow right"
+    },
+    {
+      "value": "long_arrow_right",
+      "label": "Long arrow right"
+    },
+    {
+      "value": "chevron_right",
+      "label": "Chevron"
+    },
+    {
+      "value": "arrow_up_right",
+      "label": "Arrow up right"
+    },
+    {
+      "value": "circle_arrow",
+      "label": "Circle arrow"
+    },
+    {
+      "value": "circle_chevron",
+      "label": "Circle chevron"
+    },
+    {
+      "value": "long_arrow_up",
+      "label": "Long arrow up"
+    },
+    {
+      "value": "double_chevron",
+      "label": "Double chevron"
+    },
+    {
+      "value": "arrow_outline",
+      "label": "Arrow outline"
+    },
+    {
+      "value": "square_chevron",
+      "label": "Square chevron"
+    },
+    {
+      "value": "plus",
+      "label": "Plus"
+    }
+  ],
+  "default": "arrow_right",
+  "visible_if": "{{ block.settings.show_icon }}"
+},
+    {
+      "type": "select",
+      "id": "icon_position",
+      "label": "t:labels.icon_position",
+      "options": [
+        {
+          "value": "left",
+          "label": "Left"
+        },
+        {
+          "value": "right",
+          "label": "Right"
+        }
+      ],
+      "default": "right",
+      "visible_if": "{{ block.settings.show_icon }}"
+    },
     { "type": "checkbox", "id": "full_width", "label": "Full width", "default": false },
     { "type": "header", "content": "t:general.gap" },
     { "type": "range", "id": "content_gap", "label": "Content gap", "min": 0, "max": 40, "step": 1, "unit": "px", "default": 10 },

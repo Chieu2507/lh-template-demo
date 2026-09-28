@@ -78,7 +78,7 @@
 
             <div class="main-collection__filter-groups">
               {% if block.settings.enable_sorting %}
-                <details class="main-collection__mobile-sort main-collection__filter-group" open>
+                <details data-accordion-details class="main-collection__mobile-sort main-collection__filter-group" open>
                   <summary>
                     <span>{{ sort_label }}</span>
                     {% render 'icon', icon: 'chevron-down', bare: true %}
@@ -102,12 +102,13 @@
               {% endif %}
 
               {% for filter in collection.filters %}
-                <details class="main-collection__filter-group" {% unless block.settings.collapse_filters %}open{% endunless %}>
+                <details data-accordion-details class="main-collection__filter-group" {% unless block.settings.collapse_filters %}open{% endunless %}>
                 <summary>
                   <span>{{ filter.label | escape }}</span>
                   {% render 'icon', icon: 'chevron-down', bare: true %}
                 </summary>
 
+                <div class="main-collection__filter-content">
                 {% if filter.type == 'price_range' %}
                   {% liquid
                     assign price_range_max = filter.range_max | divided_by: 100.0
@@ -217,6 +218,7 @@
                   </ul>
                   {% if filter_items_limit > 0 and filter.values.size > filter_items_limit %}<button type="button" class="link-underline" data-filter-show-more aria-expanded="false">{{ 'collection.view_more' | t }}</button>{% endif %}
                 {% endif %}
+                </div>
                 </details>
               {% endfor %}
             </div>

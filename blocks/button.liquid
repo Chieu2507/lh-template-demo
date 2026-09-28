@@ -28,9 +28,6 @@
   assign button_icon = blank
   if block.settings.show_icon
     assign button_icon = block.settings.icon | default: 'arrow'
-    unless button_icon == 'arrow' or button_icon == 'cart'
-      assign button_icon = 'arrow'
-    endunless
   endif
   assign button_icon_position = block.settings.icon_position | default: 'after'
   unless button_icon_position == 'before' or button_icon_position == 'after'
@@ -193,10 +190,52 @@
       "id": "icon",
       "label": "t:labels.icon",
       "options": [
-        { "value": "arrow", "label": "t:options.button_icon.arrow" },
-        { "value": "cart", "label": "t:options.button_icon.cart" }
+        {
+          "value": "arrow_right",
+          "label": "Arrow right"
+        },
+        {
+          "value": "long_arrow_right",
+          "label": "Long arrow right"
+        },
+        {
+          "value": "chevron_right",
+          "label": "Chevron"
+        },
+        {
+          "value": "arrow_up_right",
+          "label": "Arrow up right"
+        },
+        {
+          "value": "circle_arrow",
+          "label": "Circle arrow"
+        },
+        {
+          "value": "circle_chevron",
+          "label": "Circle chevron"
+        },
+        {
+          "value": "long_arrow_up",
+          "label": "Long arrow up"
+        },
+        {
+          "value": "double_chevron",
+          "label": "Double chevron"
+        },
+        {
+          "value": "arrow_outline",
+          "label": "Arrow outline"
+        },
+        {
+          "value": "square_chevron",
+          "label": "Square chevron"
+        },
+        {
+          "value": "plus",
+          "label": "Plus"
+        }
       ],
-      "default": "arrow",
+      "default": "arrow_right",
       "visible_if": "{{ block.settings.show_icon }}"
     },
     {
@@ -204,8 +243,14 @@
       "id": "icon_position",
       "label": "t:labels.icon_position",
       "options": [
-        { "value": "before", "label": "t:options.icon_position.before" },
-        { "value": "after", "label": "t:options.icon_position.after" }
+        {
+          "value": "before",
+          "label": "Left"
+        },
+        {
+          "value": "after",
+          "label": "Right"
+        }
       ],
       "default": "after",
       "visible_if": "{{ block.settings.show_icon }}"
@@ -360,7 +405,7 @@
         "button_style": "primary",
         "button_open_in_new_tab": false,
         "show_icon": false,
-        "icon": "arrow",
+        "icon": "arrow_right",
         "icon_position": "after",
         "icon_size": "inherit",
         "icon_width": 20,

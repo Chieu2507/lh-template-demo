@@ -12,11 +12,7 @@
   endunless
   assign social_background = block.settings.social_background | default: '#FFFFFF'
   assign social_color = block.settings.social_color | default: '#6A372F'
-  assign overlay_background = block.settings.overlay_background | default: '#000000'
-  assign overlay_opacity = block.settings.overlay_opacity | default: 38 | plus: 0
-  if overlay_opacity < 0 or overlay_opacity > 100
-    assign overlay_opacity = 38
-  endif
+  assign overlay_background = block.settings.overlay_background | default: '#00000061'
   assign tag_font_size = block.settings.tag_font_size | default: 'md'
   assign customize_mobile_tag_font_size = block.settings.customize_mobile_tag_font_size
   assign tag_font_size_mobile = block.settings.tag_font_size_mobile | default: tag_font_size
@@ -48,7 +44,7 @@
   endif
 %}
 
-<div class="gallery-image gallery-image--overlay-{{ show_overlay }}" style="--gallery-social-background: {{ social_background | escape }}; --gallery-social-color: {{ social_color | escape }}; --gallery-overlay-background: {{ overlay_background | escape }}; --gallery-overlay-opacity: {{ overlay_opacity | divided_by: 100.0 }}; --gallery-tag-font-size: {{ tag_font_size_token }}; --gallery-tag-font-size-mobile: {{ tag_font_size_mobile_token }};" {{ block.shopify_attributes }}>
+<div class="gallery-image gallery-image--overlay-{{ show_overlay }}" style="--gallery-social-background: {{ social_background | escape }}; --gallery-social-color: {{ social_color | escape }}; --gallery-overlay-background: {{ overlay_background | escape }}; --gallery-overlay-opacity: 1; --gallery-tag-font-size: {{ tag_font_size_token }}; --gallery-tag-font-size-mobile: {{ tag_font_size_mobile_token }};" {{ block.shopify_attributes }}>
   {% render 'image', image: block.settings.image, mobile_image: block.settings.mobile_image, alt: block.settings.alt_text, class: 'gallery-image__media', width: 1600, widths: '400, 600, 800, 1200, 1600', sizes: '(min-width: 768px) 25vw, 50vw' %}
   <div class="gallery-image__overlay">
     {% unless social_network == 'none' %}
@@ -107,8 +103,13 @@
     { "type": "color", "id": "social_color", "label": "Button color", "default": "#6A372F" },
     { "type": "header", "content": "Overlay" },
     { "type": "select", "id": "show_overlay", "label": "Show social overlay", "options": [{ "value": "always", "label": "Always" }, { "value": "hover", "label": "On hover" }], "default": "always" },
-    { "type": "color", "id": "overlay_background", "label": "Overlay background", "alpha": true, "default": "#000000" },
-    { "type": "range", "id": "overlay_opacity", "label": "Overlay opacity", "min": 0, "max": 100, "step": 1, "unit": "%", "default": 38 }
+    {
+      "type": "color",
+      "id": "overlay_background",
+      "label": "Overlay background",
+      "alpha": true,
+      "default": "#00000061"
+    }
   ]
 }
 {% endschema %}

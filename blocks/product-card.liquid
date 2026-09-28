@@ -112,8 +112,7 @@
     },
     {
       "type": "header",
-      "content": "t:general.color",
-      "visible_if": "{{ settings.product_card_style == 'card' }}"
+      "content": "t:general.appearance"
     },
     {
       "type": "select",
@@ -123,15 +122,14 @@
         { "value": "inherit", "label": "t:options.color_type.inherit" },
         { "value": "color_scheme", "label": "t:options.color_type.color_scheme" }
       ],
-      "default": "inherit",
-      "visible_if": "{{ settings.product_card_style == 'card' }}"
+      "default": "inherit"
     },
     {
       "type": "color_scheme",
       "id": "color_scheme",
       "label": "t:labels.color_scheme",
       "default": "scheme-1",
-      "visible_if": "{{ settings.product_card_style == 'card' and block.settings.color_type == 'color_scheme' }}"
+      "visible_if": "{{ block.settings.color_type == 'color_scheme' }}"
     }
   ],
   "presets": [

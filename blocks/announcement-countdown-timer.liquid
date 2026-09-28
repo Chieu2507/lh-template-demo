@@ -128,8 +128,76 @@
     { "type": "checkbox", "id": "button_open_in_new_tab", "label": "Open in new tab", "default": false },
     { "type": "select", "id": "button_style", "label": "Style", "options": [{ "value": "primary", "label": "Primary" }, { "value": "secondary", "label": "Secondary" }, { "value": "tertiary", "label": "Tertiary" }], "default": "tertiary" },
     { "type": "checkbox", "id": "show_icon", "label": "Show icon", "default": false },
-    { "type": "select", "id": "icon", "label": "Icon", "options": [{ "value": "arrow", "label": "Arrow" }, { "value": "arrow-left", "label": "Arrow left" }, { "value": "arrow-right", "label": "Arrow right" }, { "value": "chevron-right", "label": "Chevron right" }, { "value": "cart", "label": "Cart" }, { "value": "shopping-bag", "label": "Shopping bag" }, { "value": "check", "label": "Check" }, { "value": "plus", "label": "Plus" }, { "value": "share", "label": "Share" }], "default": "arrow", "visible_if": "{{ block.settings.show_icon }}" },
-    { "type": "select", "id": "icon_position", "label": "Position", "options": [{ "value": "before", "label": "Left" }, { "value": "after", "label": "Right" }], "default": "after", "visible_if": "{{ block.settings.show_icon }}" },
+    {
+      "type": "select",
+      "id": "icon",
+      "label": "t:labels.icon",
+      "options": [
+        {
+          "value": "arrow_right",
+          "label": "Arrow right"
+        },
+        {
+          "value": "long_arrow_right",
+          "label": "Long arrow right"
+        },
+        {
+          "value": "chevron_right",
+          "label": "Chevron"
+        },
+        {
+          "value": "arrow_up_right",
+          "label": "Arrow up right"
+        },
+        {
+          "value": "circle_arrow",
+          "label": "Circle arrow"
+        },
+        {
+          "value": "circle_chevron",
+          "label": "Circle chevron"
+        },
+        {
+          "value": "long_arrow_up",
+          "label": "Long arrow up"
+        },
+        {
+          "value": "double_chevron",
+          "label": "Double chevron"
+        },
+        {
+          "value": "arrow_outline",
+          "label": "Arrow outline"
+        },
+        {
+          "value": "square_chevron",
+          "label": "Square chevron"
+        },
+        {
+          "value": "plus",
+          "label": "Plus"
+        }
+      ],
+      "default": "arrow_right",
+      "visible_if": "{{ block.settings.show_icon }}"
+    },
+    {
+      "type": "select",
+      "id": "icon_position",
+      "label": "t:labels.icon_position",
+      "options": [
+        {
+          "value": "before",
+          "label": "Left"
+        },
+        {
+          "value": "after",
+          "label": "Right"
+        }
+      ],
+      "default": "after",
+      "visible_if": "{{ block.settings.show_icon }}"
+    },
     { "type": "select", "id": "icon_size", "label": "Icon size", "options": [{ "value": "inherit", "label": "Inherit" }, { "value": "custom", "label": "Custom" }], "default": "inherit", "visible_if": "{{ block.settings.show_icon }}" },
     { "type": "range", "id": "icon_width", "label": "Icon width", "min": 12, "max": 32, "step": 1, "unit": "px", "default": 20, "visible_if": "{{ block.settings.show_icon and block.settings.icon_size == 'custom' }}" }
   ],
