@@ -644,14 +644,14 @@
 
 /* Each column stays within the product row, including galleries/details taller
    than the viewport. The controller moves the sticky inset on scroll reversal. */
-product-sticky-layout > .product-media-gallery,
-product-sticky-layout > .product-details {
+product-sticky-layout.product-information__layout > .product-media-gallery,
+product-sticky-layout.product-information__layout > .product-details {
   position: static;
 }
 
 @media (min-width: 768px) {
-  product-sticky-layout[data-sticky-enabled] > .product-media-gallery,
-  product-sticky-layout[data-sticky-enabled] > .product-details {
+  product-sticky-layout.product-information__layout[data-sticky-enabled] > .product-media-gallery,
+  product-sticky-layout.product-information__layout[data-sticky-enabled] > .product-details {
     position: sticky;
     top: var(--product-sticky-top, calc(var(--header-height, 0px) + 16px));
     align-self: start;
