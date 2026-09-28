@@ -1268,14 +1268,16 @@
   text-transform: none;
 }
 
-@media (min-width: 1150px) {
-  .main-collection__filter-label { display: block; }
+@media (min-width: 768px) {
   .main-collection--blocks .main-collection__toolbar:has(.main-collection__product-count[data-alignment='right']) {
     grid-template-columns: auto minmax(0, 1fr) auto auto auto;
   }
   .main-collection--blocks .main-collection__product-count[data-alignment='right'] { grid-column: 3; }
   .main-collection--blocks .main-collection__toolbar:has(.main-collection__product-count[data-alignment='right']) .main-collection__sort-form { grid-column: 4; }
   .main-collection--blocks .main-collection__toolbar:has(.main-collection__product-count[data-alignment='right']) .collection-columns { grid-column: 5; }
+}
+@media (min-width: 1150px) {
+  .main-collection__filter-label { display: block; }
 }
 
 .main-collection__sort-form[data-style='text'] > label { display: none; }
