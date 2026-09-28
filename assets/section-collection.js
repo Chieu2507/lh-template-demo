@@ -456,14 +456,8 @@ if (!customElements.get('collection-facets')) {
     }
 
     disconnectedCallback() {
-      window.removeEventListener('scroll', this.onSidebarScroll);
-      window.removeEventListener('resize', this.onSidebarScroll);
-      this.sidebarResizeObserver?.disconnect();
-      this.sidebarMutationObserver?.disconnect();
-      cancelAnimationFrame(this.sidebarFrame);
+      this.destroySidebarSticky();
       cancelAnimationFrame(this.collectionScrollFrame);
-      this.sidebarPositioner?.style.removeProperty('--collection-sidebar-top');
-      this.sidebarPositioner?.removeAttribute('data-sticky-state');
       this.querySelectorAll('.main-collection__filter-values').forEach(list => {
         list._filterAnimationId = (list._filterAnimationId || 0) + 1;
         list._filterAnimations?.forEach(animation => animation.cancel());
@@ -489,7 +483,23 @@ if (!customElements.get('collection-facets')) {
       this.requestController?.abort();
     }
 
+    destroySidebarSticky() {
+      window.removeEventListener('scroll', this.onSidebarScroll);
+      window.removeEventListener('resize', this.onSidebarScroll);
+      this.sidebarResizeObserver?.disconnect();
+      this.sidebarMutationObserver?.disconnect();
+      cancelAnimationFrame(this.sidebarFrame);
+      this.sidebarFrame = 0;
+      this.sidebarPositioner?.style.removeProperty('--collection-sidebar-top');
+      this.sidebarPositioner?.removeAttribute('data-sticky-state');
+      this.sidebarPositioner = null;
+      this.sidebarTop = null;
+    }
+
     initializeSidebarSticky() {
+      // AJAX can retain the dialog while replacing the wrapper it lives in.
+      // Always observe and position the current wrapper, releasing the old one.
+      this.destroySidebarSticky();
       this.sidebarPositioner = this.dialog?.closest('.main-collection__filter-panel-positioner');
       if (!this.sidebarPositioner) return;
       this.sidebarScrollY = window.scrollY;
@@ -512,6 +522,7 @@ if (!customElements.get('collection-facets')) {
 
     updateSidebarSticky() {
       const panel = this.sidebarPositioner;
+      if (!panel?.isConnected) return;
       const scrollY = window.scrollY;
       const delta = scrollY - this.sidebarScrollY;
       this.sidebarScrollY = scrollY;
@@ -801,6 +812,7 @@ if (!customElements.get('collection-facets')) {
             this.backdropInteraction.panel = this.filterPanel;
             this.backdropInteraction.pointer = this.backdropPointer;
           }
+          this.initializeSidebarSticky();
           nextProducts.dispatchEvent(new CustomEvent('collection:products-loaded', { bubbles: true }));
 
           window.requestAnimationFrame(() => {
