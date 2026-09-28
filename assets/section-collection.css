@@ -443,7 +443,6 @@
   .main-collection__pagination [data-collection-load-more] {
     display: inline-flex;
     min-height: 44px;
-    place-items: center;
     align-items: center;
   }
 
