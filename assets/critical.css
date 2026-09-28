@@ -1502,7 +1502,7 @@ legend {
   max-width: 100%;
 }
 
-@media (hover: hover) and (pointer: fine) {
+@media (min-width: 768px) and (hover: hover) and (pointer: fine) {
   .product-card__media .product-card__action {
     opacity: 0;
     pointer-events: none;
