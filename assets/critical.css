@@ -84,6 +84,41 @@ svg {
   backdrop-filter: blur(var(--backdrop-blur, 0px));
 }
 
+/* Shared block sizing: blocks provide normalized CSS values, while this
+ * utility owns the responsive width and max-width rules. */
+.size-style {
+  --size-style-width: fit-content;
+  --size-style-max-width: 100%;
+  width: var(--size-style-width);
+  max-width: var(--size-style-max-width);
+}
+
+.size-style--contain {
+  max-width: min(var(--size-style-max-width), 100%);
+}
+
+@media (max-width: 767.98px) {
+  .size-style {
+    --size-style-width-mobile: var(--size-style-width);
+    --size-style-max-width-mobile: var(--size-style-max-width);
+    width: var(--size-style-width-mobile);
+    max-width: var(--size-style-max-width-mobile);
+  }
+
+  .size-style--contain {
+    max-width: min(var(--size-style-max-width-mobile), 100%);
+  }
+}
+
+@media (max-width: 991.98px) {
+  .size-style--tablet {
+    --size-style-width-mobile: var(--size-style-width);
+    --size-style-max-width-mobile: var(--size-style-max-width);
+    width: var(--size-style-width-mobile);
+    max-width: var(--size-style-max-width-mobile);
+  }
+}
+
 /* Shared treatment for every Shopify SVG media fallback. The first layer
  * establishes a neutral canvas; the second uses the active scheme's text RGB
  * so a white scheme still receives a subtle gray surface. */

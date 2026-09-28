@@ -199,7 +199,7 @@
   assign padding_left_mobile = block.settings.padding_left_mobile | default: 0 | plus: 0
   assign padding_right_mobile = block.settings.padding_right_mobile | default: 0 | plus: 0
 
-  assign video_class = 'video-block'
+  assign video_class = 'video-block size-style size-style--contain'
   if block.settings.show_video_first_mobile
     assign video_class = video_class | append: ' video-block--first-mobile'
   endif
@@ -207,10 +207,12 @@
 
 {% assign video_play_label = 'video.play' | t %}
 {% capture video_style %}
-  --video-block-width: {{ video_width_desktop }};
-  --video-block-max-width: {{ video_max_width_desktop }};
-  --video-block-width-mobile: {{ video_width_mobile }};
-  --video-block-max-width-mobile: {{ video_max_width_mobile }};
+  {% render 'size-style',
+    width: video_width_desktop,
+    max_width: video_max_width_desktop,
+    width_mobile: video_width_mobile,
+    max_width_mobile: video_max_width_mobile
+  %}
   --video-block-ratio: {{ aspect_ratio_desktop }};
   --video-block-height: {{ video_height_desktop }};
   --video-block-ratio-mobile: {{ aspect_ratio_mobile }};
@@ -252,8 +254,6 @@
 {% stylesheet %}
   .video-block {
     display: block;
-    width: var(--video-block-width, fit-content);
-    max-width: min(var(--video-block-max-width, 100%), 100%);
     min-width: 0;
     padding-top: var(--video-block-padding-top, 0px);
     padding-right: var(--video-block-padding-right, 0px);
@@ -278,8 +278,6 @@
     }
 
     .video-block {
-      width: var(--video-block-width-mobile, var(--video-block-width, fit-content));
-      max-width: min(var(--video-block-max-width-mobile, 100%), 100%);
       padding-top: var(--video-block-padding-top-mobile, var(--video-block-padding-top, 0px));
       padding-right: var(--video-block-padding-right-mobile, var(--video-block-padding-right, 0px));
       padding-bottom: var(--video-block-padding-bottom-mobile, var(--video-block-padding-bottom, 0px));

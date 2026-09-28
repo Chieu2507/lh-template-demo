@@ -17,6 +17,14 @@
   unless collection_tabs_view_all_width_mobile == 'fit' or collection_tabs_view_all_width_mobile == 'fill'
     assign collection_tabs_view_all_width_mobile = 'fit'
   endunless
+  assign collection_tabs_view_all_size_width = 'fit-content'
+  if collection_tabs_view_all_width == 'fill'
+    assign collection_tabs_view_all_size_width = '100%'
+  endif
+  assign collection_tabs_view_all_size_width_mobile = 'fit-content'
+  if collection_tabs_view_all_width_mobile == 'fill'
+    assign collection_tabs_view_all_size_width_mobile = '100%'
+  endif
 
   assign collection_tabs_view_all_url = blank
   if closest.collection != blank
@@ -37,11 +45,15 @@
   assign collection_tabs_view_all_padding_left_mobile = block.settings.padding_left_mobile | default: 0 | plus: 0
   assign collection_tabs_view_all_padding_right_mobile = block.settings.padding_right_mobile | default: 0 | plus: 0
 
-  assign collection_tabs_view_all_class = 'collection-tabs-view-all collection-tabs-view-all--width-' | append: collection_tabs_view_all_width
+  assign collection_tabs_view_all_class = 'collection-tabs-view-all size-style collection-tabs-view-all--width-' | append: collection_tabs_view_all_width
   assign collection_tabs_view_all_class = collection_tabs_view_all_class | append: ' collection-tabs-view-all--width-mobile-' | append: collection_tabs_view_all_width_mobile
 %}
 
 {% capture collection_tabs_view_all_style_attribute %}
+  {% render 'size-style',
+    width: collection_tabs_view_all_size_width,
+    width_mobile: collection_tabs_view_all_size_width_mobile
+  %}
   {% if collection_tabs_view_all_padding_top != 0 %}--collection-tabs-view-all-padding-top: {{ collection_tabs_view_all_padding_top }}px;{% endif %}
   {% if collection_tabs_view_all_padding_bottom != 0 %}--collection-tabs-view-all-padding-bottom: {{ collection_tabs_view_all_padding_bottom }}px;{% endif %}
   {% if collection_tabs_view_all_padding_left != 0 %}--collection-tabs-view-all-padding-left: {{ collection_tabs_view_all_padding_left }}px;{% endif %}
@@ -86,17 +98,11 @@
 {% stylesheet %}
   .collection-tabs-view-all {
     display: block;
-    width: var(--collection-tabs-view-all-width, fit-content);
-    max-width: 100%;
     min-width: 0;
     padding-top: var(--collection-tabs-view-all-padding-top, 0px);
     padding-right: var(--collection-tabs-view-all-padding-right, 0px);
     padding-bottom: var(--collection-tabs-view-all-padding-bottom, 0px);
     padding-left: var(--collection-tabs-view-all-padding-left, 0px);
-  }
-
-  .collection-tabs-view-all--width-fill {
-    --collection-tabs-view-all-width: 100%;
   }
 
   .collection-tabs-view-all__button {
@@ -109,15 +115,10 @@
 
   @media (max-width: 767.98px) {
     .collection-tabs-view-all {
-      width: var(--collection-tabs-view-all-width-mobile, var(--collection-tabs-view-all-width, fit-content));
       padding-top: var(--collection-tabs-view-all-padding-top-mobile, var(--collection-tabs-view-all-padding-top, 0px));
       padding-right: var(--collection-tabs-view-all-padding-right-mobile, var(--collection-tabs-view-all-padding-right, 0px));
       padding-bottom: var(--collection-tabs-view-all-padding-bottom-mobile, var(--collection-tabs-view-all-padding-bottom, 0px));
       padding-left: var(--collection-tabs-view-all-padding-left-mobile, var(--collection-tabs-view-all-padding-left, 0px));
-    }
-
-    .collection-tabs-view-all--width-mobile-fill {
-      --collection-tabs-view-all-width-mobile: 100%;
     }
 
     .collection-tabs-view-all--width-mobile-fill .collection-tabs-view-all__button {

@@ -5,6 +5,7 @@
   @param {string} [children] - Rendered child blocks
   @param {boolean} [allow_sticky] - Whether this media card can opt into sticky behavior
   @param {string} [class_modifier] - Optional class added to the media card
+  @param {boolean} [use_image_ratio] - Whether the caller supplies responsive image ratio settings
 {% enddoc %}
 
 {% liquid
@@ -54,6 +55,58 @@
 
   assign image_card_height_desktop = media_card_block.settings.height_desktop | default: 'ratio_1_1'
   assign image_card_height_mobile = media_card_block.settings.height_mobile | default: 'ratio_1_1'
+  assign image_card_ratio_desktop = '1'
+  assign image_card_ratio_mobile = '1'
+
+  if use_image_ratio
+    assign image_card_height_desktop = 'ratio_1_1'
+    assign image_card_height_mobile = 'ratio_1_1'
+    assign image_card_ratio_desktop_setting = media_card_block.settings.image_ratio_desktop | default: 'square'
+    assign image_card_ratio_mobile_setting = media_card_block.settings.image_ratio_mobile | default: 'square'
+
+    assign image_card_ratio_desktop = media_card_block.settings.image.aspect_ratio
+    if image_card_ratio_desktop == blank
+      assign image_card_ratio_desktop = media_card_block.settings.mobile_image.aspect_ratio
+    endif
+    if image_card_ratio_desktop == blank
+      assign image_card_ratio_desktop = media_card_block.settings.video.preview_image.aspect_ratio
+    endif
+    if image_card_ratio_desktop == blank
+      assign image_card_ratio_desktop = media_card_block.settings.mobile_video.preview_image.aspect_ratio
+    endif
+    if image_card_ratio_desktop == blank
+      assign image_card_ratio_desktop = 1
+    endif
+
+    assign image_card_ratio_mobile = media_card_block.settings.mobile_image.aspect_ratio
+    if image_card_ratio_mobile == blank
+      assign image_card_ratio_mobile = media_card_block.settings.image.aspect_ratio
+    endif
+    if image_card_ratio_mobile == blank
+      assign image_card_ratio_mobile = media_card_block.settings.mobile_video.preview_image.aspect_ratio
+    endif
+    if image_card_ratio_mobile == blank
+      assign image_card_ratio_mobile = media_card_block.settings.video.preview_image.aspect_ratio
+    endif
+    if image_card_ratio_mobile == blank
+      assign image_card_ratio_mobile = 1
+    endif
+
+    if image_card_ratio_desktop_setting == 'full_screen'
+      assign image_card_height_desktop = 'fill'
+      assign image_card_ratio_desktop_setting = 'square'
+    endif
+
+    capture image_card_ratio_desktop
+      render 'image-ratio-value', setting: image_card_ratio_desktop_setting, fallback_ratio: image_card_ratio_desktop, custom_width: media_card_block.settings.image_ratio_custom_width_desktop, custom_height: media_card_block.settings.image_ratio_custom_height_desktop
+    endcapture
+    assign image_card_ratio_desktop = image_card_ratio_desktop | strip
+
+    capture image_card_ratio_mobile
+      render 'image-ratio-value', setting: image_card_ratio_mobile_setting, fallback_ratio: image_card_ratio_mobile, custom_width: media_card_block.settings.image_ratio_custom_width_mobile, custom_height: media_card_block.settings.image_ratio_custom_height_mobile
+    endcapture
+    assign image_card_ratio_mobile = image_card_ratio_mobile | strip
+  endif
   assign image_card_position_desktop = media_card_block.settings.position_desktop | default: 'top_center'
   assign image_card_position_mobile = media_card_block.settings.position_mobile | default: 'top_center'
 
@@ -162,6 +215,10 @@
   {% if image_card_padding_right != 0 %}--image-card-padding-right: {{ image_card_padding_right }}px;{% endif %}
   {% if image_card_width_mobile != image_card_width_desktop %}--image-card-width-mobile: {{ image_card_width_mobile }};{% endif %}
   {% if image_card_max_width_mobile != image_card_max_width_desktop %}--image-card-max-width-mobile: {{ image_card_max_width_mobile }};{% endif %}
+  {% if use_image_ratio %}
+    {% unless image_card_ratio_desktop == 1 or image_card_ratio_desktop == '1' %}--image-card-ratio: {{ image_card_ratio_desktop }};{% endunless %}
+    {% unless image_card_ratio_mobile == 1 or image_card_ratio_mobile == '1' %}--image-card-ratio-mobile: {{ image_card_ratio_mobile }};{% endunless %}
+  {% endif %}
   {% if media_card_block.settings.customize_mobile_padding %}
     {% if image_card_padding_top_mobile != image_card_padding_top %}--image-card-padding-top-mobile: {{ image_card_padding_top_mobile }}px;{% endif %}
     {% if image_card_padding_bottom_mobile != image_card_padding_bottom %}--image-card-padding-bottom-mobile: {{ image_card_padding_bottom_mobile }}px;{% endif %}
@@ -468,12 +525,6 @@
   }
   @media (min-width: 768px) {
     .image-card--featured-collection-banner.image-card--height-desktop-fill {
-      height: 100vh;
-    }
-  }
-
-  @media (max-width: 767.98px) {
-    .image-card--featured-collection-banner.image-card--height-mobile-fill {
       height: 100vh;
     }
   }

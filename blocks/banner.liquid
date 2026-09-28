@@ -14,7 +14,8 @@
   media_card_block: block,
   children: banner_children,
   allow_sticky: false,
-  class_modifier: 'image-card--featured-collection-banner'
+  class_modifier: 'image-card--featured-collection-banner',
+  use_image_ratio: true
 %}
 
 {% schema %}
@@ -119,198 +120,69 @@
       "id": "device",
       "label": "t:labels.device",
       "options": [
-        {
-          "value": "desktop",
-          "label": "t:options.device.desktop"
-        },
-        {
-          "value": "mobile",
-          "label": "t:options.device.mobile"
-        }
+        { "value": "desktop", "label": "t:options.device.desktop" },
+        { "value": "mobile", "label": "t:options.device.mobile" }
       ],
       "default": "desktop"
     },
     {
       "type": "select",
-      "id": "width_desktop",
-      "label": "t:labels.width",
+      "id": "image_ratio_desktop",
+      "label": "t:labels.image_ratio",
       "options": [
-        {
-          "value": "fill",
-          "label": "t:options.width.fill"
-        },
-        {
-          "value": "custom",
-          "label": "t:options.width.custom"
-        }
+        { "value": "full_screen", "label": "t:options.section_height.full_screen" },
+        { "value": "auto", "label": "t:options.image_ratio.auto" },
+        { "value": "square", "label": "t:options.image_ratio.square" },
+        { "value": "portrait", "label": "t:options.image_ratio.portrait" },
+        { "value": "landscape", "label": "t:options.image_ratio.landscape" },
+        { "value": "wide", "label": "t:options.image_ratio.wide" },
+        { "value": "custom", "label": "t:options.image_ratio.custom" }
       ],
-      "default": "fill",
+      "default": "square",
       "visible_if": "{{ block.settings.device == 'desktop' }}"
     },
     {
-      "type": "range",
-      "id": "width_custom_desktop",
-      "label": "t:labels.desktop_custom_width",
-      "min": 10,
-      "max": 100,
-      "step": 1,
-      "unit": "%",
-      "default": 100,
-      "visible_if": "{{ block.settings.device == 'desktop' and block.settings.width_desktop == 'custom' }}"
+      "type": "number",
+      "id": "image_ratio_custom_width_desktop",
+      "label": "W",
+      "default": 16,
+      "visible_if": "{{ block.settings.device == 'desktop' and block.settings.image_ratio_desktop == 'custom' }}"
     },
     {
-      "type": "checkbox",
-      "id": "limit_width_desktop",
-      "label": "t:labels.limit_width",
-      "default": false,
-      "visible_if": "{{ block.settings.device == 'desktop' }}"
-    },
-    {
-      "type": "range",
-      "id": "max_width_desktop",
-      "label": "t:labels.max_width",
-      "min": 0,
-      "max": 1600,
-      "step": 16,
-      "unit": "px",
-      "default": 1600,
-      "visible_if": "{{ block.settings.device == 'desktop' and block.settings.limit_width_desktop }}"
+      "type": "number",
+      "id": "image_ratio_custom_height_desktop",
+      "label": "H",
+      "default": 9,
+      "visible_if": "{{ block.settings.device == 'desktop' and block.settings.image_ratio_desktop == 'custom' }}"
     },
     {
       "type": "select",
-      "id": "height_desktop",
-      "label": "t:labels.height",
+      "id": "image_ratio_mobile",
+      "label": "t:labels.image_ratio_mobile",
       "options": [
-        {
-          "value": "fill",
-          "label": "t:options.section_height.full_screen"
-        },
-        {
-          "value": "ratio_1_1",
-          "label": "t:options.image_card_height.ratio_1_1"
-        },
-        {
-          "value": "ratio_4_5",
-          "label": "t:options.image_card_height.ratio_4_5"
-        },
-        {
-          "value": "ratio_3_2",
-          "label": "t:options.image_card_height.ratio_3_2"
-        },
-        {
-          "value": "ratio_4_3",
-          "label": "t:options.image_card_height.ratio_4_3"
-        },
-        {
-          "value": "ratio_16_9",
-          "label": "t:options.image_card_height.ratio_16_9"
-        },
-        {
-          "value": "ratio_2_3",
-          "label": "t:options.image_card_height.ratio_2_3"
-        },
-        {
-          "value": "ratio_3_4",
-          "label": "t:options.image_card_height.ratio_3_4"
-        },
-        {
-          "value": "ratio_9_16",
-          "label": "t:options.image_card_height.ratio_9_16"
-        }
+        { "value": "auto", "label": "t:options.image_ratio.auto" },
+        { "value": "square", "label": "t:options.image_ratio.square" },
+        { "value": "portrait", "label": "t:options.image_ratio.portrait" },
+        { "value": "landscape", "label": "t:options.image_ratio.landscape" },
+        { "value": "wide", "label": "t:options.image_ratio.wide" },
+        { "value": "custom", "label": "t:options.image_ratio.custom" }
       ],
-      "default": "ratio_1_1",
-      "visible_if": "{{ block.settings.device == 'desktop' }}"
-    },
-    {
-      "type": "select",
-      "id": "width_mobile",
-      "label": "t:labels.width",
-      "options": [
-        {
-          "value": "fill",
-          "label": "t:options.width.fill"
-        },
-        {
-          "value": "custom",
-          "label": "t:options.width.custom"
-        }
-      ],
-      "default": "fill",
+      "default": "square",
       "visible_if": "{{ block.settings.device == 'mobile' }}"
     },
     {
-      "type": "range",
-      "id": "width_custom_mobile",
-      "label": "t:labels.mobile_custom_width",
-      "min": 10,
-      "max": 100,
-      "step": 1,
-      "unit": "%",
-      "default": 100,
-      "visible_if": "{{ block.settings.device == 'mobile' and block.settings.width_mobile == 'custom' }}"
+      "type": "number",
+      "id": "image_ratio_custom_width_mobile",
+      "label": "W (mobile)",
+      "default": 16,
+      "visible_if": "{{ block.settings.device == 'mobile' and block.settings.image_ratio_mobile == 'custom' }}"
     },
     {
-      "type": "checkbox",
-      "id": "limit_width_mobile",
-      "label": "t:labels.limit_width",
-      "default": false,
-      "visible_if": "{{ block.settings.device == 'mobile' }}"
-    },
-    {
-      "type": "range",
-      "id": "max_width_mobile",
-      "label": "t:labels.max_width",
-      "min": 0,
-      "max": 1600,
-      "step": 16,
-      "unit": "px",
-      "default": 1600,
-      "visible_if": "{{ block.settings.device == 'mobile' and block.settings.limit_width_mobile }}"
-    },
-    {
-      "type": "select",
-      "id": "height_mobile",
-      "label": "t:labels.height",
-      "options": [
-        {
-          "value": "fill",
-          "label": "t:options.section_height.full_screen"
-        },
-        {
-          "value": "ratio_1_1",
-          "label": "t:options.image_card_height.ratio_1_1"
-        },
-        {
-          "value": "ratio_4_5",
-          "label": "t:options.image_card_height.ratio_4_5"
-        },
-        {
-          "value": "ratio_3_2",
-          "label": "t:options.image_card_height.ratio_3_2"
-        },
-        {
-          "value": "ratio_4_3",
-          "label": "t:options.image_card_height.ratio_4_3"
-        },
-        {
-          "value": "ratio_16_9",
-          "label": "t:options.image_card_height.ratio_16_9"
-        },
-        {
-          "value": "ratio_2_3",
-          "label": "t:options.image_card_height.ratio_2_3"
-        },
-        {
-          "value": "ratio_3_4",
-          "label": "t:options.image_card_height.ratio_3_4"
-        },
-        {
-          "value": "ratio_9_16",
-          "label": "t:options.image_card_height.ratio_9_16"
-        }
-      ],
-      "default": "ratio_1_1",
-      "visible_if": "{{ block.settings.device == 'mobile' }}"
+      "type": "number",
+      "id": "image_ratio_custom_height_mobile",
+      "label": "H (mobile)",
+      "default": 9,
+      "visible_if": "{{ block.settings.device == 'mobile' and block.settings.image_ratio_mobile == 'custom' }}"
     },
     {
       "type": "header",
@@ -562,6 +434,8 @@
       "name": "t:general.banner",
       "category": "t:general.cards",
       "settings": {
+        "image_ratio_desktop": "square",
+        "image_ratio_mobile": "square",
         "position_desktop": "bottom_left",
         "position_mobile": "bottom_left",
         "padding_top": 32,

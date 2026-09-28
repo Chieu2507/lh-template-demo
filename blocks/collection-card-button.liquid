@@ -25,6 +25,14 @@
   unless collection_card_button_width_mobile == 'fit' or collection_card_button_width_mobile == 'fill'
     assign collection_card_button_width_mobile = collection_card_button_width
   endunless
+  assign collection_card_button_size_width = 'fit-content'
+  if collection_card_button_width == 'fill'
+    assign collection_card_button_size_width = '100%'
+  endif
+  assign collection_card_button_size_width_mobile = 'fit-content'
+  if collection_card_button_width_mobile == 'fill'
+    assign collection_card_button_size_width_mobile = '100%'
+  endif
 
   assign collection_card_button_icon = blank
   if block.settings.show_icon
@@ -88,7 +96,7 @@
     assign collection_card_button_padding_right_mobile = 0
   endif
 
-  assign collection_card_button_class = 'collection-card-button collection-card-button--width-' | append: collection_card_button_width
+  assign collection_card_button_class = 'collection-card-button size-style collection-card-button--width-' | append: collection_card_button_width
   assign collection_card_button_class = collection_card_button_class | append: ' collection-card-button--width-mobile-' | append: collection_card_button_width_mobile
   assign collection_card_button_should_render = false
   if collection_card_button_collection.url != blank and collection_card_button_label != blank
@@ -102,6 +110,10 @@
 %}
 
 {% capture collection_card_button_style_attribute %}
+  {% render 'size-style',
+    width: collection_card_button_size_width,
+    width_mobile: collection_card_button_size_width_mobile
+  %}
   {% if collection_card_button_padding_top != 0 %}--collection-card-button-padding-top: {{ collection_card_button_padding_top }}px;{% endif %}
   {% if collection_card_button_padding_bottom != 0 %}--collection-card-button-padding-bottom: {{ collection_card_button_padding_bottom }}px;{% endif %}
   {% if collection_card_button_padding_left != 0 %}--collection-card-button-padding-left: {{ collection_card_button_padding_left }}px;{% endif %}
@@ -138,17 +150,11 @@
 {% stylesheet %}
   .collection-card-button {
     display: block;
-    width: var(--collection-card-button-width, fit-content);
-    max-width: 100%;
     min-width: 0;
     padding-top: var(--collection-card-button-padding-top, 0px);
     padding-right: var(--collection-card-button-padding-right, 0px);
     padding-bottom: var(--collection-card-button-padding-bottom, 0px);
     padding-left: var(--collection-card-button-padding-left, 0px);
-  }
-
-  .collection-card-button--width-fill {
-    --collection-card-button-width: 100%;
   }
 
   .collection-card-button__button {
@@ -161,15 +167,10 @@
 
   @media (max-width: 767.98px) {
     .collection-card-button {
-      width: var(--collection-card-button-width-mobile, var(--collection-card-button-width, fit-content));
       padding-top: var(--collection-card-button-padding-top-mobile, var(--collection-card-button-padding-top, 0px));
       padding-right: var(--collection-card-button-padding-right-mobile, var(--collection-card-button-padding-right, 0px));
       padding-bottom: var(--collection-card-button-padding-bottom-mobile, var(--collection-card-button-padding-bottom, 0px));
       padding-left: var(--collection-card-button-padding-left-mobile, var(--collection-card-button-padding-left, 0px));
-    }
-
-    .collection-card-button--width-mobile-fill {
-      --collection-card-button-width-mobile: 100%;
     }
 
     .collection-card-button--width-mobile-fill .collection-card-button__button {

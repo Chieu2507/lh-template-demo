@@ -24,6 +24,14 @@
   unless button_width_mobile == 'fit' or button_width_mobile == 'fill'
     assign button_width_mobile = button_width
   endunless
+  assign button_size_width = 'fit-content'
+  if button_width == 'fill'
+    assign button_size_width = '100%'
+  endif
+  assign button_size_width_mobile = 'fit-content'
+  if button_width_mobile == 'fill'
+    assign button_size_width_mobile = '100%'
+  endif
 
   assign button_icon = blank
   if block.settings.show_icon
@@ -56,7 +64,7 @@
   assign padding_left_mobile = block.settings.padding_left_mobile | default: 0 | plus: 0
   assign padding_right_mobile = block.settings.padding_right_mobile | default: 0 | plus: 0
 
-  assign button_class = 'button-block button-block--width-' | append: button_width
+  assign button_class = 'button-block size-style button-block--width-' | append: button_width
   assign button_class = button_class | append: ' button-block--width-mobile-' | append: button_width_mobile
   if button_label == blank
     assign button_class = button_class | append: ' button-block--empty'
@@ -64,6 +72,10 @@
 %}
 
 {% capture button_style_attribute %}
+  {% render 'size-style',
+    width: button_size_width,
+    width_mobile: button_size_width_mobile
+  %}
   {% if padding_top != 0 %}--button-block-padding-top: {{ padding_top }}px;{% endif %}
   {% if padding_bottom != 0 %}--button-block-padding-bottom: {{ padding_bottom }}px;{% endif %}
   {% if padding_left != 0 %}--button-block-padding-left: {{ padding_left }}px;{% endif %}
@@ -102,17 +114,11 @@
 {% stylesheet %}
   .button-block {
     display: block;
-    width: var(--button-block-width, fit-content);
-    max-width: 100%;
     min-width: 0;
     padding-top: var(--button-block-padding-top, 0px);
     padding-right: var(--button-block-padding-right, 0px);
     padding-bottom: var(--button-block-padding-bottom, 0px);
     padding-left: var(--button-block-padding-left, 0px);
-  }
-
-  .button-block--width-fill {
-    --button-block-width: 100%;
   }
 
   .button-block__button {
@@ -129,15 +135,10 @@
 
   @media (max-width: 767.98px) {
     .button-block {
-      width: var(--button-block-width-mobile, var(--button-block-width, fit-content));
       padding-top: var(--button-block-padding-top-mobile, var(--button-block-padding-top, 0px));
       padding-right: var(--button-block-padding-right-mobile, var(--button-block-padding-right, 0px));
       padding-bottom: var(--button-block-padding-bottom-mobile, var(--button-block-padding-bottom, 0px));
       padding-left: var(--button-block-padding-left-mobile, var(--button-block-padding-left, 0px));
-    }
-
-    .button-block--width-mobile-fill {
-      --button-block-width-mobile: 100%;
     }
 
     .button-block--width-mobile-fill .button-block__button {

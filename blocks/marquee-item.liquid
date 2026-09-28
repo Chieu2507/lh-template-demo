@@ -105,6 +105,20 @@
       assign group_max_width_mobile = 480
     endif
   endif
+  assign group_size_max_width = blank
+  if group_width_mode == 'custom'
+    assign group_size_max_width = group_max_width | append: 'px'
+  endif
+  assign group_size_width_mobile = blank
+  assign group_size_max_width_mobile = blank
+  if block.settings.customize_mobile_size
+    assign group_size_width_mobile = group_width_mobile
+    if group_width_mobile_mode == 'custom'
+      assign group_size_max_width_mobile = group_max_width_mobile | append: 'px'
+    elsif group_width_mode == 'custom'
+      assign group_size_max_width_mobile = '100%'
+    endif
+  endif
 
   assign group_height_mode = block.settings.height | default: 'fit'
   unless group_height_mode == 'fit' or group_height_mode == 'fill'
@@ -187,7 +201,7 @@
     assign group_scheme = group_scheme | default: 'scheme-1' | handleize
   endif
 
-  assign group_class = 'marquee-item-layout marquee-item-layout--' | append: group_direction
+  assign group_class = 'marquee-item-layout size-style marquee-item-layout--' | append: group_direction
   assign group_class = group_class | append: ' marquee-item-layout--align-' | append: group_alignment
   assign group_class = group_class | append: ' marquee-item-layout--position-' | append: group_position_name
   assign group_class = group_class | append: ' marquee-item-layout--width-' | append: group_width_mode
@@ -210,16 +224,12 @@
 %}
 
 {% capture group_style %}
-  {% if group_width_mode != 'fit' %}--group-width: {{ group_width }};{% endif %}
-  {% if group_width_mode == 'custom' %}--group-max-width: {{ group_max_width }}px;{% endif %}
-  {% if block.settings.customize_mobile_size %}
-    {% if group_width_mobile != group_width %}--group-width-mobile: {{ group_width_mobile }};{% endif %}
-    {% if group_width_mobile_mode == 'custom' %}
-      {% if group_width_mode != 'custom' or group_max_width_mobile != group_max_width %}--group-max-width-mobile: {{ group_max_width_mobile }}px;{% endif %}
-    {% elsif group_width_mode == 'custom' %}
-      --group-max-width-mobile: 100%;
-    {% endif %}
-  {% endif %}
+  {% render 'size-style',
+    width: group_width,
+    max_width: group_size_max_width,
+    width_mobile: group_size_width_mobile,
+    max_width_mobile: group_size_max_width_mobile
+  %}
   {% if group_justify == 'space-between' %}--group-justify: {{ group_justify }};{% endif %}
   {% if group_vertical_on_mobile and group_alignment_mobile != group_alignment %}--group-align-mobile: {{ group_alignment_mobile }};{% endif %}
   {% if group_vertical_on_mobile and group_justify_mobile != group_justify %}--group-justify-mobile: {{ group_justify_mobile }};{% endif %}
@@ -256,10 +266,6 @@
 {% stylesheet %}
   .marquee-item-layout {
     /* Keep layout overrides local when groups are nested inside other groups. */
-    --group-width: initial;
-    --group-max-width: initial;
-    --group-width-mobile: initial;
-    --group-max-width-mobile: initial;
     --group-height: initial;
     --group-gap-desktop: initial;
     --group-gap-mobile: initial;
@@ -289,8 +295,6 @@
     align-items: var(--group-align);
     justify-content: var(--group-position);
     gap: var(--group-gap-desktop, 16px);
-    width: var(--group-width, fit-content);
-    max-width: var(--group-max-width, 100%);
     height: var(--group-height, fit-content);
     min-width: 0;
     padding-top: var(--group-padding-top, 0px);
@@ -416,8 +420,6 @@
   @media (max-width: 767.98px) {
     .marquee-item-layout {
       --flex-align: var(--group-align-mobile, var(--group-align));
-      width: var(--group-width-mobile, var(--group-width, fit-content));
-      max-width: var(--group-max-width-mobile, var(--group-max-width, 100%));
       gap: var(--group-gap-mobile, 12px);
       padding-top: var(--group-padding-top-mobile, var(--group-padding-top, 0px));
       padding-right: var(--group-padding-right-mobile, var(--group-padding-right, 0px));
