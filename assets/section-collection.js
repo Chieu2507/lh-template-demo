@@ -826,7 +826,7 @@ if (!customElements.get('collection-facets')) {
             this.backdropInteraction.panel = this.filterPanel;
             this.backdropInteraction.pointer = this.backdropPointer;
           }
-          this.initializeSidebarSticky();
+          this.updateSidebarSticky();
           nextProducts.dispatchEvent(new CustomEvent('collection:products-loaded', { bubbles: true }));
 
           window.requestAnimationFrame(() => {
