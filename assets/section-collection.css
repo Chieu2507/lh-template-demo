@@ -1258,6 +1258,7 @@
 .main-collection--blocks .main-collection__product-count,.main-collection--blocks .main-collection__sort-form{display:none}
 .main-collection--blocks .collection-columns{grid-column:2;justify-self:end}.collection-columns__mobile{display:block}.collection-columns__desktop{display:none}
 .main-collection--blocks .main-collection__filter-button{justify-self:start}
+.main-collection--blocks .main-collection__filter-button .btn__icon{display:inline-flex}
 .main-collection--blocks .main-collection__promotion{grid-column:span min(var(--promo-span-mobile,2),var(--main-collection-columns-mobile,2))}
 .main-collection--blocks .main-collection__promotion-card{min-height:220px}
 .main-collection--blocks .main-collection__promotion-content{padding:var(--promo-padding-top-mobile,24px) var(--promo-padding-right-mobile,16px) var(--promo-padding-bottom-mobile,24px) var(--promo-padding-left-mobile,16px)}

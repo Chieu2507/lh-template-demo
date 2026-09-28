@@ -20,10 +20,7 @@
  if active_filter_count > 0
   assign filter_button_label = filter_button_label | append: ' (' | append: active_filter_count | append: ')'
  endif
- assign filter_button_icon = blank
- if block.settings.desktop_layout == 'sidebar' and block.settings.sidebar_visibility != 'always'
-  assign filter_button_icon = block.settings.filter_icon | default: 'sliders'
- endif
+ assign filter_button_icon = block.settings.filter_icon | default: 'sliders'
 %}
 <div class="collection-filter-block" {{ block.shopify_attributes }}>
 {% if collection.filters.size > 0 %}
