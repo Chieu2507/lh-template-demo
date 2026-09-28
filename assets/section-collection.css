@@ -399,19 +399,52 @@
     min-height: 88px;
     align-items: center;
     justify-content: center;
-    gap: 6px;
+    gap: 8px;
     padding-block: var(--pagination-padding-top, 40px) var(--pagination-padding-bottom, 0px);
   }
 
-  .main-collection__pagination a,
-  .main-collection__pagination span {
-    display: grid;
-    min-width: 32px;
-    height: 32px;
-    place-items: center;
+  .main-collection__pagination :where(.page, .deco, .prev, .next) {
+    display: inline-flex;
+    min-width: 24px;
+    height: 44px;
+    align-items: center;
+    justify-content: center;
     color: var(--color-text);
     font-size: var(--label-size);
+  }
+
+  .main-collection__pagination :where(.page, .prev, .next) a {
+    display: inline-flex;
+    min-width: 24px;
+    height: 44px;
+    align-items: center;
+    justify-content: center;
+    color: inherit;
     text-decoration: none;
+  }
+
+  .main-collection__pagination .page a {
+    padding-inline: 4px;
+  }
+
+  .main-collection__pagination .page.current {
+    width: 44px;
+    min-width: 44px;
+    background: var(--color-heading);
+    color: var(--color-background);
+  }
+
+  .main-collection__pagination :where(.prev, .next) a {
+    gap: 8px;
+    padding-inline: 12px;
+    text-transform: uppercase;
+  }
+
+  .main-collection__pagination [data-collection-load-more] {
+    display: inline-flex;
+    min-height: 44px;
+    place-items: center;
+    align-items: center;
   }
 
   .main-collection__pagination .is-current {
@@ -424,7 +457,18 @@
     color: var(--button-secondary-text);
   }
 
+  .main-collection__pagination[data-style='secondary'] .page.current {
+    background: var(--button-secondary-background);
+    color: var(--button-secondary-text);
+  }
+
   .main-collection__pagination[data-style='outline'] .is-current {
+    border: 1px solid currentColor;
+    background: transparent;
+    color: var(--color-text);
+  }
+
+  .main-collection__pagination[data-style='outline'] .page.current {
     border: 1px solid currentColor;
     background: transparent;
     color: var(--color-text);
@@ -437,6 +481,12 @@
   }
 
   .main-collection__pagination[data-style='text'] .is-current {
+    background: transparent;
+    color: var(--color-text);
+    text-decoration: underline;
+  }
+
+  .main-collection__pagination[data-style='text'] .page.current {
     background: transparent;
     color: var(--color-text);
     text-decoration: underline;
