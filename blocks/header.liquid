@@ -186,6 +186,10 @@
     min-width: 0;
   }
 
+  .block-header > :is(.heading-block, .text-block, .eyebrow-block) {
+    text-align: var(--header-text-align, var(--text-align-default, inherit));
+  }
+
   @media (max-width: 767.98px) {
     .block-header {
       width: var(--header-width-mobile, var(--header-width, fit-content));
@@ -195,6 +199,10 @@
       padding-right: var(--header-padding-right-mobile, var(--header-padding-right, 0px));
       padding-bottom: var(--header-padding-bottom-mobile, var(--header-padding-bottom, 0px));
       padding-left: var(--header-padding-left-mobile, var(--header-padding-left, 0px));
+    }
+
+    .block-header > :is(.heading-block, .text-block, .eyebrow-block) {
+      text-align: var(--header-text-align-mobile, var(--header-text-align, var(--text-align-default, inherit)));
     }
   }
 {% endstylesheet %}
@@ -277,9 +285,14 @@
       "default": false
     },
     {
-      "type": "text_alignment",
+      "type": "select",
       "id": "alignment",
       "label": "t:labels.alignment",
+      "options": [
+        { "value": "left", "label": "t:options.alignment.left" },
+        { "value": "center", "label": "t:options.alignment.center" },
+        { "value": "right", "label": "t:options.alignment.right" }
+      ],
       "default": "left",
       "visible_if": "{{ block.settings.inherit_alignment == false }}"
     },
@@ -291,9 +304,14 @@
       "visible_if": "{{ block.settings.inherit_alignment == false }}"
     },
     {
-      "type": "text_alignment",
+      "type": "select",
       "id": "alignment_mobile",
       "label": "t:labels.mobile_alignment",
+      "options": [
+        { "value": "left", "label": "t:options.alignment.left" },
+        { "value": "center", "label": "t:options.alignment.center" },
+        { "value": "right", "label": "t:options.alignment.right" }
+      ],
       "default": "left",
       "visible_if": "{{ block.settings.customize_mobile_alignment and block.settings.inherit_alignment == false }}"
     },
