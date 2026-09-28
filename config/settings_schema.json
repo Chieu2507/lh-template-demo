@@ -89,25 +89,25 @@
             "type": "color",
             "id": "accent",
             "label": "t:labels.accent_color",
-            "default": "#1C1B1A"
+            "default": "#111111"
           },
           {
             "type": "color",
             "id": "border",
             "label": "t:labels.border_color",
-            "default": "#D7D0C8"
+            "default": "#D8D8D8"
           },
           {
             "type": "color",
             "id": "shadow",
             "label": "t:labels.shadow_color",
-            "default": "#1C1B1A"
+            "default": "#111111"
           },
           {
             "type": "color",
             "id": "sale_price",
             "label": "t:labels.sale_price_color",
-            "default": "#9A3D32"
+            "default": "#D82727"
           },
           {
             "type": "header",
@@ -135,19 +135,20 @@
             "type": "color",
             "id": "button_primary_hover_background",
             "label": "t:labels.hover_background",
-            "info": "t:info.clear_for_transparent"
+            "info": "t:info.clear_for_transparent",
+            "default": "#000000"
           },
           {
             "type": "color",
             "id": "button_primary_hover_text",
             "label": "t:labels.hover_text",
-            "default": "#1C1B1A"
+            "default": "#FFFFFF"
           },
           {
             "type": "color",
             "id": "button_primary_hover_border",
             "label": "t:labels.hover_border",
-            "default": "#1C1B1A"
+            "default": "#000000"
           },
           {
             "type": "header",
@@ -175,19 +176,20 @@
             "type": "color",
             "id": "button_secondary_hover_background",
             "label": "t:labels.hover_background",
-            "info": "t:info.clear_for_transparent"
+            "info": "t:info.clear_for_transparent",
+            "default": "#D8D8D8"
           },
           {
             "type": "color",
             "id": "button_secondary_hover_text",
             "label": "t:labels.hover_text",
-            "default": "#1C1B1A"
+            "default": "#111111"
           },
           {
             "type": "color",
             "id": "button_secondary_hover_border",
             "label": "t:labels.hover_border",
-            "default": "#1C1B1A"
+            "default": "#D8D8D8"
           },
           {
             "type": "header",
@@ -197,13 +199,13 @@
             "type": "color",
             "id": "button_tertiary_text",
             "label": "t:labels.button_label",
-            "default": "#1C1B1A"
+            "default": "#111111"
           },
           {
             "type": "color",
             "id": "button_tertiary_hover_text",
             "label": "t:labels.hover_text",
-            "default": "#1C1B1A"
+            "default": "#333333"
           }
         ],
         "role": {
@@ -698,7 +700,7 @@
           { "value": "original", "label": "t:options.text_case.original" },
           { "value": "uppercase", "label": "t:options.text_case.uppercase" }
         ],
-        "default": "uppercase"
+        "default": "original"
       }
     ]
   },
