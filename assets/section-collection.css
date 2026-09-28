@@ -1425,6 +1425,7 @@
 }
 
 .main-collection--blocks .main-collection__filter-dialog.is-sidebar .main-collection__active-filters {
+  margin-block-end: 16px;
   padding-inline: 0;
 }
 
