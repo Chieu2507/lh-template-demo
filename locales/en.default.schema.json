@@ -299,7 +299,9 @@
     "enable_image_zoom_on_hover": "Enable image zoom on hover",
     "enable_block_animations": "Enable block animations",
     "font_size_desktop": "Font size (desktop)",
+    "font_size_tablet": "Font size (tablet)",
     "font_size_mobile": "Font size (mobile)",
+    "button_font_size_tablet_mobile": "Button font size (tablet and mobile)",
     "title_size": "Title size",
     "backdrop_blur": "Backdrop blur",
     "line_height": "Line height",
@@ -1038,7 +1040,9 @@
     "button_font_size": {
       "10": "10px",
       "12": "12px",
+      "13": "13px",
       "14": "14px",
+      "15": "15px",
       "16": "16px"
     },
     "button_font": {
@@ -1056,6 +1060,7 @@
       "normal": "Normal",
       "relaxed": "Relaxed",
       "loose": "Loose",
+      "reference": "1.2px",
       "extra_loose": "Extra loose"
     },
     "product_card_style": {
