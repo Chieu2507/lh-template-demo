@@ -1,3 +1,86 @@
+class ProductStickyLayout extends HTMLElement {
+  connectedCallback() {
+    if (this.abortController) return;
+    this.abortController = new AbortController();
+    this.columns = new Map();
+    this.scrollY = window.scrollY;
+    this.desktop = window.matchMedia('(min-width: 768px)');
+    this.schedule = () => {
+      if (this.frame) return;
+      this.frame = requestAnimationFrame(() => {
+        this.frame = 0;
+        this.update();
+      });
+    };
+    const options = { passive: true, signal: this.abortController.signal };
+    window.addEventListener('scroll', this.schedule, options);
+    window.addEventListener('resize', this.schedule, options);
+    this.resizeObserver = new ResizeObserver(this.schedule);
+    this.resizeObserver.observe(this);
+    this.contentObserver = new MutationObserver(() => this.observeColumns());
+    this.contentObserver.observe(this, { childList: true });
+    // Header changes and Theme Editor reloads can change the shared offset.
+    this.headerObserver = new MutationObserver(this.schedule);
+    this.headerObserver.observe(document.documentElement, { attributes: true, attributeFilter: ['style'] });
+    this.observeColumns();
+  }
+
+  observeColumns() {
+    for (const column of this.columns.keys()) {
+      if (column.parentElement === this) continue;
+      this.resizeObserver.unobserve(column);
+      this.resetColumn(column);
+      this.columns.delete(column);
+    }
+    for (const column of this.querySelectorAll(':scope > .product-media-gallery, :scope > .product-details')) {
+      if (this.columns.has(column)) continue;
+      this.columns.set(column, null);
+      this.resizeObserver.observe(column);
+    }
+    this.schedule();
+  }
+
+  resetColumn(column) {
+    column.style.removeProperty('--product-sticky-top');
+    column.removeAttribute('data-sticky-state');
+  }
+
+  update() {
+    if (!this.isConnected) return;
+    const delta = window.scrollY - this.scrollY;
+    this.scrollY = window.scrollY;
+    const enabled = this.desktop.matches && this.hasAttribute('data-sticky-enabled');
+    // header.js removes this variable when the header is not sticky.
+    const headerHeight = parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--header-height')) || 0;
+    const top = headerHeight + 16;
+    for (const [column, previousTop] of this.columns) {
+      if (!enabled) {
+        this.resetColumn(column);
+        this.columns.set(column, null);
+        continue;
+      }
+      const bottom = Math.min(top, window.innerHeight - column.offsetHeight - 16);
+      const inset = Math.max(bottom, Math.min(top, (previousTop ?? top) - delta));
+      this.columns.set(column, inset);
+      column.style.setProperty('--product-sticky-top', `${inset}px`);
+      column.dataset.stickyState = inset === top ? 'top' : inset === bottom ? 'bottom' : 'scrolling';
+    }
+  }
+
+  disconnectedCallback() {
+    this.abortController?.abort();
+    this.abortController = null;
+    this.resizeObserver?.disconnect();
+    this.contentObserver?.disconnect();
+    this.headerObserver?.disconnect();
+    cancelAnimationFrame(this.frame);
+    this.frame = 0;
+    this.columns?.forEach((_, column) => this.resetColumn(column));
+  }
+}
+
+if (!customElements.get('product-sticky-layout')) customElements.define('product-sticky-layout', ProductStickyLayout);
+
 class PdpDrawerElement extends HTMLElement {
   connectedCallback() {
     if (this.abortController) return;
