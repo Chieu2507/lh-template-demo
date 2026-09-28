@@ -573,8 +573,10 @@
   align-items: start;
 }
 
-.product-details--limit-width {
-  max-width: var(--product-details-max-width, 500px);
+@media (min-width: 768px) {
+  .product-details--limit-width {
+    max-width: var(--product-details-max-width, 500px);
+  }
 }
 
 .product-details--align-center {
