@@ -1461,7 +1461,6 @@ legend {
   .product-card:focus-within .product-card__secondary-image > img {
     transform: scale(var(--product-card-image-zoom, var(--motion-image-zoom)));
   }
-
 }
 
 .product-card__quick-add {
