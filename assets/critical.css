@@ -1444,7 +1444,7 @@ legend {
 @media (hover: hover) and (pointer: fine) {
   .product-card:hover .product-card__image > img,
   .product-card:focus-within .product-card__image > img {
-    transform: scale(var(--motion-image-zoom));
+    transform: scale(var(--product-card-image-zoom, var(--motion-image-zoom)));
   }
 
   .product-card:hover .product-card__image-link--has-secondary .product-card__image,
@@ -1459,13 +1459,13 @@ legend {
 
   .product-card:hover .product-card__secondary-image > img,
   .product-card:focus-within .product-card__secondary-image > img {
-    transform: scale(var(--motion-image-zoom));
+    transform: scale(var(--product-card-image-zoom, var(--motion-image-zoom)));
   }
 }
 
 .product-card__image-link:focus-visible .product-card__image > img,
 .product-card__image-link:focus-visible .product-card__secondary-image > img {
-  transform: scale(var(--motion-image-zoom));
+  transform: scale(var(--product-card-image-zoom, var(--motion-image-zoom)));
 }
 
 .product-card__image-link--has-secondary:focus-visible .product-card__image {
@@ -2216,6 +2216,7 @@ legend {
   :root {
     --motion-distance-hover: 0px;
     --motion-image-zoom: 1;
+    --product-card-image-zoom: 1;
     --motion-block-animation: none;
   }
 
