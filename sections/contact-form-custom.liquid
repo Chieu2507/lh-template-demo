@@ -37,7 +37,6 @@
   assign padding_bottom_mobile = section.settings.padding_bottom_mobile | default: 0 | plus: 0
   assign contact_form_custom_gap_desktop = section.settings.gap_desktop | default: 80 | plus: 0
   assign contact_form_custom_gap_mobile = section.settings.gap_mobile | default: 40 | plus: 0
-  assign contact_form_custom_overlay_opacity = section.settings.background_overlay_opacity | default: 0 | plus: 0
   assign contact_form_custom_background_type = section.settings.background_type | default: 'color'
   assign contact_form_custom_has_background_image = false
   if section.settings.background_image != blank or section.settings.background_image_mobile != blank
@@ -49,9 +48,6 @@
   endif
   if contact_form_custom_gap_mobile < 0 or contact_form_custom_gap_mobile > 100
     assign contact_form_custom_gap_mobile = 40
-  endif
-  if contact_form_custom_overlay_opacity < 0 or contact_form_custom_overlay_opacity > 100
-    assign contact_form_custom_overlay_opacity = 0
   endif
 
   assign contact_form_custom_width = 'page-width'
@@ -75,7 +71,6 @@
   --contact-form-custom-align-items: {{ contact_form_custom_align_items }};
   {% if contact_form_custom_background_type == 'color' and section.settings.background_color != blank %}--contact-form-custom-background-color: {{ section.settings.background_color | escape }};{% endif %}
   {% if contact_form_custom_background_type == 'image' and section.settings.background_overlay_color != blank %}--contact-form-custom-overlay-color: {{ section.settings.background_overlay_color | escape }};{% endif %}
-  {% if contact_form_custom_background_type == 'image' and contact_form_custom_overlay_opacity != 0 %}--contact-form-custom-overlay-opacity: {{ contact_form_custom_overlay_opacity }}%;{% endif %}
   {% if padding_top != 0 %}--contact-form-custom-padding-top: {{ padding_top }}px;{% endif %}
   {% if padding_bottom != 0 %}--contact-form-custom-padding-bottom: {{ padding_bottom }}px;{% endif %}
   --contact-form-custom-gap-desktop: {{ contact_form_custom_gap_desktop }}px;
@@ -104,7 +99,7 @@
         {% endif %}
       </div>
     {% endif %}
-    {% if contact_form_custom_background_type == 'image' and contact_form_custom_overlay_opacity > 0 %}
+    {% if contact_form_custom_background_type == 'image' and section.settings.background_overlay_color != blank %}
       <div class="contact-form-custom__overlay" aria-hidden="true"></div>
     {% endif %}
 
@@ -160,7 +155,6 @@
     inset: 0;
     z-index: 1;
     background: var(--contact-form-custom-overlay-color, #000);
-    opacity: var(--contact-form-custom-overlay-opacity, 0);
     pointer-events: none;
   }
   .contact-form-custom__grid {
@@ -394,18 +388,7 @@
       "id": "background_overlay_color",
       "label": "t:labels.overlay_color",
       "alpha": true,
-      "default": "#000000",
-      "visible_if": "{{ section.settings.background_type == 'image' }}"
-    },
-    {
-      "type": "range",
-      "id": "background_overlay_opacity",
-      "label": "t:labels.overlay_opacity",
-      "min": 0,
-      "max": 100,
-      "step": 1,
-      "unit": "%",
-      "default": 0,
+      "default": "#00000000",
       "visible_if": "{{ section.settings.background_type == 'image' }}"
     },
     {

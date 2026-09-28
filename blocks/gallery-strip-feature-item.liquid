@@ -8,14 +8,10 @@
   unless show_overlay == 'always' or show_overlay == 'hover'
     assign show_overlay = 'always'
   endunless
-  assign overlay_background = block.settings.overlay_background | default: '#000000'
-  assign overlay_opacity = block.settings.overlay_opacity | default: 38 | plus: 0
-  if overlay_opacity < 0 or overlay_opacity > 100
-    assign overlay_opacity = 38
-  endif
+  assign overlay_background = block.settings.overlay_background | default: '#00000061'
 %}
 
-<div class="gallery-strip-item gallery-strip-feature-item gallery-strip-feature-item--overlay-{{ show_overlay }}" style="--gallery-strip-feature-overlay-background: {{ overlay_background | escape }}; --gallery-strip-feature-overlay-opacity: {{ overlay_opacity | divided_by: 100.0 }};" {{ block.shopify_attributes }}>
+<div class="gallery-strip-item gallery-strip-feature-item gallery-strip-feature-item--overlay-{{ show_overlay }}" style="--gallery-strip-feature-overlay-background: {{ overlay_background | escape }}; --gallery-strip-feature-overlay-opacity: 1;" {{ block.shopify_attributes }}>
   {% render 'image',
     image: image,
     mobile_image: mobile_image,
@@ -88,8 +84,13 @@
     { "type": "checkbox", "id": "open_in_new_tab", "label": "Open link in new tab", "default": false },
     { "type": "header", "content": "Overlay" },
     { "type": "select", "id": "show_overlay", "label": "Show overlay", "options": [{ "value": "always", "label": "Always" }, { "value": "hover", "label": "On hover" }], "default": "always" },
-    { "type": "color", "id": "overlay_background", "label": "Overlay background", "default": "#000000" },
-    { "type": "range", "id": "overlay_opacity", "label": "Overlay opacity", "min": 0, "max": 100, "step": 1, "unit": "%", "default": 38 }
+    {
+      "type": "color",
+      "id": "overlay_background",
+      "label": "Overlay background",
+      "alpha": true,
+      "default": "#00000061"
+    }
   ],
   "presets": [{ "name": "Strip feature", "blocks": [{ "type": "gallery-strip-overlay-group", "id": "overlay-content", "static": true }] }]
 }

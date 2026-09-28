@@ -299,7 +299,9 @@
     "enable_image_zoom_on_hover": "Enable image zoom on hover",
     "enable_block_animations": "Enable block animations",
     "font_size_desktop": "Font size (desktop)",
+    "font_size_tablet": "Font size (tablet)",
     "font_size_mobile": "Font size (mobile)",
+    "button_font_size_tablet_mobile": "Button font size (tablet and mobile)",
     "title_size": "Title size",
     "backdrop_blur": "Backdrop blur",
     "line_height": "Line height",
@@ -1038,7 +1040,9 @@
     "button_font_size": {
       "10": "10px",
       "12": "12px",
+      "13": "13px",
       "14": "14px",
+      "15": "15px",
       "16": "16px"
     },
     "button_font": {
@@ -1056,6 +1060,7 @@
       "normal": "Normal",
       "relaxed": "Relaxed",
       "loose": "Loose",
+      "reference": "1.2px",
       "extra_loose": "Extra loose"
     },
     "product_card_style": {
@@ -1343,6 +1348,7 @@
     }
   },
   "info": {
+    "collection_filter_search_discovery": "Customize filters with the [Search & Discovery app](https://admin.shopify.com/store/spinel-theme/apps/search-and-discovery).",
     "hotspot_gallery_sticky_header": "Keeps the header in view while scrolling through the gallery on tablet and desktop.",
     "mobile_image_optional": "Optional",
     "editor_title": "Used to identify this slide in the Theme Editor.",
@@ -1371,7 +1377,7 @@
     "product_badges_theme_settings": "Configure badge appearance and rules in [theme settings](/editor?context=theme&category=badges).",
     "product_badges_manual_rules": "Configured badges use collection matches and product tags beginning with badge: (for example, badge:Limited edition).",
     "variant_picker_theme_settings": "Edit variant picker styles in [theme settings](/editor?context=theme&category=variant%20pickers).",
-    "product_buy_buttons_theme_settings": "Price display follows [price settings](/editor?context=theme&category=prices); availability alerts follow [add-to-cart settings](/editor?context=theme&category=add%20to%20cart%20button).",
+    "product_buy_buttons_theme_settings": "Availability alerts follow [add-to-cart settings](/editor?context=theme&category=add%20to%20cart%20button).",
     "product_quantity_default_style": "Edit input field styles in [theme settings](/editor?context=theme&category=input%20fields).",
     "product_add_to_cart_shared_style": "Edit primary and secondary button styles in [theme settings](/editor?context=theme&category=buttons).",
     "accelerated_checkout": "Shopify displays the payment methods enabled for this store.",

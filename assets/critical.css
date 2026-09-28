@@ -34,7 +34,7 @@ html:has(dialog[scroll-lock][open], .component-overlay[scroll-lock]:not([hidden]
   overflow: clip;
 }
 
-@media (min-width: 768px) {
+@media (min-width: 992px) {
   /* Mega menus use native details state rather than a dialog, so they need the
    * same document scroll lock while their desktop panel is open. */
   html:has(.header-menu__details--mega[open]) {
@@ -923,6 +923,15 @@ input[type='submit'].btn.btn--tertiary:hover {
   padding-inline: 0;
 }
 
+@media (min-width: 768px) and (max-width: 1149.98px) {
+  .btn,
+  button.btn,
+  input.btn,
+  input[type='submit'].btn {
+    font-size: var(--button-font-size-mobile);
+  }
+}
+
 .swiper-nav-button,
 .btn.swiper-nav-button {
   display: inline-flex;
@@ -1149,6 +1158,8 @@ legend {
 .product-card {
   --product-card-action-duration: var(--motion-duration-standard);
   --product-card-action-ease: var(--motion-ease-standard);
+  --product-card-image-hover-duration: 500ms;
+  --product-card-image-hover-ease: cubic-bezier(0.2, 0.75, 0.5, 1);
   display: grid;
   gap: 0;
   min-width: 0;
@@ -1315,12 +1326,16 @@ legend {
 }
 
 .product-card__media .product-card__image > img {
-  transition: transform var(--product-card-action-duration) var(--product-card-action-ease);
+  transition: transform var(--product-card-image-hover-duration) var(--product-card-image-hover-ease);
 }
 
 .product-card__image {
   position: relative;
   z-index: 0;
+}
+
+.product-card__image-link--has-secondary .product-card__image {
+  transition: opacity var(--product-card-image-hover-duration) var(--product-card-image-hover-ease);
 }
 
 .product-card__image > img,
@@ -1385,7 +1400,11 @@ legend {
   max-width: none;
   opacity: 0;
   pointer-events: none;
-  transition: opacity var(--product-card-action-duration) var(--product-card-action-ease);
+  transition: opacity var(--product-card-image-hover-duration) var(--product-card-image-hover-ease);
+}
+
+.product-card__media .product-card__secondary-image > img {
+  transition: transform var(--product-card-image-hover-duration) var(--product-card-image-hover-ease);
 }
 
 .product-card__action {
@@ -1422,15 +1441,25 @@ legend {
   height: auto;
 }
 
-@media (hover: hover) and (pointer: fine) {
+@media (min-width: 768px) and (hover: hover) and (pointer: fine) {
   .product-card:hover .product-card__image > img,
   .product-card:focus-within .product-card__image > img {
-    transform: scale(var(--motion-image-zoom));
+    transform: scale(var(--product-card-image-zoom, var(--motion-image-zoom)));
+  }
+
+  .product-card:hover .product-card__image-link--has-secondary .product-card__image,
+  .product-card:focus-within .product-card__image-link--has-secondary .product-card__image {
+    opacity: 0;
   }
 
   .product-card:hover .product-card__secondary-image,
   .product-card:focus-within .product-card__secondary-image {
     opacity: var(--pcard-show-secondary-image);
+  }
+
+  .product-card:hover .product-card__secondary-image > img,
+  .product-card:focus-within .product-card__secondary-image > img {
+    transform: scale(var(--product-card-image-zoom, var(--motion-image-zoom)));
   }
 }
 
@@ -1455,6 +1484,12 @@ legend {
   max-width: 100%;
 }
 
+@media (min-width: 768px) {
+  .product-card__quick-add-button--text .btn__icon {
+    display: none;
+  }
+}
+
 .product-card__quick-view {
   position: absolute;
   top: 0.75rem;
@@ -1467,7 +1502,7 @@ legend {
   max-width: 100%;
 }
 
-@media (hover: hover) and (pointer: fine) {
+@media (min-width: 768px) and (hover: hover) and (pointer: fine) {
   .product-card__media .product-card__action {
     opacity: 0;
     pointer-events: none;
@@ -1586,6 +1621,7 @@ legend {
 
 .product-card__swatch-link {
   display: inline-flex;
+  position: relative;
   align-items: center;
   justify-content: center;
   line-height: 0;
@@ -1594,6 +1630,38 @@ legend {
 
 .product-card__swatch {
   width: var(--swatch-width);
+  transition: transform var(--product-card-action-duration) var(--product-card-action-ease), box-shadow var(--product-card-action-duration) var(--product-card-action-ease);
+}
+
+.product-card__swatch-link--selected .product-card__swatch {
+  animation: product-card-swatch-select var(--product-card-action-duration) var(--product-card-action-ease);
+}
+
+@keyframes product-card-swatch-select {
+  0% {
+    box-shadow: 0 0 0 0 color-mix(in srgb, var(--accent-color) 40%, transparent);
+    transform: scale(0.82);
+  }
+
+  65% {
+    box-shadow: 0 0 0 0.3rem color-mix(in srgb, var(--accent-color) 0%, transparent);
+    transform: scale(1.08);
+  }
+
+  100% {
+    box-shadow: 0 0 0 0 color-mix(in srgb, var(--accent-color) 0%, transparent);
+    transform: scale(1);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .product-card__swatch {
+    transition: none;
+  }
+
+  .product-card__swatch-link--selected .product-card__swatch {
+    animation: none;
+  }
 }
 
 .swatch__image {
@@ -2103,6 +2171,7 @@ legend {
   input[type='submit'].btn {
     min-height: var(--button-height-mobile);
     padding-inline: var(--button-padding-inline-mobile);
+    font-size: var(--button-font-size-mobile);
   }
 
   .btn.btn-tertiary,
@@ -2167,12 +2236,41 @@ legend {
   .product-card:not(.product-card--quick-view-mobile) .product-card__quick-view {
     display: none;
   }
+
+  .product-card--quick-add-mobile .product-card__quick-add {
+    right: 12px;
+    bottom: 12px;
+    left: auto;
+    width: 36px;
+    opacity: 1;
+    pointer-events: auto;
+    transform: none;
+  }
+
+  .product-card--quick-add-mobile .product-card__quick-add .product-card__quick-add-button {
+    --button-border-width: 1px;
+    --button-border: var(--color-border);
+    --button-background: var(--color-background);
+    --button-foreground: var(--color-foreground);
+    --button-radius: 0;
+    --button-icon-size: 18px;
+    width: 36px;
+    min-width: 36px;
+    height: 36px;
+    min-height: 36px;
+    padding: 0;
+  }
+
+  .product-card--quick-add-mobile .product-card__quick-add-button--text .btn__text {
+    display: none;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
   :root {
     --motion-distance-hover: 0px;
     --motion-image-zoom: 1;
+    --product-card-image-zoom: 1;
     --motion-block-animation: none;
   }
 

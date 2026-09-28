@@ -68,7 +68,7 @@
   assign animation_type = block.settings.animation_type | default: 'none'
   assign submit_icon = blank
   if block.settings.show_icon
-    assign submit_icon = 'arrow'
+    assign submit_icon = block.settings.icon | default: 'arrow_right'
   endif
 %}
 
@@ -127,7 +127,7 @@
       %}
     </div>
     <div class="contact-form-block__submit">
-      {% render 'theme-button', label: submit_label, type: 'submit', variant: button_style, icon: submit_icon, class: 'contact-form-block__button' %}
+      {% render 'theme-button', label: submit_label, type: 'submit', variant: button_style, icon: submit_icon, icon_position: block.settings.icon_position, class: 'contact-form-block__button' %}
     </div>
   {% endform %}
 </div>
@@ -235,6 +235,76 @@
       { "value": "tertiary", "label": "t:options.button_variant.tertiary" }
     ], "default": "primary" },
     { "type": "checkbox", "id": "show_icon", "label": "t:labels.show_icon", "default": false },
+{
+  "type": "select",
+  "id": "icon",
+  "label": "t:labels.icon",
+  "options": [
+    {
+      "value": "arrow_right",
+      "label": "Arrow right"
+    },
+    {
+      "value": "long_arrow_right",
+      "label": "Long arrow right"
+    },
+    {
+      "value": "chevron_right",
+      "label": "Chevron"
+    },
+    {
+      "value": "arrow_up_right",
+      "label": "Arrow up right"
+    },
+    {
+      "value": "circle_arrow",
+      "label": "Circle arrow"
+    },
+    {
+      "value": "circle_chevron",
+      "label": "Circle chevron"
+    },
+    {
+      "value": "long_arrow_up",
+      "label": "Long arrow up"
+    },
+    {
+      "value": "double_chevron",
+      "label": "Double chevron"
+    },
+    {
+      "value": "arrow_outline",
+      "label": "Arrow outline"
+    },
+    {
+      "value": "square_chevron",
+      "label": "Square chevron"
+    },
+    {
+      "value": "plus",
+      "label": "Plus"
+    }
+  ],
+  "default": "arrow_right",
+  "visible_if": "{{ block.settings.show_icon }}"
+},
+{
+  "type": "select",
+  "id": "icon_position",
+  "label": "t:labels.icon_position",
+  "options": [
+    {
+      "value": "before",
+      "label": "Left"
+    },
+    {
+      "value": "after",
+      "label": "Right"
+    }
+  ],
+  "default": "after",
+  "visible_if": "{{ block.settings.show_icon }}"
+},
     { "type": "header", "content": "t:general.size" },
     { "type": "select", "id": "width_desktop", "label": "t:labels.desktop_width", "options": [
       { "value": "fit", "label": "t:options.width.fit" }, { "value": "fill", "label": "t:options.width.fill" }, { "value": "custom", "label": "t:options.width.custom" }

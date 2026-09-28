@@ -57,9 +57,6 @@
   endif
 
   assign view_all_button_icon_name = icon | default: 'arrow'
-  unless view_all_button_icon_name == 'arrow' or view_all_button_icon_name == 'arrow-right' or view_all_button_icon_name == 'cart' or view_all_button_icon_name == 'shopping-bag'
-    assign view_all_button_icon_name = 'arrow'
-  endunless
 
   assign view_all_button_icon = blank
   if show_icon == true or show_icon == 'true'
