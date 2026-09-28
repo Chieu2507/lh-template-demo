@@ -306,7 +306,13 @@ if (!customElements.get('collection-facets')) {
         event.preventDefault();
         this.closeDialog();
       };
-      this.onDialogClose = () => this.hideBackdropPointer();
+      this.onDialogClose = () => {
+        this.hideBackdropPointer();
+        if (this.scrollAfterDialogClose) {
+          this.scrollAfterDialogClose = false;
+          this.scrollToCollectionTop();
+        }
+      };
 
       this.sheetGesture = this.dialog && window.ThemeOverlay?.SheetGesture
         ? new window.ThemeOverlay.SheetGesture({
@@ -455,6 +461,7 @@ if (!customElements.get('collection-facets')) {
       this.sidebarResizeObserver?.disconnect();
       this.sidebarMutationObserver?.disconnect();
       cancelAnimationFrame(this.sidebarFrame);
+      cancelAnimationFrame(this.collectionScrollFrame);
       this.sidebarPositioner?.style.removeProperty('--collection-sidebar-top');
       this.sidebarPositioner?.removeAttribute('data-sticky-state');
       this.querySelectorAll('.main-collection__filter-values').forEach(list => {
@@ -694,6 +701,32 @@ if (!customElements.get('collection-facets')) {
       });
     }
 
+    scrollToCollectionTop() {
+      cancelAnimationFrame(this.collectionScrollFrame);
+      this.collectionScrollFrame = requestAnimationFrame(() => {
+        this.collectionScrollFrame = 0;
+        if (!this.isConnected) return;
+
+        const collection = this.closest('.main-collection');
+        if (!collection) return;
+        const header = document.querySelector('.header[data-sticky-type]:not([data-sticky-type="none"])');
+        const headerHeight = header && getComputedStyle(header).position === 'sticky' ? header.offsetHeight : 0;
+        const top = Math.max(0, window.scrollY + collection.getBoundingClientRect().top - headerHeight - 20);
+        window.scrollTo({
+          top,
+          behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'instant' : 'smooth'
+        });
+      });
+    }
+
+    scrollAfterUpdate() {
+      if (this.dialog?.open && !this.dialog.classList.contains('is-sidebar')) {
+        this.scrollAfterDialogClose = true;
+      } else {
+        this.scrollToCollectionTop();
+      }
+    }
+
     async render(urlValue, options = {}) {
       const navigationUrl = new URL(urlValue, window.location.origin);
       navigationUrl.searchParams.delete('section_id');
@@ -726,6 +759,7 @@ if (!customElements.get('collection-facets')) {
 
         await closePromise;
 
+        let renderedFacets = this;
         if (keepDialogOpen) {
           const nextDialog = nextFacets.querySelector('[data-collection-filter-dialog]');
           const currentToolbar = this.querySelector('.main-collection__toolbar');
@@ -796,7 +830,9 @@ if (!customElements.get('collection-facets')) {
           replacement.syncColumns?.();
           replacement.observePagination?.();
           nextProducts?.dispatchEvent(new CustomEvent('collection:products-loaded', { bubbles: true }));
+          renderedFacets = replacement;
         }
+        renderedFacets.scrollAfterUpdate();
       } catch (error) {
         if (error.name === 'AbortError') return;
         window.location.assign(navigationUrl);
