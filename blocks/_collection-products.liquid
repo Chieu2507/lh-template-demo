@@ -20,13 +20,15 @@
   "tag": null,
   "settings": [
     {
-      "type": "range",
+      "type": "select",
       "id": "columns_desktop",
       "label": "Desktop columns",
-      "min": 3,
-      "max": 5,
-      "step": 1,
-      "default": 3
+      "options": [
+        { "value": "3", "label": "3" },
+        { "value": "4", "label": "4" },
+        { "value": "5", "label": "5" }
+      ],
+      "default": "3"
     },
     {
       "type": "select",

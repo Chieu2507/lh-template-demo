@@ -155,7 +155,7 @@
           "type": "_collection-products",
           "static": true,
           "settings": {
-            "columns_desktop": 3,
+            "columns_desktop": "3",
             "columns_mobile": "2",
             "column_gap_desktop": 8,
             "row_gap_desktop": 8,
