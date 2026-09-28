@@ -205,10 +205,14 @@
     });
   };
 
-  const updateHeaderHeight = (header) => {
+  const updateHeaderHeight = (header, stickyType) => {
     const height = `${header.offsetHeight}px`;
-    header.style.setProperty('--header-height', height);
-    document.documentElement.style.setProperty('--header-height', height);
+    header.style.setProperty('--header-layout-height', height);
+    if (stickyType === 'none') {
+      document.documentElement.style.removeProperty('--header-height');
+    } else {
+      document.documentElement.style.setProperty('--header-height', height);
+    }
   };
 
   const getStickyTarget = (header, stickyType) => {
@@ -389,9 +393,9 @@
     header.classList.add('header', 'section-color-scope');
     if (headerScheme) header.classList.add(headerScheme);
     if (headerTop.hasAttribute('data-header-overlay')) header.classList.add('header--overlay');
-    updateHeaderHeight(header);
+    updateHeaderHeight(header, stickyType);
     if ('ResizeObserver' in window) {
-      const observer = new ResizeObserver(() => updateHeaderHeight(header));
+      const observer = new ResizeObserver(() => updateHeaderHeight(header, stickyType));
       observer.observe(header);
       headerResizeObservers.set(header, observer);
     }
@@ -903,6 +907,9 @@
       headerStates.delete(header);
       headerResizeObservers.get(header)?.disconnect();
       headerResizeObservers.delete(header);
+      const remainingStickyHeader = Array.from(headerStates.values()).find(({ stickyType }) => stickyType !== 'none');
+      if (remainingStickyHeader) updateHeaderHeight(remainingStickyHeader.header, remainingStickyHeader.stickyType);
+      else document.documentElement.style.removeProperty('--header-height');
     });
   };
 
