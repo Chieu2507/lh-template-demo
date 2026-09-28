@@ -778,8 +778,7 @@
   }
 
   .main-collection__filter-values--swatches {
-    display: flex;
-    flex-wrap: wrap;
+    grid-template-columns: minmax(0, 1fr);
   }
 
   .main-collection__filter-value {
@@ -802,12 +801,13 @@
   }
 
   .main-collection__filter-values--swatches .main-collection__filter-value {
-    display: grid;
-    gap: 4px;
+    display: flex;
+    width: 100%;
+    min-height: 25px;
+    gap: 10px;
   }
 
-  .main-collection__filter-values--swatches .main-collection__filter-value input,
-  .main-collection__filter-values--swatches .main-collection__filter-value > span:not(.main-collection__swatch) {
+  .main-collection__filter-values--swatches .main-collection__filter-value input {
     position: absolute;
     overflow: hidden;
     width: 1px;
@@ -816,12 +816,17 @@
     white-space: nowrap;
   }
 
+  .main-collection__filter-values--swatches .main-collection__filter-value > span:last-child {
+    color: var(--color-text);
+  }
+
   .main-collection__swatch {
     display: block;
-    width: 24px;
-    height: 24px;
+    flex: 0 0 20px;
+    width: 20px;
+    height: 20px;
     border: 1px solid var(--color-variant-border);
-    border-radius: 50%;
+    border-radius: 3px;
     background-color: var(--main-collection-swatch-color, var(--color-variant-component-background));
     background-image: var(--main-collection-swatch-image, none);
     background-position: center;
