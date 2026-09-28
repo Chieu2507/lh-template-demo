@@ -923,6 +923,15 @@ input[type='submit'].btn.btn--tertiary:hover {
   padding-inline: 0;
 }
 
+@media (min-width: 768px) and (max-width: 1149.98px) {
+  .btn,
+  button.btn,
+  input.btn,
+  input[type='submit'].btn {
+    font-size: var(--button-font-size-mobile);
+  }
+}
+
 .swiper-nav-button,
 .btn.swiper-nav-button {
   display: inline-flex;
@@ -2103,6 +2112,7 @@ legend {
   input[type='submit'].btn {
     min-height: var(--button-height-mobile);
     padding-inline: var(--button-padding-inline-mobile);
+    font-size: var(--button-font-size-mobile);
   }
 
   .btn.btn-tertiary,

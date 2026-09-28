@@ -117,7 +117,7 @@
             "type": "color",
             "id": "button_primary_background",
             "label": "t:labels.background",
-            "default": "#1C1B1A"
+            "default": "#111111"
           },
           {
             "type": "color",
@@ -129,7 +129,7 @@
             "type": "color",
             "id": "button_primary_border",
             "label": "t:labels.border_color",
-            "default": "#1C1B1A"
+            "default": "#111111"
           },
           {
             "type": "color",
@@ -157,19 +157,19 @@
             "type": "color",
             "id": "button_secondary_background",
             "label": "t:labels.background",
-            "default": "#FFFFFF"
+            "default": "#ECECEC"
           },
           {
             "type": "color",
             "id": "button_secondary_text",
             "label": "t:labels.button_label",
-            "default": "#1C1B1A"
+            "default": "#111111"
           },
           {
             "type": "color",
             "id": "button_secondary_border",
             "label": "t:labels.border_color",
-            "default": "#1C1B1A"
+            "default": "#ECECEC"
           },
           {
             "type": "color",
@@ -872,7 +872,7 @@
         "step": 1,
         "unit": "px",
         "label": "t:labels.desktop_height",
-        "default": 48
+        "default": 45
       },
       {
         "type": "range",
@@ -882,7 +882,7 @@
         "step": 1,
         "unit": "px",
         "label": "t:labels.mobile_height",
-        "default": 44
+        "default": 45
       },
       {
         "type": "range",
@@ -892,7 +892,7 @@
         "step": 1,
         "unit": "px",
         "label": "t:labels.desktop_tablet_horizontal_padding",
-        "default": 28
+        "default": 30
       },
       {
         "type": "range",
@@ -902,7 +902,7 @@
         "step": 1,
         "unit": "px",
         "label": "t:labels.mobile_horizontal_padding",
-        "default": 24
+        "default": 30
       },
       {
         "type": "range",
@@ -976,7 +976,7 @@
           { "value": "original", "label": "t:options.text_case.original" },
           { "value": "uppercase", "label": "t:options.text_case.uppercase" }
         ],
-        "default": "uppercase"
+        "default": "original"
       },
       {
         "type": "range",
@@ -1010,7 +1010,7 @@
           { "value": "original", "label": "t:options.text_case.original" },
           { "value": "uppercase", "label": "t:options.text_case.uppercase" }
         ],
-        "default": "uppercase"
+        "default": "original"
       },
       {
         "type": "range",
@@ -1044,7 +1044,7 @@
           { "value": "original", "label": "t:options.text_case.original" },
           { "value": "uppercase", "label": "t:options.text_case.uppercase" }
         ],
-        "default": "uppercase"
+        "default": "original"
       },
       {
         "type": "checkbox",
@@ -1060,7 +1060,7 @@
         "step": 1,
         "unit": "px",
         "label": "t:labels.underline_offset",
-        "default": 3
+        "default": 5
       }
     ]
   },
