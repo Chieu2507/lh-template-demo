@@ -20,6 +20,10 @@
  if active_filter_count > 0
   assign filter_button_label = filter_button_label | append: ' (' | append: active_filter_count | append: ')'
  endif
+ assign filter_button_icon = blank
+ if block.settings.desktop_layout == 'sidebar' and block.settings.sidebar_visibility != 'always'
+  assign filter_button_icon = block.settings.filter_icon | default: 'sliders'
+ endif
 %}
 <div class="collection-filter-block" {{ block.shopify_attributes }}>
 {% if collection.filters.size > 0 %}
@@ -27,7 +31,7 @@
   <h2 class="main-collection__filter-label heading-text">{{ 'collection.filter' | t }}</h2>
 {% endif %}
 {% capture filter_button_attributes %}aria-controls="CollectionFilters-{{ section.id }}" aria-expanded="false" data-collection-filter-open{% endcapture %}
-{% render 'theme-button', label: filter_button_label, variant: block.settings.button_style, class: 'main-collection__filter-button', attributes: filter_button_attributes %}
+{% render 'theme-button', label: filter_button_label, variant: block.settings.button_style, class: 'main-collection__filter-button', attributes: filter_button_attributes, icon: filter_button_icon, icon_position: 'before' %}
 {% endif %}
 </div>
 {% if collection.filters.size > 0 %}
@@ -232,6 +236,17 @@
   "tag": null,
   "settings": [
     { "type": "paragraph", "content": "t:info.collection_filter_search_discovery" },
+    {
+      "type": "select",
+      "id": "filter_icon",
+      "label": "Filter icon",
+      "options": [
+        { "value": "funnel", "label": "Funnel" },
+        { "value": "sliders", "label": "Sliders" }
+      ],
+      "default": "sliders",
+      "visible_if": "{{ block.settings.desktop_layout == 'sidebar' and block.settings.sidebar_visibility != 'always' }}"
+    },
     {
       "type": "select",
       "id": "desktop_layout",
