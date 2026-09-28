@@ -1338,6 +1338,13 @@
   }
 }
 
+@media (prefers-reduced-motion: reduce) {
+  .main-collection__filter-dialog:not(.is-sidebar) {
+    animation: none !important;
+    transition: none;
+  }
+}
+
 /* Editor-configured collection blocks */
 .main-collection--blocks .main-collection__promotion-card {
   display: block;
