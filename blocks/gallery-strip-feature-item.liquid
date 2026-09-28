@@ -88,7 +88,7 @@
     { "type": "checkbox", "id": "open_in_new_tab", "label": "Open link in new tab", "default": false },
     { "type": "header", "content": "Overlay" },
     { "type": "select", "id": "show_overlay", "label": "Show overlay", "options": [{ "value": "always", "label": "Always" }, { "value": "hover", "label": "On hover" }], "default": "always" },
-    { "type": "color", "id": "overlay_background", "label": "Overlay background", "default": "#000000" },
+    { "type": "color", "id": "overlay_background", "label": "Overlay background", "alpha": true, "default": "#000000" },
     { "type": "range", "id": "overlay_opacity", "label": "Overlay opacity", "min": 0, "max": 100, "step": 1, "unit": "%", "default": 38 }
   ],
   "presets": [{ "name": "Strip feature", "blocks": [{ "type": "gallery-strip-overlay-group", "id": "overlay-content", "static": true }] }]
