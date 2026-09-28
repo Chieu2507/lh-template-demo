@@ -11,7 +11,37 @@
   endif
 %}
 {% if paginate.pages > 1 %}<nav class="main-collection__pagination" aria-label="{{ 'collection.pagination' | t }}" data-style="{{ block.settings.button_style }}" data-height="{{ block.settings.button_height }}" style="--pagination-padding-top:{{ block.settings.padding_top }}px;--pagination-padding-bottom:{{ block.settings.padding_bottom }}px;{% if block.settings.customize_mobile_padding %}--pagination-padding-top-mobile:{{ block.settings.padding_top_mobile }}px;--pagination-padding-bottom-mobile:{{ block.settings.padding_bottom_mobile }}px;{% endif %}">
-{% if block.settings.pagination_type == 'pages' %}{{ paginate | default_pagination: previous: '‹ PREV', next: 'NEXT ›' }}{% elsif paginate.next %}<a href="{{ paginate.next.url }}" class="btn btn-{{ pagination_button_variant }}" data-collection-load-more>{{ 'collection.load_more' | t }}</a>{% endif %}
+{% if block.settings.pagination_type == 'pages' %}
+  {% if paginate.previous %}
+    <span class="prev">
+      <a href="{{ paginate.previous.url }}" aria-label="{{ 'collection.previous_page' | t | escape }}">
+        {% render 'icon', icon: 'chevron-left', bare: true, class: 'main-collection__pagination-arrow' %}
+        <span>PREV</span>
+      </a>
+    </span>
+  {% endif %}
+
+  {% for part in paginate.parts %}
+    {% if part.is_link %}
+      <span class="page"><a href="{{ part.url }}">{{ part.title }}</a></span>
+    {% elsif part.title == '&hellip;' %}
+      <span class="deco" aria-hidden="true">{{ part.title }}</span>
+    {% else %}
+      <span class="page current" aria-current="page">{{ part.title }}</span>
+    {% endif %}
+  {% endfor %}
+
+  {% if paginate.next %}
+    <span class="next">
+      <a href="{{ paginate.next.url }}" aria-label="{{ 'collection.next_page' | t | escape }}">
+        <span>NEXT</span>
+        {% render 'icon', icon: 'chevron-right', bare: true, class: 'main-collection__pagination-arrow' %}
+      </a>
+    </span>
+  {% endif %}
+{% elsif paginate.next %}
+  <a href="{{ paginate.next.url }}" class="btn btn-{{ pagination_button_variant }}" data-collection-load-more>{{ 'collection.load_more' | t }}</a>
+{% endif %}
 </nav>{% endif %}</div>
 {% schema %}
 {
