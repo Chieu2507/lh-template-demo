@@ -311,7 +311,7 @@ if (!customElements.get('collection-facets')) {
         ? new window.ThemeOverlay.SheetGesture({
           panel: this.dialog,
           header: this.dialog.querySelector('.main-collection__filter-header'),
-          enabled: () => this.dialog.open && this.mobileDialog.matches && this.dialog.dataset.mobileLayout === 'bottom_sheet' && !this.dialog.classList.contains('is-closing'),
+          enabled: () => this.dialog.open && this.mobileDialog.matches && this.dialog.dataset.mobileLayout === 'sheet' && !this.dialog.classList.contains('is-closing'),
           close: () => this.closeDialog({ fromGesture: true }),
         }) : null;
       if (this.sheetGesture) this.sheetGesture.scrollTarget = this.dialog.querySelector('.main-collection__filter-body');
@@ -606,7 +606,7 @@ if (!customElements.get('collection-facets')) {
       this.dialog.classList.add('is-closing');
       this.closePromise = new Promise((resolve) => {
         this.resolveClose = resolve;
-        this.closeTimer = window.setTimeout(() => this.finishCloseDialog(), 240);
+        this.closeTimer = window.setTimeout(() => this.finishCloseDialog(), fromGesture ? 320 : 240);
       });
       return this.closePromise;
     }
