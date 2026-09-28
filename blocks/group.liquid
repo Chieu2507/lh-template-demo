@@ -44,12 +44,25 @@
       assign group_alignment = 'start'
   endcase
 
-  assign group_position_name = block.settings.position | default: 'center'
+  assign group_height_mode = block.settings.height | default: 'fit'
+  unless group_height_mode == 'fit' or group_height_mode == 'fill'
+    assign group_height_mode = 'fit'
+  endunless
+
+  assign group_position_source = 'top'
+  if group_direction == 'horizontal'
+    assign group_position_source = block.settings.position_horizontal | default: 'center'
+  elsif group_height_mode == 'fill'
+    assign group_position_source = block.settings.position | default: 'center'
+  endif
+  assign group_position_name = group_position_source
   case group_position_name
     when 'center'
       assign group_position_name = 'center'
     when 'bottom', 'flex-end'
       assign group_position_name = 'bottom'
+    when 'space-between'
+      assign group_position_name = 'space-between'
     else
       assign group_position_name = 'top'
   endcase
@@ -118,11 +131,6 @@
       assign group_max_width_mobile = 480
     endif
   endif
-
-  assign group_height_mode = block.settings.height | default: 'fit'
-  unless group_height_mode == 'fit' or group_height_mode == 'fill'
-    assign group_height_mode = 'fit'
-  endunless
 
   assign group_gap_desktop = block.settings.gap_desktop | default: 16 | plus: 0
   if group_gap_desktop < 0 or group_gap_desktop > 100
@@ -469,10 +477,23 @@
       "options": [
         { "value": "top", "label": "t:options.position.top" },
         { "value": "center", "label": "t:options.alignment.center" },
+        { "value": "bottom", "label": "t:options.position.bottom" },
+        { "value": "space-between", "label": "t:options.alignment.space_between" }
+      ],
+      "default": "center",
+      "visible_if": "{{ block.settings.direction == 'vertical' and block.settings.height == 'fill' }}"
+    },
+    {
+      "type": "select",
+      "id": "position_horizontal",
+      "label": "t:labels.position",
+      "options": [
+        { "value": "top", "label": "t:options.position.top" },
+        { "value": "center", "label": "t:options.alignment.center" },
         { "value": "bottom", "label": "t:options.position.bottom" }
       ],
       "default": "center",
-      "visible_if": "{{ block.settings.direction == 'horizontal' or block.settings.direction == 'vertical' }}"
+      "visible_if": "{{ block.settings.direction == 'horizontal' }}"
     },
     {
       "type": "select",
