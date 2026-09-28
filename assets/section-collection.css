@@ -621,6 +621,8 @@
     background: var(--color-background);
   }
 
+  .main-collection__filter-header h2 { margin: 0; }
+
   .main-collection__filter-handle { display: none; }
 
   .main-collection__active-filters {
