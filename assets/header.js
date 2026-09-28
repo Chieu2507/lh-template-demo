@@ -510,7 +510,7 @@
       });
 
       summary?.addEventListener('click', (event) => {
-        if (!isMobileMenuViewport()) return;
+        if (window.innerWidth > 767 && !(details.closest('[data-header-mobile-drawer]') && isMobileMenuViewport())) return;
         if (details.classList.contains('header-localization__details')) return;
 
         const menu = details.closest('.header-menu');
