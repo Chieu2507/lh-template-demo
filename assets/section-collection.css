@@ -594,11 +594,20 @@
   }
 
   .main-collection__filter-form {
+    position: relative;
     display: flex;
+    width: 100%;
+    max-width: var(--dialog-max-width, 40rem);
+    max-height: var(--dialog-max-height, 100%);
     flex-direction: column;
     height: 100%;
     min-height: 0;
     overflow: hidden;
+    z-index: var(--dialog-container-index, 1);
+  }
+
+  @media (max-width: 500px) {
+    .main-collection__filter-form { max-width: 100%; }
   }
 
   .main-collection__filter-body {
@@ -1259,6 +1268,74 @@
 .main-collection__filter-dialog[data-mobile-layout="drawer"]{inset:0 auto 0 0;width:min(375px,100vw);height:100dvh;max-height:none;border-radius:0;transform:translateX(-100%)}
 .main-collection__filter-dialog[data-mobile-layout="drawer"][open]:not(.is-closing){animation-name:main-collection-filter-drawer-in}
 .main-collection__filter-dialog[data-mobile-layout="drawer"] .main-collection__filter-handle{display:none}
+}
+
+/* Tablet uses a centered filter dialog; compact phones keep the configured sheet/drawer. */
+@media (min-width: 768px) and (max-width: 1023.98px) {
+  .main-collection__filter-dialog:not(.is-sidebar) {
+    --dialog-container-index: 1;
+    --dialog-max-width: 40rem;
+    --dialog-max-height: min(85dvh, 720px);
+    position: fixed;
+    inset: 0;
+    width: min(var(--dialog-max-width), calc(100vw - 48px));
+    max-width: calc(100vw - 48px);
+    height: var(--dialog-max-height);
+    max-height: calc(100dvh - 48px);
+    margin: auto;
+    overflow: hidden;
+    border-radius: var(--drawer-radius);
+    background: var(--color-background);
+    box-shadow: 0 1rem 3rem color-mix(in srgb, var(--shadow-color) 18%, transparent);
+    transform: translateY(8px) scale(.98);
+  }
+
+  .main-collection__filter-dialog:not(.is-sidebar) .main-collection__filter-form {
+    border-radius: inherit;
+    background: var(--color-background);
+  }
+
+  .main-collection__filter-dialog:not(.is-sidebar)[open]:not(.is-closing) {
+    animation-name: main-collection-filter-modal-in;
+  }
+
+  .main-collection__filter-dialog:not(.is-sidebar).is-closing {
+    animation-name: main-collection-filter-modal-out;
+  }
+}
+
+@keyframes main-collection-filter-modal-in {
+  from { opacity: 0; transform: translateY(8px) scale(.98); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+@keyframes main-collection-filter-modal-out {
+  from { opacity: 1; transform: translateY(0) scale(1); }
+  to { opacity: 0; transform: translateY(8px) scale(.98); }
+}
+
+/* Tablet control is icon-only and manages a separate 2/3-column grid state. */
+.collection-columns__tablet { display: none; }
+.collection-columns__tablet .collection-columns__option-text { display: none; }
+.collection-columns__tablet .collection-columns__option-icon { display: grid; }
+.collection-columns[data-desktop-style='secondary'] .collection-columns__tablet input:checked + .collection-columns__option-content { background: var(--button-secondary-background); color: var(--button-secondary-text); }
+.collection-columns[data-desktop-style='outline'] .collection-columns__tablet input:checked + .collection-columns__option-content { background: transparent; color: var(--heading-color); outline: 1px solid currentColor; outline-offset: -1px; }
+.collection-columns[data-desktop-style='subtle'] .collection-columns__tablet input:checked + .collection-columns__option-content { background: color-mix(in srgb, var(--heading-color) 10%, transparent); color: var(--heading-color); }
+
+@media (min-width: 768px) and (max-width: 1023.98px) {
+  .collection-columns__desktop,
+  .collection-columns__mobile { display: none; }
+  .collection-columns__tablet { display: block; }
+  .collection-columns__label { display: none; }
+}
+
+@media (min-width: 1024px) and (max-width: 1149.98px) {
+  .main-collection__grid {
+    grid-template-columns: repeat(var(--main-collection-columns-desktop), minmax(0, 1fr));
+  }
+  .main-collection--blocks .main-collection__promotion {
+    grid-column: span min(var(--promo-span, 2), var(--main-collection-columns-desktop, 3));
+  }
 }
 
 /* Editor-configured collection blocks */
