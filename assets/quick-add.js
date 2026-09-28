@@ -170,17 +170,20 @@ class QuickAddController {
     if (!trigger) return;
 
     const wrapper = trigger.closest?.('[data-product-card-quick-add-overlay-wrapper]');
+    const dots = trigger.querySelector('[data-quick-add-dots]');
     if (isLoading) {
       if (this.loadingTrigger && this.loadingTrigger !== trigger) this.setTriggerLoading(this.loadingTrigger, false);
       this.loadingTrigger = trigger;
       trigger.dataset.quickAddLoading = 'true';
       trigger.setAttribute('aria-busy', 'true');
+      if (dots) dots.hidden = false;
       if (wrapper) wrapper.dataset.quickAddLoading = 'true';
       return;
     }
 
     delete trigger.dataset.quickAddLoading;
     trigger.removeAttribute('aria-busy');
+    if (dots) dots.hidden = true;
     if (wrapper) delete wrapper.dataset.quickAddLoading;
     if (this.loadingTrigger === trigger) this.loadingTrigger = null;
   }
