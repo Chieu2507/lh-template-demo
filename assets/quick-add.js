@@ -170,7 +170,7 @@ class QuickAddController {
     if (!trigger) return;
 
     const wrapper = trigger.closest?.('[data-product-card-quick-add-overlay-wrapper]');
-    const dots = trigger.querySelector('[data-quick-add-dots]');
+    const dots = trigger.querySelector('[data-loading-dots]');
     if (isLoading) {
       if (this.loadingTrigger && this.loadingTrigger !== trigger) this.setTriggerLoading(this.loadingTrigger, false);
       this.loadingTrigger = trigger;
