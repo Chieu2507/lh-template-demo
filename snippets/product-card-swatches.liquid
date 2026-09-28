@@ -4,6 +4,7 @@
   The standard Shopify option-value swatch object determines the option when
   available. A legacy `Color` option name remains a data fallback only, so a
   merchant never loses a useful variant link while migrating product data.
+  Each local option carries inert media/price templates for inline selection.
 
   @param {product} product - Product whose option values should be rendered
 
@@ -50,7 +51,19 @@
     {% for option_value in swatch_option.values limit: swatch_limit %}
       {% liquid
         assign swatch_variant = option_value.variant
+        if swatch_variant == blank
+          assign option_index = swatch_option.position | minus: 1
+          for candidate in product.variants
+            if candidate.options[option_index] == option_value.name
+              assign swatch_variant = candidate
+              if candidate.available
+                break
+              endif
+            endif
+          endfor
+        endif
         assign swatch_selected = option_value.selected
+        assign swatch_image = swatch_variant.featured_image | default: product.featured_image
         assign swatch_url = option_value.product_url | default: product.url
         if option_value.product_url == blank and swatch_variant != blank
           assign swatch_url = product.url | append: '?variant=' | append: swatch_variant.id
@@ -64,6 +77,9 @@
           aria-current="true"
           data-swatch-selected
         {% endif %}
+        {% if option_value.product_url == blank and swatch_variant != blank %}
+          data-variant-id="{{ swatch_variant.id }}"
+        {% endif %}
         data-product-card-swatch
       >
         {% render 'swatch',
@@ -75,6 +91,14 @@
           decorative: true
         %}
       </a>
+      {% if option_value.product_url == blank and swatch_variant != blank %}
+        <template data-product-card-variant="{{ swatch_variant.id }}">
+          {% render 'product-card-price', item: swatch_variant %}
+          {% if swatch_image != blank %}
+            {% render 'image', image: swatch_image, class: 'product-card__image', width: 1000, alt: product.title %}
+          {% endif %}
+        </template>
+      {% endif %}
     {% endfor %}
   </div>
 {% endif %}
