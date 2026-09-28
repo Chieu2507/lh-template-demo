@@ -1633,32 +1633,6 @@ legend {
   transition: transform var(--product-card-action-duration) var(--product-card-action-ease), box-shadow var(--product-card-action-duration) var(--product-card-action-ease);
 }
 
-.product-card__swatch-check {
-  position: absolute;
-  z-index: 1;
-  display: grid;
-  width: min(0.75rem, calc(var(--swatch-width) / 2.5));
-  aspect-ratio: 1;
-  place-items: center;
-  color: #fff;
-  opacity: 0;
-  pointer-events: none;
-  transform: scale(0.35);
-  transition: opacity var(--product-card-action-duration) var(--product-card-action-ease), transform var(--product-card-action-duration) var(--product-card-action-ease);
-  mix-blend-mode: difference;
-}
-
-.product-card__swatch-check svg {
-  width: 100%;
-  height: 100%;
-  --icon-stroke-width: 2.5;
-}
-
-.product-card__swatch-link--selected .product-card__swatch-check {
-  opacity: 1;
-  transform: scale(1);
-}
-
 .product-card__swatch-link--selected .product-card__swatch {
   animation: product-card-swatch-select var(--product-card-action-duration) var(--product-card-action-ease);
 }
@@ -1681,8 +1655,7 @@ legend {
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .product-card__swatch,
-  .product-card__swatch-check {
+  .product-card__swatch {
     transition: none;
   }
 
