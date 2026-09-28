@@ -3,7 +3,7 @@
 {% enddoc %}
 {% assign clear_collection_label = 'collection.clear_all' | t %}
 <div class="main-collection__products{% if block.settings.full_width %} main-collection__products--full-width{% endif %}" id="CollectionProducts-{{ section.id }}" data-columns-desktop="{{ block.settings.columns_desktop }}" data-columns-mobile="{{ block.settings.columns_mobile }}" style="--main-collection-columns-desktop:{{ block.settings.columns_desktop }};--main-collection-columns-tablet:{{ block.settings.columns_desktop }};--main-collection-columns-mobile:{{ block.settings.columns_mobile }};--main-collection-column-gap:{{ block.settings.column_gap_desktop }}px;--main-collection-row-gap:{{ block.settings.row_gap_desktop }}px;--main-collection-mobile-column-gap:{{ block.settings.column_gap_mobile }}px;--main-collection-mobile-row-gap:{{ block.settings.row_gap_mobile }}px;" {{ block.shopify_attributes }}>
-{% paginate collection.products by section.settings.products_per_page, window_size: 1 %}
+{% paginate collection.products by section.settings.products_per_page, window_size: 2 %}
 {% if collection.products_count > 0 %}
 <h2 class="visually-hidden">{{ 'collection.products_heading' | t }}</h2>
 <ul class="main-collection__grid" role="list">
