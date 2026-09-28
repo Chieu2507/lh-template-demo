@@ -176,14 +176,20 @@ class QuickViewController {
       this.loadingTrigger = trigger;
       trigger.dataset.quickViewLoading = 'true';
       trigger.setAttribute('aria-busy', 'true');
-      if (dots) dots.hidden = false;
+      if (dots) {
+        dots.hidden = false;
+        dots.classList.remove('hidden');
+      }
       if (wrapper) wrapper.dataset.quickViewLoading = 'true';
       return;
     }
 
     delete trigger.dataset.quickViewLoading;
     trigger.removeAttribute('aria-busy');
-    if (dots) dots.hidden = true;
+    if (dots) {
+      dots.hidden = true;
+      dots.classList.add('hidden');
+    }
     if (wrapper) delete wrapper.dataset.quickViewLoading;
     if (this.loadingTrigger === trigger) this.loadingTrigger = null;
   }

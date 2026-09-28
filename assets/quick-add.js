@@ -176,14 +176,20 @@ class QuickAddController {
       this.loadingTrigger = trigger;
       trigger.dataset.quickAddLoading = 'true';
       trigger.setAttribute('aria-busy', 'true');
-      if (dots) dots.hidden = false;
+      if (dots) {
+        dots.hidden = false;
+        dots.classList.remove('hidden');
+      }
       if (wrapper) wrapper.dataset.quickAddLoading = 'true';
       return;
     }
 
     delete trigger.dataset.quickAddLoading;
     trigger.removeAttribute('aria-busy');
-    if (dots) dots.hidden = true;
+    if (dots) {
+      dots.hidden = true;
+      dots.classList.add('hidden');
+    }
     if (wrapper) delete wrapper.dataset.quickAddLoading;
     if (this.loadingTrigger === trigger) this.loadingTrigger = null;
   }
