@@ -1200,7 +1200,7 @@
 .main-collection--blocks .main-collection__sort-form{grid-column:3;grid-row:1;justify-self:end}
 .main-collection--blocks .collection-columns{grid-column:4;grid-row:1}
 .main-collection--blocks .main-collection__products{grid-column:1/-1;grid-row:2;min-width:0;padding:0}
-.main-collection--blocks .main-collection__grid{align-items:stretch}
+.main-collection--blocks .main-collection__grid{align-items:stretch;grid-auto-flow:row dense}
 .collection-columns{grid-column:4;grid-row:1;display:flex;align-items:center;gap:4px;padding:0;margin:0;border:0}
 .collection-columns>span{margin-inline-end:10px}
 .collection-columns__option{position:relative;cursor:pointer}
