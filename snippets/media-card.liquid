@@ -11,11 +11,14 @@
   assign image_card_media_type = media_card_block.settings.background_type | default: 'image'
 
   assign image_card_width_desktop_mode = media_card_block.settings.width_desktop | default: 'fill'
+  unless image_card_width_desktop_mode == 'fill' or image_card_width_desktop_mode == 'custom'
+    assign image_card_width_desktop_mode = 'fill'
+  endunless
   assign image_card_width_desktop = '100%'
   assign image_card_size_desktop = '100vw'
   if image_card_width_desktop_mode == 'custom'
     assign image_card_width_desktop_value = media_card_block.settings.width_custom_desktop | default: 100 | plus: 0
-    if image_card_width_desktop_value < 10 or image_card_width_desktop_value > 100
+    if image_card_width_desktop_value < 1 or image_card_width_desktop_value > 100
       assign image_card_width_desktop_value = 100
     endif
     assign image_card_width_desktop = image_card_width_desktop_value | append: '%'
@@ -32,11 +35,14 @@
   endif
 
   assign image_card_width_mobile_mode = media_card_block.settings.width_mobile | default: 'fill'
+  unless image_card_width_mobile_mode == 'fill' or image_card_width_mobile_mode == 'custom'
+    assign image_card_width_mobile_mode = 'fill'
+  endunless
   assign image_card_width_mobile = '100%'
   assign image_card_size_mobile = '100vw'
   if image_card_width_mobile_mode == 'custom'
     assign image_card_width_mobile_value = media_card_block.settings.width_custom_mobile | default: 100 | plus: 0
-    if image_card_width_mobile_value < 10 or image_card_width_mobile_value > 100
+    if image_card_width_mobile_value < 1 or image_card_width_mobile_value > 100
       assign image_card_width_mobile_value = 100
     endif
     assign image_card_width_mobile = image_card_width_mobile_value | append: '%'
@@ -105,6 +111,21 @@
       render 'image-ratio-value', setting: image_card_ratio_mobile_setting, fallback_ratio: image_card_ratio_mobile, custom_width: media_card_block.settings.image_ratio_custom_width_mobile, custom_height: media_card_block.settings.image_ratio_custom_height_mobile
     endcapture
     assign image_card_ratio_mobile = image_card_ratio_mobile | strip
+  else
+    if image_card_height_desktop == 'adapt'
+      if image_card_media_type == 'video'
+        assign image_card_ratio_desktop = media_card_block.settings.video.preview_image.aspect_ratio | default: media_card_block.settings.mobile_video.preview_image.aspect_ratio | default: media_card_block.settings.image.aspect_ratio | default: media_card_block.settings.mobile_image.aspect_ratio | default: 1
+      else
+        assign image_card_ratio_desktop = media_card_block.settings.image.aspect_ratio | default: media_card_block.settings.mobile_image.aspect_ratio | default: media_card_block.settings.video.preview_image.aspect_ratio | default: media_card_block.settings.mobile_video.preview_image.aspect_ratio | default: 1
+      endif
+    endif
+    if image_card_height_mobile == 'adapt'
+      if image_card_media_type == 'video'
+        assign image_card_ratio_mobile = media_card_block.settings.mobile_video.preview_image.aspect_ratio | default: media_card_block.settings.video.preview_image.aspect_ratio | default: media_card_block.settings.mobile_image.aspect_ratio | default: media_card_block.settings.image.aspect_ratio | default: 1
+      else
+        assign image_card_ratio_mobile = media_card_block.settings.mobile_image.aspect_ratio | default: media_card_block.settings.image.aspect_ratio | default: media_card_block.settings.mobile_video.preview_image.aspect_ratio | default: media_card_block.settings.video.preview_image.aspect_ratio | default: 1
+      endif
+    endif
   endif
   assign image_card_position_desktop = media_card_block.settings.position_desktop | default: 'top_center'
   assign image_card_position_mobile = media_card_block.settings.position_mobile | default: 'top_center'
@@ -219,8 +240,10 @@
   {% if image_card_radius == 'custom' %}--image-card-custom-radius: {{ image_card_custom_radius }}px;{% endif %}
   {% if image_card_width_mobile != image_card_width_desktop %}--image-card-width-mobile: {{ image_card_width_mobile }};{% endif %}
   {% if image_card_max_width_mobile != image_card_max_width_desktop %}--image-card-max-width-mobile: {{ image_card_max_width_mobile }};{% endif %}
-  {% if use_image_ratio %}
+  {% if use_image_ratio or image_card_height_desktop == 'adapt' %}
     {% unless image_card_ratio_desktop == 1 or image_card_ratio_desktop == '1' %}--image-card-ratio: {{ image_card_ratio_desktop }};{% endunless %}
+  {% endif %}
+  {% if use_image_ratio or image_card_height_mobile == 'adapt' %}
     {% unless image_card_ratio_mobile == 1 or image_card_ratio_mobile == '1' %}--image-card-ratio-mobile: {{ image_card_ratio_mobile }};{% endunless %}
   {% endif %}
   {% if media_card_block.settings.customize_mobile_padding %}

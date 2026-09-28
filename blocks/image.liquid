@@ -315,7 +315,7 @@
     {
       "type": "select",
       "id": "width_desktop",
-      "label": "t:labels.desktop_width",
+      "label": "t:labels.width",
       "options": [
         { "value": "fit", "label": "t:options.width.fit" },
         { "value": "fill", "label": "t:options.width.fill" },
@@ -327,7 +327,7 @@
     {
       "type": "range",
       "id": "width_custom_desktop",
-      "label": "t:labels.desktop_custom_width",
+      "label": "t:labels.custom_width",
       "min": 1,
       "max": 100,
       "step": 1,
@@ -338,14 +338,14 @@
     {
       "type": "checkbox",
       "id": "limit_width_desktop",
-      "label": "t:labels.desktop_limit_width",
+      "label": "t:labels.limit_width",
       "default": false,
       "visible_if": "{{ block.settings.device == 'desktop' }}"
     },
     {
       "type": "range",
       "id": "max_width_desktop",
-      "label": "t:labels.desktop_max_width",
+      "label": "t:labels.max_width",
       "min": 0,
       "max": 1600,
       "step": 16,

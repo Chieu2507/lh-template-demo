@@ -115,8 +115,8 @@
     {
       "type": "range",
       "id": "width_custom_desktop",
-      "label": "t:labels.desktop_custom_width",
-      "min": 10,
+      "label": "t:labels.custom_width",
+      "min": 1,
       "max": 100,
       "step": 1,
       "unit": "%",
@@ -146,6 +146,7 @@
       "id": "height_desktop",
       "label": "t:labels.height",
       "options": [
+        { "value": "adapt", "label": "t:options.image_card_height.adapt" },
         { "value": "fill", "label": "t:options.width.fill" },
         { "value": "ratio_1_1", "label": "t:options.image_card_height.ratio_1_1" },
         { "value": "ratio_4_5", "label": "t:options.image_card_height.ratio_4_5" },
@@ -162,7 +163,7 @@
     {
       "type": "select",
       "id": "width_mobile",
-      "label": "t:labels.width",
+      "label": "t:labels.width_mobile",
       "options": [
         { "value": "fill", "label": "t:options.width.fill" },
         { "value": "custom", "label": "t:options.width.custom" }
@@ -173,8 +174,8 @@
     {
       "type": "range",
       "id": "width_custom_mobile",
-      "label": "t:labels.mobile_custom_width",
-      "min": 10,
+      "label": "t:labels.custom_width_mobile",
+      "min": 1,
       "max": 100,
       "step": 1,
       "unit": "%",
@@ -184,14 +185,14 @@
     {
       "type": "checkbox",
       "id": "limit_width_mobile",
-      "label": "t:labels.limit_width",
+      "label": "t:labels.limit_width_mobile",
       "default": false,
       "visible_if": "{{ block.settings.device == 'mobile' }}"
     },
     {
       "type": "range",
       "id": "max_width_mobile",
-      "label": "t:labels.max_width",
+      "label": "t:labels.max_width_mobile",
       "min": 0,
       "max": 1600,
       "step": 16,
@@ -202,8 +203,9 @@
     {
       "type": "select",
       "id": "height_mobile",
-      "label": "t:labels.height",
+      "label": "t:labels.mobile_height",
       "options": [
+        { "value": "adapt", "label": "t:options.image_card_height.adapt" },
         { "value": "fill", "label": "t:options.width.fill" },
         { "value": "ratio_1_1", "label": "t:options.image_card_height.ratio_1_1" },
         { "value": "ratio_4_5", "label": "t:options.image_card_height.ratio_4_5" },
@@ -220,12 +222,6 @@
     {
       "type": "header",
       "content": "t:general.content"
-    },
-    {
-      "type": "checkbox",
-      "id": "enable_sticky",
-      "label": "t:labels.enable_sticky",
-      "default": true
     },
     {
       "type": "select",
