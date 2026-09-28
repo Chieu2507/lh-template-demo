@@ -1150,7 +1150,7 @@
   }
 /* Collection composition: shared kernels own typography and controls. */
 .main-collection--blocks .main-collection__facets{position:relative;display:grid;grid-template-columns:minmax(0,1fr);gap:var(--collection-gap,50px);align-items:start;padding-inline:var(--page-margin)}
-.main-collection--blocks .main-collection__toolbar{grid-column:1/-1;grid-row:1;display:grid;grid-template-columns:auto auto minmax(0,1fr) auto;align-items:center;column-gap:var(--collection-toolbar-gap,30px);min-height:var(--collection-toolbar-button-height,var(--button-height));padding:var(--collection-toolbar-padding-top,0px) 0 var(--collection-toolbar-padding-bottom,0px)}
+.main-collection--blocks .main-collection__toolbar{grid-column:1/-1;grid-row:1;display:grid;grid-template-columns:max-content max-content minmax(0,1fr) max-content;align-items:center;column-gap:var(--collection-toolbar-gap,30px);min-height:var(--collection-toolbar-button-height,var(--button-height));padding:var(--collection-toolbar-padding-top,0px) 0 var(--collection-toolbar-padding-bottom,0px)}
 .main-collection--blocks .collection-filter-block{grid-column:1;grid-row:1;display:flex;align-items:center;min-width:0}
 .main-collection--blocks .main-collection__filter-panel-positioner{display:contents}
 .main-collection--blocks .main-collection__filter-button{margin:0;min-height:var(--collection-toolbar-button-height,var(--button-height))}
@@ -1270,7 +1270,7 @@
 
 @media (min-width: 768px) {
   .main-collection--blocks .main-collection__toolbar:has(.main-collection__product-count[data-alignment='right']) {
-    grid-template-columns: auto minmax(0, 1fr) auto auto auto;
+    grid-template-columns: max-content minmax(0, 1fr) max-content max-content max-content;
   }
   .main-collection--blocks .main-collection__product-count[data-alignment='right'] { grid-column: 3; }
   .main-collection--blocks .main-collection__toolbar:has(.main-collection__product-count[data-alignment='right']) .main-collection__sort-form { grid-column: 4; }
