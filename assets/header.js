@@ -27,7 +27,7 @@
     drawer?.setAttribute('aria-hidden', String(!isOpen));
 
     if (syncOverlay) {
-      if (isOpen) overlay?.open({ opener: opener || document.activeElement, focus: true, restoreFocus: true, defer: window.innerWidth <= 767 });
+      if (isOpen) overlay?.open({ opener: opener || document.activeElement, focus: true, restoreFocus: true, defer: window.matchMedia('(max-width: 767.98px)').matches });
       else overlay?.close({ restoreFocus });
     }
 
