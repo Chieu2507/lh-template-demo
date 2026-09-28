@@ -87,10 +87,10 @@
   {% if product_information_style != blank %}style="{{ product_information_style }}"{% endif %}
 >
   <div class="container {{ container_class }} product-information__container{% if product_information_width == 'full_no_padding' %} product-information__container--no-padding{% endif %}">
-    <div class="product-information__layout">
+    <product-sticky-layout class="product-information__layout"{% unless section.settings.sticky_content == false %} data-sticky-enabled{% endunless %}>
       {% content_for 'block', type: '_product-media', id: 'product-media' %}
       {% content_for 'block', type: '_product-details', id: 'product-details' %}
-    </div>
+    </product-sticky-layout>
   </div>
 </div>
 
