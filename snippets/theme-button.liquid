@@ -10,7 +10,7 @@
   @param {string} [class] - Additional classes
   @param {boolean} [disabled] - Whether the button is disabled
   @param {boolean} [loading] - Whether the button is busy while preserving its width
-  @param {boolean} [loading_dots] - Render the hidden three-dot loader for the Product Card Quick Add action
+  @param {boolean} [loading_dots] - Render a hidden three-dot loader for product card actions
   @param {string} [variant] - Optional visual variant: primary, secondary, or tertiary
   @param {string} [icon] - Optional inline Heroicons key or legacy alias: arrow-right/arrow, eye, or shopping-bag/cart
   @param {string} [icon_position] - Icon position: before or after
@@ -114,7 +114,7 @@
 
 {% capture button_loading_dots %}
   {% if loading_dots %}
-    <span class="bouncing-dots" data-quick-add-dots aria-hidden="true" hidden>
+    <span class="bouncing-dots" data-loading-dots data-quick-add-dots aria-hidden="true" hidden>
       <span></span><span></span><span></span>
     </span>
   {% endif %}
