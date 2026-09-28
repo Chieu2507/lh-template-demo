@@ -208,7 +208,7 @@
       "product_card_swatch_gap": 8,
       "product_card_swatch_width_desktop": 30,
       "product_card_swatch_width_mobile": 30,
-      "product_card_swatch_ratio": "1_1",
+      "product_card_swatch_ratio": "3_1",
       "product_card_swatch_selected_style": "border",
       "product_card_gap": "standard",
       "variant_picker_style": "dropdown",

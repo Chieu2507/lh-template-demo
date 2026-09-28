@@ -1553,7 +1553,7 @@
           { "value": "2_1", "label": "t:options.swatch_ratio.two_to_one" },
           { "value": "3_1", "label": "t:options.swatch_ratio.three_to_one" }
         ],
-        "default": "1_1"
+        "default": "3_1"
       },
       {
         "type": "select",
