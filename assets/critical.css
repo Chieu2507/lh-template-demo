@@ -34,7 +34,7 @@ html:has(dialog[scroll-lock][open], .component-overlay[scroll-lock]:not([hidden]
   overflow: clip;
 }
 
-@media (min-width: 768px) {
+@media (min-width: 992px) {
   /* Mega menus use native details state rather than a dialog, so they need the
    * same document scroll lock while their desktop panel is open. */
   html:has(.header-menu__details--mega[open]) {
