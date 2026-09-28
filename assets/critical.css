@@ -1630,7 +1630,7 @@ legend {
 
 .product-card__swatch {
   width: var(--swatch-width);
-  transition: transform var(--motion-speed-fast) var(--ease-out), box-shadow var(--motion-speed-fast) var(--ease-out);
+  transition: transform var(--product-card-action-duration) var(--product-card-action-ease), box-shadow var(--product-card-action-duration) var(--product-card-action-ease);
 }
 
 .product-card__swatch-check {
@@ -1644,7 +1644,7 @@ legend {
   opacity: 0;
   pointer-events: none;
   transform: scale(0.35);
-  transition: opacity var(--motion-speed-fast) var(--ease-out), transform var(--motion-speed-fast) var(--ease-spring);
+  transition: opacity var(--product-card-action-duration) var(--product-card-action-ease), transform var(--product-card-action-duration) var(--product-card-action-ease);
   mix-blend-mode: difference;
 }
 
@@ -1660,7 +1660,7 @@ legend {
 }
 
 .product-card__swatch-link--selected .product-card__swatch {
-  animation: product-card-swatch-select var(--motion-speed-fast) var(--ease-spring);
+  animation: product-card-swatch-select var(--product-card-action-duration) var(--product-card-action-ease);
 }
 
 @keyframes product-card-swatch-select {
