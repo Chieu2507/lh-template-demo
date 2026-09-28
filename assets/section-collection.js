@@ -572,8 +572,9 @@ if (!customElements.get('collection-facets')) {
       const items = Array.from(products.querySelectorAll('.main-collection__grid > *'));
       this.gridAnimations?.forEach(animation => animation.cancel());
       const previous = animate ? items.map(item => item.getBoundingClientRect()) : [];
-      for (const device of ['desktop', 'mobile']) {
-        let value = products.dataset[device === 'desktop' ? 'columnsDesktop' : 'columnsMobile'];
+      for (const device of ['desktop', 'tablet', 'mobile']) {
+        const datasetKey = `columns${device[0].toUpperCase()}${device.slice(1)}`;
+        let value = products.dataset[datasetKey];
         // Editor settings are authoritative; shoppers keep their chosen view across facet refreshes.
         if (window.Shopify?.designMode) {
           this.editorColumns ||= {};
@@ -582,10 +583,9 @@ if (!customElements.get('collection-facets')) {
         } else {
           try { value = sessionStorage.getItem(`collection-columns-${this.sectionId}-${device}`) || value; } catch (_) {}
         }
-        const permitted = device === 'desktop' ? ['3','4','5'] : ['1','2'];
+        const permitted = device === 'desktop' ? ['3','4','5'] : device === 'tablet' ? ['2','3'] : ['1','2'];
         if (!permitted.includes(value)) value = permitted[0];
         products.style.setProperty(`--main-collection-columns-${device}`, value);
-        if (device === 'desktop') products.style.setProperty('--main-collection-columns-tablet', value);
         this.querySelectorAll(`[data-collection-columns][data-device="${device}"]`).forEach(input => input.checked = input.value === value);
       }
       if (animate && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {

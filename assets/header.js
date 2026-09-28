@@ -741,7 +741,7 @@
 
       const summary = details.querySelector(':scope > .header-localization__summary');
       summary?.addEventListener('click', (event) => {
-        if (window.innerWidth > 767 && !(details.closest('[data-header-mobile-drawer]') && isMobileMenuViewport())) return;
+        if (!isMobileMenuViewport()) return;
         event.preventDefault();
 
         const dialog = getLocalizationDialog(details);

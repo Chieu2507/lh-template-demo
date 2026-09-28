@@ -4,11 +4,27 @@
 <fieldset class="collection-columns" data-desktop-type="{{ block.settings.desktop_type }}" data-desktop-style="{{ block.settings.desktop_style }}" data-mobile-type="{{ block.settings.mobile_type }}" data-mobile-style="{{ block.settings.mobile_style }}" {{ block.shopify_attributes }}>
   <legend class="visually-hidden">{{ 'collection.grid_view' | t }}</legend>
   <span class="collection-columns__label" aria-hidden="true">{{ 'collection.view' | t }}</span>
-  {% for number in (1..5) %}
-    {% assign switcher_device = 'desktop' %}
-    {% if number < 3 %}{% assign switcher_device = 'mobile' %}{% endif %}
-    <label class="collection-columns__option collection-columns__{{ switcher_device }}">
-      <input type="radio" name="columns-{{ section.id }}-{{ switcher_device }}" value="{{ number }}" aria-label="{{ number }} {{ 'collection.columns' | t }}" data-collection-columns data-device="{{ switcher_device }}">
+  {% for number in (1..2) %}
+    <label class="collection-columns__option collection-columns__mobile">
+      <input type="radio" name="columns-{{ section.id }}-mobile" value="{{ number }}" aria-label="{{ number }} {{ 'collection.columns' | t }}" data-collection-columns data-device="mobile">
+      <span class="collection-columns__option-content">
+        <span class="collection-columns__option-text" aria-hidden="true">{{ number }}</span>
+        <span class="collection-columns__option-icon" style="--switcher-columns:{{ number }}" aria-hidden="true">{% for tile in (1..number) %}<i></i>{% endfor %}</span>
+      </span>
+    </label>
+  {% endfor %}
+  {% for number in (2..3) %}
+    <label class="collection-columns__option collection-columns__tablet">
+      <input type="radio" name="columns-{{ section.id }}-tablet" value="{{ number }}" aria-label="{{ number }} {{ 'collection.columns' | t }}" data-collection-columns data-device="tablet">
+      <span class="collection-columns__option-content">
+        <span class="collection-columns__option-text" aria-hidden="true">{{ number }}</span>
+        <span class="collection-columns__option-icon" style="--switcher-columns:{{ number }}" aria-hidden="true">{% for tile in (1..number) %}<i></i>{% endfor %}</span>
+      </span>
+    </label>
+  {% endfor %}
+  {% for number in (3..5) %}
+    <label class="collection-columns__option collection-columns__desktop">
+      <input type="radio" name="columns-{{ section.id }}-desktop" value="{{ number }}" aria-label="{{ number }} {{ 'collection.columns' | t }}" data-collection-columns data-device="desktop">
       <span class="collection-columns__option-content">
         <span class="collection-columns__option-text" aria-hidden="true">{{ number }}</span>
         <span class="collection-columns__option-icon" style="--switcher-columns:{{ number }}" aria-hidden="true">{% for tile in (1..number) %}<i></i>{% endfor %}</span>
