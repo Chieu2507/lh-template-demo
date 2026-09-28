@@ -1254,6 +1254,8 @@
 }
 @media(max-width:1023.98px){
 .main-collection--blocks .main-collection__facets{row-gap:calc(var(--collection-gap,50px)*.75)}
+}
+@media(max-width:1199.98px){
 .main-collection--blocks .main-collection__filter-button .btn__icon{display:inline-flex}
 }
 @media(max-width:767.98px){
