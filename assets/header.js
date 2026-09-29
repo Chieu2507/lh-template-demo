@@ -468,7 +468,7 @@
       });
 
       details.addEventListener('pointerleave', () => {
-        if (isMobileMenuViewport()) return;
+        if (isMobileMenuViewport() || trigger !== 'hover') return;
         scheduleSubmenuClose(details);
         scheduleUpdate();
       });
