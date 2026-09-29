@@ -511,34 +511,12 @@
     text-align: center;
   }
 
-  .main-collection__filter-dialog {
-    --main-collection-filter-inset: var(--overlay-drawer-content-padding-desktop, 1.5rem);
-    width: min(375px, 100vw);
-    max-width: none;
-    height: 100dvh;
-    max-height: none;
-    margin: 0 auto 0 0;
-    padding: 0;
-    overflow: visible;
-    border: 0;
-    border-radius: 0;
-    background: var(--color-background);
-    color: var(--color-text);
-  }
-
   .no-js .main-collection__filter-button {
     display: none;
   }
 
   .no-js .main-collection__filter-backdrop-pointer {
     display: none;
-  }
-
-  .no-js .main-collection__filter-dialog {
-    position: static;
-    display: block;
-    width: 100%;
-    height: auto;
   }
 
   .no-js .main-collection__filter-header button {
@@ -551,46 +529,6 @@
 
   .no-js .main-collection__filter-body {
     overflow: visible;
-  }
-
-  .main-collection__filter-dialog::backdrop { background: color-mix(in srgb, var(--color-heading) 30%, transparent); backdrop-filter: blur(10px) saturate(.9); -webkit-backdrop-filter: blur(10px) saturate(.9); }
-  html.modal-backdrop-cursor .main-collection__filter-dialog::backdrop { cursor: none !important; }
-
-  .main-collection__filter-dialog[open]:not(.is-closing) {
-    animation: main-collection-filter-drawer-in 280ms cubic-bezier(.22, 1, .36, 1);
-  }
-
-  .main-collection__filter-dialog[open]:not(.is-closing)::backdrop {
-    animation: main-collection-filter-backdrop-in 240ms ease-out both;
-  }
-
-  .main-collection__filter-dialog.is-closing {
-    pointer-events: none;
-    animation: main-collection-filter-drawer-out 240ms cubic-bezier(.55, 0, 1, .45) both;
-  }
-
-  .main-collection__filter-dialog.is-closing::backdrop {
-    animation: main-collection-filter-backdrop-out 220ms ease-in both;
-  }
-
-  @keyframes main-collection-filter-drawer-in {
-    from { opacity: 0; transform: translateX(-28px); }
-    to { opacity: 1; transform: translateX(0); }
-  }
-
-  @keyframes main-collection-filter-drawer-out {
-    from { opacity: 1; transform: translateX(0); }
-    to { opacity: 0; transform: translateX(-100%); }
-  }
-
-  @keyframes main-collection-filter-backdrop-in {
-    from { opacity: 0; }
-    to { opacity: 1; }
-  }
-
-  @keyframes main-collection-filter-backdrop-out {
-    from { opacity: 1; }
-    to { opacity: 0; }
   }
 
   .main-collection__filter-form {
@@ -737,8 +675,6 @@
   .main-collection__filter-group {
     border-block-end: 1px solid var(--color-border);
   }
-
-
 
   .main-collection__filter-group summary {
     display: flex;
@@ -1018,10 +954,9 @@
     position: sticky;
     z-index: 2;
     bottom: 0;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    align-items: stretch;
     gap: 16px;
     flex: 0 0 auto;
     padding: 16px 24px;
@@ -1029,9 +964,9 @@
     background: var(--color-background);
   }
 
-  .main-collection__filter-footer .button {
+  .main-collection__filter-footer .btn {
+    min-width: 0;
     width: 100%;
-    flex: 0 0 auto;
     text-align: center;
   }
 
@@ -1152,33 +1087,14 @@
       padding-block: var(--pagination-padding-top-mobile, var(--pagination-padding-top, 40px)) var(--pagination-padding-bottom-mobile, var(--pagination-padding-bottom, 0px));
     }
 
-    .main-collection__filter-dialog {
-      --main-collection-filter-inset: var(--overlay-drawer-content-padding-mobile, 1rem);
-      position: fixed;
-      inset: auto 0 0;
-      width: 100vw;
-      height: 85dvh;
-      max-height: 85dvh;
-      margin: 0;
-      overflow: visible;
-      border-radius: 14px 14px 0 0;
-      background: transparent;
-      box-shadow: 0 -14px 42px rgb(0 0 0 / 12%);
-      transform: translateY(100%);
-    }
-
     .main-collection__filter-form { border-radius: inherit; background: var(--color-background); }
     .main-collection__filter-dialog[data-mobile-layout="sheet"] .main-collection__filter-form { width: 100%; max-width: 100%; }
-    .main-collection__filter-dialog[open]:not(.is-closing) { transform: translateY(0); }
-    .main-collection__filter-dialog[open]:not(.is-closing) { animation-name: main-collection-filter-drawer-in-mobile; }
-    .main-collection__filter-dialog.is-closing { animation-name: main-collection-filter-drawer-out-mobile; }
+
     .main-collection__filter-handle { display: grid; width: 100%; min-height: 28px; flex: none; place-items: center; background: var(--color-background); cursor: grab; touch-action: none; user-select: none; -webkit-tap-highlight-color: transparent; }
     .main-collection__filter-handle::before { width: 48px; height: 4px; border-radius: 999px; background: color-mix(in srgb, var(--color-heading) 14%, transparent); content: ''; }
     .main-collection__filter-dialog.is-handle-dragging .main-collection__filter-handle { cursor: grabbing; }
     .main-collection__filter-header { min-height: 64px; }
 
-    @keyframes main-collection-filter-drawer-in-mobile { from { transform: translateY(100%); } to { transform: translateY(0); } }
-    @keyframes main-collection-filter-drawer-out-mobile { from { transform: translateY(0); } to { transform: translateY(100%); } }
   }
 
   @media (prefers-reduced-motion: reduce) {
@@ -1188,11 +1104,7 @@
     .main-collection__sort-trigger svg,
     .main-collection__sort-radio::before,
     .main-collection__filter-backdrop-pointer,
-    .main-collection__filter-group summary svg,
-    .main-collection__filter-dialog[open],
-    .main-collection__filter-dialog[open]::backdrop,
-    .main-collection__filter-dialog.is-closing,
-    .main-collection__filter-dialog.is-closing::backdrop {
+    .main-collection__filter-group summary svg {
       transition: none;
       animation: none;
     }
@@ -1270,24 +1182,11 @@
 .main-collection--blocks .main-collection__promotion{grid-column:span min(var(--promo-span-mobile,2),var(--main-collection-columns-mobile,2))}
 .main-collection--blocks .main-collection__promotion-card{min-height:220px}
 .main-collection--blocks .main-collection__promotion-content{padding:var(--promo-padding-top-mobile,24px) var(--promo-padding-right-mobile,16px) var(--promo-padding-bottom-mobile,24px) var(--promo-padding-left-mobile,16px)}
-.main-collection__filter-dialog[data-mobile-layout="drawer"]{inset:0 auto 0 0;width:min(375px,100vw);height:100dvh;max-height:none;border-radius:0;transform:translateX(-100%)}
-.main-collection__filter-dialog[data-mobile-layout="drawer"][open]:not(.is-closing){animation-name:main-collection-filter-drawer-in}
+
 .main-collection__filter-dialog[data-mobile-layout="drawer"] .main-collection__filter-handle{display:none}
 }
 
 /* Tablet and narrow desktop use the existing side drawer; compact phones keep the configured sheet/drawer. */
-@media (min-width: 768px) and (max-width: 1199.98px) {
-  .main-collection__filter-dialog:not(.is-sidebar) {
-    position: fixed;
-    inset: 0 auto 0 0;
-    margin: 0;
-    transform: translateX(-100%);
-  }
-
-  .main-collection__filter-dialog:not(.is-sidebar)[open]:not(.is-closing) {
-    transform: translateX(0);
-  }
-}
 
 /* Tablet control is icon-only and manages a separate 2/3-column grid state. */
 .collection-columns__tablet { display: none; }
@@ -1302,13 +1201,6 @@
   .collection-columns__mobile { display: none; }
   .collection-columns__tablet { display: block; }
   .collection-columns__label { display: none; }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .main-collection__filter-dialog:not(.is-sidebar) {
-    animation: none !important;
-    transition: none;
-  }
 }
 
 /* Editor-configured collection blocks */
@@ -1482,10 +1374,8 @@
 }
 
 /* Shared sheet gesture owns transforms after the entrance animation finishes. */
-.main-collection__filter-dialog.is-gesture-closing { animation: none !important; }
-.main-collection__filter-dialog.is-sheet-dragging { touch-action: none; }
+
 @media (max-width: 767.98px) {
-  .main-collection__filter-dialog[data-mobile-layout="drawer"][open]:not(.is-closing) { transform: translateX(0); }
-  .main-collection__filter-dialog[data-mobile-layout="drawer"].is-closing { animation-name: main-collection-filter-drawer-out; }
+
   .main-collection__filter-header { touch-action: pan-x; }
 }
