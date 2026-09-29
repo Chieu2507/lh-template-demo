@@ -966,6 +966,10 @@
     appearance: textfield;
   }
 
+  .scheme-3 .main-collection__price-input input {
+    --input-text-color: var(--button-primary-text);
+  }
+
   .main-collection__price-input input::-webkit-inner-spin-button,
   .main-collection__price-input input::-webkit-outer-spin-button {
     margin: 0;
@@ -979,7 +983,7 @@
   }
 
   .main-collection__price-input input::placeholder {
-    color: color-mix(in srgb, var(--color-text) 72%, transparent);
+    color: color-mix(in srgb, var(--input-text-color) 72%, transparent);
     opacity: 1;
   }
 
