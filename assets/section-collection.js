@@ -584,7 +584,10 @@ if (!customElements.get('collection-facets')) {
         this.dialog.setAttribute('inert', '');
         this.classList.add('is-sidebar-collapsed');
       }
-      this.sidebarTransitionTimer = window.setTimeout(() => this.finishSidebarTransition(), 340);
+      const style = getComputedStyle(this);
+      const duration = parseFloat(style.getPropertyValue('--collection-sidebar-duration'));
+      const delay = parseFloat(style.getPropertyValue('--collection-sidebar-delay'));
+      this.sidebarTransitionTimer = window.setTimeout(() => this.finishSidebarTransition(), duration + delay + 20);
     }
 
     finishSidebarTransition() {
