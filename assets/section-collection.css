@@ -584,17 +584,17 @@
     display: inline-flex;
     align-items: center;
     max-width: 100%;
+    color: var(--color-text);
+    font-size: var(--p2-size-sm);
+    line-height: 1.2;
+    text-decoration: none;
+    overflow-wrap: anywhere;
   }
 
   .main-collection__active-filter {
     gap: 8px;
     padding: 8px 12px;
     background: color-mix(in srgb, var(--color-text) 6%, var(--color-background));
-    color: var(--color-text);
-    font-size: var(--p2-size-sm);
-    line-height: 1.2;
-    text-decoration: none;
-    overflow-wrap: anywhere;
   }
 
   .main-collection__active-filter .main-collection__swatch {
