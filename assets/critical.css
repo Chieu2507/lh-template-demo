@@ -1378,22 +1378,22 @@ legend {
 }
 
 @media (min-width: 768px) and (hover: hover) and (pointer: fine) {
-  .product-card:hover .product-card__image > img,
+  .product-card__media:hover .product-card__image > img,
   .product-card:focus-within .product-card__image > img {
     transform: scale(var(--product-card-image-zoom, var(--motion-image-zoom)));
   }
 
-  .product-card:hover .product-card__image-link--has-secondary .product-card__image,
+  .product-card__media:hover .product-card__image-link--has-secondary .product-card__image,
   .product-card:focus-within .product-card__image-link--has-secondary .product-card__image {
     opacity: 0;
   }
 
-  .product-card:hover .product-card__secondary-image,
+  .product-card__media:hover .product-card__secondary-image,
   .product-card:focus-within .product-card__secondary-image {
     opacity: var(--pcard-show-secondary-image);
   }
 
-  .product-card:hover .product-card__secondary-image > img,
+  .product-card__media:hover .product-card__secondary-image > img,
   .product-card:focus-within .product-card__secondary-image > img {
     transform: scale(var(--product-card-image-zoom, var(--motion-image-zoom)));
   }
