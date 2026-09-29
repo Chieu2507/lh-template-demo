@@ -580,14 +580,16 @@
     padding: 16px var(--main-collection-filter-inset) 0;
   }
 
-  .main-collection__active-filters a {
+  .main-collection__active-filters > a {
     display: inline-flex;
     align-items: center;
-    gap: 5px;
     max-width: 100%;
-    padding: 5px 8px;
-    border: 1px solid var(--color-variant-border);
-    border-radius: 999px;
+  }
+
+  .main-collection__active-filter {
+    gap: 8px;
+    padding: 8px 12px;
+    background: color-mix(in srgb, var(--color-text) 6%, var(--color-background));
     color: var(--color-text);
     font-size: var(--p2-size-sm);
     line-height: 1.2;
@@ -595,7 +597,7 @@
     overflow-wrap: anywhere;
   }
 
-  .main-collection__active-filters .main-collection__swatch {
+  .main-collection__active-filter .main-collection__swatch {
     flex-basis: 16px;
     width: 16px;
     height: 16px;
@@ -757,7 +759,7 @@
     background: var(--color-background);
   }
 
-  .main-collection__filter-value input:checked {
+  .main-collection__filter-value input:is([type=checkbox]):checked {
     border-color: var(--color-heading);
     background: var(--color-heading);
   }
@@ -767,22 +769,25 @@
     outline-offset: 2px;
   }
 
-  .main-collection__filter-value input::after {
-    position: absolute;
-    display: block;
+  .main-collection__filter-value input:is([type=checkbox], [type=radio])::after {
     content: '';
-    width: .4rem;
-    height: .8rem;
+    display: block;
+    position: absolute;
+  }
+
+  .main-collection__filter-value input:is([type=checkbox])::after {
     border: 1.5px solid var(--color-background);
     border-inline-start: 0;
     border-block-start: 0;
+    width: .4rem;
+    height: .8rem;
     inset-inline-start: .6rem;
     inset-block-start: .3rem;
-    opacity: 0;
     transform: rotate(43deg);
+    opacity: 0;
   }
 
-  .main-collection__filter-value input:checked::after {
+  .main-collection__filter-value input:is([type=checkbox]):checked::after {
     opacity: 1;
   }
 

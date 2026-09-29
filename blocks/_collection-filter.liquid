@@ -55,7 +55,7 @@
               <div class="main-collection__active-filters">
               {% for filter in collection.filters %}
                 {% for value in filter.active_values %}
-                  <a href="{{ value.url_to_remove | escape }}">
+                  <a class="main-collection__active-filter" href="{{ value.url_to_remove | escape }}">
                     {% if filter.presentation == 'swatch' %}
                       {% liquid
                         assign swatch_style = ''
@@ -74,7 +74,7 @@
                 {% endfor %}
                 {% if filter.type == 'price_range' %}
                   {% if filter.min_value.value != nil or filter.max_value.value != nil %}
-                    <a href="{{ filter.url_to_remove | escape }}">
+                    <a class="main-collection__active-filter" href="{{ filter.url_to_remove | escape }}">
                       <span>{{ filter.label | escape }}</span>
                       <span aria-hidden="true">×</span>
                     </a>
