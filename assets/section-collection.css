@@ -394,7 +394,7 @@
   }
 
   .main-collection__pagination {
-    --pagination-control-height: var(--button-height, 44px);
+    --pagination-control-height: 44px;
     display: flex;
     min-height: 88px;
     align-items: center;
@@ -408,6 +408,8 @@
     height: var(--pagination-control-height);
     align-items: center;
     justify-content: center;
+    color: var(--color-text);
+    font-size: var(--label-size);
   }
 
   .main-collection__pagination .page {
@@ -418,21 +420,17 @@
   .main-collection__pagination .deco { min-width: 24px; }
 
   .main-collection__pagination :where(.page, .prev, .next) a {
+    display: inline-flex;
     min-height: var(--pagination-control-height);
     height: var(--pagination-control-height);
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    color: inherit;
+    text-decoration: none;
   }
 
-  .main-collection__pagination .main-collection__pagination-arrow .btn__icon {
-    display: inline-flex;
-    visibility: visible;
-    opacity: 1;
-  }
-
-  .main-collection__pagination .main-collection__pagination-arrow .btn__icon svg {
-    display: block;
-    visibility: visible;
-    opacity: 1;
-  }
+  .main-collection__pagination :where(.page, .prev, .next) a:hover { color: var(--color-heading); }
 
   .main-collection__pagination .page a {
     width: 100%;
@@ -442,7 +440,8 @@
   .main-collection__pagination .page.current {
     min-height: var(--pagination-control-height);
     padding-inline: 4px;
-    pointer-events: none;
+    color: var(--color-heading);
+    box-shadow: inset 0 -2px currentColor;
   }
 
   .main-collection__pagination .deco {
@@ -456,19 +455,9 @@
 
   .main-collection__pagination [data-collection-load-more] {
     min-height: var(--pagination-control-height);
-    padding-inline: var(--button-padding-inline-desktop);
-  }
-
-  .main-collection__pagination[data-style='outline'] .btn {
-    --button-border-width: max(1px, var(--button-secondary-border-width, 1px));
-    --button-background: transparent;
-    --button-foreground: var(--button-secondary-text);
-    --button-border: var(--button-secondary-border);
-    --button-hover-background: transparent;
-  }
-
-  .main-collection__pagination[data-style='tertiary'] .page.current {
-    box-shadow: inset 0 -2px currentColor;
+    color: var(--color-heading);
+    text-decoration: underline;
+    text-underline-offset: 4px;
   }
 
   .main-collection__pagination[data-height='extra_small'] { --pagination-control-height: 36px; }
@@ -1117,10 +1106,6 @@
     .main-collection__pagination {
       min-height: 72px;
       padding-block: var(--pagination-padding-top-mobile, var(--pagination-padding-top, 40px)) var(--pagination-padding-bottom-mobile, var(--pagination-padding-bottom, 0px));
-    }
-
-    .main-collection__pagination [data-collection-load-more] {
-      padding-inline: var(--button-padding-inline-mobile);
     }
 
     .main-collection__filter-form { border-radius: inherit; background: var(--color-background); }
