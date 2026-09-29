@@ -1407,7 +1407,7 @@
 
 /* Keep the panel in the collection grid; modal dialogs still use the top layer. */
 .main-collection--blocks .main-collection__filter-panel-positioner:has(dialog[open]:not(.is-sidebar)) { display: contents; }
-.main-collection__sort-option-button { min-height: 42px; padding: 10px 18px; font-size: var(--p1-size-sm, 16px); }
+.main-collection__sort-option-button { min-height: 42px; padding: 10px 18px; }
 .main-collection__sort-option-button[aria-selected='true'] { background: color-mix(in srgb, var(--color-text) 6%, var(--color-background)); font-weight: inherit; }
 .main-collection__sort-option-button svg { display: none; }
 .collection-columns__option-content { transition: background-color 200ms ease, color 200ms ease, box-shadow 200ms ease; }
