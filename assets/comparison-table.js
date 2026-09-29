@@ -40,9 +40,7 @@ if (!customElements.get('comparison-table-tooltip')) {
 
     featureRows.forEach((featureRow) => {
       const rowIndex = Number(featureRow.dataset.comparisonTableRow);
-      const hasFeature =
-        normalize(featureRow.dataset.comparisonTableFeatureLabel) !== '' ||
-        normalize(featureRow.dataset.comparisonTableFeatureTooltip) !== '';
+      const hasFeature = normalize(featureRow.dataset.comparisonTableFeatureLabel) !== '';
       if (hasFeature && Number.isInteger(rowIndex)) {
         lastFeatureRow = Math.max(lastFeatureRow, rowIndex);
       }
