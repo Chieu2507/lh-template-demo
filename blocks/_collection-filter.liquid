@@ -56,6 +56,18 @@
               {% for filter in collection.filters %}
                 {% for value in filter.active_values %}
                   <a href="{{ value.url_to_remove | escape }}">
+                    {% if filter.presentation == 'swatch' %}
+                      {% liquid
+                        assign swatch_style = ''
+                        if value.swatch.image != blank
+                          assign swatch_image_url = value.swatch.image | image_url: width: 48
+                          assign swatch_style = '--main-collection-swatch-image: url(' | append: swatch_image_url | append: ');'
+                        elsif value.swatch.color != blank
+                          assign swatch_style = '--main-collection-swatch-color: ' | append: value.swatch.color | append: ';'
+                        endif
+                      %}
+                      <span class="main-collection__swatch"{% if swatch_style != blank %} style="{{ swatch_style }}"{% endif %} aria-hidden="true"></span>
+                    {% endif %}
                     <span>{{ value.label | escape }}</span>
                     <span aria-hidden="true">×</span>
                   </a>

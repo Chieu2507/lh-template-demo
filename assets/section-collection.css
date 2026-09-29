@@ -584,12 +584,20 @@
     display: inline-flex;
     align-items: center;
     gap: 5px;
-    padding: 6px 8px;
+    max-width: 100%;
+    padding: 5px 8px;
     border: 1px solid var(--color-variant-border);
+    border-radius: 999px;
     color: var(--color-text);
     font-size: var(--p2-size-sm);
-    line-height: 1;
+    line-height: 1.2;
     text-decoration: none;
+  }
+
+  .main-collection__active-filters .main-collection__swatch {
+    flex-basis: 16px;
+    width: 16px;
+    height: 16px;
   }
 
   .main-collection__active-filters .main-collection__clear-link {
@@ -737,9 +745,39 @@
   }
 
   .main-collection__filter-value input {
+    position: relative;
+    flex: 0 0 18px;
     width: 18px;
     height: 18px;
-    accent-color: var(--color-heading);
+    margin: 0;
+    border: 1px solid var(--color-variant-border);
+    border-radius: 2px;
+    appearance: none;
+    background: var(--color-background);
+  }
+
+  .main-collection__filter-value input:checked {
+    border-color: var(--color-heading);
+    background: var(--color-heading);
+  }
+
+  .main-collection__filter-value input::after {
+    position: absolute;
+    display: block;
+    content: '';
+    width: .4rem;
+    height: .8rem;
+    border: 1.5px solid var(--color-background);
+    border-inline-start: 0;
+    border-block-start: 0;
+    inset-inline-start: .6rem;
+    inset-block-start: .3rem;
+    opacity: 0;
+    transform: rotate(43deg);
+  }
+
+  .main-collection__filter-value input:checked::after {
+    opacity: 1;
   }
 
   .main-collection__filter-values--swatches .main-collection__filter-value {
