@@ -576,6 +576,9 @@ dialog[data-overlay-motion='popup'][open]::backdrop {
   right: auto;
   left: var(--overlay-drawer-inset);
   border-radius: 0 var(--drawer-radius) var(--drawer-radius) 0;
+  transition:
+    transform var(--overlay-motion-duration) var(--overlay-motion-ease),
+    opacity var(--overlay-motion-duration) var(--overlay-motion-ease);
 }
 .component-overlay:where(.cart-drawer) {
   --overlay-drawer-inset: var(--cart-drawer-inset-desktop, 0px);
