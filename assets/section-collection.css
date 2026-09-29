@@ -966,7 +966,7 @@
     appearance: textfield;
   }
 
-  .scheme-3 .main-collection__price-input input {
+  .main-collection.scheme-3 .main-collection__price-input input {
     --input-text-color: var(--button-primary-text);
   }
 
