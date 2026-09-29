@@ -22,7 +22,7 @@
  endif
  assign filter_button_icon = block.settings.filter_icon | default: 'sliders'
  if filter_button_icon == 'funnel'
-  assign filter_button_icon = 'sliders'
+  assign filter_button_icon = 'adjustments-horizontal'
  endif
 %}
 <div class="collection-filter-block" {{ block.shopify_attributes }}>
