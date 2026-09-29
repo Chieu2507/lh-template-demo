@@ -408,8 +408,6 @@
     height: var(--pagination-control-height);
     align-items: center;
     justify-content: center;
-    color: var(--color-text);
-    font-size: var(--label-size);
   }
 
   .main-collection__pagination .page {
@@ -426,19 +424,12 @@
 
   .main-collection__pagination .main-collection__pagination-arrow .btn__icon {
     display: inline-flex;
-    width: 14px;
-    height: 14px;
-    flex: 0 0 14px;
-    align-items: center;
-    justify-content: center;
     visibility: visible;
     opacity: 1;
   }
 
   .main-collection__pagination .main-collection__pagination-arrow .btn__icon svg {
     display: block;
-    width: 100%;
-    height: 100%;
     visibility: visible;
     opacity: 1;
   }
@@ -450,8 +441,11 @@
 
   .main-collection__pagination .page.current {
     padding-inline: 4px;
-    background: var(--button-primary-background);
-    color: var(--button-primary-text);
+  }
+
+  .main-collection__pagination .deco {
+    color: var(--color-text);
+    font-size: var(--label-size);
   }
 
   .main-collection__pagination :where(.prev, .next) a {
@@ -463,17 +457,6 @@
     padding-inline: var(--button-padding-inline-desktop);
   }
 
-  .main-collection__pagination[data-style='secondary'] .page.current {
-    background: var(--button-secondary-background);
-    color: var(--button-secondary-text);
-  }
-
-  .main-collection__pagination[data-style='outline'] .page.current {
-    background: transparent;
-    color: var(--button-secondary-text);
-    box-shadow: inset 0 0 0 1px currentColor;
-  }
-
   .main-collection__pagination[data-style='outline'] .btn {
     --button-border-width: max(1px, var(--button-secondary-border-width, 1px));
     --button-background: transparent;
@@ -483,8 +466,6 @@
   }
 
   .main-collection__pagination[data-style='tertiary'] .page.current {
-    background: var(--button-tertiary-background);
-    color: var(--button-tertiary-text);
     box-shadow: inset 0 -2px currentColor;
   }
 
