@@ -563,21 +563,22 @@ if (!customElements.get('collection-facets')) {
       if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
         this.finishSidebarTransition();
         if (this.sidebarOpen) this.dialog.setAttribute('open', '');
-        else this.dialog.close();
         return;
       }
 
       window.clearTimeout(this.sidebarTransitionTimer);
       this.classList.add('is-sidebar-animating');
       if (this.sidebarOpen) {
+        this.dialog.removeAttribute('inert');
         if (!this.dialog.open) {
           this.classList.add('is-sidebar-collapsed');
           this.dialog.setAttribute('open', '');
           // Establish the collapsed grid before starting its transition.
-          this.offsetWidth;
+          this.getBoundingClientRect();
         }
         this.classList.remove('is-sidebar-collapsed');
       } else {
+        this.dialog.setAttribute('inert', '');
         this.classList.add('is-sidebar-collapsed');
       }
       this.sidebarTransitionTimer = window.setTimeout(() => this.finishSidebarTransition(), 340);
@@ -587,6 +588,7 @@ if (!customElements.get('collection-facets')) {
       window.clearTimeout(this.sidebarTransitionTimer);
       this.sidebarTransitionTimer = null;
       if (this.dialog?.classList.contains('is-sidebar') && this.sidebarOpen === false && this.dialog.open) this.dialog.close();
+      this.dialog?.removeAttribute('inert');
       this.classList.remove('is-sidebar-animating', 'is-sidebar-collapsed');
     }
 
