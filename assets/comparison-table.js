@@ -36,22 +36,16 @@ if (!customElements.get('comparison-table-tooltip')) {
     });
 
     const featureRows = [...table.querySelectorAll(`.comparison-table__col--feature ${rowSelector}`)];
-    let lastFeatureRow = 0;
+    const visibleRows = new Set();
 
     featureRows.forEach((featureRow) => {
-      const rowIndex = Number.parseInt(featureRow.dataset.comparisonTableRow, 10);
-      const hasFeature =
-        normalize(featureRow.dataset.comparisonTableFeatureLabel) !== '' ||
-        normalize(featureRow.dataset.comparisonTableFeatureTooltip) !== '';
-
-      if (hasFeature && Number.isInteger(rowIndex)) {
-        lastFeatureRow = Math.max(lastFeatureRow, rowIndex);
+      if (normalize(featureRow.dataset.comparisonTableFeatureLabel) !== '') {
+        visibleRows.add(featureRow.dataset.comparisonTableRow);
       }
     });
 
     table.querySelectorAll(rowSelector).forEach((row) => {
-      const rowIndex = Number.parseInt(row.dataset.comparisonTableRow, 10);
-      row.hidden = lastFeatureRow === 0 || !Number.isInteger(rowIndex) || rowIndex > lastFeatureRow;
+      row.hidden = !visibleRows.has(row.dataset.comparisonTableRow);
     });
 
     table.querySelectorAll('.comparison-table__col').forEach((column) => {
