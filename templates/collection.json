@@ -144,9 +144,7 @@
               "static": true,
               "settings": {
                 "desktop_type": "text",
-                "desktop_style": "primary",
-                "mobile_type": "icon",
-                "mobile_style": "secondary"
+                "mobile_type": "icon"
               }
             }
           }
@@ -174,7 +172,6 @@
               "static": true,
               "settings": {
                 "pagination_type": "pages",
-                "button_style": "primary",
                 "button_height": "inherit",
                 "padding_top": 40,
                 "padding_bottom": 0,
