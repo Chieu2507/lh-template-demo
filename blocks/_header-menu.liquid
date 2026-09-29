@@ -352,10 +352,14 @@
     transition: transform var(--motion-duration-standard) var(--motion-ease-standard);
   }
 
-  .header-menu__details:is([open], .is-submenu-closing) > .header-menu__summary .header-menu__dropdown-icon,
-  .header-menu--trigger-hover .header-menu__details:hover .header-menu__dropdown-icon,
-  .header-menu--trigger-hover .header-menu__details:focus-within .header-menu__dropdown-icon {
+  .header-menu__details[open]:not(.is-submenu-closing) > .header-menu__summary .header-menu__dropdown-icon,
+  .header-menu--trigger-hover .header-menu__details:not(.is-submenu-closing):hover .header-menu__dropdown-icon,
+  .header-menu--trigger-hover .header-menu__details:not(.is-submenu-closing):focus-within .header-menu__dropdown-icon {
     transform: rotate(180deg);
+  }
+
+  .header-menu__details.is-submenu-closing > .header-menu__summary .header-menu__dropdown-icon {
+    transition-duration: var(--motion-duration-slow);
   }
 
   .header-menu__submenu {
@@ -1015,6 +1019,7 @@
 
   @media (prefers-reduced-motion: reduce) {
     .header-menu__dropdown-icon,
+    .header-menu__details.is-submenu-closing > .header-menu__summary .header-menu__dropdown-icon,
     .header-menu__submenu,
     .header-mega-menu,
     .header-menu__tertiary {

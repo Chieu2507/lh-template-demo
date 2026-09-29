@@ -230,10 +230,14 @@
     transition: transform var(--motion-duration-standard) var(--motion-ease-standard);
   }
 
-  .header-localization__details:is([open], .is-submenu-closing) .header-localization__icon,
-  .header-localization--trigger-hover .header-localization__details:hover .header-localization__icon,
-  .header-localization--trigger-hover .header-localization__details:focus-within .header-localization__icon {
+  .header-localization__details[open]:not(.is-submenu-closing) .header-localization__icon,
+  .header-localization--trigger-hover .header-localization__details:not(.is-submenu-closing):hover .header-localization__icon,
+  .header-localization--trigger-hover .header-localization__details:not(.is-submenu-closing):focus-within .header-localization__icon {
     transform: rotate(180deg);
+  }
+
+  .header-localization__details.is-submenu-closing .header-localization__icon {
+    transition-duration: var(--motion-duration-slow);
   }
 
   .header-localization__panel {
@@ -377,6 +381,7 @@
 
   @media (prefers-reduced-motion: reduce) {
     .header-localization__icon,
+    .header-localization__details.is-submenu-closing .header-localization__icon,
     .header-localization__panel {
       transition-duration: 0.01ms;
       transition-delay: 0s;
