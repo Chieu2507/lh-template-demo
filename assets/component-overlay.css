@@ -189,7 +189,7 @@ custom-cursor[data-component-overlay-cursor] svg {
   .component-sheet > .component-sheet__header { min-height: 74px; padding-top: 24px; padding-bottom: 16px; }
   .component-overlay {
     --overlay-inset: var(--overlay-drawer-content-padding-mobile, 1rem);
-    --overlay-drawer-inset: var(--overlay-drawer-padding-mobile, 0px);
+    --overlay-drawer-inset: var(--overlay-drawer-padding-mobile);
   }
   .component-overlay:where([data-mobile-layout='bottom_sheet']) > .component-overlay__panel { --overlay-rest-transform: translateY(100%); position: absolute; inset: auto 0 0; width: 100%; max-height: calc(90dvh - env(safe-area-inset-top, 0px)); margin: 0; border-radius: var(--bottom-sheet-radius) var(--bottom-sheet-radius) 0 0; }
   .component-overlay:where([data-mobile-layout='bottom_sheet']):is([data-state='opening'], [data-state='open']) > .component-overlay__backdrop { opacity: calc(1 - (var(--sheet-drag-progress, 0) * 0.72)); }
@@ -586,9 +586,6 @@ dialog[data-overlay-motion='popup'][open]::backdrop {
   transition:
     transform var(--overlay-motion-duration) var(--overlay-motion-ease),
     opacity var(--overlay-motion-duration) var(--overlay-motion-ease);
-}
-@media (max-width: 767.98px) {
-  .component-overlay:where(.cart-drawer) { --overlay-drawer-inset: 0px; }
 }
 @media (max-width: 500px) {
   .component-overlay:where(.header__mobile-drawer) > .component-overlay__panel,
