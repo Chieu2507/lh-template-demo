@@ -324,14 +324,15 @@
     {
       "type": "number",
       "id": "image_ratio_custom_width_desktop",
-      "label": "W",
+      "label": "Width",
       "default": 16,
       "visible_if": "{{ block.settings.image_ratio_desktop == 'custom' }}"
     },
     {
       "type": "number",
       "id": "image_ratio_custom_height_desktop",
-      "label": "H",
+      "label": "Height",
+      "info": "Numbers only. Width 16 + Height 9 = 16:9.",
       "default": 9,
       "visible_if": "{{ block.settings.image_ratio_desktop == 'custom' }}"
     },
@@ -398,14 +399,15 @@
     {
       "type": "number",
       "id": "image_ratio_custom_width_mobile",
-      "label": "W",
+      "label": "Mobile width",
       "default": 16,
       "visible_if": "{{ block.settings.customize_mobile_size and block.settings.image_ratio_mobile == 'custom' }}"
     },
     {
       "type": "number",
       "id": "image_ratio_custom_height_mobile",
-      "label": "H",
+      "label": "Mobile height",
+      "info": "Numbers only. Width 16 + Height 9 = 16:9.",
       "default": 9,
       "visible_if": "{{ block.settings.customize_mobile_size and block.settings.image_ratio_mobile == 'custom' }}"
     },
