@@ -8,6 +8,14 @@
     assign width = 'fit'
   endunless
   assign max_width = block.settings.max_width | default: 640 | plus: 0
+  assign size_width = 'fit-content'
+  if width == 'fill' or width == 'custom'
+    assign size_width = '100%'
+  endif
+  assign size_max_width = blank
+  if width == 'custom'
+    assign size_max_width = max_width | append: 'px'
+  endif
   assign padding_top = block.settings.padding_top | default: 0 | plus: 0
   assign padding_right = block.settings.padding_right | default: 0 | plus: 0
   assign padding_bottom = block.settings.padding_bottom | default: 0 | plus: 0
@@ -15,7 +23,7 @@
 %}
 
 {% capture text_style %}
-  {% if width == 'fill' %}--text-width: 100%;{% elsif width == 'custom' %}--text-width: 100%;--text-max-width: {{ max_width }}px;{% endif %}
+  {% render 'size-style', width: size_width, max_width: size_max_width %}
   {% if padding_top != 0 %}--text-padding-top: {{ padding_top }}px;{% endif %}
   {% if padding_right != 0 %}--text-padding-right: {{ padding_right }}px;{% endif %}
   {% if padding_bottom != 0 %}--text-padding-bottom: {{ padding_bottom }}px;{% endif %}
@@ -23,7 +31,7 @@
   {% if block.settings.text_color != blank %}--text-block-color: {{ block.settings.text_color | escape }};{% endif %}
 {% endcapture %}
 
-<div class="text-block announcement-text-block motion-block body-text body-{{ text_size }}"{% if text_style != blank %} style="{{ text_style | strip }}"{% endif %} {{ block.shopify_attributes }}>
+<div class="text-block size-style announcement-text-block motion-block body-text body-{{ text_size }}"{% if text_style != blank %} style="{{ text_style | strip }}"{% endif %} {{ block.shopify_attributes }}>
   {{ block.settings.text | escape }}
 </div>
 

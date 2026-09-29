@@ -231,7 +231,7 @@
               {% endif %}
               <article class="cart-drawer__item{% if line_is_sale %} is-sale{% endif %}" data-cart-line data-line-key="{{ item.key | escape }}" data-variant-id="{{ item.variant_id }}" data-compare-price="{{ line_original_price }}">
                 <a class="cart-drawer__item-media" href="{{ item.url }}" aria-label="{{ item.product.title | escape }}">
-                  {% render 'image', image: item.image, class: 'cart-drawer__image', width: 240, widths: '120, 180, 240', sizes: '7rem' %}
+                  {% render 'image', image: item.image, class: 'cart-drawer__image', width: 240, widths: '120, 180, 240', sizes: '7rem', placeholder: 'product-1' %}
                 </a>
                 <div class="cart-drawer__item-info">
                   <h3 class="cart-drawer__item-title card-title-text"><a href="{{ item.url }}">{{ item.product.title | escape }}</a></h3>

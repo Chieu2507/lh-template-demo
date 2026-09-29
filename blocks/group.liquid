@@ -105,31 +105,56 @@
   unless group_width_mode == 'fit' or group_width_mode == 'fill' or group_width_mode == 'custom'
     assign group_width_mode = 'fit'
   endunless
+  assign group_width_custom = block.settings.width_custom | default: 100 | plus: 0
+  if group_width_custom < 10 or group_width_custom > 100
+    assign group_width_custom = 100
+  endif
   assign group_width = 'fit-content'
-  if group_width_mode == 'fill' or group_width_mode == 'custom'
+  if group_width_mode == 'fill'
     assign group_width = '100%'
+  elsif group_width_mode == 'custom'
+    assign group_width = group_width_custom | append: '%'
+  endif
+  assign group_limit_width = false
+  if group_width_mode != 'fit' and block.settings.limit_width
+    assign group_limit_width = true
   endif
   assign group_max_width = block.settings.max_width | default: 640 | plus: 0
   if group_max_width < 320 or group_max_width > 1200
     assign group_max_width = 640
   endif
+  assign group_size_max_width = blank
+  if group_limit_width
+    assign group_size_max_width = group_max_width | append: 'px'
+  endif
 
-  assign group_width_mobile_mode = group_width_mode
-  assign group_width_mobile = group_width
-  assign group_max_width_mobile = group_max_width
-  if block.settings.customize_mobile_size
-    assign group_width_mobile_mode = block.settings.width_mobile | default: group_width_mode
-    unless group_width_mobile_mode == 'fit' or group_width_mobile_mode == 'fill' or group_width_mobile_mode == 'custom'
-      assign group_width_mobile_mode = group_width_mode
-    endunless
-    assign group_width_mobile = 'fit-content'
-    if group_width_mobile_mode == 'fill' or group_width_mobile_mode == 'custom'
-      assign group_width_mobile = '100%'
-    endif
-    assign group_max_width_mobile = block.settings.max_width_mobile | default: 480 | plus: 0
-    if group_max_width_mobile < 240 or group_max_width_mobile > 800
-      assign group_max_width_mobile = 480
-    endif
+  assign group_width_mobile_mode = block.settings.width_mobile | default: group_width_mode
+  unless group_width_mobile_mode == 'fit' or group_width_mobile_mode == 'fill' or group_width_mobile_mode == 'custom'
+    assign group_width_mobile_mode = group_width_mode
+  endunless
+  assign group_width_custom_mobile = block.settings.width_custom_mobile | default: 100 | plus: 0
+  if group_width_custom_mobile < 10 or group_width_custom_mobile > 100
+    assign group_width_custom_mobile = 100
+  endif
+  assign group_width_mobile = 'fit-content'
+  if group_width_mobile_mode == 'fill'
+    assign group_width_mobile = '100%'
+  elsif group_width_mobile_mode == 'custom'
+    assign group_width_mobile = group_width_custom_mobile | append: '%'
+  endif
+  assign group_limit_width_mobile = false
+  if group_width_mobile_mode != 'fit' and block.settings.limit_width_mobile
+    assign group_limit_width_mobile = true
+  endif
+  assign group_max_width_mobile = block.settings.max_width_mobile | default: 480 | plus: 0
+  if group_max_width_mobile < 100 or group_max_width_mobile > 800
+    assign group_max_width_mobile = 480
+  endif
+  assign group_size_max_width_mobile = blank
+  if group_limit_width_mobile
+    assign group_size_max_width_mobile = group_max_width_mobile | append: 'px'
+  elsif group_limit_width
+    assign group_size_max_width_mobile = '100%'
   endif
 
   assign group_gap_desktop = block.settings.gap_desktop | default: 16 | plus: 0
@@ -208,7 +233,7 @@
     assign group_scheme = group_scheme | default: 'scheme-1' | handleize
   endif
 
-  assign group_class = 'group layout-flow layout-flow--responsive group--' | append: group_direction
+  assign group_class = 'group size-style layout-flow layout-flow--responsive group--' | append: group_direction
   assign group_class = group_class | append: ' group--align-' | append: group_alignment
   assign group_class = group_class | append: ' group--width-' | append: group_width_mode
   assign group_class = group_class | append: ' group--height-' | append: group_height_mode
@@ -242,16 +267,12 @@
     gap: group_gap_desktop,
     gap_mobile: group_gap_mobile
   %}
-  {% if group_width_mode != 'fit' %}--group-width: {{ group_width }};{% endif %}
-  {% if group_width_mode == 'custom' %}--group-max-width: {{ group_max_width }}px;{% endif %}
-  {% if block.settings.customize_mobile_size %}
-    {% if group_width_mobile != group_width %}--group-width-mobile: {{ group_width_mobile }};{% endif %}
-    {% if group_width_mobile_mode == 'custom' %}
-      {% if group_width_mode != 'custom' or group_max_width_mobile != group_max_width %}--group-max-width-mobile: {{ group_max_width_mobile }}px;{% endif %}
-    {% elsif group_width_mode == 'custom' %}
-      --group-max-width-mobile: 100%;
-    {% endif %}
-  {% endif %}
+  {% render 'size-style',
+    width: group_width,
+    max_width: group_size_max_width,
+    width_mobile: group_width_mobile,
+    max_width_mobile: group_size_max_width_mobile
+  %}
   {% if group_mobile_alignment_enabled and group_alignment_mobile != group_alignment %}--group-align-mobile: {{ group_alignment_mobile }};{% endif %}
   {% if block.settings.border_color != blank %}--group-border-color: {{ block.settings.border_color | escape }};{% endif %}
   {% if padding_top != 0 %}--group-padding-top: {{ padding_top }}px;{% endif %}
@@ -284,10 +305,6 @@
 {% stylesheet %}
   .group {
     /* Keep layout overrides local when groups are nested inside other groups. */
-    --group-width: initial;
-    --group-max-width: initial;
-    --group-width-mobile: initial;
-    --group-max-width-mobile: initial;
     --group-height: initial;
     --group-padding-top: initial;
     --group-padding-right: initial;
@@ -306,8 +323,6 @@
     --group-align-mobile: var(--group-align);
     --flex-align: var(--group-align);
     --flex-align-mobile: var(--group-align-mobile);
-    width: var(--group-width, fit-content);
-    max-width: var(--group-max-width, 100%);
     height: var(--group-height, fit-content);
     min-width: 0;
     padding-top: var(--group-padding-top, 0px);
@@ -417,8 +432,6 @@
   @media (max-width: 767.98px) {
     .group {
       --flex-align: var(--group-align-mobile, var(--group-align));
-      width: var(--group-width-mobile, var(--group-width, fit-content));
-      max-width: var(--group-max-width-mobile, var(--group-max-width, 100%));
       padding-top: var(--group-padding-top-mobile, var(--group-padding-top, 0px));
       padding-right: var(--group-padding-right-mobile, var(--group-padding-right, 0px));
       padding-bottom: var(--group-padding-bottom-mobile, var(--group-padding-bottom, 0px));
@@ -569,6 +582,16 @@
     },
     {
       "type": "select",
+      "id": "device",
+      "label": "t:labels.device",
+      "options": [
+        { "value": "desktop", "label": "t:options.device.desktop" },
+        { "value": "mobile", "label": "t:options.device.mobile" }
+      ],
+      "default": "desktop"
+    },
+    {
+      "type": "select",
       "id": "width",
       "label": "t:labels.width",
       "options": [
@@ -576,7 +599,26 @@
         { "value": "fill", "label": "t:options.width.fill" },
         { "value": "custom", "label": "t:options.width.custom" }
       ],
-      "default": "fit"
+      "default": "fit",
+      "visible_if": "{{ block.settings.device == 'desktop' }}"
+    },
+    {
+      "type": "range",
+      "id": "width_custom",
+      "label": "t:labels.custom_width",
+      "min": 10,
+      "max": 100,
+      "step": 1,
+      "unit": "%",
+      "default": 100,
+      "visible_if": "{{ block.settings.device == 'desktop' and block.settings.width == 'custom' }}"
+    },
+    {
+      "type": "checkbox",
+      "id": "limit_width",
+      "label": "t:labels.limit_width",
+      "default": false,
+      "visible_if": "{{ block.settings.device == 'desktop' and block.settings.width != 'fit' }}"
     },
     {
       "type": "range",
@@ -587,36 +629,7 @@
       "step": 10,
       "unit": "px",
       "default": 640,
-      "visible_if": "{{ block.settings.width == 'custom' }}"
-    },
-    {
-      "type": "checkbox",
-      "id": "customize_mobile_size",
-      "label": "t:labels.customize_mobile_size",
-      "default": false
-    },
-    {
-      "type": "select",
-      "id": "width_mobile",
-      "label": "t:labels.mobile_width",
-      "options": [
-        { "value": "fit", "label": "t:options.width.fit" },
-        { "value": "fill", "label": "t:options.width.fill" },
-        { "value": "custom", "label": "t:options.width.custom" }
-      ],
-      "default": "fit",
-      "visible_if": "{{ block.settings.customize_mobile_size }}"
-    },
-    {
-      "type": "range",
-      "id": "max_width_mobile",
-      "label": "t:labels.mobile_max_width",
-      "min": 240,
-      "max": 800,
-      "step": 10,
-      "unit": "px",
-      "default": 480,
-      "visible_if": "{{ block.settings.customize_mobile_size and block.settings.width_mobile == 'custom' }}"
+      "visible_if": "{{ block.settings.device == 'desktop' and block.settings.width != 'fit' and block.settings.limit_width }}"
     },
     {
       "type": "select",
@@ -626,7 +639,49 @@
         { "value": "fit", "label": "t:options.width.fit" },
         { "value": "fill", "label": "t:options.width.fill" }
       ],
-      "default": "fill"
+      "default": "fill",
+      "visible_if": "{{ block.settings.device == 'desktop' }}"
+    },
+    {
+      "type": "select",
+      "id": "width_mobile",
+      "label": "t:labels.width_mobile",
+      "options": [
+        { "value": "fit", "label": "t:options.width.fit" },
+        { "value": "fill", "label": "t:options.width.fill" },
+        { "value": "custom", "label": "t:options.width.custom" }
+      ],
+      "default": "fit",
+      "visible_if": "{{ block.settings.device == 'mobile' }}"
+    },
+    {
+      "type": "range",
+      "id": "width_custom_mobile",
+      "label": "t:labels.custom_width_mobile",
+      "min": 10,
+      "max": 100,
+      "step": 1,
+      "unit": "%",
+      "default": 100,
+      "visible_if": "{{ block.settings.device == 'mobile' and block.settings.width_mobile == 'custom' }}"
+    },
+    {
+      "type": "checkbox",
+      "id": "limit_width_mobile",
+      "label": "t:labels.limit_width_mobile",
+      "default": false,
+      "visible_if": "{{ block.settings.device == 'mobile' and block.settings.width_mobile != 'fit' }}"
+    },
+    {
+      "type": "range",
+      "id": "max_width_mobile",
+      "label": "t:labels.max_width_mobile",
+      "min": 100,
+      "max": 800,
+      "step": 10,
+      "unit": "px",
+      "default": 480,
+      "visible_if": "{{ block.settings.device == 'mobile' and block.settings.width_mobile != 'fit' and block.settings.limit_width_mobile }}"
     },
     {
       "type": "header",
@@ -837,9 +892,13 @@
         "alignment_mobile": "left",
         "gap_desktop": 16,
         "gap_mobile": 12,
-        "width": "fit",
-        "customize_mobile_size": false,
+        "device": "desktop",
+        "width": "fill",
+        "width_custom": 100,
         "width_mobile": "fit",
+        "width_custom_mobile": 100,
+        "limit_width": false,
+        "limit_width_mobile": false,
         "height": "fill",
         "appearance_type": "inherit",
         "color_scheme": "scheme-1",

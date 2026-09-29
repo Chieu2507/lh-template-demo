@@ -105,7 +105,6 @@
   {% render 'layout-flow-style',
     direction: image_cards_flow_direction,
     wrap: 'nowrap',
-    align_items: 'stretch',
     gap: image_cards_gap_desktop,
     direction_mobile: image_cards_flow_direction_mobile,
     wrap_mobile: 'nowrap',
@@ -426,8 +425,8 @@
         "gap_mobile": 8,
         "color_scheme": "scheme-1",
         "customize_mobile_padding": false,
-        "padding_top": 0,
-        "padding_bottom": 0,
+        "padding_top": 50,
+        "padding_bottom": 50,
         "padding_top_mobile": 0,
         "padding_bottom_mobile": 0
       },
@@ -435,6 +434,9 @@
         {
           "type": "image-card",
           "settings": {
+            "color_scheme": "scheme-3",
+            "position_desktop": "center_center",
+            "position_mobile": "center_center",
             "padding_top": 32,
             "padding_bottom": 32,
             "padding_left": 32,
@@ -476,6 +478,9 @@
         {
           "type": "image-card",
           "settings": {
+            "color_scheme": "scheme-3",
+            "position_desktop": "center_center",
+            "position_mobile": "center_center",
             "padding_top": 32,
             "padding_bottom": 32,
             "padding_left": 32,

@@ -41,7 +41,7 @@
   if has_distinct_mobile_video
     assign background_media_class = background_media_class | append: ' background-media--has-mobile-video'
   endif
-  assign background_media_placeholder = placeholder | default: 'product-1'
+  assign background_media_placeholder = placeholder | default: 'image'
 %}
 
 <div
@@ -59,7 +59,9 @@
         </div>
       {% endif %}
     {% else %}
-      {{ background_media_placeholder | placeholder_svg_tag: 'background-media__placeholder' }}
+      <div class="background-media__placeholder placeholder-image">
+        {{ background_media_placeholder | placeholder_svg_tag }}
+      </div>
     {% endif %}
   {% else %}
     {% render 'image',
@@ -98,6 +100,13 @@
     height: 100%;
   }
 
+  .background-media__placeholder > svg {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
   .background-media__image > picture,
   .background-media__image > img,
   .background-media__image .image__placeholder {
@@ -114,8 +123,8 @@
 
   .background-media__image .image__placeholder,
   .background-media__placeholder {
-    background: color-mix(in srgb, var(--background-color) 88%, rgb(var(--color-foreground-rgb)));
-    fill: var(--body-color);
+    background: var(--placeholder-background-color);
+    fill: var(--placeholder-fill-color);
   }
 
   .background-media__video > video {

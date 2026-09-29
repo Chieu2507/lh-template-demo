@@ -50,6 +50,20 @@
       assign header_max_width_mobile = 480
     endif
   endif
+  assign header_size_max_width = blank
+  if header_width_mode == 'custom'
+    assign header_size_max_width = header_max_width | append: 'px'
+  endif
+  assign header_size_width_mobile = blank
+  assign header_size_max_width_mobile = blank
+  if block.settings.customize_mobile_size
+    assign header_size_width_mobile = header_width_mobile
+    if header_width_mobile_mode == 'custom'
+      assign header_size_max_width_mobile = header_max_width_mobile | append: 'px'
+    elsif header_width_mode == 'custom'
+      assign header_size_max_width_mobile = '100%'
+    endif
+  endif
 
   assign header_gap_desktop = block.settings.gap_desktop | default: 12 | plus: 0
   if header_gap_desktop < 0 or header_gap_desktop > 100
@@ -133,16 +147,12 @@
     gap: header_gap_desktop,
     gap_mobile: header_gap_mobile
   %}
-  {% if header_width_mode != 'fit' %}--header-width: {{ header_width }};{% endif %}
-  {% if header_width_mode == 'custom' %}--header-max-width: {{ header_max_width }}px;{% endif %}
-  {% if block.settings.customize_mobile_size %}
-    {% if header_width_mobile != header_width %}--header-width-mobile: {{ header_width_mobile }};{% endif %}
-    {% if header_width_mobile_mode == 'custom' %}
-      {% if header_width_mode != 'custom' or header_max_width_mobile != header_max_width %}--header-max-width-mobile: {{ header_max_width_mobile }}px;{% endif %}
-    {% elsif header_width_mode == 'custom' %}
-      --header-max-width-mobile: 100%;
-    {% endif %}
-  {% endif %}
+  {% render 'size-style',
+    width: header_width,
+    max_width: header_size_max_width,
+    width_mobile: header_size_width_mobile,
+    max_width_mobile: header_size_max_width_mobile
+  %}
   {% unless header_inherit_alignment %}
     --header-align: {{ header_alignment }};
     --header-text-align: {{ header_text_alignment }};
@@ -163,7 +173,7 @@
 {% assign header_style = header_style | strip %}
 
 <div
-  class="block-header layout-flow layout-flow--responsive motion-block"
+  class="block-header size-style layout-flow layout-flow--responsive motion-block"
   {% if header_style != blank %}style="{{ header_style }}"{% endif %}
   {{ block.shopify_attributes }}
 >
@@ -172,8 +182,6 @@
 
 {% stylesheet %}
   .block-header {
-    width: var(--header-width, fit-content);
-    max-width: var(--header-max-width, 100%);
     min-width: 0;
     text-align: var(--header-text-align, var(--text-align-default, inherit));
     padding-top: var(--header-padding-top, 0px);
@@ -192,8 +200,6 @@
 
   @media (max-width: 767.98px) {
     .block-header {
-      width: var(--header-width-mobile, var(--header-width, fit-content));
-      max-width: var(--header-max-width-mobile, var(--header-max-width, 100%));
       text-align: var(--header-text-align-mobile, var(--header-text-align, var(--text-align-default, inherit)));
       padding-top: var(--header-padding-top-mobile, var(--header-padding-top, 0px));
       padding-right: var(--header-padding-right-mobile, var(--header-padding-right, 0px));

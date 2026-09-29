@@ -51,6 +51,20 @@
     assign heading_max_width_mobile = block.settings.max_width_mobile | default: heading_max_width
     assign heading_max_width_mobile = heading_max_width_mobile | plus: 0
   endif
+  assign heading_size_max_width = blank
+  if heading_width_mode == 'custom'
+    assign heading_size_max_width = heading_max_width | append: 'px'
+  endif
+  assign heading_size_width_mobile = blank
+  assign heading_size_max_width_mobile = blank
+  if block.settings.customize_mobile_size
+    assign heading_size_width_mobile = heading_width_mobile
+    if heading_width_mobile_mode == 'custom'
+      assign heading_size_max_width_mobile = heading_max_width_mobile | append: 'px'
+    elsif heading_width_mode == 'custom'
+      assign heading_size_max_width_mobile = '100%'
+    endif
+  endif
 
   assign padding_top = block.settings.padding_top | default: 0
   assign padding_top = padding_top | plus: 0
@@ -68,21 +82,17 @@
   assign padding_left_mobile = padding_left_mobile | plus: 0
   assign padding_right_mobile = block.settings.padding_right_mobile | default: 0
   assign padding_right_mobile = padding_right_mobile | plus: 0
-  assign heading_class = 'heading-block heading-text heading-' | append: heading_size
+  assign heading_class = 'heading-block size-style heading-text heading-' | append: heading_size
 %}
 
 {% capture heading_style %}
   {% if heading_size == 'custom' %}--heading-block-custom-size: {{ heading_custom_size }}px;{% endif %}
-  {% if heading_width_mode != 'fit' %}--heading-width: {{ heading_width }};{% endif %}
-  {% if heading_width_mode == 'custom' %}--heading-max-width: {{ heading_max_width }}px;{% endif %}
-  {% if block.settings.customize_mobile_size %}
-    {% if heading_width_mobile != heading_width %}--heading-width-mobile: {{ heading_width_mobile }};{% endif %}
-    {% if heading_width_mobile_mode == 'custom' %}
-      {% if heading_width_mode != 'custom' or heading_max_width_mobile != heading_max_width %}--heading-max-width-mobile: {{ heading_max_width_mobile }}px;{% endif %}
-    {% elsif heading_width_mode == 'custom' %}
-      --heading-max-width-mobile: 100%;
-    {% endif %}
-  {% endif %}
+  {% render 'size-style',
+    width: heading_width,
+    max_width: heading_size_max_width,
+    width_mobile: heading_size_width_mobile,
+    max_width_mobile: heading_size_max_width_mobile
+  %}
   {% if padding_top != 0 %}--heading-padding-top: {{ padding_top }}px;{% endif %}
   {% if padding_bottom != 0 %}--heading-padding-bottom: {{ padding_bottom }}px;{% endif %}
   {% if padding_left != 0 %}--heading-padding-left: {{ padding_left }}px;{% endif %}
@@ -105,7 +115,7 @@
   >{{ block.settings.text }}</{{ heading_tag }}>
 {% else %}
   <div
-    class="heading-block heading-block--empty"
+    class="heading-block size-style heading-block--empty"
     {% if heading_style != blank %}style="{{ heading_style }}"{% endif %}
     {{ block.shopify_attributes }}
   ></div>
@@ -114,8 +124,6 @@
 {% stylesheet %}
   .heading-block {
     display: block;
-    width: var(--heading-width, fit-content);
-    max-width: var(--heading-max-width, 100%);
     padding-top: var(--heading-padding-top, 0px);
     padding-right: var(--heading-padding-right, 0px);
     padding-bottom: var(--heading-padding-bottom, 0px);
@@ -138,8 +146,6 @@
 
   @media (max-width: 767.98px) {
     .heading-block {
-      width: var(--heading-width-mobile, var(--heading-width, fit-content));
-      max-width: var(--heading-max-width-mobile, var(--heading-max-width, 100%));
       padding-top: var(--heading-padding-top-mobile, var(--heading-padding-top, 0px));
       padding-right: var(--heading-padding-right-mobile, var(--heading-padding-right, 0px));
       padding-bottom: var(--heading-padding-bottom-mobile, var(--heading-padding-bottom, 0px));

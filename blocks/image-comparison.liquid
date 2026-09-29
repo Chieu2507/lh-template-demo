@@ -239,7 +239,7 @@
     assign comparison_padding_bottom_mobile = 0
   endif
 
-  assign image_comparison_class = 'image-compare-block image-compare-block--width-' | append: comparison_width_desktop_setting
+  assign image_comparison_class = 'image-compare-block size-style size-style--contain image-compare-block--width-' | append: comparison_width_desktop_setting
   if comparison_style == 'side_by_side'
     assign image_comparison_class = image_comparison_class | append: ' image-compare-block--side-by-side'
   endif
@@ -254,8 +254,10 @@
 %}
 
 {% capture image_comparison_style %}
-  {% if comparison_width_desktop != '100%' %}--image-compare-width: {{ comparison_width_desktop }};{% endif %}
-  {% if comparison_max_width_desktop != '100%' %}--image-compare-max-width: {{ comparison_max_width_desktop }};{% endif %}
+  {% render 'size-style',
+    width: comparison_width_desktop,
+    max_width: comparison_max_width_desktop
+  %}
   --image-compare-ratio-desktop: {{ comparison_ratio_desktop }};
   --image-compare-ratio: var(--image-compare-ratio-desktop);
   {% if comparison_ratio_mobile != comparison_ratio_desktop %}--image-compare-ratio-mobile: {{ comparison_ratio_mobile }};{% endif %}
@@ -304,8 +306,6 @@
 {% stylesheet %}
   .image-compare-block {
     display: block;
-    width: var(--image-compare-width, 100%);
-    max-width: min(var(--image-compare-max-width, 100%), 100%);
     min-width: 0;
     padding-top: var(--image-compare-padding-top, 0px);
     padding-bottom: var(--image-compare-padding-bottom, 0px);

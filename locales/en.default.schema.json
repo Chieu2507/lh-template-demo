@@ -48,6 +48,7 @@
     "hotspot_product_callout": "Hotspot: Product callout",
     "hotspot_carousel": "Hotspot carousel",
     "image_card": "Image card",
+    "banner": "Banner",
     "image_comparison": "Image comparison",
     "before_image": "Before image",
     "after_image": "After image",
@@ -315,6 +316,7 @@
     "tab_label": "Tab label",
     "button_label": "Label",
     "banner_image": "Banner image",
+    "banner_position": "Banner position",
     "mobile_banner_image": "Mobile banner image",
     "mobile_image_optional": "Mobile image (optional)",
     "mobile_video_optional": "Mobile video (optional)",
@@ -356,6 +358,7 @@
     "custom_thickness": "Custom thickness",
     "custom_color": "Custom color",
     "custom_width": "Custom width",
+    "custom_width_mobile": "Custom width (mobile)",
     "desktop_spacing": "Desktop spacing",
     "mobile_spacing": "Mobile spacing",
     "overlay_opacity": "Overlay opacity",
@@ -412,6 +415,7 @@
     "mobile_size": "Mobile size",
     "title_line_limit": "Title line limit",
     "image_ratio": "Image ratio",
+    "image_ratio_mobile": "Image ratio (mobile)",
     "custom_image_ratio": "Custom image ratio",
     "mobile_image": "Mobile image",
     "mobile_video": "Mobile video",
@@ -559,8 +563,10 @@
     "desktop_custom_width": "Desktop custom width",
     "mobile_custom_width": "Mobile custom width",
     "limit_width": "Limit width",
+    "limit_width_mobile": "Limit width (mobile)",
     "mobile_limit_width": "Mobile limit width",
     "max_width": "Max width",
+    "max_width_mobile": "Max width (mobile)",
     "desktop_limit_width": "Desktop limit width",
     "desktop_max_width": "Desktop max width",
     "desktop_gap": "Desktop gap",
@@ -620,6 +626,7 @@
     "swatch_limit": "Swatch limit",
     "desktop_width": "Desktop width",
     "mobile_width": "Mobile width",
+    "width_mobile": "Width (mobile)",
     "height_ratio": "Height ratio",
     "selected_variant_style": "Selected variant style",
     "background_color": "Background color",
@@ -748,6 +755,10 @@
       "center": "Center",
       "right": "Right",
       "space_between": "Space between"
+    },
+    "banner_position": {
+      "before": "Before",
+      "after": "After"
     },
     "logo_style": {
       "default": "Default",
@@ -1132,6 +1143,7 @@
       "custom": "Custom"
     },
     "image_card_height": {
+      "adapt": "Adapt",
       "ratio_1_1": "Ratio (1:1)",
       "ratio_4_5": "Ratio (4:5)",
       "ratio_3_2": "Ratio (3:2)",

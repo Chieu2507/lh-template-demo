@@ -105,7 +105,11 @@
   endif
 
   capture location_map_media
-    echo '<div class="location-map__media" aria-hidden="true">'
+    echo '<div class="location-map__media'
+    if section.settings.map_image == blank and request.design_mode
+      echo ' placeholder-image'
+    endif
+    echo '" aria-hidden="true">'
     if section.settings.map_image != blank
       echo section.settings.map_image | image_url: width: 2400 | image_tag: widths: '750, 1100, 1500, 2000, 2400', sizes: '(min-width: 768px) 58.333vw, 100vw', alt: section.settings.map_image_alt
     elsif request.design_mode
