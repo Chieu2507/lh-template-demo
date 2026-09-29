@@ -73,6 +73,7 @@
     "content": "Content",
     "controls": "Controls",
     "custom_section": "Custom section",
+    "image_text_split_layout": "Image text split layout",
     "item": "Item",
     "marquee": "Marquee",
     "scrolling_text_images": "Scrolling Text Images",
