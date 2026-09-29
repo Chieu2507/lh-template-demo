@@ -157,7 +157,6 @@ custom-cursor[data-component-overlay-cursor] svg {
 .component-overlay__body { min-height: 0; overflow-y: auto; overscroll-behavior: contain; padding: var(--overlay-inset); }
 .component-overlay__header--untitled + .component-overlay__body { padding-top: 56px; }
 .component-sheet { border-radius: var(--bottom-sheet-radius) var(--bottom-sheet-radius) 0 0; }
-/* Collection dialogs outside the desktop sidebar use the shared drawer inset from tablet up. */
 @media (min-width: 768px) {
   .component-overlay:where([data-desktop-layout='popup']):not([hidden]) {
     display: grid;
@@ -459,6 +458,7 @@ html.modal-backdrop-cursor .main-collection__filter-dialog::backdrop { cursor: n
     animation-name: main-collection-filter-drawer-out;
   }
 }
+/* Collection dialogs outside the desktop sidebar use the shared drawer inset from tablet up. */
 @media (min-width: 768px) {
   .main-collection__filter-dialog:not(.is-sidebar) {
     --overlay-drawer-inset: var(--overlay-drawer-padding-desktop, 0px);
