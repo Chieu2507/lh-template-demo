@@ -440,7 +440,9 @@
   }
 
   .main-collection__pagination .page.current {
+    min-height: var(--pagination-control-height);
     padding-inline: 4px;
+    pointer-events: none;
   }
 
   .main-collection__pagination .deco {
