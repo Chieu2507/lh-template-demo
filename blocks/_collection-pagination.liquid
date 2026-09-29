@@ -3,14 +3,20 @@
 {% enddoc %}
 <div class="collection-pagination-block" data-pagination-mode="{{ block.settings.pagination_type }}" {{ block.shopify_attributes }}>
 {% liquid
-  assign pagination_button_variant = block.settings.button_style
-  if pagination_button_variant == 'outline'
+  assign pagination_style = block.settings.button_style | default: 'primary'
+  case pagination_style
+    when 'text', 'subtle'
+      assign pagination_style = 'tertiary'
+    when 'primary', 'secondary', 'tertiary', 'outline'
+    else
+      assign pagination_style = 'primary'
+  endcase
+  assign pagination_button_variant = pagination_style
+  if pagination_style == 'outline'
     assign pagination_button_variant = 'secondary'
-  elsif pagination_button_variant == 'text'
-    assign pagination_button_variant = 'tertiary'
   endif
 %}
-{% if paginate.pages > 1 %}<nav class="main-collection__pagination" aria-label="{{ 'collection.pagination' | t }}" data-style="{{ block.settings.button_style }}" data-height="{{ block.settings.button_height }}" style="--pagination-padding-top:{{ block.settings.padding_top }}px;--pagination-padding-bottom:{{ block.settings.padding_bottom }}px;{% if block.settings.customize_mobile_padding %}--pagination-padding-top-mobile:{{ block.settings.padding_top_mobile }}px;--pagination-padding-bottom-mobile:{{ block.settings.padding_bottom_mobile }}px;{% endif %}">
+{% if paginate.pages > 1 %}<nav class="main-collection__pagination" aria-label="{{ 'collection.pagination' | t }}" data-style="{{ pagination_style }}" data-height="{{ block.settings.button_height }}" style="--pagination-padding-top:{{ block.settings.padding_top }}px;--pagination-padding-bottom:{{ block.settings.padding_bottom }}px;{% if block.settings.customize_mobile_padding %}--pagination-padding-top-mobile:{{ block.settings.padding_top_mobile }}px;--pagination-padding-bottom-mobile:{{ block.settings.padding_bottom_mobile }}px;{% endif %}">
 {% if block.settings.pagination_type == 'pages' %}
   {% if paginate.previous %}
     <span class="prev">
@@ -54,7 +60,7 @@
     </span>
   {% endif %}
 {% elsif paginate.next %}
-  <a href="{{ paginate.next.url }}" class="btn btn-{{ pagination_button_variant }}" data-collection-load-more>{{ 'collection.load_more' | t }}</a>
+  {% render 'theme-button', label: 'collection.load_more' | t, url: paginate.next.url, variant: pagination_button_variant, attributes: 'data-collection-load-more' %}
 {% endif %}
 </nav>{% endif %}</div>
 {% schema %}
@@ -89,19 +95,19 @@
       "options": [
         {
           "value": "primary",
-          "label": "Primary"
+          "label": "t:options.button_variant.primary"
         },
         {
           "value": "secondary",
-          "label": "Secondary"
+          "label": "t:options.button_variant.secondary"
+        },
+        {
+          "value": "tertiary",
+          "label": "t:options.button_variant.tertiary"
         },
         {
           "value": "outline",
-          "label": "Outline"
-        },
-        {
-          "value": "text",
-          "label": "Text"
+          "label": "t:options.button_variant.outline"
         }
       ],
       "default": "primary"
