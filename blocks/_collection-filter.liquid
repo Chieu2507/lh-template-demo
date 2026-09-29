@@ -278,10 +278,11 @@
       "default": "sliders",
       "visible_if": "{{ block.settings.desktop_layout == 'drawer' or block.settings.sidebar_visibility != 'always' }}"
     },
+    { "type": "header", "content": "t:labels.desktop_layout" },
     {
       "type": "select",
       "id": "desktop_layout",
-      "label": "Desktop layout",
+      "label": "t:general.layout",
       "options": [
         {
           "value": "sidebar",
@@ -328,22 +329,6 @@
     },
     {
       "type": "select",
-      "id": "mobile_layout",
-      "label": "Mobile layout",
-      "options": [
-        {
-          "value": "sheet",
-          "label": "Bottom sheet"
-        },
-        {
-          "value": "drawer",
-          "label": "Drawer"
-        }
-      ],
-      "default": "sheet"
-    },
-    {
-      "type": "select",
       "id": "button_style",
       "label": "Filter button style",
       "options": [
@@ -366,6 +351,24 @@
       ],
       "default": "primary"
     },
+    { "type": "header", "content": "t:labels.mobile_layout" },
+    {
+      "type": "select",
+      "id": "mobile_layout",
+      "label": "t:general.layout",
+      "options": [
+        {
+          "value": "sheet",
+          "label": "Bottom sheet"
+        },
+        {
+          "value": "drawer",
+          "label": "Drawer"
+        }
+      ],
+      "default": "sheet"
+    },
+    { "type": "header", "content": "Filter settings" },
     {
       "type": "checkbox",
       "id": "enable_sorting",
