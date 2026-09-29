@@ -1344,7 +1344,6 @@
 .main-collection__sort-option-button { min-height: 42px; padding: 10px 18px; font-size: var(--p1-size-sm, 16px); }
 .main-collection__sort-option-button[aria-selected='true'] { background: color-mix(in srgb, var(--color-text) 6%, var(--color-background)); font-weight: inherit; }
 .main-collection__sort-option-button svg { display: none; }
-.main-collection__sort-form[data-style] .main-collection__sort-trigger[aria-expanded='true'] { background: color-mix(in srgb, var(--color-text) 4%, var(--color-background)); }
 .collection-columns__option-content { transition: background-color 200ms ease, color 200ms ease, box-shadow 200ms ease; }
 .collection-columns__option input:active + .collection-columns__option-content { transform: scale(.96); }
 .main-collection__grid > * { transform-origin: top left; }
