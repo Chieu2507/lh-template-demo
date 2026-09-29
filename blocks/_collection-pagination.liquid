@@ -20,10 +20,8 @@
 {% if block.settings.pagination_type == 'pages' %}
   {% if paginate.previous %}
     <span class="prev">
-      <a href="{{ paginate.previous.url }}" aria-label="{{ 'collection.previous_page' | t | escape }}">
-        {% render 'icon', icon: 'chevron-left', bare: true, class: 'main-collection__pagination-arrow' %}
-        <span>PREV</span>
-      </a>
+      {% assign previous_label = 'collection.previous_page' | t %}
+      {% render 'theme-button', label: previous_label, url: paginate.previous.url, variant: pagination_button_variant, icon: 'chevron-left', icon_position: 'before', icon_size: 'custom', icon_width: 14 %}
     </span>
   {% endif %}
 
@@ -42,7 +40,7 @@
           <span class="deco" aria-hidden="true">&hellip;</span>
         {% endif %}
         {% if part.is_link %}
-          <span class="page"><a href="{{ part.url }}">{{ part.title }}</a></span>
+          <span class="page">{% render 'theme-button', label: part.title, url: part.url, variant: pagination_button_variant %}</span>
         {% else %}
           <span class="page current" aria-current="page">{{ part.title }}</span>
         {% endif %}
@@ -53,15 +51,20 @@
 
   {% if paginate.next %}
     <span class="next">
-      <a href="{{ paginate.next.url }}" aria-label="{{ 'collection.next_page' | t | escape }}">
-        <span>NEXT</span>
-        {% render 'icon', icon: 'chevron-right', bare: true, class: 'main-collection__pagination-arrow' %}
-      </a>
+      {% assign next_label = 'collection.next_page' | t %}
+      {% render 'theme-button', label: next_label, url: paginate.next.url, variant: pagination_button_variant, icon: 'chevron-right', icon_size: 'custom', icon_width: 14 %}
     </span>
   {% endif %}
 {% elsif paginate.next %}
+  {% if block.settings.pagination_type == 'infinite' %}
+    <span data-collection-infinite-sentinel data-next-url="{{ paginate.next.url | escape }}" aria-hidden="true"></span>
+  {% endif %}
   {% assign load_more_label = 'collection.load_more' | t %}
   {% render 'theme-button', label: load_more_label, url: paginate.next.url, variant: pagination_button_variant, attributes: 'data-collection-load-more' %}
+  <span data-collection-pagination-status role="status" hidden>
+    <span class="btn__spinner" aria-hidden="true"></span>
+    <span class="visually-hidden">{{ 'accessibility.loading' | t }}</span>
+  </span>
 {% endif %}
 </nav>{% endif %}</div>
 {% schema %}

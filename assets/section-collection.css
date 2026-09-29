@@ -394,7 +394,7 @@
   }
 
   .main-collection__pagination {
-    --pagination-control-height: 44px;
+    --pagination-control-height: var(--button-height, 44px);
     display: flex;
     min-height: 88px;
     align-items: center;
@@ -420,12 +420,8 @@
   .main-collection__pagination .deco { min-width: 24px; }
 
   .main-collection__pagination :where(.page, .prev, .next) a {
-    display: inline-flex;
+    min-height: var(--pagination-control-height);
     height: var(--pagination-control-height);
-    align-items: center;
-    justify-content: center;
-    color: inherit;
-    text-decoration: none;
   }
 
   .main-collection__pagination .page a {
@@ -439,9 +435,7 @@
   }
 
   .main-collection__pagination :where(.prev, .next) a {
-    gap: 8px;
     padding-inline: 12px;
-    text-transform: uppercase;
   }
 
   .main-collection__pagination [data-collection-load-more] {
@@ -460,7 +454,7 @@
     box-shadow: inset 0 0 0 1px currentColor;
   }
 
-  .main-collection__pagination[data-style='outline'] [data-collection-load-more] {
+  .main-collection__pagination[data-style='outline'] .btn {
     --button-border-width: max(1px, var(--button-secondary-border-width, 1px));
     --button-background: transparent;
     --button-foreground: var(--button-secondary-text);
@@ -480,9 +474,22 @@
   .main-collection__pagination[data-height='large'] { --pagination-control-height: 56px; }
   .main-collection__pagination[data-height='extra_large'] { --pagination-control-height: 64px; }
 
-  .main-collection__pagination-arrow svg {
-    width: 14px;
-    height: 14px;
+  .collection-pagination-block.is-infinite [data-collection-load-more] {
+    display: none;
+  }
+
+  [data-collection-infinite-sentinel] {
+    width: 1px;
+    height: 1px;
+  }
+
+  [data-collection-pagination-status]:not([hidden]) {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 24px;
+    height: 24px;
   }
 
   .main-collection__empty {
