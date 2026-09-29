@@ -1341,7 +1341,6 @@
 .main-collection__sort-form[data-style='text'] > label { display: none; }
 .main-collection__sort-form[data-style='text'] .main-collection__sort-trigger {
   text-transform: uppercase;
-  font-size: var(--font-body-xs, 12px);
 }
 .main-collection__sort-form[data-style='secondary'] .main-collection__sort-trigger,
 .main-collection__sort-form[data-style='outline'] .main-collection__sort-trigger {
