@@ -1,7 +1,16 @@
 /* One shell for popup, drawer and bottom sheet. Content never owns geometry. */
+:where(.component-overlay, .main-collection__filter-dialog) {
+  --overlay-drawer-inset: 0px;
+}
+
+@media (min-width: 768px) {
+  .drawer--padded-desktop {
+    --overlay-drawer-inset: var(--overlay-drawer-padding-desktop, 0px);
+  }
+}
+
 .component-overlay {
   --overlay-inset: var(--overlay-drawer-content-padding-desktop, 1.5rem);
-  --overlay-drawer-inset: var(--overlay-drawer-padding-desktop, 0px);
   --overlay-rest-transform: scale(.95);
   --overlay-motion-duration: var(--motion-duration-standard);
   --overlay-motion-ease: var(--motion-ease-standard);
@@ -460,7 +469,6 @@ html.modal-backdrop-cursor .main-collection__filter-dialog::backdrop { cursor: n
 /* Collection dialogs outside the desktop sidebar use the shared drawer inset from tablet up. */
 @media (min-width: 768px) {
   .main-collection__filter-dialog:not(.is-sidebar) {
-    --overlay-drawer-inset: var(--overlay-drawer-padding-desktop, 0px);
     --main-collection-filter-closed-translate: calc(-100% - var(--overlay-drawer-inset));
     position: fixed;
     inset: var(--overlay-drawer-inset) auto var(--overlay-drawer-inset) var(--overlay-drawer-inset);
@@ -551,7 +559,6 @@ dialog[data-overlay-motion='popup'][open]::backdrop {
 .component-overlay:where(.header__mobile-drawer) {
   display: none;
   --component-overlay-width: 100vw;
-  --overlay-drawer-inset: 0px;
   color: var(--header-menu-color, var(--body-color));
 }
 @media (max-width: 991.98px) {
@@ -579,9 +586,6 @@ dialog[data-overlay-motion='popup'][open]::backdrop {
   transition:
     transform var(--overlay-motion-duration) var(--overlay-motion-ease),
     opacity var(--overlay-motion-duration) var(--overlay-motion-ease);
-}
-.component-overlay:where(.cart-drawer) {
-  --overlay-drawer-inset: var(--cart-drawer-inset-desktop, 0px);
 }
 @media (max-width: 767.98px) {
   .component-overlay:where(.cart-drawer) { --overlay-drawer-inset: 0px; }

@@ -4,14 +4,15 @@
   @param {string} content - Captured body markup
   @param {string} label - Accessible name when no header title is supplied
   @param {string} [title] - Optional visible header title
-  @param {string} [desktop_layout] - popup or drawer
-  @param {string} [mobile_layout] - bottom_sheet or drawer
+  @param {string} [desktop_layout] - popup, drawer, or top_panel
+  @param {string} [mobile_layout] - bottom_sheet, drawer, or top_panel
   @param {string} [attributes] - Feature data hooks
   @param {string} [body_class] - Content-only feature class
   @param {number} [width] - Optional panel width in pixels
   @param {boolean} [append_to_body] - Move the overlay root to document.body when initialized
 {% enddoc %}
-<div id="{{ id }}" class="component-overlay" data-component-overlay{% if append_to_body %} data-append-to-body{% endif %} data-desktop-layout="{{ desktop_layout | default: 'drawer' }}" data-mobile-layout="{{ mobile_layout | default: 'bottom_sheet' }}" data-state="closed" role="dialog" aria-modal="true" aria-hidden="true" aria-label="{{ label | escape }}"{% if title != blank %} aria-labelledby="{{ id }}-heading"{% endif %}{% if width %} style="--component-overlay-width: {{ width }}px;"{% endif %} scroll-lock hidden {{ attributes }}>
+{% assign overlay_desktop_layout = desktop_layout | default: 'drawer' %}
+<div id="{{ id }}" class="component-overlay{% if settings.overlay_drawer_padding_desktop and overlay_desktop_layout == 'drawer' %} drawer--padded-desktop{% endif %}" data-component-overlay{% if append_to_body %} data-append-to-body{% endif %} data-desktop-layout="{{ overlay_desktop_layout }}" data-mobile-layout="{{ mobile_layout | default: 'bottom_sheet' }}" data-state="closed" role="dialog" aria-modal="true" aria-hidden="true" aria-label="{{ label | escape }}"{% if title != blank %} aria-labelledby="{{ id }}-heading"{% endif %}{% if width %} style="--component-overlay-width: {{ width }}px;"{% endif %} scroll-lock hidden {{ attributes }}>
   <button class="component-overlay__backdrop dialog__overlay" type="button" tabindex="-1" aria-label="{{ 'accessibility.close' | t }}" data-component-overlay-backdrop></button>
   <div class="component-overlay__panel">
     <header class="component-overlay__header{% if title == blank %} component-overlay__header--untitled{% endif %}">
