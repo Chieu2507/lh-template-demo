@@ -585,7 +585,7 @@ dialog[data-overlay-motion='popup'][open]::backdrop {
 }
 @media (max-width: 500px) {
   .component-overlay:where(.header__mobile-drawer) > .component-overlay__panel,
-  .component-overlay:where(.cart-drawer) > .component-overlay__panel { max-width: 100%; }
+  .component-overlay:where(.cart-drawer) > .component-overlay__panel { width: 100%; max-width: 100%; }
 }
 
 /* Reduced motion overrides every overlay profile, including feature keyframes. */
