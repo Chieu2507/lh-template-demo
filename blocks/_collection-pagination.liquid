@@ -2,30 +2,12 @@
   Fixed pagination role. @param {object} paginate - Native collection pagination object.
 {% enddoc %}
 <div class="collection-pagination-block" data-pagination-mode="{{ block.settings.pagination_type }}" {{ block.shopify_attributes }}>
-{% liquid
-  assign pagination_style = block.settings.button_style | default: 'primary'
-  case pagination_style
-    when 'text', 'subtle'
-      assign pagination_style = 'tertiary'
-    when 'primary', 'secondary', 'tertiary', 'outline'
-    else
-      assign pagination_style = 'primary'
-  endcase
-  assign pagination_button_variant = pagination_style
-  assign pagination_control_class = 'main-collection__pagination-control'
-  assign pagination_arrow_class = pagination_control_class | append: ' main-collection__pagination-arrow'
-  assign pagination_current_class = 'page current btn btn-' | append: pagination_button_variant | append: ' btn--' | append: pagination_button_variant | append: ' main-collection__pagination-control'
-  if pagination_style == 'outline'
-    assign pagination_button_variant = 'secondary'
-    assign pagination_current_class = 'page current btn btn-secondary btn--secondary main-collection__pagination-control'
-  endif
-%}
-{% if paginate.pages > 1 %}<nav class="main-collection__pagination" aria-label="{{ 'collection.pagination' | t }}" data-style="{{ pagination_style }}" data-height="{{ block.settings.button_height }}" style="--pagination-padding-top:{{ block.settings.padding_top }}px;--pagination-padding-bottom:{{ block.settings.padding_bottom }}px;{% if block.settings.customize_mobile_padding %}--pagination-padding-top-mobile:{{ block.settings.padding_top_mobile }}px;--pagination-padding-bottom-mobile:{{ block.settings.padding_bottom_mobile }}px;{% endif %}">
+{% if paginate.pages > 1 %}<nav class="main-collection__pagination" aria-label="{{ 'collection.pagination' | t }}" data-height="{{ block.settings.button_height }}" style="--pagination-padding-top:{{ block.settings.padding_top }}px;--pagination-padding-bottom:{{ block.settings.padding_bottom }}px;{% if block.settings.customize_mobile_padding %}--pagination-padding-top-mobile:{{ block.settings.padding_top_mobile }}px;--pagination-padding-bottom-mobile:{{ block.settings.padding_bottom_mobile }}px;{% endif %}">
 {% if block.settings.pagination_type == 'pages' %}
   {% if paginate.previous %}
     <span class="prev">
       {% assign previous_label = 'collection.previous_page' | t %}
-      {% render 'theme-button', label: previous_label, url: paginate.previous.url, variant: pagination_button_variant, class: pagination_arrow_class, icon: 'chevron-left', icon_position: 'before', icon_size: 'custom', icon_width: 14 %}
+      <a href="{{ paginate.previous.url }}" aria-label="{{ previous_label | escape }}">{% render 'icon', icon: 'chevron-left', bare: true %}<span>{{ previous_label }}</span></a>
     </span>
   {% endif %}
 
@@ -44,9 +26,9 @@
           <span class="deco" aria-hidden="true">&hellip;</span>
         {% endif %}
         {% if part.is_link %}
-          <span class="page">{% render 'theme-button', label: part.title, url: part.url, variant: pagination_button_variant, class: pagination_control_class %}</span>
+          <span class="page"><a href="{{ part.url }}">{{ part.title }}</a></span>
         {% else %}
-          <span class="{{ pagination_current_class }}" aria-current="page">{{ part.title }}</span>
+          <span class="page current" aria-current="page">{{ part.title }}</span>
         {% endif %}
         {% assign last_rendered_page = page_number %}
       {% endif %}
@@ -56,19 +38,19 @@
   {% if paginate.next %}
     <span class="next">
       {% assign next_label = 'collection.next_page' | t %}
-      {% render 'theme-button', label: next_label, url: paginate.next.url, variant: pagination_button_variant, class: pagination_arrow_class, icon: 'chevron-right', icon_size: 'custom', icon_width: 14 %}
+      <a href="{{ paginate.next.url }}" aria-label="{{ next_label | escape }}"><span>{{ next_label }}</span>{% render 'icon', icon: 'chevron-right', bare: true %}</a>
     </span>
   {% endif %}
 {% elsif paginate.next %}
   {% assign load_more_label = 'collection.load_more' | t %}
   {% if block.settings.pagination_type == 'infinite' %}
     <span data-collection-infinite-sentinel data-next-url="{{ paginate.next.url | escape }}" aria-hidden="true"></span>
-    {% render 'theme-button', label: load_more_label, url: paginate.next.url, variant: pagination_button_variant, class: pagination_control_class, attributes: 'data-collection-load-more' %}
+    <a href="{{ paginate.next.url }}" data-collection-load-more>{{ load_more_label }}</a>
     <noscript>
-      {% render 'theme-button', label: load_more_label, url: paginate.next.url, variant: pagination_button_variant, class: pagination_control_class %}
+      <a href="{{ paginate.next.url }}">{{ load_more_label }}</a>
     </noscript>
   {% else %}
-    {% render 'theme-button', label: load_more_label, url: paginate.next.url, variant: pagination_button_variant, class: pagination_control_class, attributes: 'data-collection-load-more' %}
+    <a href="{{ paginate.next.url }}" data-collection-load-more>{{ load_more_label }}</a>
   {% endif %}
   <span data-collection-pagination-status role="status" hidden>
     <span class="btn__spinner" aria-hidden="true"></span>
@@ -100,30 +82,6 @@
         }
       ],
       "default": "pages"
-    },
-    {
-      "type": "select",
-      "id": "button_style",
-      "label": "Button style",
-      "options": [
-        {
-          "value": "primary",
-          "label": "t:options.button_variant.primary"
-        },
-        {
-          "value": "secondary",
-          "label": "t:options.button_variant.secondary"
-        },
-        {
-          "value": "tertiary",
-          "label": "t:options.button_variant.tertiary"
-        },
-        {
-          "value": "outline",
-          "label": "t:options.button_variant.outline"
-        }
-      ],
-      "default": "primary"
     },
     {
       "type": "select",
