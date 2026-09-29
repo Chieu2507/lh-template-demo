@@ -188,7 +188,6 @@ custom-cursor[data-component-overlay-cursor] svg {
     --overlay-rest-transform: translateX(100%);
     position: absolute;
     inset: var(--overlay-drawer-inset) var(--overlay-drawer-inset) var(--overlay-drawer-inset) auto;
-    width: calc(100vw - var(--overlay-drawer-inset));
     height: calc(100dvh - var(--overlay-drawer-inset) - var(--overlay-drawer-inset));
     max-height: calc(100dvh - var(--overlay-drawer-inset) - var(--overlay-drawer-inset));
     margin: 0;
