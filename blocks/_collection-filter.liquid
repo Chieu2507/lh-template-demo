@@ -30,11 +30,14 @@
  elsif filter_button_style == 'text'
   assign filter_button_style = 'tertiary'
  endif
- assign filter_button_style_mobile = block.settings.button_style_mobile | default: filter_button_style
+ assign filter_button_style_mobile = block.settings.button_style_mobile | default: 'inherit'
  if filter_button_style_mobile == 'outline'
   assign filter_button_style_mobile = 'secondary'
  elsif filter_button_style_mobile == 'text'
   assign filter_button_style_mobile = 'tertiary'
+ endif
+ if filter_button_style_mobile == 'inherit'
+  assign filter_button_style_mobile = filter_button_style
  endif
  assign filter_heading_size = block.settings.heading_size | default: 'sm'
  case filter_heading_size
@@ -362,15 +365,15 @@
     {
       "type": "select",
       "id": "button_style",
-      "label": "Filter button style",
+      "label": "Desktop filter button style",
       "options": [
         {
           "value": "primary",
-          "label": "Primary"
+          "label": "t:options.button_variant.primary"
         },
         {
           "value": "secondary",
-          "label": "Secondary"
+          "label": "t:options.button_variant.secondary"
         },
         {
           "value": "tertiary",
@@ -402,11 +405,12 @@
       "id": "button_style_mobile",
       "label": "Mobile filter button style",
       "options": [
+        { "value": "inherit", "label": "Same as desktop" },
         { "value": "primary", "label": "t:options.button_variant.primary" },
         { "value": "secondary", "label": "t:options.button_variant.secondary" },
         { "value": "tertiary", "label": "t:options.button_variant.tertiary" }
       ],
-      "default": "primary"
+      "default": "inherit"
     },
     { "type": "header", "content": "t:labels.filter_settings" },
     {

@@ -309,7 +309,7 @@ if (!customElements.get('collection-facets')) {
       this.onDialogClose = () => {
         this.hideBackdropPointer();
         if (!this.dialog.classList.contains('is-sidebar')) {
-          this.querySelector('[data-collection-filter-open]')?.setAttribute('aria-expanded', 'false');
+          this.querySelectorAll('[data-collection-filter-open]').forEach(button => button.setAttribute('aria-expanded', 'false'));
         }
         if (this.scrollAfterDialogClose) {
           this.scrollAfterDialogClose = false;
@@ -341,7 +341,7 @@ if (!customElements.get('collection-facets')) {
               this.toggleSidebar();
             }
           } else if (this.dialog && !this.dialog.open) this.dialog.showModal();
-          event.target.closest('[data-collection-filter-open]').setAttribute('aria-expanded', String(this.dialog?.classList.contains('is-sidebar') ? this.sidebarOpen : Boolean(this.dialog?.open)));
+          this.querySelectorAll('[data-collection-filter-open]').forEach(button => button.setAttribute('aria-expanded', String(this.dialog?.classList.contains('is-sidebar') ? this.sidebarOpen : Boolean(this.dialog?.open))));
           return;
         }
 
@@ -558,7 +558,7 @@ if (!customElements.get('collection-facets')) {
         this.dialog.removeAttribute('scroll-lock');
         if (this.sidebarOpen ?? this.dialog.dataset.sidebarVisibility !== 'closed') this.dialog.setAttribute('open', '');
       } else this.dialog.setAttribute('scroll-lock', '');
-      this.querySelector('[data-collection-filter-open]')?.setAttribute('aria-expanded', String(this.dialog.open));
+      this.querySelectorAll('[data-collection-filter-open]').forEach(button => button.setAttribute('aria-expanded', String(this.dialog.open)));
     }
 
     toggleSidebar() {
@@ -843,7 +843,7 @@ if (!customElements.get('collection-facets')) {
           // Moving a modal dialog removes it from the top layer and restarts its CSS motion.
           nextDialog.closest('.main-collection__filter-panel-positioner')?.remove();
           currentToolbar.replaceWith(nextToolbar);
-          this.querySelector('[data-collection-filter-open]')?.setAttribute('aria-expanded', String(this.dialog.open));
+          this.querySelectorAll('[data-collection-filter-open]').forEach(button => button.setAttribute('aria-expanded', String(this.dialog.open)));
           currentProducts.replaceWith(nextProducts);
           window.ThemeAnimations?.init(nextProducts);
           this.syncColumns();
