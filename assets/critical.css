@@ -320,70 +320,6 @@ dialog::backdrop {
   backdrop-filter: blur(var(--overlay-backdrop-blur));
 }
 
-/* Shared native overlay motion. Layout-specific dialogs can opt into the
-   same contract while keeping their popup, drawer, or bottom-sheet geometry. */
-@keyframes overlay-dialog-backdrop-enter {
-  from { background-color: transparent; }
-  to { background-color: var(--overlay-backdrop-color); }
-}
-
-@keyframes overlay-dialog-popup-enter {
-  from {
-    opacity: 0;
-    transform: scale(0.95);
-  }
-  to {
-    opacity: 1;
-    transform: scale(1);
-  }
-}
-
-@keyframes overlay-dialog-drawer-enter {
-  from {
-    opacity: 0;
-    transform: translateX(100%);
-  }
-  to {
-    opacity: 1;
-    transform: translateX(0);
-  }
-}
-
-@keyframes overlay-dialog-bottom-sheet-enter {
-  from {
-    opacity: 0;
-    transform: translateY(100%);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-dialog[data-overlay-motion='popup'][open] {
-  animation: overlay-dialog-popup-enter var(--motion-duration-standard) var(--motion-ease-standard) both;
-}
-
-dialog[data-overlay-motion='popup'][open]::backdrop {
-  animation: overlay-dialog-backdrop-enter var(--motion-duration-standard) var(--motion-ease-standard) both;
-}
-
-@media (min-width: 768px) {
-  dialog[data-overlay-motion='popup'][data-desktop-layout='drawer'][open] {
-    animation-name: overlay-dialog-drawer-enter;
-  }
-}
-
-@media (max-width: 767.98px) {
-  dialog[data-overlay-motion='popup'][data-mobile-layout='bottom_sheet'][open] {
-    animation-name: overlay-dialog-bottom-sheet-enter;
-  }
-
-  dialog[data-overlay-motion='popup'][data-mobile-layout='drawer'][open] {
-    animation-name: overlay-dialog-drawer-enter;
-  }
-}
-
 .overlay__title,
 .popover__title,
 .drawer__title,
@@ -2248,10 +2184,6 @@ legend {
   }
 
   .product-card--quick-add-mobile .product-card__quick-add .product-card__quick-add-button {
-    --button-border-width: 1px;
-    --button-border: var(--color-border);
-    --button-background: var(--color-background);
-    --button-foreground: var(--color-foreground);
     --button-radius: 0;
     --button-icon-size: 18px;
     width: 36px;
