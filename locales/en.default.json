@@ -64,6 +64,15 @@
     "share_error": "Unable to share.",
     "image_card_link": "Open image card"
   },
+  "comparison_table": {
+    "features_heading": "Features",
+    "table_label": "Product comparison",
+    "scroll_label": "Scroll horizontally to compare products",
+    "more_information": "More information about {{ feature }}",
+    "yes": "Yes",
+    "no": "No",
+    "not_provided": "Not provided"
+  },
   "blog": {
     "article_comments": "Comments",
     "article_metadata_html": "{{ date }} by {{ author }}",
