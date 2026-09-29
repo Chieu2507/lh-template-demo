@@ -24,6 +24,32 @@
  if filter_button_icon == 'funnel'
   assign filter_button_icon = 'adjustments-horizontal'
  endif
+ assign filter_button_style = block.settings.button_style | default: 'primary'
+ if filter_button_style == 'outline'
+  assign filter_button_style = 'secondary'
+ elsif filter_button_style == 'text'
+  assign filter_button_style = 'tertiary'
+ endif
+ assign filter_button_style_mobile = block.settings.button_style_mobile | default: filter_button_style
+ if filter_button_style_mobile == 'outline'
+  assign filter_button_style_mobile = 'secondary'
+ elsif filter_button_style_mobile == 'text'
+  assign filter_button_style_mobile = 'tertiary'
+ endif
+ assign filter_heading_size = block.settings.heading_size | default: 'sm'
+ case filter_heading_size
+  when 'h3'
+   assign filter_heading_size = 'lg'
+  when 'h4'
+   assign filter_heading_size = 'md'
+  when 'h5'
+   assign filter_heading_size = 'sm'
+  when 'h6'
+   assign filter_heading_size = 'xs'
+ endcase
+ unless filter_heading_size == 'display' or filter_heading_size == 'xl' or filter_heading_size == 'lg' or filter_heading_size == 'md' or filter_heading_size == 'sm' or filter_heading_size == 'xs'
+  assign filter_heading_size = 'sm'
+ endunless
 %}
 <div class="collection-filter-block" {{ block.shopify_attributes }}>
 {% if collection.filters.size > 0 %}
@@ -31,13 +57,14 @@
   <h2 class="main-collection__filter-label heading-text heading-md">{{ 'collection.filter' | t }}</h2>
 {% endif %}
 {% capture filter_button_attributes %}aria-controls="CollectionFilters-{{ section.id }}" aria-expanded="false" data-collection-filter-open{% endcapture %}
-{% render 'theme-button', label: filter_button_label, variant: block.settings.button_style, class: 'main-collection__filter-button', attributes: filter_button_attributes, icon: filter_button_icon, icon_expanded: 'x-mark', icon_position: 'before' %}
+{% render 'theme-button', label: filter_button_label, variant: filter_button_style, class: 'main-collection__filter-button main-collection__filter-button--desktop', attributes: filter_button_attributes, icon: filter_button_icon, icon_expanded: 'x-mark', icon_position: 'before' %}
+{% render 'theme-button', label: filter_button_label, variant: filter_button_style_mobile, class: 'main-collection__filter-button main-collection__filter-button--mobile', attributes: filter_button_attributes, icon: filter_button_icon, icon_expanded: 'x-mark', icon_position: 'before' %}
 {% endif %}
 </div>
 {% if collection.filters.size > 0 %}
       <div class="main-collection__filter-panel-positioner">
       <dialog
-        class="main-collection__filter-dialog modal-drag-target" data-desktop-layout="{{ block.settings.desktop_layout }}" data-sidebar-visibility="{{ block.settings.sidebar_visibility }}" data-mobile-layout="{{ block.settings.mobile_layout }}" data-collapse-icon="{{ block.settings.collapse_icon }}" data-heading-size="{{ block.settings.heading_size }}" style="--collection-filter-right-padding:{{ block.settings.right_padding }}px"
+        class="main-collection__filter-dialog modal-drag-target" data-desktop-layout="{{ block.settings.desktop_layout }}" data-sidebar-visibility="{{ block.settings.sidebar_visibility }}" data-mobile-layout="{{ block.settings.mobile_layout }}" data-collapse-icon="{{ block.settings.collapse_icon }}" style="--collection-filter-right-padding:{{ block.settings.right_padding }}px"
         id="CollectionFilters-{{ section.id }}"
         aria-labelledby="CollectionFiltersTitle-{{ section.id }}"
         scroll-lock
@@ -91,7 +118,7 @@
             <div class="main-collection__filter-groups">
               {% if block.settings.enable_sorting %}
                 <details data-accordion-details class="main-collection__mobile-sort main-collection__filter-group" data-filter-key="sort_by" open>
-                  <summary class="heading-text heading-sm">
+                  <summary class="heading-text heading-{{ filter_heading_size }}">
                     <span>{{ sort_label }}</span>
                     <span class="main-collection__filter-icon main-collection__filter-icon--chevron" aria-hidden="true">{% render 'icon', icon: 'chevron-down', bare: true %}</span>
                     <span class="main-collection__filter-icon main-collection__filter-icon--plus" aria-hidden="true">
@@ -127,7 +154,7 @@
                   endif
                 %}
                 <details data-accordion-details class="main-collection__filter-group" data-filter-key="{{ filter.param_name | default: filter.min_value.param_name | escape }}" {% unless block.settings.collapse_filters %}open{% endunless %}>
-                <summary class="heading-text heading-sm">
+                <summary class="heading-text heading-{{ filter_heading_size }}">
                   <span data-filter-heading>{{ filter.label | escape }}{% if selected_count > 0 %} ({{ selected_count }}){% endif %}</span>
                   <span class="main-collection__filter-icon main-collection__filter-icon--chevron" aria-hidden="true">{% render 'icon', icon: 'chevron-down', bare: true %}</span>
                   <span class="main-collection__filter-icon main-collection__filter-icon--plus" aria-hidden="true">
@@ -346,15 +373,12 @@
           "label": "Secondary"
         },
         {
-          "value": "outline",
-          "label": "Outline"
-        },
-        {
-          "value": "text",
-          "label": "Text"
+          "value": "tertiary",
+          "label": "t:options.button_variant.tertiary"
         }
       ],
-      "default": "primary"
+      "default": "primary",
+      "visible_if": "{{ block.settings.desktop_layout == 'drawer' or block.settings.sidebar_visibility != 'always' }}"
     },
     { "type": "header", "content": "t:labels.mobile_layout" },
     {
@@ -373,18 +397,31 @@
       ],
       "default": "sheet"
     },
+    {
+      "type": "select",
+      "id": "button_style_mobile",
+      "label": "Mobile filter button style",
+      "options": [
+        { "value": "primary", "label": "t:options.button_variant.primary" },
+        { "value": "secondary", "label": "t:options.button_variant.secondary" },
+        { "value": "tertiary", "label": "t:options.button_variant.tertiary" }
+      ],
+      "default": "primary"
+    },
     { "type": "header", "content": "t:labels.filter_settings" },
     {
       "type": "select",
       "id": "heading_size",
-      "label": "Heading size",
+      "label": "t:labels.heading_size",
       "options": [
-        { "value": "h3", "label": "Heading 3" },
-        { "value": "h4", "label": "Heading 4" },
-        { "value": "h5", "label": "Heading 5" },
-        { "value": "h6", "label": "Heading 6" }
+        { "value": "display", "label": "t:options.heading_size.display" },
+        { "value": "xl", "label": "t:options.heading_size.xl" },
+        { "value": "lg", "label": "t:options.heading_size.lg" },
+        { "value": "md", "label": "t:options.heading_size.md" },
+        { "value": "sm", "label": "t:options.heading_size.sm" },
+        { "value": "xs", "label": "t:options.heading_size.xs" }
       ],
-      "default": "h5"
+      "default": "sm"
     },
     {
       "type": "select",
