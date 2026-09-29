@@ -397,7 +397,7 @@ html.modal-backdrop-cursor .main-collection__filter-dialog::backdrop { cursor: n
 }
 @keyframes main-collection-filter-drawer-out {
   from { opacity: 1; transform: translateX(0); }
-  to { opacity: 0; transform: translateX(-100%); }
+  to { opacity: 0; transform: translateX(var(--main-collection-filter-closed-translate, -100%)); }
 }
 @keyframes main-collection-filter-backdrop-in {
   from { opacity: 0; }
@@ -458,16 +458,17 @@ html.modal-backdrop-cursor .main-collection__filter-dialog::backdrop { cursor: n
     animation-name: main-collection-filter-drawer-out;
   }
 }
-@media (min-width: 768px) and (max-width: 1199.98px) {
+@media (min-width: 768px) {
   .main-collection__filter-dialog:not(.is-sidebar) {
     --overlay-drawer-inset: var(--overlay-drawer-padding-desktop, 0px);
+    --main-collection-filter-closed-translate: calc(-100% - var(--overlay-drawer-inset));
     position: fixed;
     inset: var(--overlay-drawer-inset) auto var(--overlay-drawer-inset) var(--overlay-drawer-inset);
     width: min(375px, calc(100vw - var(--overlay-drawer-inset)));
     height: calc(100dvh - var(--overlay-drawer-inset) - var(--overlay-drawer-inset));
     max-height: calc(100dvh - var(--overlay-drawer-inset) - var(--overlay-drawer-inset));
     margin: 0;
-    transform: translateX(-100%);
+    transform: translateX(var(--main-collection-filter-closed-translate));
   }
 
   .main-collection__filter-dialog:not(.is-sidebar)[open]:not(.is-closing) {
