@@ -12,8 +12,12 @@
       assign pagination_style = 'primary'
   endcase
   assign pagination_button_variant = pagination_style
+  assign pagination_control_class = 'main-collection__pagination-control'
+  assign pagination_arrow_class = pagination_control_class | append: ' main-collection__pagination-arrow'
+  assign pagination_current_class = 'page current btn btn-' | append: pagination_button_variant | append: ' btn--' | append: pagination_button_variant | append: ' main-collection__pagination-control'
   if pagination_style == 'outline'
     assign pagination_button_variant = 'secondary'
+    assign pagination_current_class = 'page current btn btn-secondary btn--secondary main-collection__pagination-control'
   endif
 %}
 {% if paginate.pages > 1 %}<nav class="main-collection__pagination" aria-label="{{ 'collection.pagination' | t }}" data-style="{{ pagination_style }}" data-height="{{ block.settings.button_height }}" style="--pagination-padding-top:{{ block.settings.padding_top }}px;--pagination-padding-bottom:{{ block.settings.padding_bottom }}px;{% if block.settings.customize_mobile_padding %}--pagination-padding-top-mobile:{{ block.settings.padding_top_mobile }}px;--pagination-padding-bottom-mobile:{{ block.settings.padding_bottom_mobile }}px;{% endif %}">
@@ -21,7 +25,7 @@
   {% if paginate.previous %}
     <span class="prev">
       {% assign previous_label = 'collection.previous_page' | t %}
-      {% render 'theme-button', label: previous_label, url: paginate.previous.url, variant: pagination_button_variant, icon: 'chevron-left', icon_position: 'before', icon_size: 'custom', icon_width: 14 %}
+      {% render 'theme-button', label: previous_label, url: paginate.previous.url, variant: pagination_button_variant, class: pagination_arrow_class, icon: 'chevron-left', icon_position: 'before', icon_size: 'custom', icon_width: 14 %}
     </span>
   {% endif %}
 
@@ -40,9 +44,9 @@
           <span class="deco" aria-hidden="true">&hellip;</span>
         {% endif %}
         {% if part.is_link %}
-          <span class="page">{% render 'theme-button', label: part.title, url: part.url, variant: pagination_button_variant %}</span>
+          <span class="page">{% render 'theme-button', label: part.title, url: part.url, variant: pagination_button_variant, class: pagination_control_class %}</span>
         {% else %}
-          <span class="page current" aria-current="page">{{ part.title }}</span>
+          <span class="{{ pagination_current_class }}" aria-current="page">{{ part.title }}</span>
         {% endif %}
         {% assign last_rendered_page = page_number %}
       {% endif %}
@@ -52,15 +56,20 @@
   {% if paginate.next %}
     <span class="next">
       {% assign next_label = 'collection.next_page' | t %}
-      {% render 'theme-button', label: next_label, url: paginate.next.url, variant: pagination_button_variant, icon: 'chevron-right', icon_size: 'custom', icon_width: 14 %}
+      {% render 'theme-button', label: next_label, url: paginate.next.url, variant: pagination_button_variant, class: pagination_arrow_class, icon: 'chevron-right', icon_size: 'custom', icon_width: 14 %}
     </span>
   {% endif %}
 {% elsif paginate.next %}
+  {% assign load_more_label = 'collection.load_more' | t %}
   {% if block.settings.pagination_type == 'infinite' %}
     <span data-collection-infinite-sentinel data-next-url="{{ paginate.next.url | escape }}" aria-hidden="true"></span>
+    {% render 'theme-button', label: load_more_label, url: paginate.next.url, variant: pagination_button_variant, class: pagination_control_class, attributes: 'data-collection-load-more' %}
+    <noscript>
+      {% render 'theme-button', label: load_more_label, url: paginate.next.url, variant: pagination_button_variant, class: pagination_control_class %}
+    </noscript>
+  {% else %}
+    {% render 'theme-button', label: load_more_label, url: paginate.next.url, variant: pagination_button_variant, class: pagination_control_class, attributes: 'data-collection-load-more' %}
   {% endif %}
-  {% assign load_more_label = 'collection.load_more' | t %}
-  {% render 'theme-button', label: load_more_label, url: paginate.next.url, variant: pagination_button_variant, attributes: 'data-collection-load-more' %}
   <span data-collection-pagination-status role="status" hidden>
     <span class="btn__spinner" aria-hidden="true"></span>
     <span class="visually-hidden">{{ 'accessibility.loading' | t }}</span>

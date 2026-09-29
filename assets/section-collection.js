@@ -653,7 +653,11 @@ if (!customElements.get('collection-facets')) {
       const pagination = this.querySelector('[data-pagination-mode="infinite"]');
       const sentinel = pagination?.querySelector('[data-collection-infinite-sentinel]');
       const link = pagination?.querySelector('[data-collection-load-more]');
-      if (!sentinel || !link || link.dataset.paginationFallback || !('IntersectionObserver' in window)) return;
+      if (!sentinel || !link || link.dataset.paginationFallback) return;
+      if (!('IntersectionObserver' in window)) {
+        pagination.dataset.paginationMode = 'load_more';
+        return;
+      }
       pagination.classList.add('is-infinite');
       this.paginationObserver = new IntersectionObserver(entries => {
         if (entries.some(entry => entry.isIntersecting) && this.contains(sentinel)) this.loadMore(sentinel);
@@ -740,6 +744,7 @@ if (!customElements.get('collection-facets')) {
       } catch (error) {
         if (requestController.signal.aborted || !this.isConnected) return;
         pagination.classList.remove('is-infinite');
+        pagination.dataset.paginationMode = 'load_more';
         if (link) link.dataset.paginationFallback = 'true';
       } finally {
         if (this.paginationRequestController === requestController) {

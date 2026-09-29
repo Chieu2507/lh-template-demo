@@ -475,7 +475,7 @@
   .main-collection__pagination[data-height='large'] { --pagination-control-height: 56px; }
   .main-collection__pagination[data-height='extra_large'] { --pagination-control-height: 64px; }
 
-  .collection-pagination-block.is-infinite [data-collection-load-more] {
+  .collection-pagination-block[data-pagination-mode='infinite'] [data-collection-load-more] {
     display: none;
   }
 
