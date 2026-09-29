@@ -9,7 +9,7 @@
       <input type="radio" name="columns-{{ section.id }}-mobile" value="{{ number }}" aria-label="{{ number }} {{ 'collection.columns' | t }}" data-collection-columns data-device="mobile">
       <span class="collection-columns__option-content">
         <span class="collection-columns__option-text" aria-hidden="true">{{ number }}</span>
-        <span class="collection-columns__option-icon" style="--switcher-columns:{{ number }}" aria-hidden="true">{% for tile in (1..number) %}<i></i>{% endfor %}</span>
+        <span class="collection-columns__option-icon" aria-hidden="true">{% render 'collection-column-icon', columns: number %}</span>
       </span>
     </label>
   {% endfor %}
@@ -18,7 +18,7 @@
       <input type="radio" name="columns-{{ section.id }}-tablet" value="{{ number }}" aria-label="{{ number }} {{ 'collection.columns' | t }}" data-collection-columns data-device="tablet">
       <span class="collection-columns__option-content">
         <span class="collection-columns__option-text" aria-hidden="true">{{ number }}</span>
-        <span class="collection-columns__option-icon" style="--switcher-columns:{{ number }}" aria-hidden="true">{% for tile in (1..number) %}<i></i>{% endfor %}</span>
+        <span class="collection-columns__option-icon" aria-hidden="true">{% render 'collection-column-icon', columns: number %}</span>
       </span>
     </label>
   {% endfor %}
@@ -27,7 +27,7 @@
       <input type="radio" name="columns-{{ section.id }}-desktop" value="{{ number }}" aria-label="{{ number }} {{ 'collection.columns' | t }}" data-collection-columns data-device="desktop">
       <span class="collection-columns__option-content">
         <span class="collection-columns__option-text" aria-hidden="true">{{ number }}</span>
-        <span class="collection-columns__option-icon" style="--switcher-columns:{{ number }}" aria-hidden="true">{% for tile in (1..number) %}<i></i>{% endfor %}</span>
+        <span class="collection-columns__option-icon" aria-hidden="true">{% render 'collection-column-icon', columns: number %}</span>
       </span>
     </label>
   {% endfor %}
