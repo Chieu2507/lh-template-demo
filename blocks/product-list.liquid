@@ -39,15 +39,15 @@
     assign product_list_show_next_slide_preview = true
   endif
 
-  assign product_list_gap_desktop = block.settings.product_gap_desktop | default: block.settings.gap_horizontal | default: 4 | plus: 0
-  assign product_list_gap_mobile = block.settings.product_gap_mobile | default: block.settings.gap_horizontal_mobile | default: 4 | plus: 0
+  assign product_list_gap_desktop = block.settings.product_gap_desktop | default: block.settings.gap_horizontal | default: 8 | plus: 0
+  assign product_list_gap_mobile = block.settings.product_gap_mobile | default: block.settings.gap_horizontal_mobile | default: 8 | plus: 0
   assign product_list_row_gap_desktop = block.settings.row_gap_desktop | default: 16 | plus: 0
   assign product_list_row_gap_mobile = block.settings.row_gap_mobile | default: 16 | plus: 0
   if product_list_gap_desktop < 0 or product_list_gap_desktop > 40
-    assign product_list_gap_desktop = 4
+    assign product_list_gap_desktop = 8
   endif
   if product_list_gap_mobile < 0 or product_list_gap_mobile > 40
-    assign product_list_gap_mobile = 4
+    assign product_list_gap_mobile = 8
   endif
   if product_list_row_gap_desktop < 0 or product_list_row_gap_desktop > 40
     assign product_list_row_gap_desktop = 16
