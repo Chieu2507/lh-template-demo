@@ -6,8 +6,6 @@
 }
 
 .product-card__quick-view-button {
-  --color-primary-button-background: var(--button-primary-background);
-  --color-primary-button-text: var(--button-primary-text);
   --quick-view-button-background: #fff;
   --quick-view-button-foreground: var(--button-secondary-text, var(--body-color));
   --quick-view-button-hover-background: var(--button-secondary-hover-background, var(--quick-view-button-background));
@@ -34,8 +32,8 @@
 }
 
 .product-card__quick-view-button:hover {
-  background-color: var(--color-primary-button-background);
-  color: var(--color-primary-button-text);
+  background-color: var(--button-primary-background);
+  color: var(--button-primary-text);
 }
 
 .product-card__quick-view-button .btn__label {
