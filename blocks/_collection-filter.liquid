@@ -224,7 +224,7 @@
                             <span class="main-collection__swatch"{% if swatch_style != blank %} style="{{ swatch_style }}"{% endif %}></span>
                           {% endif %}
                           <span>{{ value.label | escape }}</span>
-                          <span>({{ value.count }})</span>
+                          <span class="main-collection__filter-count">({{ value.count }})</span>
                         </label>
                       </li>
                     {% endfor %}
