@@ -124,8 +124,7 @@
     height: 16px;
   }
 
-  .main-collection__product-count,
-  .main-collection__sort-form {
+  .main-collection__product-count {
     font-size: var(--p2-size-sm);
   }
 
@@ -585,7 +584,6 @@
     align-items: center;
     max-width: 100%;
     color: var(--color-text);
-    font-size: var(--p2-size-sm);
     line-height: 1.2;
     text-decoration: none;
     overflow-wrap: anywhere;
@@ -630,7 +628,6 @@
     align-items: center;
     gap: 8px;
     cursor: pointer;
-    font-size: var(--p2-size-sm);
     line-height: 1.4;
   }
 
@@ -693,7 +690,6 @@
     align-items: center;
     justify-content: space-between;
     cursor: pointer;
-    font-size: var(--p2-size-sm);
     list-style: none;
   }
 
@@ -739,7 +735,6 @@
     align-items: center;
     gap: 8px;
     cursor: pointer;
-    font-size: var(--p2-size-sm);
   }
 
   .main-collection__filter-count {
@@ -956,7 +951,6 @@
     top: 50%;
     left: 14px;
     color: color-mix(in srgb, var(--color-text) 58%, transparent);
-    font-size: var(--p2-size-sm);
     transform: translateY(-50%);
     pointer-events: none;
   }
@@ -968,7 +962,6 @@
     border: 1px solid var(--color-variant-border);
     background: transparent;
     color: currentcolor;
-    font-size: var(--p2-size-sm);
     text-align: right;
     appearance: textfield;
   }
@@ -992,7 +985,6 @@
 
   .main-collection__price-separator {
     color: color-mix(in srgb, var(--color-text) 72%, transparent);
-    font-size: var(--p2-size-sm);
   }
 
   .main-collection__filter-footer {
@@ -1203,7 +1195,7 @@
 .main-collection--blocks .main-collection__filter-dialog.is-sidebar .main-collection__filter-body{padding:0;overflow:visible}
 .main-collection--blocks .main-collection__filter-dialog.is-sidebar .main-collection__filter-header,.main-collection--blocks .main-collection__filter-dialog.is-sidebar .main-collection__filter-footer,.main-collection--blocks .main-collection__filter-dialog.is-sidebar .main-collection__filter-backdrop-pointer{display:none}
 .main-collection--blocks .main-collection__filter-dialog.is-sidebar .main-collection__filter-group{border-block-end:1px solid var(--color-border)}
-.main-collection--blocks .main-collection__filter-dialog.is-sidebar .main-collection__filter-group summary{box-sizing:border-box;min-height:0;padding-block:20px 24px;font-family:var(--font-heading-family);font-size:var(--font-heading-xs,20px)}
+.main-collection--blocks .main-collection__filter-dialog.is-sidebar .main-collection__filter-group summary{box-sizing:border-box;min-height:0;padding-block:20px 24px}
 .main-collection--blocks .main-collection__filter-dialog.is-sidebar .main-collection__filter-group:first-child summary,
 .main-collection--blocks .main-collection__filter-dialog.is-sidebar .main-collection__mobile-sort + .main-collection__filter-group summary{padding-block-start:0}
 .main-collection--blocks .main-collection__filter-dialog.is-sidebar .main-collection__filter-group[open] summary{padding-block-end:16px}
@@ -1320,8 +1312,6 @@
   grid-row: 1;
   margin: 0;
   color: var(--heading-color);
-  font-family: var(--font-heading-family);
-  font-size: var(--font-heading-md);
   line-height: var(--font-heading-md-line-height);
   text-transform: none;
 }

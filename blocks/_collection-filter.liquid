@@ -25,7 +25,7 @@
 <div class="collection-filter-block" {{ block.shopify_attributes }}>
 {% if collection.filters.size > 0 %}
 {% if block.settings.desktop_layout == 'sidebar' and block.settings.sidebar_visibility == 'always' %}
-  <h2 class="main-collection__filter-label heading-text">{{ 'collection.filter' | t }}</h2>
+  <h2 class="main-collection__filter-label heading-text heading-md">{{ 'collection.filter' | t }}</h2>
 {% endif %}
 {% capture filter_button_attributes %}aria-controls="CollectionFilters-{{ section.id }}" aria-expanded="false" data-collection-filter-open{% endcapture %}
 {% render 'theme-button', label: filter_button_label, variant: block.settings.button_style, class: 'main-collection__filter-button', attributes: filter_button_attributes, icon: filter_button_icon, icon_position: 'before' %}
@@ -55,7 +55,7 @@
               <div class="main-collection__active-filters">
               {% for filter in collection.filters %}
                 {% for value in filter.active_values %}
-                  <a class="main-collection__active-filter" href="{{ value.url_to_remove | escape }}">
+                  <a class="main-collection__active-filter body-text body-sm" href="{{ value.url_to_remove | escape }}">
                     {% if filter.presentation == 'swatch' %}
                       {% liquid
                         assign swatch_style = ''
@@ -74,21 +74,21 @@
                 {% endfor %}
                 {% if filter.type == 'price_range' %}
                   {% if filter.min_value.value != nil or filter.max_value.value != nil %}
-                    <a class="main-collection__active-filter" href="{{ filter.url_to_remove | escape }}">
+                    <a class="main-collection__active-filter body-text body-sm" href="{{ filter.url_to_remove | escape }}">
                       <span>{{ filter.label | escape }}</span>
                       <span aria-hidden="true">×</span>
                     </a>
                   {% endif %}
                 {% endif %}
               {% endfor %}
-              <a class="main-collection__clear-link" href="{{ collection.url | escape }}">{{ 'collection.clear_all' | t }}</a>
+              <a class="main-collection__clear-link body-text body-sm" href="{{ collection.url | escape }}">{{ 'collection.clear_all' | t }}</a>
               </div>
             {% endif %}
 
             <div class="main-collection__filter-groups">
               {% if block.settings.enable_sorting %}
                 <details data-accordion-details class="main-collection__mobile-sort main-collection__filter-group" data-filter-key="sort_by" open>
-                  <summary>
+                  <summary class="heading-text heading-sm">
                     <span>{{ sort_label }}</span>
                     <span class="main-collection__filter-icon main-collection__filter-icon--chevron" aria-hidden="true">{% render 'icon', icon: 'chevron-down', bare: true %}</span>
                     <span class="main-collection__filter-icon main-collection__filter-icon--plus" aria-hidden="true">
@@ -99,7 +99,7 @@
                   <fieldset class="main-collection__sort-options">
                     <legend class="visually-hidden">{{ sort_label }}</legend>
                     {% for option in collection.sort_options %}
-                      <label class="main-collection__sort-option">
+                      <label class="main-collection__sort-option body-text body-sm">
                         <input
                           type="radio"
                           name="sort_by"
@@ -124,7 +124,7 @@
                   endif
                 %}
                 <details data-accordion-details class="main-collection__filter-group" data-filter-key="{{ filter.param_name | default: filter.min_value.param_name | escape }}" {% unless block.settings.collapse_filters %}open{% endunless %}>
-                <summary>
+                <summary class="heading-text heading-sm">
                   <span data-filter-heading>{{ filter.label | escape }}{% if selected_count > 0 %} ({{ selected_count }}){% endif %}</span>
                   <span class="main-collection__filter-icon main-collection__filter-icon--chevron" aria-hidden="true">{% render 'icon', icon: 'chevron-down', bare: true %}</span>
                   <span class="main-collection__filter-icon main-collection__filter-icon--plus" aria-hidden="true">
@@ -174,9 +174,10 @@
                     <div class="main-collection__price-fields">
                       <div class="main-collection__price-input">
                         <label class="visually-hidden" for="Filter-{{ filter.label | handle }}-Min-{{ section.id }}">{{ 'collection.price_from' | t }}</label>
-                        <span aria-hidden="true">{{ currency_symbol }}</span>
+                        <span class="body-text body-sm" aria-hidden="true">{{ currency_symbol }}</span>
                         <input
                           id="Filter-{{ filter.label | handle }}-Min-{{ section.id }}"
+                          class="body-text body-sm"
                           type="number"
                           name="{{ filter.min_value.param_name }}"
                           min="0"
@@ -187,12 +188,13 @@
                           {% if filter.min_value.value != nil %}value="{{ price_range_min_value }}"{% endif %}
                         >
                       </div>
-                      <span class="main-collection__price-separator" aria-hidden="true">{{ 'collection.price_to' | t | downcase }}</span>
+                      <span class="main-collection__price-separator body-text body-sm" aria-hidden="true">{{ 'collection.price_to' | t | downcase }}</span>
                       <div class="main-collection__price-input">
                         <label class="visually-hidden" for="Filter-{{ filter.label | handle }}-Max-{{ section.id }}">{{ 'collection.price_to' | t }}</label>
-                        <span aria-hidden="true">{{ currency_symbol }}</span>
+                        <span class="body-text body-sm" aria-hidden="true">{{ currency_symbol }}</span>
                         <input
                           id="Filter-{{ filter.label | handle }}-Max-{{ section.id }}"
+                          class="body-text body-sm"
                           type="number"
                           name="{{ filter.max_value.param_name }}"
                           min="0"
@@ -215,7 +217,7 @@
                   <ul id="FilterValues-{{ block.id }}-{{ forloop.index }}" class="main-collection__filter-values{% if is_swatch_filter %} main-collection__filter-values--swatches{% endif %}" role="list">
                     {% for value in filter.values %}
                       <li {% if filter_items_limit > 0 and forloop.index > filter_items_limit and value.active == false %}data-filter-overflow hidden{% endif %}>
-                        <label class="main-collection__filter-value{% if value.active %} is-active{% endif %}">
+                        <label class="main-collection__filter-value body-text body-sm{% if value.active %} is-active{% endif %}">
                           <input
                             type="checkbox"
                             name="{{ value.param_name }}"
