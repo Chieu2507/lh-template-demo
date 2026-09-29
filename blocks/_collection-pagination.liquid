@@ -60,7 +60,8 @@
     </span>
   {% endif %}
 {% elsif paginate.next %}
-  {% render 'theme-button', label: 'collection.load_more' | t, url: paginate.next.url, variant: pagination_button_variant, attributes: 'data-collection-load-more' %}
+  {% assign load_more_label = 'collection.load_more' | t %}
+  {% render 'theme-button', label: load_more_label, url: paginate.next.url, variant: pagination_button_variant, attributes: 'data-collection-load-more' %}
 {% endif %}
 </nav>{% endif %}</div>
 {% schema %}
