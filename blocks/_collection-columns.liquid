@@ -3,7 +3,7 @@
 {% enddoc %}
 <fieldset class="collection-columns" data-desktop-type="{{ block.settings.desktop_type }}" data-desktop-style="{{ block.settings.desktop_style }}" data-mobile-type="{{ block.settings.mobile_type }}" data-mobile-style="{{ block.settings.mobile_style }}" {{ block.shopify_attributes }}>
   <legend class="visually-hidden">{{ 'collection.grid_view' | t }}</legend>
-  <span class="collection-columns__label" aria-hidden="true">{{ 'collection.view' | t }}</span>
+  <span class="collection-columns__label body-text body-sm" aria-hidden="true">{{ 'collection.view' | t }}</span>
   {% for number in (1..2) %}
     <label class="collection-columns__option collection-columns__mobile">
       <input type="radio" name="columns-{{ section.id }}-mobile" value="{{ number }}" aria-label="{{ number }} {{ 'collection.columns' | t }}" data-collection-columns data-device="mobile">
