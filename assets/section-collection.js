@@ -335,11 +335,10 @@ if (!customElements.get('collection-facets')) {
         if (event.target.closest('[data-collection-filter-open]')) {
           if (this.dialog?.classList.contains('is-sidebar')) {
             if (this.dialog.dataset.sidebarVisibility !== 'always') {
-              if (this.dialog.open) this.dialog.close(); else this.dialog.setAttribute('open', '');
-              this.sidebarOpen = this.dialog.open;
+              this.toggleSidebar();
             }
           } else if (this.dialog && !this.dialog.open) this.dialog.showModal();
-          event.target.closest('[data-collection-filter-open]').setAttribute('aria-expanded', String(Boolean(this.dialog?.open)));
+          event.target.closest('[data-collection-filter-open]').setAttribute('aria-expanded', String(this.dialog?.classList.contains('is-sidebar') ? this.sidebarOpen : Boolean(this.dialog?.open)));
           return;
         }
 
@@ -456,6 +455,7 @@ if (!customElements.get('collection-facets')) {
     }
 
     disconnectedCallback() {
+      this.finishSidebarTransition();
       this.destroySidebarSticky();
       cancelAnimationFrame(this.collectionScrollFrame);
       this.querySelectorAll('.main-collection__filter-values').forEach(list => {
@@ -548,6 +548,7 @@ if (!customElements.get('collection-facets')) {
       const sidebar = this.desktopLayout.matches && this.dialog.dataset.desktopLayout === 'sidebar';
       const wasSidebar = this.dialog.classList.contains('is-sidebar');
       if (sidebar === wasSidebar) return;
+      this.finishSidebarTransition();
       if (this.dialog.open) this.dialog.close();
       this.dialog.classList.toggle('is-sidebar', sidebar);
       if (sidebar) {
@@ -555,6 +556,38 @@ if (!customElements.get('collection-facets')) {
         if (this.sidebarOpen ?? this.dialog.dataset.sidebarVisibility !== 'closed') this.dialog.setAttribute('open', '');
       } else this.dialog.setAttribute('scroll-lock', '');
       this.querySelector('[data-collection-filter-open]')?.setAttribute('aria-expanded', String(this.dialog.open));
+    }
+
+    toggleSidebar() {
+      this.sidebarOpen = !(this.sidebarOpen ?? this.dialog.open);
+      if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        this.finishSidebarTransition();
+        if (this.sidebarOpen) this.dialog.setAttribute('open', '');
+        else this.dialog.close();
+        return;
+      }
+
+      window.clearTimeout(this.sidebarTransitionTimer);
+      this.classList.add('is-sidebar-animating');
+      if (this.sidebarOpen) {
+        if (!this.dialog.open) {
+          this.classList.add('is-sidebar-collapsed');
+          this.dialog.setAttribute('open', '');
+          // Establish the collapsed grid before starting its transition.
+          this.offsetWidth;
+        }
+        this.classList.remove('is-sidebar-collapsed');
+      } else {
+        this.classList.add('is-sidebar-collapsed');
+      }
+      this.sidebarTransitionTimer = window.setTimeout(() => this.finishSidebarTransition(), 340);
+    }
+
+    finishSidebarTransition() {
+      window.clearTimeout(this.sidebarTransitionTimer);
+      this.sidebarTransitionTimer = null;
+      if (this.dialog?.classList.contains('is-sidebar') && this.sidebarOpen === false && this.dialog.open) this.dialog.close();
+      this.classList.remove('is-sidebar-animating', 'is-sidebar-collapsed');
     }
 
     mountFilterPanel() {
