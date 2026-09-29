@@ -308,6 +308,9 @@ if (!customElements.get('collection-facets')) {
       };
       this.onDialogClose = () => {
         this.hideBackdropPointer();
+        if (!this.dialog.classList.contains('is-sidebar')) {
+          this.querySelector('[data-collection-filter-open]')?.setAttribute('aria-expanded', 'false');
+        }
         if (this.scrollAfterDialogClose) {
           this.scrollAfterDialogClose = false;
           this.scrollToCollectionTop();
