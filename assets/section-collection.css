@@ -394,6 +394,7 @@
   }
 
   .main-collection__pagination {
+    --pagination-control-height: 44px;
     display: flex;
     min-height: 88px;
     align-items: center;
@@ -404,18 +405,23 @@
 
   .main-collection__pagination :where(.page, .deco, .prev, .next) {
     display: inline-flex;
-    min-width: 24px;
-    height: 44px;
+    height: var(--pagination-control-height);
     align-items: center;
     justify-content: center;
     color: var(--color-text);
     font-size: var(--label-size);
   }
 
+  .main-collection__pagination .page {
+    width: var(--pagination-control-height);
+    flex: 0 0 var(--pagination-control-height);
+  }
+
+  .main-collection__pagination .deco { min-width: 24px; }
+
   .main-collection__pagination :where(.page, .prev, .next) a {
     display: inline-flex;
-    min-width: 24px;
-    height: 44px;
+    height: var(--pagination-control-height);
     align-items: center;
     justify-content: center;
     color: inherit;
@@ -423,14 +429,13 @@
   }
 
   .main-collection__pagination .page a {
+    width: 100%;
     padding-inline: 4px;
   }
 
   .main-collection__pagination .page.current {
-    width: 44px;
-    min-width: 44px;
-    background: var(--color-heading);
-    color: var(--color-background);
+    background: var(--button-primary-background);
+    color: var(--button-primary-text);
   }
 
   .main-collection__pagination :where(.prev, .next) a {
@@ -440,19 +445,8 @@
   }
 
   .main-collection__pagination [data-collection-load-more] {
-    display: inline-flex;
-    min-height: 44px;
-    align-items: center;
-  }
-
-  .main-collection__pagination .is-current {
-    background: var(--color-heading);
-    color: var(--color-background);
-  }
-
-  .main-collection__pagination[data-style='secondary'] .is-current {
-    background: var(--button-secondary-background);
-    color: var(--button-secondary-text);
+    min-height: var(--pagination-control-height);
+    padding-inline: var(--button-padding-inline-desktop);
   }
 
   .main-collection__pagination[data-style='secondary'] .page.current {
@@ -460,41 +454,31 @@
     color: var(--button-secondary-text);
   }
 
-  .main-collection__pagination[data-style='outline'] .is-current {
-    border: 1px solid currentColor;
-    background: transparent;
-    color: var(--color-text);
-  }
-
   .main-collection__pagination[data-style='outline'] .page.current {
-    border: 1px solid currentColor;
     background: transparent;
-    color: var(--color-text);
+    color: var(--button-secondary-text);
+    box-shadow: inset 0 0 0 1px currentColor;
   }
 
   .main-collection__pagination[data-style='outline'] [data-collection-load-more] {
+    --button-border-width: max(1px, var(--button-secondary-border-width, 1px));
     --button-background: transparent;
     --button-foreground: var(--button-secondary-text);
     --button-border: var(--button-secondary-border);
+    --button-hover-background: transparent;
   }
 
-  .main-collection__pagination[data-style='text'] .is-current {
-    background: transparent;
-    color: var(--color-text);
-    text-decoration: underline;
+  .main-collection__pagination[data-style='tertiary'] .page.current {
+    background: var(--button-tertiary-background);
+    color: var(--button-tertiary-text);
+    box-shadow: inset 0 -2px currentColor;
   }
 
-  .main-collection__pagination[data-style='text'] .page.current {
-    background: transparent;
-    color: var(--color-text);
-    text-decoration: underline;
-  }
-
-  .main-collection__pagination[data-height='extra_small'] :where(a, span) { min-height: 36px; }
-  .main-collection__pagination[data-height='small'] :where(a, span) { min-height: 40px; }
-  .main-collection__pagination[data-height='medium'] :where(a, span) { min-height: 48px; }
-  .main-collection__pagination[data-height='large'] :where(a, span) { min-height: 56px; }
-  .main-collection__pagination[data-height='extra_large'] :where(a, span) { min-height: 64px; }
+  .main-collection__pagination[data-height='extra_small'] { --pagination-control-height: 36px; }
+  .main-collection__pagination[data-height='small'] { --pagination-control-height: 40px; }
+  .main-collection__pagination[data-height='medium'] { --pagination-control-height: 48px; }
+  .main-collection__pagination[data-height='large'] { --pagination-control-height: 56px; }
+  .main-collection__pagination[data-height='extra_large'] { --pagination-control-height: 64px; }
 
   .main-collection__pagination-arrow svg {
     width: 14px;
