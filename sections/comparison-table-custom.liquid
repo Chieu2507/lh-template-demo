@@ -85,6 +85,22 @@
     assign comparison_table_custom_mobile_vertical = true
   endif
 
+  assign comparison_table_custom_inherited_alignment = comparison_table_custom_flow_alignment
+  if comparison_table_custom_direction == 'horizontal'
+    case comparison_table_custom_horizontal_alignment
+      when 'center'
+        assign comparison_table_custom_inherited_alignment = 'center'
+      when 'right'
+        assign comparison_table_custom_inherited_alignment = 'end'
+      else
+        assign comparison_table_custom_inherited_alignment = 'start'
+    endcase
+  endif
+  assign comparison_table_custom_inherited_alignment_mobile = comparison_table_custom_inherited_alignment
+  if comparison_table_custom_direction == 'vertical' or comparison_table_custom_mobile_vertical
+    assign comparison_table_custom_inherited_alignment_mobile = comparison_table_custom_flow_mobile_alignment
+  endif
+
   assign comparison_table_custom_scheme = section.settings.color_scheme | default: settings.default_color_scheme | default: 'scheme-1'
   if section.settings.color_scheme.id != blank
     assign comparison_table_custom_scheme = section.settings.color_scheme.id
@@ -113,6 +129,8 @@
 {% assign comparison_table_custom_style = comparison_table_custom_style | strip | replace: '\n', ' ' %}
 
 {% capture comparison_table_custom_content_style %}
+  --flex-align: {{ comparison_table_custom_inherited_alignment }};
+  --flex-align-mobile: {{ comparison_table_custom_inherited_alignment_mobile }};
   {% render 'layout-flow-group-style',
     direction: comparison_table_custom_direction,
     wrap: 'nowrap',
@@ -158,6 +176,7 @@
 
   .comparison-table-custom__content {
     display: flex;
+    text-align: var(--flex-align, start);
   }
 
   .comparison-table-custom__content--direction-horizontal > * {
@@ -167,6 +186,12 @@
   .comparison-table-custom__spacing--no-padding,
   .comparison-table-custom__spacing .container.comparison-table-custom__container--no-padding {
     padding-inline: 0;
+  }
+
+  @media (max-width: 767.98px) {
+    .comparison-table-custom__content {
+      text-align: var(--flex-align-mobile, var(--flex-align, start));
+    }
   }
 
 {% endstylesheet %}
@@ -374,6 +399,7 @@
           "type": "header",
           "settings": {
             "width": "fill",
+            "inherit_alignment": true,
             "alignment": "center",
             "gap_desktop": 8,
             "gap_mobile": 8
@@ -414,7 +440,7 @@
             "column_min_width": 160,
             "image_width": 130,
             "alignment": "center",
-            "heading_size": "md",
+            "heading_size": "lg",
             "description_font_size": "xs"
           },
           "blocks": [
@@ -424,7 +450,7 @@
               "static": true,
               "settings": {
                 "heading": "Product Comparison",
-                "font_size": "xs",
+                "font_size": "md",
                 "feature_1_label": "Feature text goes here",
                 "feature_2_label": "Feature text goes here",
                 "feature_3_label": "Feature text goes here",

@@ -183,7 +183,7 @@
 {% stylesheet %}
   .block-header {
     min-width: 0;
-    text-align: var(--header-text-align, var(--text-align-default, inherit));
+    text-align: var(--header-text-align, inherit);
     padding-top: var(--header-padding-top, 0px);
     padding-right: var(--header-padding-right, 0px);
     padding-bottom: var(--header-padding-bottom, 0px);
@@ -195,12 +195,12 @@
   }
 
   .block-header > :is(.heading-block, .text-block, .eyebrow-block) {
-    text-align: var(--header-text-align, var(--text-align-default, inherit));
+    text-align: var(--header-text-align, inherit);
   }
 
   @media (max-width: 767.98px) {
     .block-header {
-      text-align: var(--header-text-align-mobile, var(--header-text-align, var(--text-align-default, inherit)));
+      text-align: var(--header-text-align-mobile, var(--header-text-align, inherit));
       padding-top: var(--header-padding-top-mobile, var(--header-padding-top, 0px));
       padding-right: var(--header-padding-right-mobile, var(--header-padding-right, 0px));
       padding-bottom: var(--header-padding-bottom-mobile, var(--header-padding-bottom, 0px));
@@ -208,7 +208,7 @@
     }
 
     .block-header > :is(.heading-block, .text-block, .eyebrow-block) {
-      text-align: var(--header-text-align-mobile, var(--header-text-align, var(--text-align-default, inherit)));
+      text-align: var(--header-text-align-mobile, var(--header-text-align, inherit));
     }
   }
 {% endstylesheet %}

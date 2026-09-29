@@ -118,37 +118,12 @@
     >
       <div class="comparison-table__cell comparison-table__cell--feature{{ feature_label_empty_class }}" role="rowheader" id="{{ feature_label_id }}">
         {% if feature_tooltip != blank %}
-          {% capture feature_tooltip_content %}{{ feature_tooltip | escape }}{% endcapture %}
-          <comparison-table-tooltip class="comparison-table__tooltip-wrap">
-            <button
-              class="comparison-table__trigger comparison-table__trigger--desktop"
-              type="button"
-              aria-describedby="{{ feature_tooltip_id }}"
-            >
-              <span class="comparison-table__label">{{ feature_label | escape }}<span class="comparison-table__info">{% render 'icon', icon: 'information-circle', bare: true, class: 'comparison-table__info-icon' %}<span class="comparison-table__tooltip" id="{{ feature_tooltip_id }}" role="tooltip">{{ feature_tooltip | escape }}</span></span></span>
-            </button>
-            <button
-              class="comparison-table__trigger comparison-table__trigger--mobile"
-              type="button"
-              aria-label="{{ 'comparison_table.more_information' | t: feature: feature_label | escape }}"
-              aria-haspopup="dialog"
-              aria-controls="{{ feature_dialog_id }}"
-              aria-expanded="false"
-              data-comparison-table-tooltip-trigger
-            >
-              <span class="comparison-table__label">{{ feature_label | escape }}<span class="comparison-table__info">{% render 'icon', icon: 'information-circle', bare: true, class: 'comparison-table__info-icon' %}</span></span>
-            </button>
-            {% render 'component-overlay',
-              id: feature_dialog_id,
-              label: feature_label,
-              content: feature_tooltip_content,
-              desktop_layout: 'popup',
-              mobile_layout: 'bottom_sheet',
-              width: 400,
-              append_to_body: true,
-              attributes: 'data-comparison-table-tooltip-dialog'
-            %}
-          </comparison-table-tooltip>
+          {% render 'tooltip',
+            label: feature_label,
+            tooltip: feature_tooltip,
+            tooltip_id: feature_tooltip_id,
+            dialog_id: feature_dialog_id
+          %}
         {% elsif feature_label != blank %}
           <span class="comparison-table__label">{{ feature_label | escape }}</span>
         {% endif %}
