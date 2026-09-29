@@ -399,6 +399,7 @@
     min-height: 88px;
     align-items: center;
     justify-content: center;
+    flex-wrap: wrap;
     gap: 8px;
     padding-block: var(--pagination-padding-top, 40px) var(--pagination-padding-bottom, 0px);
   }
@@ -453,8 +454,15 @@
     padding-inline: 12px;
   }
 
+  .main-collection__pagination :where(.prev, .next) svg {
+    width: 14px;
+    height: 14px;
+  }
+
   .main-collection__pagination [data-collection-load-more] {
+    display: inline-flex;
     min-height: var(--pagination-control-height);
+    align-items: center;
     color: var(--color-heading);
     text-decoration: underline;
     text-underline-offset: 4px;
