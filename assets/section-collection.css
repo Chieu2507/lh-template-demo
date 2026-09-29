@@ -1189,6 +1189,7 @@
 .main-collection__filter-group[open] .main-collection__filter-icon-closed{display:none}
 .main-collection__filter-group[open] .main-collection__filter-icon-open{display:inline-flex}
 @media(min-width:1200px){
+.main-collection--blocks .main-collection__facets:has([data-desktop-layout="drawer"]) .main-collection__filter-button .btn__icon{display:inline-flex}
 .main-collection--blocks .main-collection__facets:has(.main-collection__filter-dialog.is-sidebar[open]){grid-template-columns:minmax(200px,270px) minmax(0,1fr);column-gap:24px}
 .main-collection--blocks .main-collection__facets:has(.main-collection__filter-dialog.is-sidebar[open]) .main-collection__products{grid-column:2}
 .main-collection--blocks .main-collection__filter-panel-positioner:has(.is-sidebar[open]){display:block;position:static;grid-column:1;grid-row:2;min-width:0;width:100%}

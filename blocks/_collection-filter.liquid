@@ -276,7 +276,7 @@
         { "value": "sliders", "label": "Sliders" }
       ],
       "default": "sliders",
-      "visible_if": "{{ block.settings.desktop_layout == 'sidebar' and block.settings.sidebar_visibility != 'always' }}"
+      "visible_if": "{{ block.settings.desktop_layout == 'drawer' or block.settings.sidebar_visibility != 'always' }}"
     },
     {
       "type": "select",
