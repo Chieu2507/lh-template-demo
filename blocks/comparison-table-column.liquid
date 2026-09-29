@@ -1,0 +1,852 @@
+{% liquid
+  assign comparison_column_border_width = block.settings.border_thickness | default: 0 | plus: 0
+  if comparison_column_border_width < 0 or comparison_column_border_width > 10
+    assign comparison_column_border_width = 0
+  endif
+
+  assign comparison_column_shadow = block.settings.shadow | default: 'extra_small'
+  assign comparison_column_shadow_value = 'none'
+  case comparison_column_shadow
+    when 'extra_small'
+      assign comparison_column_shadow_value = '0 1px 5px color-mix(in srgb, var(--shadow-color) 10%, transparent)'
+    when 'small'
+      assign comparison_column_shadow_value = '0 2px 10px color-mix(in srgb, var(--shadow-color) 10%, transparent)'
+    when 'medium'
+      assign comparison_column_shadow_value = '0 4px 20px color-mix(in srgb, var(--shadow-color) 10%, transparent)'
+    when 'large'
+      assign comparison_column_shadow_value = '0 6px 30px color-mix(in srgb, var(--shadow-color) 10%, transparent)'
+  endcase
+
+  assign comparison_column_corner_radius = block.settings.corner_radius | default: 'square'
+  unless comparison_column_corner_radius == 'inherit' or comparison_column_corner_radius == 'square' or comparison_column_corner_radius == 'rounded' or comparison_column_corner_radius == 'custom'
+    assign comparison_column_corner_radius = 'square'
+  endunless
+  assign comparison_column_custom_corner_radius = block.settings.custom_corner_radius | default: 0 | plus: 0
+  if comparison_column_custom_corner_radius < 0 or comparison_column_custom_corner_radius > 40
+    assign comparison_column_custom_corner_radius = 0
+  endif
+  assign comparison_column_corner_radius_value = 'var(--media-radius, var(--radius-square))'
+  case comparison_column_corner_radius
+    when 'square'
+      assign comparison_column_corner_radius_value = 'var(--radius-square)'
+    when 'rounded'
+      assign comparison_column_corner_radius_value = 'var(--radius-rounded)'
+    when 'custom'
+      assign comparison_column_corner_radius_value = comparison_column_custom_corner_radius | append: 'px'
+  endcase
+
+  assign comparison_column_scheme_class = ''
+  if block.settings.color_type == 'scheme'
+    assign comparison_column_scheme = block.settings.color_scheme | default: 'scheme-1'
+    if block.settings.color_scheme.id != blank
+      assign comparison_column_scheme = block.settings.color_scheme.id
+    endif
+    assign comparison_column_scheme = comparison_column_scheme | default: 'scheme-1' | handleize
+    assign comparison_column_scheme_class = ' color-scheme section-color-scope ' | append: comparison_column_scheme
+  endif
+
+  assign comparison_column_heading = block.settings.heading | default: ''
+  assign comparison_column_description = block.settings.description | default: '' | strip
+  assign comparison_column_link = block.settings.link
+  assign comparison_column_new_tab = block.settings.open_in_new_tab
+  assign comparison_column_button_label = block.settings.button_label
+  assign comparison_column_button_style = block.settings.button_style | default: 'primary'
+  assign comparison_column_button_disabled = false
+  if comparison_column_link == blank
+    assign comparison_column_button_disabled = true
+  endif
+  assign comparison_column_image_width = 280
+  assign comparison_column_product_id = 'comparison-product-' | append: block.id
+%}
+
+{% capture comparison_column_style %}
+  {% if comparison_column_border_width != 0 %}--ct-border-width: {{ comparison_column_border_width }}px;{% endif %}
+  {% if comparison_column_shadow != 'extra_small' %}--comparison-column-shadow: {{ comparison_column_shadow_value }};{% endif %}
+  {% if comparison_column_corner_radius != 'square' %}--comparison-column-radius: {{ comparison_column_corner_radius_value }};{% endif %}
+{% endcapture %}
+{% assign comparison_column_style = comparison_column_style | strip | replace: '\n', ' ' %}
+
+<div
+  class="comparison-table__col grid comparison-table__col--data{{ comparison_column_scheme_class }}"
+  data-column-shadow="{{ comparison_column_shadow }}"
+  {% if comparison_column_style != blank %}style="{{ comparison_column_style }}"{% endif %}
+  role="rowgroup"
+  {{ block.shopify_attributes }}
+>
+  <div class="comparison-table__row comparison-table__row--header" role="row" aria-rowindex="1">
+    <div class="comparison-table__cell comparison-table__cell--header comparison-table__product-header" role="columnheader" id="{{ comparison_column_product_id }}">
+      {% if block.settings.image != blank %}
+        {% render 'image',
+          image: block.settings.image,
+          url: comparison_column_link,
+          class: 'comparison-table__media',
+          width: comparison_column_image_width,
+          sizes: '(min-width: 768px) 200px, 42vw',
+          open_in_new_tab: comparison_column_new_tab
+        %}
+      {% endif %}
+      {% if comparison_column_heading != blank %}
+        <h3 class="comparison-table__heading">
+          {% if comparison_column_link != blank %}
+            <a href="{{ comparison_column_link | escape }}"{% if comparison_column_new_tab %} target="_blank" rel="noopener noreferrer"{% endif %}>{{ comparison_column_heading | escape }}</a>
+          {% else %}
+            {{ comparison_column_heading | escape }}
+          {% endif %}
+        </h3>
+      {% endif %}
+      {% if comparison_column_description != blank %}
+        <p class="comparison-table__description">{{ comparison_column_description | escape | newline_to_br }}</p>
+      {% endif %}
+      {% if comparison_column_button_label != blank %}
+        {% render 'theme-button',
+          label: comparison_column_button_label,
+          url: comparison_column_link,
+          disabled: comparison_column_button_disabled,
+          variant: comparison_column_button_style,
+          open_in_new_tab: comparison_column_new_tab,
+          class: 'comparison-table__button'
+        %}
+      {% endif %}
+    </div>
+  </div>
+
+  {% assign comparison_column_row_count = 1 %}
+  {% for feature_index in (1..16) %}
+    {% assign value_type_key = 'value_' | append: feature_index | append: '_type' %}
+    {% assign value_text_key = 'value_' | append: feature_index | append: '_text' %}
+    {% assign value_type = block.settings[value_type_key] | default: 'none' %}
+    {% assign value_text = block.settings[value_text_key] | default: '' | strip %}
+    {% assign feature_id = 'comparison-feature-' | append: section.id | append: '-' | append: feature_index %}
+    {% assign value_id = 'comparison-value-' | append: block.id | append: '-' | append: feature_index %}
+    {% assign comparison_column_row_count = comparison_column_row_count | plus: 1 %}
+
+    <div
+      class="comparison-table__row comparison-table__row--feature-{{ feature_index }}"
+      role="row"
+      aria-rowindex="{{ comparison_column_row_count }}"
+      data-comparison-table-row="{{ feature_index }}"
+      data-comparison-table-value-type="{{ value_type }}"
+      data-comparison-table-value-text="{{ value_text | escape }}"
+    >
+      {% render 'comparison-table-value',
+        type: value_type,
+        text: value_text,
+        feature_id: feature_id,
+        product_id: comparison_column_product_id,
+        value_id: value_id
+      %}
+    </div>
+  {% endfor %}
+</div>
+
+{% schema %}
+{
+  "name": "t:general.column",
+  "tag": null,
+  "settings": [
+    {
+      "type": "header",
+      "content": "Header"
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Image"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Heading"
+    },
+    {
+      "type": "textarea",
+      "id": "description",
+      "label": "Description"
+    },
+    {
+      "type": "text",
+      "id": "button_label",
+      "label": "Button label",
+      "default": "View details"
+    },
+    {
+      "type": "select",
+      "id": "button_style",
+      "label": "Button style",
+      "options": [
+        {
+          "value": "primary",
+          "label": "t:options.button_variant.primary"
+        },
+        {
+          "value": "secondary",
+          "label": "t:options.button_variant.secondary"
+        },
+        {
+          "value": "tertiary",
+          "label": "t:options.button_variant.tertiary"
+        }
+      ],
+      "default": "primary"
+    },
+    {
+      "type": "url",
+      "id": "link",
+      "label": "Link"
+    },
+    {
+      "type": "checkbox",
+      "id": "open_in_new_tab",
+      "label": "Open link in new tab",
+      "default": false
+    },
+    {
+      "type": "header",
+      "content": "t:general.border"
+    },
+    {
+      "type": "range",
+      "id": "border_thickness",
+      "label": "Border thickness",
+      "min": 0,
+      "max": 10,
+      "step": 1,
+      "unit": "px",
+      "default": 0
+    },
+    {
+      "type": "select",
+      "id": "corner_radius",
+      "label": "t:labels.corner_radius",
+      "options": [
+        { "value": "inherit", "label": "t:options.radius_preset.inherit" },
+        { "value": "square", "label": "t:options.radius_preset.square" },
+        { "value": "rounded", "label": "t:options.radius_preset.rounded" },
+        { "value": "custom", "label": "t:options.radius_preset.custom" }
+      ],
+      "default": "square"
+    },
+    {
+      "type": "range",
+      "id": "custom_corner_radius",
+      "label": "t:labels.custom_corner_radius",
+      "min": 0,
+      "max": 40,
+      "step": 1,
+      "unit": "px",
+      "default": 0,
+      "visible_if": "{{ block.settings.corner_radius == 'custom' }}"
+    },
+    {
+      "type": "select",
+      "id": "shadow",
+      "label": "Shadow",
+      "options": [
+        { "value": "none", "label": "None" },
+        { "value": "extra_small", "label": "Extra small" },
+        { "value": "small", "label": "Small" },
+        { "value": "medium", "label": "Medium" },
+        { "value": "large", "label": "Large" }
+      ],
+      "default": "extra_small"
+    },
+    {
+      "type": "header",
+      "content": "Color"
+    },
+    {
+      "type": "select",
+      "id": "color_type",
+      "label": "Type",
+      "options": [
+        { "value": "inherit", "label": "Inherit" },
+        { "value": "scheme", "label": "Color scheme" }
+      ],
+      "default": "inherit"
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "Color scheme",
+      "default": "scheme-1",
+      "visible_if": "{{ block.settings.color_type == 'scheme' }}"
+    },
+    {
+      "type": "header",
+      "content": "Value 1"
+    },
+    {
+      "type": "select",
+      "id": "value_1_type",
+      "label": "Type",
+      "options": [
+        {
+          "value": "none",
+          "label": "None"
+        },
+        {
+          "value": "yes",
+          "label": "Yes"
+        },
+        {
+          "value": "no",
+          "label": "No"
+        },
+        {
+          "value": "text",
+          "label": "Text"
+        }
+      ],
+      "default": "none"
+    },
+    {
+      "type": "text",
+      "id": "value_1_text",
+      "label": "Custom text",
+      "default": "Text value",
+      "visible_if": "{{ block.settings.value_1_type == 'text' }}"
+    },
+    {
+      "type": "header",
+      "content": "Value 2"
+    },
+    {
+      "type": "select",
+      "id": "value_2_type",
+      "label": "Type",
+      "options": [
+        {
+          "value": "none",
+          "label": "None"
+        },
+        {
+          "value": "yes",
+          "label": "Yes"
+        },
+        {
+          "value": "no",
+          "label": "No"
+        },
+        {
+          "value": "text",
+          "label": "Text"
+        }
+      ],
+      "default": "none"
+    },
+    {
+      "type": "text",
+      "id": "value_2_text",
+      "label": "Custom text",
+      "default": "Text value",
+      "visible_if": "{{ block.settings.value_2_type == 'text' }}"
+    },
+    {
+      "type": "header",
+      "content": "Value 3"
+    },
+    {
+      "type": "select",
+      "id": "value_3_type",
+      "label": "Type",
+      "options": [
+        {
+          "value": "none",
+          "label": "None"
+        },
+        {
+          "value": "yes",
+          "label": "Yes"
+        },
+        {
+          "value": "no",
+          "label": "No"
+        },
+        {
+          "value": "text",
+          "label": "Text"
+        }
+      ],
+      "default": "none"
+    },
+    {
+      "type": "text",
+      "id": "value_3_text",
+      "label": "Custom text",
+      "default": "Text value",
+      "visible_if": "{{ block.settings.value_3_type == 'text' }}"
+    },
+    {
+      "type": "header",
+      "content": "Value 4"
+    },
+    {
+      "type": "select",
+      "id": "value_4_type",
+      "label": "Type",
+      "options": [
+        {
+          "value": "none",
+          "label": "None"
+        },
+        {
+          "value": "yes",
+          "label": "Yes"
+        },
+        {
+          "value": "no",
+          "label": "No"
+        },
+        {
+          "value": "text",
+          "label": "Text"
+        }
+      ],
+      "default": "none"
+    },
+    {
+      "type": "text",
+      "id": "value_4_text",
+      "label": "Custom text",
+      "default": "Text value",
+      "visible_if": "{{ block.settings.value_4_type == 'text' }}"
+    },
+    {
+      "type": "header",
+      "content": "Value 5"
+    },
+    {
+      "type": "select",
+      "id": "value_5_type",
+      "label": "Type",
+      "options": [
+        {
+          "value": "none",
+          "label": "None"
+        },
+        {
+          "value": "yes",
+          "label": "Yes"
+        },
+        {
+          "value": "no",
+          "label": "No"
+        },
+        {
+          "value": "text",
+          "label": "Text"
+        }
+      ],
+      "default": "none"
+    },
+    {
+      "type": "text",
+      "id": "value_5_text",
+      "label": "Custom text",
+      "default": "Text value",
+      "visible_if": "{{ block.settings.value_5_type == 'text' }}"
+    },
+    {
+      "type": "header",
+      "content": "Value 6"
+    },
+    {
+      "type": "select",
+      "id": "value_6_type",
+      "label": "Type",
+      "options": [
+        {
+          "value": "none",
+          "label": "None"
+        },
+        {
+          "value": "yes",
+          "label": "Yes"
+        },
+        {
+          "value": "no",
+          "label": "No"
+        },
+        {
+          "value": "text",
+          "label": "Text"
+        }
+      ],
+      "default": "none"
+    },
+    {
+      "type": "text",
+      "id": "value_6_text",
+      "label": "Custom text",
+      "default": "Text value",
+      "visible_if": "{{ block.settings.value_6_type == 'text' }}"
+    },
+    {
+      "type": "header",
+      "content": "Value 7"
+    },
+    {
+      "type": "select",
+      "id": "value_7_type",
+      "label": "Type",
+      "options": [
+        {
+          "value": "none",
+          "label": "None"
+        },
+        {
+          "value": "yes",
+          "label": "Yes"
+        },
+        {
+          "value": "no",
+          "label": "No"
+        },
+        {
+          "value": "text",
+          "label": "Text"
+        }
+      ],
+      "default": "none"
+    },
+    {
+      "type": "text",
+      "id": "value_7_text",
+      "label": "Custom text",
+      "default": "Text value",
+      "visible_if": "{{ block.settings.value_7_type == 'text' }}"
+    },
+    {
+      "type": "header",
+      "content": "Value 8"
+    },
+    {
+      "type": "select",
+      "id": "value_8_type",
+      "label": "Type",
+      "options": [
+        {
+          "value": "none",
+          "label": "None"
+        },
+        {
+          "value": "yes",
+          "label": "Yes"
+        },
+        {
+          "value": "no",
+          "label": "No"
+        },
+        {
+          "value": "text",
+          "label": "Text"
+        }
+      ],
+      "default": "none"
+    },
+    {
+      "type": "text",
+      "id": "value_8_text",
+      "label": "Custom text",
+      "default": "Text value",
+      "visible_if": "{{ block.settings.value_8_type == 'text' }}"
+    },
+    {
+      "type": "header",
+      "content": "Value 9"
+    },
+    {
+      "type": "select",
+      "id": "value_9_type",
+      "label": "Type",
+      "options": [
+        {
+          "value": "none",
+          "label": "None"
+        },
+        {
+          "value": "yes",
+          "label": "Yes"
+        },
+        {
+          "value": "no",
+          "label": "No"
+        },
+        {
+          "value": "text",
+          "label": "Text"
+        }
+      ],
+      "default": "none"
+    },
+    {
+      "type": "text",
+      "id": "value_9_text",
+      "label": "Custom text",
+      "default": "Text value",
+      "visible_if": "{{ block.settings.value_9_type == 'text' }}"
+    },
+    {
+      "type": "header",
+      "content": "Value 10"
+    },
+    {
+      "type": "select",
+      "id": "value_10_type",
+      "label": "Type",
+      "options": [
+        {
+          "value": "none",
+          "label": "None"
+        },
+        {
+          "value": "yes",
+          "label": "Yes"
+        },
+        {
+          "value": "no",
+          "label": "No"
+        },
+        {
+          "value": "text",
+          "label": "Text"
+        }
+      ],
+      "default": "none"
+    },
+    {
+      "type": "text",
+      "id": "value_10_text",
+      "label": "Custom text",
+      "default": "Text value",
+      "visible_if": "{{ block.settings.value_10_type == 'text' }}"
+    },
+    {
+      "type": "header",
+      "content": "Value 11"
+    },
+    {
+      "type": "select",
+      "id": "value_11_type",
+      "label": "Type",
+      "options": [
+        {
+          "value": "none",
+          "label": "None"
+        },
+        {
+          "value": "yes",
+          "label": "Yes"
+        },
+        {
+          "value": "no",
+          "label": "No"
+        },
+        {
+          "value": "text",
+          "label": "Text"
+        }
+      ],
+      "default": "none"
+    },
+    {
+      "type": "text",
+      "id": "value_11_text",
+      "label": "Custom text",
+      "default": "Text value",
+      "visible_if": "{{ block.settings.value_11_type == 'text' }}"
+    },
+    {
+      "type": "header",
+      "content": "Value 12"
+    },
+    {
+      "type": "select",
+      "id": "value_12_type",
+      "label": "Type",
+      "options": [
+        {
+          "value": "none",
+          "label": "None"
+        },
+        {
+          "value": "yes",
+          "label": "Yes"
+        },
+        {
+          "value": "no",
+          "label": "No"
+        },
+        {
+          "value": "text",
+          "label": "Text"
+        }
+      ],
+      "default": "none"
+    },
+    {
+      "type": "text",
+      "id": "value_12_text",
+      "label": "Custom text",
+      "default": "Text value",
+      "visible_if": "{{ block.settings.value_12_type == 'text' }}"
+    },
+    {
+      "type": "header",
+      "content": "Value 13"
+    },
+    {
+      "type": "select",
+      "id": "value_13_type",
+      "label": "Type",
+      "options": [
+        {
+          "value": "none",
+          "label": "None"
+        },
+        {
+          "value": "yes",
+          "label": "Yes"
+        },
+        {
+          "value": "no",
+          "label": "No"
+        },
+        {
+          "value": "text",
+          "label": "Text"
+        }
+      ],
+      "default": "none"
+    },
+    {
+      "type": "text",
+      "id": "value_13_text",
+      "label": "Custom text",
+      "default": "Text value",
+      "visible_if": "{{ block.settings.value_13_type == 'text' }}"
+    },
+    {
+      "type": "header",
+      "content": "Value 14"
+    },
+    {
+      "type": "select",
+      "id": "value_14_type",
+      "label": "Type",
+      "options": [
+        {
+          "value": "none",
+          "label": "None"
+        },
+        {
+          "value": "yes",
+          "label": "Yes"
+        },
+        {
+          "value": "no",
+          "label": "No"
+        },
+        {
+          "value": "text",
+          "label": "Text"
+        }
+      ],
+      "default": "none"
+    },
+    {
+      "type": "text",
+      "id": "value_14_text",
+      "label": "Custom text",
+      "default": "Text value",
+      "visible_if": "{{ block.settings.value_14_type == 'text' }}"
+    },
+    {
+      "type": "header",
+      "content": "Value 15"
+    },
+    {
+      "type": "select",
+      "id": "value_15_type",
+      "label": "Type",
+      "options": [
+        {
+          "value": "none",
+          "label": "None"
+        },
+        {
+          "value": "yes",
+          "label": "Yes"
+        },
+        {
+          "value": "no",
+          "label": "No"
+        },
+        {
+          "value": "text",
+          "label": "Text"
+        }
+      ],
+      "default": "none"
+    },
+    {
+      "type": "text",
+      "id": "value_15_text",
+      "label": "Custom text",
+      "default": "Text value",
+      "visible_if": "{{ block.settings.value_15_type == 'text' }}"
+    },
+    {
+      "type": "header",
+      "content": "Value 16"
+    },
+    {
+      "type": "select",
+      "id": "value_16_type",
+      "label": "Type",
+      "options": [
+        {
+          "value": "none",
+          "label": "None"
+        },
+        {
+          "value": "yes",
+          "label": "Yes"
+        },
+        {
+          "value": "no",
+          "label": "No"
+        },
+        {
+          "value": "text",
+          "label": "Text"
+        }
+      ],
+      "default": "none"
+    },
+    {
+      "type": "text",
+      "id": "value_16_text",
+      "label": "Custom text",
+      "default": "Text value",
+      "visible_if": "{{ block.settings.value_16_type == 'text' }}"
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:general.column",
+      "category": "t:general.comparison_table",
+      "settings": {
+        "heading": "Product Name",
+        "description": "Lorem ipsum dolor sit amet",
+        "button_label": "View details",
+        "button_style": "primary",
+        "border_thickness": 0,
+        "corner_radius": "square",
+        "shadow": "none"
+      }
+    }
+  ]
+}
+{% endschema %}
