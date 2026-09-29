@@ -1109,6 +1109,10 @@
       padding-block: var(--pagination-padding-top-mobile, var(--pagination-padding-top, 40px)) var(--pagination-padding-bottom-mobile, var(--pagination-padding-bottom, 0px));
     }
 
+    .main-collection__pagination [data-collection-load-more] {
+      padding-inline: var(--button-padding-inline-mobile);
+    }
+
     .main-collection__filter-form { border-radius: inherit; background: var(--color-background); }
     .main-collection__filter-dialog[data-mobile-layout="sheet"] .main-collection__filter-form { width: 100%; max-width: 100%; }
 
