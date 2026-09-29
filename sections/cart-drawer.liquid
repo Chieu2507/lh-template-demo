@@ -94,7 +94,7 @@
 
 <div
   id="CartDrawer"
-  class="component-overlay cart-drawer color-scheme section-color-scope {{ cart_drawer_scheme }}{% if section.settings.enable_padding_desktop != false %} drawer--padded-desktop{% endif %}{% if section.settings.product_cards %} cart-drawer--product-cards{% endif %}{% if section.settings.enable_block_animations %} cart-drawer--animated{% endif %}"
+  class="component-overlay cart-drawer color-scheme section-color-scope {{ cart_drawer_scheme }}{% if section.settings.enable_padding_desktop == false %} drawer--unpadded-desktop{% endif %}{% if section.settings.product_cards %} cart-drawer--product-cards{% endif %}{% if section.settings.enable_block_animations %} cart-drawer--animated{% endif %}"
   data-component-overlay
   data-append-to-body
   data-desktop-layout="drawer"

@@ -1,11 +1,11 @@
 /* One shell for popup, drawer and bottom sheet. Content never owns geometry. */
 :where(.component-overlay, .main-collection__filter-dialog) {
-  --overlay-drawer-inset: 0px;
+  --overlay-drawer-inset: var(--overlay-drawer-padding-desktop);
 }
 
 @media (min-width: 768px) {
-  .drawer--padded-desktop {
-    --overlay-drawer-inset: var(--overlay-drawer-padding-desktop, 0px);
+  .drawer--unpadded-desktop {
+    --overlay-drawer-inset: 0px;
   }
 }
 
