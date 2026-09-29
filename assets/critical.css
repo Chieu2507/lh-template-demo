@@ -1378,7 +1378,7 @@ legend {
 }
 
 @media (min-width: 768px) and (hover: hover) and (pointer: fine) {
-  .product-card__media:hover .product-card__image > img,
+  .product-card:hover .product-card__image > img,
   .product-card:focus-within .product-card__image > img {
     transform: scale(var(--product-card-image-zoom, var(--motion-image-zoom)));
   }
@@ -1393,7 +1393,7 @@ legend {
     opacity: var(--pcard-show-secondary-image);
   }
 
-  .product-card__media:hover .product-card__secondary-image > img,
+  .product-card:hover .product-card__secondary-image > img,
   .product-card:focus-within .product-card__secondary-image > img {
     transform: scale(var(--product-card-image-zoom, var(--motion-image-zoom)));
   }
