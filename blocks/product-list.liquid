@@ -41,11 +41,19 @@
 
   assign product_list_gap_desktop = block.settings.product_gap_desktop | default: block.settings.gap_horizontal | default: 4 | plus: 0
   assign product_list_gap_mobile = block.settings.product_gap_mobile | default: block.settings.gap_horizontal_mobile | default: 4 | plus: 0
+  assign product_list_row_gap_desktop = block.settings.row_gap_desktop | default: 16 | plus: 0
+  assign product_list_row_gap_mobile = block.settings.row_gap_mobile | default: 16 | plus: 0
   if product_list_gap_desktop < 0 or product_list_gap_desktop > 40
     assign product_list_gap_desktop = 4
   endif
   if product_list_gap_mobile < 0 or product_list_gap_mobile > 40
     assign product_list_gap_mobile = 4
+  endif
+  if product_list_row_gap_desktop < 0 or product_list_row_gap_desktop > 40
+    assign product_list_row_gap_desktop = 16
+  endif
+  if product_list_row_gap_mobile < 0 or product_list_row_gap_mobile > 40
+    assign product_list_row_gap_mobile = 16
   endif
 
   assign product_list_navigation_position = block.settings.navigation_position | default: 'inside'
@@ -227,9 +235,9 @@
       columns_desktop: block.settings.columns_desktop,
       columns_mobile: block.settings.columns_mobile,
       gap_horizontal: product_list_gap_desktop,
-      gap_vertical: product_list_gap_desktop,
+      gap_vertical: product_list_row_gap_desktop,
       gap_horizontal_mobile: product_list_gap_mobile,
-      gap_vertical_mobile: product_list_gap_mobile,
+      gap_vertical_mobile: product_list_row_gap_mobile,
       show_placeholders: true,
       show_placeholders_for_empty_collection: true,
       placeholder_count: product_list_max_products,
@@ -388,22 +396,42 @@
     {
       "type": "range",
       "id": "product_gap_desktop",
-      "label": "t:options.device.desktop",
+      "label": "Desktop column gap",
       "min": 0,
       "max": 40,
       "step": 1,
       "unit": "px",
-      "default": 4
+      "default": 8
+    },
+    {
+      "type": "range",
+      "id": "row_gap_desktop",
+      "label": "Desktop row gap",
+      "min": 0,
+      "max": 40,
+      "step": 1,
+      "unit": "px",
+      "default": 16
     },
     {
       "type": "range",
       "id": "product_gap_mobile",
-      "label": "t:options.device.mobile",
+      "label": "Mobile column gap",
       "min": 0,
       "max": 40,
       "step": 1,
       "unit": "px",
-      "default": 4
+      "default": 8
+    },
+    {
+      "type": "range",
+      "id": "row_gap_mobile",
+      "label": "Mobile row gap",
+      "min": 0,
+      "max": 40,
+      "step": 1,
+      "unit": "px",
+      "default": 16
     },
     {
       "type": "header",
@@ -570,8 +598,10 @@
         "columns_desktop": "4",
         "columns_mobile": "1",
         "show_next_slide_preview_on_desktop": false,
-        "product_gap_desktop": 4,
-        "product_gap_mobile": 4,
+        "product_gap_desktop": 8,
+        "row_gap_desktop": 16,
+        "product_gap_mobile": 8,
+        "row_gap_mobile": 16,
         "show_navigation_on_desktop": true,
         "navigation_position": "inside",
         "navigation_style": "secondary",
