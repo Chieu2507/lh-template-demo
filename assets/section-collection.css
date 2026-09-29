@@ -956,18 +956,15 @@
   }
 
   .main-collection__price-input input {
+    --input-text-color: #1a1a1a;
     width: 100%;
     min-height: 58px;
     padding: 0 14px 0 32px;
     border: 1px solid var(--color-variant-border);
     background: transparent;
-    color: currentcolor;
+    color: var(--input-text-color);
     text-align: right;
     appearance: textfield;
-  }
-
-  .main-collection.scheme-3 .main-collection__price-input input {
-    --input-text-color: var(--button-primary-text);
   }
 
   .main-collection__price-input input::-webkit-inner-spin-button,
@@ -1156,7 +1153,9 @@
 .main-collection--blocks .collection-filter-block{grid-column:1;grid-row:1;display:flex;align-items:center;min-width:0}
 .main-collection--blocks .main-collection__filter-panel-positioner{display:contents}
 .main-collection--blocks .main-collection__filter-button{margin:0;min-height:var(--collection-toolbar-button-height,var(--button-height))}
-.main-collection--blocks .main-collection__filter-button .btn__icon{display:none}
+.main-collection--blocks .main-collection__filter-button .btn__icon--expanded{display:none}
+.main-collection--blocks .main-collection__filter-button[aria-expanded='true'] .btn__icon--collapsed{display:none}
+.main-collection--blocks .main-collection__filter-button[aria-expanded='true'] .btn__icon--expanded{display:inline-flex}
 .main-collection--blocks .main-collection__product-count{grid-column:2;grid-row:1}
 .main-collection--blocks .main-collection__sort-form{grid-column:3;grid-row:1;justify-self:end}
 .main-collection--blocks .collection-columns{grid-column:4;grid-row:1}
@@ -1185,7 +1184,8 @@
 .main-collection__filter-group[open] .main-collection__filter-icon-closed{display:none}
 .main-collection__filter-group[open] .main-collection__filter-icon-open{display:inline-flex}
 @media(min-width:1200px){
-.main-collection--blocks .main-collection__facets:has([data-desktop-layout="drawer"]) .main-collection__filter-button .btn__icon{display:inline-flex}
+.main-collection--blocks .main-collection__facets:has([data-desktop-layout="sidebar"].is-sidebar){grid-template-columns:0px minmax(0,1fr);column-gap:0;transition:grid-template-columns 300ms cubic-bezier(.22,1,.36,1),column-gap 300ms cubic-bezier(.22,1,.36,1)}
+.main-collection--blocks .main-collection__facets:has([data-desktop-layout="sidebar"].is-sidebar) .main-collection__products{grid-column:2}
 .main-collection--blocks .main-collection__facets:has(.main-collection__filter-dialog.is-sidebar[open]){grid-template-columns:minmax(200px,270px) minmax(0,1fr);column-gap:24px}
 .main-collection--blocks .main-collection__facets:has(.main-collection__filter-dialog.is-sidebar[open]) .main-collection__products{grid-column:2}
 .main-collection--blocks .main-collection__filter-panel-positioner:has(.is-sidebar[open]){display:block;position:static;grid-column:1;grid-row:2;min-width:0;width:100%}
@@ -1208,7 +1208,6 @@
 .main-collection--blocks .main-collection__facets:has([data-sidebar-visibility="always"].is-sidebar) .main-collection__filter-button{display:none}
 .main-collection--blocks .main-collection__facets.is-sidebar-animating:has(.is-sidebar[open]){
   grid-template-columns:270px minmax(0,1fr);
-  transition:grid-template-columns 300ms cubic-bezier(.22,1,.36,1),column-gap 300ms cubic-bezier(.22,1,.36,1);
 }
 .main-collection--blocks .main-collection__facets.is-sidebar-animating.is-sidebar-collapsed:has(.is-sidebar[open]){
   grid-template-columns:0px minmax(0,1fr);
@@ -1216,12 +1215,17 @@
 }
 .main-collection--blocks .is-sidebar-animating .main-collection__filter-panel-positioner:has(.is-sidebar[open]){
   overflow:clip;
+  opacity:1;
+  transition:opacity 300ms cubic-bezier(.22,1,.36,1);
 }
+.main-collection--blocks .is-sidebar-animating.is-sidebar-collapsed .main-collection__filter-panel-positioner:has(.is-sidebar[open]){opacity:0}
 .main-collection--blocks .is-sidebar-animating .main-collection__filter-dialog.is-sidebar{
   width:270px;
 }
 @media(prefers-reduced-motion:reduce){
   .main-collection--blocks .main-collection__facets.is-sidebar-animating{transition:none}
+  .main-collection--blocks .main-collection__facets:has([data-desktop-layout="sidebar"].is-sidebar),
+  .main-collection--blocks .is-sidebar-animating .main-collection__filter-panel-positioner:has(.is-sidebar[open]){transition:none}
 }
 }
 @media(max-width:1023.98px){
