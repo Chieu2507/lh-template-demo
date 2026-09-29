@@ -289,8 +289,7 @@
         "height_mobile": "extra_small",
         "color_scheme": "scheme-3",
         "padding_top": 0,
-        "padding_bottom": 0,
-        "customize_mobile_padding": false
+        "padding_bottom": 0
       }
     },
     "divider": {
@@ -608,7 +607,9 @@
             "columns_mobile": "1",
             "show_next_slide_preview_on_desktop": false,
             "product_gap_desktop": 8,
+            "row_gap_desktop": 16,
             "product_gap_mobile": 8,
+            "row_gap_mobile": 16,
             "show_navigation_on_desktop": true,
             "navigation_position": "top",
             "navigation_style": "secondary",
