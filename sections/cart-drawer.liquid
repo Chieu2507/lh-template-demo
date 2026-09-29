@@ -342,14 +342,14 @@
 
       {% if section.settings.show_order_note or section.settings.show_shipping_estimator or section.settings.show_discount %}
         <button class="cart-drawer__order-options-backdrop" type="button" aria-label="Close cart options" data-cart-drawer-order-options-close></button>
-        <section class="bottom-sheet cart-drawer__order-options-panel component-sheet" data-bottom-sheet data-cart-drawer-order-options aria-hidden="true">
+        <div class="bottom-sheet cart-drawer__order-options-panel component-sheet" data-bottom-sheet data-cart-drawer-order-options aria-hidden="true">
           <header class="cart-drawer__order-options-header component-sheet__header" data-cart-drawer-order-options-sheet-header><span class="bottom-sheet__handle cart-drawer__order-options-sheet-handle" aria-hidden="true"></span><h3 class="heading-text heading-sm" data-cart-drawer-order-options-title>Cart options</h3><button class="overlay-close cart-drawer__order-options-close" type="button" aria-label="Close cart options" data-cart-drawer-order-options-close>{% render 'icon', icon: 'x-mark', bare: true, class: 'overlay-close__icon' %}</button></header>
           <div class="cart-drawer__order-options-content">
             {% if section.settings.show_order_note %}<div data-cart-drawer-order-options-content="note" hidden><label class="form__label" for="CartDrawerNote">Order special instructions</label><textarea class="form__control form__control--textarea" id="CartDrawerNote" rows="5" data-cart-drawer-note placeholder="{{ section.settings.order_note_placeholder | default: 'Add a note to your order' | escape }}">{{ cart.note | escape }}</textarea><button class="btn btn--primary cart-drawer__order-options-submit" type="button" data-cart-drawer-save-note>{{ section.settings.order_note_save_label | default: 'Save note' }}</button></div>{% endif %}
             {% if section.settings.show_shipping_estimator %}<div data-cart-drawer-order-options-content="shipping" hidden><form class="cart-drawer__shipping-estimator" data-cart-drawer-shipping-estimator><label class="form__label"><span>{{ 'cart_drawer.country' | t }}</span><select class="form__control form__control--select" name="country" data-cart-drawer-shipping-country required>{{ all_country_option_tags }}</select></label><label class="form__label"><span>{{ 'cart_drawer.postal_code' | t }}</span><input class="form__control form__control--input" type="text" name="zip" autocomplete="postal-code" required></label><button class="btn btn--primary cart-drawer__order-options-submit" type="submit">{{ 'cart_drawer.calculate' | t }}</button></form><div class="cart-drawer__shipping-rates body-text body-sm" data-cart-drawer-shipping-rates role="status" aria-live="polite"></div></div>{% endif %}
             {% if section.settings.show_discount %}<div data-cart-drawer-order-options-content="discount" hidden><form class="cart-drawer__discount" data-cart-drawer-discount><label class="form__label visually-hidden" for="CartDrawerDiscount">{{ 'cart_drawer.discount_code' | t }}</label><input class="form__control form__control--input" id="CartDrawerDiscount" type="text" name="discount" autocomplete="off" placeholder="{{ 'cart_drawer.discount_code' | t | escape }}"><button class="btn btn--primary cart-drawer__order-options-submit" type="submit">{{ 'cart_drawer.apply' | t }}</button></form><ul class="cart-drawer__discounts body-text body-sm" data-cart-drawer-discounts role="list" hidden></ul></div>{% endif %}
           </div>
-        </section>
+        </div>
       {% endif %}
 
       <p class="cart-drawer__error form__error" role="alert" data-cart-drawer-error hidden></p>
@@ -358,20 +358,6 @@
 </div>
 
 {% stylesheet %}
-  .cart-drawer {
-    position: fixed;
-    z-index: var(--z-modal);
-    inset: 0;
-    visibility: hidden;
-    background: transparent;
-    color: var(--body-color);
-    pointer-events: none;
-    --cart-drawer-padding: var(--cart-drawer-padding-desktop, var(--overlay-drawer-content-padding-desktop, 1.5rem));
-  }
-
-  .cart-drawer[hidden] {
-    display: none;
-  }
 
   .cart-drawer__shipping-progress[hidden],
   .cart-drawer__promotion[hidden],
@@ -380,36 +366,6 @@
   .cart-drawer__recommendations[hidden],
   .cart-drawer__footer[hidden] {
     display: none !important;
-  }
-
-  .cart-drawer:is(.is-open, .is-closing) {
-    visibility: visible;
-    transition-delay: 0s;
-  }
-
-  .cart-drawer.is-open {
-    pointer-events: auto;
-  }
-
-  .cart-drawer.is-closing {
-    pointer-events: none;
-  }
-
-  .cart-drawer__backdrop {
-    background-color: transparent;
-    transition:
-      background-color var(--overlay-backdrop-duration, var(--motion-duration-standard)) var(--overlay-backdrop-ease, var(--motion-ease-standard)),
-      opacity var(--overlay-backdrop-duration, var(--motion-duration-standard)) var(--overlay-backdrop-ease, var(--motion-ease-standard)),
-      -webkit-backdrop-filter var(--overlay-backdrop-duration, var(--motion-duration-standard)) var(--overlay-backdrop-ease, var(--motion-ease-standard)),
-      backdrop-filter var(--overlay-backdrop-duration, var(--motion-duration-standard)) var(--overlay-backdrop-ease, var(--motion-ease-standard));
-  }
-
-  .cart-drawer__panel {
-    display: flex;
-    box-sizing: border-box;
-    overflow: hidden;
-    padding: 0;
-    pointer-events: auto;
   }
 
   .cart-drawer__inner {
@@ -795,16 +751,7 @@
     pointer-events: none;
   }
 
-  @media (prefers-reduced-motion: reduce) {
-    .cart-drawer__panel {
-      transition-duration: 0.01ms;
-    }
-  }
-
   @media (max-width: 767.98px) {
-    .cart-drawer {
-      --cart-drawer-padding: var(--cart-drawer-padding-mobile, var(--overlay-drawer-content-padding-mobile, 1rem));
-    }
 
     .cart-drawer__header {
       min-height: 4.625rem;
@@ -831,8 +778,6 @@
   .cart-drawer,
   .cart-drawer.color-scheme {
     --cart-drawer-padding: var(--cart-drawer-padding-desktop, var(--overlay-drawer-content-padding-desktop, 1.5rem));
-    --cart-drawer-inset: var(--cart-drawer-inset-desktop, 0px);
-    --overlay-drawer-inset: var(--cart-drawer-inset, 0px);
     color: var(--body-color);
   }
 
@@ -1003,8 +948,6 @@
   @keyframes cart-drawer-spin { to { transform: rotate(360deg); } }
 
   @media (prefers-reduced-motion: reduce) {
-    .cart-drawer__backdrop,
-    .cart-drawer__order-options-backdrop,
     .cart-drawer__shipping-progress-track > span,
     .cart-drawer__accordion summary > span:last-child { transition: none; animation: none; }
   }
@@ -1013,7 +956,6 @@
     .cart-drawer,
     .cart-drawer.color-scheme {
       --cart-drawer-padding: var(--cart-drawer-padding-mobile, var(--overlay-drawer-content-padding-mobile, 1rem));
-      --cart-drawer-inset: 0px;
       --cart-drawer-footer-padding: 1.25rem var(--cart-drawer-padding) 20px;
     }
     .cart-drawer__header { min-height: 74px; }
@@ -1026,8 +968,6 @@
     .cart-drawer__recommendation-media { width: 4.875rem; }
     .cart-drawer__recommendation-add { width: var(--button-height-mobile); min-width: var(--button-height-mobile); height: var(--button-height-mobile); min-height: var(--button-height-mobile); }
   }
-
-  .cart-drawer__panel { z-index: 3; }
 
   .cart-drawer__shipping-progress {
     display: grid;
@@ -1232,56 +1172,6 @@
   .cart-drawer__order-options-action:focus-visible { outline: 1px solid var(--heading-color); outline-offset: -3px; }
   .cart-drawer__order-options-action[aria-expanded='true']::before { opacity: 1; transform: scaleX(1); }
 
-  .cart-drawer__order-options-backdrop {
-    position: absolute;
-    z-index: 4;
-    inset: 0;
-    width: 100%;
-    height: 100%;
-    padding: 0;
-    border: 0;
-    background-color: transparent;
-    -webkit-backdrop-filter: blur(0);
-    backdrop-filter: blur(0);
-    pointer-events: none;
-    opacity: 1;
-    transition:
-      background-color var(--motion-duration-standard) var(--motion-ease-standard),
-      opacity var(--motion-duration-standard) var(--motion-ease-standard),
-      backdrop-filter var(--motion-duration-standard) var(--motion-ease-standard),
-      visibility 0s linear var(--motion-duration-standard);
-    visibility: hidden;
-  }
-
-  .cart-drawer__order-options-panel {
-    position: absolute;
-    z-index: 5;
-    inset: auto 0 0;
-    display: flex;
-    max-height: min(34rem, calc(100% - 4rem));
-    flex-direction: column;
-    overflow: auto;
-    padding-bottom: 1.8rem;
-    border-top: 1px solid var(--border-color);
-
-    background: var(--background-color);
-    box-shadow: 0 -12px 36px rgb(0 0 0 / 14%);
-    opacity: 0;
-    pointer-events: none;
-    transform: translateY(100%);
-    transition: transform var(--motion-duration-standard) var(--motion-ease-standard), opacity var(--motion-duration-standard) var(--motion-ease-standard), visibility 0s linear var(--motion-duration-standard);
-    visibility: hidden;
-  }
-
-  .cart-drawer.is-order-options-open .cart-drawer__order-options-backdrop {
-    background-color: var(--overlay-backdrop-color);
-    -webkit-backdrop-filter: blur(var(--overlay-backdrop-blur));
-    backdrop-filter: blur(var(--overlay-backdrop-blur));
-    pointer-events: auto;
-    transition-delay: 0s;
-    visibility: visible;
-  }
-  .cart-drawer.is-order-options-open .cart-drawer__order-options-panel { opacity: 1; pointer-events: auto; transform: translateY(0); transition-delay: 0s; visibility: visible; }
   .cart-drawer__order-options-header { position: relative; display: flex; min-height: 4.75rem; align-items: center; justify-content: space-between; gap: 1rem; padding: 0 var(--cart-drawer-padding); border-bottom: 1px solid var(--border-color); cursor: grab; touch-action: none; user-select: none; }
   .cart-drawer__order-options-header h3 { margin: 0; color: var(--heading-color); }
   .cart-drawer__order-options-close { flex: 0 0 var(--overlay-close-size); color: var(--heading-color); }
@@ -1298,7 +1188,7 @@
     .cart-drawer__order-options-action { min-height: 4.5rem; flex-direction: column; gap: 0.25rem; padding-inline: 0.3rem; text-align: center; }
     .cart-drawer__order-options-action-copy { justify-items: center; }
     .cart-drawer__order-options-action-copy small { max-width: 100%; overflow: hidden; text-overflow: ellipsis; }
-    .cart-drawer__order-options-panel { max-height: min(78dvh, calc(100% - 2rem)); }
+
     .cart-drawer__discount input,
     .cart-drawer__shipping-estimator input,
     .cart-drawer__shipping-estimator select,
