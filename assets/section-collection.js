@@ -334,7 +334,12 @@ if (!customElements.get('collection-facets')) {
           return;
         }
         const load = event.target.closest('[data-collection-load-more]');
-        if (load) { event.preventDefault(); this.loadMore(load); return; }
+        if (load) {
+          if (load.dataset.paginationFallback || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey || event.button !== 0) return;
+          event.preventDefault();
+          this.loadMore(load);
+          return;
+        }
         if (event.target.closest('[data-collection-filter-open]')) {
           if (this.dialog?.classList.contains('is-sidebar')) {
             if (this.dialog.dataset.sidebarVisibility !== 'always') {
@@ -358,7 +363,7 @@ if (!customElements.get('collection-facets')) {
         const link = event.target.closest(
           '.main-collection__active-filters a, .main-collection__filter-footer a, .main-collection__pagination a, .main-collection__empty a'
         );
-        if (!link) return;
+        if (!link || !link.hasAttribute('href') || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey || event.button !== 0) return;
 
         event.preventDefault();
         this.render(link.href, {
@@ -471,7 +476,8 @@ if (!customElements.get('collection-facets')) {
       this.removeEventListener('submit', this.onSubmit);
       this.desktopLayout?.removeEventListener('change', this.onLayoutChange);
       this.sheetGesture?.destroy();
-      this.paginationObserver?.disconnect();
+      this.cancelPagination();
+      this.productRevealObserver?.disconnect();
       window.__themeAccordionDetailsController?.cleanupRoot(this);
       this.gridAnimations?.forEach(animation => animation.cancel());
       this.dialog?.removeEventListener('cancel', this.onDialogCancel);
@@ -643,36 +649,104 @@ if (!customElements.get('collection-facets')) {
 
     observePagination() {
       this.paginationObserver?.disconnect();
-      const link = this.querySelector('[data-pagination-mode="infinite"] [data-collection-load-more]');
-      if (!link) return;
+      if (!this.isConnected || this.loadingMore || this.requestController) return;
+      const pagination = this.querySelector('[data-pagination-mode="infinite"]');
+      const sentinel = pagination?.querySelector('[data-collection-infinite-sentinel]');
+      const link = pagination?.querySelector('[data-collection-load-more]');
+      if (!sentinel || !link || link.dataset.paginationFallback || !('IntersectionObserver' in window)) return;
+      pagination.classList.add('is-infinite');
       this.paginationObserver = new IntersectionObserver(entries => {
-        if (entries.some(entry => entry.isIntersecting)) this.loadMore(link);
+        if (entries.some(entry => entry.isIntersecting) && this.contains(sentinel)) this.loadMore(sentinel);
       }, { rootMargin: '300px' });
-      this.paginationObserver.observe(link);
+      this.paginationObserver.observe(sentinel);
     }
 
-    async loadMore(link) {
-      if (this.loadingMore) return;
+    revealProducts(items) {
+      if (window.matchMedia('(prefers-reduced-motion: reduce)').matches || window.Shopify?.designMode) return;
+      this.revealCards ||= new WeakSet();
+      const reveal = (card, index) => {
+        card.style.animationDelay = `${Math.min(index, 6) * 75}ms`;
+        card.classList.add('motion-block');
+      };
+      if ('IntersectionObserver' in window && !this.productRevealObserver) {
+        this.productRevealObserver = new IntersectionObserver(entries => {
+          entries.filter(entry => entry.isIntersecting && this.contains(entry.target)).forEach((entry, index) => {
+            this.productRevealObserver.unobserve(entry.target);
+            reveal(entry.target, index);
+          });
+        });
+      }
+      items.forEach((item, index) => {
+        const card = item.querySelector('[data-product-card]');
+        if (!card || this.revealCards.has(card)) return;
+        this.revealCards.add(card);
+        if (this.productRevealObserver) this.productRevealObserver.observe(card);
+        else reveal(card, index);
+      });
+    }
+
+    cancelPagination() {
+      this.paginationObserver?.disconnect();
+      this.paginationRequestController?.abort();
+      this.paginationRequestController = null;
+      this.loadingMore = false;
+      this.querySelector('.main-collection__products')?.removeAttribute('aria-busy');
+      this.querySelector('[data-collection-load-more]')?.removeAttribute('aria-busy');
+      const status = this.querySelector('[data-collection-pagination-status]');
+      if (status) status.hidden = true;
+    }
+
+    async loadMore(control) {
+      if (this.loadingMore || this.requestController || !this.isConnected || !this.contains(control)) return;
+      const nextUrl = control.dataset.nextUrl || control.href;
+      if (!nextUrl) return;
+      const pagination = control.closest('.collection-pagination-block');
+      const link = pagination.querySelector('[data-collection-load-more]');
+      const status = pagination.querySelector('[data-collection-pagination-status]');
+      const products = this.querySelector('.main-collection__products');
+      const grid = products?.querySelector('.main-collection__grid');
+      if (!grid) return;
+      const requestController = new AbortController();
+      this.paginationRequestController = requestController;
       this.loadingMore = true;
-      link.setAttribute('aria-busy', 'true');
+      link?.setAttribute('aria-busy', 'true');
+      products.setAttribute('aria-busy', 'true');
+      if (status) status.hidden = false;
       this.paginationObserver?.disconnect();
       try {
-        const url = new URL(link.href); url.searchParams.set('section_id', this.sectionId);
-        const response = await fetch(url); if (!response.ok) throw new Error('Pagination request failed');
+        const url = new URL(nextUrl, window.location.origin);
+        url.searchParams.set('section_id', this.sectionId);
+        const response = await fetch(url, { signal: requestController.signal });
+        if (!response.ok) throw new Error('Pagination request failed');
         const html = new DOMParser().parseFromString(await response.text(), 'text/html');
-        const next = html.querySelector('collection-facets');
-        const grid = this.querySelector('.main-collection__grid');
-        const offset = grid.querySelectorAll('.main-collection__product').length;
-        next.querySelectorAll('.main-collection__product').forEach((item, index) => {
+        const next = html.querySelector(`collection-facets[data-section-id="${this.sectionId}"]`);
+        const items = Array.from(next?.querySelectorAll('.main-collection__grid > .main-collection__product') || []);
+        const nextPagination = next?.querySelector('.collection-pagination-block');
+        if (!items.length || !nextPagination) throw new Error('Pagination response was missing products or pagination');
+        if (requestController.signal.aborted || !this.isConnected || !this.contains(grid)) return;
+        const restoreFocus = link === document.activeElement;
+        const offset = grid.querySelectorAll(':scope > .main-collection__product').length;
+        items.forEach((item, index) => {
           item.style.order = (offset + index + 1) * 10;
           grid.append(item);
         });
-        const pagination = this.querySelector('.collection-pagination-block');
-        const nextPagination = next.querySelector('.collection-pagination-block');
-        if (nextPagination) pagination.replaceWith(nextPagination); else pagination.remove();
+        pagination.replaceWith(nextPagination);
+        this.revealProducts(items);
+        if (restoreFocus) {
+          const firstLink = items[0].querySelector('a[href]');
+          firstLink?.focus({ preventScroll: true });
+        }
         grid.dispatchEvent(new CustomEvent('collection:products-loaded', { bubbles: true }));
-      } catch (_) { window.location.assign(link.href); }
-      finally { this.loadingMore = false; this.observePagination(); }
+      } catch (error) {
+        if (requestController.signal.aborted || !this.isConnected) return;
+        pagination.classList.remove('is-infinite');
+        if (link) link.dataset.paginationFallback = 'true';
+      } finally {
+        if (this.paginationRequestController === requestController) {
+          this.cancelPagination();
+          this.observePagination();
+        }
+      }
     }
 
     hideBackdropPointer() {
@@ -805,6 +879,7 @@ if (!customElements.get('collection-facets')) {
       const closePromise = options.closeDialog ? this.closeDialog() : Promise.resolve();
 
       this.requestController?.abort();
+      this.cancelPagination();
       const requestController = new AbortController();
       this.requestController = requestController;
       this.setAttribute('aria-busy', 'true');
@@ -845,7 +920,8 @@ if (!customElements.get('collection-facets')) {
           currentToolbar.replaceWith(nextToolbar);
           this.querySelectorAll('[data-collection-filter-open]').forEach(button => button.setAttribute('aria-expanded', String(this.dialog.open)));
           currentProducts.replaceWith(nextProducts);
-          window.ThemeAnimations?.init(nextProducts);
+          this.productRevealObserver?.disconnect();
+          this.revealProducts(Array.from(nextProducts.querySelectorAll('.main-collection__product')));
           this.syncColumns();
           this.observePagination();
           const currentActiveFilters = this.dialog.querySelector('.main-collection__active-filters');
@@ -893,10 +969,9 @@ if (!customElements.get('collection-facets')) {
           replacement.sidebarOpen = this.sidebarOpen;
           const nextProducts = replacement.querySelector('.main-collection__products');
           this.replaceWith(replacement);
-          window.ThemeAnimations?.init(nextProducts);
+          replacement.revealProducts(Array.from(nextProducts.querySelectorAll('.main-collection__product')));
           replacement.syncLayout?.();
           replacement.syncColumns?.();
-          replacement.observePagination?.();
           nextProducts?.dispatchEvent(new CustomEvent('collection:products-loaded', { bubbles: true }));
           renderedFacets = replacement;
         }
@@ -905,7 +980,11 @@ if (!customElements.get('collection-facets')) {
         if (error.name === 'AbortError') return;
         window.location.assign(navigationUrl);
       } finally {
-        if (this.requestController === requestController) this.removeAttribute('aria-busy');
+        if (this.requestController === requestController) {
+          this.requestController = null;
+          this.removeAttribute('aria-busy');
+          this.observePagination();
+        }
       }
     }
   }
