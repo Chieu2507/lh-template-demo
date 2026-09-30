@@ -18,22 +18,68 @@
           "type": "announcement-text",
           "settings": {
             "text": "Free shipping for all orders over $100.00",
-            "text_size": "sm",
             "text_color": "",
             "width": "fill",
-            "max_width": 640,
-            "padding_top": 0,
-            "padding_right": 0,
-            "padding_bottom": 0,
-            "padding_left": 0
+            "max_width": 640
+          },
+          "blocks": {}
+        },
+        "discount-code": {
+          "type": "discount-code",
+          "settings": {
+            "gap_desktop": 16,
+            "gap_mobile": 12,
+            "message": "<p>50% off - use code:</p>",
+            "message_color": "",
+            "discount_code": "BIG50",
+            "button_label": "Shop now",
+            "button_link": "",
+            "button_open_in_new_tab": false,
+            "button_style": "tertiary",
+            "show_icon": false,
+            "icon": "arrow_right",
+            "icon_position": "after",
+            "icon_size": "inherit",
+            "icon_width": 20
+          },
+          "blocks": {}
+        },
+        "announcement-countdown-timer": {
+          "type": "announcement-countdown-timer",
+          "settings": {
+            "hide_when_expired": true,
+            "gap_desktop": 16,
+            "gap_mobile": 12,
+            "message": "<p>Hurry up! Sale ends in:</p>",
+            "message_color": "",
+            "style": "inline",
+            "corner_radius": "square",
+            "type": "fixed_time",
+            "end_time": "2026-12-25 12:00",
+            "duration_hours": 24,
+            "duration_minutes": 0,
+            "color_type": "inherit",
+            "number_color": "",
+            "button_label": "Shop now",
+            "button_link": "",
+            "button_open_in_new_tab": false,
+            "button_style": "tertiary",
+            "show_icon": false,
+            "icon": "arrow_right",
+            "icon_position": "after",
+            "icon_size": "inherit",
+            "icon_width": 20
           },
           "blocks": {}
         }
       },
       "block_order": [
-        "announcement-text"
+        "announcement-text",
+        "discount-code",
+        "announcement-countdown-timer"
       ],
       "settings": {
+        "bottom_separator": false,
         "type": "slider",
         "speed": 1,
         "direction": "left",
@@ -41,6 +87,10 @@
         "pause_on_hover": true,
         "navigation_behavior": "show_on_hover",
         "navigation_icon": "arrow",
+        "font_size": "sm",
+        "background_type": "none",
+        "overlay": false,
+        "overlay_color": "#00000033",
         "gap": 16,
         "color_scheme": "scheme-3",
         "padding_top": 8,
@@ -271,10 +321,10 @@
       "settings": {
         "section_width": "page_width",
         "icon_size": 20,
-        "sticky_type": "none",
+        "sticky_type": "scroll_up",
         "color_scheme": "scheme-1",
-        "header_overlay": false,
-        "transparent_color_scheme": "scheme-1"
+        "header_overlay": true,
+        "transparent_color_scheme": "scheme-3"
       }
     }
   },
