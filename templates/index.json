@@ -35,7 +35,7 @@
             "eyebrow": {
               "type": "eyebrow",
               "settings": {
-                "text": "<p>The new chapter</p>",
+                "text": "<p>THE NEW CHAPTER</p>",
                 "color": "",
                 "show_background": false,
                 "show_icon": false,
@@ -136,7 +136,7 @@
             "eyebrow": {
               "type": "eyebrow",
               "settings": {
-                "text": "<p>Our selection</p>",
+                "text": "<p>OUR SELECTION</p>",
                 "color": "",
                 "show_background": false,
                 "show_icon": false,
@@ -237,7 +237,7 @@
             "eyebrow": {
               "type": "eyebrow",
               "settings": {
-                "text": "<p>Discover more</p>",
+                "text": "<p>DISCOVER MORE</p>",
                 "color": "",
                 "show_background": false,
                 "show_icon": false,
@@ -3548,7 +3548,7 @@
             "heading_size": "xl",
             "custom_heading_size": 24,
             "html_tag": "h2",
-            "text": "<p>Add text here.</p>",
+            "text": "<p>Add a short paragraph to support the heading</p>",
             "text_size": "lg",
             "content_color_scheme": "scheme-3",
             "text_alignment": "left",
@@ -3635,7 +3635,7 @@
             "heading_size": "xl",
             "custom_heading_size": 24,
             "html_tag": "h2",
-            "text": "<p>Add text here.</p>",
+            "text": "<p>Add a short paragraph to support the heading</p>",
             "text_size": "lg",
             "content_color_scheme": "scheme-3",
             "text_alignment": "left",
@@ -3722,7 +3722,7 @@
             "heading_size": "xl",
             "custom_heading_size": 24,
             "html_tag": "h2",
-            "text": "<p>Add text here.</p>",
+            "text": "<p>Add a short paragraph to support the heading</p>",
             "text_size": "lg",
             "content_color_scheme": "scheme-3",
             "text_alignment": "left",
