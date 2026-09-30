@@ -1247,7 +1247,7 @@
 /* Tablet control is icon-only and manages a separate 2/3-column grid state. */
 .collection-columns__tablet { display: none; }
 .collection-columns__tablet .collection-columns__option-text { display: none; }
-.collection-columns__tablet .collection-columns__option-icon { display: grid; }
+.collection-columns__tablet .collection-columns__option-icon { display: block; }
 
 @media (min-width: 768px) and (max-width: 1023.98px) {
   .collection-columns__desktop,
@@ -1348,15 +1348,15 @@
 
 .collection-columns__option-content { display: grid; place-items: center; width: 44px; height: 44px; }
 .collection-columns__option-text { display: block; }
-.collection-columns__option-icon { display: none; width: 24px; height: 20px; grid-template-columns: repeat(var(--switcher-columns), minmax(0, 1fr)); gap: 2px; }
-.collection-columns__option-icon i { border: 1px solid currentColor; }
+.collection-columns__option-icon { display: none; width: 24px; height: 24px; }
+.collection-columns__option-icon svg { display: block; width: 100%; height: 100%; }
 .collection-columns[data-desktop-type='icon'] .collection-columns__desktop .collection-columns__option-text { display: none; }
-.collection-columns[data-desktop-type='icon'] .collection-columns__desktop .collection-columns__option-icon { display: grid; }
+.collection-columns[data-desktop-type='icon'] .collection-columns__desktop .collection-columns__option-icon { display: block; }
 
 @media (max-width: 767.98px) {
   .collection-columns__label { display: none; }
   .collection-columns[data-mobile-type='icon'] .collection-columns__mobile .collection-columns__option-text { display: none; }
-  .collection-columns[data-mobile-type='icon'] .collection-columns__mobile .collection-columns__option-icon { display: grid; }
+  .collection-columns[data-mobile-type='icon'] .collection-columns__mobile .collection-columns__option-icon { display: block; }
 }
 
 .main-collection--blocks .main-collection__facets:has(.main-collection__filter-dialog.is-sidebar[open]) .main-collection__products--full-width {
