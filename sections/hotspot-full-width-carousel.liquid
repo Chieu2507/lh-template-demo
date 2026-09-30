@@ -1,3 +1,28 @@
+{% comment %}
+  Theme Block types/settings are not reliably exposed to the parent section,
+  and editor-generated IDs do not identify the block type. Render each block
+  once, then use the callout's own marker to separate slides from the header.
+{% endcomment %}
+{% liquid
+  assign hotspot_carousel_header = ''
+  assign hotspot_carousel_slides = ''
+  assign hotspot_carousel_product_callout_count = 0
+%}
+{% for hotspot_carousel_block in section.blocks %}
+  {% capture hotspot_carousel_block_markup %}
+    {% render hotspot_carousel_block %}
+  {% endcapture %}
+  {% liquid
+    assign hotspot_carousel_block_markup = hotspot_carousel_block_markup | strip
+    if hotspot_carousel_block_markup contains 'data-product-callout-carousel="true"'
+      assign hotspot_carousel_slides = hotspot_carousel_slides | append: hotspot_carousel_block_markup
+      assign hotspot_carousel_product_callout_count = hotspot_carousel_product_callout_count | plus: 1
+    else
+      assign hotspot_carousel_header = hotspot_carousel_header | append: hotspot_carousel_block_markup
+    endif
+  %}
+{% endfor %}
+
 {% liquid
   assign hotspot_carousel_width = section.settings.width | default: 'full'
   unless hotspot_carousel_width == 'page' or hotspot_carousel_width == 'full' or hotspot_carousel_width == 'full_bleed'
@@ -80,13 +105,6 @@
     assign hotspot_carousel_padding_top_mobile = 0
     assign hotspot_carousel_padding_bottom_mobile = 0
   endif
-
-  assign hotspot_carousel_product_callout_count = 0
-  for hotspot_carousel_block in section.blocks
-    if hotspot_carousel_block.type == 'product-callout' or hotspot_carousel_block.id contains 'product-callout'
-      assign hotspot_carousel_product_callout_count = hotspot_carousel_product_callout_count | plus: 1
-    endif
-  endfor
 
   assign hotspot_carousel_render = false
   if hotspot_carousel_product_callout_count > 0 or request.design_mode and section.blocks.size > 0
@@ -211,23 +229,6 @@
     {% endif %}
 
     {% if section.blocks.size > 0 %}
-      {% capture hotspot_carousel_header %}
-        {% for hotspot_carousel_block in section.blocks %}
-          {% if hotspot_carousel_block.type == 'header' or hotspot_carousel_block.id contains '__header' or hotspot_carousel_block.id == 'header' %}
-            {% render hotspot_carousel_block %}
-          {% endif %}
-        {% endfor %}
-      {% endcapture %}
-      {% assign hotspot_carousel_header = hotspot_carousel_header | strip %}
-
-      {% capture hotspot_carousel_slides %}
-        {% for hotspot_carousel_block in section.blocks %}
-          {% if hotspot_carousel_block.type == 'product-callout' or hotspot_carousel_block.id contains 'product-callout' %}
-            {% render hotspot_carousel_block %}
-          {% endif %}
-        {% endfor %}
-      {% endcapture %}
-
       {% capture hotspot_carousel_pagination %}
         {% if hotspot_carousel_has_multiple_slides and hotspot_carousel_show_pagination and hotspot_carousel_use_fraction == false %}
           {% render 'swiper-pagination',
@@ -290,13 +291,11 @@
           {% endif %}
         {% elsif request.design_mode %}
           <div class="hotspot-full-width-carousel__empty-state">
-            <p>{{ 'accessibility.hotspot_carousel_empty' | t }}</p>
           </div>
         {% endif %}
       </div>
     {% elsif request.design_mode %}
       <div class="hotspot-full-width-carousel__empty-state">
-        <p>{{ 'accessibility.hotspot_carousel_empty' | t }}</p>
       </div>
     {% endif %}
   </div>
