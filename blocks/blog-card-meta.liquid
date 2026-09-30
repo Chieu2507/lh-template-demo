@@ -6,6 +6,10 @@
 
 {% liquid
   assign blog_card_meta_article = closest.article | default: article
+  assign blog_card_meta_is_placeholder = false
+  if blog_card_meta_article == blank or request.design_mode
+    assign blog_card_meta_is_placeholder = true
+  endif
   assign blog_card_meta_size = block.settings.size | default: 'xs'
   unless blog_card_meta_size == 'xs' or blog_card_meta_size == 'sm' or blog_card_meta_size == 'md' or blog_card_meta_size == 'lg' or blog_card_meta_size == 'xl' or blog_card_meta_size == 'xxl'
     assign blog_card_meta_size = 'xs'
@@ -74,21 +78,21 @@
   assign blog_card_meta_show_author = false
   if block.settings.show_author and blog_card_meta_article.author != blank
     assign blog_card_meta_show_author = true
-  elsif block.settings.show_author and blog_card_meta_article == blank
+  elsif block.settings.show_author and blog_card_meta_is_placeholder
     assign blog_card_meta_show_author = true
   endif
 
   assign blog_card_meta_show_date = false
   if block.settings.show_date and blog_card_meta_article.published_at != blank
     assign blog_card_meta_show_date = true
-  elsif block.settings.show_date and blog_card_meta_article == blank
+  elsif block.settings.show_date and blog_card_meta_is_placeholder
     assign blog_card_meta_show_date = true
   endif
 
   assign blog_card_meta_show_comment_count = false
   if block.settings.show_comment_count and blog_card_meta_article.comments_count != blank
     assign blog_card_meta_show_comment_count = true
-  elsif block.settings.show_comment_count and blog_card_meta_article == blank
+  elsif block.settings.show_comment_count and blog_card_meta_is_placeholder
     assign blog_card_meta_show_comment_count = true
   endif
 
@@ -174,7 +178,7 @@
                 {% endif %}
                 {% if blog_card_meta_article.published_at != blank %}
                   <time datetime="{{ blog_card_meta_article.published_at | date: '%Y-%m-%d' }}">{{ blog_card_meta_article.published_at | date: blog_card_meta_date_format }}</time>
-                {% elsif blog_card_meta_article == blank %}
+                {% elsif blog_card_meta_is_placeholder %}
                   <span>February 03, 2026</span>
                 {% endif %}
               </span>
