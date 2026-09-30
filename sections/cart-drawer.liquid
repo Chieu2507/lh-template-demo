@@ -96,6 +96,14 @@
   <script type="module" src="{{ 'cart-drawer-recommendations.js' | asset_url }}"></script>
 {% endif %}
 
+<link
+  rel="stylesheet"
+  href="{{ 'cart-drawer.css' | asset_url }}"
+  media="print"
+  onload="this.media='all'"
+>
+<noscript>{{ 'cart-drawer.css' | asset_url | stylesheet_tag }}</noscript>
+
 <div
   id="CartDrawer"
   class="component-overlay cart-drawer color-scheme section-color-scope {{ cart_drawer_scheme }}{% if section.settings.product_cards %} cart-drawer--product-cards{% endif %}{% if section.settings.enable_block_animations %} cart-drawer--animated{% endif %}"
