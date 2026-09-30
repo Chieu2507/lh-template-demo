@@ -87,7 +87,7 @@ class QuickAddController {
 
     this.handleClick = this.handleClick.bind(this);
     this.handlePointerDown = this.handlePointerDown.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleCartReady = this.handleCartReady.bind(this);
     this.handleClose = this.handleClose.bind(this);
     this.handleRetry = this.handleRetry.bind(this);
     this.handleSectionSelect = this.handleSectionSelect.bind(this);
@@ -95,11 +95,12 @@ class QuickAddController {
 
     document.addEventListener('click', this.handleClick, { capture: true, signal: this.signal });
     document.addEventListener('pointerdown', this.handlePointerDown, { capture: true, signal: this.signal });
-    document.addEventListener('submit', this.handleSubmit, { capture: true, signal: this.signal });
+    document.addEventListener('cart:add:ready', this.handleCartReady, { signal: this.signal });
     document.addEventListener('shopify:section:select', this.handleSectionSelect, { signal: this.signal });
     document.addEventListener('shopify:section:deselect', this.handleSectionDeselect, { signal: this.signal });
     document.addEventListener('shopify:section:unload', (event) => {
       if (event.target === this.sectionRoot || event.target?.contains?.(this.sectionRoot)) this.destroy();
+      else if (event.target?.contains?.(this.loadingTrigger)) this.handleClose();
     }, { signal: this.signal });
     this.dialog.addEventListener('close', this.handleClose, { signal: this.signal });
   }
@@ -176,6 +177,8 @@ class QuickAddController {
       this.loadingTrigger = trigger;
       trigger.dataset.quickAddLoading = 'true';
       trigger.setAttribute('aria-busy', 'true');
+      this.triggerDisabledState = trigger.getAttribute('aria-disabled');
+      trigger.setAttribute('aria-disabled', 'true');
       if (dots) {
         dots.hidden = false;
         dots.classList.remove('hidden');
@@ -186,6 +189,8 @@ class QuickAddController {
 
     delete trigger.dataset.quickAddLoading;
     trigger.removeAttribute('aria-busy');
+    if (this.triggerDisabledState == null) trigger.removeAttribute('aria-disabled');
+    else trigger.setAttribute('aria-disabled', this.triggerDisabledState);
     if (dots) {
       dots.hidden = true;
       dots.classList.add('hidden');
@@ -212,7 +217,11 @@ class QuickAddController {
 
     const trigger = event.target.closest?.('[data-product-card-quick-add-overlay]');
     if (!trigger) return;
-    if (trigger.dataset.quickAddLoading === 'true') return;
+    if (trigger.dataset.quickAddLoading === 'true') {
+      event.preventDefault();
+      this.pointerActivated = false;
+      return;
+    }
 
     const url = this.productUrl(trigger);
     if (!url) return;
@@ -223,13 +232,12 @@ class QuickAddController {
     this.open(url, trigger, { restoreFocus: !pointerActivated && (trigger.matches?.(':focus-visible') ?? event.detail === 0) });
   }
 
-  handleSubmit(event) {
-    const form = event.target.closest?.('form[action*="/cart/add"]');
+  handleCartReady(event) {
+    const form = event.detail?.form;
     if (!form || !this.dialog.contains(form) || !form.querySelector('[name="id"]')?.value) return;
 
-    // The cart drawer listens to the same submit event. Let it start its request,
-    // then close this overlay without stealing the drawer's focus.
-    window.queueMicrotask(() => this.overlay?.close({ restoreFocus: false }));
+    event.detail.opener = this.opener;
+    this.overlay?.close({ immediate: true, restoreFocus: false });
   }
 
   handleRetry() {
@@ -311,12 +319,13 @@ class QuickAddController {
     this.dialog.setAttribute('aria-busy', 'true');
 
     try {
-      const nextContent = await this.fetchContent(targetUrl, requestController.signal);
+      const [nextContent] = await Promise.all([
+        this.fetchContent(targetUrl, requestController.signal),
+        loadProductFeatures(),
+      ]);
       if (requestController.signal.aborted || this.requestController !== requestController) return;
 
       this.replaceContent(nextContent);
-      await loadProductFeatures();
-      if (requestController.signal.aborted || this.requestController !== requestController) return;
       this.setStatus('content');
       await waitForContentReady(this.content);
       if (requestController.signal.aborted || this.requestController !== requestController) return;
@@ -342,8 +351,10 @@ class QuickAddController {
       this.overlay.open({ opener, focus, defer: true, restoreFocus });
       if (focus) this.dialog.querySelector('[data-quick-add-retry]')?.focus({ preventScroll: true });
     } finally {
-      if (this.requestController === requestController && !requestController.signal.aborted) {
+      if (this.requestController === requestController) {
         this.dialog.removeAttribute('aria-busy');
+        this.clearTriggerLoading();
+        this.requestController = null;
       }
     }
   }
@@ -359,8 +370,7 @@ class QuickAddController {
   }
 
   destroy() {
-    this.requestController?.abort();
-    this.clearTriggerLoading();
+    this.handleClose();
     this.overlay?.destroy();
     this.abortController.abort();
     controllers.delete(this.dialog);

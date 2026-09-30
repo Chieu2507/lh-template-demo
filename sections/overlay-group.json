@@ -61,7 +61,7 @@
     "quick-add": {
       "type": "quick-add",
       "settings": {
-        "desktop_layout": "popup",
+        "desktop_layout": "drawer",
         "desktop_width": 550,
         "mobile_layout": "bottom_sheet",
         "media_position": "top",

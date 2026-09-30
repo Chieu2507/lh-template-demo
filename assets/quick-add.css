@@ -16,6 +16,10 @@
   visibility: hidden;
 }
 
+.product-card__quick-add-button[aria-busy='true'] .btn__label {
+  visibility: hidden;
+}
+
 .quick-add__body {
   display: flex;
   min-height: 0;

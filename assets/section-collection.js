@@ -602,18 +602,28 @@ if (!customElements.get('collection-facets')) {
 
     observePagination() {
       this.paginationObserver?.disconnect();
-      const link = this.querySelector('[data-pagination-mode="infinite"] [data-collection-load-more]');
-      if (!link) return;
+      if (!this.isConnected || this.loadingMore || this.requestController) return;
+      const pagination = this.querySelector('[data-pagination-mode="infinite"]');
+      const sentinel = pagination?.querySelector('[data-collection-infinite-sentinel]');
+      const link = pagination?.querySelector('[data-collection-load-more]');
+      if (!sentinel || !link || link.dataset.paginationFallback) return;
+      if (!('IntersectionObserver' in window)) {
+        pagination.dataset.paginationMode = 'load_more';
+        link.dataset.paginationFallback = 'true';
+        return;
+      }
       this.paginationObserver = new IntersectionObserver(entries => {
         if (entries.some(entry => entry.isIntersecting)) this.loadMore(link);
       }, { rootMargin: '300px' });
-      this.paginationObserver.observe(link);
+      this.paginationObserver.observe(sentinel);
     }
 
     async loadMore(link) {
       if (this.loadingMore) return;
       this.loadingMore = true;
       link.setAttribute('aria-busy', 'true');
+      const status = link.closest('.collection-pagination-block')?.querySelector('[data-collection-pagination-status]');
+      if (status) status.hidden = false;
       this.paginationObserver?.disconnect();
       try {
         const url = new URL(link.href); url.searchParams.set('section_id', this.sectionId);
@@ -628,10 +638,16 @@ if (!customElements.get('collection-facets')) {
         });
         const pagination = this.querySelector('.collection-pagination-block');
         const nextPagination = next.querySelector('.collection-pagination-block');
-        if (nextPagination) pagination.replaceWith(nextPagination); else pagination.remove();
+        if (nextPagination?.querySelector('[data-collection-load-more]')) pagination.replaceWith(nextPagination);
+        else pagination.remove();
         grid.dispatchEvent(new CustomEvent('collection:products-loaded', { bubbles: true }));
       } catch (_) { window.location.assign(link.href); }
-      finally { this.loadingMore = false; this.observePagination(); }
+      finally {
+        link.removeAttribute('aria-busy');
+        this.querySelectorAll('[data-collection-pagination-status]').forEach(item => { item.hidden = true; });
+        this.loadingMore = false;
+        this.observePagination();
+      }
     }
 
     hideBackdropPointer() {
