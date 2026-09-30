@@ -53,25 +53,23 @@
 {% endcapture %}
 {% assign blog_card_button_style_attribute = blog_card_button_style_attribute | strip %}
 
-{% if blog_card_button_article != blank or request.design_mode %}
-  <div
-    class="blog-card-button"
-    {% if blog_card_button_style_attribute != blank %}style="{{ blog_card_button_style_attribute }}"{% endif %}
-    {{ block.shopify_attributes }}
-  >
-    {% render 'theme-button',
-      label: blog_card_button_label,
-      url: blog_card_button_article.url,
-      force_link: true,
-      variant: blog_card_button_style,
-      icon: blog_card_button_icon,
-      icon_position: blog_card_button_icon_position,
-      icon_size: blog_card_button_icon_size,
-      icon_width: blog_card_button_icon_width,
-      class: 'blog-card-button__button'
-    %}
-  </div>
-{% endif %}
+<div
+  class="blog-card-button"
+  {% if blog_card_button_style_attribute != blank %}style="{{ blog_card_button_style_attribute }}"{% endif %}
+  {{ block.shopify_attributes }}
+>
+  {% render 'theme-button',
+    label: blog_card_button_label,
+    url: blog_card_button_article.url,
+    force_link: true,
+    variant: blog_card_button_style,
+    icon: blog_card_button_icon,
+    icon_position: blog_card_button_icon_position,
+    icon_size: blog_card_button_icon_size,
+    icon_width: blog_card_button_icon_width,
+    class: 'blog-card-button__button'
+  %}
+</div>
 
 {% stylesheet %}
   .blog-card-button {
