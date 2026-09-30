@@ -395,7 +395,7 @@
   }
 
   .main-collection__pagination {
-    --pagination-control-height: var(--button-height, 44px);
+    --pagination-control-height: var(--collection-control-size, var(--button-height, 44px));
     display: flex;
     min-height: 88px;
     align-items: center;
@@ -534,11 +534,11 @@
     color: var(--button-secondary-hover-text, var(--button-secondary-text, var(--color-heading)));
   }
 
-  .main-collection__pagination[data-height='extra_small'] { --pagination-control-height: 36px; }
-  .main-collection__pagination[data-height='small'] { --pagination-control-height: 40px; }
-  .main-collection__pagination[data-height='medium'] { --pagination-control-height: 48px; }
-  .main-collection__pagination[data-height='large'] { --pagination-control-height: 56px; }
-  .main-collection__pagination[data-height='extra_large'] { --pagination-control-height: 64px; }
+  .main-collection--blocks:has(.main-collection__pagination[data-height='extra_small']) { --collection-control-size: 36px; }
+  .main-collection--blocks:has(.main-collection__pagination[data-height='small']) { --collection-control-size: 40px; }
+  .main-collection--blocks:has(.main-collection__pagination[data-height='medium']) { --collection-control-size: 48px; }
+  .main-collection--blocks:has(.main-collection__pagination[data-height='large']) { --collection-control-size: 56px; }
+  .main-collection--blocks:has(.main-collection__pagination[data-height='extra_large']) { --collection-control-size: 64px; }
 
   .main-collection__pagination-arrow {
     width: 14px;
@@ -1214,8 +1214,8 @@
       padding-block: var(--pagination-padding-top-mobile, var(--pagination-padding-top, 40px)) var(--pagination-padding-bottom-mobile, var(--pagination-padding-bottom, 0px));
     }
 
-    .main-collection__pagination[data-height='inherit'] {
-      --pagination-control-height: var(--button-height-mobile, var(--button-height, 44px));
+    .main-collection--blocks {
+      --collection-control-size: var(--button-height-mobile, var(--button-height, 44px));
     }
 
     .main-collection__filter-dialog {
@@ -1265,6 +1265,7 @@
   }
 /* Collection composition: shared kernels own typography and controls. */
 .main-collection--blocks .main-collection__facets{position:relative;display:grid;grid-template-columns:minmax(0,1fr);gap:var(--collection-gap,50px);align-items:start;padding-inline:var(--page-margin)}
+.main-collection--blocks { --collection-control-size: var(--button-height, 44px); }
 .main-collection--blocks .main-collection__toolbar{grid-column:1/-1;grid-row:1;display:grid;grid-template-columns:max-content max-content minmax(0,1fr) max-content;align-items:center;column-gap:var(--collection-toolbar-gap,30px);min-height:var(--collection-toolbar-button-height,var(--button-height));padding:var(--collection-toolbar-padding-top,0px) 0 var(--collection-toolbar-padding-bottom,0px)}
 .main-collection--blocks .collection-filter-block{grid-column:1;grid-row:1;display:flex;align-items:center;min-width:0}
 .main-collection--blocks .main-collection__filter-panel-positioner{display:contents}
@@ -1317,8 +1318,8 @@
 
 .collection-columns__option-content {
   display: grid;
-  width: 32px;
-  height: 32px;
+  width: var(--collection-control-size, var(--button-height, 44px));
+  height: var(--collection-control-size, var(--button-height, 44px));
   place-items: center;
   color: inherit;
   transition:
