@@ -181,6 +181,46 @@ body {
   }
 }
 
+/*
+ * Swiper first-paint structure:
+ * Section-owned Swiper styles are loaded with the section, so keep their
+ * server-rendered slide stream in a predictable layout while those styles
+ * and the carousel module are still loading.
+ */
+.swiper {
+  position: relative;
+  overflow: hidden;
+}
+
+.swiper > .swiper-wrapper {
+  position: relative;
+  display: flex;
+  width: 100%;
+  height: 100%;
+  align-items: stretch;
+}
+
+.swiper > .swiper-wrapper > .swiper-slide {
+  flex: 0 0 100%;
+  width: 100%;
+  height: auto;
+}
+
+.swiper-carousel--grid {
+  overflow: visible;
+}
+
+.swiper-carousel--grid > .swiper-wrapper {
+  display: grid;
+  grid-template-columns: repeat(var(--swiper-carousel-grid-columns, 1), minmax(0, 1fr));
+  gap: var(--swiper-carousel-grid-gap, var(--layout-grid-gap, 1.6rem));
+  transform: none;
+}
+
+.swiper-carousel--grid > .swiper-wrapper > .swiper-slide {
+  width: auto;
+}
+
 html:has(dialog[scroll-lock][open], .component-overlay[scroll-lock]:not([hidden]), details[scroll-lock][open]) {
   /* Clip the page without creating an overflow scroll container for sticky content. */
   overflow: clip;
