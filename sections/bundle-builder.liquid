@@ -40,7 +40,9 @@
     data-money-format="{{ shop.money_format | escape }}"
     data-money-with-currency-format="{{ shop.money_with_currency_format | escape }}"
   >
-    {% content_for 'block', type: 'header', id: 'header' %}
+    <div class="bundle-builder__headers">
+      {% content_for 'blocks' %}
+    </div>
     {% content_for 'block', type: '_bundle-product-list', id: 'products' %}
     {% content_for 'block', type: '_bundle-summary', id: 'summary' %}
     <noscript><p class="body-text body-md">{{ 'bundle_builder.javascript_required' | t }}</p></noscript>
@@ -66,8 +68,14 @@
     gap: 24px;
   }
 
-  .bundle-builder__container > .block-header {
+  .bundle-builder__headers {
     grid-area: header;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  .bundle-builder__headers > .block-header {
     width: 100%;
     max-width: none;
   }
@@ -121,11 +129,9 @@
   "name": "Bundle builder",
   "class": "section-bundle-builder",
   "enabled_on": { "templates": ["index"] },
-  "max_blocks": 3,
+  "max_blocks": 50,
   "blocks": [
-    { "type": "header" },
-    { "type": "_bundle-product-list" },
-    { "type": "_bundle-summary" }
+    { "type": "header" }
   ],
   "settings": [
     {
@@ -153,8 +159,6 @@
       "blocks": [
         {
           "type": "header",
-          "id": "header",
-          "static": true,
           "blocks": [
             { "type": "heading", "settings": { "text": "<p>Build your bundle</p>", "heading_size": "lg", "html_tag": "h2" } },
             { "type": "text", "settings": { "text": "<p>Choose your favorites and unlock a bundle reward.</p>" } }

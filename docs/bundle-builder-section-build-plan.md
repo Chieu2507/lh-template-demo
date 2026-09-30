@@ -16,10 +16,10 @@ section_settings:
   - "customize_mobile_padding and optional mobile top/bottom padding; default off/24."
 allowed_blocks:
   section:
-    - "header: singleton shared Header block with Heading and Text children."
-    - "_bundle-product-list: singleton private product source, responsive grid, variant selection, and item action."
-    - "_bundle-summary: singleton private selection summary, progress tiers, appearance, and add-to-cart action."
-  max_blocks: 3
+    - "header: the only merchant-addable block type; repeatable shared Header blocks with Heading and Text children."
+    - "_bundle-product-list: fixed static private product source, responsive grid, variant selection, and item action."
+    - "_bundle-summary: fixed static private selection summary, progress tiers, appearance, and add-to-cart action."
+  max_blocks: 50
   app_blocks: "Not allowed; this fixed commerce composition owns bundle state and cart submission."
 preset_tree:
   - "Header with Heading and Text."
@@ -61,7 +61,7 @@ consumers_reviewed:
   - "Shared variant picker defaults remain unchanged when no type override is passed."
   - "Existing product card output is reused without changing its global quick-add, quick-view, or swatch behavior."
 acceptance_checklist:
-  - "The section appears as Bundle builder on the home page template with exactly the approved three direct block types."
+  - "The section appears as Bundle builder on the home page template; merchants can add Header blocks only, and each Header renders above the fixed Product list and Bundle summary blocks."
   - "Product list selection overrides the collection, and both feed the shared responsive grid."
   - "Per-product variants can be selected and added/removed from the bundle; quantity changes follow variant rules."
   - "Tier settings and messages update the summary progress; Shopify Discounts remains the price authority."

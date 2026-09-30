@@ -545,7 +545,7 @@
     width: var(--bundle-summary-item-media-width);
     aspect-ratio: 1;
     overflow: hidden;
-    border-radius: var(--media-border-radius-sm, 6px);
+    border-radius: var(--media-radius, var(--radius-square));
     background: color-mix(in srgb, var(--body-color) 6%, transparent);
   }
 
@@ -561,7 +561,7 @@
     display: block;
     width: min(100%, 183px);
     height: 13px;
-    border-radius: var(--media-border-radius-xs, 4px);
+    border-radius: var(--media-radius, var(--radius-square));
     background: color-mix(in srgb, var(--body-color) 6%, transparent);
   }
 
@@ -586,7 +586,7 @@
     width: 100%;
     aspect-ratio: var(--pcard-image-ratio, 1);
     overflow: hidden;
-    border-radius: var(--media-border-radius-sm, 0.375rem);
+    border-radius: var(--media-radius, var(--radius-square));
     background: color-mix(in srgb, var(--body-color) 6%, var(--background-color));
   }
 
