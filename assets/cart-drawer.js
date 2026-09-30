@@ -323,7 +323,7 @@
     list.hidden = codes.length === 0;
   };
 
-  const updateCartUI = async (cart) => {
+  const updateCartUI = async (cart, { awaitRecommendations = true } = {}) => {
     if (!state.drawer || !cart?.items) return;
     const drawer = state.drawer;
     const revision = ++state.cartRevision;
@@ -383,7 +383,9 @@
 
     updateHeaderCount(cart);
     updateShippingProgress(cart);
-    await loadRecommendations(cart);
+    const recommendationsPromise = loadRecommendations(cart);
+    if (!awaitRecommendations) recommendationsPromise.catch(() => {});
+    else await recommendationsPromise;
     if (state.drawer !== drawer || state.cartRevision !== revision) return;
     document.dispatchEvent(new CustomEvent('cart:updated', { detail: { cart, source: 'cart-drawer' } }));
   };
@@ -480,11 +482,11 @@
     return response.json();
   };
 
-  const syncMutation = async (payload) => {
+  const syncMutation = async (payload, options) => {
     const drawer = state.drawer;
     const cart = payload?.items && Number.isFinite(payload?.item_count) ? payload : await fetchCart();
     if (state.drawer !== drawer) return;
-    await updateCartUI(cart);
+    await updateCartUI(cart, options);
   };
 
   const refresh = async () => {
@@ -575,7 +577,7 @@
       if (!response.ok) throw new Error((await parseError(response)) || fallbackError);
       const payload = await response.json();
       if (state.drawer !== drawer) return;
-      await syncMutation(payload);
+      await syncMutation(payload, { awaitRecommendations: false });
       if (state.drawer !== drawer) return;
       // Overlay owners close only after the cart DOM is ready and provide an
       // external opener so closing the drawer never focuses a hidden modal.
