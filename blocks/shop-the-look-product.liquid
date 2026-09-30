@@ -4,8 +4,7 @@
   This block owns the product and hotspot settings. The shared product-card
   snippet keeps card presentation aligned with collection and recommendation
   surfaces; the hidden hotspot source is moved to the section image by the
-  parent Shop the look controller. Unassigned or unavailable products retain
-  their placeholder card on the storefront as well as in the Theme Editor.
+  parent Shop the look controller.
 
   @example
   {% content_for 'block', type: 'shop-the-look-product', id: 'product-1' %}
@@ -29,51 +28,53 @@
   endunless
 %}
 
-<div
-  class="shop-the-look-product swiper-slide"
-  {% if shop_the_look_has_product %}data-shop-the-look-product="{{ shop_the_look_product_id }}"{% else %}data-shop-the-look-product{% endif %}
-  data-shop-the-look-block-id="{{ block.id }}"
-  {{ block.shopify_attributes }}
->
-  {% render 'product-card',
-    product: shop_the_look_product,
-    placeholder: shop_the_look_product_placeholder,
-    class: 'shop-the-look-product__card'
-  %}
+{% if shop_the_look_has_product or request.design_mode %}
+  <div
+    class="shop-the-look-product swiper-slide"
+    {% if shop_the_look_has_product %}data-shop-the-look-product="{{ shop_the_look_product_id }}"{% else %}data-shop-the-look-product{% endif %}
+    data-shop-the-look-block-id="{{ block.id }}"
+    {{ block.shopify_attributes }}
+  >
+    {% render 'product-card',
+      product: shop_the_look_product,
+      placeholder: shop_the_look_product_placeholder,
+      class: 'shop-the-look-product__card'
+    %}
 
-  <div class="shop-the-look-product__hotspot-source" data-shop-the-look-hotspot-source hidden aria-hidden="true">
-    {% assign shop_the_look_hotspot_placeholder = false %}
-    {% if shop_the_look_has_product == false %}
-      {% assign shop_the_look_hotspot_placeholder = true %}
-    {% endif %}
-    {% assign shop_the_look_render_hotspot = false %}
-    {% if block.settings.show_hotspot != false %}
-      {% if shop_the_look_has_product or request.design_mode and shop_the_look_hotspot_placeholder %}
-        {% assign shop_the_look_render_hotspot = true %}
+    <div class="shop-the-look-product__hotspot-source" data-shop-the-look-hotspot-source hidden aria-hidden="true">
+      {% assign shop_the_look_hotspot_placeholder = false %}
+      {% if shop_the_look_has_product == false %}
+        {% assign shop_the_look_hotspot_placeholder = true %}
       {% endif %}
-    {% endif %}
-    {% if shop_the_look_render_hotspot %}
-      {% assign shop_the_look_hotspot_x = block.settings.hotspot_horizontal | default: 50 | plus: 0 %}
-      {% assign shop_the_look_hotspot_y = block.settings.hotspot_vertical | default: 50 | plus: 0 %}
-      {% assign shop_the_look_hotspot_x_mobile = shop_the_look_hotspot_x %}
-      {% assign shop_the_look_hotspot_y_mobile = shop_the_look_hotspot_y %}
-      {% if block.settings.customize_mobile_position %}
-        {% assign shop_the_look_hotspot_x_mobile = block.settings.hotspot_horizontal_mobile | default: shop_the_look_hotspot_x | plus: 0 %}
-        {% assign shop_the_look_hotspot_y_mobile = block.settings.hotspot_vertical_mobile | default: shop_the_look_hotspot_y | plus: 0 %}
+      {% assign shop_the_look_render_hotspot = false %}
+      {% if block.settings.show_hotspot != false %}
+        {% if shop_the_look_has_product or request.design_mode and shop_the_look_hotspot_placeholder %}
+          {% assign shop_the_look_render_hotspot = true %}
+        {% endif %}
       {% endif %}
+      {% if shop_the_look_render_hotspot %}
+        {% assign shop_the_look_hotspot_x = block.settings.hotspot_horizontal | default: 50 | plus: 0 %}
+        {% assign shop_the_look_hotspot_y = block.settings.hotspot_vertical | default: 50 | plus: 0 %}
+        {% assign shop_the_look_hotspot_x_mobile = shop_the_look_hotspot_x %}
+        {% assign shop_the_look_hotspot_y_mobile = shop_the_look_hotspot_y %}
+        {% if block.settings.customize_mobile_position %}
+          {% assign shop_the_look_hotspot_x_mobile = block.settings.hotspot_horizontal_mobile | default: shop_the_look_hotspot_x | plus: 0 %}
+          {% assign shop_the_look_hotspot_y_mobile = block.settings.hotspot_vertical_mobile | default: shop_the_look_hotspot_y | plus: 0 %}
+        {% endif %}
 
-      {% render 'product-hotspot',
-        product: shop_the_look_product,
-        placeholder: shop_the_look_hotspot_placeholder,
-        block_id: block.id,
-        x: shop_the_look_hotspot_x,
-        y: shop_the_look_hotspot_y,
-        mobile_x: shop_the_look_hotspot_x_mobile,
-        mobile_y: shop_the_look_hotspot_y_mobile
-      %}
-    {% endif %}
+        {% render 'product-hotspot',
+          product: shop_the_look_product,
+          placeholder: shop_the_look_hotspot_placeholder,
+          block_id: block.id,
+          x: shop_the_look_hotspot_x,
+          y: shop_the_look_hotspot_y,
+          mobile_x: shop_the_look_hotspot_x_mobile,
+          mobile_y: shop_the_look_hotspot_y_mobile
+        %}
+      {% endif %}
+    </div>
   </div>
-</div>
+{% endif %}
 
 {% stylesheet %}
   .shop-the-look-product {
