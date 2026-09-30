@@ -4,6 +4,7 @@
 
   The parent layout owns the block width and alignment. This block owns the
   selected menu, heading presentation, link list and mobile disclosure state.
+  Empty menus show the same non-interactive placeholder in the editor and storefront.
 
   @example
   {% content_for 'block', type: 'menu', id: 'menu' %}
@@ -122,7 +123,7 @@
         </li>
       {% endfor %}
     </ul>
-  {% elsif request.design_mode %}
+  {% else %}
     <p class="menu-block__empty">{{ 'accessibility.footer_menu' | t }}</p>
   {% endif %}
 {% endcapture %}
@@ -146,33 +147,31 @@
 
 {% assign menu_content_id = 'MenuContent-' | append: section.id | append: '-' | append: block.id %}
 
-{% if has_menu or request.design_mode %}
-  <nav
-    class="{{ menu_class }}"
-    aria-label="{{ heading_label | escape }}"
-    data-collapse-mobile="{{ collapse_menu_on_mobile }}"
-    {% if menu_style != blank %}style="{{ menu_style }}"{% endif %}
-    {{ block.shopify_attributes }}
-  >
-    {% if collapse_menu_on_mobile %}
-      {% render 'accordion-details',
-        class: 'menu-block__details',
-        summary: menu_summary,
-        content: menu_markup,
-        content_id: menu_content_id,
-        summary_class: 'menu-block__summary',
-        content_class: 'menu-block__content',
-        content_inner_class: 'menu-block__content-inner',
-        mobile_only: true
-      %}
-    {% else %}
-      {{ heading_markup }}
-      <div class="menu-block__content">
-        <div class="menu-block__content-inner">{{ menu_markup }}</div>
-      </div>
-    {% endif %}
-  </nav>
-{% endif %}
+<nav
+  class="{{ menu_class }}"
+  aria-label="{{ heading_label | escape }}"
+  data-collapse-mobile="{{ collapse_menu_on_mobile }}"
+  {% if menu_style != blank %}style="{{ menu_style }}"{% endif %}
+  {{ block.shopify_attributes }}
+>
+  {% if collapse_menu_on_mobile %}
+    {% render 'accordion-details',
+      class: 'menu-block__details',
+      summary: menu_summary,
+      content: menu_markup,
+      content_id: menu_content_id,
+      summary_class: 'menu-block__summary',
+      content_class: 'menu-block__content',
+      content_inner_class: 'menu-block__content-inner',
+      mobile_only: true
+    %}
+  {% else %}
+    {{ heading_markup }}
+    <div class="menu-block__content">
+      <div class="menu-block__content-inner">{{ menu_markup }}</div>
+    </div>
+  {% endif %}
+</nav>
 
 {% stylesheet %}
   .menu-block__heading.heading-custom { font-size: var(--menu-block-heading-custom-size, var(--font-heading-custom)); }
