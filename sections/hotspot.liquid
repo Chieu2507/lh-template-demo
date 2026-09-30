@@ -53,7 +53,7 @@
   {% endif %}
 
   <div class="{{ hotspot_section_header_class }}">
-    {% content_for 'block', type: 'header', id: 'header' %}
+    {% content_for 'blocks' %}
   </div>
 
   <div class="hotspot-section__callout">
@@ -308,6 +308,33 @@
         "padding_bottom_mobile": 40
       },
       "blocks": [
+        {
+          "type": "header",
+          "settings": {
+            "width": "fit",
+            "alignment": "center",
+            "gap_desktop": 8,
+            "gap_mobile": 8,
+            "padding_bottom": 40,
+            "padding_bottom_mobile": 40
+          },
+          "blocks": [
+            {
+              "type": "eyebrow",
+              "settings": {
+                "text": "<p>SUBHEADING</p>"
+              }
+            },
+            {
+              "type": "heading",
+              "settings": {
+                "text": "<p>Main Heading Text Placeholder</p>",
+                "heading_size": "lg",
+                "html_tag": "h2"
+              }
+            }
+          ]
+        },
         {
           "type": "product-callout",
           "id": "product-callout",
