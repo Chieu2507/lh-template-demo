@@ -181,8 +181,15 @@
   assign email_signup_success_id = email_signup_form_id | append: '-Success'
   assign email_signup_preferences_title_id = email_signup_form_id | append: '-SubscriptionPreferencesTitle'
 
+  assign email_signup_scheme = block.settings.color_scheme | default: 'scheme-1'
+  if block.settings.color_scheme.id != blank
+    assign email_signup_scheme = block.settings.color_scheme.id
+  endif
+  assign email_signup_scheme = email_signup_scheme | handleize
+
   assign subscription_preferences_state = 'disabled'
-  assign email_signup_class = 'email-signup-block motion-block email-signup-block--layout-' | append: form_layout
+  assign email_signup_class = 'email-signup-block size-style motion-block email-signup-block--layout-' | append: form_layout
+  assign email_signup_class = email_signup_class | append: ' ' | append: email_signup_scheme
   if block.settings.enable_subscription_preferences
     assign subscription_preferences_state = 'enabled'
     assign email_signup_class = email_signup_class | append: ' email-signup-block--subscription-preferences'
@@ -202,14 +209,19 @@
 %}
 
 {% capture email_signup_style %}
-  --email-signup-width-desktop: {{ email_signup_width_desktop }};
-  --email-signup-max-width-desktop: {{ email_signup_max_width_desktop }};
-  --email-signup-width-mobile: {{ email_signup_width_mobile }};
-  --email-signup-max-width-mobile: {{ email_signup_max_width_mobile }};
+  {% render 'size-style',
+    width: email_signup_width_desktop,
+    max_width: email_signup_max_width_desktop,
+    width_mobile: email_signup_width_mobile,
+    max_width_mobile: email_signup_max_width_mobile
+  %}
   --email-signup-gap-desktop: {{ gap_desktop }}px;
   --email-signup-gap-mobile: {{ gap_mobile }}px;
   --email-signup-field-height-desktop: {{ field_height_desktop }}px;
   --email-signup-field-height-mobile: {{ field_height_mobile }}px;
+  {% if block.settings.background_color != blank %}
+    --email-signup-background-color: {{ block.settings.background_color | escape }};
+  {% endif %}
   --email-signup-button-padding-top: {{ button_padding_top }}px;
   --email-signup-button-padding-bottom: {{ button_padding_bottom }}px;
   --email-signup-button-padding-left: {{ button_padding_left }}px;
@@ -378,9 +390,9 @@
 {% stylesheet %}
   .email-signup-block {
     display: block;
-    width: var(--email-signup-width-desktop, 100%);
-    max-width: var(--email-signup-max-width-desktop, 100%);
     min-width: 0;
+    color: var(--body-color);
+    background-color: var(--email-signup-background-color, var(--background-color));
   }
 
   .email-signup-block__form,
@@ -587,11 +599,6 @@
   }
 
   @media (max-width: 767.98px) {
-    .email-signup-block {
-      width: var(--email-signup-width-mobile, var(--email-signup-width-desktop, 100%));
-      max-width: var(--email-signup-max-width-mobile, var(--email-signup-max-width-desktop, 100%));
-    }
-
     .email-signup-block .form__fields {
       gap: var(--email-signup-gap-mobile, var(--email-signup-gap-desktop, 0px));
     }
@@ -971,6 +978,22 @@
       "unit": "px",
       "default": 20,
       "visible_if": "{{ block.settings.show_icon and block.settings.icon_size == 'custom' }}"
+    },
+    {
+      "type": "header",
+      "content": "t:general.appearance"
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "t:labels.color_scheme",
+      "default": "scheme-1"
+    },
+    {
+      "type": "color",
+      "alpha": true,
+      "id": "background_color",
+      "label": "t:labels.background_color"
     },
     {
       "type": "header",
