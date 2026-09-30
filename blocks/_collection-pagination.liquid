@@ -3,20 +3,24 @@
 {% enddoc %}
 <div class="collection-pagination-block" data-pagination-mode="{{ block.settings.pagination_type }}" {{ block.shopify_attributes }}>
 {% liquid
-  assign pagination_button_variant = block.settings.button_style
+  assign pagination_style = block.settings.button_style | default: 'primary'
+  if pagination_style == 'subtle'
+    assign pagination_style = 'outline'
+  elsif pagination_style == 'text'
+    assign pagination_style = 'tertiary'
+  endif
+  assign pagination_button_variant = pagination_style
   if pagination_button_variant == 'outline'
     assign pagination_button_variant = 'secondary'
-  elsif pagination_button_variant == 'text'
-    assign pagination_button_variant = 'tertiary'
   endif
 %}
-{% if paginate.pages > 1 %}<nav class="main-collection__pagination" aria-label="{{ 'collection.pagination' | t }}" data-style="{{ block.settings.button_style }}" data-height="{{ block.settings.button_height }}" style="--pagination-padding-top:{{ block.settings.padding_top }}px;--pagination-padding-bottom:{{ block.settings.padding_bottom }}px;{% if block.settings.customize_mobile_padding %}--pagination-padding-top-mobile:{{ block.settings.padding_top_mobile }}px;--pagination-padding-bottom-mobile:{{ block.settings.padding_bottom_mobile }}px;{% endif %}">
+{% if paginate.pages > 1 %}<nav class="main-collection__pagination body-text body-sm" aria-label="{{ 'collection.pagination' | t }}" data-style="{{ pagination_style }}" data-height="{{ block.settings.button_height }}" style="--pagination-padding-top:{{ block.settings.padding_top }}px;--pagination-padding-bottom:{{ block.settings.padding_bottom }}px;{% if block.settings.customize_mobile_padding %}--pagination-padding-top-mobile:{{ block.settings.padding_top_mobile }}px;--pagination-padding-bottom-mobile:{{ block.settings.padding_bottom_mobile }}px;{% endif %}">
 {% if block.settings.pagination_type == 'pages' %}
   {% if paginate.previous %}
     <span class="prev">
-      <a href="{{ paginate.previous.url }}" aria-label="{{ 'collection.previous_page' | t | escape }}">
+      <a href="{{ paginate.previous.url }}" class="link-underline" data-underline="persistent" data-underline-target="text" aria-label="{{ 'collection.previous_page' | t | escape }}">
         {% render 'icon', icon: 'chevron-left', bare: true, class: 'main-collection__pagination-arrow' %}
-        <span>PREV</span>
+        <span class="btn__text">{{ 'collection.previous' | t }}</span>
       </a>
     </span>
   {% endif %}
@@ -47,14 +51,27 @@
 
   {% if paginate.next %}
     <span class="next">
-      <a href="{{ paginate.next.url }}" aria-label="{{ 'collection.next_page' | t | escape }}">
-        <span>NEXT</span>
+      <a href="{{ paginate.next.url }}" class="link-underline" data-underline="persistent" data-underline-target="text" aria-label="{{ 'collection.next_page' | t | escape }}">
+        <span class="btn__text">{{ 'collection.next' | t }}</span>
         {% render 'icon', icon: 'chevron-right', bare: true, class: 'main-collection__pagination-arrow' %}
       </a>
     </span>
   {% endif %}
 {% elsif paginate.next %}
-  <a href="{{ paginate.next.url }}" class="btn btn-{{ pagination_button_variant }}" data-collection-load-more>{{ 'collection.load_more' | t }}</a>
+  {% assign load_more_label = 'collection.load_more' | t %}
+  {% if block.settings.pagination_type == 'infinite' %}
+    <span data-collection-infinite-sentinel data-next-url="{{ paginate.next.url | escape }}" aria-hidden="true"></span>
+    <a href="{{ paginate.next.url }}" class="btn btn-{{ pagination_button_variant }}" data-collection-load-more>{{ load_more_label }}</a>
+    <noscript>
+      <a href="{{ paginate.next.url }}">{{ load_more_label }}</a>
+    </noscript>
+  {% else %}
+    <a href="{{ paginate.next.url }}" class="btn btn-{{ pagination_button_variant }}" data-collection-load-more>{{ load_more_label }}</a>
+  {% endif %}
+  <span data-collection-pagination-status role="status" hidden>
+    <span class="btn__spinner" aria-hidden="true"></span>
+    <span class="visually-hidden">{{ 'accessibility.loading' | t }}</span>
+  </span>
 {% endif %}
 </nav>{% endif %}</div>
 {% schema %}
@@ -85,23 +102,23 @@
     {
       "type": "select",
       "id": "button_style",
-      "label": "Button style",
+      "label": "Style",
       "options": [
         {
           "value": "primary",
-          "label": "Primary"
+          "label": "t:options.button_variant.primary"
         },
         {
           "value": "secondary",
-          "label": "Secondary"
+          "label": "t:options.button_variant.secondary"
+        },
+        {
+          "value": "tertiary",
+          "label": "t:options.button_variant.tertiary"
         },
         {
           "value": "outline",
-          "label": "Outline"
-        },
-        {
-          "value": "text",
-          "label": "Text"
+          "label": "t:options.button_variant.outline"
         }
       ],
       "default": "primary"
