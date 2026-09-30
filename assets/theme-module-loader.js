@@ -36,11 +36,11 @@
       });
   };
 
-  const schedule = (script) => {
+  const schedule = (target) => {
     if (typeof window.requestIdleCallback === 'function') {
-      window.requestIdleCallback(() => load(script), { timeout: 2000 });
+      window.requestIdleCallback(() => loadTarget(target), { timeout: 2000 });
     } else {
-      window.setTimeout(() => load(script), 1000);
+      window.setTimeout(() => loadTarget(target), 1000);
     }
   };
 
@@ -64,7 +64,7 @@
     if (observedTargets.has(target)) return;
     observedTargets.add(target);
     if (observer) observer.observe(target);
-    else schedule(script);
+    else schedule(target);
   };
 
   const scan = (root = document) => {
