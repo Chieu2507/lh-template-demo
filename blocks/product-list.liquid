@@ -207,7 +207,6 @@
 {% assign product_list_navigation_markup = product_list_navigation_markup | strip %}
 
 {% if product_list_layout == 'carousel' %}
-  {% render 'swiper-stylesheet' %}
   <script type="module" src="{{ 'product-collection-carousel.js' | asset_url }}"></script>
 {% endif %}
 

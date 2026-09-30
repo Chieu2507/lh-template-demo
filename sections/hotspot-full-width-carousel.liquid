@@ -181,9 +181,9 @@
 %}
 
 {% if hotspot_carousel_render %}
-  {% render 'swiper-stylesheet' %}
   {% if hotspot_carousel_transition == 'fade' and hotspot_carousel_show_next_slide_preview == false %}
-    <link rel="stylesheet" href="{{ 'swiper-12.2.0-effect-fade.min.css' | asset_url }}">
+    <link rel="stylesheet" href="{{ 'swiper-12.2.0-effect-fade.min.css' | asset_url }}" media="print" onload="this.media='all'">
+    <noscript>{{ 'swiper-12.2.0-effect-fade.min.css' | asset_url | stylesheet_tag }}</noscript>
   {% endif %}
   <script type="module" src="{{ 'carousel-block.js' | asset_url }}"></script>
 

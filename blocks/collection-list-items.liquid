@@ -193,7 +193,6 @@
 {% assign collection_list_navigation = collection_list_navigation | strip %}
 
 {% if collection_list_layout == 'carousel' %}
-  {% render 'swiper-stylesheet' %}
   <script type="module" src="{{ 'product-collection-carousel.js' | asset_url }}"></script>
 {% endif %}
 

@@ -73,8 +73,6 @@
   {{ 'product-information.css' | asset_url | stylesheet_tag }}
   {{ 'product-information-extras.css' | asset_url | stylesheet_tag }}
   {{ 'product-media.css' | asset_url | stylesheet_tag }}
-  {% render 'swiper-stylesheet' %}
-
   <div
     class="section-spacing product-information featured-product{% unless section.settings.sticky_content == false %} featured-product--sticky-content{% endunless %} color-scheme section-color-scope {{ featured_product_scheme }}"
     data-product-information

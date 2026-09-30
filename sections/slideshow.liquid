@@ -54,8 +54,8 @@
   {% if section.settings.autoplay %}--slideshow-autoplay-duration: {{ slideshow_autoplay_delay }}ms;{% endif %}
 {% endcapture %}
 
-{% render 'swiper-stylesheet' %}
-<link rel="stylesheet" href="{{ 'swiper-12.2.0-effect-fade.min.css' | asset_url }}">
+<link rel="stylesheet" href="{{ 'swiper-12.2.0-effect-fade.min.css' | asset_url }}" media="print" onload="this.media='all'">
+<noscript>{{ 'swiper-12.2.0-effect-fade.min.css' | asset_url | stylesheet_tag }}</noscript>
 <script type="module" src="{{ 'slideshow.js' | asset_url }}"></script>
 
 <div
