@@ -74,21 +74,21 @@
   assign blog_card_meta_show_author = false
   if block.settings.show_author and blog_card_meta_article.author != blank
     assign blog_card_meta_show_author = true
-  elsif block.settings.show_author and request.design_mode
+  elsif block.settings.show_author and blog_card_meta_article == blank
     assign blog_card_meta_show_author = true
   endif
 
   assign blog_card_meta_show_date = false
   if block.settings.show_date and blog_card_meta_article.published_at != blank
     assign blog_card_meta_show_date = true
-  elsif block.settings.show_date and request.design_mode
+  elsif block.settings.show_date and blog_card_meta_article == blank
     assign blog_card_meta_show_date = true
   endif
 
   assign blog_card_meta_show_comment_count = false
   if block.settings.show_comment_count and blog_card_meta_article.comments_count != blank
     assign blog_card_meta_show_comment_count = true
-  elsif block.settings.show_comment_count and request.design_mode
+  elsif block.settings.show_comment_count and blog_card_meta_article == blank
     assign blog_card_meta_show_comment_count = true
   endif
 
@@ -174,7 +174,7 @@
                 {% endif %}
                 {% if blog_card_meta_article.published_at != blank %}
                   <time datetime="{{ blog_card_meta_article.published_at | date: '%Y-%m-%d' }}">{{ blog_card_meta_article.published_at | date: blog_card_meta_date_format }}</time>
-                {% elsif request.design_mode %}
+                {% elsif blog_card_meta_article == blank %}
                   <span>February 03, 2026</span>
                 {% endif %}
               </span>

@@ -22,7 +22,7 @@
   assign blog_list_is_placeholder = false
   if blog_list_source != blank and blog_list_source.articles != blank
     assign blog_list_items = blog_list_source.articles
-  elsif request.design_mode
+  else
     assign blog_list_placeholder_count = blog_list_max_posts
     assign blog_list_items = (1..blog_list_placeholder_count)
     assign blog_list_item_limit = blog_list_placeholder_count

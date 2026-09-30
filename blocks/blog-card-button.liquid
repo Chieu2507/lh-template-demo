@@ -53,7 +53,7 @@
 {% endcapture %}
 {% assign blog_card_button_style_attribute = blog_card_button_style_attribute | strip %}
 
-{% if blog_card_button_article != blank or request.design_mode %}
+{% if blog_card_button_article != blank or request.design_mode or blog_card_button_article == blank %}
   <div
     class="blog-card-button"
     {% if blog_card_button_style_attribute != blank %}style="{{ blog_card_button_style_attribute }}"{% endif %}
