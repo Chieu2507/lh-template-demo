@@ -1428,65 +1428,48 @@
 
 .collection-columns__option-content { transition: color 200ms ease; }
 
-/* Pagination variants belong to its links and current-page presentation. */
-.main-collection__pagination[data-style] {
-  --collection-choice-border: transparent;
-  --collection-choice-color: var(--color-text);
-  --collection-choice-selected-background: transparent;
-  --collection-choice-selected-color: var(--color-heading);
-  --collection-choice-selected-border: transparent;
-  --collection-choice-hover-background: var(--color-surface);
-  --collection-choice-hover-color: var(--color-heading);
-}
-
-.main-collection__pagination[data-style='primary'] {
-  --collection-choice-selected-background: var(--button-primary-background);
-  --collection-choice-selected-color: var(--button-primary-text);
-  --collection-choice-selected-border: var(--button-primary-border);
-  --collection-choice-hover-background: var(--button-primary-hover-background);
-  --collection-choice-hover-color: var(--button-primary-hover-text);
-}
-
-.main-collection__pagination[data-style='secondary'] {
-  --collection-choice-selected-background: var(--button-secondary-background);
-  --collection-choice-selected-color: var(--button-secondary-text);
-  --collection-choice-selected-border: var(--button-secondary-border);
-  --collection-choice-hover-background: var(--button-secondary-hover-background);
-  --collection-choice-hover-color: var(--button-secondary-hover-text);
-}
-
-.main-collection__pagination[data-style='tertiary'] {
-  --collection-choice-color: var(--button-tertiary-text);
-  --collection-choice-selected-color: var(--button-tertiary-text);
-  --collection-choice-hover-background: transparent;
-  --collection-choice-hover-color: var(--button-tertiary-hover-text);
-}
-
-.main-collection__pagination[data-style='outline'] {
-  --collection-choice-border: var(--border-color);
-  --collection-choice-selected-border: var(--color-heading);
-  --collection-choice-hover-background: transparent;
-}
-
-.main-collection__pagination[data-style] :is(.page a, .page.current, .prev a, .next a, [data-collection-load-more]) {
-  border: 1px solid var(--collection-choice-border, transparent);
-  background: transparent;
-  color: var(--collection-choice-color, var(--color-text));
+/* Pagination variants style the current page; page navigation stays link-based. */
+.main-collection__pagination[data-style] .page.current {
+  border: 1px solid transparent;
+  box-shadow: none;
   transition: background-color 200ms ease, border-color 200ms ease, color 200ms ease;
 }
 
-.main-collection__pagination[data-style] :is(.page.current, [data-collection-load-more]) {
-  border-color: var(--collection-choice-selected-border);
-  background: var(--collection-choice-selected-background);
-  color: var(--collection-choice-selected-color);
+.main-collection__pagination[data-style='primary'] .page.current {
+  border-color: var(--button-primary-border, transparent);
+  background: var(--button-primary-background);
+  color: var(--button-primary-text);
 }
 
-.main-collection__pagination[data-style] .page.current { box-shadow: none; }
-.main-collection__pagination[data-style] [data-collection-load-more] { padding-inline: 16px; text-decoration: none; }
+.main-collection__pagination[data-style='secondary'] .page.current {
+  border-color: var(--button-secondary-border, transparent);
+  background: var(--button-secondary-background);
+  color: var(--button-secondary-text);
+}
 
-.main-collection__pagination[data-style='tertiary'] :is(.page.current, [data-collection-load-more]) {
+.main-collection__pagination[data-style='tertiary'] .page.current {
+  background: transparent;
+  color: var(--button-tertiary-text, var(--color-heading));
   text-decoration: underline;
   text-underline-offset: 4px;
+}
+
+.main-collection__pagination[data-style='outline'] .page.current {
+  border-color: var(--border-color, var(--color-border));
+  background: transparent;
+  color: var(--color-heading);
+}
+
+.main-collection__pagination[data-style='primary'] [data-collection-load-more] {
+  color: var(--button-primary-background);
+}
+
+.main-collection__pagination[data-style='secondary'] [data-collection-load-more] {
+  color: var(--button-secondary-background);
+}
+
+.main-collection__pagination[data-style='tertiary'] [data-collection-load-more] {
+  color: var(--button-tertiary-text, var(--color-heading));
 }
 
 @media (hover: hover) and (pointer: fine) {
@@ -1496,15 +1479,11 @@
     --input-toggle-dot-color: var(--collection-radio-hover-dot);
   }
 
-  .main-collection__pagination[data-style] a:hover {
-    background: var(--collection-choice-hover-background);
-    color: var(--collection-choice-hover-color);
-  }
 }
 .main-collection__grid > * { transform-origin: top left; }
 @media (prefers-reduced-motion: reduce) {
   .collection-columns__option-content,
-  .main-collection__pagination[data-style] :is(.page a, .page.current, .prev a, .next a, [data-collection-load-more]) { transition: none; }
+  .main-collection__pagination[data-style] .page.current { transition: none; }
 }
 
 .main-collection__sort-listbox { border-radius: var(--drawer-radius); box-shadow: 0 .75rem 1.5rem color-mix(in srgb, var(--shadow-color) 15%, transparent); }
