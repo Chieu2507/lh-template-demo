@@ -89,7 +89,7 @@
   endfor
 
   assign hotspot_carousel_render = false
-  if hotspot_carousel_product_callout_count > 0 or request.design_mode and section.blocks.size > 0
+  if hotspot_carousel_product_callout_count > 0 or request.design_mode
     assign hotspot_carousel_render = true
   endif
 
@@ -289,11 +289,15 @@
             </div>
           {% endif %}
         {% elsif request.design_mode %}
-          {% content_for 'block', type: 'product-callout', id: 'product-callout' %}
+          <div class="hotspot-full-width-carousel__empty-state">
+            <p>{{ 'accessibility.hotspot_carousel_empty' | t }}</p>
+          </div>
         {% endif %}
       </div>
     {% elsif request.design_mode %}
-      {% content_for 'block', type: 'product-callout', id: 'product-callout' %}
+      <div class="hotspot-full-width-carousel__empty-state">
+        <p>{{ 'accessibility.hotspot_carousel_empty' | t }}</p>
+      </div>
     {% endif %}
   </div>
 {% endif %}
