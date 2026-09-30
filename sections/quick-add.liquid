@@ -1,7 +1,7 @@
 {% liquid
-  assign quick_add_desktop_layout = section.settings.desktop_layout | default: 'popup'
+  assign quick_add_desktop_layout = section.settings.desktop_layout | default: 'drawer'
   unless quick_add_desktop_layout == 'popup' or quick_add_desktop_layout == 'drawer'
-    assign quick_add_desktop_layout = 'popup'
+    assign quick_add_desktop_layout = 'drawer'
   endunless
 
   assign quick_add_mobile_layout = section.settings.mobile_layout | default: 'bottom_sheet'
@@ -124,7 +124,7 @@
         { "value": "popup", "label": "Popup" },
         { "value": "drawer", "label": "Drawer" }
       ],
-      "default": "popup"
+      "default": "drawer"
     },
     {
       "type": "range",

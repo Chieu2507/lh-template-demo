@@ -16,6 +16,7 @@
     recommendationProductId: null,
     variantComparePrices: new Map(),
     orderOptionsDrag: null,
+    cartRevision: 0,
   };
 
   const getDrawer = (root = document) => {
@@ -322,9 +323,12 @@
     list.hidden = codes.length === 0;
   };
 
-  const updateCartUI = async (cart) => {
+  const updateCartUI = async (cart, { awaitRecommendations = true } = {}) => {
     if (!state.drawer || !cart?.items) return;
+    const drawer = state.drawer;
+    const revision = ++state.cartRevision;
     await hydrateVariantComparePrices(cart);
+    if (state.drawer !== drawer || state.cartRevision !== revision) return;
     state.cart = cart;
     const currency = cart.currency || state.drawer.dataset.currency || 'USD';
     const items = state.drawer.querySelector('[data-cart-drawer-items]');
@@ -346,16 +350,17 @@
     const discountCount = getAppliedDiscountCount(cart);
 
     if (items) {
+      const currentLines = new Map(Array.from(items.querySelectorAll('[data-cart-line]'))
+        .map((line) => [line.dataset.lineKey, line]));
       const nextKeys = new Set(cart.items.map((item) => String(item.key)));
-      items.querySelectorAll('[data-cart-line]').forEach((line) => {
-        if (!nextKeys.has(String(line.dataset.lineKey))) line.remove();
+      currentLines.forEach((line, key) => {
+        if (!nextKeys.has(key)) line.remove();
       });
       cart.items.forEach((item, index) => {
         const template = document.createElement('template');
         template.innerHTML = renderCartLine(item, index + 1, currency).trim();
         const nextLine = template.content.firstElementChild;
-        const currentLine = Array.from(items.querySelectorAll('[data-cart-line]'))
-          .find((line) => line.dataset.lineKey === String(item.key));
+        const currentLine = currentLines.get(String(item.key));
         if (currentLine) currentLine.replaceWith(nextLine);
         else items.append(nextLine);
       });
@@ -378,7 +383,10 @@
 
     updateHeaderCount(cart);
     updateShippingProgress(cart);
-    await loadRecommendations(cart);
+    const recommendationsPromise = loadRecommendations(cart);
+    if (!awaitRecommendations) recommendationsPromise.catch(() => {});
+    else await recommendationsPromise;
+    if (state.drawer !== drawer || state.cartRevision !== revision) return;
     document.dispatchEvent(new CustomEvent('cart:updated', { detail: { cart, source: 'cart-drawer' } }));
   };
 
@@ -450,6 +458,7 @@
       });
       if (!response.ok) throw new Error('Recommendations unavailable');
       const data = await response.json();
+      if (state.drawer !== drawer || state.cart !== cart) return;
       const products = (data.products || []).filter((product) => !cart.items.some((item) => item.product_id === product.id));
       if (!products.length) {
         hideRecommendations();
@@ -458,7 +467,7 @@
       renderRecommendations(products.slice(0, limit), cart.currency || 'USD');
       state.recommendationProductId = productId;
     } catch (error) {
-      hideRecommendations();
+      if (state.drawer === drawer && state.cart === cart) hideRecommendations();
     }
   };
 
@@ -473,16 +482,21 @@
     return response.json();
   };
 
-  const syncMutation = async (payload) => {
+  const syncMutation = async (payload, options) => {
+    const drawer = state.drawer;
     const cart = payload?.items && Number.isFinite(payload?.item_count) ? payload : await fetchCart();
-    await updateCartUI(cart);
+    if (state.drawer !== drawer) return;
+    await updateCartUI(cart, options);
   };
 
   const refresh = async () => {
     const drawer = state.drawer;
-    if (!drawer) return;
+    if (!drawer || state.request) return;
+    const revision = state.cartRevision;
 
-    await updateCartUI(await fetchCart());
+    const cart = await fetchCart();
+    if (state.drawer !== drawer || state.request || state.cartRevision !== revision) return;
+    await updateCartUI(cart);
   };
 
   const findQuantityInput = (lineKey) => Array.from(state.drawer?.querySelectorAll('[data-cart-quantity-input]') || [])
@@ -531,15 +545,34 @@
     }
   };
 
-  const addFormToCart = async (form) => {
+  const addFormToCart = async (form, submitter) => {
     if (!state.drawer || state.request) return;
+    if (form.dataset.variantAvailable === 'false' || submitter?.disabled) return;
     const formData = new FormData(form);
     if (!formData.get('id')) return;
+    const drawer = state.drawer;
+    const opener = submitter || document.activeElement;
+    const buttons = Array.from(form.querySelectorAll('[type="submit"]'));
+    const disabledStates = buttons.map((button) => button.disabled);
+    const loadingDots = buttons.map((button) => button.querySelector('[data-loading-dots]'));
+    let formError = form.querySelector('[data-cart-add-error]');
+    if (formError) formError.hidden = true;
     const fallbackError = state.drawer.dataset.cartAddError || 'Unable to add this item';
 
-    open();
+    form.setAttribute('aria-busy', 'true');
+    buttons.forEach((button, index) => {
+      button.disabled = true;
+      button.setAttribute('aria-busy', 'true');
+      const dots = loadingDots[index];
+      if (dots) {
+        dots.hidden = false;
+        dots.classList.remove('hidden');
+        button.dataset.quickAddLoading = 'true';
+      }
+    });
     setLoading(true);
     setError();
+    state.cartRevision += 1;
     state.request = fetch(endpoint(state.drawer.dataset.cartAddUrl), {
       method: 'POST',
       headers: { Accept: 'application/json' },
@@ -549,12 +582,44 @@
     try {
       const response = await state.request;
       if (!response.ok) throw new Error((await parseError(response)) || fallbackError);
-      await syncMutation(await response.json());
+      const payload = await response.json();
+      if (state.drawer !== drawer) return;
+      await syncMutation(payload, { awaitRecommendations: false });
+      if (state.drawer !== drawer) return;
+      // Overlay owners close only after the cart DOM is ready and provide an
+      // external opener so closing the drawer never focuses a hidden modal.
+      const detail = { form, opener };
+      document.dispatchEvent(new CustomEvent('cart:add:ready', { detail }));
+      state.opener = detail.opener;
+      setLoading(false);
+      open({ refreshCart: false });
     } catch (error) {
-      setError(error.message || fallbackError);
+      if (state.drawer === drawer) setError(error.message || fallbackError);
+      if (form.isConnected) {
+        if (!formError) {
+          formError = document.createElement('p');
+          formError.setAttribute('data-cart-add-error', '');
+          formError.setAttribute('role', 'alert');
+          form.append(formError);
+        }
+        formError.textContent = error.message || fallbackError;
+        formError.hidden = false;
+      }
     } finally {
       state.request = null;
-      setLoading(false);
+      form.removeAttribute('aria-busy');
+      buttons.forEach((button, index) => {
+        button.disabled = button.dataset.variantAvailable != null
+          ? button.dataset.variantAvailable !== 'true' : disabledStates[index];
+        button.removeAttribute('aria-busy');
+        delete button.dataset.quickAddLoading;
+        const dots = loadingDots[index];
+        if (dots) {
+          dots.hidden = true;
+          dots.classList.add('hidden');
+        }
+      });
+      if (state.drawer === drawer) setLoading(false);
     }
   };
 
@@ -764,7 +829,7 @@
     }
   };
 
-  const open = () => {
+  const open = ({ refreshCart = true } = {}) => {
     const drawer = state.drawer;
     if (!drawer) return;
     const shouldOpen = !state.overlay?.isOpen();
@@ -774,7 +839,7 @@
     drawer.classList.add('is-open');
     state.overlay?.open({ opener, focus: !state.editorSelected, restoreFocus: !state.editorSelected });
     document.dispatchEvent(new CustomEvent('cart-drawer:open', { detail: { drawer } }));
-    refresh().catch(() => {});
+    if (refreshCart) refresh().catch(() => {});
   };
 
   const close = ({ force = false } = {}) => {
@@ -900,7 +965,7 @@
     const form = event.target.closest?.('form[action*="/cart/add"]');
     if (!form || !state.drawer) return;
     event.preventDefault();
-    addFormToCart(form);
+    addFormToCart(form, event.submitter);
   });
 
   document.addEventListener('keydown', (event) => {
