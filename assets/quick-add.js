@@ -87,7 +87,7 @@ class QuickAddController {
 
     this.handleClick = this.handleClick.bind(this);
     this.handlePointerDown = this.handlePointerDown.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleCartReady = this.handleCartReady.bind(this);
     this.handleClose = this.handleClose.bind(this);
     this.handleRetry = this.handleRetry.bind(this);
     this.handleSectionSelect = this.handleSectionSelect.bind(this);
@@ -95,7 +95,7 @@ class QuickAddController {
 
     document.addEventListener('click', this.handleClick, { capture: true, signal: this.signal });
     document.addEventListener('pointerdown', this.handlePointerDown, { capture: true, signal: this.signal });
-    document.addEventListener('cart:add:ready', this.handleSubmit, { signal: this.signal });
+    document.addEventListener('cart:add:ready', this.handleCartReady, { signal: this.signal });
     document.addEventListener('shopify:section:select', this.handleSectionSelect, { signal: this.signal });
     document.addEventListener('shopify:section:deselect', this.handleSectionDeselect, { signal: this.signal });
     document.addEventListener('shopify:section:unload', (event) => {
@@ -226,7 +226,7 @@ class QuickAddController {
     this.open(url, trigger, { restoreFocus: !pointerActivated && (trigger.matches?.(':focus-visible') ?? event.detail === 0) });
   }
 
-  handleSubmit(event) {
+  handleCartReady(event) {
     const form = event.detail?.form;
     if (!form || !this.dialog.contains(form) || !form.querySelector('[name="id"]')?.value) return;
 
@@ -320,7 +320,6 @@ class QuickAddController {
       if (requestController.signal.aborted || this.requestController !== requestController) return;
 
       this.replaceContent(nextContent);
-      if (requestController.signal.aborted || this.requestController !== requestController) return;
       this.setStatus('content');
       await waitForContentReady(this.content);
       if (requestController.signal.aborted || this.requestController !== requestController) return;
