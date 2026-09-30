@@ -82,7 +82,6 @@
 {% endcapture %}
 {% assign menu_style = menu_style | strip %}
 
-{% if has_header_menu or request.design_mode %}
   <nav
     class="{{ menu_class }} {{ menu_typography_class }}"
     id="HeaderMenu-{{ section.id }}"
@@ -136,7 +135,7 @@
           {% endfor %}
       </ul>
       <div class="header-menu__mega-config" aria-hidden="true">{% content_for 'blocks' %}</div>
-    {% elsif request.design_mode %}
+    {% else %}
       <span class="header-menu__placeholder">{{ 'accessibility.menu' | t }}</span>
     {% endif %}
   </nav>
@@ -193,7 +192,7 @@
               </li>
             {% endfor %}
           </ul>
-        {% elsif request.design_mode %}
+        {% else %}
           <span class="header__mobile-drawer-placeholder">{{ 'accessibility.menu' | t }}</span>
         {% endif %}
       </div>
@@ -252,7 +251,6 @@
       </footer>
     </div>
   </aside>
-{% endif %}
 
 {% stylesheet %}
   .header-menu {
