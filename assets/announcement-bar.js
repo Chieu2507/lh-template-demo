@@ -76,62 +76,95 @@ const sanitizeEditorAttributes = (element) => {
 const initSlider = (root, slides, track) => {
   if (slides.length < 2) root.classList.add('announcement-bar--single');
   let activeIndex = 0;
-  const firstClone = slides.length > 1 ? sanitizeEditorAttributes(slides[0].cloneNode(true)) : null;
-  firstClone?.setAttribute('aria-hidden', 'true');
-  firstClone?.setAttribute('data-announcement-slider-clone', 'true');
-  firstClone?.setAttribute('inert', '');
-  if (firstClone) track.append(firstClone);
+  let visualIndex = 0;
+  let slideHeight = 0;
+  let isAnimating = false;
+  let lastMoveAt = 0;
+  let firstClone = null;
+  const transitionDuration = () => {
+    const duration = parseFloat(getComputedStyle(track).transitionDuration || '0');
+    return Number.isFinite(duration) ? duration * 1000 : 420;
+  };
+  const measureSlideHeight = (slide) => {
+    const clone = slide.cloneNode(true);
+    clone.dataset.announcementActive = 'false';
+    clone.setAttribute('aria-hidden', 'true');
+    clone.style.position = 'relative';
+    clone.style.inset = 'auto';
+    clone.style.width = '100%';
+    clone.style.flex = '0 0 auto';
+    clone.style.height = 'auto';
+    clone.style.minHeight = '0';
+    clone.style.visibility = 'hidden';
+    clone.style.opacity = '0';
+    clone.style.pointerEvents = 'none';
+    track.append(clone);
+    const height = clone.scrollHeight || clone.offsetHeight;
+    clone.remove();
+    return height;
+  };
   const syncSize = () => {
     const activeSlide = slides[activeIndex];
     if (!activeSlide) return;
-    const offset = slides.slice(0, activeIndex).reduce((total, slide) => total + slide.offsetHeight, 0);
-    root.style.setProperty('--announcement-slider-height', `${activeSlide.offsetHeight}px`);
-    root.style.setProperty('--announcement-slider-offset', `${offset}px`);
+    slideHeight = Math.max(...slides.map(measureSlideHeight), 0);
+    root.style.setProperty('--announcement-slider-height', `${slideHeight}px`);
+    track.style.setProperty('--announcement-slider-offset', `${visualIndex * slideHeight}px`);
   };
-  const setActive = (index) => {
-    activeIndex = (index + slides.length) % slides.length;
+  const setActive = (index, state = 'active') => {
+    activeIndex = index;
     slides.forEach((slide, slideIndex) => {
       const active = slideIndex === activeIndex;
       slide.dataset.announcementActive = String(active);
       slide.setAttribute('aria-hidden', String(!active));
       slide.inert = !active;
+      slide.dataset.announcementState = active ? state : 'idle';
     });
     syncSize();
   };
-  const totalHeight = () => slides.reduce((total, slide) => total + slide.offsetHeight, 0);
-  const transitionDuration = () => {
-    const duration = parseFloat(getComputedStyle(track).transitionDuration || '0');
-    return Number.isFinite(duration) ? duration * 1000 : 400;
-  };
   const move = (direction) => {
-    if (direction > 0 && activeIndex === slides.length - 1 && firstClone) {
-      const firstSlide = slides[0];
-      activeIndex = 0;
-      slides.forEach((slide, slideIndex) => {
-        const active = slideIndex === activeIndex;
-        slide.dataset.announcementActive = String(active);
-        slide.setAttribute('aria-hidden', String(!active));
-        slide.inert = !active;
-      });
-      root.style.setProperty('--announcement-slider-height', `${firstSlide.offsetHeight}px`);
-      window.requestAnimationFrame(() => {
-        root.style.setProperty('--announcement-slider-offset', `${totalHeight()}px`);
-        window.setTimeout(() => {
-          root.classList.add('announcement-bar--slider-reset');
-          root.style.setProperty('--announcement-slider-offset', '0px');
-          window.requestAnimationFrame(() => root.classList.remove('announcement-bar--slider-reset'));
-        }, transitionDuration());
-      });
-      return;
-    }
-    setActive(activeIndex + direction);
+    const now = Date.now();
+    if (isAnimating || slides.length < 2 || now - lastMoveAt < 900) return;
+    if (direction < 0 && activeIndex === 0) return;
+    lastMoveAt = now;
+    const previousIndex = activeIndex;
+    const nextIndex = activeIndex + direction;
+    const isLoop = direction > 0 && nextIndex === slides.length;
+    const nextSlide = isLoop ? firstClone : slides[nextIndex];
+    if (!nextSlide) return;
+    isAnimating = true;
+    root.classList.add('announcement-bar--slider-moving');
+    visualIndex = nextIndex;
+    slides[previousIndex].dataset.announcementState = 'exit';
+    nextSlide.dataset.announcementActive = 'true';
+    nextSlide.dataset.announcementState = 'enter';
+    nextSlide.setAttribute('aria-hidden', 'false');
+    track.style.setProperty('--announcement-slider-offset', `${nextIndex * slideHeight}px`);
+    window.setTimeout(() => {
+      if (isLoop) {
+        track.classList.add('announcement-bar--slider-reset');
+        visualIndex = 0;
+        track.style.setProperty('--announcement-slider-offset', '0px');
+        nextSlide.dataset.announcementActive = 'false';
+        nextSlide.setAttribute('aria-hidden', 'true');
+        window.requestAnimationFrame(() => track.classList.remove('announcement-bar--slider-reset'));
+        setActive(0);
+      } else {
+        visualIndex = nextIndex;
+        setActive(nextIndex);
+      }
+      nextSlide.dataset.announcementState = 'active';
+      root.classList.remove('announcement-bar--slider-moving');
+      isAnimating = false;
+    }, transitionDuration());
   };
   const previous = root.querySelector('[data-announcement-previous]');
   const next = root.querySelector('[data-announcement-next]');
-  const onPrevious = () => { move(-1); restart(); };
-  const onNext = () => { move(1); restart(); };
+  const onPrevious = (event) => { event.preventDefault(); event.stopImmediatePropagation(); stop(); move(-1); restart(); };
+  const onNext = (event) => { event.preventDefault(); event.stopImmediatePropagation(); stop(); move(1); restart(); };
   const autoplayDelay = Number(root.dataset.announcementAutoplay) || 0;
   const pauseOnHover = root.dataset.announcementPauseOnHover !== 'false';
+  let isHovered = false;
+  let isFocused = false;
   let timer = 0;
   const stop = () => {
     if (timer) window.clearTimeout(timer);
@@ -139,14 +172,24 @@ const initSlider = (root, slides, track) => {
   };
   const restart = () => {
     stop();
-    if (slides.length < 2 || autoplayDelay <= 0 || reducedMotion()) return;
+    if (slides.length < 2 || autoplayDelay <= 0 || reducedMotion() || (pauseOnHover && (isHovered || isFocused))) return;
     timer = window.setTimeout(() => {
       move(1);
       restart();
     }, autoplayDelay);
   };
-  const pause = () => { if (pauseOnHover) stop(); };
-  const resume = () => { if (pauseOnHover) restart(); };
+  const pause = (event) => {
+    if (!pauseOnHover) return;
+    if (event.type === 'mouseenter') isHovered = true;
+    if (event.type === 'focusin') isFocused = true;
+    stop();
+  };
+  const resume = (event) => {
+    if (!pauseOnHover) return;
+    if (event.type === 'mouseleave') isHovered = false;
+    if (event.type === 'focusout') isFocused = false;
+    restart();
+  };
   const resizeObserver = new ResizeObserver(syncSize);
   slides.forEach((slide) => resizeObserver.observe(slide));
   previous?.addEventListener('click', onPrevious);
@@ -156,6 +199,14 @@ const initSlider = (root, slides, track) => {
     root.addEventListener('mouseleave', resume);
     root.addEventListener('focusin', pause);
     root.addEventListener('focusout', resume);
+  }
+  firstClone = slides.length > 1 ? sanitizeEditorAttributes(slides[0].cloneNode(true)) : null;
+  if (firstClone) {
+    firstClone.dataset.announcementActive = 'false';
+    firstClone.dataset.announcementState = 'idle';
+    firstClone.setAttribute('aria-hidden', 'true');
+    firstClone.setAttribute('inert', '');
+    track.append(firstClone);
   }
   setActive(0);
   restart();
@@ -246,7 +297,6 @@ const destroy = (root) => {
   state.clearCopyTimer?.();
   state.stop?.();
   state.sliderResizeObserver?.disconnect();
-  state.firstClone?.remove();
   if (state.pauseOnHover) {
     root.removeEventListener('mouseenter', state.pause);
     root.removeEventListener('mouseleave', state.resume);
@@ -256,7 +306,8 @@ const destroy = (root) => {
   state.scrollingResizeObserver?.disconnect();
   state.mutationObserver?.disconnect();
   state.clones?.forEach((clone) => clone.remove());
-  root.classList.remove('announcement-bar--ready', 'announcement-bar--single');
+  state.firstClone?.remove();
+  root.classList.remove('announcement-bar--ready', 'announcement-bar--single', 'announcement-bar--slider-moving');
   states.delete(root);
 };
 
