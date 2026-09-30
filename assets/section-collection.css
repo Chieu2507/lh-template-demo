@@ -1378,8 +1378,58 @@
 .main-collection__sort-option-button { min-height: 42px; padding: 10px 18px; }
 .main-collection__sort-option-button[aria-selected='true'] { background: color-mix(in srgb, var(--color-text) 6%, var(--color-background)); font-weight: inherit; }
 .main-collection__sort-option-button svg { display: none; }
-/* Collection choices share scheme colors while retaining their radio/link semantics. */
-:is(.collection-columns__option, .main-collection__pagination)[data-style] {
+/* Column variants customize the shared radio, leaving its label and icon unboxed. */
+.collection-columns__option[data-style] {
+  --collection-radio-checked-border: var(--color-heading);
+  --collection-radio-checked-background: var(--color-background);
+  --collection-radio-checked-dot: var(--color-heading);
+  --collection-radio-hover-border: var(--color-heading);
+  --collection-radio-hover-background: var(--color-background);
+  --collection-radio-hover-dot: var(--color-heading);
+}
+
+.collection-columns__option[data-style='primary'] {
+  --collection-radio-checked-border: var(--button-primary-border);
+  --collection-radio-checked-background: var(--button-primary-background);
+  --collection-radio-checked-dot: var(--button-primary-text);
+  --collection-radio-hover-border: var(--button-primary-hover-border);
+  --collection-radio-hover-background: var(--button-primary-hover-background);
+  --collection-radio-hover-dot: var(--button-primary-hover-text);
+}
+
+.collection-columns__option[data-style='secondary'] {
+  --collection-radio-checked-border: var(--button-secondary-border);
+  --collection-radio-checked-background: var(--button-secondary-background);
+  --collection-radio-checked-dot: var(--button-secondary-text);
+  --collection-radio-hover-border: var(--button-secondary-hover-border);
+  --collection-radio-hover-background: var(--button-secondary-hover-background);
+  --collection-radio-hover-dot: var(--button-secondary-hover-text);
+}
+
+.collection-columns__option[data-style='tertiary'] {
+  --collection-radio-checked-border: var(--button-tertiary-text);
+  --collection-radio-checked-background: transparent;
+  --collection-radio-checked-dot: var(--button-tertiary-text);
+  --collection-radio-hover-border: var(--button-tertiary-hover-text);
+  --collection-radio-hover-background: transparent;
+  --collection-radio-hover-dot: var(--button-tertiary-hover-text);
+}
+
+.collection-columns__option[data-style='outline'] {
+  --collection-radio-checked-background: transparent;
+  --collection-radio-hover-background: transparent;
+}
+
+.collection-columns__option[data-style] .form__control--radio:checked {
+  --input-toggle-border: var(--collection-radio-checked-border);
+  --input-toggle-background: var(--collection-radio-checked-background);
+  --input-toggle-dot-color: var(--collection-radio-checked-dot);
+}
+
+.collection-columns__option-content { transition: color 200ms ease; }
+
+/* Pagination variants belong to its links and current-page presentation. */
+.main-collection__pagination[data-style] {
   --collection-choice-border: transparent;
   --collection-choice-color: var(--color-text);
   --collection-choice-selected-background: transparent;
@@ -1389,7 +1439,7 @@
   --collection-choice-hover-color: var(--color-heading);
 }
 
-:is(.collection-columns__option, .main-collection__pagination)[data-style='primary'] {
+.main-collection__pagination[data-style='primary'] {
   --collection-choice-selected-background: var(--button-primary-background);
   --collection-choice-selected-color: var(--button-primary-text);
   --collection-choice-selected-border: var(--button-primary-border);
@@ -1397,7 +1447,7 @@
   --collection-choice-hover-color: var(--button-primary-hover-text);
 }
 
-:is(.collection-columns__option, .main-collection__pagination)[data-style='secondary'] {
+.main-collection__pagination[data-style='secondary'] {
   --collection-choice-selected-background: var(--button-secondary-background);
   --collection-choice-selected-color: var(--button-secondary-text);
   --collection-choice-selected-border: var(--button-secondary-border);
@@ -1405,20 +1455,19 @@
   --collection-choice-hover-color: var(--button-secondary-hover-text);
 }
 
-:is(.collection-columns__option, .main-collection__pagination)[data-style='tertiary'] {
+.main-collection__pagination[data-style='tertiary'] {
   --collection-choice-color: var(--button-tertiary-text);
   --collection-choice-selected-color: var(--button-tertiary-text);
   --collection-choice-hover-background: transparent;
   --collection-choice-hover-color: var(--button-tertiary-hover-text);
 }
 
-:is(.collection-columns__option, .main-collection__pagination)[data-style='outline'] {
+.main-collection__pagination[data-style='outline'] {
   --collection-choice-border: var(--border-color);
   --collection-choice-selected-border: var(--color-heading);
   --collection-choice-hover-background: transparent;
 }
 
-.collection-columns__option-content,
 .main-collection__pagination[data-style] :is(.page a, .page.current, .prev a, .next a, [data-collection-load-more]) {
   border: 1px solid var(--collection-choice-border, transparent);
   background: transparent;
@@ -1426,7 +1475,6 @@
   transition: background-color 200ms ease, border-color 200ms ease, color 200ms ease;
 }
 
-.collection-columns__option-input:is([type=radio]):checked + .collection-columns__option-content,
 .main-collection__pagination[data-style] :is(.page.current, [data-collection-load-more]) {
   border-color: var(--collection-choice-selected-border);
   background: var(--collection-choice-selected-background);
@@ -1436,19 +1484,18 @@
 .main-collection__pagination[data-style] .page.current { box-shadow: none; }
 .main-collection__pagination[data-style] [data-collection-load-more] { padding-inline: 16px; text-decoration: none; }
 
-.collection-columns__option[data-style='tertiary'] input:checked + .collection-columns__option-content,
 .main-collection__pagination[data-style='tertiary'] :is(.page.current, [data-collection-load-more]) {
   text-decoration: underline;
   text-underline-offset: 4px;
 }
 
-.collection-columns__option-input:focus-visible + .collection-columns__option-content {
-  outline: 2px solid var(--input-focus-color);
-  outline-offset: 3px;
-}
-
 @media (hover: hover) and (pointer: fine) {
-  .collection-columns__option:hover .collection-columns__option-input:not(:disabled) + .collection-columns__option-content,
+  .collection-columns__option[data-style]:hover .form__control--radio:not(:disabled) {
+    --input-toggle-border: var(--collection-radio-hover-border);
+    --input-toggle-background: var(--collection-radio-hover-background);
+    --input-toggle-dot-color: var(--collection-radio-hover-dot);
+  }
+
   .main-collection__pagination[data-style] a:hover {
     background: var(--collection-choice-hover-background);
     color: var(--collection-choice-hover-color);
