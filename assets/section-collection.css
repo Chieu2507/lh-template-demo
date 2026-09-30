@@ -1384,37 +1384,37 @@
 }
 @media (hover: hover) and (pointer: fine) {
   .collection-columns__option:hover { color: var(--color-heading); }
-  .collection-columns[data-desktop-style='primary'] :is(.collection-columns__desktop, .collection-columns__tablet):has(> .collection-columns__option-input:checked:hover) .collection-columns__option-content {
+  .collection-columns[data-desktop-style='primary'] :is(.collection-columns__desktop, .collection-columns__tablet):has(> .collection-columns__option-input:hover) .collection-columns__option-content {
     background: var(--button-primary-hover-background);
     color: var(--button-primary-hover-text);
   }
-  .collection-columns[data-desktop-style='secondary'] :is(.collection-columns__desktop, .collection-columns__tablet):has(> .collection-columns__option-input:checked:hover) .collection-columns__option-content {
+  .collection-columns[data-desktop-style='secondary'] :is(.collection-columns__desktop, .collection-columns__tablet):has(> .collection-columns__option-input:hover) .collection-columns__option-content {
     background: var(--button-secondary-hover-background);
     color: var(--button-secondary-hover-text);
   }
-  .collection-columns[data-desktop-style='tertiary'] :is(.collection-columns__desktop, .collection-columns__tablet):has(> .collection-columns__option-input:checked:hover) .collection-columns__option-content {
+  .collection-columns[data-desktop-style='tertiary'] :is(.collection-columns__desktop, .collection-columns__tablet):has(> .collection-columns__option-input:hover) .collection-columns__option-content {
     background: var(--button-tertiary-hover-background, transparent);
     color: var(--button-tertiary-hover-text, var(--button-tertiary-text, var(--color-heading)));
     box-shadow: inset 0 -2px var(--button-tertiary-hover-text, var(--button-tertiary-text, var(--color-heading)));
   }
-  .collection-columns[data-desktop-style='outline'] :is(.collection-columns__desktop, .collection-columns__tablet):has(> .collection-columns__option-input:checked:hover) .collection-columns__option-content {
+  .collection-columns[data-desktop-style='outline'] :is(.collection-columns__desktop, .collection-columns__tablet):has(> .collection-columns__option-input:hover) .collection-columns__option-content {
     color: var(--button-secondary-hover-text, var(--button-secondary-text, var(--color-heading)));
     box-shadow: inset 0 0 0 1px var(--button-secondary-hover-border, var(--button-secondary-border, var(--color-border)));
   }
-  .collection-columns[data-mobile-style='primary'] .collection-columns__mobile:has(> .collection-columns__option-input:checked:hover) .collection-columns__option-content {
+  .collection-columns[data-mobile-style='primary'] .collection-columns__mobile:has(> .collection-columns__option-input:hover) .collection-columns__option-content {
     background: var(--button-primary-hover-background);
     color: var(--button-primary-hover-text);
   }
-  .collection-columns[data-mobile-style='secondary'] .collection-columns__mobile:has(> .collection-columns__option-input:checked:hover) .collection-columns__option-content {
+  .collection-columns[data-mobile-style='secondary'] .collection-columns__mobile:has(> .collection-columns__option-input:hover) .collection-columns__option-content {
     background: var(--button-secondary-hover-background);
     color: var(--button-secondary-hover-text);
   }
-  .collection-columns[data-mobile-style='tertiary'] .collection-columns__mobile:has(> .collection-columns__option-input:checked:hover) .collection-columns__option-content {
+  .collection-columns[data-mobile-style='tertiary'] .collection-columns__mobile:has(> .collection-columns__option-input:hover) .collection-columns__option-content {
     background: var(--button-tertiary-hover-background, transparent);
     color: var(--button-tertiary-hover-text, var(--button-tertiary-text, var(--color-heading)));
     box-shadow: inset 0 -2px var(--button-tertiary-hover-text, var(--button-tertiary-text, var(--color-heading)));
   }
-  .collection-columns[data-mobile-style='outline'] .collection-columns__mobile:has(> .collection-columns__option-input:checked:hover) .collection-columns__option-content {
+  .collection-columns[data-mobile-style='outline'] .collection-columns__mobile:has(> .collection-columns__option-input:hover) .collection-columns__option-content {
     color: var(--button-secondary-hover-text, var(--button-secondary-text, var(--color-heading)));
     box-shadow: inset 0 0 0 1px var(--button-secondary-hover-border, var(--button-secondary-border, var(--color-border)));
   }
