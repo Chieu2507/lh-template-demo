@@ -278,6 +278,7 @@ const init = (root) => {
   const sliderState = root.dataset.announcementType === 'slider' ? initSlider(root, slides, track) : { previous: null, next: null, onPrevious: null, onNext: null };
   const scrollingState = root.dataset.announcementType === 'scrolling' ? initScrolling(root, track) : { clones: [], resizeObserver: null, mutationObserver: null };
   const copyState = initCopyInteraction(root);
+  root.dataset.announcementInitialized = 'true';
   states.set(root, {
     track,
     ...sliderState,
@@ -307,6 +308,7 @@ const destroy = (root) => {
   state.mutationObserver?.disconnect();
   state.clones?.forEach((clone) => clone.remove());
   state.firstClone?.remove();
+  delete root.dataset.announcementInitialized;
   root.classList.remove('announcement-bar--ready', 'announcement-bar--single', 'announcement-bar--slider-moving');
   states.delete(root);
 };
