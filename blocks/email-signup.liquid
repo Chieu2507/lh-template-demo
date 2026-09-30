@@ -188,7 +188,7 @@
   assign email_signup_scheme = email_signup_scheme | handleize
 
   assign subscription_preferences_state = 'disabled'
-  assign email_signup_class = 'email-signup-block size-style motion-block section-color-scope ' | append: email_signup_scheme | append: ' email-signup-block--layout-' | append: form_layout
+  assign email_signup_class = 'email-signup-block size-style motion-block color-scheme section-color-scope ' | append: email_signup_scheme | append: ' email-signup-block--layout-' | append: form_layout
   if block.settings.enable_subscription_preferences
     assign subscription_preferences_state = 'enabled'
     assign email_signup_class = email_signup_class | append: ' email-signup-block--subscription-preferences'
