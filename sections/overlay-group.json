@@ -149,7 +149,7 @@
               "settings": {
                 "label": "View details",
                 "show_icon": false,
-                "icon": "arrow",
+                "icon": "arrow_right",
                 "icon_position": "after",
                 "icon_size": "inherit",
                 "icon_width": 20,
@@ -265,7 +265,7 @@
               "settings": {
                 "label": "View details",
                 "show_icon": false,
-                "icon": "arrow",
+                "icon": "arrow_right",
                 "icon_position": "after",
                 "icon_size": "inherit",
                 "icon_width": 20,

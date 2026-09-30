@@ -18,9 +18,6 @@
     elsif blog_card_button_icon == 'shopping-bag'
       assign blog_card_button_icon = 'cart'
     endif
-    unless blog_card_button_icon == 'arrow' or blog_card_button_icon == 'cart'
-      assign blog_card_button_icon = 'arrow'
-    endunless
   endif
 
   assign blog_card_button_icon_position = block.settings.icon_position | default: 'after'
@@ -56,25 +53,23 @@
 {% endcapture %}
 {% assign blog_card_button_style_attribute = blog_card_button_style_attribute | strip %}
 
-{% if blog_card_button_article != blank or request.design_mode %}
-  <div
-    class="blog-card-button"
-    {% if blog_card_button_style_attribute != blank %}style="{{ blog_card_button_style_attribute }}"{% endif %}
-    {{ block.shopify_attributes }}
-  >
-    {% render 'theme-button',
-      label: blog_card_button_label,
-      url: blog_card_button_article.url,
-      force_link: true,
-      variant: blog_card_button_style,
-      icon: blog_card_button_icon,
-      icon_position: blog_card_button_icon_position,
-      icon_size: blog_card_button_icon_size,
-      icon_width: blog_card_button_icon_width,
-      class: 'blog-card-button__button'
-    %}
-  </div>
-{% endif %}
+<div
+  class="blog-card-button"
+  {% if blog_card_button_style_attribute != blank %}style="{{ blog_card_button_style_attribute }}"{% endif %}
+  {{ block.shopify_attributes }}
+>
+  {% render 'theme-button',
+    label: blog_card_button_label,
+    url: blog_card_button_article.url,
+    force_link: true,
+    variant: blog_card_button_style,
+    icon: blog_card_button_icon,
+    icon_position: blog_card_button_icon_position,
+    icon_size: blog_card_button_icon_size,
+    icon_width: blog_card_button_icon_width,
+    class: 'blog-card-button__button'
+  %}
+</div>
 
 {% stylesheet %}
   .blog-card-button {
@@ -124,10 +119,52 @@
       "id": "icon",
       "label": "t:labels.icon",
       "options": [
-        { "value": "arrow", "label": "t:options.button_icon.arrow" },
-        { "value": "cart", "label": "t:options.button_icon.cart" }
+        {
+          "value": "arrow_right",
+          "label": "Arrow right"
+        },
+        {
+          "value": "long_arrow_right",
+          "label": "Long arrow right"
+        },
+        {
+          "value": "chevron_right",
+          "label": "Chevron"
+        },
+        {
+          "value": "arrow_up_right",
+          "label": "Arrow up right"
+        },
+        {
+          "value": "circle_arrow",
+          "label": "Circle arrow"
+        },
+        {
+          "value": "circle_chevron",
+          "label": "Circle chevron"
+        },
+        {
+          "value": "long_arrow_up",
+          "label": "Long arrow up"
+        },
+        {
+          "value": "double_chevron",
+          "label": "Double chevron"
+        },
+        {
+          "value": "arrow_outline",
+          "label": "Arrow outline"
+        },
+        {
+          "value": "square_chevron",
+          "label": "Square chevron"
+        },
+        {
+          "value": "plus",
+          "label": "Plus"
+        }
       ],
-      "default": "arrow",
+      "default": "arrow_right",
       "visible_if": "{{ block.settings.show_icon }}"
     },
     {
@@ -135,8 +172,14 @@
       "id": "icon_position",
       "label": "t:labels.icon_position",
       "options": [
-        { "value": "before", "label": "t:options.icon_position.before" },
-        { "value": "after", "label": "t:options.icon_position.after" }
+        {
+          "value": "before",
+          "label": "Left"
+        },
+        {
+          "value": "after",
+          "label": "Right"
+        }
       ],
       "default": "after",
       "visible_if": "{{ block.settings.show_icon }}"
@@ -223,7 +266,7 @@
       "settings": {
         "style": "tertiary",
         "show_icon": false,
-        "icon": "arrow",
+        "icon": "arrow_right",
         "icon_position": "after",
         "icon_size": "inherit",
         "icon_width": 20,

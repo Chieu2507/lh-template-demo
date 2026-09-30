@@ -177,7 +177,6 @@
 {% endcapture %}
 {% assign buy_style = buy_style | strip %}
 
-{% if buy_product != blank or request.design_mode %}
   <product-buy-buttons
     id="ProductBuyButtons-{{ section.id }}-{{ block.id }}"
     class="product-buy-buttons"
@@ -363,13 +362,12 @@
           {% render 'component-overlay', id: back_in_stock_dialog_id, label: notify_title, title: notify_title, content: notify_content, append_to_body: true, desktop_layout: back_in_stock_layout_desktop, mobile_layout: back_in_stock_layout_mobile, attributes: 'data-back-in-stock-dialog data-form-state="idle"' %}
         </div>
       {% endif %}
-    {% elsif request.design_mode %}
+    {% else %}
       <div class="product-buy-buttons__placeholder" aria-hidden="true">
         {% render 'theme-button', label: sold_out_label, type: 'button', class: 'product-form__submit', disabled: true %}
       </div>
     {% endif %}
   </product-buy-buttons>
-{% endif %}
 
 {% schema %}
 {

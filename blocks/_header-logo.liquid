@@ -6,7 +6,7 @@
 
   assign logo_width = settings.logo_width | default: 180 | plus: 0
   assign logo_width_mobile = settings.logo_width_mobile | default: 140 | plus: 0
-  assign logo_sizes = '(min-width: 768px) ' | append: logo_width | append: 'px, ' | append: logo_width_mobile | append: 'px'
+  assign logo_sizes = '(min-width: 992px) ' | append: logo_width | append: 'px, ' | append: logo_width_mobile | append: 'px'
   assign logo_image = settings.logo
   assign logo_class = 'header-logo site-logo header-logo--' | append: logo_position
 
@@ -88,7 +88,7 @@
     transform: translateX(-50%);
   }
 
-  @media (max-width: 767.98px) {
+  @media (max-width: 991.98px) {
     .site-logo {
       width: min(var(--logo-width-mobile), 52vw);
       max-width: min(var(--logo-width-mobile), 52vw);

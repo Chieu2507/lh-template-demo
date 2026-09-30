@@ -1,0 +1,174 @@
+{% doc %}
+  Fixed pagination role. @param {object} paginate - Native collection pagination object.
+{% enddoc %}
+<div class="collection-pagination-block" data-pagination-mode="{{ block.settings.pagination_type }}" {{ block.shopify_attributes }}>
+{% liquid
+  assign pagination_button_variant = block.settings.button_style
+  if pagination_button_variant == 'outline'
+    assign pagination_button_variant = 'secondary'
+  elsif pagination_button_variant == 'text'
+    assign pagination_button_variant = 'tertiary'
+  endif
+%}
+{% if paginate.pages > 1 %}<nav class="main-collection__pagination" aria-label="{{ 'collection.pagination' | t }}" data-style="{{ block.settings.button_style }}" data-height="{{ block.settings.button_height }}" style="--pagination-padding-top:{{ block.settings.padding_top }}px;--pagination-padding-bottom:{{ block.settings.padding_bottom }}px;{% if block.settings.customize_mobile_padding %}--pagination-padding-top-mobile:{{ block.settings.padding_top_mobile }}px;--pagination-padding-bottom-mobile:{{ block.settings.padding_bottom_mobile }}px;{% endif %}">
+{% if block.settings.pagination_type == 'pages' %}
+  {% if paginate.previous %}
+    <span class="prev">
+      <a href="{{ paginate.previous.url }}" aria-label="{{ 'collection.previous_page' | t | escape }}">
+        {% render 'icon', icon: 'chevron-left', bare: true, class: 'main-collection__pagination-arrow' %}
+        <span>PREV</span>
+      </a>
+    </span>
+  {% endif %}
+
+  {% liquid
+    assign current_page = paginate.current_page
+    assign previous_page = current_page | minus: 1
+    assign next_page = current_page | plus: 1
+    assign last_rendered_page = 0
+  %}
+  {% for part in paginate.parts %}
+    {% assign page_number = part.title | plus: 0 %}
+    {% if page_number > 0 %}
+      {% if page_number == 1 or page_number == paginate.pages or page_number == previous_page or page_number == current_page or page_number == next_page %}
+        {% assign page_gap = page_number | minus: last_rendered_page %}
+        {% if last_rendered_page > 0 and page_gap > 1 %}
+          <span class="deco" aria-hidden="true">&hellip;</span>
+        {% endif %}
+        {% if part.is_link %}
+          <span class="page"><a href="{{ part.url }}">{{ part.title }}</a></span>
+        {% else %}
+          <span class="page current" aria-current="page">{{ part.title }}</span>
+        {% endif %}
+        {% assign last_rendered_page = page_number %}
+      {% endif %}
+    {% endif %}
+  {% endfor %}
+
+  {% if paginate.next %}
+    <span class="next">
+      <a href="{{ paginate.next.url }}" aria-label="{{ 'collection.next_page' | t | escape }}">
+        <span>NEXT</span>
+        {% render 'icon', icon: 'chevron-right', bare: true, class: 'main-collection__pagination-arrow' %}
+      </a>
+    </span>
+  {% endif %}
+{% elsif paginate.next %}
+  <a href="{{ paginate.next.url }}" class="btn btn-{{ pagination_button_variant }}" data-collection-load-more>{{ 'collection.load_more' | t }}</a>
+{% endif %}
+</nav>{% endif %}</div>
+{% schema %}
+{
+  "name": "Pagination",
+  "tag": null,
+  "settings": [
+    {
+      "type": "select",
+      "id": "pagination_type",
+      "label": "Pagination type",
+      "options": [
+        {
+          "value": "pages",
+          "label": "Pages"
+        },
+        {
+          "value": "load_more",
+          "label": "Load more"
+        },
+        {
+          "value": "infinite",
+          "label": "Infinite scroll"
+        }
+      ],
+      "default": "pages"
+    },
+    {
+      "type": "select",
+      "id": "button_style",
+      "label": "Button style",
+      "options": [
+        {
+          "value": "primary",
+          "label": "Primary"
+        },
+        {
+          "value": "secondary",
+          "label": "Secondary"
+        },
+        {
+          "value": "outline",
+          "label": "Outline"
+        },
+        {
+          "value": "text",
+          "label": "Text"
+        }
+      ],
+      "default": "primary"
+    },
+    {
+      "type": "select",
+      "id": "button_height",
+      "label": "Height",
+      "options": [
+        { "value": "inherit", "label": "Inherit" },
+        { "value": "extra_small", "label": "Extra small" },
+        { "value": "small", "label": "Small" },
+        { "value": "medium", "label": "Medium" },
+        { "value": "large", "label": "Large" },
+        { "value": "extra_large", "label": "Extra large" }
+      ],
+      "default": "inherit"
+    },
+    { "type": "header", "content": "Padding" },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "label": "Top padding",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "default": 40,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "label": "Bottom padding",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "default": 0,
+      "unit": "px"
+    },
+    {
+      "type": "checkbox",
+      "id": "customize_mobile_padding",
+      "label": "Custom for mobile",
+      "default": false
+    },
+    {
+      "type": "range",
+      "id": "padding_top_mobile",
+      "label": "Mobile top padding",
+      "min": 0,
+      "max": 100,
+      "step": 2,
+      "default": 30,
+      "unit": "px",
+      "visible_if": "{{ block.settings.customize_mobile_padding }}"
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_mobile",
+      "label": "Mobile bottom padding",
+      "min": 0,
+      "max": 100,
+      "step": 2,
+      "default": 0,
+      "unit": "px",
+      "visible_if": "{{ block.settings.customize_mobile_padding }}"
+    }
+  ]
+}
+{% endschema %}

@@ -86,7 +86,7 @@
 {% endcapture %}
 {% assign blog_card_tag_style = blog_card_tag_style | strip %}
 
-{% if blog_card_tag_article.tags != blank or request.design_mode %}
+{% if blog_card_tag_article.tags != blank or request.design_mode or blog_card_tag_article == blank %}
   <div
     class="{{ blog_card_tag_class }}"
     {% if blog_card_tag_style != blank %}style="{{ blog_card_tag_style }}"{% endif %}
@@ -103,7 +103,7 @@
           <span class="blog-card-tag__label">{{ blog_card_tag_value | escape }}</span>
         {% if blog_card_tag_url != blank %}</a>{% endif %}
       {% endfor %}
-    {% elsif request.design_mode %}
+    {% elsif request.design_mode or blog_card_tag_article == blank %}
       <span class="blog-card-tag__label">Tags</span>
     {% endif %}
   </div>

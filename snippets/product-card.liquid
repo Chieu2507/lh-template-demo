@@ -11,6 +11,9 @@
   @param {object} [color_scheme] - Optional block-level color scheme override
   @param {boolean} [placeholder] - Whether to render the styled placeholder card
   @param {string} [attributes] - Theme Editor attributes for the card root
+  @param {boolean} [show_media_actions] - Optional section override for quick actions
+  @param {boolean} [enable_quick_view] - Optional section override for quick view
+  @param {string} [heading_tag] - Optional heading tag for the product title
 
   @example
   {% render 'product-card', product: product %}
@@ -49,12 +52,9 @@
       assign card_color_scheme = settings.product_card_color_scheme.id
     endif
     assign card_color_scheme = card_color_scheme | default: 'scheme-1'
-    if card_color_type == 'color_scheme' and color_scheme != blank
-      assign card_color_scheme = color_scheme
-      if color_scheme.id != blank
-        assign card_color_scheme = color_scheme.id
-      endif
-    endif
+  endif
+  if card_color_type == 'color_scheme' and color_scheme != blank
+    assign card_color_scheme = color_scheme.id | default: color_scheme
   endif
 
   assign quick_add_color_scheme = settings.product_card_quick_add_color_scheme
@@ -82,6 +82,12 @@
 
   assign quick_view_enabled = true
   if settings.product_card_quick_view_enabled == false
+    assign quick_view_enabled = false
+  endif
+  if show_media_actions == false
+    assign quick_add_enabled = false
+    assign quick_view_enabled = false
+  elsif enable_quick_view == false
     assign quick_view_enabled = false
   endif
   assign quick_view_mobile = false
@@ -148,7 +154,7 @@
     assign card_class = card_class | append: ' product-card--quick-view-mobile'
   endif
   if card_color_scheme != blank
-    assign card_class = card_class | append: ' ' | append: card_color_scheme
+    assign card_class = card_class | append: ' color-scheme section-color-scope ' | append: card_color_scheme
   endif
   if class != blank
     assign card_class = card_class | append: ' ' | append: class
@@ -220,6 +226,7 @@
         {% render 'product-card-quick-add',
           variant_id: current_variant.id,
           label: quick_add_label,
+          product_title: product.title,
           style: quick_add_style,
           full_width: quick_add_full_width,
           color_scheme: quick_add_color_scheme,
@@ -254,7 +261,7 @@
       {% if show_type and product.type != blank %}
         <p class="product-card__type body-sm">{{ product.type | escape }}</p>
       {% endif %}
-      {% render 'product-card-title', product: product %}
+      {% render 'product-card-title', product: product, heading_tag: heading_tag %}
       {% render 'product-card-price', item: product %}
     </div>
 

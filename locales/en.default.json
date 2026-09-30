@@ -256,6 +256,41 @@
     "read_more": "Read more",
     "read_less": "Read less"
   },
+  "collection": {
+    "apply_filters": "Apply ({{ count }})",
+    "apply_sort": "Apply",
+    "clear_all": "Clear all",
+    "close_filters": "Close filters",
+    "empty": "No products found",
+    "empty_help": "Try removing a filter or explore another collection.",
+    "filter": "Filter",
+    "filters": "Filters",
+    "next_page": "Next page",
+    "pagination": "Collection pagination",
+    "previous_page": "Previous page",
+    "price_from": "From",
+    "price_to": "To",
+    "product_count": {
+      "one": "{{ count }} product",
+      "other": "{{ count }} products"
+    },
+    "item_count": {
+      "one": "{{ count }} item",
+      "other": "{{ count }} items"
+    },
+    "columns": "columns",
+    "products_heading": "Products",
+    "promo_link": "Open promotion",
+    "read_less": "Read less",
+    "read_more": "Read more",
+    "sort_by": "Sort:",
+    "sort_trigger": "Sort by",
+    "grid_view": "Grid view",
+    "view": "View",
+    "view_more": "View more",
+    "view_less": "View less",
+    "load_more": "Load more"
+  },
   "gift_card": {
     "add_to_apple_wallet": "Add to Apple Wallet",
     "card": "Gift card",

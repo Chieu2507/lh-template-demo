@@ -10,6 +10,7 @@
   @param {string} [url] - Optional URL override
   @param {boolean} [placeholder] - Whether to render the placeholder title
   @param {string} [class] - Additional title classes
+  @param {string} [heading_tag] - Heading level for a real product; defaults to h2
 
   @example
   {% render 'product-card-title', product: product %}
@@ -35,12 +36,16 @@
   if class != blank
     assign product_card_title_class = product_card_title_class | append: ' ' | append: class
   endif
+  assign product_card_heading_tag = heading_tag | default: 'h2'
+  unless product_card_heading_tag == 'h2' or product_card_heading_tag == 'h3' or product_card_heading_tag == 'h4' or product_card_heading_tag == 'h5' or product_card_heading_tag == 'h6'
+    assign product_card_heading_tag = 'h2'
+  endunless
 %}
 
 {% if is_placeholder_title %}
   <p class="{{ product_card_title_class | strip }}">{{ product_card_title | escape }}</p>
 {% else %}
-  <h2 class="{{ product_card_title_class | strip }}">
+  <{{ product_card_heading_tag }} class="{{ product_card_title_class | strip }}">
     {% if product_card_title_url != blank %}
       <a class="product-card__title-link" href="{{ product_card_title_url | escape }}">
         {{ product_card_title | escape }}
@@ -48,5 +53,5 @@
     {% else %}
       {{ product_card_title | escape }}
     {% endif %}
-  </h2>
+  </{{ product_card_heading_tag }}>
 {% endif %}

@@ -37,7 +37,7 @@
 %}
 
 {% if url != blank %}
-  <a class="product-card__image-link" href="{{ url | escape }}" aria-label="{{ image_alt | escape }}">
+  <a class="product-card__image-link{% if has_secondary_image and render_placeholder == false %} product-card__image-link--has-secondary{% endif %}" href="{{ url | escape }}" aria-label="{{ image_alt | escape }}">
 {% endif %}
   {% unless render_placeholder %}
     {% render 'image',

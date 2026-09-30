@@ -6,6 +6,7 @@
 
   @param {number} variant_id - Variant ID submitted to the cart endpoint
   @param {string} label - Accessible and visible button label
+  @param {string} [product_title] - Product title for the accessible name
   @param {string} [style] - Button style: icon or text
   @param {boolean} [full_width] - Whether the action fills its wrapper
   @param {string} [color_scheme] - Color scheme class for the action
@@ -33,6 +34,11 @@
   if full_width != false
     assign quick_add_class = quick_add_class | append: ' product-card__quick-add--full'
   endif
+
+  assign quick_add_accessible_label = label
+  if product_title != blank
+    assign quick_add_accessible_label = label | append: ': ' | append: product_title
+  endif
 %}
 
 <div class="{{ quick_add_class }}{% if color_scheme != blank %} {{ color_scheme }}{% endif %}" data-product-card-quick-add-wrapper>
@@ -41,6 +47,7 @@
     {% if quick_add_style == 'icon' %}
       {% render 'theme-button',
         label: label,
+        aria_label: quick_add_accessible_label,
         type: 'submit',
         variant: 'primary',
         icon: 'cart',
@@ -51,10 +58,12 @@
     {% else %}
       {% render 'theme-button',
         label: label,
+        aria_label: quick_add_accessible_label,
         type: 'submit',
         variant: 'primary',
+        icon: 'cart',
         motion_speed: quick_add_motion_speed,
-        class: 'product-card__quick-add-button'
+        class: 'product-card__quick-add-button product-card__quick-add-button--text'
       %}
     {% endif %}
   </form>

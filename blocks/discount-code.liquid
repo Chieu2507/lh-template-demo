@@ -9,9 +9,6 @@
   assign button_icon = blank
   if block.settings.show_icon
     assign button_icon = block.settings.icon | default: 'arrow'
-    unless button_icon == 'arrow' or button_icon == 'arrow-left' or button_icon == 'arrow-right' or button_icon == 'bars-3' or button_icon == 'menu' or button_icon == 'chevron' or button_icon == 'chevron-down' or button_icon == 'chevron-left' or button_icon == 'chevron-right' or button_icon == 'x-mark' or button_icon == 'close' or button_icon == 'magnifying-glass' or button_icon == 'search' or button_icon == 'shopping-bag' or button_icon == 'bag' or button_icon == 'cart' or button_icon == 'shopping-cart' or button_icon == 'user' or button_icon == 'account' or button_icon == 'truck' or button_icon == 'shipping' or button_icon == 'tag' or button_icon == 'discount' or button_icon == 'trash' or button_icon == 'remove' or button_icon == 'document-text' or button_icon == 'note' or button_icon == 'receipt-percent' or button_icon == 'coupon' or button_icon == 'share' or button_icon == 'play' or button_icon == 'pause' or button_icon == 'plus' or button_icon == 'minus' or button_icon == 'check' or button_icon == 'circle' or button_icon == 'square' or button_icon == 'triangle' or button_icon == 'diamond' or button_icon == 'star' or button_icon == 'four-stars' or button_icon == 'five-stars'
-      assign button_icon = 'arrow'
-    endunless
   endif
   assign button_icon_position = block.settings.icon_position | default: 'after'
   unless button_icon_position == 'before' or button_icon_position == 'after'
@@ -97,8 +94,76 @@
     { "type": "checkbox", "id": "button_open_in_new_tab", "label": "Open in new tab", "default": false },
     { "type": "select", "id": "button_style", "label": "Style", "options": [{ "value": "primary", "label": "t:options.button_variant.primary" }, { "value": "secondary", "label": "t:options.button_variant.secondary" }, { "value": "tertiary", "label": "t:options.button_variant.tertiary" }], "default": "tertiary" },
     { "type": "checkbox", "id": "show_icon", "label": "Show icon", "default": false },
-    { "type": "select", "id": "icon", "label": "Icon", "options": [{ "value": "arrow", "label": "Arrow" }, { "value": "arrow-left", "label": "Arrow left" }, { "value": "arrow-right", "label": "Arrow right" }, { "value": "bars-3", "label": "Menu" }, { "value": "chevron", "label": "Chevron" }, { "value": "chevron-down", "label": "Chevron down" }, { "value": "chevron-left", "label": "Chevron left" }, { "value": "chevron-right", "label": "Chevron right" }, { "value": "x-mark", "label": "Close" }, { "value": "magnifying-glass", "label": "Search" }, { "value": "shopping-bag", "label": "Shopping bag" }, { "value": "cart", "label": "Cart" }, { "value": "user", "label": "Account" }, { "value": "truck", "label": "Shipping" }, { "value": "tag", "label": "Tag" }, { "value": "discount", "label": "Discount" }, { "value": "trash", "label": "Trash" }, { "value": "document-text", "label": "Document" }, { "value": "receipt-percent", "label": "Receipt" }, { "value": "share", "label": "Share" }, { "value": "play", "label": "Play" }, { "value": "pause", "label": "Pause" }, { "value": "plus", "label": "Plus" }, { "value": "minus", "label": "Minus" }, { "value": "check", "label": "Check" }, { "value": "star", "label": "Star" }, { "value": "four-stars", "label": "Four stars" }, { "value": "five-stars", "label": "Five stars" }], "default": "arrow", "visible_if": "{{ block.settings.show_icon }}" },
-    { "type": "select", "id": "icon_position", "label": "Position", "options": [{ "value": "before", "label": "Left" }, { "value": "after", "label": "Right" }], "default": "after", "visible_if": "{{ block.settings.show_icon }}" },
+    {
+      "type": "select",
+      "id": "icon",
+      "label": "t:labels.icon",
+      "options": [
+        {
+          "value": "arrow_right",
+          "label": "Arrow right"
+        },
+        {
+          "value": "long_arrow_right",
+          "label": "Long arrow right"
+        },
+        {
+          "value": "chevron_right",
+          "label": "Chevron"
+        },
+        {
+          "value": "arrow_up_right",
+          "label": "Arrow up right"
+        },
+        {
+          "value": "circle_arrow",
+          "label": "Circle arrow"
+        },
+        {
+          "value": "circle_chevron",
+          "label": "Circle chevron"
+        },
+        {
+          "value": "long_arrow_up",
+          "label": "Long arrow up"
+        },
+        {
+          "value": "double_chevron",
+          "label": "Double chevron"
+        },
+        {
+          "value": "arrow_outline",
+          "label": "Arrow outline"
+        },
+        {
+          "value": "square_chevron",
+          "label": "Square chevron"
+        },
+        {
+          "value": "plus",
+          "label": "Plus"
+        }
+      ],
+      "default": "arrow_right",
+      "visible_if": "{{ block.settings.show_icon }}"
+    },
+    {
+      "type": "select",
+      "id": "icon_position",
+      "label": "t:labels.icon_position",
+      "options": [
+        {
+          "value": "before",
+          "label": "Left"
+        },
+        {
+          "value": "after",
+          "label": "Right"
+        }
+      ],
+      "default": "after",
+      "visible_if": "{{ block.settings.show_icon }}"
+    },
     { "type": "select", "id": "icon_size", "label": "Icon size", "options": [{ "value": "inherit", "label": "t:options.icon_size.inherit" }, { "value": "custom", "label": "t:options.icon_size.custom" }], "default": "inherit", "visible_if": "{{ block.settings.show_icon }}" },
     { "type": "range", "id": "icon_width", "label": "Icon width", "min": 12, "max": 32, "step": 1, "unit": "px", "default": 20, "visible_if": "{{ block.settings.show_icon and block.settings.icon_size == 'custom' }}" }
   ],

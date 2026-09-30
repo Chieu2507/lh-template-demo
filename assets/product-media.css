@@ -39,6 +39,12 @@
   position: relative;
 }
 
+/* Auto-height must measure natural slide heights, not stretch slides to the
+   wrapper's previous inline height when the gallery gets narrower. */
+.product-media-gallery__main.swiper-autoheight > .swiper-wrapper {
+  align-items: flex-start;
+}
+
 .product-media-gallery__slide[hidden],
 .product-media-gallery__thumbnail[hidden] {
   display: none !important;
@@ -178,7 +184,11 @@
     inset-block-start: 0;
     inset-inline-start: 0;
     width: var(--product-media-thumbnail-width, 7.2rem);
-    height: min(72rem, 75vh);
+    height: 100%;
+  }
+
+  .product-media-gallery--desktop-left_thumbnails .product-media-gallery__thumbnails {
+    height: 100%;
   }
 
   .product-media-gallery--desktop-left_thumbnails .media-gallery__carousel {
@@ -284,6 +294,10 @@
     inset: auto;
     grid-row: 2;
     width: auto;
+    height: auto;
+  }
+
+  .product-media-gallery--desktop-left_thumbnails .product-media-gallery__thumbnails {
     height: auto;
   }
 
