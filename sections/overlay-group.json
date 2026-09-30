@@ -188,7 +188,7 @@
       "settings": {
         "desktop_layout": "drawer",
         "desktop_width": 550,
-        "mobile_layout": "drawer",
+        "mobile_layout": "bottom_sheet",
         "media_position": "top",
         "gap_desktop": 20,
         "gap_mobile": 20,

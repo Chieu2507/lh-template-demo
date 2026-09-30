@@ -554,14 +554,21 @@
     const opener = submitter || document.activeElement;
     const buttons = Array.from(form.querySelectorAll('[type="submit"]'));
     const disabledStates = buttons.map((button) => button.disabled);
+    const loadingDots = buttons.map((button) => button.querySelector('[data-loading-dots]'));
     let formError = form.querySelector('[data-cart-add-error]');
     if (formError) formError.hidden = true;
     const fallbackError = state.drawer.dataset.cartAddError || 'Unable to add this item';
 
     form.setAttribute('aria-busy', 'true');
-    buttons.forEach((button) => {
+    buttons.forEach((button, index) => {
       button.disabled = true;
       button.setAttribute('aria-busy', 'true');
+      const dots = loadingDots[index];
+      if (dots) {
+        dots.hidden = false;
+        dots.classList.remove('hidden');
+        button.dataset.quickAddLoading = 'true';
+      }
     });
     setLoading(true);
     setError();
@@ -605,6 +612,12 @@
         button.disabled = button.dataset.variantAvailable != null
           ? button.dataset.variantAvailable !== 'true' : disabledStates[index];
         button.removeAttribute('aria-busy');
+        delete button.dataset.quickAddLoading;
+        const dots = loadingDots[index];
+        if (dots) {
+          dots.hidden = true;
+          dots.classList.add('hidden');
+        }
       });
       if (state.drawer === drawer) setLoading(false);
     }
