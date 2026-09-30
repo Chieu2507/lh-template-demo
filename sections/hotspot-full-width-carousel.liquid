@@ -289,13 +289,11 @@
             </div>
           {% endif %}
         {% elsif request.design_mode %}
-          <div class="hotspot-full-width-carousel__empty-state">
-          </div>
+          {% content_for 'block', type: 'product-callout', id: 'product-callout' %}
         {% endif %}
       </div>
     {% elsif request.design_mode %}
-      <div class="hotspot-full-width-carousel__empty-state">
-      </div>
+      {% content_for 'block', type: 'product-callout', id: 'product-callout' %}
     {% endif %}
   </div>
 {% endif %}
