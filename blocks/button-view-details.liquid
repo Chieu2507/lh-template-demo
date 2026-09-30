@@ -66,7 +66,6 @@
 {% assign view_details_style_attribute = view_details_style_attribute | strip %}
 
 {% if view_details_label != blank %}
-  {% if view_details_product != blank or request.design_mode %}
     <div
       class="view-details"
       {% if view_details_style_attribute != blank %}style="{{ view_details_style_attribute }}"{% endif %}
@@ -85,7 +84,6 @@
         attributes: view_details_attributes
       %}
     </div>
-  {% endif %}
 {% endif %}
 
 {% stylesheet %}

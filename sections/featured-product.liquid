@@ -70,7 +70,6 @@
 {% endcapture %}
 {% assign featured_product_style = featured_product_style | strip %}
 
-{% if featured_product != blank or request.design_mode %}
   {{ 'product-information.css' | asset_url | stylesheet_tag }}
   {{ 'product-information-extras.css' | asset_url | stylesheet_tag }}
   {{ 'product-media.css' | asset_url | stylesheet_tag }}
@@ -102,7 +101,6 @@
   <script type="module" src="{{ 'product-inventory.js' | asset_url }}"></script>
   <script type="module" src="{{ 'product-media.js' | asset_url }}"></script>
   <script type="module" src="{{ 'product-information-extras.js' | asset_url }}"></script>
-{% endif %}
 
 {% stylesheet %}
   .featured-product {
