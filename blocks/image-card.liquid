@@ -11,7 +11,8 @@
 
 {% render 'media-card',
   media_card_block: block,
-  children: image_card_children
+  children: image_card_children,
+  enable_sticky: block.settings.enable_sticky
 %}
 
 {% schema %}
@@ -222,6 +223,12 @@
     {
       "type": "header",
       "content": "t:general.content"
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_sticky",
+      "label": "t:labels.enable_sticky",
+      "default": false
     },
     {
       "type": "select",
