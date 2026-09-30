@@ -1,0 +1,169 @@
+{% liquid
+  assign bundle_builder_width = 'page-width'
+  if section.settings.section_width == 'full_width'
+    assign bundle_builder_width = 'full-width'
+  endif
+
+  assign bundle_builder_scheme = section.settings.color_scheme | default: 'scheme-1'
+  if section.settings.color_scheme.id != blank
+    assign bundle_builder_scheme = section.settings.color_scheme.id
+  endif
+  assign bundle_builder_scheme = bundle_builder_scheme | default: 'scheme-1' | handleize
+
+  assign bundle_builder_padding_top = section.settings.padding_top | default: 40 | plus: 0
+  assign bundle_builder_padding_bottom = section.settings.padding_bottom | default: 40 | plus: 0
+  assign bundle_builder_padding_top_mobile = section.settings.padding_top_mobile | default: bundle_builder_padding_top | plus: 0
+  assign bundle_builder_padding_bottom_mobile = section.settings.padding_bottom_mobile | default: bundle_builder_padding_bottom | plus: 0
+%}
+
+{% capture bundle_builder_style %}
+  {% if bundle_builder_padding_top != 40 %}--bundle-builder-padding-top: {{ bundle_builder_padding_top }}px;{% endif %}
+  {% if bundle_builder_padding_bottom != 40 %}--bundle-builder-padding-bottom: {{ bundle_builder_padding_bottom }}px;{% endif %}
+  {% if section.settings.customize_mobile_padding %}
+    {% if bundle_builder_padding_top_mobile != bundle_builder_padding_top %}--bundle-builder-padding-top-mobile: {{ bundle_builder_padding_top_mobile }}px;{% endif %}
+    {% if bundle_builder_padding_bottom_mobile != bundle_builder_padding_bottom %}--bundle-builder-padding-bottom-mobile: {{ bundle_builder_padding_bottom_mobile }}px;{% endif %}
+  {% endif %}
+{% endcapture %}
+{% assign bundle_builder_style = bundle_builder_style | strip %}
+
+<div
+  class="section-spacing section-color-scope color-scheme {{ bundle_builder_scheme }} bundle-builder"
+  {% if bundle_builder_style != blank %}style="{{ bundle_builder_style }}"{% endif %}
+>
+  <div
+    class="container {{ bundle_builder_width }} bundle-builder__container"
+    data-bundle-builder
+    data-section-id="{{ section.id }}"
+    data-bundle-design-mode="{{ request.design_mode }}"
+    data-currency="{{ cart.currency.iso_code | default: shop.currency }}"
+    data-currency-code-display="{{ settings.price_currency_code_product_cards }}"
+    data-money-format="{{ shop.money_format | escape }}"
+    data-money-with-currency-format="{{ shop.money_with_currency_format | escape }}"
+  >
+    {% content_for 'block', type: 'header', id: 'header' %}
+    {% content_for 'block', type: '_bundle-product-list', id: 'products' %}
+    {% content_for 'block', type: '_bundle-summary', id: 'summary' %}
+    <noscript><p class="body-text body-md">{{ 'bundle_builder.javascript_required' | t }}</p></noscript>
+  </div>
+</div>
+
+<script type="module" src="{{ 'variant-picker.js' | asset_url }}"></script>
+<script type="module" src="{{ 'bundle-builder.js' | asset_url }}"></script>
+
+{% stylesheet %}
+  .bundle-builder {
+    width: 100%;
+    padding-block: var(--bundle-builder-padding-top, 40px) var(--bundle-builder-padding-bottom, 40px);
+  }
+
+  .bundle-builder__container {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-areas:
+      'header'
+      'products'
+      'summary';
+    gap: 24px;
+  }
+
+  .bundle-builder__container > .block-header {
+    grid-area: header;
+    width: 100%;
+    max-width: none;
+  }
+
+  .bundle-builder__container > .bundle-product-list {
+    grid-area: products;
+  }
+
+  .bundle-builder__container > .bundle-summary {
+    grid-area: summary;
+  }
+
+  .bundle-builder__container > * {
+    min-width: 0;
+  }
+
+  @media (min-width: 768px) {
+    .bundle-builder__container {
+      grid-template-columns: minmax(0, 1.7fr) minmax(280px, 0.8fr);
+      grid-template-areas:
+        'header header'
+        'products summary';
+      align-items: start;
+      column-gap: 32px;
+      row-gap: 24px;
+    }
+
+    .bundle-builder__container > .bundle-summary {
+      position: sticky;
+      top: calc(var(--header-sticky-height, 0px) + var(--sticky-offset-spacing, 16px));
+      align-self: start;
+      z-index: 1;
+    }
+  }
+
+  @media (max-width: 767.98px) {
+    .bundle-builder {
+      padding-top: var(--bundle-builder-padding-top-mobile, var(--bundle-builder-padding-top, 40px));
+      padding-bottom: var(--bundle-builder-padding-bottom-mobile, var(--bundle-builder-padding-bottom, 40px));
+    }
+
+    .bundle-builder__container > .bundle-product-list {
+      flex-basis: 100%;
+      margin-block-end: -60lvh;
+    }
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "Bundle builder",
+  "class": "section-bundle-builder",
+  "enabled_on": { "templates": ["index"] },
+  "max_blocks": 3,
+  "blocks": [
+    { "type": "header" },
+    { "type": "_bundle-product-list" },
+    { "type": "_bundle-summary" }
+  ],
+  "settings": [
+    {
+      "type": "select",
+      "id": "section_width",
+      "label": "Section width",
+      "options": [
+        { "value": "page_width", "label": "Page width" },
+        { "value": "full_width", "label": "Full width" }
+      ],
+      "default": "page_width"
+    },
+    { "type": "color_scheme", "id": "color_scheme", "label": "Color scheme", "default": "scheme-1" },
+    { "type": "header", "content": "Padding" },
+    { "type": "range", "id": "padding_top", "label": "Top padding", "min": 0, "max": 100, "step": 1, "unit": "px", "default": 40 },
+    { "type": "range", "id": "padding_bottom", "label": "Bottom padding", "min": 0, "max": 100, "step": 1, "unit": "px", "default": 40 },
+    { "type": "checkbox", "id": "customize_mobile_padding", "label": "Custom for mobile", "default": false },
+    { "type": "range", "id": "padding_top_mobile", "label": "Top padding (mobile)", "min": 0, "max": 100, "step": 1, "unit": "px", "default": 24, "visible_if": "{{ section.settings.customize_mobile_padding }}" },
+    { "type": "range", "id": "padding_bottom_mobile", "label": "Bottom padding (mobile)", "min": 0, "max": 100, "step": 1, "unit": "px", "default": 24, "visible_if": "{{ section.settings.customize_mobile_padding }}" }
+  ],
+  "presets": [
+    {
+      "name": "Bundle builder",
+      "category": "t:labels.products",
+      "blocks": [
+        {
+          "type": "header",
+          "id": "header",
+          "static": true,
+          "blocks": [
+            { "type": "heading", "settings": { "text": "<p>Build your bundle</p>", "heading_size": "lg", "html_tag": "h2" } },
+            { "type": "text", "settings": { "text": "<p>Choose your favorites and unlock a bundle reward.</p>" } }
+          ]
+        },
+        { "type": "_bundle-product-list", "id": "products", "static": true },
+        { "type": "_bundle-summary", "id": "summary", "static": true }
+      ]
+    }
+  ]
+}
+{% endschema %}

@@ -10,6 +10,10 @@
   @param {string} [media_gallery_id] - Id of the related product media gallery
   @param {string} [form_id] - Id of the product form that receives the chosen variant
   @param {string} [block_id] - Optional block identifier used to keep duplicate pickers addressable
+  @param {string} [type_override] - Optional local presentation override: button or dropdown
+  @param {boolean} [sync_external_variants] - Whether matching picker changes elsewhere in the section update this picker
+  @param {boolean} [update_url_on_change] - Whether this picker writes its selected variant to the page URL
+  @param {boolean} [ignore_url_variant] - Whether a page URL variant is ignored when initializing this picker
   @param {boolean} [show_option_names] - Whether option legends remain visible
   @param {string} [color_option_display] - Block setting: text or color when Shopify supplies color swatches
   @param {string} [size_chart_option_name] - Product option name that should expose the size guide
@@ -38,9 +42,25 @@
     assign swatch_selected_style = 'border'
   endif
 
-  assign picker_type = 'dropdown'
-  if settings.variant_picker_style == 'button' or settings.variant_picker_style == 'buttons'
-    assign picker_type = 'button'
+  assign picker_type = type_override
+  unless picker_type == 'button' or picker_type == 'dropdown'
+    assign picker_type = 'dropdown'
+    if settings.variant_picker_style == 'button' or settings.variant_picker_style == 'buttons'
+      assign picker_type = 'button'
+    endif
+  endunless
+
+  assign picker_sync_external_variants = true
+  if sync_external_variants == false
+    assign picker_sync_external_variants = false
+  endif
+  assign picker_update_url_on_change = true
+  if update_url_on_change == false
+    assign picker_update_url_on_change = false
+  endif
+  assign picker_ignore_url_variant = false
+  if ignore_url_variant == true
+    assign picker_ignore_url_variant = true
   endif
 
   assign picker_scope = section_id | default: product.id
@@ -108,6 +128,9 @@
   class="variant-picker variant-picker--{{ picker_type }}"
   data-product-variant-picker
   data-section-id="{{ picker_scope }}"
+  data-sync-external-variants="{{ picker_sync_external_variants }}"
+  data-update-url-on-change="{{ picker_update_url_on_change }}"
+  data-ignore-url-variant="{{ picker_ignore_url_variant }}"
   data-product-form-id="{{ product_form_id }}"
   data-media-gallery-id="{{ gallery_id }}"
   data-only-selected-media="{{ only_selected_media }}"

@@ -6,6 +6,8 @@
   merchant never loses a useful variant link while migrating product data.
 
   @param {product} product - Product whose option values should be rendered
+  @param {number} [image_width] - Product card image width
+  @param {number} [image_height] - Product card fixed image height
 
   @example
   {% render 'product-card-swatches', product: product %}
@@ -51,6 +53,7 @@
       {% liquid
         assign swatch_variant = option_value.variant
         assign swatch_selected = option_value.selected
+        assign swatch_image = swatch_variant.featured_image | default: product.featured_image
         assign swatch_url = option_value.product_url | default: product.url
         if option_value.product_url == blank and swatch_variant != blank
           assign swatch_url = product.url | append: '?variant=' | append: swatch_variant.id
@@ -65,6 +68,9 @@
           data-swatch-selected
         {% endif %}
         data-product-card-swatch
+        {% if option_value.product_url == blank and swatch_variant != blank and swatch_image != blank %}
+          data-product-card-variant-id="{{ swatch_variant.id }}"
+        {% endif %}
       >
         {% render 'swatch',
           value: option_value.name,
@@ -74,6 +80,18 @@
           class: 'product-card__swatch',
           decorative: true
         %}
+        {% if option_value.product_url == blank and swatch_variant != blank and swatch_image != blank %}
+          <template data-product-card-swatch-image>
+            {% render 'image',
+              image: swatch_image,
+              class: 'product-card__image',
+              width: image_width,
+              height: image_height,
+              crop: 'center',
+              alt: product.title
+            %}
+          </template>
+        {% endif %}
       </a>
     {% endfor %}
   </div>

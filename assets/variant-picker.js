@@ -24,7 +24,9 @@ class VariantPicker extends HTMLElement {
     this.addEventListener('click', this.handleClick, eventOptions);
     this.addEventListener('keydown', this.handleKeydown, eventOptions);
     window.addEventListener('popstate', this.handlePopState, eventOptions);
-    this.sectionRoot?.addEventListener('variant:change', this.handleExternalVariantChange, eventOptions);
+    if (this.dataset.syncExternalVariants !== 'false') {
+      this.sectionRoot?.addEventListener('variant:change', this.handleExternalVariantChange, eventOptions);
+    }
 
     this.applyUrlVariant();
     this.sync({ source: 'initial' });
@@ -440,6 +442,7 @@ class VariantPicker extends HTMLElement {
 
     const url = new URL(window.location.href);
     const requestedVariantId = url.searchParams.get('variant');
+    if (requestedVariantId && this.dataset.ignoreUrlVariant === 'true') return;
     const targetVariant = requestedVariantId
       ? this.findVariantById(requestedVariantId)
       : this.findVariantById(this.initialVariantId);
@@ -503,7 +506,7 @@ class VariantPicker extends HTMLElement {
       return;
     }
 
-    this.sync({ updateUrl: true, source: 'change' });
+    this.sync({ updateUrl: this.dataset.updateUrlOnChange !== 'false', source: 'change' });
   }
 
   handleClick(event) {
@@ -533,6 +536,7 @@ class VariantPicker extends HTMLElement {
 
   handlePopState() {
     if (this.sectionRoot?.hasAttribute('data-featured-product')) return;
+    if (this.dataset.ignoreUrlVariant === 'true') return;
     if (window.Shopify?.designMode) return;
 
     const url = new URL(window.location.href);
