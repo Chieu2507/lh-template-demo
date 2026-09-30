@@ -4,7 +4,8 @@
   This block owns the product and hotspot settings. The shared product-card
   snippet keeps card presentation aligned with collection and recommendation
   surfaces; the hidden hotspot source is moved to the section image by the
-  parent Shop the look controller.
+  parent Shop the look controller. Unassigned or unavailable products retain
+  their placeholder card on the storefront as well as in the Theme Editor.
 
   @example
   {% content_for 'block', type: 'shop-the-look-product', id: 'product-1' %}
@@ -28,7 +29,6 @@
   endunless
 %}
 
-{% if shop_the_look_has_product or request.design_mode %}
   <div
     class="shop-the-look-product swiper-slide"
     {% if shop_the_look_has_product %}data-shop-the-look-product="{{ shop_the_look_product_id }}"{% else %}data-shop-the-look-product{% endif %}
@@ -74,7 +74,6 @@
       {% endif %}
     </div>
   </div>
-{% endif %}
 
 {% stylesheet %}
   .shop-the-look-product {
