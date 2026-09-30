@@ -132,7 +132,7 @@
 </div>
 
 {% if collection_tabs_layout_type == 'carousel' %}
-  <script type="module" src="{{ 'product-collection-carousel.js' | asset_url }}"></script>
+  <script data-theme-module="{{ 'product-collection-carousel.js' | asset_url }}"></script>
 {% endif %}
 
 {% stylesheet %}

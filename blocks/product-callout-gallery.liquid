@@ -165,7 +165,7 @@
 {% assign gallery_navigation = gallery_navigation | strip %}
 
 {% if gallery_layout == 'carousel' %}
-  <script type="module" src="{{ 'carousel-block.js' | asset_url }}"></script>
+  <script data-theme-module="{{ 'carousel-block.js' | asset_url }}"></script>
 {% endif %}
 
 <div

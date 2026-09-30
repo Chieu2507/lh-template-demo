@@ -207,7 +207,7 @@
 {% assign product_list_navigation_markup = product_list_navigation_markup | strip %}
 
 {% if product_list_layout == 'carousel' %}
-  <script type="module" src="{{ 'product-collection-carousel.js' | asset_url }}"></script>
+  <script data-theme-module="{{ 'product-collection-carousel.js' | asset_url }}"></script>
 {% endif %}
 
 <div

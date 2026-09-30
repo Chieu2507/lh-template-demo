@@ -193,7 +193,7 @@
 {% assign collection_list_navigation = collection_list_navigation | strip %}
 
 {% if collection_list_layout == 'carousel' %}
-  <script type="module" src="{{ 'product-collection-carousel.js' | asset_url }}"></script>
+  <script data-theme-module="{{ 'product-collection-carousel.js' | asset_url }}"></script>
 {% endif %}
 
 <div

@@ -170,7 +170,7 @@
 {% assign shop_the_look_products_pagination = shop_the_look_products_pagination | strip %}
 
 {% if shop_the_look_products_layout == 'carousel' %}
-  <script type="module" src="{{ 'product-collection-carousel.js' | asset_url }}"></script>
+  <script data-theme-module="{{ 'product-collection-carousel.js' | asset_url }}"></script>
 {% endif %}
 
 {% capture shop_the_look_products_content %}{% content_for 'blocks' %}{% endcapture %}

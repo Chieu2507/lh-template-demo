@@ -185,7 +185,7 @@
     <link rel="stylesheet" href="{{ 'swiper-12.2.0-effect-fade.min.css' | asset_url }}" media="print" onload="this.media='all'">
     <noscript>{{ 'swiper-12.2.0-effect-fade.min.css' | asset_url | stylesheet_tag }}</noscript>
   {% endif %}
-  <script type="module" src="{{ 'carousel-block.js' | asset_url }}"></script>
+  <script data-theme-module="{{ 'carousel-block.js' | asset_url }}"></script>
 
   <div
     class="hotspot-full-width-carousel hotspot-full-width-carousel--width-{{ hotspot_carousel_width }} hotspot-full-width-carousel--desktop-{{ hotspot_carousel_desktop_height }} hotspot-full-width-carousel--mobile-{{ hotspot_carousel_mobile_height }} section-color-scope color-scheme {{ hotspot_carousel_scheme }}"
