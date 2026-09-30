@@ -415,7 +415,7 @@
     min-width: 0;
   }
 
-  .email-signup-block .form__control--input,
+  .email-signup-block .form__control--input:not([type='checkbox']):not([type='radio']):not([type='hidden']),
   .email-signup-block--layout-input_with_button .email-signup-block__input-wrap {
     border-radius: 0 !important;
     background-color: var(--email-signup-background-color, var(--input-background-color));
