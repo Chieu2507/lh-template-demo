@@ -384,6 +384,7 @@
     updateHeaderCount(cart);
     updateShippingProgress(cart);
     await loadRecommendations(cart);
+    if (state.drawer !== drawer || state.cartRevision !== revision) return;
     document.dispatchEvent(new CustomEvent('cart:updated', { detail: { cart, source: 'cart-drawer' } }));
   };
 
@@ -455,6 +456,7 @@
       });
       if (!response.ok) throw new Error('Recommendations unavailable');
       const data = await response.json();
+      if (state.drawer !== drawer || state.cart !== cart) return;
       const products = (data.products || []).filter((product) => !cart.items.some((item) => item.product_id === product.id));
       if (!products.length) {
         hideRecommendations();
@@ -463,7 +465,7 @@
       renderRecommendations(products.slice(0, limit), cart.currency || 'USD');
       state.recommendationProductId = productId;
     } catch (error) {
-      hideRecommendations();
+      if (state.drawer === drawer && state.cart === cart) hideRecommendations();
     }
   };
 
@@ -479,7 +481,9 @@
   };
 
   const syncMutation = async (payload) => {
+    const drawer = state.drawer;
     const cart = payload?.items && Number.isFinite(payload?.item_count) ? payload : await fetchCart();
+    if (state.drawer !== drawer) return;
     await updateCartUI(cart);
   };
 
@@ -559,6 +563,7 @@
     });
     setLoading(true);
     setError();
+    state.cartRevision += 1;
     state.request = fetch(endpoint(state.drawer.dataset.cartAddUrl), {
       method: 'POST',
       headers: { Accept: 'application/json' },
@@ -568,7 +573,9 @@
     try {
       const response = await state.request;
       if (!response.ok) throw new Error((await parseError(response)) || fallbackError);
-      await syncMutation(await response.json());
+      const payload = await response.json();
+      if (state.drawer !== drawer) return;
+      await syncMutation(payload);
       if (state.drawer !== drawer) return;
       // Overlay owners close only after the cart DOM is ready and provide an
       // external opener so closing the drawer never focuses a hidden modal.
