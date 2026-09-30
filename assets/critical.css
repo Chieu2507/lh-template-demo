@@ -84,31 +84,50 @@ svg {
   backdrop-filter: blur(var(--backdrop-blur, 0px));
 }
 
-/* Shared treatment for every Shopify SVG media fallback. The first layer
- * establishes a neutral canvas; the second uses the active scheme's text RGB
- * so a white scheme still receives a subtle gray surface. */
+/* Shared block sizing: blocks provide normalized CSS values, while this
+ * utility owns the responsive width and max-width rules. */
+.size-style {
+  --size-style-width: fit-content;
+  --size-style-max-width: 100%;
+  width: var(--size-style-width);
+  max-width: var(--size-style-max-width);
+}
+
+.size-style--contain {
+  max-width: min(var(--size-style-max-width), 100%);
+}
+
+@media (max-width: 767.98px) {
+  .size-style {
+    --size-style-width-mobile: var(--size-style-width);
+    --size-style-max-width-mobile: var(--size-style-max-width);
+    width: var(--size-style-width-mobile);
+    max-width: var(--size-style-max-width-mobile);
+  }
+
+  .size-style--contain {
+    max-width: min(var(--size-style-max-width-mobile), 100%);
+  }
+}
+
+@media (max-width: 991.98px) {
+  .size-style--tablet {
+    --size-style-width-mobile: var(--size-style-width);
+    --size-style-max-width-mobile: var(--size-style-max-width);
+    width: var(--size-style-width-mobile);
+    max-width: var(--size-style-max-width-mobile);
+  }
+}
+
+/* Shared treatment for Shopify media fallbacks. The placeholder derives its
+ * colors from the inherited scheme so nested media stays in sync. */
 .placeholder-image {
+  --placeholder-background-color: color-mix(in srgb, var(--background-color) 92%, var(--body-color));
+  --placeholder-fill-color: color-mix(in srgb, var(--body-color) 30%, transparent);
   position: relative;
   isolation: isolate;
   overflow: hidden;
-  background-color: rgb(var(--color-foreground-rgb) / 8%);
-}
-
-.placeholder-image::before,
-.placeholder-image::after {
-  position: absolute;
-  inset: 0;
-  content: '';
-  pointer-events: none;
-}
-
-.placeholder-image::before {
-  background-color: #fff6;
-}
-
-.placeholder-image::after {
-  z-index: 1;
-  background-color: rgb(var(--color-foreground-rgb) / 8%);
+  background-color: var(--placeholder-background-color);
 }
 
 .placeholder-image > svg {
@@ -117,7 +136,8 @@ svg {
   display: flex;
   width: 100%;
   height: 100%;
-  fill: rgb(var(--color-foreground-rgb) / 30%);
+  color: var(--placeholder-fill-color);
+  fill: var(--placeholder-fill-color);
 }
 
 .icon {
@@ -215,46 +235,6 @@ input[type='checkbox'],
 input[type='radio'],
 .form__control--radio {
   border-radius: 50%;
-}
-
-.form__control--radio:is([type='radio']) {
-  --input-toggle-border: rgb(var(--color-foreground-rgb) / 70%);
-  display: inline-block;
-  position: relative;
-  width: var(--input-toggle-size, 1.8rem);
-  height: var(--input-toggle-size, 1.8rem);
-  min-height: var(--input-toggle-size, 1.8rem);
-  margin: 0;
-  padding: 0;
-  appearance: none;
-  border: 1px solid var(--input-toggle-border, var(--color-border));
-  background: var(--input-toggle-background, var(--color-background));
-  cursor: pointer;
-  transition:
-    background-color var(--motion-duration-slow) var(--motion-ease-standard),
-    border-color var(--motion-duration-slow) var(--motion-ease-standard);
-}
-
-@media (hover: hover) and (pointer: fine) {
-  .form__control--radio:is([type='radio']):hover:not(:disabled) {
-    --input-toggle-border: var(--color-heading, var(--heading-color));
-  }
-}
-
-.form__control--radio:is([type='radio']):checked {
-  --input-toggle-border: var(--color-heading, var(--heading-color));
-}
-
-.form__control--radio:is([type='radio']):checked::after {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 0.8rem;
-  height: 0.8rem;
-  border-radius: 50%;
-  background: var(--input-toggle-dot-color, var(--color-heading, var(--heading-color)));
-  content: '';
-  transform: translate(-50%, -50%);
 }
 
 button:focus-visible,
@@ -358,6 +338,70 @@ dialog::backdrop {
   background-color: var(--overlay-backdrop-color);
   -webkit-backdrop-filter: blur(var(--overlay-backdrop-blur));
   backdrop-filter: blur(var(--overlay-backdrop-blur));
+}
+
+/* Shared native overlay motion. Layout-specific dialogs can opt into the
+   same contract while keeping their popup, drawer, or bottom-sheet geometry. */
+@keyframes overlay-dialog-backdrop-enter {
+  from { background-color: transparent; }
+  to { background-color: var(--overlay-backdrop-color); }
+}
+
+@keyframes overlay-dialog-popup-enter {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes overlay-dialog-drawer-enter {
+  from {
+    opacity: 0;
+    transform: translateX(100%);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes overlay-dialog-bottom-sheet-enter {
+  from {
+    opacity: 0;
+    transform: translateY(100%);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+dialog[data-overlay-motion='popup'][open] {
+  animation: overlay-dialog-popup-enter var(--motion-duration-standard) var(--motion-ease-standard) both;
+}
+
+dialog[data-overlay-motion='popup'][open]::backdrop {
+  animation: overlay-dialog-backdrop-enter var(--motion-duration-standard) var(--motion-ease-standard) both;
+}
+
+@media (min-width: 768px) {
+  dialog[data-overlay-motion='popup'][data-desktop-layout='drawer'][open] {
+    animation-name: overlay-dialog-drawer-enter;
+  }
+}
+
+@media (max-width: 767.98px) {
+  dialog[data-overlay-motion='popup'][data-mobile-layout='bottom_sheet'][open] {
+    animation-name: overlay-dialog-bottom-sheet-enter;
+  }
+
+  dialog[data-overlay-motion='popup'][data-mobile-layout='drawer'][open] {
+    animation-name: overlay-dialog-drawer-enter;
+  }
 }
 
 .overlay__title,
@@ -1180,8 +1224,7 @@ legend {
   min-width: 0;
 }
 
-.product-collection-grid--carousel,
-.product-collection-grid--swipe-mobile {
+.product-collection-grid--carousel {
   grid-auto-flow: column;
   grid-auto-columns: var(--product-collection-grid-item-width-desktop);
   grid-template-columns: none;
@@ -1204,6 +1247,13 @@ legend {
 .product-collection-grid.swiper > .swiper-wrapper {
   display: flex;
   gap: 0;
+}
+
+.product-collection-grid--mobile-carousel:not(.swiper-initialized) > .swiper-wrapper {
+  display: grid;
+  grid-template-columns: repeat(var(--product-collection-grid-columns-desktop, 2), minmax(0, 1fr));
+  column-gap: var(--product-collection-grid-gap-horizontal, 4px);
+  row-gap: var(--product-collection-grid-gap-vertical, 4px);
 }
 
 .product-collection-grid.swiper > .swiper-wrapper > .product-collection-grid__item {
@@ -1230,12 +1280,26 @@ legend {
     row-gap: var(--product-collection-grid-gap-vertical-mobile, 4px);
   }
 
+  .product-collection-grid--mobile-carousel:not(.swiper-initialized) > .swiper-wrapper {
+    grid-template-columns: repeat(var(--product-collection-grid-columns-mobile, 1), minmax(0, 1fr));
+    column-gap: var(--product-collection-grid-gap-horizontal-mobile, 4px);
+    row-gap: var(--product-collection-grid-gap-vertical-mobile, 4px);
+  }
+
   .product-collection-grid--carousel,
   .product-collection-grid--swipe-mobile {
     grid-template-columns: none;
     grid-auto-columns: var(--product-collection-grid-item-width-mobile);
     column-gap: var(--product-collection-grid-gap-horizontal-mobile, 4px);
     row-gap: var(--product-collection-grid-gap-vertical-mobile, 4px);
+  }
+
+  .product-collection-grid--swipe-mobile {
+    grid-auto-flow: column;
+    overflow-x: auto;
+    overscroll-behavior-inline: contain;
+    scroll-snap-type: inline mandatory;
+    scrollbar-width: thin;
   }
 }
 
@@ -1327,7 +1391,7 @@ legend {
 .product-card__placeholder > svg {
   width: 100%;
   height: 100%;
-  fill: var(--body-color);
+  fill: var(--placeholder-fill-color);
 }
 
 .product-card--placeholder .product-card__title {
@@ -1418,19 +1482,23 @@ legend {
 }
 
 @media (min-width: 768px) and (hover: hover) and (pointer: fine) {
-  .product-card__media:is(:hover, :focus-within) .product-card__image > img {
+  .product-card:hover .product-card__image > img,
+  .product-card:focus-within .product-card__image > img {
     transform: scale(var(--product-card-image-zoom, var(--motion-image-zoom)));
   }
 
-  .product-card__media:is(:hover, :focus-within) .product-card__image-link--has-secondary .product-card__image {
+  .product-card:hover .product-card__image-link--has-secondary .product-card__image,
+  .product-card:focus-within .product-card__image-link--has-secondary .product-card__image {
     opacity: 0;
   }
 
-  .product-card__media:is(:hover, :focus-within) .product-card__secondary-image {
+  .product-card:hover .product-card__secondary-image,
+  .product-card:focus-within .product-card__secondary-image {
     opacity: var(--pcard-show-secondary-image);
   }
 
-  .product-card__media:is(:hover, :focus-within) .product-card__secondary-image > img {
+  .product-card:hover .product-card__secondary-image > img,
+  .product-card:focus-within .product-card__secondary-image > img {
     transform: scale(var(--product-card-image-zoom, var(--motion-image-zoom)));
   }
 }
@@ -2220,6 +2288,10 @@ legend {
   }
 
   .product-card--quick-add-mobile .product-card__quick-add .product-card__quick-add-button {
+    --button-border-width: 1px;
+    --button-border: var(--color-border);
+    --button-background: var(--color-background);
+    --button-foreground: var(--color-foreground);
     --button-radius: 0;
     --button-icon-size: 18px;
     width: 36px;

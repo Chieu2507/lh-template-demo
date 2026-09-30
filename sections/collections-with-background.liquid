@@ -56,7 +56,7 @@
         {{ section.settings.background_video | video_tag: autoplay: true, loop: true, muted: true, controls: false, image_size: '2400x' }}
       {% else %}
         <div class="collections-with-background__background-placeholder placeholder-image">
-          {{ 'collection-1' | placeholder_svg_tag }}
+          {{ 'image' | placeholder_svg_tag }}
         </div>
       {% endif %}
     </div>
@@ -76,7 +76,7 @@
   .collections-with-background { position: relative; isolation: isolate; overflow: hidden; --section-padding-top: var(--collections-background-padding-top); --section-padding-bottom: var(--collections-background-padding-bottom); background: var(--background-color); }
   .collections-with-background__background { position: absolute; z-index: -1; inset: 0; }
   .collections-with-background__background :is(img, video, .collections-with-background__background-placeholder) { display: block; width: 100%; height: 100%; object-fit: cover; }
-  .collections-with-background__background-placeholder svg { width: 100%; height: 100%; fill: rgb(var(--color-foreground-rgb) / 30%); }
+  .collections-with-background__background-placeholder svg { width: 100%; height: 100%; fill: var(--placeholder-fill-color); }
   .collections-with-background__frame { --collections-background-page-margin: var(--page-margin-desktop); position: relative; width: calc(100% - (var(--collections-background-page-margin) * 2)); min-height: 32rem; margin-inline: auto; overflow: hidden; background: var(--background-color); }
   .collections-with-background__frame--page_width { max-width: var(--page-width); }
   .collections-with-background__frame--full_width { max-width: none; }
@@ -100,7 +100,7 @@
   .collection-background-item.is-active .collection-background-item__panel { z-index: 1; visibility: visible; opacity: 1; transition: opacity 700ms cubic-bezier(.22, .61, .36, 1), visibility 0s; }
   .collection-background-item__media { position: absolute; z-index: 0; inset: 0; display: block; width: 100%; height: 100%; }
   .collection-background-item__media .media__inner { z-index: 0; }
-  .collection-background-item__media .placeholder-image > svg { opacity: 1; fill: rgb(var(--color-foreground-rgb) / 30%); }
+  .collection-background-item__media .placeholder-image > svg { opacity: 1; fill: var(--placeholder-fill-color); }
   .collection-background-item__overlay { z-index: 1; }
   .collection-background-item__media :is(.media__inner > img, .media__inner > video, .media__inner > svg, .media__inner > picture > img) { object-fit: cover; transform: scale(1.05); will-change: transform; transition: transform 1400ms cubic-bezier(.22, .61, .36, 1) 80ms; }
   .collection-background-item.is-active .collection-background-item__media :is(.media__inner > img, .media__inner > video, .media__inner > svg, .media__inner > picture > img) { transform: scale(1); }

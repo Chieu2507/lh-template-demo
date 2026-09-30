@@ -113,7 +113,7 @@
   endif
 
   assign gallery_navigation_label = 'accessibility.hotspot_carousel' | t
-  assign gallery_carousel_id = 'HotspotGalleryCarousel-' | append: block.id
+  assign gallery_carousel_id = 'HotspotGalleryCarousel-' | append: section.id | append: '-' | append: block.id
   assign gallery_pagination_class = 'swiper-pagination--below product-callout-gallery__pagination product-callout-gallery__pagination--' | append: gallery_pagination_type
 %}
 

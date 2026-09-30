@@ -897,6 +897,8 @@
     --color-accent: var(--accent-color);
     --color-border: var(--border-color);
     --color-surface: color-mix(in srgb, var(--background-color) 94%, var(--body-color));
+    --placeholder-background-color: color-mix(in srgb, var(--background-color) 92%, var(--body-color));
+    --placeholder-fill-color: color-mix(in srgb, var(--body-color) 30%, transparent);
 
     --font-body-xs: {{ body_xs_size }}px;
     --font-body-sm: {{ body_sm_size }}px;
@@ -1247,9 +1249,11 @@
       --accent-color: {{ scheme_accent }};
       --input-focus-color: var(--accent-color);
       --input-focus: var(--input-focus-color);
+      --input-text-color: var(--body-color);
       --price-compare-color: var(--body-color);
       --price-unit-color: var(--body-color);
       --border-color: {{ scheme_border }};
+      --input-border-color: var(--border-color);
       --shadow-color: {{ scheme_shadow }};
       --sale-price-color: {{ scheme_sale_price }};
       --price-sale-color: var(--sale-price-color);
@@ -1278,6 +1282,8 @@
       --color-accent: var(--accent-color);
       --color-border: var(--border-color);
       --color-surface: color-mix(in srgb, var(--background-color) 94%, var(--body-color));
+      --placeholder-background-color: color-mix(in srgb, var(--background-color) 92%, var(--body-color));
+      --placeholder-fill-color: color-mix(in srgb, var(--body-color) 30%, transparent);
       --button-background: var(--button-{{ button_default_variant }}-background);
       --button-foreground: var(--button-{{ button_default_variant }}-text);
       --button-border: var(--button-{{ button_default_variant }}-border);

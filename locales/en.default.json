@@ -73,6 +73,15 @@
     "share_error": "Unable to share.",
     "image_card_link": "Open image card"
   },
+  "comparison_table": {
+    "features_heading": "Features",
+    "table_label": "Product comparison",
+    "scroll_label": "Scroll horizontally to compare products",
+    "more_information": "More information about {{ feature }}",
+    "yes": "Yes",
+    "no": "No",
+    "not_provided": "Not provided"
+  },
   "blog": {
     "article_comments": "Comments",
     "article_metadata_html": "{{ date }} by {{ author }}",
@@ -325,6 +334,14 @@
     "no_results": "No results found",
     "no_results_html": "No results found for {{ terms }}",
     "results_for_html": "{{ count }} results found for {{ terms }}"
+  },
+  "timeline": {
+    "carousel_label": "Timeline milestone slides",
+    "navigation_label": "Timeline milestones",
+    "show_milestone": "Show milestone {{ year }}",
+    "previous": "Previous timeline item",
+    "next": "Next timeline item",
+    "add_milestone": "Add a slide to get started"
   },
   "social": {
     "facebook": "Facebook",

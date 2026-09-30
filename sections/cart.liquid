@@ -16,7 +16,7 @@
         {% for item in cart.items %}
           <tr>
             <td>
-              {% render 'image', image: item.image, url: item.url %}
+              {% render 'image', image: item.image, url: item.url, placeholder: 'product-1' %}
             </td>
             <td>
               <p class="cart-item__title card-title-text">{{ item.product.title | escape }}</p>

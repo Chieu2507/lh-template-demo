@@ -1,16 +1,7 @@
 /* One shell for popup, drawer and bottom sheet. Content never owns geometry. */
-:where(.component-overlay, .main-collection__filter-dialog) {
-  --overlay-drawer-inset: var(--overlay-drawer-padding-desktop);
-}
-
-@media (min-width: 768px) {
-  .drawer--unpadded-desktop {
-    --overlay-drawer-inset: 0px;
-  }
-}
-
 .component-overlay {
   --overlay-inset: var(--overlay-drawer-content-padding-desktop, 1.5rem);
+  --overlay-drawer-inset: var(--overlay-drawer-padding-desktop, 0px);
   --overlay-rest-transform: scale(.95);
   --overlay-motion-duration: var(--motion-duration-standard);
   --overlay-motion-ease: var(--motion-ease-standard);
@@ -36,7 +27,6 @@
   box-shadow: none;
 }
 .component-overlay[hidden] { display: none; }
-.component-overlay[data-state='closing'] { pointer-events: none; }
 .component-overlay__backdrop {
   position: absolute;
   z-index: 0;
@@ -77,13 +67,12 @@
     transform var(--overlay-motion-duration) var(--overlay-motion-ease),
     opacity var(--overlay-motion-duration) var(--overlay-motion-ease);
 }
-
-.component-overlay[data-state='open'] > .component-overlay__panel {
+.component-overlay[data-state='open'] .component-overlay__panel {
   opacity: 1;
   transform: none;
   transition-delay: var(--overlay-enter-delay);
 }
-.component-overlay[data-state='closing'] > .component-overlay__panel {
+.component-overlay[data-state='closing'] .component-overlay__panel {
   opacity: 0;
   transform: var(--overlay-rest-transform);
   transition-delay: 0ms;
@@ -114,14 +103,14 @@
     backdrop-filter: blur(0);
   }
 }
-.component-overlay:is([data-state='opening'], [data-state='open']) > .component-overlay__backdrop {
+.component-overlay:is([data-state='opening'], [data-state='open']) .component-overlay__backdrop {
   background-color: var(--overlay-backdrop-color);
   opacity: 1;
   -webkit-backdrop-filter: blur(var(--overlay-backdrop-blur));
   backdrop-filter: blur(var(--overlay-backdrop-blur));
   animation: component-overlay-backdrop-enter var(--overlay-backdrop-duration) var(--overlay-backdrop-ease) both;
 }
-.component-overlay[data-state='closing'] > .component-overlay__backdrop {
+.component-overlay[data-state='closing'] .component-overlay__backdrop {
   animation: component-overlay-backdrop-exit var(--overlay-backdrop-duration) var(--overlay-backdrop-ease) both;
 }
 custom-cursor[data-component-overlay-cursor] {
@@ -167,12 +156,12 @@ custom-cursor[data-component-overlay-cursor] svg {
 .component-overlay__header--untitled + .component-overlay__body { padding-top: 56px; }
 .component-sheet { border-radius: var(--bottom-sheet-radius) var(--bottom-sheet-radius) 0 0; }
 @media (min-width: 768px) {
-  .component-overlay:where([data-desktop-layout='popup']):not([hidden]) {
+  .component-overlay[data-desktop-layout='popup']:not([hidden]) {
     display: grid;
     place-items: center;
   }
 
-  .component-overlay:where([data-desktop-layout='drawer']) > .component-overlay__panel {
+  .component-overlay[data-desktop-layout='drawer'] .component-overlay__panel {
     --overlay-rest-transform: translateX(100%);
     position: absolute;
     inset: var(--overlay-drawer-inset) var(--overlay-drawer-inset) var(--overlay-drawer-inset) auto;
@@ -189,424 +178,33 @@ custom-cursor[data-component-overlay-cursor] svg {
   .component-sheet > .component-sheet__header { min-height: 74px; padding-top: 24px; padding-bottom: 16px; }
   .component-overlay {
     --overlay-inset: var(--overlay-drawer-content-padding-mobile, 1rem);
-    --overlay-drawer-inset: var(--overlay-drawer-padding-mobile);
+    --overlay-drawer-inset: var(--overlay-drawer-padding-mobile, 0px);
   }
-  .component-overlay:where([data-mobile-layout='bottom_sheet']) > .component-overlay__panel { --overlay-rest-transform: translateY(100%); position: absolute; inset: auto 0 0; width: 100%; max-height: calc(90dvh - env(safe-area-inset-top, 0px)); margin: 0; border-radius: var(--bottom-sheet-radius) var(--bottom-sheet-radius) 0 0; }
-  .component-overlay:where([data-mobile-layout='bottom_sheet']):is([data-state='opening'], [data-state='open']) > .component-overlay__backdrop { opacity: calc(1 - (var(--sheet-drag-progress, 0) * 0.72)); }
-  .component-overlay:where([data-mobile-layout='drawer']) > .component-overlay__panel {
+  .component-overlay[data-mobile-layout='bottom_sheet'] .component-overlay__panel { --overlay-rest-transform: translateY(100%); position: absolute; inset: auto 0 0; width: 100%; max-height: calc(90dvh - env(safe-area-inset-top, 0px)); margin: 0; border-radius: var(--bottom-sheet-radius) var(--bottom-sheet-radius) 0 0; }
+  .component-overlay[data-mobile-layout='bottom_sheet']:is([data-state='opening'], [data-state='open']) .component-overlay__backdrop { opacity: calc(1 - (var(--sheet-drag-progress, 0) * 0.72)); }
+  .component-overlay[data-mobile-layout='drawer'] .component-overlay__panel {
     --overlay-rest-transform: translateX(100%);
     position: absolute;
     inset: var(--overlay-drawer-inset) var(--overlay-drawer-inset) var(--overlay-drawer-inset) auto;
+    width: calc(100vw - var(--overlay-drawer-inset));
     height: calc(100dvh - var(--overlay-drawer-inset) - var(--overlay-drawer-inset));
     max-height: calc(100dvh - var(--overlay-drawer-inset) - var(--overlay-drawer-inset));
     margin: 0;
     border-radius: var(--drawer-radius) 0 0 var(--drawer-radius);
   }
-  .component-overlay:where([data-mobile-layout='bottom_sheet']) > .component-overlay__panel,
+  .component-overlay[data-mobile-layout='bottom_sheet'] .component-overlay__panel,
   .component-sheet { touch-action: pan-y; }
-  .component-overlay:where([data-mobile-layout='bottom_sheet']) > .component-overlay__panel.is-sheet-dragging,
+  .component-overlay[data-mobile-layout='bottom_sheet'] .component-overlay__panel.is-sheet-dragging,
   .component-sheet.is-sheet-dragging { touch-action: none; user-select: none; }
-  .component-overlay:where([data-mobile-layout='bottom_sheet']) .component-overlay__header { padding-top: 24px; touch-action: none; user-select: none; cursor: grab; }
-  .component-overlay:where([data-mobile-layout='bottom_sheet']) .component-overlay__handle { display: block; }
-  .component-overlay:where([data-mobile-layout='bottom_sheet']) .component-overlay__header--untitled { height: 48px; min-height: 48px; padding: 0; }
-  .component-overlay:where([data-mobile-layout='bottom_sheet']) .component-overlay__header--untitled + .component-overlay__body { padding-top: 8px; }
+  .component-overlay[data-mobile-layout='bottom_sheet'] .component-overlay__header { padding-top: 24px; touch-action: none; user-select: none; cursor: grab; }
+  .component-overlay[data-mobile-layout='bottom_sheet'] .component-overlay__handle { display: block; }
+  .component-overlay[data-mobile-layout='bottom_sheet'] .component-overlay__header--untitled { height: 48px; min-height: 48px; padding: 0; }
+  .component-overlay[data-mobile-layout='bottom_sheet'] .component-overlay__header--untitled + .component-overlay__body { padding-top: 8px; }
   .component-overlay__body { padding-bottom: max(var(--overlay-inset), env(safe-area-inset-bottom, 0px)); }
 }
-/* Feature profiles change only the shared shell's tokens and geometry. */
-.component-overlay[data-quick-view-overlay] {
-  --overlay-motion-duration: 320ms;
-  --overlay-motion-ease: cubic-bezier(0.16, 1, 0.3, 1);
-  --overlay-exit-ease: cubic-bezier(0.4, 0, 1, 1);
-  --overlay-enter-delay: 24ms;
-  --overlay-backdrop-duration: 300ms;
-  --overlay-backdrop-ease: cubic-bezier(0.2, 0.8, 0.2, 1);
-}
-@media (min-width: 768px) {
-  .component-overlay[data-quick-view-overlay][data-desktop-layout='popup'] {
-    --overlay-rest-transform: scale(.9);
-    --overlay-motion-duration: 500ms;
-    --overlay-motion-ease: cubic-bezier(.7, 0, .2, 1);
-    --overlay-enter-delay: 0ms;
-    --overlay-backdrop-duration: 700ms;
-    --overlay-backdrop-ease: cubic-bezier(.7, 0, .2, 1);
-    --overlay-exit-duration: var(--overlay-backdrop-duration);
-  }
-
-  @keyframes quick-view-popup-in {
-    from { opacity: 0; transform: scale(.9); }
-    to { opacity: 1; transform: scale(1); }
-  }
-
-  @keyframes quick-view-popup-out {
-    from { opacity: 1; transform: scale(1); }
-    to { opacity: 0; transform: scale(.9); }
-  }
-
-  .component-overlay[data-quick-view-overlay][data-desktop-layout='popup']:is([data-state='opening'], [data-state='open']) > .component-overlay__panel {
-    animation: quick-view-popup-in var(--overlay-motion-duration) var(--overlay-motion-ease) forwards;
-  }
-
-  .component-overlay[data-quick-view-overlay][data-desktop-layout='popup'][data-state='closing'] > .component-overlay__panel {
-    animation: quick-view-popup-out var(--overlay-exit-duration) var(--overlay-motion-ease) forwards;
-  }
-
-  .component-overlay[data-quick-view-overlay][data-desktop-layout='popup']:has(.quick-view--media-left .product-media-gallery[data-desktop-layout='stacked']) > .component-overlay__panel {
-    height: min(900px, calc(100dvh - 32px));
-  }
-}
-
-/* Top panels (Search today) use the same shell without pretending to be drawers. */
-.component-overlay:where([data-desktop-layout='top_panel'], [data-mobile-layout='top_panel']) {
-  --overlay-rest-transform: translateY(-0.5rem);
-}
-@media (min-width: 768px) {
-  .component-overlay:where([data-desktop-layout='top_panel']) > .component-overlay__panel {
-    position: absolute;
-    inset: var(--overlay-top-offset, 0px) 0 auto;
-    width: 100%;
-    max-width: none;
-    max-height: calc(100dvh - var(--overlay-top-offset, 0px));
-    margin: 0;
-    overflow-y: auto;
-    border: 0;
-    border-radius: 0;
-    box-shadow: none;
-  }
-}
-@media (max-width: 767.98px) {
-  .component-overlay:where([data-mobile-layout='top_panel']) > .component-overlay__panel {
-    position: absolute;
-    inset: var(--overlay-top-offset, 0px) 0 auto;
-    width: 100%;
-    max-width: none;
-    max-height: calc(100dvh - var(--overlay-top-offset, 0px));
-    margin: 0;
-    overflow-y: auto;
-    border: 0;
-    border-radius: 0;
-    box-shadow: none;
-  }
-}
-
-/* Cart compatibility state and its nested commerce sheet remain cart-owned. */
-.cart-drawer {
-  visibility: hidden;
-  background: transparent;
-  color: var(--body-color);
-  pointer-events: none;
-  --cart-drawer-padding: var(--cart-drawer-padding-desktop, var(--overlay-drawer-content-padding-desktop, 1.5rem));
-}
-.cart-drawer:is(.is-open, .is-closing) {
-  visibility: visible;
-  transition-delay: 0s;
-}
-.cart-drawer.is-open { pointer-events: auto; }
-.cart-drawer.is-closing { pointer-events: none; }
-.cart-drawer__panel {
-  box-sizing: border-box;
-  overflow: hidden;
-  padding: 0;
-  pointer-events: auto;
-  z-index: 3;
-}
-@media (max-width: 767.98px) {
-  .cart-drawer { --cart-drawer-padding: var(--cart-drawer-padding-mobile, var(--overlay-drawer-content-padding-mobile, 1rem)); }
-}
-.cart-drawer__order-options-backdrop {
-  position: absolute;
-  z-index: 4;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  padding: 0;
-  border: 0;
-  background-color: transparent;
-  -webkit-backdrop-filter: blur(0);
-  backdrop-filter: blur(0);
-  pointer-events: none;
-  opacity: 1;
-  transition:
-    background-color var(--motion-duration-standard) var(--motion-ease-standard),
-    opacity var(--motion-duration-standard) var(--motion-ease-standard),
-    backdrop-filter var(--motion-duration-standard) var(--motion-ease-standard),
-    visibility 0s linear var(--motion-duration-standard);
-  visibility: hidden;
-}
-.cart-drawer__order-options-panel {
-  position: absolute;
-  z-index: 5;
-  inset: auto 0 0;
-  display: flex;
-  max-height: min(34rem, calc(100% - 4rem));
-  flex-direction: column;
-  overflow: auto;
-  padding-bottom: 1.8rem;
-  border-top: 1px solid var(--border-color);
-  background: var(--background-color);
-  box-shadow: 0 -12px 36px rgb(0 0 0 / 14%);
-  opacity: 0;
-  pointer-events: none;
-  transform: translateY(100%);
-  transition: transform var(--motion-duration-standard) var(--motion-ease-standard), opacity var(--motion-duration-standard) var(--motion-ease-standard), visibility 0s linear var(--motion-duration-standard);
-  visibility: hidden;
-}
-.cart-drawer.is-order-options-open .cart-drawer__order-options-backdrop {
-  background-color: var(--overlay-backdrop-color);
-  -webkit-backdrop-filter: blur(var(--overlay-backdrop-blur));
-  backdrop-filter: blur(var(--overlay-backdrop-blur));
-  pointer-events: auto;
-  transition-delay: 0s;
-  visibility: visible;
-}
-.cart-drawer.is-order-options-open .cart-drawer__order-options-panel { opacity: 1; pointer-events: auto; transform: translateY(0); transition-delay: 0s; visibility: visible; }
-@media (max-width: 767.98px) {
-  .cart-drawer__order-options-panel { max-height: min(78dvh, calc(100% - 2rem)); }
-}
-
-/* Collection keeps native dialog/facet lifecycle; only presentation is centralized here. */
-.main-collection__filter-dialog {
-  --main-collection-filter-inset: var(--overlay-drawer-content-padding-desktop, 1.5rem);
-  width: min(375px, 100vw);
-  max-width: none;
-  height: 100dvh;
-  max-height: none;
-  margin: 0 auto 0 0;
-  padding: 0;
-  overflow: visible;
-  border: 0;
-  border-radius: 0;
-  background: var(--color-background);
-  color: var(--color-text);
-}
-.no-js .main-collection__filter-dialog {
-  position: static;
-  display: block;
-  width: 100%;
-  height: auto;
-}
-.main-collection__filter-dialog::backdrop { background: color-mix(in srgb, var(--color-heading) 30%, transparent); backdrop-filter: blur(10px) saturate(.9); -webkit-backdrop-filter: blur(10px) saturate(.9); }
-html.modal-backdrop-cursor .main-collection__filter-dialog::backdrop { cursor: none !important; }
-.main-collection__filter-dialog[open]:not(.is-closing) {
-  animation: main-collection-filter-drawer-in 280ms cubic-bezier(.22, 1, .36, 1);
-}
-.main-collection__filter-dialog[open]:not(.is-closing)::backdrop {
-  animation: main-collection-filter-backdrop-in 240ms ease-out both;
-}
-.main-collection__filter-dialog.is-closing {
-  pointer-events: none;
-  animation: main-collection-filter-drawer-out 240ms cubic-bezier(.55, 0, 1, .45) both;
-}
-.main-collection__filter-dialog.is-closing::backdrop {
-  animation: main-collection-filter-backdrop-out 220ms ease-in both;
-}
-@keyframes main-collection-filter-drawer-in {
-  from { opacity: 0; transform: translateX(-28px); }
-  to { opacity: 1; transform: translateX(0); }
-}
-@keyframes main-collection-filter-drawer-out {
-  from { opacity: 1; transform: translateX(0); }
-  to { opacity: 0; transform: translateX(var(--main-collection-filter-closed-translate, -100%)); }
-}
-@keyframes main-collection-filter-backdrop-in {
-  from { opacity: 0; }
-  to { opacity: 1; }
-}
-@keyframes main-collection-filter-backdrop-out {
-  from { opacity: 1; }
-  to { opacity: 0; }
-}
-@media screen and (max-width: 767.98px) {
-  .main-collection__filter-dialog {
-    --main-collection-filter-inset: var(--overlay-drawer-content-padding-mobile, 1rem);
-    position: fixed;
-    inset: auto 0 0;
-    width: 100vw;
-    height: 85dvh;
-    max-height: 85dvh;
-    margin: 0;
-    overflow: visible;
-    border-radius: 14px 14px 0 0;
-    background: transparent;
-    box-shadow: 0 -14px 42px rgb(0 0 0 / 12%);
-    transform: translateY(100%);
-  }
-
-  .main-collection__filter-dialog[open]:not(.is-closing) {
-    transform: translateY(0);
-    animation-name: main-collection-filter-drawer-in-mobile;
-  }
-
-  .main-collection__filter-dialog.is-closing { animation-name: main-collection-filter-drawer-out-mobile; }
-
-  @keyframes main-collection-filter-drawer-in-mobile {
-    from { transform: translateY(100%); }
-    to { transform: translateY(0); }
-  }
-
-  @keyframes main-collection-filter-drawer-out-mobile {
-    from { transform: translateY(0); }
-    to { transform: translateY(100%); }
-  }
-
-  .main-collection__filter-dialog[data-mobile-layout='drawer'] {
-    inset: 0 auto 0 0;
-    width: min(375px, 100vw);
-    height: 100dvh;
-    max-height: none;
-    border-radius: 0;
-    transform: translateX(-100%);
-  }
-
-  .main-collection__filter-dialog[data-mobile-layout='drawer'][open]:not(.is-closing) {
-    transform: translateX(0);
-    animation-name: main-collection-filter-drawer-in;
-  }
-
-  .main-collection__filter-dialog[data-mobile-layout='drawer'].is-closing {
-    animation-name: main-collection-filter-drawer-out;
-  }
-}
-/* Collection dialogs outside the desktop sidebar use the shared drawer inset from tablet up. */
-@media (min-width: 768px) {
-  .main-collection__filter-dialog:not(.is-sidebar) {
-    --main-collection-filter-closed-translate: calc(-100% - var(--overlay-drawer-inset));
-    position: fixed;
-    inset: var(--overlay-drawer-inset) auto var(--overlay-drawer-inset) var(--overlay-drawer-inset);
-    width: min(375px, calc(100vw - var(--overlay-drawer-inset)));
-    height: calc(100dvh - var(--overlay-drawer-inset) - var(--overlay-drawer-inset));
-    max-height: calc(100dvh - var(--overlay-drawer-inset) - var(--overlay-drawer-inset));
-    margin: 0;
-    transform: translateX(var(--main-collection-filter-closed-translate));
-  }
-
-  .main-collection__filter-dialog:not(.is-sidebar)[open]:not(.is-closing) {
-    transform: translateX(0);
-  }
-}
 @media (prefers-reduced-motion: reduce) {
-  .main-collection__filter-dialog:not(.is-sidebar),
-  .main-collection__filter-dialog:not(.is-sidebar)::backdrop {
-    animation: none !important;
-    transition: none;
-  }
-}
-.main-collection__filter-dialog.is-gesture-closing { animation: none !important; }
-.main-collection__filter-dialog.is-sheet-dragging { touch-action: none; }
-
-/* Shared native overlay motion. Layout-specific dialogs can opt into the
-   same contract while keeping their popup, drawer, or bottom-sheet geometry. */
-@keyframes overlay-dialog-backdrop-enter {
-  from { background-color: transparent; }
-  to { background-color: var(--overlay-backdrop-color); }
-}
-
-@keyframes overlay-dialog-popup-enter {
-  from {
-    opacity: 0;
-    transform: scale(0.95);
-  }
-  to {
-    opacity: 1;
-    transform: scale(1);
-  }
-}
-
-@keyframes overlay-dialog-drawer-enter {
-  from {
-    opacity: 0;
-    transform: translateX(100%);
-  }
-  to {
-    opacity: 1;
-    transform: translateX(0);
-  }
-}
-
-@keyframes overlay-dialog-bottom-sheet-enter {
-  from {
-    opacity: 0;
-    transform: translateY(100%);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-dialog[data-overlay-motion='popup'][open] {
-  animation: overlay-dialog-popup-enter var(--motion-duration-standard) var(--motion-ease-standard) both;
-}
-
-dialog[data-overlay-motion='popup'][open]::backdrop {
-  animation: overlay-dialog-backdrop-enter var(--motion-duration-standard) var(--motion-ease-standard) both;
-}
-@media (min-width: 768px) {
-  dialog[data-overlay-motion='popup'][data-desktop-layout='drawer'][open] {
-    animation-name: overlay-dialog-drawer-enter;
-  }
-}
-@media (max-width: 767.98px) {
-  dialog[data-overlay-motion='popup'][data-mobile-layout='bottom_sheet'][open] {
-    animation-name: overlay-dialog-bottom-sheet-enter;
-  }
-
-  dialog[data-overlay-motion='popup'][data-mobile-layout='drawer'][open] {
-    animation-name: overlay-dialog-drawer-enter;
-  }
-}
-
-/* Navigation remains available below its scoped 992px layout threshold. */
-.component-overlay:where(.header__mobile-drawer) {
-  display: none;
-  --component-overlay-width: 100vw;
-  color: var(--header-menu-color, var(--body-color));
-}
-@media (max-width: 991.98px) {
-  .component-overlay:where(.header__mobile-drawer):not([hidden]) { display: block; }
-  .component-overlay:where(.header__mobile-drawer) > .component-overlay__panel {
-    max-width: 40rem;
-    overflow: hidden;
-    background: var(--background-color);
-    color: var(--header-menu-color, var(--body-color));
-    transition-property: transform;
-    transition-duration: var(--overlay-motion-duration);
-  }
-  .component-overlay:where(.header__mobile-drawer)[data-state='closing'] > .component-overlay__panel {
-    opacity: 1;
-  }
-}
-
-/* Direction and per-drawer spacing are orthogonal to shell layout. */
-.component-overlay:where([data-drawer-side='left']) > .component-overlay__panel {
-  --overlay-rest-transform: translateX(-100%);
-  inset-inline: auto;
-  right: auto;
-  left: var(--overlay-drawer-inset);
-  border-radius: 0 var(--drawer-radius) var(--drawer-radius) 0;
-  transition:
-    transform var(--overlay-motion-duration) var(--overlay-motion-ease),
-    opacity var(--overlay-motion-duration) var(--overlay-motion-ease);
-}
-@media (max-width: 500px) {
-  .component-overlay:where(.header__mobile-drawer) > .component-overlay__panel,
-  .component-overlay:where(.cart-drawer) > .component-overlay__panel { width: 100%; max-width: 100%; }
-}
-
-/* Reduced motion overrides every overlay profile, including feature keyframes. */
-@media (prefers-reduced-motion: reduce) {
-  .component-overlay > .component-overlay__backdrop,
-  .component-overlay > .component-overlay__panel,
-  .cart-drawer__order-options-backdrop,
-  .cart-drawer__order-options-panel,
-  custom-cursor[data-component-overlay-cursor],
-  dialog[data-overlay-motion='popup'][open],
-  dialog[data-overlay-motion='popup'][open]::backdrop {
-    transition: none;
-    animation: none;
-  }
-
-  .component-overlay[data-quick-view-overlay][data-desktop-layout='popup'][data-state] > .component-overlay__panel {
-    transition: none;
-    animation: none;
-  }
+  .component-overlay__backdrop,
+  .component-overlay__panel,
+  custom-cursor[data-component-overlay-cursor] { transition: none; }
+  .component-overlay__backdrop { animation: none; }
 }

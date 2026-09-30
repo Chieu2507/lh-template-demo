@@ -55,10 +55,17 @@
   #shopify-section-{{ section.id }} {
     background: {{ section.settings.background_color | default: section.settings.color_scheme.settings.background }};
   }
+  {% if section.settings.transparent_header %}
+    body:has(#MainContent > #shopify-section-{{ section.id }}:first-child .collection-banner--transparent-header) .section-header.header {
+      z-index: var(--z-drawer);
+      margin-block-end: calc(var(--header-layout-height, 0px) * -1);
+      background-color: transparent;
+    }
+  {% endif %}
 {% endstyle %}
 <div
-  class="collection-banner collection-banner--{{ section.settings.layout }}{% if section.settings.show_overlay %} collection-banner--overlay{% endif %} color-scheme section-color-scope {{ banner_scheme }} section-spacing{% if section.settings.section_width == 'page' %} container page-width{% elsif section.settings.section_width == 'full' %} container full-width{% endif %}"
-  style="--banner-height:{{ banner_height_desktop }}px;--banner-height-mobile:{{ banner_height_mobile }}px;--banner-gap:{{ section.settings.gap_desktop }}px;--banner-gap-mobile:{{ section.settings.gap_mobile }}px;--banner-overlay:1;--banner-overlay-color:{{ section.settings.overlay_color }};--banner-position-x:{{ banner_position_x }};--banner-position-y:{{ banner_position_y }};--text-align-default:{{ banner_text_align }};--section-padding-top:{{ section.settings.padding_top }}px;--section-padding-bottom:{{ section.settings.padding_bottom }}px"
+  class="collection-banner collection-banner--{{ section.settings.layout }}{% if section.settings.show_overlay %} collection-banner--overlay{% endif %}{% if section.settings.transparent_header %} collection-banner--transparent-header{% endif %} color-scheme section-color-scope {{ banner_scheme }} section-spacing{% if section.settings.section_width == 'page' %} container page-width{% elsif section.settings.section_width == 'full' %} container full-width{% endif %}"
+  style="--banner-height:{{ banner_height_desktop }}px;--banner-height-mobile:{{ banner_height_mobile }}px;--banner-gap:{{ section.settings.gap_desktop }}px;--banner-gap-mobile:{{ section.settings.gap_mobile }}px;--banner-overlay:1;--banner-overlay-color:{{ section.settings.overlay_color }};--banner-position-x:{{ banner_position_x }};--banner-position-y:{{ banner_position_y }};--text-align-default:{{ banner_text_align }};--section-padding-top:{{ section.settings.padding_top }}px;--section-padding-bottom:{{ section.settings.padding_bottom }}px;--section-padding-top-mobile:{{ section.settings.padding_top_mobile }}px;--section-padding-bottom-mobile:{{ section.settings.padding_bottom_mobile }}px"
 >
   {% if banner_image != blank %}
     <div class="collection-banner__media">
@@ -80,11 +87,6 @@
 </div>
 
 {% stylesheet %}
-  .collection-banner.section-spacing {
-    --banner-padding-scale: 1;
-    padding-block: calc(var(--section-padding-top, 0px) * var(--banner-padding-scale)) calc(var(--section-padding-bottom, 0px) * var(--banner-padding-scale));
-  }
-
   .collection-banner {
     position: relative;
     display: grid;
@@ -195,12 +197,6 @@
     text-decoration: underline;
   }
 
-  @media (min-width: 768px) and (max-width: 1149.98px) {
-    .collection-banner.section-spacing {
-      --banner-padding-scale: 0.75;
-    }
-  }
-
   @media (min-width: 768px) and (max-width: 1023.98px) {
     .collection-banner__content {
       padding-block: 38px;
@@ -208,10 +204,6 @@
   }
 
   @media (max-width: 767.98px) {
-    .collection-banner.section-spacing {
-      --banner-padding-scale: 0.5;
-    }
-
     .collection-banner {
       min-height: var(--banner-height-mobile, 240px);
     }
@@ -332,6 +324,13 @@
       "default": "bottom-left"
     },
     {
+      "type": "checkbox",
+      "id": "transparent_header",
+      "label": "Allow transparent header",
+      "info": "This setting applies when this section is first on the page.",
+      "default": false
+    },
+    {
       "type": "range",
       "id": "gap_desktop",
       "label": "Desktop gap",
@@ -428,6 +427,34 @@
       "step": 4,
       "unit": "px",
       "default": 0
+    },
+    {
+      "type": "checkbox",
+      "id": "customize_mobile_padding",
+      "label": "Custom for mobile",
+      "default": false
+    },
+    {
+      "type": "range",
+      "id": "padding_top_mobile",
+      "label": "Mobile top padding",
+      "min": 0,
+      "max": 100,
+      "step": 2,
+      "unit": "px",
+      "default": 0,
+      "visible_if": "{{ section.settings.customize_mobile_padding }}"
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_mobile",
+      "label": "Mobile bottom padding",
+      "min": 0,
+      "max": 100,
+      "step": 2,
+      "unit": "px",
+      "default": 0,
+      "visible_if": "{{ section.settings.customize_mobile_padding }}"
     }
   ],
   "presets": [

@@ -58,7 +58,7 @@
           {{ section.settings.background_video | video_tag: autoplay: true, loop: true, muted: true, controls: false, image_size: '2400x' }}
         {% else %}
           <div class="collection-list__background-placeholder placeholder-image">
-            {{ 'collection-1' | placeholder_svg_tag }}
+            {{ 'image' | placeholder_svg_tag }}
           </div>
         {% endif %}
       </div>

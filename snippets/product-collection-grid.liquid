@@ -11,6 +11,7 @@
   @param {string} [columns_desktop] - Desktop column setting
   @param {string} [columns_mobile] - Mobile column setting
   @param {boolean} [enable_swipe_mobile] - Whether to enable mobile swipe
+  @param {boolean} [mobile_carousel] - Whether a grid should use Swiper on mobile only
   @param {number} [gap_horizontal] - Desktop horizontal gap in pixels
   @param {number} [gap_vertical] - Desktop vertical gap in pixels
   @param {number} [gap_horizontal_mobile] - Mobile horizontal gap in pixels
@@ -54,6 +55,11 @@
   unless product_collection_grid_layout == 'grid' or product_collection_grid_layout == 'carousel'
     assign product_collection_grid_layout = 'grid'
   endunless
+
+  assign product_collection_grid_mobile_carousel = false
+  if mobile_carousel == true or mobile_carousel == 'true'
+    assign product_collection_grid_mobile_carousel = true
+  endif
 
   assign product_collection_grid_pagination_type = pagination_type | default: 'bullets'
   unless product_collection_grid_pagination_type == 'progress_bar' or product_collection_grid_pagination_type == 'bullets'
@@ -172,6 +178,9 @@
   if enable_swipe_mobile and product_collection_grid_layout == 'grid'
     assign product_collection_grid_class = product_collection_grid_class | append: ' product-collection-grid--swipe-mobile'
   endif
+  if product_collection_grid_mobile_carousel and product_collection_grid_layout == 'grid'
+    assign product_collection_grid_class = product_collection_grid_class | append: ' product-collection-grid--mobile-carousel'
+  endif
   if product_collection_grid_is_placeholder
     assign product_collection_grid_class = product_collection_grid_class | append: ' product-collection-grid--placeholder'
   endif
@@ -267,6 +276,27 @@
       autoplay: autoplay,
       pause_on_hover: autoplay_pause_on_hover,
       autoplay_delay: autoplay_delay
+    %}
+  {% elsif product_collection_grid_mobile_carousel %}
+    {% capture product_collection_grid_mobile_carousel_attributes %}
+      data-product-collection-grid
+      data-layout="carousel"
+      data-product-carousel
+      data-swiper-mobile-only="true"
+      data-swiper-columns-desktop="{{ product_collection_grid_columns_desktop }}"
+      data-swiper-columns-mobile="{{ product_collection_grid_columns_mobile }}"
+      data-swiper-gap-desktop="{{ product_collection_grid_gap_horizontal }}"
+      data-swiper-gap-mobile="{{ product_collection_grid_gap_horizontal_mobile }}"
+      {% if items_data_attributes != blank %}{{ items_data_attributes }}{% endif %}
+      {% if grid_attributes != blank %}{{ grid_attributes }}{% endif %}
+      style="{{ product_collection_grid_style }}"
+    {% endcapture %}
+    {% render 'swiper-carousel',
+      layout: 'carousel',
+      content: product_collection_grid_content,
+      root_class: product_collection_grid_class,
+      root_attributes: product_collection_grid_mobile_carousel_attributes,
+      aria_label: product_collection_grid_aria_label
     %}
   {% else %}
     <div

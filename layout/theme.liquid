@@ -25,10 +25,14 @@
     {{ 'menu.css' | asset_url | stylesheet_tag }}
     <script src="{{ 'header.js' | asset_url }}" defer></script>
     <script src="{{ 'accordion-details.js' | asset_url }}" defer></script>
+    <script src="{{ 'product-card-variants.js' | asset_url }}" defer></script>
     <script src="{{ 'share.js' | asset_url }}" defer></script>
     <script src="{{ 'cart-drawer.js' | asset_url }}" defer></script>
     <script src="{{ 'scroll-to.js' | asset_url }}" defer></script>
     <script src="{{ 'hero.js' | asset_url }}" defer></script>
+    {% if request.design_mode %}
+      <script type="module" src="{{ 'timeline-list.js' | asset_url }}"></script>
+    {% endif %}
 
     {% # Social, title, etc. %}
     {% render 'meta-tags' %}
