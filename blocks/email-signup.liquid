@@ -188,8 +188,7 @@
   assign email_signup_scheme = email_signup_scheme | handleize
 
   assign subscription_preferences_state = 'disabled'
-  assign email_signup_class = 'email-signup-block size-style motion-block email-signup-block--layout-' | append: form_layout
-  assign email_signup_class = email_signup_class | append: ' ' | append: email_signup_scheme
+  assign email_signup_class = 'email-signup-block size-style motion-block section-color-scope ' | append: email_signup_scheme | append: ' email-signup-block--layout-' | append: form_layout
   if block.settings.enable_subscription_preferences
     assign subscription_preferences_state = 'enabled'
     assign email_signup_class = email_signup_class | append: ' email-signup-block--subscription-preferences'
@@ -393,7 +392,12 @@
     min-width: 0;
     color: var(--body-color);
     background-color: var(--email-signup-background-color, var(--background-color));
-    --input-background-color: var(--email-signup-background-color, var(--input-background-color));
+    --input-text-color: var(--body-color);
+  }
+
+  .email-signup-block .form__control::placeholder {
+    color: color-mix(in srgb, var(--body-color) 60%, transparent);
+    opacity: 1;
   }
 
   .email-signup-block__form,
@@ -414,6 +418,7 @@
   .email-signup-block .form__control--input,
   .email-signup-block--layout-input_with_button .email-signup-block__input-wrap {
     border-radius: 0 !important;
+    background-color: var(--email-signup-background-color, var(--input-background-color));
   }
 
   .email-signup-block--layout-horizontal .form__fields {
@@ -445,7 +450,7 @@
     padding: 0.65rem 0.875rem;
     border: var(--input-border-width) solid var(--input-border-color);
     border-radius: var(--input-radius);
-    background: var(--input-background-color);
+    background-color: var(--email-signup-background-color, var(--input-background-color));
     color: var(--input-text-color);
     font-size: var(--form-input-font-size);
     transition: border-color var(--motion-duration-standard) var(--motion-ease-standard);
