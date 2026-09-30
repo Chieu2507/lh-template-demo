@@ -35,6 +35,20 @@
     endif
     assign editorial_text_max_width_mobile = block.settings.max_width_mobile | default: editorial_text_max_width
   endif
+  assign editorial_text_size_max_width = blank
+  if editorial_text_width_mode == 'custom'
+    assign editorial_text_size_max_width = editorial_text_max_width | append: 'px'
+  endif
+  assign editorial_text_size_width_mobile = blank
+  assign editorial_text_size_max_width_mobile = blank
+  if block.settings.customize_mobile_size
+    assign editorial_text_size_width_mobile = editorial_text_width_mobile
+    if editorial_text_width_mobile_mode == 'custom'
+      assign editorial_text_size_max_width_mobile = editorial_text_max_width_mobile | append: 'px'
+    elsif editorial_text_width_mode == 'custom'
+      assign editorial_text_size_max_width_mobile = '100%'
+    endif
+  endif
 
   assign editorial_text_padding_top = block.settings.padding_top | default: 0 | plus: 0
   assign editorial_text_padding_bottom = block.settings.padding_bottom | default: 0 | plus: 0
@@ -46,23 +60,19 @@
   assign editorial_text_padding_right_mobile = block.settings.padding_right_mobile | default: 0 | plus: 0
   assign editorial_text_font_size = block.settings.font_size | default: 40 | plus: 0
 
-  assign editorial_text_class = 'editorial-text-block heading-text heading-' | append: editorial_text_size
+  assign editorial_text_class = 'editorial-text-block size-style heading-text heading-' | append: editorial_text_size
   if editorial_text_size == 'custom'
     assign editorial_text_class = editorial_text_class | append: ' editorial-text-block--custom'
   endif
 %}
 
 {% capture editorial_text_style %}
-  {% if editorial_text_width_mode != 'fit' %}--editorial-text-width: {{ editorial_text_width }};{% endif %}
-  {% if editorial_text_width_mode == 'custom' %}--editorial-text-max-width: {{ editorial_text_max_width }}px;{% endif %}
-  {% if block.settings.customize_mobile_size %}
-    {% if editorial_text_width_mobile != editorial_text_width %}--editorial-text-width-mobile: {{ editorial_text_width_mobile }};{% endif %}
-    {% if editorial_text_width_mobile_mode == 'custom' %}
-      {% if editorial_text_width_mode != 'custom' or editorial_text_max_width_mobile != editorial_text_max_width %}--editorial-text-max-width-mobile: {{ editorial_text_max_width_mobile }}px;{% endif %}
-    {% elsif editorial_text_width_mode == 'custom' %}
-      --editorial-text-max-width-mobile: 100%;
-    {% endif %}
-  {% endif %}
+  {% render 'size-style',
+    width: editorial_text_width,
+    max_width: editorial_text_size_max_width,
+    width_mobile: editorial_text_size_width_mobile,
+    max_width_mobile: editorial_text_size_max_width_mobile
+  %}
   {% if block.settings.text_color != blank %}--editorial-text-color: {{ block.settings.text_color | escape }};{% endif %}
   {% if editorial_text_size == 'custom' %}--editorial-text-font-size: {{ editorial_text_font_size }}px;{% endif %}
   {% if editorial_text_padding_top != 0 %}--editorial-text-padding-top: {{ editorial_text_padding_top }}px;{% endif %}
@@ -92,8 +102,6 @@
 {% stylesheet %}
   .editorial-text-block {
     display: block;
-    width: var(--editorial-text-width, fit-content);
-    max-width: var(--editorial-text-max-width, 100%);
     padding-top: var(--editorial-text-padding-top, 0px);
     padding-right: var(--editorial-text-padding-right, 0px);
     padding-bottom: var(--editorial-text-padding-bottom, 0px);
@@ -137,8 +145,6 @@
 
   @media (max-width: 767.98px) {
     .editorial-text-block {
-      width: var(--editorial-text-width-mobile, var(--editorial-text-width, fit-content));
-      max-width: var(--editorial-text-max-width-mobile, var(--editorial-text-max-width, 100%));
       padding-top: var(--editorial-text-padding-top-mobile, var(--editorial-text-padding-top, 0px));
       padding-right: var(--editorial-text-padding-right-mobile, var(--editorial-text-padding-right, 0px));
       padding-bottom: var(--editorial-text-padding-bottom-mobile, var(--editorial-text-padding-bottom, 0px));

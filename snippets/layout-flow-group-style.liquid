@@ -4,7 +4,7 @@
 
   @param {string} [direction] - horizontal or vertical
   @param {string} [wrap] - Flex wrapping for the default breakpoint
-  @param {string} [position] - top, center or bottom
+  @param {string} [position] - top, center, bottom or space-between
   @param {string} [alignment] - start, center or end
   @param {string} [horizontal_alignment] - flex-start, center, flex-end or space-between
   @param {boolean} [mobile_vertical] - whether the horizontal flow stacks on mobile
@@ -59,6 +59,7 @@
   {% case layout_flow_position %}
     {% when 'center' %}--layout-flow-justify-content: center;
     {% when 'bottom' %}--layout-flow-justify-content: flex-end;
+    {% when 'space-between' %}--layout-flow-justify-content: space-between;
   {% endcase %}
   {% if layout_flow_mobile_alignment != blank %}
     {% case layout_flow_mobile_alignment %}

@@ -13,74 +13,24 @@
   assign mobile_image_source = block.settings.mobile_image
 
   assign image_ratio_desktop_setting = block.settings.image_ratio_desktop | default: 'auto'
-  assign image_ratio_desktop = 'auto'
+  capture image_ratio_desktop
+    render 'image-ratio-value', setting: image_ratio_desktop_setting, fallback_ratio: 'auto', custom_width: block.settings.image_ratio_custom_width_desktop, custom_height: block.settings.image_ratio_custom_height_desktop
+  endcapture
+  assign image_ratio_desktop = image_ratio_desktop | strip
   assign image_height_desktop = 'auto'
-  case image_ratio_desktop_setting
-    when 'square'
-      assign image_ratio_desktop = '1'
-      assign image_height_desktop = '100%'
-    when 'portrait'
-      assign image_ratio_desktop = '0.8'
-      assign image_height_desktop = '100%'
-    when 'landscape'
-      assign image_ratio_desktop = '1.3333'
-      assign image_height_desktop = '100%'
-    when 'wide'
-      assign image_ratio_desktop = '1.7778'
-      assign image_height_desktop = '100%'
-    when 'custom'
-      assign image_ratio_custom_width_desktop = block.settings.image_ratio_custom_width_desktop | default: 16 | plus: 0
-      assign image_ratio_custom_height_desktop = block.settings.image_ratio_custom_height_desktop | default: 9 | plus: 0
-      if image_ratio_custom_width_desktop < 1 or image_ratio_custom_width_desktop > 100
-        assign image_ratio_custom_width_desktop = 16
-      endif
-      if image_ratio_custom_height_desktop < 1 or image_ratio_custom_height_desktop > 100
-        assign image_ratio_custom_height_desktop = 9
-      endif
-      assign image_ratio_desktop = image_ratio_custom_width_desktop | times: 1.0 | divided_by: image_ratio_custom_height_desktop
-      if image_ratio_desktop < 0.25 or image_ratio_desktop > 3
-        assign image_ratio_desktop = 16 | divided_by: 9.0
-      endif
-      assign image_height_desktop = '100%'
-    when 'auto'
-    else
-      assign image_ratio_desktop = 'auto'
-  endcase
+  if image_ratio_desktop_setting == 'square' or image_ratio_desktop_setting == 'portrait' or image_ratio_desktop_setting == 'landscape' or image_ratio_desktop_setting == 'wide' or image_ratio_desktop_setting == 'custom'
+    assign image_height_desktop = '100%'
+  endif
 
   assign image_ratio_mobile_setting = block.settings.image_ratio_mobile | default: 'auto'
-  assign image_ratio_mobile = 'auto'
+  capture image_ratio_mobile
+    render 'image-ratio-value', setting: image_ratio_mobile_setting, fallback_ratio: 'auto', custom_width: block.settings.image_ratio_custom_width_mobile, custom_height: block.settings.image_ratio_custom_height_mobile
+  endcapture
+  assign image_ratio_mobile = image_ratio_mobile | strip
   assign image_height_mobile = 'auto'
-  case image_ratio_mobile_setting
-    when 'square'
-      assign image_ratio_mobile = '1'
-      assign image_height_mobile = '100%'
-    when 'portrait'
-      assign image_ratio_mobile = '0.8'
-      assign image_height_mobile = '100%'
-    when 'landscape'
-      assign image_ratio_mobile = '1.3333'
-      assign image_height_mobile = '100%'
-    when 'wide'
-      assign image_ratio_mobile = '1.7778'
-      assign image_height_mobile = '100%'
-    when 'custom'
-      assign image_ratio_custom_width_mobile = block.settings.image_ratio_custom_width_mobile | default: 16 | plus: 0
-      assign image_ratio_custom_height_mobile = block.settings.image_ratio_custom_height_mobile | default: 9 | plus: 0
-      if image_ratio_custom_width_mobile < 1 or image_ratio_custom_width_mobile > 100
-        assign image_ratio_custom_width_mobile = 16
-      endif
-      if image_ratio_custom_height_mobile < 1 or image_ratio_custom_height_mobile > 100
-        assign image_ratio_custom_height_mobile = 9
-      endif
-      assign image_ratio_mobile = image_ratio_custom_width_mobile | times: 1.0 | divided_by: image_ratio_custom_height_mobile
-      if image_ratio_mobile < 0.25 or image_ratio_mobile > 3
-        assign image_ratio_mobile = 16 | divided_by: 9.0
-      endif
-      assign image_height_mobile = '100%'
-    when 'auto'
-    else
-      assign image_ratio_mobile = 'auto'
-  endcase
+  if image_ratio_mobile_setting == 'square' or image_ratio_mobile_setting == 'portrait' or image_ratio_mobile_setting == 'landscape' or image_ratio_mobile_setting == 'wide' or image_ratio_mobile_setting == 'custom'
+    assign image_height_mobile = '100%'
+  endif
 
   assign image_width_desktop_setting = block.settings.width_desktop | default: 'fit'
   unless image_width_desktop_setting == 'fit' or image_width_desktop_setting == 'fill' or image_width_desktop_setting == 'custom'
@@ -92,7 +42,7 @@
     assign image_width_desktop = '100%'
   elsif image_width_desktop_setting == 'custom'
     assign image_width_desktop_value = block.settings.width_custom_desktop | default: 100 | plus: 0
-    if image_width_desktop_value < 1 or image_width_desktop_value > 100
+    if image_width_desktop_value < 10 or image_width_desktop_value > 100
       assign image_width_desktop_value = 100
     endif
     assign image_width_desktop = image_width_desktop_value | append: '%'
@@ -109,7 +59,7 @@
     assign image_width_mobile = '100%'
   elsif image_width_mobile_setting == 'custom'
     assign image_width_mobile_value = block.settings.width_custom_mobile | default: 100 | plus: 0
-    if image_width_mobile_value < 1 or image_width_mobile_value > 100
+    if image_width_mobile_value < 10 or image_width_mobile_value > 100
       assign image_width_mobile_value = 100
     endif
     assign image_width_mobile = image_width_mobile_value | append: '%'
@@ -134,18 +84,36 @@
     assign image_max_width_mobile = max_width_mobile | append: 'px'
   endif
 
-  unless block.settings.customize_mobile_size
-    assign image_ratio_mobile = image_ratio_desktop
-    assign image_height_mobile = image_height_desktop
-    assign image_width_mobile = image_width_desktop
-    assign image_size_mobile = image_size_desktop
-    assign image_max_width_mobile = image_max_width_desktop
+  assign image_corner_radius = block.settings.corner_radius | default: 'square'
+  assign image_custom_corner_radius = block.settings.custom_corner_radius | default: 0 | plus: 0
+  unless image_corner_radius == 'inherit' or image_corner_radius == 'square' or image_corner_radius == 'rounded' or image_corner_radius == 'full' or image_corner_radius == 'custom'
+    assign image_legacy_corner_radius = image_corner_radius | plus: 0
+    if image_legacy_corner_radius > 0
+      assign image_corner_radius = 'custom'
+      assign image_custom_corner_radius = image_legacy_corner_radius
+      if image_custom_corner_radius > 40
+        assign image_custom_corner_radius = 40
+      endif
+    else
+      assign image_corner_radius = 'square'
+    endif
   endunless
 
-  assign image_corner_radius = block.settings.corner_radius | default: 0 | plus: 0
-  if image_corner_radius < 0 or image_corner_radius > 100
-    assign image_corner_radius = 0
+  if image_custom_corner_radius < 0 or image_custom_corner_radius > 40
+    assign image_custom_corner_radius = 0
   endif
+
+  assign image_radius_value = 'var(--media-radius, var(--radius-square))'
+  case image_corner_radius
+    when 'square'
+      assign image_radius_value = 'var(--radius-square)'
+    when 'rounded'
+      assign image_radius_value = 'var(--radius-rounded)'
+    when 'full'
+      assign image_radius_value = 'var(--radius-pill)'
+    when 'custom'
+      assign image_radius_value = image_custom_corner_radius | append: 'px'
+  endcase
 
   assign padding_top = block.settings.padding_top | default: 0 | plus: 0
   assign padding_bottom = block.settings.padding_bottom | default: 0 | plus: 0
@@ -156,19 +124,21 @@
   assign padding_left_mobile = block.settings.padding_left_mobile | default: 0 | plus: 0
   assign padding_right_mobile = block.settings.padding_right_mobile | default: 0 | plus: 0
 
-  assign image_class = 'image-block image-block--ratio-desktop-' | append: image_ratio_desktop_setting
+  assign image_class = 'image-block size-style size-style--contain image-block--ratio-desktop-' | append: image_ratio_desktop_setting
   if block.settings.show_image_first_mobile
     assign image_class = image_class | append: ' image-block--first-mobile'
   endif
 %}
 
 {% capture image_style %}
-  --image-block-width: {{ image_width_desktop }};
-  --image-block-max-width: {{ image_max_width_desktop }};
+  {% render 'size-style',
+    width: image_width_desktop,
+    max_width: image_max_width_desktop,
+    width_mobile: image_width_mobile,
+    max_width_mobile: image_max_width_mobile
+  %}
   --image-block-ratio: {{ image_ratio_desktop }};
   --image-block-image-height: {{ image_height_desktop }};
-  --image-block-width-mobile: {{ image_width_mobile }};
-  --image-block-max-width-mobile: {{ image_max_width_mobile }};
   --image-block-ratio-mobile: {{ image_ratio_mobile }};
   --image-block-image-height-mobile: {{ image_height_mobile }};
   --image-block-padding-top: {{ padding_top }}px;
@@ -181,7 +151,7 @@
     --image-block-padding-left-mobile: {{ padding_left_mobile }}px;
     --image-block-padding-right-mobile: {{ padding_right_mobile }}px;
   {% endif %}
-  --image-block-radius: {{ image_corner_radius }}px;
+  --image-block-radius: {{ image_radius_value }};
 {% endcapture %}
 {% assign image_style = image_style | strip | replace: '\n', ' ' %}
 
@@ -207,8 +177,6 @@
 {% stylesheet %}
   .image-block {
     display: block;
-    width: var(--image-block-width, fit-content);
-    max-width: min(var(--image-block-max-width, 100%), 100%);
     min-width: 0;
     padding-top: var(--image-block-padding-top, 0px);
     padding-right: var(--image-block-padding-right, 0px);
@@ -242,8 +210,6 @@
     }
 
     .image-block {
-      width: var(--image-block-width-mobile, var(--image-block-width, fit-content));
-      max-width: min(var(--image-block-max-width-mobile, 100%), 100%);
       padding-top: var(--image-block-padding-top-mobile, var(--image-block-padding-top, 0px));
       padding-right: var(--image-block-padding-right-mobile, var(--image-block-padding-right, 0px));
       padding-bottom: var(--image-block-padding-bottom-mobile, var(--image-block-padding-bottom, 0px));
@@ -309,81 +275,18 @@
     },
     {
       "type": "select",
+      "id": "device",
+      "label": "t:labels.device",
+      "options": [
+        { "value": "desktop", "label": "t:options.device.desktop" },
+        { "value": "mobile", "label": "t:options.device.mobile" }
+      ],
+      "default": "desktop"
+    },
+    {
+      "type": "select",
       "id": "image_ratio_desktop",
-      "label": "t:labels.desktop_image_ratio",
-      "options": [
-        { "value": "auto", "label": "t:options.image_ratio.auto" },
-        { "value": "square", "label": "t:options.image_ratio.square" },
-        { "value": "portrait", "label": "t:options.image_ratio.portrait" },
-        { "value": "landscape", "label": "t:options.image_ratio.landscape" },
-        { "value": "wide", "label": "t:options.image_ratio.wide" },
-        { "value": "custom", "label": "t:options.image_ratio.custom" }
-      ],
-      "default": "auto"
-    },
-    {
-      "type": "number",
-      "id": "image_ratio_custom_width_desktop",
-      "label": "W",
-      "default": 16,
-      "visible_if": "{{ block.settings.image_ratio_desktop == 'custom' }}"
-    },
-    {
-      "type": "number",
-      "id": "image_ratio_custom_height_desktop",
-      "label": "H",
-      "default": 9,
-      "visible_if": "{{ block.settings.image_ratio_desktop == 'custom' }}"
-    },
-    {
-      "type": "select",
-      "id": "width_desktop",
-      "label": "t:labels.desktop_width",
-      "options": [
-        { "value": "fit", "label": "t:options.width.fit" },
-        { "value": "fill", "label": "t:options.width.fill" },
-        { "value": "custom", "label": "t:options.width.custom" }
-      ],
-      "default": "fit"
-    },
-    {
-      "type": "range",
-      "id": "width_custom_desktop",
-      "label": "t:labels.desktop_custom_width",
-      "min": 1,
-      "max": 100,
-      "step": 1,
-      "unit": "%",
-      "default": 100,
-      "visible_if": "{{ block.settings.width_desktop == 'custom' }}"
-    },
-    {
-      "type": "checkbox",
-      "id": "limit_width_desktop",
-      "label": "t:labels.desktop_limit_width",
-      "default": false
-    },
-    {
-      "type": "range",
-      "id": "max_width_desktop",
-      "label": "t:labels.desktop_max_width",
-      "min": 0,
-      "max": 1600,
-      "step": 16,
-      "unit": "px",
-      "default": 1600,
-      "visible_if": "{{ block.settings.limit_width_desktop }}"
-    },
-    {
-      "type": "checkbox",
-      "id": "customize_mobile_size",
-      "label": "t:labels.customize_mobile_size",
-      "default": false
-    },
-    {
-      "type": "select",
-      "id": "image_ratio_mobile",
-      "label": "t:labels.mobile_image_ratio",
+      "label": "t:labels.image_ratio",
       "options": [
         { "value": "auto", "label": "t:options.image_ratio.auto" },
         { "value": "square", "label": "t:options.image_ratio.square" },
@@ -393,76 +296,160 @@
         { "value": "custom", "label": "t:options.image_ratio.custom" }
       ],
       "default": "auto",
-      "visible_if": "{{ block.settings.customize_mobile_size }}"
+      "visible_if": "{{ block.settings.device == 'desktop' }}"
     },
     {
       "type": "number",
-      "id": "image_ratio_custom_width_mobile",
+      "id": "image_ratio_custom_width_desktop",
       "label": "W",
       "default": 16,
-      "visible_if": "{{ block.settings.customize_mobile_size and block.settings.image_ratio_mobile == 'custom' }}"
+      "visible_if": "{{ block.settings.device == 'desktop' and block.settings.image_ratio_desktop == 'custom' }}"
     },
     {
       "type": "number",
-      "id": "image_ratio_custom_height_mobile",
+      "id": "image_ratio_custom_height_desktop",
       "label": "H",
       "default": 9,
-      "visible_if": "{{ block.settings.customize_mobile_size and block.settings.image_ratio_mobile == 'custom' }}"
+      "visible_if": "{{ block.settings.device == 'desktop' and block.settings.image_ratio_desktop == 'custom' }}"
     },
     {
       "type": "select",
-      "id": "width_mobile",
-      "label": "t:labels.mobile_width",
+      "id": "width_desktop",
+      "label": "t:labels.width",
       "options": [
         { "value": "fit", "label": "t:options.width.fit" },
         { "value": "fill", "label": "t:options.width.fill" },
         { "value": "custom", "label": "t:options.width.custom" }
       ],
       "default": "fit",
-      "visible_if": "{{ block.settings.customize_mobile_size }}"
+      "visible_if": "{{ block.settings.device == 'desktop' }}"
     },
     {
       "type": "range",
-      "id": "width_custom_mobile",
-      "label": "t:labels.mobile_custom_width",
-      "min": 1,
+      "id": "width_custom_desktop",
+      "label": "t:labels.custom_width",
+      "min": 10,
       "max": 100,
       "step": 1,
       "unit": "%",
       "default": 100,
-      "visible_if": "{{ block.settings.customize_mobile_size and block.settings.width_mobile == 'custom' }}"
+      "visible_if": "{{ block.settings.device == 'desktop' and block.settings.width_desktop == 'custom' }}"
     },
     {
       "type": "checkbox",
-      "id": "limit_width_mobile",
-      "label": "t:labels.mobile_limit_width",
+      "id": "limit_width_desktop",
+      "label": "t:labels.limit_width",
       "default": false,
-      "visible_if": "{{ block.settings.customize_mobile_size }}"
+      "visible_if": "{{ block.settings.device == 'desktop' }}"
     },
     {
       "type": "range",
-      "id": "max_width_mobile",
-      "label": "t:labels.mobile_max_width",
+      "id": "max_width_desktop",
+      "label": "t:labels.max_width",
       "min": 0,
       "max": 1600,
       "step": 16,
       "unit": "px",
       "default": 1600,
-      "visible_if": "{{ block.settings.customize_mobile_size and block.settings.limit_width_mobile }}"
+      "visible_if": "{{ block.settings.device == 'desktop' and block.settings.limit_width_desktop }}"
     },
     {
-      "type": "header",
-      "content": "t:general.appearance"
+      "type": "select",
+      "id": "image_ratio_mobile",
+      "label": "t:labels.image_ratio_mobile",
+      "options": [
+        { "value": "auto", "label": "t:options.image_ratio.auto" },
+        { "value": "square", "label": "t:options.image_ratio.square" },
+        { "value": "portrait", "label": "t:options.image_ratio.portrait" },
+        { "value": "landscape", "label": "t:options.image_ratio.landscape" },
+        { "value": "wide", "label": "t:options.image_ratio.wide" },
+        { "value": "custom", "label": "t:options.image_ratio.custom" }
+      ],
+      "default": "auto",
+      "visible_if": "{{ block.settings.device == 'mobile' }}"
+    },
+    {
+      "type": "number",
+      "id": "image_ratio_custom_width_mobile",
+      "label": "W (mobile)",
+      "default": 16,
+      "visible_if": "{{ block.settings.device == 'mobile' and block.settings.image_ratio_mobile == 'custom' }}"
+    },
+    {
+      "type": "number",
+      "id": "image_ratio_custom_height_mobile",
+      "label": "H (mobile)",
+      "default": 9,
+      "visible_if": "{{ block.settings.device == 'mobile' and block.settings.image_ratio_mobile == 'custom' }}"
+    },
+    {
+      "type": "select",
+      "id": "width_mobile",
+      "label": "t:labels.width_mobile",
+      "options": [
+        { "value": "fit", "label": "t:options.width.fit" },
+        { "value": "fill", "label": "t:options.width.fill" },
+        { "value": "custom", "label": "t:options.width.custom" }
+      ],
+      "default": "fit",
+      "visible_if": "{{ block.settings.device == 'mobile' }}"
     },
     {
       "type": "range",
-      "id": "corner_radius",
-      "label": "t:labels.corner_radius",
-      "min": 0,
+      "id": "width_custom_mobile",
+      "label": "t:labels.custom_width_mobile",
+      "min": 10,
       "max": 100,
       "step": 1,
+      "unit": "%",
+      "default": 100,
+      "visible_if": "{{ block.settings.device == 'mobile' and block.settings.width_mobile == 'custom' }}"
+    },
+    {
+      "type": "checkbox",
+      "id": "limit_width_mobile",
+      "label": "t:labels.limit_width_mobile",
+      "default": false,
+      "visible_if": "{{ block.settings.device == 'mobile' }}"
+    },
+    {
+      "type": "range",
+      "id": "max_width_mobile",
+      "label": "t:labels.max_width_mobile",
+      "min": 0,
+      "max": 1600,
+      "step": 16,
       "unit": "px",
-      "default": 0
+      "default": 1600,
+      "visible_if": "{{ block.settings.device == 'mobile' and block.settings.limit_width_mobile }}"
+    },
+    {
+      "type": "header",
+      "content": "t:general.border"
+    },
+    {
+      "type": "select",
+      "id": "corner_radius",
+      "label": "t:labels.corner_radius",
+      "options": [
+        { "value": "inherit", "label": "t:options.radius_preset.inherit" },
+        { "value": "square", "label": "t:options.radius_preset.square" },
+        { "value": "rounded", "label": "t:options.radius_preset.rounded" },
+        { "value": "full", "label": "t:options.radius_preset.full" },
+        { "value": "custom", "label": "t:options.radius_preset.custom" }
+      ],
+      "default": "square"
+    },
+    {
+      "type": "range",
+      "id": "custom_corner_radius",
+      "label": "t:labels.custom_corner_radius",
+      "min": 0,
+      "max": 40,
+      "step": 1,
+      "unit": "px",
+      "default": 0,
+      "visible_if": "{{ block.settings.corner_radius == 'custom' }}"
     },
     {
       "type": "header",
@@ -566,12 +553,12 @@
       "settings": {
         "image_ratio_desktop": "auto",
         "image_ratio_mobile": "auto",
-        "customize_mobile_size": false,
         "width_desktop": "fit",
         "width_mobile": "fit",
         "limit_width_desktop": false,
         "limit_width_mobile": false,
-        "corner_radius": 0,
+        "corner_radius": "square",
+        "custom_corner_radius": 0,
         "customize_mobile_padding": false
       }
     }

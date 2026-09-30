@@ -182,7 +182,7 @@
   assign email_signup_preferences_title_id = email_signup_form_id | append: '-SubscriptionPreferencesTitle'
 
   assign subscription_preferences_state = 'disabled'
-  assign email_signup_class = 'email-signup-block motion-block email-signup-block--layout-' | append: form_layout
+  assign email_signup_class = 'email-signup-block size-style motion-block email-signup-block--layout-' | append: form_layout
   if block.settings.enable_subscription_preferences
     assign subscription_preferences_state = 'enabled'
     assign email_signup_class = email_signup_class | append: ' email-signup-block--subscription-preferences'
@@ -202,10 +202,12 @@
 %}
 
 {% capture email_signup_style %}
-  --email-signup-width-desktop: {{ email_signup_width_desktop }};
-  --email-signup-max-width-desktop: {{ email_signup_max_width_desktop }};
-  --email-signup-width-mobile: {{ email_signup_width_mobile }};
-  --email-signup-max-width-mobile: {{ email_signup_max_width_mobile }};
+  {% render 'size-style',
+    width: email_signup_width_desktop,
+    max_width: email_signup_max_width_desktop,
+    width_mobile: email_signup_width_mobile,
+    max_width_mobile: email_signup_max_width_mobile
+  %}
   --email-signup-gap-desktop: {{ gap_desktop }}px;
   --email-signup-gap-mobile: {{ gap_mobile }}px;
   --email-signup-field-height-desktop: {{ field_height_desktop }}px;
@@ -378,8 +380,6 @@
 {% stylesheet %}
   .email-signup-block {
     display: block;
-    width: var(--email-signup-width-desktop, 100%);
-    max-width: var(--email-signup-max-width-desktop, 100%);
     min-width: 0;
   }
 
@@ -587,11 +587,6 @@
   }
 
   @media (max-width: 767.98px) {
-    .email-signup-block {
-      width: var(--email-signup-width-mobile, var(--email-signup-width-desktop, 100%));
-      max-width: var(--email-signup-max-width-mobile, var(--email-signup-max-width-desktop, 100%));
-    }
-
     .email-signup-block .form__fields {
       gap: var(--email-signup-gap-mobile, var(--email-signup-gap-desktop, 0px));
     }

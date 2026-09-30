@@ -2,6 +2,14 @@
   assign faq_accordion_style = block.settings.style | default: 'simple'
   assign faq_accordion_icon = block.settings.icon | default: 'chevron'
   assign faq_accordion_width = block.settings.width | default: 'fill'
+  assign faq_accordion_width_css = '100%'
+  if faq_accordion_width == 'custom'
+    assign faq_accordion_width_css = block.settings.custom_width | default: 100 | append: '%'
+  endif
+  assign faq_accordion_max_width_css = blank
+  if block.settings.limit_width
+    assign faq_accordion_max_width_css = block.settings.max_width | default: 1100 | append: 'px'
+  endif
   assign faq_question_font_size = block.settings.question_font_size | default: 'xs'
   assign faq_answer_font_size = block.settings.answer_font_size | default: 'md'
   assign faq_question_font_size_mobile = block.settings.question_font_size_mobile | default: faq_question_font_size
@@ -63,8 +71,10 @@
 %}
 
 {% capture faq_accordion_style_attribute %}
-  --faq-accordion-width: {% if faq_accordion_width == 'custom' %}{{ block.settings.custom_width | default: 100 }}%{% else %}100%{% endif %};
-  {% if block.settings.limit_width %}--faq-accordion-max-width: {{ block.settings.max_width | default: 1100 }}px;{% endif %}
+  {% render 'size-style',
+    width: faq_accordion_width_css,
+    max_width: faq_accordion_max_width_css
+  %}
   --faq-item-gap: {{ block.settings.gap_desktop | default: 16 }}px;
   --faq-item-gap-mobile: {{ block.settings.gap_mobile | default: 16 }}px;
   --faq-item-border-width: {{ block.settings.border_thickness | default: 1 }}px;
@@ -81,14 +91,14 @@
   {% endif %}
 {% endcapture %}
 
-<div class="faq-accordion faq-accordion--width-{{ faq_accordion_width }} faq-accordion--style-{{ faq_accordion_style }} faq-accordion--icon-{{ faq_accordion_icon }}{% if block.settings.dividers %} faq-accordion--dividers{% endif %}{% if faq_accordion_style == 'boxed' %} color-scheme {{ faq_accordion_scheme }}{% endif %}" style="{{ faq_accordion_style_attribute | strip }}" {{ block.shopify_attributes }}>
+<div class="faq-accordion size-style faq-accordion--width-{{ faq_accordion_width }} faq-accordion--style-{{ faq_accordion_style }} faq-accordion--icon-{{ faq_accordion_icon }}{% if block.settings.dividers %} faq-accordion--dividers{% endif %}{% if faq_accordion_style == 'boxed' %} color-scheme {{ faq_accordion_scheme }}{% endif %}" style="{{ faq_accordion_style_attribute | strip }}" {{ block.shopify_attributes }}>
   <div class="faq-accordion__items">
     {% content_for 'blocks' %}
   </div>
 </div>
 
 {% stylesheet %}
-  .faq-accordion { width: var(--faq-accordion-width, 100%); max-width: var(--faq-accordion-max-width, 100%); min-width: 0; }
+  .faq-accordion { min-width: 0; }
   .faq-accordion__items { display: grid; gap: var(--faq-item-gap, 16px); min-width: 0; }
   .faq-accordion--style-simple .faq-accordion__items { gap: 0; }
   .faq-accordion--style-simple:not(.faq-accordion--dividers) .faq-item { border: 0; }

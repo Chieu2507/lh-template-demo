@@ -62,7 +62,7 @@
     assign wrapper = 'div'
   endif
 
-  assign image_placeholder = placeholder | default: 'product-1'
+  assign image_placeholder = placeholder | default: 'image'
 %}
 
 <{{ wrapper }}
@@ -143,6 +143,6 @@
     display: block;
     width: 100%;
     height: auto;
-    background-color: var(--surface-color, var(--background-color));
+    background-color: var(--placeholder-background-color, var(--surface-color, var(--background-color)));
   }
 {% endstylesheet %}

@@ -20,8 +20,12 @@
         "pause_on_hover": true,
         "navigation_behavior": "show_on_hover",
         "navigation_icon": "arrow",
+        "font_size": "sm",
+        "background_type": "none",
+        "overlay": false,
         "gap": 16,
-        "color_scheme": "scheme-1",
+        "color_scheme": "scheme-3",
+        "bottom_separator": false,
         "padding_top": 8,
         "padding_right": 0,
         "padding_bottom": 8,
@@ -32,12 +36,34 @@
           "type": "announcement-text",
           "settings": {
             "text": "Free shipping for all orders over $100.00",
-            "text_size": "sm",
             "width": "fill"
+          }
+        },
+        "discount-code": {
+          "type": "discount-code",
+          "settings": {
+            "message": "<p>50% off - use code:</p>",
+            "discount_code": "BIG50",
+            "button_label": "Shop now",
+            "button_style": "tertiary",
+            "show_icon": false
+          }
+        },
+        "announcement-countdown-timer": {
+          "type": "announcement-countdown-timer",
+          "settings": {
+            "message": "<p>Hurry up! Sale ends in:</p>",
+            "style": "inline",
+            "type": "fixed_time",
+            "end_time": "2026-12-25 12:00",
+            "button_label": "Shop now",
+            "button_style": "tertiary",
+            "show_icon": false,
+            "color_type": "inherit"
           }
         }
       },
-      "block_order": ["announcement-text"]
+      "block_order": ["announcement-text", "discount-code", "announcement-countdown-timer"]
     },
     "header": {
       "type": "header",

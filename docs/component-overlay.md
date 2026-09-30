@@ -12,15 +12,16 @@
   tokens.
 - `assets/component-overlay.js`: open/close state, Escape/backdrop, focus return,
   pointer close positioning, interrupted transitions, reduced motion and
-  reusable `SheetGesture`. Opening does not autofocus the close control; callers
-  may opt into an explicit focus target only when the interaction requires it.
+  reusable `SheetGesture`. Opening focuses the close control by default;
+  Theme Editor selection handlers pass `focus: false` to keep focus in the editor.
 - Feature controllers own only content, forms, variants and trigger wiring.
 
 Popup blocks, Pickup availability, back-in-stock Notify and Size chart render
-this same shell. Native `showModal()` places them in the browser top layer;
-dialogs marked with `append_to_body` are portaled to `document.body` before
-opening so Product Details transforms and overflow cannot clip them. The
-controller remembers the original location and restores it during teardown.
+this same shell. It is a `<div role="dialog">`, and the controller manages its
+visibility, initial focus, Tab wrapping and focus return. Dialogs marked with
+`append_to_body` are portaled to `document.body` before opening so Product
+Details transforms and overflow cannot clip them. The controller remembers
+the original location and restores it during teardown.
 
 Cart order options and Localization retain their existing commerce/navigation
 shells. They consume the shared sheet radius/header classes and `SheetGesture`
@@ -43,11 +44,12 @@ padding, transitions, backdrop, header, close control or radius.
 ```js
 const overlay = window.ThemeOverlay.get(dialog);
 overlay.open({ opener: trigger });
-// The default open path leaves focus where the trigger interaction placed it;
-// it does not move focus to the close button.
+// Default storefront opening focuses the close control and traps Tab in the overlay.
 // Feature controllers can defer the panel reveal by one frame so the backdrop
 // leads the content when a loaded view needs a softer entrance.
 // overlay.open({ opener: trigger, defer: true });
+// Theme Editor selection handlers keep focus in the editor:
+// overlay.open({ opener: null, focus: false, restoreFocus: false });
 overlay.close();
 // On section removal:
 overlay.destroy();
@@ -91,9 +93,10 @@ links and other interactive targets retain their native behavior.
 
 Run `node --test tests/component-overlay.test.cjs` for controller and pointer
 close regressions.
-`tests/overlay-fixture.html` is a manual native-dialog fixture with the real
-component CSS/JS; its output records opening transforms and backdrop color.
-It does not render Liquid or replace storefront/Theme Editor QA.
+`tests/overlay-fixture.html` is a manual browser fixture for the shared
+`div[role="dialog"]` shell with the real component CSS/JS; its output records
+opening transforms and backdrop color. It does not render Liquid or replace
+storefront/Theme Editor QA.
 
 Before release verify the actual theme at mobile, 768px and desktop: popup
 animation, drawer animation, drag/cancel, Escape, backdrop, Tab confinement,
