@@ -5,7 +5,7 @@
   <legend class="visually-hidden">{{ 'collection.grid_view' | t }}</legend>
   <span class="collection-columns__label body-text body-sm" aria-hidden="true">{{ 'collection.view' | t }}</span>
   {% for number in (1..2) %}
-    <label class="collection-columns__option collection-columns__mobile">
+    <label class="collection-columns__option collection-columns__mobile" data-style="{{ block.settings.mobile_style | default: 'secondary' | replace: 'subtle', 'tertiary' }}">
       <input class="collection-columns__option-input form__control--radio" type="radio" name="columns-{{ section.id }}-mobile" value="{{ number }}" aria-label="{{ number }} {{ 'collection.columns' | t }}" data-collection-columns data-device="mobile">
       <span class="collection-columns__option-content">
         <span class="collection-columns__option-text" aria-hidden="true">{{ number }}</span>
@@ -14,7 +14,7 @@
     </label>
   {% endfor %}
   {% for number in (2..3) %}
-    <label class="collection-columns__option collection-columns__tablet">
+    <label class="collection-columns__option collection-columns__tablet" data-style="{{ block.settings.desktop_style | default: 'primary' | replace: 'subtle', 'tertiary' }}">
       <input class="collection-columns__option-input form__control--radio" type="radio" name="columns-{{ section.id }}-tablet" value="{{ number }}" aria-label="{{ number }} {{ 'collection.columns' | t }}" data-collection-columns data-device="tablet">
       <span class="collection-columns__option-content">
         <span class="collection-columns__option-text" aria-hidden="true">{{ number }}</span>
@@ -23,7 +23,7 @@
     </label>
   {% endfor %}
   {% for number in (3..5) %}
-    <label class="collection-columns__option collection-columns__desktop">
+    <label class="collection-columns__option collection-columns__desktop" data-style="{{ block.settings.desktop_style | default: 'primary' | replace: 'subtle', 'tertiary' }}">
       <input class="collection-columns__option-input form__control--radio" type="radio" name="columns-{{ section.id }}-desktop" value="{{ number }}" aria-label="{{ number }} {{ 'collection.columns' | t }}" data-collection-columns data-device="desktop">
       <span class="collection-columns__option-content">
         <span class="collection-columns__option-text" aria-hidden="true">{{ number }}</span>
@@ -41,10 +41,22 @@
     { "type": "select", "id": "desktop_type", "label": "Type", "options": [
       { "value": "icon", "label": "Icon" }, { "value": "text", "label": "Text" }
     ], "default": "text" },
+    { "type": "select", "id": "desktop_style", "label": "Desktop style", "options": [
+      { "value": "primary", "label": "t:options.button_variant.primary" },
+      { "value": "secondary", "label": "t:options.button_variant.secondary" },
+      { "value": "tertiary", "label": "t:options.button_variant.tertiary" },
+      { "value": "outline", "label": "t:options.button_variant.outline" }
+    ], "default": "primary" },
     { "type": "header", "content": "Mobile" },
     { "type": "select", "id": "mobile_type", "label": "Type", "options": [
       { "value": "icon", "label": "Icon" }, { "value": "text", "label": "Text" }
-    ], "default": "icon" }
+    ], "default": "icon" },
+    { "type": "select", "id": "mobile_style", "label": "Mobile style", "options": [
+      { "value": "primary", "label": "t:options.button_variant.primary" },
+      { "value": "secondary", "label": "t:options.button_variant.secondary" },
+      { "value": "tertiary", "label": "t:options.button_variant.tertiary" },
+      { "value": "outline", "label": "t:options.button_variant.outline" }
+    ], "default": "secondary" }
   ]
 }
 {% endschema %}
