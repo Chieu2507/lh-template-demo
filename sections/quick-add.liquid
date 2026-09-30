@@ -4,9 +4,9 @@
     assign quick_add_desktop_layout = 'drawer'
   endunless
 
-  assign quick_add_mobile_layout = section.settings.mobile_layout | default: 'drawer'
+  assign quick_add_mobile_layout = section.settings.mobile_layout | default: 'bottom_sheet'
   unless quick_add_mobile_layout == 'bottom_sheet' or quick_add_mobile_layout == 'drawer'
-    assign quick_add_mobile_layout = 'drawer'
+    assign quick_add_mobile_layout = 'bottom_sheet'
   endunless
 
   assign quick_add_media_position = section.settings.media_position | default: 'top'
@@ -144,7 +144,7 @@
         { "value": "bottom_sheet", "label": "Bottom sheet" },
         { "value": "drawer", "label": "Drawer" }
       ],
-      "default": "drawer"
+      "default": "bottom_sheet"
     },
     {
       "type": "select",
