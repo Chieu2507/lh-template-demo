@@ -100,6 +100,7 @@ class QuickAddController {
     document.addEventListener('shopify:section:deselect', this.handleSectionDeselect, { signal: this.signal });
     document.addEventListener('shopify:section:unload', (event) => {
       if (event.target === this.sectionRoot || event.target?.contains?.(this.sectionRoot)) this.destroy();
+      else if (event.target?.contains?.(this.loadingTrigger)) this.handleClose();
     }, { signal: this.signal });
     this.dialog.addEventListener('close', this.handleClose, { signal: this.signal });
   }
@@ -176,6 +177,8 @@ class QuickAddController {
       this.loadingTrigger = trigger;
       trigger.dataset.quickAddLoading = 'true';
       trigger.setAttribute('aria-busy', 'true');
+      this.triggerDisabledState = trigger.getAttribute('aria-disabled');
+      trigger.setAttribute('aria-disabled', 'true');
       if (dots) {
         dots.hidden = false;
         dots.classList.remove('hidden');
@@ -186,6 +189,8 @@ class QuickAddController {
 
     delete trigger.dataset.quickAddLoading;
     trigger.removeAttribute('aria-busy');
+    if (this.triggerDisabledState == null) trigger.removeAttribute('aria-disabled');
+    else trigger.setAttribute('aria-disabled', this.triggerDisabledState);
     if (dots) {
       dots.hidden = true;
       dots.classList.add('hidden');
@@ -214,6 +219,7 @@ class QuickAddController {
     if (!trigger) return;
     if (trigger.dataset.quickAddLoading === 'true') {
       event.preventDefault();
+      this.pointerActivated = false;
       return;
     }
 
@@ -345,8 +351,10 @@ class QuickAddController {
       this.overlay.open({ opener, focus, defer: true, restoreFocus });
       if (focus) this.dialog.querySelector('[data-quick-add-retry]')?.focus({ preventScroll: true });
     } finally {
-      if (this.requestController === requestController && !requestController.signal.aborted) {
+      if (this.requestController === requestController) {
         this.dialog.removeAttribute('aria-busy');
+        this.clearTriggerLoading();
+        this.requestController = null;
       }
     }
   }
@@ -362,8 +370,7 @@ class QuickAddController {
   }
 
   destroy() {
-    this.requestController?.abort();
-    this.clearTriggerLoading();
+    this.handleClose();
     this.overlay?.destroy();
     this.abortController.abort();
     controllers.delete(this.dialog);

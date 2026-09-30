@@ -186,9 +186,9 @@
         }
       },
       "settings": {
-        "desktop_layout": "popup",
+        "desktop_layout": "drawer",
         "desktop_width": 550,
-        "mobile_layout": "bottom_sheet",
+        "mobile_layout": "drawer",
         "media_position": "top",
         "gap_desktop": 20,
         "gap_mobile": 20,
