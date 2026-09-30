@@ -8,6 +8,11 @@ const setFocusableState = (element) => {
   });
 };
 
+const disableEntranceAnimation = (element) => {
+  element.classList.remove('motion-block');
+  element.querySelectorAll('.motion-block').forEach((motionElement) => motionElement.classList.remove('motion-block'));
+};
+
 const copyToClipboard = async (value) => {
   if (navigator.clipboard?.writeText) {
     try {
@@ -235,6 +240,7 @@ const initScrolling = (root, track) => {
     const appendCloneSet = () => {
       originalSlides.forEach((slide) => {
         const clone = slide.cloneNode(true);
+        disableEntranceAnimation(clone);
         setFocusableState(clone);
         clone.dataset.announcementClone = 'true';
         track.append(clone);
