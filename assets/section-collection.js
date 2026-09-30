@@ -328,14 +328,6 @@ if (!customElements.get('collection-facets')) {
       this.resetHandleDrag = () => this.sheetGesture?.reset();
 
       this.onClick = (event) => {
-        const column = event.target.closest('[data-collection-columns]');
-        if (column) {
-          if (column.getAttribute('aria-pressed') !== 'true') {
-            try { sessionStorage.setItem(`collection-columns-${this.sectionId}-${column.dataset.device}`, column.value); } catch (_) {}
-            this.syncColumns(true, column);
-          }
-          return;
-        }
         const more = event.target.closest('[data-filter-show-more]');
         if (more) {
           this.toggleFilterValues(more);
@@ -381,6 +373,14 @@ if (!customElements.get('collection-facets')) {
 
       this.onChange = (event) => {
         const control = event.target;
+        if (control.matches('[data-collection-columns]')) {
+          if (control.checked) {
+            try { sessionStorage.setItem(`collection-columns-${this.sectionId}-${control.dataset.device}`, control.value); } catch (_) {}
+            this.syncColumns(true, control);
+          }
+          return;
+        }
+
         if (control.matches('[data-collection-sort]')) {
           this.renderFromForm(control.form);
           return;
@@ -636,7 +636,7 @@ if (!customElements.get('collection-facets')) {
         const permitted = device === 'desktop' ? ['3','4','5'] : device === 'tablet' ? ['2','3'] : ['1','2'];
         if (!permitted.includes(value)) value = permitted[0];
         products.style.setProperty(`--main-collection-columns-${device}`, value);
-        this.querySelectorAll(`[data-collection-columns][data-device="${device}"]`).forEach(button => button.setAttribute('aria-pressed', String(button.value === value)));
+        this.querySelectorAll(`[data-collection-columns][data-device="${device}"]`).forEach(input => { input.checked = input.value === value; });
       }
       if (animate && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
         this.gridAnimations = items.map((item, index) => {
