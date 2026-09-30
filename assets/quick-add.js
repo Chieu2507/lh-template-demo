@@ -95,7 +95,7 @@ class QuickAddController {
 
     document.addEventListener('click', this.handleClick, { capture: true, signal: this.signal });
     document.addEventListener('pointerdown', this.handlePointerDown, { capture: true, signal: this.signal });
-    document.addEventListener('submit', this.handleSubmit, { capture: true, signal: this.signal });
+    document.addEventListener('cart:add:ready', this.handleSubmit, { signal: this.signal });
     document.addEventListener('shopify:section:select', this.handleSectionSelect, { signal: this.signal });
     document.addEventListener('shopify:section:deselect', this.handleSectionDeselect, { signal: this.signal });
     document.addEventListener('shopify:section:unload', (event) => {
@@ -212,7 +212,10 @@ class QuickAddController {
 
     const trigger = event.target.closest?.('[data-product-card-quick-add-overlay]');
     if (!trigger) return;
-    if (trigger.dataset.quickAddLoading === 'true') return;
+    if (trigger.dataset.quickAddLoading === 'true') {
+      event.preventDefault();
+      return;
+    }
 
     const url = this.productUrl(trigger);
     if (!url) return;
@@ -224,12 +227,11 @@ class QuickAddController {
   }
 
   handleSubmit(event) {
-    const form = event.target.closest?.('form[action*="/cart/add"]');
+    const form = event.detail?.form;
     if (!form || !this.dialog.contains(form) || !form.querySelector('[name="id"]')?.value) return;
 
-    // The cart drawer listens to the same submit event. Let it start its request,
-    // then close this overlay without stealing the drawer's focus.
-    window.queueMicrotask(() => this.overlay?.close({ restoreFocus: false }));
+    event.detail.opener = this.opener;
+    this.overlay?.close({ immediate: true, restoreFocus: false });
   }
 
   handleRetry() {
@@ -311,11 +313,13 @@ class QuickAddController {
     this.dialog.setAttribute('aria-busy', 'true');
 
     try {
-      const nextContent = await this.fetchContent(targetUrl, requestController.signal);
+      const [nextContent] = await Promise.all([
+        this.fetchContent(targetUrl, requestController.signal),
+        loadProductFeatures(),
+      ]);
       if (requestController.signal.aborted || this.requestController !== requestController) return;
 
       this.replaceContent(nextContent);
-      await loadProductFeatures();
       if (requestController.signal.aborted || this.requestController !== requestController) return;
       this.setStatus('content');
       await waitForContentReady(this.content);
