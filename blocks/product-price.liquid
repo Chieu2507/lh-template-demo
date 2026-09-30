@@ -92,7 +92,7 @@
     {% else %}
       {% if price_product != blank %}
         {% render 'price', item: price_product, context: 'product-page', class: 'product-page__price' %}
-      {% elsif request.design_mode %}
+      {% else %}
         {% render 'price', amount: 1999, context: 'product-page', class: 'product-page__price' %}
       {% endif %}
     {% endif %}

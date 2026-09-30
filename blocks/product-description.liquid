@@ -68,7 +68,7 @@
   assign description_class = description_class | append: ' product-description--height-' | append: description_height
   assign description_content_id = 'ProductDescriptionContent-' | append: section.id | append: '-' | append: block.id
   assign description_should_render = description_has_content
-  if description_product == blank and request.design_mode
+  if description_product == blank
     assign description_should_render = true
   endif
 %}
@@ -101,7 +101,7 @@
         {% if description_has_content %}
           {{ description_product.description }}
         {% else %}
-          {% if description_product == blank and request.design_mode %}
+          {% if description_product == blank %}
             <p>{{ 'products.product_description_placeholder' | t }}</p>
           {% else %}
             <span class="visually-hidden">{{ 'products.product_description' | t }}</span>
