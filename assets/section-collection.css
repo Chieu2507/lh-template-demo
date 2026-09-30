@@ -1280,21 +1280,20 @@
 .collection-columns__option {
   position: relative;
   display: inline-flex;
-  min-height: var(--collection-toolbar-button-height, var(--button-height, 44px));
+  min-height: 0;
   align-items: center;
   justify-content: center;
   padding: 0;
-  border: 1px solid var(--input-toggle-border, var(--color-border));
-  border-radius: var(--button-radius, 0);
-  background: transparent;
+  border: 0;
+  border-radius: 0;
+  background: none;
   color: var(--color-heading);
   cursor: pointer;
-  transition: border-color var(--button-motion-duration, var(--motion-duration-standard)) var(--button-motion-ease, var(--motion-ease-standard));
 }
 
 .collection-columns__mobile + .collection-columns__mobile,
 .collection-columns__tablet + .collection-columns__tablet,
-.collection-columns__desktop + .collection-columns__desktop { margin-inline-start: -1px; }
+.collection-columns__desktop + .collection-columns__desktop { margin-inline-start: 4px; }
 
 .collection-columns__option > .collection-columns__option-input {
   position: absolute;
@@ -1318,8 +1317,8 @@
 
 .collection-columns__option-content {
   display: grid;
-  width: 44px;
-  height: var(--collection-toolbar-button-height, var(--button-height, 44px));
+  width: 32px;
+  height: 32px;
   place-items: center;
   color: inherit;
   transition:
@@ -1384,7 +1383,7 @@
   outline-offset: 3px;
 }
 @media (hover: hover) and (pointer: fine) {
-  .collection-columns__option:hover { border-color: var(--color-heading); }
+  .collection-columns__option:hover { color: var(--color-heading); }
   .collection-columns[data-desktop-style='primary'] :is(.collection-columns__desktop, .collection-columns__tablet):has(> .collection-columns__option-input:checked:hover) .collection-columns__option-content {
     background: var(--button-primary-hover-background);
     color: var(--button-primary-hover-text);

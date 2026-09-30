@@ -18,9 +18,9 @@
 {% if block.settings.pagination_type == 'pages' %}
   {% if paginate.previous %}
     <span class="prev">
-      <a href="{{ paginate.previous.url }}" class="link-underline" aria-label="{{ 'collection.previous_page' | t | escape }}">
+      <a href="{{ paginate.previous.url }}" class="link-underline" data-underline="persistent" data-underline-target="text" aria-label="{{ 'collection.previous_page' | t | escape }}">
         {% render 'icon', icon: 'chevron-left', bare: true, class: 'main-collection__pagination-arrow' %}
-        <span>{{ 'collection.previous_page' | t }}</span>
+        <span class="btn__text">{{ 'collection.previous_page' | t }}</span>
       </a>
     </span>
   {% endif %}
@@ -51,8 +51,8 @@
 
   {% if paginate.next %}
     <span class="next">
-      <a href="{{ paginate.next.url }}" class="link-underline" aria-label="{{ 'collection.next_page' | t | escape }}">
-        <span>{{ 'collection.next_page' | t }}</span>
+      <a href="{{ paginate.next.url }}" class="link-underline" data-underline="persistent" data-underline-target="text" aria-label="{{ 'collection.next_page' | t | escape }}">
+        <span class="btn__text">{{ 'collection.next_page' | t }}</span>
         {% render 'icon', icon: 'chevron-right', bare: true, class: 'main-collection__pagination-arrow' %}
       </a>
     </span>
