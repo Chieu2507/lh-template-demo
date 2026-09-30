@@ -635,6 +635,7 @@
     "background_color": "Background color",
     "border_radius": "Border radius",
     "border_width": "Border width",
+    "outline_thickness": "Outline thickness",
     "layout_direction": "Layout direction",
     "logo": "Logo",
     "transparent_overlay_logo": "Transparent / overlay logo",

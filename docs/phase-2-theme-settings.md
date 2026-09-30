@@ -599,12 +599,12 @@ settings đã được loại khỏi contract Colors.
 
 | ID | Type | Values | Default | Mapping / constraint |
 | --- | --- | --- | --- | --- |
-| input_style | select | solid, outline | solid | `--input-style`; outline chuyển background về transparent |
+| input_style | select | solid, outline | solid | `input-style--solid` / `input-style--outline` đặt `--input-background-color` |
 | input_height_desktop | range | 40–64, step 1px | 48 | `--input-height` |
 | input_height_mobile | range | 40–56, step 1px | 44 | `--input-height-mobile` |
 | input_radius_style | select | square, slightly_rounded, rounded, pill | rounded | `--input-radius` dùng primitive radius chung; không còn numeric radius field |
-| input_border_width | range | 0–3, step 1px | 1 | `--input-border-width`; giữ ID tương thích |
-| input_background_color | color | CSS color | #FFFFFF | `--input-background-color` cho Solid; Outline fallback transparent |
+| input_border_width | range | 0–3, step 1px | 1 | `--input-border-width-outline`; Solid đặt `--input-border-width` về 0px |
+| input_background_color | color | CSS color | #FFFFFF | `--input-background-color-solid`; Solid đọc màu này, Outline dùng transparent |
 | form_label_typography | select | xs, sm, md, lg, xl, xxl | md | `--form-label-font-size`; dùng cùng scale `Text size` của Text block |
 | form_input_typography | select | xs, sm, md, lg, xl, xxl | md | `--form-input-font-size`; không đổi layout control |
 | form_helper_typography | select | xs, sm, md, lg, xl, xxl | md | `--form-helper-font-size` |

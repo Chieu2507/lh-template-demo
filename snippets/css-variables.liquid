@@ -462,11 +462,6 @@
   assign button_tertiary_underline_offset = settings.button_tertiary_underline_offset | default: 3
   assign button_default_variant = 'primary'
 
-  assign input_style = 'solid'
-  if settings.input_style == 'outline'
-    assign input_style = 'outline'
-  endif
-
   assign input_height_desktop = settings.input_height_desktop
   if input_height_desktop == blank
     assign input_height_desktop = 48
@@ -492,9 +487,6 @@
       assign input_radius = 'var(--radius-pill)'
   endcase
   assign input_background_color = settings.input_background_color | default: '#FFFFFF'
-  if input_style == 'outline'
-    assign input_background_color = 'transparent'
-  endif
 
   assign form_label_font_size = 'var(--font-body-md)'
   case settings.form_label_typography
@@ -1041,12 +1033,13 @@
     --button-tertiary-text-decoration: {{ button_tertiary_underline }};
     --button-tertiary-underline-display: {{ button_tertiary_underline_display }};
 
-    --input-style: {{ input_style }};
     --input-height: {{ input_height_desktop }}px;
     --input-height-mobile: {{ input_height_mobile }}px;
     --input-radius: {{ input_radius }};
-    --input-border-width: {{ input_border_width }}px;
-    --input-background-color: {{ input_background_color }};
+    --input-border-width-outline: {{ input_border_width }}px;
+    --input-border-width: 0px;
+    --input-background-color-solid: {{ input_background_color }};
+    --input-background-color: var(--input-background-color-solid);
     --input-border-color: var(--border-color);
     --input-focus-color: var(--accent-color);
     --input-error-color: var(--sale-price-color);

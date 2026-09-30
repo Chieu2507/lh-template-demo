@@ -170,9 +170,24 @@ input[type='reset'] {
   cursor: pointer;
 }
 
-input:not([type='checkbox']):not([type='radio']):not([type='hidden']),
-textarea,
-select {
+.input-style--solid {
+  --input-background-color: var(--input-background-color-solid);
+  --input-background: var(--input-background-color);
+  --input-border-width: 0px;
+}
+
+.input-style--outline {
+  --input-background-color: transparent;
+  --input-background: var(--input-background-color);
+  --input-border-width: var(--input-border-width-outline);
+}
+
+:where(
+  .form__control:not(.form__control--checkbox):not(.form__control--radio):not([type='checkbox']):not([type='radio']):not([type='hidden']),
+  input:not([type='checkbox']):not([type='radio']):not([type='hidden']):not(.form__control),
+  textarea:not(.form__control),
+  select:not(.form__control)
+) {
   width: 100%;
   min-height: var(--input-height);
   padding: 0.65rem 0.875rem;
@@ -183,15 +198,13 @@ select {
   font-size: var(--form-input-font-size);
 }
 
-textarea {
+:where(.form__control--textarea, textarea:not(.form__control)) {
   min-height: 8rem;
   resize: vertical;
 }
 
-select {
+:where(.form__control--select, select:not(.form__control)) {
   appearance: none;
-  background-color: var(--input-background-color);
-  color: currentcolor;
 }
 
 .form__control-wrap--select {
@@ -1210,10 +1223,6 @@ legend {
   opacity: 1;
 }
 
-.form__control--textarea {
-  min-height: 8rem;
-}
-
 .form__control--checkbox,
 .form__control--radio {
   width: 1.125rem;
@@ -1246,8 +1255,11 @@ legend {
 }
 
 @media (max-width: 767px) {
-  input:not([type='checkbox']):not([type='radio']):not([type='hidden']),
-  select {
+  :where(
+    .form__control:not(textarea):not(.form__control--checkbox):not(.form__control--radio):not([type='checkbox']):not([type='radio']):not([type='hidden']),
+    input:not([type='checkbox']):not([type='radio']):not([type='hidden']):not(.form__control),
+    select:not(.form__control)
+  ) {
     min-height: var(--input-height-mobile);
   }
 }
