@@ -235,7 +235,7 @@
       </template>
 
       <div class="bundle-summary__items" id="{{ bundle_summary_items_id }}">
-        <div class="bundle-summary__item-list" data-bundle-items>
+        <div class="bundle-summary__item-list scrollbar scrollbar--vertical" data-bundle-items>
           {% for placeholder_index in (1..bundle_summary_placeholder_count) %}
             <div class="bundle-summary__placeholder-item" data-bundle-placeholder aria-hidden="true">
               <span class="bundle-summary__placeholder-media"></span>
@@ -530,6 +530,7 @@
   .bundle-summary__item-list {
     display: grid;
     gap: 20px;
+    min-height: 0;
     min-width: 0;
   }
 
@@ -835,8 +836,6 @@
     .bundle-summary[data-mobile-sticky='true'][data-mobile-expanded='true'] .bundle-summary__items {
       flex: 0 1 auto;
       margin-block-start: 0;
-      overflow-y: auto;
-      overscroll-behavior: contain;
       opacity: 1;
       visibility: visible;
       pointer-events: auto;
@@ -940,12 +939,6 @@
       .bundle-summary__surface {
         max-height: calc(100svh - var(--header-sticky-height, 0px) - var(--sticky-offset-spacing, 16px) - var(--sticky-offset-spacing, 16px));
       }
-    }
-
-    .bundle-summary__items {
-      overflow-y: auto;
-      overflow-x: hidden;
-      overscroll-behavior: contain;
     }
 
     .bundle-summary__item-list {

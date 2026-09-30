@@ -17,7 +17,7 @@
         <button type="button" data-product-recommendations-next aria-label="Next products">{% render 'icon', icon: 'chevron-right', bare: true %}</button>
       </div>
     </div>
-    <div class="product-recommendations__track" data-product-recommendations-track>
+    <div class="product-recommendations__track scrollbar scrollbar--horizontal scrollbar--hidden" data-product-recommendations-track>
       {% for recommendation in recommendation_products limit: recommendation_limit %}
         <div class="product-recommendations__item">{% render 'product-card', product: recommendation %}</div>
       {% else %}

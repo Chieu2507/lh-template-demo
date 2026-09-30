@@ -84,6 +84,90 @@ svg {
   backdrop-filter: blur(var(--backdrop-blur, 0px));
 }
 
+/* Scrollport rules: add .scrollbar for a thin thumb tinted by the inherited
+ * scheme color. Use --horizontal, --vertical, or --both for the scroll axis;
+ * use --horizontal-mobile or --vertical-until-desktop for responsive axes.
+ * Add --hidden only when a swipe rail or tab strip intentionally hides its
+ * thumb. Keep axes tied to an interaction state in the component stylesheet. */
+.scrollbar {
+  --scrollbar-size: 0.8rem;
+  --scrollbar-thumb-color: color-mix(in srgb, currentColor 28%, transparent);
+  --scrollbar-thumb-hover-color: color-mix(in srgb, currentColor 46%, transparent);
+  scrollbar-color: var(--scrollbar-thumb-color) transparent;
+  scrollbar-width: thin;
+}
+
+.scrollbar::-webkit-scrollbar {
+  width: var(--scrollbar-size);
+  height: var(--scrollbar-size);
+}
+
+.scrollbar::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.scrollbar::-webkit-scrollbar-thumb {
+  border: 2px solid transparent;
+  border-radius: 999px;
+  background: var(--scrollbar-thumb-color);
+  background-clip: content-box;
+}
+
+.scrollbar:hover::-webkit-scrollbar-thumb {
+  background-color: var(--scrollbar-thumb-hover-color);
+}
+
+.scrollbar--horizontal {
+  overflow-x: auto;
+  overflow-y: hidden;
+  overscroll-behavior-inline: contain;
+}
+
+.scrollbar--vertical {
+  overflow-x: hidden;
+  overflow-y: auto;
+  overscroll-behavior-block: contain;
+}
+
+.scrollbar--both {
+  overflow: auto;
+  overscroll-behavior: contain;
+}
+
+.scrollbar--hidden {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.scrollbar--hidden::-webkit-scrollbar {
+  display: none;
+}
+
+@media (max-width: 767.98px) {
+  .scrollbar--horizontal-mobile {
+    overflow-x: auto;
+    overflow-y: hidden;
+    overscroll-behavior-inline: contain;
+  }
+
+  .scrollbar--hidden-mobile {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  .scrollbar--hidden-mobile::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+@media (max-width: 1149.98px) {
+  .scrollbar--vertical-until-desktop {
+    overflow-x: hidden;
+    overflow-y: auto;
+    overscroll-behavior-block: contain;
+  }
+}
+
 /* Shared block sizing: blocks provide normalized CSS values, while this
  * utility owns the responsive width and max-width rules. */
 .size-style {
@@ -1316,10 +1400,7 @@ legend {
   grid-auto-flow: column;
   grid-auto-columns: var(--product-collection-grid-item-width-desktop);
   grid-template-columns: none;
-  overflow-x: auto;
-  overscroll-behavior-inline: contain;
   scroll-snap-type: inline mandatory;
-  scrollbar-width: thin;
 }
 
 .product-collection-grid--carousel .product-collection-grid__item,
@@ -1384,10 +1465,7 @@ legend {
 
   .product-collection-grid--swipe-mobile {
     grid-auto-flow: column;
-    overflow-x: auto;
-    overscroll-behavior-inline: contain;
     scroll-snap-type: inline mandatory;
-    scrollbar-width: thin;
   }
 }
 

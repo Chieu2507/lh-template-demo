@@ -19,6 +19,6 @@
       {% if title != blank %}<h2 id="{{ id }}-heading" class="component-overlay__title heading-text heading-sm">{{ title }}</h2>{% endif %}
       <button type="button" class="overlay-close component-overlay__close" data-overlay-close aria-label="{{ 'accessibility.close' | t }}">{% render 'icon', icon: 'x-mark', bare: true, class: 'overlay-close__icon' %}</button>
     </header>
-    <div class="component-overlay__body {{ body_class }}">{{ content }}</div>
+    <div class="component-overlay__body scrollbar scrollbar--vertical {{ body_class }}">{{ content }}</div>
   </div>
 </div>

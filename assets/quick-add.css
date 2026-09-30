@@ -38,7 +38,6 @@
   display: flex;
   min-height: 0;
   padding: var(--overlay-inset);
-  overflow: auto;
 }
 
 .quick-add__content {
@@ -84,8 +83,6 @@
 .quick-add__details {
   min-height: 0;
   padding: 0;
-  overflow-y: auto;
-  overscroll-behavior: contain;
   scrollbar-gutter: stable;
 }
 
@@ -160,7 +157,6 @@
 
 .quick-add--media-left .quick-add__media {
   min-height: 0;
-  overflow-y: auto;
 }
 
 .quick-add--media-left .quick-add__details {
@@ -214,14 +210,10 @@
     grid-template-rows: auto minmax(0, 1fr);
   }
 
-  .component-overlay[data-desktop-layout='drawer'] .quick-add--media-top .quick-add__details {
-    overflow-y: auto;
-  }
 }
 
 @media (max-width: 767.98px) {
   .quick-add__body {
-    overflow-y: auto;
     padding-bottom: max(var(--overlay-inset), env(safe-area-inset-bottom, 0px));
   }
 

@@ -570,13 +570,6 @@
   justify-content: center;
   gap: 0.8rem;
   margin: 0 auto 1.2rem;
-  overflow-x: auto;
-  overscroll-behavior-inline: contain;
-  scrollbar-width: none;
-}
-
-.product-media-lightbox__thumbnails::-webkit-scrollbar {
-  display: none;
 }
 
 .product-media-lightbox__thumbnail {

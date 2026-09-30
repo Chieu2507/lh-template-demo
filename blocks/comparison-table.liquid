@@ -195,7 +195,7 @@
       >
         {{ comparison_table_feature_column }}
         <div
-          class="comparison-table__scroll comparison-table__scroll--products grid horizontal-scroll"
+          class="comparison-table__scroll comparison-table__scroll--products grid scrollbar scrollbar--horizontal scrollbar--hidden-mobile"
           role="group"
           aria-label="{{ 'comparison_table.scroll_label' | t }}"
           tabindex="0"
@@ -205,7 +205,7 @@
       </div>
     {% else %}
       <div
-        class="comparison-table__scroll comparison-table__scroll--with-feature grid horizontal-scroll"
+        class="comparison-table__scroll comparison-table__scroll--with-feature grid scrollbar scrollbar--horizontal scrollbar--hidden-mobile"
         role="table"
         aria-label="{{ 'comparison_table.table_label' | t }}"
         aria-description="{{ 'comparison_table.scroll_label' | t }}"
@@ -258,26 +258,10 @@
     width: 100%;
     min-width: 0;
     padding-bottom: 2px;
-    overflow-x: auto;
-    overflow-y: hidden;
-    overscroll-behavior-x: contain;
     scroll-behavior: smooth;
     scroll-snap-type: x mandatory;
-    scrollbar-width: thin;
     color: var(--body-color);
-    --scroll-bar-width: 1rem;
     isolation: isolate;
-  }
-
-  .comparison-table__scroll::-webkit-scrollbar {
-    height: var(--scroll-bar-width, 0.6rem);
-  }
-
-  .comparison-table__scroll::-webkit-scrollbar-thumb {
-    border: 3px solid transparent;
-    border-radius: 999px;
-    background: color-mix(in srgb, var(--body-color) 25%, transparent);
-    background-clip: content-box;
   }
 
   .comparison-table__scroll--with-feature:not(.comparison-table__layout--feature-fixed) {
@@ -734,14 +718,6 @@
       padding-inline: 10px;
     }
 
-    .comparison-table__scroll {
-      --scroll-bar-width: 0;
-      scrollbar-width: none;
-    }
-
-    .comparison-table__scroll::-webkit-scrollbar {
-      display: none;
-    }
   }
 
   @media (prefers-reduced-motion: reduce) {

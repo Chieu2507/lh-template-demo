@@ -76,7 +76,7 @@
         </p>
 
         <div class="search-page__results">
-          <div class="search-page__tabs" role="tablist" aria-label="{{ 'search.title' | t | escape }}">
+          <div class="search-page__tabs scrollbar scrollbar--horizontal" role="tablist" aria-label="{{ 'search.title' | t | escape }}">
             {% if product_count > 0 %}
               <button
                 id="SearchPageTabProducts"
@@ -310,7 +310,6 @@
   .search-page__tabs {
     display: flex;
     gap: 2.5rem;
-    overflow-x: auto;
     border-bottom: 1px solid var(--border-color);
   }
 
