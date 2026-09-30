@@ -1245,7 +1245,7 @@
 /* Tablet control is icon-only and manages a separate 2/3-column grid state. */
 .collection-columns__tablet { display: none; }
 .collection-columns__tablet .collection-columns__option-text { display: none; }
-.collection-columns__tablet .collection-columns__option-icon { display: block; }
+.collection-columns__tablet .collection-columns__option-icon { display: grid; }
 
 @media (min-width: 768px) and (max-width: 1023.98px) {
   .collection-columns__desktop,
@@ -1378,55 +1378,20 @@
 .main-collection__sort-option-button { min-height: 42px; padding: 10px 18px; }
 .main-collection__sort-option-button[aria-selected='true'] { background: color-mix(in srgb, var(--color-text) 6%, var(--color-background)); font-weight: inherit; }
 .main-collection__sort-option-button svg { display: none; }
-/* Column variants customize the shared radio, leaving its label and icon unboxed. */
-.collection-columns__option[data-style] {
-  --collection-radio-checked-border: var(--color-heading);
-  --collection-radio-checked-background: var(--color-background);
-  --collection-radio-checked-dot: var(--color-heading);
-  --collection-radio-hover-border: var(--color-heading);
-  --collection-radio-hover-background: var(--color-background);
-  --collection-radio-hover-dot: var(--color-heading);
+/* Keep each column choice as a rectangular segment across text and icon modes. */
+.collection-columns__option[data-style='secondary'][aria-pressed='true'] {
+  border-color: var(--button-secondary-border);
+  background: var(--button-secondary-background);
+  color: var(--button-secondary-text);
 }
 
-.collection-columns__option[data-style='primary'] {
-  --collection-radio-checked-border: var(--button-primary-border);
-  --collection-radio-checked-background: var(--button-primary-background);
-  --collection-radio-checked-dot: var(--button-primary-text);
-  --collection-radio-hover-border: var(--button-primary-hover-border);
-  --collection-radio-hover-background: var(--button-primary-hover-background);
-  --collection-radio-hover-dot: var(--button-primary-hover-text);
+.collection-columns__option[data-style='outline'][aria-pressed='true'] {
+  border-color: var(--color-heading);
+  background: transparent;
+  color: var(--color-heading);
 }
 
-.collection-columns__option[data-style='secondary'] {
-  --collection-radio-checked-border: var(--button-secondary-border);
-  --collection-radio-checked-background: var(--button-secondary-background);
-  --collection-radio-checked-dot: var(--button-secondary-text);
-  --collection-radio-hover-border: var(--button-secondary-hover-border);
-  --collection-radio-hover-background: var(--button-secondary-hover-background);
-  --collection-radio-hover-dot: var(--button-secondary-hover-text);
-}
-
-.collection-columns__option[data-style='tertiary'] {
-  --collection-radio-checked-border: var(--button-tertiary-text);
-  --collection-radio-checked-background: transparent;
-  --collection-radio-checked-dot: var(--button-tertiary-text);
-  --collection-radio-hover-border: var(--button-tertiary-hover-text);
-  --collection-radio-hover-background: transparent;
-  --collection-radio-hover-dot: var(--button-tertiary-hover-text);
-}
-
-.collection-columns__option[data-style='outline'] {
-  --collection-radio-checked-background: transparent;
-  --collection-radio-hover-background: transparent;
-}
-
-.collection-columns__option[data-style] .form__control--radio:checked {
-  --input-toggle-border: var(--collection-radio-checked-border);
-  --input-toggle-background: var(--collection-radio-checked-background);
-  --input-toggle-dot-color: var(--collection-radio-checked-dot);
-}
-
-.collection-columns__option-content { transition: color 200ms ease; }
+.collection-columns__option { transition: background-color 200ms ease, border-color 200ms ease, color 200ms ease; }
 
 /* Pagination variants style the current page; page navigation stays link-based. */
 .main-collection__pagination[data-style] .page.current {
@@ -1447,7 +1412,7 @@
   color: var(--button-secondary-text);
 }
 
-.main-collection__pagination[data-style='tertiary'] .page.current {
+.main-collection__pagination[data-style='text'] .page.current {
   background: transparent;
   color: var(--button-tertiary-text, var(--color-heading));
   text-decoration: underline;
@@ -1468,21 +1433,19 @@
   color: var(--button-secondary-background);
 }
 
-.main-collection__pagination[data-style='tertiary'] [data-collection-load-more] {
+.main-collection__pagination[data-style='text'] [data-collection-load-more] {
   color: var(--button-tertiary-text, var(--color-heading));
 }
 
 @media (hover: hover) and (pointer: fine) {
-  .collection-columns__option[data-style]:hover .form__control--radio:not(:disabled) {
-    --input-toggle-border: var(--collection-radio-hover-border);
-    --input-toggle-background: var(--collection-radio-hover-background);
-    --input-toggle-dot-color: var(--collection-radio-hover-dot);
-  }
+  .collection-columns__option:not([aria-pressed='true']):hover { border-color: var(--color-heading); }
+  .collection-columns__option[data-style='primary'][aria-pressed='true']:hover { background: var(--button-primary-hover-background); color: var(--button-primary-hover-text); }
+  .collection-columns__option[data-style='secondary'][aria-pressed='true']:hover { background: var(--button-secondary-hover-background); color: var(--button-secondary-hover-text); }
 
 }
 .main-collection__grid > * { transform-origin: top left; }
 @media (prefers-reduced-motion: reduce) {
-  .collection-columns__option-content,
+  .collection-columns__option,
   .main-collection__pagination[data-style] .page.current { transition: none; }
 }
 
