@@ -53,7 +53,7 @@
 %}
 
 {% capture bundle_placeholder_middle %}
-  <div class="bundle-product-item__variants" aria-hidden="true"></div>
+  <div class="bundle-card__options" aria-hidden="true"></div>
 {% endcapture %}
 {% capture bundle_placeholder_footer %}
   <div class="bundle-product-item__action">
@@ -147,7 +147,7 @@
             <div class="form__control-wrap--select">
               <select
                 id="{{ bundle_variant_select_id }}"
-                class="bundle-product-item__variant-select variant-picker__control--select form__control form__control--select"
+                class="bundle-card__options-select variant-picker__control variant-picker__control--select form__control form__control--select"
                 data-bundle-variant-select
                 data-option-names="{{ bundle_product.options | json | escape }}"
                 data-sold-out-label="{{ bundle_sold_out_label | escape }}"
@@ -170,13 +170,13 @@
             </div>
           {% endcapture %}
           {% capture bundle_product_middle %}
-            <div class="bundle-product-item__variants">
+            <div class="bundle-card__options">
               {% unless bundle_product.has_only_default_variant %}
                 {% if bundle_variant_picker_type == 'button' and bundle_variant_picker_type_mobile == 'dropdown' %}
                   {% liquid
                     assign bundle_variant_picker_desktop_id = bundle_variant_picker_id | append: '-desktop'
                   %}
-                  <div class="bundle-product-item__variant-picker bundle-product-item__variant-picker--desktop">
+                  <div class="bundle-card__options-picker bundle-card__options-picker--desktop bundle-card__options-picker--button">
                     {% render 'variant-picker',
                       product: bundle_product,
                       current_variant: bundle_current_variant,
@@ -188,24 +188,26 @@
                       ignore_url_variant: true
                     %}
                   </div>
-                  <div class="bundle-product-item__variant-picker bundle-product-item__variant-picker--mobile">
+                  <div class="bundle-card__options-picker bundle-card__options-picker--mobile">
                     {{ bundle_product_dropdown_picker }}
                   </div>
                 {% elsif bundle_variant_picker_type == 'dropdown' %}
-                  <div class="bundle-product-item__variant-picker bundle-product-item__variant-picker--dropdown">
+                  <div class="bundle-card__options-picker bundle-card__options-picker--dropdown">
                     {{ bundle_product_dropdown_picker }}
                   </div>
                 {% else %}
-                  {% render 'variant-picker',
-                    product: bundle_product,
-                    current_variant: bundle_current_variant,
-                    section_id: section.id,
-                    block_id: bundle_variant_picker_id,
-                    type_override: 'button',
-                    sync_external_variants: false,
-                    update_url_on_change: false,
-                    ignore_url_variant: true
-                  %}
+                  <div class="bundle-card__options-picker bundle-card__options-picker--button">
+                    {% render 'variant-picker',
+                      product: bundle_product,
+                      current_variant: bundle_current_variant,
+                      section_id: section.id,
+                      block_id: bundle_variant_picker_id,
+                      type_override: 'button',
+                      sync_external_variants: false,
+                      update_url_on_change: false,
+                      ignore_url_variant: true
+                    %}
+                  </div>
                 {% endif %}
               {% else %}
                 <script type="application/json" data-bundle-product-variants>{{ bundle_product.variants | json }}</script>
@@ -306,17 +308,23 @@
     display: none !important;
   }
 
-  .bundle-product-item__variants {
+  .bundle-card__options {
     min-width: 0;
     align-self: start;
     width: 100%;
   }
 
-  .bundle-product-item__variants .variant-picker {
-    margin: 0;
+  .bundle-card__options .variant-picker {
+    margin-bottom: 16px;
+    padding-top: var(--details-gap);
+    border-top: 1px solid var(--color-border);
   }
 
-  .bundle-product-item .variant-picker__control--select {
+  .bundle-card__options .variant-picker--button {
+    --variant-border-width: var(--input-border-width-outline, 1px);
+  }
+
+  .bundle-card__options .variant-picker__control--select {
     --variant-height: var(--input-height);
     --variant-height-mobile: var(--input-height-mobile);
     --variant-border-width: var(--input-border-width);
@@ -327,12 +335,12 @@
     min-width: 0;
   }
 
-  .bundle-product-item__variant-picker--mobile {
+  .bundle-card__options-picker--mobile {
     display: none;
   }
 
-  .bundle-product-item__variant-picker--dropdown,
-  .bundle-product-item__variant-picker--dropdown .form__control-wrap--select {
+  .bundle-card__options-picker--dropdown,
+  .bundle-card__options-picker--dropdown .form__control-wrap--select {
     width: 100%;
     min-width: 0;
   }
@@ -359,11 +367,15 @@
   }
 
   @media (max-width: 767.98px) {
-    .bundle-product-item__variant-picker--desktop {
+    .bundle-card__options .variant-picker {
+      padding-top: var(--details-gap-mobile);
+    }
+
+    .bundle-card__options-picker--desktop {
       display: none;
     }
 
-    .bundle-product-item__variant-picker--mobile {
+    .bundle-card__options-picker--mobile {
       display: block;
     }
   }
