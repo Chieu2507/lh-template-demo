@@ -170,8 +170,8 @@
   .swiper-pagination[data-pagination-type='bullets'],
   .swiper-pagination.swiper-pagination-bullets
 ) .swiper-pagination-bullet-active::after {
-  width: var(--swiper-pagination-bullet-active-width, 32px);
-  height: var(--swiper-pagination-bullet-active-height, 8px);
+  width: var(--swiper-pagination-bullet-active-width, var(--swiper-pagination-bullet-width, 32px));
+  height: var(--swiper-pagination-bullet-active-height, var(--swiper-pagination-bullet-height, 8px));
 }
 
 .swiper > :is(
@@ -206,11 +206,11 @@
 
 @keyframes swiper-pagination-bullet-progress {
   from {
-    transform: scaleX(0);
+    transform: translate(-50%, -50%) scaleX(0);
   }
 
   to {
-    transform: scaleX(1);
+    transform: translate(-50%, -50%) scaleX(1);
   }
 }
 
