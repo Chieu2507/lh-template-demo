@@ -619,7 +619,7 @@ if (!customElements.get('collection-facets')) {
     }
 
     async loadMore(link) {
-      if (this.loadingMore) return;
+      if (this.loadingMore || this.requestController) return;
       this.loadingMore = true;
       link.setAttribute('aria-busy', 'true');
       const status = link.closest('.collection-pagination-block')?.querySelector('[data-collection-pagination-status]');
@@ -782,6 +782,7 @@ if (!customElements.get('collection-facets')) {
       this.requestController?.abort();
       const requestController = new AbortController();
       this.requestController = requestController;
+      this.paginationObserver?.disconnect();
       this.setAttribute('aria-busy', 'true');
 
       try {
@@ -822,7 +823,6 @@ if (!customElements.get('collection-facets')) {
           currentProducts.replaceWith(nextProducts);
           window.ThemeAnimations?.init(nextProducts);
           this.syncColumns();
-          this.observePagination();
           const currentActiveFilters = this.dialog.querySelector('.main-collection__active-filters');
           const nextActiveFilters = nextDialog.querySelector('.main-collection__active-filters');
           const currentFooter = this.dialog.querySelector('.main-collection__filter-footer');
@@ -880,7 +880,11 @@ if (!customElements.get('collection-facets')) {
         if (error.name === 'AbortError') return;
         window.location.assign(navigationUrl);
       } finally {
-        if (this.requestController === requestController) this.removeAttribute('aria-busy');
+        if (this.requestController === requestController) {
+          this.requestController = null;
+          this.removeAttribute('aria-busy');
+          this.observePagination();
+        }
       }
     }
   }

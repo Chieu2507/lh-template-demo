@@ -238,6 +238,7 @@
   },
   "labels": {
     "icon_accessible_label": "Icon link accessible label",
+    "filter_settings": "Filter settings",
     "alignment": "Alignment",
     "header_vertical_alignment": "Header vertical alignment",
     "inherit_alignment": "Inherit parent alignment",
