@@ -279,6 +279,90 @@ svg {
   backdrop-filter: blur(var(--backdrop-blur, 0px));
 }
 
+/* Scrollport rules: add .scrollbar for a thin thumb tinted by the inherited
+ * scheme color. Use --horizontal, --vertical, or --both for the scroll axis;
+ * use --horizontal-mobile or --vertical-until-desktop for responsive axes.
+ * Add --hidden only when a swipe rail or tab strip intentionally hides its
+ * thumb. Keep axes tied to an interaction state in the component stylesheet. */
+.scrollbar {
+  --scrollbar-size: 0.8rem;
+  --scrollbar-thumb-color: color-mix(in srgb, currentColor 28%, transparent);
+  --scrollbar-thumb-hover-color: color-mix(in srgb, currentColor 46%, transparent);
+  scrollbar-color: var(--scrollbar-thumb-color) transparent;
+  scrollbar-width: thin;
+}
+
+.scrollbar::-webkit-scrollbar {
+  width: var(--scrollbar-size);
+  height: var(--scrollbar-size);
+}
+
+.scrollbar::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.scrollbar::-webkit-scrollbar-thumb {
+  border: 2px solid transparent;
+  border-radius: 999px;
+  background: var(--scrollbar-thumb-color);
+  background-clip: content-box;
+}
+
+.scrollbar:hover::-webkit-scrollbar-thumb {
+  background-color: var(--scrollbar-thumb-hover-color);
+}
+
+.scrollbar--horizontal {
+  overflow-x: auto;
+  overflow-y: hidden;
+  overscroll-behavior-inline: contain;
+}
+
+.scrollbar--vertical {
+  overflow-x: hidden;
+  overflow-y: auto;
+  overscroll-behavior-block: contain;
+}
+
+.scrollbar--both {
+  overflow: auto;
+  overscroll-behavior: contain;
+}
+
+.scrollbar--hidden {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.scrollbar--hidden::-webkit-scrollbar {
+  display: none;
+}
+
+@media (max-width: 767.98px) {
+  .scrollbar--horizontal-mobile {
+    overflow-x: auto;
+    overflow-y: hidden;
+    overscroll-behavior-inline: contain;
+  }
+
+  .scrollbar--hidden-mobile {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  .scrollbar--hidden-mobile::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+@media (max-width: 1149.98px) {
+  .scrollbar--vertical-until-desktop {
+    overflow-x: hidden;
+    overflow-y: auto;
+    overscroll-behavior-block: contain;
+  }
+}
+
 /* Shared block sizing: blocks provide normalized CSS values, while this
  * utility owns the responsive width and max-width rules. */
 .size-style {
@@ -365,6 +449,18 @@ input[type='reset'] {
   cursor: pointer;
 }
 
+.input-style--solid {
+  --input-background-color: var(--input-background-color-solid);
+  --input-background: var(--input-background-color);
+  --input-border-width: 0px;
+}
+
+.input-style--outline {
+  --input-background-color: transparent;
+  --input-background: var(--input-background-color);
+  --input-border-width: var(--input-border-width-outline);
+}
+
 input:not([type='checkbox']):not([type='radio']):not([type='hidden']),
 textarea,
 select {
@@ -447,6 +543,93 @@ a:focus-visible,
 /* Keep field focus inside its border so scrollports and drawers cannot clip it. */
 :where(input:not([type='checkbox']):not([type='radio']):not([type='range']):not([type='button']):not([type='submit']):not([type='reset']), select, textarea):focus-visible {
   outline-offset: -2px;
+}
+
+.quantity-selector {
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-between;
+  flex: 0 0 auto;
+  height: var(--quantity-selector-height);
+  border: var(--input-border-width) solid var(--input-border-color);
+  border-radius: var(--input-radius);
+  background: var(--input-background-color);
+  color: var(--input-text-color);
+  font-family: var(--font-body-family);
+  font-size: var(--font-body-md);
+  font-weight: var(--font-body-weight);
+  line-height: var(--quantity-selector-height);
+}
+
+.quantity-selector:has(:focus-visible) {
+  outline: 2px solid var(--input-focus-color);
+  outline-offset: 2px;
+}
+
+.quantity-selector[hidden] {
+  display: none;
+}
+
+.quantity-selector__button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 var(--quantity-selector-button-width);
+  width: var(--quantity-selector-button-width);
+  height: 100%;
+  min-height: 0;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: var(--heading-color);
+  cursor: pointer;
+}
+
+.quantity-selector__button svg {
+  display: block;
+  width: var(--quantity-selector-icon-size);
+  height: var(--quantity-selector-icon-size);
+}
+
+.quantity-selector input:not([type='checkbox']):not([type='radio']):not([type='hidden']) {
+  flex: 0 0 var(--quantity-selector-input-width);
+  width: var(--quantity-selector-input-width);
+  max-width: var(--quantity-selector-input-width);
+  height: 100%;
+  min-height: 0;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  color: var(--heading-color);
+  font-weight: 500;
+  text-align: center;
+  appearance: textfield;
+  -moz-appearance: textfield;
+}
+
+.quantity-selector :is(button, input):focus-visible {
+  outline: none;
+}
+
+.quantity-selector input::-webkit-inner-spin-button,
+.quantity-selector input::-webkit-outer-spin-button {
+  margin: 0;
+  appearance: none;
+}
+
+@media (max-width: 767.98px) {
+  .quantity-selector {
+    height: var(--quantity-selector-height-mobile);
+    line-height: var(--quantity-selector-height-mobile);
+  }
+
+  .quantity-selector input:not([type='checkbox']):not([type='radio']):not([type='hidden']) {
+    flex-basis: var(--quantity-selector-input-width-mobile);
+    width: var(--quantity-selector-input-width-mobile);
+    max-width: var(--quantity-selector-input-width-mobile);
+  }
 }
 
 button:disabled,
@@ -830,11 +1013,11 @@ h6 {
 .eyebrow-text {
   font-family: var(--font-body-family);
   font-style: var(--font-body-style);
-  font-weight: var(--font-p3-weight);
-  font-size: var(--font-p3-size);
-  line-height: var(--font-p3-line-height);
-  letter-spacing: var(--font-p3-letter-spacing);
-  text-transform: var(--font-p3-text-transform);
+  font-weight: var(--font-eyebrow-weight);
+  font-size: var(--font-eyebrow-size);
+  line-height: var(--font-eyebrow-line-height);
+  letter-spacing: var(--font-eyebrow-letter-spacing);
+  text-transform: var(--font-eyebrow-text-transform);
 }
 
 .eyebrow-text {
@@ -1384,10 +1567,10 @@ legend {
   gap: 0;
   min-width: 0;
   color: var(--body-color);
-  text-align: var(--pcard-alignment);
-  border: var(--pcard-border-width) solid var(--border-color);
+  text-align: var(--product-card-alignment);
+  border: var(--product-card-border-width) solid var(--border-color);
   border-radius: var(--card-radius);
-  box-shadow: var(--pcard-shadow);
+  box-shadow: var(--product-card-shadow);
 }
 
 .product-card-layout__item {
@@ -1517,11 +1700,11 @@ legend {
 }
 
 .product-card--card .product-card__content {
-  padding: var(--pcard-content-spacing, 20px);
+  padding: var(--product-card-content-spacing, 20px);
 }
 
 .product-card--standard .product-card__content {
-  padding-block-start: var(--pcard-content-spacing, 20px);
+  padding-block-start: var(--product-card-content-spacing, 20px);
 }
 
 .product-card--standard .product-card__media {
@@ -1529,13 +1712,13 @@ legend {
 }
 
 .product-card--placeholder .product-card__media {
-  aspect-ratio: var(--pcard-image-ratio);
+  aspect-ratio: var(--product-card-image-ratio);
 }
 
 .product-card__media {
   position: relative;
   overflow: hidden;
-  aspect-ratio: var(--pcard-image-ratio);
+  aspect-ratio: var(--product-card-image-ratio);
   background: color-mix(in srgb, var(--background-color) 94%, var(--body-color));
 }
 
@@ -1691,7 +1874,15 @@ legend {
   }
 
   .product-card__media:is(:hover, :focus-within) .product-card__secondary-image {
-    opacity: var(--pcard-show-secondary-image);
+    opacity: var(--product-card-show-secondary-image);
+  }
+
+.product-card--variant-image-selected .product-card__media:is(:hover, :focus-within) .product-card__image {
+    opacity: 1;
+  }
+
+  .product-card--variant-image-selected .product-card__media:is(:hover, :focus-within) .product-card__secondary-image {
+    opacity: 0;
   }
 
   .product-card__media:is(:hover, :focus-within) .product-card__secondary-image > img {
@@ -1709,7 +1900,15 @@ legend {
 }
 
 .product-card__image-link:focus-visible .product-card__secondary-image {
-  opacity: var(--pcard-show-secondary-image);
+  opacity: var(--product-card-show-secondary-image);
+}
+
+.product-card--variant-image-selected .product-card__image-link:focus-visible .product-card__image {
+  opacity: 1;
+}
+
+.product-card--variant-image-selected .product-card__image-link:focus-visible .product-card__secondary-image {
+  opacity: 0;
 }
 
 .product-card__quick-add {
@@ -1767,9 +1966,9 @@ legend {
 
 .product-card__content {
   display: grid;
-  gap: var(--pcard-content-gap);
+  gap: var(--product-card-content-gap);
   min-width: 0;
-  text-align: var(--pcard-alignment);
+  text-align: var(--product-card-alignment);
 }
 
 .product-card__details {
@@ -1777,7 +1976,7 @@ legend {
   flex-direction: column;
   align-items: stretch;
   width: 100%;
-  gap: var(--pcard-product-info-gap);
+  gap: var(--product-card-info-gap);
   min-width: 0;
   text-align: inherit;
 }
@@ -1786,13 +1985,13 @@ legend {
 .product-card__vendor,
 .product-card__type {
   width: 100%;
-  text-align: var(--pcard-alignment);
+  text-align: var(--product-card-alignment);
 }
 
 .product-card__title {
   min-width: 0;
-  font-family: var(--pcard-title-font-family);
-  font-size: var(--pcard-title-size);
+  font-family: var(--product-card-title-font-family);
+  font-size: var(--product-card-title-size);
   line-height: var(--font-heading-md-line-height);
   letter-spacing: var(--font-heading-letter-spacing);
   color: var(--heading-color);
@@ -1833,8 +2032,8 @@ legend {
 
 .product-card__price {
   width: 100%;
-  justify-content: var(--pcard-content-alignment);
-  text-align: var(--pcard-alignment);
+  justify-content: var(--product-card-content-alignment);
+  text-align: var(--product-card-alignment);
 }
 
 .product-card__ranking {
@@ -1858,14 +2057,15 @@ legend {
 }
 
 .product-card__swatches {
-  --swatch-width: var(--pcard-swatch-width);
-  --swatch-height-ratio: var(--pcard-swatch-ratio);
-  --swatch-selected-style: var(--pcard-swatch-selected-style);
+  --swatch-width: var(--product-card-swatch-width);
+  --swatch-height-ratio: var(--product-card-swatch-ratio);
+  --swatch-selected-style: var(--product-card-swatch-selected-style);
   display: flex;
   flex-wrap: wrap;
   width: 100%;
-  justify-content: var(--pcard-content-alignment);
-  gap: var(--pcard-swatch-gap);
+  padding: 5px;
+  justify-content: var(--product-card-content-alignment);
+  gap: var(--product-card-swatch-gap);
 }
 
 .product-card__swatch-link {
@@ -1911,6 +2111,40 @@ legend {
   .product-card__swatch-link--selected .product-card__swatch {
     animation: none;
   }
+}
+
+.product-card__swatches.swatches--selected-border .product-card__swatch {
+  position: relative;
+}
+
+.product-card__swatches.swatches--selected-border .product-card__swatch::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  border: 3px solid transparent;
+  border-radius: inherit;
+  pointer-events: none;
+  transition: border-color var(--motion-duration-slow) var(--motion-ease-standard);
+}
+
+.product-card__swatches.swatches--selected-border [data-swatch-selected] .product-card__swatch::before {
+  border-color: var(--accent-color);
+}
+
+.product-card__swatches.swatches--selected-underline .product-card__swatch-link::after {
+  content: '';
+  position: absolute;
+  right: 0;
+  bottom: -3px;
+  left: 0;
+  height: 1px;
+  background-color: transparent;
+  transition: background-color var(--motion-duration-slow) var(--motion-ease-standard);
+}
+
+.product-card__swatches.swatches--selected-underline [data-swatch-selected]::after {
+  background-color: var(--accent-color);
 }
 
 .swatch__image {
@@ -2072,13 +2306,13 @@ legend {
   background-color: var(--swatch-color, var(--input-background-color));
 }
 
-.swatches--selected-border [data-swatch-selected] .swatch,
+.swatches--selected-border:not(.product-card__swatches) [data-swatch-selected] .swatch,
 .swatches--selected-border .swatch__input:checked + .swatch__label .swatch {
   outline: 2px solid var(--accent-color);
   outline-offset: 2px;
 }
 
-.swatches--selected-underline [data-swatch-selected],
+.swatches--selected-underline:not(.product-card__swatches) [data-swatch-selected],
 .swatches--selected-underline .swatch__input:checked + .swatch__label {
   padding-block-end: 0.3rem;
   border-block-end: max(2px, var(--shape-border-width)) solid var(--accent-color);
@@ -2445,27 +2679,27 @@ legend {
   }
 
   .product-card--card .product-card__content {
-    padding: var(--pcard-content-spacing-mobile, 16px);
+    padding: var(--product-card-content-spacing-mobile, 16px);
   }
 
   .product-card--standard .product-card__content {
-    padding-block-start: var(--pcard-content-spacing-mobile, 16px);
+    padding-block-start: var(--product-card-content-spacing-mobile, 16px);
   }
 
   .product-card__content {
-    gap: var(--pcard-content-gap-mobile);
+    gap: var(--product-card-content-gap-mobile);
   }
 
   .product-card__details {
-    gap: var(--pcard-product-info-gap-mobile);
+    gap: var(--product-card-info-gap-mobile);
   }
 
   .product-card__title {
-    font-size: var(--pcard-title-size-mobile);
+    font-size: var(--product-card-title-size-mobile);
   }
 
   .product-card__swatches {
-    --swatch-width: var(--pcard-swatch-width-mobile);
+    --swatch-width: var(--product-card-swatch-width-mobile);
   }
 
   .variant-picker__option--swatches {
