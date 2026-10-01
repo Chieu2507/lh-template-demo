@@ -809,7 +809,6 @@
     align-items: center;
     justify-content: space-between;
     cursor: pointer;
-    font-size: var(--p2-size-sm);
     list-style: none;
   }
 
@@ -1626,6 +1625,9 @@
 .main-collection__sort-form[data-style='outline'] .main-collection__sort-trigger { background: transparent; }
 .main-collection--blocks .main-collection__toolbar .main-collection__sort-trigger {
   min-height: var(--collection-toolbar-button-height, var(--button-height));
+}
+.main-collection--blocks .main-collection__filter-group summary.heading-custom {
+  font-size: var(--collection-filter-heading-custom-size, var(--font-heading-custom));
 }
 .main-collection--blocks .main-collection__facets:has(.main-collection__filter-dialog.is-sidebar[open]) .main-collection__products--full-width {
   margin-inline-end: calc(var(--page-margin) * -1);
