@@ -1440,6 +1440,9 @@
   },
   "social_links_settings": {
     "manage_links": "Manage social media links in [theme settings](/editor?context=theme&category=social%20media).",
+    "display_mode": "Display as",
+    "inherit_display": "Use theme settings",
+    "display_mode_info": "Use theme settings keeps icons and follows the global Show labels setting. Icon and Text override it for this block.",
     "social_link": "Social link",
     "color_type": "Color type",
     "top_padding": "Top padding",

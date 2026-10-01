@@ -1,14 +1,33 @@
 {% doc %}
   Renders configured social media links from the global Social media settings.
 
-  Labels remain available to assistive technology when the visual label setting
-  is disabled.
+  Labels remain available to assistive technology in every display mode.
 
   @param {string} [color_scheme] - Optional scheme class applied to each link.
     Layout and link appearance inherit custom properties from the owning block.
+  @param {string} [display_mode] - icon or text; inherit (or omitted) preserves
+    global social_show_labels behavior, rendering icons with optional labels.
+  @param {string} [direction] - horizontal (default) or vertical on all devices.
+  @param {string} [shadow] - none, extra_small, small, medium, or large.
 {% enddoc %}
 
 {% liquid
+  assign show_icons = true
+  assign show_labels = settings.social_show_labels
+  case display_mode
+    when 'text'
+      assign show_icons = false
+      assign show_labels = true
+    when 'icon'
+      assign show_labels = false
+  endcase
+
+  assign social_direction = 'horizontal'
+  if direction == 'vertical'
+    assign social_direction = 'vertical'
+  endif
+  assign social_shadow = shadow | default: 'extra_small'
+
   assign social_names = 'facebook,instagram,tiktok,youtube,pinterest,x,linkedin' | split: ','
   assign has_social_links = false
   for social_name in social_names
@@ -21,7 +40,7 @@
 %}
 
 {% if has_social_links %}
-  <nav class="social-links" aria-label="{{ 'accessibility.social_media' | t | escape }}">
+  <nav class="social-links social-links--{{ social_direction }}" aria-label="{{ 'accessibility.social_media' | t | escape }}">
     {% for social_name in social_names %}
       {% liquid
         assign social_key = 'social_' | append: social_name
@@ -32,14 +51,17 @@
       {% if social_url != blank %}
         <a
           class="social-links__link{% if color_scheme != blank %} color-scheme section-color-scope {{ color_scheme | escape }}{% endif %}"
+          data-shadow="{{ social_shadow | escape }}"
           href="{{ social_url | escape }}"
           {% if settings.social_new_tab %}
             target="_blank" rel="noopener noreferrer"
           {% endif %}
           aria-label="{{ social_label | escape }}"
         >
-          {% render 'social-icon', icon: social_name %}
-          {% if settings.social_show_labels %}
+          {% if show_icons %}
+            {% render 'social-icon', icon: social_name %}
+          {% endif %}
+          {% if show_labels %}
             <span class="social-links__label">{{ social_label | escape }}</span>
           {% endif %}
         </a>

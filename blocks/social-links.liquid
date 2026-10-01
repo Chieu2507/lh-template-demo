@@ -19,18 +19,6 @@
       assign social_radius = 'var(--radius-rounded)'
   endcase
 
-  assign social_shadow = '0 1px 5px color-mix(in srgb, var(--shadow-color) 10%, transparent)'
-  case block.settings.shadow
-    when 'none'
-      assign social_shadow = 'none'
-    when 'small'
-      assign social_shadow = '0 2px 10px color-mix(in srgb, var(--shadow-color) 10%, transparent)'
-    when 'medium'
-      assign social_shadow = '0 4px 20px color-mix(in srgb, var(--shadow-color) 10%, transparent)'
-    when 'large'
-      assign social_shadow = '0 6px 30px color-mix(in srgb, var(--shadow-color) 10%, transparent)'
-  endcase
-
   assign social_scheme = ''
   if block.settings.color_type == 'color_scheme'
     assign social_scheme = block.settings.color_scheme.id | default: block.settings.color_scheme | default: 'scheme-1' | handleize
@@ -48,7 +36,6 @@
     --social-link-padding: {{ block.settings.padding | default: 10 }}px;
     --social-link-border: {{ block.settings.border_thickness | default: 0 }}px;
     --social-link-radius: {{ social_radius }};
-    --social-link-shadow: {{ social_shadow }};
     --social-padding-top: {{ block.settings.padding_top | default: 0 }}px;
     --social-padding-bottom: {{ block.settings.padding_bottom | default: 0 }}px;
     {% if block.settings.customize_mobile_padding %}
@@ -58,7 +45,12 @@
   "
   {{ block.shopify_attributes }}
 >
-  {% render 'social-links', color_scheme: social_scheme %}
+  {% render 'social-links',
+    color_scheme: social_scheme,
+    display_mode: block.settings.display_mode,
+    direction: block.settings.direction,
+    shadow: block.settings.shadow
+  %}
 </div>
 
 {% schema %}
@@ -67,11 +59,30 @@
   "tag": null,
   "settings": [
     { "type": "paragraph", "content": "t:social_links_settings.manage_links" },
+    { "type": "header", "content": "t:general.layout" },
+    {
+      "type": "select", "id": "display_mode", "label": "t:social_links_settings.display_mode",
+      "options": [
+        { "value": "inherit", "label": "t:social_links_settings.inherit_display" },
+        { "value": "icon", "label": "t:options.button_style.icon" },
+        { "value": "text", "label": "t:options.button_style.text" }
+      ],
+      "default": "inherit",
+      "info": "t:social_links_settings.display_mode_info"
+    },
+    {
+      "type": "select", "id": "direction", "label": "t:labels.direction",
+      "options": [
+        { "value": "horizontal", "label": "t:options.direction.horizontal" },
+        { "value": "vertical", "label": "t:options.direction.vertical" }
+      ],
+      "default": "horizontal"
+    },
     { "type": "header", "content": "t:general.gap" },
     { "type": "range", "id": "gap_desktop", "label": "t:labels.desktop_gap", "min": 0, "max": 100, "step": 1, "unit": "px", "default": 10 },
     { "type": "range", "id": "gap_mobile", "label": "t:labels.mobile_gap", "min": 0, "max": 100, "step": 1, "unit": "px", "default": 10 },
     { "type": "header", "content": "t:social_links_settings.social_link" },
-    { "type": "range", "id": "icon_width", "label": "t:labels.icon_size", "min": 12, "max": 48, "step": 1, "unit": "px", "default": 20 },
+    { "type": "range", "id": "icon_width", "label": "t:labels.icon_block_width", "min": 12, "max": 48, "step": 1, "unit": "px", "default": 20, "visible_if": "{{ block.settings.display_mode != 'text' }}" },
     { "type": "range", "id": "padding", "label": "t:labels.padding", "min": 0, "max": 40, "step": 1, "unit": "px", "default": 10 },
     { "type": "range", "id": "border_thickness", "label": "t:labels.border_thickness", "min": 0, "max": 10, "step": 1, "unit": "px", "default": 0 },
     {
@@ -111,6 +122,6 @@
     { "type": "range", "id": "padding_top_mobile", "label": "t:social_links_settings.mobile_top_padding", "min": 0, "max": 100, "step": 1, "unit": "px", "default": 0, "visible_if": "{{ block.settings.customize_mobile_padding }}" },
     { "type": "range", "id": "padding_bottom_mobile", "label": "t:social_links_settings.mobile_bottom_padding", "min": 0, "max": 100, "step": 1, "unit": "px", "default": 0, "visible_if": "{{ block.settings.customize_mobile_padding }}" }
   ],
-  "presets": [{ "name": "t:general.social_links", "category": "t:general.footer" }]
+  "presets": [{ "name": "t:general.social_links", "category": "t:general.footer", "settings": { "display_mode": "icon" } }]
 }
 {% endschema %}
