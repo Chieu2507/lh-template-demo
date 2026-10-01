@@ -45,7 +45,7 @@
                 "footer-address-menu": {
                   "type": "menu",
                   "settings": {
-                    "menu": "address",
+                    "menu": "main-menu",
                     "heading": "Address",
                     "collapse_menu_on_mobile": true,
                     "icon": "plus",
@@ -74,7 +74,7 @@
                 "footer-info-menu": {
                   "type": "menu",
                   "settings": {
-                    "menu": "info",
+                    "menu": "main-menu",
                     "heading": "Info",
                     "collapse_menu_on_mobile": true,
                     "icon": "plus",
