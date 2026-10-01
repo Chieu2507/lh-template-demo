@@ -13,6 +13,7 @@
   const observedTargets = new WeakSet();
   const pendingSelections = new WeakMap();
   const replayedSelections = new WeakSet();
+  let latestSelection = null;
 
   const moduleURL = (script) => {
     const source = script.dataset.themeModule?.trim();
@@ -163,6 +164,7 @@
   }
 
   const loadEditorTarget = (event) => {
+    if (event.type === 'shopify:block:select' && !replayedSelections.has(event)) latestSelection = event;
     // Block selection can target a slide, with its marker outside the block.
     const target = event.target.closest?.('.shopify-section') || event.target;
     const scripts = markersWithin(target);
@@ -182,6 +184,8 @@
     Promise.all(loads).then(() => {
       if (pendingSelections.get(target) !== event) return;
       pendingSelections.delete(target);
+      if (latestSelection !== event) return;
+      latestSelection = null;
       if (!event.target.isConnected || !scripts.every((script) => script.dataset.themeModuleState === 'loaded')) return;
       const replay = new CustomEvent(event.type, { bubbles: true, detail: event.detail });
       replayedSelections.add(replay);
@@ -192,8 +196,12 @@
   document.addEventListener('shopify:section:load', loadEditorTarget);
   document.addEventListener('shopify:section:select', loadEditorTarget);
   document.addEventListener('shopify:block:select', loadEditorTarget);
+  document.addEventListener('shopify:block:deselect', (event) => {
+    if (latestSelection?.target === event.target) latestSelection = null;
+  });
   document.addEventListener('shopify:section:unload', (event) => {
     unobserve(event.target);
+    if (pendingSelections.get(event.target) === latestSelection) latestSelection = null;
     pendingSelections.delete(event.target);
   });
 })();
