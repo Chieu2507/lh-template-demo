@@ -248,7 +248,9 @@
     data-swiper-previous-selector="[data-blog-list-previous]"
     data-swiper-next-selector="[data-blog-list-next]"
   {% endif %}
-  style="--blog-list-columns-desktop: {{ blog_list_columns_desktop }}; --blog-list-columns-mobile: {{ blog_list_columns_mobile }}; --blog-list-gap-desktop: {{ blog_list_gap_desktop }}px; --blog-list-gap-mobile: {{ blog_list_gap_mobile }}px;"
+  {% if blog_list_layout == 'grid' %}
+    style="--blog-list-columns-desktop: {{ blog_list_columns_desktop }}; --blog-list-columns-mobile: {{ blog_list_columns_mobile }}; --blog-list-gap-desktop: {{ blog_list_gap_desktop }}px; --blog-list-gap-mobile: {{ blog_list_gap_mobile }}px;"
+  {% endif %}
 {% endcapture %}
 {% assign blog_list_carousel_attributes = blog_list_carousel_attributes | strip %}
 
