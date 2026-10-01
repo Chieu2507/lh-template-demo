@@ -11,7 +11,7 @@
   --overlay-backdrop-duration: var(--overlay-motion-duration);
   --overlay-backdrop-ease: var(--overlay-motion-ease);
   position: fixed;
-  z-index: var(--z-modal);
+  z-index: var(--z-modal, 1000);
   inset: 0;
   width: 100%;
   max-width: none;
@@ -38,8 +38,7 @@
   background-color: transparent;
   cursor: pointer;
   opacity: 0;
-  -webkit-backdrop-filter: blur(0);
-  backdrop-filter: blur(0);
+  --backdrop-blur: 0px;
   transition:
     background-color var(--overlay-backdrop-duration) var(--overlay-backdrop-ease),
     opacity var(--overlay-backdrop-duration) var(--overlay-backdrop-ease),
@@ -79,43 +78,19 @@
   transition-duration: var(--overlay-exit-duration);
   transition-timing-function: var(--overlay-exit-ease);
 }
-@keyframes component-overlay-backdrop-enter {
-  from {
-    background-color: transparent;
-    -webkit-backdrop-filter: blur(0);
-    backdrop-filter: blur(0);
-  }
-  to {
-    background-color: var(--overlay-backdrop-color);
-    -webkit-backdrop-filter: blur(var(--overlay-backdrop-blur));
-    backdrop-filter: blur(var(--overlay-backdrop-blur));
-  }
-}
-@keyframes component-overlay-backdrop-exit {
-  from {
-    background-color: var(--overlay-backdrop-color);
-    -webkit-backdrop-filter: blur(var(--overlay-backdrop-blur));
-    backdrop-filter: blur(var(--overlay-backdrop-blur));
-  }
-  to {
-    background-color: transparent;
-    -webkit-backdrop-filter: blur(0);
-    backdrop-filter: blur(0);
-  }
-}
-.component-overlay:is([data-state='opening'], [data-state='open']) .component-overlay__backdrop {
-  background-color: var(--overlay-backdrop-color);
-  opacity: 1;
-  -webkit-backdrop-filter: blur(var(--overlay-backdrop-blur));
-  backdrop-filter: blur(var(--overlay-backdrop-blur));
-  animation: component-overlay-backdrop-enter var(--overlay-backdrop-duration) var(--overlay-backdrop-ease) both;
+.component-overlay[data-state='open'] .component-overlay__backdrop {
+  --backdrop-blur: var(--overlay-backdrop-blur, 0px);
+  background-color: var(--overlay-color);
+  opacity: var(--overlay-opacity, 0.4);
 }
 .component-overlay[data-state='closing'] .component-overlay__backdrop {
-  animation: component-overlay-backdrop-exit var(--overlay-backdrop-duration) var(--overlay-backdrop-ease) both;
+  --backdrop-blur: 0px;
+  background-color: transparent;
+  opacity: 0;
 }
 custom-cursor[data-component-overlay-cursor] {
   position: fixed;
-  z-index: calc(var(--z-modal) + 1);
+  z-index: calc(var(--z-modal, 1000) + 1);
   top: var(--cursor-y, -100px);
   left: var(--cursor-x, -100px);
   display: flex;
@@ -181,7 +156,7 @@ custom-cursor[data-component-overlay-cursor] svg {
     --overlay-drawer-inset: var(--overlay-drawer-padding-mobile, 0px);
   }
   .component-overlay[data-mobile-layout='bottom_sheet'] .component-overlay__panel { --overlay-rest-transform: translateY(100%); position: absolute; inset: auto 0 0; width: 100%; max-height: calc(90dvh - env(safe-area-inset-top, 0px)); margin: 0; border-radius: var(--bottom-sheet-radius) var(--bottom-sheet-radius) 0 0; }
-  .component-overlay[data-mobile-layout='bottom_sheet']:is([data-state='opening'], [data-state='open']) .component-overlay__backdrop { opacity: calc(1 - (var(--sheet-drag-progress, 0) * 0.72)); }
+  .component-overlay[data-mobile-layout='bottom_sheet']:is([data-state='opening'], [data-state='open']) .component-overlay__backdrop { opacity: calc(var(--overlay-opacity, 0.4) * (1 - (var(--sheet-drag-progress, 0) * 0.72))); }
   .component-overlay[data-mobile-layout='drawer'] .component-overlay__panel {
     --overlay-rest-transform: translateX(100%);
     position: absolute;
@@ -206,5 +181,4 @@ custom-cursor[data-component-overlay-cursor] svg {
   .component-overlay__backdrop,
   .component-overlay__panel,
   custom-cursor[data-component-overlay-cursor] { transition: none; }
-  .component-overlay__backdrop { animation: none; }
 }

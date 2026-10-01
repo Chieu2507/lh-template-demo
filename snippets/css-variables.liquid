@@ -695,7 +695,7 @@
   if settings.product_card_swatch_type == 'variant_image'
     assign product_card_swatch_type = 'variant_image'
   endif
-  assign product_card_swatch_limit = settings.product_card_swatch_limit | default: 4
+  assign product_card_swatch_limit = settings.product_card_swatch_limit | default: 4 | plus: 0
   assign product_card_swatch_gap = settings.product_card_swatch_gap | default: 8
   assign product_card_swatch_width_desktop = settings.product_card_swatch_width_desktop | default: 30
   assign product_card_swatch_width_mobile = settings.product_card_swatch_width_mobile | default: 30
@@ -768,16 +768,20 @@
 
   assign overlay_title_size = 'var(--font-heading-md)'
   case settings.overlay_title_size
-    when 'heading_1'
+    when 'display', 'heading_1'
       assign overlay_title_size = 'var(--font-heading-display)'
-    when 'heading_2'
+    when 'xl', 'heading_2'
       assign overlay_title_size = 'var(--font-heading-xl)'
-    when 'heading_3'
+    when 'lg', 'heading_3'
       assign overlay_title_size = 'var(--font-heading-lg)'
-    when 'heading_5'
+    when 'md', 'heading_4'
+      assign overlay_title_size = 'var(--font-heading-md)'
+    when 'sm', 'heading_5'
       assign overlay_title_size = 'var(--font-heading-sm)'
-    when 'heading_6'
+    when 'xs', 'heading_6'
       assign overlay_title_size = 'var(--font-heading-xs)'
+    when 'custom'
+      assign overlay_title_size = settings.overlay_custom_title_size | default: 24 | append: 'px'
   endcase
 
   assign overlay_backdrop_blur = settings.overlay_backdrop_blur
@@ -1179,9 +1183,9 @@
     --overlay-drawer-padding-mobile: {{ overlay_drawer_padding_mobile }};
     --overlay-drawer-content-padding-desktop: {{ overlay_drawer_content_padding_desktop }};
     --overlay-drawer-content-padding-mobile: {{ overlay_drawer_content_padding_mobile }};
-    --z-base: {{ overlay_z_base }};
-    --z-drawer: {{ overlay_z_drawer }};
-    --z-modal: {{ overlay_z_modal }};
+    --z-base: {{ overlay_z_base | default: 10 }};
+    --z-drawer: {{ overlay_z_drawer | default: 200 }};
+    --z-modal: {{ overlay_z_modal | default: 1000 }};
   }
 
   @media (min-width: 768px) and (max-width: 1149.98px) {

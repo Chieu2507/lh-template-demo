@@ -68,7 +68,7 @@
   data-view-all-label="{{ 'search.view_all_results' | t | escape }}"
   data-no-results-label="{{ 'search.no_results' | t | escape }}"
 >
-  <button class="component-overlay__backdrop search-overlay__backdrop" type="button" tabindex="-1" aria-label="{{ 'search.close' | t }}" data-component-overlay-backdrop data-search-overlay-backdrop></button>
+  <button class="component-overlay__backdrop backdrop-blur search-overlay__backdrop" type="button" tabindex="-1" aria-label="{{ 'search.close' | t }}" data-component-overlay-backdrop data-search-overlay-backdrop></button>
   <div class="component-overlay__panel search-overlay__panel scrollbar scrollbar--vertical">
     <div class="container page-width search-overlay__container">
       <form class="search-overlay__form body-text body-xl body-mobile-lg" action="{{ routes.search_url }}" method="get" role="search" data-search-overlay-form>
@@ -130,7 +130,7 @@
    * retain the normal modal stacking contract. */
   body:has(.search-overlay:is([data-state='opening'], [data-state='open'], [data-state='closing'])) .shopify-section.section-header,
   body:has(.search-overlay:is([data-state='opening'], [data-state='open'], [data-state='closing'])) .shopify-section.section-announcement-bar {
-    z-index: calc(var(--z-modal) + 1);
+    z-index: calc(var(--z-modal, 1000) + 1);
   }
 
   body:has(.search-overlay:is([data-state='opening'], [data-state='open'], [data-state='closing'])) .shopify-section.section-announcement-bar {

@@ -1509,7 +1509,7 @@
           { "value": "top", "label": "t:options.position.top" },
           { "value": "bottom", "label": "t:options.position.bottom" }
         ],
-        "default": "bottom"
+        "default": "top"
       },
       {
         "type": "select",
@@ -1947,14 +1947,26 @@
         "id": "overlay_title_size",
         "label": "t:labels.title_size",
         "options": [
-          { "value": "heading_1", "label": "t:options.overlay_title_size.heading_1" },
-          { "value": "heading_2", "label": "t:options.overlay_title_size.heading_2" },
-          { "value": "heading_3", "label": "t:options.overlay_title_size.heading_3" },
-          { "value": "heading_4", "label": "t:options.overlay_title_size.heading_4" },
-          { "value": "heading_5", "label": "t:options.overlay_title_size.heading_5" },
-          { "value": "heading_6", "label": "t:options.overlay_title_size.heading_6" }
+          { "value": "display", "label": "t:options.heading_size.display" },
+          { "value": "xl", "label": "t:options.heading_size.xl" },
+          { "value": "lg", "label": "t:options.heading_size.lg" },
+          { "value": "md", "label": "t:options.heading_size.md" },
+          { "value": "sm", "label": "t:options.heading_size.sm" },
+          { "value": "xs", "label": "t:options.heading_size.xs" },
+          { "value": "custom", "label": "t:options.heading_size.custom" }
         ],
-        "default": "heading_4"
+        "default": "md"
+      },
+      {
+        "type": "range",
+        "id": "overlay_custom_title_size",
+        "min": 10,
+        "max": 100,
+        "step": 1,
+        "unit": "px",
+        "label": "Custom size",
+        "default": 24,
+        "visible_if": "{{ settings.overlay_title_size == 'custom' }}"
       },
       {
         "type": "range",

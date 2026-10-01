@@ -984,8 +984,6 @@
               "type": "product-card",
               "static": true,
               "settings": {
-                "show_ranking": false,
-                "ranking_color": "",
                 "color_type": "inherit",
                 "color_scheme": "scheme-1"
               },
