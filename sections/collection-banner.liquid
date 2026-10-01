@@ -83,7 +83,6 @@
   #shopify-section-{{ section.id }} {
     background: {{ section.settings.background_color | default: effective_scheme.settings.background }};
   }
-
 {% endstyle %}
 <div
   class="collection-banner collection-banner--width-{{ banner_width }}{% if section.settings.limit_description_width %} collection-banner--limit-description{% endif %} collection-banner--{{ banner_layout }}{% if section.settings.image_position == 'right' %} collection-banner--image-right{% endif %}{% if section.settings.height_desktop == 'adapt' %} collection-banner--adapt{% endif %}{% if section.settings.height_mobile == 'adapt' %} collection-banner--adapt-mobile{% endif %}{% if section.settings.show_overlay %} collection-banner--overlay{% endif %}{% if section.settings.show_top_divider %} collection-banner--divider-top{% endif %}{% if section.settings.show_bottom_divider %} collection-banner--divider-bottom{% endif %} color-scheme section-color-scope {{ banner_scheme }} section-spacing"
