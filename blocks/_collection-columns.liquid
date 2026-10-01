@@ -1,7 +1,17 @@
 {% doc %}
   Responsive column switcher. Choice is preserved when facets refresh.
 {% enddoc %}
-<fieldset class="collection-columns" data-desktop-type="{{ block.settings.desktop_type }}" data-desktop-style="{{ block.settings.desktop_style | default: 'primary' | replace: 'subtle', 'outline' }}" data-mobile-type="{{ block.settings.mobile_type }}" data-mobile-style="{{ block.settings.mobile_style | default: 'secondary' | replace: 'subtle', 'outline' }}" {{ block.shopify_attributes }}>
+{% liquid
+  assign desktop_style = block.settings.desktop_style | default: 'primary'
+  assign mobile_style = block.settings.mobile_style | default: 'secondary'
+  if desktop_style == 'subtle'
+    assign desktop_style = 'outline'
+  endif
+  if mobile_style == 'subtle'
+    assign mobile_style = 'outline'
+  endif
+%}
+<fieldset class="collection-columns" data-desktop-type="{{ block.settings.desktop_type }}" data-desktop-style="{{ desktop_style }}" data-mobile-type="{{ block.settings.mobile_type }}" data-mobile-style="{{ mobile_style }}" {{ block.shopify_attributes }}>
   <legend class="visually-hidden">{{ 'collection.grid_view' | t }}</legend>
   <span class="collection-columns__label body-text body-sm" aria-hidden="true">{{ 'collection.view' | t }}</span>
   {% for number in (1..2) %}

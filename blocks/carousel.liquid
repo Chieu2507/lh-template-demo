@@ -208,14 +208,8 @@
   endif
 %}
 
-<<<<<<< HEAD
-{% render 'swiper-stylesheet' %}
-<script type="module" src="{{ 'carousel-block.js' | asset_url }}"></script>
-<script type="module" src="{{ 'image-text-card-grid.js' | asset_url }}"></script>
-=======
 <script data-theme-module="{{ 'carousel-block.js' | asset_url }}"></script>
 <script data-theme-module="{{ 'image-text-card-grid.js' | asset_url }}"></script>
->>>>>>> 15300ff9b95504fd3e4c67b5d53a7c94ccc20c60
 
 {% capture carousel_slides %}{% content_for 'blocks' %}{% endcapture %}
 {% capture carousel_pagination %}

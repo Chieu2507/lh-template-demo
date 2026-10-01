@@ -308,10 +308,7 @@ const destroy = (root) => {
   state.mutationObserver?.disconnect();
   state.clones?.forEach((clone) => clone.remove());
   state.firstClone?.remove();
-<<<<<<< HEAD
-=======
   delete root.dataset.announcementInitialized;
->>>>>>> 15300ff9b95504fd3e4c67b5d53a7c94ccc20c60
   root.classList.remove('announcement-bar--ready', 'announcement-bar--single', 'announcement-bar--slider-moving');
   states.delete(root);
 };

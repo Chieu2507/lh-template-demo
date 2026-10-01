@@ -103,14 +103,11 @@
   .announcement-bar--slider .announcement-bar__slides > .text-block[data-announcement-active='true'],
   .announcement-bar--slider .announcement-bar__slides > .text-block[data-announcement-state='enter'] { opacity: 1; pointer-events: auto; }
   .announcement-bar--slider.announcement-bar--slider-moving .announcement-bar__slides > .text-block[data-announcement-state='exit'] { opacity: 0; }
-<<<<<<< HEAD
-=======
   /* Keep the server-rendered announcement stable until the slider module initializes. */
   .announcement-bar--slider:not([data-announcement-initialized='true']) .announcement-bar__viewport { height: auto; }
   .announcement-bar--slider:not([data-announcement-initialized='true']) .announcement-bar__slides { transform: none; }
   .announcement-bar--slider:not([data-announcement-initialized='true']) .announcement-bar__slides > .text-block { display: none; }
   .announcement-bar--slider:not([data-announcement-initialized='true']) .announcement-bar__slides > .text-block:first-child { display: flex; flex: 0 0 auto; height: auto; opacity: 1; pointer-events: auto; }
->>>>>>> 15300ff9b95504fd3e4c67b5d53a7c94ccc20c60
   .announcement-bar--scrolling .announcement-bar__slides { display: flex; flex-wrap: nowrap; align-items: center; gap: var(--announcement-bar-gap, 16px); width: max-content; max-width: max-content; animation: none; will-change: transform; }
   .announcement-bar--scrolling.announcement-bar--ready .announcement-bar__slides { animation: announcement-scroll-left calc(28s / var(--announcement-bar-speed, 1)) linear infinite; }
   .announcement-bar--scrolling.announcement-bar--direction-right.announcement-bar--ready .announcement-bar__slides { animation-name: announcement-scroll-right; }
