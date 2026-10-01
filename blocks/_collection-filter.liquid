@@ -28,6 +28,16 @@
   assign filter_button_style = 'tertiary'
  endif
  assign filter_heading_size = block.settings.heading_size | default: 'sm'
+ case filter_heading_size
+  when 'h3'
+   assign filter_heading_size = 'lg'
+  when 'h4'
+   assign filter_heading_size = 'md'
+  when 'h5'
+   assign filter_heading_size = 'sm'
+  when 'h6'
+   assign filter_heading_size = 'xs'
+ endcase
  unless filter_heading_size == 'lg' or filter_heading_size == 'md' or filter_heading_size == 'sm' or filter_heading_size == 'xs'
   assign filter_heading_size = 'sm'
  endunless
