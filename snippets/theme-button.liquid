@@ -13,6 +13,7 @@
   @param {boolean} [loading_dots] - Render a hidden three-dot loader for product card actions
   @param {string} [variant] - Optional visual variant: primary, secondary, or tertiary
   @param {string} [icon] - Optional inline Heroicons key or legacy alias: arrow-right/arrow, eye, or shopping-bag/cart
+  @param {string} [icon_expanded] - Optional icon shown when the caller sets aria-expanded="true"
   @param {string} [icon_position] - Icon position: before or after
   @param {string} [icon_size] - Icon size: inherit or custom
   @param {number} [icon_width] - Custom icon width in pixels
@@ -95,12 +96,17 @@
 {% capture button_icon_markup %}
   {% if button_icon_name != blank %}
     <span
-      class="btn__icon{% if button_icon_size == 'custom' %} btn__icon--custom{% endif %}"
+      class="btn__icon{% if icon_expanded != blank %} btn__icon--collapsed{% endif %}{% if button_icon_size == 'custom' %} btn__icon--custom{% endif %}"
       {% if button_icon_size == 'custom' %}style="--button-icon-width: {{ button_icon_width }}px;"{% endif %}
       aria-hidden="true"
     >
       {% render 'icon', icon: button_icon_name, bare: true %}
     </span>
+    {% if icon_expanded != blank %}
+      <span class="btn__icon btn__icon--expanded{% if button_icon_size == 'custom' %} btn__icon--custom{% endif %}"{% if button_icon_size == 'custom' %} style="--button-icon-width: {{ button_icon_width }}px;"{% endif %} aria-hidden="true">
+        {% render 'icon', icon: icon_expanded, bare: true %}
+      </span>
+    {% endif %}
   {% endif %}
 {% endcapture %}
 

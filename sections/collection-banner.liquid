@@ -5,6 +5,16 @@
   endif
 
   assign banner_scheme = section.settings.color_scheme.id | default: section.settings.color_scheme
+  assign banner_width = section.settings.section_width | default: 'full_bleed'
+  if banner_width != 'page' and banner_width != 'full' and banner_width != 'full_bleed'
+    assign banner_width = 'full_bleed'
+  endif
+
+  assign banner_layout = section.settings.layout | default: 'background'
+  if banner_layout != 'classic' and banner_layout != 'background'
+    assign banner_layout = 'background'
+  endif
+
   assign banner_height_desktop = 600
   case section.settings.height_desktop
     when 'extra_small'
@@ -55,48 +65,51 @@
   #shopify-section-{{ section.id }} {
     background: {{ section.settings.background_color | default: section.settings.color_scheme.settings.background }};
   }
-  {% if section.settings.transparent_header %}
-    body:has(#MainContent > #shopify-section-{{ section.id }}:first-child .collection-banner--transparent-header) .section-header.header {
-      z-index: var(--z-drawer);
-      margin-block-end: calc(var(--header-layout-height, 0px) * -1);
-      background-color: transparent;
-    }
-  {% endif %}
 {% endstyle %}
 <div
-  class="collection-banner collection-banner--{{ section.settings.layout }}{% if section.settings.show_overlay %} collection-banner--overlay{% endif %}{% if section.settings.transparent_header %} collection-banner--transparent-header{% endif %} color-scheme section-color-scope {{ banner_scheme }} section-spacing{% if section.settings.section_width == 'page' %} container page-width{% elsif section.settings.section_width == 'full' %} container full-width{% endif %}"
+  class="collection-banner collection-banner--width-{{ banner_width }} collection-banner--{{ banner_layout }}{% if section.settings.show_overlay %} collection-banner--overlay{% endif %} color-scheme section-color-scope {{ banner_scheme }}{% if banner_width == 'page' %} container page-width section-spacing{% endif %}"
   style="--banner-height:{{ banner_height_desktop }}px;--banner-height-mobile:{{ banner_height_mobile }}px;--banner-gap:{{ section.settings.gap_desktop }}px;--banner-gap-mobile:{{ section.settings.gap_mobile }}px;--banner-overlay:1;--banner-overlay-color:{{ section.settings.overlay_color }};--banner-position-x:{{ banner_position_x }};--banner-position-y:{{ banner_position_y }};--text-align-default:{{ banner_text_align }};--section-padding-top:{{ section.settings.padding_top }}px;--section-padding-bottom:{{ section.settings.padding_bottom }}px;--section-padding-top-mobile:{{ section.settings.padding_top_mobile }}px;--section-padding-bottom-mobile:{{ section.settings.padding_bottom_mobile }}px"
 >
-  {% if banner_image != blank %}
-    <div class="collection-banner__media">
-      <picture>
-        {% if section.settings.mobile_image != blank %}
-          <source media="(max-width: 767.98px)" srcset="{{ section.settings.mobile_image | image_url: width: 900 }}">
-        {% endif %}
-        {{ banner_image | image_url: width: 2400 | image_tag: widths: '400, 750, 1100, 1600, 2000, 2400', sizes: '100vw', loading: 'eager', fetchpriority: 'high', class: 'collection-banner__image' }}
-      </picture>
+  <div class="collection-banner__surface{% unless banner_width == 'page' %} section-spacing{% endunless %}">
+    {% if banner_image != blank %}
+      <div class="collection-banner__media">
+        <picture>
+          {% if section.settings.mobile_image != blank %}
+            <source media="(max-width: 767.98px)" srcset="{{ section.settings.mobile_image | image_url: width: 900 }}">
+          {% endif %}
+          {{ banner_image | image_url: width: 2400 | image_tag: widths: '400, 750, 1100, 1600, 2000, 2400', sizes: '100vw', loading: 'eager', fetchpriority: 'high', class: 'collection-banner__image' }}
+        </picture>
+      </div>
+    {% else %}
+      <div class="collection-banner__media collection-banner__media--placeholder">
+        {{ 'collection-1' | placeholder_svg_tag: 'collection-banner__image' }}
+      </div>
+    {% endif %}
+    <div class="collection-banner__content{% unless section.settings.full_width_content %} collection-banner__content--contained{% endunless %}">
+      {% content_for 'blocks' %}
     </div>
-  {% else %}
-    <div class="collection-banner__media collection-banner__media--placeholder">
-      {{ 'collection-1' | placeholder_svg_tag: 'collection-banner__image' }}
-    </div>
-  {% endif %}
-  <div class="collection-banner__content{% unless section.settings.full_width_content %} collection-banner__content--contained{% endunless %}">
-    {% content_for 'blocks' %}
   </div>
 </div>
 
 {% stylesheet %}
   .collection-banner {
     position: relative;
-    display: grid;
+    width: 100%;
     isolation: isolate;
+  }
+
+  .collection-banner__surface {
+    position: relative;
+    display: grid;
+    grid-template-rows: minmax(var(--banner-height, 600px), max-content);
+    width: 100%;
     min-height: var(--banner-height, 600px);
     overflow: hidden;
   }
 
   .collection-banner__media {
     position: relative;
+    grid-row: 1;
     min-width: 0;
     min-height: 0;
   }
@@ -119,7 +132,7 @@
   .collection-banner--background .collection-banner__media {
     position: absolute;
     inset: 0;
-    z-index: -2;
+    z-index: 0;
   }
 
   .collection-banner--background.collection-banner--overlay .collection-banner__media::after {
@@ -138,9 +151,14 @@
     inset: 0;
   }
 
+  .collection-banner--width-full .collection-banner__surface {
+    --page-margin-current: var(--page-margin-desktop);
+  }
+
   .collection-banner__content {
     position: relative;
     z-index: 1;
+    grid-row: 1;
     display: flex;
     min-width: 0;
     min-height: inherit;
@@ -148,8 +166,21 @@
     align-items: var(--banner-position-x, flex-start);
     justify-content: var(--banner-position-y, flex-end);
     gap: var(--banner-gap, 16px);
-    padding: 50px var(--page-margin);
+    padding: var(--banner-content-padding, 50px);
     text-align: var(--text-align-default, left);
+  }
+
+  .collection-banner--width-full .collection-banner__content {
+    padding-inline: calc(var(--page-margin-current) + var(--banner-content-padding, 50px));
+  }
+
+  .collection-banner--classic .collection-banner__surface {
+    min-height: 0;
+  }
+
+  .collection-banner--classic .collection-banner__content {
+    grid-row: 2;
+    min-height: 0;
   }
 
   .collection-banner__content--contained {
@@ -163,19 +194,6 @@
 
   .collection-banner--classic .collection-banner__media {
     height: var(--banner-height, 600px);
-  }
-
-  .collection-banner--split {
-    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
-  }
-
-  .collection-banner--split .collection-banner__media,
-  .collection-banner--split .collection-banner__content {
-    grid-row: 1;
-  }
-
-  .collection-banner--split .collection-banner__content {
-    grid-column: 2;
   }
 
   .collection-banner__breadcrumb {
@@ -198,19 +216,32 @@
   }
 
   @media (min-width: 768px) and (max-width: 1023.98px) {
+    .collection-banner--width-full .collection-banner__surface {
+      --page-margin-current: var(--page-margin-tablet);
+    }
+
     .collection-banner__content {
       padding-block: 38px;
     }
   }
 
   @media (max-width: 767.98px) {
-    .collection-banner {
+    .collection-banner--width-full .collection-banner__surface {
+      --page-margin-current: var(--page-margin-mobile);
+    }
+
+    .collection-banner__surface {
+      grid-template-rows: minmax(var(--banner-height-mobile, 240px), max-content);
       min-height: var(--banner-height-mobile, 240px);
     }
 
     .collection-banner__content {
       gap: var(--banner-gap-mobile, var(--banner-gap, 16px));
-      padding-block: 24px;
+      --banner-content-padding: 24px;
+    }
+
+    .collection-banner--width-full .collection-banner__content {
+      padding-inline: calc(var(--page-margin-current) + var(--banner-content-padding));
     }
 
     .collection-banner__breadcrumb.collection-banner__breadcrumb--custom-mobile-padding {
@@ -223,24 +254,6 @@
 
     .collection-banner--classic .collection-banner__media {
       height: var(--banner-height-mobile, 240px);
-    }
-
-    .collection-banner--split {
-      grid-template-columns: minmax(0, 1fr);
-    }
-
-    .collection-banner--split .collection-banner__media,
-    .collection-banner--split .collection-banner__content {
-      grid-column: 1;
-      grid-row: auto;
-    }
-
-    .collection-banner--split .collection-banner__media {
-      height: var(--banner-height-mobile, 240px);
-    }
-
-    .collection-banner--split .collection-banner__content {
-      min-height: 0;
     }
   }
 {% endstylesheet %}
@@ -298,8 +311,7 @@
       "label": "Layout",
       "options": [
         { "value": "classic", "label": "Classic" },
-        { "value": "background", "label": "Background" },
-        { "value": "split", "label": "Split" }
+        { "value": "background", "label": "Background" }
       ],
       "default": "background"
     },
@@ -322,13 +334,6 @@
         { "value": "bottom-right", "label": "Bottom right" }
       ],
       "default": "bottom-left"
-    },
-    {
-      "type": "checkbox",
-      "id": "transparent_header",
-      "label": "Allow transparent header",
-      "info": "This setting applies when this section is first on the page.",
-      "default": false
     },
     {
       "type": "range",

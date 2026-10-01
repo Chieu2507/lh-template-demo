@@ -48,7 +48,7 @@
   <h2 class="main-collection__filter-label heading-text heading-md">{{ 'collection.filter' | t }}</h2>
 {% endif %}
 {% capture filter_button_attributes %}aria-controls="CollectionFilters-{{ section.id }}" aria-expanded="false" data-collection-filter-open{% endcapture %}
-{% render 'theme-button', label: filter_button_label, variant: filter_button_style, class: 'main-collection__filter-button', attributes: filter_button_attributes, icon: filter_button_icon, icon_position: 'before' %}
+{% render 'theme-button', label: filter_button_label, variant: filter_button_style, class: 'main-collection__filter-button', attributes: filter_button_attributes, icon: filter_button_icon, icon_expanded: 'x-mark', icon_position: 'before' %}
 {% endif %}
 </div>
 {% if collection.filters.size > 0 %}

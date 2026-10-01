@@ -1098,6 +1098,18 @@
     text-align: center;
   }
 
+  @media screen and (max-width: 767.98px) {
+    .main-collection__filter-footer {
+      flex-direction: row;
+    }
+
+    .main-collection__filter-footer .button {
+      width: auto;
+      min-width: 0;
+      flex: 1 1 0;
+    }
+  }
+
   @media screen and (min-width: 768px) {
     .main-collection__toolbar-end {
       gap: 0;
@@ -1270,7 +1282,10 @@
 .main-collection--blocks .collection-filter-block{grid-column:1;grid-row:1;display:flex;align-items:center;min-width:0}
 .main-collection--blocks .main-collection__filter-panel-positioner{display:contents}
 .main-collection--blocks .main-collection__filter-button{margin:0;min-height:var(--collection-toolbar-button-height,var(--button-height))}
-.main-collection--blocks .main-collection__filter-button .btn__icon{display:none}
+.main-collection--blocks .main-collection__filter-button .btn__icon{display:inline-flex}
+.main-collection--blocks .main-collection__filter-button .btn__icon--expanded{display:none}
+.main-collection--blocks .main-collection__filter-button[aria-expanded='true'] .btn__icon--collapsed{display:none}
+.main-collection--blocks .main-collection__filter-button[aria-expanded='true'] .btn__icon--expanded{display:inline-flex}
 .main-collection--blocks .main-collection__product-count{grid-column:2;grid-row:1}
 .main-collection--blocks .main-collection__sort-form{grid-column:3;grid-row:1;justify-self:end}
 .main-collection--blocks .collection-columns{grid-column:4;grid-row:1}
@@ -1443,6 +1458,8 @@
 .main-collection__filter-group[open] .main-collection__filter-icon-closed{display:none}
 .main-collection__filter-group[open] .main-collection__filter-icon-open{display:inline-flex}
 @media(min-width:1200px){
+.main-collection--blocks .main-collection__facets:has([data-desktop-layout="sidebar"].is-sidebar){grid-template-columns:0px minmax(0,1fr);column-gap:0;transition:grid-template-columns 300ms cubic-bezier(.22,1,.36,1),column-gap 300ms cubic-bezier(.22,1,.36,1)}
+.main-collection--blocks .main-collection__facets:has([data-desktop-layout="sidebar"].is-sidebar) .main-collection__products{grid-column:2}
 .main-collection--blocks .main-collection__facets:has(.main-collection__filter-dialog.is-sidebar[open]){grid-template-columns:minmax(200px,270px) minmax(0,1fr);column-gap:24px}
 .main-collection--blocks .main-collection__facets:has(.main-collection__filter-dialog.is-sidebar[open]) .main-collection__products{grid-column:2}
 .main-collection--blocks .main-collection__filter-panel-positioner:has(.is-sidebar[open]){display:block;position:static;grid-column:1;grid-row:2;min-width:0;width:100%}
@@ -1463,12 +1480,19 @@
 .main-collection--blocks .main-collection__filter-dialog.is-sidebar .main-collection__filter-content{padding-block-end:24px}
 .main-collection--blocks .main-collection__filter-dialog.is-sidebar .main-collection__filter-values{padding:0}
 .main-collection--blocks .main-collection__facets:has([data-sidebar-visibility="always"].is-sidebar) .main-collection__filter-button{display:none}
+.main-collection--blocks .main-collection__facets.is-sidebar-animating:has(.is-sidebar[open]){grid-template-columns:270px minmax(0,1fr)}
+.main-collection--blocks .main-collection__facets.is-sidebar-animating.is-sidebar-collapsed:has(.is-sidebar[open]){grid-template-columns:0px minmax(0,1fr);column-gap:0}
+.main-collection--blocks .is-sidebar-animating .main-collection__filter-panel-positioner:has(.is-sidebar[open]){overflow:clip;opacity:1;transition:opacity 300ms cubic-bezier(.22,1,.36,1)}
+.main-collection--blocks .is-sidebar-animating.is-sidebar-collapsed .main-collection__filter-panel-positioner:has(.is-sidebar[open]){opacity:0}
+.main-collection--blocks .is-sidebar-animating .main-collection__filter-dialog.is-sidebar{width:270px}
+@media(prefers-reduced-motion:reduce){
+  .main-collection--blocks .main-collection__facets.is-sidebar-animating{transition:none}
+  .main-collection--blocks .main-collection__facets:has([data-desktop-layout="sidebar"].is-sidebar),
+  .main-collection--blocks .is-sidebar-animating .main-collection__filter-panel-positioner:has(.is-sidebar[open]){transition:none}
+}
 }
 @media(max-width:1023.98px){
 .main-collection--blocks .main-collection__facets{row-gap:calc(var(--collection-gap,50px)*.75)}
-}
-@media(max-width:1199.98px){
-.main-collection--blocks .main-collection__filter-button .btn__icon{display:inline-flex}
 }
 @media(max-width:767.98px){
 .main-collection--blocks .main-collection__facets{grid-template-columns:1fr;row-gap:var(--collection-gap-mobile,calc(var(--collection-gap,50px)*.5))}
@@ -1477,7 +1501,6 @@
 .main-collection--blocks .main-collection__product-count,.main-collection--blocks .main-collection__sort-form{display:none}
 .main-collection--blocks .collection-columns{grid-column:2;justify-self:end}.collection-columns__mobile{display:inline-flex}.collection-columns__desktop{display:none}.collection-columns__label{display:none}
 .main-collection--blocks .main-collection__filter-button{justify-self:start}
-.main-collection--blocks .main-collection__filter-button .btn__icon{display:inline-flex}
 .main-collection--blocks .main-collection__promotion{grid-column:span min(var(--promo-span-mobile,2),var(--main-collection-columns-mobile,2))}
 .main-collection--blocks .main-collection__promotion-card{min-height:220px}
 .main-collection--blocks .main-collection__promotion-content{padding:var(--promo-padding-top-mobile,24px) var(--promo-padding-right-mobile,16px) var(--promo-padding-bottom-mobile,24px) var(--promo-padding-left-mobile,16px)}
@@ -1635,7 +1658,6 @@
 .main-collection__sort-option-button { min-height: 42px; padding: 10px 18px; font-size: var(--p1-size-sm, 16px); }
 .main-collection__sort-option-button[aria-selected='true'] { background: color-mix(in srgb, var(--color-text) 6%, var(--color-background)); font-weight: inherit; }
 .main-collection__sort-option-button svg { display: none; }
-.main-collection__sort-form[data-style] .main-collection__sort-trigger[aria-expanded='true'] { background: color-mix(in srgb, var(--color-text) 4%, var(--color-background)); }
 .collection-columns__option > .collection-columns__option-input:active + .collection-columns__option-content { transform: scale(.96); }
 .main-collection__grid > * { transform-origin: top left; }
 @media (prefers-reduced-motion: reduce) {
@@ -1663,9 +1685,34 @@
 
 /* Shared sheet gesture owns transforms after the entrance animation finishes. */
 .main-collection__filter-dialog.is-gesture-closing { animation: none !important; }
-.main-collection__filter-dialog.is-sheet-dragging { touch-action: none; }
+.main-collection__filter-form.is-sheet-dragging { touch-action: none; user-select: none; }
 @media (max-width: 767.98px) {
+  /* The dragged panel owns its surface; the native backdrop shares gesture progress. */
+  .main-collection__filter-dialog[data-mobile-layout="sheet"] { box-shadow: none; }
+  .main-collection__filter-dialog[data-mobile-layout="sheet"] .main-collection__filter-form { box-shadow: 0 -14px 42px rgb(0 0 0 / 12%); }
+  .main-collection__filter-dialog[data-mobile-layout="sheet"]::backdrop {
+    background: var(--overlay-backdrop-color);
+    -webkit-backdrop-filter: blur(var(--overlay-backdrop-blur));
+    backdrop-filter: blur(var(--overlay-backdrop-blur));
+    opacity: calc(1 - (var(--sheet-drag-progress, 0) * 0.72));
+    transition: opacity var(--motion-duration-standard) var(--motion-ease-standard);
+  }
+  .main-collection__filter-dialog[data-mobile-layout="sheet"][open]:not(.is-closing)::backdrop {
+    animation: component-overlay-backdrop-enter 280ms cubic-bezier(.22, 1, .36, 1) both;
+  }
+  .main-collection__filter-dialog[data-mobile-layout="sheet"].is-closing::backdrop {
+    animation: component-overlay-backdrop-exit 240ms cubic-bezier(.55, 0, 1, .45) both;
+  }
+  .main-collection__filter-dialog[data-mobile-layout="sheet"].is-gesture-closing::backdrop {
+    animation-duration: var(--motion-duration-standard);
+    animation-timing-function: var(--motion-ease-standard);
+  }
+  .main-collection__filter-dialog[data-mobile-layout="sheet"]:has(.is-sheet-dragging)::backdrop { transition: none; }
+  .main-collection__filter-dialog[data-mobile-layout="sheet"].is-gesture-closing { transform: translateY(0); }
   .main-collection__filter-dialog[data-mobile-layout="drawer"][open]:not(.is-closing) { transform: translateX(0); }
   .main-collection__filter-dialog[data-mobile-layout="drawer"].is-closing { animation-name: main-collection-filter-drawer-out; }
   .main-collection__filter-header { touch-action: pan-x; }
+}
+@media (max-width: 767.98px) and (prefers-reduced-motion: reduce) {
+  .main-collection__filter-dialog[data-mobile-layout="sheet"]::backdrop { animation: none !important; transition: none; }
 }
