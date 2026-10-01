@@ -27,15 +27,6 @@
  elsif filter_button_style == 'text'
   assign filter_button_style = 'tertiary'
  endif
- assign filter_button_style_mobile = block.settings.button_style_mobile | default: 'inherit'
- if filter_button_style_mobile == 'outline'
-  assign filter_button_style_mobile = 'secondary'
- elsif filter_button_style_mobile == 'text'
-  assign filter_button_style_mobile = 'tertiary'
- endif
- if filter_button_style_mobile == 'inherit'
-  assign filter_button_style_mobile = filter_button_style
- endif
  assign filter_heading_size = block.settings.heading_size | default: 'sm'
  case filter_heading_size
   when 'h3'
@@ -57,8 +48,7 @@
   <h2 class="main-collection__filter-label heading-text heading-md">{{ 'collection.filter' | t }}</h2>
 {% endif %}
 {% capture filter_button_attributes %}aria-controls="CollectionFilters-{{ section.id }}" aria-expanded="false" data-collection-filter-open{% endcapture %}
-{% render 'theme-button', label: filter_button_label, variant: filter_button_style, class: 'main-collection__filter-button main-collection__filter-button--desktop', attributes: filter_button_attributes, icon: filter_button_icon, icon_expanded: 'x-mark', icon_position: 'before' %}
-{% render 'theme-button', label: filter_button_label, variant: filter_button_style_mobile, class: 'main-collection__filter-button main-collection__filter-button--mobile', attributes: filter_button_attributes, icon: filter_button_icon, icon_expanded: 'x-mark', icon_position: 'before' %}
+{% render 'theme-button', label: filter_button_label, variant: filter_button_style, class: 'main-collection__filter-button', attributes: filter_button_attributes, icon: filter_button_icon, icon_position: 'before' %}
 {% endif %}
 </div>
 {% if collection.filters.size > 0 %}
@@ -419,30 +409,6 @@
         }
       ],
       "default": "sheet"
-    },
-    {
-      "type": "select",
-      "id": "button_style_mobile",
-      "label": "Mobile filter button style",
-      "options": [
-        {
-          "value": "inherit",
-          "label": "Same as desktop"
-        },
-        {
-          "value": "primary",
-          "label": "t:options.button_variant.primary"
-        },
-        {
-          "value": "secondary",
-          "label": "t:options.button_variant.secondary"
-        },
-        {
-          "value": "tertiary",
-          "label": "t:options.button_variant.tertiary"
-        }
-      ],
-      "default": "inherit"
     },
     {
       "type": "header",
