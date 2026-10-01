@@ -308,7 +308,7 @@
 
 @media (max-width: 767.98px) {
   .product-media-gallery__main > .product-media-gallery__pagination.swiper-pagination-bullets {
-    --swiper-pagination-bullet-hit-size: 32px;
+    --swiper-pagination-bullet-hit-size: 24px;
     --swiper-pagination-bullet-gap: 2px;
     gap: var(--swiper-pagination-bullet-gap, 8px);
   }
