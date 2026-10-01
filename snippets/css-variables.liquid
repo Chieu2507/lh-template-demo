@@ -71,7 +71,7 @@
     endif
   endfor
 
-  assign default_body_rgb = default_body | color_to_rgb | remove: 'rgb(' | remove: ')' | replace: ',', ' ' | strip
+  assign default_body_rgb = default_body | color_to_rgb | remove: 'rgba(' | remove: 'rgb(' | remove: ')' | split: ',' | slice: 0, 3 | join: ' ' | strip
 
   assign overlay_scheme_id = settings.overlay_color_scheme | default: default_scheme_id
   if settings.overlay_color_scheme.id != blank
@@ -503,7 +503,6 @@
     when 'pill'
       assign input_radius = 'var(--radius-pill)'
   endcase
-  assign input_background_color = settings.input_background_color | default: '#F5F5F5'
 
   assign form_label_font_size = 'var(--font-body-md)'
   case settings.form_label_typography
@@ -814,8 +813,8 @@
     assign overlay_opacity = 40
   endif
   assign overlay_opacity_value = overlay_opacity | divided_by: 100.0
-  assign overlay_color_rgb = overlay_color | color_to_rgb | remove: 'rgb(' | remove: ')' | strip
-  assign overlay_backdrop_color = 'rgba(' | append: overlay_color_rgb | append: ', ' | append: overlay_opacity_value | append: ')'
+  # Backdrop opacity owns alpha; color_to_rgb can return rgba for saved alpha colors.
+  assign overlay_backdrop_color = overlay_color | color_modify: 'alpha', overlay_opacity_value
   assign overlay_z_base = settings.overlay_z_base
   if overlay_z_base == blank
     assign overlay_z_base = 10
@@ -1053,7 +1052,7 @@
     --input-radius: {{ input_radius }};
     --input-border-width-outline: {{ input_border_width }}px;
     --input-border-width: 0px;
-    --input-background-color-solid: {{ input_background_color }};
+    --input-background-color-solid: color-mix(in srgb, var(--body-color) 6%, transparent);
     --input-background-color: var(--input-background-color-solid);
     --input-border-color: var(--border-color);
     --input-focus-color: var(--accent-color);
@@ -1233,7 +1232,7 @@
     {% assign scheme_secondary_hover_border = scheme.settings.button_secondary_hover_border | default: default_secondary_hover_border %}
     {% assign scheme_tertiary_text = scheme.settings.button_tertiary_text | default: default_tertiary_text %}
     {% assign scheme_tertiary_hover_text = scheme.settings.button_tertiary_hover_text | default: default_tertiary_hover_text %}
-    {% assign scheme_body_rgb = scheme_body | color_to_rgb | remove: 'rgb(' | remove: ')' | replace: ',', ' ' | strip %}
+    {% assign scheme_body_rgb = scheme_body | color_to_rgb | remove: 'rgba(' | remove: 'rgb(' | remove: ')' | split: ',' | slice: 0, 3 | join: ' ' | strip %}
     .{{ scheme.id }} {
       --background-color: {{ scheme_background }};
       --heading-color: {{ scheme_heading }};

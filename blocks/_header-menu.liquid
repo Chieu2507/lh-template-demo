@@ -68,6 +68,11 @@
   assign submenu_typography_class = 'body-text body-' | append: submenu_font_size | append: ' font-' | append: submenu_font | append: ' tracking-' | append: menu_letter_spacing | append: ' text-case-' | append: submenu_text_case
   assign menu_class = 'header-menu header-menu--trigger-' | append: dropdown_trigger
   assign mobile_drawer_class = 'header__mobile-drawer'
+  assign mobile_drawer_scheme = settings.overlay_color_scheme | default: settings.color_schemes.first.id
+  if settings.overlay_color_scheme.id != blank
+    assign mobile_drawer_scheme = settings.overlay_color_scheme.id
+  endif
+  assign mobile_drawer_scheme = mobile_drawer_scheme | default: 'scheme-1' | handleize
   assign header_menu = block.settings.menu
   assign has_header_menu = false
   if block.settings.menu != blank and block.settings.menu.links != blank
@@ -140,7 +145,7 @@
     {% endif %}
   </nav>
 
-  <aside class="component-overlay section-color-scope {{ mobile_drawer_class }} {{ menu_typography_class }}" id="HeaderMobileDrawer-{{ section.id }}" aria-label="{{ 'accessibility.menu' | t }}" aria-labelledby="HeaderMobileDrawerHeading-{{ section.id }}" aria-hidden="true" aria-modal="true" role="dialog" data-component-overlay data-drawer-side="left" data-desktop-layout="drawer" data-mobile-layout="drawer" data-state="closed" scroll-lock hidden data-header-mobile-drawer{% if menu_style != blank %} style="{{ menu_style | strip }}"{% endif %}>
+  <aside class="component-overlay {{ mobile_drawer_scheme }} {{ mobile_drawer_class }} {{ menu_typography_class }}" id="HeaderMobileDrawer-{{ section.id }}" aria-label="{{ 'accessibility.menu' | t }}" aria-labelledby="HeaderMobileDrawerHeading-{{ section.id }}" aria-hidden="true" aria-modal="true" role="dialog" data-component-overlay data-drawer-side="left" data-desktop-layout="drawer" data-mobile-layout="drawer" data-state="closed" scroll-lock hidden data-header-mobile-drawer>
     <button class="component-overlay__backdrop header__mobile-drawer-backdrop" type="button" tabindex="-1" aria-label="Close menu" data-component-overlay-backdrop data-header-menu-backdrop></button>
     <div class="component-overlay__panel header__mobile-drawer-surface">
       <header class="component-overlay__header header__mobile-drawer-header">
@@ -677,6 +682,14 @@
       display: none !important;
     }
 
+    .header__mobile-drawer.component-overlay {
+      /* Shared typography and moved mega-menu content use the overlay palette. */
+      --background-color: var(--overlay-background-color);
+      --body-color: var(--overlay-text-color);
+      --heading-color: var(--overlay-text-color);
+      --border-color: var(--overlay-border-color);
+    }
+
     .header__mobile-drawer {
       position: fixed;
       z-index: var(--z-modal);
@@ -731,7 +744,7 @@
       min-height: 100dvh;
       overflow: hidden;
       border-radius: var(--drawer-radius);
-      background: var(--background-color);
+      background: var(--overlay-background-color);
       flex-direction: column;
     }
 
@@ -745,8 +758,8 @@
       margin: 0;
       border: var(--overlay-popover-border-width) solid var(--overlay-border-color);
       border-radius: 0 var(--drawer-radius) var(--drawer-radius) 0;
-      background: var(--background-color);
-      color: var(--header-menu-color, var(--body-color));
+      background: var(--overlay-background-color);
+      color: var(--overlay-text-color);
       transform: var(--overlay-rest-transform);
       transition: transform var(--overlay-motion-duration, var(--motion-duration-standard)) var(--overlay-motion-ease, var(--motion-ease-standard));
     }
@@ -772,8 +785,8 @@
       justify-content: space-between;
       padding-inline: var(--page-margin-mobile);
       padding-block: var(--header-top-padding-top-mobile, var(--header-top-padding-top, 12px)) var(--header-top-padding-bottom-mobile, var(--header-top-padding-bottom, 12px));
-      border-bottom: 1px solid var(--border-color);
-      background: var(--background-color);
+      border-bottom: 1px solid var(--overlay-border-color);
+      background: var(--overlay-background-color);
     }
 
   .header__mobile-drawer-title {
@@ -797,7 +810,7 @@
       padding: 0;
       border: 0;
       background: transparent;
-      color: var(--header-menu-color);
+      color: var(--overlay-text-color);
     }
 
     .header__mobile-drawer-back[hidden],
@@ -836,7 +849,7 @@
 
     .header__mobile-drawer-list > .header__mobile-drawer-item {
       padding: 10px 0;
-      border-bottom: 1px solid var(--border-color);
+      border-bottom: 1px solid var(--overlay-border-color);
     }
 
     .header__mobile-drawer-link,
@@ -867,8 +880,8 @@
       inset: 0;
       display: block;
       padding: 1rem var(--page-margin-mobile);
-      background: var(--background-color);
-      color: var(--header-submenu-color);
+      background: var(--overlay-background-color);
+      color: var(--overlay-text-color);
       opacity: 0;
       pointer-events: none;
       transform: translateX(100%);
@@ -896,7 +909,7 @@
 
     .header__mobile-drawer-submenu > ul > .header__mobile-drawer-submenu-item--has-children {
       margin-block-start: 0.75rem;
-      border-block-end: 1px solid var(--border-color);
+      border-block-end: 1px solid var(--overlay-border-color);
     }
 
     .header__mobile-drawer-submenu > ul > li > a:not(.btn),
@@ -924,7 +937,8 @@
       inset: 0;
       display: block;
       padding: 1rem var(--page-margin-mobile);
-      background: var(--background-color);
+      background: var(--overlay-background-color);
+      color: var(--overlay-text-color);
       opacity: 0;
       pointer-events: none;
       transform: translateX(100%);
@@ -1009,8 +1023,8 @@
       display: grid;
       gap: 1.5rem;
       padding: 0.75rem var(--page-margin-mobile) max(0.75rem, env(safe-area-inset-bottom));
-      border-top: 1px solid var(--border-color);
-      background: var(--background-color);
+      border-top: 1px solid var(--overlay-border-color);
+      background: var(--overlay-background-color);
     }
 
     .header__mobile-drawer-account {
@@ -1075,7 +1089,7 @@
       align-items: center;
       justify-content: center;
       gap: 1rem;
-      color: var(--body-color);
+      color: var(--overlay-text-color);
     }
 
     .header__mobile-drawer-localization .header-localization__summary {

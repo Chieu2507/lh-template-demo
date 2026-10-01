@@ -438,7 +438,7 @@ svg {
 button,
 input,
 textarea,
-select {
+:where(.form__control--select, select:not(.form__control)) {
   font: inherit;
 }
 
@@ -482,8 +482,10 @@ input[type='reset'] {
   resize: vertical;
 }
 
-:where(.form__control--select, select:not(.form__control)) {
+select {
   appearance: none;
+  background-color: var(--input-background-color);
+  color: currentcolor;
 }
 
 .form__control-wrap--select {
@@ -539,6 +541,11 @@ a:focus-visible,
 :where(input, select, textarea):focus-visible {
   outline: 2px solid var(--input-focus-color);
   outline-offset: 3px;
+}
+
+/* Keep field focus inside its border so scrollports and drawers cannot clip it. */
+:where(input:not([type='checkbox']):not([type='radio']):not([type='range']):not([type='button']):not([type='submit']):not([type='reset']), select, textarea):focus-visible {
+  outline-offset: -2px;
 }
 
 .quantity-selector {
@@ -1511,6 +1518,10 @@ legend {
   opacity: 1;
 }
 
+.form__control--textarea {
+  min-height: 8rem;
+}
+
 .form__control--checkbox,
 .form__control--radio {
   width: 1.125rem;
@@ -1606,7 +1617,10 @@ legend {
   grid-auto-flow: column;
   grid-auto-columns: var(--product-collection-grid-item-width-desktop);
   grid-template-columns: none;
+  overflow-x: auto;
+  overscroll-behavior-inline: contain;
   scroll-snap-type: inline mandatory;
+  scrollbar-width: thin;
 }
 
 .product-collection-grid--carousel .product-collection-grid__item,
@@ -1671,7 +1685,10 @@ legend {
 
   .product-collection-grid--swipe-mobile {
     grid-auto-flow: column;
+    overflow-x: auto;
+    overscroll-behavior-inline: contain;
     scroll-snap-type: inline mandatory;
+    scrollbar-width: thin;
   }
 }
 
@@ -2722,8 +2739,6 @@ legend {
   .product-card--quick-add-mobile .product-card__quick-add .product-card__quick-add-button {
     --button-radius: 0;
     --button-icon-size: 18px;
-    --button-foreground: #ffffff;
-    --button-hover-foreground: #ffffff;
     width: 36px;
     min-width: 36px;
     height: 36px;
