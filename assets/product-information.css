@@ -663,7 +663,8 @@ product-sticky-layout.product-information__layout > .product-details {
 }
 
 @media (prefers-reduced-motion: reduce) {
-  product-sticky-layout.product-information__layout {
+  product-sticky-layout.product-information__layout > .product-media-gallery,
+  product-sticky-layout.product-information__layout > .product-details {
     --product-sticky-offset-duration: 0ms;
   }
 }
