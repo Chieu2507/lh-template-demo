@@ -101,19 +101,26 @@
   position: relative;
   flex: 0 0 auto;
   /* Keep the visual bullet small while giving the button a usable touch area. */
-  width: var(--swiper-pagination-bullet-hit-size, 48px) !important;
-  min-width: var(--swiper-pagination-bullet-hit-size, 48px) !important;
-  height: var(--swiper-pagination-bullet-hit-size, 48px) !important;
-  min-height: var(--swiper-pagination-bullet-hit-size, 48px) !important;
+  width: var(--swiper-pagination-bullet-hit-size, 48px);
+  min-width: var(--swiper-pagination-bullet-hit-size, 48px);
+  height: var(--swiper-pagination-bullet-hit-size, 48px);
+  min-height: var(--swiper-pagination-bullet-hit-size, 48px);
   margin: 0;
   padding: 0;
   border: 0;
-  overflow: visible !important;
+  overflow: visible;
   box-sizing: border-box;
   border-radius: var(--swiper-pagination-bullet-border-radius, 1000px);
-  background: transparent !important;
+  background: transparent;
   opacity: var(--swiper-pagination-bullet-inactive-opacity, 1);
   transform: none;
+}
+
+/* State classes must win over the bullet layout, including before init. */
+.swiper > .swiper-pagination:is(.swiper-pagination-lock, .swiper-pagination-disabled),
+.swiper.swiper-pagination-disabled > .swiper-pagination,
+.swiper.swiper-carousel--grid > .swiper-pagination {
+  display: none;
 }
 
 .swiper > :is(
@@ -217,6 +224,17 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
+  .swiper > :is(
+    .swiper-pagination[data-pagination-type='bullets'],
+    .swiper-pagination.swiper-pagination-bullets
+  ) .swiper-pagination-bullet::before,
+  .swiper > :is(
+    .swiper-pagination[data-pagination-type='bullets'],
+    .swiper-pagination.swiper-pagination-bullets
+  ) .swiper-pagination-bullet::after {
+    transition: none;
+  }
+
   .swiper[data-swiper-autoplay='true'] > :is(
     .swiper-pagination[data-pagination-type='bullets'],
     .swiper-pagination.swiper-pagination-bullets

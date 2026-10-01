@@ -130,31 +130,13 @@
   .slideshow__pagination { position: absolute; inset-block-end: 0; inset-inline-start: 0; z-index: 4; display: flex; width: auto; gap: .8rem; align-items: center; justify-content: flex-start; padding-block: 2.4rem; padding-inline: var(--slideshow-content-inline-padding); color: var(--heading-color); --swiper-pagination-color: var(--heading-color); --swiper-pagination-progressbar-bg-color: color-mix(in srgb, var(--heading-color) 30%, transparent); --swiper-pagination-bullet-inactive-color: color-mix(in srgb, var(--heading-color) 30%, transparent); --swiper-pagination-bullet-horizontal-gap: 0px; }
   .slideshow .slideshow__swiper > .slideshow__pagination[data-pagination-type='bullets'] {
     --swiper-pagination-bullet-gap: .8rem;
+    --swiper-pagination-bullet-inactive-opacity: .55;
     max-width: 100%;
     box-sizing: border-box;
     flex-wrap: wrap;
   }
-  .slideshow .slideshow__swiper > .slideshow__pagination[data-pagination-type='bullets'] .swiper-pagination-bullet {
-    width: var(--swiper-pagination-bullet-width, var(--swiper-pagination-bullet-size, 8px)) !important;
-    height: var(--swiper-pagination-bullet-height, var(--swiper-pagination-bullet-size, 8px)) !important;
-    min-width: 0 !important;
-    min-height: 0 !important;
-    margin: 0;
-    border-radius: var(--swiper-pagination-bullet-border-radius, 1000px);
-    opacity: .55;
-    transition: width var(--motion-duration-standard) var(--motion-ease-standard),
-      height var(--motion-duration-standard) var(--motion-ease-standard),
-      opacity var(--motion-duration-standard) var(--motion-ease-standard);
-  }
-  .slideshow .slideshow__swiper > .slideshow__pagination[data-pagination-type='bullets'] .swiper-pagination-bullet-active {
-    width: var(--swiper-pagination-bullet-active-width, 32px) !important;
-    height: var(--swiper-pagination-bullet-active-height, 8px) !important;
-    opacity: 1;
-  }
   .slideshow .slideshow__swiper > .slideshow__pagination[data-pagination-type='bullets'] .swiper-pagination-bullet::before,
   .slideshow .slideshow__swiper > .slideshow__pagination[data-pagination-type='bullets'] .swiper-pagination-bullet::after {
-    width: 100%;
-    height: 100%;
     transform: translate(-50%, -50%);
     transition: none;
   }

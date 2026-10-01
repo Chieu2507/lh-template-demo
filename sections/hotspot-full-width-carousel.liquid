@@ -485,25 +485,12 @@
     --swiper-pagination-progressbar-bg-color: color-mix(in srgb, var(--heading-color) 30%, transparent);
     --swiper-pagination-bullet-inactive-color: color-mix(in srgb, var(--heading-color) 30%, transparent);
     --swiper-pagination-bullet-horizontal-gap: 0px;
+    --swiper-pagination-bullet-inactive-opacity: 0.55;
   }
 
   .hotspot-full-width-carousel__pagination[data-pagination-type='bullets'] {
     width: auto !important;
     padding-inline: var(--page-margin-current);
-  }
-
-  .hotspot-full-width-carousel__pagination .swiper-pagination-bullet {
-    width: 0.8rem;
-    height: 0.8rem;
-    margin: 0;
-    opacity: 0.55;
-    background: currentColor;
-    transition: width var(--motion-duration-standard) var(--motion-ease-standard), opacity var(--motion-duration-standard) var(--motion-ease-standard);
-  }
-
-  .hotspot-full-width-carousel__pagination .swiper-pagination-bullet-active {
-    width: 3.2rem;
-    opacity: 1;
   }
 
   .hotspot-full-width-carousel__pagination.hotspot-full-width-carousel__pagination--desktop-left,
