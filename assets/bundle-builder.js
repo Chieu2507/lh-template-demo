@@ -278,7 +278,7 @@ function initialize(root) {
   const mobileSummaryItems = summary.querySelector('.bundle-summary__items');
   const mobileSummaryFooter = summary.querySelector('.bundle-summary__footer');
   const mobileViewport = window.matchMedia('(max-width: 767.98px)');
-  const productCardImageRatio = getComputedStyle(root).getPropertyValue('--pcard-image-ratio').trim();
+  const productCardImageRatio = getComputedStyle(root).getPropertyValue('--product-card-image-ratio').trim();
   const abortController = new AbortController();
   const { signal } = abortController;
   const parsedGoals = parseJson(summary.dataset.goals || '[]', []);
