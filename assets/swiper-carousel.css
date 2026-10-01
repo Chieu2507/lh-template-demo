@@ -1,3 +1,8 @@
+.swiper > .swiper-wrapper > .swiper-slide {
+  /* Swiper sets the computed slide width inline for multi-column layouts. */
+  flex-basis: auto;
+}
+
 .swiper-carousel--grid {
   overflow: visible;
 }
@@ -95,19 +100,20 @@
 ) .swiper-pagination-bullet {
   position: relative;
   flex: 0 0 auto;
-  width: var(--swiper-pagination-bullet-width, var(--swiper-pagination-bullet-size, 8px));
-  height: var(--swiper-pagination-bullet-height, var(--swiper-pagination-bullet-size, 8px));
+  /* Keep the visual bullet small while giving the button a usable touch area. */
+  width: var(--swiper-pagination-bullet-hit-size, 48px) !important;
+  min-width: var(--swiper-pagination-bullet-hit-size, 48px) !important;
+  height: var(--swiper-pagination-bullet-hit-size, 48px) !important;
+  min-height: var(--swiper-pagination-bullet-hit-size, 48px) !important;
   margin: 0;
   padding: 0;
   border: 0;
-  overflow: hidden;
+  overflow: visible !important;
   box-sizing: border-box;
   border-radius: var(--swiper-pagination-bullet-border-radius, 1000px);
-  background: transparent;
+  background: transparent !important;
   opacity: var(--swiper-pagination-bullet-inactive-opacity, 1);
   transform: none;
-  transition: width var(--motion-duration-standard) var(--motion-ease-standard),
-    height var(--motion-duration-standard) var(--motion-ease-standard);
 }
 
 .swiper > :is(
@@ -120,11 +126,16 @@
 ) .swiper-pagination-bullet::after {
   position: absolute;
   z-index: 0;
-  inset: 0;
+  inset: 50%;
   display: block;
+  width: var(--swiper-pagination-bullet-width, var(--swiper-pagination-bullet-size, 8px));
+  height: var(--swiper-pagination-bullet-height, var(--swiper-pagination-bullet-size, 8px));
   border-radius: var(--swiper-pagination-bullet-border-radius, 1000px);
   content: '';
   pointer-events: none;
+  transform: translate(-50%, -50%);
+  transition: width var(--motion-duration-standard) var(--motion-ease-standard),
+    height var(--motion-duration-standard) var(--motion-ease-standard);
 }
 
 .swiper > :is(
@@ -140,7 +151,7 @@
 ) .swiper-pagination-bullet::after {
   background: var(--swiper-pagination-color, var(--body-color));
   opacity: 0;
-  transform: scaleX(0);
+  transform: translate(-50%, -50%) scaleX(0);
   transform-origin: left center;
 }
 
@@ -148,9 +159,19 @@
   .swiper-pagination[data-pagination-type='bullets'],
   .swiper-pagination.swiper-pagination-bullets
 ) .swiper-pagination-bullet-active {
+  opacity: var(--swiper-pagination-bullet-opacity, 1);
+}
+
+.swiper > :is(
+  .swiper-pagination[data-pagination-type='bullets'],
+  .swiper-pagination.swiper-pagination-bullets
+) .swiper-pagination-bullet-active::before,
+.swiper > :is(
+  .swiper-pagination[data-pagination-type='bullets'],
+  .swiper-pagination.swiper-pagination-bullets
+) .swiper-pagination-bullet-active::after {
   width: var(--swiper-pagination-bullet-active-width, 32px);
   height: var(--swiper-pagination-bullet-active-height, 8px);
-  opacity: var(--swiper-pagination-bullet-opacity, 1);
 }
 
 .swiper > :is(
@@ -165,14 +186,14 @@
   .swiper-pagination.swiper-pagination-bullets
 ) .swiper-pagination-bullet-active::after {
   opacity: 1;
-  transform: scaleX(1);
+  transform: translate(-50%, -50%) scaleX(1);
 }
 
 .swiper[data-swiper-autoplay='true'] > :is(
   .swiper-pagination[data-pagination-type='bullets'],
   .swiper-pagination.swiper-pagination-bullets
 ) .swiper-pagination-bullet-active::after {
-  transform: scaleX(0);
+  transform: translate(-50%, -50%) scaleX(0);
   animation: swiper-pagination-bullet-progress var(--swiper-pagination-bullet-progress-duration, 4s) linear both;
 }
 
@@ -199,7 +220,7 @@
     .swiper-pagination.swiper-pagination-bullets
   ) .swiper-pagination-bullet-active::after {
     animation: none;
-    transform: scaleX(1);
+    transform: translate(-50%, -50%) scaleX(1);
   }
 }
 
