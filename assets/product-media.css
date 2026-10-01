@@ -307,6 +307,12 @@
 }
 
 @media (max-width: 767.98px) {
+  .product-media-gallery__main > .product-media-gallery__pagination.swiper-pagination-bullets {
+    --swiper-pagination-bullet-hit-size: 32px;
+    --swiper-pagination-bullet-gap: 2px;
+    gap: var(--swiper-pagination-bullet-gap, 8px);
+  }
+
   .product-media-gallery--overlay .product-media-gallery__main .product-media {
     aspect-ratio: var(--overlay-media-ratio-mobile, var(--overlay-media-ratio-desktop, 1));
   }

@@ -5,7 +5,6 @@
   const submenuCloseTimers = new WeakMap();
   const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
   const isMobileMenuViewport = () => window.matchMedia('(max-width: 991.98px)').matches;
-  const submenuCloseGrace = 100;
   const submenuTransitionBuffer = 16;
   const menuToggleButtons = new WeakSet();
   const megaMenuBackdropControls = new WeakSet();
@@ -158,14 +157,24 @@
     }
   };
 
+  const keepSubmenuFocusOpen = (details) => {
+    if (!details.matches(':focus-within')) return false;
+    const summary = details.querySelector(':scope > summary');
+    // Pointer focus on a hover trigger must not reopen its panel after exit.
+    // Keyboard focus and focus inside the panel keep its controls reachable.
+    return details.dataset.headerSubmenuTrigger !== 'hover' ||
+      !summary?.matches(':focus') || summary.matches(':focus-visible');
+  };
+
   const closeHeaderDetails = (details) => {
     if (!details?.open && !details?.classList.contains('is-submenu-closing')) return;
+    if (submenuCloseTimers.has(details)) return;
 
     clearSubmenuClose(details);
     const finish = () => {
       details.removeAttribute('open');
-      details.classList.remove('is-submenu-closing');
       releaseHoverSubmenuFocus(details);
+      details.classList.remove('is-submenu-closing');
       scheduleUpdate();
     };
 
@@ -273,16 +282,25 @@
     const headerTop = header.querySelector('.header-top');
     if (!headerTop) return;
 
-    const headerBottom = headerTop.getBoundingClientRect().bottom;
-    header.querySelectorAll('.header-localization__details, .header-menu__details').forEach((details) => {
-      const detailsBottom = details.getBoundingClientRect().bottom;
-      details.style.setProperty('--header-submenu-offset', `${Math.max(0, headerBottom - detailsBottom)}px`);
+    // Read all geometry before writing CSS variables. Interleaving reads and
+    // writes here forces the browser to recalculate layout for every submenu.
+    const headerRect = headerTop.getBoundingClientRect();
+    const submenuRects = Array.from(
+      header.querySelectorAll('.header-localization__details, .header-menu__details'),
+      (details) => ({ details, rect: details.getBoundingClientRect() }),
+    );
+    const megaMenuRects = Array.from(
+      header.querySelectorAll('.header-menu__details--mega'),
+      (details) => ({ details, rect: details.getBoundingClientRect() }),
+    );
+
+    submenuRects.forEach(({ details, rect }) => {
+      details.style.setProperty('--header-submenu-offset', `${Math.max(0, headerRect.bottom - rect.bottom)}px`);
     });
 
-    const headerWidth = headerTop.getBoundingClientRect().width;
-    header.querySelectorAll('.header-menu__details--mega').forEach((details) => {
-      details.style.setProperty('--header-mega-inline-offset', `${Math.max(0, details.getBoundingClientRect().left)}px`);
-      details.style.setProperty('--header-mega-width', `${headerWidth}px`);
+    megaMenuRects.forEach(({ details, rect }) => {
+      details.style.setProperty('--header-mega-inline-offset', `${Math.max(0, rect.left)}px`);
+      details.style.setProperty('--header-mega-width', `${headerRect.width}px`);
     });
   };
 
@@ -291,11 +309,11 @@
     const scrollDelta = scrollY - lastScrollY;
 
     headerStates.forEach(({ header, stickyType }) => {
-      synchronizeSubmenuOffsets(header);
       const isSticky = stickyType !== 'none';
       const isScrolled = isSticky && scrollY > 8;
       const isSubmenuOpen = hasOpenHeaderSubmenu(header);
       const isMegaMenuOpen = hasOpenMegaMenu(header);
+      if (isSubmenuOpen) synchronizeSubmenuOffsets(header);
       const isSearchOpen = header.classList.contains('header--search-open');
       const isCartOpen = header.classList.contains('header--cart-open');
       const headerTop = header.querySelector('.header-top');
@@ -440,29 +458,9 @@
 
   const initializeHeaderSubmenus = (header) => {
     const scheduleSubmenuClose = (details) => {
-      clearSubmenuClose(details);
       if (isMobileMenuViewport()) return;
-      if (!details.open) return;
-      const trigger = details.dataset.headerSubmenuTrigger || 'click';
-      details.classList.add('is-submenu-closing');
-      const duration = getHeaderSubmenuMotionDuration(details);
-      let timer;
-      timer = window.setTimeout(() => {
-        if (submenuCloseTimers.get(details) !== timer) return;
-        submenuCloseTimers.delete(details);
-        const keepFocusOpen =
-          details.matches(':focus-within') &&
-          (trigger === 'click' || details.querySelector(':scope > summary')?.matches(':focus-visible'));
-        if (!details.dataset.editorSelected && !details.matches(':hover') && !keepFocusOpen) {
-          details.removeAttribute('open');
-          details.classList.remove('is-submenu-closing');
-          releaseHoverSubmenuFocus(details);
-        } else {
-          details.classList.remove('is-submenu-closing');
-        }
-        scheduleUpdate();
-      }, submenuCloseGrace + duration + submenuTransitionBuffer);
-      submenuCloseTimers.set(details, timer);
+      if (details.dataset.editorSelected || details.matches(':hover') || keepSubmenuFocusOpen(details)) return;
+      closeHeaderDetails(details);
     };
 
     header.querySelectorAll('details:not([data-mobile-drawer-details]):not([data-mobile-drawer-submenu-details])').forEach((details) => {
@@ -477,8 +475,8 @@
         if (trigger === 'hover') {
           closeHeaderSurfaces(header, { details });
           details.open = true;
+          clearSubmenuClose(details);
         }
-        clearSubmenuClose(details);
         scheduleUpdate();
       });
 
@@ -493,8 +491,8 @@
         if (trigger === 'hover') {
           closeHeaderSurfaces(header, { details });
           details.open = true;
+          clearSubmenuClose(details);
         }
-        clearSubmenuClose(details);
         scheduleUpdate();
       });
 
@@ -787,38 +785,19 @@
         if (footerLocalizationStates.has(details)) return;
 
         const controller = new AbortController();
-        const state = { closeTimer: 0, controller };
-        const clearCloseTimer = () => {
-          if (!state.closeTimer) return;
-          window.clearTimeout(state.closeTimer);
-          state.closeTimer = 0;
-        };
+        const state = { controller };
         const scheduleClose = () => {
-          clearCloseTimer();
-          if (!details.open) return;
-          details.classList.add('is-submenu-closing');
-          const duration = getHeaderSubmenuMotionDuration(details);
-          state.closeTimer = window.setTimeout(() => {
-            state.closeTimer = 0;
-            if (!details.matches(':hover') && !details.matches(':focus-within')) {
-              details.removeAttribute('open');
-              details.classList.remove('is-submenu-closing');
-            } else {
-              details.classList.remove('is-submenu-closing');
-            }
-            scheduleUpdate();
-          }, submenuCloseGrace + duration + submenuTransitionBuffer);
+          if (details.matches(':hover') || keepSubmenuFocusOpen(details)) return;
+          closeHeaderDetails(details);
         };
         const openOnHover = () => {
           if (window.innerWidth <= 767 || details.dataset.headerSubmenuTrigger !== 'hover') return;
-          clearCloseTimer();
-          details.classList.remove('is-submenu-closing');
+          clearSubmenuClose(details);
           details.open = true;
           scheduleUpdate();
         };
         const closeOnLeave = () => {
           if (window.innerWidth <= 767 || details.dataset.headerSubmenuTrigger !== 'hover' || !details.open) return;
-          details.classList.add('is-submenu-closing');
           scheduleClose();
         };
 
@@ -832,14 +811,21 @@
         };
         document.addEventListener('pointerdown', closeOnOutsidePointer, { signal: controller.signal });
         details.querySelector(':scope > summary')?.addEventListener('click', (event) => {
-          if (window.innerWidth <= 767 || details.dataset.headerSubmenuTrigger === 'hover' || !details.open) return;
+          if (window.innerWidth <= 767 || event.defaultPrevented) return;
+          if (details.dataset.headerSubmenuTrigger === 'hover') {
+            event.preventDefault();
+            clearSubmenuClose(details);
+            details.open = true;
+            scheduleUpdate();
+            return;
+          }
+          if (!details.open) return;
           event.preventDefault();
           closeHeaderDetails(details);
         }, { signal: controller.signal });
         details.addEventListener('toggle', () => {
-          if (details.open) {
-            clearCloseTimer();
-            details.classList.remove('is-submenu-closing');
+          if (details.open && !details.classList.contains('is-submenu-closing')) {
+            clearSubmenuClose(details);
             localization.querySelectorAll(':scope > .header-localization__details[open]').forEach((otherDetails) => {
               if (otherDetails !== details) otherDetails.removeAttribute('open');
             });
@@ -861,7 +847,7 @@
         const state = footerLocalizationStates.get(details);
         if (!state) return;
         state.controller.abort();
-        if (state.closeTimer) window.clearTimeout(state.closeTimer);
+        clearSubmenuClose(details);
         footerLocalizationStates.delete(details);
       });
     });
@@ -916,6 +902,7 @@
 
     root.querySelectorAll?.(HEADER_SELECTOR).forEach((headerTop) => headers.push(getHeaderRoot(headerTop)));
     headers.forEach((header) => {
+      header.querySelectorAll('details').forEach(clearSubmenuClose);
       header.querySelectorAll('[data-header-mega-menu-backdrop]').forEach((backdrop) => {
         backdropCursorBindings.get(backdrop)?.destroy();
         backdropCursorBindings.delete(backdrop);

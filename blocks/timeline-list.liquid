@@ -96,8 +96,8 @@
   endcapture
 %}
 
-{% render 'swiper-stylesheet' %}
-<link rel="stylesheet" href="{{ 'swiper-12.2.0-effect-fade.min.css' | asset_url }}">
+<link rel="stylesheet" href="{{ 'swiper-12.2.0-effect-fade.min.css' | asset_url }}" media="print" onload="this.media='all'">
+<noscript>{{ 'swiper-12.2.0-effect-fade.min.css' | asset_url | stylesheet_tag }}</noscript>
 {% unless request.design_mode %}
   <script type="module" src="{{ 'timeline-list.js' | asset_url }}"></script>
 {% endunless %}

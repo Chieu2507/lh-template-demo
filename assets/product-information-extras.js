@@ -3,8 +3,12 @@ class ProductStickyLayout extends HTMLElement {
     if (this.abortController) return;
     this.abortController = new AbortController();
     this.columns = new Map();
+    this.offsetAnimations = new Map();
+    this.top = null;
+    this.headerVisible = null;
     this.scrollY = window.scrollY;
     this.desktop = window.matchMedia('(min-width: 768px)');
+    this.reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
     this.schedule = () => {
       if (this.frame) return;
       this.frame = requestAnimationFrame(() => {
@@ -12,17 +16,47 @@ class ProductStickyLayout extends HTMLElement {
         this.update();
       });
     };
+    this.onResize = () => {
+      for (const column of this.offsetAnimations.keys()) this.cancelOffsetAnimation(column);
+      this.schedule();
+    };
     const options = { passive: true, signal: this.abortController.signal };
     window.addEventListener('scroll', this.schedule, options);
-    window.addEventListener('resize', this.schedule, options);
-    this.resizeObserver = new ResizeObserver(this.schedule);
+    window.addEventListener('resize', this.onResize, options);
+    this.reducedMotion.addEventListener('change', () => {
+      for (const column of this.offsetAnimations.keys()) this.cancelOffsetAnimation(column);
+    }, options);
+    this.resizeObserver = new ResizeObserver(this.onResize);
     this.resizeObserver.observe(this);
     this.contentObserver = new MutationObserver(() => this.observeColumns());
-    this.contentObserver.observe(this, { childList: true });
+    this.contentObserver.observe(this, { childList: true, attributes: true, attributeFilter: ['data-sticky-enabled'] });
     // Header changes and Theme Editor reloads can change the shared offset.
+    this.offsetObserver = new MutationObserver(this.schedule);
+    this.offsetObserver.observe(document.documentElement, { attributes: true, attributeFilter: ['style'] });
     this.headerObserver = new MutationObserver(this.schedule);
-    this.headerObserver.observe(document.documentElement, { attributes: true, attributeFilter: ['style'] });
+    document.addEventListener('shopify:section:load', () => this.observeHeader(), options);
+    document.addEventListener('shopify:section:unload', (event) => this.observeHeader(event.target), options);
+    this.observeHeader();
     this.observeColumns();
+  }
+
+  observeHeader(unloadingSection) {
+    const headerTop = document.querySelector('.header-top[data-header-root]');
+    const header = headerTop?.closest('.shopify-section') || headerTop;
+    const nextHeader = header && !unloadingSection?.contains(header) ? header : null;
+    if (nextHeader !== this.header) {
+      this.headerObserver.disconnect();
+      this.headerAbortController?.abort();
+      this.headerVisible = null;
+      for (const column of this.offsetAnimations.keys()) this.cancelOffsetAnimation(column);
+      this.header = nextHeader;
+      if (this.header) {
+        this.headerObserver.observe(this.header, { attributes: true, attributeFilter: ['class', 'data-sticky-type'] });
+        this.headerAbortController = new AbortController();
+        this.header.addEventListener('transitionend', this.schedule, { signal: this.headerAbortController.signal });
+      }
+    }
+    this.schedule();
   }
 
   observeColumns() {
@@ -41,8 +75,37 @@ class ProductStickyLayout extends HTMLElement {
   }
 
   resetColumn(column) {
+    this.cancelOffsetAnimation(column);
     column.style.removeProperty('--product-sticky-top');
     column.removeAttribute('data-sticky-state');
+  }
+
+  cancelOffsetAnimation(column) {
+    this.offsetAnimations.get(column)?.cancel();
+    this.offsetAnimations.delete(column);
+  }
+
+  animateOffset(column, previousPosition) {
+    // Animate only the header-induced displacement. Sticky top remains immediate
+    // during ordinary scrolling, including scroll reversal for tall columns.
+    this.cancelOffsetAnimation(column);
+    const displacement = previousPosition - column.getBoundingClientRect().top;
+    if (Math.abs(displacement) < 0.5) return;
+    const styles = getComputedStyle(column);
+    const duration = styles.getPropertyValue('--product-sticky-offset-duration').trim();
+    const milliseconds = parseFloat(duration) * (duration.endsWith('ms') ? 1 : 1000);
+    if (!Number.isFinite(milliseconds) || milliseconds <= 0) return;
+    const animation = column.animate([
+      { translate: `0 ${displacement}px` },
+      { translate: '0 0' },
+    ], {
+      duration: milliseconds,
+      easing: styles.getPropertyValue('--product-sticky-offset-easing').trim() || 'ease',
+    });
+    this.offsetAnimations.set(column, animation);
+    animation.onfinish = () => {
+      if (this.offsetAnimations.get(column) === animation) this.offsetAnimations.delete(column);
+    };
   }
 
   update() {
@@ -50,9 +113,15 @@ class ProductStickyLayout extends HTMLElement {
     const delta = window.scrollY - this.scrollY;
     this.scrollY = window.scrollY;
     const enabled = this.desktop.matches && this.hasAttribute('data-sticky-enabled');
-    // header.js removes this variable when the header is not sticky.
-    const headerHeight = parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--header-height')) || 0;
+    // --header-height is the measured height, even while scroll-up headers are hidden.
+    const headerVisible = Boolean(this.header?.isConnected && this.header.dataset.stickyType !== 'none' &&
+      !this.header.classList.contains('header--is-hidden'));
+    const headerHeight = headerVisible
+      ? parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--header-height')) || 0
+      : 0;
     const top = headerHeight + 16;
+    const animateHeaderOffset = enabled && !this.reducedMotion.matches && this.headerVisible !== null &&
+      headerVisible !== this.headerVisible && top !== this.top;
     for (const [column, previousTop] of this.columns) {
       if (!enabled) {
         this.resetColumn(column);
@@ -60,11 +129,20 @@ class ProductStickyLayout extends HTMLElement {
         continue;
       }
       const bottom = Math.min(top, window.innerHeight - column.offsetHeight - 16);
-      const inset = Math.max(bottom, Math.min(top, (previousTop ?? top) - delta));
+      // Keep top-pinned tall columns attached to the changing header offset.
+      const start = previousTop === this.top ? top : previousTop ?? top;
+      const inset = Math.max(bottom, Math.min(top, start - delta));
+      // Capture the visual position before changing top, including an interrupted
+      // animation, so rapid header reversals start from the current position.
+      const previousPosition = animateHeaderOffset && previousTop !== null && inset !== previousTop
+        ? column.getBoundingClientRect().top : null;
       this.columns.set(column, inset);
       column.style.setProperty('--product-sticky-top', `${inset}px`);
       column.dataset.stickyState = inset === top ? 'top' : inset === bottom ? 'bottom' : 'scrolling';
+      if (previousPosition !== null) this.animateOffset(column, previousPosition);
     }
+    this.top = top;
+    this.headerVisible = headerVisible;
   }
 
   disconnectedCallback() {
@@ -72,7 +150,10 @@ class ProductStickyLayout extends HTMLElement {
     this.abortController = null;
     this.resizeObserver?.disconnect();
     this.contentObserver?.disconnect();
+    this.offsetObserver?.disconnect();
     this.headerObserver?.disconnect();
+    this.headerAbortController?.abort();
+    this.header = null;
     cancelAnimationFrame(this.frame);
     this.frame = 0;
     this.columns?.forEach((_, column) => this.resetColumn(column));

@@ -140,7 +140,7 @@
     {% endif %}
   </nav>
 
-  <aside class="component-overlay section-color-scope {{ mobile_drawer_class }} {{ menu_typography_class }}" id="HeaderMobileDrawer-{{ section.id }}" aria-label="{{ 'accessibility.menu' | t }}" aria-labelledby="HeaderMobileDrawerHeading-{{ section.id }}" aria-hidden="true" aria-modal="true" role="dialog" data-component-overlay data-desktop-layout="drawer" data-mobile-layout="drawer" data-state="closed" scroll-lock hidden data-header-mobile-drawer{% if menu_style != blank %} style="{{ menu_style | strip }}"{% endif %}>
+  <aside class="component-overlay section-color-scope {{ mobile_drawer_class }} {{ menu_typography_class }}" id="HeaderMobileDrawer-{{ section.id }}" aria-label="{{ 'accessibility.menu' | t }}" aria-labelledby="HeaderMobileDrawerHeading-{{ section.id }}" aria-hidden="true" aria-modal="true" role="dialog" data-component-overlay data-drawer-side="left" data-desktop-layout="drawer" data-mobile-layout="drawer" data-state="closed" scroll-lock hidden data-header-mobile-drawer{% if menu_style != blank %} style="{{ menu_style | strip }}"{% endif %}>
     <button class="component-overlay__backdrop header__mobile-drawer-backdrop" type="button" tabindex="-1" aria-label="Close menu" data-component-overlay-backdrop data-header-menu-backdrop></button>
     <div class="component-overlay__panel header__mobile-drawer-surface">
       <header class="component-overlay__header header__mobile-drawer-header">
@@ -350,10 +350,14 @@
     transition: transform var(--motion-duration-standard) var(--motion-ease-standard);
   }
 
-  .header-menu__details:is([open], .is-submenu-closing) > .header-menu__summary .header-menu__dropdown-icon,
-  .header-menu--trigger-hover .header-menu__details:hover .header-menu__dropdown-icon,
-  .header-menu--trigger-hover .header-menu__details:focus-within .header-menu__dropdown-icon {
+  .header-menu__details[open]:not(.is-submenu-closing) > .header-menu__summary .header-menu__dropdown-icon,
+  .header-menu--trigger-hover .header-menu__details:not(.is-submenu-closing):hover .header-menu__dropdown-icon,
+  .header-menu--trigger-hover .header-menu__details:not(.is-submenu-closing):focus-within .header-menu__dropdown-icon {
     transform: rotate(180deg);
+  }
+
+  .header-menu__details.is-submenu-closing > .header-menu__summary .header-menu__dropdown-icon {
+    transition-duration: var(--motion-duration-slow);
   }
 
   .header-menu__submenu {
@@ -660,11 +664,6 @@
       backdrop-filter: blur(var(--overlay-backdrop-blur));
       transition-delay: 0s;
     }
-  }
-
-  .header__mobile-drawer {
-    display: none;
-    color: var(--header-menu-color, var(--body-color));
   }
 
   .header-menu__drawer,
@@ -1098,6 +1097,7 @@
 
   @media (prefers-reduced-motion: reduce) {
     .header-menu__dropdown-icon,
+    .header-menu__details.is-submenu-closing > .header-menu__summary .header-menu__dropdown-icon,
     .header-menu__submenu,
     .header-mega-menu,
     .header-menu__tertiary {

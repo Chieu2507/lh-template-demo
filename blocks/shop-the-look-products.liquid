@@ -135,10 +135,12 @@
 %}
 
 {% capture shop_the_look_products_style %}
-  --shop-the-look-columns-desktop: {{ shop_the_look_products_columns_desktop }};
-  --shop-the-look-columns-mobile: {{ shop_the_look_products_columns_mobile }};
-  --shop-the-look-gap-desktop: {{ shop_the_look_products_gap_desktop }}px;
-  --shop-the-look-gap-mobile: {{ shop_the_look_products_gap_mobile }}px;
+  {% if shop_the_look_products_layout == 'grid' %}
+    --shop-the-look-columns-desktop: {{ shop_the_look_products_columns_desktop }};
+    --shop-the-look-columns-mobile: {{ shop_the_look_products_columns_mobile }};
+    --shop-the-look-gap-desktop: {{ shop_the_look_products_gap_desktop }}px;
+    --shop-the-look-gap-mobile: {{ shop_the_look_products_gap_mobile }}px;
+  {% endif %}
 {% endcapture %}
 {% assign shop_the_look_products_style = shop_the_look_products_style | strip %}
 
@@ -170,8 +172,7 @@
 {% assign shop_the_look_products_pagination = shop_the_look_products_pagination | strip %}
 
 {% if shop_the_look_products_layout == 'carousel' %}
-  {% render 'swiper-stylesheet' %}
-  <script type="module" src="{{ 'product-collection-carousel.js' | asset_url }}"></script>
+  <script data-theme-module="{{ 'product-collection-carousel.js' | asset_url }}"></script>
 {% endif %}
 
 {% capture shop_the_look_products_content %}{% content_for 'blocks' %}{% endcapture %}
@@ -195,7 +196,7 @@
         data-swiper-pagination-type="{{ shop_the_look_products_pagination_type }}"
         data-swiper-previous-selector="[data-shop-the-look-previous]"
         data-swiper-next-selector="[data-shop-the-look-next]"
-        style="{{ shop_the_look_products_style }}"
+        {% if shop_the_look_products_style != blank %}style="{{ shop_the_look_products_style }}"{% endif %}
       {% endcapture %}
 
       {% render 'swiper-carousel',
@@ -214,7 +215,7 @@
         class="shop-the-look-products__items"
         data-product-collection-grid
         data-layout="grid"
-        style="{{ shop_the_look_products_style }}"
+        {% if shop_the_look_products_style != blank %}style="{{ shop_the_look_products_style }}"{% endif %}
       >
         {{ shop_the_look_products_content }}
       </div>

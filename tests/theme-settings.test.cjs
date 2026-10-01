@@ -94,7 +94,7 @@ test('Footer consumes global social URLs and no longer references follow-us menu
   assert.equal(socialBlock.type, 'social-links');
   assert.doesNotMatch(read('sections/footer-group.json'), /follow-us/);
   assert.doesNotMatch(read('sections/footer.liquid'), /follow-us/);
-  assert.match(read('blocks/social-links.liquid'), /\{% render 'social-links' %\}/);
+  assert.match(read('blocks/social-links.liquid'), /\{%\s*render 'social-links'(?:\s*,[\s\S]*?)?\s*%\}/);
   assert.match(read('blocks/_column.liquid'), /\{ "type": "social-links" \}/);
 });
 

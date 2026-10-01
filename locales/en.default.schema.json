@@ -1444,5 +1444,15 @@
     "label": "Timeline label",
     "navigation_spacing": "Gap",
     "item_gap": "Content gap"
+  },
+  "social_links_settings": {
+    "manage_links": "Manage social media links in [theme settings](/editor?context=theme&category=social%20media).",
+    "display_mode": "Display as",
+    "social_link": "Social link",
+    "color_type": "Color type",
+    "top_padding": "Top padding",
+    "bottom_padding": "Bottom padding",
+    "mobile_top_padding": "Mobile top padding",
+    "mobile_bottom_padding": "Mobile bottom padding"
   }
 }

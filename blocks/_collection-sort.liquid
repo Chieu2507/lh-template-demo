@@ -14,7 +14,7 @@
   endif
  endfor
 %}
-            <form class="main-collection__sort-form main-collection__sort-form--mobile-hidden" action="{{ collection.url | escape }}" method="get" data-collection-sort-form data-style="{{ block.settings.style }}" {{ block.shopify_attributes }}>
+            <form class="main-collection__sort-form main-collection__sort-form--mobile-hidden body-text body-sm" action="{{ collection.url | escape }}" method="get" data-collection-sort-form data-style="{{ block.settings.style }}" {{ block.shopify_attributes }}>
             {% for filter in collection.filters %}
               {% for value in filter.active_values %}
                 <input type="hidden" name="{{ value.param_name }}" value="{{ value.value }}">
@@ -52,7 +52,7 @@
                 {% endfor %}
               </select>
               <button
-                class="main-collection__sort-trigger"
+                class="main-collection__sort-trigger body-text body-xs"
                 type="button"
                 aria-haspopup="listbox"
                 aria-expanded="false"
@@ -68,7 +68,7 @@
                 {% render 'icon', icon: 'chevron-down', bare: true %}
               </button>
               <div
-                class="main-collection__sort-listbox"
+                class="main-collection__sort-listbox body-text body-sm"
                 id="CollectionSortOptions-{{ section.id }}"
                 role="listbox"
                 aria-labelledby="CollectionSortLabel-{{ section.id }}"

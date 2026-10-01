@@ -59,8 +59,10 @@
 }
 
 .product-card__quick-view-button {
-  --quick-view-button-background: var(--button-secondary-background, var(--background-color));
-  --quick-view-button-foreground: var(--button-secondary-text, var(--body-color));
+  --color-primary-button-background: var(--button-primary-background);
+  --color-primary-button-text: var(--button-primary-text);
+  --quick-view-button-background: #fff;
+  --quick-view-button-foreground: #000;
   --quick-view-button-hover-background: var(--button-secondary-hover-background, var(--quick-view-button-background));
   --quick-view-button-hover-foreground: var(--button-secondary-hover-text, var(--quick-view-button-foreground));
   width: 44px;
@@ -82,6 +84,11 @@
   background: var(--quick-view-button-hover-background);
   color: var(--quick-view-button-hover-foreground);
   transform: translateY(0) scale(1.03);
+}
+
+.product-card__quick-view-button:hover {
+  background-color: var(--color-primary-button-background);
+  color: var(--color-primary-button-text);
 }
 
 .product-card__quick-view-button .btn__label {
