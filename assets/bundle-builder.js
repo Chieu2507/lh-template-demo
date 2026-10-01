@@ -21,6 +21,80 @@ function getVariant(card, variantId) {
   return getVariantData(card).find((variant) => String(variant.id) === String(variantId)) || null;
 }
 
+function getVariantOptionValue(option) {
+  if (option == null) return '';
+  if (typeof option !== 'object') return String(option);
+
+  const value = option.value;
+  if (value && typeof value === 'object') return String(value.name || value.value || '');
+  return String(option.name || value || '');
+}
+
+function getVariantOptionValues(variant) {
+  if (Array.isArray(variant?.options_with_values) && variant.options_with_values.length) {
+    return variant.options_with_values.map((option) => getVariantOptionValue(option?.value));
+  }
+  if (Array.isArray(variant?.options) && variant.options.length) {
+    return variant.options.map(getVariantOptionValue);
+  }
+  return [variant?.option1, variant?.option2, variant?.option3]
+    .filter((value) => value != null)
+    .map(getVariantOptionValue);
+}
+
+function getVariantSelectLabel(variant, optionNames) {
+  const optionValues = getVariantOptionValues(variant);
+  return optionValues
+    .map((value, index) => {
+      const option = variant?.options_with_values?.[index];
+      const optionName = option?.name || optionNames[index];
+      return optionName ? `${optionName}: ${value}` : value;
+    })
+    .filter(Boolean)
+    .join(' | ') || String(variant?.title || '');
+}
+
+function populateBundleVariantSelects(root) {
+  root.querySelectorAll('[data-bundle-variant-select]').forEach((select) => {
+    const card = select.closest('[data-bundle-product]');
+    if (!card) return;
+
+    const variants = getVariantData(card);
+    if (!variants.length) return;
+
+    const optionNames = parseJson(select.dataset.optionNames || '[]', []);
+    const currentVariantId = String(card.dataset.currentVariantId || select.value || '');
+    const currentVariant = variants.find((variant) => String(variant.id) === currentVariantId)
+      || variants.find((variant) => variant.available)
+      || variants[0];
+    if (!currentVariant) return;
+
+    const fragment = document.createDocumentFragment();
+    if (select.dataset.unavailableLabel) {
+      const unavailableOption = document.createElement('option');
+      unavailableOption.value = '';
+      unavailableOption.textContent = select.dataset.unavailableLabel;
+      unavailableOption.disabled = true;
+      fragment.append(unavailableOption);
+    }
+    variants.forEach((variant) => {
+      const option = document.createElement('option');
+      option.value = String(variant.id);
+      option.dataset.variantAvailable = String(Boolean(variant.available));
+      option.textContent = getVariantSelectLabel(variant, optionNames);
+      if (!variant.available && select.dataset.soldOutLabel) {
+        option.textContent += ` — ${select.dataset.soldOutLabel}`;
+      }
+      fragment.append(option);
+    });
+
+    select.replaceChildren(fragment);
+    select.value = String(currentVariant.id);
+    card.dataset.currentVariantId = String(currentVariant.id);
+    card.dataset.currentVariantAvailable = String(Boolean(currentVariant.available));
+  });
+}
+
 function quantityRule(variant) {
   const rule = variant?.quantity_rule || {};
   const minValue = Number(rule.min);
@@ -191,7 +265,7 @@ function initialize(root) {
       .reduce((height, property) => height + (Number.parseFloat(surfaceStyle[property]) || 0), 0);
     const progressHeight = mobileSummaryProgress?.hidden ? 0 : mobileSummaryProgress?.scrollHeight || 0;
     const headerHeight = mobileSummaryHeading.getBoundingClientRect().height + (progressHeight ? 14 + progressHeight : 0);
-    const productsHeight = mobileSummaryItems.querySelector('.bundle-summary__item-list')?.scrollHeight || 0;
+    const productsHeight = mobileSummaryItems.scrollHeight;
     const contentHeight = headerHeight + productsHeight + mobileSummaryFooter.getBoundingClientRect().height + innerGap * 2;
     summary.style.setProperty('--bundle-summary-expanded-height', `${Math.ceil(chromeHeight + contentHeight)}px`);
   };
@@ -518,6 +592,8 @@ function initialize(root) {
     const variant = event.detail?.variant;
     card.dataset.currentVariantId = variant?.id ? String(variant.id) : '';
     card.dataset.currentVariantAvailable = String(Boolean(variant?.available));
+    const variantSelect = card.querySelector('[data-bundle-variant-select]');
+    if (variantSelect) variantSelect.value = variant?.id ? String(variant.id) : '';
 
     renderProductButton(card);
     render();
@@ -574,6 +650,25 @@ function initialize(root) {
   };
 
   const handleChange = (event) => {
+    const variantSelect = event.target.closest('[data-bundle-variant-select]');
+    if (variantSelect && root.contains(variantSelect)) {
+      const card = variantSelect.closest('[data-bundle-product]');
+      const variant = card ? getVariant(card, variantSelect.value) : null;
+      if (!card || !variant) return;
+
+      variantSelect.dispatchEvent(new CustomEvent('variant:change', {
+        bubbles: true,
+        detail: {
+          variant,
+          variantId: String(variant.id),
+          options: getVariantOptionValues(variant),
+          available: Boolean(variant.available),
+          source: 'bundle-dropdown',
+        },
+      }));
+      return;
+    }
+
     const input = event.target.closest('[data-bundle-quantity]');
     if (!input || !root.contains(input)) return;
     const variantId = String(input.dataset.variantId || '');
@@ -635,6 +730,7 @@ function initialize(root) {
   root.addEventListener('click', handleClick, { signal });
   root.addEventListener('change', handleChange, { signal });
   root.addEventListener('variant:change', handleVariantChange, { signal });
+  populateBundleVariantSelects(root);
   render();
 }
 

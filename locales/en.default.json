@@ -296,6 +296,7 @@
     "added_item": "Added to bundle",
     "remove_item": "Remove",
     "add_product": "Add {{ product }} to bundle",
+    "select_variant_for": "Choose a variant for {{ product }}",
     "remove_product": "Remove {{ product }} from bundle",
     "products": "Bundle products",
     "choose_products": "Select products or a collection to display bundle items.",

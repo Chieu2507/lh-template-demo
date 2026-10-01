@@ -136,9 +136,42 @@
 
 {% capture bundle_goals %}
   [
-    {"enabled":{{ bundle_tier_1_enabled | json }},"label":{{ bundle_tier_1_label | json }},"minimumType":{{ bundle_tier_1_minimum_type | json }},"minimumQuantity":{{ bundle_tier_1_minimum_quantity | json }},"minimumAmount":{{ block.settings.minimum_amount | json }},"discountType":{{ block.settings.discount_type | json }},"discountMethod":{{ block.settings.discount_method | json }},"discountPercentage":{{ block.settings.discount_percentage | json }},"discountAmount":{{ block.settings.discount_amount | json }},"onlyApplyOncePerOrder":{{ block.settings.only_apply_discount_once_per_order | json }}},
-    {"enabled":{{ bundle_tier_2_enabled | json }},"label":{{ bundle_tier_2_label | json }},"minimumType":{{ block.settings.minimum_requirement | json }},"minimumQuantity":{{ bundle_tier_2_minimum_quantity | json }},"minimumAmount":{{ block.settings.tier_2_minimum_amount | json }},"discountType":{{ block.settings.tier_2_discount_type | json }},"discountMethod":{{ block.settings.discount_method | json }},"discountPercentage":{{ block.settings.tier_2_discount_percentage | json }},"discountAmount":{{ block.settings.tier_2_discount_amount | json }},"onlyApplyOncePerOrder":{{ block.settings.only_apply_discount_once_per_order | json }}},
-    {"enabled":{{ bundle_tier_3_enabled | json }},"label":{{ bundle_tier_3_label | json }},"minimumType":{{ block.settings.minimum_requirement | json }},"minimumQuantity":{{ bundle_tier_3_minimum_quantity | json }},"minimumAmount":{{ block.settings.tier_3_minimum_amount | json }},"discountType":{{ block.settings.tier_3_discount_type | json }},"discountMethod":{{ block.settings.discount_method | json }},"discountPercentage":{{ block.settings.tier_3_discount_percentage | json }},"discountAmount":{{ block.settings.tier_3_discount_amount | json }},"onlyApplyOncePerOrder":{{ block.settings.only_apply_discount_once_per_order | json }}}
+    {
+      "enabled": {{ bundle_tier_1_enabled | json }},
+      "label": {{ bundle_tier_1_label | json }},
+      "minimumType": {{ bundle_tier_1_minimum_type | json }},
+      "minimumQuantity": {{ bundle_tier_1_minimum_quantity | json }},
+      "minimumAmount": {{ block.settings.minimum_amount | json }},
+      "discountType": {{ block.settings.discount_type | json }},
+      "discountMethod": {{ block.settings.discount_method | json }},
+      "discountPercentage": {{ block.settings.discount_percentage | json }},
+      "discountAmount": {{ block.settings.discount_amount | json }},
+      "onlyApplyOncePerOrder": {{ block.settings.only_apply_discount_once_per_order | json }}
+    },
+    {
+      "enabled": {{ bundle_tier_2_enabled | json }},
+      "label": {{ bundle_tier_2_label | json }},
+      "minimumType": {{ block.settings.minimum_requirement | json }},
+      "minimumQuantity": {{ bundle_tier_2_minimum_quantity | json }},
+      "minimumAmount": {{ block.settings.tier_2_minimum_amount | json }},
+      "discountType": {{ block.settings.tier_2_discount_type | json }},
+      "discountMethod": {{ block.settings.discount_method | json }},
+      "discountPercentage": {{ block.settings.tier_2_discount_percentage | json }},
+      "discountAmount": {{ block.settings.tier_2_discount_amount | json }},
+      "onlyApplyOncePerOrder": {{ block.settings.only_apply_discount_once_per_order | json }}
+    },
+    {
+      "enabled": {{ bundle_tier_3_enabled | json }},
+      "label": {{ bundle_tier_3_label | json }},
+      "minimumType": {{ block.settings.minimum_requirement | json }},
+      "minimumQuantity": {{ bundle_tier_3_minimum_quantity | json }},
+      "minimumAmount": {{ block.settings.tier_3_minimum_amount | json }},
+      "discountType": {{ block.settings.tier_3_discount_type | json }},
+      "discountMethod": {{ block.settings.discount_method | json }},
+      "discountPercentage": {{ block.settings.tier_3_discount_percentage | json }},
+      "discountAmount": {{ block.settings.tier_3_discount_amount | json }},
+      "onlyApplyOncePerOrder": {{ block.settings.only_apply_discount_once_per_order | json }}
+    }
   ]
 {% endcapture %}
 
@@ -234,18 +267,16 @@
         <span class="bundle-summary__progress-milestone-label body-text body-xs"></span>
       </template>
 
-      <div class="bundle-summary__items" id="{{ bundle_summary_items_id }}">
-        <div class="bundle-summary__item-list scrollbar scrollbar--vertical" data-bundle-items>
-          {% for placeholder_index in (1..bundle_summary_placeholder_count) %}
-            <div class="bundle-summary__placeholder-item" data-bundle-placeholder aria-hidden="true">
-              <span class="bundle-summary__placeholder-media"></span>
-              <span class="bundle-summary__placeholder-details">
-                <span class="bundle-summary__placeholder-line"></span>
-                <span class="bundle-summary__placeholder-line bundle-summary__placeholder-line--short"></span>
-              </span>
-            </div>
-          {% endfor %}
-        </div>
+      <div class="bundle-summary__items scrollbar scrollbar--vertical scrollbar--hidden-mobile" id="{{ bundle_summary_items_id }}" data-bundle-items>
+        {% for placeholder_index in (1..bundle_summary_placeholder_count) %}
+          <div class="bundle-summary__placeholder-item" data-bundle-placeholder aria-hidden="true">
+            <span class="bundle-summary__placeholder-media"></span>
+            <span class="bundle-summary__placeholder-details">
+              <span class="bundle-summary__placeholder-line"></span>
+              <span class="bundle-summary__placeholder-line bundle-summary__placeholder-line--short"></span>
+            </span>
+          </div>
+        {% endfor %}
       </div>
 
       <div class="bundle-summary__footer">
@@ -397,8 +428,7 @@
   .bundle-summary__progress[hidden],
   .bundle-summary__total[hidden],
   .bundle-summary__item-variant[hidden],
-  .bundle-summary__item-quantity[hidden],
-  .bundle-summary__progress[hidden] {
+  .bundle-summary__item-quantity[hidden] {
     display: none;
   }
 
@@ -519,19 +549,15 @@
 
   .bundle-summary__items {
     --bundle-summary-item-media-width: clamp(72px, 30%, 100px);
-    display: flex;
-    flex: 1 1 auto;
-    flex-direction: column;
-    gap: 10px;
-    min-height: 0;
-    min-width: 0;
-  }
-
-  .bundle-summary__item-list {
     display: grid;
+    flex: 1 1 auto;
     gap: 20px;
     min-height: 0;
     min-width: 0;
+    overscroll-behavior: auto;
+    padding-block-end: 6.4px;
+    margin-inline-end: -16px;
+    padding-inline-end: 16px;
   }
 
   .bundle-summary__placeholder-item {
@@ -836,6 +862,8 @@
     .bundle-summary[data-mobile-sticky='true'][data-mobile-expanded='true'] .bundle-summary__items {
       flex: 0 1 auto;
       margin-block-start: 0;
+      overflow-x: hidden;
+      overflow-y: auto;
       opacity: 1;
       visibility: visible;
       pointer-events: auto;
@@ -843,10 +871,6 @@
         margin-block-start var(--motion-duration-slow, 420ms) var(--motion-ease-emphasized, cubic-bezier(0.2, 0.7, 0, 1)),
         opacity var(--motion-duration-fast, 160ms) ease 80ms,
         visibility 0s;
-    }
-
-    .bundle-summary[data-mobile-sticky='true'][data-mobile-expanded='true'] .bundle-summary__item-list {
-      padding-inline-end: 10px;
     }
 
     .bundle-summary[data-mobile-sticky='true'][data-mobile-expanded='true'] .bundle-summary__footer {
@@ -909,11 +933,8 @@
       gap: var(--bundle-summary-gap-mobile, 16px);
     }
 
-    .bundle-summary__item-list {
-      gap: 16px;
-    }
-
     .bundle-summary__items {
+      gap: 16px;
       --bundle-summary-item-media-width: clamp(64px, 30%, 90px);
     }
 
@@ -939,10 +960,6 @@
       .bundle-summary__surface {
         max-height: calc(100svh - var(--header-sticky-height, 0px) - var(--sticky-offset-spacing, 16px) - var(--sticky-offset-spacing, 16px));
       }
-    }
-
-    .bundle-summary__item-list {
-      padding-inline-end: 10px;
     }
   }
 

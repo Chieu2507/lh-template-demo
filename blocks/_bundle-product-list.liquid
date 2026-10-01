@@ -99,6 +99,9 @@
             assign bundle_button_disabled = false
           endif
           assign bundle_add_aria_label = 'bundle_builder.add_product' | t: product: bundle_product.title
+          assign bundle_variant_select_label = 'bundle_builder.select_variant_for' | t: product: bundle_product.title
+          assign bundle_sold_out_label = 'products.sold_out' | t
+          assign bundle_unavailable_variant_label = 'products.variant_selection_unavailable' | t
         %}
         <div
           class="product-collection-grid__item bundle-product-item"
@@ -110,13 +113,45 @@
           data-current-variant-id="{{ bundle_current_variant.id }}"
           data-current-variant-available="{{ bundle_product_available }}"
         >
+          {% capture bundle_product_dropdown_picker %}
+            {% liquid
+              assign bundle_variant_select_id = bundle_variant_picker_id | append: '-select'
+            %}
+            {% if bundle_variant_picker_type == 'dropdown' %}
+              <script type="application/json" data-bundle-product-variants>{{ bundle_product.variants | json }}</script>
+            {% endif %}
+            <label class="visually-hidden" for="{{ bundle_variant_select_id }}">{{ bundle_variant_select_label | escape }}</label>
+            <div class="form__control-wrap--select">
+              <select
+                id="{{ bundle_variant_select_id }}"
+                class="bundle-product-item__variant-select variant-picker__control--select form__control form__control--select"
+                data-bundle-variant-select
+                data-option-names="{{ bundle_product.options | json | escape }}"
+                data-sold-out-label="{{ bundle_sold_out_label | escape }}"
+                data-unavailable-label="{{ bundle_unavailable_variant_label | escape }}"
+              >
+                <option value="" disabled>{{ bundle_unavailable_variant_label | escape }}</option>
+                {% for bundle_option_variant in bundle_product.variants %}
+                  {% capture bundle_option_label %}
+                    {% for bundle_variant_option in bundle_option_variant.options_with_values %}{% unless forloop.first %} | {% endunless %}{% assign bundle_variant_option_value = bundle_variant_option.value.name | default: bundle_variant_option.value %}{{ bundle_variant_option.name | escape }}: {{ bundle_variant_option_value | escape }}{% endfor %}
+                  {% endcapture %}
+                  <option
+                    value="{{ bundle_option_variant.id }}"
+                    data-variant-available="{{ bundle_option_variant.available }}"
+                    {% if bundle_option_variant.id == bundle_current_variant.id %}selected{% endif %}
+                  >
+                    {{ bundle_option_label | strip }}{% unless bundle_option_variant.available %} — {{ bundle_sold_out_label | escape }}{% endunless %}
+                  </option>
+                {% endfor %}
+              </select>
+            </div>
+          {% endcapture %}
           {% capture bundle_product_middle %}
             <div class="bundle-product-item__variants">
               {% unless bundle_product.has_only_default_variant %}
                 {% if bundle_variant_picker_type == 'button' and bundle_variant_picker_type_mobile == 'dropdown' %}
                   {% liquid
                     assign bundle_variant_picker_desktop_id = bundle_variant_picker_id | append: '-desktop'
-                    assign bundle_variant_picker_mobile_id = bundle_variant_picker_id | append: '-mobile'
                   %}
                   <div class="bundle-product-item__variant-picker bundle-product-item__variant-picker--desktop">
                     {% render 'variant-picker',
@@ -131,16 +166,11 @@
                     %}
                   </div>
                   <div class="bundle-product-item__variant-picker bundle-product-item__variant-picker--mobile">
-                    {% render 'variant-picker',
-                      product: bundle_product,
-                      current_variant: bundle_current_variant,
-                      section_id: section.id,
-                      block_id: bundle_variant_picker_mobile_id,
-                      type_override: 'dropdown',
-                      sync_external_variants: true,
-                      update_url_on_change: false,
-                      ignore_url_variant: true
-                    %}
+                    {{ bundle_product_dropdown_picker }}
+                  </div>
+                {% elsif bundle_variant_picker_type == 'dropdown' %}
+                  <div class="bundle-product-item__variant-picker bundle-product-item__variant-picker--dropdown">
+                    {{ bundle_product_dropdown_picker }}
                   </div>
                 {% else %}
                   {% render 'variant-picker',
@@ -148,7 +178,7 @@
                     current_variant: bundle_current_variant,
                     section_id: section.id,
                     block_id: bundle_variant_picker_id,
-                    type_override: bundle_variant_picker_type,
+                    type_override: 'button',
                     sync_external_variants: false,
                     update_url_on_change: false,
                     ignore_url_variant: true
@@ -192,10 +222,17 @@
 {% endcapture %}
 {% assign bundle_grid_items = bundle_grid_items | strip %}
 
+{% capture bundle_source_product_ids -%}
+  {%- for selected_product in block.settings.products -%}
+    {{- selected_product.id -}}
+    {%- unless forloop.last -%},{%- endunless -%}
+  {%- endfor -%}
+{%- endcapture %}
+
 <div
   class="bundle-product-list"
   data-bundle-source-collection="{{ bundle_source_collection.id }}"
-  data-bundle-source-products="{% for selected_product in block.settings.products %}{{ selected_product.id }}{% unless forloop.last %},{% endunless %}{% endfor %}"
+  data-bundle-source-products="{{ bundle_source_product_ids }}"
   {{ block.shopify_attributes }}
 >
   {% if bundle_grid_items != blank %}
@@ -242,7 +279,7 @@
     grid-template-rows: auto minmax(0, 1fr) auto;
   }
 
-  .bundle-product-item .product-card__action {
+  .bundle-product-item .product-card__quick-add {
     display: none !important;
   }
 
@@ -262,6 +299,12 @@
 
   .bundle-product-item__variant-picker--mobile {
     display: none;
+  }
+
+  .bundle-product-item__variant-picker--dropdown,
+  .bundle-product-item__variant-picker--dropdown .form__control-wrap--select {
+    width: 100%;
+    min-width: 0;
   }
 
   .bundle-product-toggle {
