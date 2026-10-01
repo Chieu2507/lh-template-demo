@@ -279,14 +279,10 @@
     const transparentScheme = headerTop?.dataset.headerTransparentScheme;
     const appliedTransparentScheme = headerTop.dataset.appliedTransparentScheme;
 
-<<<<<<< HEAD
-    if (!headerTop || !transparentScheme) return;
     useBaseScheme ||= !header.classList.contains('header--overlay');
-=======
     if (appliedTransparentScheme && appliedTransparentScheme !== transparentScheme) {
       headerTop.classList.remove(appliedTransparentScheme);
     }
->>>>>>> theme-base/dev
 
     if (!transparentScheme) {
       headerTop.classList.remove('header-top--transparent-scheme');
@@ -349,19 +345,15 @@
     const scrollY = Math.max(window.scrollY, 0);
     const scrollDelta = scrollY - lastScrollY;
 
-<<<<<<< HEAD
     const firstSection = document.querySelector('#MainContent > .shopify-section');
     const collectionOverlay = Boolean(firstSection?.querySelector('[data-collection-transparent-header]'));
 
-    headerStates.forEach(({ header, stickyType }) => {
-      const overlayEnabled = collectionOverlay || Boolean(header.querySelector('[data-header-overlay]'));
-      header.classList.toggle('header--overlay', overlayEnabled);
-      header.classList.toggle('header--overlap-first-section', overlayEnabled);
-=======
     headerStates.forEach((headerState) => {
       const { header } = headerState;
       const stickyType = synchronizeStickyType(header, headerState);
->>>>>>> theme-base/dev
+      const overlayEnabled = collectionOverlay || Boolean(header.querySelector('[data-header-overlay]'));
+      header.classList.toggle('header--overlay', overlayEnabled);
+      header.classList.toggle('header--overlap-first-section', overlayEnabled);
       const isSticky = stickyType !== 'none';
       const isScrolled = isSticky && scrollY > 8;
       const isSubmenuOpen = hasOpenHeaderSubmenu(header);
