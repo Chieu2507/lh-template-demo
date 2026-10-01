@@ -657,6 +657,14 @@ product-sticky-layout.product-information__layout > .product-details {
     position: sticky;
     top: var(--product-sticky-top, calc(var(--header-height, 0px) + 16px));
     align-self: start;
+    --product-sticky-offset-duration: var(--motion-duration-standard);
+    --product-sticky-offset-easing: var(--motion-ease-standard);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  product-sticky-layout.product-information__layout {
+    --product-sticky-offset-duration: 0ms;
   }
 }
 
