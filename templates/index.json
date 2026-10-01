@@ -2485,7 +2485,7 @@
         "heading_size_mobile": "lg",
         "custom_heading_size_mobile": 24,
         "heading_tag": "h2",
-        "outline_text": false,
+        "outline_text": true,
         "text_opacity": 60,
         "background_media": "none",
         "color_scheme": "",
