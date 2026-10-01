@@ -135,7 +135,7 @@
     assign image_card_class = image_card_class | append: ' image-card--has-overlay'
   endif
   if block.settings.enable_sticky
-    assign image_card_class = image_card_class | append: ' image-card--sticky'
+    assign image_card_class = image_card_class | append: ' image-card--content-sticky'
   endif
   if image_card_width_desktop_mode == 'custom'
     assign image_card_class = image_card_class | append: ' image-card--width-desktop-custom'
@@ -169,12 +169,17 @@
 {% endcapture %}
 {% assign image_card_style = image_card_style | strip %}
 
+{% assign image_card_content_justify = 'var(--image-card-content-justify, flex-start)' %}
+{% if block.settings.enable_sticky %}
+  {% assign image_card_content_justify = 'flex-start' %}
+{% endif %}
+
 {% capture image_card_content_style %}
   {% render 'layout-flow-style',
     direction: 'column',
     wrap: 'nowrap',
     align_items: 'var(--flex-align, flex-start)',
-    justify_content: 'var(--image-card-content-justify, flex-start)',
+    justify_content: image_card_content_justify,
     align_items_mobile: 'var(--flex-align-mobile, var(--flex-align, flex-start))',
     gap: image_card_gap_desktop,
     gap_mobile: image_card_gap_mobile
@@ -218,7 +223,7 @@
     ></a>
   {% endif %}
 
-  <div class="image-card__content layout-flow layout-flow--responsive align-content" style="{{ image_card_content_style }}">
+  <div class="image-card__content layout-flow layout-flow--responsive align-content{% if block.settings.enable_sticky %} image-card__content--sticky{% endif %}" style="{{ image_card_content_style }}">
     {% content_for 'blocks' %}
   </div>
 </article>
@@ -240,6 +245,10 @@
 
   .image-card--width-desktop-custom {
     flex: 0 0 var(--image-card-width, 100%);
+  }
+
+  .image-card--content-sticky {
+    overflow: clip;
   }
 
   .image-card--height-desktop-ratio_4_5 {
@@ -369,10 +378,13 @@
     pointer-events: auto;
   }
 
-  .image-card--sticky {
+  .image-card__content--sticky {
     position: sticky;
-    top: var(--image-card-sticky-offset, 1rem);
-    align-self: start;
+    inset: auto;
+    top: calc(var(--header-height, 0px) + 2rem);
+    align-self: flex-start;
+    justify-content: flex-start;
+    overflow: visible;
   }
 
   @media (max-width: 767.98px) {
@@ -456,11 +468,6 @@
     .image-card--position-mobile-bottom_center .image-card__content,
     .image-card--position-mobile-bottom_right .image-card__content {
       --image-card-content-justify: flex-end;
-    }
-
-    .image-card--sticky {
-      position: relative;
-      top: auto;
     }
   }
 {% endstylesheet %}
