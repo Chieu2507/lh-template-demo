@@ -1,22 +1,25 @@
 # Shopify Theme Base
 
+Spinel preview trên branch `codex/spinel-chieutt-dev`: chạy
+`node scripts/preview-supervisor.cjs start` để giữ cổng 9292 và tự phục hồi.
+Xem [hướng dẫn supervisor](docs/preview-supervisor.md) để kiểm tra, đọc log và dừng.
+
 Base theme được khởi tạo bằng Shopify Skeleton Theme cho store `omnise-theme-base`.
 
 ## Store and branches
 
-- Store: [omnise-theme-base](https://admin.shopify.com/store/omnise-theme-base)
+- Store: [spinel-theme](https://admin.shopify.com/store/spinel-theme)
 - Production theme: Git branch `main`
-- Development theme: Git branch `dev`
+- Development theme: Git branch `codex/spinel-chieutt-dev`, unpublished theme `144448127024`
 - Shopify MCP và Shopify CLI đã được xác thực trong môi trường hiện tại.
 
 ## Development
 
-Chỉ làm việc trên `dev`:
+Chỉ làm việc trên `codex/spinel-chieutt-dev`:
 
 ```bash
-git switch dev
-git pull --ff-only origin dev
-shopify theme dev --store omnise-theme-base.myshopify.com
+git switch codex/spinel-chieutt-dev
+node scripts/preview-supervisor.cjs start
 ```
 
 ## Checks
@@ -33,4 +36,4 @@ Phase 2 global Theme Settings contract and acceptance criteria are documented in
 
 ## Promote
 
-Push `dev`, mở pull request `dev` → `main`, review rồi merge. Shopify Git connection sẽ đồng bộ branch `main` theo cấu hình production theme.
+Chỉ push `origin/codex/spinel-chieutt-dev` sau khi fetch và merge lịch sử remote mới nhất. Không triển khai lên `main` hoặc theme live `144223469616` trong workflow development.
