@@ -80,29 +80,6 @@
   endif
 %}
 {% style %}
-  {% if section.settings.custom_typography %}
-    {{ section.settings.heading_font | font_face: font_display: 'swap' }}
-    {{ section.settings.body_font | font_face: font_display: 'swap' }}
-    #shopify-section-{{ section.id }} .collection-banner {
-      --font-heading-family: {{ section.settings.heading_font.family }}, {{ section.settings.heading_font.fallback_families }};
-      --font-heading-style: {{ section.settings.heading_font.style }};
-      --font-heading-weight: {{ section.settings.heading_font.weight }};
-      --font-heading-xl: clamp(32px, calc(8px + 3.125vw), 48px);
-      --font-heading-xl-line-height: 1.2;
-      --font-heading-xl-letter-spacing: normal;
-      --font-body-family: {{ section.settings.body_font.family }}, {{ section.settings.body_font.fallback_families }};
-      --font-body-style: {{ section.settings.body_font.style }};
-      --font-body-weight: {{ section.settings.body_font.weight }};
-      --font-body-sm: 12px;
-      --font-body-md: 14px;
-      --font-body-line-height: 1.5;
-      --font-body-letter-spacing: normal;
-      font-family: var(--font-body-family);
-      font-style: var(--font-body-style);
-      font-weight: var(--font-body-weight);
-      line-height: var(--font-body-line-height);
-    }
-  {% endif %}
   #shopify-section-{{ section.id }} {
     background: {{ section.settings.background_color | default: effective_scheme.settings.background }};
   }
@@ -494,31 +471,6 @@
     },
     {
       "type": "header",
-      "content": "Typography"
-    },
-    {
-      "type": "checkbox",
-      "id": "custom_typography",
-      "label": "Use custom typography",
-      "info": "Applies only to this collection banner. The Extra large heading scales from 32px to 48px, Small text is 12px, and Medium text is 14px.",
-      "default": false
-    },
-    {
-      "type": "font_picker",
-      "id": "heading_font",
-      "label": "Heading font",
-      "default": "instrument_serif_n4",
-      "visible_if": "{{ section.settings.custom_typography }}"
-    },
-    {
-      "type": "font_picker",
-      "id": "body_font",
-      "label": "Body font",
-      "default": "instrument_sans_n4",
-      "visible_if": "{{ section.settings.custom_typography }}"
-    },
-    {
-      "type": "header",
       "content": "Appearance"
     },
     {
@@ -663,7 +615,6 @@
         }
       ],
       "settings": {
-        "custom_typography": true,
         "limit_description_width": true
       }
     }
