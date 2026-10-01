@@ -1677,25 +1677,34 @@ legend {
 }
 
 @media (min-width: 768px) and (hover: hover) and (pointer: fine) {
-  .product-card:hover .product-card__image > img,
-  .product-card:focus-within .product-card__image > img {
+  .product-card__media:is(:hover, :focus-within) .product-card__image > img {
     transform: scale(var(--product-card-image-zoom, var(--motion-image-zoom)));
   }
 
-  .product-card:hover .product-card__image-link--has-secondary .product-card__image,
-  .product-card:focus-within .product-card__image-link--has-secondary .product-card__image {
+  .product-card__media:is(:hover, :focus-within) .product-card__image-link--has-secondary .product-card__image {
     opacity: 0;
   }
 
-  .product-card:hover .product-card__secondary-image,
-  .product-card:focus-within .product-card__secondary-image {
+  .product-card__media:is(:hover, :focus-within) .product-card__secondary-image {
     opacity: var(--pcard-show-secondary-image);
   }
 
-  .product-card:hover .product-card__secondary-image > img,
-  .product-card:focus-within .product-card__secondary-image > img {
+  .product-card__media:is(:hover, :focus-within) .product-card__secondary-image > img {
     transform: scale(var(--product-card-image-zoom, var(--motion-image-zoom)));
   }
+}
+
+.product-card__image-link:focus-visible .product-card__image > img,
+.product-card__image-link:focus-visible .product-card__secondary-image > img {
+  transform: scale(var(--product-card-image-zoom, var(--motion-image-zoom)));
+}
+
+.product-card__image-link--has-secondary:focus-visible .product-card__image {
+  opacity: 0;
+}
+
+.product-card__image-link:focus-visible .product-card__secondary-image {
+  opacity: var(--pcard-show-secondary-image);
 }
 
 .product-card__quick-add {
@@ -2483,12 +2492,10 @@ legend {
   }
 
   .product-card--quick-add-mobile .product-card__quick-add .product-card__quick-add-button {
-    --button-border-width: 1px;
-    --button-border: var(--color-border);
-    --button-background: var(--color-background);
-    --button-foreground: var(--color-foreground);
     --button-radius: 0;
     --button-icon-size: 18px;
+    --button-foreground: #ffffff;
+    --button-hover-foreground: #ffffff;
     width: 36px;
     min-width: 36px;
     height: 36px;
