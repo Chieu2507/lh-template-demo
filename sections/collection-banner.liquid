@@ -57,7 +57,7 @@
   }
   {% if section.settings.transparent_header %}
     body:has(#MainContent > #shopify-section-{{ section.id }}:first-child .collection-banner--transparent-header) .section-header.header {
-      z-index: var(--z-drawer);
+      z-index: var(--z-drawer, 200);
       margin-block-end: calc(var(--header-layout-height, 0px) * -1);
       background-color: transparent;
     }

@@ -11,7 +11,7 @@
   --overlay-backdrop-duration: var(--overlay-motion-duration);
   --overlay-backdrop-ease: var(--overlay-motion-ease);
   position: fixed;
-  z-index: var(--z-modal);
+  z-index: var(--z-modal, 1000);
   inset: 0;
   width: 100%;
   max-width: none;
@@ -115,7 +115,7 @@
 }
 custom-cursor[data-component-overlay-cursor] {
   position: fixed;
-  z-index: calc(var(--z-modal) + 1);
+  z-index: calc(var(--z-modal, 1000) + 1);
   top: var(--cursor-y, -100px);
   left: var(--cursor-x, -100px);
   display: flex;

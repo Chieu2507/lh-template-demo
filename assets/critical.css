@@ -637,7 +637,7 @@ textarea:disabled {
 }
 
 dialog {
-  z-index: var(--z-modal);
+  z-index: var(--z-modal, 1000);
   border: 0;
   border-radius: var(--drawer-radius);
   background-color: var(--overlay-background-color);
@@ -1780,7 +1780,7 @@ legend {
   position: absolute;
   top: 0.75rem;
   left: 0.75rem;
-  z-index: var(--z-base);
+  z-index: var(--z-base, 10);
   display: flex;
   flex-wrap: wrap;
   max-width: calc(100% - 1.5rem);
@@ -1791,7 +1791,7 @@ legend {
   position: absolute;
   top: 0.75rem;
   left: 0.75rem;
-  z-index: var(--z-base);
+  z-index: var(--z-base, 10);
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -1907,7 +1907,7 @@ legend {
   right: 0.75rem;
   bottom: 0.75rem;
   left: 0.75rem;
-  z-index: var(--z-base);
+  z-index: var(--z-base, 10);
 }
 
 .product-card__quick-add form {
@@ -1933,7 +1933,7 @@ legend {
   position: absolute;
   top: 0.75rem;
   right: 0.75rem;
-  z-index: var(--z-base);
+  z-index: var(--z-base, 10);
   padding-inline: 0.75rem;
 }
 
@@ -2661,7 +2661,7 @@ legend {
 .theme-overlay {
   position: fixed;
   inset: 0;
-  z-index: var(--z-drawer);
+  z-index: var(--z-drawer, 200);
   background-color: var(--overlay-backdrop-color);
   -webkit-backdrop-filter: blur(var(--overlay-backdrop-blur));
   backdrop-filter: blur(var(--overlay-backdrop-blur));

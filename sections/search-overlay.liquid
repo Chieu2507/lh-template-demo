@@ -130,7 +130,7 @@
    * retain the normal modal stacking contract. */
   body:has(.search-overlay:is([data-state='opening'], [data-state='open'], [data-state='closing'])) .shopify-section.section-header,
   body:has(.search-overlay:is([data-state='opening'], [data-state='open'], [data-state='closing'])) .shopify-section.section-announcement-bar {
-    z-index: calc(var(--z-modal) + 1);
+    z-index: calc(var(--z-modal, 1000) + 1);
   }
 
   body:has(.search-overlay:is([data-state='opening'], [data-state='open'], [data-state='closing'])) .shopify-section.section-announcement-bar {

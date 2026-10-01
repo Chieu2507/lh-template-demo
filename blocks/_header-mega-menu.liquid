@@ -65,7 +65,7 @@
 
   .header-mega-menu {
     position: absolute;
-    z-index: var(--z-drawer);
+    z-index: var(--z-drawer, 200);
     inset-block-start: calc(100% + var(--header-submenu-offset, 0px));
     inset-inline-start: 0;
     width: min(42rem, calc(100vw - (var(--page-margin-current) * 2)));
