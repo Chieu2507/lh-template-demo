@@ -131,7 +131,6 @@
                 "right_padding": 50,
                 "button_style": "primary",
                 "mobile_layout": "sheet",
-                "button_style_mobile": "inherit",
                 "heading_size": "h5",
                 "collapse_icon": "plus",
                 "collapse_filters": false,
