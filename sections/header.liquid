@@ -9,7 +9,7 @@
     transition: background-color var(--motion-duration-standard) var(--motion-ease-standard);
   }
 
-  .header--overlay {
+  .header.header--overlay {
     background-color: transparent;
   }
 
@@ -26,6 +26,7 @@
   }
 
   .header--overlap-first-section {
+    z-index: var(--z-drawer);
     margin-block-end: calc(var(--header-layout-height, 0px) * -1);
   }
 
