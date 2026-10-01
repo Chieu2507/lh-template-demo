@@ -933,6 +933,10 @@ h6 {
   text-transform: var(--font-heading-custom-text-transform);
 }
 
+.drawer__title.heading-custom {
+  font-size: var(--overlay-title-size);
+}
+
 .body-text,
 .accent-text,
 .body-p3,

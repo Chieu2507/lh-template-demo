@@ -1068,8 +1068,11 @@ shadow, padding hoặc z-index rời rạc.
 - `overlay_color_scheme` resolve một scheme độc lập; panel dùng
   `--overlay-background-color`, `--overlay-text-color`,
   `--overlay-border-color` và `--overlay-shadow-color`.
-- `overlay_title_size` map về visual token `--font-heading-*` thông qua
-  `--overlay-title-size`; setting không thay đổi semantic HTML.
+- `overlay_title_size` dùng cùng visual scale với Heading block
+  (`display`, `xl`, `lg`, `md`, `sm`, `xs`, `custom`) và map về
+  `--overlay-title-size`; cỡ `custom` lấy từ `overlay_custom_title_size`.
+  Setting là nguồn size chung cho các title trong overlay và drawer, gồm cả
+  Cart drawer; setting không thay đổi semantic HTML.
 - `overlay_backdrop_blur` map về `--overlay-backdrop-blur`; `.theme-overlay` và
   `dialog::backdrop` dùng `backdrop-filter` với `background-color` dạng
   `rgba()` từ màu shadow của `overlay_color_scheme` và alpha của
@@ -1087,7 +1090,7 @@ shadow, padding hoặc z-index rời rạc.
 
 Desktop/tablet dùng padding desktop; dưới breakpoint `767.98px` dùng padding
 mobile. Giá trị blank hoặc scheme không hợp lệ fallback về scheme mặc định,
-Heading 4, blur 20px, border 0px, shadow Medium và padding mặc định.
+Heading `md`, cỡ custom 24px, blur 20px, border 0px, shadow Medium và padding mặc định.
 Opacity là 0–80%; overlay không chứa thông tin nên không cần accessible name.
 Dialog native vẫn cần focus management, `aria-modal`, tên accessible và
 keyboard Escape ở component implementation. Focus-visible không bị cắt bởi
@@ -1098,7 +1101,8 @@ radius; reduced-motion policy áp dụng cho animation mở/đóng ở phase Mot
 | ID | Type | Values | Default | Mapping / constraint |
 | --- | --- | --- | --- | --- |
 | overlay_color_scheme | color_scheme | Scheme được định nghĩa trong Color schemes | scheme-1 | Chọn scheme cho panel/backdrop; invalid -> default scheme |
-| overlay_title_size | select | heading_1…heading_6 | heading_4 | `--overlay-title-size`; chỉ đổi visual scale, không đổi semantic HTML |
+| overlay_title_size | select | display, xl, lg, md, sm, xs, custom | md | Cùng visual scale với Heading block; `--overlay-title-size`; không đổi semantic HTML |
+| overlay_custom_title_size | range | 10–100, step 1px | 24 | Dùng khi `overlay_title_size=custom` |
 | overlay_backdrop_blur | range | 0–40, step 1px | 20 | `--overlay-backdrop-blur`; chỉ dùng cho backdrop |
 | overlay_popover_border_width | range | 0–3, step 1px | 0 | `--overlay-popover-border-width`; chỉ áp dụng cho popover |
 | overlay_popover_shadow | select | none, small, medium, large | medium | `--overlay-popover-shadow`; màu lấy từ scheme shadow |

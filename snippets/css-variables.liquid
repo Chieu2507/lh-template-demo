@@ -769,16 +769,20 @@
 
   assign overlay_title_size = 'var(--font-heading-md)'
   case settings.overlay_title_size
-    when 'heading_1'
+    when 'display', 'heading_1'
       assign overlay_title_size = 'var(--font-heading-display)'
-    when 'heading_2'
+    when 'xl', 'heading_2'
       assign overlay_title_size = 'var(--font-heading-xl)'
-    when 'heading_3'
+    when 'lg', 'heading_3'
       assign overlay_title_size = 'var(--font-heading-lg)'
-    when 'heading_5'
+    when 'md', 'heading_4'
+      assign overlay_title_size = 'var(--font-heading-md)'
+    when 'sm', 'heading_5'
       assign overlay_title_size = 'var(--font-heading-sm)'
-    when 'heading_6'
+    when 'xs', 'heading_6'
       assign overlay_title_size = 'var(--font-heading-xs)'
+    when 'custom'
+      assign overlay_title_size = settings.overlay_custom_title_size | default: 24 | append: 'px'
   endcase
 
   assign overlay_backdrop_blur = settings.overlay_backdrop_blur
