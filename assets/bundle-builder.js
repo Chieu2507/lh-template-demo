@@ -21,6 +21,51 @@ function getVariant(card, variantId) {
   return getVariantData(card).find((variant) => String(variant.id) === String(variantId)) || null;
 }
 
+function getSizedImageUrl(source, width) {
+  if (!source) return '';
+
+  try {
+    const url = new URL(source, window.location.origin);
+    url.searchParams.set('width', String(width));
+    return url.toString();
+  } catch (error) {
+    return source;
+  }
+}
+
+function updateProductImage(card, variant) {
+  const variantImage = variant?.featured_image || variant?.image || null;
+  const variantImageUrl = variantImage?.src || '';
+  const imageUrl = variantImageUrl
+    ? getSizedImageUrl(variantImageUrl, 800)
+    : card.dataset.productImageDefaultLarge;
+  const image = card.querySelector('.product-card__image img');
+
+  if (image && imageUrl) {
+    image.src = imageUrl;
+    image.removeAttribute('srcset');
+    image.alt = variantImage?.alt || card.dataset.productTitle || '';
+
+    const imageWidth = Number(variantImage?.width || card.dataset.productImageDefaultWidth);
+    const imageHeight = Number(variantImage?.height || card.dataset.productImageDefaultHeight);
+    if (Number.isFinite(imageWidth) && imageWidth > 0) image.width = imageWidth;
+    if (Number.isFinite(imageHeight) && imageHeight > 0) image.height = imageHeight;
+  }
+
+  card.dataset.productImage = variantImageUrl
+    ? getSizedImageUrl(variantImageUrl, 160)
+    : card.dataset.productImageDefault || '';
+
+  const imageWidth = Number(variantImage?.width || card.dataset.productImageDefaultWidth);
+  const imageHeight = Number(variantImage?.height || card.dataset.productImageDefaultHeight);
+  const imageRatio = Number(variantImage?.aspect_ratio)
+    || (imageWidth > 0 && imageHeight > 0 ? imageWidth / imageHeight : 0)
+    || Number(card.dataset.productImageDefaultRatio);
+  if (Number.isFinite(imageRatio) && imageRatio > 0) {
+    card.dataset.productImageRatio = String(imageRatio);
+  }
+}
+
 function getVariantOptionValue(option) {
   if (option == null) return '';
   if (typeof option !== 'object') return String(option);
@@ -592,6 +637,7 @@ function initialize(root) {
     const variant = event.detail?.variant;
     card.dataset.currentVariantId = variant?.id ? String(variant.id) : '';
     card.dataset.currentVariantAvailable = String(Boolean(variant?.available));
+    updateProductImage(card, variant);
     const variantSelect = card.querySelector('[data-bundle-variant-select]');
     if (variantSelect) variantSelect.value = variant?.id ? String(variant.id) : '';
 
@@ -731,6 +777,10 @@ function initialize(root) {
   root.addEventListener('change', handleChange, { signal });
   root.addEventListener('variant:change', handleVariantChange, { signal });
   populateBundleVariantSelects(root);
+  root.querySelectorAll('[data-bundle-product]').forEach((card) => {
+    const variant = getVariant(card, card.dataset.currentVariantId);
+    if (variant) updateProductImage(card, variant);
+  });
   render();
 }
 

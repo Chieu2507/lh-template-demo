@@ -85,9 +85,11 @@
           assign bundle_current_variant = bundle_product.selected_or_first_available_variant
           assign bundle_variant_picker_id = block.id | append: '-' | append: bundle_product.id
           assign bundle_product_image = blank
+          assign bundle_product_image_large = blank
           assign bundle_product_image_ratio = 1
           if bundle_product.featured_image != blank
             assign bundle_product_image = bundle_product.featured_image | image_url: width: 160
+            assign bundle_product_image_large = bundle_product.featured_image | image_url: width: 800
             assign bundle_product_image_ratio = bundle_product.featured_image.aspect_ratio | default: 1
           endif
           assign bundle_product_available = false
@@ -108,8 +110,13 @@
           data-bundle-product
           data-product-id="{{ bundle_product.id }}"
           data-product-title="{{ bundle_product.title | escape }}"
-          data-product-image="{{ bundle_product_image }}"
+          data-product-image="{{ bundle_product_image | escape }}"
           data-product-image-ratio="{{ bundle_product_image_ratio }}"
+          data-product-image-default="{{ bundle_product_image | escape }}"
+          data-product-image-default-large="{{ bundle_product_image_large | escape }}"
+          data-product-image-default-ratio="{{ bundle_product_image_ratio }}"
+          data-product-image-default-width="{{ bundle_product.featured_image.width }}"
+          data-product-image-default-height="{{ bundle_product.featured_image.height }}"
           data-current-variant-id="{{ bundle_current_variant.id }}"
           data-current-variant-available="{{ bundle_product_available }}"
         >
