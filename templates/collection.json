@@ -130,7 +130,7 @@
                 "mobile_layout": "sheet",
                 "button_style": "primary",
                 "right_padding": 50,
-                "heading_size": "h5",
+                "heading_size": "sm",
                 "items_limit": "5",
                 "filter_icon": "sliders",
                 "button_style_mobile": "inherit",
