@@ -11,7 +11,6 @@
     --h5-size-md: var(--font-heading-sm);
     --heading-line-height: var(--font-heading-xl-line-height);
     --label-size: var(--font-body-sm);
-    --p2-size-sm: var(--font-body-sm);
     --motion-duration: 200ms;
     --style-border-radius-inputs: 0;
     --page-margin: var(--page-margin-desktop);
@@ -71,7 +70,7 @@
     background: transparent;
     color: var(--color-text);
     cursor: pointer;
-    font-size: var(--p2-size-sm);
+    font-size: var(--font-body-sm);
     line-height: 1.3;
   }
 
@@ -127,7 +126,7 @@
 
   .main-collection__product-count,
   .main-collection__sort-form {
-    font-size: var(--p2-size-sm);
+    font-size: var(--font-body-sm);
   }
 
   .main-collection__sort-form {
@@ -712,7 +711,7 @@
     padding: 6px 8px;
     border: 1px solid var(--color-variant-border);
     color: var(--color-text);
-    font-size: var(--p2-size-sm);
+    font-size: var(--font-body-sm);
     line-height: 1;
     text-decoration: none;
   }
@@ -744,7 +743,7 @@
     align-items: center;
     gap: 8px;
     cursor: pointer;
-    font-size: var(--p2-size-sm);
+    font-size: var(--font-body-sm);
     line-height: 1.4;
   }
 
@@ -854,7 +853,7 @@
     align-items: center;
     gap: 8px;
     cursor: pointer;
-    font-size: var(--p2-size-sm);
+    font-size: var(--font-body-sm);
   }
 
   .main-collection__filter-value > span:last-child {
@@ -948,13 +947,11 @@
   }
 
   .main-collection__filter-value input:checked + .main-collection__swatch {
-    outline: 1px solid var(--color-heading);
-    outline-offset: 2px;
+    box-shadow: inset 0 0 0 1px var(--color-background), inset 0 0 0 2px var(--color-heading);
   }
 
   .main-collection__filter-value input:focus-visible + .main-collection__swatch {
-    outline: 2px solid var(--color-heading);
-    outline-offset: 3px;
+    box-shadow: inset 0 0 0 2px var(--color-background), inset 0 0 0 4px var(--color-heading);
   }
 
   .main-collection__price-filter {
@@ -1083,21 +1080,13 @@
     top: 50%;
     left: 14px;
     color: color-mix(in srgb, var(--color-text) 58%, transparent);
-    font-size: var(--p2-size-sm);
+    font-size: var(--font-body-sm);
     transform: translateY(-50%);
     pointer-events: none;
   }
 
   .main-collection__price-input input {
-    width: 100%;
-    min-height: 58px;
-    padding: 0 14px 0 32px;
-    border: 1px solid var(--color-variant-border);
-    background: transparent;
-    color: currentcolor;
-    font-size: var(--p2-size-sm);
     text-align: right;
-    appearance: textfield;
   }
 
   .main-collection__price-input input::-webkit-inner-spin-button,
@@ -1119,7 +1108,7 @@
 
   .main-collection__price-separator {
     color: color-mix(in srgb, var(--color-text) 72%, transparent);
-    font-size: var(--p2-size-sm);
+    font-size: var(--font-body-sm);
   }
 
   .main-collection__filter-footer {
@@ -1690,7 +1679,7 @@
 
 /* Keep the panel in the collection grid; modal dialogs still use the top layer. */
 .main-collection--blocks .main-collection__filter-panel-positioner:has(dialog[open]:not(.is-sidebar)) { display: contents; }
-.main-collection__sort-option-button { min-height: 42px; padding: 10px 18px; font-size: var(--p1-size-sm, 16px); }
+.main-collection__sort-option-button { min-height: 42px; padding: 10px 18px; font-size: var(--font-body-md); }
 .main-collection__sort-option-button[aria-selected='true'] { background: color-mix(in srgb, var(--color-text) 6%, var(--color-background)); font-weight: inherit; }
 .main-collection__sort-option-button svg { display: none; }
 .collection-columns__option > .collection-columns__option-input:active + .collection-columns__option-content { transform: scale(.96); }

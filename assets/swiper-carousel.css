@@ -89,9 +89,12 @@
   .swiper-pagination.swiper-pagination-bullets
 ) {
   display: flex;
+  flex-wrap: wrap;
+  max-width: 100%;
+  box-sizing: border-box;
   align-items: center;
   justify-content: center;
-  gap: var(--swiper-pagination-bullet-gap, 0.5rem);
+  gap: var(--swiper-pagination-bullet-gap, 8px);
 }
 
 .swiper > :is(
@@ -101,8 +104,8 @@
   position: relative;
   flex: 0 0 auto;
   /* Keep the visual bullet small while giving the button a usable touch area. */
-  width: var(--swiper-pagination-bullet-hit-size, 48px);
-  min-width: var(--swiper-pagination-bullet-hit-size, 48px);
+  width: var(--swiper-pagination-bullet-hit-width, 24px);
+  min-width: var(--swiper-pagination-bullet-hit-width, 24px);
   height: var(--swiper-pagination-bullet-hit-size, 48px);
   min-height: var(--swiper-pagination-bullet-hit-size, 48px);
   margin: 0;
@@ -169,6 +172,8 @@
   .swiper-pagination.swiper-pagination-bullets
 ) .swiper-pagination-bullet-active {
   opacity: var(--swiper-pagination-bullet-opacity, 1);
+  width: var(--swiper-pagination-bullet-active-hit-width, 48px);
+  min-width: var(--swiper-pagination-bullet-active-hit-width, 48px);
 }
 
 .swiper > :is(
