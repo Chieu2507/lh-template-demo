@@ -172,7 +172,7 @@
   .slideshow .slideshow__swiper.swiper-rtl > .slideshow__pagination[data-pagination-type='bullets'] .swiper-pagination-bullet::after {
     background-position: right center;
   }
-  .slideshow[data-autoplay='true'] .slideshow .slideshow__swiper.swiper-rtl > .slideshow__pagination[data-pagination-type='bullets'] .swiper-pagination-bullet-active::after {
+  .slideshow[data-autoplay='true'] .slideshow__swiper.swiper-rtl > .slideshow__pagination[data-pagination-type='bullets'] .swiper-pagination-bullet-active::after {
     clip-path: inset(0 0 0 calc((1 - clamp(0, var(--slideshow-autoplay-progress, 1), 1)) * 100%) round var(--swiper-pagination-bullet-border-radius, 1000px));
   }
   .slideshow .slideshow__swiper > .slideshow__pagination[data-pagination-type='bullets'] .swiper-pagination-bullet:focus-visible {
