@@ -27,15 +27,15 @@
 
   assign header_top_class = 'header-top'
   assign header_transparent_scheme = section.settings.transparent_color_scheme | default: settings.overlay_color_scheme | default: section.settings.color_scheme | default: 'scheme-1'
-    if section.settings.transparent_color_scheme.id != blank
-      assign header_transparent_scheme = section.settings.transparent_color_scheme.id
-    elsif settings.overlay_color_scheme.id != blank
-      assign header_transparent_scheme = settings.overlay_color_scheme.id
-    endif
-    assign header_transparent_scheme = header_transparent_scheme | default: 'scheme-1' | handleize
-    if header_overlay_enabled
-      assign header_top_class = header_top_class | append: ' header-top--transparent-scheme section-color-scope ' | append: header_transparent_scheme
-    endif
+  if section.settings.transparent_color_scheme.id != blank
+    assign header_transparent_scheme = section.settings.transparent_color_scheme.id
+  elsif settings.overlay_color_scheme.id != blank
+    assign header_transparent_scheme = settings.overlay_color_scheme.id
+  endif
+  assign header_transparent_scheme = header_transparent_scheme | default: 'scheme-1' | handleize
+  if header_overlay_enabled
+    assign header_top_class = header_top_class | append: ' header-top--transparent-scheme section-color-scope ' | append: header_transparent_scheme
+  endif
 
   assign header_top_separator = block.settings.bottom_separator | default: 'none'
   unless header_top_separator == 'none' or header_top_separator == 'line' or header_top_separator == 'shadow'
