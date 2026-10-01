@@ -1,6 +1,6 @@
 /*
  * Load below-the-fold Theme Block modules when their script marker approaches
- * the viewport. Module imports are cached by the browser, so repeated markers
+ * the viewport. Imports are cached by the browser; repeated markers
  * for the same carousel runtime resolve to one module evaluation.
  */
 (() => {
@@ -11,6 +11,8 @@
   const selector = 'script[data-theme-module]';
   const modules = new Map();
   const observedTargets = new WeakSet();
+  const scheduledTargets = new WeakMap();
+  const markerInitializations = new WeakMap();
   const pendingSelections = new WeakMap();
   const replayedSelections = new WeakSet();
   let latestSelection = null;
@@ -34,16 +36,6 @@
     else delete script.dataset.themeModuleError;
   };
 
-  const markMatching = (src, state, error) => {
-    document.querySelectorAll(selector).forEach((script) => {
-      try {
-        if (moduleURL(script) === src) setState(script, state, error);
-      } catch {
-        // Invalid markers are reported when their own load is requested.
-      }
-    });
-  };
-
   const reportError = (src, error) => {
     console.error('[Theme modules] Failed to load', src, error);
     document.dispatchEvent(new CustomEvent('theme:module:error', { detail: { url: src, error } }));
@@ -62,39 +54,52 @@
 
     const existing = modules.get(src);
     if (existing) {
-      setState(script, existing.state);
-      return initializeMarker(script, existing.promise);
+      return initializeMarker(script, existing.promise, src);
     }
 
     const record = { state: 'loading', promise: null };
     // Store before importing so intersection, mutation and editor callbacks
     // share one attempt. A failed attempt may be retried by a later render.
     modules.set(src, record);
-    markMatching(src, 'loading');
     record.promise = import(src).then((module) => {
       record.state = 'loaded';
-      markMatching(src, 'loaded');
       return module;
     }, (error) => {
       modules.delete(src);
-      markMatching(src, 'error', error);
       reportError(src, error);
+      throw error;
     });
-    return initializeMarker(script, record.promise);
+    return initializeMarker(script, record.promise, src);
   };
 
   // Module evaluation happens once; inserted storefront/editor markup still
   // needs initialization after that evaluation, even when the import is cached.
-  const initializeMarker = (script, promise) => promise.then((module) => {
-    if (!script.isConnected || !module?.initializeThemeModule) return;
+  const initializeMarker = (script, promise, src) => {
     const root = script.closest('.shopify-section') || script.parentElement;
-    try {
-      module.initializeThemeModule(root);
-    } catch (error) {
+    const existing = markerInitializations.get(script);
+    if (existing?.src === src && existing.root === root) return existing.promise;
+    setState(script, 'loading');
+    const attempt = { src, root, promise: null };
+    markerInitializations.set(script, attempt);
+    const isCurrent = () => script.isConnected && markerInitializations.get(script) === attempt;
+    attempt.promise = promise.then(async (module) => {
+      if (!isCurrent()) return;
+      try {
+        await module?.initializeThemeModule?.(root);
+        if (isCurrent()) setState(script, 'loaded');
+      } catch (error) {
+        if (!isCurrent()) return;
+        markerInitializations.delete(script);
+        setState(script, 'error', error);
+        reportError(src, error);
+      }
+    }, (error) => {
+      if (!isCurrent()) return;
+      markerInitializations.delete(script);
       setState(script, 'error', error);
-      reportError(script.dataset.themeModule, error);
-    }
-  });
+    });
+    return attempt.promise;
+  };
 
   const markersWithin = (root) => {
     const scripts = Array.from(root.querySelectorAll?.(selector) || []);
@@ -104,16 +109,26 @@
 
   const loadTarget = (target) => {
     if (!observedTargets.has(target)) return;
+    observer?.unobserve(target);
+    cancelSchedule(target);
     observedTargets.delete(target);
     if (!target.isConnected) return;
     markersWithin(target).forEach(load);
   };
 
+  const cancelSchedule = (target) => {
+    const cancel = scheduledTargets.get(target);
+    cancel?.();
+    scheduledTargets.delete(target);
+  };
+
   const schedule = (target) => {
     if (typeof window.requestIdleCallback === 'function') {
-      window.requestIdleCallback(() => loadTarget(target), { timeout: 2000 });
+      const id = window.requestIdleCallback(() => loadTarget(target), { timeout: 2000 });
+      scheduledTargets.set(target, () => window.cancelIdleCallback?.(id));
     } else {
-      window.setTimeout(() => loadTarget(target), 1000);
+      const id = window.setTimeout(() => loadTarget(target), 1000);
+      scheduledTargets.set(target, () => window.clearTimeout(id));
     }
   };
 
@@ -164,10 +179,16 @@
   const scan = (root = document) => markersWithin(root).forEach(observe);
 
   const unobserve = (root) => {
+    markersWithin(root).forEach((script) => {
+      markerInitializations.delete(script);
+      delete script.dataset.themeModuleState;
+      delete script.dataset.themeModuleError;
+    });
     // The observation target may be above the marker's immediate parent.
     [root, ...Array.from(root.querySelectorAll?.('*') || [])].forEach((target) => {
       if (observedTargets.has(target)) {
         observer?.unobserve(target);
+        cancelSchedule(target);
         observedTargets.delete(target);
       }
     });
@@ -202,7 +223,8 @@
     const scripts = markersWithin(target);
     const needsSelection = event.type === 'shopify:block:select' && !replayedSelections.has(event) && scripts.some((script) => {
       try {
-        return modules.get(moduleURL(script))?.state !== 'loaded';
+        moduleURL(script);
+        return script.dataset.themeModuleState !== 'loaded';
       } catch {
         return false;
       }
