@@ -238,7 +238,7 @@
 
   .header-localization__panel {
     position: absolute;
-    z-index: var(--z-drawer);
+    z-index: var(--z-drawer, 200);
     inset-block-start: calc(100% + var(--header-submenu-offset, var(--header-top-padding-bottom, 24px)));
     inset-inline-start: 0;
     min-width: 250px;

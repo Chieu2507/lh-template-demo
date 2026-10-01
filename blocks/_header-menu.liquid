@@ -145,8 +145,13 @@
     {% endif %}
   </nav>
 
+<<<<<<< HEAD
   <aside class="component-overlay {{ mobile_drawer_scheme }} {{ mobile_drawer_class }} {{ menu_typography_class }}" id="HeaderMobileDrawer-{{ section.id }}" aria-label="{{ 'accessibility.menu' | t }}" aria-labelledby="HeaderMobileDrawerHeading-{{ section.id }}" aria-hidden="true" aria-modal="true" role="dialog" data-component-overlay data-drawer-side="left" data-desktop-layout="drawer" data-mobile-layout="drawer" data-state="closed" scroll-lock hidden data-header-mobile-drawer>
     <button class="component-overlay__backdrop header__mobile-drawer-backdrop" type="button" tabindex="-1" aria-label="Close menu" data-component-overlay-backdrop data-header-menu-backdrop></button>
+=======
+  <aside class="component-overlay section-color-scope {{ mobile_drawer_class }} {{ menu_typography_class }}" id="HeaderMobileDrawer-{{ section.id }}" aria-label="{{ 'accessibility.menu' | t }}" aria-labelledby="HeaderMobileDrawerHeading-{{ section.id }}" aria-hidden="true" aria-modal="true" role="dialog" data-component-overlay data-drawer-side="left" data-desktop-layout="drawer" data-mobile-layout="drawer" data-state="closed" scroll-lock hidden data-header-mobile-drawer{% if menu_style != blank %} style="{{ menu_style | strip }}"{% endif %}>
+    <button class="component-overlay__backdrop backdrop-blur header__mobile-drawer-backdrop" type="button" tabindex="-1" aria-label="Close menu" data-component-overlay-backdrop data-header-menu-backdrop></button>
+>>>>>>> theme-base/dev
     <div class="component-overlay__panel header__mobile-drawer-surface">
       <header class="component-overlay__header header__mobile-drawer-header">
         <span class="header__mobile-drawer-title heading-text heading-sm" id="HeaderMobileDrawerHeading-{{ section.id }}">{{ shop.name | escape }}</span>
@@ -367,7 +372,7 @@
 
   .header-menu__submenu {
     position: absolute;
-    z-index: var(--z-drawer);
+    z-index: var(--z-drawer, 200);
     inset-block-start: calc(100% + var(--header-submenu-offset, 0px));
     inset-inline-start: 0;
     display: flex;
@@ -429,7 +434,7 @@
 
   .header-mega-menu {
     position: absolute;
-    z-index: var(--z-drawer);
+    z-index: var(--z-drawer, 200);
     inset-block-start: calc(100% + var(--header-submenu-offset, 0px));
     inset-inline-start: calc(var(--header-mega-inline-offset, 0px) * -1);
     width: 100vw;
@@ -637,7 +642,7 @@
   @media (min-width: 992px) {
     .header-menu__backdrop {
       position: absolute;
-      z-index: calc(var(--z-drawer) - 1);
+      z-index: calc(var(--z-drawer, 200) - 1);
       inset-block-start: 100%;
       inset-inline-start: 50%;
       display: block;
@@ -651,8 +656,6 @@
       visibility: hidden;
       pointer-events: none;
       transform: translateX(-50%);
-      -webkit-backdrop-filter: blur(0);
-      backdrop-filter: blur(0);
       transition:
         background-color var(--motion-duration-slow) var(--motion-ease-standard),
         opacity var(--motion-duration-slow) var(--motion-ease-standard),
@@ -692,7 +695,7 @@
 
     .header__mobile-drawer {
       position: fixed;
-      z-index: var(--z-modal);
+      z-index: var(--z-modal, 1000);
       inset: 0;
       display: block;
       visibility: hidden;

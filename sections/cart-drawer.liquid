@@ -5,7 +5,25 @@
   endif
   assign cart_drawer_scheme = cart_drawer_scheme | default: 'scheme-1' | handleize
   assign cart_drawer_title = section.settings.title | default: 'Cart'
-  assign cart_drawer_title_size = section.settings.title_size | default: 'md'
+  assign cart_drawer_title_size = settings.overlay_title_size | default: 'md'
+  assign cart_drawer_custom_title_size = settings.overlay_custom_title_size | default: 24
+  assign cart_drawer_title_size_class = 'heading-md'
+  case cart_drawer_title_size
+    when 'display', 'heading_1'
+      assign cart_drawer_title_size_class = 'heading-display'
+    when 'xl', 'heading_2'
+      assign cart_drawer_title_size_class = 'heading-xl'
+    when 'lg', 'heading_3'
+      assign cart_drawer_title_size_class = 'heading-lg'
+    when 'md', 'heading_4'
+      assign cart_drawer_title_size_class = 'heading-md'
+    when 'sm', 'heading_5'
+      assign cart_drawer_title_size_class = 'heading-sm'
+    when 'xs', 'heading_6'
+      assign cart_drawer_title_size_class = 'heading-xs'
+    when 'custom'
+      assign cart_drawer_title_size_class = 'heading-custom'
+  endcase
   assign cart_drawer_title_limit = section.settings.title_line_limit | default: 'none'
   assign cart_drawer_show_count = section.settings.show_cart_count
   assign cart_drawer_share_label = 'cart_drawer.share_cart' | t
@@ -120,7 +138,7 @@
   hidden
   data-cart-drawer
   data-section-id="{{ section.id }}"
-  style="--component-overlay-width: {{ section.settings.desktop_width | default: 550 }}px; --cart-drawer-padding-desktop: {{ cart_drawer_padding_desktop }}; --cart-drawer-padding-mobile: {{ cart_drawer_padding_mobile }}; --cart-drawer-inset-desktop: {{ cart_drawer_inset_desktop }}; --cart-drawer-shipping-progress-color: {{ section.settings.progress_bar_color | default: 'var(--sale-price-color)' }}; --cart-drawer-shipping-success-color: {{ section.settings.free_shipping_success_color | default: '#5d874f' }}; --cart-drawer-custom-font-size: {{ section.settings.custom_title_size | default: 24 }}px;"
+  style="--component-overlay-width: {{ section.settings.desktop_width | default: 550 }}px; --cart-drawer-padding-desktop: {{ cart_drawer_padding_desktop }}; --cart-drawer-padding-mobile: {{ cart_drawer_padding_mobile }}; --cart-drawer-inset-desktop: {{ cart_drawer_inset_desktop }}; --cart-drawer-shipping-progress-color: {{ section.settings.progress_bar_color | default: 'var(--sale-price-color)' }}; --cart-drawer-shipping-success-color: {{ section.settings.free_shipping_success_color | default: '#5d874f' }};"
   data-cart-add-url="{{ routes.cart_add_url }}"
   data-cart-change-url="{{ routes.cart_change_url }}"
   data-cart-update-url="{{ routes.cart_update_url }}"
@@ -161,12 +179,12 @@
   data-discount-icon="{{ cart_drawer_discount_icon_data }}"
   data-recommendation-icon="{{ cart_drawer_recommendation_icon_data }}"
 >
-  <button class="component-overlay__backdrop cart-drawer__backdrop" type="button" tabindex="-1" aria-label="{{ 'cart.close' | t | escape }}" data-component-overlay-backdrop></button>
+  <button class="component-overlay__backdrop backdrop-blur cart-drawer__backdrop" type="button" tabindex="-1" aria-label="{{ 'cart.close' | t | escape }}" data-component-overlay-backdrop></button>
 
   <aside class="component-overlay__panel cart-drawer__panel drawer" data-drawer>
     <div class="cart-drawer__inner">
       <header class="component-overlay__header cart-drawer__header">
-        <h2 class="drawer__title cart-drawer__title heading-text heading-{{ cart_drawer_title_size }}" id="CartDrawerHeading" data-cart-drawer-title data-title-limit="{{ cart_drawer_title_limit }}">
+        <h2 class="drawer__title {{ cart_drawer_title_size_class }}" id="CartDrawerHeading" data-cart-drawer-title data-title-limit="{{ cart_drawer_title_limit }}"{% if cart_drawer_title_size == 'custom' %} style="--overlay-title-size: {{ cart_drawer_custom_title_size }}px"{% endif %}>
           {{ cart_drawer_title | escape }}{% if cart_drawer_show_count %} <span class="cart-drawer__item-count body-text body-xs" data-cart-drawer-item-count aria-label="{{ cart.item_count }}">({{ cart.item_count }})</span>{% endif %}
         </h2>
         <div class="cart-drawer__header-actions">
@@ -367,7 +385,7 @@
 {% stylesheet %}
   .cart-drawer {
     position: fixed;
-    z-index: var(--z-modal);
+    z-index: var(--z-modal, 1000);
     inset: 0;
     visibility: hidden;
     background: transparent;
@@ -439,8 +457,7 @@
     border-bottom: 1px solid var(--border-color);
   }
 
-  .cart-drawer__header .drawer__title,
-  .cart-drawer__header .cart-drawer__title {
+  .cart-drawer__header .drawer__title {
     margin: 0;
     color: var(--heading-color);
   }
@@ -846,19 +863,18 @@
     padding: 0 var(--cart-drawer-padding);
   }
 
-  .cart-drawer__header .cart-drawer__title {
+  .cart-drawer__header .drawer__title {
     max-width: 100%;
     margin: 0;
     color: var(--heading-color);
   }
 
-  .cart-drawer__title.heading-custom { font-size: var(--cart-drawer-custom-font-size, var(--font-heading-md)); }
-  .cart-drawer__title[data-title-limit='one'],
-  .cart-drawer__title[data-title-limit='two'],
-  .cart-drawer__title[data-title-limit='three'] { display: -webkit-box; overflow: hidden; -webkit-box-orient: vertical; }
-  .cart-drawer__title[data-title-limit='one'] { -webkit-line-clamp: 1; }
-  .cart-drawer__title[data-title-limit='two'] { -webkit-line-clamp: 2; }
-  .cart-drawer__title[data-title-limit='three'] { -webkit-line-clamp: 3; }
+  .drawer__title[data-title-limit='one'],
+  .drawer__title[data-title-limit='two'],
+  .drawer__title[data-title-limit='three'] { display: -webkit-box; overflow: hidden; -webkit-box-orient: vertical; }
+  .drawer__title[data-title-limit='one'] { -webkit-line-clamp: 1; }
+  .drawer__title[data-title-limit='two'] { -webkit-line-clamp: 2; }
+  .drawer__title[data-title-limit='three'] { -webkit-line-clamp: 3; }
 
   .cart-drawer__header-actions {
     display: flex;
@@ -1342,32 +1358,6 @@
       "id": "title",
       "label": "Title",
       "default": "Cart"
-    },
-    {
-      "type": "select",
-      "id": "title_size",
-      "label": "t:labels.heading_size",
-      "options": [
-        { "value": "display", "label": "t:options.heading_size.display" },
-        { "value": "xl", "label": "t:options.heading_size.xl" },
-        { "value": "lg", "label": "t:options.heading_size.lg" },
-        { "value": "md", "label": "t:options.heading_size.md" },
-        { "value": "sm", "label": "t:options.heading_size.sm" },
-        { "value": "xs", "label": "t:options.heading_size.xs" },
-        { "value": "custom", "label": "t:options.heading_size.custom" }
-      ],
-      "default": "md"
-    },
-    {
-      "type": "range",
-      "id": "custom_title_size",
-      "label": "Custom title size",
-      "min": 10,
-      "max": 64,
-      "step": 1,
-      "unit": "px",
-      "default": 24,
-      "visible_if": "{{ section.settings.title_size == 'custom' }}"
     },
     {
       "type": "checkbox",

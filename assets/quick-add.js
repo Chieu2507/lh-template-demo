@@ -172,16 +172,22 @@ class QuickAddController {
 
     const wrapper = trigger.closest?.('[data-product-card-quick-add-overlay-wrapper]');
     const dots = trigger.querySelector('[data-loading-dots]');
+    const isSwatchMoreButton = trigger.matches?.('[data-product-card-swatch-more]') ?? false;
     if (isLoading) {
       if (this.loadingTrigger && this.loadingTrigger !== trigger) this.setTriggerLoading(this.loadingTrigger, false);
       this.loadingTrigger = trigger;
       trigger.dataset.quickAddLoading = 'true';
       trigger.setAttribute('aria-busy', 'true');
-      this.triggerDisabledState = trigger.getAttribute('aria-disabled');
-      trigger.setAttribute('aria-disabled', 'true');
+      if (!isSwatchMoreButton) {
+        this.triggerDisabledState = trigger.getAttribute('aria-disabled');
+        trigger.setAttribute('aria-disabled', 'true');
+      }
+      if (isSwatchMoreButton) trigger.classList.add('btn--loading');
       if (dots) {
-        dots.hidden = false;
-        dots.classList.remove('hidden');
+        if (!isSwatchMoreButton) {
+          dots.hidden = false;
+          dots.classList.remove('hidden');
+        }
       }
       if (wrapper) wrapper.dataset.quickAddLoading = 'true';
       return;
@@ -189,11 +195,16 @@ class QuickAddController {
 
     delete trigger.dataset.quickAddLoading;
     trigger.removeAttribute('aria-busy');
-    if (this.triggerDisabledState == null) trigger.removeAttribute('aria-disabled');
-    else trigger.setAttribute('aria-disabled', this.triggerDisabledState);
+    if (!isSwatchMoreButton) {
+      if (this.triggerDisabledState == null) trigger.removeAttribute('aria-disabled');
+      else trigger.setAttribute('aria-disabled', this.triggerDisabledState);
+    }
+    if (isSwatchMoreButton) trigger.classList.remove('btn--loading');
     if (dots) {
-      dots.hidden = true;
-      dots.classList.add('hidden');
+      if (!isSwatchMoreButton) {
+        dots.hidden = true;
+        dots.classList.add('hidden');
+      }
     }
     if (wrapper) delete wrapper.dataset.quickAddLoading;
     if (this.loadingTrigger === trigger) this.loadingTrigger = null;
@@ -229,7 +240,11 @@ class QuickAddController {
     event.preventDefault();
     const pointerActivated = this.pointerActivated;
     this.pointerActivated = false;
-    this.open(url, trigger, { restoreFocus: !pointerActivated && (trigger.matches?.(':focus-visible') ?? event.detail === 0) });
+    const opener = event.productCardLoadingTarget || trigger;
+    const restoreFocus = event.productCardLoadingTarget
+      ? true
+      : !pointerActivated && (trigger.matches?.(':focus-visible') ?? event.detail === 0);
+    this.open(url, opener, { restoreFocus });
   }
 
   handleCartReady(event) {

@@ -37,7 +37,6 @@
   @param {string} [items_content] - Optional pre-rendered item markup. When provided, the caller owns item rendering.
   @param {object} [product_card_block] - Direct Product Card child settings and editor attributes
   @param {boolean} [product_card_override_enabled] - Whether to use legacy card setting overrides
-  @param {boolean} [product_card_show_ranking_override] - Legacy card ranking override
   @param {string} [product_card_color_type_override] - Legacy card color type override
   @param {object} [product_card_color_scheme_override] - Legacy card color scheme override
   @param {string} [product_card_editor_attributes_override] - Legacy card editor attributes
@@ -142,23 +141,16 @@
     endif
   endif
 
-  assign product_collection_grid_card_show_ranking = false
-  assign product_collection_grid_card_ranking_color = blank
   assign product_collection_grid_card_color_type = 'inherit'
   assign product_collection_grid_card_color_scheme = 'scheme-1'
   assign product_collection_grid_card_editor_attributes = blank
   if product_card_block != blank
-    assign product_collection_grid_card_show_ranking = product_card_block.settings.show_ranking
-    assign product_collection_grid_card_ranking_color = product_card_block.settings.ranking_color
     assign product_collection_grid_card_color_type = product_card_block.settings.color_type | default: 'inherit'
     assign product_collection_grid_card_color_scheme = product_card_block.settings.color_scheme | default: 'scheme-1'
     assign product_collection_grid_card_editor_attributes = product_card_block.shopify_attributes
   endif
 
   if product_card_override_enabled
-    if product_card_show_ranking_override != nil
-      assign product_collection_grid_card_show_ranking = product_card_show_ranking_override
-    endif
     if product_card_color_type_override != blank
       assign product_collection_grid_card_color_type = product_card_color_type_override
     endif
@@ -232,9 +224,6 @@
         {% render 'product-card',
           product: product_collection_grid_card_product,
           placeholder: product_collection_grid_card_placeholder,
-          show_ranking: product_collection_grid_card_show_ranking,
-          ranking_position: forloop.index,
-          ranking_color: product_collection_grid_card_ranking_color,
           color_type: product_collection_grid_card_color_type,
           color_scheme: product_collection_grid_card_color_scheme,
           attributes: product_collection_grid_card_editor_attributes

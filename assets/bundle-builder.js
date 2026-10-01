@@ -40,7 +40,7 @@ function getVariantImage(card, variant) {
     ? images.find((image) => String(image.id) === String(variant?.id))
     : null;
 
-  if (imageData?.src) return imageData;
+  if (imageData && (imageData.src || imageData.secondary_src)) return imageData;
 
   const image = variant?.featured_image || variant?.image || variant?.featured_media?.preview_image || null;
   if (typeof image === 'string') return { src: image };
@@ -83,10 +83,42 @@ function updateProductImage(card, variant) {
   if (Number.isFinite(imageRatio) && imageRatio > 0) {
     card.dataset.productImageRatio = String(imageRatio);
   }
-  card.querySelector('.product-card')?.classList.toggle(
-    'product-card--variant-image-selected',
-    Boolean(variantImageUrl),
+
+  const productCard = card.querySelector('.product-card');
+  const imageLink = productCard?.querySelector('.product-card__image-link');
+  const secondaryImageUrl = variantImage?.secondary_src || '';
+  const secondaryImageEnabled = card.dataset.productSecondaryImageEnabled !== 'false';
+  let secondaryWrapper = imageLink?.querySelector('.product-card__secondary-image');
+  let secondaryImage = secondaryWrapper?.querySelector('img');
+
+  if (secondaryImageEnabled && secondaryImageUrl && imageLink && !secondaryWrapper) {
+    secondaryWrapper = document.createElement('div');
+    secondaryWrapper.className = 'image product-card__secondary-image';
+    secondaryImage = document.createElement('img');
+    secondaryImage.loading = 'lazy';
+    secondaryImage.decoding = 'async';
+    secondaryWrapper.append(secondaryImage);
+    imageLink.append(secondaryWrapper);
+  }
+
+  const hasSecondaryImage = Boolean(
+    secondaryImageEnabled && secondaryImageUrl && secondaryWrapper && secondaryImage,
   );
+  if (hasSecondaryImage) {
+    secondaryImage.src = secondaryImageUrl;
+    secondaryImage.removeAttribute('srcset');
+    secondaryImage.alt = variantImage?.secondary_alt || card.dataset.productTitle || '';
+
+    const secondaryWidth = Number(variantImage?.secondary_width);
+    const secondaryHeight = Number(variantImage?.secondary_height);
+    if (Number.isFinite(secondaryWidth) && secondaryWidth > 0) secondaryImage.width = secondaryWidth;
+    if (Number.isFinite(secondaryHeight) && secondaryHeight > 0) secondaryImage.height = secondaryHeight;
+  } else if (secondaryImage) {
+    secondaryImage.alt = '';
+  }
+
+  imageLink?.classList.toggle('product-card__image-link--has-secondary', hasSecondaryImage);
+  productCard?.classList.toggle('product-card--variant-image-selected', !hasSecondaryImage);
 }
 
 function getVariantOptionValue(option) {
@@ -661,8 +693,9 @@ function initialize(root) {
     card.dataset.currentVariantId = variant?.id ? String(variant.id) : '';
     card.dataset.currentVariantAvailable = String(Boolean(variant?.available));
     updateProductImage(card, variant);
-    const variantSelect = card.querySelector('[data-bundle-variant-select]');
-    if (variantSelect) variantSelect.value = variant?.id ? String(variant.id) : '';
+    card.querySelectorAll('[data-bundle-variant-select]').forEach((variantSelect) => {
+      variantSelect.value = variant?.id ? String(variant.id) : '';
+    });
 
     renderProductButton(card);
     render();
