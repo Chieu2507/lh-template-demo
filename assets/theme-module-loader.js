@@ -11,6 +11,8 @@
   const selector = 'script[data-theme-module]';
   const modules = new Map();
   const observedTargets = new WeakSet();
+  const pendingSelections = new WeakMap();
+  const replayedSelections = new WeakSet();
 
   const moduleURL = (script) => {
     const source = script.dataset.themeModule?.trim();
@@ -86,6 +88,7 @@
   };
 
   const loadTarget = (target) => {
+    if (!observedTargets.has(target)) return;
     observedTargets.delete(target);
     if (!target.isConnected) return;
     markersWithin(target).forEach(load);
@@ -162,11 +165,35 @@
   const loadEditorTarget = (event) => {
     // Block selection can target a slide, with its marker outside the block.
     const target = event.target.closest?.('.shopify-section') || event.target;
-    markersWithin(target).forEach(load);
+    const scripts = markersWithin(target);
+    const needsSelection = event.type === 'shopify:block:select' && !replayedSelections.has(event) && scripts.some((script) => {
+      try {
+        return modules.get(moduleURL(script))?.state !== 'loaded';
+      } catch {
+        return false;
+      }
+    });
+    const loads = scripts.map(load);
+    if (!needsSelection) return;
+
+    // A lazy module registers its selection listener after this event. Replay
+    // only the latest selection once it is ready, so the selected slide opens.
+    pendingSelections.set(target, event);
+    Promise.all(loads).then(() => {
+      if (pendingSelections.get(target) !== event) return;
+      pendingSelections.delete(target);
+      if (!event.target.isConnected || !scripts.every((script) => script.dataset.themeModuleState === 'loaded')) return;
+      const replay = new CustomEvent(event.type, { bubbles: true, detail: event.detail });
+      replayedSelections.add(replay);
+      event.target.dispatchEvent(replay);
+    });
   };
 
   document.addEventListener('shopify:section:load', loadEditorTarget);
   document.addEventListener('shopify:section:select', loadEditorTarget);
   document.addEventListener('shopify:block:select', loadEditorTarget);
-  document.addEventListener('shopify:section:unload', (event) => unobserve(event.target));
+  document.addEventListener('shopify:section:unload', (event) => {
+    unobserve(event.target);
+    pendingSelections.delete(event.target);
+  });
 })();
