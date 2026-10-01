@@ -16,13 +16,17 @@ class ProductStickyLayout extends HTMLElement {
         this.update();
       });
     };
+    this.onResize = () => {
+      for (const column of this.offsetAnimations.keys()) this.cancelOffsetAnimation(column);
+      this.schedule();
+    };
     const options = { passive: true, signal: this.abortController.signal };
     window.addEventListener('scroll', this.schedule, options);
-    window.addEventListener('resize', this.schedule, options);
+    window.addEventListener('resize', this.onResize, options);
     this.reducedMotion.addEventListener('change', () => {
       for (const column of this.offsetAnimations.keys()) this.cancelOffsetAnimation(column);
     }, options);
-    this.resizeObserver = new ResizeObserver(this.schedule);
+    this.resizeObserver = new ResizeObserver(this.onResize);
     this.resizeObserver.observe(this);
     this.contentObserver = new MutationObserver(() => this.observeColumns());
     this.contentObserver.observe(this, { childList: true, attributes: true, attributeFilter: ['data-sticky-enabled'] });
