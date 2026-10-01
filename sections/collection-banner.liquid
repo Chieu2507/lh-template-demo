@@ -1,5 +1,5 @@
 {% liquid
-  assign banner_image = collection.featured_image
+  assign banner_image = collection.featured_image | default: collection.products.first.featured_image
   if section.settings.image_source == 'custom'
     assign banner_image = section.settings.image
   endif
