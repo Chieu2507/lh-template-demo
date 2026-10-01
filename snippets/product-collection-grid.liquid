@@ -291,7 +291,11 @@
       data-swiper-gap-mobile="{{ product_collection_grid_gap_horizontal_mobile }}"
       {% if items_data_attributes != blank %}{{ items_data_attributes }}{% endif %}
       {% if grid_attributes != blank %}{{ grid_attributes }}{% endif %}
+<<<<<<< HEAD
+      style="{{ product_collection_grid_style }}"
+=======
       {% if product_collection_grid_style != blank %}style="{{ product_collection_grid_style }}"{% endif %}
+>>>>>>> 15300ff9b95504fd3e4c67b5d53a7c94ccc20c60
     {% endcapture %}
     {% render 'swiper-carousel',
       layout: 'carousel',

@@ -1438,16 +1438,6 @@
     "back_in_stock_alert": "Collect customer emails to notify them when a product is back in stock.",
     "back_in_stock_alert_manual_notifications": "Note: Email notifications will not be sent automatically when the product becomes available — you will need to send them yourself."
   },
-  "social_links_settings": {
-    "manage_links": "Manage social media links in [theme settings](/editor?context=theme&category=social%20media).",
-    "display_mode": "Display as",
-    "social_link": "Social link",
-    "color_type": "Color type",
-    "top_padding": "Top padding",
-    "bottom_padding": "Bottom padding",
-    "mobile_top_padding": "Mobile top padding",
-    "mobile_bottom_padding": "Mobile bottom padding"
-  },
   "timeline": {
     "year": "Year or date label",
     "label": "Timeline label",

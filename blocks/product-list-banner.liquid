@@ -33,7 +33,12 @@
 %}
 
 {% if block.settings.enable_swipe_mobile %}
+<<<<<<< HEAD
+  {% render 'swiper-stylesheet' %}
+  <script type="module" src="{{ 'product-collection-carousel.js' | asset_url }}"></script>
+=======
   <script data-theme-module="{{ 'product-collection-carousel.js' | asset_url }}"></script>
+>>>>>>> 15300ff9b95504fd3e4c67b5d53a7c94ccc20c60
 {% endif %}
 
 {% capture product_list_banner_items_content %}
