@@ -48,6 +48,16 @@
     transform: translateY(-100%);
   }
 
+  @media (max-width: 991.98px) {
+    /* Keep the fixed drawer viewport-relative through its entire overlay
+       lifecycle, including the exit animation before [hidden] is restored. */
+    .header[data-sticky-type='scroll_up']:has([data-header-mobile-drawer]:not([hidden])) {
+      transform: none;
+      will-change: auto;
+      transition-property: background-color;
+    }
+  }
+
   .header[data-sticky-type='top_header_only'],
   .header[data-sticky-type='bottom_header_only'] {
     position: sticky;

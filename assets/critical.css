@@ -2492,12 +2492,10 @@ legend {
   }
 
   .product-card--quick-add-mobile .product-card__quick-add .product-card__quick-add-button {
-    --button-border-width: 1px;
-    --button-border: var(--color-border);
-    --button-background: var(--color-background);
-    --button-foreground: var(--color-foreground);
     --button-radius: 0;
     --button-icon-size: 18px;
+    --button-foreground: #ffffff;
+    --button-hover-foreground: #ffffff;
     width: 36px;
     min-width: 36px;
     height: 36px;
