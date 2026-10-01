@@ -78,21 +78,19 @@
   <div class="bundle-card__options bundle-card__options--empty" aria-hidden="true"></div>
 {% endcapture %}
 {% capture bundle_placeholder_footer %}
-  <div class="bundle-product-item__action">
-    {% render 'theme-button',
-      label: bundle_add_item_label,
-      variant: bundle_button_variant,
-      class: bundle_button_class,
-      disabled: true
-    %}
-  </div>
+  {% render 'theme-button',
+    label: bundle_add_item_label,
+    variant: bundle_button_variant,
+    class: bundle_button_class,
+    disabled: true
+  %}
 {% endcapture %}
 
 {% capture bundle_grid_items %}
   {% if bundle_products != blank %}
     {% for bundle_product in bundle_products limit: bundle_max_products %}
       {% if bundle_products_are_placeholders %}
-        <div class="product-collection-grid__item bundle-product-item bundle-product-item--placeholder">
+        <div class="product-collection-grid__item product-card-layout__item bundle-product-item bundle-product-item--placeholder">
           {% render 'product-card',
             product: blank,
             placeholder: true,
@@ -128,7 +126,7 @@
           assign bundle_unavailable_variant_label = 'products.variant_selection_unavailable' | t
         %}
         <div
-          class="product-collection-grid__item bundle-product-item"
+          class="product-collection-grid__item product-card-layout__item bundle-product-item"
           data-bundle-product
           data-product-id="{{ bundle_product.id }}"
           data-product-title="{{ bundle_product.title | escape }}"
@@ -280,16 +278,14 @@
             data-bundle-aria-add="{{ bundle_add_aria_label | escape }}"
           {% endcapture %}
           {% capture bundle_product_footer %}
-            <div class="bundle-product-item__action">
-              {% render 'theme-button',
-                label: bundle_add_item_label,
-                variant: bundle_button_variant,
-                class: bundle_button_class,
-                disabled: bundle_button_disabled,
-                aria_label: bundle_add_aria_label,
-                attributes: bundle_toggle_attributes
-              %}
-            </div>
+            {% render 'theme-button',
+              label: bundle_add_item_label,
+              variant: bundle_button_variant,
+              class: bundle_button_class,
+              disabled: bundle_button_disabled,
+              aria_label: bundle_add_aria_label,
+              attributes: bundle_toggle_attributes
+            %}
           {% endcapture %}
           {% render 'product-card',
             product: bundle_product,
@@ -359,7 +355,13 @@
 
   .bundle-product-card .product-card__content {
     flex: 1 1 auto;
-    grid-template-rows: auto minmax(0, 1fr) auto;
+    display: flex;
+    flex-direction: column;
+    min-height: 0;
+  }
+
+  .bundle-product-card .product-card__details {
+    flex: 1 1 auto;
   }
 
   .bundle-product-item .product-card__quick-add {
@@ -369,16 +371,11 @@
   .bundle-card__options {
     min-width: 0;
     width: 100%;
-    margin-block-start: auto;
   }
 
   .bundle-card__options--empty,
   .bundle-card__options:not(:has(.variant-picker__option)):not(:has(.form__control)) {
     display: none;
-  }
-
-  .bundle-card__options:has(.variant-picker__option, .form__control) + .bundle-product-item__action {
-    margin-block-start: 0;
   }
 
   .bundle-card__options .variant-picker {
@@ -491,13 +488,6 @@
     --variant-radius: var(--input-radius);
   }
 
-  .bundle-product-item__action {
-    display: flex;
-    width: 100%;
-    min-width: 0;
-    margin-block-start: auto;
-  }
-
   .bundle-card__control--mobile {
     display: none;
   }
@@ -510,6 +500,10 @@
 
   .bundle-product-toggle {
     width: 100%;
+  }
+
+  .bundle-card__add {
+    margin-block-start: auto;
   }
 
   .bundle-product-toggle.btn--outline {

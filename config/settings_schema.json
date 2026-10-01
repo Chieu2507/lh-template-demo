@@ -1530,17 +1530,13 @@
         "default": "color"
       },
       {
-        "type": "select",
+        "type": "range",
         "id": "product_card_swatch_limit",
+        "min": 2,
+        "max": 6,
+        "step": 1,
         "label": "t:labels.swatch_limit",
-        "options": [
-          { "value": "2", "label": "t:options.swatch_limit.two" },
-          { "value": "3", "label": "t:options.swatch_limit.three" },
-          { "value": "4", "label": "t:options.swatch_limit.four" },
-          { "value": "5", "label": "t:options.swatch_limit.five" },
-          { "value": "6", "label": "t:options.swatch_limit.six" }
-        ],
-        "default": "4"
+        "default": 4
       },
       {
         "type": "range",
