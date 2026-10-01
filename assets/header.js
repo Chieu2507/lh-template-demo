@@ -821,7 +821,9 @@
         details.addEventListener('focusin', openOnHover, { signal: controller.signal });
         details.addEventListener('focusout', closeOnLeave, { signal: controller.signal });
         document.addEventListener('pointerdown', (event) => {
-          if (details.open && !details.contains(event.target)) closeHeaderDetails(details);
+          if (localization.classList.contains('localization-block') && details.open && !details.contains(event.target)) {
+            closeHeaderDetails(details);
+          }
         }, { signal: controller.signal });
         details.querySelector(':scope > summary')?.addEventListener('click', (event) => {
           if (window.innerWidth <= 767 || details.dataset.headerSubmenuTrigger === 'hover' || !details.open) return;
