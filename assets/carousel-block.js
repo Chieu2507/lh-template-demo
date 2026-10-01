@@ -741,6 +741,8 @@ const destroyRoot = (root) => {
   root.querySelectorAll?.('[data-carousel-block]').forEach(destroy);
 };
 
+export { initializeRoot as initializeThemeModule };
+
 document.addEventListener('shopify:section:load', (event) => initializeRoot(event.target));
 document.addEventListener('shopify:section:select', (event) => initializeRoot(event.target, true));
 document.addEventListener('shopify:section:unload', (event) => destroyRoot(event.target));

@@ -203,6 +203,8 @@ const initializeRoot = (root = document) => {
   root.querySelectorAll?.(carouselSelector).forEach(initialize);
 };
 
+export { initializeRoot as initializeThemeModule };
+
 const destroy = (carousel) => {
   const state = instances.get(carousel);
   if (!state) return;
