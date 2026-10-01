@@ -44,7 +44,7 @@
 {% if collection.filters.size > 0 %}
       <div class="main-collection__filter-panel-positioner">
       <dialog
-        class="main-collection__filter-dialog modal-drag-target" data-desktop-layout="{{ block.settings.desktop_layout }}" data-sidebar-visibility="{{ block.settings.sidebar_visibility }}" data-mobile-layout="{{ block.settings.mobile_layout }}" data-collapse-icon="{{ block.settings.collapse_icon }}" style="--collection-filter-right-padding:{{ block.settings.right_padding }}px"
+        class="main-collection__filter-dialog modal-drag-target" data-desktop-layout="{{ block.settings.desktop_layout }}" data-sidebar-visibility="{{ block.settings.sidebar_visibility }}" data-mobile-layout="{{ block.settings.mobile_layout }}" data-collapse-icon="{{ block.settings.collapse_icon }}" style="--collection-filter-right-padding:{{ block.settings.right_padding }}px;{% if filter_heading_size == 'custom' %}--heading-block-custom-size:{{ block.settings.custom_heading_size | default: 24 }}px;{% endif %}"
         id="CollectionFilters-{{ section.id }}"
         aria-labelledby="CollectionFiltersTitle-{{ section.id }}"
         scroll-lock
@@ -433,8 +433,23 @@
           "value": "xs",
           "label": "t:options.heading_size.xs"
         },
+        {
+          "value": "custom",
+          "label": "t:options.heading_size.custom"
+        }
       ],
       "default": "sm"
+    },
+    {
+      "type": "range",
+      "id": "custom_heading_size",
+      "label": "Custom size",
+      "min": 10,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "default": 24,
+      "visible_if": "{{ block.settings.heading_size == 'custom' }}"
     },
     {
       "type": "select",
