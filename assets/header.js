@@ -811,6 +811,11 @@
         details.addEventListener('pointerleave', closeOnLeave, { signal: controller.signal });
         details.addEventListener('focusin', openOnHover, { signal: controller.signal });
         details.addEventListener('focusout', closeOnLeave, { signal: controller.signal });
+        const closeOnOutsidePointer = (event) => {
+          if (!details.open || details.contains(event.target)) return;
+          closeHeaderDetails(details);
+        };
+        document.addEventListener('pointerdown', closeOnOutsidePointer, { signal: controller.signal });
         details.querySelector(':scope > summary')?.addEventListener('click', (event) => {
           if (window.innerWidth <= 767 || details.dataset.headerSubmenuTrigger === 'hover' || !details.open) return;
           event.preventDefault();

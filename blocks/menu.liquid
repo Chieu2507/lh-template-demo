@@ -16,6 +16,9 @@
   if block.settings.menu.handle != blank
     assign selected_menu_handle = block.settings.menu.handle
   endif
+  if selected_menu_handle == blank
+    assign selected_menu_handle = 'main-menu'
+  endif
   if selected_menu.links == blank and selected_menu_handle != blank
     assign selected_menu = linklists[selected_menu_handle]
   endif
