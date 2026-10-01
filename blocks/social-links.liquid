@@ -9,6 +9,11 @@
 {% enddoc %}
 
 {% liquid
+  assign social_display_mode = block.settings.display_mode
+  unless social_display_mode == 'text'
+    assign social_display_mode = 'icon'
+  endunless
+
   assign social_radius = 'var(--radius-pill)'
   case block.settings.corner_radius
     when 'inherit'
@@ -20,7 +25,7 @@
   endcase
 
   assign social_scheme = ''
-  if block.settings.color_type == 'color_scheme'
+  if social_display_mode == 'icon' and block.settings.color_type == 'color_scheme'
     assign social_scheme = block.settings.color_scheme.id | default: block.settings.color_scheme | default: 'scheme-1' | handleize
   endif
 %}
@@ -47,9 +52,11 @@
 >
   {% render 'social-links',
     color_scheme: social_scheme,
-    display_mode: block.settings.display_mode,
+    display_mode: social_display_mode,
     direction: block.settings.direction,
-    shadow: block.settings.shadow
+    shadow: block.settings.shadow,
+    text_color: block.settings.text_color,
+    text_size: block.settings.text_size
   %}
 </div>
 
@@ -72,10 +79,6 @@
       "label": "t:social_links_settings.display_mode",
       "options": [
         {
-          "value": "inherit",
-          "label": "t:social_links_settings.inherit_display"
-        },
-        {
           "value": "icon",
           "label": "t:options.button_style.icon"
         },
@@ -84,8 +87,7 @@
           "label": "t:options.button_style.text"
         }
       ],
-      "default": "inherit",
-      "info": "t:social_links_settings.display_mode_info"
+      "default": "icon"
     },
     {
       "type": "select",
@@ -140,7 +142,29 @@
       "step": 1,
       "unit": "px",
       "default": 20,
-      "visible_if": "{{ block.settings.display_mode != 'text' }}"
+      "visible_if": "{{ block.settings.display_mode == 'icon' }}"
+    },
+    {
+      "type": "select",
+      "id": "text_size",
+      "label": "t:labels.text_size",
+      "options": [
+        { "value": "xs", "label": "t:options.text_size.xs" },
+        { "value": "sm", "label": "t:options.text_size.sm" },
+        { "value": "md", "label": "t:options.text_size.md" },
+        { "value": "lg", "label": "t:options.text_size.lg" },
+        { "value": "xl", "label": "t:options.text_size.xl" },
+        { "value": "xxl", "label": "t:options.text_size.xxl" }
+      ],
+      "default": "md",
+      "visible_if": "{{ block.settings.display_mode == 'text' }}"
+    },
+    {
+      "type": "color",
+      "alpha": true,
+      "id": "text_color",
+      "label": "t:labels.text_color",
+      "visible_if": "{{ block.settings.display_mode == 'text' }}"
     },
     {
       "type": "range",
@@ -228,14 +252,15 @@
           "label": "t:options.color_type.color_scheme"
         }
       ],
-      "default": "inherit"
+      "default": "inherit",
+      "visible_if": "{{ block.settings.display_mode == 'icon' }}"
     },
     {
       "type": "color_scheme",
       "id": "color_scheme",
       "label": "t:labels.color_scheme",
       "default": "scheme-1",
-      "visible_if": "{{ block.settings.color_type == 'color_scheme' }}"
+      "visible_if": "{{ block.settings.display_mode == 'icon' and block.settings.color_type == 'color_scheme' }}"
     },
     {
       "type": "header",
