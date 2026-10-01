@@ -7,6 +7,8 @@
   Each local option carries inert media/price templates for inline selection.
 
   @param {product} product - Product whose option values should be rendered
+  @param {number} [image_width] - Product card image width
+  @param {number} [image_height] - Product card fixed image height
 
   @example
   {% render 'product-card-swatches', product: product %}
@@ -94,6 +96,9 @@
           data-variant-id="{{ swatch_variant.id }}"
         {% endif %}
         data-product-card-swatch
+        {% if option_value.product_url == blank and swatch_variant != blank and swatch_image != blank %}
+          data-product-card-variant-id="{{ swatch_variant.id }}"
+        {% endif %}
       >
         {% render 'swatch',
           value: option_value.name,
@@ -103,6 +108,18 @@
           class: 'product-card__swatch',
           decorative: true
         %}
+        {% if option_value.product_url == blank and swatch_variant != blank and swatch_image != blank %}
+          <template data-product-card-swatch-image>
+            {% render 'image',
+              image: swatch_image,
+              class: 'product-card__image',
+              width: image_width,
+              height: image_height,
+              crop: 'center',
+              alt: product.title
+            %}
+          </template>
+        {% endif %}
       </a>
       {% if option_value.product_url == blank and swatch_variant != blank %}
         <template data-product-card-variant="{{ swatch_variant.id }}">

@@ -25,8 +25,7 @@
 .product-recommendations__controls { display: flex; gap: 0.45rem; }
 .product-recommendations__controls button { display: inline-grid; width: 2rem; height: 2rem; place-items: center; padding: 0; color: inherit; background: transparent; border: 0; cursor: pointer; }
 .product-recommendations__controls svg { width: 1rem; height: 1rem; }
-.product-recommendations__track { display: flex; gap: 0.5rem; overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none; }
-.product-recommendations__track::-webkit-scrollbar { display: none; }
+.product-recommendations__track { display: flex; gap: 0.5rem; scroll-snap-type: x mandatory; }
 .product-recommendations__item { flex: 0 0 calc(50% - 0.25rem); min-width: 0; scroll-snap-align: start; }
 .product-recommendations .product-card__content { padding-top: 0.55rem; }
 .product-sticky-add-to-cart {

@@ -61,8 +61,8 @@
 %}
 
 {% capture comparison_feature_style %}
-  {% if comparison_feature_min_width != 160 %}--ct-feature-min-width: {{ comparison_feature_min_width }}px;{% endif %}
-  {% if comparison_feature_size != 'lg' %}--ct-label-size: {{ comparison_feature_size_token }}; --comparison-feature-line-height: {{ comparison_feature_line_height }};{% endif %}
+  {% if comparison_feature_min_width != 160 %}--comparison-table-feature-min-width: {{ comparison_feature_min_width }}px;{% endif %}
+  {% if comparison_feature_size != 'lg' %}--comparison-table-feature-label-size: {{ comparison_feature_size_token }}; --comparison-feature-line-height: {{ comparison_feature_line_height }};{% endif %}
   {% if comparison_feature_font != 'heading' %}--comparison-feature-font-family: {{ comparison_feature_font_family }};{% endif %}
 {% endcapture %}
 {% assign comparison_feature_style = comparison_feature_style | strip | replace: '\n', ' ' %}
@@ -70,8 +70,8 @@
 {% if comparison_table_dom_id != blank %}
   <style>
     #{{ comparison_table_dom_id }} .comparison-table__scroll--with-feature {
-      --ct-feature-width: {{ comparison_feature_width }};
-      --ct-feature-width-fixed: {{ comparison_feature_fixed_width }};
+      --comparison-table-feature-width: {{ comparison_feature_width }};
+      --comparison-table-feature-width-fixed: {{ comparison_feature_fixed_width }};
     }
   </style>
 {% endif %}

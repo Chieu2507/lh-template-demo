@@ -60,7 +60,7 @@
 %}
 
 {% capture comparison_column_style %}
-  {% if comparison_column_border_width != 0 %}--ct-border-width: {{ comparison_column_border_width }}px;{% endif %}
+  {% if comparison_column_border_width != 0 %}--comparison-table-column-border-width: {{ comparison_column_border_width }}px;{% endif %}
   {% if comparison_column_shadow != 'extra_small' %}--comparison-column-shadow: {{ comparison_column_shadow_value }};{% endif %}
   {% if comparison_column_corner_radius != 'square' %}--comparison-column-radius: {{ comparison_column_corner_radius_value }};{% endif %}
 {% endcapture %}

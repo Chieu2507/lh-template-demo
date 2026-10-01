@@ -149,7 +149,7 @@
 
     <div class="timeline-list__controls" data-timeline-controls hidden>
       <nav
-        class="timeline-list__navigation timeline-list__navigation--{{ timeline_list_pagination_class }}"
+        class="timeline-list__navigation timeline-list__navigation--{{ timeline_list_pagination_class }} scrollbar{% if timeline_list_position == 'left' %} scrollbar--vertical{% else %} scrollbar--horizontal scrollbar--hidden-mobile{% endif %}"
         aria-label="{{ timeline_list_navigation_label | escape }}"
         data-timeline-navigation
         data-timeline-label-template="{{ timeline_list_label_template | escape }}"
@@ -229,10 +229,6 @@
     flex: 1 1 auto;
     width: 100%;
     min-width: 0;
-    overflow-x: auto;
-    overflow-y: hidden;
-    overscroll-behavior-inline: contain;
-    scrollbar-width: thin;
   }
 
   .timeline-list__navigation[hidden],
@@ -438,11 +434,6 @@
     margin: 0;
   }
 
-  .timeline-list[data-timeline-position='left'] .timeline-list__navigation {
-    overflow-x: hidden;
-    overflow-y: auto;
-  }
-
   .timeline-list[data-timeline-position='left'] .timeline-list__navigation-list {
     display: grid;
     grid-auto-columns: minmax(0, 1fr);
@@ -584,12 +575,7 @@
 
     .timeline-list:not([data-timeline-position='left']) .timeline-list__navigation {
       max-width: 100%;
-      scrollbar-width: none;
       -webkit-overflow-scrolling: touch;
-    }
-
-    .timeline-list:not([data-timeline-position='left']) .timeline-list__navigation::-webkit-scrollbar {
-      display: none;
     }
 
     .timeline-list:not([data-timeline-position='left']) .timeline-list__navigation-list {

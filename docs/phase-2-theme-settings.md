@@ -599,12 +599,12 @@ settings đã được loại khỏi contract Colors.
 
 | ID | Type | Values | Default | Mapping / constraint |
 | --- | --- | --- | --- | --- |
-| input_style | select | solid, outline | solid | `--input-style`; outline chuyển background về transparent |
+| input_style | select | solid, outline | solid | `input-style--solid` / `input-style--outline` đặt `--input-background-color` |
 | input_height_desktop | range | 40–64, step 1px | 48 | `--input-height` |
 | input_height_mobile | range | 40–56, step 1px | 44 | `--input-height-mobile` |
 | input_radius_style | select | square, slightly_rounded, rounded, pill | rounded | `--input-radius` dùng primitive radius chung; không còn numeric radius field |
-| input_border_width | range | 0–3, step 1px | 1 | `--input-border-width`; giữ ID tương thích |
-| input_background_color | color | CSS color | #FFFFFF | `--input-background-color` cho Solid; Outline fallback transparent |
+| input_border_width | range | 0–3, step 1px | 1 | `--input-border-width-outline`; Solid đặt `--input-border-width` về 0px |
+| input_background_color | color | CSS color | #FFFFFF | `--input-background-color-solid`; Solid đọc màu này, Outline dùng transparent |
 | form_label_typography | select | xs, sm, md, lg, xl, xxl | md | `--form-label-font-size`; dùng cùng scale `Text size` của Text block |
 | form_input_typography | select | xs, sm, md, lg, xl, xxl | md | `--form-input-font-size`; không đổi layout control |
 | form_helper_typography | select | xs, sm, md, lg, xl, xxl | md | `--form-helper-font-size` |
@@ -674,7 +674,7 @@ Markup dùng BEM ổn định: `.product-card`, `.product-card--standard`,
 
 ### CSS Foundation, responsive và fallback
 
-- `--pcard-*` là namespace duy nhất cho title, ratio, layout, spacing, quick
+- `--product-card-*` là namespace duy nhất cho title, ratio, layout, spacing, quick
   add/view và swatches. Card kế thừa semantic color, typography, button, radius
   và price token của scheme gần nhất.
 - Ảnh dùng `image_url`/`image_tag` với width/height theo ratio; khi thiếu ảnh,
@@ -682,7 +682,7 @@ Markup dùng BEM ổn định: `.product-card`, `.product-card--standard`,
 - Secondary image chỉ là enhancement hover/focus trên pointer phù hợp và bị tắt
   trên mobile. Quick add dùng form POST native tới `routes.cart_add_url`, quick
   view dùng link product native; data hooks chỉ để JavaScript hydrate về sau.
-- Breakpoint chung: desktop/tablet dùng `--pcard-*`, mobile dùng các biến
+- Breakpoint chung: desktop/tablet dùng `--product-card-*`, mobile dùng các biến
   `*-mobile` tại `max-width: 767.98px`. Không có width/gap riêng theo section.
 - Không có swatch option phù hợp thì `__swatches` không render; variant image
   fallback về color swatch. Unknown color dùng neutral surface nhưng vẫn có
@@ -693,22 +693,22 @@ Markup dùng BEM ổn định: `.product-card`, `.product-card--standard`,
 | ID | Type | Values | Default | Mapping / constraint |
 | --- | --- | --- | --- | --- |
 | product_card_style | select | standard, card | standard | Modifier `product-card--standard/card`; fallback standard |
-| product_card_border_width | range | 0–3, step 1px | 0 | `--pcard-border-width` |
-| product_card_shadow | select | none, soft, strong | none | `--pcard-shadow`; preset chỉ dùng semantic shadow token |
+| product_card_border_width | range | 0–3, step 1px | 0 | `--product-card-border-width` |
+| product_card_shadow | select | none, soft, strong | none | `--product-card-shadow`; preset chỉ dùng semantic shadow token |
 | product_card_color_scheme | color_scheme | scheme group | scheme-1 | Class `scheme-*`; card scheme ownership |
-| product_card_title_font | select | display, heading, body | display | `--pcard-title-font-family`; Display/Heading -> heading family |
-| product_card_title_size_desktop | range | 12–40, step 1px | 20 | `--pcard-title-size` |
-| product_card_title_size_mobile | range | 12–32, step 1px | 18 | `--pcard-title-size-mobile` |
-| product_card_alignment | select | left, center, right | left | `--pcard-alignment`; title, price, swatches cùng alignment |
-| product_card_title_line_limit | select | none, 1, 2, 3 | none | `--pcard-title-line-limit` và line-clamp modifier |
-| product_card_ratio | select | natural, square, portrait, landscape | natural | `--pcard-image-ratio`; Original giữ intrinsic ratio |
+| product_card_title_font | select | display, heading, body | display | `--product-card-title-font-family`; Display/Heading -> heading family |
+| product_card_title_size_desktop | range | 12–40, step 1px | 20 | `--product-card-title-size` |
+| product_card_title_size_mobile | range | 12–32, step 1px | 18 | `--product-card-title-size-mobile` |
+| product_card_alignment | select | left, center, right | left | `--product-card-alignment`; title, price, swatches cùng alignment |
+| product_card_title_line_limit | select | none, 1, 2, 3 | none | `--product-card-title-line-limit` và line-clamp modifier |
+| product_card_ratio | select | natural, square, portrait, landscape | natural | `--product-card-image-ratio`; Original giữ intrinsic ratio |
 | product_card_gap_device | select | desktop, mobile | desktop | Chọn nhóm range trong Editor |
-| product_card_content_spacing_desktop | range | 0–40, step 1px | 20 | `--pcard-content-spacing` |
-| product_card_content_gap_desktop | range | 0–32, step 1px | 14 | `--pcard-content-gap` |
-| product_card_info_gap_desktop | range | 0–16, step 1px | 4 | `--pcard-product-info-gap` |
-| product_card_content_spacing_mobile | range | 0–32, step 1px | 16 | `--pcard-content-spacing-mobile` |
-| product_card_content_gap_mobile | range | 0–28, step 1px | 12 | `--pcard-content-gap-mobile` |
-| product_card_info_gap_mobile | range | 0–16, step 1px | 4 | `--pcard-product-info-gap-mobile` |
+| product_card_content_spacing_desktop | range | 0–40, step 1px | 20 | `--product-card-content-spacing` |
+| product_card_content_gap_desktop | range | 0–32, step 1px | 14 | `--product-card-content-gap` |
+| product_card_info_gap_desktop | range | 0–16, step 1px | 4 | `--product-card-info-gap` |
+| product_card_content_spacing_mobile | range | 0–32, step 1px | 16 | `--product-card-content-spacing-mobile` |
+| product_card_content_gap_mobile | range | 0–28, step 1px | 12 | `--product-card-content-gap-mobile` |
+| product_card_info_gap_mobile | range | 0–16, step 1px | 4 | `--product-card-info-gap-mobile` |
 | product_card_quick_add_enabled | checkbox | true/false | true | Render native add form khi product có available variant |
 | product_card_quick_add_mobile | checkbox | true/false | true | Modifier mobile visibility |
 | product_card_quick_add_color_scheme | color_scheme | scheme group | scheme-1 | Scheme riêng trên `__quick-add` |
@@ -716,20 +716,20 @@ Markup dùng BEM ổn định: `.product-card`, `.product-card--standard`,
 | product_card_quick_add_full_width | checkbox | true/false | true | `__quick-add-button` width 100% khi bật |
 | product_card_quick_view_enabled | checkbox | true/false | true | Native product link + `data-product-card-quick-view` |
 | product_card_quick_view_mobile | checkbox | true/false | false | Modifier mobile visibility |
-| product_card_secondary | checkbox | true/false | true | `--pcard-show-secondary-image`; mobile không hover |
+| product_card_secondary | checkbox | true/false | true | `--product-card-show-secondary-image`; mobile không hover |
 | product_card_show_sale_badge | checkbox | true/false | true | Sale badge theo `--sale-price-color` |
 | product_card_show_sold_out_badge | checkbox | true/false | true | Sold-out badge theo semantic badge token |
 | product_card_vendor | checkbox | true/false | false | Chỉ render khi product.vendor có dữ liệu |
 | product_card_type | checkbox | true/false | false | Chỉ render khi product.type có dữ liệu |
-| product_card_swatches_enabled | checkbox | true/false | true | `--pcard-swatch-enabled`; không có option thì không render |
+| product_card_swatches_enabled | checkbox | true/false | true | `--product-card-swatch-enabled`; không có option thì không render |
 | product_card_swatch_position | select | top, bottom | bottom | Modifier `product-card--swatches-*` |
 | product_card_swatch_type | select | color, variant_image | color | Variant image fallback về color value |
 | product_card_swatch_limit | range | 2–6, step 1 | 4 | Giới hạn option values render |
-| product_card_swatch_gap | range | 0–20, step 1px | 8 | `--pcard-swatch-gap` |
-| product_card_swatch_width_desktop | range | 16–48, step 1px | 30 | `--pcard-swatch-width` |
-| product_card_swatch_width_mobile | range | 16–48, step 1px | 30 | `--pcard-swatch-width-mobile` |
-| product_card_swatch_ratio | select | 1:1, 3:2, 2:1, 3:1 | 1:1 | `--pcard-swatch-ratio` |
-| product_card_swatch_selected_style | select | border, underline | border | `--pcard-swatch-selected-style` và selected modifier |
+| product_card_swatch_gap | range | 0–20, step 1px | 8 | `--product-card-swatch-gap` |
+| product_card_swatch_width_desktop | range | 16–48, step 1px | 30 | `--product-card-swatch-width` |
+| product_card_swatch_width_mobile | range | 16–48, step 1px | 30 | `--product-card-swatch-width-mobile` |
+| product_card_swatch_ratio | select | 1:1, 3:2, 2:1, 3:1 | 1:1 | `--product-card-swatch-ratio` |
+| product_card_swatch_selected_style | select | border, underline | border | `--product-card-swatch-selected-style` và selected modifier |
 
 Setting legacy `product_card_gap` không còn xuất hiện trong Editor nhưng vẫn có
 fallback trong Liquid để store cũ không mất spacing khi chưa có dữ liệu của
@@ -837,7 +837,7 @@ hoặc palette fallback theo tên option; variant-image mode dùng ảnh variant
   snippets/product-card-swatches.liquid.
 - Token: snippets/css-variables.liquid.
 - CSS: assets/critical.css.
-- Product card chỉ remap `--pcard-swatch-*` vào `--swatch-*` trong scope card,
+- Product card chỉ remap `--product-card-swatch-*` vào `--swatch-*` trong scope card,
   không tạo bộ token visual thứ hai.
 
 ### Responsive, accessibility và fallback
@@ -860,7 +860,7 @@ chung, ratio không đổi theo breakpoint.
 
 `--swatch-radius` lấy từ `radius_swatches`. Không component nào được tạo token
 màu/size/radius swatch ngoài contract này; product card chỉ được remap
-`--pcard-swatch-*` vào token global trong scope của card. Helper nhắc rõ nhóm
+`--product-card-swatch-*` vào token global trong scope của card. Helper nhắc rõ nhóm
 Product cards là nơi cấu hình swatch riêng của card; Theme Settings schema
 không có deep-link ổn định tới category hiện tại mà không nhúng theme ID.
 

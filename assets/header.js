@@ -214,6 +214,7 @@
     } else {
       document.documentElement.style.setProperty('--header-height', height);
     }
+    updateStickyHeaderHeight(header, stickyType);
   };
 
   const getStickyTarget = (header, stickyType) => {
@@ -230,6 +231,15 @@
     }
 
     return header;
+  };
+
+  const updateStickyHeaderHeight = (header, stickyType = header.dataset.stickyType || 'none') => {
+    const isHidden = stickyType === 'scroll_up' && header.classList.contains('header--is-hidden');
+    const stickyHeight = stickyType === 'none' || isHidden ? 0 : getStickyTarget(header, stickyType).offsetHeight;
+    const height = `${stickyHeight}px`;
+
+    header.style.setProperty('--header-sticky-height', height);
+    document.documentElement.style.setProperty('--header-sticky-height', height);
   };
 
   const synchronizeHeaderColorScheme = (header, useBaseScheme) => {
@@ -303,6 +313,7 @@
 
       if (stickyType !== 'scroll_up') {
         header.classList.remove('header--is-hidden');
+        updateStickyHeaderHeight(header, stickyType);
         return;
       }
 
@@ -318,6 +329,8 @@
       } else if (scrollDelta > 2 && scrollY > revealThreshold) {
         header.classList.add('header--is-hidden');
       }
+
+      updateStickyHeaderHeight(header, stickyType);
     });
 
     lastScrollY = scrollY;
@@ -394,12 +407,6 @@
     header.classList.add('header', 'section-color-scope');
     if (headerScheme) header.classList.add(headerScheme);
     if (headerTop.hasAttribute('data-header-overlay')) header.classList.add('header--overlay');
-    updateHeaderHeight(header, stickyType);
-    if ('ResizeObserver' in window) {
-      const observer = new ResizeObserver(() => updateHeaderHeight(header, stickyType));
-      observer.observe(header);
-      headerResizeObservers.set(header, observer);
-    }
     if (headerTop.hasAttribute('data-header-overlap-first-section')) {
       header.classList.add('header--overlap-first-section');
     }
@@ -411,6 +418,14 @@
 
     if (target !== header) {
       target.dataset.headerStickyTarget = stickyType;
+    }
+
+    updateHeaderHeight(header, stickyType);
+    if ('ResizeObserver' in window) {
+      const observer = new ResizeObserver(() => updateHeaderHeight(header, stickyType));
+      observer.observe(header);
+      if (target !== header) observer.observe(target);
+      headerResizeObservers.set(header, observer);
     }
 
     headerStates.set(header, { header, stickyType });
@@ -915,7 +930,10 @@
       headerResizeObservers.delete(header);
       const remainingStickyHeader = Array.from(headerStates.values()).find(({ stickyType }) => stickyType !== 'none');
       if (remainingStickyHeader) updateHeaderHeight(remainingStickyHeader.header, remainingStickyHeader.stickyType);
-      else document.documentElement.style.removeProperty('--header-height');
+      else {
+        document.documentElement.style.removeProperty('--header-height');
+        document.documentElement.style.setProperty('--header-sticky-height', '0px');
+      }
     });
   };
 
@@ -928,7 +946,10 @@
   document.addEventListener('focusin', (event) => {
     const headerTop = event.target.closest?.(HEADER_SELECTOR);
     const header = headerTop ? getHeaderRoot(headerTop) : null;
-    header?.classList.remove('header--is-hidden');
+    if (header) {
+      header.classList.remove('header--is-hidden');
+      updateStickyHeaderHeight(header);
+    }
   });
 
   document.addEventListener('search-overlay:open', (event) => {

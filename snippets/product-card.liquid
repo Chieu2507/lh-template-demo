@@ -14,6 +14,9 @@
   @param {boolean} [show_media_actions] - Optional section override for quick actions
   @param {boolean} [enable_quick_view] - Optional section override for quick view
   @param {string} [heading_tag] - Optional heading tag for the product title
+  @param {boolean} [hide_swatches] - Hide swatches for card-specific layouts
+  @param {string} [middle_content] - Optional HTML after product details
+  @param {string} [footer_content] - Optional HTML at the bottom of card content
 
   @example
   {% render 'product-card', product: product %}
@@ -116,7 +119,7 @@
     assign show_type = true
   endif
   assign swatches_enabled = true
-  if settings.product_card_swatches_enabled == false
+  if settings.product_card_swatches_enabled == false or hide_swatches
     assign swatches_enabled = false
   endif
   assign swatch_position = settings.product_card_swatch_position | default: 'bottom'
@@ -165,7 +168,8 @@
   if product != blank
     assign secondary_image = product.images[1]
     assign current_variant = product.selected_or_first_available_variant
-    if product.featured_image
+    assign card_image = current_variant.featured_image | default: product.featured_image
+    if card_image
       assign product_card_image_placeholder = false
     endif
   endif
@@ -182,7 +186,9 @@
     placeholder_price: 19,
     show_ranking: show_ranking,
     ranking_position: ranking_position,
-    ranking_color: ranking_color
+    ranking_color: ranking_color,
+    middle_content: middle_content,
+    footer_content: footer_content
   %}
 {% else %}
 <article
@@ -192,7 +198,7 @@
 >
   <div class="product-card__media">
     {% render 'product-card-image',
-      image: product.featured_image,
+      image: card_image,
       secondary_image: secondary_image,
       secondary_image_enabled: secondary_image_enabled,
       placeholder: product_card_image_placeholder,
@@ -251,7 +257,7 @@
 
   <div class="product-card__content">
     {% if swatches_enabled and swatch_position == 'top' %}
-      {% render 'product-card-swatches', product: product %}
+      {% render 'product-card-swatches', product: product, image_width: image_width, image_height: image_height %}
     {% endif %}
 
     <div class="product-card__details">
@@ -265,8 +271,16 @@
       {% render 'product-card-price', item: product %}
     </div>
 
+    {% if middle_content != blank %}
+      {{ middle_content }}
+    {% endif %}
+
     {% if swatches_enabled and swatch_position == 'bottom' %}
-      {% render 'product-card-swatches', product: product %}
+      {% render 'product-card-swatches', product: product, image_width: image_width, image_height: image_height %}
+    {% endif %}
+
+    {% if footer_content != blank %}
+      {{ footer_content }}
     {% endif %}
   </div>
 </article>
