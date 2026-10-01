@@ -1698,6 +1698,19 @@ legend {
   }
 }
 
+.product-card__image-link:focus-visible .product-card__image > img,
+.product-card__image-link:focus-visible .product-card__secondary-image > img {
+  transform: scale(var(--product-card-image-zoom, var(--motion-image-zoom)));
+}
+
+.product-card__image-link--has-secondary:focus-visible .product-card__image {
+  opacity: 0;
+}
+
+.product-card__image-link:focus-visible .product-card__secondary-image {
+  opacity: var(--pcard-show-secondary-image);
+}
+
 .product-card__quick-add {
   position: absolute;
   right: 0.75rem;
