@@ -5,9 +5,13 @@
   endif
   assign mobile_image = section.settings.mobile_image | default: banner_image
   assign fallback_image = banner_image | default: mobile_image
-  assign banner_ratio = banner_image.aspect_ratio | default: 1.5
+  assign banner_ratio = fallback_image.aspect_ratio | default: 1.5
   assign banner_ratio_mobile = mobile_image.aspect_ratio | default: banner_ratio
-  assign banner_scheme = section.settings.color_scheme.id | default: section.settings.color_scheme
+  assign effective_scheme = section.settings.color_scheme
+  if section.settings.layout == 'classic'
+    assign effective_scheme = section.settings.classic_color_scheme | default: section.settings.color_scheme
+  endif
+  assign banner_scheme = effective_scheme.id | default: effective_scheme
   assign banner_width = section.settings.section_width | default: 'full_bleed'
   unless banner_width == 'page' or banner_width == 'full' or banner_width == 'full_bleed'
     assign banner_width = 'full_bleed'
@@ -71,7 +75,7 @@
 %}
 {% style %}
   #shopify-section-{{ section.id }} {
-    background: {{ section.settings.background_color | default: section.settings.color_scheme.settings.background }};
+    background: {{ section.settings.background_color | default: effective_scheme.settings.background }};
   }
 {% endstyle %}
 <div
@@ -122,6 +126,7 @@
   .collection-banner--background.collection-banner--overlay .collection-banner__media::after {
     position: absolute; inset: 0; background: var(--banner-overlay-color); content: ''; pointer-events: none;
   }
+  .collection-banner--split .collection-banner__content--contained { padding-inline: max(50px, calc((100vw - var(--page-width)) / 2)); }
   .collection-banner--background .collection-banner__content--contained { width: 100%; max-width: var(--page-width); margin-inline: auto; }
   .collection-banner--background.collection-banner--adapt .collection-banner__surface { min-height: 0; aspect-ratio: var(--banner-ratio); }
   .collection-banner--split .collection-banner__surface { grid-template-columns: repeat(2, minmax(0, 1fr)); min-height: var(--banner-height); }
@@ -180,7 +185,8 @@
   "settings": [
     {
       "type": "header",
-      "content": "Collection image"
+      "content": "Collection image",
+      "visible_if": "{{ section.settings.layout != 'classic' }}"
     },
     {
       "type": "select",
@@ -447,7 +453,15 @@
       "type": "color_scheme",
       "id": "color_scheme",
       "label": "t:labels.color_scheme",
-      "default": "scheme-1"
+      "default": "scheme-1",
+      "visible_if": "{{ section.settings.layout != 'classic' }}"
+    },
+    {
+      "type": "color_scheme",
+      "id": "classic_color_scheme",
+      "label": "t:labels.color_scheme",
+      "default": "scheme-1",
+      "visible_if": "{{ section.settings.layout == 'classic' }}"
     },
     {
       "type": "color",
