@@ -5,6 +5,12 @@
   padding-block: var(--social-padding-top, 0px) var(--social-padding-bottom, 0px);
 }
 
+/* Empty blocks retain a canvas selection target only in the Theme Editor. */
+.social-links-block--editor:not(:has(.social-links)) {
+  min-width: 24px;
+  min-height: 24px;
+}
+
 .social-links.social-links {
   display: flex;
   flex-direction: row;
@@ -34,6 +40,10 @@
 }
 
 /* Resolve the scheme's shadow color on the link, not on its ancestor wrapper. */
+.social-links .social-links__link[data-shadow='none'] {
+  box-shadow: none;
+}
+
 .social-links .social-links__link[data-shadow='extra_small'] {
   box-shadow: 0 1px 5px color-mix(in srgb, var(--shadow-color, currentColor) 12%, transparent);
 }
