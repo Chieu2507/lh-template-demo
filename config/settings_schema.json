@@ -1148,7 +1148,7 @@
         "type": "color",
         "alpha": true,
         "id": "input_background_color",
-        "default": "#F5F5F5",
+        "default": "#f2f2f2",
         "label": "t:labels.background_color",
         "visible_if": "{{ settings.input_style == 'solid' }}"
       },
