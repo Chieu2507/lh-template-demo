@@ -438,7 +438,7 @@ svg {
 button,
 input,
 textarea,
-select {
+:where(.form__control--select, select:not(.form__control)) {
   font: inherit;
 }
 
@@ -461,9 +461,12 @@ input[type='reset'] {
   --input-border-width: var(--input-border-width-outline);
 }
 
-input:not([type='checkbox']):not([type='radio']):not([type='hidden']),
-textarea,
-select {
+:where(
+  .form__control:not(.form__control--checkbox):not(.form__control--radio):not([type='checkbox']):not([type='radio']):not([type='hidden']),
+  input:not([type='checkbox']):not([type='radio']):not([type='hidden']):not(.form__control),
+  textarea:not(.form__control),
+  select:not(.form__control)
+) {
   width: 100%;
   min-height: var(--input-height);
   padding: 0.65rem 0.875rem;
@@ -474,7 +477,7 @@ select {
   font-size: var(--form-input-font-size);
 }
 
-textarea {
+:where(.form__control--textarea, textarea:not(.form__control)) {
   min-height: 8rem;
   resize: vertical;
 }
@@ -1551,8 +1554,11 @@ legend {
 }
 
 @media (max-width: 767px) {
-  input:not([type='checkbox']):not([type='radio']):not([type='hidden']),
-  select {
+  :where(
+    .form__control:not(textarea):not(.form__control--checkbox):not(.form__control--radio):not([type='checkbox']):not([type='radio']):not([type='hidden']),
+    input:not([type='checkbox']):not([type='radio']):not([type='hidden']):not(.form__control),
+    select:not(.form__control)
+  ) {
     min-height: var(--input-height-mobile);
   }
 }
@@ -1877,7 +1883,7 @@ legend {
     opacity: var(--product-card-show-secondary-image);
   }
 
-.product-card--variant-image-selected .product-card__media:is(:hover, :focus-within) .product-card__image {
+  .product-card--variant-image-selected .product-card__media:is(:hover, :focus-within) .product-card__image {
     opacity: 1;
   }
 
