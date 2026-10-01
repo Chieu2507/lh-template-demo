@@ -1475,7 +1475,7 @@
 .main-collection--blocks .main-collection__filter-dialog.is-sidebar .main-collection__filter-body{padding:0;overflow:visible}
 .main-collection--blocks .main-collection__filter-dialog.is-sidebar .main-collection__filter-header,.main-collection--blocks .main-collection__filter-dialog.is-sidebar .main-collection__filter-footer,.main-collection--blocks .main-collection__filter-dialog.is-sidebar .main-collection__filter-backdrop-pointer{display:none}
 .main-collection--blocks .main-collection__filter-dialog.is-sidebar .main-collection__filter-group{border-block-end:1px solid var(--color-border)}
-.main-collection--blocks .main-collection__filter-dialog.is-sidebar .main-collection__filter-group summary{box-sizing:border-box;min-height:0;padding-block:20px 24px;font-family:var(--font-heading-family)}
+.main-collection--blocks .main-collection__filter-dialog.is-sidebar .main-collection__filter-group summary{box-sizing:border-box;min-height:0;padding-block:20px 24px}
 .main-collection--blocks .main-collection__filter-dialog.is-sidebar .main-collection__filter-group:first-child summary,
 .main-collection--blocks .main-collection__filter-dialog.is-sidebar .main-collection__mobile-sort + .main-collection__filter-group summary{padding-block-start:0}
 .main-collection--blocks .main-collection__filter-dialog.is-sidebar .main-collection__filter-group[open] summary{padding-block-end:16px}
@@ -1625,9 +1625,6 @@
 .main-collection__sort-form[data-style='outline'] .main-collection__sort-trigger { background: transparent; }
 .main-collection--blocks .main-collection__toolbar .main-collection__sort-trigger {
   min-height: var(--collection-toolbar-button-height, var(--button-height));
-}
-.main-collection--blocks .main-collection__filter-group summary.heading-custom {
-  font-size: var(--collection-filter-heading-custom-size, var(--font-heading-custom));
 }
 .main-collection--blocks .main-collection__facets:has(.main-collection__filter-dialog.is-sidebar[open]) .main-collection__products--full-width {
   margin-inline-end: calc(var(--page-margin) * -1);
