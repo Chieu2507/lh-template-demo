@@ -47,7 +47,7 @@
       endif
     %}
     <div class="{% if block.settings.enable_swipe_mobile %}swiper-slide {% endif %}product-collection-grid__item product-card-layout__item product-list-banner__item">
-      {% content_for 'block', type: 'product-card', id: 'product-card', product: product_list_banner_card_product, closest.product: product_list_banner_card_product, placeholder: product_list_banner_card_placeholder, ranking_position: forloop.index %}
+      {% content_for 'block', type: 'product-card', id: 'product-card', product: product_list_banner_card_product, closest.product: product_list_banner_card_product, placeholder: product_list_banner_card_placeholder %}
     </div>
   {% endfor %}
 {% endcapture %}
@@ -175,7 +175,6 @@
           "id": "product-card",
           "static": true,
           "settings": {
-            "show_ranking": false,
             "color_type": "inherit",
             "color_scheme": "scheme-1"
           }

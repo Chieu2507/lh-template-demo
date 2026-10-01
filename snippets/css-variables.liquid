@@ -696,7 +696,7 @@
   if settings.product_card_swatch_type == 'variant_image'
     assign product_card_swatch_type = 'variant_image'
   endif
-  assign product_card_swatch_limit = settings.product_card_swatch_limit | default: 4
+  assign product_card_swatch_limit = settings.product_card_swatch_limit | default: 4 | plus: 0
   assign product_card_swatch_gap = settings.product_card_swatch_gap | default: 8
   assign product_card_swatch_width_desktop = settings.product_card_swatch_width_desktop | default: 30
   assign product_card_swatch_width_mobile = settings.product_card_swatch_width_mobile | default: 30

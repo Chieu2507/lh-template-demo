@@ -14,6 +14,11 @@
   @param {boolean} [sync_external_variants] - Whether matching picker changes elsewhere in the section update this picker
   @param {boolean} [update_url_on_change] - Whether this picker writes its selected variant to the page URL
   @param {boolean} [ignore_url_variant] - Whether a page URL variant is ignored when initializing this picker
+  @param {string} [swatch_style_override] - Optional local swatch style: color or variant_image
+  @param {string} [swatch_selected_style_override] - Optional local swatch selection style: border or underline
+  @param {number} [swatch_width_override] - Optional local desktop swatch width
+  @param {number} [swatch_width_mobile_override] - Optional local mobile swatch width
+  @param {string} [swatch_height_ratio_override] - Optional local CSS aspect ratio for swatches
   @param {boolean} [show_option_names] - Whether option legends remain visible
   @param {string} [color_option_display] - Block setting: text or color when Shopify supplies color swatches
   @param {string} [size_chart_option_name] - Product option name that should expose the size guide
@@ -27,20 +32,29 @@
 {% enddoc %}
 
 {% liquid
-  assign swatch_style = settings.swatch_style | default: 'color'
+  assign swatch_style = swatch_style_override | default: settings.swatch_style | default: 'color'
   unless swatch_style == 'color' or swatch_style == 'variant_image'
     assign swatch_style = 'color'
   endunless
 
-  assign swatch_width_desktop = settings.swatch_width_desktop | default: 40 | plus: 0
+  assign swatch_width_desktop = swatch_width_override | default: settings.swatch_width_desktop | default: 40 | plus: 0
   if swatch_width_desktop < 16 or swatch_width_desktop > 64
     assign swatch_width_desktop = 40
   endif
 
-  assign swatch_selected_style = 'underline'
-  if settings.swatch_selected_style == 'border'
-    assign swatch_selected_style = 'border'
+  assign swatch_width_mobile_style = 'var(--swatch-width-mobile)'
+  if swatch_width_mobile_override != blank
+    assign swatch_width_mobile = swatch_width_mobile_override | plus: 0
+    if swatch_width_mobile < 16 or swatch_width_mobile > 64
+      assign swatch_width_mobile = 40
+    endif
+    assign swatch_width_mobile_style = swatch_width_mobile | append: 'px'
   endif
+
+  assign swatch_selected_style = swatch_selected_style_override | default: settings.swatch_selected_style | default: 'underline'
+  unless swatch_selected_style == 'border' or swatch_selected_style == 'underline'
+    assign swatch_selected_style = 'underline'
+  endunless
 
   assign picker_type = type_override
   unless picker_type == 'button' or picker_type == 'dropdown'
@@ -125,7 +139,7 @@
 
 <variant-picker
   id="{{ picker_id }}"
-  class="variant-picker variant-picker--{{ picker_type }}"
+  class="variant-picker variant-picker--{{ picker_type }} variant-swatch--selected-style-{{ swatch_selected_style }}"
   data-product-variant-picker
   data-section-id="{{ picker_scope }}"
   data-sync-external-variants="{{ picker_sync_external_variants }}"
@@ -141,7 +155,7 @@
   data-unavailable-selection-label="{{ unavailable_selection_label | escape }}"
   data-size-chart-dialog-id="{{ size_chart_dialog_id }}"
   data-swatch-style="{{ swatch_style }}"
-  style="--product-swatch-width: {{ swatch_width_desktop }}px; --product-swatch-width-mobile: var(--swatch-width-mobile);"
+  style="--product-swatch-width: {{ swatch_width_desktop }}px; --product-swatch-width-mobile: {{ swatch_width_mobile_style }};{% if swatch_height_ratio_override != blank %} --swatch-height-ratio: {{ swatch_height_ratio_override }};{% endif %}"
 >
   {% if form_id == blank and block_id == blank %}
     <input type="hidden" name="id" value="{{ current_variant_id }}" data-variant-id data-variant-id-input>
@@ -205,7 +219,7 @@
     %}
 
     <fieldset class="variant-picker__option{% if option_uses_swatches %} variant-picker__option--swatches{% endif %}{% if option_uses_native_color_swatches %} variant-picker__option--native-color-swatches{% endif %}" data-option-index="{{ option_index }}">
-      <legend id="{{ option_id }}-label" class="variant-picker__label{% unless show_option_names %} visually-hidden{% endunless %}">
+      <legend id="{{ option_id }}-label" class="variant-picker__label body-sm{% unless show_option_names %} visually-hidden{% endunless %}">
         <span class="variant-picker__option-name">{{ product_option.name | escape }}</span><span class="variant-picker__selected-value" data-variant-selected-value{% unless show_option_names %} aria-hidden="true"{% endunless %}>{% if selected_option_value != blank %}: {{ selected_option_value | escape }}{% endif %}</span>
       </legend>
       {% if show_size_chart %}
@@ -341,7 +355,7 @@
                 {% endif %}
                 <span class="variant-picker__label{% if option_uses_swatches %} visually-hidden{% endif %}">{{ option_value.name | escape }}</span>
                 <span
-                  class="variant-picker__status{% if option_uses_swatches %} visually-hidden{% endif %}"
+                  class="variant-picker__status visually-hidden"
                   data-variant-status
                   {% if value_state == 'available' %}
                     hidden

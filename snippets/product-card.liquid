@@ -4,9 +4,6 @@
 
   @param {product} product - Product to render
   @param {string} [class] - Additional classes
-  @param {boolean} [show_ranking] - Whether to render the product position in its parent collection
-  @param {number} [ranking_position] - 1-based position in the parent collection
-  @param {string} [ranking_color] - Custom color for the ranking badge
   @param {string} [color_type] - Inherit or override the card color scheme
   @param {object} [color_scheme] - Optional block-level color scheme override
   @param {boolean} [placeholder] - Whether to render the styled placeholder card
@@ -122,7 +119,7 @@
   if settings.product_card_swatches_enabled == false or hide_swatches
     assign swatches_enabled = false
   endif
-  assign swatch_position = settings.product_card_swatch_position | default: 'bottom'
+  assign swatch_position = settings.product_card_swatch_position | default: 'top'
   unless swatch_position == 'top'
     assign swatch_position = 'bottom'
   endunless
@@ -166,9 +163,32 @@
   assign current_variant = blank
   assign product_card_image_placeholder = true
   if product != blank
-    assign secondary_image = product.images[1]
     assign current_variant = product.selected_or_first_available_variant
     assign card_image = current_variant.featured_image | default: product.featured_image
+    if card_image != blank
+      for product_image in product.images
+        if product_image.id != card_image.id and product_image.variants != blank
+          for image_variant in product_image.variants
+            if image_variant.id == current_variant.id
+              assign secondary_image = product_image
+              break
+            endif
+          endfor
+          if secondary_image != blank
+            break
+          endif
+        endif
+      endfor
+
+      if secondary_image == blank
+        for product_image in product.images
+          if product_image.id != card_image.id and product_image.variants == blank
+            assign secondary_image = product_image
+            break
+          endif
+        endfor
+      endif
+    endif
     if card_image
       assign product_card_image_placeholder = false
     endif
@@ -184,9 +204,6 @@
     card_class: card_class,
     attributes: attributes,
     placeholder_price: 19,
-    show_ranking: show_ranking,
-    ranking_position: ranking_position,
-    ranking_color: ranking_color,
     middle_content: middle_content,
     footer_content: footer_content
   %}
@@ -250,14 +267,11 @@
       %}
     {% endif %}
 
-    {% if show_ranking and ranking_position != blank %}
-      {% render 'product-card-ranking', position: ranking_position, color: ranking_color %}
-    {% endif %}
     </div>
 
   <div class="product-card__content">
     {% if swatches_enabled and swatch_position == 'top' %}
-      {% render 'product-card-swatches', product: product, image_width: image_width, image_height: image_height %}
+      {% render 'product-card-swatches', product: product, secondary_image_enabled: secondary_image_enabled, image_width: image_width, image_height: image_height %}
     {% endif %}
 
     <div class="product-card__details">
@@ -276,7 +290,7 @@
     {% endif %}
 
     {% if swatches_enabled and swatch_position == 'bottom' %}
-      {% render 'product-card-swatches', product: product, image_width: image_width, image_height: image_height %}
+      {% render 'product-card-swatches', product: product, secondary_image_enabled: secondary_image_enabled, image_width: image_width, image_height: image_height %}
     {% endif %}
 
     {% if footer_content != blank %}

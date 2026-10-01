@@ -1517,7 +1517,7 @@
           { "value": "top", "label": "t:options.position.top" },
           { "value": "bottom", "label": "t:options.position.bottom" }
         ],
-        "default": "bottom"
+        "default": "top"
       },
       {
         "type": "select",
@@ -1530,13 +1530,17 @@
         "default": "color"
       },
       {
-        "type": "range",
+        "type": "select",
         "id": "product_card_swatch_limit",
-        "min": 2,
-        "max": 6,
-        "step": 1,
         "label": "t:labels.swatch_limit",
-        "default": 4
+        "options": [
+          { "value": "2", "label": "t:options.swatch_limit.two" },
+          { "value": "3", "label": "t:options.swatch_limit.three" },
+          { "value": "4", "label": "t:options.swatch_limit.four" },
+          { "value": "5", "label": "t:options.swatch_limit.five" },
+          { "value": "6", "label": "t:options.swatch_limit.six" }
+        ],
+        "default": "4"
       },
       {
         "type": "range",
