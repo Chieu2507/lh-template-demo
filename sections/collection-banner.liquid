@@ -67,10 +67,10 @@
   }
 {% endstyle %}
 <div
-  class="collection-banner collection-banner--width-{{ banner_width }} collection-banner--{{ banner_layout }}{% if section.settings.show_overlay %} collection-banner--overlay{% endif %} color-scheme section-color-scope {{ banner_scheme }}{% if banner_width == 'page' %} container page-width section-spacing{% endif %}"
+  class="collection-banner collection-banner--width-{{ banner_width }} collection-banner--{{ banner_layout }}{% if section.settings.show_overlay %} collection-banner--overlay{% endif %} color-scheme section-color-scope {{ banner_scheme }}{% if banner_width == 'page' %} container page-width section-spacing{% elsif banner_width == 'full' %} container full-width section-spacing{% endif %}"
   style="--banner-height:{{ banner_height_desktop }}px;--banner-height-mobile:{{ banner_height_mobile }}px;--banner-gap:{{ section.settings.gap_desktop }}px;--banner-gap-mobile:{{ section.settings.gap_mobile }}px;--banner-overlay:1;--banner-overlay-color:{{ section.settings.overlay_color }};--banner-position-x:{{ banner_position_x }};--banner-position-y:{{ banner_position_y }};--text-align-default:{{ banner_text_align }};--section-padding-top:{{ section.settings.padding_top }}px;--section-padding-bottom:{{ section.settings.padding_bottom }}px;--section-padding-top-mobile:{{ section.settings.padding_top_mobile }}px;--section-padding-bottom-mobile:{{ section.settings.padding_bottom_mobile }}px"
 >
-  <div class="collection-banner__surface{% unless banner_width == 'page' %} section-spacing{% endunless %}">
+  <div class="collection-banner__surface{% unless banner_width == 'page' or banner_width == 'full' %} section-spacing{% endunless %}">
     {% if banner_image != blank %}
       <div class="collection-banner__media">
         <picture>
@@ -151,7 +151,7 @@
     inset: 0;
   }
 
-  .collection-banner--width-full .collection-banner__surface {
+  .collection-banner--width-full_bleed .collection-banner__surface {
     --page-margin-current: var(--page-margin-desktop);
   }
 
@@ -170,7 +170,7 @@
     text-align: var(--text-align-default, left);
   }
 
-  .collection-banner--width-full .collection-banner__content {
+  .collection-banner--width-full_bleed .collection-banner__content {
     padding-inline: calc(var(--page-margin-current) + var(--banner-content-padding, 50px));
   }
 
@@ -216,7 +216,7 @@
   }
 
   @media (min-width: 768px) and (max-width: 1023.98px) {
-    .collection-banner--width-full .collection-banner__surface {
+    .collection-banner--width-full_bleed .collection-banner__surface {
       --page-margin-current: var(--page-margin-tablet);
     }
 
@@ -226,7 +226,7 @@
   }
 
   @media (max-width: 767.98px) {
-    .collection-banner--width-full .collection-banner__surface {
+    .collection-banner--width-full_bleed .collection-banner__surface {
       --page-margin-current: var(--page-margin-mobile);
     }
 
@@ -240,7 +240,7 @@
       --banner-content-padding: 24px;
     }
 
-    .collection-banner--width-full .collection-banner__content {
+    .collection-banner--width-full_bleed .collection-banner__content {
       padding-inline: calc(var(--page-margin-current) + var(--banner-content-padding));
     }
 
