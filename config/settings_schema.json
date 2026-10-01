@@ -2069,12 +2069,6 @@
       },
       {
         "type": "checkbox",
-        "id": "social_show_labels",
-        "label": "Show social labels",
-        "default": false
-      },
-      {
-        "type": "checkbox",
         "id": "social_new_tab",
         "label": "Open links in a new tab",
         "default": true
