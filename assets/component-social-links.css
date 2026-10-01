@@ -64,8 +64,16 @@
   color: var(--body-color);
 }
 
+.social-links .social-links__link--text {
+  color: var(--social-text-color, inherit);
+}
+
 .social-links .social-links__link:is(:hover, :focus-visible) {
   color: var(--accent-color);
+}
+
+.social-links .social-links__link--text:is(:hover, :focus-visible) {
+  color: var(--social-text-color, var(--accent-color));
 }
 
 .social-links .social-links__link:focus-visible {

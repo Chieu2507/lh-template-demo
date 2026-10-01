@@ -5,22 +5,23 @@
 
   @param {string} [color_scheme] - Optional scheme class applied to each link.
     Layout and link appearance inherit custom properties from the owning block.
-  @param {string} [display_mode] - icon or text; inherit (or omitted) preserves
-    global social_show_labels behavior, rendering icons with optional labels.
+  @param {string} [display_mode] - icon (default) or text.
   @param {string} [direction] - horizontal (default) or vertical on all devices.
   @param {string} [shadow] - none, extra_small, small, medium, or large.
+  @param {string} [text_color] - Optional text-link color; blank inherits its context.
+  @param {string} [text_size] - Text-link size token: xs, sm, md, lg, xl, or xxl.
 {% enddoc %}
 
 {% liquid
-  assign show_icons = true
-  assign show_labels = settings.social_show_labels
-  case display_mode
-    when 'text'
-      assign show_icons = false
-      assign show_labels = true
-    when 'icon'
-      assign show_labels = false
-  endcase
+  assign social_display_mode = 'icon'
+  if display_mode == 'text'
+    assign social_display_mode = 'text'
+  endif
+
+  assign social_text_size = text_size | default: 'md'
+  unless social_text_size == 'xs' or social_text_size == 'sm' or social_text_size == 'md' or social_text_size == 'lg' or social_text_size == 'xl' or social_text_size == 'xxl'
+    assign social_text_size = 'md'
+  endunless
 
   assign social_direction = 'horizontal'
   if direction == 'vertical'
@@ -50,7 +51,8 @@
       %}
       {% if social_url != blank %}
         <a
-          class="social-links__link{% if color_scheme != blank %} color-scheme section-color-scope {{ color_scheme | escape }}{% endif %}"
+          class="social-links__link{% if social_display_mode == 'text' %} social-links__link--text{% else %} social-links__link--icon{% if color_scheme != blank %} color-scheme section-color-scope {{ color_scheme | escape }}{% endif %}{% endif %}"
+          {% if social_display_mode == 'text' and text_color != blank %}style="--social-text-color: {{ text_color | escape }};"{% endif %}
           data-shadow="{{ social_shadow | escape }}"
           href="{{ social_url | escape }}"
           {% if settings.social_new_tab %}
@@ -58,11 +60,11 @@
           {% endif %}
           aria-label="{{ social_label | escape }}"
         >
-          {% if show_icons %}
+          {% if social_display_mode == 'icon' %}
             {% render 'social-icon', icon: social_name %}
           {% endif %}
-          {% if show_labels %}
-            <span class="social-links__label">{{ social_label | escape }}</span>
+          {% if social_display_mode == 'text' %}
+            <span class="social-links__label body-{{ social_text_size }}">{{ social_label | escape }}</span>
           {% endif %}
         </a>
       {% endif %}
