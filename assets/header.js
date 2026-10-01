@@ -256,6 +256,7 @@
     const transparentScheme = headerTop?.dataset.headerTransparentScheme;
 
     if (!headerTop || !transparentScheme) return;
+    useBaseScheme ||= !header.classList.contains('header--overlay');
 
     headerTop.classList.toggle('header-top--transparent-scheme', !useBaseScheme);
     headerTop.classList.toggle('section-color-scope', !useBaseScheme);
@@ -308,7 +309,13 @@
     const scrollY = Math.max(window.scrollY, 0);
     const scrollDelta = scrollY - lastScrollY;
 
+    const firstSection = document.querySelector('#MainContent > .shopify-section');
+    const collectionOverlay = Boolean(firstSection?.querySelector('[data-collection-transparent-header]'));
+
     headerStates.forEach(({ header, stickyType }) => {
+      const overlayEnabled = collectionOverlay || Boolean(header.querySelector('[data-header-overlay]'));
+      header.classList.toggle('header--overlay', overlayEnabled);
+      header.classList.toggle('header--overlap-first-section', overlayEnabled);
       const isSticky = stickyType !== 'none';
       const isScrolled = isSticky && scrollY > 8;
       const isSubmenuOpen = hasOpenHeaderSubmenu(header);
@@ -968,13 +975,17 @@
   document.addEventListener('shopify:section:load', (event) => {
     initializeHeaders(event.target);
     initializeFooterLocalizations(event.target);
+    scheduleUpdate();
   });
 
   document.addEventListener('shopify:section:unload', (event) => {
     destroyLocalizationOverlays(event.target);
     removeFooterLocalizations(event.target);
     removeHeaders(event.target);
+    scheduleUpdate();
   });
+
+  document.addEventListener('shopify:section:reorder', scheduleUpdate);
 
   document.addEventListener('shopify:block:select', (event) => {
     const megaMenu = event.target.closest?.('[data-header-mega-menu]');

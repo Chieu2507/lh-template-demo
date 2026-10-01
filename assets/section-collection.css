@@ -1460,15 +1460,17 @@
 @media(min-width:1200px){
 .main-collection--blocks .main-collection__facets:has([data-desktop-layout="sidebar"].is-sidebar){grid-template-columns:0px minmax(0,1fr);column-gap:0;transition:grid-template-columns 300ms cubic-bezier(.22,1,.36,1),column-gap 300ms cubic-bezier(.22,1,.36,1)}
 .main-collection--blocks .main-collection__facets:has([data-desktop-layout="sidebar"].is-sidebar) .main-collection__products{grid-column:2}
-.main-collection--blocks .main-collection__facets:has(.main-collection__filter-dialog.is-sidebar[open]){grid-template-columns:minmax(200px,270px) minmax(0,1fr);column-gap:24px}
+.main-collection--blocks .main-collection__facets:has(.main-collection__filter-dialog.is-sidebar[open]){grid-template-columns:270px minmax(0,1fr);column-gap:24px}
 .main-collection--blocks .main-collection__facets:has(.main-collection__filter-dialog.is-sidebar[open]) .main-collection__products{grid-column:2}
-.main-collection--blocks .main-collection__filter-panel-positioner:has(.is-sidebar[open]){display:block;position:static;grid-column:1;grid-row:2;min-width:0;width:100%}
-.main-collection--blocks .main-collection__filter-panel-positioner:has(.is-sidebar[open]){
+.main-collection--blocks .main-collection__filter-panel-positioner:has(.is-sidebar){display:block;grid-column:1;grid-row:2;min-width:0;width:0;opacity:0;overflow:clip;transition:width 300ms cubic-bezier(.22,1,.36,1),opacity 300ms cubic-bezier(.22,1,.36,1)}
+.main-collection--blocks .main-collection__filter-panel-positioner:has(.is-sidebar[open]){width:270px;opacity:1}
+.main-collection--blocks .main-collection__filter-panel-positioner:has(.is-sidebar){
   position:sticky;
   top:var(--collection-sidebar-top, calc(var(--header-height, 0px) + 16px));
   align-self:start;
 }
-.main-collection--blocks .main-collection__filter-dialog.is-sidebar{position:static;width:100%;height:auto;max-height:none;margin:0;overflow:visible;transform:none;animation:none;box-shadow:none;background:transparent}
+/* Reveal a fixed-width filter through the animated positioner, without rewrapping its contents. */
+.main-collection--blocks .main-collection__filter-dialog.is-sidebar{position:static;width:270px;min-width:270px;max-width:none;height:auto;max-height:none;margin:0;overflow:visible;transform:none;animation:none;box-shadow:none;background:transparent}
 .main-collection--blocks .main-collection__filter-dialog.is-sidebar .main-collection__filter-form{height:auto;overflow:visible;background:transparent}
 .main-collection--blocks .main-collection__filter-dialog.is-sidebar .main-collection__filter-body{padding:0;overflow:visible}
 .main-collection--blocks .main-collection__filter-dialog.is-sidebar .main-collection__filter-header,.main-collection--blocks .main-collection__filter-dialog.is-sidebar .main-collection__filter-footer,.main-collection--blocks .main-collection__filter-dialog.is-sidebar .main-collection__filter-backdrop-pointer{display:none}
@@ -1480,15 +1482,12 @@
 .main-collection--blocks .main-collection__filter-dialog.is-sidebar .main-collection__filter-content{padding-block-end:24px}
 .main-collection--blocks .main-collection__filter-dialog.is-sidebar .main-collection__filter-values{padding:0}
 .main-collection--blocks .main-collection__facets:has([data-sidebar-visibility="always"].is-sidebar) .main-collection__filter-button{display:none}
-.main-collection--blocks .main-collection__facets.is-sidebar-animating:has(.is-sidebar[open]){grid-template-columns:270px minmax(0,1fr);column-gap:24px}
 .main-collection--blocks .main-collection__facets.is-sidebar-animating.is-sidebar-collapsed:has(.is-sidebar[open]){grid-template-columns:0px minmax(0,1fr);column-gap:0}
-.main-collection--blocks .is-sidebar-animating .main-collection__filter-panel-positioner:has(.is-sidebar[open]){min-width:0;overflow:clip;opacity:1;transition:opacity 300ms cubic-bezier(.22,1,.36,1)}
-.main-collection--blocks .is-sidebar-animating.is-sidebar-collapsed .main-collection__filter-panel-positioner:has(.is-sidebar[open]){opacity:0}
-.main-collection--blocks .is-sidebar-animating .main-collection__filter-dialog.is-sidebar{width:100%;min-width:0}
+.main-collection--blocks .is-sidebar-animating.is-sidebar-collapsed .main-collection__filter-panel-positioner:has(.is-sidebar[open]){width:0;opacity:0}
 @media(prefers-reduced-motion:reduce){
   .main-collection--blocks .main-collection__facets.is-sidebar-animating{transition:none}
   .main-collection--blocks .main-collection__facets:has([data-desktop-layout="sidebar"].is-sidebar),
-  .main-collection--blocks .is-sidebar-animating .main-collection__filter-panel-positioner:has(.is-sidebar[open]){transition:none}
+  .main-collection--blocks .main-collection__filter-panel-positioner:has(.is-sidebar){transition:none}
 }
 }
 @media(max-width:1023.98px){
