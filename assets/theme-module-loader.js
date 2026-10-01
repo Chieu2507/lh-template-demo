@@ -63,7 +63,7 @@
     const existing = modules.get(src);
     if (existing) {
       setState(script, existing.state);
-      return existing.promise;
+      return initializeMarker(script, existing.promise);
     }
 
     const record = { state: 'loading', promise: null };
@@ -71,16 +71,30 @@
     // share one attempt. A failed attempt may be retried by a later render.
     modules.set(src, record);
     markMatching(src, 'loading');
-    record.promise = import(src).then(() => {
+    record.promise = import(src).then((module) => {
       record.state = 'loaded';
       markMatching(src, 'loaded');
+      return module;
     }, (error) => {
       modules.delete(src);
       markMatching(src, 'error', error);
       reportError(src, error);
     });
-    return record.promise;
+    return initializeMarker(script, record.promise);
   };
+
+  // Module evaluation happens once; inserted storefront/editor markup still
+  // needs initialization after that evaluation, even when the import is cached.
+  const initializeMarker = (script, promise) => promise.then((module) => {
+    if (!script.isConnected || !module?.initializeThemeModule) return;
+    const root = script.closest('.shopify-section') || script.parentElement;
+    try {
+      module.initializeThemeModule(root);
+    } catch (error) {
+      setState(script, 'error', error);
+      reportError(script.dataset.themeModule, error);
+    }
+  });
 
   const markersWithin = (root) => {
     const scripts = Array.from(root.querySelectorAll?.(selector) || []);
@@ -124,13 +138,23 @@
     try {
       const existing = modules.get(moduleURL(script));
       if (existing) {
-        setState(script, existing.state);
+        load(script);
         return;
       }
     } catch {
       // Validate and report in load(), without throwing out of scan().
     }
-    const target = script.parentElement || script;
+    // Markers are siblings of their component. Their parent can be a
+    // display:contents layout slot (featured collection on desktop), which
+    // has no box for IntersectionObserver to intersect. Find a boxed ancestor.
+    let target = script.parentElement;
+    while (target && !Array.from(target.getClientRects()).some((rect) => rect.width > 0 && rect.height > 0)) {
+      target = target.parentElement;
+    }
+    if (!target) {
+      load(script);
+      return;
+    }
     if (observedTargets.has(target)) return;
     observedTargets.add(target);
     if (observer) observer.observe(target);
@@ -140,10 +164,12 @@
   const scan = (root = document) => markersWithin(root).forEach(observe);
 
   const unobserve = (root) => {
-    markersWithin(root).forEach((script) => {
-      const target = script.parentElement || script;
-      observer?.unobserve(target);
-      observedTargets.delete(target);
+    // The observation target may be above the marker's immediate parent.
+    [root, ...Array.from(root.querySelectorAll?.('*') || [])].forEach((target) => {
+      if (observedTargets.has(target)) {
+        observer?.unobserve(target);
+        observedTargets.delete(target);
+      }
     });
   };
 
