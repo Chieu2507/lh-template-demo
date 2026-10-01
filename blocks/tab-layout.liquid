@@ -172,7 +172,7 @@
   {{ block.shopify_attributes }}
 >
   <div
-    class="tab-layout__navigation"
+    class="tab-layout__navigation scrollbar{% if tab_layout_vertical_layout %} scrollbar--vertical{% else %} scrollbar--horizontal{% endif %} scrollbar--hidden"
     role="tablist"
     aria-label="{{ 'accessibility.collection_tabs' | t | escape }}"
     data-tab-navigation
@@ -196,26 +196,16 @@
     column-gap: calc(var(--layout-grid-gap, 24px) * 0.75);
     row-gap: 0.5rem;
     max-width: 100%;
-    overflow-x: auto;
-    overflow-y: hidden;
-    overscroll-behavior-inline: contain;
     padding-block: 0;
-    scrollbar-width: none;
   }
 
   [data-layout-direction='horizontal'] .tab-layout[data-vertical-layout='true'] .tab-layout__navigation {
     flex-direction: column;
     align-items: var(--collection-tabs-controls-alignment, flex-start);
     justify-content: flex-start;
-    overflow-x: hidden;
-    overflow-y: auto;
   }
 
   .tab-layout__navigation[hidden] {
-    display: none;
-  }
-
-  .tab-layout__navigation::-webkit-scrollbar {
     display: none;
   }
 

@@ -8,6 +8,8 @@
   @param {boolean} [show_ranking] - Whether to render the placeholder position
   @param {number} [ranking_position] - 1-based position in the parent collection
   @param {string} [ranking_color] - Custom color for the ranking badge
+  @param {string} [middle_content] - Optional HTML after product details
+  @param {string} [footer_content] - Optional HTML at the bottom of card content
 
   @example
   {% render 'product-card-placeholder', card_class: 'product-card product-card--standard' %}
@@ -30,5 +32,11 @@
       {% render 'product-card-title', placeholder: true %}
       {% render 'product-card-price', placeholder: true, placeholder_price: placeholder_price %}
     </div>
+    {% if middle_content != blank %}
+      {{ middle_content }}
+    {% endif %}
+    {% if footer_content != blank %}
+      {{ footer_content }}
+    {% endif %}
   </div>
 </article>

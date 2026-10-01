@@ -14,6 +14,7 @@
   @param {string} [error_text] - Optional error text
   @param {string} [autocomplete] - Optional autocomplete value
   @param {string} [class] - Optional class added to the field wrapper
+  @param {string} [control_class] - Optional class added to the control
   @param {string} [inputmode] - Optional input mode hint for mobile keyboards
   @param {string} [pattern] - Optional HTML validation pattern
   @param {boolean} [required] - Whether the field is required
@@ -27,6 +28,22 @@
 {% liquid
   assign control_type = control | default: 'input'
   assign input_type = type | default: 'text'
+  assign control_classes = 'form__control'
+  case control_type
+    when 'textarea'
+      assign control_classes = control_classes | append: ' form__control--textarea'
+    when 'select'
+      assign control_classes = control_classes | append: ' form__control--select'
+    else
+      assign control_classes = control_classes | append: ' form__control--input'
+  endcase
+  if error_text != blank
+    assign control_classes = control_classes | append: ' form__control--error'
+  endif
+  if control_class != blank
+    assign control_classes = control_classes | append: ' ' | append: control_class
+  endif
+
   assign field_classes = 'form__field'
   assign label_classes = 'form__label'
   if hide_label
@@ -57,7 +74,7 @@
   {% case control_type %}
     {% when 'textarea' %}
       <textarea
-        class="form__control form__control--textarea{% if error_text != blank %} form__control--error{% endif %}"
+        class="{{ control_classes }}"
         id="{{ id }}"
         name="{{ name }}"
         {% if placeholder != blank %}
@@ -88,7 +105,7 @@
     {% when 'select' %}
       <div class="form__control-wrap form__control-wrap--select">
         <select
-          class="form__control form__control--select{% if error_text != blank %} form__control--error{% endif %}"
+          class="{{ control_classes }}"
           id="{{ id }}"
           name="{{ name }}"
           {% if describedby != blank %}
@@ -118,7 +135,7 @@
       </div>
     {% else %}
       <input
-        class="form__control form__control--input{% if error_text != blank %} form__control--error{% endif %}"
+        class="{{ control_classes }}"
         id="{{ id }}"
         name="{{ name }}"
         type="{{ input_type | escape }}"

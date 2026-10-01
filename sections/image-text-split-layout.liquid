@@ -75,12 +75,7 @@
 
     <div class="container {{ image_text_split_container_width }} image-text-split-layout__container">
       <div class="image-text-split-layout__grid">
-        <div class="image-text-split-layout__text">
-          {% content_for 'block', type: 'header', id: 'text' %}
-        </div>
-        <div class="image-text-split-layout__media">
-          {% content_for 'block', type: 'group', id: 'media' %}
-        </div>
+        {% content_for 'blocks' %}
       </div>
     </div>
   </div>
@@ -129,22 +124,9 @@
     min-width: 0;
   }
 
-  .image-text-split-layout__text,
-  .image-text-split-layout__media,
-  .image-text-split-layout__text > .header,
-  .image-text-split-layout__media > .group,
-  .image-text-split-layout__media > .group > .image-block {
-    width: 100%;
+  .image-text-split-layout__grid > * {
     max-width: 100%;
     min-width: 0;
-  }
-
-  .image-text-split-layout__text {
-    align-self: var(--image-text-split-position, start);
-  }
-
-  .image-text-split-layout__media {
-    align-self: var(--image-text-split-position, start);
   }
 
   @media (max-width: 767.98px) {
@@ -159,10 +141,6 @@
       gap: var(--image-text-split-gap-mobile, var(--image-text-split-gap-desktop, 64px));
     }
 
-    .image-text-split-layout__text,
-    .image-text-split-layout__media {
-      width: 100%;
-    }
   }
 {% endstylesheet %}
 
@@ -171,7 +149,6 @@
   "name": "t:general.image_text_split_layout",
   "class": "section-image-text-split-layout",
   "enabled_on": { "templates": ["*"] },
-  "max_blocks": 2,
   "blocks": [
     { "type": "header" },
     { "type": "group" }
@@ -256,8 +233,6 @@
       "blocks": [
         {
           "type": "header",
-          "id": "text",
-          "static": true,
           "settings": {
             "width": "fill",
             "alignment": "left",
@@ -297,8 +272,6 @@
         },
         {
           "type": "group",
-          "id": "media",
-          "static": true,
           "settings": {
             "direction": "vertical",
             "alignment": "left",

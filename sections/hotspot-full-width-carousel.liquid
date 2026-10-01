@@ -311,7 +311,6 @@
     padding-block: var(--hotspot-carousel-padding-top, 0px) var(--hotspot-carousel-padding-bottom, 0px);
     background: var(--hotspot-carousel-background, var(--background-color));
     --page-margin-current: var(--page-margin-desktop);
-    --hotspot-carousel-content-inline-padding: var(--page-margin-current);
   }
 
   .hotspot-full-width-carousel__background {
@@ -333,7 +332,6 @@
   }
 
   .hotspot-full-width-carousel--width-page .hotspot-full-width-carousel__container {
-    --page-margin-current: var(--page-margin-desktop);
     max-width: var(--page-width);
     padding-inline: var(--page-margin-current);
     margin-inline: auto;
@@ -435,7 +433,7 @@
     gap: 1rem;
     align-items: center;
     justify-content: flex-start;
-    padding: 2.4rem var(--hotspot-carousel-content-inline-padding);
+    padding: 2.4rem var(--page-margin-current);
     color: var(--heading-color);
   }
 
@@ -478,7 +476,7 @@
     inset-inline: 0 !important;
     width: 100% !important;
     margin: 0 !important;
-    padding: 2.4rem var(--hotspot-carousel-content-inline-padding);
+    padding: 2.4rem var(--page-margin-current);
     color: var(--heading-color);
     display: flex;
     align-items: center;
@@ -491,7 +489,7 @@
 
   .hotspot-full-width-carousel__pagination[data-pagination-type='bullets'] {
     width: auto !important;
-    padding-inline: var(--hotspot-carousel-content-inline-padding);
+    padding-inline: var(--page-margin-current);
   }
 
   .hotspot-full-width-carousel__pagination .swiper-pagination-bullet {
@@ -533,7 +531,7 @@
   }
 
   .hotspot-full-width-carousel__pagination[data-pagination-type='progress_bar'] {
-    inset-inline: var(--hotspot-carousel-content-inline-padding) !important;
+    inset-inline: var(--page-margin-current) !important;
     width: auto !important;
     padding-inline: 0;
   }
@@ -561,12 +559,7 @@
   @media (min-width: 768px) and (max-width: 1149.98px) {
     .hotspot-full-width-carousel {
       --page-margin-current: var(--page-margin-tablet);
-      --hotspot-carousel-content-inline-padding: var(--page-margin-current);
       padding-block: calc(var(--hotspot-carousel-padding-top, 0px) * 0.75) calc(var(--hotspot-carousel-padding-bottom, 0px) * 0.75);
-    }
-
-    .hotspot-full-width-carousel--width-page .hotspot-full-width-carousel__container {
-      --page-margin-current: var(--page-margin-tablet);
     }
 
     .hotspot-full-width-carousel--width-full .hotspot-full-width-carousel__container {
@@ -574,19 +567,14 @@
     }
 
     .hotspot-full-width-carousel__pagination {
-      padding-inline: var(--hotspot-carousel-content-inline-padding);
+      padding-inline: var(--page-margin-current);
     }
   }
 
   @media (max-width: 767.98px) {
     .hotspot-full-width-carousel {
       --page-margin-current: var(--page-margin-mobile);
-      --hotspot-carousel-content-inline-padding: var(--page-margin-current);
       padding-block: var(--hotspot-carousel-padding-top-mobile, calc(var(--hotspot-carousel-padding-top, 0px) * 0.5)) var(--hotspot-carousel-padding-bottom-mobile, calc(var(--hotspot-carousel-padding-bottom, 0px) * 0.5));
-    }
-
-    .hotspot-full-width-carousel--width-page .hotspot-full-width-carousel__container {
-      --page-margin-current: var(--page-margin-mobile);
     }
 
     .hotspot-full-width-carousel--width-full .hotspot-full-width-carousel__container {
@@ -638,7 +626,7 @@
 
     .hotspot-full-width-carousel__pagination {
       padding-block: 1.6rem;
-      padding-inline: var(--hotspot-carousel-content-inline-padding);
+      padding-inline: var(--page-margin-current);
     }
 
     .hotspot-full-width-carousel__fraction-controls {
@@ -676,7 +664,7 @@
     }
 
     .hotspot-full-width-carousel__pagination[data-pagination-type='bullets'] {
-      padding-inline: var(--hotspot-carousel-content-inline-padding);
+      padding-inline: var(--page-margin-current);
     }
   }
 {% endstylesheet %}

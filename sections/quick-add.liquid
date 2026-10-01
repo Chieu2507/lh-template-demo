@@ -66,10 +66,10 @@
     style="--quick-add-gap-desktop: {{ quick_add_gap_desktop }}px; --quick-add-gap-mobile: {{ quick_add_gap_mobile }}px;"
   >
     <div class="quick-add__layout" data-quick-add-layout hidden>
-      <div class="quick-add__media">
+      <div class="quick-add__media scrollbar scrollbar--vertical">
         {% content_for 'block', type: '_overlay-product-media', id: 'product-media' %}
       </div>
-      <div class="quick-add__details">
+      <div class="quick-add__details scrollbar scrollbar--vertical">
         {% content_for 'block', type: '_product-details', id: 'product-details' %}
       </div>
     </div>
@@ -96,7 +96,7 @@
   desktop_layout: quick_add_desktop_layout,
   mobile_layout: quick_add_mobile_layout,
   width: quick_add_width,
-  body_class: 'quick-add__body',
+  body_class: 'quick-add__body scrollbar--both',
   append_to_body: true,
   attributes: quick_add_attributes
 %}

@@ -175,6 +175,17 @@
   endunless
 
   assign product_collection_grid_class = 'product-collection-grid product-collection-grid--' | append: product_collection_grid_layout
+  assign product_collection_grid_scroll_class = blank
+  if product_collection_grid_layout == 'carousel'
+    assign product_collection_grid_scroll_class = ' scrollbar scrollbar--horizontal'
+  elsif product_collection_grid_layout == 'grid'
+    if enable_swipe_mobile or product_collection_grid_mobile_carousel
+      assign product_collection_grid_scroll_class = ' scrollbar scrollbar--horizontal-mobile'
+    endif
+  endif
+  if product_collection_grid_scroll_class != blank
+    assign product_collection_grid_class = product_collection_grid_class | append: product_collection_grid_scroll_class
+  endif
   if enable_swipe_mobile and product_collection_grid_layout == 'grid'
     assign product_collection_grid_class = product_collection_grid_class | append: ' product-collection-grid--swipe-mobile'
   endif

@@ -1140,15 +1140,17 @@
         "max": 3,
         "step": 1,
         "unit": "px",
-        "label": "t:labels.border_width",
-        "default": 1
+        "label": "t:labels.outline_thickness",
+        "default": 1,
+        "visible_if": "{{ settings.input_style == 'outline' }}"
       },
       {
         "type": "color",
         "alpha": true,
         "id": "input_background_color",
-        "default": "#FFFFFF",
-        "label": "t:labels.background_color"
+        "default": "#F5F5F5",
+        "label": "t:labels.background_color",
+        "visible_if": "{{ settings.input_style == 'solid' }}"
       },
       {
         "type": "header",

@@ -72,11 +72,11 @@
 <script type="module" src="{{ 'collections-with-background.js' | asset_url }}"></script>
 
 {% stylesheet %}
-  .collections-with-background { position: relative; isolation: isolate; overflow: hidden; --section-padding-top: var(--collections-background-padding-top); --section-padding-bottom: var(--collections-background-padding-bottom); background: var(--background-color); }
+  .collections-with-background { position: relative; isolation: isolate; overflow: hidden; --page-margin-current: var(--page-margin-desktop); --section-padding-top: var(--collections-background-padding-top); --section-padding-bottom: var(--collections-background-padding-bottom); background: var(--background-color); }
   .collections-with-background__background { position: absolute; z-index: -1; inset: 0; }
   .collections-with-background__background :is(img, video, .collections-with-background__background-placeholder) { display: block; width: 100%; height: 100%; object-fit: cover; }
   .collections-with-background__background-placeholder svg { width: 100%; height: 100%; fill: var(--placeholder-fill-color); }
-  .collections-with-background__frame { --collections-background-page-margin: var(--page-margin-desktop); position: relative; width: calc(100% - (var(--collections-background-page-margin) * 2)); min-height: 32rem; margin-inline: auto; overflow: hidden; background: var(--background-color); }
+  .collections-with-background__frame { position: relative; width: calc(100% - (var(--page-margin-current) * 2)); min-height: 32rem; margin-inline: auto; overflow: hidden; background: var(--background-color); }
   .collections-with-background__frame--page_width { max-width: var(--page-width); }
   .collections-with-background__frame--full_width { max-width: none; }
   .collections-with-background__frame--full_width_no_padding { width: 100%; max-width: none; }
@@ -123,11 +123,11 @@
   .collection-background-item__trigger:focus-visible { outline: 2px solid currentColor; outline-offset: .25rem; }
   @media (prefers-reduced-motion: reduce) { .collection-background-item__panel, .collection-background-item__media :is(.media__inner > img, .media__inner > video, .media__inner > svg, .media__inner > picture > img) { transition: none; } }
   .is-sticky-title .collections-with-background__titles { position: fixed; z-index: var(--z-sticky, 20); }
-  @media (min-width: 768px) and (max-width: 1149.98px) { .collections-with-background { --section-padding-top: calc(var(--collections-background-padding-top) * .75); --section-padding-bottom: calc(var(--collections-background-padding-bottom) * .75); } .collections-with-background__frame { --collections-background-page-margin: var(--page-margin-tablet); } }
+  @media (min-width: 768px) and (max-width: 1149.98px) { .collections-with-background { --page-margin-current: var(--page-margin-tablet); --section-padding-top: calc(var(--collections-background-padding-top) * .75); --section-padding-bottom: calc(var(--collections-background-padding-bottom) * .75); } }
   @media (max-width: 767.98px) {
-    .collections-with-background { --section-padding-top: var(--collections-background-padding-top-mobile, calc(var(--collections-background-padding-top) * .5)); --section-padding-bottom: var(--collections-background-padding-bottom-mobile, calc(var(--collections-background-padding-bottom) * .5)); }
-    .collections-with-background__frame { --collections-background-page-margin: var(--page-margin-mobile); min-height: 0; overflow: visible; }
-    .collections-with-background__frame--mobile-page { width: calc(100% - (var(--collections-background-page-margin) * 2)); margin-inline: auto; }
+    .collections-with-background { --page-margin-current: var(--page-margin-mobile); --section-padding-top: var(--collections-background-padding-top-mobile, calc(var(--collections-background-padding-top) * .5)); --section-padding-bottom: var(--collections-background-padding-bottom-mobile, calc(var(--collections-background-padding-bottom) * .5)); }
+    .collections-with-background__frame { min-height: 0; overflow: visible; }
+    .collections-with-background__frame--mobile-page { width: calc(100% - (var(--page-margin-current) * 2)); margin-inline: auto; }
     .collections-with-background__frame--mobile-full { width: 100%; margin-inline: 0; }
     .collections-with-background .collections-with-background__panels { position: relative; display: grid; grid-template-columns: minmax(0, 1fr); gap: var(--collections-background-gap-mobile); }
     .collections-with-background .collections-with-background__mobile-swiper { position: relative; inset: auto; width: 100%; }

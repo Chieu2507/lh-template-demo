@@ -72,7 +72,7 @@
         {{ press_quotes_items }}
       </div>
     </div>
-    <div class="press-quotes__pagination reveal-carousel__pagination" aria-label="{{ press_quotes_aria_label | escape }}">
+    <div class="press-quotes__pagination reveal-carousel__pagination scrollbar scrollbar--horizontal scrollbar--hidden" aria-label="{{ press_quotes_aria_label | escape }}">
       {% for press_item in block.blocks %}
         <button
           class="press-quotes__pagination-button reveal-carousel__pagination-button btn--unstyled"
@@ -147,15 +147,8 @@
     max-width: 100%;
     margin: -0.3rem;
     padding: 0.3rem;
-    overflow-x: auto;
-    overscroll-behavior-x: contain;
     scroll-snap-type: x mandatory;
-    scrollbar-width: none;
     -webkit-overflow-scrolling: touch;
-  }
-
-  .press-quotes__pagination::-webkit-scrollbar {
-    display: none;
   }
 
   .press-quotes.reveal-carousel .press-quotes__pagination-button {

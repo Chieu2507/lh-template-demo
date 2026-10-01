@@ -479,11 +479,6 @@
   assign button_tertiary_underline_offset = settings.button_tertiary_underline_offset | default: 3
   assign button_default_variant = 'primary'
 
-  assign input_style = 'solid'
-  if settings.input_style == 'outline'
-    assign input_style = 'outline'
-  endif
-
   assign input_height_desktop = settings.input_height_desktop
   if input_height_desktop == blank
     assign input_height_desktop = 48
@@ -508,10 +503,7 @@
     when 'pill'
       assign input_radius = 'var(--radius-pill)'
   endcase
-  assign input_background_color = settings.input_background_color | default: '#FFFFFF'
-  if input_style == 'outline'
-    assign input_background_color = 'transparent'
-  endif
+  assign input_background_color = settings.input_background_color | default: '#F5F5F5'
 
   assign form_label_font_size = 'var(--font-body-md)'
   case settings.form_label_typography
@@ -856,6 +848,8 @@
   {% endif %}
 
   :root {
+    --header-height: 0px;
+    --header-sticky-height: 0px;
     --font-body-family: {% if body_font != blank %}{{ body_font.family }}, {{ body_font.fallback_families }}{% else %}system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif{% endif %};
     --font-body-style: {% if body_font != blank %}{{ body_font.style }}{% else %}normal{% endif %};
     --font-body-weight: {% if body_font != blank %}{{ body_font.weight }}{% else %}400{% endif %};
@@ -878,7 +872,6 @@
     --page-margin-desktop: {{ page_margin_desktop }}px;
     --page-margin-tablet: {{ page_margin_tablet }}px;
     --page-margin-mobile: {{ mobile_margin }}px;
-    --page-margin: var(--page-margin-desktop);
     --layout-section-gap: {{ section_gap }}px;
     --layout-grid-gap: {{ grid_gap }}px;
 
@@ -943,11 +936,6 @@
     --font-eyebrow-letter-spacing: {{ eyebrow_letter_spacing }};
     --font-eyebrow-text-transform: {{ eyebrow_text_case }};
     --font-eyebrow-weight: 500;
-    --font-p3-size: var(--font-eyebrow-size);
-    --font-p3-line-height: var(--font-eyebrow-line-height);
-    --font-p3-letter-spacing: var(--font-eyebrow-letter-spacing);
-    --font-p3-text-transform: var(--font-eyebrow-text-transform);
-    --font-p3-weight: var(--font-eyebrow-weight);
     --type-body-size: var(--font-body-md);
     --type-body-leading: var(--font-body-line-height);
     --type-heading-1-size: var(--font-heading-display);
@@ -1060,12 +1048,13 @@
     --button-tertiary-text-decoration: {{ button_tertiary_underline }};
     --button-tertiary-underline-display: {{ button_tertiary_underline_display }};
 
-    --input-style: {{ input_style }};
     --input-height: {{ input_height_desktop }}px;
     --input-height-mobile: {{ input_height_mobile }}px;
     --input-radius: {{ input_radius }};
-    --input-border-width: {{ input_border_width }}px;
-    --input-background-color: {{ input_background_color }};
+    --input-border-width-outline: {{ input_border_width }}px;
+    --input-border-width: 0px;
+    --input-background-color-solid: {{ input_background_color }};
+    --input-background-color: var(--input-background-color-solid);
     --input-border-color: var(--border-color);
     --input-focus-color: var(--accent-color);
     --input-error-color: var(--sale-price-color);
@@ -1080,50 +1069,55 @@
     --input-border: var(--input-border-color);
     --input-focus: var(--input-focus-color);
     --style-border-radius-inputs: var(--input-radius);
+    --quantity-selector-height: 3.4rem;
+    --quantity-selector-height-mobile: 3.4rem;
+    --quantity-selector-button-width: 3rem;
+    --quantity-selector-input-width: 3rem;
+    --quantity-selector-input-width-mobile: 2rem;
+    --quantity-selector-icon-size: 1.4rem;
 
-    --pcard-style: {{ product_card_style }};
-    --pcard-border-width: {{ product_card_border_width }}px;
-    --pcard-shadow: {{ product_card_shadow }};
-    --pcard-title-font-family: {{ product_card_title_font_family }};
-    --pcard-title-size: {{ product_card_title_size_desktop }}px;
-    --pcard-title-size-mobile: {{ product_card_title_size_mobile }}px;
-    --pcard-image-ratio: {{ product_card_image_ratio }};
-    --pcard-alignment: {{ product_card_alignment }};
-    --pcard-content-alignment: {{ product_card_content_alignment }};
-    --pcard-title-line-limit: {{ product_card_title_line_limit }};
-    --pcard-content-spacing: {{ product_card_content_spacing_desktop }}px;
-    --pcard-content-spacing-mobile: {{ product_card_content_spacing_mobile }}px;
-    --pcard-content-gap: {{ product_card_content_gap_desktop }}px;
-    --pcard-content-gap-mobile: {{ product_card_content_gap_mobile }}px;
-    --pcard-product-info-gap: {{ product_card_info_gap_desktop }}px;
-    --pcard-product-info-gap-mobile: {{ product_card_info_gap_mobile }}px;
+    --product-card-style: {{ product_card_style }};
+    --product-card-border-width: {{ product_card_border_width }}px;
+    --product-card-shadow: {{ product_card_shadow }};
+    --product-card-title-font-family: {{ product_card_title_font_family }};
+    --product-card-title-size: {{ product_card_title_size_desktop }}px;
+    --product-card-title-size-mobile: {{ product_card_title_size_mobile }}px;
+    --product-card-image-ratio: {{ product_card_image_ratio }};
+    --product-card-alignment: {{ product_card_alignment }};
+    --product-card-content-alignment: {{ product_card_content_alignment }};
+    --product-card-title-line-limit: {{ product_card_title_line_limit }};
+    --product-card-content-spacing: {{ product_card_content_spacing_desktop }}px;
+    --product-card-content-spacing-mobile: {{ product_card_content_spacing_mobile }}px;
+    --product-card-content-gap: {{ product_card_content_gap_desktop }}px;
+    --product-card-content-gap-mobile: {{ product_card_content_gap_mobile }}px;
+    --product-card-info-gap: {{ product_card_info_gap_desktop }}px;
+    --product-card-info-gap-mobile: {{ product_card_info_gap_mobile }}px;
     --card-radius: {{ media_container_radius }};
     --media-radius: {{ media_container_radius }};
-    --pcard-quick-add-enabled: {{ product_card_quick_add_enabled }};
-    --pcard-quick-add-mobile: {{ product_card_quick_add_mobile }};
-    --pcard-quick-add-style: {{ product_card_quick_add_style }};
-    --pcard-quick-add-full-width: {{ product_card_quick_add_full_width }};
-    --pcard-quick-view-enabled: {{ product_card_quick_view_enabled }};
-    --pcard-quick-view-mobile: {{ product_card_quick_view_mobile }};
-    --pcard-show-secondary-image: {{ product_card_secondary }};
-    --pcard-show-sale-badge: {{ product_card_show_sale_badge }};
-    --pcard-show-sold-out-badge: {{ product_card_show_sold_out_badge }};
-    --pcard-show-vendor: {{ product_card_vendor }};
-    --pcard-show-type: {{ product_card_type }};
-    --pcard-swatch-enabled: {{ product_card_swatches_enabled }};
-    --pcard-swatch-position: {{ product_card_swatch_position }};
-    --pcard-swatch-type: {{ product_card_swatch_type }};
-    --pcard-swatch-limit: {{ product_card_swatch_limit }};
-    --pcard-swatch-gap: {{ product_card_swatch_gap }}px;
-    --pcard-swatch-width: {{ product_card_swatch_width_desktop }}px;
-    --pcard-swatch-width-mobile: {{ product_card_swatch_width_mobile }}px;
-    --pcard-swatch-ratio: {{ product_card_swatch_ratio }};
-    --pcard-swatch-selected-style: {{ product_card_swatch_selected_style }};
+    --product-card-quick-add-enabled: {{ product_card_quick_add_enabled }};
+    --product-card-quick-add-mobile: {{ product_card_quick_add_mobile }};
+    --product-card-quick-add-style: {{ product_card_quick_add_style }};
+    --product-card-quick-add-full-width: {{ product_card_quick_add_full_width }};
+    --product-card-quick-view-enabled: {{ product_card_quick_view_enabled }};
+    --product-card-quick-view-mobile: {{ product_card_quick_view_mobile }};
+    --product-card-show-secondary-image: {{ product_card_secondary }};
+    --product-card-show-sale-badge: {{ product_card_show_sale_badge }};
+    --product-card-show-sold-out-badge: {{ product_card_show_sold_out_badge }};
+    --product-card-show-vendor: {{ product_card_vendor }};
+    --product-card-show-type: {{ product_card_type }};
+    --product-card-swatch-enabled: {{ product_card_swatches_enabled }};
+    --product-card-swatch-position: {{ product_card_swatch_position }};
+    --product-card-swatch-type: {{ product_card_swatch_type }};
+    --product-card-swatch-limit: {{ product_card_swatch_limit }};
+    --product-card-swatch-gap: {{ product_card_swatch_gap }}px;
+    --product-card-swatch-width: {{ product_card_swatch_width_desktop }}px;
+    --product-card-swatch-width-mobile: {{ product_card_swatch_width_mobile }}px;
+    --product-card-swatch-ratio: {{ product_card_swatch_ratio }};
+    --product-card-swatch-selected-style: {{ product_card_swatch_selected_style }};
 
     /* Legacy aliases remain valid for existing product-card styles. */
     --product-card-ratio: {{ product_card_ratio }};
-    --product-card-alignment: var(--pcard-alignment);
-    --product-card-secondary: var(--pcard-show-secondary-image);
+    --product-card-secondary: var(--product-card-show-secondary-image);
 
     --variant-height: {{ variant_height_desktop }}px;
     --variant-height-mobile: {{ variant_height_mobile }}px;

@@ -88,7 +88,7 @@
 {% assign menu_style = menu_style | strip %}
 
   <nav
-    class="{{ menu_class }} {{ menu_typography_class }}"
+    class="{{ menu_class }} {{ menu_typography_class }} scrollbar scrollbar--hidden scrollbar--vertical-until-desktop"
     id="HeaderMenu-{{ section.id }}"
     aria-label="{{ 'accessibility.menu' | t }}"
     data-dropdown-trigger="{{ dropdown_trigger }}"
@@ -155,7 +155,7 @@
           {% render 'icon', icon: 'chevron-left', class: 'header__mobile-drawer-back-icon' %}<span data-header-menu-back-label data-header-menu-back-default-label="{{ 'accessibility.menu' | t }}">{{ 'accessibility.menu' | t }}</span>
         </button>
       </header>
-      <div class="header__mobile-drawer-scroll">
+      <div class="header__mobile-drawer-scroll scrollbar scrollbar--vertical scrollbar--hidden">
         {% if has_header_menu %}
           <ul class="header__mobile-drawer-list" role="list">
             {% for link in header_menu.links %}
@@ -163,7 +163,7 @@
                 {% if link.links != blank %}
                   <details class="header__mobile-drawer-details" data-mobile-drawer-details>
                     <summary><span>{{ link.title | escape }}</span>{% render 'icon', icon: 'chevron-right', class: 'header__mobile-drawer-chevron' %}</summary>
-                    <div class="header__mobile-drawer-submenu {{ submenu_typography_class }}">
+                    <div class="header__mobile-drawer-submenu scrollbar scrollbar--vertical {{ submenu_typography_class }}">
                       <div class="header__mobile-drawer-mega-featured-slot" data-mobile-mega-featured-slot="{{ link.title | handleize }}"></div>
                       <ul role="list">
                         {% for child_link in link.links %}
@@ -174,7 +174,7 @@
                                   <span>{{ child_link.title | escape }}</span>
                                   {% render 'icon', icon: 'chevron-right', class: 'header__mobile-drawer-chevron' %}
                                 </summary>
-                                <div class="header__mobile-drawer-tertiary-panel">
+                                <div class="header__mobile-drawer-tertiary-panel scrollbar scrollbar--vertical">
                                   <ul class="header__mobile-drawer-tertiary" role="list">
                                     {% for grandchild_link in child_link.links %}
                                       <li><a href="{{ grandchild_link.url }}">{{ grandchild_link.title | escape }}</a></li>
@@ -830,10 +830,7 @@
       position: relative;
       min-height: 0;
       flex: 1 1 auto;
-      overflow-x: hidden;
-      overflow-y: auto;
       padding: 1rem var(--page-margin-mobile) 8rem;
-      scrollbar-width: none;
     }
 
     .header__mobile-drawer--submenu-active .header__mobile-drawer-scroll {
@@ -882,7 +879,6 @@
       z-index: 1;
       inset: 0;
       display: block;
-      overflow-y: auto;
       padding: 1rem var(--page-margin-mobile);
       background: var(--overlay-background-color);
       color: var(--overlay-text-color);
@@ -940,7 +936,6 @@
       z-index: 2;
       inset: 0;
       display: block;
-      overflow-y: auto;
       padding: 1rem var(--page-margin-mobile);
       background: var(--overlay-background-color);
       color: var(--overlay-text-color);

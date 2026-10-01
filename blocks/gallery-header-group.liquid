@@ -90,6 +90,7 @@
     { "type": "checkbox", "id": "customize_mobile_alignment", "label": "Customize mobile alignment", "default": false },
     { "type": "select", "id": "alignment_mobile", "label": "Mobile alignment", "options": [{ "value": "left", "label": "Left" }, { "value": "center", "label": "Center" }, { "value": "right", "label": "Right" }], "default": "center", "visible_if": "{{ block.settings.customize_mobile_alignment }}" },
     { "type": "range", "id": "gap_mobile", "label": "Mobile gap", "min": 0, "max": 100, "step": 1, "unit": "px", "default": 8 }
-  ]
+  ],
+  "presets": [{ "name": "Gallery header", "category": "Gallery" }]
 }
 {% endschema %}

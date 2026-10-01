@@ -178,6 +178,7 @@
         triggers.forEach((trigger) => {
           trigger.addEventListener('click', () => activate(trigger));
           trigger.addEventListener('keydown', (event) => {
+            if (event.target !== trigger) return;
             if (event.key !== 'Enter' && event.key !== ' ') return;
             event.preventDefault();
             activate(trigger);
@@ -315,7 +316,7 @@
               "blocks": [
                 { "type": "heading", "settings": { "text": "<p>Sydney</p>", "heading_size": "sm", "html_tag": "h4" } },
                 { "type": "text", "settings": { "text": "<p>123 Sample St, Sydney NSW 2000 AU</p>", "text_size": "sm" } },
-                { "type": "button", "settings": { "button_label": "Get directions", "button_style": "tertiary", "show_icon": false, "icon": "arrow", "icon_position": "after", "width": "fit" } }
+                { "type": "button", "settings": { "button_label": "Get directions", "button_link": "https://www.google.com/maps/dir/?api=1&destination=Sydney%2C%20Australia", "button_style": "tertiary", "show_icon": false, "icon": "arrow", "icon_position": "after", "width": "fit" } }
               ]
             },
             {
@@ -324,7 +325,7 @@
               "blocks": [
                 { "type": "heading", "settings": { "text": "<p>Ho Chi Minh City</p>", "heading_size": "sm", "html_tag": "h4" } },
                 { "type": "text", "settings": { "text": "<p>2 Hai Trieu, District 1, Ho Chi Minh City</p>", "text_size": "sm" } },
-                { "type": "button", "settings": { "button_label": "Get directions", "button_style": "tertiary", "show_icon": false, "icon": "arrow", "icon_position": "after", "width": "fit" } }
+                { "type": "button", "settings": { "button_label": "Get directions", "button_link": "https://www.google.com/maps/dir/?api=1&destination=2%20Hai%20Trieu%2C%20Ho%20Chi%20Minh%20City", "button_style": "tertiary", "show_icon": false, "icon": "arrow", "icon_position": "after", "width": "fit" } }
               ]
             },
             {
@@ -333,7 +334,7 @@
               "blocks": [
                 { "type": "heading", "settings": { "text": "<p>London</p>", "heading_size": "sm", "html_tag": "h4" } },
                 { "type": "text", "settings": { "text": "<p>123 Sample St, London W1C 1DE, United Kingdom</p>", "text_size": "sm" } },
-                { "type": "button", "settings": { "button_label": "Get directions", "button_style": "tertiary", "show_icon": false, "icon": "arrow", "icon_position": "after", "width": "fit" } }
+                { "type": "button", "settings": { "button_label": "Get directions", "button_link": "https://www.google.com/maps/dir/?api=1&destination=London%2C%20United%20Kingdom", "button_style": "tertiary", "show_icon": false, "icon": "arrow", "icon_position": "after", "width": "fit" } }
               ]
             }
           ]

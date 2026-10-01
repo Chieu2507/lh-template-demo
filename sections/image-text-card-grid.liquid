@@ -42,9 +42,8 @@
 <div class="image-text-card-grid image-text-card-grid--{{ section.settings.section_width }} color-scheme section-color-scope {{ section_scheme }}">
   <div class="section-spacing image-text-card-grid__spacing" style="--image-text-card-grid-padding-top: {{ section_padding_top }}px; --image-text-card-grid-padding-bottom: {{ section_padding_bottom }}px; --image-text-card-grid-padding-left: {{ section_padding_left }}px; --image-text-card-grid-padding-right: {{ section_padding_right }}px; --image-text-card-grid-padding-top-mobile: {{ section_padding_top_mobile }}px; --image-text-card-grid-padding-bottom-mobile: {{ section_padding_bottom_mobile }}px; --image-text-card-grid-padding-left-mobile: {{ section_padding_left_mobile }}px; --image-text-card-grid-padding-right-mobile: {{ section_padding_right_mobile }}px;">
     <div class="container {{ section_container_class }} image-text-card-grid__container">
-      <div class="image-text-card-grid__content" style="--image-text-card-grid-gap: {{ section_gap_desktop }}px; --image-text-card-grid-gap-mobile: {{ section_gap_mobile }}px;">
-        {% content_for 'block', type: 'group', id: 'intro' %}
-        {% content_for 'block', type: 'carousel', id: 'carousel' %}
+      <div class="image-text-card-grid__content" style="--image-text-card-grid-align: {{ section_alignment }}; --image-text-card-grid-text-align: {{ section.settings.alignment | default: 'center' }}; --image-text-card-grid-gap: {{ section_gap_desktop }}px; --image-text-card-grid-gap-mobile: {{ section_gap_mobile }}px;">
+        {% content_for 'blocks' %}
       </div>
     </div>
   </div>
@@ -58,14 +57,12 @@
   .image-text-card-grid__content {
     display: flex;
     flex-direction: column;
-    align-items: var(--flex-align, flex-start);
+    align-items: var(--image-text-card-grid-align, center);
     gap: var(--image-text-card-grid-gap, 40px);
-    text-align: center;
+    text-align: var(--image-text-card-grid-text-align, center);
   }
-  .image-text-card-grid__intro { display: flex; flex-direction: column; align-items: center; width: 100%; text-align: center; }
-  .image-text-card-grid__intro > * { width: 100%; }
+  .image-text-card-grid__content > * { min-width: 0; max-width: 100%; }
   .container.image-text-card-grid__container--no-padding { padding-inline: 0; }
-  .image-text-card-grid__content > .carousel-block { width: 100%; }
   @media (max-width: 767.98px) {
     .image-text-card-grid__spacing { padding: var(--image-text-card-grid-padding-top-mobile, 40px) var(--image-text-card-grid-padding-right-mobile, 0px) var(--image-text-card-grid-padding-bottom-mobile, 40px) var(--image-text-card-grid-padding-left-mobile, 0px); }
     .image-text-card-grid__content { gap: var(--image-text-card-grid-gap-mobile, var(--image-text-card-grid-gap, 32px)); }
@@ -124,12 +121,10 @@
       "blocks": [
         {
           "type": "group",
-          "id": "intro",
-          "static": true,
           "settings": {
             "direction": "vertical",
             "alignment": "center",
-            "width": "fill",
+            "width": "fit",
             "height": "fit",
             "gap_desktop": 8,
             "gap_mobile": 8,
@@ -145,8 +140,6 @@
         },
         {
           "type": "carousel",
-          "id": "carousel",
-          "static": true,
           "settings": { "columns_desktop": "4", "columns_mobile": "1", "gap_desktop": 32, "gap_mobile": 24, "show_navigation_on_desktop": true, "show_pagination_on_desktop": false, "show_pagination_on_mobile": false },
           "blocks": [
             { "type": "image-text-card-grid-item", "settings": { "heading": "<p>Main Category</p>", "content": "<p>This is a placeholder description for a card. Add supporting content here.</p>" } },
