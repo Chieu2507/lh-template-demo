@@ -42,9 +42,9 @@
     { "type": "paragraph", "content": "t:info.product_quantity_default_style", "visible_if": "{{ block.settings.style == 'default' }}" },
     { "type": "paragraph", "content": "t:info.product_quantity_rules" },
     { "type": "header", "content": "t:general.colors", "visible_if": "{{ block.settings.style == 'custom' }}" },
-    { "type": "color", "id": "background_color", "label": "t:labels.background", "visible_if": "{{ block.settings.style == 'custom' }}" },
-    { "type": "color", "id": "text_color", "label": "t:labels.text_color", "visible_if": "{{ block.settings.style == 'custom' }}" },
-    { "type": "color", "id": "border_color", "label": "t:labels.border_color", "visible_if": "{{ block.settings.style == 'custom' }}" },
+    { "type": "color", "alpha": true, "id": "background_color", "label": "t:labels.background", "visible_if": "{{ block.settings.style == 'custom' }}" },
+    { "type": "color", "alpha": true, "id": "text_color", "label": "t:labels.text_color", "visible_if": "{{ block.settings.style == 'custom' }}" },
+    { "type": "color", "alpha": true, "id": "border_color", "label": "t:labels.border_color", "visible_if": "{{ block.settings.style == 'custom' }}" },
     { "type": "range", "id": "border_thickness", "label": "t:labels.border_thickness", "min": 0, "max": 5, "step": 1, "unit": "px", "default": 1, "visible_if": "{{ block.settings.style == 'custom' }}" },
     { "type": "range", "id": "corner_radius", "label": "t:labels.corner_radius", "min": 0, "max": 100, "step": 1, "unit": "px", "default": 4, "visible_if": "{{ block.settings.style == 'custom' }}" }
   ]

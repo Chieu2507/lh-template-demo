@@ -63,48 +63,56 @@
           },
           {
             "type": "color",
+            "alpha": true,
             "id": "background",
             "label": "t:labels.background",
             "default": "#FFFFFF"
           },
           {
             "type": "color",
+            "alpha": true,
             "id": "heading",
             "label": "t:labels.heading_color",
             "default": "#111111"
           },
           {
             "type": "color",
+            "alpha": true,
             "id": "heading_highlight",
             "label": "t:labels.heading_highlight_color",
             "default": "#A67C52"
           },
           {
             "type": "color",
+            "alpha": true,
             "id": "text",
             "label": "t:labels.text",
             "default": "#404040"
           },
           {
             "type": "color",
+            "alpha": true,
             "id": "accent",
             "label": "t:labels.accent_color",
             "default": "#111111"
           },
           {
             "type": "color",
+            "alpha": true,
             "id": "border",
             "label": "t:labels.border_color",
-            "default": "#D8D8D8"
+            "default": "#1C1B1A1A"
           },
           {
             "type": "color",
+            "alpha": true,
             "id": "shadow",
             "label": "t:labels.shadow_color",
-            "default": "#111111"
+            "default": "#1C1B1A1A"
           },
           {
             "type": "color",
+            "alpha": true,
             "id": "sale_price",
             "label": "t:labels.sale_price_color",
             "default": "#D82727"
@@ -115,24 +123,28 @@
           },
           {
             "type": "color",
+            "alpha": true,
             "id": "button_primary_background",
             "label": "t:labels.background",
             "default": "#111111"
           },
           {
             "type": "color",
+            "alpha": true,
             "id": "button_primary_text",
             "label": "t:labels.button_label",
             "default": "#FFFFFF"
           },
           {
             "type": "color",
+            "alpha": true,
             "id": "button_primary_border",
             "label": "t:labels.border_color",
             "default": "#111111"
           },
           {
             "type": "color",
+            "alpha": true,
             "id": "button_primary_hover_background",
             "label": "t:labels.hover_background",
             "info": "t:info.clear_for_transparent",
@@ -140,12 +152,14 @@
           },
           {
             "type": "color",
+            "alpha": true,
             "id": "button_primary_hover_text",
             "label": "t:labels.hover_text",
             "default": "#FFFFFF"
           },
           {
             "type": "color",
+            "alpha": true,
             "id": "button_primary_hover_border",
             "label": "t:labels.hover_border",
             "default": "#000000"
@@ -156,24 +170,28 @@
           },
           {
             "type": "color",
+            "alpha": true,
             "id": "button_secondary_background",
             "label": "t:labels.background",
             "default": "#ECECEC"
           },
           {
             "type": "color",
+            "alpha": true,
             "id": "button_secondary_text",
             "label": "t:labels.button_label",
             "default": "#111111"
           },
           {
             "type": "color",
+            "alpha": true,
             "id": "button_secondary_border",
             "label": "t:labels.border_color",
             "default": "#ECECEC"
           },
           {
             "type": "color",
+            "alpha": true,
             "id": "button_secondary_hover_background",
             "label": "t:labels.hover_background",
             "info": "t:info.clear_for_transparent",
@@ -181,12 +199,14 @@
           },
           {
             "type": "color",
+            "alpha": true,
             "id": "button_secondary_hover_text",
             "label": "t:labels.hover_text",
             "default": "#111111"
           },
           {
             "type": "color",
+            "alpha": true,
             "id": "button_secondary_hover_border",
             "label": "t:labels.hover_border",
             "default": "#D8D8D8"
@@ -197,12 +217,14 @@
           },
           {
             "type": "color",
+            "alpha": true,
             "id": "button_tertiary_text",
             "label": "t:labels.button_label",
             "default": "#111111"
           },
           {
             "type": "color",
+            "alpha": true,
             "id": "button_tertiary_hover_text",
             "label": "t:labels.hover_text",
             "default": "#333333"
@@ -1123,6 +1145,7 @@
       },
       {
         "type": "color",
+        "alpha": true,
         "id": "input_background_color",
         "default": "#FFFFFF",
         "label": "t:labels.background_color"
@@ -1718,30 +1741,35 @@
       },
       {
         "type": "color",
+        "alpha": true,
         "id": "badge_sale_price_color",
         "label": "t:labels.sale_price_color",
         "default": "#D82727"
       },
       {
         "type": "color",
+        "alpha": true,
         "id": "badge_sale_background_color",
         "label": "t:labels.sale_badge_background",
         "default": "#D82727"
       },
       {
         "type": "color",
+        "alpha": true,
         "id": "badge_sale_text_color",
         "label": "t:labels.sale_badge_text",
         "default": "#FFFFFF"
       },
       {
         "type": "color",
+        "alpha": true,
         "id": "badge_sold_out_background_color",
         "label": "t:labels.sold_out_badge_background",
         "default": "#ADADAD"
       },
       {
         "type": "color",
+        "alpha": true,
         "id": "badge_sold_out_text_color",
         "label": "t:labels.sold_out_badge_text",
         "default": "#181818"

@@ -99,8 +99,8 @@
     { "type": "range", "id": "tag_font_size_custom_mobile", "label": "Custom mobile font size", "min": 10, "max": 80, "step": 1, "unit": "px", "default": 14, "visible_if": "{{ block.settings.customize_mobile_tag_font_size and block.settings.tag_font_size_mobile == 'custom' }}" },
     { "type": "select", "id": "social_network", "label": "Social network", "options": [{ "value": "none", "label": "None" }, { "value": "instagram", "label": "Instagram" }, { "value": "facebook", "label": "Facebook" }, { "value": "x", "label": "X" }, { "value": "tiktok", "label": "TikTok" }, { "value": "youtube", "label": "YouTube" }, { "value": "pinterest", "label": "Pinterest" }, { "value": "linkedin", "label": "LinkedIn" }], "default": "instagram" },
     { "type": "url", "id": "social_url", "label": "Social link", "info": "Leave blank to use the selected social network URL from Theme settings." },
-    { "type": "color", "id": "social_background", "label": "Button background", "default": "#FFFFFF" },
-    { "type": "color", "id": "social_color", "label": "Button color", "default": "#6A372F" },
+    { "type": "color", "alpha": true, "id": "social_background", "label": "Button background", "default": "#FFFFFF" },
+    { "type": "color", "alpha": true, "id": "social_color", "label": "Button color", "default": "#6A372F" },
     { "type": "header", "content": "Overlay" },
     { "type": "select", "id": "show_overlay", "label": "Show social overlay", "options": [{ "value": "always", "label": "Always" }, { "value": "hover", "label": "On hover" }], "default": "always" },
     {
