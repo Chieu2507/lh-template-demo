@@ -61,12 +61,8 @@
       </div>
     {% endif %}
     <div class="container {{ container_width }} gallery-full-width-strip__container{% if container_no_padding %} gallery-full-width-strip__container--no-padding{% endif %}">
-      <div class="gallery-full-width-strip__items">
-        {% content_for 'block', type: 'gallery-strip-item', id: 'item-1' %}
-        {% content_for 'block', type: 'gallery-strip-item', id: 'item-2' %}
-        {% content_for 'block', type: 'gallery-strip-feature-item', id: 'item-3' %}
-        {% content_for 'block', type: 'gallery-strip-item', id: 'item-4' %}
-        {% content_for 'block', type: 'gallery-strip-item', id: 'item-5' %}
+      <div class="gallery-full-width-strip__items" style="--gallery-strip-columns: {{ section.blocks.size | at_least: 1 | at_most: 5 }};">
+        {% content_for 'blocks' %}
       </div>
     </div>
   </div>
@@ -74,9 +70,7 @@
 
 {% stylesheet %}
   .gallery-full-width-strip {
-    width: 100vw;
-    max-width: 100vw;
-    margin-inline: calc(50% - 50vw);
+    width: 100%;
     min-width: 0;
   }
 
@@ -105,19 +99,15 @@
   .container.gallery-full-width-strip__container {
     position: relative;
     z-index: 1;
-    width: 100%;
-    max-width: none;
-    padding-inline: 0;
   }
 
-  .gallery-full-width-strip__container,
   .container.full-width.gallery-full-width-strip__container--no-padding {
     padding-inline: 0;
   }
 
   .gallery-full-width-strip__items {
     display: grid;
-    grid-template-columns: repeat(5, minmax(0, 1fr));
+    grid-template-columns: repeat(var(--gallery-strip-columns, 5), minmax(0, 1fr));
     gap: var(--gallery-strip-gap, 0px);
     justify-items: stretch;
     width: 100%;
@@ -155,7 +145,6 @@
   "class": "section-kernel",
   "enabled_on": { "templates": ["*"] },
   "blocks": [{ "type": "gallery-strip-item" }, { "type": "gallery-strip-feature-item" }],
-  "max_blocks": 5,
   "settings": [
     { "type": "header", "content": "Layout" },
     { "type": "select", "id": "section_width", "label": "t:labels.section_width", "options": [{ "value": "page_width", "label": "t:options.section_width.page_width" }, { "value": "full_width", "label": "t:options.section_width.full_width" }, { "value": "full_width_no_padding", "label": "Full width (no padding)" }], "default": "full_width_no_padding" },
@@ -183,19 +172,17 @@
       "category": "Storytelling",
       "settings": { "section_width": "full_width_no_padding", "alignment": "left", "content_gap": 0, "customize_mobile_gap": false, "color_scheme": "scheme-1", "customize_mobile_padding": false },
       "blocks": [
-        { "type": "gallery-strip-item", "id": "item-1", "static": true },
-        { "type": "gallery-strip-item", "id": "item-2", "static": true },
+        { "type": "gallery-strip-item" },
+        { "type": "gallery-strip-item" },
         {
           "type": "gallery-strip-feature-item",
-          "id": "item-3",
-          "static": true,
           "blocks": [{ "type": "gallery-strip-overlay-group", "id": "overlay-content", "static": true, "blocks": [
             { "type": "heading", "id": "heading", "static": true, "settings": { "text": "<p>Follow Us On Instagram</p>", "html_tag": "h2", "heading_size": "md" } },
             { "type": "button", "id": "button", "static": true, "settings": { "button_label": "Button label", "button_style": "tertiary", "width": "fit", "width_mobile": "fit" } }
           ] }]
         },
-        { "type": "gallery-strip-item", "id": "item-4", "static": true },
-        { "type": "gallery-strip-item", "id": "item-5", "static": true }
+        { "type": "gallery-strip-item" },
+        { "type": "gallery-strip-item" }
       ]
     }
   ]
