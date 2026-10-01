@@ -964,4 +964,3 @@
   .cart-drawer__totals > div:nth-child(2) > span:last-child {
     color: color-mix(in srgb, var(--body-color) 62%, transparent);
   }
-
