@@ -208,9 +208,8 @@
   endif
 %}
 
-{% render 'swiper-stylesheet' %}
-<script type="module" src="{{ 'carousel-block.js' | asset_url }}"></script>
-<script type="module" src="{{ 'image-text-card-grid.js' | asset_url }}"></script>
+<script data-theme-module="{{ 'carousel-block.js' | asset_url }}"></script>
+<script data-theme-module="{{ 'image-text-card-grid.js' | asset_url }}"></script>
 
 {% capture carousel_slides %}{% content_for 'blocks' %}{% endcapture %}
 {% capture carousel_pagination %}
@@ -229,8 +228,6 @@
 {% endcapture %}
 
 {% capture carousel_style %}
-  --carousel-gap-desktop: {{ carousel_gap_desktop }}px;
-  --carousel-gap-mobile: {{ carousel_gap_mobile }}px;
   --carousel-padding-top: {{ carousel_padding_top }}px;
   --carousel-padding-bottom: {{ carousel_padding_bottom }}px;
   {% if carousel_customize_mobile_padding %}

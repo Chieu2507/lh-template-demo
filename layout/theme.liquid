@@ -21,9 +21,14 @@
     {{ 'critical.css' | asset_url | stylesheet_tag: preload: true }}
     {{ 'component-overlay.css' | asset_url | stylesheet_tag }}
     <script src="{{ 'component-overlay.js' | asset_url }}" defer></script>
-    {{ 'accordion-details.css' | asset_url | stylesheet_tag }}
-    {{ 'menu.css' | asset_url | stylesheet_tag }}
+    {% comment %} Footer-only disclosure styles should not delay the first paint. {% endcomment %}
+    <link rel="stylesheet" href="{{ 'accordion-details.css' | asset_url }}" media="print" onload="this.media='all'">
+    <noscript>{{ 'accordion-details.css' | asset_url | stylesheet_tag }}</noscript>
+    <link rel="stylesheet" href="{{ 'menu.css' | asset_url }}" media="print" onload="this.media='all'">
+    <noscript>{{ 'menu.css' | asset_url | stylesheet_tag }}</noscript>
+    {% render 'swiper-stylesheet' %}
     <script src="{{ 'header.js' | asset_url }}" defer></script>
+    <script src="{{ 'theme-module-loader.js' | asset_url }}" defer></script>
     <script src="{{ 'accordion-details.js' | asset_url }}" defer></script>
     <script src="{{ 'product-card-variants.js' | asset_url }}" defer></script>
     <script src="{{ 'share.js' | asset_url }}" defer></script>

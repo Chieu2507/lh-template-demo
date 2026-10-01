@@ -38,7 +38,7 @@
     { "type": "range", "id": "padding_bottom", "label": "Bottom", "min": 0, "max": 100, "step": 1, "unit": "px", "default": 0 },
     { "type": "range", "id": "padding_left", "label": "Left", "min": 0, "max": 100, "step": 1, "unit": "px", "default": 24, "visible_if": "{{ block.settings.width == 'full' }}" },
     { "type": "range", "id": "padding_right", "label": "Right", "min": 0, "max": 100, "step": 1, "unit": "px", "default": 24, "visible_if": "{{ block.settings.width == 'full' }}" },
-    { "type": "checkbox", "id": "custom_mobile_padding", "label": "Custom for mobile", "default": false },
+    { "type": "checkbox", "id": "custom_mobile_padding", "label": "Customize for mobile", "default": false },
     { "type": "range", "id": "padding_top_mobile", "label": "Top (mobile)", "min": 0, "max": 100, "step": 1, "unit": "px", "default": 0, "visible_if": "{{ block.settings.custom_mobile_padding }}" },
     { "type": "range", "id": "padding_bottom_mobile", "label": "Bottom (mobile)", "min": 0, "max": 100, "step": 1, "unit": "px", "default": 0, "visible_if": "{{ block.settings.custom_mobile_padding }}" }
   ]

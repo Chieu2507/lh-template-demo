@@ -92,9 +92,16 @@
 %}
 
 {% if section.settings.show_recommendations %}
-  {% render 'swiper-stylesheet' %}
   <script type="module" src="{{ 'cart-drawer-recommendations.js' | asset_url }}"></script>
 {% endif %}
+
+<link
+  rel="stylesheet"
+  href="{{ 'cart-drawer.css' | asset_url }}"
+  media="print"
+  onload="this.media='all'"
+>
+<noscript>{{ 'cart-drawer.css' | asset_url | stylesheet_tag }}</noscript>
 
 <div
   id="CartDrawer"

@@ -407,30 +407,46 @@
     typeof window.matchMedia === 'function' &&
     window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-  const animatePanel = (state, panel) => {
+  const cancelPanelAnimation = (state) => {
+    if (state.panelAnimationFrame) {
+      window.cancelAnimationFrame(state.panelAnimationFrame);
+      state.panelAnimationFrame = 0;
+    }
     state.panelAnimation?.cancel();
     state.panelAnimation = null;
+  };
+
+  const animatePanel = (state, panel) => {
+    cancelPanelAnimation(state);
 
     if (!panel || typeof panel.animate !== 'function' || prefersReducedMotion()) return;
 
-    const animation = panel.animate(
-      [
-        { transform: 'translateY(1.5rem)', opacity: 0 },
-        { transform: 'translateY(0)', opacity: 1 }
-      ],
-      {
-        duration: 300,
-        easing: 'ease-in-out',
-        fill: 'none'
-      }
-    );
+    // A newly selected panel may have just been removed from the hidden/display:none
+    // state. Wait for the browser to commit that layout before starting the
+    // animation, otherwise the first reveal can be skipped entirely.
+    state.panelAnimationFrame = window.requestAnimationFrame(() => {
+      state.panelAnimationFrame = 0;
+      if (instances.get(state.layout) !== state || state.activeEntry?.panel !== panel || panel.hidden) return;
 
-    state.panelAnimation = animation;
-    animation.finished
-      .then(() => {
-        if (state.panelAnimation === animation) state.panelAnimation = null;
-      })
-      .catch(() => {});
+      const animation = panel.animate(
+        [
+          { transform: 'translateY(1.5rem)', opacity: 0 },
+          { transform: 'translateY(0)', opacity: 1 }
+        ],
+        {
+          duration: 300,
+          easing: 'ease-in-out',
+          fill: 'none'
+        }
+      );
+
+      state.panelAnimation = animation;
+      animation.finished
+        .then(() => {
+          if (state.panelAnimation === animation) state.panelAnimation = null;
+        })
+        .catch(() => {});
+    });
   };
 
   const updateViewAll = (state, trigger) => {
@@ -528,9 +544,8 @@
 
     if (shouldAnimate && previousEntry && previousEntry !== selectedEntry) {
       animatePanel(state, selectedEntry.panel);
-    } else {
-      state.panelAnimation?.cancel();
-      state.panelAnimation = null;
+    } else if (previousEntry !== selectedEntry) {
+      cancelPanelAnimation(state);
     }
   };
 
@@ -561,6 +576,7 @@
       controller,
       observer: null,
       panelAnimation: null,
+      panelAnimationFrame: 0,
       synchronizationQueued: false,
       externalNavigationSwiper: null,
       externalNavigationCleanup: null
@@ -648,7 +664,7 @@
       state.externalNavigationSwiper = null;
       state.controller.abort();
       state.observer?.disconnect();
-      state.panelAnimation?.cancel();
+      cancelPanelAnimation(state);
       state.entries.forEach((entry) => {
         if (entry.tab.isConnected && !entry.tab.contains(entry.trigger)) {
           entry.tab.insertBefore(entry.trigger, entry.tab.firstChild);

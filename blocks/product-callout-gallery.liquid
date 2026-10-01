@@ -165,8 +165,7 @@
 {% assign gallery_navigation = gallery_navigation | strip %}
 
 {% if gallery_layout == 'carousel' %}
-  {% render 'swiper-stylesheet' %}
-  <script type="module" src="{{ 'carousel-block.js' | asset_url }}"></script>
+  <script data-theme-module="{{ 'carousel-block.js' | asset_url }}"></script>
 {% endif %}
 
 <div
@@ -186,7 +185,7 @@
     data-swiper-autoplay-pause-on-hover="true"
     data-swiper-autoplay-delay="4000"
   {% endif %}
-  style="{% unless gallery_ratio_setting == 'auto' %}--hotspot-gallery-image-ratio: {{ gallery_ratio }}; --hotspot-gallery-image-ratio-mobile: {{ gallery_ratio }};{% endunless %} --hotspot-gallery-gap: {{ gallery_gap_desktop }}px; --hotspot-gallery-gap-mobile: {{ gallery_gap_mobile }}px; --hotspot-gallery-columns-desktop: {{ gallery_columns_desktop }}; --hotspot-gallery-columns-mobile: {{ gallery_columns_mobile }};"
+  style="{% unless gallery_ratio_setting == 'auto' %}--hotspot-gallery-image-ratio: {{ gallery_ratio }}; --hotspot-gallery-image-ratio-mobile: {{ gallery_ratio }};{% endunless %}{% if gallery_layout == 'grid' %} --hotspot-gallery-gap: {{ gallery_gap_desktop }}px; --hotspot-gallery-gap-mobile: {{ gallery_gap_mobile }}px; --hotspot-gallery-columns-desktop: {{ gallery_columns_desktop }}; --hotspot-gallery-columns-mobile: {{ gallery_columns_mobile }};{% endif %}"
   {{ block.shopify_attributes }}
 >
   {% if gallery_layout == 'carousel' %}

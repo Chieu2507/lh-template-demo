@@ -1,3 +1,12 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "type": "custom.overlay",
   "name": "Overlay group",
@@ -27,7 +36,6 @@
         "promotion_message": "Use coupon code [code] for 10% off your first order.",
         "promotion_code": "CODE10",
         "promotion_action_label": "Use coupon",
-        "color_scheme": "scheme-1",
         "desktop_width": 550,
         "show_recommendations": true,
         "recommendations_heading": "You may also like",
@@ -41,7 +49,8 @@
         "shipping_estimator_label": "Estimate shipping",
         "discount_label": "Discount",
         "total_label": "Estimated total",
-        "checkout_label": "Checkout"
+        "checkout_label": "Checkout",
+        "color_scheme": "scheme-1"
       }
     },
     "search": {
@@ -76,9 +85,9 @@
           "settings": {
             "desktop_width": "medium",
             "desktop_layout": "left_thumbnails",
-            "zoom": "open_lightbox",
             "autoplay": false,
             "loop_video": false,
+            "zoom": "open_lightbox",
             "gap": 12,
             "gap_mobile": 12
           }
@@ -109,11 +118,28 @@
             "padding_right_mobile": 0
           },
           "blocks": {
-            "badges": { "type": "product-badges", "settings": {} },
-            "title": { "type": "product-title", "settings": { "heading_size": "lg" } },
-            "price": { "type": "product-price", "settings": {} },
-            "description": { "type": "product-description", "settings": {} },
-            "variant-picker": { "type": "product-variant-picker", "settings": {} },
+            "badges": {
+              "type": "product-badges",
+              "settings": {}
+            },
+            "title": {
+              "type": "product-title",
+              "settings": {
+                "heading_size": "lg"
+              }
+            },
+            "price": {
+              "type": "product-price",
+              "settings": {}
+            },
+            "description": {
+              "type": "product-description",
+              "settings": {}
+            },
+            "variant-picker": {
+              "type": "product-variant-picker",
+              "settings": {}
+            },
             "inventory": {
               "type": "product-inventory",
               "settings": {
@@ -124,13 +150,8 @@
             "buy-buttons": {
               "type": "product-buy-buttons",
               "settings": {
-                "show_quantity": true,
-                "show_accelerated_checkout": false,
                 "show_back_in_stock_button": true,
                 "show_gift_card_form": true,
-                "button_style": "primary",
-                "button_height_desktop": "medium",
-                "button_height_mobile": "small",
                 "gap_desktop": 12,
                 "gap_mobile": 12,
                 "padding_top": 0,
@@ -192,9 +213,9 @@
           "settings": {
             "desktop_width": "medium",
             "desktop_layout": "left_thumbnails",
-            "zoom": "open_lightbox",
             "autoplay": false,
             "loop_video": false,
+            "zoom": "open_lightbox",
             "gap": 12,
             "gap_mobile": 12
           }
@@ -225,11 +246,28 @@
             "padding_right_mobile": 0
           },
           "blocks": {
-            "badges": { "type": "product-badges", "settings": {} },
-            "title": { "type": "product-title", "settings": { "heading_size": "lg" } },
-            "price": { "type": "product-price", "settings": {} },
-            "description": { "type": "product-description", "settings": {} },
-            "variant-picker": { "type": "product-variant-picker", "settings": {} },
+            "badges": {
+              "type": "product-badges",
+              "settings": {}
+            },
+            "title": {
+              "type": "product-title",
+              "settings": {
+                "heading_size": "lg"
+              }
+            },
+            "price": {
+              "type": "product-price",
+              "settings": {}
+            },
+            "description": {
+              "type": "product-description",
+              "settings": {}
+            },
+            "variant-picker": {
+              "type": "product-variant-picker",
+              "settings": {}
+            },
             "inventory": {
               "type": "product-inventory",
               "settings": {
@@ -240,13 +278,8 @@
             "buy-buttons": {
               "type": "product-buy-buttons",
               "settings": {
-                "show_quantity": true,
-                "show_accelerated_checkout": false,
                 "show_back_in_stock_button": true,
                 "show_gift_card_form": true,
-                "button_style": "primary",
-                "button_height_desktop": "medium",
-                "button_height_mobile": "small",
                 "gap_desktop": 12,
                 "gap_mobile": 12,
                 "padding_top": 0,

@@ -58,7 +58,6 @@
 {% endcapture %}
 {% assign navigation_center_style = navigation_center_style | strip %}
 {% if layout == 'carousel' %}
-  {% render 'swiper-stylesheet' %}
   <script type="module" src="{{ 'collection-thumbnails.js' | asset_url }}"></script>
 {% endif %}
 <div class="section-spacing collection-thumbnails color-scheme section-color-scope {{ section.settings.color_scheme | default: 'scheme-1' }}" style="--ct-gap:{{ section.settings.gap_desktop | default: 40 }}px;--ct-gap-mobile:{{ section.settings.gap_mobile | default: 20 }}px;--ct-card-gap:{{ section.settings.card_gap | default: 10 }}px;--ct-image-width:{{ section.settings.image_width_desktop | default: 110 }}px;--ct-image-width-mobile:{{ section.settings.image_width_mobile | default: 85 }}px;--ct-justify:{{ justify }};--ct-padding-top:{{ section.settings.padding_top | default: 50 }}px;--ct-padding-bottom:{{ section.settings.padding_bottom | default: 50 }}px;{% if section.settings.background_color != blank %}--background-color:{{ section.settings.background_color }};{% endif %}{% if section.settings.customize_mobile_padding %}--ct-padding-top-mobile:{{ section.settings.padding_top_mobile }}px;--ct-padding-bottom-mobile:{{ section.settings.padding_bottom_mobile }}px;{% endif %}">

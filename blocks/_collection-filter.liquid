@@ -21,14 +21,34 @@
   assign filter_button_label = filter_button_label | append: ' (' | append: active_filter_count | append: ')'
  endif
  assign filter_button_icon = block.settings.filter_icon | default: 'sliders'
+ assign filter_button_style = block.settings.button_style | default: 'primary'
+ if filter_button_style == 'outline'
+  assign filter_button_style = 'secondary'
+ elsif filter_button_style == 'text'
+  assign filter_button_style = 'tertiary'
+ endif
+ assign filter_heading_size = block.settings.heading_size | default: 'sm'
+ case filter_heading_size
+  when 'h3'
+   assign filter_heading_size = 'lg'
+  when 'h4'
+   assign filter_heading_size = 'md'
+  when 'h5'
+   assign filter_heading_size = 'sm'
+  when 'h6'
+   assign filter_heading_size = 'xs'
+ endcase
+ unless filter_heading_size == 'display' or filter_heading_size == 'xl' or filter_heading_size == 'lg' or filter_heading_size == 'md' or filter_heading_size == 'sm' or filter_heading_size == 'xs'
+  assign filter_heading_size = 'sm'
+ endunless
 %}
 <div class="collection-filter-block" {{ block.shopify_attributes }}>
 {% if collection.filters.size > 0 %}
 {% if block.settings.desktop_layout == 'sidebar' and block.settings.sidebar_visibility == 'always' %}
-  <h2 class="main-collection__filter-label heading-text">{{ 'collection.filter' | t }}</h2>
+  <h2 class="main-collection__filter-label heading-text heading-md">{{ 'collection.filter' | t }}</h2>
 {% endif %}
 {% capture filter_button_attributes %}aria-controls="CollectionFilters-{{ section.id }}" aria-expanded="false" data-collection-filter-open{% endcapture %}
-{% render 'theme-button', label: filter_button_label, variant: block.settings.button_style, class: 'main-collection__filter-button', attributes: filter_button_attributes, icon: filter_button_icon, icon_position: 'before' %}
+{% render 'theme-button', label: filter_button_label, variant: filter_button_style, class: 'main-collection__filter-button', attributes: filter_button_attributes, icon: filter_button_icon, icon_position: 'before' %}
 {% endif %}
 </div>
 {% if collection.filters.size > 0 %}
@@ -55,28 +75,40 @@
               <div class="main-collection__active-filters">
               {% for filter in collection.filters %}
                 {% for value in filter.active_values %}
-                  <a href="{{ value.url_to_remove | escape }}">
+                  <a class="main-collection__active-filter body-text body-sm" href="{{ value.url_to_remove | escape }}">
+                    {% if filter.presentation == 'swatch' %}
+                      {% liquid
+                        assign swatch_style = ''
+                        if value.swatch.image != blank
+                          assign swatch_image_url = value.swatch.image | image_url: width: 48
+                          assign swatch_style = '--main-collection-swatch-image: url(' | append: swatch_image_url | append: ');'
+                        elsif value.swatch.color != blank
+                          assign swatch_style = '--main-collection-swatch-color: ' | append: value.swatch.color | append: ';'
+                        endif
+                      %}
+                      <span class="main-collection__swatch"{% if swatch_style != blank %} style="{{ swatch_style }}"{% endif %} aria-hidden="true"></span>
+                    {% endif %}
                     <span>{{ value.label | escape }}</span>
                     <span aria-hidden="true">×</span>
                   </a>
                 {% endfor %}
                 {% if filter.type == 'price_range' %}
                   {% if filter.min_value.value != nil or filter.max_value.value != nil %}
-                    <a href="{{ filter.url_to_remove | escape }}">
+                    <a class="main-collection__active-filter body-text body-sm" href="{{ filter.url_to_remove | escape }}">
                       <span>{{ filter.label | escape }}</span>
                       <span aria-hidden="true">×</span>
                     </a>
                   {% endif %}
                 {% endif %}
               {% endfor %}
-              <a class="main-collection__clear-link" href="{{ collection.url | escape }}">{{ 'collection.clear_all' | t }}</a>
+              <a class="main-collection__clear-link body-text body-sm" href="{{ collection.url | escape }}">{{ 'collection.clear_all' | t }}</a>
               </div>
             {% endif %}
 
             <div class="main-collection__filter-groups">
               {% if block.settings.enable_sorting %}
                 <details data-accordion-details class="main-collection__mobile-sort main-collection__filter-group" data-filter-key="sort_by" open>
-                  <summary>
+                  <summary class="heading-text heading-{{ filter_heading_size }}">
                     <span>{{ sort_label }}</span>
                     <span class="main-collection__filter-icon main-collection__filter-icon--chevron" aria-hidden="true">{% render 'icon', icon: 'chevron-down', bare: true %}</span>
                     <span class="main-collection__filter-icon main-collection__filter-icon--plus" aria-hidden="true">
@@ -87,7 +119,7 @@
                   <fieldset class="main-collection__sort-options">
                     <legend class="visually-hidden">{{ sort_label }}</legend>
                     {% for option in collection.sort_options %}
-                      <label class="main-collection__sort-option">
+                      <label class="main-collection__sort-option body-text body-sm">
                         <input
                           type="radio"
                           name="sort_by"
@@ -112,7 +144,7 @@
                   endif
                 %}
                 <details data-accordion-details class="main-collection__filter-group" data-filter-key="{{ filter.param_name | default: filter.min_value.param_name | escape }}" {% unless block.settings.collapse_filters %}open{% endunless %}>
-                <summary>
+                <summary class="heading-text heading-{{ filter_heading_size }}">
                   <span data-filter-heading>{{ filter.label | escape }}{% if selected_count > 0 %} ({{ selected_count }}){% endif %}</span>
                   <span class="main-collection__filter-icon main-collection__filter-icon--chevron" aria-hidden="true">{% render 'icon', icon: 'chevron-down', bare: true %}</span>
                   <span class="main-collection__filter-icon main-collection__filter-icon--plus" aria-hidden="true">
@@ -162,9 +194,10 @@
                     <div class="main-collection__price-fields">
                       <div class="main-collection__price-input">
                         <label class="visually-hidden" for="Filter-{{ filter.label | handle }}-Min-{{ section.id }}">{{ 'collection.price_from' | t }}</label>
-                        <span aria-hidden="true">{{ currency_symbol }}</span>
+                        <span class="body-text body-sm" aria-hidden="true">{{ currency_symbol }}</span>
                         <input
                           id="Filter-{{ filter.label | handle }}-Min-{{ section.id }}"
+                          class="body-text body-sm"
                           type="number"
                           name="{{ filter.min_value.param_name }}"
                           min="0"
@@ -175,12 +208,13 @@
                           {% if filter.min_value.value != nil %}value="{{ price_range_min_value }}"{% endif %}
                         >
                       </div>
-                      <span class="main-collection__price-separator" aria-hidden="true">{{ 'collection.price_to' | t | downcase }}</span>
+                      <span class="main-collection__price-separator body-text body-sm" aria-hidden="true">{{ 'collection.price_to' | t | downcase }}</span>
                       <div class="main-collection__price-input">
                         <label class="visually-hidden" for="Filter-{{ filter.label | handle }}-Max-{{ section.id }}">{{ 'collection.price_to' | t }}</label>
-                        <span aria-hidden="true">{{ currency_symbol }}</span>
+                        <span class="body-text body-sm" aria-hidden="true">{{ currency_symbol }}</span>
                         <input
                           id="Filter-{{ filter.label | handle }}-Max-{{ section.id }}"
+                          class="body-text body-sm"
                           type="number"
                           name="{{ filter.max_value.param_name }}"
                           min="0"
@@ -203,7 +237,7 @@
                   <ul id="FilterValues-{{ block.id }}-{{ forloop.index }}" class="main-collection__filter-values{% if is_swatch_filter %} main-collection__filter-values--swatches{% endif %}" role="list">
                     {% for value in filter.values %}
                       <li {% if filter_items_limit > 0 and forloop.index > filter_items_limit and value.active == false %}data-filter-overflow hidden{% endif %}>
-                        <label class="main-collection__filter-value{% if value.active %} is-active{% endif %}">
+                        <label class="main-collection__filter-value body-text body-sm{% if value.active %} is-active{% endif %}">
                           <input
                             type="checkbox"
                             name="{{ value.param_name }}"
@@ -224,7 +258,7 @@
                             <span class="main-collection__swatch"{% if swatch_style != blank %} style="{{ swatch_style }}"{% endif %}></span>
                           {% endif %}
                           <span>{{ value.label | escape }}</span>
-                          <span>({{ value.count }})</span>
+                          <span class="main-collection__filter-count">({{ value.count }})</span>
                         </label>
                       </li>
                     {% endfor %}
@@ -254,22 +288,35 @@
   "name": "Filter",
   "tag": null,
   "settings": [
-    { "type": "paragraph", "content": "t:info.collection_filter_search_discovery" },
+    {
+      "type": "paragraph",
+      "content": "t:info.collection_filter_search_discovery"
+    },
     {
       "type": "select",
       "id": "filter_icon",
       "label": "Filter icon",
       "options": [
-        { "value": "funnel", "label": "Funnel" },
-        { "value": "sliders", "label": "Sliders" }
+        {
+          "value": "funnel",
+          "label": "Funnel"
+        },
+        {
+          "value": "sliders",
+          "label": "Sliders"
+        }
       ],
       "default": "sliders",
-      "visible_if": "{{ block.settings.desktop_layout == 'sidebar' and block.settings.sidebar_visibility != 'always' }}"
+      "visible_if": "{{ block.settings.desktop_layout == 'drawer' or block.settings.sidebar_visibility != 'always' }}"
+    },
+    {
+      "type": "header",
+      "content": "t:labels.desktop_layout"
     },
     {
       "type": "select",
       "id": "desktop_layout",
-      "label": "Desktop layout",
+      "label": "t:general.layout",
       "options": [
         {
           "value": "sidebar",
@@ -316,8 +363,41 @@
     },
     {
       "type": "select",
+      "id": "button_style",
+      "label": "Desktop filter button style",
+      "options": [
+        {
+          "value": "primary",
+          "label": "t:options.button_variant.primary"
+        },
+        {
+          "value": "secondary",
+          "label": "t:options.button_variant.secondary"
+        },
+        {
+          "value": "tertiary",
+          "label": "t:options.button_variant.tertiary"
+        },
+        {
+          "value": "outline",
+          "label": "Outline"
+        },
+        {
+          "value": "text",
+          "label": "Text"
+        }
+      ],
+      "default": "primary",
+      "visible_if": "{{ block.settings.desktop_layout == 'drawer' or block.settings.sidebar_visibility != 'always' }}"
+    },
+    {
+      "type": "header",
+      "content": "t:labels.mobile_layout"
+    },
+    {
+      "type": "select",
       "id": "mobile_layout",
-      "label": "Mobile layout",
+      "label": "t:general.layout",
       "options": [
         {
           "value": "sheet",
@@ -331,44 +411,54 @@
       "default": "sheet"
     },
     {
-      "type": "select",
-      "id": "button_style",
-      "label": "Filter button style",
-      "options": [
-        {
-          "value": "primary",
-          "label": "Primary"
-        },
-        {
-          "value": "secondary",
-          "label": "Secondary"
-        },
-        {
-          "value": "outline",
-          "label": "Outline"
-        },
-        {
-          "value": "text",
-          "label": "Text"
-        }
-      ],
-      "default": "primary"
-    },
-    {
-      "type": "checkbox",
-      "id": "enable_sorting",
-      "label": "Show sorting in drawer",
-      "default": true
+      "type": "header",
+      "content": "t:labels.filter_settings"
     },
     {
       "type": "select",
       "id": "heading_size",
-      "label": "Heading size",
+      "label": "t:labels.heading_size",
       "options": [
-        { "value": "h3", "label": "Heading 3" },
-        { "value": "h4", "label": "Heading 4" },
-        { "value": "h5", "label": "Heading 5" },
-        { "value": "h6", "label": "Heading 6" }
+        {
+          "value": "display",
+          "label": "t:options.heading_size.display"
+        },
+        {
+          "value": "xl",
+          "label": "t:options.heading_size.xl"
+        },
+        {
+          "value": "lg",
+          "label": "t:options.heading_size.lg"
+        },
+        {
+          "value": "md",
+          "label": "t:options.heading_size.md"
+        },
+        {
+          "value": "sm",
+          "label": "t:options.heading_size.sm"
+        },
+        {
+          "value": "xs",
+          "label": "t:options.heading_size.xs"
+        },
+        {
+          "value": "h3",
+          "label": "Heading 3"
+        },
+        {
+          "value": "h4",
+          "label": "Heading 4"
+        },
+        {
+          "value": "h5",
+          "label": "Heading 5"
+        },
+        {
+          "value": "h6",
+          "label": "Heading 6"
+        }
       ],
       "default": "h5"
     },
@@ -399,13 +489,34 @@
       "id": "items_limit",
       "label": "Items limit",
       "options": [
-        { "value": "0", "label": "No limit" },
-        { "value": "5", "label": "5" },
-        { "value": "10", "label": "10" },
-        { "value": "15", "label": "15" },
-        { "value": "20", "label": "20" }
+        {
+          "value": "0",
+          "label": "No limit"
+        },
+        {
+          "value": "5",
+          "label": "5"
+        },
+        {
+          "value": "10",
+          "label": "10"
+        },
+        {
+          "value": "15",
+          "label": "15"
+        },
+        {
+          "value": "20",
+          "label": "20"
+        }
       ],
       "default": "5"
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_sorting",
+      "label": "Show sorting in drawer",
+      "default": true
     }
   ]
 }

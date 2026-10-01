@@ -263,16 +263,25 @@
     const headerTop = header.querySelector('.header-top');
     if (!headerTop) return;
 
-    const headerBottom = headerTop.getBoundingClientRect().bottom;
-    header.querySelectorAll('.header-localization__details, .header-menu__details').forEach((details) => {
-      const detailsBottom = details.getBoundingClientRect().bottom;
-      details.style.setProperty('--header-submenu-offset', `${Math.max(0, headerBottom - detailsBottom)}px`);
+    // Read all geometry before writing CSS variables. Interleaving reads and
+    // writes here forces the browser to recalculate layout for every submenu.
+    const headerRect = headerTop.getBoundingClientRect();
+    const submenuRects = Array.from(
+      header.querySelectorAll('.header-localization__details, .header-menu__details'),
+      (details) => ({ details, rect: details.getBoundingClientRect() }),
+    );
+    const megaMenuRects = Array.from(
+      header.querySelectorAll('.header-menu__details--mega'),
+      (details) => ({ details, rect: details.getBoundingClientRect() }),
+    );
+
+    submenuRects.forEach(({ details, rect }) => {
+      details.style.setProperty('--header-submenu-offset', `${Math.max(0, headerRect.bottom - rect.bottom)}px`);
     });
 
-    const headerWidth = headerTop.getBoundingClientRect().width;
-    header.querySelectorAll('.header-menu__details--mega').forEach((details) => {
-      details.style.setProperty('--header-mega-inline-offset', `${Math.max(0, details.getBoundingClientRect().left)}px`);
-      details.style.setProperty('--header-mega-width', `${headerWidth}px`);
+    megaMenuRects.forEach(({ details, rect }) => {
+      details.style.setProperty('--header-mega-inline-offset', `${Math.max(0, rect.left)}px`);
+      details.style.setProperty('--header-mega-width', `${headerRect.width}px`);
     });
   };
 
@@ -281,11 +290,11 @@
     const scrollDelta = scrollY - lastScrollY;
 
     headerStates.forEach(({ header, stickyType }) => {
-      synchronizeSubmenuOffsets(header);
       const isSticky = stickyType !== 'none';
       const isScrolled = isSticky && scrollY > 8;
       const isSubmenuOpen = hasOpenHeaderSubmenu(header);
       const isMegaMenuOpen = hasOpenMegaMenu(header);
+      if (isSubmenuOpen) synchronizeSubmenuOffsets(header);
       const isSearchOpen = header.classList.contains('header--search-open');
       const isCartOpen = header.classList.contains('header--cart-open');
       const headerTop = header.querySelector('.header-top');

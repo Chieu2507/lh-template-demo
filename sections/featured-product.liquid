@@ -73,10 +73,8 @@
   {{ 'product-information.css' | asset_url | stylesheet_tag }}
   {{ 'product-information-extras.css' | asset_url | stylesheet_tag }}
   {{ 'product-media.css' | asset_url | stylesheet_tag }}
-  {% render 'swiper-stylesheet' %}
-
   <div
-    class="section-spacing product-information featured-product{% unless section.settings.sticky_content == false %} featured-product--sticky-content{% endunless %} color-scheme section-color-scope {{ featured_product_scheme }}"
+    class="section-spacing product-information featured-product color-scheme section-color-scope {{ featured_product_scheme }}"
     data-product-information
     data-featured-product
     {% if featured_product_style != blank %}style="{{ featured_product_style }}"{% endif %}
@@ -88,10 +86,10 @@
     {% endif %}
 
     <div class="container {{ featured_product_container_class }} featured-product__container">
-      <div class="product-information__layout">
+      <product-sticky-layout class="product-information__layout"{% unless section.settings.sticky_content == false %} data-sticky-enabled{% endunless %}>
         {% content_for 'block', type: '_product-media', id: 'product-media', product: featured_product, closest.product: featured_product %}
         {% content_for 'block', type: '_product-details', id: 'product-details', closest.product: featured_product %}
-      </div>
+      </product-sticky-layout>
     </div>
   </div>
 
@@ -108,18 +106,6 @@
     width: 100%;
     min-width: 0;
     background-color: var(--featured-product-background-color, var(--background-color));
-  }
-
-  @media (min-width: 768px) {
-    .featured-product--sticky-content .product-information__layout > .product-media-gallery {
-      position: sticky;
-      top: calc(var(--header-height, 0px) + var(--layout-grid-gap));
-      align-self: start;
-    }
-
-    .featured-product--sticky-content .product-information__layout > .product-details {
-      position: static;
-    }
   }
 
   .featured-product__background {
