@@ -131,7 +131,7 @@
                 "right_padding": 50,
                 "button_style": "primary",
                 "mobile_layout": "sheet",
-                "heading_size": "h5",
+                "heading_size": "sm",
                 "collapse_icon": "plus",
                 "collapse_filters": false,
                 "items_limit": "5",
