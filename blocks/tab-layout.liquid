@@ -544,7 +544,7 @@
 
     if (shouldAnimate && previousEntry && previousEntry !== selectedEntry) {
       animatePanel(state, selectedEntry.panel);
-    } else {
+    } else if (previousEntry !== selectedEntry) {
       cancelPanelAnimation(state);
     }
   };
