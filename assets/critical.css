@@ -319,10 +319,30 @@ svg {
 .placeholder-image {
   --placeholder-background-color: color-mix(in srgb, var(--background-color) 92%, var(--body-color));
   --placeholder-fill-color: color-mix(in srgb, var(--body-color) 30%, transparent);
+  display: flex;
   position: relative;
   isolation: isolate;
   overflow: hidden;
+  width: 100%;
+  height: 100%;
   background-color: var(--placeholder-background-color);
+}
+
+.placeholder-image::before,
+.placeholder-image::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.placeholder-image::before {
+  background-color: #fff6;
+}
+
+.placeholder-image::after {
+  background-color: rgb(var(--color-foreground-rgb) / 8%);
 }
 
 .placeholder-image > svg {
