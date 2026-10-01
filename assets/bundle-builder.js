@@ -33,11 +33,30 @@ function getSizedImageUrl(source, width) {
   }
 }
 
+function getVariantImage(card, variant) {
+  const imageScript = card.querySelector('[data-bundle-variant-images]');
+  const images = parseJson(imageScript?.textContent || '[]', []);
+  const imageData = Array.isArray(images)
+    ? images.find((image) => String(image.id) === String(variant?.id))
+    : null;
+
+  if (imageData?.src) return imageData;
+
+  const image = variant?.featured_image || variant?.image || variant?.featured_media?.preview_image || null;
+  if (typeof image === 'string') return { src: image };
+  if (!image || typeof image !== 'object') return null;
+
+  return {
+    ...image,
+    src: typeof image.src === 'string' ? image.src : image.preview_image?.src || '',
+  };
+}
+
 function updateProductImage(card, variant) {
-  const variantImage = variant?.featured_image || variant?.image || null;
+  const variantImage = getVariantImage(card, variant);
   const variantImageUrl = variantImage?.src || '';
   const imageUrl = variantImageUrl
-    ? getSizedImageUrl(variantImageUrl, 800)
+    ? variantImageUrl
     : card.dataset.productImageDefaultLarge;
   const image = card.querySelector('.product-card__image img');
 
@@ -53,7 +72,7 @@ function updateProductImage(card, variant) {
   }
 
   card.dataset.productImage = variantImageUrl
-    ? getSizedImageUrl(variantImageUrl, 160)
+    ? variantImage.thumb_src || getSizedImageUrl(variantImageUrl, 160)
     : card.dataset.productImageDefault || '';
 
   const imageWidth = Number(variantImage?.width || card.dataset.productImageDefaultWidth);
@@ -64,6 +83,10 @@ function updateProductImage(card, variant) {
   if (Number.isFinite(imageRatio) && imageRatio > 0) {
     card.dataset.productImageRatio = String(imageRatio);
   }
+  card.querySelector('.product-card')?.classList.toggle(
+    'product-card--variant-image-selected',
+    Boolean(variantImageUrl),
+  );
 }
 
 function getVariantOptionValue(option) {

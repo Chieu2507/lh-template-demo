@@ -120,6 +120,22 @@
           data-current-variant-id="{{ bundle_current_variant.id }}"
           data-current-variant-available="{{ bundle_product_available }}"
         >
+          <script type="application/json" data-bundle-variant-images>
+            [
+              {% for bundle_variant in bundle_product.variants %}
+                {% assign bundle_variant_image = bundle_variant.featured_image | default: bundle_variant.featured_media.preview_image %}
+                {
+                  "id": {{ bundle_variant.id | json }},
+                  "src": {% if bundle_variant_image != blank %}{{ bundle_variant_image | image_url: width: 800 | json }}{% else %}null{% endif %},
+                  "thumb_src": {% if bundle_variant_image != blank %}{{ bundle_variant_image | image_url: width: 160 | json }}{% else %}null{% endif %},
+                  "alt": {{ bundle_variant_image.alt | default: bundle_product.title | json }},
+                  "width": {{ bundle_variant_image.width | json }},
+                  "height": {{ bundle_variant_image.height | json }},
+                  "aspect_ratio": {{ bundle_variant_image.aspect_ratio | json }}
+                }{% unless forloop.last %},{% endunless %}
+              {% endfor %}
+            ]
+          </script>
           {% capture bundle_product_dropdown_picker %}
             {% liquid
               assign bundle_variant_select_id = bundle_variant_picker_id | append: '-select'
@@ -300,6 +316,13 @@
     margin: 0;
   }
 
+  .bundle-product-item .variant-picker__control--select {
+    --variant-height: var(--input-height);
+    --variant-height-mobile: var(--input-height-mobile);
+    --variant-border-width: var(--input-border-width);
+    --variant-radius: var(--input-radius);
+  }
+
   .bundle-product-item__action {
     min-width: 0;
   }
@@ -352,7 +375,7 @@
   "tag": null,
   "settings": [
     { "type": "paragraph", "content": "Products chosen here override the collection. Configure the same products or collection in Shopify Discounts for the offer to apply." },
-    { "type": "collection", "id": "collection", "label": "Collection", "info": "Use the same collection configured in Shopify Discounts. [Learn more](https://help.shopify.com/en/manual/discounts)" },
+    { "type": "collection", "id": "collection", "label": "Collection" },
     { "type": "product_list", "id": "products", "label": "Products", "limit": 50, "info": "Selected products display instead of the collection above." },
     { "type": "range", "id": "max_products", "label": "Max products", "min": 4, "max": 16, "step": 1, "default": 9 },
     { "type": "header", "content": "Layout" },
