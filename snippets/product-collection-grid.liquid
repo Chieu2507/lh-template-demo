@@ -9,6 +9,7 @@
   @param {number} [max_products] - Maximum number of products to render
   @param {string} [layout_type] - Grid or carousel presentation
   @param {string} [columns_desktop] - Desktop column setting
+  @param {string} [columns_tablet] - Optional tablet columns
   @param {string} [columns_mobile] - Mobile column setting
   @param {boolean} [enable_swipe_mobile] - Whether to enable mobile swipe
   @param {boolean} [mobile_carousel] - Whether a grid should use Swiper on mobile only
@@ -82,9 +83,16 @@
     assign product_collection_grid_autoplay_delay = 4000
   endif
 
-  assign product_collection_grid_aria_label = aria_label | default: 'search.products' | t
+  assign product_collection_grid_aria_label = aria_label
+  if product_collection_grid_aria_label == blank
+    assign product_collection_grid_aria_label = 'search.products' | t
+  endif
 
   assign product_collection_grid_columns_desktop = columns_desktop | default: 3 | plus: 0
+  assign product_collection_grid_columns_tablet = columns_tablet | default: product_collection_grid_columns_desktop | plus: 0
+  if product_collection_grid_columns_tablet < 2 or product_collection_grid_columns_tablet > 4
+    assign product_collection_grid_columns_tablet = product_collection_grid_columns_desktop
+  endif
   assign product_collection_grid_columns_mobile = columns_mobile | default: 1 | plus: 0
   if product_collection_grid_columns_desktop < 1 or product_collection_grid_columns_desktop > 6
     assign product_collection_grid_columns_desktop = 3
@@ -195,6 +203,7 @@
 {% capture product_collection_grid_style %}
   {% if product_collection_grid_layout == 'grid' %}
     --product-collection-grid-columns-desktop: {{ product_collection_grid_columns_desktop }};
+    --product-collection-grid-columns-tablet: {{ product_collection_grid_columns_tablet }};
     --product-collection-grid-columns-mobile: {{ product_collection_grid_columns_mobile }};
     --product-collection-grid-gap-horizontal: {{ product_collection_grid_gap_horizontal }}px;
     --product-collection-grid-gap-vertical: {{ product_collection_grid_gap_vertical }}px;
@@ -240,6 +249,7 @@
       data-layout="carousel"
       data-product-carousel
       data-swiper-columns-desktop="{{ product_collection_grid_columns_desktop }}"
+      {% if columns_tablet != blank %}data-swiper-columns-tablet="{{ product_collection_grid_columns_tablet }}"{% endif %}
       data-swiper-columns-mobile="{{ product_collection_grid_columns_mobile }}"
       data-swiper-gap-desktop="{{ product_collection_grid_gap_horizontal }}"
       data-swiper-gap-mobile="{{ product_collection_grid_gap_horizontal_mobile }}"
@@ -286,6 +296,7 @@
       data-product-carousel
       data-swiper-mobile-only="true"
       data-swiper-columns-desktop="{{ product_collection_grid_columns_desktop }}"
+      {% if columns_tablet != blank %}data-swiper-columns-tablet="{{ product_collection_grid_columns_tablet }}"{% endif %}
       data-swiper-columns-mobile="{{ product_collection_grid_columns_mobile }}"
       data-swiper-gap-desktop="{{ product_collection_grid_gap_horizontal }}"
       data-swiper-gap-mobile="{{ product_collection_grid_gap_horizontal_mobile }}"

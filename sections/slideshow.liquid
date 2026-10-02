@@ -44,6 +44,9 @@
 %}
 
 {% capture slideshow_style %}
+  {% if slideshow_desktop_height == 'custom' %}--slideshow-height: {{ section.settings.desktop_height_custom | default: 810 }}px;{% endif %}
+  {% if section.settings.customize_tablet_height %}--slideshow-height-tablet: {{ section.settings.tablet_height_custom | default: 720 }}px;{% endif %}
+  {% if slideshow_mobile_height == 'custom' %}--slideshow-height-mobile: {{ section.settings.mobile_height_custom | default: 670 }}px;{% endif %}
   {% if slideshow_padding_top != 0 %}--slideshow-padding-top: {{ slideshow_padding_top }}px;{% endif %}
   {% if slideshow_padding_bottom != 0 %}--slideshow-padding-bottom: {{ slideshow_padding_bottom }}px;{% endif %}
   {% if section.settings.customize_mobile_padding %}
@@ -189,7 +192,7 @@
   @media (min-width: 768px) {
     .slideshow--width-page[data-show-next-slide-preview-on-desktop='true'] .slideshow__swiper { overflow: visible; }
   }
-  @media (min-width: 768px) and (max-width: 1149.98px) { .slideshow { --slideshow-content-inline-padding: var(--page-margin-tablet); }.slideshow--width-page .slideshow__container { --page-margin-current: var(--page-margin-tablet); }.slideshow--width-full .slideshow__container { width: calc(100% - (var(--page-margin-tablet) * 2)); } }
+  @media (min-width: 768px) and (max-width: 1149.98px) { .slideshow:not(.slideshow--desktop-adapt) .slideshow__swiper { height: var(--slideshow-height-tablet, var(--slideshow-height, 72rem)); } .slideshow { --slideshow-content-inline-padding: var(--page-margin-tablet); }.slideshow--width-page .slideshow__container { --page-margin-current: var(--page-margin-tablet); }.slideshow--width-full .slideshow__container { width: calc(100% - (var(--page-margin-tablet) * 2)); } }
   @media (max-width: 767.98px) {
     .slideshow { --slideshow-content-inline-padding: var(--page-margin-mobile); padding-block: var(--slideshow-padding-top-mobile, var(--slideshow-padding-top, 0px)) var(--slideshow-padding-bottom-mobile, var(--slideshow-padding-bottom, 0px)); }
     .slideshow--width-page .slideshow__container { --page-margin-current: var(--page-margin-mobile); }
@@ -221,8 +224,12 @@
     { "type": "select", "id": "transition_style", "label": "Transition style", "options": [{ "value": "slide", "label": "Slide" }, { "value": "fade", "label": "Fade" }], "default": "slide", "visible_if": "{{ section.settings.width != 'page' or section.settings.show_next_slide_preview_on_desktop == false }}" },
     { "type": "checkbox", "id": "full_width_content", "label": "Full-width content", "default": false },
     { "type": "header", "content": "Height" },
-    { "type": "select", "id": "desktop_height", "label": "Desktop height", "options": [{ "value": "adapt", "label": "Adapt" }, { "value": "extra_small", "label": "Extra small" }, { "value": "small", "label": "Small" }, { "value": "medium", "label": "Medium" }, { "value": "large", "label": "Large" }, { "value": "extra_large", "label": "Extra large" }, { "value": "full_screen", "label": "Full screen" }], "default": "medium" },
-    { "type": "select", "id": "mobile_height", "label": "Mobile height", "options": [{ "value": "adapt", "label": "Adapt" }, { "value": "extra_small", "label": "Extra small" }, { "value": "small", "label": "Small" }, { "value": "medium", "label": "Medium" }, { "value": "large", "label": "Large" }, { "value": "extra_large", "label": "Extra large" }, { "value": "full_screen", "label": "Full screen" }], "default": "small" },
+    {"type": "select", "id": "desktop_height", "label": "Desktop height", "options": [{"value": "adapt", "label": "Adapt"}, {"value": "extra_small", "label": "Extra small"}, {"value": "small", "label": "Small"}, {"value": "medium", "label": "Medium"}, {"value": "large", "label": "Large"}, {"value": "extra_large", "label": "Extra large"}, {"value": "full_screen", "label": "Full screen"}, {"value": "custom", "label": "Custom"}], "default": "medium"},
+    {"type": "range", "id": "desktop_height_custom", "label": "Desktop custom height", "min": 200, "max": 1200, "step": 10, "unit": "px", "default": 810, "visible_if": "{{ section.settings.desktop_height == 'custom' }}"},
+    {"type": "checkbox", "id": "customize_tablet_height", "label": "Customize tablet height", "default": false, "visible_if": "{{ section.settings.desktop_height != 'adapt' }}"},
+    {"type": "range", "id": "tablet_height_custom", "label": "Tablet height", "min": 200, "max": 1200, "step": 10, "unit": "px", "default": 720, "visible_if": "{{ section.settings.desktop_height != 'adapt' and section.settings.customize_tablet_height }}"},
+    {"type": "select", "id": "mobile_height", "label": "Mobile height", "options": [{"value": "adapt", "label": "Adapt"}, {"value": "extra_small", "label": "Extra small"}, {"value": "small", "label": "Small"}, {"value": "medium", "label": "Medium"}, {"value": "large", "label": "Large"}, {"value": "extra_large", "label": "Extra large"}, {"value": "full_screen", "label": "Full screen"}, {"value": "custom", "label": "Custom"}], "default": "small"},
+    {"type": "range", "id": "mobile_height_custom", "label": "Mobile custom height", "min": 200, "max": 1200, "step": 10, "unit": "px", "default": 670, "visible_if": "{{ section.settings.mobile_height == 'custom' }}"},
     { "type": "header", "content": "Slide autoplay" },
     { "type": "checkbox", "id": "autoplay", "label": "Auto-rotate slides", "default": true },
     { "type": "checkbox", "id": "pause_on_hover", "label": "Pause on hover", "default": true, "visible_if": "{{ section.settings.autoplay }}" },

@@ -1,0 +1,1046 @@
+{
+  "colors": {
+    "stroken-white-f2f2f2": {
+      "id": "gid://shopify/Metaobject/618126311723",
+      "handle": "stroken-white-f2f2f2",
+      "displayName": "White",
+      "fields": [
+        {
+          "key": "label",
+          "value": "White"
+        },
+        {
+          "key": "color",
+          "value": "#f2f2f2"
+        },
+        {
+          "key": "image",
+          "value": null
+        },
+        {
+          "key": "color_taxonomy_reference",
+          "value": "[\"gid://shopify/TaxonomyValue/3\"]"
+        },
+        {
+          "key": "pattern_taxonomy_reference",
+          "value": "gid://shopify/TaxonomyValue/2874"
+        }
+      ]
+    },
+    "stroken-dark-green-06785f": {
+      "id": "gid://shopify/Metaobject/618126344491",
+      "handle": "stroken-dark-green-06785f",
+      "displayName": "Dark green",
+      "fields": [
+        {
+          "key": "label",
+          "value": "Dark green"
+        },
+        {
+          "key": "color",
+          "value": "#06785f"
+        },
+        {
+          "key": "image",
+          "value": null
+        },
+        {
+          "key": "color_taxonomy_reference",
+          "value": "[\"gid://shopify/TaxonomyValue/9\"]"
+        },
+        {
+          "key": "pattern_taxonomy_reference",
+          "value": "gid://shopify/TaxonomyValue/2874"
+        }
+      ]
+    },
+    "stroken-yellow-f8d933": {
+      "id": "gid://shopify/Metaobject/618126377259",
+      "handle": "stroken-yellow-f8d933",
+      "displayName": "Yellow",
+      "fields": [
+        {
+          "key": "label",
+          "value": "Yellow"
+        },
+        {
+          "key": "color",
+          "value": "#f8d933"
+        },
+        {
+          "key": "image",
+          "value": null
+        },
+        {
+          "key": "color_taxonomy_reference",
+          "value": "[\"gid://shopify/TaxonomyValue/14\"]"
+        },
+        {
+          "key": "pattern_taxonomy_reference",
+          "value": "gid://shopify/TaxonomyValue/2874"
+        }
+      ]
+    },
+    "stroken-orange-red-fb421d": {
+      "id": "gid://shopify/Metaobject/618126410027",
+      "handle": "stroken-orange-red-fb421d",
+      "displayName": "Orange red",
+      "fields": [
+        {
+          "key": "label",
+          "value": "Orange red"
+        },
+        {
+          "key": "color",
+          "value": "#fb421d"
+        },
+        {
+          "key": "image",
+          "value": null
+        },
+        {
+          "key": "color_taxonomy_reference",
+          "value": "[\"gid://shopify/TaxonomyValue/10\",\"gid://shopify/TaxonomyValue/13\"]"
+        },
+        {
+          "key": "pattern_taxonomy_reference",
+          "value": "gid://shopify/TaxonomyValue/2874"
+        }
+      ]
+    },
+    "stroken-white-efefef": {
+      "id": "gid://shopify/Metaobject/618126442795",
+      "handle": "stroken-white-efefef",
+      "displayName": "White",
+      "fields": [
+        {
+          "key": "label",
+          "value": "White"
+        },
+        {
+          "key": "color",
+          "value": "#efefef"
+        },
+        {
+          "key": "image",
+          "value": null
+        },
+        {
+          "key": "color_taxonomy_reference",
+          "value": "[\"gid://shopify/TaxonomyValue/3\"]"
+        },
+        {
+          "key": "pattern_taxonomy_reference",
+          "value": "gid://shopify/TaxonomyValue/2874"
+        }
+      ]
+    },
+    "stroken-blue-grey-8399ae": {
+      "id": "gid://shopify/Metaobject/618126475563",
+      "handle": "stroken-blue-grey-8399ae",
+      "displayName": "Blue grey",
+      "fields": [
+        {
+          "key": "label",
+          "value": "Blue grey"
+        },
+        {
+          "key": "color",
+          "value": "#8399ae"
+        },
+        {
+          "key": "image",
+          "value": null
+        },
+        {
+          "key": "color_taxonomy_reference",
+          "value": "[\"gid://shopify/TaxonomyValue/2\",\"gid://shopify/TaxonomyValue/8\"]"
+        },
+        {
+          "key": "pattern_taxonomy_reference",
+          "value": "gid://shopify/TaxonomyValue/2874"
+        }
+      ]
+    },
+    "stroken-white-f1f2f4": {
+      "id": "gid://shopify/Metaobject/618126508331",
+      "handle": "stroken-white-f1f2f4",
+      "displayName": "White",
+      "fields": [
+        {
+          "key": "label",
+          "value": "White"
+        },
+        {
+          "key": "color",
+          "value": "#f1f2f4"
+        },
+        {
+          "key": "image",
+          "value": null
+        },
+        {
+          "key": "color_taxonomy_reference",
+          "value": "[\"gid://shopify/TaxonomyValue/3\"]"
+        },
+        {
+          "key": "pattern_taxonomy_reference",
+          "value": "gid://shopify/TaxonomyValue/2874"
+        }
+      ]
+    },
+    "stroken-dark-grey-393939": {
+      "id": "gid://shopify/Metaobject/618126541099",
+      "handle": "stroken-dark-grey-393939",
+      "displayName": "Dark grey",
+      "fields": [
+        {
+          "key": "label",
+          "value": "Dark grey"
+        },
+        {
+          "key": "color",
+          "value": "#393939"
+        },
+        {
+          "key": "image",
+          "value": null
+        },
+        {
+          "key": "color_taxonomy_reference",
+          "value": "[\"gid://shopify/TaxonomyValue/8\"]"
+        },
+        {
+          "key": "pattern_taxonomy_reference",
+          "value": "gid://shopify/TaxonomyValue/2874"
+        }
+      ]
+    },
+    "stroken-light-lime-c5ed7c": {
+      "id": "gid://shopify/Metaobject/618126573867",
+      "handle": "stroken-light-lime-c5ed7c",
+      "displayName": "Light lime",
+      "fields": [
+        {
+          "key": "label",
+          "value": "Light lime"
+        },
+        {
+          "key": "color",
+          "value": "#c5ed7c"
+        },
+        {
+          "key": "image",
+          "value": null
+        },
+        {
+          "key": "color_taxonomy_reference",
+          "value": "[\"gid://shopify/TaxonomyValue/9\"]"
+        },
+        {
+          "key": "pattern_taxonomy_reference",
+          "value": "gid://shopify/TaxonomyValue/2874"
+        }
+      ]
+    },
+    "stroken-dark-brown-4c3d31": {
+      "id": "gid://shopify/Metaobject/618126606635",
+      "handle": "stroken-dark-brown-4c3d31",
+      "displayName": "Dark brown",
+      "fields": [
+        {
+          "key": "label",
+          "value": "Dark brown"
+        },
+        {
+          "key": "color",
+          "value": "#4c3d31"
+        },
+        {
+          "key": "image",
+          "value": null
+        },
+        {
+          "key": "color_taxonomy_reference",
+          "value": "[\"gid://shopify/TaxonomyValue/7\"]"
+        },
+        {
+          "key": "pattern_taxonomy_reference",
+          "value": "gid://shopify/TaxonomyValue/2874"
+        }
+      ]
+    },
+    "stroken-white-f5f6f8": {
+      "id": "gid://shopify/Metaobject/618126639403",
+      "handle": "stroken-white-f5f6f8",
+      "displayName": "White",
+      "fields": [
+        {
+          "key": "label",
+          "value": "White"
+        },
+        {
+          "key": "color",
+          "value": "#f5f6f8"
+        },
+        {
+          "key": "image",
+          "value": null
+        },
+        {
+          "key": "color_taxonomy_reference",
+          "value": "[\"gid://shopify/TaxonomyValue/3\"]"
+        },
+        {
+          "key": "pattern_taxonomy_reference",
+          "value": "gid://shopify/TaxonomyValue/2874"
+        }
+      ]
+    },
+    "stroken-light-pink-e5bed7": {
+      "id": "gid://shopify/Metaobject/618126672171",
+      "handle": "stroken-light-pink-e5bed7",
+      "displayName": "Light pink",
+      "fields": [
+        {
+          "key": "label",
+          "value": "Light pink"
+        },
+        {
+          "key": "color",
+          "value": "#e5bed7"
+        },
+        {
+          "key": "image",
+          "value": null
+        },
+        {
+          "key": "color_taxonomy_reference",
+          "value": "[\"gid://shopify/TaxonomyValue/11\"]"
+        },
+        {
+          "key": "pattern_taxonomy_reference",
+          "value": "gid://shopify/TaxonomyValue/2874"
+        }
+      ]
+    },
+    "stroken-light-yellow-edf0ca": {
+      "id": "gid://shopify/Metaobject/618126704939",
+      "handle": "stroken-light-yellow-edf0ca",
+      "displayName": "Light yellow",
+      "fields": [
+        {
+          "key": "label",
+          "value": "Light yellow"
+        },
+        {
+          "key": "color",
+          "value": "#edf0ca"
+        },
+        {
+          "key": "image",
+          "value": null
+        },
+        {
+          "key": "color_taxonomy_reference",
+          "value": "[\"gid://shopify/TaxonomyValue/14\"]"
+        },
+        {
+          "key": "pattern_taxonomy_reference",
+          "value": "gid://shopify/TaxonomyValue/2874"
+        }
+      ]
+    },
+    "stroken-light-blue-grey-ced5dd": {
+      "id": "gid://shopify/Metaobject/618126737707",
+      "handle": "stroken-light-blue-grey-ced5dd",
+      "displayName": "Light blue grey",
+      "fields": [
+        {
+          "key": "label",
+          "value": "Light blue grey"
+        },
+        {
+          "key": "color",
+          "value": "#ced5dd"
+        },
+        {
+          "key": "image",
+          "value": null
+        },
+        {
+          "key": "color_taxonomy_reference",
+          "value": "[\"gid://shopify/TaxonomyValue/2\",\"gid://shopify/TaxonomyValue/8\"]"
+        },
+        {
+          "key": "pattern_taxonomy_reference",
+          "value": "gid://shopify/TaxonomyValue/2874"
+        }
+      ]
+    },
+    "stroken-dark-navy-334875": {
+      "id": "gid://shopify/Metaobject/618126770475",
+      "handle": "stroken-dark-navy-334875",
+      "displayName": "Dark navy",
+      "fields": [
+        {
+          "key": "label",
+          "value": "Dark navy"
+        },
+        {
+          "key": "color",
+          "value": "#334875"
+        },
+        {
+          "key": "image",
+          "value": null
+        },
+        {
+          "key": "color_taxonomy_reference",
+          "value": "[\"gid://shopify/TaxonomyValue/15\"]"
+        },
+        {
+          "key": "pattern_taxonomy_reference",
+          "value": "gid://shopify/TaxonomyValue/2874"
+        }
+      ]
+    },
+    "stroken-grey-918f95": {
+      "id": "gid://shopify/Metaobject/618126803243",
+      "handle": "stroken-grey-918f95",
+      "displayName": "Grey",
+      "fields": [
+        {
+          "key": "label",
+          "value": "Grey"
+        },
+        {
+          "key": "color",
+          "value": "#918f95"
+        },
+        {
+          "key": "image",
+          "value": null
+        },
+        {
+          "key": "color_taxonomy_reference",
+          "value": "[\"gid://shopify/TaxonomyValue/8\"]"
+        },
+        {
+          "key": "pattern_taxonomy_reference",
+          "value": "gid://shopify/TaxonomyValue/2874"
+        }
+      ]
+    },
+    "stroken-sage-green-9bbca9": {
+      "id": "gid://shopify/Metaobject/618126836011",
+      "handle": "stroken-sage-green-9bbca9",
+      "displayName": "Sage green",
+      "fields": [
+        {
+          "key": "label",
+          "value": "Sage green"
+        },
+        {
+          "key": "color",
+          "value": "#9bbca9"
+        },
+        {
+          "key": "image",
+          "value": null
+        },
+        {
+          "key": "color_taxonomy_reference",
+          "value": "[\"gid://shopify/TaxonomyValue/9\"]"
+        },
+        {
+          "key": "pattern_taxonomy_reference",
+          "value": "gid://shopify/TaxonomyValue/2874"
+        }
+      ]
+    },
+    "stroken-black-343338": {
+      "id": "gid://shopify/Metaobject/618126901547",
+      "handle": "stroken-black-343338",
+      "displayName": "Black",
+      "fields": [
+        {
+          "key": "label",
+          "value": "Black"
+        },
+        {
+          "key": "color",
+          "value": "#343338"
+        },
+        {
+          "key": "image",
+          "value": null
+        },
+        {
+          "key": "color_taxonomy_reference",
+          "value": "[\"gid://shopify/TaxonomyValue/1\"]"
+        },
+        {
+          "key": "pattern_taxonomy_reference",
+          "value": "gid://shopify/TaxonomyValue/2874"
+        }
+      ]
+    },
+    "stroken-periwinkle-6578dc": {
+      "id": "gid://shopify/Metaobject/618126934315",
+      "handle": "stroken-periwinkle-6578dc",
+      "displayName": "Periwinkle",
+      "fields": [
+        {
+          "key": "label",
+          "value": "Periwinkle"
+        },
+        {
+          "key": "color",
+          "value": "#6578dc"
+        },
+        {
+          "key": "image",
+          "value": null
+        },
+        {
+          "key": "color_taxonomy_reference",
+          "value": "[\"gid://shopify/TaxonomyValue/2\"]"
+        },
+        {
+          "key": "pattern_taxonomy_reference",
+          "value": "gid://shopify/TaxonomyValue/2874"
+        }
+      ]
+    },
+    "stroken-navy-394058": {
+      "id": "gid://shopify/Metaobject/618126967083",
+      "handle": "stroken-navy-394058",
+      "displayName": "Navy",
+      "fields": [
+        {
+          "key": "label",
+          "value": "Navy"
+        },
+        {
+          "key": "color",
+          "value": "#394058"
+        },
+        {
+          "key": "image",
+          "value": null
+        },
+        {
+          "key": "color_taxonomy_reference",
+          "value": "[\"gid://shopify/TaxonomyValue/15\"]"
+        },
+        {
+          "key": "pattern_taxonomy_reference",
+          "value": "gid://shopify/TaxonomyValue/2874"
+        }
+      ]
+    },
+    "stroken-navy-313b56": {
+      "id": "gid://shopify/Metaobject/618126999851",
+      "handle": "stroken-navy-313b56",
+      "displayName": "Navy",
+      "fields": [
+        {
+          "key": "label",
+          "value": "Navy"
+        },
+        {
+          "key": "color",
+          "value": "#313b56"
+        },
+        {
+          "key": "image",
+          "value": null
+        },
+        {
+          "key": "color_taxonomy_reference",
+          "value": "[\"gid://shopify/TaxonomyValue/15\"]"
+        },
+        {
+          "key": "pattern_taxonomy_reference",
+          "value": "gid://shopify/TaxonomyValue/2874"
+        }
+      ]
+    },
+    "stroken-dark-green-364e48": {
+      "id": "gid://shopify/Metaobject/618127032619",
+      "handle": "stroken-dark-green-364e48",
+      "displayName": "Dark green",
+      "fields": [
+        {
+          "key": "label",
+          "value": "Dark green"
+        },
+        {
+          "key": "color",
+          "value": "#364e48"
+        },
+        {
+          "key": "image",
+          "value": null
+        },
+        {
+          "key": "color_taxonomy_reference",
+          "value": "[\"gid://shopify/TaxonomyValue/9\"]"
+        },
+        {
+          "key": "pattern_taxonomy_reference",
+          "value": "gid://shopify/TaxonomyValue/2874"
+        }
+      ]
+    },
+    "stroken-cream-f0ece3": {
+      "id": "gid://shopify/Metaobject/618127065387",
+      "handle": "stroken-cream-f0ece3",
+      "displayName": "Cream",
+      "fields": [
+        {
+          "key": "label",
+          "value": "Cream"
+        },
+        {
+          "key": "color",
+          "value": "#f0ece3"
+        },
+        {
+          "key": "image",
+          "value": null
+        },
+        {
+          "key": "color_taxonomy_reference",
+          "value": "[\"gid://shopify/TaxonomyValue/6\"]"
+        },
+        {
+          "key": "pattern_taxonomy_reference",
+          "value": "gid://shopify/TaxonomyValue/2874"
+        }
+      ]
+    },
+    "stroken-pink-e7c7ce": {
+      "id": "gid://shopify/Metaobject/618127098155",
+      "handle": "stroken-pink-e7c7ce",
+      "displayName": "Pink",
+      "fields": [
+        {
+          "key": "label",
+          "value": "Pink"
+        },
+        {
+          "key": "color",
+          "value": "#e7c7ce"
+        },
+        {
+          "key": "image",
+          "value": null
+        },
+        {
+          "key": "color_taxonomy_reference",
+          "value": "[\"gid://shopify/TaxonomyValue/11\"]"
+        },
+        {
+          "key": "pattern_taxonomy_reference",
+          "value": "gid://shopify/TaxonomyValue/2874"
+        }
+      ]
+    },
+    "stroken-light-yellow-f6eabb": {
+      "id": "gid://shopify/Metaobject/618127130923",
+      "handle": "stroken-light-yellow-f6eabb",
+      "displayName": "Light yellow",
+      "fields": [
+        {
+          "key": "label",
+          "value": "Light yellow"
+        },
+        {
+          "key": "color",
+          "value": "#f6eabb"
+        },
+        {
+          "key": "image",
+          "value": null
+        },
+        {
+          "key": "color_taxonomy_reference",
+          "value": "[\"gid://shopify/TaxonomyValue/14\"]"
+        },
+        {
+          "key": "pattern_taxonomy_reference",
+          "value": "gid://shopify/TaxonomyValue/2874"
+        }
+      ]
+    }
+  },
+  "products": [
+    {
+      "id": "gid://shopify/Product/15396900471083",
+      "options": [
+        {
+          "id": "gid://shopify/ProductOption/17858435121451",
+          "name": "Color",
+          "linkedMetafield": {
+            "namespace": "shopify",
+            "key": "color-pattern"
+          },
+          "optionValues": [
+            {
+              "id": "gid://shopify/ProductOptionValue/14946272641323",
+              "name": "White",
+              "linkedMetafieldValue": "gid://shopify/Metaobject/618126311723"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "gid://shopify/Product/15396900700459",
+      "options": [
+        {
+          "id": "gid://shopify/ProductOption/17858435350827",
+          "name": "Color",
+          "linkedMetafield": {
+            "namespace": "shopify",
+            "key": "color-pattern"
+          },
+          "optionValues": [
+            {
+              "id": "gid://shopify/ProductOptionValue/14946272936235",
+              "name": "Dark green",
+              "linkedMetafieldValue": "gid://shopify/Metaobject/618126344491"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "gid://shopify/Product/15396900995371",
+      "options": [
+        {
+          "id": "gid://shopify/ProductOption/17858435645739",
+          "name": "Color",
+          "linkedMetafield": {
+            "namespace": "shopify",
+            "key": "color-pattern"
+          },
+          "optionValues": [
+            {
+              "id": "gid://shopify/ProductOptionValue/14946273329451",
+              "name": "Yellow",
+              "linkedMetafieldValue": "gid://shopify/Metaobject/618126377259"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "gid://shopify/Product/15396901159211",
+      "options": [
+        {
+          "id": "gid://shopify/ProductOption/17858435809579",
+          "name": "Color",
+          "linkedMetafield": {
+            "namespace": "shopify",
+            "key": "color-pattern"
+          },
+          "optionValues": [
+            {
+              "id": "gid://shopify/ProductOptionValue/14946273558827",
+              "name": "Orange red",
+              "linkedMetafieldValue": "gid://shopify/Metaobject/618126410027"
+            },
+            {
+              "id": "gid://shopify/ProductOptionValue/14946273591595",
+              "name": "White",
+              "linkedMetafieldValue": "gid://shopify/Metaobject/618126442795"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "gid://shopify/Product/15396901388587",
+      "options": [
+        {
+          "id": "gid://shopify/ProductOption/17858436038955",
+          "name": "Color",
+          "linkedMetafield": {
+            "namespace": "shopify",
+            "key": "color-pattern"
+          },
+          "optionValues": [
+            {
+              "id": "gid://shopify/ProductOptionValue/14946274017579",
+              "name": "Blue grey",
+              "linkedMetafieldValue": "gid://shopify/Metaobject/618126475563"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "gid://shopify/Product/15396901617963",
+      "options": [
+        {
+          "id": "gid://shopify/ProductOption/17858436268331",
+          "name": "Color",
+          "linkedMetafield": {
+            "namespace": "shopify",
+            "key": "color-pattern"
+          },
+          "optionValues": [
+            {
+              "id": "gid://shopify/ProductOptionValue/14946274312491",
+              "name": "White",
+              "linkedMetafieldValue": "gid://shopify/Metaobject/618126508331"
+            },
+            {
+              "id": "gid://shopify/ProductOptionValue/14946274345259",
+              "name": "Dark grey",
+              "linkedMetafieldValue": "gid://shopify/Metaobject/618126541099"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "gid://shopify/Product/15396901978411",
+      "options": [
+        {
+          "id": "gid://shopify/ProductOption/17858436628779",
+          "name": "Color",
+          "linkedMetafield": {
+            "namespace": "shopify",
+            "key": "color-pattern"
+          },
+          "optionValues": [
+            {
+              "id": "gid://shopify/ProductOptionValue/14946274771243",
+              "name": "Blue grey",
+              "linkedMetafieldValue": "gid://shopify/Metaobject/618126475563"
+            },
+            {
+              "id": "gid://shopify/ProductOptionValue/14946274804011",
+              "name": "Light lime",
+              "linkedMetafieldValue": "gid://shopify/Metaobject/618126573867"
+            },
+            {
+              "id": "gid://shopify/ProductOptionValue/14946274836779",
+              "name": "Dark brown",
+              "linkedMetafieldValue": "gid://shopify/Metaobject/618126606635"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "gid://shopify/Product/15396902273323",
+      "options": [
+        {
+          "id": "gid://shopify/ProductOption/17858436923691",
+          "name": "Color",
+          "linkedMetafield": {
+            "namespace": "shopify",
+            "key": "color-pattern"
+          },
+          "optionValues": [
+            {
+              "id": "gid://shopify/ProductOptionValue/14946275229995",
+              "name": "White",
+              "linkedMetafieldValue": "gid://shopify/Metaobject/618126639403"
+            },
+            {
+              "id": "gid://shopify/ProductOptionValue/14946275262763",
+              "name": "Light pink",
+              "linkedMetafieldValue": "gid://shopify/Metaobject/618126672171"
+            },
+            {
+              "id": "gid://shopify/ProductOptionValue/14946275295531",
+              "name": "Light yellow",
+              "linkedMetafieldValue": "gid://shopify/Metaobject/618126704939"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "gid://shopify/Product/15396902568235",
+      "options": [
+        {
+          "id": "gid://shopify/ProductOption/17858437218603",
+          "name": "Color",
+          "linkedMetafield": {
+            "namespace": "shopify",
+            "key": "color-pattern"
+          },
+          "optionValues": [
+            {
+              "id": "gid://shopify/ProductOptionValue/14946275655979",
+              "name": "Light blue grey",
+              "linkedMetafieldValue": "gid://shopify/Metaobject/618126737707"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "gid://shopify/Product/15396902830379",
+      "options": [
+        {
+          "id": "gid://shopify/ProductOption/17858437480747",
+          "name": "Color",
+          "linkedMetafield": {
+            "namespace": "shopify",
+            "key": "color-pattern"
+          },
+          "optionValues": [
+            {
+              "id": "gid://shopify/ProductOptionValue/14946276016427",
+              "name": "Dark navy",
+              "linkedMetafieldValue": "gid://shopify/Metaobject/618126770475"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "gid://shopify/Product/15396903059755",
+      "options": [
+        {
+          "id": "gid://shopify/ProductOption/17858437710123",
+          "name": "Color",
+          "linkedMetafield": {
+            "namespace": "shopify",
+            "key": "color-pattern"
+          },
+          "optionValues": [
+            {
+              "id": "gid://shopify/ProductOptionValue/14946276311339",
+              "name": "Grey",
+              "linkedMetafieldValue": "gid://shopify/Metaobject/618126803243"
+            },
+            {
+              "id": "gid://shopify/ProductOptionValue/14946276344107",
+              "name": "Sage green",
+              "linkedMetafieldValue": "gid://shopify/Metaobject/618126836011"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "gid://shopify/Product/15396903420203",
+      "options": [
+        {
+          "id": "gid://shopify/ProductOption/17858438070571",
+          "name": "Color",
+          "linkedMetafield": {
+            "namespace": "shopify",
+            "key": "color-pattern"
+          },
+          "optionValues": [
+            {
+              "id": "gid://shopify/ProductOptionValue/14946276802859",
+              "name": "Black",
+              "linkedMetafieldValue": "gid://shopify/Metaobject/618126901547"
+            },
+            {
+              "id": "gid://shopify/ProductOptionValue/14946276835627",
+              "name": "White",
+              "linkedMetafieldValue": "gid://shopify/Metaobject/618126639403"
+            },
+            {
+              "id": "gid://shopify/ProductOptionValue/14946276868395",
+              "name": "Periwinkle",
+              "linkedMetafieldValue": "gid://shopify/Metaobject/618126934315"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "gid://shopify/Product/15396903715115",
+      "options": [
+        {
+          "id": "gid://shopify/ProductOption/17858438365483",
+          "name": "Color",
+          "linkedMetafield": {
+            "namespace": "shopify",
+            "key": "color-pattern"
+          },
+          "optionValues": [
+            {
+              "id": "gid://shopify/ProductOptionValue/14946277261611",
+              "name": "Navy",
+              "linkedMetafieldValue": "gid://shopify/Metaobject/618126967083"
+            },
+            {
+              "id": "gid://shopify/ProductOptionValue/14946277294379",
+              "name": "White",
+              "linkedMetafieldValue": "gid://shopify/Metaobject/618126639403"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "gid://shopify/Product/15396904075563",
+      "options": [
+        {
+          "id": "gid://shopify/ProductOption/17858438725931",
+          "name": "Color",
+          "linkedMetafield": {
+            "namespace": "shopify",
+            "key": "color-pattern"
+          },
+          "optionValues": [
+            {
+              "id": "gid://shopify/ProductOptionValue/14946278179115",
+              "name": "Navy",
+              "linkedMetafieldValue": "gid://shopify/Metaobject/618126999851"
+            },
+            {
+              "id": "gid://shopify/ProductOptionValue/14946278211883",
+              "name": "Dark green",
+              "linkedMetafieldValue": "gid://shopify/Metaobject/618127032619"
+            },
+            {
+              "id": "gid://shopify/ProductOptionValue/14946278244651",
+              "name": "Cream",
+              "linkedMetafieldValue": "gid://shopify/Metaobject/618127065387"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "gid://shopify/Product/15396904403243",
+      "options": [
+        {
+          "id": "gid://shopify/ProductOption/17858439053611",
+          "name": "Color",
+          "linkedMetafield": {
+            "namespace": "shopify",
+            "key": "color-pattern"
+          },
+          "optionValues": [
+            {
+              "id": "gid://shopify/ProductOptionValue/14946278670635",
+              "name": "Pink",
+              "linkedMetafieldValue": "gid://shopify/Metaobject/618127098155"
+            },
+            {
+              "id": "gid://shopify/ProductOptionValue/14946278703403",
+              "name": "Light yellow",
+              "linkedMetafieldValue": "gid://shopify/Metaobject/618127130923"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

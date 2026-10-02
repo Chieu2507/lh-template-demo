@@ -249,6 +249,22 @@ svg {
 
 /* Reusable media surface: a section supplies placement and dimensions, while
  * this primitive keeps media, placeholders, and overlay in one clipped box. */
+/* Hover media opts into the global zoom token without transforming content,
+ * video controls, or the wrapper used by parallax and carousel runtimes. */
+.media-hover-zoom__media {
+  overflow: clip;
+}
+
+@media (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) {
+  .media-hover-zoom .media-hover-zoom__media :where(img, svg) {
+    transition: transform var(--motion-duration-slow, 500ms) var(--motion-ease-standard, ease);
+  }
+
+  .media-hover-zoom:is(:hover, :focus-within) .media-hover-zoom__media :where(img, svg) {
+    transform: scale(var(--motion-image-zoom, 1));
+  }
+}
+
 .media {
   position: relative;
   overflow: clip;
@@ -1224,6 +1240,12 @@ p:empty {
   animation: var(--motion-block-animation);
 }
 
+.motion-block:has(.backdrop-blur) {
+  /* Release the animated opacity/transform layer so child backdrops can sample
+     the content behind this group after its entrance animation finishes. */
+  animation-fill-mode: backwards;
+}
+
 .motion-block .motion-block {
   animation: none;
 }
@@ -2152,7 +2174,7 @@ legend {
   position: absolute;
   inset: 0;
   z-index: 1;
-  border: 3px solid transparent;
+  border: 2px solid transparent;
   border-radius: inherit;
   pointer-events: none;
   transition: border-color var(--motion-duration-slow) var(--motion-ease-standard);
@@ -2647,6 +2669,18 @@ legend {
   color: var(--badge-sold-out-color);
 }
 
+.product-badge--new {
+  border-color: var(--badge-new-background);
+  background: var(--badge-new-background);
+  color: var(--badge-new-color);
+}
+
+.product-badge--best-seller {
+  border-color: var(--badge-best-seller-background);
+  background: var(--badge-best-seller-background);
+  color: var(--badge-best-seller-color);
+}
+
 .product-badge--manual {
   border-color: var(--accent-color);
   background: var(--accent-color);
@@ -2944,5 +2978,11 @@ legend {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1149.98px) {
+  .product-collection-grid--grid {
+    grid-template-columns: repeat(var(--product-collection-grid-columns-tablet, var(--product-collection-grid-columns-desktop, 3)), minmax(0, 1fr));
   }
 }

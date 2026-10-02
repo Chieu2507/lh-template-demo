@@ -104,7 +104,7 @@
   assign page_width = page_width | remove: 'px' | append: 'px'
   assign page_margin_desktop = settings.layout_desktop_margin
   if page_margin_desktop == blank
-    assign page_margin_desktop = 48
+    assign page_margin_desktop = 32
   endif
   assign page_margin_tablet = settings.layout_tablet_margin
   if page_margin_tablet == blank
@@ -141,28 +141,30 @@
       assign heading_letter_spacing = '0.2px'
   endcase
 
-  assign heading_1_letter_spacing = '-1.28px'
-  assign heading_2_letter_spacing = '-0.8px'
-  assign heading_3_letter_spacing = '-0.64px'
-  assign heading_4_letter_spacing = '-0.48px'
-  assign heading_5_letter_spacing = '0em'
-  assign heading_6_letter_spacing = '0em'
+  assign heading_1_letter_spacing = heading_letter_spacing
+  assign heading_2_letter_spacing = heading_letter_spacing
+  assign heading_3_letter_spacing = heading_letter_spacing
+  assign heading_4_letter_spacing = heading_letter_spacing
+  assign heading_5_letter_spacing = heading_letter_spacing
+  assign heading_6_letter_spacing = heading_letter_spacing
 
-  assign heading_1_size_desktop = settings.type_heading_1_size_desktop | default: 64
-  assign heading_1_size_tablet = settings.type_heading_1_size_tablet | default: 52
+  assign heading_1_size_desktop = settings.type_heading_1_size_desktop | default: 68
+  assign heading_1_size_tablet = settings.type_heading_1_size_tablet | default: 46
   assign heading_1_size_mobile = settings.type_heading_1_size_mobile | default: 40
   assign heading_2_size_desktop = settings.type_heading_2_size_desktop | default: 40
-  assign heading_2_size_tablet = settings.type_heading_2_size_tablet | default: 34
+  assign heading_2_size_tablet = settings.type_heading_2_size_tablet | default: 32
   assign heading_2_size_mobile = settings.type_heading_2_size_mobile | default: 30
-  assign heading_3_size_desktop = settings.type_heading_3_size_desktop | default: 32
-  assign heading_3_size_tablet = settings.type_heading_3_size_tablet | default: 22
-  assign heading_3_size_mobile = settings.type_heading_3_size_mobile | default: 20
-  assign heading_4_size_desktop = settings.type_heading_4_size_desktop | default: 24
-  assign heading_4_size_mobile = settings.type_heading_4_size_mobile | default: 18
+  assign heading_3_size_desktop = settings.type_heading_3_size_desktop | default: 28
+  assign heading_3_size_tablet = settings.type_heading_3_size_tablet | default: 26
+  assign heading_3_size_mobile = settings.type_heading_3_size_mobile | default: 22
+  assign heading_4_size_desktop = settings.type_heading_4_size_desktop | default: 22
+  assign heading_4_size_tablet = settings.type_heading_4_size_tablet | default: 20
+  assign heading_4_size_mobile = settings.type_heading_4_size_mobile | default: 20
   assign heading_5_size_desktop = settings.type_heading_5_size_desktop | default: 18
-  assign heading_5_size_tablet = settings.type_heading_5_size_tablet | default: 15
-  assign heading_5_size_mobile = settings.type_heading_5_size_mobile | default: 15
+  assign heading_5_size_tablet = settings.type_heading_5_size_tablet | default: 16
+  assign heading_5_size_mobile = settings.type_heading_5_size_mobile | default: 16
   assign heading_6_size_desktop = settings.type_heading_6_size_desktop | default: 16
+  assign heading_6_size_tablet = settings.type_heading_6_size_tablet | default: 14
   assign heading_6_size_mobile = settings.type_heading_6_size_mobile | default: 14
 
   assign heading_1_line_height = '1.2'
@@ -184,9 +186,6 @@
       assign heading_2_line_height = '1.3'
   endcase
   assign heading_2_line_height_tablet = heading_2_line_height
-  if settings.type_heading_2_line_height == 'normal'
-    assign heading_2_line_height_tablet = '1.3'
-  endif
   assign heading_3_line_height = '1.3'
   case settings.type_heading_3_line_height
     when 'tight'
@@ -261,7 +260,7 @@
     assign heading_6_text_case = 'capitalize'
   endif
 
-  assign eyebrow_size = settings.type_eyebrow_size | default: 12
+  assign eyebrow_size = settings.type_eyebrow_size | default: 16
   assign eyebrow_line_height = '1.5'
   case settings.type_eyebrow_line_height
     when 'tight'
@@ -598,6 +597,8 @@
       assign product_card_image_ratio = '4 / 5'
     when 'landscape'
       assign product_card_image_ratio = '4 / 3'
+    when 'ratio_7_6'
+      assign product_card_image_ratio = '1.1666666667'
   endcase
   assign product_card_alignment = 'left'
   case settings.product_card_alignment
@@ -837,6 +838,8 @@
   {% # Loads font variants with display: swap. %}
   {% if body_font != blank %}
     {{ body_font | font_face: font_display: 'swap' }}
+    {{ body_font | font_modify: 'weight', '500' | font_face: font_display: 'swap' }}
+    {{ body_font | font_modify: 'weight', '600' | font_face: font_display: 'swap' }}
     {{ body_font | font_modify: 'weight', 'bold' | font_face: font_display: 'swap' }}
     {{ body_font | font_modify: 'weight', 'bold' | font_modify: 'style', 'italic' | font_face: font_display: 'swap' }}
     {{ body_font | font_modify: 'style', 'italic' | font_face: font_display: 'swap' }}
@@ -938,7 +941,7 @@
     --font-eyebrow-line-height: {{ eyebrow_line_height }};
     --font-eyebrow-letter-spacing: {{ eyebrow_letter_spacing }};
     --font-eyebrow-text-transform: {{ eyebrow_text_case }};
-    --font-eyebrow-weight: 500;
+    --font-eyebrow-weight: {{ settings.type_eyebrow_weight | default: '700' }};
     --type-body-size: var(--font-body-md);
     --type-body-leading: var(--font-body-line-height);
     --type-heading-1-size: var(--font-heading-display);
@@ -1036,7 +1039,7 @@
     --button-font-size: {{ button_font_size }};
     --button-font-size-mobile: {{ button_font_size_mobile }};
     --button-letter-spacing: {{ button_letter_spacing }};
-    --button-font-weight: var(--font-body-weight);
+    --button-font-weight: {{ settings.button_font_weight | default: '700' }};
     --button-font-family: {{ button_primary_font_family }};
     --button-text-case: {{ button_primary_text_case }};
     --button-border-width: {{ button_primary_border_width }}px;
@@ -1158,6 +1161,10 @@
     --badge-sale-color: {{ badge_sale_color }};
     --badge-sold-out-background: {{ badge_sold_out_background }};
     --badge-sold-out-color: {{ badge_sold_out_color }};
+    --badge-new-background: {{ settings.badge_new_background_color | default: '#2E3C40' }};
+    --badge-new-color: {{ settings.badge_new_text_color | default: '#FFFFFF' }};
+    --badge-best-seller-background: {{ settings.badge_best_seller_background_color | default: '#F8A787' }};
+    --badge-best-seller-color: {{ settings.badge_best_seller_text_color | default: '#0A0A0A' }};
 
     --price-font-family: var(--font-body-family);
     --price-font-style: var(--font-body-style);
@@ -1190,9 +1197,9 @@
 
   @media (min-width: 768px) and (max-width: 1149.98px) {
     :root {
-      --font-heading-xs: {{ heading_6_size_desktop }}px;
+      --font-heading-xs: {{ heading_6_size_tablet }}px;
       --font-heading-sm: {{ heading_5_size_tablet }}px;
-      --font-heading-md: {{ heading_4_size_desktop }}px;
+      --font-heading-md: {{ heading_4_size_tablet }}px;
       --font-heading-lg: {{ heading_3_size_tablet }}px;
       --font-heading-xl: {{ heading_2_size_tablet }}px;
       --font-heading-display: {{ heading_1_size_tablet }}px;

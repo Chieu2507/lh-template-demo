@@ -18,7 +18,7 @@
   endcapture
   assign image_ratio_desktop = image_ratio_desktop | strip
   assign image_height_desktop = 'auto'
-  if image_ratio_desktop_setting == 'square' or image_ratio_desktop_setting == 'portrait' or image_ratio_desktop_setting == 'landscape' or image_ratio_desktop_setting == 'wide' or image_ratio_desktop_setting == 'custom'
+  if image_ratio_desktop_setting == 'square' or image_ratio_desktop_setting == 'portrait' or image_ratio_desktop_setting == 'landscape' or image_ratio_desktop_setting == 'ratio_7_6' or image_ratio_desktop_setting == 'wide' or image_ratio_desktop_setting == 'custom'
     assign image_height_desktop = '100%'
   endif
 
@@ -28,7 +28,7 @@
   endcapture
   assign image_ratio_mobile = image_ratio_mobile | strip
   assign image_height_mobile = 'auto'
-  if image_ratio_mobile_setting == 'square' or image_ratio_mobile_setting == 'portrait' or image_ratio_mobile_setting == 'landscape' or image_ratio_mobile_setting == 'wide' or image_ratio_mobile_setting == 'custom'
+  if image_ratio_mobile_setting == 'square' or image_ratio_mobile_setting == 'portrait' or image_ratio_mobile_setting == 'landscape' or image_ratio_mobile_setting == 'ratio_7_6' or image_ratio_mobile_setting == 'wide' or image_ratio_mobile_setting == 'custom'
     assign image_height_mobile = '100%'
   endif
 
@@ -124,7 +124,7 @@
   assign padding_left_mobile = block.settings.padding_left_mobile | default: 0 | plus: 0
   assign padding_right_mobile = block.settings.padding_right_mobile | default: 0 | plus: 0
 
-  assign image_class = 'image-block size-style size-style--contain image-block--ratio-desktop-' | append: image_ratio_desktop_setting
+  assign image_class = 'image-block media-hover-zoom size-style size-style--contain image-block--ratio-desktop-' | append: image_ratio_desktop_setting
   if block.settings.show_image_first_mobile
     assign image_class = image_class | append: ' image-block--first-mobile'
   endif
@@ -167,7 +167,7 @@
     url: block.settings.image_link,
     open_in_new_tab: block.settings.open_in_new_tab,
     alt: block.settings.alt_text,
-    class: 'image-block__media',
+    class: 'image-block__media media-hover-zoom__media',
     width: 2400,
     widths: '400, 600, 800, 1200, 1600, 2400',
     sizes: image_sizes
@@ -292,6 +292,7 @@
         { "value": "square", "label": "t:options.image_ratio.square" },
         { "value": "portrait", "label": "t:options.image_ratio.portrait" },
         { "value": "landscape", "label": "t:options.image_ratio.landscape" },
+        { "value": "ratio_7_6", "label": "t:options.image_ratio.ratio_7_6" },
         { "value": "wide", "label": "t:options.image_ratio.wide" },
         { "value": "custom", "label": "t:options.image_ratio.custom" }
       ],
@@ -362,6 +363,7 @@
         { "value": "square", "label": "t:options.image_ratio.square" },
         { "value": "portrait", "label": "t:options.image_ratio.portrait" },
         { "value": "landscape", "label": "t:options.image_ratio.landscape" },
+        { "value": "ratio_7_6", "label": "t:options.image_ratio.ratio_7_6" },
         { "value": "wide", "label": "t:options.image_ratio.wide" },
         { "value": "custom", "label": "t:options.image_ratio.custom" }
       ],

@@ -281,6 +281,13 @@
 
   assign countdown_style_class = countdown_style | replace: '_', '-'
   assign countdown_class = 'countdown-timer countdown-timer--style-' | append: countdown_style_class
+  assign countdown_minutes_key = 'countdown.minutes'
+  assign countdown_seconds_key = 'countdown.seconds'
+  if countdown_style == 'with_labels' and block.settings.unit_layout == 'connected'
+    assign countdown_class = countdown_class | append: ' countdown-timer--connected'
+    assign countdown_minutes_key = 'countdown.minutes_full'
+    assign countdown_seconds_key = 'countdown.seconds_full'
+  endif
   if block.settings.show_background == false or block.settings.show_background == 'false'
     assign countdown_class = countdown_class | append: ' countdown-timer--no-background'
   endif
@@ -310,7 +317,7 @@
     data-countdown-hide-when-expired="{{ countdown_hide_when_expired }}"
     data-countdown-design-mode="{{ request.design_mode }}"
     data-countdown-expired-label="{{ 'countdown.expired' | t | escape }}"
-    style="--countdown-number-size: {{ countdown_number_font_size }}; --countdown-number-line-height: {{ countdown_number_line_height }}; --countdown-number-letter-spacing: {{ countdown_number_letter_spacing }}; --countdown-number-text-transform: {{ countdown_number_text_transform }}; --countdown-label-size: {{ countdown_label_font_size }}; --countdown-inline-font-family: {{ countdown_inline_font_family }}; --countdown-inline-font-style: {{ countdown_inline_font_style }}; --countdown-inline-font-weight: {{ countdown_inline_font_weight }}; --countdown-inline-font-size: {{ countdown_inline_font_size_token }}; --countdown-inline-letter-spacing: {{ countdown_inline_letter_spacing_token }}; --countdown-inline-text-transform: {{ countdown_inline_text_transform_token }}; --countdown-number-color: {{ countdown_number_color }}; --countdown-background: {{ countdown_background_color }}; --countdown-radius: {{ countdown_radius }}; --countdown-padding-top: {{ countdown_padding_top }}px; --countdown-padding-bottom: {{ countdown_padding_bottom }}px; --countdown-padding-left: {{ countdown_padding_left }}px; --countdown-padding-right: {{ countdown_padding_right }}px;{% if countdown_customize_mobile_padding %} --countdown-padding-top-mobile: {{ countdown_padding_top_mobile }}px; --countdown-padding-bottom-mobile: {{ countdown_padding_bottom_mobile }}px; --countdown-padding-left-mobile: {{ countdown_padding_left_mobile }}px; --countdown-padding-right-mobile: {{ countdown_padding_right_mobile }}px;{% endif %}"
+    style="--countdown-max-width: {{ block.settings.max_width | default: 448 | at_least: 200 | at_most: 1000 }}px; --countdown-number-size: {{ countdown_number_font_size }}; --countdown-number-line-height: {{ countdown_number_line_height }}; --countdown-number-letter-spacing: {{ countdown_number_letter_spacing }}; --countdown-number-text-transform: {{ countdown_number_text_transform }}; --countdown-label-size: {{ countdown_label_font_size }}; --countdown-inline-font-family: {{ countdown_inline_font_family }}; --countdown-inline-font-style: {{ countdown_inline_font_style }}; --countdown-inline-font-weight: {{ countdown_inline_font_weight }}; --countdown-inline-font-size: {{ countdown_inline_font_size_token }}; --countdown-inline-letter-spacing: {{ countdown_inline_letter_spacing_token }}; --countdown-inline-text-transform: {{ countdown_inline_text_transform_token }}; --countdown-number-color: {{ countdown_number_color }}; --countdown-background: {{ countdown_background_color }}; --countdown-radius: {{ countdown_radius }}; --countdown-padding-top: {{ countdown_padding_top }}px; --countdown-padding-bottom: {{ countdown_padding_bottom }}px; --countdown-padding-left: {{ countdown_padding_left }}px; --countdown-padding-right: {{ countdown_padding_right }}px;{% if countdown_customize_mobile_padding %} --countdown-padding-top-mobile: {{ countdown_padding_top_mobile }}px; --countdown-padding-bottom-mobile: {{ countdown_padding_bottom_mobile }}px; --countdown-padding-left-mobile: {{ countdown_padding_left_mobile }}px; --countdown-padding-right-mobile: {{ countdown_padding_right_mobile }}px;{% endif %}"
     role="timer"
     {{ block.shopify_attributes }}
   >
@@ -327,21 +334,21 @@
           <span class="countdown-timer__label" data-countdown-label>{{ 'countdown.hours' | t }}</span>
         {% endif %}
       </div>
-      <div class="countdown-timer__unit" data-countdown-unit="minutes" data-countdown-unit-label="{{ 'countdown.minutes' | t | escape }}">
+      <div class="countdown-timer__unit" data-countdown-unit="minutes" data-countdown-unit-label="{{ countdown_minutes_key | t | escape }}">
         <span class="countdown-timer__value" data-countdown-value="minutes">{{ countdown_minutes_display }}</span>
         {% if countdown_style != 'numbers_only' %}
-          <span class="countdown-timer__label" data-countdown-label>{{ 'countdown.minutes' | t }}</span>
+          <span class="countdown-timer__label" data-countdown-label>{{ countdown_minutes_key | t }}</span>
         {% endif %}
       </div>
-      <div class="countdown-timer__unit" data-countdown-unit="seconds" data-countdown-unit-label="{{ 'countdown.seconds' | t | escape }}">
+      <div class="countdown-timer__unit" data-countdown-unit="seconds" data-countdown-unit-label="{{ countdown_seconds_key | t | escape }}">
         <span class="countdown-timer__value" data-countdown-value="seconds">{{ countdown_seconds_display }}</span>
         {% if countdown_style != 'numbers_only' %}
-          <span class="countdown-timer__label" data-countdown-label>{{ 'countdown.seconds' | t }}</span>
+          <span class="countdown-timer__label" data-countdown-label>{{ countdown_seconds_key | t }}</span>
         {% endif %}
       </div>
     </div>
     <span class="countdown-timer__announcement visually-hidden" data-countdown-announcement aria-live="polite">
-      {{ countdown_days_display }} {{ 'countdown.days' | t }}, {{ countdown_hours_display }} {{ 'countdown.hours' | t }}, {{ countdown_minutes_display }} {{ 'countdown.minutes' | t }}, {{ countdown_seconds_display }} {{ 'countdown.seconds' | t }}
+      {{ countdown_days_display }} {{ 'countdown.days' | t }}, {{ countdown_hours_display }} {{ 'countdown.hours' | t }}, {{ countdown_minutes_display }} {{ countdown_minutes_key | t }}, {{ countdown_seconds_display }} {{ countdown_seconds_key | t }}
     </span>
   </countdown-timer>
 {% endif %}
@@ -522,6 +529,34 @@
     }
   }
 
+  .countdown-timer--connected { width: min(100%, var(--countdown-max-width, 44.8rem)); flex-shrink: 1; }
+  .countdown-timer--connected .countdown-timer__units {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 0;
+    border: 1px solid var(--border-color);
+    border-radius: var(--countdown-radius, var(--radius-square));
+    overflow: hidden;
+  }
+  .countdown-timer--connected .countdown-timer__unit {
+    width: auto;
+    min-width: 0;
+    min-height: 0;
+    border-radius: 0;
+    padding: 1rem 1.2rem;
+  }
+  .countdown-timer--connected .countdown-timer__unit + .countdown-timer__unit {
+    border-inline-start: 1px solid var(--border-color);
+  }
+  .countdown-timer--connected .countdown-timer__label {
+    color: var(--body-color);
+    letter-spacing: normal;
+    text-transform: none;
+  }
+  @media (max-width: 767.98px) {
+    .countdown-timer--connected .countdown-timer__unit { padding-inline: 0.4rem; }
+  }
+
   @media (prefers-reduced-motion: reduce) {
     .countdown-timer__value,
     .countdown-timer__label {
@@ -660,7 +695,7 @@
       }
 
       syncUnitWidth() {
-        if (!this.unitElements?.length) return;
+        if (!this.unitElements?.length || this.classList.contains('countdown-timer--connected')) return;
 
         this.style.removeProperty('--countdown-unit-width');
         const maxWidth = Math.max(...this.unitElements.map((unit) => unit.getBoundingClientRect().width));
@@ -710,12 +745,48 @@
       "id": "style",
       "label": "t:labels.style",
       "options": [
-        { "value": "with_labels", "label": "t:options.countdown_style.with_labels" },
-        { "value": "numbers_only", "label": "t:options.countdown_style.numbers_only" },
-        { "value": "inline", "label": "t:options.countdown_style.inline" },
-        { "value": "inline_superscript", "label": "t:options.countdown_style.inline_superscript" }
+        {
+          "value": "with_labels",
+          "label": "t:options.countdown_style.with_labels"
+        },
+        {
+          "value": "numbers_only",
+          "label": "t:options.countdown_style.numbers_only"
+        },
+        {
+          "value": "inline",
+          "label": "t:options.countdown_style.inline"
+        },
+        {
+          "value": "inline_superscript",
+          "label": "t:options.countdown_style.inline_superscript"
+        }
       ],
       "default": "with_labels"
+    },
+    {
+      "type": "select",
+      "id": "unit_layout",
+      "label": "t:labels.unit_layout",
+      "options": [
+        {
+          "value": "separated",
+          "label": "t:options.countdown_unit_layout.separated"
+        },
+        {
+          "value": "connected",
+          "label": "t:options.countdown_unit_layout.connected"
+        }
+      ],
+      "default": "separated",
+      "visible_if": "{{ block.settings.style == 'with_labels' }}"
+    },
+    {
+      "type": "number",
+      "id": "max_width",
+      "label": "t:labels.max_width",
+      "default": 448,
+      "visible_if": "{{ block.settings.style == 'with_labels' and block.settings.unit_layout == 'connected' }}"
     },
     {
       "type": "checkbox",
@@ -728,10 +799,22 @@
       "id": "corner_radius",
       "label": "t:labels.corner_radius",
       "options": [
-        { "value": "square", "label": "t:options.radius_preset.square" },
-        { "value": "slightly_rounded", "label": "t:options.radius_preset.slightly_rounded" },
-        { "value": "rounded", "label": "t:options.radius_preset.rounded" },
-        { "value": "pill", "label": "t:options.radius_preset.pill" }
+        {
+          "value": "square",
+          "label": "t:options.radius_preset.square"
+        },
+        {
+          "value": "slightly_rounded",
+          "label": "t:options.radius_preset.slightly_rounded"
+        },
+        {
+          "value": "rounded",
+          "label": "t:options.radius_preset.rounded"
+        },
+        {
+          "value": "pill",
+          "label": "t:options.radius_preset.pill"
+        }
       ],
       "default": "square"
     },
@@ -744,8 +827,14 @@
       "id": "type",
       "label": "t:labels.type",
       "options": [
-        { "value": "fixed_time", "label": "t:options.countdown_type.fixed_time" },
-        { "value": "recurring", "label": "t:options.countdown_type.duration" }
+        {
+          "value": "fixed_time",
+          "label": "t:options.countdown_type.fixed_time"
+        },
+        {
+          "value": "recurring",
+          "label": "t:options.countdown_type.duration"
+        }
       ],
       "default": "fixed_time"
     },
@@ -797,13 +886,34 @@
       "id": "number_size",
       "label": "t:labels.number_size",
       "options": [
-        { "value": "display", "label": "t:options.heading_size.display" },
-        { "value": "xl", "label": "t:options.heading_size.xl" },
-        { "value": "lg", "label": "t:options.heading_size.lg" },
-        { "value": "md", "label": "t:options.heading_size.md" },
-        { "value": "sm", "label": "t:options.heading_size.sm" },
-        { "value": "xs", "label": "t:options.heading_size.xs" },
-        { "value": "custom", "label": "t:options.heading_size.custom" }
+        {
+          "value": "display",
+          "label": "t:options.heading_size.display"
+        },
+        {
+          "value": "xl",
+          "label": "t:options.heading_size.xl"
+        },
+        {
+          "value": "lg",
+          "label": "t:options.heading_size.lg"
+        },
+        {
+          "value": "md",
+          "label": "t:options.heading_size.md"
+        },
+        {
+          "value": "sm",
+          "label": "t:options.heading_size.sm"
+        },
+        {
+          "value": "xs",
+          "label": "t:options.heading_size.xs"
+        },
+        {
+          "value": "custom",
+          "label": "t:options.heading_size.custom"
+        }
       ],
       "default": "md",
       "visible_if": "{{ block.settings.style == 'with_labels' }}"
@@ -824,12 +934,30 @@
       "id": "label_size",
       "label": "t:labels.label_size",
       "options": [
-        { "value": "xs", "label": "t:options.text_size.xs" },
-        { "value": "sm", "label": "t:options.text_size.sm" },
-        { "value": "md", "label": "t:options.text_size.md" },
-        { "value": "lg", "label": "t:options.text_size.lg" },
-        { "value": "xl", "label": "t:options.text_size.xl" },
-        { "value": "xxl", "label": "t:options.text_size.xxl" }
+        {
+          "value": "xs",
+          "label": "t:options.text_size.xs"
+        },
+        {
+          "value": "sm",
+          "label": "t:options.text_size.sm"
+        },
+        {
+          "value": "md",
+          "label": "t:options.text_size.md"
+        },
+        {
+          "value": "lg",
+          "label": "t:options.text_size.lg"
+        },
+        {
+          "value": "xl",
+          "label": "t:options.text_size.xl"
+        },
+        {
+          "value": "xxl",
+          "label": "t:options.text_size.xxl"
+        }
       ],
       "default": "sm",
       "visible_if": "{{ block.settings.style == 'with_labels' }}"
@@ -839,9 +967,18 @@
       "id": "font",
       "label": "t:labels.font",
       "options": [
-        { "value": "body", "label": "t:options.menu_font.body" },
-        { "value": "heading", "label": "t:options.menu_font.heading" },
-        { "value": "accent", "label": "t:options.menu_font.accent" }
+        {
+          "value": "body",
+          "label": "t:options.menu_font.body"
+        },
+        {
+          "value": "heading",
+          "label": "t:options.menu_font.heading"
+        },
+        {
+          "value": "accent",
+          "label": "t:options.menu_font.accent"
+        }
       ],
       "default": "accent",
       "visible_if": "{{ block.settings.style == 'inline' or block.settings.style == 'inline_superscript' }}"
@@ -851,12 +988,30 @@
       "id": "font_size",
       "label": "t:labels.font_size",
       "options": [
-        { "value": "xs", "label": "t:options.text_size.xs" },
-        { "value": "sm", "label": "t:options.text_size.sm" },
-        { "value": "md", "label": "t:options.text_size.md" },
-        { "value": "lg", "label": "t:options.text_size.lg" },
-        { "value": "xl", "label": "t:options.text_size.xl" },
-        { "value": "xxl", "label": "t:options.text_size.xxl" }
+        {
+          "value": "xs",
+          "label": "t:options.text_size.xs"
+        },
+        {
+          "value": "sm",
+          "label": "t:options.text_size.sm"
+        },
+        {
+          "value": "md",
+          "label": "t:options.text_size.md"
+        },
+        {
+          "value": "lg",
+          "label": "t:options.text_size.lg"
+        },
+        {
+          "value": "xl",
+          "label": "t:options.text_size.xl"
+        },
+        {
+          "value": "xxl",
+          "label": "t:options.text_size.xxl"
+        }
       ],
       "default": "md",
       "visible_if": "{{ block.settings.style == 'inline' or block.settings.style == 'inline_superscript' }}"
@@ -866,10 +1021,22 @@
       "id": "letter_spacing",
       "label": "t:labels.letter_spacing",
       "options": [
-        { "value": "normal", "label": "t:options.letter_spacing.normal" },
-        { "value": "relaxed", "label": "t:options.letter_spacing.relaxed" },
-        { "value": "loose", "label": "t:options.letter_spacing.loose" },
-        { "value": "extra_loose", "label": "t:options.letter_spacing.extra_loose" }
+        {
+          "value": "normal",
+          "label": "t:options.letter_spacing.normal"
+        },
+        {
+          "value": "relaxed",
+          "label": "t:options.letter_spacing.relaxed"
+        },
+        {
+          "value": "loose",
+          "label": "t:options.letter_spacing.loose"
+        },
+        {
+          "value": "extra_loose",
+          "label": "t:options.letter_spacing.extra_loose"
+        }
       ],
       "default": "normal",
       "visible_if": "{{ block.settings.style == 'inline' or block.settings.style == 'inline_superscript' }}"
@@ -883,8 +1050,14 @@
       "id": "color_type",
       "label": "t:labels.type",
       "options": [
-        { "value": "inherit", "label": "t:options.countdown_color_type.inherit" },
-        { "value": "custom", "label": "t:options.countdown_color_type.custom" }
+        {
+          "value": "inherit",
+          "label": "t:options.countdown_color_type.inherit"
+        },
+        {
+          "value": "custom",
+          "label": "t:options.countdown_color_type.custom"
+        }
       ],
       "default": "inherit"
     },

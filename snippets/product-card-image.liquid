@@ -1,4 +1,5 @@
 {% doc %}
+  @param {number} [placeholder_index] - Ordered placeholder image variant
   Renders the reusable media primitive for a Product Card.
 
   The component owns the product image, optional secondary image and the
@@ -60,7 +61,9 @@
     {% endif %}
   {% else %}
     <div class="product-card__placeholder placeholder-image" aria-hidden="true">
-      {{ 'product-1' | placeholder_svg_tag }}
+      {% assign placeholder_number = placeholder_index | default: 1 | minus: 1 | modulo: 6 | plus: 1 %}
+      {% assign placeholder_name = 'product-' | append: placeholder_number %}
+      {{ placeholder_name | placeholder_svg_tag }}
     </div>
   {% endunless %}
 {% if url != blank %}

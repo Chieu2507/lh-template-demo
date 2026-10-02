@@ -1,0 +1,32 @@
+{% doc %}
+  Maps a Background block's device height to a safe CSS length.
+  @param {object} settings - Background block settings
+  @param {string} device - desktop or mobile
+{% enddoc %}
+{%- liquid
+  assign height_key = 'height_' | append: device
+  assign unit_key = 'height_unit_' | append: device
+  assign px_key = 'height_px_' | append: device
+  assign percent_key = 'height_percent_' | append: device
+  case settings[height_key]
+    when 'small'
+      echo '160px'
+    when 'large'
+      echo '400px'
+    when 'full_screen'
+      echo '100svh'
+    when 'custom'
+      if settings[unit_key] == 'percent'
+        assign height_value = settings[percent_key] | default: 40 | at_least: 1 | at_most: 100 | divided_by: 100.0
+        echo 'calc(var(--collection-content-height, 600px) * '
+        echo height_value
+        echo ')'
+      else
+        assign height_value = settings[px_key] | default: 256 | at_least: 0 | at_most: 1200
+        echo height_value
+        echo 'px'
+      endif
+    else
+      echo '256px'
+  endcase
+-%}

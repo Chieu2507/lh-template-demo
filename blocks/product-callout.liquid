@@ -33,8 +33,29 @@
     assign product_callout_mobile_ratio = product_callout_desktop_ratio
   endif
 
+  assign product_callout_height_options = 'adapt,extra_small,small,medium,large,extra_large,full_screen' | split: ','
   assign product_callout_desktop_height = block.settings.desktop_height | default: 'adapt'
   assign product_callout_mobile_height = block.settings.mobile_height | default: 'adapt'
+
+  if block.settings.image_ratio_desktop == 'wide_21_9'
+    assign product_callout_desktop_ratio = 2.3333333333
+  endif
+  if block.settings.image_ratio_mobile == 'ratio_7_6'
+    assign product_callout_mobile_ratio = 1.1666666667
+  endif
+
+  assign product_callout_radius = 'var(--radius-square)'
+  case block.settings.corner_radius
+    when 'rounded'
+      assign product_callout_radius = 'var(--radius-rounded)'
+    when 'custom'
+      assign product_callout_radius = block.settings.custom_corner_radius | default: 0 | at_least: 0 | at_most: 40 | append: 'px'
+  endcase
+
+  assign product_callout_has_content = false
+  if block.settings.preheading != blank or block.settings.heading != blank or block.settings.text != blank or block.settings.button_label != blank
+    assign product_callout_has_content = true
+  endif
 
   if product_callout_is_carousel
     assign product_callout_desktop_height = section.settings.desktop_height | default: 'medium'
@@ -52,7 +73,7 @@
         assign product_callout_desktop_height = 'extra_large'
       endif
     endif
-    unless product_callout_desktop_height == 'adapt' or product_callout_desktop_height == 'extra_small' or product_callout_desktop_height == 'small' or product_callout_desktop_height == 'medium' or product_callout_desktop_height == 'large' or product_callout_desktop_height == 'extra_large' or product_callout_desktop_height == 'full_screen'
+    unless product_callout_height_options contains product_callout_desktop_height
       assign product_callout_desktop_height = 'medium'
     endunless
 
@@ -71,14 +92,14 @@
         assign product_callout_mobile_height = 'extra_large'
       endif
     endif
-    unless product_callout_mobile_height == 'adapt' or product_callout_mobile_height == 'extra_small' or product_callout_mobile_height == 'small' or product_callout_mobile_height == 'medium' or product_callout_mobile_height == 'large' or product_callout_mobile_height == 'extra_large' or product_callout_mobile_height == 'full_screen'
+    unless product_callout_height_options contains product_callout_mobile_height
       assign product_callout_mobile_height = 'small'
     endunless
   else
-    unless product_callout_desktop_height == 'adapt' or product_callout_desktop_height == 'extra_small' or product_callout_desktop_height == 'small' or product_callout_desktop_height == 'medium' or product_callout_desktop_height == 'large' or product_callout_desktop_height == 'extra_large' or product_callout_desktop_height == 'full_screen'
+    unless product_callout_height_options contains product_callout_desktop_height
       assign product_callout_desktop_height = 'adapt'
     endunless
-    unless product_callout_mobile_height == 'adapt' or product_callout_mobile_height == 'extra_small' or product_callout_mobile_height == 'small' or product_callout_mobile_height == 'medium' or product_callout_mobile_height == 'large' or product_callout_mobile_height == 'extra_large' or product_callout_mobile_height == 'full_screen'
+    unless product_callout_height_options contains product_callout_mobile_height
       assign product_callout_mobile_height = 'adapt'
     endunless
   endif
@@ -191,12 +212,19 @@
     assign product_callout_class = product_callout_class | append: ' product-callout--mobile-' | append: product_callout_mobile_height
   endif
   assign product_callout_class = product_callout_class | append: ' product-callout--icon-' | append: product_callout_hotspot_icon_style
+  unless product_callout_has_content
+    assign product_callout_class = product_callout_class | append: ' product-callout--media-only'
+  endunless
+  if section.settings.product_card_layout == 'compact'
+    assign product_callout_class = product_callout_class | append: ' product-callout--compact'
+  endif
   assign product_callout_class = product_callout_class | append: ' color-scheme section-color-scope ' | append: product_callout_content_scheme
   assign product_callout_text_class = 'product-callout__text body-text body-' | append: product_callout_text_size | append: ' rte'
 
 %}
 
 {% capture product_callout_style %}
+  --product-callout-media-radius: {{ product_callout_radius }};
   --product-callout-ratio: {{ product_callout_desktop_ratio }};
   --product-callout-ratio-mobile: {{ product_callout_mobile_ratio }};
   --product-callout-image-position: {{ product_callout_image_position_desktop | escape }};
@@ -237,6 +265,7 @@
   {% endcapture %}
 
   {% capture product_callout_content_markup %}
+    {% if product_callout_has_content %}
     <div class="product-callout__content product-callout__content--{{ product_callout_text_position }} product-callout__content--align-{{ product_callout_text_alignment }}">
       {% if block.settings.preheading != blank %}
         <p class="product-callout__preheading eyebrow-text">{{ block.settings.preheading | escape }}</p>
@@ -260,6 +289,7 @@
         %}
       {% endif %}
     </div>
+    {% endif %}
   {% endcapture %}
 
   <article
@@ -268,6 +298,7 @@
     data-product-callout
     data-product-callout-carousel="{{ product_callout_is_carousel }}"
     data-product-callout-hotspot-behavior="{{ product_callout_hotspot_behavior }}"
+    {% if section.settings.product_card_layout == 'compact' %}data-product-callout-popover-placement="side"{% endif %}
     {% if block.settings.editor_title != blank %}data-carousel-slide-label="{{ block.settings.editor_title | escape }}"{% endif %}
     {{ block.shopify_attributes }}
   >
@@ -310,6 +341,50 @@
       "label": "t:labels.mobile_image",
       "info": "t:info.mobile_image_optional",
       "visible_if": "{{ block.settings.image != blank }}"
+    },
+    {
+      "type": "select",
+      "id": "image_ratio_desktop",
+      "label": "Desktop image ratio",
+      "options": [
+        { "value": "auto", "label": "Adapt to image" },
+        { "value": "wide_21_9", "label": "21:9" }
+      ],
+      "default": "auto",
+      "visible_if": "{{ block.settings.desktop_height == 'adapt' }}"
+    },
+    {
+      "type": "select",
+      "id": "image_ratio_mobile",
+      "label": "Mobile image ratio",
+      "options": [
+        { "value": "auto", "label": "Adapt to image" },
+        { "value": "ratio_7_6", "label": "7:6" }
+      ],
+      "default": "auto",
+      "visible_if": "{{ block.settings.mobile_height == 'adapt' }}"
+    },
+    {
+      "type": "select",
+      "id": "corner_radius",
+      "label": "t:labels.corner_radius",
+      "options": [
+        { "value": "square", "label": "t:options.radius_preset.square" },
+        { "value": "rounded", "label": "t:options.radius_preset.rounded" },
+        { "value": "custom", "label": "t:options.radius_preset.custom" }
+      ],
+      "default": "square"
+    },
+    {
+      "type": "range",
+      "id": "custom_corner_radius",
+      "label": "t:labels.custom_corner_radius",
+      "min": 0,
+      "max": 40,
+      "step": 1,
+      "unit": "px",
+      "default": 0,
+      "visible_if": "{{ block.settings.corner_radius == 'custom' }}"
     },
     {
       "type": "select",

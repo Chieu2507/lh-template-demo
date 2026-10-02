@@ -280,11 +280,11 @@
 {% capture image_card_sizes %}(min-width: 768px) {{ image_card_size_desktop }}, {{ image_card_size_mobile }}{% endcapture %}
 
 <article
-  class="{{ image_card_class }}"
+  class="{{ image_card_class }}{% if image_card_media_type == 'image' %} media-hover-zoom{% endif %}"
   {% if image_card_style != blank %}style="{{ image_card_style }}"{% endif %}
   {{ media_card_block.shopify_attributes }}
 >
-  <div class="image-card__media">
+  <div class="image-card__media media-hover-zoom__media">
     {% render 'media-background',
       media_type: image_card_media_type,
       image: media_card_block.settings.image,

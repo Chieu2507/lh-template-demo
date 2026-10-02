@@ -1,7 +1,7 @@
 {% doc %}
   Resolves a shared image ratio preset to a CSS aspect-ratio value.
 
-  @param {string} setting - The ratio preset: auto, square, portrait, landscape, wide, or custom
+  @param {string} setting - The ratio preset: auto, square, portrait, landscape, ratio_7_6, wide, or custom
   @param {string} [fallback_ratio] - Ratio used for auto or an unknown preset
   @param {number} [custom_width] - Custom ratio numerator
   @param {number} [custom_height] - Custom ratio denominator
@@ -17,6 +17,8 @@
       assign image_ratio_value = '0.8'
     when 'landscape'
       assign image_ratio_value = '1.3333'
+    when 'ratio_7_6'
+      assign image_ratio_value = '1.1666666667'
     when 'wide'
       assign image_ratio_value = '1.7778'
     when 'custom'

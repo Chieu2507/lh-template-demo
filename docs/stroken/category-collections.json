@@ -1,0 +1,62 @@
+{
+  "rackets": {
+    "collection": {
+      "id": "gid://shopify/Collection/534556803371",
+      "title": "Rackets Stroken",
+      "handle": "rackets-stroken",
+      "image": {
+        "url": "https://cdn.shopify.com/s/files/1/1024/2192/2091/collections/84a45ea1-66be-4960-ad79-294a80de0f0e.png?v=1790926679",
+        "altText": "Tennis Rackets — Stroken"
+      }
+    },
+    "userErrors": []
+  },
+  "apparel": {
+    "collection": {
+      "id": "gid://shopify/Collection/534556836139",
+      "title": "Apparel Stroken",
+      "handle": "apparel-stroken",
+      "image": {
+        "url": "https://cdn.shopify.com/s/files/1/1024/2192/2091/collections/62f6cae8-4322-437d-a7f7-4867bec4bf37.png?v=1790926680",
+        "altText": "Tennis Apparel — Stroken"
+      }
+    },
+    "userErrors": []
+  },
+  "shoes": {
+    "collection": {
+      "id": "gid://shopify/Collection/534557196587",
+      "title": "Tennis Shoes Stroken",
+      "handle": "tennis-shoes-stroken",
+      "image": {
+        "url": "https://cdn.shopify.com/s/files/1/1024/2192/2091/collections/7e23ef7b-f7eb-436e-8220-d54ee72733d0.jpg?v=1790926682",
+        "altText": "Tennis Shoes — Stroken"
+      }
+    },
+    "userErrors": []
+  },
+  "bags": {
+    "collection": {
+      "id": "gid://shopify/Collection/534557229355",
+      "title": "Tennis Bags Stroken",
+      "handle": "tennis-bags-stroken",
+      "image": {
+        "url": "https://cdn.shopify.com/s/files/1/1024/2192/2091/collections/228affdf-6c13-4fdd-8a89-25ad0dcc10d0.jpg?v=1790926684",
+        "altText": "Tennis Bags — Stroken"
+      }
+    },
+    "userErrors": []
+  },
+  "balls": {
+    "collection": {
+      "id": "gid://shopify/Collection/534557262123",
+      "title": "Tennis Balls Stroken",
+      "handle": "tennis-balls-stroken",
+      "image": {
+        "url": "https://cdn.shopify.com/s/files/1/1024/2192/2091/collections/9d3a790d-d1e3-41bc-b6e7-f852ad0dffad.jpg?v=1790926686",
+        "altText": "Tennis Balls — Stroken"
+      }
+    },
+    "userErrors": []
+  }
+}

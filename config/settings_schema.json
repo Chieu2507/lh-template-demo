@@ -73,28 +73,28 @@
             "alpha": true,
             "id": "heading",
             "label": "t:labels.heading_color",
-            "default": "#111111"
+            "default": "#0A0A0A"
           },
           {
             "type": "color",
             "alpha": true,
             "id": "heading_highlight",
             "label": "t:labels.heading_highlight_color",
-            "default": "#A67C52"
+            "default": "#0A0A0A"
           },
           {
             "type": "color",
             "alpha": true,
             "id": "text",
             "label": "t:labels.text",
-            "default": "#404040"
+            "default": "#4C4C4C"
           },
           {
             "type": "color",
             "alpha": true,
             "id": "accent",
             "label": "t:labels.accent_color",
-            "default": "#111111"
+            "default": "#0A0A0A"
           },
           {
             "type": "color",
@@ -126,21 +126,21 @@
             "alpha": true,
             "id": "button_primary_background",
             "label": "t:labels.background",
-            "default": "#111111"
+            "default": "#E4EA34"
           },
           {
             "type": "color",
             "alpha": true,
             "id": "button_primary_text",
             "label": "t:labels.button_label",
-            "default": "#FFFFFF"
+            "default": "#0A0A0A"
           },
           {
             "type": "color",
             "alpha": true,
             "id": "button_primary_border",
             "label": "t:labels.border_color",
-            "default": "#111111"
+            "default": "#E4EA34"
           },
           {
             "type": "color",
@@ -148,21 +148,21 @@
             "id": "button_primary_hover_background",
             "label": "t:labels.hover_background",
             "info": "t:info.clear_for_transparent",
-            "default": "#000000"
+            "default": "rgba(0,0,0,0)"
           },
           {
             "type": "color",
             "alpha": true,
             "id": "button_primary_hover_text",
             "label": "t:labels.hover_text",
-            "default": "#FFFFFF"
+            "default": "#0A0A0A"
           },
           {
             "type": "color",
             "alpha": true,
             "id": "button_primary_hover_border",
             "label": "t:labels.hover_border",
-            "default": "#000000"
+            "default": "#0A0A0A"
           },
           {
             "type": "header",
@@ -173,21 +173,21 @@
             "alpha": true,
             "id": "button_secondary_background",
             "label": "t:labels.background",
-            "default": "#ECECEC"
+            "default": "#EBEBEB"
           },
           {
             "type": "color",
             "alpha": true,
             "id": "button_secondary_text",
             "label": "t:labels.button_label",
-            "default": "#111111"
+            "default": "#0A0A0A"
           },
           {
             "type": "color",
             "alpha": true,
             "id": "button_secondary_border",
             "label": "t:labels.border_color",
-            "default": "#ECECEC"
+            "default": "#EBEBEB"
           },
           {
             "type": "color",
@@ -195,21 +195,21 @@
             "id": "button_secondary_hover_background",
             "label": "t:labels.hover_background",
             "info": "t:info.clear_for_transparent",
-            "default": "#D8D8D8"
+            "default": "#0A0A0A"
           },
           {
             "type": "color",
             "alpha": true,
             "id": "button_secondary_hover_text",
             "label": "t:labels.hover_text",
-            "default": "#111111"
+            "default": "#FFFFFF"
           },
           {
             "type": "color",
             "alpha": true,
             "id": "button_secondary_hover_border",
             "label": "t:labels.hover_border",
-            "default": "#D8D8D8"
+            "default": "#0A0A0A"
           },
           {
             "type": "header",
@@ -220,14 +220,14 @@
             "alpha": true,
             "id": "button_tertiary_text",
             "label": "t:labels.button_label",
-            "default": "#111111"
+            "default": "#0A0A0A"
           },
           {
             "type": "color",
             "alpha": true,
             "id": "button_tertiary_hover_text",
             "label": "t:labels.hover_text",
-            "default": "#333333"
+            "default": "#0A0A0A"
           }
         ],
         "role": {
@@ -272,7 +272,7 @@
         "step": 1,
         "unit": "px",
         "label": "t:labels.desktop_page_margin",
-        "default": 48
+        "default": 32
       },
       {
         "type": "range",
@@ -306,19 +306,19 @@
       {
         "type": "font_picker",
         "id": "type_heading_font",
-        "default": "poppins_n4",
+        "default": "bricolage_grotesque_n7",
         "label": "t:labels.heading_font"
       },
       {
         "type": "font_picker",
         "id": "type_primary_font",
-        "default": "poppins_n4",
+        "default": "bricolage_grotesque_n4",
         "label": "t:labels.body_font"
       },
       {
         "type": "font_picker",
         "id": "type_accent_font",
-        "default": "instrument_sans_n4",
+        "default": "bricolage_grotesque_n4",
         "label": "t:labels.accent_font"
       },
       {
@@ -373,7 +373,7 @@
         "step": 4,
         "unit": "px",
         "label": "t:labels.font_size_desktop",
-        "default": 64
+        "default": 68
       },
       {
         "type": "range",
@@ -383,7 +383,7 @@
         "step": 2,
         "unit": "px",
         "label": "t:labels.font_size_tablet",
-        "default": 52
+        "default": 46
       },
       {
         "type": "range",
@@ -439,7 +439,7 @@
         "step": 2,
         "unit": "px",
         "label": "t:labels.font_size_tablet",
-        "default": 34
+        "default": 32
       },
       {
         "type": "range",
@@ -485,7 +485,7 @@
         "step": 4,
         "unit": "px",
         "label": "t:labels.font_size_desktop",
-        "default": 32
+        "default": 28
       },
       {
         "type": "range",
@@ -495,7 +495,7 @@
         "step": 2,
         "unit": "px",
         "label": "t:labels.font_size_tablet",
-        "default": 22
+        "default": 26
       },
       {
         "type": "range",
@@ -505,7 +505,7 @@
         "step": 2,
         "unit": "px",
         "label": "t:labels.font_size_mobile",
-        "default": 20
+        "default": 22
       },
       {
         "type": "select",
@@ -536,12 +536,22 @@
       {
         "type": "range",
         "id": "type_heading_4_size_desktop",
-        "min": 24,
+        "min": 16,
         "max": 48,
-        "step": 4,
+        "step": 2,
         "unit": "px",
         "label": "t:labels.font_size_desktop",
-        "default": 24
+        "default": 22
+      },
+      {
+        "type": "range",
+        "id": "type_heading_4_size_tablet",
+        "min": 16,
+        "max": 48,
+        "step": 2,
+        "unit": "px",
+        "label": "t:labels.font_size_tablet",
+        "default": 20
       },
       {
         "type": "range",
@@ -551,7 +561,7 @@
         "step": 2,
         "unit": "px",
         "label": "t:labels.font_size_mobile",
-        "default": 18
+        "default": 20
       },
       {
         "type": "select",
@@ -597,7 +607,7 @@
         "step": 1,
         "unit": "px",
         "label": "t:labels.font_size_tablet",
-        "default": 15
+        "default": 16
       },
       {
         "type": "range",
@@ -607,7 +617,7 @@
         "step": 1,
         "unit": "px",
         "label": "t:labels.font_size_mobile",
-        "default": 15
+        "default": 16
       },
       {
         "type": "select",
@@ -644,6 +654,16 @@
         "unit": "px",
         "label": "t:labels.font_size_desktop",
         "default": 16
+      },
+      {
+        "type": "range",
+        "id": "type_heading_6_size_tablet",
+        "min": 12,
+        "max": 30,
+        "step": 2,
+        "unit": "px",
+        "label": "t:labels.font_size_tablet",
+        "default": 14
       },
       {
         "type": "range",
@@ -689,7 +709,31 @@
         "step": 1,
         "unit": "px",
         "label": "t:labels.font_size",
-        "default": 12
+        "default": 16
+      },
+      {
+        "type": "select",
+        "id": "type_eyebrow_weight",
+        "label": "t:labels.font_weight",
+        "options": [
+          {
+            "value": "400",
+            "label": "400"
+          },
+          {
+            "value": "500",
+            "label": "500"
+          },
+          {
+            "value": "600",
+            "label": "600"
+          },
+          {
+            "value": "700",
+            "label": "700"
+          }
+        ],
+        "default": "700"
       },
       {
         "type": "select",
@@ -712,7 +756,7 @@
           { "value": "loose", "label": "t:options.letter_spacing.loose" },
           { "value": "extra_loose", "label": "t:options.letter_spacing.extra_loose" }
         ],
-        "default": "extra_loose"
+        "default": "normal"
       },
       {
         "type": "select",
@@ -760,7 +804,7 @@
           { "value": "rounded", "label": "t:options.radius_preset.rounded" },
           { "value": "pill", "label": "t:options.radius_preset.pill" }
         ],
-        "default": "square"
+        "default": "pill"
       },
       {
         "type": "select",
@@ -886,7 +930,7 @@
           { "value": "rounded", "label": "t:options.button_radius.rounded" },
           { "value": "pill", "label": "t:options.button_radius.pill" }
         ],
-        "default": "square"
+        "default": "pill"
       },
       {
         "type": "range",
@@ -950,7 +994,7 @@
           { "value": "15px", "label": "t:options.button_font_size.15" },
           { "value": "16px", "label": "t:options.button_font_size.16" }
         ],
-        "default": "13px"
+        "default": "16px"
       },
       {
         "type": "select",
@@ -963,7 +1007,31 @@
           { "value": "15px", "label": "t:options.button_font_size.15" },
           { "value": "16px", "label": "t:options.button_font_size.16" }
         ],
-        "default": "15px"
+        "default": "16px"
+      },
+      {
+        "type": "select",
+        "id": "button_font_weight",
+        "label": "t:labels.font_weight",
+        "options": [
+          {
+            "value": "400",
+            "label": "400"
+          },
+          {
+            "value": "500",
+            "label": "500"
+          },
+          {
+            "value": "600",
+            "label": "600"
+          },
+          {
+            "value": "700",
+            "label": "700"
+          }
+        ],
+        "default": "700"
       },
       {
         "type": "select",
@@ -976,7 +1044,7 @@
           { "value": "reference", "label": "t:options.letter_spacing.reference" },
           { "value": "extra_loose", "label": "t:options.letter_spacing.extra_loose" }
         ],
-        "default": "reference"
+        "default": "normal"
       },
       {
         "type": "header",
@@ -1319,7 +1387,8 @@
           { "value": "natural", "label": "t:options.image_ratio.original" },
           { "value": "square", "label": "t:options.image_ratio.square" },
           { "value": "portrait", "label": "t:options.image_ratio.portrait" },
-          { "value": "landscape", "label": "t:options.image_ratio.landscape" }
+          { "value": "landscape", "label": "t:options.image_ratio.landscape" },
+          { "value": "ratio_7_6", "label": "t:options.image_ratio.ratio_7_6" }
         ],
         "default": "portrait"
       },
@@ -1745,7 +1814,7 @@
         "alpha": true,
         "id": "badge_sale_background_color",
         "label": "t:labels.sale_badge_background",
-        "default": "#D82727"
+        "default": "#B1242E"
       },
       {
         "type": "color",
@@ -1759,14 +1828,14 @@
         "alpha": true,
         "id": "badge_sold_out_background_color",
         "label": "t:labels.sold_out_badge_background",
-        "default": "#ADADAD"
+        "default": "#9D9D9D"
       },
       {
         "type": "color",
         "alpha": true,
         "id": "badge_sold_out_text_color",
         "label": "t:labels.sold_out_badge_text",
-        "default": "#181818"
+        "default": "#FFFFFF"
       },
       {
         "type": "header",
@@ -1787,6 +1856,34 @@
       {
         "type": "header",
         "content": "t:general.collection_badges"
+      },
+      {
+        "type": "color",
+        "alpha": true,
+        "id": "badge_new_background_color",
+        "label": "t:labels.badge_new_background_color",
+        "default": "#2E3C40"
+      },
+      {
+        "type": "color",
+        "alpha": true,
+        "id": "badge_new_text_color",
+        "label": "t:labels.badge_new_text_color",
+        "default": "#FFFFFF"
+      },
+      {
+        "type": "color",
+        "alpha": true,
+        "id": "badge_best_seller_background_color",
+        "label": "t:labels.badge_best_seller_background_color",
+        "default": "#F8A787"
+      },
+      {
+        "type": "color",
+        "alpha": true,
+        "id": "badge_best_seller_text_color",
+        "label": "t:labels.badge_best_seller_text_color",
+        "default": "#0A0A0A"
       },
       {
         "type": "paragraph",
@@ -2110,4 +2207,3 @@
     ]
   }
 ]
-

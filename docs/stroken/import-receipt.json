@@ -1,0 +1,363 @@
+{
+  "store": "layouthub-template-v2.myshopify.com",
+  "collections": {
+    "rackets-stroken": "gid://shopify/Collection/534556803371",
+    "apparel-stroken": "gid://shopify/Collection/534556836139",
+    "new-arrivals-stroken": "gid://shopify/Collection/534556868907"
+  },
+  "products": [
+    {
+      "id": "gid://shopify/Product/15396900471083",
+      "title": "Speed MP Tour Racket Strung",
+      "handle": "stroken-speed-mp-tour-racket-strung",
+      "variants": {
+        "nodes": [
+          {
+            "id": "gid://shopify/ProductVariant/67627063410987",
+            "title": "Default Title",
+            "price": "117.00",
+            "compareAtPrice": "234.00",
+            "inventoryQuantity": 100
+          }
+        ]
+      }
+    },
+    {
+      "id": "gid://shopify/Product/15396900700459",
+      "title": "Blade 100 Tour Racket Unstrung",
+      "handle": "stroken-blade-100-tour-racket-unstrung",
+      "variants": {
+        "nodes": [
+          {
+            "id": "gid://shopify/ProductVariant/67627063705899",
+            "title": "Dark green",
+            "price": "235.00",
+            "compareAtPrice": null,
+            "inventoryQuantity": 100
+          }
+        ]
+      }
+    },
+    {
+      "id": "gid://shopify/Product/15396900995371",
+      "title": "BLX Pro Open Tour Racket Strung",
+      "handle": "stroken-blx-pro-open-tour-racket-strung",
+      "variants": {
+        "nodes": [
+          {
+            "id": "gid://shopify/ProductVariant/67627064099115",
+            "title": "Yellow",
+            "price": "168.00",
+            "compareAtPrice": null,
+            "inventoryQuantity": 100
+          }
+        ]
+      }
+    },
+    {
+      "id": "gid://shopify/Product/15396901159211",
+      "title": "T-Fight 300 IG Tour Racket Strung",
+      "handle": "stroken-t-fight-300-ig-tour-racket-strung",
+      "variants": {
+        "nodes": [
+          {
+            "id": "gid://shopify/ProductVariant/67627064328491",
+            "title": "Orange red",
+            "price": "210.00",
+            "compareAtPrice": null,
+            "inventoryQuantity": 100
+          },
+          {
+            "id": "gid://shopify/ProductVariant/67627064361259",
+            "title": "White",
+            "price": "210.00",
+            "compareAtPrice": null,
+            "inventoryQuantity": 100
+          }
+        ]
+      }
+    },
+    {
+      "id": "gid://shopify/Product/15396901388587",
+      "title": "Muse 107 Allround Racket Strung",
+      "handle": "stroken-muse-107-allround-racket-strung",
+      "variants": {
+        "nodes": [
+          {
+            "id": "gid://shopify/ProductVariant/67627064787243",
+            "title": "Blue grey",
+            "price": "193.00",
+            "compareAtPrice": null,
+            "inventoryQuantity": 100
+          }
+        ]
+      }
+    },
+    {
+      "id": "gid://shopify/Product/15396901617963",
+      "title": "Dri-FIT Advantage Polo",
+      "handle": "stroken-dri-fit-advantage-polo",
+      "variants": {
+        "nodes": [
+          {
+            "id": "gid://shopify/ProductVariant/67627065082155",
+            "title": "White",
+            "price": "60.00",
+            "compareAtPrice": null,
+            "inventoryQuantity": 100
+          },
+          {
+            "id": "gid://shopify/ProductVariant/67627065114923",
+            "title": "Dark grey",
+            "price": "60.00",
+            "compareAtPrice": null,
+            "inventoryQuantity": 100
+          }
+        ]
+      }
+    },
+    {
+      "id": "gid://shopify/Product/15396901978411",
+      "title": "Dri-Fit Advantage T-Shirt",
+      "handle": "stroken-dri-fit-advantage-t-shirt",
+      "variants": {
+        "nodes": [
+          {
+            "id": "gid://shopify/ProductVariant/67627065540907",
+            "title": "Blue grey",
+            "price": "39.00",
+            "compareAtPrice": "50.00",
+            "inventoryQuantity": 100
+          },
+          {
+            "id": "gid://shopify/ProductVariant/67627065573675",
+            "title": "Light lime",
+            "price": "39.00",
+            "compareAtPrice": "50.00",
+            "inventoryQuantity": 100
+          },
+          {
+            "id": "gid://shopify/ProductVariant/67627065606443",
+            "title": "Dark brown",
+            "price": "39.00",
+            "compareAtPrice": "50.00",
+            "inventoryQuantity": 100
+          }
+        ]
+      }
+    },
+    {
+      "id": "gid://shopify/Product/15396902273323",
+      "title": "Short-Sleeve Polo Pleated Dress",
+      "handle": "stroken-short-sleeve-polo-pleated-dress",
+      "variants": {
+        "nodes": [
+          {
+            "id": "gid://shopify/ProductVariant/67627065999659",
+            "title": "White",
+            "price": "55.00",
+            "compareAtPrice": null,
+            "inventoryQuantity": 100
+          },
+          {
+            "id": "gid://shopify/ProductVariant/67627066032427",
+            "title": "Light pink",
+            "price": "55.00",
+            "compareAtPrice": null,
+            "inventoryQuantity": 100
+          },
+          {
+            "id": "gid://shopify/ProductVariant/67627066065195",
+            "title": "Light yellow",
+            "price": "55.00",
+            "compareAtPrice": null,
+            "inventoryQuantity": 100
+          }
+        ]
+      }
+    },
+    {
+      "id": "gid://shopify/Product/15396902568235",
+      "title": "RG Pro Dress Women",
+      "handle": "stroken-rg-pro-dress-women",
+      "variants": {
+        "nodes": [
+          {
+            "id": "gid://shopify/ProductVariant/67627066458411",
+            "title": "Light blue grey",
+            "price": "100.00",
+            "compareAtPrice": null,
+            "inventoryQuantity": 100
+          }
+        ]
+      }
+    },
+    {
+      "id": "gid://shopify/Product/15396902830379",
+      "title": "Pure Drive RH6 Racket",
+      "handle": "stroken-pure-drive-rh6-racket",
+      "variants": {
+        "nodes": [
+          {
+            "id": "gid://shopify/ProductVariant/67627066786091",
+            "title": "Dark navy",
+            "price": "71.00",
+            "compareAtPrice": "100.00",
+            "inventoryQuantity": 100
+          }
+        ]
+      }
+    },
+    {
+      "id": "gid://shopify/Product/15396903059755",
+      "title": "Court Dri-Fit Advantage Slam",
+      "handle": "stroken-court-dri-fit-advantage-slam",
+      "variants": {
+        "nodes": [
+          {
+            "id": "gid://shopify/ProductVariant/67627067081003",
+            "title": "Grey",
+            "price": "88.00",
+            "compareAtPrice": null,
+            "inventoryQuantity": 100
+          },
+          {
+            "id": "gid://shopify/ProductVariant/67627067113771",
+            "title": "Sage green",
+            "price": "88.00",
+            "compareAtPrice": null,
+            "inventoryQuantity": 100
+          }
+        ]
+      }
+    },
+    {
+      "id": "gid://shopify/Product/15396903420203",
+      "title": "Ergo 7Inch Shorts",
+      "handle": "stroken-ergo-7inch-shorts",
+      "variants": {
+        "nodes": [
+          {
+            "id": "gid://shopify/ProductVariant/67627067572523",
+            "title": "Black",
+            "price": "46.00",
+            "compareAtPrice": null,
+            "inventoryQuantity": 100
+          },
+          {
+            "id": "gid://shopify/ProductVariant/67627067605291",
+            "title": "White",
+            "price": "46.00",
+            "compareAtPrice": null,
+            "inventoryQuantity": 100
+          },
+          {
+            "id": "gid://shopify/ProductVariant/67627067638059",
+            "title": "Periwinkle",
+            "price": "46.00",
+            "compareAtPrice": null,
+            "inventoryQuantity": 100
+          }
+        ]
+      }
+    },
+    {
+      "id": "gid://shopify/Product/15396903715115",
+      "title": "RG Pro Skirt Women",
+      "handle": "stroken-rg-pro-skirt-women",
+      "variants": {
+        "nodes": [
+          {
+            "id": "gid://shopify/ProductVariant/67627068031275",
+            "title": "Navy",
+            "price": "54.00",
+            "compareAtPrice": null,
+            "inventoryQuantity": 100
+          },
+          {
+            "id": "gid://shopify/ProductVariant/67627068064043",
+            "title": "White",
+            "price": "54.00",
+            "compareAtPrice": null,
+            "inventoryQuantity": 100
+          }
+        ]
+      }
+    },
+    {
+      "id": "gid://shopify/Product/15396904075563",
+      "title": "Long Sleeve Polo Collar Dress",
+      "handle": "stroken-long-sleeve-polo-collar-dress",
+      "variants": {
+        "nodes": [
+          {
+            "id": "gid://shopify/ProductVariant/67627068686635",
+            "title": "Navy",
+            "price": "59.00",
+            "compareAtPrice": null,
+            "inventoryQuantity": 100
+          },
+          {
+            "id": "gid://shopify/ProductVariant/67627068719403",
+            "title": "Dark green",
+            "price": "59.00",
+            "compareAtPrice": null,
+            "inventoryQuantity": 100
+          },
+          {
+            "id": "gid://shopify/ProductVariant/67627068752171",
+            "title": "Cream",
+            "price": "59.00",
+            "compareAtPrice": null,
+            "inventoryQuantity": 100
+          }
+        ]
+      }
+    },
+    {
+      "id": "gid://shopify/Product/15396904403243",
+      "title": "Mini Skirt Set",
+      "handle": "stroken-mini-skirt-set",
+      "variants": {
+        "nodes": [
+          {
+            "id": "gid://shopify/ProductVariant/67627069440299",
+            "title": "Pink",
+            "price": "119.00",
+            "compareAtPrice": null,
+            "inventoryQuantity": 100
+          },
+          {
+            "id": "gid://shopify/ProductVariant/67627069473067",
+            "title": "Light yellow",
+            "price": "119.00",
+            "compareAtPrice": null,
+            "inventoryQuantity": 100
+          }
+        ]
+      }
+    }
+  ],
+  "published": [
+    "gid://shopify/Collection/534556803371",
+    "gid://shopify/Collection/534556836139",
+    "gid://shopify/Collection/534556868907",
+    "gid://shopify/Product/15396900471083",
+    "gid://shopify/Product/15396900700459",
+    "gid://shopify/Product/15396900995371",
+    "gid://shopify/Product/15396901159211",
+    "gid://shopify/Product/15396901388587",
+    "gid://shopify/Product/15396901617963",
+    "gid://shopify/Product/15396901978411",
+    "gid://shopify/Product/15396902273323",
+    "gid://shopify/Product/15396902568235",
+    "gid://shopify/Product/15396902830379",
+    "gid://shopify/Product/15396903059755",
+    "gid://shopify/Product/15396903420203",
+    "gid://shopify/Product/15396903715115",
+    "gid://shopify/Product/15396904075563",
+    "gid://shopify/Product/15396904403243"
+  ],
+  "inventoryLocation": "gid://shopify/Location/117337850155",
+  "inventoryPerVariant": 100
+}

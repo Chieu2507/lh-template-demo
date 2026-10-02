@@ -3,7 +3,7 @@
   `setting|ratio` pair for the caller to split.
 
   @param {string} [setting] - Ratio preset: auto, square, portrait,
-    landscape, wide, or custom
+    landscape, ratio_7_6, wide, or custom
   @param {string} [fallback] - Preset used when the setting is invalid
   @param {number} [custom_width] - Custom ratio width
   @param {number} [custom_height] - Custom ratio height
@@ -13,7 +13,7 @@
 {% liquid
   assign overlay_ratio_setting = setting | default: fallback | default: 'auto'
   assign overlay_ratio_fallback = fallback | default: 'auto'
-  unless overlay_ratio_setting == 'auto' or overlay_ratio_setting == 'square' or overlay_ratio_setting == 'portrait' or overlay_ratio_setting == 'landscape' or overlay_ratio_setting == 'wide' or overlay_ratio_setting == 'custom'
+  unless overlay_ratio_setting == 'auto' or overlay_ratio_setting == 'square' or overlay_ratio_setting == 'portrait' or overlay_ratio_setting == 'landscape' or overlay_ratio_setting == 'ratio_7_6' or overlay_ratio_setting == 'wide' or overlay_ratio_setting == 'custom'
     assign overlay_ratio_setting = overlay_ratio_fallback
   endunless
 
@@ -27,6 +27,8 @@
       assign overlay_ratio = '0.8'
     when 'landscape'
       assign overlay_ratio = '1.3333'
+    when 'ratio_7_6'
+      assign overlay_ratio = '1.1666666667'
     when 'wide'
       assign overlay_ratio = '1.7778'
     when 'custom'

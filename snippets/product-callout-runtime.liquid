@@ -20,6 +20,17 @@
     aspect-ratio: var(--product-callout-ratio, 2.4);
     overflow: visible;
     background: var(--background-color);
+    border-radius: var(--product-callout-media-radius, 0px);
+  }
+
+  .product-callout__media > .background-media,
+  .product-callout__overlay {
+    border-radius: inherit;
+    overflow: hidden;
+  }
+
+  .product-callout--media-only.product-callout--layout-split {
+    display: block;
   }
 
   .product-callout--desktop-adapt .product-callout__media { min-height: 0; }
@@ -545,6 +556,69 @@
     text-decoration: none;
   }
 
+  .product-callout--compact .product-callout__hotspot {
+    width: 4rem;
+    height: 4rem;
+  }
+
+  .product-callout--compact.product-callout--icon-plus .product-callout__hotspot[aria-expanded='true'] .product-callout__hotspot-icon--plus {
+    display: none;
+  }
+
+  .product-callout--compact.product-callout--icon-plus .product-callout__hotspot[aria-expanded='true'] .product-callout__hotspot-icon--minus {
+    display: grid;
+    place-items: center;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    background: var(--background-color);
+    color: var(--heading-color);
+  }
+
+  .product-callout__hotspot-icon--minus svg {
+    width: 42%;
+    height: 42%;
+  }
+
+  .product-callout--compact .product-callout__popover:not(.product-callout__popover--content) {
+    --product-callout-popover-max-inline-size: 32rem;
+  }
+
+  .product-callout--compact .product-callout__product-card {
+    align-items: center;
+    gap: 1.2rem;
+    padding: 1rem;
+    border: 0;
+    border-radius: var(--radius-rounded);
+    box-shadow: 0 0.4rem 1.6rem rgb(0 0 0 / 12%);
+  }
+
+  .product-callout--compact .product-callout__product-card-media {
+    flex-basis: 6.4rem;
+    width: 6.4rem;
+    height: 6.4rem;
+    border-radius: var(--radius-rounded);
+  }
+
+  .product-callout--compact .product-callout__product-card-title {
+    margin-top: 0;
+    font-size: var(--font-body-md);
+    font-weight: 700;
+  }
+
+  .product-callout--compact .product-callout__product-card-price {
+    font-size: var(--font-body-sm);
+  }
+
+  .product-callout__quick-view.btn {
+    flex: 0 0 4rem;
+    width: 4rem;
+    height: 4rem;
+    min-height: 0;
+    padding: 0;
+    border-radius: var(--radius-pill);
+  }
+
   @media (max-width: 767.98px) {
     .product-callout--mobile-adapt .product-callout__media { min-height: 0; aspect-ratio: var(--product-callout-ratio-mobile, var(--product-callout-ratio, 2.4)); }
     .product-callout--mobile-extra_small .product-callout__media { min-height: 40rem; aspect-ratio: auto; }
@@ -797,6 +871,12 @@
       const oppositeVertical = preferredVertical === 'top' ? 'bottom' : 'top';
 
       const candidates = [preferredVertical, oppositeVertical].map((vertical) => getVerticalCandidate(vertical, triggerRect, width, height, gap));
+      if (state.callout.dataset.productCalloutPopoverPlacement === 'side' && window.matchMedia('(min-width: 768px)').matches) {
+        candidates.unshift(
+          { left: triggerRect.right + gap, top: triggerRect.top + (triggerRect.height - height) / 2 },
+          { left: triggerRect.left - gap - width, top: triggerRect.top + (triggerRect.height - height) / 2 },
+        );
+      }
       let candidate = candidates.find((item) => getOverflow(item, width, height, bounds) === 0);
       if (!candidate) {
         candidate = candidates.reduce((best, item) => {

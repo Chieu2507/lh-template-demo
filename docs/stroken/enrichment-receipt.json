@@ -1,0 +1,504 @@
+{
+  "products": [
+    {
+      "id": "gid://shopify/Product/15396900471083",
+      "descriptionHtml": "<p>Bring a classic court look to your tennis collection with the Speed MP Tour Racket Strung. Presented in the black-and-white finish shown in the Stroken collection.</p>",
+      "category": {
+        "id": "gid://shopify/TaxonomyCategory/sg-1-20-7",
+        "name": "Tennis Rackets"
+      },
+      "media": {
+        "nodes": [
+          {
+            "id": "gid://shopify/MediaImage/46304333332779",
+            "status": "UPLOADED",
+            "alt": "Speed MP Tour Racket Strung — Figma reference"
+          }
+        ]
+      },
+      "handle": "stroken-speed-mp-tour-racket-strung",
+      "mediaId": "gid://shopify/MediaImage/46304333332779",
+      "variantImagesAssigned": true,
+      "variantImages": [
+        {
+          "id": "gid://shopify/ProductVariant/67627063410987",
+          "image": {
+            "url": "https://cdn.shopify.com/s/files/1/1024/2192/2091/files/6fc9c88c-2513-49d9-911f-69fe475e64eb.jpg?v=1790926021"
+          }
+        }
+      ]
+    },
+    {
+      "id": "gid://shopify/Product/15396900700459",
+      "descriptionHtml": "<p>The Blade 100 Tour Racket Unstrung adds a green finish to your court setup. This unstrung model is presented as part of the Stroken racket collection.</p><p>Available colours: Dark green.</p>",
+      "category": {
+        "id": "gid://shopify/TaxonomyCategory/sg-1-20-7",
+        "name": "Tennis Rackets"
+      },
+      "media": {
+        "nodes": [
+          {
+            "id": "gid://shopify/MediaImage/46304333562155",
+            "status": "UPLOADED",
+            "alt": "Blade 100 Tour Racket Unstrung — Figma reference"
+          }
+        ]
+      },
+      "handle": "stroken-blade-100-tour-racket-unstrung",
+      "mediaId": "gid://shopify/MediaImage/46304333562155",
+      "variantImagesAssigned": true,
+      "variantImages": [
+        {
+          "id": "gid://shopify/ProductVariant/67627063705899",
+          "image": {
+            "url": "https://cdn.shopify.com/s/files/1/1024/2192/2091/files/7a69f32d-d356-4f0c-88fd-8c0f6829e24e.jpg?v=1790926023"
+          }
+        }
+      ]
+    },
+    {
+      "id": "gid://shopify/Product/15396900995371",
+      "descriptionHtml": "<p>The BLX Pro Open Tour Racket Strung features the black-and-yellow look shown in the Stroken collection. Pair it with your favourite court apparel to complete your tennis setup.</p><p>Available colours: Yellow.</p>",
+      "category": {
+        "id": "gid://shopify/TaxonomyCategory/sg-1-20-7",
+        "name": "Tennis Rackets"
+      },
+      "media": {
+        "nodes": [
+          {
+            "id": "gid://shopify/MediaImage/46304333693227",
+            "status": "UPLOADED",
+            "alt": "BLX Pro Open Tour Racket Strung — Figma reference"
+          }
+        ]
+      },
+      "handle": "stroken-blx-pro-open-tour-racket-strung",
+      "mediaId": "gid://shopify/MediaImage/46304333693227",
+      "variantImagesAssigned": true,
+      "variantImages": [
+        {
+          "id": "gid://shopify/ProductVariant/67627064099115",
+          "image": {
+            "url": "https://cdn.shopify.com/s/files/1/1024/2192/2091/files/a06698b1-c1fe-4269-91ab-4cb0606c3b5b.jpg?v=1790926025"
+          }
+        }
+      ]
+    },
+    {
+      "id": "gid://shopify/Product/15396901159211",
+      "descriptionHtml": "<p>The T-Fight 300 IG Tour Racket Strung brings a bright accent to the Stroken racket collection. Choose your preferred listed finish for a coordinated court setup.</p><p>Available colours: Orange red, White.</p>",
+      "category": {
+        "id": "gid://shopify/TaxonomyCategory/sg-1-20-7",
+        "name": "Tennis Rackets"
+      },
+      "media": {
+        "nodes": [
+          {
+            "id": "gid://shopify/MediaImage/46304334020907",
+            "status": "UPLOADED",
+            "alt": "T-Fight 300 IG Tour Racket Strung — Figma reference"
+          }
+        ]
+      },
+      "handle": "stroken-t-fight-300-ig-tour-racket-strung",
+      "mediaId": "gid://shopify/MediaImage/46304334020907",
+      "variantImagesAssigned": true,
+      "variantImages": [
+        {
+          "id": "gid://shopify/ProductVariant/67627064328491",
+          "image": {
+            "url": "https://cdn.shopify.com/s/files/1/1024/2192/2091/files/70e26639-31ac-4a38-9472-1b085d1d1181.jpg?v=1790926027"
+          }
+        },
+        {
+          "id": "gid://shopify/ProductVariant/67627064361259",
+          "image": {
+            "url": "https://cdn.shopify.com/s/files/1/1024/2192/2091/files/70e26639-31ac-4a38-9472-1b085d1d1181.jpg?v=1790926027"
+          }
+        }
+      ]
+    },
+    {
+      "id": "gid://shopify/Product/15396901388587",
+      "descriptionHtml": "<p>The Muse 107 Allround Racket Strung completes the Stroken racket selection with a blue-grey finish and a classic tennis silhouette.</p><p>Available colours: Blue grey.</p>",
+      "category": {
+        "id": "gid://shopify/TaxonomyCategory/sg-1-20-7",
+        "name": "Tennis Rackets"
+      },
+      "media": {
+        "nodes": [
+          {
+            "id": "gid://shopify/MediaImage/46304334577963",
+            "status": "PROCESSING",
+            "alt": "Muse 107 Allround Racket Strung — Figma reference"
+          }
+        ]
+      },
+      "handle": "stroken-muse-107-allround-racket-strung",
+      "mediaId": "gid://shopify/MediaImage/46304334577963",
+      "variantImagesAssigned": true,
+      "variantImages": [
+        {
+          "id": "gid://shopify/ProductVariant/67627064787243",
+          "image": {
+            "url": "https://cdn.shopify.com/s/files/1/1024/2192/2091/files/b9fc7d93-722e-4fed-b54e-3a9746aca6d4.jpg?v=1790926029"
+          }
+        }
+      ]
+    },
+    {
+      "id": "gid://shopify/Product/15396901617963",
+      "descriptionHtml": "<p>A polo-collar style for your tennis-inspired wardrobe. The Dri-FIT Advantage Polo pairs naturally with court shorts and everyday sportswear.</p><p>Available colours: White, Dark grey.</p>",
+      "category": {
+        "id": "gid://shopify/TaxonomyCategory/aa-1",
+        "name": "Clothing"
+      },
+      "media": {
+        "nodes": [
+          {
+            "id": "gid://shopify/MediaImage/46304335528235",
+            "status": "UPLOADED",
+            "alt": "Dri-FIT Advantage Polo — Figma reference"
+          }
+        ]
+      },
+      "handle": "stroken-dri-fit-advantage-polo",
+      "mediaId": "gid://shopify/MediaImage/46304335528235",
+      "variantImagesAssigned": true,
+      "variantImages": [
+        {
+          "id": "gid://shopify/ProductVariant/67627065082155",
+          "image": {
+            "url": "https://cdn.shopify.com/s/files/1/1024/2192/2091/files/4b95c0fa-0724-4e83-913f-a77c1d5bb9db.jpg?v=1790926032"
+          }
+        },
+        {
+          "id": "gid://shopify/ProductVariant/67627065114923",
+          "image": {
+            "url": "https://cdn.shopify.com/s/files/1/1024/2192/2091/files/4b95c0fa-0724-4e83-913f-a77c1d5bb9db.jpg?v=1790926032"
+          }
+        }
+      ]
+    },
+    {
+      "id": "gid://shopify/Product/15396901978411",
+      "descriptionHtml": "<p>Keep your court wardrobe simple with the Dri-Fit Advantage T-Shirt. Its short-sleeve silhouette pairs with tennis shorts, skirts and casual sportswear.</p><p>Available colours: Blue grey, Light lime, Dark brown.</p>",
+      "category": {
+        "id": "gid://shopify/TaxonomyCategory/aa-1",
+        "name": "Clothing"
+      },
+      "media": {
+        "nodes": [
+          {
+            "id": "gid://shopify/MediaImage/46304336216363",
+            "status": "UPLOADED",
+            "alt": "Dri-Fit Advantage T-Shirt — Figma reference"
+          }
+        ]
+      },
+      "handle": "stroken-dri-fit-advantage-t-shirt",
+      "mediaId": "gid://shopify/MediaImage/46304336216363",
+      "variantImagesAssigned": true,
+      "variantImages": [
+        {
+          "id": "gid://shopify/ProductVariant/67627065540907",
+          "image": {
+            "url": "https://cdn.shopify.com/s/files/1/1024/2192/2091/files/500b1ebc-3d65-42a0-891b-1814c8c5e252.jpg?v=1790926034"
+          }
+        },
+        {
+          "id": "gid://shopify/ProductVariant/67627065573675",
+          "image": {
+            "url": "https://cdn.shopify.com/s/files/1/1024/2192/2091/files/500b1ebc-3d65-42a0-891b-1814c8c5e252.jpg?v=1790926034"
+          }
+        },
+        {
+          "id": "gid://shopify/ProductVariant/67627065606443",
+          "image": {
+            "url": "https://cdn.shopify.com/s/files/1/1024/2192/2091/files/500b1ebc-3d65-42a0-891b-1814c8c5e252.jpg?v=1790926034"
+          }
+        }
+      ]
+    },
+    {
+      "id": "gid://shopify/Product/15396902273323",
+      "descriptionHtml": "<p>A polo collar and pleated skirt bring classic tennis styling together in the Short-Sleeve Polo Pleated Dress. A coordinated look for your court-inspired wardrobe.</p><p>Available colours: White, Light pink, Light yellow.</p>",
+      "category": {
+        "id": "gid://shopify/TaxonomyCategory/aa-1",
+        "name": "Clothing"
+      },
+      "media": {
+        "nodes": [
+          {
+            "id": "gid://shopify/MediaImage/46304337035563",
+            "status": "UPLOADED",
+            "alt": "Short-Sleeve Polo Pleated Dress — Figma reference"
+          }
+        ]
+      },
+      "handle": "stroken-short-sleeve-polo-pleated-dress",
+      "mediaId": "gid://shopify/MediaImage/46304337035563",
+      "variantImagesAssigned": true,
+      "variantImages": [
+        {
+          "id": "gid://shopify/ProductVariant/67627065999659",
+          "image": {
+            "url": "https://cdn.shopify.com/s/files/1/1024/2192/2091/files/37086605-b708-4ed5-be3e-916b0709efb3.jpg?v=1790926036"
+          }
+        },
+        {
+          "id": "gid://shopify/ProductVariant/67627066032427",
+          "image": {
+            "url": "https://cdn.shopify.com/s/files/1/1024/2192/2091/files/37086605-b708-4ed5-be3e-916b0709efb3.jpg?v=1790926036"
+          }
+        },
+        {
+          "id": "gid://shopify/ProductVariant/67627066065195",
+          "image": {
+            "url": "https://cdn.shopify.com/s/files/1/1024/2192/2091/files/37086605-b708-4ed5-be3e-916b0709efb3.jpg?v=1790926036"
+          }
+        }
+      ]
+    },
+    {
+      "id": "gid://shopify/Product/15396902568235",
+      "descriptionHtml": "<p>The RG Pro Dress Women offers a sleeveless tennis-inspired silhouette. Pair it with your preferred court accessories for a coordinated outfit.</p><p>Available colours: Light blue grey.</p>",
+      "category": {
+        "id": "gid://shopify/TaxonomyCategory/aa-1",
+        "name": "Clothing"
+      },
+      "media": {
+        "nodes": [
+          {
+            "id": "gid://shopify/MediaImage/46304337887531",
+            "status": "PROCESSING",
+            "alt": "RG Pro Dress Women — Figma reference"
+          }
+        ]
+      },
+      "handle": "stroken-rg-pro-dress-women",
+      "mediaId": "gid://shopify/MediaImage/46304337887531",
+      "variantImagesAssigned": true,
+      "variantImages": [
+        {
+          "id": "gid://shopify/ProductVariant/67627066458411",
+          "image": {
+            "url": "https://cdn.shopify.com/s/files/1/1024/2192/2091/files/31392b4c-8ae5-409f-b72a-94866f925dec.jpg?v=1790926038"
+          }
+        }
+      ]
+    },
+    {
+      "id": "gid://shopify/Product/15396902830379",
+      "descriptionHtml": "<p>Complete your tennis setup with the Pure Drive RH6 racket bag shown in the Stroken collection. Its navy finish coordinates with a classic court wardrobe.</p><p>Available colours: Dark navy.</p>",
+      "category": {
+        "id": "gid://shopify/TaxonomyCategory/sg-1-20-6-2",
+        "name": "Tennis Racket Bags"
+      },
+      "media": {
+        "nodes": [
+          {
+            "id": "gid://shopify/MediaImage/46304338575659",
+            "status": "UPLOADED",
+            "alt": "Pure Drive RH6 Racket — Figma reference"
+          }
+        ]
+      },
+      "handle": "stroken-pure-drive-rh6-racket",
+      "mediaId": "gid://shopify/MediaImage/46304338575659",
+      "variantImagesAssigned": true,
+      "variantImages": [
+        {
+          "id": "gid://shopify/ProductVariant/67627066786091",
+          "image": {
+            "url": "https://cdn.shopify.com/s/files/1/1024/2192/2091/files/381c958b-aba3-4500-ba4b-28af8a69e415.jpg?v=1790926041"
+          }
+        }
+      ]
+    },
+    {
+      "id": "gid://shopify/Product/15396903059755",
+      "descriptionHtml": "<p>The Court Dri-Fit Advantage Slam brings a short-sleeve tennis look to the Stroken collection. Pair it with your preferred shorts for a coordinated court outfit.</p><p>Available colours: Grey, Sage green.</p>",
+      "category": {
+        "id": "gid://shopify/TaxonomyCategory/aa-1",
+        "name": "Clothing"
+      },
+      "media": {
+        "nodes": [
+          {
+            "id": "gid://shopify/MediaImage/46304339591467",
+            "status": "PROCESSING",
+            "alt": "Court Dri-Fit Advantage Slam — Figma reference"
+          }
+        ]
+      },
+      "handle": "stroken-court-dri-fit-advantage-slam",
+      "mediaId": "gid://shopify/MediaImage/46304339591467",
+      "variantImagesAssigned": true,
+      "variantImages": [
+        {
+          "id": "gid://shopify/ProductVariant/67627067081003",
+          "image": {
+            "url": "https://cdn.shopify.com/s/files/1/1024/2192/2091/files/b6894f80-7865-4e10-a7e8-40a8c990219a.jpg?v=1790926043"
+          }
+        },
+        {
+          "id": "gid://shopify/ProductVariant/67627067113771",
+          "image": {
+            "url": "https://cdn.shopify.com/s/files/1/1024/2192/2091/files/b6894f80-7865-4e10-a7e8-40a8c990219a.jpg?v=1790926043"
+          }
+        }
+      ]
+    },
+    {
+      "id": "gid://shopify/Product/15396903420203",
+      "descriptionHtml": "<p>The Ergo 7Inch Shorts offer a simple sportswear silhouette for a tennis-inspired wardrobe. Mix and match with the Stroken polo and T-shirt selection.</p><p>Available colours: Black, White, Periwinkle.</p>",
+      "category": {
+        "id": "gid://shopify/TaxonomyCategory/aa-1",
+        "name": "Clothing"
+      },
+      "media": {
+        "nodes": [
+          {
+            "id": "gid://shopify/MediaImage/46304340607275",
+            "status": "UPLOADED",
+            "alt": "Ergo 7Inch Shorts — Figma reference"
+          }
+        ]
+      },
+      "handle": "stroken-ergo-7inch-shorts",
+      "mediaId": "gid://shopify/MediaImage/46304340607275",
+      "variantImagesAssigned": true,
+      "variantImages": [
+        {
+          "id": "gid://shopify/ProductVariant/67627067572523",
+          "image": {
+            "url": "https://cdn.shopify.com/s/files/1/1024/2192/2091/files/68883d49-a926-4be3-ae15-eb922e7f8303.jpg?v=1790926046"
+          }
+        },
+        {
+          "id": "gid://shopify/ProductVariant/67627067605291",
+          "image": {
+            "url": "https://cdn.shopify.com/s/files/1/1024/2192/2091/files/68883d49-a926-4be3-ae15-eb922e7f8303.jpg?v=1790926046"
+          }
+        },
+        {
+          "id": "gid://shopify/ProductVariant/67627067638059",
+          "image": {
+            "url": "https://cdn.shopify.com/s/files/1/1024/2192/2091/files/68883d49-a926-4be3-ae15-eb922e7f8303.jpg?v=1790926046"
+          }
+        }
+      ]
+    },
+    {
+      "id": "gid://shopify/Product/15396903715115",
+      "descriptionHtml": "<p>Add a pleated tennis-inspired silhouette to your wardrobe with the RG Pro Skirt Women. Style it with a polo, T-shirt or sleeveless top.</p><p>Available colours: Navy, White.</p>",
+      "category": {
+        "id": "gid://shopify/TaxonomyCategory/aa-1",
+        "name": "Clothing"
+      },
+      "media": {
+        "nodes": [
+          {
+            "id": "gid://shopify/MediaImage/46304341360939",
+            "status": "UPLOADED",
+            "alt": "RG Pro Skirt Women — Figma reference"
+          }
+        ]
+      },
+      "handle": "stroken-rg-pro-skirt-women",
+      "mediaId": "gid://shopify/MediaImage/46304341360939",
+      "variantImagesAssigned": true,
+      "variantImages": [
+        {
+          "id": "gid://shopify/ProductVariant/67627068031275",
+          "image": {
+            "url": "https://cdn.shopify.com/s/files/1/1024/2192/2091/files/f7a4940a-e3bb-438e-9e07-45b52c3fd563.jpg?v=1790926047"
+          }
+        },
+        {
+          "id": "gid://shopify/ProductVariant/67627068064043",
+          "image": {
+            "url": "https://cdn.shopify.com/s/files/1/1024/2192/2091/files/f7a4940a-e3bb-438e-9e07-45b52c3fd563.jpg?v=1790926047"
+          }
+        }
+      ]
+    },
+    {
+      "id": "gid://shopify/Product/15396904075563",
+      "descriptionHtml": "<p>A long-sleeve silhouette and polo collar give this dress a classic sporting look. Pair the Long Sleeve Polo Collar Dress with your favourite court accessories.</p><p>Available colours: Navy, Dark green, Cream.</p>",
+      "category": {
+        "id": "gid://shopify/TaxonomyCategory/aa-1",
+        "name": "Clothing"
+      },
+      "media": {
+        "nodes": [
+          {
+            "id": "gid://shopify/MediaImage/46304342147371",
+            "status": "PROCESSING",
+            "alt": "Long Sleeve Polo Collar Dress — Figma reference"
+          }
+        ]
+      },
+      "handle": "stroken-long-sleeve-polo-collar-dress",
+      "mediaId": "gid://shopify/MediaImage/46304342147371",
+      "variantImagesAssigned": true,
+      "variantImages": [
+        {
+          "id": "gid://shopify/ProductVariant/67627068686635",
+          "image": {
+            "url": "https://cdn.shopify.com/s/files/1/1024/2192/2091/files/510434b2-0a25-4089-acd9-c34d37724bb4.jpg?v=1790926050"
+          }
+        },
+        {
+          "id": "gid://shopify/ProductVariant/67627068719403",
+          "image": {
+            "url": "https://cdn.shopify.com/s/files/1/1024/2192/2091/files/510434b2-0a25-4089-acd9-c34d37724bb4.jpg?v=1790926050"
+          }
+        },
+        {
+          "id": "gid://shopify/ProductVariant/67627068752171",
+          "image": {
+            "url": "https://cdn.shopify.com/s/files/1/1024/2192/2091/files/510434b2-0a25-4089-acd9-c34d37724bb4.jpg?v=1790926050"
+          }
+        }
+      ]
+    },
+    {
+      "id": "gid://shopify/Product/15396904403243",
+      "descriptionHtml": "<p>Bring a coordinated tennis-inspired look to your wardrobe with the Mini Skirt Set. Its collared top and pleated mini skirt create a matching outfit.</p><p>Available colours: Pink, Light yellow.</p>",
+      "category": {
+        "id": "gid://shopify/TaxonomyCategory/aa-1",
+        "name": "Clothing"
+      },
+      "media": {
+        "nodes": [
+          {
+            "id": "gid://shopify/MediaImage/46304343490859",
+            "status": "UPLOADED",
+            "alt": "Mini Skirt Set — Figma reference"
+          }
+        ]
+      },
+      "handle": "stroken-mini-skirt-set",
+      "mediaId": "gid://shopify/MediaImage/46304343490859",
+      "variantImagesAssigned": true,
+      "variantImages": [
+        {
+          "id": "gid://shopify/ProductVariant/67627069440299",
+          "image": {
+            "url": "https://cdn.shopify.com/s/files/1/1024/2192/2091/files/4cbb7bc3-d8d3-4f73-9b14-cadb0a7e38a2.jpg?v=1790926052"
+          }
+        },
+        {
+          "id": "gid://shopify/ProductVariant/67627069473067",
+          "image": {
+            "url": "https://cdn.shopify.com/s/files/1/1024/2192/2091/files/4cbb7bc3-d8d3-4f73-9b14-cadb0a7e38a2.jpg?v=1790926052"
+          }
+        }
+      ]
+    }
+  ],
+  "source": "Figma original images",
+  "variantImageNote": "Figma provides one product photograph per card; the same source photo is assigned to each color variant."
+}

@@ -20,6 +20,10 @@
   endif
 
   assign hotspot_product = block.settings.product
+  assign hotspot_compact_card = false
+  if section.settings.product_card_layout == 'compact'
+    assign hotspot_compact_card = true
+  endif
   assign hotspot_has_product = false
   if hotspot_type == 'product' and hotspot_product != blank and hotspot_product.id != blank and hotspot_product.url != blank
     assign hotspot_has_product = true
@@ -145,6 +149,11 @@
         <span class="product-callout__hotspot-icon product-callout__hotspot-icon--plus" aria-hidden="true">
           {% render 'icon', icon: 'plus', bare: true %}
         </span>
+        {% if hotspot_compact_card %}
+          <span class="product-callout__hotspot-icon product-callout__hotspot-icon--minus" aria-hidden="true">
+            {% render 'icon', icon: 'minus', bare: true %}
+          </span>
+        {% endif %}
         <span class="product-callout__hotspot-icon product-callout__hotspot-icon--tag" aria-hidden="true">
           {% render 'icon', icon: 'tag', bare: true %}
         </span>
@@ -201,6 +210,7 @@
               {% if hotspot_show_price %}
                 {% render 'price', item: hotspot_product, context: 'product-card', class: 'product-callout__product-card-price' %}
               {% endif %}
+              {% unless hotspot_compact_card %}
               {% if hotspot_is_carousel %}
                 <a class="product-callout__product-card-action" href="{{ hotspot_product.url | escape }}">{{ hotspot_product_link_label | escape }}</a>
               {% else %}
@@ -213,10 +223,36 @@
                   aria-expanded="false"
                 >{{ hotspot_product_link_label | escape }}</a>
               {% endif %}
+              {% endunless %}
             {% else %}
+              {% unless hotspot_compact_card %}
               <span class="product-callout__product-card-action product-callout__product-card-action--disabled" aria-disabled="true">{{ hotspot_product_link_label | escape }}</span>
+              {% endunless %}
             {% endif %}
           </div>
+          {% if hotspot_compact_card %}
+            {% capture hotspot_quick_view_attributes %}
+              {% if hotspot_has_product %}
+                data-product-card-quick-view
+                data-product-card-quick-view-url="{{ hotspot_product.url | escape }}"
+                aria-haspopup="dialog" aria-expanded="false"
+              {% endif %}
+            {% endcapture %}
+            {% assign hotspot_quick_view_label = 'products.quick_view' | t %}
+            {% assign hotspot_quick_view_disabled = false %}
+            {% unless hotspot_has_product %}{% assign hotspot_quick_view_disabled = true %}{% endunless %}
+            {% render 'theme-button',
+              label: hotspot_quick_view_label,
+              url: hotspot_product.url,
+              icon: 'shopping-bag',
+              icon_only: true,
+              icon_size: 'custom',
+              icon_width: 20,
+              class: 'product-callout__quick-view',
+              attributes: hotspot_quick_view_attributes,
+              disabled: hotspot_quick_view_disabled
+            %}
+          {% endif %}
         </div>
       {% endif %}
     </div>

@@ -1,0 +1,268 @@
+{% doc %}
+  Decorative image slot for Featured collection: background (custom).
+  Height/placement belong to this block; the section maps them to its spacer.
+  Percent height uses the section's measured content height, never its own row.
+{% enddoc %}
+{% capture background_height_desktop %}{% render 'collection-background-height', settings: block.settings, device: 'desktop' %}{% endcapture %}
+{% capture background_height_mobile %}{% render 'collection-background-height', settings: block.settings, device: 'mobile' %}{% endcapture %}
+{% style %}
+  #shopify-section-{{ section.id }} .featured-collection-background {
+    --collection-background-height-desktop: {{ background_height_desktop | strip }};
+    --collection-background-height-mobile: {{ background_height_mobile | strip }};
+    --collection-background-overlap-desktop: {% if block.settings.placement_desktop == 'stack' %}0{% else %}{{ block.settings.overlap_desktop | default: 80 }}{% endif %}px;
+    --collection-background-overlap-mobile: {% if block.settings.placement_mobile == 'below' %}{{ block.settings.overlap_mobile | default: 0 }}{% else %}0{% endif %}px;
+  }
+{% endstyle %}
+<div class="collection-background" aria-hidden="true"{% if block.settings.overlay != blank %} style="--collection-background-overlay: {{ block.settings.overlay }};"{% endif %} {{ block.shopify_attributes }}>
+  {% render 'image', image: block.settings.image, mobile_image: block.settings.mobile_image, class: 'collection-background__image', width: 2400, widths: '750, 1100, 1500, 2000, 2400', sizes: '100vw', placeholder: 'lifestyle-1' %}
+</div>
+{% stylesheet %}
+  .collection-background { position: absolute; inset: 0; height: var(--collection-background-height, 256px); pointer-events: none; overflow: hidden; }
+  .collection-background__image,
+  .collection-background__image > picture,
+  .collection-background__image > img,
+  .collection-background__image > picture > img,
+  .collection-background__image > .image__placeholder { width: 100%; height: 100%; }
+  .collection-background__image img { object-fit: cover; }
+  .collection-background::after { content: ''; position: absolute; inset: 0; background: var(--collection-background-overlay, transparent); }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "t:featured_collection_background.background_block",
+  "tag": null,
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "t:general.image"
+    },
+    {
+      "type": "image_picker",
+      "id": "mobile_image",
+      "label": "t:labels.mobile_image"
+    },
+    {
+      "type": "header",
+      "content": "t:general.layout"
+    },
+    {
+      "type": "select",
+      "id": "device",
+      "label": "t:labels.device",
+      "options": [
+        {
+          "value": "desktop",
+          "label": "t:options.device.desktop"
+        },
+        {
+          "value": "mobile",
+          "label": "t:options.device.mobile"
+        }
+      ],
+      "default": "desktop"
+    },
+    {
+      "type": "select",
+      "id": "placement_desktop",
+      "label": "t:featured_collection_background.background_placement",
+      "options": [
+        {
+          "value": "below",
+          "label": "t:featured_collection_background.background_below"
+        },
+        {
+          "value": "stack",
+          "label": "t:featured_collection_background.background_stack"
+        }
+      ],
+      "default": "below",
+      "visible_if": "{{ block.settings.device == 'desktop' }}",
+      "info": "t:featured_collection_background.background_placement_info"
+    },
+    {
+      "type": "select",
+      "id": "height_desktop",
+      "label": "t:featured_collection_background.background_height",
+      "options": [
+        {
+          "value": "small",
+          "label": "t:featured_collection_background.background_height_small"
+        },
+        {
+          "value": "medium",
+          "label": "t:featured_collection_background.background_height_medium"
+        },
+        {
+          "value": "large",
+          "label": "t:featured_collection_background.background_height_large"
+        },
+        {
+          "value": "full_screen",
+          "label": "t:options.section_height.full_screen"
+        },
+        {
+          "value": "custom",
+          "label": "t:options.section_height.custom"
+        }
+      ],
+      "default": "medium",
+      "visible_if": "{{ block.settings.device == 'desktop' }}"
+    },
+    {
+      "type": "select",
+      "id": "height_unit_desktop",
+      "label": "t:featured_collection_background.height_unit",
+      "options": [
+        {
+          "value": "px",
+          "label": "t:featured_collection_background.height_pixels"
+        },
+        {
+          "value": "percent",
+          "label": "t:featured_collection_background.height_percent"
+        }
+      ],
+      "default": "px",
+      "visible_if": "{{ block.settings.device == 'desktop' and block.settings.height_desktop == 'custom' }}"
+    },
+    {
+      "type": "number",
+      "id": "height_px_desktop",
+      "label": "t:featured_collection_background.custom_height_px",
+      "default": 256,
+      "visible_if": "{{ block.settings.device == 'desktop' and block.settings.height_desktop == 'custom' and block.settings.height_unit_desktop == 'px' }}"
+    },
+    {
+      "type": "range",
+      "id": "height_percent_desktop",
+      "label": "t:featured_collection_background.custom_height",
+      "min": 1,
+      "max": 100,
+      "step": 1,
+      "default": 40,
+      "unit": "%",
+      "info": "t:featured_collection_background.height_percent_info",
+      "visible_if": "{{ block.settings.device == 'desktop' and block.settings.height_desktop == 'custom' and block.settings.height_unit_desktop == 'percent' }}"
+    },
+    {
+      "type": "range",
+      "id": "overlap_desktop",
+      "label": "t:featured_collection_background.background_overlap",
+      "min": 0,
+      "max": 200,
+      "step": 2,
+      "default": 80,
+      "unit": "px",
+      "info": "t:featured_collection_background.background_overlap_info",
+      "visible_if": "{{ block.settings.device == 'desktop' and block.settings.placement_desktop == 'below' }}"
+    },
+    {
+      "type": "select",
+      "id": "placement_mobile",
+      "label": "t:featured_collection_background.background_placement",
+      "options": [
+        {
+          "value": "below",
+          "label": "t:featured_collection_background.background_below"
+        },
+        {
+          "value": "stack",
+          "label": "t:featured_collection_background.background_stack"
+        }
+      ],
+      "default": "stack",
+      "visible_if": "{{ block.settings.device == 'mobile' }}",
+      "info": "t:featured_collection_background.background_placement_info"
+    },
+    {
+      "type": "select",
+      "id": "height_mobile",
+      "label": "t:featured_collection_background.background_height",
+      "options": [
+        {
+          "value": "small",
+          "label": "t:featured_collection_background.background_height_small"
+        },
+        {
+          "value": "medium",
+          "label": "t:featured_collection_background.background_height_medium"
+        },
+        {
+          "value": "large",
+          "label": "t:featured_collection_background.background_height_large"
+        },
+        {
+          "value": "full_screen",
+          "label": "t:options.section_height.full_screen"
+        },
+        {
+          "value": "custom",
+          "label": "t:options.section_height.custom"
+        }
+      ],
+      "default": "medium",
+      "visible_if": "{{ block.settings.device == 'mobile' }}"
+    },
+    {
+      "type": "select",
+      "id": "height_unit_mobile",
+      "label": "t:featured_collection_background.height_unit",
+      "options": [
+        {
+          "value": "px",
+          "label": "t:featured_collection_background.height_pixels"
+        },
+        {
+          "value": "percent",
+          "label": "t:featured_collection_background.height_percent"
+        }
+      ],
+      "default": "px",
+      "visible_if": "{{ block.settings.device == 'mobile' and block.settings.height_mobile == 'custom' }}"
+    },
+    {
+      "type": "number",
+      "id": "height_px_mobile",
+      "label": "t:featured_collection_background.custom_height_px",
+      "default": 256,
+      "visible_if": "{{ block.settings.device == 'mobile' and block.settings.height_mobile == 'custom' and block.settings.height_unit_mobile == 'px' }}"
+    },
+    {
+      "type": "range",
+      "id": "height_percent_mobile",
+      "label": "t:featured_collection_background.custom_height",
+      "min": 1,
+      "max": 100,
+      "step": 1,
+      "default": 40,
+      "unit": "%",
+      "info": "t:featured_collection_background.height_percent_info",
+      "visible_if": "{{ block.settings.device == 'mobile' and block.settings.height_mobile == 'custom' and block.settings.height_unit_mobile == 'percent' }}"
+    },
+    {
+      "type": "range",
+      "id": "overlap_mobile",
+      "label": "t:featured_collection_background.background_overlap",
+      "min": 0,
+      "max": 200,
+      "step": 2,
+      "default": 0,
+      "unit": "px",
+      "info": "t:featured_collection_background.background_overlap_info",
+      "visible_if": "{{ block.settings.device == 'mobile' and block.settings.placement_mobile == 'below' }}"
+    },
+    {
+      "type": "header",
+      "content": "t:general.appearance"
+    },
+    {
+      "type": "color",
+      "id": "overlay",
+      "label": "t:labels.overlay",
+      "alpha": true,
+      "default": "#00000033"
+    }
+  ]
+}
+{% endschema %}

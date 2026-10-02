@@ -1,17 +1,21 @@
 ---
 name: build-base
-description: "Project-local conventions for building and auditing Shopify theme foundations and sections: contracts, placement, schemas, shared shells, kernel blocks, responsive/editor lifecycle, and validation. Use only in this repository for theme foundation work."
+description: "Build and audit Shopify template branches in lh-template-demo: shared theme foundations, Figma layout mapping, editable Group composition, responsive cards, schemas, and Theme Editor validation."
 ---
 
 # Build Base
 
-Use this skill only for `/Users/chieutrinh/Documents/GitHub/shopify-theme-base`. It records the current architecture decisions for the Spinel base theme; the root `AGENTS.md` remains authoritative for branch, secret, Shopify CLI, and Git delivery safety.
+Use this skill in the `lh-template-demo` repository. Each template has its own branch and composes the shared Spinel foundation. The root `AGENTS.md` and the user's selected branch remain authoritative for branch, secret, Shopify CLI, and Git delivery safety.
 
 ## Scope
 
 Apply these conventions when building or changing Theme Settings, section kernels, theme blocks, shared tokens, section DOM, responsive behavior, or reusable Liquid/CSS components in this repository.
 
-Do not load `shopify-section-builder` or `section-editor-standards` for this project unless the user explicitly re-enables them. Do not infer new settings or brand UI from an old screenshot; extend the current contract only when requested.
+Use this repository's current kernels and contracts as the source of truth when consulting other build/audit skills. Do not infer new controls or brand UI from an old screenshot; use existing settings and editable blocks before extending the contract.
+
+## Template layout builds
+
+When matching a design or building template sections/cards, read [Editable template composition](references/template-composition.md). It records the approved Group-based composition, responsive column controls, and the Stroken examples. Keep template-specific values in template JSON; do not turn them into universal component defaults.
 
 ## Section build preflight
 
@@ -238,7 +242,7 @@ Heading, Text, Eyebrow, and Header blocks must inherit this context rather than 
 - Block alignment is inherited from the section or compound parent. Do not add per-block alignment controls unless the user explicitly changes this contract.
 - Use `block.shopify_attributes` directly on the rendered block element. Avoid an extra wrapper solely to carry editor attributes.
 - Emit inline CSS custom properties only when a value is non-default or an active mobile override differs from desktop. Default zero padding and default width/alignment should not appear in the `style` attribute.
-- Keep `fit`, `fill`, and `custom` width modes consistent. Show max-width only for `custom`; show mobile width/custom values only when `Customize for mobile` is enabled.
+- Keep `fit`, `fill`, and `custom` width modes consistent with the current block schema. Group uses its Device selector for desktop/mobile controls and defaults Mobile width to Fill; an explicitly saved Fit or Custom choice remains valid. Do not introduce a second responsive-width toggle.
 - Shared Header is a compound block with at most one Eyebrow, Heading, and Text child, in the recommended order Eyebrow → Heading → Text. It owns child flow/gap/padding, not child typography or alignment.
 - Eyebrow background is opt-in. When enabled, its default surface padding is `1rem 1.4rem`; its icon choices are the contract-defined decorative shapes (circle, square, triangle, diamond). Radius options use the shared presets `Square`, `Slightly rounded`, `Rounded`, and `Pill` rather than an ad-hoc range.
 
@@ -272,7 +276,7 @@ When adding a section/block relationship, verify all three surfaces together: th
 
 ## Delivery and validation
 
-Before editing, inspect the worktree and remote and preserve unrelated user changes. Work on `dev` unless the user explicitly requests another branch. Follow the root `AGENTS.md` for the exact Shopify theme safety rules.
+Before editing, inspect the worktree and remote and preserve unrelated user changes. Continue on the user's selected template branch; do not switch a template build to `dev` automatically. Follow the root `AGENTS.md` for the exact Shopify theme safety rules.
 
 For Shopify CLI validation, verify the development theme with `shopify theme info` immediately before each Shopify CLI command, then run Theme Check. Keep the requested `shopify theme dev` watcher running, but do not leave an unrequested watcher after QA. Validate `git diff --check`, inspect the preview at desktop/mobile widths, and check that editor attributes, empty content, responsive fallbacks, and keyboard focus remain correct.
 

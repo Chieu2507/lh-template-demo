@@ -356,7 +356,7 @@
   }
 
   .main-collection__promotion-card[href]:hover .main-collection__promotion-image {
-    transform: scale(1.02);
+    transform: scale(var(--motion-image-zoom, 1));
   }
 
   .main-collection__promotion-overlay {
@@ -1600,7 +1600,7 @@
 }
 
 .main-collection--blocks .main-collection__promotion-card:has(.main-collection__promotion-hit-area:hover) .main-collection__promotion-image {
-  transform: scale(1.02);
+  transform: scale(var(--motion-image-zoom, 1));
 }
 
 .main-collection--blocks .main-collection__promotion-content > .button-block {

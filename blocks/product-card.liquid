@@ -1,4 +1,5 @@
 {% doc %}
+  @param {number} [placeholder_index] - Ordered placeholder image variant
   Renders a Product Card from the product context supplied by its parent
   Product List, section, grid, or recommendation surface.
 
@@ -47,6 +48,7 @@
   {% render 'product-card',
     product: blank,
     placeholder: true,
+    placeholder_index: placeholder_index,
     color_type: product_card_color_type,
     color_scheme: product_card_color_scheme,
     attributes: product_card_editor_attributes

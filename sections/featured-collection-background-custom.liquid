@@ -1,0 +1,299 @@
+{% liquid
+  assign container_width = 'page-width'
+  if section.settings.section_width == 'full_width'
+    assign container_width = 'full-width'
+  endif
+%}
+<lh-collection-background class="section-spacing featured-collection-background color-scheme section-color-scope {{ section.settings.color_scheme }}" data-collection-background-section
+  style="--collection-header-width: {{ section.settings.header_width | default: 21 }}%; --collection-content-gap: {{ section.settings.gap_desktop | default: 10 }}px; --collection-content-gap-mobile: {{ section.settings.gap_mobile | default: 40 }}px; --collection-content-top-mobile: {{ section.settings.content_top_padding_mobile | default: 40 }}px; --section-padding-top: {{ section.settings.padding_top | default: 0 }}px; --section-padding-bottom: {{ section.settings.padding_bottom | default: 80 }}px;{% if section.settings.customize_mobile_padding %} --section-padding-top-mobile: {{ section.settings.padding_top_mobile | default: 0 }}px; --section-padding-bottom-mobile: {{ section.settings.padding_bottom_mobile | default: 16 }}px;{% endif %}"
+>
+  <div class="featured-collection-background__background">
+    {% content_for 'block', type: 'collection-background', id: 'background' %}
+  </div>
+  <div class="container {{ container_width }} featured-collection-background__content" data-collection-background-content data-content-layout="{{ section.settings.layout_desktop }}">
+    <div class="featured-collection-background__intro align-content">
+      {% content_for 'block', type: 'header', id: 'header' %}
+      {% content_for 'block', type: 'view-all-button', id: 'featured-collection-view-all' %}
+    </div>
+    <div class="featured-collection-background__products">
+      {% content_for 'block', type: 'product-list', id: 'product-list' %}
+    </div>
+  </div>
+</lh-collection-background>
+<script data-theme-module="{{ 'featured-collection-background.js' | asset_url }}"></script>
+{% stylesheet %}
+.featured-collection-background { display: block; position: relative; isolation: isolate; --collection-background-height: var(--collection-background-height-desktop, 256px); --collection-background-overlap: var(--collection-background-overlap-desktop, 80px); }
+.featured-collection-background__background { position: relative; z-index: 0; height: 0; }
+.featured-collection-background__background:has(.collection-background) { height: max(0px, calc(var(--collection-background-height) - min(var(--collection-background-overlap), var(--collection-background-height)))); }
+.featured-collection-background__content { position: relative; z-index: 1; display: flex; flex-direction: column; gap: var(--collection-content-gap, 10px); min-width: 0; }
+.featured-collection-background__intro { justify-content: center; gap: 32px; min-width: 0; }
+.featured-collection-background__products { min-width: 0; }
+.featured-collection-background__intro > .block-header { width: 100%; }
+@media (min-width: 768px) {
+  .featured-collection-background__content[data-content-layout='side'] { display: grid; grid-template-columns: minmax(0, var(--collection-header-width, 21%)) minmax(0, 1fr); }
+}
+@media (max-width: 767.98px) {
+  .featured-collection-background { --collection-background-height: var(--collection-background-height-mobile, 256px); --collection-background-overlap: var(--collection-background-overlap-mobile, 0px); }
+  .featured-collection-background__content { padding-top: var(--collection-content-top-mobile, 40px); gap: var(--collection-content-gap-mobile, 40px); }
+}
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "t:featured_collection_background.fc_background_name",
+  "class": "section-featured-collection-background",
+  "enabled_on": {
+    "templates": [
+      "*"
+    ]
+  },
+  "settings": [
+    {
+      "type": "header",
+      "content": "t:general.layout"
+    },
+    {
+      "type": "select",
+      "id": "section_width",
+      "label": "t:labels.section_width",
+      "options": [
+        {
+          "value": "page_width",
+          "label": "t:options.section_width.page_width"
+        },
+        {
+          "value": "full_width",
+          "label": "t:options.section_width.full_width"
+        }
+      ],
+      "default": "page_width"
+    },
+    {
+      "type": "select",
+      "id": "layout_desktop",
+      "label": "t:featured_collection_background.content_layout",
+      "options": [
+        {
+          "value": "side",
+          "label": "t:featured_collection_background.header_beside_products"
+        },
+        {
+          "value": "stack",
+          "label": "t:featured_collection_background.header_above_products"
+        }
+      ],
+      "default": "side"
+    },
+    {
+      "type": "range",
+      "id": "header_width",
+      "label": "t:featured_collection_background.header_width",
+      "min": 15,
+      "max": 40,
+      "step": 1,
+      "default": 21,
+      "unit": "%",
+      "visible_if": "{{ section.settings.layout_desktop == 'side' }}"
+    },
+    {
+      "type": "range",
+      "id": "gap_desktop",
+      "label": "t:labels.desktop_gap",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "default": 10,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "gap_mobile",
+      "label": "t:labels.mobile_gap",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "default": 40,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "content_top_padding_mobile",
+      "label": "t:featured_collection_background.content_top_padding",
+      "min": 0,
+      "max": 100,
+      "step": 2,
+      "default": 40,
+      "unit": "px"
+    },
+    {
+      "type": "header",
+      "content": "t:general.appearance"
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "t:labels.color_scheme",
+      "default": "scheme-1"
+    },
+    {
+      "type": "header",
+      "content": "t:general.padding"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "label": "t:options.position.top",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "default": 0,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "label": "t:options.position.bottom",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "default": 80,
+      "unit": "px"
+    },
+    {
+      "type": "checkbox",
+      "id": "customize_mobile_padding",
+      "label": "t:labels.customize_mobile_padding",
+      "default": false
+    },
+    {
+      "type": "range",
+      "id": "padding_top_mobile",
+      "label": "t:labels.mobile_top_padding",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "default": 0,
+      "unit": "px",
+      "visible_if": "{{ section.settings.customize_mobile_padding }}"
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_mobile",
+      "label": "t:labels.mobile_bottom_padding",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "default": 16,
+      "unit": "px",
+      "visible_if": "{{ section.settings.customize_mobile_padding }}"
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:featured_collection_background.fc_background_preset",
+      "category": "t:general.collection",
+      "settings": {
+        "layout_desktop": "side",
+        "gap_desktop": 10,
+        "gap_mobile": 40,
+        "header_width": 21,
+        "content_top_padding_mobile": 40,
+        "padding_bottom": 80
+      },
+      "blocks": [
+        {
+          "type": "collection-background",
+          "id": "background",
+          "static": true,
+          "settings": {
+            "height_desktop": "medium",
+            "placement_desktop": "below",
+            "overlap_desktop": 80,
+            "height_mobile": "medium",
+            "placement_mobile": "stack"
+          }
+        },
+        {
+          "type": "header",
+          "id": "header",
+          "static": true,
+          "settings": {
+            "width": "fill",
+            "gap_desktop": 16,
+            "gap_mobile": 16
+          },
+          "blocks": [
+            {
+              "type": "heading",
+              "settings": {
+                "text": "<p>BUILT FOR THE BASELINE</p>",
+                "heading_size": "lg",
+                "html_tag": "h2"
+              }
+            },
+            {
+              "type": "text",
+              "settings": {
+                "text": "<p>Our performance-driven sports products designed to elevate your game.</p>"
+              }
+            }
+          ]
+        },
+        {
+          "type": "view-all-button",
+          "id": "featured-collection-view-all",
+          "static": true,
+          "settings": {
+            "button_label": "View all",
+            "button_style": "primary",
+            "button_style_mobile": "primary",
+            "button_height_mobile": "inherit",
+            "full_width_mobile": false,
+            "show_icon": false,
+            "show_icon_mobile": false
+          }
+        },
+        {
+          "type": "product-list",
+          "id": "product-list",
+          "static": true,
+          "settings": {
+            "collection": "",
+            "max_products": 6,
+            "layout_type": "carousel",
+            "columns_desktop": "4",
+            "columns_mobile": "2",
+            "show_next_slide_preview_on_desktop": false,
+            "product_gap_desktop": 20,
+            "product_gap_mobile": 20,
+            "show_navigation_on_desktop": true,
+            "navigation_position": "inside",
+            "navigation_style": "secondary",
+            "navigation_icon": "chevron",
+            "show_pagination_on_desktop": true,
+            "pagination_type": "progress_bar",
+            "pagination_top_padding_desktop": 50,
+            "pagination_top_padding_mobile": 24,
+            "pagination_limit_width": true,
+            "pagination_max_width": 260,
+            "autoplay": false,
+            "autoplay_pause_on_hover": true,
+            "autoplay_speed": 4
+          },
+          "blocks": [
+            {
+              "type": "product-card",
+              "id": "product-card",
+              "static": true,
+              "settings": {
+                "color_type": "inherit",
+                "color_scheme": "scheme-1"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

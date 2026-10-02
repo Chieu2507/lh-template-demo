@@ -1,4 +1,5 @@
 {% doc %}
+  @param {number} [placeholder_index] - Ordered placeholder image variant
   Renders a reusable product card for collection, search and recommendation
   surfaces using the global Product cards settings.
 
@@ -26,7 +27,7 @@
   endunless
 
   assign card_ratio = settings.product_card_ratio | default: 'natural'
-  unless card_ratio == 'natural' or card_ratio == 'square' or card_ratio == 'portrait' or card_ratio == 'landscape'
+  unless card_ratio == 'natural' or card_ratio == 'square' or card_ratio == 'portrait' or card_ratio == 'landscape' or card_ratio == 'ratio_7_6'
     assign card_ratio = 'natural'
   endunless
 
@@ -137,6 +138,8 @@
       assign image_height = 1000
     when 'landscape'
       assign image_height = 600
+    when 'ratio_7_6'
+      assign image_height = 686
   endcase
 
   assign card_class = 'product-card product-card--' | append: card_style
@@ -204,6 +207,7 @@
     card_class: card_class,
     attributes: attributes,
     placeholder_price: 19,
+    placeholder_index: placeholder_index,
     middle_content: middle_content,
     footer_content: footer_content
   %}

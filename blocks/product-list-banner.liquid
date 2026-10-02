@@ -56,7 +56,8 @@
   collection: product_list_banner_collection,
   max_products: product_list_banner_max_products,
   layout_type: 'grid',
-  columns_desktop: 2,
+  columns_desktop: block.settings.columns_desktop,
+  columns_tablet: block.settings.columns_tablet,
   columns_mobile: product_list_banner_columns_mobile,
   mobile_carousel: block.settings.enable_swipe_mobile,
   gap_horizontal: block.settings.gap_horizontal,
@@ -73,7 +74,9 @@
   "name": "t:general.product_list",
   "tag": null,
   "blocks": [
-    { "type": "product-card" }
+    {
+      "type": "product-card"
+    }
   ],
   "settings": [
     {
@@ -96,11 +99,57 @@
     },
     {
       "type": "select",
+      "id": "columns_desktop",
+      "label": "t:labels.desktop_columns",
+      "options": [
+        {
+          "value": "2",
+          "label": "2"
+        },
+        {
+          "value": "3",
+          "label": "3"
+        },
+        {
+          "value": "4",
+          "label": "4"
+        }
+      ],
+      "default": "2"
+    },
+    {
+      "type": "select",
+      "id": "columns_tablet",
+      "label": "t:labels.tablet_columns",
+      "options": [
+        {
+          "value": "2",
+          "label": "2"
+        },
+        {
+          "value": "3",
+          "label": "3"
+        },
+        {
+          "value": "4",
+          "label": "4"
+        }
+      ],
+      "default": "2"
+    },
+    {
+      "type": "select",
       "id": "columns_mobile",
       "label": "t:labels.mobile_columns",
       "options": [
-        { "value": "1", "label": "1" },
-        { "value": "2", "label": "2" }
+        {
+          "value": "1",
+          "label": "1"
+        },
+        {
+          "value": "2",
+          "label": "2"
+        }
       ],
       "default": "1"
     },

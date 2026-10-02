@@ -128,7 +128,7 @@
     assign group_size_max_width = group_max_width | append: 'px'
   endif
 
-  assign group_width_mobile_mode = block.settings.width_mobile | default: group_width_mode
+  assign group_width_mobile_mode = block.settings.width_mobile | default: 'fill'
   unless group_width_mobile_mode == 'fit' or group_width_mobile_mode == 'fill' or group_width_mobile_mode == 'custom'
     assign group_width_mobile_mode = group_width_mode
   endunless
@@ -279,6 +279,12 @@
   {% if padding_bottom != 0 %}--group-padding-bottom: {{ padding_bottom }}px;{% endif %}
   {% if padding_left != 0 %}--group-padding-left: {{ padding_left }}px;{% endif %}
   {% if padding_right != 0 %}--group-padding-right: {{ padding_right }}px;{% endif %}
+  {% if block.settings.customize_tablet_padding %}
+    --group-padding-top-tablet: {{ block.settings.padding_tablet | default: 0 | at_least: 0 | at_most: 100 }}px;
+    --group-padding-bottom-tablet: {{ block.settings.padding_tablet | default: 0 | at_least: 0 | at_most: 100 }}px;
+    --group-padding-left-tablet: {{ block.settings.padding_tablet | default: 0 | at_least: 0 | at_most: 100 }}px;
+    --group-padding-right-tablet: {{ block.settings.padding_tablet | default: 0 | at_least: 0 | at_most: 100 }}px;
+  {% endif %}
   {% if block.settings.customize_mobile_padding %}
     {% if padding_top_mobile != padding_top %}--group-padding-top-mobile: {{ padding_top_mobile }}px;{% endif %}
     {% if padding_bottom_mobile != padding_bottom %}--group-padding-bottom-mobile: {{ padding_bottom_mobile }}px;{% endif %}
@@ -310,6 +316,10 @@
     --group-padding-right: initial;
     --group-padding-bottom: initial;
     --group-padding-left: initial;
+    --group-padding-top-tablet: initial;
+    --group-padding-bottom-tablet: initial;
+    --group-padding-left-tablet: initial;
+    --group-padding-right-tablet: initial;
     --group-padding-top-mobile: initial;
     --group-padding-right-mobile: initial;
     --group-padding-bottom-mobile: initial;
@@ -429,6 +439,15 @@
     min-width: 0;
   }
 
+  @media (min-width: 768px) and (max-width: 1149.98px) {
+    .group {
+      padding-top: var(--group-padding-top-tablet, var(--group-padding-top, 0px));
+      padding-bottom: var(--group-padding-bottom-tablet, var(--group-padding-bottom, 0px));
+      padding-left: var(--group-padding-left-tablet, var(--group-padding-left, 0px));
+      padding-right: var(--group-padding-right-tablet, var(--group-padding-right, 0px));
+    }
+  }
+
   @media (max-width: 767.98px) {
     .group {
       --flex-align: var(--group-align-mobile, var(--group-align));
@@ -457,16 +476,36 @@
   "name": "t:general.group",
   "tag": null,
   "blocks": [
-    { "type": "@theme" },
-    { "type": "@app" },
-    { "type": "product-badges" },
-    { "type": "product-title" },
-    { "type": "product-price" },
-    { "type": "product-description" },
-    { "type": "product-variant-picker" },
-    { "type": "product-inventory" },
-    { "type": "product-buy-buttons" },
-    { "type": "product-accordion" }
+    {
+      "type": "@theme"
+    },
+    {
+      "type": "@app"
+    },
+    {
+      "type": "product-badges"
+    },
+    {
+      "type": "product-title"
+    },
+    {
+      "type": "product-price"
+    },
+    {
+      "type": "product-description"
+    },
+    {
+      "type": "product-variant-picker"
+    },
+    {
+      "type": "product-inventory"
+    },
+    {
+      "type": "product-buy-buttons"
+    },
+    {
+      "type": "product-accordion"
+    }
   ],
   "settings": [
     {
@@ -478,8 +517,14 @@
       "id": "direction",
       "label": "t:labels.direction",
       "options": [
-        { "value": "horizontal", "label": "t:options.direction.horizontal" },
-        { "value": "vertical", "label": "t:options.direction.vertical" }
+        {
+          "value": "horizontal",
+          "label": "t:options.direction.horizontal"
+        },
+        {
+          "value": "vertical",
+          "label": "t:options.direction.vertical"
+        }
       ],
       "default": "vertical"
     },
@@ -488,10 +533,22 @@
       "id": "position",
       "label": "t:labels.position",
       "options": [
-        { "value": "top", "label": "t:options.position.top" },
-        { "value": "center", "label": "t:options.alignment.center" },
-        { "value": "bottom", "label": "t:options.position.bottom" },
-        { "value": "space-between", "label": "t:options.alignment.space_between" }
+        {
+          "value": "top",
+          "label": "t:options.position.top"
+        },
+        {
+          "value": "center",
+          "label": "t:options.alignment.center"
+        },
+        {
+          "value": "bottom",
+          "label": "t:options.position.bottom"
+        },
+        {
+          "value": "space-between",
+          "label": "t:options.alignment.space_between"
+        }
       ],
       "default": "center",
       "visible_if": "{{ block.settings.direction == 'vertical' and block.settings.height == 'fill' }}"
@@ -501,9 +558,18 @@
       "id": "position_horizontal",
       "label": "t:labels.position",
       "options": [
-        { "value": "top", "label": "t:options.position.top" },
-        { "value": "center", "label": "t:options.alignment.center" },
-        { "value": "bottom", "label": "t:options.position.bottom" }
+        {
+          "value": "top",
+          "label": "t:options.position.top"
+        },
+        {
+          "value": "center",
+          "label": "t:options.alignment.center"
+        },
+        {
+          "value": "bottom",
+          "label": "t:options.position.bottom"
+        }
       ],
       "default": "center",
       "visible_if": "{{ block.settings.direction == 'horizontal' }}"
@@ -513,10 +579,22 @@
       "id": "horizontal_alignment",
       "label": "t:labels.alignment",
       "options": [
-        { "value": "left", "label": "t:options.alignment.left" },
-        { "value": "center", "label": "t:options.alignment.center" },
-        { "value": "right", "label": "t:options.alignment.right" },
-        { "value": "space-between", "label": "t:options.alignment.space_between" }
+        {
+          "value": "left",
+          "label": "t:options.alignment.left"
+        },
+        {
+          "value": "center",
+          "label": "t:options.alignment.center"
+        },
+        {
+          "value": "right",
+          "label": "t:options.alignment.right"
+        },
+        {
+          "value": "space-between",
+          "label": "t:options.alignment.space_between"
+        }
       ],
       "default": "left",
       "visible_if": "{{ block.settings.direction == 'horizontal' }}"
@@ -533,9 +611,18 @@
       "id": "alignment",
       "label": "t:labels.alignment",
       "options": [
-        { "value": "left", "label": "t:options.alignment.left" },
-        { "value": "center", "label": "t:options.alignment.center" },
-        { "value": "right", "label": "t:options.alignment.right" }
+        {
+          "value": "left",
+          "label": "t:options.alignment.left"
+        },
+        {
+          "value": "center",
+          "label": "t:options.alignment.center"
+        },
+        {
+          "value": "right",
+          "label": "t:options.alignment.right"
+        }
       ],
       "default": "left",
       "visible_if": "{{ block.settings.direction == 'vertical' }}"
@@ -545,9 +632,18 @@
       "id": "alignment_mobile",
       "label": "t:labels.alignment_mobile",
       "options": [
-        { "value": "left", "label": "t:options.alignment.left" },
-        { "value": "center", "label": "t:options.alignment.center" },
-        { "value": "right", "label": "t:options.alignment.right" }
+        {
+          "value": "left",
+          "label": "t:options.alignment.left"
+        },
+        {
+          "value": "center",
+          "label": "t:options.alignment.center"
+        },
+        {
+          "value": "right",
+          "label": "t:options.alignment.right"
+        }
       ],
       "default": "left",
       "visible_if": "{{ block.settings.direction == 'vertical' or block.settings.customize_mobile_alignment }}"
@@ -585,8 +681,14 @@
       "id": "device",
       "label": "t:labels.device",
       "options": [
-        { "value": "desktop", "label": "t:options.device.desktop" },
-        { "value": "mobile", "label": "t:options.device.mobile" }
+        {
+          "value": "desktop",
+          "label": "t:options.device.desktop"
+        },
+        {
+          "value": "mobile",
+          "label": "t:options.device.mobile"
+        }
       ],
       "default": "desktop"
     },
@@ -595,9 +697,18 @@
       "id": "width",
       "label": "t:labels.width",
       "options": [
-        { "value": "fit", "label": "t:options.width.fit" },
-        { "value": "fill", "label": "t:options.width.fill" },
-        { "value": "custom", "label": "t:options.width.custom" }
+        {
+          "value": "fit",
+          "label": "t:options.width.fit"
+        },
+        {
+          "value": "fill",
+          "label": "t:options.width.fill"
+        },
+        {
+          "value": "custom",
+          "label": "t:options.width.custom"
+        }
       ],
       "default": "fit",
       "visible_if": "{{ block.settings.device == 'desktop' }}"
@@ -636,8 +747,14 @@
       "id": "height",
       "label": "t:labels.height",
       "options": [
-        { "value": "fit", "label": "t:options.width.fit" },
-        { "value": "fill", "label": "t:options.width.fill" }
+        {
+          "value": "fit",
+          "label": "t:options.width.fit"
+        },
+        {
+          "value": "fill",
+          "label": "t:options.width.fill"
+        }
       ],
       "default": "fill",
       "visible_if": "{{ block.settings.device == 'desktop' }}"
@@ -647,11 +764,20 @@
       "id": "width_mobile",
       "label": "t:labels.width_mobile",
       "options": [
-        { "value": "fit", "label": "t:options.width.fit" },
-        { "value": "fill", "label": "t:options.width.fill" },
-        { "value": "custom", "label": "t:options.width.custom" }
+        {
+          "value": "fit",
+          "label": "t:options.width.fit"
+        },
+        {
+          "value": "fill",
+          "label": "t:options.width.fill"
+        },
+        {
+          "value": "custom",
+          "label": "t:options.width.custom"
+        }
       ],
-      "default": "fit",
+      "default": "fill",
       "visible_if": "{{ block.settings.device == 'mobile' }}"
     },
     {
@@ -692,8 +818,14 @@
       "id": "appearance_type",
       "label": "t:labels.type",
       "options": [
-        { "value": "inherit", "label": "t:options.appearance_type.inherit" },
-        { "value": "scheme", "label": "t:options.appearance_type.scheme" }
+        {
+          "value": "inherit",
+          "label": "t:options.appearance_type.inherit"
+        },
+        {
+          "value": "scheme",
+          "label": "t:options.appearance_type.scheme"
+        }
       ],
       "default": "inherit"
     },
@@ -726,11 +858,26 @@
       "id": "border_type",
       "label": "t:labels.type",
       "options": [
-        { "value": "none", "label": "t:options.border_type.none" },
-        { "value": "solid", "label": "t:options.border_type.solid" },
-        { "value": "dashed", "label": "t:options.border_type.dashed" },
-        { "value": "dotted", "label": "t:options.border_type.dotted" },
-        { "value": "double", "label": "t:options.border_type.double" }
+        {
+          "value": "none",
+          "label": "t:options.border_type.none"
+        },
+        {
+          "value": "solid",
+          "label": "t:options.border_type.solid"
+        },
+        {
+          "value": "dashed",
+          "label": "t:options.border_type.dashed"
+        },
+        {
+          "value": "dotted",
+          "label": "t:options.border_type.dotted"
+        },
+        {
+          "value": "double",
+          "label": "t:options.border_type.double"
+        }
       ],
       "default": "none"
     },
@@ -746,10 +893,22 @@
       "id": "corner_radius",
       "label": "t:labels.corner_radius",
       "options": [
-        { "value": "square", "label": "t:options.radius_preset.square" },
-        { "value": "slightly_rounded", "label": "t:options.radius_preset.slightly_rounded" },
-        { "value": "rounded", "label": "t:options.radius_preset.rounded" },
-        { "value": "pill", "label": "t:options.radius_preset.pill" }
+        {
+          "value": "square",
+          "label": "t:options.radius_preset.square"
+        },
+        {
+          "value": "slightly_rounded",
+          "label": "t:options.radius_preset.slightly_rounded"
+        },
+        {
+          "value": "rounded",
+          "label": "t:options.radius_preset.rounded"
+        },
+        {
+          "value": "pill",
+          "label": "t:options.radius_preset.pill"
+        }
       ],
       "default": "square"
     },
@@ -758,10 +917,22 @@
       "id": "shadow",
       "label": "t:labels.shadow",
       "options": [
-        { "value": "none", "label": "t:options.overlay_shadow.none" },
-        { "value": "small", "label": "t:options.overlay_shadow.small" },
-        { "value": "medium", "label": "t:options.overlay_shadow.medium" },
-        { "value": "large", "label": "t:options.overlay_shadow.large" }
+        {
+          "value": "none",
+          "label": "t:options.overlay_shadow.none"
+        },
+        {
+          "value": "small",
+          "label": "t:options.overlay_shadow.small"
+        },
+        {
+          "value": "medium",
+          "label": "t:options.overlay_shadow.medium"
+        },
+        {
+          "value": "large",
+          "label": "t:options.overlay_shadow.large"
+        }
       ],
       "default": "none"
     },
@@ -831,6 +1002,23 @@
     },
     {
       "type": "checkbox",
+      "id": "customize_tablet_padding",
+      "label": "t:labels.customize_tablet_padding",
+      "default": false
+    },
+    {
+      "type": "range",
+      "id": "padding_tablet",
+      "label": "t:labels.tablet_padding",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "default": 0,
+      "visible_if": "{{ block.settings.customize_tablet_padding }}"
+    },
+    {
+      "type": "checkbox",
       "id": "customize_mobile_padding",
       "label": "t:labels.customize_mobile_padding",
       "default": false
@@ -895,7 +1083,7 @@
         "device": "desktop",
         "width": "fill",
         "width_custom": 100,
-        "width_mobile": "fit",
+        "width_mobile": "fill",
         "width_custom_mobile": 100,
         "limit_width": false,
         "limit_width_mobile": false,

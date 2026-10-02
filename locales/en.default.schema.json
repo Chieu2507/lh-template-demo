@@ -237,6 +237,12 @@
     "accordion_options": "Accordion options"
   },
   "labels": {
+    "outline_text": "Outline text",
+    "font_weight": "Font weight",
+    "badge_new_background_color": "New badge background",
+    "badge_new_text_color": "New badge text",
+    "badge_best_seller_background_color": "Best seller badge background",
+    "badge_best_seller_text_color": "Best seller badge text",
     "icon_accessible_label": "Icon link accessible label",
     "filter_settings": "Filter settings",
     "alignment": "Alignment",
@@ -701,7 +707,16 @@
     "description": "Description",
     "question": "Question",
     "answer": "Answer",
-    "initially_open": "Open by default"
+    "initially_open": "Open by default",
+    "stack_on_tablet": "Stack on tablet",
+    "media_aspect_ratio": "Media aspect ratio",
+    "media_corner_radius": "Media corner radius",
+    "unit_layout": "Unit layout",
+    "customize_tablet_padding": "Customize tablet padding",
+    "hover_zoom": "Hover zoom",
+    "tablet_padding": "Tablet padding",
+    "collection_tabs_header_layout": "Header layout",
+    "show_view_all_button": "Show view all button"
   },
   "options": {
     "product_quantity_style": {
@@ -853,7 +868,8 @@
     },
     "collection_navigation_position": {
       "outside": "Outside",
-      "inside": "Inside"
+      "inside": "Inside",
+      "bottom": "Bottom"
     },
     "collection_navigation_icon": {
       "chevron": "Chevron",
@@ -885,7 +901,8 @@
     },
     "tab_active_style": {
       "primary": "Primary",
-      "outline": "Outline"
+      "outline": "Outline",
+      "secondary": "Secondary"
     },
     "header_separator": {
       "none": "None",
@@ -1147,6 +1164,7 @@
       "square": "Square - 1:1",
       "portrait": "Portrait - 4:5",
       "landscape": "Landscape - 4:3",
+      "ratio_7_6": "7:6",
       "wide": "Wide - 16:9",
       "custom": "Custom"
     },
@@ -1390,6 +1408,14 @@
       "body": "Body",
       "heading": "Heading",
       "accent": "Accent"
+    },
+    "countdown_unit_layout": {
+      "separated": "Separated",
+      "connected": "Connected"
+    },
+    "collection_tabs_header_layout": {
+      "stacked": "Stacked",
+      "inline": "Heading and tabs in one row"
     }
   },
   "info": {
@@ -1447,7 +1473,8 @@
     "product_media_variant_filter": "Gallery filtering follows [theme settings](/editor?context=theme&category=variant%20pickers).",
     "autoplay_video_muted": "Videos are muted when autoplay is enabled.",
     "back_in_stock_alert": "Collect customer emails to notify them when a product is back in stock.",
-    "back_in_stock_alert_manual_notifications": "Note: Email notifications will not be sent automatically when the product becomes available — you will need to send them yourself."
+    "back_in_stock_alert_manual_notifications": "Note: Email notifications will not be sent automatically when the product becomes available — you will need to send them yourself.",
+    "hero_media_aspect_ratio": "Used for Adapt height in Stack layout."
   },
   "timeline": {
     "year": "Year or date label",
@@ -1464,5 +1491,31 @@
     "bottom_padding": "Bottom padding",
     "mobile_top_padding": "Mobile top padding",
     "mobile_bottom_padding": "Mobile bottom padding"
+  },
+  "featured_collection_background": {
+    "fc_background_name": "Collection background",
+    "fc_background_preset": "Featured collection: background (custom)",
+    "background_block": "Background",
+    "background_height": "Background height",
+    "custom_height": "Custom height",
+    "height_unit": "Height unit",
+    "height_percent_info": "Percentage of the collection content height, excluding background and section padding.",
+    "background_placement": "Placement",
+    "background_placement_info": "Below places the image behind the collection. Stack places it in a separate row above the collection.",
+    "background_overlap": "Content overlap",
+    "background_overlap_info": "How far the collection overlaps the image. The value cannot exceed the image height.",
+    "content_layout": "Content layout",
+    "header_beside_products": "Header beside products",
+    "header_above_products": "Header above products",
+    "header_width": "Header width",
+    "content_top_padding": "Mobile content top padding",
+    "background_height_small": "Small (160px)",
+    "background_height_medium": "Medium (256px)",
+    "background_height_large": "Large (400px)",
+    "height_pixels": "Pixels",
+    "height_percent": "Percentage",
+    "background_below": "Below",
+    "background_stack": "Stack",
+    "custom_height_px": "Custom height (px)"
   }
 }

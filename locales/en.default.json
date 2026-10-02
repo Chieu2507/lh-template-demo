@@ -128,7 +128,7 @@
     "share_cart": "Share cart",
     "cart_link_copied": "Cart link copied.",
     "share_error": "Unable to share cart.",
-    "shipping_calculating": "Calculating shipping…",
+    "shipping_calculating": "Calculating shipping\u2026",
     "shipping_unavailable": "Shipping rates unavailable.",
     "shipping_no_rates": "No shipping rates found.",
     "country": "Country",
@@ -186,6 +186,10 @@
     "default_title": "Collection",
     "default_description": "Collection description",
     "products_count": "{{ count }} products",
+    "items_count": {
+      "one": "{{ count }} item",
+      "other": "{{ count }} items"
+    },
     "previous": "Previous collection",
     "next": "Next collection"
   },
@@ -210,7 +214,9 @@
     "hours": "Hours",
     "minutes": "Min",
     "seconds": "Sec",
-    "expired": "The countdown has ended."
+    "expired": "The countdown has ended.",
+    "minutes_full": "Minutes",
+    "seconds_full": "Seconds"
   },
   "products": {
     "category": "Category",
@@ -265,7 +271,7 @@
     "back_in_stock_phone": "Phone number (optional)",
     "back_in_stock_submit": "Notify me",
     "close_back_in_stock": "Close back-in-stock form",
-    "back_in_stock_success": "Thanks — we'll let you know when it's back in stock.",
+    "back_in_stock_success": "Thanks \u2014 we'll let you know when it's back in stock.",
     "read_more": "Read more",
     "read_less": "Read less"
   },

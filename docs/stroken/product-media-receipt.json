@@ -1,0 +1,1664 @@
+{
+  "store": "layouthub-template-v2.myshopify.com",
+  "generatedBy": "built-in imagegen",
+  "products": {
+    "stroken-speed-mp-tour-racket-strung": {
+      "productId": "gid://shopify/Product/15396900471083",
+      "images": {
+        "0": {
+          "jobId": 0,
+          "color": "White",
+          "kind": "lifestyle",
+          "file": "output/stroken-product-media/stroken-speed-mp-tour-racket-strung-white-lifestyle.png",
+          "mediaId": "gid://shopify/MediaImage/46304925286699"
+        }
+      },
+      "complete": true,
+      "variantPairs": [
+        {
+          "variantId": "gid://shopify/ProductVariant/67627063410987",
+          "color": "White",
+          "mediaIds": [
+            "gid://shopify/MediaImage/46304333332779",
+            "gid://shopify/MediaImage/46304925286699"
+          ]
+        }
+      ],
+      "verified": {
+        "id": "gid://shopify/Product/15396900471083",
+        "handle": "stroken-speed-mp-tour-racket-strung",
+        "media": {
+          "nodes": [
+            {
+              "id": "gid://shopify/MediaImage/46304333332779",
+              "alt": "Speed MP Tour Racket Strung — Figma reference",
+              "status": "READY",
+              "image": {
+                "url": "https://cdn.shopify.com/s/files/1/1024/2192/2091/files/6fc9c88c-2513-49d9-911f-69fe475e64eb.jpg?v=1790926021"
+              }
+            },
+            {
+              "id": "gid://shopify/MediaImage/46304925286699",
+              "alt": "Speed MP Tour Racket Strung — White — in use (AI demo)",
+              "status": "READY",
+              "image": {
+                "url": "https://cdn.shopify.com/s/files/1/1024/2192/2091/files/stroken-speed-mp-tour-racket-strung-white-lifestyle.png?v=1790927803"
+              }
+            }
+          ]
+        },
+        "variants": {
+          "nodes": [
+            {
+              "id": "gid://shopify/ProductVariant/67627063410987",
+              "title": "White",
+              "price": "117.00",
+              "compareAtPrice": "234.00",
+              "inventoryQuantity": 100,
+              "media": {
+                "nodes": [
+                  {
+                    "id": "gid://shopify/MediaImage/46304333332779"
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      }
+    },
+    "stroken-blade-100-tour-racket-unstrung": {
+      "productId": "gid://shopify/Product/15396900700459",
+      "images": {
+        "1": {
+          "jobId": 1,
+          "color": "Dark green",
+          "kind": "lifestyle",
+          "file": "output/stroken-product-media/stroken-blade-100-tour-racket-unstrung-dark-green-lifestyle.png",
+          "mediaId": "gid://shopify/MediaImage/46304981483819"
+        }
+      },
+      "complete": true,
+      "variantPairs": [
+        {
+          "variantId": "gid://shopify/ProductVariant/67627063705899",
+          "color": "Dark green",
+          "mediaIds": [
+            "gid://shopify/MediaImage/46304333562155",
+            "gid://shopify/MediaImage/46304981483819"
+          ]
+        }
+      ],
+      "verified": {
+        "id": "gid://shopify/Product/15396900700459",
+        "handle": "stroken-blade-100-tour-racket-unstrung",
+        "media": {
+          "nodes": [
+            {
+              "id": "gid://shopify/MediaImage/46304333562155",
+              "alt": "Blade 100 Tour Racket Unstrung — Figma reference",
+              "status": "READY",
+              "image": {
+                "url": "https://cdn.shopify.com/s/files/1/1024/2192/2091/files/7a69f32d-d356-4f0c-88fd-8c0f6829e24e.jpg?v=1790926023"
+              }
+            },
+            {
+              "id": "gid://shopify/MediaImage/46304981483819",
+              "alt": "Blade 100 Tour Racket Unstrung — Dark green — in use (AI demo)",
+              "status": "READY",
+              "image": {
+                "url": "https://cdn.shopify.com/s/files/1/1024/2192/2091/files/stroken-blade-100-tour-racket-unstrung-dark-green-lifestyle.png?v=1790927894"
+              }
+            }
+          ]
+        },
+        "variants": {
+          "nodes": [
+            {
+              "id": "gid://shopify/ProductVariant/67627063705899",
+              "title": "Dark green",
+              "price": "235.00",
+              "compareAtPrice": null,
+              "inventoryQuantity": 100,
+              "media": {
+                "nodes": [
+                  {
+                    "id": "gid://shopify/MediaImage/46304333562155"
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      }
+    },
+    "stroken-blx-pro-open-tour-racket-strung": {
+      "productId": "gid://shopify/Product/15396900995371",
+      "images": {
+        "2": {
+          "jobId": 2,
+          "color": "Yellow",
+          "kind": "lifestyle",
+          "file": "output/stroken-product-media/stroken-blx-pro-open-tour-racket-strung-yellow-lifestyle.png",
+          "mediaId": "gid://shopify/MediaImage/46304991510827"
+        }
+      },
+      "complete": true,
+      "variantPairs": [
+        {
+          "variantId": "gid://shopify/ProductVariant/67627064099115",
+          "color": "Yellow",
+          "mediaIds": [
+            "gid://shopify/MediaImage/46304333693227",
+            "gid://shopify/MediaImage/46304991510827"
+          ]
+        }
+      ],
+      "verified": {
+        "id": "gid://shopify/Product/15396900995371",
+        "handle": "stroken-blx-pro-open-tour-racket-strung",
+        "media": {
+          "nodes": [
+            {
+              "id": "gid://shopify/MediaImage/46304333693227",
+              "alt": "BLX Pro Open Tour Racket Strung — Figma reference",
+              "status": "READY",
+              "image": {
+                "url": "https://cdn.shopify.com/s/files/1/1024/2192/2091/files/a06698b1-c1fe-4269-91ab-4cb0606c3b5b.jpg?v=1790926025"
+              }
+            },
+            {
+              "id": "gid://shopify/MediaImage/46304991510827",
+              "alt": "BLX Pro Open Tour Racket Strung — Yellow — in use (AI demo)",
+              "status": "READY",
+              "image": {
+                "url": "https://cdn.shopify.com/s/files/1/1024/2192/2091/files/stroken-blx-pro-open-tour-racket-strung-yellow-lifestyle.png?v=1790927913"
+              }
+            }
+          ]
+        },
+        "variants": {
+          "nodes": [
+            {
+              "id": "gid://shopify/ProductVariant/67627064099115",
+              "title": "Yellow",
+              "price": "168.00",
+              "compareAtPrice": null,
+              "inventoryQuantity": 100,
+              "media": {
+                "nodes": [
+                  {
+                    "id": "gid://shopify/MediaImage/46304333693227"
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      }
+    },
+    "stroken-t-fight-300-ig-tour-racket-strung": {
+      "productId": "gid://shopify/Product/15396901159211",
+      "images": {
+        "3": {
+          "jobId": 3,
+          "color": "Orange red",
+          "kind": "lifestyle",
+          "file": "output/stroken-product-media/stroken-t-fight-300-ig-tour-racket-strung-orange-red-lifestyle.png",
+          "mediaId": "gid://shopify/MediaImage/46304999309611"
+        },
+        "4": {
+          "jobId": 4,
+          "color": "White",
+          "kind": "catalog",
+          "file": "output/stroken-product-media/stroken-t-fight-300-ig-tour-racket-strung-white-catalog.png",
+          "mediaId": "gid://shopify/MediaImage/46304999342379"
+        },
+        "5": {
+          "jobId": 5,
+          "color": "White",
+          "kind": "lifestyle",
+          "file": "output/stroken-product-media/stroken-t-fight-300-ig-tour-racket-strung-white-lifestyle.png",
+          "mediaId": "gid://shopify/MediaImage/46304999375147"
+        }
+      },
+      "complete": true,
+      "variantPairs": [
+        {
+          "variantId": "gid://shopify/ProductVariant/67627064328491",
+          "color": "Orange red",
+          "mediaIds": [
+            "gid://shopify/MediaImage/46304334020907",
+            "gid://shopify/MediaImage/46304999309611"
+          ]
+        },
+        {
+          "variantId": "gid://shopify/ProductVariant/67627064361259",
+          "color": "White",
+          "mediaIds": [
+            "gid://shopify/MediaImage/46304999342379",
+            "gid://shopify/MediaImage/46304999375147"
+          ]
+        }
+      ],
+      "verified": {
+        "id": "gid://shopify/Product/15396901159211",
+        "handle": "stroken-t-fight-300-ig-tour-racket-strung",
+        "media": {
+          "nodes": [
+            {
+              "id": "gid://shopify/MediaImage/46304334020907",
+              "alt": "T-Fight 300 IG Tour Racket Strung — Figma reference",
+              "status": "READY",
+              "image": {
+                "url": "https://cdn.shopify.com/s/files/1/1024/2192/2091/files/70e26639-31ac-4a38-9472-1b085d1d1181.jpg?v=1790926027"
+              }
+            },
+            {
+              "id": "gid://shopify/MediaImage/46304999309611",
+              "alt": "T-Fight 300 IG Tour Racket Strung — Orange red — in use (AI demo)",
+              "status": "READY",
+              "image": {
+                "url": "https://cdn.shopify.com/s/files/1/1024/2192/2091/files/stroken-t-fight-300-ig-tour-racket-strung-orange-red-lifestyle.png?v=1790927932"
+              }
+            },
+            {
+              "id": "gid://shopify/MediaImage/46304999342379",
+              "alt": "T-Fight 300 IG Tour Racket Strung — White — catalog view (AI demo)",
+              "status": "READY",
+              "image": {
+                "url": "https://cdn.shopify.com/s/files/1/1024/2192/2091/files/stroken-t-fight-300-ig-tour-racket-strung-white-catalog.png?v=1790927932"
+              }
+            },
+            {
+              "id": "gid://shopify/MediaImage/46304999375147",
+              "alt": "T-Fight 300 IG Tour Racket Strung — White — in use (AI demo)",
+              "status": "READY",
+              "image": {
+                "url": "https://cdn.shopify.com/s/files/1/1024/2192/2091/files/stroken-t-fight-300-ig-tour-racket-strung-white-lifestyle.png?v=1790927932"
+              }
+            }
+          ]
+        },
+        "variants": {
+          "nodes": [
+            {
+              "id": "gid://shopify/ProductVariant/67627064328491",
+              "title": "Orange red",
+              "price": "210.00",
+              "compareAtPrice": null,
+              "inventoryQuantity": 100,
+              "media": {
+                "nodes": [
+                  {
+                    "id": "gid://shopify/MediaImage/46304334020907"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "gid://shopify/ProductVariant/67627064361259",
+              "title": "White",
+              "price": "210.00",
+              "compareAtPrice": null,
+              "inventoryQuantity": 100,
+              "media": {
+                "nodes": [
+                  {
+                    "id": "gid://shopify/MediaImage/46304999342379"
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      }
+    },
+    "stroken-muse-107-allround-racket-strung": {
+      "productId": "gid://shopify/Product/15396901388587",
+      "images": {
+        "6": {
+          "jobId": 6,
+          "color": "Blue grey",
+          "kind": "lifestyle",
+          "file": "output/stroken-product-media/stroken-muse-107-allround-racket-strung-blue-grey-lifestyle.png",
+          "mediaId": "gid://shopify/MediaImage/46305005633835"
+        }
+      },
+      "complete": true,
+      "variantPairs": [
+        {
+          "variantId": "gid://shopify/ProductVariant/67627064787243",
+          "color": "Blue grey",
+          "mediaIds": [
+            "gid://shopify/MediaImage/46304334577963",
+            "gid://shopify/MediaImage/46305005633835"
+          ]
+        }
+      ],
+      "verified": {
+        "id": "gid://shopify/Product/15396901388587",
+        "handle": "stroken-muse-107-allround-racket-strung",
+        "media": {
+          "nodes": [
+            {
+              "id": "gid://shopify/MediaImage/46304334577963",
+              "alt": "Muse 107 Allround Racket Strung — Figma reference",
+              "status": "READY",
+              "image": {
+                "url": "https://cdn.shopify.com/s/files/1/1024/2192/2091/files/b9fc7d93-722e-4fed-b54e-3a9746aca6d4.jpg?v=1790926029"
+              }
+            },
+            {
+              "id": "gid://shopify/MediaImage/46305005633835",
+              "alt": "Muse 107 Allround Racket Strung — Blue grey — in use (AI demo)",
+              "status": "READY",
+              "image": {
+                "url": "https://cdn.shopify.com/s/files/1/1024/2192/2091/files/stroken-muse-107-allround-racket-strung-blue-grey-lifestyle.png?v=1790927947"
+              }
+            }
+          ]
+        },
+        "variants": {
+          "nodes": [
+            {
+              "id": "gid://shopify/ProductVariant/67627064787243",
+              "title": "Blue grey",
+              "price": "193.00",
+              "compareAtPrice": null,
+              "inventoryQuantity": 100,
+              "media": {
+                "nodes": [
+                  {
+                    "id": "gid://shopify/MediaImage/46304334577963"
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      }
+    },
+    "stroken-dri-fit-advantage-polo": {
+      "productId": "gid://shopify/Product/15396901617963",
+      "images": {
+        "7": {
+          "jobId": 7,
+          "color": "White",
+          "kind": "lifestyle",
+          "file": "output/stroken-product-media/stroken-dri-fit-advantage-polo-white-lifestyle.png",
+          "mediaId": "gid://shopify/MediaImage/46305015234859"
+        },
+        "8": {
+          "jobId": 8,
+          "color": "Dark grey",
+          "kind": "catalog",
+          "file": "output/stroken-product-media/stroken-dri-fit-advantage-polo-dark-grey-catalog.png",
+          "mediaId": "gid://shopify/MediaImage/46305015267627"
+        },
+        "9": {
+          "jobId": 9,
+          "color": "Dark grey",
+          "kind": "lifestyle",
+          "file": "output/stroken-product-media/stroken-dri-fit-advantage-polo-dark-grey-lifestyle.png",
+          "mediaId": "gid://shopify/MediaImage/46305015300395"
+        }
+      },
+      "complete": true,
+      "variantPairs": [
+        {
+          "variantId": "gid://shopify/ProductVariant/67627065082155",
+          "color": "White",
+          "mediaIds": [
+            "gid://shopify/MediaImage/46304335528235",
+            "gid://shopify/MediaImage/46305015234859"
+          ]
+        },
+        {
+          "variantId": "gid://shopify/ProductVariant/67627065114923",
+          "color": "Dark grey",
+          "mediaIds": [
+            "gid://shopify/MediaImage/46305015267627",
+            "gid://shopify/MediaImage/46305015300395"
+          ]
+        }
+      ],
+      "verified": {
+        "id": "gid://shopify/Product/15396901617963",
+        "handle": "stroken-dri-fit-advantage-polo",
+        "media": {
+          "nodes": [
+            {
+              "id": "gid://shopify/MediaImage/46304335528235",
+              "alt": "Dri-FIT Advantage Polo — Figma reference",
+              "status": "READY",
+              "image": {
+                "url": "https://cdn.shopify.com/s/files/1/1024/2192/2091/files/4b95c0fa-0724-4e83-913f-a77c1d5bb9db.jpg?v=1790926032"
+              }
+            },
+            {
+              "id": "gid://shopify/MediaImage/46305015234859",
+              "alt": "Dri-FIT Advantage Polo — White — alternate rear view (AI demo)",
+              "status": "READY",
+              "image": {
+                "url": "https://cdn.shopify.com/s/files/1/1024/2192/2091/files/stroken-dri-fit-advantage-polo-white-lifestyle.png?v=1790927967"
+              }
+            },
+            {
+              "id": "gid://shopify/MediaImage/46305015267627",
+              "alt": "Dri-FIT Advantage Polo — Dark grey — catalog view (AI demo)",
+              "status": "READY",
+              "image": {
+                "url": "https://cdn.shopify.com/s/files/1/1024/2192/2091/files/stroken-dri-fit-advantage-polo-dark-grey-catalog.png?v=1790927967"
+              }
+            },
+            {
+              "id": "gid://shopify/MediaImage/46305015300395",
+              "alt": "Dri-FIT Advantage Polo — Dark grey — alternate rear view (AI demo)",
+              "status": "READY",
+              "image": {
+                "url": "https://cdn.shopify.com/s/files/1/1024/2192/2091/files/stroken-dri-fit-advantage-polo-dark-grey-lifestyle.png?v=1790927967"
+              }
+            }
+          ]
+        },
+        "variants": {
+          "nodes": [
+            {
+              "id": "gid://shopify/ProductVariant/67627065082155",
+              "title": "White",
+              "price": "60.00",
+              "compareAtPrice": null,
+              "inventoryQuantity": 100,
+              "media": {
+                "nodes": [
+                  {
+                    "id": "gid://shopify/MediaImage/46304335528235"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "gid://shopify/ProductVariant/67627065114923",
+              "title": "Dark grey",
+              "price": "60.00",
+              "compareAtPrice": null,
+              "inventoryQuantity": 100,
+              "media": {
+                "nodes": [
+                  {
+                    "id": "gid://shopify/MediaImage/46305015267627"
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      }
+    },
+    "stroken-dri-fit-advantage-t-shirt": {
+      "productId": "gid://shopify/Product/15396901978411",
+      "images": {
+        "10": {
+          "jobId": 10,
+          "color": "Blue grey",
+          "kind": "lifestyle",
+          "file": "output/stroken-product-media/stroken-dri-fit-advantage-t-shirt-blue-grey-lifestyle.png",
+          "mediaId": "gid://shopify/MediaImage/46305025687851"
+        },
+        "11": {
+          "jobId": 11,
+          "color": "Light lime",
+          "kind": "catalog",
+          "file": "output/stroken-product-media/stroken-dri-fit-advantage-t-shirt-light-lime-catalog.png",
+          "mediaId": "gid://shopify/MediaImage/46305025720619"
+        },
+        "12": {
+          "jobId": 12,
+          "color": "Light lime",
+          "kind": "lifestyle",
+          "file": "output/stroken-product-media/stroken-dri-fit-advantage-t-shirt-light-lime-lifestyle.png",
+          "mediaId": "gid://shopify/MediaImage/46305025753387"
+        },
+        "13": {
+          "jobId": 13,
+          "color": "Dark brown",
+          "kind": "catalog",
+          "file": "output/stroken-product-media/stroken-dri-fit-advantage-t-shirt-dark-brown-catalog.png",
+          "mediaId": "gid://shopify/MediaImage/46305025786155"
+        },
+        "14": {
+          "jobId": 14,
+          "color": "Dark brown",
+          "kind": "lifestyle",
+          "file": "output/stroken-product-media/stroken-dri-fit-advantage-t-shirt-dark-brown-lifestyle.png",
+          "mediaId": "gid://shopify/MediaImage/46305025818923"
+        }
+      },
+      "complete": true,
+      "variantPairs": [
+        {
+          "variantId": "gid://shopify/ProductVariant/67627065540907",
+          "color": "Blue grey",
+          "mediaIds": [
+            "gid://shopify/MediaImage/46304336216363",
+            "gid://shopify/MediaImage/46305025687851"
+          ]
+        },
+        {
+          "variantId": "gid://shopify/ProductVariant/67627065573675",
+          "color": "Light lime",
+          "mediaIds": [
+            "gid://shopify/MediaImage/46305025720619",
+            "gid://shopify/MediaImage/46305025753387"
+          ]
+        },
+        {
+          "variantId": "gid://shopify/ProductVariant/67627065606443",
+          "color": "Dark brown",
+          "mediaIds": [
+            "gid://shopify/MediaImage/46305025786155",
+            "gid://shopify/MediaImage/46305025818923"
+          ]
+        }
+      ],
+      "verified": {
+        "id": "gid://shopify/Product/15396901978411",
+        "handle": "stroken-dri-fit-advantage-t-shirt",
+        "media": {
+          "nodes": [
+            {
+              "id": "gid://shopify/MediaImage/46304336216363",
+              "alt": "Dri-Fit Advantage T-Shirt — Figma reference",
+              "status": "READY",
+              "image": {
+                "url": "https://cdn.shopify.com/s/files/1/1024/2192/2091/files/500b1ebc-3d65-42a0-891b-1814c8c5e252.jpg?v=1790926034"
+              }
+            },
+            {
+              "id": "gid://shopify/MediaImage/46305025687851",
+              "alt": "Dri-Fit Advantage T-Shirt — Blue grey — alternate rear view (AI demo)",
+              "status": "READY",
+              "image": {
+                "url": "https://cdn.shopify.com/s/files/1/1024/2192/2091/files/stroken-dri-fit-advantage-t-shirt-blue-grey-lifestyle.png?v=1790927990"
+              }
+            },
+            {
+              "id": "gid://shopify/MediaImage/46305025720619",
+              "alt": "Dri-Fit Advantage T-Shirt — Light lime — catalog view (AI demo)",
+              "status": "READY",
+              "image": {
+                "url": "https://cdn.shopify.com/s/files/1/1024/2192/2091/files/stroken-dri-fit-advantage-t-shirt-light-lime-catalog.png?v=1790927990"
+              }
+            },
+            {
+              "id": "gid://shopify/MediaImage/46305025753387",
+              "alt": "Dri-Fit Advantage T-Shirt — Light lime — alternate rear view (AI demo)",
+              "status": "READY",
+              "image": {
+                "url": "https://cdn.shopify.com/s/files/1/1024/2192/2091/files/stroken-dri-fit-advantage-t-shirt-light-lime-lifestyle.png?v=1790927990"
+              }
+            },
+            {
+              "id": "gid://shopify/MediaImage/46305025786155",
+              "alt": "Dri-Fit Advantage T-Shirt — Dark brown — catalog view (AI demo)",
+              "status": "READY",
+              "image": {
+                "url": "https://cdn.shopify.com/s/files/1/1024/2192/2091/files/stroken-dri-fit-advantage-t-shirt-dark-brown-catalog.png?v=1790927990"
+              }
+            },
+            {
+              "id": "gid://shopify/MediaImage/46305025818923",
+              "alt": "Dri-Fit Advantage T-Shirt — Dark brown — alternate rear view (AI demo)",
+              "status": "READY",
+              "image": {
+                "url": "https://cdn.shopify.com/s/files/1/1024/2192/2091/files/stroken-dri-fit-advantage-t-shirt-dark-brown-lifestyle.png?v=1790927990"
+              }
+            }
+          ]
+        },
+        "variants": {
+          "nodes": [
+            {
+              "id": "gid://shopify/ProductVariant/67627065540907",
+              "title": "Blue grey",
+              "price": "39.00",
+              "compareAtPrice": "50.00",
+              "inventoryQuantity": 100,
+              "media": {
+                "nodes": [
+                  {
+                    "id": "gid://shopify/MediaImage/46304336216363"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "gid://shopify/ProductVariant/67627065573675",
+              "title": "Light lime",
+              "price": "39.00",
+              "compareAtPrice": "50.00",
+              "inventoryQuantity": 100,
+              "media": {
+                "nodes": [
+                  {
+                    "id": "gid://shopify/MediaImage/46305025720619"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "gid://shopify/ProductVariant/67627065606443",
+              "title": "Dark brown",
+              "price": "39.00",
+              "compareAtPrice": "50.00",
+              "inventoryQuantity": 100,
+              "media": {
+                "nodes": [
+                  {
+                    "id": "gid://shopify/MediaImage/46305025786155"
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      }
+    },
+    "stroken-short-sleeve-polo-pleated-dress": {
+      "productId": "gid://shopify/Product/15396902273323",
+      "images": {
+        "15": {
+          "jobId": 15,
+          "color": "White",
+          "kind": "lifestyle",
+          "file": "output/stroken-product-media/stroken-short-sleeve-polo-pleated-dress-white-lifestyle.png",
+          "mediaId": "gid://shopify/MediaImage/46305083490603"
+        },
+        "16": {
+          "jobId": 16,
+          "color": "Light pink",
+          "kind": "catalog",
+          "file": "output/stroken-product-media/stroken-short-sleeve-polo-pleated-dress-light-pink-catalog.png",
+          "mediaId": "gid://shopify/MediaImage/46305083523371"
+        },
+        "17": {
+          "jobId": 17,
+          "color": "Light pink",
+          "kind": "lifestyle",
+          "file": "output/stroken-product-media/stroken-short-sleeve-polo-pleated-dress-light-pink-lifestyle.png",
+          "mediaId": "gid://shopify/MediaImage/46305083556139"
+        },
+        "18": {
+          "jobId": 18,
+          "color": "Light yellow",
+          "kind": "catalog",
+          "file": "output/stroken-product-media/stroken-short-sleeve-polo-pleated-dress-light-yellow-catalog.png",
+          "mediaId": "gid://shopify/MediaImage/46305083588907"
+        },
+        "19": {
+          "jobId": 19,
+          "color": "Light yellow",
+          "kind": "lifestyle",
+          "file": "output/stroken-product-media/stroken-short-sleeve-polo-pleated-dress-light-yellow-lifestyle.png",
+          "mediaId": "gid://shopify/MediaImage/46305083621675"
+        }
+      },
+      "complete": true,
+      "variantPairs": [
+        {
+          "variantId": "gid://shopify/ProductVariant/67627065999659",
+          "color": "White",
+          "mediaIds": [
+            "gid://shopify/MediaImage/46304337035563",
+            "gid://shopify/MediaImage/46305083490603"
+          ]
+        },
+        {
+          "variantId": "gid://shopify/ProductVariant/67627066032427",
+          "color": "Light pink",
+          "mediaIds": [
+            "gid://shopify/MediaImage/46305083523371",
+            "gid://shopify/MediaImage/46305083556139"
+          ]
+        },
+        {
+          "variantId": "gid://shopify/ProductVariant/67627066065195",
+          "color": "Light yellow",
+          "mediaIds": [
+            "gid://shopify/MediaImage/46305083588907",
+            "gid://shopify/MediaImage/46305083621675"
+          ]
+        }
+      ],
+      "verified": {
+        "id": "gid://shopify/Product/15396902273323",
+        "handle": "stroken-short-sleeve-polo-pleated-dress",
+        "media": {
+          "nodes": [
+            {
+              "id": "gid://shopify/MediaImage/46304337035563",
+              "alt": "Short-Sleeve Polo Pleated Dress — Figma reference",
+              "status": "READY",
+              "image": {
+                "url": "https://cdn.shopify.com/s/files/1/1024/2192/2091/files/37086605-b708-4ed5-be3e-916b0709efb3.jpg?v=1790926036"
+              }
+            },
+            {
+              "id": "gid://shopify/MediaImage/46305083490603",
+              "alt": "Short-Sleeve Polo Pleated Dress — White — alternate rear view (AI demo)",
+              "status": "READY",
+              "image": {
+                "url": "https://cdn.shopify.com/s/files/1/1024/2192/2091/files/stroken-short-sleeve-polo-pleated-dress-white-lifestyle.png?v=1790928091"
+              }
+            },
+            {
+              "id": "gid://shopify/MediaImage/46305083523371",
+              "alt": "Short-Sleeve Polo Pleated Dress — Light pink — catalog view (AI demo)",
+              "status": "READY",
+              "image": {
+                "url": "https://cdn.shopify.com/s/files/1/1024/2192/2091/files/stroken-short-sleeve-polo-pleated-dress-light-pink-catalog.png?v=1790928091"
+              }
+            },
+            {
+              "id": "gid://shopify/MediaImage/46305083556139",
+              "alt": "Short-Sleeve Polo Pleated Dress — Light pink — alternate rear view (AI demo)",
+              "status": "READY",
+              "image": {
+                "url": "https://cdn.shopify.com/s/files/1/1024/2192/2091/files/stroken-short-sleeve-polo-pleated-dress-light-pink-lifestyle.png?v=1790928091"
+              }
+            },
+            {
+              "id": "gid://shopify/MediaImage/46305083588907",
+              "alt": "Short-Sleeve Polo Pleated Dress — Light yellow — catalog view (AI demo)",
+              "status": "READY",
+              "image": {
+                "url": "https://cdn.shopify.com/s/files/1/1024/2192/2091/files/stroken-short-sleeve-polo-pleated-dress-light-yellow-catalog.png?v=1790928091"
+              }
+            },
+            {
+              "id": "gid://shopify/MediaImage/46305083621675",
+              "alt": "Short-Sleeve Polo Pleated Dress — Light yellow — alternate rear view (AI demo)",
+              "status": "READY",
+              "image": {
+                "url": "https://cdn.shopify.com/s/files/1/1024/2192/2091/files/stroken-short-sleeve-polo-pleated-dress-light-yellow-lifestyle.png?v=1790928091"
+              }
+            }
+          ]
+        },
+        "variants": {
+          "nodes": [
+            {
+              "id": "gid://shopify/ProductVariant/67627065999659",
+              "title": "White",
+              "price": "55.00",
+              "compareAtPrice": null,
+              "inventoryQuantity": 100,
+              "media": {
+                "nodes": [
+                  {
+                    "id": "gid://shopify/MediaImage/46304337035563"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "gid://shopify/ProductVariant/67627066032427",
+              "title": "Light pink",
+              "price": "55.00",
+              "compareAtPrice": null,
+              "inventoryQuantity": 100,
+              "media": {
+                "nodes": [
+                  {
+                    "id": "gid://shopify/MediaImage/46305083523371"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "gid://shopify/ProductVariant/67627066065195",
+              "title": "Light yellow",
+              "price": "55.00",
+              "compareAtPrice": null,
+              "inventoryQuantity": 100,
+              "media": {
+                "nodes": [
+                  {
+                    "id": "gid://shopify/MediaImage/46305083588907"
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      }
+    },
+    "stroken-rg-pro-dress-women": {
+      "productId": "gid://shopify/Product/15396902568235",
+      "images": {
+        "20": {
+          "jobId": 20,
+          "color": "Light blue grey",
+          "kind": "lifestyle",
+          "file": "output/stroken-product-media/stroken-rg-pro-dress-women-light-blue-grey-lifestyle.png",
+          "mediaId": "gid://shopify/MediaImage/46305094172971"
+        }
+      },
+      "complete": true,
+      "variantPairs": [
+        {
+          "variantId": "gid://shopify/ProductVariant/67627066458411",
+          "color": "Light blue grey",
+          "mediaIds": [
+            "gid://shopify/MediaImage/46304337887531",
+            "gid://shopify/MediaImage/46305094172971"
+          ]
+        }
+      ],
+      "verified": {
+        "id": "gid://shopify/Product/15396902568235",
+        "handle": "stroken-rg-pro-dress-women",
+        "media": {
+          "nodes": [
+            {
+              "id": "gid://shopify/MediaImage/46304337887531",
+              "alt": "RG Pro Dress Women — Figma reference",
+              "status": "READY",
+              "image": {
+                "url": "https://cdn.shopify.com/s/files/1/1024/2192/2091/files/31392b4c-8ae5-409f-b72a-94866f925dec.jpg?v=1790926038"
+              }
+            },
+            {
+              "id": "gid://shopify/MediaImage/46305094172971",
+              "alt": "RG Pro Dress Women — Light blue grey — alternate rear view (AI demo)",
+              "status": "READY",
+              "image": {
+                "url": "https://cdn.shopify.com/s/files/1/1024/2192/2091/files/stroken-rg-pro-dress-women-light-blue-grey-lifestyle.png?v=1790928109"
+              }
+            }
+          ]
+        },
+        "variants": {
+          "nodes": [
+            {
+              "id": "gid://shopify/ProductVariant/67627066458411",
+              "title": "Light blue grey",
+              "price": "100.00",
+              "compareAtPrice": null,
+              "inventoryQuantity": 100,
+              "media": {
+                "nodes": [
+                  {
+                    "id": "gid://shopify/MediaImage/46304337887531"
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      }
+    },
+    "stroken-pure-drive-rh6-racket": {
+      "productId": "gid://shopify/Product/15396902830379",
+      "images": {
+        "21": {
+          "jobId": 21,
+          "color": "Dark navy",
+          "kind": "lifestyle",
+          "file": "output/stroken-product-media/stroken-pure-drive-rh6-racket-dark-navy-lifestyle.png",
+          "mediaId": "gid://shopify/MediaImage/46305106788651"
+        }
+      },
+      "complete": true,
+      "variantPairs": [
+        {
+          "variantId": "gid://shopify/ProductVariant/67627066786091",
+          "color": "Dark navy",
+          "mediaIds": [
+            "gid://shopify/MediaImage/46304338575659",
+            "gid://shopify/MediaImage/46305106788651"
+          ]
+        }
+      ],
+      "verified": {
+        "id": "gid://shopify/Product/15396902830379",
+        "handle": "stroken-pure-drive-rh6-racket",
+        "media": {
+          "nodes": [
+            {
+              "id": "gid://shopify/MediaImage/46304338575659",
+              "alt": "Pure Drive RH6 Racket — Figma reference",
+              "status": "READY",
+              "image": {
+                "url": "https://cdn.shopify.com/s/files/1/1024/2192/2091/files/381c958b-aba3-4500-ba4b-28af8a69e415.jpg?v=1790926041"
+              }
+            },
+            {
+              "id": "gid://shopify/MediaImage/46305106788651",
+              "alt": "Pure Drive RH6 Racket — Dark navy — in use (AI demo)",
+              "status": "READY",
+              "image": {
+                "url": "https://cdn.shopify.com/s/files/1/1024/2192/2091/files/stroken-pure-drive-rh6-racket-dark-navy-lifestyle.png?v=1790928127"
+              }
+            }
+          ]
+        },
+        "variants": {
+          "nodes": [
+            {
+              "id": "gid://shopify/ProductVariant/67627066786091",
+              "title": "Dark navy",
+              "price": "71.00",
+              "compareAtPrice": "100.00",
+              "inventoryQuantity": 100,
+              "media": {
+                "nodes": [
+                  {
+                    "id": "gid://shopify/MediaImage/46304338575659"
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      }
+    },
+    "stroken-court-dri-fit-advantage-slam": {
+      "productId": "gid://shopify/Product/15396903059755",
+      "images": {
+        "22": {
+          "jobId": 22,
+          "color": "Grey",
+          "kind": "lifestyle",
+          "file": "output/stroken-product-media/stroken-court-dri-fit-advantage-slam-grey-lifestyle.png",
+          "mediaId": "gid://shopify/MediaImage/46305122386219"
+        },
+        "23": {
+          "jobId": 23,
+          "color": "Sage green",
+          "kind": "catalog",
+          "file": "output/stroken-product-media/stroken-court-dri-fit-advantage-slam-sage-green-catalog.png",
+          "mediaId": "gid://shopify/MediaImage/46305122418987"
+        },
+        "24": {
+          "jobId": 24,
+          "color": "Sage green",
+          "kind": "lifestyle",
+          "file": "output/stroken-product-media/stroken-court-dri-fit-advantage-slam-sage-green-lifestyle.png",
+          "mediaId": "gid://shopify/MediaImage/46305122451755"
+        }
+      },
+      "complete": true,
+      "variantPairs": [
+        {
+          "variantId": "gid://shopify/ProductVariant/67627067081003",
+          "color": "Grey",
+          "mediaIds": [
+            "gid://shopify/MediaImage/46304339591467",
+            "gid://shopify/MediaImage/46305122386219"
+          ]
+        },
+        {
+          "variantId": "gid://shopify/ProductVariant/67627067113771",
+          "color": "Sage green",
+          "mediaIds": [
+            "gid://shopify/MediaImage/46305122418987",
+            "gid://shopify/MediaImage/46305122451755"
+          ]
+        }
+      ],
+      "verified": {
+        "id": "gid://shopify/Product/15396903059755",
+        "handle": "stroken-court-dri-fit-advantage-slam",
+        "media": {
+          "nodes": [
+            {
+              "id": "gid://shopify/MediaImage/46304339591467",
+              "alt": "Court Dri-Fit Advantage Slam — Figma reference",
+              "status": "READY",
+              "image": {
+                "url": "https://cdn.shopify.com/s/files/1/1024/2192/2091/files/b6894f80-7865-4e10-a7e8-40a8c990219a.jpg?v=1790926043"
+              }
+            },
+            {
+              "id": "gid://shopify/MediaImage/46305122386219",
+              "alt": "Court Dri-Fit Advantage Slam — Grey — alternate rear view (AI demo)",
+              "status": "READY",
+              "image": {
+                "url": "https://cdn.shopify.com/s/files/1/1024/2192/2091/files/stroken-court-dri-fit-advantage-slam-grey-lifestyle.png?v=1790928148"
+              }
+            },
+            {
+              "id": "gid://shopify/MediaImage/46305122418987",
+              "alt": "Court Dri-Fit Advantage Slam — Sage green — catalog view (AI demo)",
+              "status": "READY",
+              "image": {
+                "url": "https://cdn.shopify.com/s/files/1/1024/2192/2091/files/stroken-court-dri-fit-advantage-slam-sage-green-catalog.png?v=1790928148"
+              }
+            },
+            {
+              "id": "gid://shopify/MediaImage/46305122451755",
+              "alt": "Court Dri-Fit Advantage Slam — Sage green — alternate rear view (AI demo)",
+              "status": "READY",
+              "image": {
+                "url": "https://cdn.shopify.com/s/files/1/1024/2192/2091/files/stroken-court-dri-fit-advantage-slam-sage-green-lifestyle.png?v=1790928148"
+              }
+            }
+          ]
+        },
+        "variants": {
+          "nodes": [
+            {
+              "id": "gid://shopify/ProductVariant/67627067081003",
+              "title": "Grey",
+              "price": "88.00",
+              "compareAtPrice": null,
+              "inventoryQuantity": 100,
+              "media": {
+                "nodes": [
+                  {
+                    "id": "gid://shopify/MediaImage/46304339591467"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "gid://shopify/ProductVariant/67627067113771",
+              "title": "Sage green",
+              "price": "88.00",
+              "compareAtPrice": null,
+              "inventoryQuantity": 100,
+              "media": {
+                "nodes": [
+                  {
+                    "id": "gid://shopify/MediaImage/46305122418987"
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      }
+    },
+    "stroken-ergo-7inch-shorts": {
+      "productId": "gid://shopify/Product/15396903420203",
+      "images": {
+        "25": {
+          "jobId": 25,
+          "color": "Black",
+          "kind": "lifestyle",
+          "file": "output/stroken-product-media/stroken-ergo-7inch-shorts-black-lifestyle.png",
+          "mediaId": "gid://shopify/MediaImage/46305239105835"
+        },
+        "26": {
+          "jobId": 26,
+          "color": "White",
+          "kind": "catalog",
+          "file": "output/stroken-product-media/stroken-ergo-7inch-shorts-white-catalog.png",
+          "mediaId": "gid://shopify/MediaImage/46305239138603"
+        },
+        "27": {
+          "jobId": 27,
+          "color": "White",
+          "kind": "lifestyle",
+          "file": "output/stroken-product-media/stroken-ergo-7inch-shorts-white-lifestyle.png",
+          "mediaId": "gid://shopify/MediaImage/46305239171371"
+        },
+        "28": {
+          "jobId": 28,
+          "color": "Periwinkle",
+          "kind": "catalog",
+          "file": "output/stroken-product-media/stroken-ergo-7inch-shorts-periwinkle-catalog.png",
+          "mediaId": "gid://shopify/MediaImage/46305239204139"
+        },
+        "29": {
+          "jobId": 29,
+          "color": "Periwinkle",
+          "kind": "lifestyle",
+          "file": "output/stroken-product-media/stroken-ergo-7inch-shorts-periwinkle-lifestyle.png",
+          "mediaId": "gid://shopify/MediaImage/46305239236907"
+        }
+      },
+      "complete": true,
+      "variantPairs": [
+        {
+          "variantId": "gid://shopify/ProductVariant/67627067572523",
+          "color": "Black",
+          "mediaIds": [
+            "gid://shopify/MediaImage/46304340607275",
+            "gid://shopify/MediaImage/46305239105835"
+          ]
+        },
+        {
+          "variantId": "gid://shopify/ProductVariant/67627067605291",
+          "color": "White",
+          "mediaIds": [
+            "gid://shopify/MediaImage/46305239138603",
+            "gid://shopify/MediaImage/46305239171371"
+          ]
+        },
+        {
+          "variantId": "gid://shopify/ProductVariant/67627067638059",
+          "color": "Periwinkle",
+          "mediaIds": [
+            "gid://shopify/MediaImage/46305239204139",
+            "gid://shopify/MediaImage/46305239236907"
+          ]
+        }
+      ],
+      "verified": {
+        "id": "gid://shopify/Product/15396903420203",
+        "handle": "stroken-ergo-7inch-shorts",
+        "media": {
+          "nodes": [
+            {
+              "id": "gid://shopify/MediaImage/46304340607275",
+              "alt": "Ergo 7Inch Shorts — Figma reference",
+              "status": "READY",
+              "image": {
+                "url": "https://cdn.shopify.com/s/files/1/1024/2192/2091/files/68883d49-a926-4be3-ae15-eb922e7f8303.jpg?v=1790926046"
+              }
+            },
+            {
+              "id": "gid://shopify/MediaImage/46305239105835",
+              "alt": "Ergo 7Inch Shorts — Black — alternate rear view (AI demo)",
+              "status": "READY",
+              "image": {
+                "url": "https://cdn.shopify.com/s/files/1/1024/2192/2091/files/stroken-ergo-7inch-shorts-black-lifestyle.png?v=1790928317"
+              }
+            },
+            {
+              "id": "gid://shopify/MediaImage/46305239138603",
+              "alt": "Ergo 7Inch Shorts — White — catalog view (AI demo)",
+              "status": "READY",
+              "image": {
+                "url": "https://cdn.shopify.com/s/files/1/1024/2192/2091/files/stroken-ergo-7inch-shorts-white-catalog.png?v=1790928316"
+              }
+            },
+            {
+              "id": "gid://shopify/MediaImage/46305239171371",
+              "alt": "Ergo 7Inch Shorts — White — alternate rear view (AI demo)",
+              "status": "READY",
+              "image": {
+                "url": "https://cdn.shopify.com/s/files/1/1024/2192/2091/files/stroken-ergo-7inch-shorts-white-lifestyle.png?v=1790928317"
+              }
+            },
+            {
+              "id": "gid://shopify/MediaImage/46305239204139",
+              "alt": "Ergo 7Inch Shorts — Periwinkle — catalog view (AI demo)",
+              "status": "READY",
+              "image": {
+                "url": "https://cdn.shopify.com/s/files/1/1024/2192/2091/files/stroken-ergo-7inch-shorts-periwinkle-catalog.png?v=1790928317"
+              }
+            },
+            {
+              "id": "gid://shopify/MediaImage/46305239236907",
+              "alt": "Ergo 7Inch Shorts — Periwinkle — alternate rear view (AI demo)",
+              "status": "READY",
+              "image": {
+                "url": "https://cdn.shopify.com/s/files/1/1024/2192/2091/files/stroken-ergo-7inch-shorts-periwinkle-lifestyle.png?v=1790928316"
+              }
+            }
+          ]
+        },
+        "variants": {
+          "nodes": [
+            {
+              "id": "gid://shopify/ProductVariant/67627067572523",
+              "title": "Black",
+              "price": "46.00",
+              "compareAtPrice": null,
+              "inventoryQuantity": 100,
+              "media": {
+                "nodes": [
+                  {
+                    "id": "gid://shopify/MediaImage/46304340607275"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "gid://shopify/ProductVariant/67627067605291",
+              "title": "White",
+              "price": "46.00",
+              "compareAtPrice": null,
+              "inventoryQuantity": 100,
+              "media": {
+                "nodes": [
+                  {
+                    "id": "gid://shopify/MediaImage/46305239138603"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "gid://shopify/ProductVariant/67627067638059",
+              "title": "Periwinkle",
+              "price": "46.00",
+              "compareAtPrice": null,
+              "inventoryQuantity": 100,
+              "media": {
+                "nodes": [
+                  {
+                    "id": "gid://shopify/MediaImage/46305239204139"
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      }
+    },
+    "stroken-rg-pro-skirt-women": {
+      "productId": "gid://shopify/Product/15396903715115",
+      "images": {
+        "30": {
+          "jobId": 30,
+          "color": "Navy",
+          "kind": "lifestyle",
+          "file": "output/stroken-product-media/stroken-rg-pro-skirt-women-navy-lifestyle.png",
+          "mediaId": "gid://shopify/MediaImage/46305253392683"
+        },
+        "31": {
+          "jobId": 31,
+          "color": "White",
+          "kind": "catalog",
+          "file": "output/stroken-product-media/stroken-rg-pro-skirt-women-white-catalog.png",
+          "mediaId": "gid://shopify/MediaImage/46305253425451"
+        },
+        "32": {
+          "jobId": 32,
+          "color": "White",
+          "kind": "lifestyle",
+          "file": "output/stroken-product-media/stroken-rg-pro-skirt-women-white-lifestyle.png",
+          "mediaId": "gid://shopify/MediaImage/46305253458219"
+        }
+      },
+      "complete": true,
+      "variantPairs": [
+        {
+          "variantId": "gid://shopify/ProductVariant/67627068031275",
+          "color": "Navy",
+          "mediaIds": [
+            "gid://shopify/MediaImage/46304341360939",
+            "gid://shopify/MediaImage/46305253392683"
+          ]
+        },
+        {
+          "variantId": "gid://shopify/ProductVariant/67627068064043",
+          "color": "White",
+          "mediaIds": [
+            "gid://shopify/MediaImage/46305253425451",
+            "gid://shopify/MediaImage/46305253458219"
+          ]
+        }
+      ],
+      "verified": {
+        "id": "gid://shopify/Product/15396903715115",
+        "handle": "stroken-rg-pro-skirt-women",
+        "media": {
+          "nodes": [
+            {
+              "id": "gid://shopify/MediaImage/46304341360939",
+              "alt": "RG Pro Skirt Women — Figma reference",
+              "status": "READY",
+              "image": {
+                "url": "https://cdn.shopify.com/s/files/1/1024/2192/2091/files/f7a4940a-e3bb-438e-9e07-45b52c3fd563.jpg?v=1790926047"
+              }
+            },
+            {
+              "id": "gid://shopify/MediaImage/46305253392683",
+              "alt": "RG Pro Skirt Women — Navy — alternate rear view (AI demo)",
+              "status": "READY",
+              "image": {
+                "url": "https://cdn.shopify.com/s/files/1/1024/2192/2091/files/stroken-rg-pro-skirt-women-navy-lifestyle.png?v=1790928337"
+              }
+            },
+            {
+              "id": "gid://shopify/MediaImage/46305253425451",
+              "alt": "RG Pro Skirt Women — White — catalog view (AI demo)",
+              "status": "READY",
+              "image": {
+                "url": "https://cdn.shopify.com/s/files/1/1024/2192/2091/files/stroken-rg-pro-skirt-women-white-catalog.png?v=1790928338"
+              }
+            },
+            {
+              "id": "gid://shopify/MediaImage/46305253458219",
+              "alt": "RG Pro Skirt Women — White — alternate rear view (AI demo)",
+              "status": "READY",
+              "image": {
+                "url": "https://cdn.shopify.com/s/files/1/1024/2192/2091/files/stroken-rg-pro-skirt-women-white-lifestyle.png?v=1790928337"
+              }
+            }
+          ]
+        },
+        "variants": {
+          "nodes": [
+            {
+              "id": "gid://shopify/ProductVariant/67627068031275",
+              "title": "Navy",
+              "price": "54.00",
+              "compareAtPrice": null,
+              "inventoryQuantity": 100,
+              "media": {
+                "nodes": [
+                  {
+                    "id": "gid://shopify/MediaImage/46304341360939"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "gid://shopify/ProductVariant/67627068064043",
+              "title": "White",
+              "price": "54.00",
+              "compareAtPrice": null,
+              "inventoryQuantity": 100,
+              "media": {
+                "nodes": [
+                  {
+                    "id": "gid://shopify/MediaImage/46305253425451"
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      }
+    },
+    "stroken-long-sleeve-polo-collar-dress": {
+      "productId": "gid://shopify/Product/15396904075563",
+      "images": {
+        "33": {
+          "jobId": 33,
+          "color": "Navy",
+          "kind": "lifestyle",
+          "file": "output/stroken-product-media/stroken-long-sleeve-polo-collar-dress-navy-lifestyle.png",
+          "mediaId": "gid://shopify/MediaImage/46305277182251"
+        },
+        "34": {
+          "jobId": 34,
+          "color": "Dark green",
+          "kind": "catalog",
+          "file": "output/stroken-product-media/stroken-long-sleeve-polo-collar-dress-dark-green-catalog.png",
+          "mediaId": "gid://shopify/MediaImage/46305277215019"
+        },
+        "35": {
+          "jobId": 35,
+          "color": "Dark green",
+          "kind": "lifestyle",
+          "file": "output/stroken-product-media/stroken-long-sleeve-polo-collar-dress-dark-green-lifestyle.png",
+          "mediaId": "gid://shopify/MediaImage/46305277247787"
+        },
+        "36": {
+          "jobId": 36,
+          "color": "Cream",
+          "kind": "catalog",
+          "file": "output/stroken-product-media/stroken-long-sleeve-polo-collar-dress-cream-catalog.png",
+          "mediaId": "gid://shopify/MediaImage/46305277280555"
+        },
+        "37": {
+          "jobId": 37,
+          "color": "Cream",
+          "kind": "lifestyle",
+          "file": "output/stroken-product-media/stroken-long-sleeve-polo-collar-dress-cream-lifestyle.png",
+          "mediaId": "gid://shopify/MediaImage/46305277313323"
+        }
+      },
+      "complete": true,
+      "variantPairs": [
+        {
+          "variantId": "gid://shopify/ProductVariant/67627068686635",
+          "color": "Navy",
+          "mediaIds": [
+            "gid://shopify/MediaImage/46304342147371",
+            "gid://shopify/MediaImage/46305277182251"
+          ]
+        },
+        {
+          "variantId": "gid://shopify/ProductVariant/67627068719403",
+          "color": "Dark green",
+          "mediaIds": [
+            "gid://shopify/MediaImage/46305277215019",
+            "gid://shopify/MediaImage/46305277247787"
+          ]
+        },
+        {
+          "variantId": "gid://shopify/ProductVariant/67627068752171",
+          "color": "Cream",
+          "mediaIds": [
+            "gid://shopify/MediaImage/46305277280555",
+            "gid://shopify/MediaImage/46305277313323"
+          ]
+        }
+      ],
+      "verified": {
+        "id": "gid://shopify/Product/15396904075563",
+        "handle": "stroken-long-sleeve-polo-collar-dress",
+        "media": {
+          "nodes": [
+            {
+              "id": "gid://shopify/MediaImage/46304342147371",
+              "alt": "Long Sleeve Polo Collar Dress — Figma reference",
+              "status": "READY",
+              "image": {
+                "url": "https://cdn.shopify.com/s/files/1/1024/2192/2091/files/510434b2-0a25-4089-acd9-c34d37724bb4.jpg?v=1790926050"
+              }
+            },
+            {
+              "id": "gid://shopify/MediaImage/46305277182251",
+              "alt": "Long Sleeve Polo Collar Dress — Navy — alternate rear view (AI demo)",
+              "status": "READY",
+              "image": {
+                "url": "https://cdn.shopify.com/s/files/1/1024/2192/2091/files/stroken-long-sleeve-polo-collar-dress-navy-lifestyle.png?v=1790928360"
+              }
+            },
+            {
+              "id": "gid://shopify/MediaImage/46305277215019",
+              "alt": "Long Sleeve Polo Collar Dress — Dark green — catalog view (AI demo)",
+              "status": "READY",
+              "image": {
+                "url": "https://cdn.shopify.com/s/files/1/1024/2192/2091/files/stroken-long-sleeve-polo-collar-dress-dark-green-catalog.png?v=1790928360"
+              }
+            },
+            {
+              "id": "gid://shopify/MediaImage/46305277247787",
+              "alt": "Long Sleeve Polo Collar Dress — Dark green — alternate rear view (AI demo)",
+              "status": "READY",
+              "image": {
+                "url": "https://cdn.shopify.com/s/files/1/1024/2192/2091/files/stroken-long-sleeve-polo-collar-dress-dark-green-lifestyle.png?v=1790928360"
+              }
+            },
+            {
+              "id": "gid://shopify/MediaImage/46305277280555",
+              "alt": "Long Sleeve Polo Collar Dress — Cream — catalog view (AI demo)",
+              "status": "READY",
+              "image": {
+                "url": "https://cdn.shopify.com/s/files/1/1024/2192/2091/files/stroken-long-sleeve-polo-collar-dress-cream-catalog.png?v=1790928360"
+              }
+            },
+            {
+              "id": "gid://shopify/MediaImage/46305277313323",
+              "alt": "Long Sleeve Polo Collar Dress — Cream — alternate rear view (AI demo)",
+              "status": "READY",
+              "image": {
+                "url": "https://cdn.shopify.com/s/files/1/1024/2192/2091/files/stroken-long-sleeve-polo-collar-dress-cream-lifestyle.png?v=1790928360"
+              }
+            }
+          ]
+        },
+        "variants": {
+          "nodes": [
+            {
+              "id": "gid://shopify/ProductVariant/67627068686635",
+              "title": "Navy",
+              "price": "59.00",
+              "compareAtPrice": null,
+              "inventoryQuantity": 100,
+              "media": {
+                "nodes": [
+                  {
+                    "id": "gid://shopify/MediaImage/46304342147371"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "gid://shopify/ProductVariant/67627068719403",
+              "title": "Dark green",
+              "price": "59.00",
+              "compareAtPrice": null,
+              "inventoryQuantity": 100,
+              "media": {
+                "nodes": [
+                  {
+                    "id": "gid://shopify/MediaImage/46305277215019"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "gid://shopify/ProductVariant/67627068752171",
+              "title": "Cream",
+              "price": "59.00",
+              "compareAtPrice": null,
+              "inventoryQuantity": 100,
+              "media": {
+                "nodes": [
+                  {
+                    "id": "gid://shopify/MediaImage/46305277280555"
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      }
+    },
+    "stroken-mini-skirt-set": {
+      "productId": "gid://shopify/Product/15396904403243",
+      "images": {
+        "38": {
+          "jobId": 38,
+          "color": "Pink",
+          "kind": "lifestyle",
+          "file": "output/stroken-product-media/stroken-mini-skirt-set-pink-lifestyle.png",
+          "mediaId": "gid://shopify/MediaImage/46305292452139"
+        },
+        "39": {
+          "jobId": 39,
+          "color": "Light yellow",
+          "kind": "catalog",
+          "file": "output/stroken-product-media/stroken-mini-skirt-set-light-yellow-catalog.png",
+          "mediaId": "gid://shopify/MediaImage/46305292484907"
+        },
+        "40": {
+          "jobId": 40,
+          "color": "Light yellow",
+          "kind": "lifestyle",
+          "file": "output/stroken-product-media/stroken-mini-skirt-set-light-yellow-lifestyle.png",
+          "mediaId": "gid://shopify/MediaImage/46305292517675"
+        }
+      },
+      "complete": true,
+      "variantPairs": [
+        {
+          "variantId": "gid://shopify/ProductVariant/67627069440299",
+          "color": "Pink",
+          "mediaIds": [
+            "gid://shopify/MediaImage/46304343490859",
+            "gid://shopify/MediaImage/46305292452139"
+          ]
+        },
+        {
+          "variantId": "gid://shopify/ProductVariant/67627069473067",
+          "color": "Light yellow",
+          "mediaIds": [
+            "gid://shopify/MediaImage/46305292484907",
+            "gid://shopify/MediaImage/46305292517675"
+          ]
+        }
+      ],
+      "verified": {
+        "id": "gid://shopify/Product/15396904403243",
+        "handle": "stroken-mini-skirt-set",
+        "media": {
+          "nodes": [
+            {
+              "id": "gid://shopify/MediaImage/46304343490859",
+              "alt": "Mini Skirt Set — Figma reference",
+              "status": "READY",
+              "image": {
+                "url": "https://cdn.shopify.com/s/files/1/1024/2192/2091/files/4cbb7bc3-d8d3-4f73-9b14-cadb0a7e38a2.jpg?v=1790926052"
+              }
+            },
+            {
+              "id": "gid://shopify/MediaImage/46305292452139",
+              "alt": "Mini Skirt Set — Pink — alternate rear view (AI demo)",
+              "status": "READY",
+              "image": {
+                "url": "https://cdn.shopify.com/s/files/1/1024/2192/2091/files/stroken-mini-skirt-set-pink-lifestyle.png?v=1790928380"
+              }
+            },
+            {
+              "id": "gid://shopify/MediaImage/46305292484907",
+              "alt": "Mini Skirt Set — Light yellow — catalog view (AI demo)",
+              "status": "READY",
+              "image": {
+                "url": "https://cdn.shopify.com/s/files/1/1024/2192/2091/files/stroken-mini-skirt-set-light-yellow-catalog.png?v=1790928380"
+              }
+            },
+            {
+              "id": "gid://shopify/MediaImage/46305292517675",
+              "alt": "Mini Skirt Set — Light yellow — alternate rear view (AI demo)",
+              "status": "READY",
+              "image": {
+                "url": "https://cdn.shopify.com/s/files/1/1024/2192/2091/files/stroken-mini-skirt-set-light-yellow-lifestyle.png?v=1790928380"
+              }
+            }
+          ]
+        },
+        "variants": {
+          "nodes": [
+            {
+              "id": "gid://shopify/ProductVariant/67627069440299",
+              "title": "Pink",
+              "price": "119.00",
+              "compareAtPrice": null,
+              "inventoryQuantity": 100,
+              "media": {
+                "nodes": [
+                  {
+                    "id": "gid://shopify/MediaImage/46304343490859"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "gid://shopify/ProductVariant/67627069473067",
+              "title": "Light yellow",
+              "price": "119.00",
+              "compareAtPrice": null,
+              "inventoryQuantity": 100,
+              "media": {
+                "nodes": [
+                  {
+                    "id": "gid://shopify/MediaImage/46305292484907"
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      }
+    }
+  },
+  "status": "complete",
+  "totalImages": 56,
+  "totalVariants": 28,
+  "originalImages": 15,
+  "generatedImages": 41,
+  "verifiedAt": "2026-10-02T08:07:59.030Z",
+  "associationNote": "15 original Figma photos plus 41 AI-generated demo photos. Gallery ordered catalog/secondary for each variant. Shopify supports one directly assigned image per variant; secondary photos are in the product gallery."
+}

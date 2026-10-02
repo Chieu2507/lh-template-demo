@@ -72,9 +72,11 @@
       <div class="collection-list__header">
         {% content_for 'block', type: 'header', id: 'header' %}
       </div>
-      <div class="collection-list__actions">
-        {% content_for 'block', type: 'view-all-button', id: 'view-all' %}
-      </div>
+      {% capture collection_list_actions %}{% content_for 'block', type: 'view-all-button', id: 'view-all' %}{% endcapture %}
+      {% assign collection_list_actions = collection_list_actions | strip %}
+      {% if collection_list_actions != blank %}
+        <div class="collection-list__actions">{{ collection_list_actions }}</div>
+      {% endif %}
       <div class="collection-list__content">
         {% content_for 'block', type: 'collection-list-items', id: 'collection-list' %}
       </div>
@@ -116,6 +118,7 @@
   .collection-list__container {
     position: relative;
   }
+
 
   .collection-list__header,
   .collection-list__actions,
@@ -254,11 +257,21 @@
 {
   "name": "t:general.collection_list",
   "class": "section-collection-list",
-  "enabled_on": { "templates": ["*"] },
+  "enabled_on": {
+    "templates": [
+      "*"
+    ]
+  },
   "blocks": [
-    { "type": "header" },
-    { "type": "view-all-button" },
-    { "type": "collection-list-items" }
+    {
+      "type": "header"
+    },
+    {
+      "type": "view-all-button"
+    },
+    {
+      "type": "collection-list-items"
+    }
   ],
   "settings": [
     {
@@ -270,8 +283,14 @@
       "id": "section_width",
       "label": "t:labels.section_width",
       "options": [
-        { "value": "page_width", "label": "t:options.section_width.page_width" },
-        { "value": "full_width", "label": "t:options.section_width.full_width" }
+        {
+          "value": "page_width",
+          "label": "t:options.section_width.page_width"
+        },
+        {
+          "value": "full_width",
+          "label": "t:options.section_width.full_width"
+        }
       ],
       "default": "page_width"
     },
@@ -280,8 +299,14 @@
       "id": "desktop_alignment",
       "label": "t:labels.alignment",
       "options": [
-        { "value": "left", "label": "t:options.alignment.left" },
-        { "value": "center", "label": "t:options.alignment.center" }
+        {
+          "value": "left",
+          "label": "t:options.alignment.left"
+        },
+        {
+          "value": "center",
+          "label": "t:options.alignment.center"
+        }
       ],
       "default": "left"
     },
@@ -290,9 +315,18 @@
       "id": "mobile_alignment",
       "label": "t:labels.mobile_alignment",
       "options": [
-        { "value": "left", "label": "t:options.alignment.left" },
-        { "value": "center", "label": "t:options.alignment.center" },
-        { "value": "right", "label": "t:options.alignment.right" }
+        {
+          "value": "left",
+          "label": "t:options.alignment.left"
+        },
+        {
+          "value": "center",
+          "label": "t:options.alignment.center"
+        },
+        {
+          "value": "right",
+          "label": "t:options.alignment.right"
+        }
       ],
       "default": "left"
     },
@@ -329,9 +363,18 @@
       "id": "background_media",
       "label": "t:general.media",
       "options": [
-        { "value": "none", "label": "t:options.background_media.none" },
-        { "value": "image", "label": "t:general.image" },
-        { "value": "video", "label": "t:general.video" }
+        {
+          "value": "none",
+          "label": "t:options.background_media.none"
+        },
+        {
+          "value": "image",
+          "label": "t:general.image"
+        },
+        {
+          "value": "video",
+          "label": "t:general.video"
+        }
       ],
       "default": "none"
     },
@@ -411,9 +454,42 @@
       "name": "t:general.collection_list",
       "category": "t:general.collections",
       "blocks": [
-        { "type": "header", "id": "header", "static": true, "blocks": [{ "type": "heading", "settings": { "text": "<p>Collection list</p>", "html_tag": "h2" } }] },
-        { "type": "view-all-button", "id": "view-all", "static": true },
-        { "type": "collection-list-items", "id": "collection-list", "static": true, "blocks": [{ "type": "collection-card", "id": "collection-card", "static": true, "blocks": [{ "type": "collection-card-title", "id": "title", "static": true }] }] }
+        {
+          "type": "header",
+          "id": "header",
+          "static": true,
+          "blocks": [
+            {
+              "type": "heading",
+              "settings": {
+                "text": "<p>Collection list</p>",
+                "html_tag": "h2"
+              }
+            }
+          ]
+        },
+        {
+          "type": "view-all-button",
+          "id": "view-all",
+          "static": true
+        },
+        {
+          "type": "collection-list-items",
+          "id": "collection-list",
+          "static": true,
+          "blocks": [
+            {
+              "type": "collection-card",
+              "id": "collection-card",
+              "static": true,
+              "blocks": [
+                {
+                  "type": "collection-card-title"
+                }
+              ]
+            }
+          ]
+        }
       ]
     }
   ]

@@ -32,7 +32,10 @@
   endif
 
   assign product_list_carousel_id = 'ProductListCarousel-' | append: block.id
-  assign product_list_aria_label = product_list_collection.title | default: 'search.products' | t
+  assign product_list_aria_label = product_list_collection.title
+  if product_list_aria_label == blank
+    assign product_list_aria_label = 'search.products' | t
+  endif
 
   assign product_list_show_next_slide_preview = false
   if block.settings.show_next_slide_preview_on_desktop

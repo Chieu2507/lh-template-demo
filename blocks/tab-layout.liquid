@@ -9,13 +9,21 @@
 {% enddoc %}
 
 {% liquid
+  assign tab_layout_inline_alignment = 'flex-end'
+  case block.settings.alignment
+    when 'left'
+      assign tab_layout_inline_alignment = 'flex-start'
+    when 'center'
+      assign tab_layout_inline_alignment = 'center'
+  endcase
+
   assign tab_layout_style = block.settings.style | default: 'underline'
   unless tab_layout_style == 'underline' or tab_layout_style == 'button'
     assign tab_layout_style = 'underline'
   endunless
 
   assign tab_layout_active_style = block.settings.active_style | default: 'primary'
-  unless tab_layout_active_style == 'primary' or tab_layout_active_style == 'outline'
+  unless tab_layout_active_style == 'primary' or tab_layout_active_style == 'outline' or tab_layout_active_style == 'secondary'
     assign tab_layout_active_style = 'primary'
   endunless
 
@@ -151,6 +159,7 @@
 %}
 
 {% capture tab_layout_style_attribute %}
+  --tab-layout-inline-alignment: {{ tab_layout_inline_alignment }};
   --tab-layout-gap-desktop: {{ tab_layout_gap_desktop }}px;
   --tab-layout-gap-mobile: {{ tab_layout_gap_mobile }}px;
   --tab-layout-font-family: {{ tab_layout_font_family }};
@@ -280,6 +289,17 @@
     border-color: var(--button-primary-hover-border);
     background-color: var(--button-primary-hover-background);
     color: var(--button-primary-hover-text);
+  }
+
+  .tab-layout--button.tab-layout--active-secondary .tab-layout__tab:not([aria-selected='true']) {
+    background: transparent;
+    border-color: transparent;
+    color: var(--button-tertiary-text);
+  }
+  .tab-layout--button.tab-layout--active-secondary .tab-layout__tab[aria-selected='true'] {
+    background: var(--button-secondary-background);
+    border-color: var(--button-secondary-border);
+    color: var(--button-secondary-text);
   }
 
   .tab-layout--button.tab-layout--active-outline .tab-layout__tab:not([aria-selected='true']) {
@@ -706,6 +726,27 @@
   "tag": null,
   "settings": [
     {
+      "type": "select",
+      "id": "alignment",
+      "label": "t:labels.alignment",
+      "options": [
+        {
+          "value": "left",
+          "label": "t:options.alignment.left"
+        },
+        {
+          "value": "center",
+          "label": "t:options.alignment.center"
+        },
+        {
+          "value": "right",
+          "label": "t:options.alignment.right"
+        }
+      ],
+      "default": "right",
+      "visible_if": "{{ section.settings.layout_direction == 'vertical' and section.settings.header_layout == 'inline' }}"
+    },
+    {
       "type": "checkbox",
       "id": "vertical_layout",
       "label": "t:labels.vertical_layout",
@@ -717,8 +758,14 @@
       "id": "style",
       "label": "t:general.style",
       "options": [
-        { "value": "underline", "label": "t:options.tab_style.underline" },
-        { "value": "button", "label": "t:options.tab_style.button" }
+        {
+          "value": "underline",
+          "label": "t:options.tab_style.underline"
+        },
+        {
+          "value": "button",
+          "label": "t:options.tab_style.button"
+        }
       ],
       "default": "underline"
     },
@@ -727,8 +774,18 @@
       "id": "active_style",
       "label": "t:labels.active_style",
       "options": [
-        { "value": "primary", "label": "t:options.tab_active_style.primary" },
-        { "value": "outline", "label": "t:options.tab_active_style.outline" }
+        {
+          "value": "primary",
+          "label": "t:options.tab_active_style.primary"
+        },
+        {
+          "value": "outline",
+          "label": "t:options.tab_active_style.outline"
+        },
+        {
+          "value": "secondary",
+          "label": "t:options.tab_active_style.secondary"
+        }
       ],
       "default": "primary",
       "visible_if": "{{ block.settings.style == 'button' }}"
@@ -766,9 +823,18 @@
       "id": "font",
       "label": "t:labels.font",
       "options": [
-        { "value": "body", "label": "t:options.menu_font.body" },
-        { "value": "heading", "label": "t:options.menu_font.heading" },
-        { "value": "accent", "label": "t:options.menu_font.accent" }
+        {
+          "value": "body",
+          "label": "t:options.menu_font.body"
+        },
+        {
+          "value": "heading",
+          "label": "t:options.menu_font.heading"
+        },
+        {
+          "value": "accent",
+          "label": "t:options.menu_font.accent"
+        }
       ],
       "default": "body"
     },
@@ -777,13 +843,34 @@
       "id": "heading_size",
       "label": "t:labels.font_size",
       "options": [
-        { "value": "display", "label": "t:options.heading_size.display" },
-        { "value": "xl", "label": "t:options.heading_size.xl" },
-        { "value": "lg", "label": "t:options.heading_size.lg" },
-        { "value": "md", "label": "t:options.heading_size.md" },
-        { "value": "sm", "label": "t:options.heading_size.sm" },
-        { "value": "xs", "label": "t:options.heading_size.xs" },
-        { "value": "custom", "label": "t:options.heading_size.custom" }
+        {
+          "value": "display",
+          "label": "t:options.heading_size.display"
+        },
+        {
+          "value": "xl",
+          "label": "t:options.heading_size.xl"
+        },
+        {
+          "value": "lg",
+          "label": "t:options.heading_size.lg"
+        },
+        {
+          "value": "md",
+          "label": "t:options.heading_size.md"
+        },
+        {
+          "value": "sm",
+          "label": "t:options.heading_size.sm"
+        },
+        {
+          "value": "xs",
+          "label": "t:options.heading_size.xs"
+        },
+        {
+          "value": "custom",
+          "label": "t:options.heading_size.custom"
+        }
       ],
       "default": "lg"
     },

@@ -83,6 +83,9 @@
   assign padding_right_mobile = block.settings.padding_right_mobile | default: 0
   assign padding_right_mobile = padding_right_mobile | plus: 0
   assign heading_class = 'heading-block size-style heading-text heading-' | append: heading_size
+  if block.settings.outline_text
+    assign heading_class = heading_class | append: ' heading-block--outline'
+  endif
 %}
 
 {% capture heading_style %}
@@ -138,6 +141,11 @@
 
   .heading-block.heading-custom {
     font-size: var(--heading-block-custom-size, var(--font-heading-custom));
+  }
+
+  .heading-block--outline {
+    -webkit-text-stroke: 1px var(--heading-block-color, var(--heading-color));
+    -webkit-text-fill-color: transparent;
   }
 
   .heading-block--empty {
@@ -216,6 +224,12 @@
       "id": "text_color",
       "label": "t:labels.text_color",
       "info": "t:info.heading_text_color"
+    },
+    {
+      "type": "checkbox",
+      "id": "outline_text",
+      "label": "t:labels.outline_text",
+      "default": false
     },
     {
       "type": "header",

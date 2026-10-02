@@ -28,10 +28,8 @@ const getSlidesPerView = (value) => {
 const getMobileSlidesPerView = (carousel) => {
   const columns = getSlidesPerView(carousel.dataset.swiperColumnsMobile);
 
-  // The preview is intended for a one-column mobile layout. Keep an explicit
-  // two-column choice intact instead of silently replacing it with 1.2.
-  if (columns === 1 && carousel.dataset.swiperNextSlidePreviewMobile === 'true') {
-    return 1.2;
+  if (carousel.dataset.swiperNextSlidePreviewMobile === 'true') {
+    return columns + 0.2;
   }
 
   return columns;
@@ -76,6 +74,17 @@ const buildOptions = (carousel, scope) => {
     },
     controls: getControls(carousel, scope),
   };
+
+  if (carousel.dataset.swiperColumnsTablet) {
+    options.breakpoints[768] = {
+      slidesPerView: getSlidesPerView(carousel.dataset.swiperColumnsTablet),
+      spaceBetween: toNumber(carousel.dataset.swiperGapDesktop, 0),
+    };
+    options.breakpoints[1150] = {
+      slidesPerView: getSlidesPerView(carousel.dataset.swiperColumnsDesktop),
+      spaceBetween: toNumber(carousel.dataset.swiperGapDesktop, 0),
+    };
+  }
 
   if (pagination) {
     options.modules = [Pagination];
