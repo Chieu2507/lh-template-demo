@@ -314,10 +314,12 @@ if (!customElements.get('collection-facets')) {
         }
       };
 
-      this.sheetGesture = this.dialog && window.ThemeOverlay?.SheetGesture
+      // Capture on the content panel: dialog-targeted clicks dismiss the backdrop.
+      this.sheetGesture = this.filterPanel && window.ThemeOverlay?.SheetGesture
         ? new window.ThemeOverlay.SheetGesture({
-          panel: this.dialog,
+          panel: this.filterPanel,
           header: this.dialog.querySelector('.main-collection__filter-header'),
+          backdrop: this.dialog,
           enabled: () => this.dialog.open && this.mobileDialog.matches && this.dialog.dataset.mobileLayout === 'sheet' && !this.dialog.classList.contains('is-closing'),
           close: () => this.closeDialog({ fromGesture: true }),
         }) : null;
@@ -335,11 +337,10 @@ if (!customElements.get('collection-facets')) {
         if (event.target.closest('[data-collection-filter-open]')) {
           if (this.dialog?.classList.contains('is-sidebar')) {
             if (this.dialog.dataset.sidebarVisibility !== 'always') {
-              if (this.dialog.open) this.dialog.close(); else this.dialog.setAttribute('open', '');
-              this.sidebarOpen = this.dialog.open;
+              this.toggleSidebar();
             }
           } else if (this.dialog && !this.dialog.open) this.dialog.showModal();
-          event.target.closest('[data-collection-filter-open]').setAttribute('aria-expanded', String(Boolean(this.dialog?.open)));
+          event.target.closest('[data-collection-filter-open]').setAttribute('aria-expanded', String(this.dialog?.classList.contains('is-sidebar') ? this.sidebarOpen : Boolean(this.dialog?.open)));
           return;
         }
 
@@ -456,6 +457,7 @@ if (!customElements.get('collection-facets')) {
     }
 
     disconnectedCallback() {
+      this.finishSidebarTransition();
       this.destroySidebarSticky();
       cancelAnimationFrame(this.collectionScrollFrame);
       this.querySelectorAll('.main-collection__filter-values').forEach(list => {
@@ -548,6 +550,7 @@ if (!customElements.get('collection-facets')) {
       const sidebar = this.desktopLayout.matches && this.dialog.dataset.desktopLayout === 'sidebar';
       const wasSidebar = this.dialog.classList.contains('is-sidebar');
       if (sidebar === wasSidebar) return;
+      this.finishSidebarTransition();
       if (this.dialog.open) this.dialog.close();
       this.dialog.classList.toggle('is-sidebar', sidebar);
       if (sidebar) {
@@ -555,6 +558,40 @@ if (!customElements.get('collection-facets')) {
         if (this.sidebarOpen ?? this.dialog.dataset.sidebarVisibility !== 'closed') this.dialog.setAttribute('open', '');
       } else this.dialog.setAttribute('scroll-lock', '');
       this.querySelector('[data-collection-filter-open]')?.setAttribute('aria-expanded', String(this.dialog.open));
+    }
+
+    toggleSidebar() {
+      this.sidebarOpen = !(this.sidebarOpen ?? this.dialog.open);
+      if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        this.finishSidebarTransition();
+        if (this.sidebarOpen) this.dialog.setAttribute('open', '');
+        return;
+      }
+
+      window.clearTimeout(this.sidebarTransitionTimer);
+      this.classList.add('is-sidebar-animating');
+      if (this.sidebarOpen) {
+        this.dialog.removeAttribute('inert');
+        if (!this.dialog.open) {
+          this.classList.add('is-sidebar-collapsed');
+          this.dialog.setAttribute('open', '');
+          // Establish the collapsed grid before starting its transition.
+          this.getBoundingClientRect();
+        }
+        this.classList.remove('is-sidebar-collapsed');
+      } else {
+        this.dialog.setAttribute('inert', '');
+        this.classList.add('is-sidebar-collapsed');
+      }
+      this.sidebarTransitionTimer = window.setTimeout(() => this.finishSidebarTransition(), 340);
+    }
+
+    finishSidebarTransition() {
+      window.clearTimeout(this.sidebarTransitionTimer);
+      this.sidebarTransitionTimer = null;
+      if (this.dialog?.classList.contains('is-sidebar') && this.sidebarOpen === false && this.dialog.open) this.dialog.close();
+      this.dialog?.removeAttribute('inert');
+      this.classList.remove('is-sidebar-animating', 'is-sidebar-collapsed');
     }
 
     mountFilterPanel() {
@@ -619,7 +656,7 @@ if (!customElements.get('collection-facets')) {
     }
 
     async loadMore(link) {
-      if (this.loadingMore) return;
+      if (this.loadingMore || this.requestController) return;
       this.loadingMore = true;
       link.setAttribute('aria-busy', 'true');
       const status = link.closest('.collection-pagination-block')?.querySelector('[data-collection-pagination-status]');
@@ -705,7 +742,7 @@ if (!customElements.get('collection-facets')) {
       this.dialog.classList.add('is-closing');
       this.closePromise = new Promise((resolve) => {
         this.resolveClose = resolve;
-        const gestureDuration = parseFloat(getComputedStyle(this.dialog).transitionDuration) * 1000 || 280;
+        const gestureDuration = parseFloat(getComputedStyle(this.sheetGesture?.panel || this.dialog).transitionDuration) * 1000 || 280;
         this.closeTimer = window.setTimeout(() => this.finishCloseDialog(), fromGesture ? gestureDuration + 16 : 240);
       });
       return this.closePromise;
@@ -782,6 +819,7 @@ if (!customElements.get('collection-facets')) {
       this.requestController?.abort();
       const requestController = new AbortController();
       this.requestController = requestController;
+      this.paginationObserver?.disconnect();
       this.setAttribute('aria-busy', 'true');
 
       try {
@@ -822,7 +860,6 @@ if (!customElements.get('collection-facets')) {
           currentProducts.replaceWith(nextProducts);
           window.ThemeAnimations?.init(nextProducts);
           this.syncColumns();
-          this.observePagination();
           const currentActiveFilters = this.dialog.querySelector('.main-collection__active-filters');
           const nextActiveFilters = nextDialog.querySelector('.main-collection__active-filters');
           const currentFooter = this.dialog.querySelector('.main-collection__filter-footer');
@@ -880,7 +917,11 @@ if (!customElements.get('collection-facets')) {
         if (error.name === 'AbortError') return;
         window.location.assign(navigationUrl);
       } finally {
-        if (this.requestController === requestController) this.removeAttribute('aria-busy');
+        if (this.requestController === requestController) {
+          this.requestController = null;
+          this.removeAttribute('aria-busy');
+          this.observePagination();
+        }
       }
     }
   }

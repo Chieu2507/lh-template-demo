@@ -38,6 +38,12 @@ function fixture({ mobile = true, reduced = false, portal = false } = {}) {
         add: (...names) => names.forEach((name) => classes.add(name)),
         remove: (...names) => names.forEach((name) => classes.delete(name)),
         contains: (name) => classes.has(name),
+        toggle: (name, force) => {
+          if (force === undefined) force = !classes.has(name);
+          if (force) classes.add(name);
+          else classes.delete(name);
+          return force;
+        },
         [Symbol.iterator]: () => classes[Symbol.iterator](),
       };
       this.offsetHeight = 500;
@@ -104,7 +110,7 @@ function fixture({ mobile = true, reduced = false, portal = false } = {}) {
   const reducedMedia = new EventTarget();
   reducedMedia.matches = reduced;
   const window = { matchMedia: (query) => query.includes('reduced') ? reducedMedia : media };
-  vm.runInNewContext(fs.readFileSync(path.join(__dirname, '../assets/component-overlay.js'), 'utf8'), {
+  const context = {
     window, document, AbortController, Event,
     performance: { now: () => now },
     getComputedStyle: (element) => element === backdrop
@@ -114,10 +120,11 @@ function fixture({ mobile = true, reduced = false, portal = false } = {}) {
     clearTimeout: (key) => timers.delete(key),
     requestAnimationFrame: (fn) => { frames.set(++id, fn); return id; },
     cancelAnimationFrame: (key) => frames.delete(key),
-  });
+  };
+  vm.runInNewContext(fs.readFileSync(path.join(__dirname, '../assets/component-overlay.js'), 'utf8'), context);
   const flush = (queue) => { const callbacks = [...queue.values()]; queue.clear(); callbacks.forEach((fn) => fn()); };
   return {
-    api: window.ThemeOverlay, dialog, header, panel, body, opener, closeButton, backdrop, backdropCursor, lastInput, document, media, timers, frames, timerDelays,
+    context, api: window.ThemeOverlay, dialog, header, panel, body, opener, closeButton, backdrop, backdropCursor, lastInput, document, media, timers, frames, timerDelays,
     overlay: window.ThemeOverlay.get(dialog),
     tick: (ms) => { now += ms; },
     flushTimers: () => flush(timers), flushFrames: () => flush(frames),
@@ -125,6 +132,114 @@ function fixture({ mobile = true, reduced = false, portal = false } = {}) {
     pointer: (y, target = header) => ({ target, pointerId: 1, clientY: y, isPrimary: true, button: 0, preventDefault() {} }),
   };
 }
+
+function collectionFixture(options) {
+  const f = fixture(options);
+  f.overlay.destroy();
+  f.flushNative();
+  const definitions = new Map();
+  Object.assign(f.context, {
+    HTMLElement: f.panel.constructor,
+    customElements: { get: (name) => definitions.get(name), define: (name, type) => definitions.set(name, type) },
+  });
+  Object.assign(f.context.window, {
+    addEventListener() {}, removeEventListener() {},
+    setTimeout: f.context.setTimeout, clearTimeout: f.context.clearTimeout,
+  });
+  f.document.addEventListener = () => {};
+  f.document.removeEventListener = () => {};
+  vm.runInNewContext(fs.readFileSync(path.join(__dirname, '../assets/section-collection.js'), 'utf8'), f.context);
+  f.facets = new (definitions.get('collection-facets'))();
+  // Isolate dialog wiring from unrelated grid, pagination and sticky layout work.
+  for (const name of ['mountFilterPanel', 'syncLayout', 'initializeSidebarSticky', 'syncColumns', 'observePagination']) {
+    f.facets[name] = () => {};
+  }
+  f.facets.querySelector = (selector) => selector === '[data-collection-filter-dialog]' ? f.dialog : null;
+  f.dialog.querySelector = (selector) => ({
+    '.main-collection__filter-form': f.panel,
+    '.main-collection__filter-header': f.header,
+    '.main-collection__filter-body': f.body,
+  })[selector] || null;
+  f.dialog.dataset.mobileLayout = 'sheet';
+  f.facets.connectedCallback();
+  f.dialog.showModal();
+  // Model the follow-up click target when capture and pointerdown targets differ.
+  f.clickCapturedPanel = () => f.facets.onClick({ target: f.facets.sheetGesture.panel });
+  return f;
+}
+
+test('collection upward, tiny, short, reversed and cancelled drags keep the sheet open after click', () => {
+  for (const [distance, cancelled, reverse] of [[-120, false], [4, false], [20, false], [120, false, true], [180, true]]) {
+    const f = collectionFixture();
+    const gesture = f.facets.sheetGesture;
+    gesture.start(f.pointer(200));
+    assert.equal(f.panel.capture, 1);
+    assert.equal(f.dialog.capture, undefined);
+    f.tick(200);
+    gesture.move(f.pointer(200 + distance));
+    if (reverse) {
+      f.tick(200);
+      gesture.move(f.pointer(180));
+    }
+    gesture.end(f.pointer(reverse ? 180 : 200 + distance), cancelled);
+    f.clickCapturedPanel();
+    f.flushFrames();
+    f.flushTimers();
+    assert.equal(f.dialog.open, true);
+    assert.equal(f.dialog.classList.contains('is-closing'), false);
+    assert.equal(f.panel.style.transform, undefined);
+    assert.equal(f.panel.capture, null);
+    assert.equal(f.panel.style['--sheet-drag-progress'], undefined);
+    assert.equal(f.dialog.style['--sheet-drag-progress'], undefined);
+  }
+});
+
+test('collection uses shared distance and fresh downward velocity dismissal', () => {
+  for (const [distance, elapsed, pause, dismiss] of [[99, 200, 0, false], [100, 200, 0, true], [31, 10, 0, false], [40, 50, 0, true], [40, 50, 101, false]]) {
+    const f = collectionFixture();
+    const gesture = f.facets.sheetGesture;
+    gesture.start(f.pointer(0));
+    f.tick(elapsed);
+    gesture.move(f.pointer(distance));
+    assert.equal(f.dialog.style['--sheet-drag-progress'], f.panel.style['--sheet-drag-progress'], 'native backdrop follows the panel drag');
+    f.tick(pause);
+    gesture.end(f.pointer(distance));
+    f.clickCapturedPanel();
+    assert.equal(f.dialog.classList.contains('is-gesture-closing'), dismiss);
+    if (dismiss) assert.equal(f.timerDelays.at(-1), 516, 'close waits for the inner panel transition');
+    f.flushFrames();
+    f.flushTimers();
+    assert.equal(f.dialog.open, !dismiss);
+    assert.equal(f.panel.style.transform, undefined);
+    assert.equal(f.dialog.style['--sheet-drag-progress'], undefined);
+  }
+});
+
+test('collection backdrop clicks and native Escape cancellation still close', () => {
+  for (const action of ['backdrop', 'escape']) {
+    const f = collectionFixture();
+    if (action === 'backdrop') f.facets.onClick({ target: f.dialog });
+    else {
+      const event = new Event('cancel', { cancelable: true });
+      f.dialog.dispatchEvent(event);
+      assert.equal(event.defaultPrevented, true);
+    }
+    assert.equal(f.dialog.classList.contains('is-closing'), true);
+    f.flushTimers();
+    assert.equal(f.dialog.open, false);
+  }
+});
+
+test('collection reduced-motion gesture closes immediately and clears panel styles', () => {
+  const f = collectionFixture({ reduced: true });
+  f.facets.sheetGesture.start(f.pointer(0));
+  f.tick(200);
+  f.facets.sheetGesture.move(f.pointer(120));
+  f.facets.sheetGesture.end(f.pointer(120));
+  assert.equal(f.dialog.open, false);
+  assert.equal(f.panel.style.transform, undefined);
+  assert.equal(f.frames.size, 0);
+});
 
 test('one controller per dialog; default open focuses close and restores focus on close', () => {
   const f = fixture();

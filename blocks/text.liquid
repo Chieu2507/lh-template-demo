@@ -102,11 +102,37 @@
     {% if text_style != blank %}style="{{ text_style }}"{% endif %}
     {{ block.shopify_attributes }}
   >
-    {{ block.settings.text }}
+    {% if block.settings.height_limit != blank and block.settings.height_limit != 'none' %}
+      {% liquid
+        assign text_height = 200
+        case block.settings.height_limit
+          when 'small'
+            assign text_height = 100
+          when 'large'
+            assign text_height = 300
+        endcase
+        assign text_content_id = 'TextContent-' | append: section.id | append: '-' | append: block.id
+      %}
+      <script src="{{ 'product-description.js' | asset_url }}" type="module"></script>
+      <product-description class="text-block__collapse" data-description-height="{{ block.settings.height_limit }}" style="--product-description-collapsed-height: {{ text_height }}px">
+        <div id="{{ text_content_id }}" class="text-block__collapse-content" data-description-content>
+          <div data-description-flow>{{ block.settings.text }}</div>
+        </div>
+        <button class="btn btn-tertiary text-block__collapse-toggle" type="button" aria-controls="{{ text_content_id }}" aria-expanded="false" data-description-toggle data-more-label="{{ 'collection.read_more' | t | escape }}" data-less-label="{{ 'collection.read_less' | t | escape }}" hidden>
+          <span data-description-toggle-label>{{ 'collection.read_more' | t }}</span>
+        </button>
+      </product-description>
+    {% else %}
+      {{ block.settings.text }}
+    {% endif %}
   </div>
 {% endif %}
 
 {% stylesheet %}
+  .text-block__collapse { display: block; min-width: 0; }
+  .text-block__collapse[data-description-state='collapsed'] .text-block__collapse-content { max-height: var(--product-description-collapsed-height); overflow: hidden; }
+  .text-block__collapse-toggle { margin-top: 16px; }
+  .text-block__collapse-toggle[hidden] { display: none; }
   .text-block {
     display: block;
     padding-top: var(--text-padding-top, 0px);
@@ -163,6 +189,18 @@
         { "value": "xxl", "label": "t:options.text_size.xxl" }
       ],
       "default": "md"
+    },
+    {
+      "type": "select",
+      "id": "height_limit",
+      "label": "t:labels.height_limit",
+      "options": [
+        { "value": "none", "label": "t:options.product_description_height.none" },
+        { "value": "small", "label": "t:options.product_description_height.small" },
+        { "value": "medium", "label": "t:options.product_description_height.medium" },
+        { "value": "large", "label": "t:options.product_description_height.large" }
+      ],
+      "default": "none"
     },
     {
       "type": "color",

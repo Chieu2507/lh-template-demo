@@ -9,7 +9,7 @@
     transition: background-color var(--motion-duration-standard) var(--motion-ease-standard);
   }
 
-  .header--overlay {
+  .header.header--overlay {
     background-color: transparent;
   }
 
@@ -26,6 +26,7 @@
   }
 
   .header--overlap-first-section {
+    z-index: var(--z-drawer);
     margin-block-end: calc(var(--header-layout-height, 0px) * -1);
   }
 
@@ -34,7 +35,7 @@
     position: sticky;
     top: 0;
     inset-inline: 0;
-    z-index: var(--z-drawer);
+    z-index: var(--z-drawer, 200);
   }
 
   .header[data-sticky-type='scroll_up'] {
@@ -61,7 +62,7 @@
   .header[data-sticky-type='bottom_header_only'] {
     position: sticky;
     top: 0;
-    z-index: var(--z-drawer);
+    z-index: var(--z-drawer, 200);
   }
 
   @media (prefers-reduced-motion: reduce) {

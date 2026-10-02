@@ -16,7 +16,7 @@
   endif
 
   assign header_overlay_enabled = false
-  if template.name == 'index' and section.settings.header_overlay
+  if template.name == 'index' and section.settings.header_overlay and header_sticky_type != 'none'
     assign header_overlay_enabled = true
   endif
 
@@ -26,14 +26,14 @@
   endif
 
   assign header_top_class = 'header-top'
+  assign header_transparent_scheme = section.settings.transparent_color_scheme | default: settings.overlay_color_scheme | default: section.settings.color_scheme | default: 'scheme-1'
+  if section.settings.transparent_color_scheme.id != blank
+    assign header_transparent_scheme = section.settings.transparent_color_scheme.id
+  elsif settings.overlay_color_scheme.id != blank
+    assign header_transparent_scheme = settings.overlay_color_scheme.id
+  endif
+  assign header_transparent_scheme = header_transparent_scheme | default: 'scheme-1' | handleize
   if header_overlay_enabled
-    assign header_transparent_scheme = section.settings.transparent_color_scheme | default: settings.overlay_color_scheme | default: section.settings.color_scheme | default: 'scheme-1'
-    if section.settings.transparent_color_scheme.id != blank
-      assign header_transparent_scheme = section.settings.transparent_color_scheme.id
-    elsif settings.overlay_color_scheme.id != blank
-      assign header_transparent_scheme = settings.overlay_color_scheme.id
-    endif
-    assign header_transparent_scheme = header_transparent_scheme | default: 'scheme-1' | handleize
     assign header_top_class = header_top_class | append: ' header-top--transparent-scheme section-color-scope ' | append: header_transparent_scheme
   endif
 
@@ -85,7 +85,7 @@
   data-sticky-type="{{ header_sticky_type }}"
   {% if header_overlay_enabled %}data-header-overlap-first-section{% endif %}
   {% if header_overlay_enabled %}data-header-overlay{% endif %}
-  {% if header_overlay_enabled %}data-header-transparent-scheme="{{ header_transparent_scheme }}"{% endif %}
+  data-header-transparent-scheme="{{ header_transparent_scheme }}"
   {% if header_top_style != blank %}style="{{ header_top_style }}"{% endif %}
   {{ block.shopify_attributes }}
 >

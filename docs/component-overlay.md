@@ -72,8 +72,9 @@ keeps those edges flush at `0`.
 All modes use the global motion and backdrop tokens. Backdrop alpha is part of
 `--overlay-backdrop-color` as an `rgba()` background color so the blur remains
 visible while the overlay opacity setting still controls the configured alpha.
-Backdrop color and blur share one keyframe timeline, so they enter and exit
-with the same duration and easing instead of relying on separate paint paths.
+Backdrop color, element opacity and blur transition with the same duration and
+easing. At rest, element opacity remains `1` so the configured color alpha does
+not weaken the blur; sheet dragging fades the backdrop from that baseline.
 On fine pointers, the HTML backdrop itself receives the hover event and
 activates the global `<custom-cursor>` DOM element. It uses the active overlay
 scheme, expands to 6.4rem with a 2.2rem SVG X, and collapses smoothly when the

@@ -604,7 +604,6 @@ settings đã được loại khỏi contract Colors.
 | input_height_mobile | range | 40–56, step 1px | 44 | `--input-height-mobile` |
 | input_radius_style | select | square, slightly_rounded, rounded, pill | rounded | `--input-radius` dùng primitive radius chung; không còn numeric radius field |
 | input_border_width | range | 0–3, step 1px | 1 | `--input-border-width-outline`; Solid đặt `--input-border-width` về 0px |
-| input_background_color | color | CSS color | #FFFFFF | `--input-background-color-solid`; Solid đọc màu này, Outline dùng transparent |
 | form_label_typography | select | xs, sm, md, lg, xl, xxl | md | `--form-label-font-size`; dùng cùng scale `Text size` của Text block |
 | form_input_typography | select | xs, sm, md, lg, xl, xxl | md | `--form-input-font-size`; không đổi layout control |
 | form_helper_typography | select | xs, sm, md, lg, xl, xxl | md | `--form-helper-font-size` |
@@ -672,6 +671,88 @@ Markup dùng BEM ổn định: `.product-card`, `.product-card--standard`,
 `.product-card--card`, `__media`, `__content`, `__details`, `__title`,
 `__price`, `__swatches`, `__badges`, `__quick-add` và `__quick-view`.
 
+### Cấu hình và runtime của Swatches
+
+Nhóm `Swatches` nằm bên trong category `Product cards` điều khiển riêng swatch
+trên product card. Category `Swatches` độc lập trong Theme Settings điều khiển
+variant picker trên trang sản phẩm; hai nhóm dùng cùng primitive hình ảnh/màu
+`snippets/swatch.liquid` nhưng có setting và token riêng.
+
+Luồng setting đi theo thứ tự:
+
+1. `config/settings_schema.json` khai báo `product_card_swatches_enabled` và
+   các setting `product_card_swatch_*` trong category `Product cards`.
+2. `snippets/product-card.liquid` ẩn/hiện swatches và đặt chúng ở đầu hoặc
+   cuối vùng nội dung theo setting `position`.
+3. `snippets/product-card-swatches.liquid` chọn option có Shopify swatch data,
+   sau đó dùng option `Color` làm fallback; đoạn này áp kiểu, giới hạn số giá
+   trị, URL variant và số lựa chọn còn lại `+N`.
+4. `snippets/swatch.liquid` vẽ màu hoặc ảnh. Shopify swatch data được ưu tiên;
+   màu theo tên và bề mặt trung tính là fallback khi thiếu màu/ảnh.
+5. `snippets/css-variables.liquid` đưa gap, width desktop/mobile và ratio vào
+   token. `assets/critical.css` dùng các token này cho `.product-card__swatches`
+   và `.product-card__swatch-box`; breakpoint mobile đổi width sang token mobile.
+6. `assets/product-card-variants.js` định nghĩa
+   `swatches-variant-picker-component`; sự kiện `change` của radio cập nhật
+   giá, ảnh chính/ảnh phụ, link và variant id của card. Giá trị thuộc sản phẩm
+   khác hoặc thiếu variant nội bộ đi tới URL Shopify lưu trên radio. Nút `+N`
+   mở Quick Add; khi card không có Quick Add, nó đi tới trang sản phẩm.
+
+Markup theo theme mẫu là custom element chứa `form > ul > li > label`, trong
+label có `input[type=radio]`, swatch trực quan và tên ẩn cho trình đọc màn hình.
+`ul` dùng class `.product-card__swatches`; các `template` giá/ảnh là anh em
+của `form` bên trong custom element, để giữ cây `ul` hợp lệ. Radio chưa được
+chọn khi card tải lần đầu, tương tự mẫu; chọn radio làm nổi trạng thái theo
+`product_card_swatch_selected_style`. Nếu vượt giới hạn, một `li` cuối chứa
+nút `+N`. `position: top` đặt nhóm trước tiêu đề/giá; `position: bottom` đặt
+nhóm sau chi tiết sản phẩm. Khi `+N` mở Quick Add, nút mang class
+`btn--loading`, ẩn mờ nhãn `+N` và hiển thị một chấm nảy 7px trong lúc nội dung
+sản phẩm được tải; trạng thái loading hiển thị trên `+N`. Nhãn `+N` dùng
+typography, màu chữ và text case theo button tertiary trong Theme Settings.
+Gạch chân không hiện sẵn; khi hover nó chạy vào và vẫn theo setting
+`Show underline`.
+
+Trong product card, option value hết hàng vẫn hiện nhưng radio bị disabled và
+được đọc cùng nhãn “Sold out”. Swatch giữ nguyên màu/ảnh, có hai nét strike
+SVG từ góc trên trái xuống góc dưới phải như cấu trúc `variant-strike` của
+theme mẫu; không làm mờ toàn bộ swatch bằng opacity.
+
+Với `Selected variant style = Underline`, CSS theme mẫu đặt `padding-bottom:
+5px` trên từng `li` (kể cả `li[slot="more"]`) và vẽ đường 1px ở đáy `li` của
+radio đang chọn, dùng màu heading. Swatch không có viền chọn hay viền trong;
+ô trắng vẫn giữ viền mờ để nhìn thấy trên nền trắng. Vì đường gạch thuộc `li`,
+nó nằm dưới ô màu thay vì phủ lên ô màu.
+
+Cấu trúc HTML rút gọn:
+
+```html
+<swatches-variant-picker-component class="product-card__swatches-variant-picker" data-product-url="/products/item">
+  <form autocomplete="off">
+    <ul class="product-card__swatches product-card__swatches--selected-border" data-product-card-swatches>
+      <li class="product-card__swatch-item">
+        <label class="product-card__swatch-label">
+          <input type="radio" value="Black" data-variant-id="123" data-product-url="/products/item?variant=123" data-product-card-swatch>
+          <span class="swatch swatch--color product-card__swatch-box" aria-hidden="true"></span>
+          <span class="visually-hidden">Black</span>
+        </label>
+      </li>
+      <li class="product-card__swatch-more" slot="more">
+        <button type="button" class="product-card__swatch-count btn btn-tertiary btn--tertiary" data-product-card-swatch-more aria-label="Show all options">
+          <span class="product-card__swatch-count-label btn__text">+N</span>
+          <span class="bouncing-dots hidden" data-loading-dots aria-hidden="true"><span></span></span>
+        </button>
+      </li>
+    </ul>
+  </form>
+  <template data-product-card-variant="123">…</template>
+</swatches-variant-picker-component>
+```
+
+Khi option có dữ liệu swatch chuẩn Shopify, card chỉ tính các value có swatch;
+option `Color` legacy không có dữ liệu này thì dùng toàn bộ value. Vì thế
+product mẫu Oxygen có Black, Red và Blue phù hợp: hiển thị hai ô và `+1`.
+`+N` chỉ được render khi số value phù hợp vượt giới hạn cấu hình.
+
 ### CSS Foundation, responsive và fallback
 
 - `--product-card-*` là namespace duy nhất cho title, ratio, layout, spacing, quick
@@ -721,15 +802,15 @@ Markup dùng BEM ổn định: `.product-card`, `.product-card--standard`,
 | product_card_show_sold_out_badge | checkbox | true/false | true | Sold-out badge theo semantic badge token |
 | product_card_vendor | checkbox | true/false | false | Chỉ render khi product.vendor có dữ liệu |
 | product_card_type | checkbox | true/false | false | Chỉ render khi product.type có dữ liệu |
-| product_card_swatches_enabled | checkbox | true/false | true | `--product-card-swatch-enabled`; không có option thì không render |
-| product_card_swatch_position | select | top, bottom | bottom | Modifier `product-card--swatches-*` |
-| product_card_swatch_type | select | color, variant_image | color | Variant image fallback về color value |
-| product_card_swatch_limit | range | 2–6, step 1 | 4 | Giới hạn option values render |
+| product_card_swatches_enabled | checkbox | true/false | true | Liquid chỉ render khi bật và có option swatch phù hợp |
+| product_card_swatch_position | select | top, bottom | top | Liquid đặt nhóm trước hoặc sau chi tiết sản phẩm |
+| product_card_swatch_type | select | color, variant_image | color | Được truyền vào `snippets/swatch.liquid`; thiếu ảnh dùng màu hoặc bề mặt trung tính |
+| product_card_swatch_limit | select | 2, 3, 4, 5, 6 | 4 | Liquid đổi lựa chọn chuỗi sang số để giới hạn option values; phần còn lại hiển thị thành `+N` |
 | product_card_swatch_gap | range | 0–20, step 1px | 8 | `--product-card-swatch-gap` |
 | product_card_swatch_width_desktop | range | 16–48, step 1px | 30 | `--product-card-swatch-width` |
 | product_card_swatch_width_mobile | range | 16–48, step 1px | 30 | `--product-card-swatch-width-mobile` |
-| product_card_swatch_ratio | select | 1:1, 3:2, 2:1, 3:1 | 1:1 | `--product-card-swatch-ratio` |
-| product_card_swatch_selected_style | select | border, underline | border | `--product-card-swatch-selected-style` và selected modifier |
+| product_card_swatch_ratio | select | 1:1, 3:2, 2:1, 3:1 | 3:1 | `--product-card-swatch-ratio` |
+| product_card_swatch_selected_style | select | border, underline | border | Class `product-card__swatches--selected-*` điều khiển viền hoặc gạch chân |
 
 Setting legacy `product_card_gap` không còn xuất hiện trong Editor nhưng vẫn có
 fallback trong Liquid để store cũ không mất spacing khi chưa có dữ liệu của
@@ -743,9 +824,10 @@ hoặc radius token ngoài foundation.
   product title, quick add và quick view đều có accessible name.
 - Quick add có form native, hidden variant id không bị CSS input contract áp
   style; button dùng `.btn` và giữ nguyên chiều rộng khi loading.
-- Swatch là link tới variant URL, có `aria-label`, `aria-current` cho variant
-  hiện tại và focus-visible theo rule chung. Status badge không chỉ truyền đạt
-  bằng màu.
+- Swatch là radio trong label, có tên option ẩn cho trình đọc màn hình và
+  trạng thái checked/focus-visible theo rule của card. Radio lưu URL Shopify
+  để component chuyển trang khi value thuộc sản phẩm khác hoặc thiếu variant.
+- Khi số giá trị vượt giới hạn swatch, card hiện `+N` để cho biết còn lựa chọn khác.
 - Card đổi Standard/Card, scheme, ratio, alignment, gap, quick actions và
   swatches độc lập trong Theme Editor; không đổi markup section.
 - Card hoạt động khi thiếu ảnh, vendor, type, badge, price hoặc swatch; không
@@ -985,8 +1067,11 @@ shadow, padding hoặc z-index rời rạc.
 - `overlay_color_scheme` resolve một scheme độc lập; panel dùng
   `--overlay-background-color`, `--overlay-text-color`,
   `--overlay-border-color` và `--overlay-shadow-color`.
-- `overlay_title_size` map về visual token `--font-heading-*` thông qua
-  `--overlay-title-size`; setting không thay đổi semantic HTML.
+- `overlay_title_size` dùng cùng visual scale với Heading block
+  (`display`, `xl`, `lg`, `md`, `sm`, `xs`, `custom`) và map về
+  `--overlay-title-size`; cỡ `custom` lấy từ `overlay_custom_title_size`.
+  Setting là nguồn size chung cho các title trong overlay và drawer, gồm cả
+  Cart drawer; setting không thay đổi semantic HTML.
 - `overlay_backdrop_blur` map về `--overlay-backdrop-blur`; `.theme-overlay` và
   `dialog::backdrop` dùng `backdrop-filter` với `background-color` dạng
   `rgba()` từ màu shadow của `overlay_color_scheme` và alpha của
@@ -1004,7 +1089,7 @@ shadow, padding hoặc z-index rời rạc.
 
 Desktop/tablet dùng padding desktop; dưới breakpoint `767.98px` dùng padding
 mobile. Giá trị blank hoặc scheme không hợp lệ fallback về scheme mặc định,
-Heading 4, blur 20px, border 0px, shadow Medium và padding mặc định.
+Heading `md`, cỡ custom 24px, blur 20px, border 0px, shadow Medium và padding mặc định.
 Opacity là 0–80%; overlay không chứa thông tin nên không cần accessible name.
 Dialog native vẫn cần focus management, `aria-modal`, tên accessible và
 keyboard Escape ở component implementation. Focus-visible không bị cắt bởi
@@ -1015,7 +1100,8 @@ radius; reduced-motion policy áp dụng cho animation mở/đóng ở phase Mot
 | ID | Type | Values | Default | Mapping / constraint |
 | --- | --- | --- | --- | --- |
 | overlay_color_scheme | color_scheme | Scheme được định nghĩa trong Color schemes | scheme-1 | Chọn scheme cho panel/backdrop; invalid -> default scheme |
-| overlay_title_size | select | heading_1…heading_6 | heading_4 | `--overlay-title-size`; chỉ đổi visual scale, không đổi semantic HTML |
+| overlay_title_size | select | display, xl, lg, md, sm, xs, custom | md | Cùng visual scale với Heading block; `--overlay-title-size`; không đổi semantic HTML |
+| overlay_custom_title_size | range | 10–100, step 1px | 24 | Dùng khi `overlay_title_size=custom` |
 | overlay_backdrop_blur | range | 0–40, step 1px | 20 | `--overlay-backdrop-blur`; chỉ dùng cho backdrop |
 | overlay_popover_border_width | range | 0–3, step 1px | 0 | `--overlay-popover-border-width`; chỉ áp dụng cho popover |
 | overlay_popover_shadow | select | none, small, medium, large | medium | `--overlay-popover-shadow`; màu lấy từ scheme shadow |

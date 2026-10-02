@@ -238,6 +238,7 @@
   },
   "labels": {
     "icon_accessible_label": "Icon link accessible label",
+    "filter_settings": "Filter settings",
     "alignment": "Alignment",
     "header_vertical_alignment": "Header vertical alignment",
     "inherit_alignment": "Inherit parent alignment",
@@ -478,8 +479,6 @@
     "enable_custom_badges": "Enable custom tag badges",
     "show_vendor": "Show vendor",
     "show_type": "Show type",
-    "show_ranking": "Show ranking",
-    "ranking_color": "Ranking color",
     "show_swatches": "Show swatches",
     "swatch_style": "Swatch style",
     "color_option_display": "Color option display",
@@ -1225,6 +1224,9 @@
       "shopping_bag": "Shopping bag",
       "shopping_cart": "Shopping cart",
       "user": "User",
+      "paper_airplane": "Paper airplane",
+      "chat_bubble": "Chat bubble",
+      "cube": "Cube",
       "truck": "Truck",
       "tag": "Tag",
       "trash": "Trash",
@@ -1236,6 +1238,7 @@
       "plus": "Plus",
       "minus": "Minus",
       "check": "Check",
+      "shield_check": "Shield check",
       "circle": "Circle",
       "square": "Square",
       "triangle": "Triangle",
@@ -1280,6 +1283,13 @@
     "swatch_type": {
       "color": "Color",
       "variant_image": "Variant image"
+    },
+    "swatch_limit": {
+      "two": "2",
+      "three": "3",
+      "four": "4",
+      "five": "5",
+      "six": "6"
     },
     "color_option_display": {
       "text": "Text",

@@ -177,7 +177,7 @@
 
   assign hotspot_carousel_controls_scheme_class = 'color-scheme ' | append: hotspot_carousel_content_scheme
   assign hotspot_carousel_navigation_class = 'hotspot-full-width-carousel__navigation ' | append: hotspot_carousel_controls_scheme_class
-  assign hotspot_carousel_pagination_class = 'hotspot-full-width-carousel__pagination hotspot-full-width-carousel__pagination--desktop-' | append: hotspot_carousel_pagination_position_desktop | append: ' hotspot-full-width-carousel__pagination--mobile-' | append: hotspot_carousel_pagination_position_mobile | append: ' ' | append: hotspot_carousel_controls_scheme_class
+  assign hotspot_carousel_pagination_class = 'hotspot-full-width-carousel__pagination swiper-pagination--overlay swiper-pagination--desktop-' | append: hotspot_carousel_pagination_position_desktop | append: ' swiper-pagination--mobile-' | append: hotspot_carousel_pagination_position_mobile | append: ' ' | append: hotspot_carousel_controls_scheme_class
 %}
 
 {% if hotspot_carousel_render %}
@@ -470,74 +470,11 @@
   }
 
   .hotspot-full-width-carousel__pagination {
-    position: absolute !important;
-    z-index: 4;
-    inset-block-end: 0 !important;
-    inset-inline: 0 !important;
-    width: 100% !important;
-    margin: 0 !important;
-    padding: 2.4rem var(--page-margin-current);
-    color: var(--heading-color);
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
-    --swiper-pagination-color: var(--heading-color);
-    --swiper-pagination-progressbar-bg-color: color-mix(in srgb, var(--heading-color) 30%, transparent);
-    --swiper-pagination-bullet-inactive-color: color-mix(in srgb, var(--heading-color) 30%, transparent);
-    --swiper-pagination-bullet-horizontal-gap: 0px;
-  }
-
-  .hotspot-full-width-carousel__pagination[data-pagination-type='bullets'] {
-    width: auto !important;
-    padding-inline: var(--page-margin-current);
-  }
-
-  .hotspot-full-width-carousel__pagination .swiper-pagination-bullet {
-    width: 0.8rem;
-    height: 0.8rem;
-    margin: 0;
-    opacity: 0.55;
-    background: currentColor;
-    transition: width var(--motion-duration-standard) var(--motion-ease-standard), opacity var(--motion-duration-standard) var(--motion-ease-standard);
-  }
-
-  .hotspot-full-width-carousel__pagination .swiper-pagination-bullet-active {
-    width: 3.2rem;
-    opacity: 1;
-  }
-
-  .hotspot-full-width-carousel__pagination.hotspot-full-width-carousel__pagination--desktop-left,
-  .hotspot-full-width-carousel__pagination.hotspot-full-width-carousel__pagination--desktop-center,
-  .hotspot-full-width-carousel__pagination.hotspot-full-width-carousel__pagination--desktop-right {
-    transform: none;
-  }
-
-  .hotspot-full-width-carousel__pagination.hotspot-full-width-carousel__pagination--desktop-left {
-    left: 0 !important;
-    right: auto !important;
-    justify-content: flex-start;
-  }
-
-  .hotspot-full-width-carousel__pagination.hotspot-full-width-carousel__pagination--desktop-center {
-    left: 0 !important;
-    right: 0 !important;
-    justify-content: center;
-  }
-
-  .hotspot-full-width-carousel__pagination.hotspot-full-width-carousel__pagination--desktop-right {
-    right: 0 !important;
-    left: auto !important;
-    justify-content: flex-end;
-  }
-
-  .hotspot-full-width-carousel__pagination[data-pagination-type='progress_bar'] {
-    inset-inline: var(--page-margin-current) !important;
-    width: auto !important;
-    padding-inline: 0;
+    --swiper-pagination-inline-padding: var(--page-margin-current);
   }
 
   .hotspot-full-width-carousel.carousel-block--locked .hotspot-full-width-carousel__navigation,
-  .hotspot-full-width-carousel.carousel-block--locked .hotspot-full-width-carousel__pagination,
+  .hotspot-full-width-carousel.carousel-block--locked .hotspot-full-width-carousel__viewport > .hotspot-full-width-carousel__pagination,
   .hotspot-full-width-carousel.carousel-block--locked .hotspot-full-width-carousel__fraction-controls {
     display: none;
   }
@@ -566,9 +503,6 @@
       width: calc(100% - (var(--page-margin-tablet) * 2));
     }
 
-    .hotspot-full-width-carousel__pagination {
-      padding-inline: var(--page-margin-current);
-    }
   }
 
   @media (max-width: 767.98px) {
@@ -624,10 +558,6 @@
       display: none;
     }
 
-    .hotspot-full-width-carousel__pagination {
-      padding-block: 1.6rem;
-      padding-inline: var(--page-margin-current);
-    }
 
     .hotspot-full-width-carousel__fraction-controls {
       padding-block: 1.6rem;
@@ -645,27 +575,7 @@
       justify-content: flex-end;
     }
 
-    .hotspot-full-width-carousel__pagination.hotspot-full-width-carousel__pagination--mobile-left {
-      left: 0 !important;
-      right: auto !important;
-      justify-content: flex-start;
-    }
 
-    .hotspot-full-width-carousel__pagination.hotspot-full-width-carousel__pagination--mobile-center {
-      left: 0 !important;
-      right: 0 !important;
-      justify-content: center;
-    }
-
-    .hotspot-full-width-carousel__pagination.hotspot-full-width-carousel__pagination--mobile-right {
-      right: 0 !important;
-      left: auto !important;
-      justify-content: flex-end;
-    }
-
-    .hotspot-full-width-carousel__pagination[data-pagination-type='bullets'] {
-      padding-inline: var(--page-margin-current);
-    }
   }
 {% endstylesheet %}
 

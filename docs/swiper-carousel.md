@@ -70,13 +70,30 @@ controls available without requiring hover.
 Pagination consumes Swiper's `--swiper-pagination-progressbar-size` token for
 progress bars. Use pagination-specific custom properties on a component when
 its colors or bullet sizing need a local override; keep pagination width and
-placement in the owning component. Add `swiper-pagination--below` when the
+placement in the owning component. Slideshow and hotspot carousel share
+`swiper-pagination--overlay` with `swiper-pagination--desktop-left|center|right`
+and `swiper-pagination--mobile-left|center|right` alignment modifiers. The section
+provides `--swiper-pagination-inline-padding`; overlay controls use 24px desktop
+and 16px mobile bottom spacing. Progress bars span this inset at every alignment.
+Add `swiper-pagination--below` when the
 pagination should flow below the carousel; it provides shared position,
 spacing, width, and centering behavior through `--swiper-pagination-spacing`
 and `--swiper-pagination-width`. Use
 `swiper-carousel__navigation--centered` for overlay controls that should stay
 centered on the slide area when below-flow pagination is present; set
 `--swiper-navigation-center-offset` to the pagination flow offset.
+
+Bullet buttons use a 24px height by default. Inactive buttons are 24px wide;
+the active button is 48px wide. Override the pagination hit-size and hit-width
+custom properties on the pagination root when a component needs different
+dimensions. Their width tokens are `--swiper-pagination-bullet-hit-width` and
+`--swiper-pagination-bullet-active-hit-width`; height uses
+`--swiper-pagination-bullet-hit-size`. The `::before` and `::after` layers own
+the visible dot and active indicator through the bullet width/height and
+active width/height tokens. Override these tokens on the pagination root
+instead of resizing or painting the button itself. Optional placement/spacing
+tokens intentionally have consumer fallbacks; they are not missing global
+settings.
 
 Pass `show_next_slide_preview: true` to `swiper-carousel` when a desktop
 carousel should reveal the next item. The shared contract keeps the numeric

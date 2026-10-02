@@ -15,7 +15,6 @@
       "type": "cart-drawer",
       "settings": {
         "title": "Cart",
-        "title_size": "md",
         "show_cart_count": true,
         "enable_share_cart": false,
         "enable_block_animations": true,
