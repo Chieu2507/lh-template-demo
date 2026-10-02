@@ -237,7 +237,9 @@
                     "padding_top_mobile": 0,
                     "padding_bottom_mobile": 0,
                     "padding_left_mobile": 0,
-                    "padding_right_mobile": 0
+                    "padding_right_mobile": 0,
+                    "color_scheme": "scheme-3",
+                    "background_color": "#00000000"
                   },
                   "blocks": {}
                 }

@@ -1418,7 +1418,7 @@
     },
     "new_arrivals_banner": {
       "type": "featured-collection-banner",
-      "name": "New arrivals \u2014 Banner",
+      "name": "New arrivals — Banner",
       "settings": {
         "section_width": "page_width",
         "banner_position": "after",
@@ -1479,7 +1479,9 @@
             "padding_left": 32,
             "padding_right": 32,
             "gap_desktop": 16,
-            "gap_mobile": 12
+            "gap_mobile": 12,
+            "image": "shopify://shop_images/stroken-new-arrivals-banner.png",
+            "mobile_image": "shopify://shop_images/stroken-new-arrivals-banner.png"
           },
           "blocks": {
             "content": {
@@ -1602,7 +1604,9 @@
             "hotspot_icon_style": "plus",
             "hotspot_behavior": "click",
             "hotspot_color_scheme": "scheme-1",
-            "content_color_scheme": "scheme-1"
+            "content_color_scheme": "scheme-1",
+            "image": "shopify://shop_images/stroken-hotspot-desktop.jpg",
+            "mobile_image": "shopify://shop_images/stroken-hotspot-mobile.jpg"
           },
           "blocks": {
             "racket": {
@@ -1663,6 +1667,480 @@
         "padding_top_mobile": 0,
         "padding_bottom_mobile": 64
       }
+    },
+    "testimonials_products": {
+      "type": "testimonials-product",
+      "settings": {
+        "section_width": "page_width",
+        "color_scheme": "scheme-2",
+        "columns_desktop": "3",
+        "columns_tablet": "2",
+        "columns_mobile": "1",
+        "gap": 20,
+        "header_gap": 40,
+        "header_gap_mobile": 36,
+        "padding_top": 80,
+        "padding_bottom": 80,
+        "customize_mobile_padding": true,
+        "padding_top_mobile": 64,
+        "padding_bottom_mobile": 64,
+        "show_pagination": true,
+        "show_navigation": true
+      },
+      "blocks": {
+        "header": {
+          "type": "header",
+          "settings": {
+            "width": "fill",
+            "inherit_alignment": true,
+            "gap_desktop": 16,
+            "gap_mobile": 16
+          },
+          "blocks": {
+            "heading": {
+              "type": "heading",
+              "settings": {
+                "text": "<p>LOVED BY OUR COMMUNITY</p>",
+                "heading_size": "xl",
+                "html_tag": "h2",
+                "width": "fill"
+              }
+            },
+            "text": {
+              "type": "text",
+              "settings": {
+                "text": "<p>See what our customers are saying about our products</p>",
+                "text_size": "md",
+                "width": "fill"
+              }
+            }
+          },
+          "block_order": [
+            "heading",
+            "text"
+          ],
+          "static": true
+        },
+        "emily": {
+          "type": "_testimonial-product-card",
+          "settings": {
+            "color_scheme": "scheme-1",
+            "padding": 24,
+            "gap": 20
+          },
+          "blocks": {
+            "content": {
+              "type": "group",
+              "settings": {
+                "width": "fill",
+                "width_mobile": "fill",
+                "height": "fit",
+                "alignment": "left",
+                "alignment_mobile": "left",
+                "gap_desktop": 16,
+                "gap_mobile": 16
+              },
+              "blocks": {
+                "stars": {
+                  "type": "icon",
+                  "settings": {
+                    "icon": "five-stars",
+                    "icon_width": 84
+                  }
+                },
+                "copy": {
+                  "type": "group",
+                  "settings": {
+                    "width": "fill",
+                    "width_mobile": "fill",
+                    "height": "fit",
+                    "alignment": "left",
+                    "alignment_mobile": "left",
+                    "gap_desktop": 12,
+                    "gap_mobile": 12
+                  },
+                  "blocks": {
+                    "quote": {
+                      "type": "text",
+                      "settings": {
+                        "text": "<p>“The stretch, movement, and fit are spot on. Nothing distracts you during play, which is exactly what good tenniswear should do.”</p>",
+                        "text_size": "lg",
+                        "width": "fill",
+                        "text_color": "#0a0a0a"
+                      }
+                    },
+                    "author": {
+                      "type": "text",
+                      "settings": {
+                        "text": "<p>Emily R.</p>",
+                        "text_size": "md",
+                        "width": "fill"
+                      }
+                    }
+                  },
+                  "block_order": [
+                    "quote",
+                    "author"
+                  ]
+                }
+              },
+              "block_order": [
+                "stars",
+                "copy"
+              ]
+            },
+            "divider": {
+              "type": "divider",
+              "settings": {
+                "desktop_spacing": 0,
+                "mobile_spacing": 0
+              }
+            },
+            "product": {
+              "type": "_product-card-compact",
+              "settings": {
+                "product": "stroken-short-sleeve-polo-pleated-dress",
+                "show_price": true
+              }
+            }
+          },
+          "block_order": [
+            "content",
+            "divider",
+            "product"
+          ]
+        },
+        "jason": {
+          "type": "_testimonial-product-card",
+          "settings": {
+            "color_scheme": "scheme-1",
+            "padding": 24,
+            "gap": 20
+          },
+          "blocks": {
+            "content": {
+              "type": "group",
+              "settings": {
+                "width": "fill",
+                "width_mobile": "fill",
+                "height": "fit",
+                "alignment": "left",
+                "alignment_mobile": "left",
+                "gap_desktop": 16,
+                "gap_mobile": 16
+              },
+              "blocks": {
+                "stars": {
+                  "type": "icon",
+                  "settings": {
+                    "icon": "five-stars",
+                    "icon_width": 84
+                  }
+                },
+                "copy": {
+                  "type": "group",
+                  "settings": {
+                    "width": "fill",
+                    "width_mobile": "fill",
+                    "height": "fit",
+                    "alignment": "left",
+                    "alignment_mobile": "left",
+                    "gap_desktop": 12,
+                    "gap_mobile": 12
+                  },
+                  "blocks": {
+                    "quote": {
+                      "type": "text",
+                      "settings": {
+                        "text": "<p>“Played a full weekend tournament in this kit and stayed comfortable the entire time. Breathability is seriously impressive.”</p>",
+                        "text_size": "lg",
+                        "width": "fill",
+                        "text_color": "#0a0a0a"
+                      }
+                    },
+                    "author": {
+                      "type": "text",
+                      "settings": {
+                        "text": "<p>Jason M.</p>",
+                        "text_size": "md",
+                        "width": "fill"
+                      }
+                    }
+                  },
+                  "block_order": [
+                    "quote",
+                    "author"
+                  ]
+                }
+              },
+              "block_order": [
+                "stars",
+                "copy"
+              ]
+            },
+            "divider": {
+              "type": "divider",
+              "settings": {
+                "desktop_spacing": 0,
+                "mobile_spacing": 0
+              }
+            },
+            "product": {
+              "type": "_product-card-compact",
+              "settings": {
+                "product": "stroken-blx-pro-open-tour-racket-strung",
+                "show_price": true
+              }
+            }
+          },
+          "block_order": [
+            "content",
+            "divider",
+            "product"
+          ]
+        },
+        "sophia": {
+          "type": "_testimonial-product-card",
+          "settings": {
+            "color_scheme": "scheme-1",
+            "padding": 24,
+            "gap": 20
+          },
+          "blocks": {
+            "content": {
+              "type": "group",
+              "settings": {
+                "width": "fill",
+                "width_mobile": "fill",
+                "height": "fit",
+                "alignment": "left",
+                "alignment_mobile": "left",
+                "gap_desktop": 16,
+                "gap_mobile": 16
+              },
+              "blocks": {
+                "stars": {
+                  "type": "icon",
+                  "settings": {
+                    "icon": "five-stars",
+                    "icon_width": 84
+                  }
+                },
+                "copy": {
+                  "type": "group",
+                  "settings": {
+                    "width": "fill",
+                    "width_mobile": "fill",
+                    "height": "fit",
+                    "alignment": "left",
+                    "alignment_mobile": "left",
+                    "gap_desktop": 12,
+                    "gap_mobile": 12
+                  },
+                  "blocks": {
+                    "quote": {
+                      "type": "text",
+                      "settings": {
+                        "text": "<p>“I love that it actually looks elevated while still feeling performance-driven. Easily my favorite tennis collection right now.”</p>",
+                        "text_size": "lg",
+                        "width": "fill",
+                        "text_color": "#0a0a0a"
+                      }
+                    },
+                    "author": {
+                      "type": "text",
+                      "settings": {
+                        "text": "<p>Sophia L.</p>",
+                        "text_size": "md",
+                        "width": "fill"
+                      }
+                    }
+                  },
+                  "block_order": [
+                    "quote",
+                    "author"
+                  ]
+                }
+              },
+              "block_order": [
+                "stars",
+                "copy"
+              ]
+            },
+            "divider": {
+              "type": "divider",
+              "settings": {
+                "desktop_spacing": 0,
+                "mobile_spacing": 0
+              }
+            },
+            "product": {
+              "type": "_product-card-compact",
+              "settings": {
+                "product": "stroken-rg-pro-dress-women",
+                "show_price": true
+              }
+            }
+          },
+          "block_order": [
+            "content",
+            "divider",
+            "product"
+          ]
+        }
+      },
+      "block_order": [
+        "emily",
+        "jason",
+        "sophia"
+      ]
+    },
+    "questions_answers": {
+      "type": "faq-accordion",
+      "settings": {
+        "section_width": "page_width",
+        "limit_width": true,
+        "max_width": 768,
+        "layout": "vertical",
+        "alignment": "center",
+        "gap_desktop": 40,
+        "gap_mobile": 32,
+        "color_scheme": "scheme-1",
+        "padding_top": 80,
+        "padding_bottom": 80
+      },
+      "blocks": {
+        "header": {
+          "type": "group",
+          "settings": {
+            "direction": "vertical",
+            "alignment": "center",
+            "alignment_mobile": "center",
+            "width": "fill",
+            "width_mobile": "fill",
+            "gap_desktop": 16,
+            "gap_mobile": 16
+          },
+          "blocks": {
+            "heading": {
+              "type": "heading",
+              "settings": {
+                "text": "<p>QUESTIONS &amp; ANSWERS</p>",
+                "heading_size": "xl",
+                "html_tag": "h2",
+                "width": "fill"
+              }
+            }
+          },
+          "block_order": [
+            "heading"
+          ]
+        },
+        "accordion": {
+          "type": "faq_accordion",
+          "settings": {
+            "style": "simple",
+            "icon": "plus",
+            "dividers": true,
+            "question_font_size": "sm",
+            "answer_font_size": "md",
+            "width": "fill",
+            "limit_width": false
+          },
+          "blocks": {
+            "question_1": {
+              "type": "faq_item",
+              "settings": {
+                "question": "1. HOW DO I CARE FOR MY STROKEN GEAR?",
+                "show_question_icon": false,
+                "initially_open": true
+              },
+              "blocks": {
+                "answer": {
+                  "type": "faq_answer_text",
+                  "settings": {
+                    "text": "<p>Machine wash cold, inside out, with like colours. Avoid fabric softeners they break down performance fibres over time. Tumble dry on low or air dry for best results.</p>"
+                  }
+                }
+              },
+              "block_order": [
+                "answer"
+              ]
+            },
+            "question_2": {
+              "type": "faq_item",
+              "settings": {
+                "question": "2. CAN I TRACK MY ORDER?",
+                "show_question_icon": false,
+                "initially_open": false
+              },
+              "blocks": {
+                "answer": {
+                  "type": "faq_answer_text",
+                  "settings": {
+                    "text": "<p>Contact our support team for help tracking your order.</p>"
+                  }
+                }
+              },
+              "block_order": [
+                "answer"
+              ]
+            },
+            "question_3": {
+              "type": "faq_item",
+              "settings": {
+                "question": "3. DO YOU SHIP INTERNATIONALLY?",
+                "show_question_icon": false,
+                "initially_open": false
+              },
+              "blocks": {
+                "answer": {
+                  "type": "faq_answer_text",
+                  "settings": {
+                    "text": "<p>Contact our support team to check shipping availability for your destination.</p>"
+                  }
+                }
+              },
+              "block_order": [
+                "answer"
+              ]
+            },
+            "question_4": {
+              "type": "faq_item",
+              "settings": {
+                "question": "4. WHAT IS YOUR RETURN POLICY?",
+                "show_question_icon": false,
+                "initially_open": false
+              },
+              "blocks": {
+                "answer": {
+                  "type": "faq_answer_text",
+                  "settings": {
+                    "text": "<p>Contact our support team for details about returns and exchanges.</p>"
+                  }
+                }
+              },
+              "block_order": [
+                "answer"
+              ]
+            }
+          },
+          "block_order": [
+            "question_1",
+            "question_2",
+            "question_3",
+            "question_4"
+          ]
+        }
+      },
+      "block_order": [
+        "header",
+        "accordion"
+      ],
+      "custom_css": [
+        ".faq-item__summary {padding-right: 12px; gap: 20px;}",
+        ".faq-item__content-inner {padding: 0 48px 20px 0;}"
+      ]
     }
   },
   "order": [
@@ -1674,6 +2152,8 @@
     "parallax",
     "featured_collection_background",
     "hotspot_active_gear",
-    "new_arrivals_banner"
+    "new_arrivals_banner",
+    "testimonials_products",
+    "questions_answers"
   ]
 }

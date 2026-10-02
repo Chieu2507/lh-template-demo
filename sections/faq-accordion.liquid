@@ -32,7 +32,14 @@
   assign faq_section_scheme = faq_section_scheme | default: 'scheme-1' | handleize
 %}
 
+{% style %}
+  #shopify-section-{{ section.id }} {
+    background: {% if section.settings.background_color != blank %}{{ section.settings.background_color }}{% else %}{{ section.settings.color_scheme.settings.background | default: settings.color_schemes[faq_section_scheme].settings.background | default: settings.background_color }}{% endif %};
+  }
+{% endstyle %}
+
 {% capture faq_section_style %}
+  {% if section.settings.limit_width %}--faq-section-max-width: {{ section.settings.max_width }}px;{% endif %}
   --faq-section-gap: {{ section.settings.gap_desktop | default: 80 }}px;
   --faq-section-gap-mobile: {{ section.settings.gap_mobile | default: 40 }}px;
   --faq-section-padding-top: {{ section.settings.padding_top | default: 0 }}px;
@@ -40,22 +47,24 @@
   {% if section.settings.background_color != blank %}--faq-section-background: {{ section.settings.background_color | escape }};{% endif %}
 {% endcapture %}
 
-<div class="faq-section faq-section--{{ faq_section_layout }} faq-section--align-{{ faq_section_alignment }} faq-section--position-{{ faq_section_position }}{% if section.settings.vertical_on_mobile %} faq-section--vertical-mobile faq-section--mobile-align-{{ faq_section_mobile_alignment }}{% endif %}">
-  <div class="section-spacing color-scheme section-color-scope {{ faq_section_scheme }}" style="{{ faq_section_style | strip }}">
+<div class="section-spacing faq-section faq-section--{{ faq_section_layout }} faq-section--align-{{ faq_section_alignment }} faq-section--position-{{ faq_section_position }}{% if section.settings.vertical_on_mobile %} faq-section--vertical-mobile faq-section--mobile-align-{{ faq_section_mobile_alignment }}{% endif %} color-scheme section-color-scope {{ faq_section_scheme }}" style="{{ faq_section_style | strip }}">
     <div class="container {{ faq_section_container_width }} faq-section__container">
       <div class="faq-section__content">
         {% content_for 'blocks' %}
       </div>
     </div>
-  </div>
 </div>
 
 {% stylesheet %}
   .faq-section { width: 100%; min-width: 0; }
-  .faq-section .section-spacing { background: var(--faq-section-background, var(--background-color)); }
+  .faq-section { background: var(--faq-section-background, var(--background-color)); }
   .faq-section .container.full-width--no-padding { padding-inline: 0; }
   .faq-section__container, .faq-section__content { min-width: 0; }
-  .faq-section__content {
+  .section-faq-accordion .faq-accordion { text-align: left; }
+  .section-faq-accordion .faq-section__content {
+    width: 100%;
+    max-width: var(--faq-section-max-width, none);
+    margin-inline: auto;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
@@ -77,7 +86,11 @@
   .faq-section--horizontal.faq-section--align-space-between .faq-section__content { justify-content: space-between; }
   .faq-section__content > * { flex: 1 1 0; min-width: 0; width: auto; }
   .faq-section--vertical .faq-section__content > * { flex: 0 1 auto; width: 100%; }
+  @media (min-width: 768px) and (max-width: 1149.98px) {
+    .section-faq-accordion .faq-section__content { padding-top: calc(var(--faq-section-padding-top, 0px) * 0.75); padding-bottom: calc(var(--faq-section-padding-bottom, 0px) * 0.75); }
+  }
   @media (max-width: 767.98px) {
+    .section-faq-accordion .faq-section__content { padding-top: calc(var(--faq-section-padding-top, 0px) * 0.5); padding-bottom: calc(var(--faq-section-padding-bottom, 0px) * 0.5); }
     .faq-section__content { gap: var(--faq-section-gap-mobile, 40px); }
     .faq-section--vertical-mobile .faq-section__content { flex-direction: column; }
     .faq-section--horizontal.faq-section--vertical-mobile .faq-section__content > * { flex: 0 1 auto; width: 100%; }
@@ -101,6 +114,8 @@
   "settings": [
     { "type": "header", "content": "Layout" },
     { "type": "select", "id": "section_width", "label": "t:labels.section_width", "options": [{ "value": "page_width", "label": "t:options.section_width.page_width" }, { "value": "full_width", "label": "t:options.section_width.full_width" }, { "value": "full_width_no_padding", "label": "t:options.section_width.full_width_no_padding" }], "default": "page_width" },
+    { "type": "checkbox", "id": "limit_width", "label": "t:labels.limit_width", "default": false },
+    { "type": "range", "id": "max_width", "label": "t:labels.max_width", "min": 320, "max": 1280, "step": 16, "unit": "px", "default": 768, "visible_if": "{{ section.settings.limit_width }}" },
     { "type": "select", "id": "layout", "label": "Layout", "options": [{ "value": "horizontal", "label": "Horizontal" }, { "value": "vertical", "label": "Vertical" }], "default": "horizontal" },
     { "type": "select", "id": "position", "label": "Position", "options": [{ "value": "top", "label": "Top" }, { "value": "center", "label": "Center" }, { "value": "bottom", "label": "Bottom" }], "default": "top", "visible_if": "{{ section.settings.layout == 'horizontal' }}" },
     { "type": "select", "id": "alignment", "label": "Alignment", "options": [{ "value": "left", "label": "Left" }, { "value": "center", "label": "Center" }, { "value": "right", "label": "Right" }], "default": "left", "visible_if": "{{ section.settings.layout == 'vertical' }}" },
@@ -112,10 +127,10 @@
     { "type": "range", "id": "gap_mobile", "label": "Mobile gap", "min": 0, "max": 100, "step": 1, "unit": "px", "default": 40 },
     { "type": "header", "content": "Appearance" },
     { "type": "color_scheme", "id": "color_scheme", "label": "Color scheme", "default": "scheme-1" },
-    { "type": "color", "alpha": true, "id": "background_color", "label": "Background" },
-    { "type": "header", "content": "Padding" },
-    { "type": "range", "id": "padding_top", "label": "Top", "min": 0, "max": 100, "step": 1, "unit": "px", "default": 0 },
-    { "type": "range", "id": "padding_bottom", "label": "Bottom", "min": 0, "max": 100, "step": 1, "unit": "px", "default": 0 }
+    { "type": "color", "alpha": true, "id": "background_color", "label": "Background color" },
+    { "type": "header", "content": "Section padding" },
+    { "type": "range", "id": "padding_top", "label": "Top padding", "min": 0, "max": 100, "step": 1, "unit": "px", "default": 0 },
+    { "type": "range", "id": "padding_bottom", "label": "Bottom padding", "min": 0, "max": 100, "step": 1, "unit": "px", "default": 0 }
   ],
   "presets": [{
     "name": "FAQ accordion",

@@ -1,0 +1,307 @@
+{% capture slides %}{% content_for 'blocks' %}{% endcapture %}
+{% capture pagination %}
+  {% if section.settings.show_pagination %}
+    <div class="swiper-pagination swiper-pagination--below" data-carousel-pagination data-pagination-type="progress_bar" data-pagination-visible-desktop="true" data-pagination-visible-mobile="true"></div>
+  {% endif %}
+{% endcapture %}
+{% assign carousel_id = 'TestimonialProducts-' | append: section.id %}
+<div class="section-spacing testimonial-products color-scheme section-color-scope {{ section.settings.color_scheme }}" style="--testimonial-padding-top: {{ section.settings.padding_top }}px; --testimonial-padding-bottom: {{ section.settings.padding_bottom }}px; --testimonial-header-gap: {{ section.settings.header_gap }}px; --testimonial-header-gap-mobile: {{ section.settings.header_gap_mobile }}px;{% if section.settings.customize_mobile_padding %} --testimonial-padding-top-mobile: {{ section.settings.padding_top_mobile }}px; --testimonial-padding-bottom-mobile: {{ section.settings.padding_bottom_mobile }}px;{% endif %}">
+  <div class="container {% if section.settings.section_width == 'full_width' %}full-width{% else %}page-width{% endif %} testimonial-products__content">
+    <div class="testimonial-products__header align-content">{% content_for 'block', type: 'header', id: 'header' %}</div>
+    <div class="testimonial-products__carousel" data-carousel-block data-swiper-columns-desktop="{{ section.settings.columns_desktop }}" data-swiper-columns-tablet="{{ section.settings.columns_tablet }}" data-swiper-columns-mobile="{{ section.settings.columns_mobile }}" data-swiper-gap-desktop="{{ section.settings.gap }}" data-swiper-gap-mobile="{{ section.settings.gap }}" data-swiper-pagination-type="progress_bar" data-swiper-pagination-desktop="{{ section.settings.show_pagination }}" data-swiper-pagination-mobile="{{ section.settings.show_pagination }}" data-carousel-loop="false">
+      {% render 'swiper-carousel', id: carousel_id, content: slides, pagination: pagination, aria_label: section.settings.accessible_label %}
+      {% render 'swiper-navigation', show: section.settings.show_navigation, centered: false, style: 'outline', icon: 'chevron', behavior: 'always', wrapper_class: 'testimonial-products__navigation', wrapper_attributes: 'data-carousel-navigation', previous_attribute: 'data-carousel-previous', next_attribute: 'data-carousel-next' %}
+    </div>
+  </div>
+</div>
+<script data-theme-module="{{ 'carousel-block.js' | asset_url }}"></script>
+{% stylesheet %}
+.testimonial-products { padding-top: var(--testimonial-padding-top, 80px); padding-bottom: var(--testimonial-padding-bottom, 80px); }
+.testimonial-products__content { display: flex; flex-direction: column; gap: var(--testimonial-header-gap, 40px); }
+.testimonial-products__header { --flex-align: center; --flex-align-mobile: center; }
+.testimonial-products__header .block-header { max-width: 768px; }
+.testimonial-products__carousel { position: relative; min-width: 0; --swiper-pagination-spacing: 56px; --swiper-pagination-spacing-mobile: 32px; --swiper-pagination-width: 250px; }
+.testimonial-products__carousel .swiper-wrapper { align-items: flex-start; }
+.testimonial-products__carousel .swiper-pagination { margin-inline: 0; }
+.testimonial-products__navigation { display: flex; justify-content: flex-end; gap: 8px; position: absolute; right: 0; bottom: 0; }
+.testimonial-products__carousel.carousel-block--locked .testimonial-products__navigation { display: none; }
+@media (min-width: 768px) {
+ .testimonial-products__carousel:has(.testimonial-products__navigation) { padding-bottom: 24px; }
+ .testimonial-products__carousel:has(.testimonial-products__navigation):not(:has(.swiper-pagination)) { padding-bottom: 80px; }
+ .testimonial-products__carousel.carousel-block--locked { padding-bottom: 0; }
+ .testimonial-products__navigation button { width: 48px; height: 48px; }
+}
+@media (min-width: 768px) and (max-width: 1149.98px) { .testimonial-products__header .block-header { max-width: 576px; } }
+@media (max-width: 767.98px) {
+ .testimonial-products { padding-top: var(--testimonial-padding-top-mobile, var(--testimonial-padding-top, 80px)); padding-bottom: var(--testimonial-padding-bottom-mobile, var(--testimonial-padding-bottom, 80px)); }
+ .testimonial-products__content { gap: var(--testimonial-header-gap-mobile, 36px); }
+ .testimonial-products__header .block-header { max-width: 448px; }
+ .testimonial-products__navigation { display: none; }
+ .testimonial-products__carousel { --swiper-pagination-width: 100%; }
+}
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "Testimonials: Products",
+  "class": "section-testimonial-products",
+  "enabled_on": {
+    "templates": [
+      "*"
+    ]
+  },
+  "blocks": [
+    {
+      "type": "_testimonial-product-card"
+    }
+  ],
+  "max_blocks": 12,
+  "settings": [
+    {
+      "type": "header",
+      "content": "t:general.layout"
+    },
+    {
+      "type": "select",
+      "id": "section_width",
+      "label": "t:labels.section_width",
+      "options": [
+        {
+          "value": "page_width",
+          "label": "t:options.section_width.page_width"
+        },
+        {
+          "value": "full_width",
+          "label": "t:options.section_width.full_width"
+        }
+      ],
+      "default": "page_width"
+    },
+    {
+      "type": "text",
+      "id": "accessible_label",
+      "label": "Carousel label",
+      "default": "Customer testimonials"
+    },
+    {
+      "type": "select",
+      "id": "columns_desktop",
+      "label": "Desktop items per view",
+      "options": [
+        {
+          "value": "1",
+          "label": "1"
+        },
+        {
+          "value": "2",
+          "label": "2"
+        },
+        {
+          "value": "3",
+          "label": "3"
+        },
+        {
+          "value": "4",
+          "label": "4"
+        },
+        {
+          "value": "5",
+          "label": "5"
+        },
+        {
+          "value": "6",
+          "label": "6"
+        }
+      ],
+      "default": "3"
+    },
+    {
+      "type": "select",
+      "id": "columns_tablet",
+      "label": "Tablet items per view",
+      "options": [
+        {
+          "value": "2",
+          "label": "2"
+        },
+        {
+          "value": "3",
+          "label": "3"
+        },
+        {
+          "value": "4",
+          "label": "4"
+        }
+      ],
+      "default": "2"
+    },
+    {
+      "type": "select",
+      "id": "columns_mobile",
+      "label": "Mobile items per view",
+      "options": [
+        {
+          "value": "1",
+          "label": "1"
+        },
+        {
+          "value": "2",
+          "label": "2"
+        }
+      ],
+      "default": "1"
+    },
+    {
+      "type": "range",
+      "id": "gap",
+      "label": "Card gap",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "default": 20
+    },
+    {
+      "type": "range",
+      "id": "header_gap",
+      "label": "Desktop header gap",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "header_gap_mobile",
+      "label": "Mobile header gap",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "default": 36
+    },
+    {
+      "type": "checkbox",
+      "id": "show_navigation",
+      "label": "Show navigation on desktop",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "show_pagination",
+      "label": "Show pagination",
+      "default": true
+    },
+    {
+      "type": "header",
+      "content": "t:general.appearance"
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "t:labels.color_scheme",
+      "default": "scheme-2"
+    },
+    {
+      "type": "header",
+      "content": "Section padding"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "label": "Top padding",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "default": 80
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "label": "Bottom padding",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "default": 80
+    },
+    {
+      "type": "checkbox",
+      "id": "customize_mobile_padding",
+      "label": "t:labels.customize_mobile_padding",
+      "default": false
+    },
+    {
+      "type": "range",
+      "id": "padding_top_mobile",
+      "label": "Mobile top padding",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "default": 64,
+      "visible_if": "{{ section.settings.customize_mobile_padding }}"
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_mobile",
+      "label": "Mobile bottom padding",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "default": 64,
+      "visible_if": "{{ section.settings.customize_mobile_padding }}"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Testimonials: Products",
+      "category": "Trust & social proof",
+      "blocks": [
+        {
+          "type": "header",
+          "id": "header",
+          "static": true,
+          "settings": {
+            "width": "fill",
+            "inherit_alignment": true,
+            "gap_desktop": 16,
+            "gap_mobile": 16
+          },
+          "blocks": [
+            {
+              "type": "heading",
+              "settings": {
+                "text": "<p>LOVED BY OUR COMMUNITY</p>",
+                "heading_size": "xl",
+                "html_tag": "h2",
+                "width": "fill"
+              }
+            },
+            {
+              "type": "text",
+              "settings": {
+                "text": "<p>See what our customers are saying about our products</p>",
+                "text_size": "md",
+                "width": "fill"
+              }
+            }
+          ]
+        },
+        {
+          "type": "_testimonial-product-card"
+        },
+        {
+          "type": "_testimonial-product-card"
+        },
+        {
+          "type": "_testimonial-product-card"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

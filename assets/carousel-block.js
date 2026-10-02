@@ -556,6 +556,8 @@ const initialize = (root) => {
   const manualLoopRequested = root.dataset.carouselManualLoop === 'true';
   const showNextSlidePreview = viewport.dataset.swiperNextSlidePreview === 'true';
   const desktopColumns = number(root.dataset.swiperColumnsDesktop, 4);
+  const hasTabletColumns = root.dataset.swiperColumnsTablet !== undefined;
+  const tabletColumns = number(root.dataset.swiperColumnsTablet, desktopColumns);
   const slideCount = Array.from(wrapper.children).filter((slide) => slide.classList.contains('swiper-slide')).length;
   const previewEnabled = showNextSlidePreview && slideCount > desktopColumns;
   viewport.dataset.swiperNextSlidePreview = String(previewEnabled);
@@ -577,7 +579,11 @@ const initialize = (root) => {
     slidesPerView: number(root.dataset.swiperColumnsMobile, 1),
     spaceBetween: number(root.dataset.swiperGapMobile, 12),
     breakpoints: {
-      [desktopBreakpoint]: {
+      ...(hasTabletColumns ? { 768: {
+        slidesPerView: tabletColumns,
+        spaceBetween: number(root.dataset.swiperGapDesktop, 16)
+      } } : {}),
+      [hasTabletColumns ? 1150 : desktopBreakpoint]: {
         slidesPerView: desktopColumns,
         spaceBetween: number(root.dataset.swiperGapDesktop, 16),
         ...(useCenteredSlidePreview ? { centeredSlides: true, spaceBetween: 24 } : {})

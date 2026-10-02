@@ -1,0 +1,123 @@
+{% doc %}
+  Private carousel card for editable testimonial content and compact products.
+  Child Groups own quote/author composition; this card owns its local surface.
+{% enddoc %}
+<article class="testimonial-product-card swiper-slide color-scheme {{ block.settings.color_scheme }}" style="--review-padding: {{ block.settings.padding }}px; --review-gap: {{ block.settings.gap }}px;" {{ block.shopify_attributes }}>
+  {% content_for 'blocks' %}
+</article>
+{% stylesheet %}
+.testimonial-product-card { display: flex; flex-direction: column; align-items: stretch; gap: var(--review-gap, 20px); padding: var(--review-padding, 24px); min-width: 0; height: auto; border-radius: 8px; background: var(--background-color); --flex-align: start; --flex-align-mobile: start; --text-align: left; }
+.testimonial-product-card > * { min-width: 0; }
+.testimonial-product-card .text-block { font-weight: 500; }
+.testimonial-product-card .icon-block { color: #ff9623; }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "Testimonial card",
+  "tag": null,
+  "blocks": [
+    {
+      "type": "group"
+    },
+    {
+      "type": "icon"
+    },
+    {
+      "type": "text"
+    },
+    {
+      "type": "divider"
+    },
+    {
+      "type": "_product-card-compact"
+    }
+  ],
+  "settings": [
+    {
+      "type": "header",
+      "content": "t:general.appearance"
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "t:labels.color_scheme",
+      "default": "scheme-1"
+    },
+    {
+      "type": "range",
+      "id": "padding",
+      "label": "Card padding",
+      "min": 0,
+      "max": 48,
+      "step": 1,
+      "unit": "px",
+      "default": 24
+    },
+    {
+      "type": "range",
+      "id": "gap",
+      "label": "t:labels.content_gap",
+      "min": 0,
+      "max": 48,
+      "step": 1,
+      "unit": "px",
+      "default": 20
+    }
+  ],
+  "presets": [
+    {
+      "name": "Testimonial card",
+      "blocks": [
+        {
+          "type": "group",
+          "settings": {
+            "width": "fill",
+            "width_mobile": "fill",
+            "height": "fit",
+            "alignment": "left",
+            "alignment_mobile": "left",
+            "gap_desktop": 16,
+            "gap_mobile": 16
+          },
+          "blocks": [
+            {
+              "type": "icon",
+              "settings": {
+                "icon": "five-stars",
+                "icon_width": 84
+              }
+            },
+            {
+              "type": "text",
+              "settings": {
+                "text": "<p>Share a customer testimonial.</p>",
+                "text_size": "lg",
+                "width": "fill"
+              }
+            },
+            {
+              "type": "text",
+              "settings": {
+                "text": "<p>Customer name</p>",
+                "text_size": "md",
+                "width": "fill"
+              }
+            }
+          ]
+        },
+        {
+          "type": "divider",
+          "settings": {
+            "desktop_spacing": 0,
+            "mobile_spacing": 0
+          }
+        },
+        {
+          "type": "_product-card-compact"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
