@@ -659,3 +659,21 @@ html.product-media-lightbox-open {
     height: 5rem;
   }
 }
+
+/* Overlay thumbnails retain the normal bottom gallery at tablet/mobile sizes. */
+@media (min-width: 1150px) {
+  .product-media-gallery--overlay-thumbnails .product-media-gallery__layout {
+    display: block;
+  }
+
+  .product-media-gallery--overlay-thumbnails .media-thumbnails__carousel {
+    position: absolute;
+    z-index: 2;
+    inset: auto auto 20px 28px;
+    width: min(calc(100% - 56px), calc(var(--product-media-thumbnail-width) * 6 + var(--product-media-thumbnail-gap) * 5 + 8px));
+    padding: 4px;
+    border-radius: var(--radius-slight);
+    background: var(--color-background, #fff);
+    box-shadow: var(--shadow-extra-small);
+  }
+}

@@ -1002,6 +1002,7 @@
     "product_media_layout": {
       "left_thumbnails": "Thumbnail rail — left",
       "bottom_thumbnails": "Thumbnail rail — below",
+      "carousel_thumbnails": "Carousel with overlay thumbnails",
       "grid": "Gallery grid",
       "stacked": "Single-column stack",
       "stacked_thumbnails": "Stack + thumbnail rail",

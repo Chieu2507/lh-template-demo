@@ -19,6 +19,12 @@
     assign media_desktop_layout = 'left_thumbnails'
   endunless
 
+  assign media_overlay_thumbnails = false
+  if block.settings.desktop_layout == 'carousel_thumbnails'
+    assign media_overlay_thumbnails = true
+    assign media_desktop_layout = 'bottom_thumbnails'
+  endif
+
   assign media_mobile_layout = block.settings.mobile_layout | default: 'slider'
   unless media_mobile_layout == 'thumbnails' or media_mobile_layout == 'slider'
     assign media_mobile_layout = 'slider'
@@ -141,10 +147,11 @@
 
 <product-media-gallery
   id="{{ gallery_id }}"
-  class="media-gallery product-media-gallery motion-block product-media-gallery--desktop-{{ media_desktop_layout }} product-media-gallery--mobile-{{ media_mobile_layout }} product-media-gallery--radius-{{ media_container_radius }}{% if media_full_width %} product-media-gallery--mobile-full-width{% endif %}"
+  class="media-gallery product-media-gallery motion-block product-media-gallery--desktop-{{ media_desktop_layout }} product-media-gallery--mobile-{{ media_mobile_layout }} product-media-gallery--radius-{{ media_container_radius }}{% if media_overlay_thumbnails %} product-media-gallery--overlay-thumbnails{% endif %}{% if media_full_width %} product-media-gallery--mobile-full-width{% endif %}"
   data-product-media-gallery
   data-desktop-layout="{{ media_desktop_layout }}"
   data-mobile-layout="{{ media_mobile_layout }}"
+  data-overlay-thumbnails="{{ media_overlay_thumbnails }}"
   data-mobile-show-pagination="{{ media_mobile_show_pagination }}"
   data-zoom="{{ media_zoom }}"
   data-block-animations="{{ media_block_motion_enabled }}"
@@ -243,6 +250,33 @@
     </div>
 
     {% render 'product-media-lightbox', product: media_product, id: lightbox_swiper_id, controls_color_scheme: media_controls_color_scheme %}
+  {% elsif media_overlay_thumbnails %}
+    <div class="media-gallery__layout product-media-gallery__layout" data-product-media-empty>
+      <div class="media-gallery__carousel swiper-carousel__container">
+        {% capture placeholder_main %}
+          {% for index in (1..6) %}
+            {% assign placeholder_name = 'product-' | append: index %}
+            <div class="swiper-slide product-media-gallery__slide" data-product-media data-media-id="placeholder-{{ index }}">
+              <div class="product-media placeholder-image">
+                {{ placeholder_name | placeholder_svg_tag: 'product-media-gallery__placeholder' }}
+              </div>
+            </div>
+          {% endfor %}
+        {% endcapture %}
+        {% render 'swiper-carousel', id: main_swiper_id, content: placeholder_main, root_class: 'media-gallery__main product-media-gallery__main', root_attributes: 'data-product-main-swiper', aria_label: media_main_aria_label %}
+      </div>
+      <div class="media-thumbnails__carousel">
+        {% capture placeholder_thumbnails %}
+          {% for index in (1..6) %}
+            {% assign placeholder_name = 'product-' | append: index %}
+            <button class="swiper-slide product-media-gallery__thumbnail placeholder-image" type="button" data-product-media-thumbnail data-media-id="placeholder-{{ index }}" aria-label="{{ 'products.view_media' | t: index: index | escape }}">
+              {{ placeholder_name | placeholder_svg_tag: 'product-media-gallery__thumbnail-placeholder' }}
+            </button>
+          {% endfor %}
+        {% endcapture %}
+        {% render 'swiper-carousel', id: thumbnail_swiper_id, content: placeholder_thumbnails, root_class: 'media-gallery__thumbnails product-media-gallery__thumbnails', root_attributes: 'data-product-thumbnail-swiper', aria_label: media_thumbnails_aria_label %}
+      </div>
+    </div>
   {% else %}
     <div class="product-media-gallery__empty placeholder-image" data-product-media-empty>
       {{ 'product-1' | placeholder_svg_tag: 'product-media-gallery__placeholder' }}
@@ -270,6 +304,7 @@
       "options": [
         { "value": "left_thumbnails", "label": "t:options.product_media_layout.left_thumbnails" },
         { "value": "bottom_thumbnails", "label": "t:options.product_media_layout.bottom_thumbnails" },
+        { "value": "carousel_thumbnails", "label": "t:options.product_media_layout.carousel_thumbnails" },
         { "value": "grid", "label": "t:options.product_media_layout.grid" },
         { "value": "stacked", "label": "t:options.product_media_layout.stacked" },
         { "value": "stacked_thumbnails", "label": "t:options.product_media_layout.stacked_thumbnails" },

@@ -16,6 +16,7 @@ class ProductMediaGallery extends HTMLElement {
     this.abortController = new AbortController();
     this.signal = this.abortController.signal;
     this.mobileQuery = window.matchMedia('(max-width: 767.98px)');
+    this.overlayThumbnailQuery = window.matchMedia('(min-width: 1150px)');
     this.desktopLeftThumbnailQuery = window.matchMedia('(min-width: 992px)');
     this.productInformation = this.closest('[data-product-information]');
     const variantPicker = this.productInformation?.querySelector('[data-product-variant-picker]');
@@ -52,6 +53,7 @@ class ProductMediaGallery extends HTMLElement {
     this.addEventListener('dragstart', this.handleLightboxDragStart, { signal: this.signal, capture: true });
     this.mobileQuery.addEventListener('change', this.handleBreakpoint, { signal: this.signal });
     this.desktopLeftThumbnailQuery.addEventListener('change', this.handleBreakpoint, { signal: this.signal });
+    this.overlayThumbnailQuery.addEventListener('change', this.handleBreakpoint, { signal: this.signal });
     window.addEventListener('resize', () => {
       if (!this.lightbox?.open) return;
       this.resetLightboxZoom();
@@ -157,6 +159,7 @@ class ProductMediaGallery extends HTMLElement {
   get galleryMode() {
     if (this.mobileQuery.matches) return 'mobile';
     if (this.dataset.overlayPresentation === 'quick-add-strip') return 'quick-add-strip';
+    if (this.dataset.overlayThumbnails === 'true' && this.overlayThumbnailQuery.matches) return 'desktop-carousel-overlay';
     if (!['left_thumbnails', 'bottom_thumbnails'].includes(this.dataset.desktopLayout)) return 'desktop-static';
 
     const useLeftThumbnails = this.dataset.desktopLayout === 'left_thumbnails'
@@ -287,7 +290,7 @@ class ProductMediaGallery extends HTMLElement {
     const isQuickAddStrip = mode === 'quick-add-strip';
     const showThumbnails = (!isMobile && !isQuickAddStrip) || this.dataset.mobileLayout === 'thumbnails';
     const showPagination = isMobile && this.dataset.mobileLayout === 'slider' && this.dataset.mobileShowPagination === 'true';
-    const slidesPerView = isQuickAddStrip ? this.quickAddStripSlidesPerView : 1;
+    const slidesPerView = isQuickAddStrip ? this.quickAddStripSlidesPerView : (mode === 'desktop-carousel-overlay' ? 1.45 : 1);
     this.syncPaginationVisibility(showPagination);
     this.syncQuickAddStripSlidesPerView();
     const gapProperty = isMobile ? '--product-media-gap-mobile' : '--product-media-gap';
