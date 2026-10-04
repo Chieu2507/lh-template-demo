@@ -10,7 +10,7 @@ class MultipleImagesText extends HTMLElement {
     this.classList.add('is-ready');
     this.show(0);
     this.resizeObserver = new ResizeObserver(() => {
-      const height = Math.max(0, ...this.images.map(image => image?.getBoundingClientRect().height || 0));
+      const height = Math.max(0, ...this.images.map(image => image?.offsetHeight || 0));
       this.style.setProperty('--multi-media-height', `${height + 32}px`);
     });
     this.images.forEach(image => { if (image) this.resizeObserver.observe(image); });
