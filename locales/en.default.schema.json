@@ -9,6 +9,8 @@
  */
 {
   "general": {
+    "multiple_images_text": "Multiple images with text",
+    "multiple_images_text_item": "Image with text item",
     "404": "Not found",
     "article": "Article",
     "appearance": "Appearance",
@@ -237,6 +239,7 @@
     "accordion_options": "Accordion options"
   },
   "labels": {
+    "multiple_images_navigation": "Show navigation",
     "outline_text": "Outline text",
     "font_weight": "Font weight",
     "badge_new_background_color": "New badge background",
