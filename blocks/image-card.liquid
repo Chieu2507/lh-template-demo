@@ -336,8 +336,8 @@
   }
 
   @media (hover:hover) and (prefers-reduced-motion:no-preference) {
-    .image-card--zoom .background-media {transition:transform 400ms ease;}
-    .image-card--zoom:hover .background-media {transform:scale(1.05);}
+    .image-card--zoom .background-media {transition:transform var(--motion-duration-slow,500ms) var(--motion-ease-standard,ease);}
+    .image-card--zoom:hover .background-media {transform:scale(var(--motion-image-zoom,1));}
   }
   .image-card__media {
     z-index: 0;

@@ -257,6 +257,57 @@
     },
     {
       "type": "header",
+      "content": "Animation"
+    },
+    {
+      "type": "select",
+      "id": "animation_type",
+      "label": "Type",
+      "options": [
+        {
+          "value": "none",
+          "label": "None"
+        },
+        {
+          "value": "fade",
+          "label": "Fade"
+        },
+        {
+          "value": "scale",
+          "label": "Scale"
+        },
+        {
+          "value": "slide-left",
+          "label": "Slide from left"
+        },
+        {
+          "value": "slide-right",
+          "label": "Slide from right"
+        },
+        {
+          "value": "slide-bottom",
+          "label": "Slide from bottom"
+        },
+        {
+          "value": "rotate-words",
+          "label": "Rotate words"
+        }
+      ],
+      "default": "none"
+    },
+    {
+      "type": "range",
+      "id": "animation_delay",
+      "label": "Delay",
+      "min": 0,
+      "max": 1000,
+      "step": 50,
+      "unit": "ms",
+      "default": 0,
+      "visible_if": "{{ block.settings.animation_type != 'none' }}"
+    },
+    {
+      "type": "header",
       "content": "t:general.padding"
     },
     {
@@ -348,57 +399,6 @@
       "unit": "px",
       "default": 0,
       "visible_if": "{{ block.settings.customize_mobile_padding }}"
-    },
-    {
-      "type": "header",
-      "content": "Animation"
-    },
-    {
-      "type": "select",
-      "id": "animation_type",
-      "label": "Type",
-      "options": [
-        {
-          "value": "none",
-          "label": "None"
-        },
-        {
-          "value": "fade",
-          "label": "Fade"
-        },
-        {
-          "value": "scale",
-          "label": "Scale"
-        },
-        {
-          "value": "slide-left",
-          "label": "Slide from left"
-        },
-        {
-          "value": "slide-right",
-          "label": "Slide from right"
-        },
-        {
-          "value": "slide-bottom",
-          "label": "Slide from bottom"
-        },
-        {
-          "value": "rotate-words",
-          "label": "Rotate words"
-        }
-      ],
-      "default": "none"
-    },
-    {
-      "type": "range",
-      "id": "animation_delay",
-      "label": "Delay",
-      "min": 0,
-      "max": 1000,
-      "step": 50,
-      "unit": "ms",
-      "default": 0,
-      "visible_if": "{{ block.settings.animation_type != 'none' }}"
     }
   ],
   "presets": [

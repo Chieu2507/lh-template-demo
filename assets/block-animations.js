@@ -26,7 +26,9 @@
     element.classList.remove('reveal-pending');
     if (!enabled()) return;
     const delay = Math.min(1500, Math.max(0, Number(element.dataset.animationDelay) || 0));
-    const options = {duration:600, delay, easing:'cubic-bezier(.22,1,.36,1)', fill:'backwards'};
+    const tokens = getComputedStyle(element);
+    const duration = parseFloat(tokens.getPropertyValue('--motion-duration-slow')) || 600;
+    const options = {duration, delay, easing:tokens.getPropertyValue('--motion-ease-standard').trim() || 'cubic-bezier(.22,1,.36,1)', fill:'backwards'};
     const type = element.dataset.blockAnimation || 'slide-bottom';
     const from = {opacity:0};
     if (type === 'scale') from.transform = 'scale(.94)';
