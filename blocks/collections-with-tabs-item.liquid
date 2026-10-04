@@ -17,9 +17,9 @@
   endif
 %}
 {% if section.settings.layout == 'centered_image_list' %}
-  <article class="swiper-slide collections-image-list__item" data-collections-image-list-item data-collections-with-tabs-id="{{ item_id }}" {{ block.shopify_attributes }}>
+  <article class="swiper-slide collections-image-list__item" data-collections-image-list-item data-collections-with-tabs-id="{{ item_id }}">
     {% render 'collections-image-list-media', image: item_image, position: 'primary' %}
-    <a class="collections-image-list__title" {% if item_collection != blank %}href="{{ item_collection.url }}"{% else %}role="link" aria-disabled="true" tabindex="0"{% endif %} data-collections-image-list-link>
+    <a class="collections-image-list__title" {% if item_collection != blank %}href="{{ item_collection.url }}"{% else %}role="link" aria-disabled="true" tabindex="0"{% endif %} data-collections-image-list-link {{ block.shopify_attributes }}>
       <{{ item_title_tag }} class="heading-text heading-{{ item_title_size }}">{{ item_title | escape }}</{{ item_title_tag }}>
     </a>
     {% render 'collections-image-list-media', image: item_secondary_image, position: 'secondary' %}

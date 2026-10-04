@@ -169,7 +169,7 @@ document.addEventListener('shopify:section:unload', (event) => destroyRoot(event
 document.addEventListener('shopify:block:select', (event) => {
   const block = event.target.closest?.('[data-shopify-editor-block]');
   const section = block?.closest('[data-collections-with-tabs]');
-  const tab = block?.querySelector('[data-collections-with-tabs-tab]') || (block?.matches('[data-collections-image-list-item]') ? block : null);
+  const tab = block?.querySelector('[data-collections-with-tabs-tab]') || block?.closest('[data-collections-image-list-item]');
   if (!section || !tab) return;
   section.dispatchEvent(new CustomEvent('collections-with-tabs:activate', { detail: { id: tab.dataset.collectionsWithTabsId } }));
 });
