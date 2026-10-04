@@ -2258,6 +2258,7 @@
           "static": true,
           "settings": {
             "width": "fill",
+            "inherit_alignment": true,
             "gap_desktop": 12,
             "gap_mobile": 12
           },
@@ -2265,7 +2266,7 @@
             "eyebrow": {
               "type": "eyebrow",
               "settings": {
-                "text": "<p>Collections</p>",
+                "text": "<p>COLLECTIONS</p>",
                 "show_background": false
               }
             }
