@@ -1269,7 +1269,7 @@ input[type='submit'].btn {
   font-size: var(--button-font-size);
   font-weight: var(--button-font-weight);
   letter-spacing: var(--button-letter-spacing);
-  line-height: 1;
+  line-height: var(--font-body-line-height, 1.5);
   text-align: center;
   text-decoration: none;
   text-transform: var(--button-text-case);
@@ -2653,7 +2653,7 @@ legend {
   font-size: var(--badge-font-size);
   font-weight: var(--badge-font-weight);
   letter-spacing: var(--badge-letter-spacing);
-  line-height: 1;
+  line-height: var(--font-body-line-height, 1.5);
   overflow-wrap: anywhere;
 }
 
