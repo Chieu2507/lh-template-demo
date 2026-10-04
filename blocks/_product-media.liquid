@@ -69,6 +69,9 @@
     assign media_gap_mobile = 10
   endif
   assign media_thumbnail_gap = media_gap | plus: 4
+  if media_overlay_thumbnails
+    assign media_gap = 10
+  endif
   assign media_thumbnail_gap_mobile = media_gap_mobile | plus: 2
   assign media_thumbnail_width = block.settings.bottom_thumbnail_width | default: 72 | plus: 0
   if media_thumbnail_width < 48 or media_thumbnail_width > 200

@@ -2685,7 +2685,9 @@
             "divider": {
               "type": "divider",
               "settings": {
-                "thickness": "thin"
+                "thickness": "thin",
+                "desktop_spacing": 0,
+                "mobile_spacing": 0
               }
             },
             "inventory": {
@@ -2708,7 +2710,8 @@
       "name": "Featured product",
       "custom_css": [
         "@media (min-width:768px) and (max-width:1149.98px) {.featured-product {padding-block:80px}}",
-        "@media (min-width:768px) and (max-width:1149.98px) {.product-information__layout {grid-template-columns:repeat(2,minmax(0,1fr));gap:40px}}"
+        "@media (min-width:768px) and (max-width:1149.98px) {.product-information__layout {grid-template-columns:repeat(2,minmax(0,1fr));gap:40px}}",
+        ".product-price .price {--price-font-size:18px}"
       ]
     }
   },
