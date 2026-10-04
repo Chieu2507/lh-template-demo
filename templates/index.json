@@ -2789,7 +2789,7 @@
                       "type": "text",
                       "settings": {
                         "text": "<p>Engineered for athletes who demand more from every stride. STRIDEO merges advanced geometry, responsive cushioning, and aerodynamic design to deliver effortless speed and all-day stability from track intensity to urban movement.</p>",
-                        "text_size": "lg",
+                        "text_size": "md",
                         "width": "fill",
                         "width_mobile": "fill"
                       }
@@ -2882,7 +2882,7 @@
                       "type": "text",
                       "settings": {
                         "text": "<p>Find your rhythm with lightweight essentials designed for steady support, easy movement, and comfort from your first step to your last.</p>",
-                        "text_size": "lg",
+                        "text_size": "md",
                         "width": "fill",
                         "width_mobile": "fill"
                       }
@@ -2975,7 +2975,7 @@
                       "type": "text",
                       "settings": {
                         "text": "<p>From morning runs to city routes, discover versatile performance styles that move with you throughout the day.</p>",
-                        "text_size": "lg",
+                        "text_size": "md",
                         "width": "fill",
                         "width_mobile": "fill"
                       }
