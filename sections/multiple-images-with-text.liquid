@@ -8,7 +8,7 @@
 {% style %}
   #shopify-section-{{ section.id }} { background: {{ section.settings.background_color | default: section.settings.color_scheme.settings.background }}; }
 {% endstyle %}
-<div class="section-spacing multiple-images-text color-scheme section-color-scope {{ scheme }}" style="--multi-gap:{{ section.settings.gap_desktop }}px;--multi-gap-mobile:{{ section.settings.gap_mobile }}px;--multi-padding-top:{{ section.settings.padding_top }}px;--multi-padding-bottom:{{ section.settings.padding_bottom }}px;{% if section.settings.customize_tablet_padding %}--multi-padding-top-tablet:{{ section.settings.padding_top_tablet }}px;--multi-padding-bottom-tablet:{{ section.settings.padding_bottom_tablet }}px;{% endif %}{% if section.settings.customize_mobile_padding %}--multi-padding-top-mobile:{{ section.settings.padding_top_mobile }}px;--multi-padding-bottom-mobile:{{ section.settings.padding_bottom_mobile }}px;{% endif %}{% if section.settings.background_color != blank %}background-color:{{ section.settings.background_color }};{% endif %}">
+<div class="section-spacing multiple-images-text color-scheme section-color-scope {{ scheme }}" style="--multi-gap:{{ section.settings.gap_desktop }}px;--multi-gap-mobile:{{ section.settings.gap_mobile }}px;--multi-padding-top:{{ section.settings.padding_top }}px;--multi-padding-bottom:{{ section.settings.padding_bottom }}px;{% if section.settings.customize_mobile_padding %}--multi-padding-top-mobile:{{ section.settings.padding_top_mobile }}px;--multi-padding-bottom-mobile:{{ section.settings.padding_bottom_mobile }}px;{% endif %}{% if section.settings.background_color != blank %}background-color:{{ section.settings.background_color }};{% endif %}">
   <multiple-images-text class="container {{ container_width }} multiple-images-text__layout" role="region" aria-label="{{ 'accessibility.multiple_images_text' | t | escape }}">
     <div class="multiple-images-text__images" data-multi-images></div>
     <div class="multiple-images-text__items" data-multi-items>{% content_for 'blocks' %}</div>
@@ -46,7 +46,7 @@
     .multiple-images-text__layout.is-ready:has([data-multi-navigation]:not([hidden])) .multiple-images-text__item[data-content-position="end"] {margin-bottom:84px;}
   }
   @media (min-width:768px) and (max-width:1149.98px) {
-    .multiple-images-text {padding-block:var(--multi-padding-top-tablet,calc(var(--multi-padding-top) * .75)) var(--multi-padding-bottom-tablet,calc(var(--multi-padding-bottom) * .75));}
+    .multiple-images-text {padding-block:calc(var(--multi-padding-top) * .75) calc(var(--multi-padding-bottom) * .75);}
     .multiple-images-text__layout {column-gap:40px;row-gap:20px;}
     .multiple-images-text__layout.is-ready .multiple-images-text__images {min-height:340px;}
     .multiple-images-text__layout.is-ready .multiple-images-text__items {grid-row:1 / 3;align-self:start;padding:0;}
@@ -173,34 +173,6 @@
       "step": 4,
       "unit": "px",
       "default": 96
-    },
-    {
-      "type": "checkbox",
-      "id": "customize_tablet_padding",
-      "label": "Customize padding for tablet",
-      "default": false
-    },
-    {
-      "type": "range",
-      "id": "padding_top_tablet",
-      "label": "Tablet top padding",
-      "min": 0,
-      "max": 100,
-      "step": 1,
-      "unit": "px",
-      "default": 0,
-      "visible_if": "{{ section.settings.customize_tablet_padding }}"
-    },
-    {
-      "type": "range",
-      "id": "padding_bottom_tablet",
-      "label": "Tablet bottom padding",
-      "min": 0,
-      "max": 100,
-      "step": 1,
-      "unit": "px",
-      "default": 80,
-      "visible_if": "{{ section.settings.customize_tablet_padding }}"
     },
     {
       "type": "checkbox",

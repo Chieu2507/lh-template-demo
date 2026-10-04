@@ -2725,9 +2725,6 @@
         "color_scheme": "scheme-1",
         "padding_top": 112,
         "padding_bottom": 112,
-        "customize_tablet_padding": true,
-        "padding_top_tablet": 96,
-        "padding_bottom_tablet": 96,
         "customize_mobile_padding": true,
         "padding_top_mobile": 80,
         "padding_bottom_mobile": 80
