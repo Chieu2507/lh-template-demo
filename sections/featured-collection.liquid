@@ -306,7 +306,15 @@
   @media (max-width: 767.98px) {
     .featured-collection__container[data-hide-view-all-mobile] .featured-collection__actions { display: none; }
   }
-  .featured-collection__container[data-desktop-alignment='left'] .featured-collection__actions { align-self: end; }
+  @media (min-width: 768px) {
+    .featured-collection__container[data-desktop-alignment='left']:not(:has(.product-list__navigation--top)) {
+      grid-template-columns: minmax(0, 1fr) auto;
+      grid-template-areas: 'header actions' 'products products' 'additional-blocks additional-blocks';
+    }
+    .featured-collection__container[data-desktop-alignment='left']:not(:has(.product-list__navigation--top, .featured-collection__additional-blocks)) {
+      grid-template-areas: 'header actions' 'products products';
+    }
+  }
 {% endstylesheet %}
 
 {% javascript %}
