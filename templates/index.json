@@ -2320,22 +2320,68 @@
       ],
       "settings": {
         "section_width": "page_width",
-        "gap_desktop": 112,
-        "gap_mobile": 16,
         "title_size": "heading_1",
         "title_tag": "h2",
+        "image_size": "medium",
+        "gap_desktop": 112,
+        "gap_mobile": 16,
+        "header_gap_desktop": 40,
+        "header_gap_mobile": 36,
         "color_scheme": "scheme-1",
         "padding_top": 40,
         "padding_bottom": 144,
-        "customize_mobile_padding": true,
-        "padding_top_mobile": 20,
-        "padding_bottom_mobile": 112,
-        "image_size": "medium",
-        "header_gap_desktop": 40,
-        "header_gap_mobile": 36,
         "customize_tablet_padding": true,
         "padding_top_tablet": 32,
-        "padding_bottom_tablet": 128
+        "padding_bottom_tablet": 128,
+        "customize_mobile_padding": true,
+        "padding_top_mobile": 20,
+        "padding_bottom_mobile": 112
+      }
+    },
+    "scroll_reading_text": {
+      "type": "scroll-reading-text",
+      "blocks": {
+        "text": {
+          "type": "text",
+          "disabled": true,
+          "static": true,
+          "settings": {
+            "text": ""
+          }
+        },
+        "editorial-text": {
+          "type": "editorial-text",
+          "static": true,
+          "settings": {
+            "text": "<p>True balance begins from the ground up.</p>",
+            "size": "display",
+            "width": "fill",
+            "enable_scroll_reveal": true,
+            "scroll_speed": "medium",
+            "start_opacity": 30
+          }
+        },
+        "button": {
+          "type": "button",
+          "disabled": true,
+          "static": true,
+          "settings": {
+            "button_label": ""
+          }
+        }
+      },
+      "settings": {
+        "section_width": "page_width",
+        "color_scheme": "scheme-3",
+        "padding_top": 80,
+        "padding_right": 0,
+        "padding_bottom": 80,
+        "padding_left": 0,
+        "customize_mobile_padding": true,
+        "padding_top_mobile": 80,
+        "padding_right_mobile": 0,
+        "padding_bottom_mobile": 80,
+        "padding_left_mobile": 0
       }
     }
   },
@@ -2344,6 +2390,7 @@
     "collection_list",
     "featured_collection",
     "collections_image_list",
+    "scroll_reading_text",
     "countdown_timer",
     "scrolling_text",
     "parallax",
