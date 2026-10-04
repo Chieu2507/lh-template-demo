@@ -37,10 +37,9 @@
 {% style %}
   #shopify-section-{{ section.id }} { background-color: {{ reading_background }}; }
 {% endstyle %}
-<div class="section-spacing value-proposition-01 scroll-reading-text scroll-reading-text--desktop-{{ desktop_height }} scroll-reading-text--mobile-{{ mobile_height }} color-scheme section-color-scope {{ reading_scheme }}" style="{{ reading_style | strip }}">
-  {% if section.settings.background_image != blank or section.settings.mobile_image != blank %}
-    {% render 'media-background', media_type: 'image', image: section.settings.background_image, mobile_image: section.settings.mobile_image, aria_hidden: true, alt: '', sizes: '100vw', class: 'scroll-reading-text__background' %}
-  {% endif %}
+<div class="scroll-reading-text__track" data-scroll-reading-track>
+<div data-scroll-reading-panel class="section-spacing value-proposition-01 scroll-reading-text scroll-reading-text--desktop-{{ desktop_height }} scroll-reading-text--mobile-{{ mobile_height }} color-scheme section-color-scope {{ reading_scheme }}" style="{{ reading_style | strip }}">
+  {% render 'media-background', media_type: 'image', image: section.settings.background_image, mobile_image: section.settings.mobile_image, aria_hidden: true, alt: '', sizes: '100vw', class: 'scroll-reading-text__background' %}
   {% if section.settings.overlay %}<div class="scroll-reading-text__overlay" aria-hidden="true"></div>{% endif %}
   <div class="container {{ section_container_width }} value-proposition-01__container">
     <div class="value-proposition-01__content align-content scroll-reading-text__content--{{ content_width }}">
@@ -51,7 +50,14 @@
     </div>
   </div>
 </div>
+</div>
 {% stylesheet %}
+  .scroll-reading-text__track[data-reading-sticky] { padding-bottom: var(--reading-scroll-distance, 0px); }
+  .scroll-reading-text__track[data-reading-sticky] > .scroll-reading-text { position: sticky; top: var(--reading-sticky-top, 0px); }
+  @media (prefers-reduced-motion: reduce) {
+    .scroll-reading-text__track[data-reading-sticky] { padding-bottom: 0; }
+    .scroll-reading-text__track[data-reading-sticky] > .scroll-reading-text { position: relative; top: auto; }
+  }
   .scroll-reading-text {
     position: relative;
     overflow: clip;
