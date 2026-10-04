@@ -78,6 +78,7 @@
   <div
     class="{{ eyebrow_class }}"
     {% if eyebrow_style != blank %}style="{{ eyebrow_style }}"{% endif %}
+    {% render 'block-animation-attributes', settings: block.settings %}
     {{ block.shopify_attributes }}
   >
     {% if block.settings.show_icon %}
@@ -186,10 +187,22 @@
       "id": "icon",
       "label": "t:labels.icon",
       "options": [
-        { "value": "circle", "label": "t:options.eyebrow_icon.circle" },
-        { "value": "square", "label": "t:options.eyebrow_icon.square" },
-        { "value": "triangle", "label": "t:options.eyebrow_icon.triangle" },
-        { "value": "diamond", "label": "t:options.eyebrow_icon.diamond" }
+        {
+          "value": "circle",
+          "label": "t:options.eyebrow_icon.circle"
+        },
+        {
+          "value": "square",
+          "label": "t:options.eyebrow_icon.square"
+        },
+        {
+          "value": "triangle",
+          "label": "t:options.eyebrow_icon.triangle"
+        },
+        {
+          "value": "diamond",
+          "label": "t:options.eyebrow_icon.diamond"
+        }
       ],
       "default": "circle",
       "visible_if": "{{ block.settings.show_icon }}"
@@ -215,10 +228,22 @@
       "id": "corner_radius",
       "label": "t:labels.corner_radius",
       "options": [
-        { "value": "square", "label": "t:options.radius_preset.square" },
-        { "value": "slightly_rounded", "label": "t:options.radius_preset.slightly_rounded" },
-        { "value": "rounded", "label": "t:options.radius_preset.rounded" },
-        { "value": "pill", "label": "t:options.radius_preset.pill" }
+        {
+          "value": "square",
+          "label": "t:options.radius_preset.square"
+        },
+        {
+          "value": "slightly_rounded",
+          "label": "t:options.radius_preset.slightly_rounded"
+        },
+        {
+          "value": "rounded",
+          "label": "t:options.radius_preset.rounded"
+        },
+        {
+          "value": "pill",
+          "label": "t:options.radius_preset.pill"
+        }
       ],
       "default": "square",
       "visible_if": "{{ block.settings.show_background }}"
@@ -323,6 +348,57 @@
       "unit": "px",
       "default": 0,
       "visible_if": "{{ block.settings.customize_mobile_padding }}"
+    },
+    {
+      "type": "header",
+      "content": "Animation"
+    },
+    {
+      "type": "select",
+      "id": "animation_type",
+      "label": "Type",
+      "options": [
+        {
+          "value": "none",
+          "label": "None"
+        },
+        {
+          "value": "fade",
+          "label": "Fade"
+        },
+        {
+          "value": "scale",
+          "label": "Scale"
+        },
+        {
+          "value": "slide-left",
+          "label": "Slide from left"
+        },
+        {
+          "value": "slide-right",
+          "label": "Slide from right"
+        },
+        {
+          "value": "slide-bottom",
+          "label": "Slide from bottom"
+        },
+        {
+          "value": "rotate-words",
+          "label": "Rotate words"
+        }
+      ],
+      "default": "none"
+    },
+    {
+      "type": "range",
+      "id": "animation_delay",
+      "label": "Delay",
+      "min": 0,
+      "max": 1000,
+      "step": 50,
+      "unit": "ms",
+      "default": 0,
+      "visible_if": "{{ block.settings.animation_type != 'none' }}"
     }
   ],
   "presets": [
