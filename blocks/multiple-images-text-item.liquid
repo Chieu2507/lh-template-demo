@@ -3,7 +3,7 @@
   The parent controller moves the Image wrapper to the visual stack while
   retaining the original Image block and editor attributes.
 {% enddoc %}
-<article class="multiple-images-text__item" data-multi-item data-item-id="{{ block.id }}" {{ block.shopify_attributes }}>
+<article class="multiple-images-text__item" style="--multi-content-position:{{ block.settings.content_position | default: 'center' }};" data-multi-item data-item-id="{{ block.id }}" {{ block.shopify_attributes }}>
   <div class="multiple-images-text__image" data-multi-image data-item-id="{{ block.id }}">
     {% content_for 'block', type: 'image', id: 'image' %}
   </div>
@@ -31,7 +31,7 @@
       "type": "button"
     }
   ],
-  "settings": [],
+  "settings": [{"type":"select","id":"content_position","label":"Content position","info":"Vertical position on desktop. Tablet and mobile content follows the image layout.","options":[{"value":"start","label":"Top"},{"value":"center","label":"Center"},{"value":"end","label":"Bottom"}],"default":"center"}],
   "presets": [
     {
       "name": "t:general.multiple_images_text_item",
