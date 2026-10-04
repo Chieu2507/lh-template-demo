@@ -97,7 +97,9 @@
                         "padding_top_mobile": 0,
                         "padding_bottom_mobile": 0,
                         "padding_left_mobile": 0,
-                        "padding_right_mobile": 0
+                        "padding_right_mobile": 0,
+                        "animation_type": "rotate-words",
+                        "animation_delay": 50
                       },
                       "blocks": {}
                     },
@@ -114,7 +116,9 @@
                         "padding_top": 0,
                         "padding_bottom": 0,
                         "padding_left": 0,
-                        "padding_right": 0
+                        "padding_right": 0,
+                        "animation_type": "fade",
+                        "animation_delay": 0
                       },
                       "blocks": {}
                     }
@@ -168,7 +172,9 @@
                         "padding_top_mobile": 0,
                         "padding_bottom_mobile": 0,
                         "padding_left_mobile": 0,
-                        "padding_right_mobile": 0
+                        "padding_right_mobile": 0,
+                        "animation_type": "slide-bottom",
+                        "animation_delay": 100
                       },
                       "blocks": {}
                     },
@@ -194,7 +200,9 @@
                         "padding_top_mobile": 0,
                         "padding_bottom_mobile": 0,
                         "padding_left_mobile": 0,
-                        "padding_right_mobile": 0
+                        "padding_right_mobile": 0,
+                        "animation_type": "slide-bottom",
+                        "animation_delay": 100
                       },
                       "blocks": {}
                     }
@@ -298,7 +306,9 @@
                         "padding_top_mobile": 0,
                         "padding_bottom_mobile": 0,
                         "padding_left_mobile": 0,
-                        "padding_right_mobile": 0
+                        "padding_right_mobile": 0,
+                        "animation_type": "rotate-words",
+                        "animation_delay": 50
                       },
                       "blocks": {}
                     },
@@ -315,7 +325,9 @@
                         "padding_top": 0,
                         "padding_bottom": 0,
                         "padding_left": 0,
-                        "padding_right": 0
+                        "padding_right": 0,
+                        "animation_type": "fade",
+                        "animation_delay": 0
                       },
                       "blocks": {}
                     }
@@ -369,7 +381,9 @@
                         "padding_top_mobile": 0,
                         "padding_bottom_mobile": 0,
                         "padding_left_mobile": 0,
-                        "padding_right_mobile": 0
+                        "padding_right_mobile": 0,
+                        "animation_type": "slide-bottom",
+                        "animation_delay": 100
                       },
                       "blocks": {}
                     },
@@ -395,7 +409,9 @@
                         "padding_top_mobile": 0,
                         "padding_bottom_mobile": 0,
                         "padding_left_mobile": 0,
-                        "padding_right_mobile": 0
+                        "padding_right_mobile": 0,
+                        "animation_type": "slide-bottom",
+                        "animation_delay": 100
                       },
                       "blocks": {}
                     }
@@ -499,7 +515,9 @@
                         "padding_top_mobile": 0,
                         "padding_bottom_mobile": 0,
                         "padding_left_mobile": 0,
-                        "padding_right_mobile": 0
+                        "padding_right_mobile": 0,
+                        "animation_type": "rotate-words",
+                        "animation_delay": 50
                       },
                       "blocks": {}
                     },
@@ -516,7 +534,9 @@
                         "padding_top": 0,
                         "padding_bottom": 0,
                         "padding_left": 0,
-                        "padding_right": 0
+                        "padding_right": 0,
+                        "animation_type": "fade",
+                        "animation_delay": 0
                       },
                       "blocks": {}
                     }
@@ -570,7 +590,9 @@
                         "padding_top_mobile": 0,
                         "padding_bottom_mobile": 0,
                         "padding_left_mobile": 0,
-                        "padding_right_mobile": 0
+                        "padding_right_mobile": 0,
+                        "animation_type": "slide-bottom",
+                        "animation_delay": 100
                       },
                       "blocks": {}
                     },
@@ -596,7 +618,9 @@
                         "padding_top_mobile": 0,
                         "padding_bottom_mobile": 0,
                         "padding_left_mobile": 0,
-                        "padding_right_mobile": 0
+                        "padding_right_mobile": 0,
+                        "animation_type": "slide-bottom",
+                        "animation_delay": 100
                       },
                       "blocks": {}
                     }
@@ -676,7 +700,9 @@
                 "text": "<p>Shop by category</p>",
                 "heading_size": "xl",
                 "html_tag": "h2",
-                "width": "fill"
+                "width": "fill",
+                "animation_type": "rotate-words",
+                "animation_delay": 50
               }
             }
           },
@@ -901,7 +927,9 @@
                         "text": "<p>Run into savings</p>",
                         "heading_size": "display",
                         "html_tag": "h2",
-                        "width": "fill"
+                        "width": "fill",
+                        "animation_type": "rotate-words",
+                        "animation_delay": 50
                       }
                     },
                     "text": {
@@ -909,7 +937,9 @@
                       "settings": {
                         "text": "<p>Your next stride just got lighter. Grab up to 40% off select styles built to move with you on the track, in the city, and everywhere in between.</p>",
                         "text_size": "lg",
-                        "width": "fill"
+                        "width": "fill",
+                        "animation_type": "fade",
+                        "animation_delay": 0
                       }
                     }
                   },
@@ -924,7 +954,9 @@
                     "button_label": "Shop now",
                     "button_link": "shopify://collections/all",
                     "button_style": "primary",
-                    "show_icon": false
+                    "show_icon": false,
+                    "animation_type": "slide-bottom",
+                    "animation_delay": 100
                   }
                 }
               },
@@ -1041,7 +1073,9 @@
               "settings": {
                 "text": "<p>This week\u2019s top picks</p>",
                 "heading_size": "xl",
-                "html_tag": "h2"
+                "html_tag": "h2",
+                "animation_type": "rotate-words",
+                "animation_delay": 50
               }
             }
           },
@@ -1156,7 +1190,9 @@
                     "html_tag": "div",
                     "outline_text": false,
                     "width": "fit",
-                    "text_color": ""
+                    "text_color": "",
+                    "animation_type": "rotate-words",
+                    "animation_delay": 50
                   }
                 }
               },
@@ -1187,7 +1223,9 @@
                     "html_tag": "div",
                     "outline_text": false,
                     "width": "fit",
-                    "text_color": "#FDFFE5"
+                    "text_color": "#FDFFE5",
+                    "animation_type": "rotate-words",
+                    "animation_delay": 50
                   }
                 }
               },
@@ -1241,7 +1279,9 @@
               "type": "eyebrow",
               "settings": {
                 "text": "<p>COLLECTIONS</p>",
-                "show_background": false
+                "show_background": false,
+                "animation_type": "fade",
+                "animation_delay": 0
               }
             }
           },
@@ -1371,7 +1411,9 @@
               "settings": {
                 "text": "<p>New arrivals</p>",
                 "heading_size": "xl",
-                "html_tag": "h2"
+                "html_tag": "h2",
+                "animation_type": "rotate-words",
+                "animation_delay": 50
               }
             }
           },
@@ -1681,7 +1723,9 @@
                 "image_ratio_custom_width_mobile": 6,
                 "image_ratio_custom_height_mobile": 7,
                 "corner_radius": "custom",
-                "custom_corner_radius": 4
+                "custom_corner_radius": 4,
+                "animation_type": "scale",
+                "animation_delay": 0
               }
             },
             "group-1": {
@@ -1719,7 +1763,9 @@
                         "heading_size": "xl",
                         "html_tag": "h2",
                         "width": "fill",
-                        "width_mobile": "fill"
+                        "width_mobile": "fill",
+                        "animation_type": "rotate-words",
+                        "animation_delay": 50
                       }
                     },
                     "text-1": {
@@ -1728,7 +1774,9 @@
                         "text": "<p>Engineered for athletes who demand more from every stride. STRIDEO merges advanced geometry, responsive cushioning, and aerodynamic design to deliver effortless speed and all-day stability from track intensity to urban movement.</p>",
                         "text_size": "md",
                         "width": "fill",
-                        "width_mobile": "fill"
+                        "width_mobile": "fill",
+                        "animation_type": "fade",
+                        "animation_delay": 0
                       }
                     }
                   },
@@ -1743,7 +1791,9 @@
                     "button_label": "Shop now",
                     "button_link": "shopify://collections/all",
                     "button_style": "primary",
-                    "show_icon": false
+                    "show_icon": false,
+                    "animation_type": "slide-bottom",
+                    "animation_delay": 100
                   }
                 }
               },
@@ -1774,7 +1824,9 @@
                 "image_ratio_custom_width_mobile": 6,
                 "image_ratio_custom_height_mobile": 7,
                 "corner_radius": "custom",
-                "custom_corner_radius": 4
+                "custom_corner_radius": 4,
+                "animation_type": "scale",
+                "animation_delay": 0
               }
             },
             "group-1": {
@@ -1812,7 +1864,9 @@
                         "heading_size": "xl",
                         "html_tag": "h2",
                         "width": "fill",
-                        "width_mobile": "fill"
+                        "width_mobile": "fill",
+                        "animation_type": "rotate-words",
+                        "animation_delay": 50
                       }
                     },
                     "text-1": {
@@ -1821,7 +1875,9 @@
                         "text": "<p>Find your rhythm with lightweight essentials designed for steady support, easy movement, and comfort from your first step to your last.</p>",
                         "text_size": "md",
                         "width": "fill",
-                        "width_mobile": "fill"
+                        "width_mobile": "fill",
+                        "animation_type": "fade",
+                        "animation_delay": 0
                       }
                     }
                   },
@@ -1836,7 +1892,9 @@
                     "button_label": "Shop now",
                     "button_link": "shopify://collections/all",
                     "button_style": "primary",
-                    "show_icon": false
+                    "show_icon": false,
+                    "animation_type": "slide-bottom",
+                    "animation_delay": 100
                   }
                 }
               },
@@ -1867,7 +1925,9 @@
                 "image_ratio_custom_width_mobile": 6,
                 "image_ratio_custom_height_mobile": 7,
                 "corner_radius": "custom",
-                "custom_corner_radius": 4
+                "custom_corner_radius": 4,
+                "animation_type": "scale",
+                "animation_delay": 0
               }
             },
             "group-1": {
@@ -1905,7 +1965,9 @@
                         "heading_size": "xl",
                         "html_tag": "h2",
                         "width": "fill",
-                        "width_mobile": "fill"
+                        "width_mobile": "fill",
+                        "animation_type": "rotate-words",
+                        "animation_delay": 50
                       }
                     },
                     "text-1": {
@@ -1914,7 +1976,9 @@
                         "text": "<p>From morning runs to city routes, discover versatile performance styles that move with you throughout the day.</p>",
                         "text_size": "md",
                         "width": "fill",
-                        "width_mobile": "fill"
+                        "width_mobile": "fill",
+                        "animation_type": "fade",
+                        "animation_delay": 0
                       }
                     }
                   },
@@ -1929,7 +1993,9 @@
                     "button_label": "Shop now",
                     "button_link": "shopify://collections/all",
                     "button_style": "primary",
-                    "show_icon": false
+                    "show_icon": false,
+                    "animation_type": "slide-bottom",
+                    "animation_delay": 100
                   }
                 }
               },
@@ -1991,7 +2057,9 @@
                 "heading_size": "xl",
                 "html_tag": "h2",
                 "width": "fill",
-                "width_mobile": "fill"
+                "width_mobile": "fill",
+                "animation_type": "rotate-words",
+                "animation_delay": 50
               }
             }
           },
@@ -2017,7 +2085,8 @@
             "padding_bottom": 0,
             "padding_left": 0,
             "padding_right": 0,
-            "enable_sticky": false
+            "enable_sticky": false,
+            "zoom_on_hover": true
           },
           "blocks": {
             "content": {
@@ -2073,7 +2142,8 @@
             "padding_bottom": 0,
             "padding_left": 0,
             "padding_right": 0,
-            "enable_sticky": false
+            "enable_sticky": false,
+            "zoom_on_hover": true
           },
           "blocks": {
             "content": {
@@ -2129,7 +2199,8 @@
             "padding_bottom": 0,
             "padding_left": 0,
             "padding_right": 0,
-            "enable_sticky": false
+            "enable_sticky": false,
+            "zoom_on_hover": true
           },
           "blocks": {
             "content": {
@@ -2185,7 +2256,8 @@
             "padding_bottom": 0,
             "padding_left": 0,
             "padding_right": 0,
-            "enable_sticky": false
+            "enable_sticky": false,
+            "zoom_on_hover": true
           },
           "blocks": {
             "content": {
