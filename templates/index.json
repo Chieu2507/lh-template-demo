@@ -2320,22 +2320,22 @@
       ],
       "settings": {
         "section_width": "page_width",
-        "title_size": "heading_1",
-        "title_tag": "h2",
-        "image_size": "medium",
         "gap_desktop": 112,
         "gap_mobile": 16,
-        "header_gap_desktop": 40,
-        "header_gap_mobile": 36,
+        "title_size": "heading_1",
+        "title_tag": "h2",
         "color_scheme": "scheme-1",
         "padding_top": 40,
         "padding_bottom": 144,
-        "customize_tablet_padding": true,
-        "padding_top_tablet": 32,
-        "padding_bottom_tablet": 128,
         "customize_mobile_padding": true,
         "padding_top_mobile": 20,
-        "padding_bottom_mobile": 112
+        "padding_bottom_mobile": 112,
+        "image_size": "medium",
+        "header_gap_desktop": 40,
+        "header_gap_mobile": 36,
+        "customize_tablet_padding": true,
+        "padding_top_tablet": 32,
+        "padding_bottom_tablet": 128
       }
     },
     "scroll_reading_text": {
@@ -2343,8 +2343,8 @@
       "blocks": {
         "text": {
           "type": "text",
-          "disabled": true,
           "static": true,
+          "disabled": true,
           "settings": {
             "text": ""
           }
@@ -2363,8 +2363,8 @@
         },
         "button": {
           "type": "button",
-          "disabled": true,
           "static": true,
+          "disabled": true,
           "settings": {
             "button_label": ""
           }
@@ -2372,16 +2372,25 @@
       },
       "settings": {
         "section_width": "page_width",
+        "desktop_height": "large",
+        "mobile_height": "large",
+        "content_width": "medium",
+        "alignment": "center",
+        "desktop_gap": 40,
+        "mobile_gap": 40,
         "color_scheme": "scheme-3",
+        "overlay": true,
+        "overlay_color": "#000000",
+        "overlay_opacity": 10,
         "padding_top": 80,
-        "padding_right": 0,
         "padding_bottom": 80,
         "padding_left": 0,
+        "padding_right": 0,
         "customize_mobile_padding": true,
         "padding_top_mobile": 80,
-        "padding_right_mobile": 0,
         "padding_bottom_mobile": 80,
-        "padding_left_mobile": 0
+        "padding_left_mobile": 0,
+        "padding_right_mobile": 0
       }
     }
   },
