@@ -43,9 +43,6 @@
   {% if section.settings.overlay %}<div class="scroll-reading-text__overlay" aria-hidden="true"></div>{% endif %}
   <div class="container {{ section_container_width }} value-proposition-01__container">
     <div class="value-proposition-01__content align-content scroll-reading-text__content--{{ content_width }}">
-      {% content_for 'block', type: 'text', id: 'text' %}
-      {% content_for 'block', type: 'editorial-text', id: 'editorial-text' %}
-      {% content_for 'block', type: 'button', id: 'button' %}
       {% content_for 'blocks' %}
     </div>
   </div>
@@ -470,31 +467,12 @@
       },
       "blocks": [
         {
-          "type": "text",
-          "id": "text",
-          "static": true,
-          "settings": {
-            "text": "<p>The pavilion standard</p>"
-          }
-        },
-        {
           "type": "editorial-text",
-          "id": "editorial-text",
-          "static": true,
           "settings": {
             "text": "<p>Every piece that leaves our studio passes through no fewer than forty pairs of hands. We believe jewelry should outlive trends and outlive us.</p>",
             "size": "lg",
             "width": "custom",
             "max_width": 900
-          }
-        },
-        {
-          "type": "button",
-          "id": "button",
-          "static": true,
-          "settings": {
-            "button_label": "Our story",
-            "button_style": "secondary"
           }
         }
       ]
