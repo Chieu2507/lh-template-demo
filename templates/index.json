@@ -2341,17 +2341,8 @@
     "scroll_reading_text": {
       "type": "scroll-reading-text",
       "blocks": {
-        "text": {
-          "type": "text",
-          "static": true,
-          "disabled": true,
-          "settings": {
-            "text": ""
-          }
-        },
         "editorial-text": {
           "type": "editorial-text",
-          "static": true,
           "settings": {
             "text": "<p>True balance begins from the ground up.</p>",
             "size": "display",
@@ -2359,14 +2350,6 @@
             "enable_scroll_reveal": true,
             "scroll_speed": "medium",
             "start_opacity": 30
-          }
-        },
-        "button": {
-          "type": "button",
-          "static": true,
-          "disabled": true,
-          "settings": {
-            "button_label": ""
           }
         }
       },
@@ -2391,7 +2374,10 @@
         "padding_bottom_mobile": 80,
         "padding_left_mobile": 0,
         "padding_right_mobile": 0
-      }
+      },
+      "block_order": [
+        "editorial-text"
+      ]
     }
   },
   "order": [
