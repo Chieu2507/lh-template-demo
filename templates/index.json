@@ -2713,6 +2713,309 @@
         "@media (min-width:768px) and (max-width:1149.98px) {.product-information__layout {grid-template-columns:repeat(2,minmax(0,1fr));gap:40px}}",
         ".product-price .price {--price-font-size:18px}"
       ]
+    },
+    "multiple_images_text": {
+      "type": "multiple-images-with-text",
+      "name": "Multiple images with text",
+      "settings": {
+        "section_width": "page_width",
+        "gap_desktop": 64,
+        "gap_mobile": 40,
+        "show_navigation": true,
+        "color_scheme": "scheme-1",
+        "padding_top": 112,
+        "padding_bottom": 112
+      },
+      "blocks": {
+        "item_1": {
+          "type": "multiple-images-text-item",
+          "settings": {},
+          "blocks": {
+            "image": {
+              "type": "image",
+              "static": true,
+              "settings": {
+                "width_desktop": "fill",
+                "width_mobile": "fill",
+                "image_ratio_desktop": "custom",
+                "image_ratio_custom_width_desktop": 6,
+                "image_ratio_custom_height_desktop": 7,
+                "image_ratio_mobile": "custom",
+                "image_ratio_custom_width_mobile": 6,
+                "image_ratio_custom_height_mobile": 7,
+                "corner_radius": "custom",
+                "custom_corner_radius": 4
+              }
+            },
+            "group-1": {
+              "type": "group",
+              "settings": {
+                "direction": "vertical",
+                "width": "fill",
+                "width_mobile": "fill",
+                "height": "fit",
+                "alignment": "left",
+                "alignment_mobile": "center",
+                "gap_desktop": 40,
+                "gap_mobile": 40,
+                "backdrop_blur": 0
+              },
+              "blocks": {
+                "group-0": {
+                  "type": "group",
+                  "settings": {
+                    "direction": "vertical",
+                    "width": "fill",
+                    "width_mobile": "fill",
+                    "height": "fit",
+                    "alignment": "left",
+                    "alignment_mobile": "center",
+                    "gap_desktop": 16,
+                    "gap_mobile": 16,
+                    "backdrop_blur": 0
+                  },
+                  "blocks": {
+                    "heading-0": {
+                      "type": "heading",
+                      "settings": {
+                        "text": "<p>Built for motion, designed for life.</p>",
+                        "heading_size": "xl",
+                        "html_tag": "h2",
+                        "width": "fill",
+                        "width_mobile": "fill"
+                      }
+                    },
+                    "text-1": {
+                      "type": "text",
+                      "settings": {
+                        "text": "<p>Engineered for athletes who demand more from every stride. STRIDEO merges advanced geometry, responsive cushioning, and aerodynamic design to deliver effortless speed and all-day stability from track intensity to urban movement.</p>",
+                        "text_size": "lg",
+                        "width": "fill",
+                        "width_mobile": "fill"
+                      }
+                    }
+                  },
+                  "block_order": [
+                    "heading-0",
+                    "text-1"
+                  ]
+                },
+                "button-1": {
+                  "type": "button",
+                  "settings": {
+                    "button_label": "Shop now",
+                    "button_link": "shopify://collections/all",
+                    "button_style": "primary",
+                    "show_icon": false
+                  }
+                }
+              },
+              "block_order": [
+                "group-0",
+                "button-1"
+              ]
+            }
+          },
+          "block_order": [
+            "group-1"
+          ]
+        },
+        "item_2": {
+          "type": "multiple-images-text-item",
+          "settings": {},
+          "blocks": {
+            "image": {
+              "type": "image",
+              "static": true,
+              "settings": {
+                "width_desktop": "fill",
+                "width_mobile": "fill",
+                "image_ratio_desktop": "custom",
+                "image_ratio_custom_width_desktop": 6,
+                "image_ratio_custom_height_desktop": 7,
+                "image_ratio_mobile": "custom",
+                "image_ratio_custom_width_mobile": 6,
+                "image_ratio_custom_height_mobile": 7,
+                "corner_radius": "custom",
+                "custom_corner_radius": 4
+              }
+            },
+            "group-1": {
+              "type": "group",
+              "settings": {
+                "direction": "vertical",
+                "width": "fill",
+                "width_mobile": "fill",
+                "height": "fit",
+                "alignment": "left",
+                "alignment_mobile": "center",
+                "gap_desktop": 40,
+                "gap_mobile": 40,
+                "backdrop_blur": 0
+              },
+              "blocks": {
+                "group-0": {
+                  "type": "group",
+                  "settings": {
+                    "direction": "vertical",
+                    "width": "fill",
+                    "width_mobile": "fill",
+                    "height": "fit",
+                    "alignment": "left",
+                    "alignment_mobile": "center",
+                    "gap_desktop": 16,
+                    "gap_mobile": 16,
+                    "backdrop_blur": 0
+                  },
+                  "blocks": {
+                    "heading-0": {
+                      "type": "heading",
+                      "settings": {
+                        "text": "<p>Comfort that keeps pace.</p>",
+                        "heading_size": "xl",
+                        "html_tag": "h2",
+                        "width": "fill",
+                        "width_mobile": "fill"
+                      }
+                    },
+                    "text-1": {
+                      "type": "text",
+                      "settings": {
+                        "text": "<p>Find your rhythm with lightweight essentials designed for steady support, easy movement, and comfort from your first step to your last.</p>",
+                        "text_size": "lg",
+                        "width": "fill",
+                        "width_mobile": "fill"
+                      }
+                    }
+                  },
+                  "block_order": [
+                    "heading-0",
+                    "text-1"
+                  ]
+                },
+                "button-1": {
+                  "type": "button",
+                  "settings": {
+                    "button_label": "Shop now",
+                    "button_link": "shopify://collections/all",
+                    "button_style": "primary",
+                    "show_icon": false
+                  }
+                }
+              },
+              "block_order": [
+                "group-0",
+                "button-1"
+              ]
+            }
+          },
+          "block_order": [
+            "group-1"
+          ]
+        },
+        "item_3": {
+          "type": "multiple-images-text-item",
+          "settings": {},
+          "blocks": {
+            "image": {
+              "type": "image",
+              "static": true,
+              "settings": {
+                "width_desktop": "fill",
+                "width_mobile": "fill",
+                "image_ratio_desktop": "custom",
+                "image_ratio_custom_width_desktop": 6,
+                "image_ratio_custom_height_desktop": 7,
+                "image_ratio_mobile": "custom",
+                "image_ratio_custom_width_mobile": 6,
+                "image_ratio_custom_height_mobile": 7,
+                "corner_radius": "custom",
+                "custom_corner_radius": 4
+              }
+            },
+            "group-1": {
+              "type": "group",
+              "settings": {
+                "direction": "vertical",
+                "width": "fill",
+                "width_mobile": "fill",
+                "height": "fit",
+                "alignment": "left",
+                "alignment_mobile": "center",
+                "gap_desktop": 40,
+                "gap_mobile": 40,
+                "backdrop_blur": 0
+              },
+              "blocks": {
+                "group-0": {
+                  "type": "group",
+                  "settings": {
+                    "direction": "vertical",
+                    "width": "fill",
+                    "width_mobile": "fill",
+                    "height": "fit",
+                    "alignment": "left",
+                    "alignment_mobile": "center",
+                    "gap_desktop": 16,
+                    "gap_mobile": 16,
+                    "backdrop_blur": 0
+                  },
+                  "blocks": {
+                    "heading-0": {
+                      "type": "heading",
+                      "settings": {
+                        "text": "<p>Made for your everyday miles.</p>",
+                        "heading_size": "xl",
+                        "html_tag": "h2",
+                        "width": "fill",
+                        "width_mobile": "fill"
+                      }
+                    },
+                    "text-1": {
+                      "type": "text",
+                      "settings": {
+                        "text": "<p>From morning runs to city routes, discover versatile performance styles that move with you throughout the day.</p>",
+                        "text_size": "lg",
+                        "width": "fill",
+                        "width_mobile": "fill"
+                      }
+                    }
+                  },
+                  "block_order": [
+                    "heading-0",
+                    "text-1"
+                  ]
+                },
+                "button-1": {
+                  "type": "button",
+                  "settings": {
+                    "button_label": "Shop now",
+                    "button_link": "shopify://collections/all",
+                    "button_style": "primary",
+                    "show_icon": false
+                  }
+                }
+              },
+              "block_order": [
+                "group-0",
+                "button-1"
+              ]
+            }
+          },
+          "block_order": [
+            "group-1"
+          ]
+        }
+      },
+      "block_order": [
+        "item_1",
+        "item_2",
+        "item_3"
+      ],
+      "custom_css": [
+        "@media (min-width:768px) and (max-width:1149.98px) {.multiple-images-text {padding-block:96px}}",
+        "@media (max-width:767.98px) {.multiple-images-text {padding-block:80px}}"
+      ]
     }
   },
   "order": [
@@ -2721,6 +3024,7 @@
     "featured_collection",
     "collections_image_list",
     "scroll_reading_text",
+    "multiple_images_text",
     "scrolling_text",
     "new_arrivals_tabs",
     "countdown_timer",

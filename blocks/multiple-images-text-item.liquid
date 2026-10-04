@@ -1,0 +1,120 @@
+{% doc %}
+  Paired media and editable content for Multiple images with text.
+  The parent controller moves the Image wrapper to the visual stack while
+  retaining the original Image block and editor attributes.
+{% enddoc %}
+<article class="multiple-images-text__item" data-multi-item data-item-id="{{ block.id }}" {{ block.shopify_attributes }}>
+  <div class="multiple-images-text__image" data-multi-image data-item-id="{{ block.id }}">
+    {% content_for 'block', type: 'image', id: 'image' %}
+  </div>
+  <div class="multiple-images-text__content">{% content_for 'blocks' %}</div>
+</article>
+
+{% schema %}
+{
+  "name": "t:general.multiple_images_text_item",
+  "tag": null,
+  "blocks": [
+    {
+      "type": "image"
+    },
+    {
+      "type": "group"
+    },
+    {
+      "type": "heading"
+    },
+    {
+      "type": "text"
+    },
+    {
+      "type": "button"
+    }
+  ],
+  "settings": [],
+  "presets": [
+    {
+      "name": "t:general.multiple_images_text_item",
+      "blocks": [
+        {
+          "type": "image",
+          "id": "image",
+          "static": true,
+          "settings": {
+            "width_desktop": "fill",
+            "width_mobile": "fill",
+            "image_ratio_desktop": "custom",
+            "image_ratio_custom_width_desktop": 6,
+            "image_ratio_custom_height_desktop": 7,
+            "image_ratio_mobile": "custom",
+            "image_ratio_custom_width_mobile": 6,
+            "image_ratio_custom_height_mobile": 7,
+            "corner_radius": "custom",
+            "custom_corner_radius": 4
+          }
+        },
+        {
+          "type": "group",
+          "settings": {
+            "direction": "vertical",
+            "width": "fill",
+            "width_mobile": "fill",
+            "height": "fit",
+            "alignment": "left",
+            "alignment_mobile": "center",
+            "gap_desktop": 40,
+            "gap_mobile": 40,
+            "backdrop_blur": 0
+          },
+          "blocks": [
+            {
+              "type": "group",
+              "settings": {
+                "direction": "vertical",
+                "width": "fill",
+                "width_mobile": "fill",
+                "height": "fit",
+                "alignment": "left",
+                "alignment_mobile": "center",
+                "gap_desktop": 16,
+                "gap_mobile": 16,
+                "backdrop_blur": 0
+              },
+              "blocks": [
+                {
+                  "type": "heading",
+                  "settings": {
+                    "text": "<p>Built for motion, designed for life.</p>",
+                    "heading_size": "xl",
+                    "html_tag": "h2",
+                    "width": "fill",
+                    "width_mobile": "fill"
+                  }
+                },
+                {
+                  "type": "text",
+                  "settings": {
+                    "text": "<p>Engineered for athletes who demand more from every stride. STRIDEO merges advanced geometry, responsive cushioning, and aerodynamic design to deliver effortless speed and all-day stability from track intensity to urban movement.</p>",
+                    "text_size": "lg",
+                    "width": "fill",
+                    "width_mobile": "fill"
+                  }
+                }
+              ]
+            },
+            {
+              "type": "button",
+              "settings": {
+                "button_label": "Shop now",
+                "button_link": "shopify://collections/all",
+                "button_style": "primary",
+                "show_icon": false
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
