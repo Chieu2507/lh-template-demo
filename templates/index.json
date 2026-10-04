@@ -1015,7 +1015,7 @@
         "mobile_banner_image": ""
       },
       "custom_css": [
-        ".hero__surface{--hero-min-height:750px}.hero__container{padding-block:80px}.hero__content{height:calc(var(--hero-min-height) - 160px);max-width:calc(var(--page-width) - var(--page-margin-current)*2)}.countdown-timer__units,.countdown-timer__unit{border:0!important}@media(max-width:1149.98px){.hero__surface{--hero-min-height:640px}}@media(max-width:767.98px){.hero__surface{--hero-min-height:570px}.hero__container{padding-block:64px}.hero__content{height:442px}}"
+        ".hero__surface {--hero-min-height: 750px}\n.hero__container {padding-block: 80px}\n.hero__content {height: calc(var(--hero-min-height) - 160px);max-width: calc(var(--page-width) - var(--page-margin-current)*2)}\n.countdown-timer__units,.countdown-timer__unit {border: 0!important}\n@media (max-width: 1149.98px) {.hero__surface {--hero-min-height: 640px}\n}\n@media (max-width: 767.98px) {.hero__surface {--hero-min-height: 570px}\n.hero__container {padding-block: 64px}\n.hero__content {height: 442px}\n}\n"
       ]
     },
     "featured_collection": {
