@@ -2249,12 +2249,107 @@
         "padding_top": 80,
         "padding_bottom": 80
       }
+    },
+    "collections_image_list": {
+      "type": "collections-with-tabs",
+      "blocks": {
+        "look-header": {
+          "type": "header",
+          "static": true,
+          "settings": {
+            "width": "fill",
+            "gap_desktop": 12,
+            "gap_mobile": 12
+          },
+          "blocks": {
+            "eyebrow": {
+              "type": "eyebrow",
+              "settings": {
+                "text": "<p>Collections</p>",
+                "show_background": false
+              }
+            }
+          },
+          "block_order": [
+            "eyebrow"
+          ]
+        },
+        "collection_1": {
+          "type": "collections-with-tabs-item",
+          "settings": {
+            "collection": "",
+            "custom_title": "Cloud"
+          }
+        },
+        "collection_2": {
+          "type": "collections-with-tabs-item",
+          "settings": {
+            "collection": "",
+            "custom_title": "The Roger"
+          }
+        },
+        "collection_3": {
+          "type": "collections-with-tabs-item",
+          "settings": {
+            "collection": "",
+            "custom_title": "Cloudmonster"
+          }
+        },
+        "collection_4": {
+          "type": "collections-with-tabs-item",
+          "settings": {
+            "collection": "",
+            "custom_title": "Cloudtilt"
+          }
+        },
+        "collection_5": {
+          "type": "collections-with-tabs-item",
+          "settings": {
+            "collection": "",
+            "custom_title": "Cloudsurfer"
+          }
+        }
+      },
+      "block_order": [
+        "collection_1",
+        "collection_2",
+        "collection_3",
+        "collection_4",
+        "collection_5"
+      ],
+      "settings": {
+        "section_width": "page_width",
+        "layout": "centered_image_list",
+        "boxed_layout": false,
+        "gap_desktop": 112,
+        "gap_mobile": 16,
+        "image_ratio": "1",
+        "show_featured_products": false,
+        "title_size": "heading_1",
+        "title_tag": "h2",
+        "show_product_count": false,
+        "auto_rotate": false,
+        "background_media": "none",
+        "color_scheme": "scheme-1",
+        "padding_top": 40,
+        "padding_bottom": 144,
+        "customize_mobile_padding": true,
+        "padding_top_mobile": 20,
+        "padding_bottom_mobile": 112,
+        "image_size": "medium",
+        "header_gap_desktop": 40,
+        "header_gap_mobile": 36,
+        "customize_tablet_padding": true,
+        "padding_top_tablet": 32,
+        "padding_bottom_tablet": 128
+      }
     }
   },
   "order": [
     "slideshow",
     "collection_list",
     "featured_collection",
+    "collections_image_list",
     "countdown_timer",
     "scrolling_text",
     "parallax",
