@@ -107,7 +107,7 @@
   .collections-with-tabs--centered-image-list { padding-block:var(--collections-with-tabs-padding-top-tablet,var(--collections-with-tabs-padding-top)) var(--collections-with-tabs-padding-bottom-tablet,var(--collections-with-tabs-padding-bottom)); }
   .collections-image-list__items { display:flex; flex-direction:column; gap:32px; }
   .collections-image-list__item { display:flex; width:100%; justify-content:center; align-items:center; gap:32px; }
-  .collections-with-tabs--centered-image-list .collections-image-list .collections-image-list__image { position:static; width:64px; flex:0 0 64px; align-self:center; opacity:1; visibility:visible; border-radius:var(--radius-slight); }
+  .collections-with-tabs--centered-image-list .collections-image-list .collections-image-list__image { position:relative; width:64px; flex:0 0 64px; align-self:center; opacity:1; visibility:visible; border-radius:var(--radius-slight); }
   .collections-with-tabs--centered-image-list .collections-image-list .collections-image-list__title { color:var(--heading-color); min-width:0; }
   .collections-image-list__title .heading-text { overflow-wrap:anywhere; }
 }
@@ -116,7 +116,7 @@
   .collections-image-list__items { display:flex; gap:var(--collections-with-tabs-gap-mobile); }
   .collections-image-list__item { display:flex; flex-direction:column; flex:0 0 auto; gap:16px; width:min(252px,calc(100% - 32px)); }
   .collections-image-list.swiper-initialized .collections-image-list__items { gap:0; }
-  .collections-with-tabs--centered-image-list .collections-image-list .collections-image-list__image--primary { position:static; width:100%; max-width:none; opacity:1; visibility:visible; }
+  .collections-with-tabs--centered-image-list .collections-image-list .collections-image-list__image--primary { position:relative; width:100%; max-width:none; opacity:1; visibility:visible; }
   .collections-with-tabs--centered-image-list .collections-image-list .collections-image-list__image--secondary { display:none; }
   .collections-with-tabs--centered-image-list .collections-image-list .collections-image-list__title { color:var(--heading-color); text-align:left; width:100%; }
   .collections-image-list__title .heading-text { font-size:var(--font-heading-xl); line-height:var(--font-heading-xl-line-height); overflow-wrap:anywhere; }
