@@ -39,7 +39,7 @@
   if collection_card_ratio_setting == 'original'
     assign collection_card_ratio_setting = 'auto'
   endif
-  unless collection_card_ratio_setting == 'auto' or collection_card_ratio_setting == 'square' or collection_card_ratio_setting == 'portrait' or collection_card_ratio_setting == 'landscape' or collection_card_ratio_setting == 'ratio_7_6' or collection_card_ratio_setting == 'wide' or collection_card_ratio_setting == 'custom'
+  unless collection_card_ratio_setting == 'auto' or collection_card_ratio_setting == 'square' or collection_card_ratio_setting == 'portrait' or collection_card_ratio_setting == 'landscape' or collection_card_ratio_setting == 'ratio_7_6' or collection_card_ratio_setting == 'ratio_6_7' or collection_card_ratio_setting == 'wide' or collection_card_ratio_setting == 'custom'
     assign collection_card_ratio_setting = 'auto'
   endunless
   assign collection_card_ratio = 'auto'
@@ -50,6 +50,8 @@
       assign collection_card_ratio = '0.8'
     when 'landscape'
       assign collection_card_ratio = '1.3333'
+    when 'ratio_6_7'
+      assign collection_card_ratio = '0.8571428571'
     when 'ratio_7_6'
       assign collection_card_ratio = '1.1666666667'
     when 'wide'
@@ -285,6 +287,7 @@
           "value": "landscape",
           "label": "t:options.image_ratio.landscape"
         },
+        { "value": "ratio_6_7", "label": "Portrait (6:7)" },
         { "value": "ratio_7_6", "label": "t:options.image_ratio.ratio_7_6" },
         {
           "value": "wide",

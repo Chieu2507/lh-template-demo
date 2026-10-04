@@ -33,6 +33,11 @@
     assign collection_list_gap_mobile = 8
   endif
 
+  assign collection_list_gap_tablet = collection_list_gap_desktop
+  if block.settings.customize_tablet_gap
+    assign collection_list_gap_tablet = block.settings.gap_tablet | default: collection_list_gap_desktop | plus: 0
+  endif
+
   assign collection_list_show_next_slide_preview = false
   if block.settings.show_next_slide_preview_on_desktop
     assign collection_list_show_next_slide_preview = true
@@ -132,7 +137,10 @@
 
   assign collection_list_carousel_id = 'CollectionListCarousel-' | append: block.id
   assign collection_list_aria_label = 'collection_list.default_title' | t
-  assign collection_list_pagination_class = 'collection-list__pagination collection-list__pagination--' | append: collection_list_pagination_type
+  assign collection_list_pagination_class = 'collection-card-list__pagination collection-card-list__pagination--' | append: collection_list_pagination_type
+  if block.settings.pagination_visibility == 'tablet_mobile'
+    assign collection_list_pagination_class = collection_list_pagination_class | append: ' collection-card-list__pagination--tablet-mobile'
+  endif
   assign collection_list_previous_label = 'collection_list.previous' | t
   assign collection_list_next_label = 'collection_list.next' | t
   assign collection_list_source_items = block.settings.collections
@@ -144,6 +152,7 @@
 %}
 
 {% capture collection_list_pagination_style %}
+  {% if block.settings.pagination_thickness == 'thin' %}--swiper-pagination-progressbar-size: 2px;{% endif %}
   --swiper-pagination-spacing: {{ collection_list_pagination_top_padding_desktop }}px;
   --swiper-pagination-spacing-mobile: {{ collection_list_pagination_top_padding_mobile }}px;
   {% if collection_list_pagination_limit_width %}--swiper-pagination-width: min(100%, {{ collection_list_pagination_max_width }}px);{% endif %}
@@ -152,7 +161,7 @@
 {% assign collection_list_pagination_style = collection_list_pagination_style | strip %}
 
 {% capture collection_list_navigation_center_style %}
-  {% if collection_list_show_pagination and collection_list_navigation_position != 'top' %}--swiper-navigation-center-offset: calc(({{ collection_list_pagination_top_padding_desktop }}px + {{ collection_list_pagination_size }}) / 2);{% endif %}
+  {% if collection_list_show_pagination and collection_list_navigation_position != 'top' and block.settings.pagination_visibility != 'tablet_mobile' %}--swiper-navigation-center-offset: calc(({{ collection_list_pagination_top_padding_desktop }}px + {{ collection_list_pagination_size }}) / 2);{% endif %}
 {% endcapture %}
 {% assign collection_list_navigation_center_style = collection_list_navigation_center_style | strip %}
 
@@ -221,6 +230,7 @@
       data-swiper-columns-mobile="{{ collection_list_mobile_columns }}"
       {% if block.settings.columns_tablet != 'inherit' and block.settings.columns_tablet != blank %}data-swiper-columns-tablet="{{ block.settings.columns_tablet }}"{% endif %}
       data-swiper-gap-desktop="{{ collection_list_gap_desktop }}"
+      data-swiper-gap-tablet="{{ collection_list_gap_tablet }}"
       data-swiper-gap-mobile="{{ collection_list_gap_mobile }}"
       data-swiper-pagination-type="{{ collection_list_pagination_type }}"
       data-swiper-previous-selector="[data-collection-list-previous]"
@@ -256,7 +266,7 @@
   {% else %}
     <div
       class="collection-card-list__grid"
-      style="--cards: {{ collection_list_desktop_columns }}; --cards-mobile: {{ collection_list_mobile_columns }}; --cards-tablet: {{ block.settings.columns_tablet | default: collection_list_desktop_columns | replace: 'inherit', collection_list_desktop_columns }}; --gap: {{ collection_list_gap_desktop }}px; --gap-mobile: {{ collection_list_gap_mobile }}px;"
+      style="--cards: {{ collection_list_desktop_columns }}; --cards-mobile: {{ collection_list_mobile_columns }}; --cards-tablet: {{ block.settings.columns_tablet | default: collection_list_desktop_columns | replace: 'inherit', collection_list_desktop_columns }}; --gap: {{ collection_list_gap_desktop }}px; --gap-mobile: {{ collection_list_gap_mobile }}px; --gap-tablet: {{ collection_list_gap_tablet }}px;"
     >
       {{ collection_list_items }}
     </div>
@@ -336,6 +346,14 @@
     pointer-events: auto;
   }
 
+  @media (min-width: 1150px) {
+    .collection-card-list__pagination--tablet-mobile { display: none; }
+  }
+
+  @media (min-width: 768px) and (max-width: 1149.98px) {
+    .collection-card-list__carousel-wrap:has(.collection-card-list__pagination--tablet-mobile) .collection-card-list__navigation { display: none; }
+  }
+
   .collection-card-list__pagination--progress_bar {
     --swiper-pagination-progressbar-bg-color: color-mix(in srgb, var(--body-color) 20%, transparent);
     --swiper-pagination-color: var(--body-color);
@@ -354,7 +372,7 @@
   }
 
   @media (min-width: 768px) and (max-width: 1149.98px) {
-    .collection-card-list__grid { grid-template-columns: repeat(var(--cards-tablet, var(--cards)), minmax(0, 1fr)); }
+    .collection-card-list__grid { grid-template-columns: repeat(var(--cards-tablet, var(--cards)), minmax(0, 1fr)); gap: var(--gap-tablet, var(--gap)); }
   }
 
   @media (max-width: 767.98px) {
@@ -504,6 +522,8 @@
       "unit": "px",
       "default": 12
     },
+    { "type": "checkbox", "id": "customize_tablet_gap", "label": "Customize tablet gap", "default": false },
+    { "type": "range", "id": "gap_tablet", "label": "Tablet gap", "min": 0, "max": 40, "step": 1, "unit": "px", "default": 20, "visible_if": "{{ block.settings.customize_tablet_gap }}" },
     {
       "type": "range",
       "id": "gap_mobile",
@@ -622,6 +642,7 @@
       "default": true,
       "visible_if": "{{ block.settings.layout == 'carousel' }}"
     },
+    { "type": "select", "id": "pagination_visibility", "label": "Show pagination on", "options": [{ "value": "all", "label": "All devices" }, { "value": "tablet_mobile", "label": "Tablet and mobile" }], "default": "all", "visible_if": "{{ block.settings.layout == 'carousel' and block.settings.show_pagination_on_desktop }}" },
     {
       "type": "select",
       "id": "pagination_type",
@@ -639,6 +660,7 @@
       "default": "progress_bar",
       "visible_if": "{{ block.settings.layout == 'carousel' and block.settings.show_pagination_on_desktop }}"
     },
+    { "type": "select", "id": "pagination_thickness", "label": "Progress bar thickness", "options": [{ "value": "standard", "label": "Standard" }, { "value": "thin", "label": "Thin" }], "default": "standard", "visible_if": "{{ block.settings.layout == 'carousel' and block.settings.show_pagination_on_desktop and block.settings.pagination_type == 'progress_bar' }}" },
     {
       "type": "range",
       "id": "pagination_top_padding_desktop",

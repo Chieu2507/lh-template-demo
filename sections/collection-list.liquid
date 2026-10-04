@@ -33,6 +33,7 @@
 %}
 
 {% capture collection_list_style %}
+  {% if section.settings.customize_tablet_padding %}--collection-list-padding-tablet: {{ section.settings.padding_tablet }}px;{% endif %}
   {% if collection_list_mobile_justify != collection_list_desktop_justify %}--collection-list-justify-mobile: {{ collection_list_mobile_justify }};{% endif %}
   {% if collection_list_gap_desktop != 40 %}--collection-list-gap: {{ collection_list_gap_desktop }}px;{% endif %}
   {% if collection_list_gap_mobile != 30 %}--collection-list-gap-mobile: {{ collection_list_gap_mobile }}px;{% endif %}
@@ -211,6 +212,13 @@
     .collection-list__container[data-desktop-alignment='center'] .collection-card-list__navigation--top {
       justify-content: center;
       justify-self: center;
+    }
+  }
+
+  @media (min-width: 768px) and (max-width: 1149.98px) {
+    .collection-list__spacing {
+      padding-top: var(--collection-list-padding-tablet, var(--collection-list-padding-top, 50px));
+      padding-bottom: var(--collection-list-padding-tablet, var(--collection-list-padding-bottom, 50px));
     }
   }
 
@@ -420,6 +428,8 @@
       "unit": "px",
       "default": 50
     },
+    { "type": "checkbox", "id": "customize_tablet_padding", "label": "Customize tablet padding", "default": false },
+    { "type": "range", "id": "padding_tablet", "label": "Tablet padding", "min": 0, "max": 100, "step": 1, "unit": "px", "default": 80, "visible_if": "{{ section.settings.customize_tablet_padding }}" },
     {
       "type": "checkbox",
       "id": "customize_mobile_padding",
