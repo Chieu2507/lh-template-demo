@@ -128,6 +128,9 @@
   endif
 
   assign image_card_class = 'image-card'
+  if block.settings.zoom_on_hover
+    assign image_card_class = image_card_class | append: ' image-card--zoom'
+  endif
   if section.settings.card_layout == 'carousel'
     assign image_card_class = image_card_class | append: ' swiper-slide'
   endif
@@ -332,6 +335,10 @@
     inset: 0;
   }
 
+  @media (hover:hover) and (prefers-reduced-motion:no-preference) {
+    .image-card--zoom .background-media {transition:transform 400ms ease;}
+    .image-card--zoom:hover .background-media {transform:scale(1.05);}
+  }
   .image-card__media {
     z-index: 0;
   }
@@ -408,7 +415,7 @@
       flex: 0 0 var(--image-card-width-mobile, var(--image-card-width, 100%));
     }
 
-    .image-card--height-mobile-ratio_6_7 {--image-card-ratio:0.8571428571;}
+    .image-card--height-mobile-ratio_6_7 {--image-card-ratio-mobile:0.8571428571;}
     .image-card--height-mobile-ratio_4_5 {
       --image-card-ratio-mobile: 0.8;
     }
@@ -566,6 +573,12 @@
       "id": "mobile_video",
       "label": "t:labels.mobile_video",
       "visible_if": "{{ block.settings.background_type == 'video' }}"
+    },
+    {
+      "type": "checkbox",
+      "id": "zoom_on_hover",
+      "label": "Zoom image on hover",
+      "default": false
     },
     {
       "type": "checkbox",
