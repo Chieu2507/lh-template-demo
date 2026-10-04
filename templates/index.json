@@ -2585,7 +2585,7 @@
             "autoplay": false,
             "loop_video": false,
             "zoom": "open_lightbox",
-            "gap": 4,
+            "gap": 10,
             "gap_mobile": 6,
             "bottom_thumbnail_width": 64,
             "thumbnail_width_mobile": 64,

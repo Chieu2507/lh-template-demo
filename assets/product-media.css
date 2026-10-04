@@ -660,8 +660,16 @@ html.product-media-lightbox-open {
   }
 }
 
+.product-media-gallery--overlay-thumbnails {
+  --product-media-overlay-thumbnail-gap: 8px;
+}
+
 /* Overlay thumbnails retain the normal bottom gallery at tablet/mobile sizes. */
 @media (min-width: 1150px) {
+  .product-media-gallery--overlay-thumbnails {
+    --product-media-overlay-thumbnail-gap: 4px;
+  }
+
   .product-media-gallery--overlay-thumbnails .product-media-gallery__layout {
     display: block;
   }
@@ -674,6 +682,6 @@ html.product-media-lightbox-open {
     padding: 4px;
     border-radius: var(--radius-slight);
     background: var(--color-background, #fff);
-    box-shadow: var(--shadow-extra-small);
+    box-shadow: 0 1px 3px color-mix(in srgb, var(--shadow-color) 10%, transparent);
   }
 }
