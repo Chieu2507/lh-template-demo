@@ -1,46 +1,7 @@
-import { createSwiperCarousel, destroySwiperCarousel } from './swiper-carousel.js';
-
 const instances = new WeakMap();
-
-const initializeImageList = (section) => {
-  const root = section.querySelector('.collections-image-list');
-  const items = [...section.querySelectorAll('[data-collections-image-list-item]')];
-  if (!root || !items.length) return;
-  const controller = new AbortController();
-  const mobile = window.matchMedia('(max-width: 767.98px)');
-  const desktop = window.matchMedia('(min-width: 1150px)');
-  let swiper = null;
-  const activate = (id) => {
-    const selected = items.find((item) => item.dataset.collectionsWithTabsId === id) || items[0];
-    items.forEach((item) => { item.dataset.active = String(item === selected); });
-    if (mobile.matches && swiper) swiper.slideTo(items.indexOf(selected));
-  };
-  items.forEach((item) => {
-    const link = item.querySelector('[data-collections-image-list-link]');
-    link?.addEventListener('pointerenter', () => {
-      if (desktop.matches) activate(item.dataset.collectionsWithTabsId);
-    }, { signal: controller.signal });
-    link?.addEventListener('focus', () => activate(item.dataset.collectionsWithTabsId), { signal: controller.signal });
-  });
-  const updateLayout = () => {
-    if (mobile.matches && !swiper) {
-      swiper = createSwiperCarousel(root, { slidesPerView: 'auto', spaceBetween: Number.parseFloat(getComputedStyle(section).getPropertyValue('--collections-with-tabs-gap-mobile')) || 16 });
-    } else if (!mobile.matches && swiper) {
-      destroySwiperCarousel(root);
-      swiper = null;
-    }
-  };
-  mobile.addEventListener('change', updateLayout, { signal: controller.signal });
-  section.addEventListener('collections-with-tabs:activate', (event) => activate(event.detail?.id), { signal: controller.signal });
-  activate(items[0].dataset.collectionsWithTabsId);
-  root.dataset.ready = 'true';
-  updateLayout();
-  instances.set(section, { destroy() { controller.abort(); destroySwiperCarousel(root); delete root.dataset.ready; } });
-};
 
 const initialize = (section) => {
   if (!section || instances.has(section)) return;
-  if (section.dataset.layout === 'centered_image_list') { initializeImageList(section); return; }
   const tabs = [...section.querySelectorAll('[data-collections-with-tabs-tab]')];
   const panels = [...section.querySelectorAll('[data-collections-with-tabs-panel]')];
   if (!tabs.length || !panels.length) return;
@@ -150,7 +111,6 @@ const initialize = (section) => {
 const destroy = (section) => {
   const state = instances.get(section);
   if (!state) return;
-  if (state.destroy) { state.destroy(); instances.delete(section); return; }
   state.controller.abort();
   state.clearRotation();
   window.cancelAnimationFrame(state.activationFrame);
@@ -169,7 +129,7 @@ document.addEventListener('shopify:section:unload', (event) => destroyRoot(event
 document.addEventListener('shopify:block:select', (event) => {
   const block = event.target.closest?.('[data-shopify-editor-block]');
   const section = block?.closest('[data-collections-with-tabs]');
-  const tab = block?.querySelector('[data-collections-with-tabs-tab]') || block?.closest('[data-collections-image-list-item]');
+  const tab = block?.querySelector('[data-collections-with-tabs-tab]');
   if (!section || !tab) return;
   section.dispatchEvent(new CustomEvent('collections-with-tabs:activate', { detail: { id: tab.dataset.collectionsWithTabsId } }));
 });
