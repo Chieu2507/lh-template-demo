@@ -42,6 +42,7 @@
 %}
 
 {% capture featured_collection_style %}
+  {% if section.settings.customize_tablet_padding %}--featured-collection-padding-top-tablet: {{ section.settings.padding_top_tablet }}px;--featured-collection-padding-bottom-tablet: {{ section.settings.padding_bottom_tablet }}px;{% endif %}
   {% if featured_collection_gap_desktop != 32 %}--featured-collection-gap-desktop: {{ featured_collection_gap_desktop }}px;{% endif %}
   {% if featured_collection_gap_mobile != 24 %}--featured-collection-gap-mobile: {{ featured_collection_gap_mobile }}px;{% endif %}
   {% if featured_collection_padding_top != 0 %}--featured-collection-padding-top: {{ featured_collection_padding_top }}px;{% endif %}
@@ -60,6 +61,7 @@
   <div
     class="container {{ featured_collection_container_width }} featured-collection__container"
     data-featured-collection
+    {% if section.settings.hide_view_all_mobile %}data-hide-view-all-mobile="true"{% endif %}
     data-desktop-alignment="{{ featured_collection_desktop_alignment }}"
     data-mobile-alignment="{{ featured_collection_mobile_alignment }}"
   >
@@ -295,6 +297,16 @@
       padding-bottom: var(--featured-collection-padding-bottom-mobile, var(--featured-collection-padding-bottom, 0px));
     }
   }
+  @media (min-width: 768px) and (max-width: 1149.98px) {
+    .featured-collection {
+      padding-top: var(--featured-collection-padding-top-tablet, var(--featured-collection-padding-top, 0px));
+      padding-bottom: var(--featured-collection-padding-bottom-tablet, var(--featured-collection-padding-bottom, 0px));
+    }
+  }
+  @media (max-width: 767.98px) {
+    .featured-collection__container[data-hide-view-all-mobile] .featured-collection__actions { display: none; }
+  }
+  .featured-collection__container[data-desktop-alignment='left'] .featured-collection__actions { align-self: end; }
 {% endstylesheet %}
 
 {% javascript %}
@@ -443,6 +455,10 @@
       "unit": "px",
       "default": 0
     },
+    { "type": "checkbox", "id": "hide_view_all_mobile", "label": "Hide View all on mobile", "default": false },
+    { "type": "checkbox", "id": "customize_tablet_padding", "label": "Customize padding for tablet", "default": false },
+    { "type": "range", "id": "padding_top_tablet", "label": "Tablet top padding", "min": 0, "max": 100, "step": 1, "unit": "px", "default": 0, "visible_if": "{{ section.settings.customize_tablet_padding }}" },
+    { "type": "range", "id": "padding_bottom_tablet", "label": "Tablet bottom padding", "min": 0, "max": 100, "step": 1, "unit": "px", "default": 80, "visible_if": "{{ section.settings.customize_tablet_padding }}" },
     {
       "type": "checkbox",
       "id": "customize_mobile_padding",

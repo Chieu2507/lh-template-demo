@@ -1616,7 +1616,7 @@
         "type": "range",
         "id": "product_card_swatch_limit",
         "min": 2,
-        "max": 6,
+        "max": 8,
         "step": 1,
         "label": "t:labels.swatch_limit",
         "default": 4

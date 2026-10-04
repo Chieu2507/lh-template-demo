@@ -77,7 +77,8 @@ const buildOptions = (carousel, scope) => {
 
   if (carousel.dataset.swiperColumnsTablet) {
     options.breakpoints[768] = {
-      slidesPerView: getSlidesPerView(carousel.dataset.swiperColumnsTablet),
+      slidesPerView: getSlidesPerView(carousel.dataset.swiperColumnsTablet) +
+        (carousel.dataset.swiperNextSlidePreviewTablet === 'true' ? 1 / 3 : 0),
       spaceBetween: toNumber(carousel.dataset.swiperGapTablet ?? carousel.dataset.swiperGapDesktop, 0),
     };
     options.breakpoints[1150] = {

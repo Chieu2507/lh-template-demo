@@ -90,7 +90,7 @@
 
   assign product_collection_grid_columns_desktop = columns_desktop | default: 3 | plus: 0
   assign product_collection_grid_columns_tablet = columns_tablet | default: product_collection_grid_columns_desktop | plus: 0
-  if product_collection_grid_columns_tablet < 2 or product_collection_grid_columns_tablet > 4
+  if product_collection_grid_columns_tablet < 1 or product_collection_grid_columns_tablet > 4
     assign product_collection_grid_columns_tablet = product_collection_grid_columns_desktop
   endif
   assign product_collection_grid_columns_mobile = columns_mobile | default: 1 | plus: 0
@@ -249,7 +249,8 @@
       data-layout="carousel"
       data-product-carousel
       data-swiper-columns-desktop="{{ product_collection_grid_columns_desktop }}"
-      {% if columns_tablet != blank %}data-swiper-columns-tablet="{{ product_collection_grid_columns_tablet }}"{% endif %}
+      {% if columns_tablet != blank and columns_tablet != 'inherit' %}data-swiper-columns-tablet="{{ product_collection_grid_columns_tablet }}"{% endif %}
+      {% if next_slide_preview_tablet %}data-swiper-next-slide-preview-tablet="true"{% endif %}
       data-swiper-columns-mobile="{{ product_collection_grid_columns_mobile }}"
       data-swiper-gap-desktop="{{ product_collection_grid_gap_horizontal }}"
       data-swiper-gap-mobile="{{ product_collection_grid_gap_horizontal_mobile }}"
@@ -296,7 +297,8 @@
       data-product-carousel
       data-swiper-mobile-only="true"
       data-swiper-columns-desktop="{{ product_collection_grid_columns_desktop }}"
-      {% if columns_tablet != blank %}data-swiper-columns-tablet="{{ product_collection_grid_columns_tablet }}"{% endif %}
+      {% if columns_tablet != blank and columns_tablet != 'inherit' %}data-swiper-columns-tablet="{{ product_collection_grid_columns_tablet }}"{% endif %}
+      {% if next_slide_preview_tablet %}data-swiper-next-slide-preview-tablet="true"{% endif %}
       data-swiper-columns-mobile="{{ product_collection_grid_columns_mobile }}"
       data-swiper-gap-desktop="{{ product_collection_grid_gap_horizontal }}"
       data-swiper-gap-mobile="{{ product_collection_grid_gap_horizontal_mobile }}"

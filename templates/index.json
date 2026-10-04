@@ -995,137 +995,95 @@
       }
     },
     "featured_collection": {
-      "type": "collection-tabs",
+      "type": "featured-collection",
       "blocks": {
         "header": {
           "type": "header",
           "static": true,
           "settings": {
-            "width": "fit",
+            "width": "fill",
             "gap_desktop": 12,
-            "gap_mobile": 8
+            "gap_mobile": 12
           },
           "blocks": {
-            "child_0": {
+            "heading": {
               "type": "heading",
               "settings": {
-                "text": "<p>BEST SELLERS</p>",
+                "text": "<p>This week’s top picks</p>",
                 "heading_size": "xl",
                 "html_tag": "h2"
               }
             }
           },
           "block_order": [
-            "child_0"
+            "heading"
           ]
         },
-        "tab-layout": {
-          "type": "tab-layout",
+        "featured-collection-view-all": {
+          "type": "view-all-button",
           "static": true,
           "settings": {
-            "vertical_layout": false,
-            "style": "button",
-            "active_style": "secondary",
-            "gap_desktop": 8,
-            "gap_mobile": 8,
-            "font": "body",
-            "heading_size": "md"
-          }
-        },
-        "tab_2": {
-          "type": "collection-tab",
-          "settings": {
-            "label": "Rackets",
-            "collection": "rackets-stroken"
-          },
-          "blocks": {
-            "product-card": {
-              "type": "product-card",
-              "static": true,
-              "settings": {
-                "color_type": "inherit",
-                "color_scheme": "scheme-1"
-              }
-            }
-          },
-          "block_order": []
-        },
-        "tab_3": {
-          "type": "collection-tab",
-          "settings": {
-            "label": "Apparel",
-            "collection": "apparel-stroken"
-          },
-          "blocks": {
-            "product-card": {
-              "type": "product-card",
-              "static": true,
-              "settings": {
-                "color_type": "inherit",
-                "color_scheme": "scheme-1"
-              }
-            }
-          },
-          "block_order": []
-        },
-        "collection-tabs-view-all": {
-          "type": "tabs-view-all-button",
-          "static": true,
-          "settings": {
-            "show_button": false,
-            "button_label": "",
+            "button_label": "View All",
             "button_style": "tertiary",
             "show_icon": false,
-            "icon": "arrow",
-            "icon_position": "after",
-            "icon_size": "inherit",
-            "icon_width": 20,
-            "width": "fit",
-            "width_mobile": "fit",
-            "customize_mobile_padding": false
+            "button_style_mobile": "tertiary",
+            "show_icon_mobile": false
           }
+        },
+        "product-list": {
+          "type": "product-list",
+          "static": true,
+          "settings": {
+            "collection": "",
+            "max_products": 6,
+            "layout_type": "carousel",
+            "columns_desktop": "3",
+            "columns_tablet": "1",
+            "show_next_slide_preview_on_tablet": true,
+            "columns_mobile": "1",
+            "show_next_slide_preview_on_desktop": false,
+            "product_gap_desktop": 10,
+            "product_gap_mobile": 10,
+            "show_navigation_on_desktop": true,
+            "navigation_position": "bottom",
+            "navigation_style": "icon_only",
+            "navigation_icon": "arrow",
+            "navigation_behavior": "always",
+            "show_pagination_on_desktop": true,
+            "pagination_type": "progress_bar",
+            "pagination_thickness": "thin",
+            "pagination_top_padding_desktop": 60,
+            "pagination_top_padding_mobile": 40,
+            "pagination_limit_width": false,
+            "autoplay": false
+          },
+          "blocks": {
+            "product-card": {
+              "type": "product-card",
+              "static": true,
+              "settings": {
+                "color_type": "inherit"
+              }
+            }
+          },
+          "block_order": []
         }
       },
-      "block_order": [
-        "tab_2",
-        "tab_3"
-      ],
-      "name": "Featured collection",
       "settings": {
         "section_width": "page_width",
-        "layout_direction": "vertical",
-        "header_layout": "inline",
-        "tab_position": "left",
+        "desktop_alignment": "left",
         "mobile_alignment": "left",
-        "gap_desktop": 32,
-        "gap_mobile": 24,
-        "max_products": 8,
-        "layout_type": "carousel",
-        "columns_desktop": "5",
-        "columns_tablet": "3",
-        "columns_mobile": "2",
-        "show_next_slide_preview_on_desktop": false,
-        "product_gap_desktop": 20,
-        "product_gap_mobile": 16,
-        "show_navigation_on_desktop": true,
-        "navigation_position": "bottom",
-        "navigation_style": "outline",
-        "navigation_icon": "chevron",
-        "navigation_behavior": "always",
-        "show_pagination_on_desktop": true,
-        "pagination_type": "progress_bar",
-        "pagination_top_padding_desktop": 32,
-        "pagination_top_padding_mobile": 24,
-        "pagination_limit_width": true,
-        "pagination_max_width": 100,
-        "autoplay": false,
-        "autoplay_pause_on_hover": true,
-        "autoplay_speed": 4,
+        "gap_desktop": 40,
+        "gap_mobile": 40,
         "color_scheme": "scheme-1",
-        "padding_top": 0,
-        "padding_bottom": 80,
+        "padding_top": 20,
+        "padding_bottom": 96,
+        "hide_view_all_mobile": true,
+        "customize_tablet_padding": true,
+        "padding_top_tablet": 10,
+        "padding_bottom_tablet": 80,
         "customize_mobile_padding": true,
-        "padding_top_mobile": 0,
+        "padding_top_mobile": 10,
         "padding_bottom_mobile": 64
       }
     },
@@ -2296,8 +2254,8 @@
   "order": [
     "slideshow",
     "collection_list",
-    "countdown_timer",
     "featured_collection",
+    "countdown_timer",
     "scrolling_text",
     "parallax",
     "featured_collection_background",
