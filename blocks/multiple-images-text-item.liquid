@@ -3,7 +3,7 @@
   The parent controller moves the Image wrapper to the visual stack while
   retaining the original Image block and editor attributes.
 {% enddoc %}
-<article class="multiple-images-text__item" style="--multi-content-position:{{ block.settings.content_position | default: 'center' }};" data-multi-item data-item-id="{{ block.id }}" {{ block.shopify_attributes }}>
+<article class="multiple-images-text__item" style="--multi-content-position:{{ block.settings.content_position | default: 'center' }};" data-content-position="{{ block.settings.content_position | default: 'center' }}" data-multi-item data-item-id="{{ block.id }}" {{ block.shopify_attributes }}>
   <div class="multiple-images-text__image" data-multi-image data-item-id="{{ block.id }}">
     {% content_for 'block', type: 'image', id: 'image' %}
   </div>
