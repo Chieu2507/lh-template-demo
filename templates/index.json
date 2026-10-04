@@ -1095,8 +1095,8 @@
           "settings": {
             "animation_direction": "backward",
             "animation_speed": 1,
-            "gap_desktop": 16,
-            "gap_mobile": 16,
+            "gap_desktop": 12,
+            "gap_mobile": 12,
             "padding_top": 0,
             "padding_bottom": 0,
             "padding_left": 0,
@@ -1113,17 +1113,20 @@
                 "gap_mobile": 0,
                 "backdrop_blur": 0,
                 "padding_left": 24,
-                "padding_right": 24
+                "padding_right": 24,
+                "padding_top": 0,
+                "padding_bottom": 0
               },
               "blocks": {
                 "heading-1": {
                   "type": "heading",
                   "settings": {
-                    "text": "<p>BUILT FOR THE COURT</p>",
-                    "heading_size": "xl",
+                    "text": "<p>Power</p>",
+                    "heading_size": "lg",
                     "html_tag": "div",
                     "outline_text": false,
-                    "width": "fit"
+                    "width": "fit",
+                    "text_color": ""
                   }
                 }
               },
@@ -1141,17 +1144,20 @@
                 "gap_mobile": 0,
                 "backdrop_blur": 0,
                 "padding_left": 24,
-                "padding_right": 24
+                "padding_right": 24,
+                "padding_top": 0,
+                "padding_bottom": 0
               },
               "blocks": {
                 "heading-2": {
                   "type": "heading",
                   "settings": {
-                    "text": "<p>MADE FOR PLAYERS</p>",
-                    "heading_size": "xl",
+                    "text": "<p>Performance</p>",
+                    "heading_size": "lg",
                     "html_tag": "div",
-                    "outline_text": true,
-                    "width": "fit"
+                    "outline_text": false,
+                    "width": "fit",
+                    "text_color": "#FDFFE5"
                   }
                 }
               },
@@ -1176,12 +1182,16 @@
         "position_vertical": "left",
         "gap_desktop": 0,
         "gap_mobile": 0,
-        "color_scheme": "scheme-3",
-        "padding_top": 32,
+        "color_scheme": "scheme-5",
+        "padding_top": 24,
         "padding_right": 0,
-        "padding_bottom": 32,
+        "padding_bottom": 24,
         "padding_left": 0,
-        "customize_mobile_padding": false
+        "customize_mobile_padding": true,
+        "padding_top_mobile": 20,
+        "padding_bottom_mobile": 20,
+        "padding_left_mobile": 0,
+        "padding_right_mobile": 0
       }
     },
     "parallax": {
