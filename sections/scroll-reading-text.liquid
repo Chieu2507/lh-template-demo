@@ -52,10 +52,10 @@
 </div>
 </div>
 {% stylesheet %}
-  .scroll-reading-text__track[data-reading-sticky] { padding-bottom: var(--reading-scroll-distance, 0px); }
+  .scroll-reading-text__track[data-reading-sticky] { min-height: calc(var(--reading-panel-height, 0px) + var(--reading-scroll-distance, 0px)); }
   .scroll-reading-text__track[data-reading-sticky] > .scroll-reading-text { position: sticky; top: var(--reading-sticky-top, 0px); }
   @media (prefers-reduced-motion: reduce) {
-    .scroll-reading-text__track[data-reading-sticky] { padding-bottom: 0; }
+    .scroll-reading-text__track[data-reading-sticky] { min-height: 0; }
     .scroll-reading-text__track[data-reading-sticky] > .scroll-reading-text { position: relative; top: auto; }
   }
   .scroll-reading-text {
