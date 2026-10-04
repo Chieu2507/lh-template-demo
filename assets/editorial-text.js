@@ -88,12 +88,12 @@
         if (this.motion.matches) {
           this.clearTrack();
         } else {
+          if (!this.track.hasAttribute('data-reading-sticky')) this.track.setAttribute('data-reading-sticky', '');
           const panelHeight = this.panel.getBoundingClientRect().height;
-          const stickyTop = (viewport - panelHeight) / 2;
+          const stickyTop = Math.min(0, (viewport - panelHeight) / 2);
           // All enabled Editorial blocks share one pinned interval.
           const slowest = Math.min(...Array.from(tracks.get(this.track), owner => speeds[owner.dataset.editorialSpeed] || 1));
           const distance = Math.max(viewport, panelHeight) / slowest;
-          this.track.setAttribute('data-reading-sticky', '');
           this.setTrackProperty('--reading-panel-height', `${panelHeight}px`);
           this.setTrackProperty('--reading-scroll-distance', `${distance}px`);
           this.setTrackProperty('--reading-sticky-top', `${stickyTop}px`);
