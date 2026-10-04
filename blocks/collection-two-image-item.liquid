@@ -1,0 +1,52 @@
+{% liquid
+  assign item_collection = block.settings.collection
+  assign item_title = block.settings.custom_title | default: item_collection.title | default: 'Collection title'
+  assign item_image = block.settings.custom_image | default: item_collection.featured_image | default: item_collection.image
+  assign item_secondary_image = block.settings.secondary_image | default: item_image
+  assign item_id = block.id
+  assign item_title_tag = section.settings.title_tag | default: 'div'
+  assign item_title_size = section.settings.title_size | default: 'heading_2'
+  assign item_title_size = item_title_size | replace: 'heading_1', 'display' | replace: 'heading_2', 'xl' | replace: 'heading_3', 'lg' | replace: 'heading_4', 'md'
+%}
+  <article class="swiper-slide collection-two-image__item" data-collection-two-image-item data-collection-item-id="{{ item_id }}">
+    {% render 'collection-two-image-media', image: item_image, position: 'primary' %}
+    <a class="collection-two-image__title" {% if item_collection != blank %}href="{{ item_collection.url }}"{% else %}role="link" aria-disabled="true" tabindex="0"{% endif %} data-collection-two-image-link {{ block.shopify_attributes }}>
+      <{{ item_title_tag }} class="heading-text heading-{{ item_title_size }}">{{ item_title | escape }}</{{ item_title_tag }}>
+    </a>
+    {% render 'collection-two-image-media', image: item_secondary_image, position: 'secondary' %}
+  </article>
+{% schema %}
+{
+  "name": "Collection",
+  "tag": null,
+  "settings": [
+    {
+      "type": "collection",
+      "id": "collection",
+      "label": "Collection"
+    },
+    {
+      "type": "text",
+      "id": "custom_title",
+      "label": "Custom title"
+    },
+    {
+      "type": "image_picker",
+      "id": "custom_image",
+      "label": "Primary image",
+      "info": "Uses the collection image when empty."
+    },
+    {
+      "type": "image_picker",
+      "id": "secondary_image",
+      "label": "Secondary image",
+      "info": "Uses the primary image when empty. Hidden on mobile."
+    }
+  ],
+  "presets": [
+    {
+      "name": "Collection"
+    }
+  ]
+}
+{% endschema %}

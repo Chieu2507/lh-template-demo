@@ -2251,7 +2251,7 @@
       }
     },
     "collections_image_list": {
-      "type": "collections-with-tabs",
+      "type": "collection-list-two-image",
       "blocks": {
         "look-header": {
           "type": "header",
@@ -2276,35 +2276,35 @@
           ]
         },
         "collection_1": {
-          "type": "collections-with-tabs-item",
+          "type": "collection-two-image-item",
           "settings": {
             "collection": "",
             "custom_title": "Cloud"
           }
         },
         "collection_2": {
-          "type": "collections-with-tabs-item",
+          "type": "collection-two-image-item",
           "settings": {
             "collection": "",
             "custom_title": "The Roger"
           }
         },
         "collection_3": {
-          "type": "collections-with-tabs-item",
+          "type": "collection-two-image-item",
           "settings": {
             "collection": "",
             "custom_title": "Cloudmonster"
           }
         },
         "collection_4": {
-          "type": "collections-with-tabs-item",
+          "type": "collection-two-image-item",
           "settings": {
             "collection": "",
             "custom_title": "Cloudtilt"
           }
         },
         "collection_5": {
-          "type": "collections-with-tabs-item",
+          "type": "collection-two-image-item",
           "settings": {
             "collection": "",
             "custom_title": "Cloudsurfer"
@@ -2320,17 +2320,10 @@
       ],
       "settings": {
         "section_width": "page_width",
-        "layout": "centered_image_list",
-        "boxed_layout": false,
         "gap_desktop": 112,
         "gap_mobile": 16,
-        "image_ratio": "1",
-        "show_featured_products": false,
         "title_size": "heading_1",
         "title_tag": "h2",
-        "show_product_count": false,
-        "auto_rotate": false,
-        "background_media": "none",
         "color_scheme": "scheme-1",
         "padding_top": 40,
         "padding_bottom": 144,
