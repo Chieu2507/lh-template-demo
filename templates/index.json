@@ -852,60 +852,54 @@
           "name": "Content area",
           "settings": {
             "direction": "vertical",
-            "alignment": "center",
-            "alignment_mobile": "center",
-            "gap_desktop": 32,
-            "gap_mobile": 32,
             "width": "fill",
-            "height": "fit",
             "width_mobile": "fill",
+            "alignment": "left",
+            "alignment_mobile": "left",
+            "height": "fill",
             "backdrop_blur": 0,
-            "padding_left": 96,
-            "padding_right": 96,
-            "customize_tablet_padding": true,
-            "padding_tablet": 40,
-            "customize_mobile_padding": true,
-            "padding_top_mobile": 40,
-            "padding_bottom_mobile": 0,
-            "padding_left_mobile": 0,
-            "padding_right_mobile": 0
+            "position": "space-between",
+            "gap_desktop": 64,
+            "gap_mobile": 40
           },
           "blocks": {
-            "wrapper": {
+            "content": {
               "type": "group",
-              "name": "Wrapper",
+              "name": "Content",
               "settings": {
                 "direction": "vertical",
-                "alignment": "center",
-                "alignment_mobile": "center",
-                "gap_desktop": 32,
-                "gap_mobile": 32,
                 "width": "fill",
-                "height": "fit",
                 "width_mobile": "fill",
-                "backdrop_blur": 0
+                "alignment": "left",
+                "alignment_mobile": "left",
+                "height": "fit",
+                "backdrop_blur": 0,
+                "gap_desktop": 40,
+                "gap_mobile": 32,
+                "limit_width": true,
+                "max_width": 580
               },
               "blocks": {
-                "content": {
+                "heading-content": {
                   "type": "group",
-                  "name": "Content",
+                  "name": "Heading and description",
                   "settings": {
                     "direction": "vertical",
-                    "alignment": "center",
-                    "alignment_mobile": "center",
-                    "gap_desktop": 16,
-                    "gap_mobile": 16,
                     "width": "fill",
-                    "height": "fit",
                     "width_mobile": "fill",
-                    "backdrop_blur": 0
+                    "alignment": "left",
+                    "alignment_mobile": "left",
+                    "height": "fit",
+                    "backdrop_blur": 0,
+                    "gap_desktop": 16,
+                    "gap_mobile": 16
                   },
                   "blocks": {
                     "heading": {
                       "type": "heading",
                       "settings": {
-                        "text": "<p>LIMITED TIME ONLY</p>",
-                        "heading_size": "xl",
+                        "text": "<p>Run into savings</p>",
+                        "heading_size": "display",
                         "html_tag": "h2",
                         "width": "fill"
                       }
@@ -913,8 +907,8 @@
                     "text": {
                       "type": "text",
                       "settings": {
-                        "text": "<p>Don't miss your chance! Secure your gear now before the time runs out - these offers are only available for a limited period.</p>",
-                        "text_size": "md",
+                        "text": "<p>Your next stride just got lighter. Grab up to 40% off select styles built to move with you on the track, in the city, and everywhere in between.</p>",
+                        "text_size": "lg",
                         "width": "fill"
                       }
                     }
@@ -924,12 +918,47 @@
                     "text"
                   ]
                 },
+                "button": {
+                  "type": "button",
+                  "settings": {
+                    "button_label": "Shop now",
+                    "button_link": "shopify://collections/all",
+                    "button_style": "primary",
+                    "show_icon": false
+                  }
+                }
+              },
+              "block_order": [
+                "heading-content",
+                "button"
+              ]
+            },
+            "countdown": {
+              "type": "group",
+              "name": "Countdown",
+              "settings": {
+                "direction": "vertical",
+                "width": "fill",
+                "width_mobile": "fill",
+                "alignment": "left",
+                "alignment_mobile": "left",
+                "height": "fit",
+                "backdrop_blur": 0,
+                "limit_width": true,
+                "max_width": 430,
+                "appearance_type": "scheme",
+                "color_scheme": "scheme-4",
+                "corner_radius": "slightly_rounded",
+                "gap_desktop": 0,
+                "gap_mobile": 0
+              },
+              "blocks": {
                 "timer": {
                   "type": "countdown-timer",
                   "settings": {
                     "style": "with_labels",
                     "unit_layout": "connected",
-                    "max_width": 448,
+                    "max_width": 428,
                     "show_background": false,
                     "corner_radius": "slightly_rounded",
                     "type": "recurring",
@@ -938,26 +967,16 @@
                     "number_size": "lg",
                     "label_size": "sm"
                   }
-                },
-                "button": {
-                  "type": "button",
-                  "settings": {
-                    "button_label": "Explore Sale",
-                    "button_link": "shopify://collections/all",
-                    "button_style": "primary",
-                    "show_icon": false
-                  }
                 }
               },
               "block_order": [
-                "content",
-                "timer",
-                "button"
+                "timer"
               ]
             }
           },
           "block_order": [
-            "wrapper"
+            "content",
+            "countdown"
           ]
         }
       },
@@ -966,18 +985,18 @@
       ],
       "name": "Countdown timer",
       "settings": {
-        "width": "page",
-        "layout": "stack",
+        "width": "full",
+        "layout": "classic",
         "desktop_content_position": "last",
-        "stack_on_tablet": true,
+        "stack_on_tablet": false,
         "media_type": "image",
-        "banner_image": "shopify://shop_images/image_coutndowntimmer.jpg",
+        "banner_image": "",
         "media_aspect_ratio": "ratio_7_6",
         "media_corner_radius": "rounded",
-        "hover_zoom": true,
-        "overlay": "rgba(0,0,0,0)",
-        "desktop_height": "adapt",
-        "mobile_height": "adapt",
+        "hover_zoom": false,
+        "overlay": "rgba(0,0,0,0.25)",
+        "desktop_height": "medium",
+        "mobile_height": "medium",
         "content_width": "fill",
         "desktop_position": "center_center",
         "mobile_position": "center_center",
@@ -985,14 +1004,18 @@
         "mobile_gap": 0,
         "page_content_padding": 0,
         "page_content_padding_mobile": 0,
-        "color_scheme": "scheme-1",
-        "content_color_scheme": "scheme-1",
+        "color_scheme": "scheme-3",
+        "content_color_scheme": "scheme-3",
         "padding_top": 0,
-        "padding_bottom": 80,
+        "padding_bottom": 0,
         "customize_mobile_padding": true,
         "padding_top_mobile": 0,
-        "padding_bottom_mobile": 64
-      }
+        "padding_bottom_mobile": 0,
+        "mobile_banner_image": ""
+      },
+      "custom_css": [
+        ".hero__surface{--hero-min-height:750px}.hero__container{padding-block:80px}.hero__content{height:calc(var(--hero-min-height) - 160px);max-width:var(--page-width)}.countdown-timer__units,.countdown-timer__unit{border:0!important}@media(max-width:1149.98px){.hero__surface{--hero-min-height:640px}}@media(max-width:767.98px){.hero__surface{--hero-min-height:570px}.hero__container{padding-block:64px}.hero__content{height:442px}}"
+      ]
     },
     "featured_collection": {
       "type": "featured-collection",
@@ -2534,9 +2557,9 @@
     "featured_collection",
     "collections_image_list",
     "scroll_reading_text",
-    "countdown_timer",
     "scrolling_text",
     "new_arrivals_tabs",
+    "countdown_timer",
     "parallax",
     "featured_collection_background",
     "hotspot_active_gear",
