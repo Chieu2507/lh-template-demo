@@ -422,8 +422,8 @@
   color: inherit;
 }
 
-.product-buy-buttons__quantity-button:is(:hover, :focus-visible) {
-  background: color-mix(in srgb, currentColor 8%, transparent);
+.product-buy-buttons__quantity-button:enabled:hover {
+  opacity: 0.6;
 }
 
 .product-buy-buttons__quantity-button:focus-visible {
