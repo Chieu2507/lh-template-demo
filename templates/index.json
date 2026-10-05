@@ -1529,7 +1529,7 @@
         "content_gap_mobile": 24,
         "slide_gap": 80,
         "slide_gap_mobile": 16,
-        "initial_slide": 1,
+        "initial_slide": 2,
         "show_navigation": true,
         "navigation_mode": "arrows",
         "color_scheme": "scheme-3",
