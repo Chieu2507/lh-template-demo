@@ -17,6 +17,8 @@ Use this repository's current kernels and contracts as the source of truth when 
 
 When matching a design or building template sections/cards, read [Editable template composition](references/template-composition.md). It records the approved Group-based composition, responsive column controls, and the Stroken examples. Keep template-specific values in template JSON; do not turn them into universal component defaults.
 
+For Figma sections with images, banners, hotspots, or nested editable content, also read [Figma section mapping and media sizing](references/figma-section-mapping.md). It records the user's approved independent width/ratio controls and the asset, nesting, and responsive checks learned from the Stroken build. Apply these project conventions alongside Figma design extraction; do not let generated reference code replace the theme's kernels.
+
 ## Section build preflight
 
 Do not start a section from markup. Before implementation, create a short Section Build Plan that records the decisions below. If placement or resource context is missing, stop at the plan and ask for the missing contract instead of guessing.
