@@ -1734,30 +1734,29 @@
             "heading-1"
           ]
         },
-        "carousel-1": {
-          "type": "carousel",
+        "marquee-1": {
+          "type": "marquee",
           "settings": {
-            "columns_desktop": "4",
-            "columns_mobile": "2",
-            "loop": true,
-            "show_next_slide_preview_on_desktop": true,
+            "animation_direction": "backward",
+            "animation_speed": 1,
             "gap_desktop": 10,
             "gap_mobile": 10,
-            "border_thickness": 0,
-            "show_navigation_on_desktop": false,
-            "navigation_style": "secondary",
-            "navigation_icon": "chevron",
-            "navigation_behavior": "always",
-            "pagination_type": "progress_bar",
-            "show_pagination_on_desktop": false,
-            "show_pagination_on_mobile": false
+            "padding_top": 0,
+            "padding_bottom": 0,
+            "padding_left": 0,
+            "padding_right": 0
           },
           "blocks": {
             "0": {
-              "type": "slide",
+              "type": "marquee-item",
               "settings": {
+                "direction": "vertical",
                 "gap_desktop": 0,
-                "gap_mobile": 0
+                "gap_mobile": 0,
+                "padding_top": 0,
+                "padding_bottom": 0,
+                "padding_left": 0,
+                "padding_right": 0
               },
               "blocks": {
                 "image": {
@@ -1779,10 +1778,15 @@
               ]
             },
             "1": {
-              "type": "slide",
+              "type": "marquee-item",
               "settings": {
+                "direction": "vertical",
                 "gap_desktop": 0,
-                "gap_mobile": 0
+                "gap_mobile": 0,
+                "padding_top": 0,
+                "padding_bottom": 0,
+                "padding_left": 0,
+                "padding_right": 0
               },
               "blocks": {
                 "image": {
@@ -1804,10 +1808,15 @@
               ]
             },
             "2": {
-              "type": "slide",
+              "type": "marquee-item",
               "settings": {
+                "direction": "vertical",
                 "gap_desktop": 0,
-                "gap_mobile": 0
+                "gap_mobile": 0,
+                "padding_top": 0,
+                "padding_bottom": 0,
+                "padding_left": 0,
+                "padding_right": 0
               },
               "blocks": {
                 "image": {
@@ -1829,10 +1838,15 @@
               ]
             },
             "3": {
-              "type": "slide",
+              "type": "marquee-item",
               "settings": {
+                "direction": "vertical",
                 "gap_desktop": 0,
-                "gap_mobile": 0
+                "gap_mobile": 0,
+                "padding_top": 0,
+                "padding_bottom": 0,
+                "padding_left": 0,
+                "padding_right": 0
               },
               "blocks": {
                 "image": {
@@ -1854,10 +1868,15 @@
               ]
             },
             "4": {
-              "type": "slide",
+              "type": "marquee-item",
               "settings": {
+                "direction": "vertical",
                 "gap_desktop": 0,
-                "gap_mobile": 0
+                "gap_mobile": 0,
+                "padding_top": 0,
+                "padding_bottom": 0,
+                "padding_left": 0,
+                "padding_right": 0
               },
               "blocks": {
                 "image": {
@@ -1879,10 +1898,15 @@
               ]
             },
             "5": {
-              "type": "slide",
+              "type": "marquee-item",
               "settings": {
+                "direction": "vertical",
                 "gap_desktop": 0,
-                "gap_mobile": 0
+                "gap_mobile": 0,
+                "padding_top": 0,
+                "padding_bottom": 0,
+                "padding_left": 0,
+                "padding_right": 0
               },
               "blocks": {
                 "image": {
@@ -1916,7 +1940,7 @@
       },
       "block_order": [
         "gallery-header-group-0",
-        "carousel-1"
+        "marquee-1"
       ],
       "settings": {
         "direction": "vertical",
