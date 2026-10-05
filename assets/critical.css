@@ -2561,6 +2561,7 @@ legend {
 }
 
 .variant-picker__option--swatches .swatch__input:checked + .swatch__label {
+  background: transparent;
   color: inherit;
 }
 
