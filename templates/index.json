@@ -2035,7 +2035,15 @@
         "padding_bottom": 112,
         "customize_mobile_padding": true,
         "padding_top_mobile": 80,
-        "padding_bottom_mobile": 80
+        "padding_bottom_mobile": 80,
+        "enable_boxed_layout": true,
+        "boxed_color_scheme": "scheme-2",
+        "corner_radius": "rounded",
+        "shadow": "none",
+        "boxed_padding_block": 70,
+        "boxed_padding_inline": 70,
+        "boxed_padding_block_mobile": 50,
+        "boxed_padding_inline_mobile": 30
       }
     },
     "collection_list_03": {
