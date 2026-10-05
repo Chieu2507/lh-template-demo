@@ -206,6 +206,13 @@
       // Copies are decorative, never additional selectable Theme Editor blocks.
       [clone, ...clone.querySelectorAll('*')].forEach((element) => {
         element.removeAttribute('id');
+        // Hidden/inert copies cannot enter the shared reveal lifecycle.
+        // Render their content immediately instead of inheriting opacity: 0.
+        element.classList.remove('reveal-pending');
+        if (element.hasAttribute('data-block-animation') || element.hasAttribute('data-component-reveal')) {
+          element.setAttribute('data-block-animation', 'none');
+          element.removeAttribute('data-component-reveal');
+        }
         [...element.attributes].forEach(({ name }) => {
           if (name.startsWith('data-shopify-editor')) element.removeAttribute(name);
         });
