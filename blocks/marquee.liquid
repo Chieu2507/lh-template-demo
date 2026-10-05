@@ -261,7 +261,7 @@
         }
 
         // Keep a full viewport of content beyond the end of one animation cycle.
-        const copyCount = Math.max(1, Math.ceil(viewport.clientWidth / distance));
+        const copyCount = Math.max(1, Math.ceil((viewport.clientWidth + gap) / distance));
         const fragment = document.createDocumentFragment();
         for (let setIndex = 0; setIndex < copyCount; setIndex += 1) {
           items.forEach((item) => {
