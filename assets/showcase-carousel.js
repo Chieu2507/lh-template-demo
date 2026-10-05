@@ -68,6 +68,7 @@ const init = (root) => {
   const sync = () => {
     if (!swiper || swiper.destroyed) return;
     const logical = current();
+    [...wrapper.children].forEach((slide, index) => slide.setAttribute('aria-label', `${wrap(index, count) + 1} / ${count}`));
     const source = originals[logical];
     const nextScheme = source.dataset.colorScheme || root.dataset.defaultScheme;
     if (nextScheme !== scheme) { root.classList.remove(scheme); root.classList.add(nextScheme); scheme = nextScheme; }
@@ -103,10 +104,15 @@ const init = (root) => {
   swiper = createSwiperCarousel(viewport, {
     slidesPerView: 'auto', centeredSlides: true, initialSlide: offset + initial,
     loop: false, speed: reducedMotion.matches ? 0 : 550, spaceBetween: gap(),
-    allowTouchMove: count > 1, watchOverflow: count < 2,
+    allowTouchMove: count > 1 && !(root.classList.contains('showcase-carousel--navigation-cursor') && finePointer.matches), watchOverflow: count < 2,
     a11y: { slideLabelMessage: '{{index}} / {{slidesLength}}' }
   });
-  const updateGap = () => { if (swiper.destroyed) return; swiper.params.spaceBetween = gap(); swiper.update(); restore(); };
+  const updateGap = () => {
+    if (swiper.destroyed) return;
+    swiper.params.spaceBetween = gap();
+    swiper.allowTouchMove = count > 1 && !(root.classList.contains('showcase-carousel--navigation-cursor') && finePointer.matches);
+    swiper.update(); restore();
+  };
   const updateMotion = () => { swiper.params.speed = reducedMotion.matches ? 0 : 550; };
   swiper.on('slideChange', sync);
   swiper.on('slideChangeTransitionEnd', restore);
