@@ -52,7 +52,7 @@
 {% assign collection_list_view_all_style_attribute = collection_list_view_all_style_attribute | strip %}
 
   <div
-    class="collection-list-view-all{% if block.settings.full_width_mobile %} collection-list-view-all--full-width-mobile{% endif %}"
+    class="collection-list-view-all{% if block.settings.hide_view_all_mobile %} collection-list-view-all--hide-mobile{% endif %}{% if block.settings.full_width_mobile %} collection-list-view-all--full-width-mobile{% endif %}"
     {% if collection_list_view_all_style_attribute != blank %}style="{{ collection_list_view_all_style_attribute }}"{% endif %}
     {{ block.shopify_attributes }}
   >
@@ -109,6 +109,9 @@
     .collection-list-view-all--full-width-mobile .collection-list-view-all__button--mobile {
       width: 100%;
     }
+  }
+  @media (max-width: 767.98px) {
+    .collection-list-view-all--hide-mobile { display: none; }
   }
 {% endstylesheet %}
 
@@ -226,6 +229,7 @@
       "visible_if": "{{ block.settings.icon_size == 'custom' and block.settings.show_icon or block.settings.show_icon_mobile }}"
     },
     { "type": "header", "content": "t:labels.mobile" },
+    { "type": "checkbox", "id": "hide_view_all_mobile", "label": "Hide View all on mobile", "default": false },
     {
       "type": "select",
       "id": "button_style_mobile",

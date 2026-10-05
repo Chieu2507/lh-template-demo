@@ -204,6 +204,12 @@
       padding-bottom: var(--featured-blog-posts-padding-bottom-mobile, var(--featured-blog-posts-padding-bottom, 0px));
     }
   }
+  @media (max-width: 767.98px) {
+    .featured-blog-posts__container { grid-template-areas: 'header' 'grid' 'actions'; }
+    .featured-blog-posts__container:has(.collection-list-view-all--hide-mobile) { grid-template-areas: 'header' 'grid'; }
+    .featured-blog-posts__actions { width: 100%; }
+    .featured-blog-posts__actions:has(> .collection-list-view-all--hide-mobile) { display: none; }
+  }
 {% endstylesheet %}
 
 {% schema %}

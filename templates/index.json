@@ -721,7 +721,10 @@
           "type": "view-all-button",
           "disabled": true,
           "static": true,
-          "settings": {}
+          "settings": {
+            "button_style_mobile": "secondary",
+            "full_width_mobile": true
+          }
         },
         "collection-list": {
           "type": "collection-list-items",
@@ -938,8 +941,8 @@
         "padding_top": 40,
         "padding_bottom": 96,
         "customize_mobile_padding": true,
-        "padding_top_mobile": 24,
-        "padding_bottom_mobile": 48
+        "padding_top_mobile": 20,
+        "padding_bottom_mobile": 64
       }
     },
     "featured_collection": {
@@ -976,8 +979,10 @@
             "button_label": "View All",
             "button_style": "tertiary",
             "show_icon": false,
-            "button_style_mobile": "tertiary",
-            "show_icon_mobile": false
+            "button_style_mobile": "secondary",
+            "show_icon_mobile": false,
+            "hide_view_all_mobile": true,
+            "full_width_mobile": true
           }
         },
         "product-list": {
@@ -1028,9 +1033,8 @@
         "color_scheme": "scheme-1",
         "padding_top": 96,
         "padding_bottom": 96,
-        "hide_view_all_mobile": true,
         "customize_mobile_padding": true,
-        "padding_top_mobile": 10,
+        "padding_top_mobile": 64,
         "padding_bottom_mobile": 64
       }
     },
@@ -1127,8 +1131,8 @@
         "padding_top": 40,
         "padding_bottom": 96,
         "customize_mobile_padding": true,
-        "padding_top_mobile": 20,
-        "padding_bottom_mobile": 112,
+        "padding_top_mobile": 10,
+        "padding_bottom_mobile": 64,
         "inactive_title_color": "#999999"
       }
     },
@@ -1221,8 +1225,9 @@
             "icon_size": "inherit",
             "icon_width": 20,
             "width": "fit",
-            "width_mobile": "fit",
-            "customize_mobile_padding": false
+            "width_mobile": "fill",
+            "customize_mobile_padding": false,
+            "button_style_mobile": "secondary"
           }
         }
       },
@@ -1563,9 +1568,9 @@
             "button_label": "View all posts",
             "button_style": "tertiary",
             "show_icon": false,
-            "button_style_mobile": "tertiary",
+            "button_style_mobile": "secondary",
             "button_height_mobile": "inherit",
-            "full_width_mobile": false,
+            "full_width_mobile": true,
             "show_icon_mobile": false
           }
         },
@@ -1686,7 +1691,7 @@
         "padding_bottom": 80,
         "customize_mobile_padding": true,
         "padding_top_mobile": 0,
-        "padding_bottom_mobile": 40
+        "padding_bottom_mobile": 56
       }
     },
     "divider": {
@@ -1694,7 +1699,10 @@
       "settings": {
         "width": "page",
         "padding_top": 0,
-        "padding_bottom": 0
+        "padding_bottom": 0,
+        "customize_mobile_padding": true,
+        "padding_top_mobile": 10,
+        "padding_bottom_mobile": 10
       }
     },
     "gallery": {
@@ -1912,8 +1920,8 @@
         "padding_top": 80,
         "padding_bottom": 96,
         "customize_mobile_padding": true,
-        "padding_top_mobile": 40,
-        "padding_bottom_mobile": 48
+        "padding_top_mobile": 56,
+        "padding_bottom_mobile": 64
       }
     }
   },

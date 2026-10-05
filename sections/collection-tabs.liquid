@@ -343,6 +343,15 @@
     }
 
   }
+  @media (max-width: 767.98px) {
+    .collection-tabs__layout > .collection-tabs__controls,
+    .collection-tabs__layout > .collection-tabs__controls > .collection-tabs__actions,
+    .collection-tabs__layout > .collection-tabs__controls > .collection-tabs__controls-group { display: contents; }
+    .collection-tabs__controls-group > .block-header { order: 0; }
+    .collection-tabs__controls-group > .tab-layout { order: 1; }
+    .collection-tabs__list { order: 2; }
+    .collection-tabs__actions > .collection-tabs-view-all { order: 3; align-self: var(--collection-tabs-controls-alignment-mobile, flex-start); }
+  }
 {% endstylesheet %}
 
 {% schema %}

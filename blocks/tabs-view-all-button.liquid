@@ -47,6 +47,9 @@
 
   assign collection_tabs_view_all_class = 'collection-tabs-view-all size-style collection-tabs-view-all--width-' | append: collection_tabs_view_all_width
   assign collection_tabs_view_all_class = collection_tabs_view_all_class | append: ' collection-tabs-view-all--width-mobile-' | append: collection_tabs_view_all_width_mobile
+  if block.settings.hide_view_all_mobile
+    assign collection_tabs_view_all_class = collection_tabs_view_all_class | append: ' collection-tabs-view-all--hide-mobile'
+  endif
 %}
 
 {% capture collection_tabs_view_all_style_attribute %}
@@ -90,7 +93,21 @@
       icon_position: block.settings.icon_position,
       icon_size: block.settings.icon_size,
       icon_width: block.settings.icon_width,
-      class: 'collection-tabs-view-all__button',
+      class: 'collection-tabs-view-all__button collection-tabs-view-all__button--desktop',
+      attributes: collection_tabs_view_all_attributes
+    %}
+    {% render 'view-all-button',
+      label: collection_tabs_view_all_label,
+      url: collection_tabs_view_all_url,
+      force_link: true,
+      variant: block.settings.button_style_mobile,
+      fallback_variant: 'secondary',
+      show_icon: block.settings.show_icon,
+      icon: block.settings.icon,
+      icon_position: block.settings.icon_position,
+      icon_size: block.settings.icon_size,
+      icon_width: block.settings.icon_width,
+      class: 'collection-tabs-view-all__button collection-tabs-view-all__button--mobile',
       attributes: collection_tabs_view_all_attributes
     %}
   </div>
@@ -127,6 +144,12 @@
     .collection-tabs-view-all--width-mobile-fill .collection-tabs-view-all__button {
       width: 100%;
     }
+  }
+  .collection-tabs-view-all__button--mobile { display: none; }
+  @media (max-width: 767.98px) {
+    .collection-tabs-view-all__button--desktop { display: none; }
+    .collection-tabs-view-all__button--mobile { display: inline-flex; }
+    .collection-tabs-view-all--hide-mobile { display: none; }
   }
 {% endstylesheet %}
 
@@ -293,6 +316,15 @@
         }
       ],
       "default": "fit"
+    },
+    { "type": "checkbox", "id": "hide_view_all_mobile", "label": "Hide View all on mobile", "default": false },
+    {
+      "type": "select", "id": "button_style_mobile", "label": "Mobile style",
+      "options": [
+        { "value": "primary", "label": "t:options.button_variant.primary" },
+        { "value": "secondary", "label": "t:options.button_variant.secondary" },
+        { "value": "tertiary", "label": "t:options.button_variant.tertiary" }
+      ], "default": "secondary"
     },
     {
       "type": "select",

@@ -36,6 +36,12 @@
   .featured-collection-background { --collection-background-height: var(--collection-background-height-mobile, 256px); --collection-background-overlap: var(--collection-background-overlap-mobile, 0px); }
   .featured-collection-background__content { padding-top: var(--collection-content-top-mobile, 40px); gap: var(--collection-content-gap-mobile, 40px); }
 }
+@media (max-width: 767.98px) {
+  .featured-collection-background__intro { display: contents; }
+  .featured-collection-background__intro > .block-header { order: 1; }
+  .featured-collection-background__products { order: 2; }
+  .featured-collection-background__intro > .collection-list-view-all { order: 3; }
+}
 {% endstylesheet %}
 
 {% schema %}

@@ -61,7 +61,6 @@
   <div
     class="container {{ featured_collection_container_width }} featured-collection__container"
     data-featured-collection
-    {% if section.settings.hide_view_all_mobile %}data-hide-view-all-mobile="true"{% endif %}
     data-desktop-alignment="{{ featured_collection_desktop_alignment }}"
     data-mobile-alignment="{{ featured_collection_mobile_alignment }}"
   >
@@ -298,7 +297,11 @@
     }
   }
   @media (max-width: 767.98px) {
-    .featured-collection__container[data-hide-view-all-mobile] .featured-collection__actions { display: none; }
+    .featured-collection__header { order: 1; }
+    .featured-collection__products { order: 2; }
+    .featured-collection__actions { order: 3; width: 100%; }
+    .featured-collection__additional-blocks { order: 4; }
+    .featured-collection__actions:has(> .collection-list-view-all--hide-mobile) { display: none; }
   }
   @media (min-width: 768px) {
     .featured-collection__container[data-desktop-alignment='left']:not(:has(.product-list__navigation--top)) {
@@ -457,7 +460,6 @@
       "unit": "px",
       "default": 0
     },
-    { "type": "checkbox", "id": "hide_view_all_mobile", "label": "Hide View all on mobile", "default": false },
     {
       "type": "checkbox",
       "id": "customize_mobile_padding",
