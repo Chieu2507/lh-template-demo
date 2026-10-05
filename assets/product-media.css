@@ -91,10 +91,6 @@
   cursor: zoom-in;
 }
 
-.product-media--image img {
-  transition: transform var(--motion-duration-slow) var(--motion-ease-standard);
-}
-
 .product-media-gallery[data-zoom='click_hover'] .product-media--image:is(:hover, .is-zoomed) img {
   transform: scale(1.35);
 }
