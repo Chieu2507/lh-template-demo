@@ -88,7 +88,63 @@
           "url": "https://cdn.shopify.com/s/files/1/1024/2192/2091/articles/fluxstep-blog-where-training-meets-elevation.jpg?v=1791189480"
         }
       }
+    },
+    {
+      "title": "Find your everyday rhythm",
+      "handle": "find-your-everyday-rhythm",
+      "summary": "<p>Make room for movement in your daily routine, one familiar route and one easy stride at a time.</p>",
+      "body": "<p>Not every run needs a finish line. Sometimes the best route is the one that fits naturally into your day: a loop around the neighborhood, a quiet path through the park, or a few streets you know by heart.</p><p>Start with the details that make stepping outside feel easy. Set your shoes by the door, choose a time that works for you, and pick a route you enjoy. A simple routine leaves more space to notice the experience itself.</p><h2>A pace that belongs to you</h2><p>Let the outing match the day. You might feel like exploring a new street or returning to an old favorite. Give yourself permission to keep it short, slow down, and enjoy the surroundings.</p><p>Movement can be a small, welcome part of everyday life. Lace up, step outside, and find the rhythm you want to return to.</p>",
+      "image": {
+        "url": "https://cdn.shopify.com/s/files/1/1024/2192/2091/files/fluxstep-gallery-2.jpg?v=1791185794",
+        "altText": "Lacing white running shoes on a green track"
+      },
+      "publishDate": "2025-11-16T12:00:00Z",
+      "author": {
+        "name": "LayoutHub"
+      },
+      "isPublished": true,
+      "tags": [
+        "Fluxstep",
+        "Running"
+      ],
+      "created_resource": {
+        "id": "gid://shopify/Article/633694159147",
+        "title": "Find your everyday rhythm",
+        "handle": "find-your-everyday-rhythm",
+        "publishedAt": "2025-11-16T12:00:00Z",
+        "image": {
+          "url": "https://cdn.shopify.com/s/files/1/1024/2192/2091/articles/fluxstep-gallery-2.jpg?v=1791190154"
+        }
+      }
+    },
+    {
+      "title": "Take the scenic route",
+      "handle": "take-the-scenic-route",
+      "summary": "<p>Trade the familiar streets for a new perspective and discover the moments waiting beyond your usual route.</p>",
+      "body": "<p>A change of scenery can make a familiar habit feel new. A wooded path, an open hillside, or a trail beside the water offers a different backdrop to the simple pleasure of moving outdoors.</p><h2>Plan for the place</h2><p>Choose a route that suits your experience and check the conditions before you leave. Think about the surface, the distance, and how you will find your way back. Bring what you need for the outing and leave yourself enough time to enjoy it.</p><p>Once you are on the path, let the landscape set the mood. Notice the changes in texture underfoot, the light through the trees, and the views around each turn. There is more to collect than a distance on a screen.</p><h2>Enjoy the journey</h2><p>Respect the route and the people sharing it. Keep to marked paths, take your belongings home, and pause whenever you want to appreciate the view. The scenic route is an invitation to explore at your own pace.</p>",
+      "image": {
+        "url": "https://cdn.shopify.com/s/files/1/1024/2192/2091/files/fluxstep-gallery-3.jpg?v=1791185794",
+        "altText": "Runner jumping over a rocky trail"
+      },
+      "publishDate": "2025-11-15T12:00:00Z",
+      "author": {
+        "name": "LayoutHub"
+      },
+      "isPublished": true,
+      "tags": [
+        "Fluxstep",
+        "Running"
+      ],
+      "created_resource": {
+        "id": "gid://shopify/Article/633694191915",
+        "title": "Take the scenic route",
+        "handle": "take-the-scenic-route",
+        "publishedAt": "2025-11-15T12:00:00Z",
+        "image": {
+          "url": "https://cdn.shopify.com/s/files/1/1024/2192/2091/articles/fluxstep-gallery-3.jpg?v=1791190165"
+        }
+      }
     }
   ],
-  "status": "Created and published; selected in homepage Blog posts"
+  "status": "Five published articles; homepage retains the three original Figma cards"
 }

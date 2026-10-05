@@ -144,7 +144,7 @@
       }
     }
   ],
-  "blog_status": "Created and published: Fluxstep journal, three Figma cards; bound to homepage blog-list",
+  "blog_status": "Fluxstep journal: five published articles; homepage shows the original three Figma cards",
   "blog": {
     "title": "Fluxstep journal",
     "handle": "fluxstep-journal",
@@ -176,6 +176,24 @@
       "publishedAt": "2025-11-17T12:00:00Z",
       "image": {
         "url": "https://cdn.shopify.com/s/files/1/1024/2192/2091/articles/fluxstep-blog-where-training-meets-elevation.jpg?v=1791189480"
+      }
+    },
+    {
+      "id": "gid://shopify/Article/633694159147",
+      "title": "Find your everyday rhythm",
+      "handle": "find-your-everyday-rhythm",
+      "publishedAt": "2025-11-16T12:00:00Z",
+      "image": {
+        "url": "https://cdn.shopify.com/s/files/1/1024/2192/2091/articles/fluxstep-gallery-2.jpg?v=1791190154"
+      }
+    },
+    {
+      "id": "gid://shopify/Article/633694191915",
+      "title": "Take the scenic route",
+      "handle": "take-the-scenic-route",
+      "publishedAt": "2025-11-15T12:00:00Z",
+      "image": {
+        "url": "https://cdn.shopify.com/s/files/1/1024/2192/2091/articles/fluxstep-gallery-3.jpg?v=1791190165"
       }
     }
   ]
