@@ -45,7 +45,7 @@
   .showcase-carousel--navigation-cursor.is-cursor-active[data-cursor-direction='next'] [data-showcase-previous], .showcase-carousel--navigation-cursor.is-cursor-active[data-cursor-direction='previous'] [data-showcase-next] { visibility: hidden; }
 }
 @media (min-width: 768px) and (max-width: 1149.98px) {
-  .showcase-carousel { --showcase-width: 45%; padding-block: calc(var(--showcase-padding-top) * .75) calc(var(--showcase-padding-bottom) * .75); }
+  .showcase-carousel { --showcase-width: 45%;  }
   .showcase-carousel--overlay { --showcase-width: 65%; }
   .showcase-carousel--navigation-cursor .showcase-carousel__navigation { display: none; }
 }

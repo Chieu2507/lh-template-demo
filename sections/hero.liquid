@@ -12,7 +12,7 @@
   assign hero_content_scheme = hero_content_scheme | default: 'scheme-1' | handleize
 
   assign hero_width = section.settings.width | default: 'full'
-  unless hero_width == 'page' or hero_width == 'full'
+  unless hero_width == 'page' or hero_width == 'full' or hero_width == 'full_padded'
     assign hero_width = 'full'
   endunless
   assign hero_layout = section.settings.layout | default: 'classic'
@@ -46,11 +46,11 @@
   endif
 
   assign hero_desktop_height = section.settings.desktop_height | default: 'medium'
-  unless hero_desktop_height == 'adapt' or hero_desktop_height == 'extra_small' or hero_desktop_height == 'small' or hero_desktop_height == 'medium' or hero_desktop_height == 'large' or hero_desktop_height == 'extra_large' or hero_desktop_height == 'full_screen'
+  unless hero_desktop_height == 'adapt' or hero_desktop_height == 'extra_small' or hero_desktop_height == 'small' or hero_desktop_height == 'medium' or hero_desktop_height == 'large' or hero_desktop_height == 'extra_large' or hero_desktop_height == 'full_screen' or hero_desktop_height == 'custom'
     assign hero_desktop_height = 'medium'
   endunless
   assign hero_mobile_height = section.settings.mobile_height | default: 'adapt'
-  unless hero_mobile_height == 'adapt' or hero_mobile_height == 'extra_small' or hero_mobile_height == 'small' or hero_mobile_height == 'medium' or hero_mobile_height == 'large' or hero_mobile_height == 'extra_large' or hero_mobile_height == 'full_screen'
+  unless hero_mobile_height == 'adapt' or hero_mobile_height == 'extra_small' or hero_mobile_height == 'small' or hero_mobile_height == 'medium' or hero_mobile_height == 'large' or hero_mobile_height == 'extra_large' or hero_mobile_height == 'full_screen' or hero_mobile_height == 'custom'
     assign hero_mobile_height = 'adapt'
   endunless
 
@@ -85,6 +85,8 @@
 %}
 
 {% capture hero_style %}
+  {% if hero_desktop_height == 'custom' %}--hero-height-desktop: {{ section.settings.custom_height_desktop }}px;{% endif %}
+  {% if hero_mobile_height == 'custom' %}--hero-height-mobile: {{ section.settings.custom_height_mobile }}px;{% endif %}
   --hero-media-ratio: {{ hero_media_ratio }};
   --hero-media-radius: {% case hero_media_radius %}{% when 'rounded' %}var(--radius-rounded){% when 'slightly_rounded' %}var(--radius-slight){% else %}var(--radius-square){% endcase %};
   {% if hero_desktop_gap != 12 %}--hero-content-gap: {{ hero_desktop_gap }}px;{% endif %}
@@ -107,7 +109,7 @@
 {% endcapture %}
 
 <div
-  class="hero hero--width-{{ hero_width }} hero--{{ hero_layout }}{% if section.settings.stack_on_tablet %} hero--tablet-stack{% endif %}{% if section.settings.hover_zoom %} hero--hover-zoom{% unless hero_layout == 'stack' %} media-hover-zoom{% endunless %}{% endif %} hero--content-{{ hero_content_width }} hero--content-position-{{ hero_desktop_content_position }} hero--desktop-{{ hero_desktop_height }} hero--mobile-{{ hero_mobile_height }}{% if hero_width == 'page' %} container page-width section-spacing color-scheme section-color-scope {{ hero_section_scheme }}{% endif %}"
+  class="hero hero--width-{{ hero_width }} hero--{{ hero_layout }}{% if section.settings.stack_on_tablet %} hero--tablet-stack{% endif %}{% if section.settings.hover_zoom %} hero--hover-zoom{% unless hero_layout == 'stack' %} media-hover-zoom{% endunless %}{% endif %} hero--content-{{ hero_content_width }} hero--content-position-{{ hero_desktop_content_position }} hero--desktop-{{ hero_desktop_height }} hero--mobile-{{ hero_mobile_height }}{% if hero_width == 'page' %} container page-width section-spacing color-scheme section-color-scope {{ hero_section_scheme }}{% elsif hero_width == 'full_padded' %} container full-width section-spacing color-scheme section-color-scope {{ hero_section_scheme }}{% endif %}"
   {% unless hero_parallax_effect == 'none' %}data-hero-parallax="{{ hero_parallax_effect }}"{% endunless %}
   {% if hero_style != blank %}style="{{ hero_style | strip }}"{% endif %}
 >
@@ -161,6 +163,8 @@
 
   .hero--stack.hero--desktop-adapt .hero__container { min-height: 0; }
   .hero--stack .hero__content--width-fill { padding: 0; }
+  .hero--width-full_padded .hero__surface { border-radius: var(--hero-media-radius); overflow: hidden; }
+
   .hero__surface {
     position: relative;
     display: grid;
@@ -188,6 +192,7 @@
   .hero--desktop-large { --hero-min-height: 90rem; }
   .hero--desktop-extra_large { --hero-min-height: 108rem; }
   .hero--desktop-full_screen { --hero-min-height: 100svh; }
+  .hero--desktop-custom { --hero-min-height: var(--hero-height-desktop, 750px); }
 
   .hero__surface > .media {
     position: absolute;
@@ -287,7 +292,8 @@
     width: min(100%, var(--hero-content-max-width, 64rem));
   }
 
-  .hero--width-page .hero__content {
+  .hero--width-page .hero__content,
+  .hero--width-full_padded .hero__content {
     padding: var(--hero-content-padding, 6.4rem);
   }
 
@@ -381,13 +387,17 @@
     .hero--mobile-large { --hero-min-height: 76rem; }
     .hero--mobile-extra_large { --hero-min-height: 90rem; }
     .hero--mobile-full_screen { --hero-min-height: 100svh; }
+    .hero--mobile-custom { --hero-min-height: var(--hero-height-mobile, 500px); }
+
+    .hero--width-full_padded .hero__content { padding: var(--hero-content-padding-mobile, 4rem); }
 
     .hero__content {
       gap: var(--hero-content-gap-mobile, var(--hero-content-gap, 1.2rem));
       padding: 0;
     }
 
-    .hero--width-page .hero__content {
+    .hero--width-page .hero__content,
+  .hero--width-full_padded .hero__content {
       padding-block: var(--hero-content-padding-mobile, min(var(--hero-content-padding, 6.4rem), 4rem));
       padding-inline: var(--page-margin-mobile);
     }
@@ -549,6 +559,10 @@
         {
           "value": "full",
           "label": "t:options.hero_width.full"
+        },
+        {
+          "value": "full_padded",
+          "label": "Full width with page margins"
         }
       ],
       "default": "full"
@@ -642,12 +656,30 @@
       "label": "t:labels.media_aspect_ratio",
       "default": "landscape",
       "options": [
-        { "value": "auto", "label": "t:options.image_ratio.auto" },
-        { "value": "square", "label": "t:options.image_ratio.square" },
-        { "value": "portrait", "label": "t:options.image_ratio.portrait" },
-        { "value": "landscape", "label": "t:options.image_ratio.landscape" },
-        { "value": "ratio_7_6", "label": "t:options.image_ratio.ratio_7_6" },
-        { "value": "wide", "label": "t:options.image_ratio.wide" }
+        {
+          "value": "auto",
+          "label": "t:options.image_ratio.auto"
+        },
+        {
+          "value": "square",
+          "label": "t:options.image_ratio.square"
+        },
+        {
+          "value": "portrait",
+          "label": "t:options.image_ratio.portrait"
+        },
+        {
+          "value": "landscape",
+          "label": "t:options.image_ratio.landscape"
+        },
+        {
+          "value": "ratio_7_6",
+          "label": "t:options.image_ratio.ratio_7_6"
+        },
+        {
+          "value": "wide",
+          "label": "t:options.image_ratio.wide"
+        }
       ],
       "info": "t:info.hero_media_aspect_ratio",
       "visible_if": "{{ section.settings.layout == 'stack' }}"
@@ -764,9 +796,24 @@
         {
           "value": "full_screen",
           "label": "t:options.hero_height.full_screen"
+        },
+        {
+          "value": "custom",
+          "label": "t:options.heading_size.custom"
         }
       ],
       "default": "medium"
+    },
+    {
+      "type": "range",
+      "id": "custom_height_desktop",
+      "label": "Desktop custom height",
+      "min": 200,
+      "max": 1200,
+      "step": 10,
+      "unit": "px",
+      "default": 750,
+      "visible_if": "{{ section.settings.desktop_height == 'custom' }}"
     },
     {
       "type": "select",
@@ -800,9 +847,24 @@
         {
           "value": "full_screen",
           "label": "t:options.hero_height.full_screen"
+        },
+        {
+          "value": "custom",
+          "label": "t:options.heading_size.custom"
         }
       ],
       "default": "adapt"
+    },
+    {
+      "type": "range",
+      "id": "custom_height_mobile",
+      "label": "Mobile custom height",
+      "min": 200,
+      "max": 1200,
+      "step": 10,
+      "unit": "px",
+      "default": 500,
+      "visible_if": "{{ section.settings.mobile_height == 'custom' }}"
     },
     {
       "type": "header",
