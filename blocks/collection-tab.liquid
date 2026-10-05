@@ -328,6 +328,11 @@
     transform: translateY(-50%);
   }
 
+  /* Match pagination visibility when Swiper has no overflowing products. */
+  .collection-tab__carousel-navigation:has(.swiper-button-lock) {
+    display: none;
+  }
+
   .collection-tab__carousel-navigation--outside {
     padding-inline: 0;
   }
