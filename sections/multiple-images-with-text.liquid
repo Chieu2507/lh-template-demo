@@ -1,4 +1,18 @@
 {% liquid
+  assign navigation_style = section.settings.navigation_style | default: 'secondary'
+  unless navigation_style == 'primary' or navigation_style == 'secondary' or navigation_style == 'outline' or navigation_style == 'icon_only'
+    assign navigation_style = 'secondary'
+  endunless
+  assign navigation_variant = navigation_style
+  assign navigation_modifier = ''
+  if navigation_style == 'icon_only'
+    assign navigation_variant = 'tertiary'
+    assign navigation_modifier = 'swiper-nav-button--icon-only'
+  elsif navigation_style == 'outline'
+    assign navigation_variant = 'tertiary'
+    assign navigation_modifier = 'swiper-nav-button--outline'
+  endif
+  assign navigation_icon = section.settings.navigation_icon | default: 'arrow'
   assign scheme = section.settings.color_scheme | default: 'scheme-1'
   assign boxed_scheme = section.settings.boxed_color_scheme | default: 'scheme-1'
   assign boxed_radius = 'var(--radius-rounded)'
@@ -34,8 +48,8 @@
     <div class="multiple-images-text__items" data-multi-items>{% content_for 'blocks' %}</div>
     {% if section.settings.show_navigation %}
       <div class="multiple-images-text__navigation" data-multi-navigation>
-        <button class="btn btn-secondary btn--secondary btn--icon swiper-nav-button" type="button" data-multi-previous aria-label="{{ 'collection_tabs.previous' | t | escape }}">{% render 'carousel-navigation-icon', icon: 'arrow', direction: 'previous' %}</button>
-        <button class="btn btn-secondary btn--secondary btn--icon swiper-nav-button" type="button" data-multi-next aria-label="{{ 'collection_tabs.next' | t | escape }}">{% render 'carousel-navigation-icon', icon: 'arrow', direction: 'next' %}</button>
+        <button class="btn btn-{{ navigation_variant }} btn--{{ navigation_variant }} btn--icon {{ navigation_modifier }} swiper-nav-button" type="button" data-multi-previous aria-label="{{ 'collection_tabs.previous' | t | escape }}">{% render 'carousel-navigation-icon', icon: navigation_icon, direction: 'previous' %}</button>
+        <button class="btn btn-{{ navigation_variant }} btn--{{ navigation_variant }} btn--icon {{ navigation_modifier }} swiper-nav-button" type="button" data-multi-next aria-label="{{ 'collection_tabs.next' | t | escape }}">{% render 'carousel-navigation-icon', icon: navigation_icon, direction: 'next' %}</button>
       </div>
     {% endif %}
     <span class="visually-hidden" data-multi-status role="status" aria-live="polite"></span>
@@ -68,7 +82,9 @@
   @media (min-width:1150px) {
     .multiple-images-text__layout--content-first.is-ready .multiple-images-text__items {padding:0 20px 0 96px;}
     .multiple-images-text__layout--content-first.is-ready .multiple-images-text__navigation {margin-left:96px;}
-    .multiple-images-text__layout.is-ready:has([data-multi-navigation]:not([hidden])) .multiple-images-text__item[data-content-position="end"] {margin-bottom:84px;}
+    .multiple-images-text__layout.is-ready:has([data-multi-navigation]:not([hidden])) {grid-template-rows:minmax(min-content,1fr) auto;}
+    .multiple-images-text__layout.is-ready:has([data-multi-navigation]:not([hidden])) .multiple-images-text__images {grid-row:1 / 3;align-self:start;}
+    .multiple-images-text__layout.is-ready .multiple-images-text__navigation {grid-row:2;align-self:end;margin-top:20px;}
   }
   @media (min-width:768px) and (max-width:1149.98px) {
     .multiple-images-text {padding-block:calc(var(--multi-padding-top) * .75) calc(var(--multi-padding-bottom) * .75);}
@@ -180,10 +196,60 @@
       "default": 40
     },
     {
+      "type": "header",
+      "content": "t:general.navigation"
+    },
+    {
       "type": "checkbox",
       "id": "show_navigation",
       "label": "t:labels.multiple_images_navigation",
       "default": true
+    },
+    {
+      "type": "select",
+      "id": "navigation_style",
+      "label": "t:labels.style",
+      "options": [
+        {
+          "value": "primary",
+          "label": "t:options.button_variant.primary"
+        },
+        {
+          "value": "secondary",
+          "label": "t:options.button_variant.secondary"
+        },
+        {
+          "value": "outline",
+          "label": "t:options.button_variant.outline"
+        },
+        {
+          "value": "icon_only",
+          "label": "t:options.button_variant.icon_only"
+        }
+      ],
+      "default": "secondary",
+      "visible_if": "{{ section.settings.show_navigation }}"
+    },
+    {
+      "type": "select",
+      "id": "navigation_icon",
+      "label": "t:labels.icon",
+      "options": [
+        {
+          "value": "chevron",
+          "label": "t:options.collection_navigation_icon.chevron"
+        },
+        {
+          "value": "arrow",
+          "label": "t:options.collection_navigation_icon.arrow"
+        },
+        {
+          "value": "long_arrow",
+          "label": "t:options.collection_navigation_icon.long_arrow"
+        }
+      ],
+      "default": "arrow",
+      "visible_if": "{{ section.settings.show_navigation }}"
     },
     {
       "type": "header",
