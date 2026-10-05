@@ -12,7 +12,7 @@
     "breadcrumbs": {
       "type": "breadcrumbs",
       "settings": {
-        "section_width": "full_width",
+        "section_width": "page_width",
         "show_top_divider": true,
         "show_bottom_divider": false,
         "separator_style": "dot",
@@ -31,7 +31,7 @@
 
       "settings": {
         "sticky_content": true,
-        "width": "full",
+        "width": "page",
         "media_width": "large",
         "gap": 70,
         "gap_mobile": 30,
@@ -101,7 +101,7 @@
             },
             "variant-picker": {
               "type": "product-variant-picker",
-              "settings": {}
+              "settings": { "color_option_display": "variant_image" }
             },
             "inventory": {
               "type": "product-inventory",
