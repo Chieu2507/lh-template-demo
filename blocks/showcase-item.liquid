@@ -1,0 +1,179 @@
+{% doc %}
+  One centered Showcase carousel item. The parent controls card geometry and
+  active state; Image and Group retain their shared editable content contracts.
+{% enddoc %}
+{% liquid
+  assign item_scheme = blank
+  if block.settings.color_type == 'scheme'
+    assign item_scheme = block.settings.color_scheme.id | default: block.settings.color_scheme | default: 'scheme-1' | handleize
+  endif
+%}
+<div class="swiper-slide showcase-item" data-showcase-item data-block-id="{{ block.id }}"{% if item_scheme != blank %} data-color-scheme="{{ item_scheme }}"{% endif %}{% if block.settings.background_color != blank %} data-background-color="{{ block.settings.background_color | escape }}"{% endif %} style="--showcase-image-spacing: {{ block.settings.image_spacing }}px; --showcase-image-spacing-mobile: {{ block.settings.image_spacing_mobile }}px;" {{ block.shopify_attributes }}>
+  <div class="showcase-item__media">
+    {% unless block.settings.background == 'none' %}
+      <div class="showcase-item__background" aria-hidden="true">
+        {% if block.settings.background == 'shape' %}
+          <div class="showcase-item__shape"></div>
+        {% elsif block.settings.background_image != blank %}
+          {% render 'image', image: block.settings.background_image, width: 1600, sizes: '(min-width: 768px) 45vw, 100vw' %}
+        {% endif %}
+      </div>
+    {% endunless %}
+    <div class="showcase-item__image">
+      {% content_for 'block', type: 'image', id: 'image' %}
+    </div>
+  </div>
+  <div class="showcase-item__content align-content">
+    {% content_for 'block', type: 'group', id: 'content' %}
+  </div>
+</div>
+{% schema %}
+{
+  "name": "Showcase item",
+  "tag": null,
+  "blocks": [
+    {
+      "type": "image"
+    },
+    {
+      "type": "group"
+    }
+  ],
+  "settings": [
+    {
+      "type": "header",
+      "content": "Layout"
+    },
+    {
+      "type": "range",
+      "id": "image_spacing",
+      "label": "Desktop image spacing",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "default": 30
+    },
+    {
+      "type": "range",
+      "id": "image_spacing_mobile",
+      "label": "Mobile image spacing",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "default": 30
+    },
+    {
+      "type": "header",
+      "content": "Appearance"
+    },
+    {
+      "type": "select",
+      "id": "background",
+      "label": "Image background",
+      "info": "Only visible when this slide is centered.",
+      "options": [
+        {
+          "value": "none",
+          "label": "None"
+        },
+        {
+          "value": "shape",
+          "label": "Shape"
+        },
+        {
+          "value": "image",
+          "label": "Image"
+        }
+      ],
+      "default": "none"
+    },
+    {
+      "type": "image_picker",
+      "id": "background_image",
+      "label": "Background image",
+      "visible_if": "{{ block.settings.background == 'image' }}"
+    },
+    {
+      "type": "select",
+      "id": "color_type",
+      "label": "Color type",
+      "options": [
+        {
+          "value": "inherit",
+          "label": "Inherit"
+        },
+        {
+          "value": "scheme",
+          "label": "Color scheme"
+        }
+      ],
+      "default": "inherit"
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "t:labels.color_scheme",
+      "default": "scheme-1",
+      "visible_if": "{{ block.settings.color_type == 'scheme' }}"
+    },
+    {
+      "type": "color",
+      "alpha": true,
+      "id": "background_color",
+      "label": "Background color"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Showcase item",
+      "blocks": [
+        {
+          "type": "image",
+          "static": true,
+          "settings": {
+            "width_desktop": "fill",
+            "width_mobile": "fill"
+          },
+          "id": "image"
+        },
+        {
+          "type": "group",
+          "static": true,
+          "settings": {
+            "alignment": "center",
+            "alignment_mobile": "center",
+            "gap_desktop": 12,
+            "gap_mobile": 8
+          },
+          "blocks": [
+            {
+              "type": "heading",
+              "settings": {
+                "text": "<p>Showcase your favorites</p>",
+                "heading_size": "md",
+                "html_tag": "h3"
+              }
+            },
+            {
+              "type": "text",
+              "settings": {
+                "text": "<p>Share what makes this collection special.</p>"
+              }
+            },
+            {
+              "type": "button",
+              "settings": {
+                "button_label": "Shop now",
+                "button_link": "shopify://collections/all"
+              }
+            }
+          ],
+          "id": "content"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

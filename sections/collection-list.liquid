@@ -167,6 +167,12 @@
       row-gap: var(--collection-list-gap, 40px);
     }
 
+    .collection-list__container[data-desktop-alignment='center']:not(:has(.collection-list__actions, .collection-card-list__navigation--top)) {
+      grid-template-areas:
+        'header'
+        'content';
+    }
+
     .collection-list__header {
       grid-area: header;
     }
@@ -415,8 +421,8 @@
       "id": "padding_bottom",
       "label": "t:labels.bottom_padding",
       "min": 0,
-      "max": 100,
-      "step": 1,
+      "max": 200,
+      "step": 2,
       "unit": "px",
       "default": 50
     },

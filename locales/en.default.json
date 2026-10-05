@@ -387,5 +387,8 @@
     "pinterest": "Pinterest",
     "x": "X",
     "linkedin": "LinkedIn"
+  },
+  "showcase_carousel": {
+    "go_to_slide": "Go to slide {{ index }}"
   }
 }
