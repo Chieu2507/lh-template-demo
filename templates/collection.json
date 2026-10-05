@@ -89,7 +89,7 @@
       "disabled": true,
       "settings": {
         "alignment": "flex-start",
-        "section_width": "full",
+        "section_width": "page",
         "text_case": "normal",
         "item_gap": 8,
         "show_home_link": true,
@@ -257,7 +257,7 @@
       },
       "settings": {
         "products_per_page": 10,
-        "section_width": "full",
+        "section_width": "page",
         "item_gap": 50,
         "item_gap_mobile": 16,
         "color_scheme": "scheme-1",
@@ -346,11 +346,11 @@
       ],
       "settings": {
         "image_source": "collection",
-        "section_width": "full_bleed",
+        "section_width": "page",
         "layout": "background",
         "limit_description_width": true,
         "description_max_width": 750,
-        "full_width_content": true,
+        "full_width_content": false,
         "content_position": "bottom-left",
         "height_desktop": "large",
         "height_mobile": "extra_small",
@@ -843,7 +843,7 @@
         "item_2"
       ],
       "settings": {
-        "section_width": "full_width",
+        "section_width": "page_width",
         "height": "auto",
         "custom_height": 100,
         "direction": "horizontal",
@@ -922,7 +922,6 @@
           "static": true,
           "settings": {
             "button_label": "View all",
-            "button_link": "",
             "button_open_in_new_tab": false,
             "button_style": "tertiary",
             "show_icon": false,
