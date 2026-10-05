@@ -1632,7 +1632,9 @@
             },
             "product-variant-picker-2": {
               "type": "product-variant-picker",
-              "settings": {}
+              "settings": {
+                "color_option_display": "variant_image"
+              }
             },
             "product-buy-buttons-3": {
               "type": "product-buy-buttons",

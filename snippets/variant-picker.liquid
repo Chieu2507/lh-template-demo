@@ -20,7 +20,7 @@
   @param {number} [swatch_width_mobile_override] - Optional local mobile swatch width
   @param {string} [swatch_height_ratio_override] - Optional local CSS aspect ratio for swatches
   @param {boolean} [show_option_names] - Whether option legends remain visible
-  @param {string} [color_option_display] - Block setting: text or color when Shopify supplies color swatches
+  @param {string} [color_option_display] - Block setting: text, native color, or linked variant image
   @param {string} [size_chart_option_name] - Product option name that should expose the size guide
   @param {page} [size_chart_page] - Page or dynamic page source rendered by the size guide
   @param {string} [size_chart_desktop_layout] - Desktop size guide presentation: popup or drawer
@@ -189,7 +189,10 @@
       assign option_uses_native_color_swatches = false
       if picker_type == 'button'
         if color_option_display != blank and option_is_color
-          if color_option_display == 'color' and all_values_have_color
+          if color_option_display == 'variant_image'
+            assign option_uses_swatches = true
+            assign option_swatch_style = 'variant_image'
+          elsif color_option_display == 'color' and all_values_have_color
             assign option_uses_swatches = true
             assign option_swatch_style = 'color'
             assign option_selected_style = 'border'
