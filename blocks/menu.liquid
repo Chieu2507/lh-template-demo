@@ -16,7 +16,7 @@
   if block.settings.menu.handle != blank
     assign selected_menu_handle = block.settings.menu.handle
   endif
-  if selected_menu_handle == blank
+  if selected_menu_handle == blank and block.blocks.size == 0
     assign selected_menu_handle = 'main-menu'
   endif
   if selected_menu.links == blank and selected_menu_handle != blank
@@ -110,7 +110,11 @@
 {% assign heading_markup = heading_markup | strip %}
 
 {% capture menu_markup %}
-  {% if has_menu %}
+  {% if block.blocks.size > 0 and has_menu == false %}
+    <ul class="{{ menu_list_class }}" role="list">
+      {% content_for 'blocks' %}
+    </ul>
+  {% elsif has_menu %}
     <ul class="{{ menu_list_class }}" role="list">
       {% for menu_link in selected_menu.links %}
         <li class="menu-block__item{% if menu_link.active or menu_link.child_active %} menu-block__item--active{% endif %}">
@@ -184,6 +188,7 @@
 {
   "name": "t:general.menu",
   "tag": null,
+  "blocks": [{ "type": "_menu-link" }],
   "settings": [
     {
       "type": "link_list",

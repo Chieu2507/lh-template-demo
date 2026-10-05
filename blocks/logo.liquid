@@ -98,7 +98,7 @@
         alt: shop.name
     }}
   {% else %}
-    <span class="site-logo__fallback heading-text heading-display">{{ shop.name | escape }}</span>
+    <span class="site-logo__fallback heading-text heading-display">{{ block.settings.fallback_text | default: shop.name | escape }}</span>
   {% endif %}
 </a>
 
@@ -148,6 +148,12 @@
   "name": "t:general.logo",
   "tag": null,
   "settings": [
+    {
+      "type": "text",
+      "id": "fallback_text",
+      "label": "Logo text",
+      "info": "Shown when no logo image is selected in Theme settings. Leave blank to use the store name."
+    },
     {
       "type": "paragraph",
       "content": "t:info.logo_block"

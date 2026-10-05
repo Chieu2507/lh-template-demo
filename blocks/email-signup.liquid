@@ -122,10 +122,12 @@
   endunless
 
   assign button_icon = blank
+  assign button_icon_only = false
   assign button_icon_position = 'after'
   assign button_icon_size = 'inherit'
   assign button_icon_width = 20
   if block.settings.show_icon
+    assign button_icon_only = block.settings.button_icon_only | default: false
     assign button_icon = block.settings.icon | default: 'arrow'
     assign button_icon_position = block.settings.icon_position | default: 'after'
     unless button_icon_position == 'before' or button_icon_position == 'after'
@@ -255,6 +257,7 @@
     icon_position: button_icon_position,
     icon_size: button_icon_size,
     icon_width: button_icon_width,
+    icon_only: button_icon_only,
     class: 'email-signup-block__submit'
   %}
 {% endcapture %}
@@ -892,6 +895,13 @@
       "id": "show_icon",
       "label": "t:labels.show_icon",
       "default": false
+    },
+    {
+      "type": "checkbox",
+      "id": "button_icon_only",
+      "label": "Show icon only",
+      "default": false,
+      "visible_if": "{{ block.settings.show_icon }}"
     },
     {
       "type": "select",
