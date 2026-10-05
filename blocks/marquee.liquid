@@ -227,6 +227,8 @@
       if (!track || !viewport) return;
 
       let frame = 0;
+      let scrollFrame = 0;
+      let lastScrollY = window.scrollY;
       let destroyed = false;
       let measuredLayout = '';
       const originalItems = () => [...track.children].filter((item) => !item.hasAttribute('data-marquee-clone'));
@@ -301,10 +303,39 @@
         if (layoutSignature() !== measuredLayout) scheduleSync();
       });
 
+      const handleScroll = () => {
+        if (scrollFrame || destroyed) return;
+        scrollFrame = requestAnimationFrame(() => {
+          scrollFrame = 0;
+          const scrollY = window.scrollY;
+          const delta = Math.max(-50, Math.min(50, scrollY - lastScrollY));
+          lastScrollY = scrollY;
+          const bounds = viewport.getBoundingClientRect();
+          const distance = parseFloat(track.style.getPropertyValue('--marquee-loop-distance'));
+          if (!delta || !distance || bounds.bottom <= 0 || bounds.top >= window.innerHeight) return;
+
+          // Move the existing loop's phase, keeping autoplay and the seamless seam.
+          // Upward scrolling has extra influence so it visibly reverses the text.
+          const pixels = delta * (delta < 0 ? 0.7 : 0.35);
+          track.getAnimations().forEach((animation) => {
+            if (!['marquee-scroll-left', 'marquee-scroll-right'].includes(animation.animationName)) return;
+            const duration = Number(animation.effect?.getComputedTiming().duration);
+            if (!duration || animation.currentTime === null) return;
+            const time = Number(animation.currentTime) + pixels / distance * duration;
+            animation.currentTime = ((time % duration) + duration) % duration;
+          });
+        });
+      };
+      // Scrolling text owns this effect; other placements keep their existing motion.
+      const scrollReactive = marquee.closest('.text-marquee-custom') && !marquee.classList.contains('marquee--static');
+      if (scrollReactive) window.addEventListener('scroll', handleScroll, { passive: true });
+
       instances.set(marquee, {
         destroy: () => {
           destroyed = true;
           cancelAnimationFrame(frame);
+          cancelAnimationFrame(scrollFrame);
+          if (scrollReactive) window.removeEventListener('scroll', handleScroll);
           resizeObserver.disconnect();
           mutationObserver.disconnect();
         }
