@@ -1,0 +1,182 @@
+{
+  "collections": {
+    "trail": {
+      "collection": {
+        "id": "gid://shopify/Collection/534685843755",
+        "title": "Trail running",
+        "handle": "trail-running-fluxstep"
+      },
+      "userErrors": []
+    },
+    "tennis": {
+      "collection": {
+        "id": "gid://shopify/Collection/534685876523",
+        "title": "Tennis",
+        "handle": "tennis-fluxstep"
+      },
+      "userErrors": []
+    },
+    "hiking": {
+      "collection": {
+        "id": "gid://shopify/Collection/534685909291",
+        "title": "Hiking & outdoor",
+        "handle": "hiking-outdoor-fluxstep"
+      },
+      "userErrors": []
+    }
+  },
+  "media": [
+    {
+      "id": "gid://shopify/MediaImage/46381577568555",
+      "fileStatus": "READY",
+      "image": {
+        "url": "https://cdn.shopify.com/s/files/1/1024/2192/2091/files/fluxstep-blog-discipline-before-speed.jpg?v=1791185794",
+        "width": 1080,
+        "height": 1350
+      }
+    },
+    {
+      "id": "gid://shopify/MediaImage/46381577601323",
+      "fileStatus": "READY",
+      "image": {
+        "url": "https://cdn.shopify.com/s/files/1/1024/2192/2091/files/fluxstep-blog-warm-up-to-go-further.jpg?v=1791185794",
+        "width": 900,
+        "height": 900
+      }
+    },
+    {
+      "id": "gid://shopify/MediaImage/46381577634091",
+      "fileStatus": "READY",
+      "image": {
+        "url": "https://cdn.shopify.com/s/files/1/1024/2192/2091/files/fluxstep-blog-where-training-meets-elevation.jpg?v=1791185794",
+        "width": 1080,
+        "height": 1350
+      }
+    },
+    {
+      "id": "gid://shopify/MediaImage/46381577666859",
+      "fileStatus": "READY",
+      "image": {
+        "url": "https://cdn.shopify.com/s/files/1/1024/2192/2091/files/fluxstep-gallery-1.jpg?v=1791185794",
+        "width": 1200,
+        "height": 1200
+      }
+    },
+    {
+      "id": "gid://shopify/MediaImage/46381577699627",
+      "fileStatus": "READY",
+      "image": {
+        "url": "https://cdn.shopify.com/s/files/1/1024/2192/2091/files/fluxstep-gallery-2.jpg?v=1791185794",
+        "width": 900,
+        "height": 1200
+      }
+    },
+    {
+      "id": "gid://shopify/MediaImage/46381577732395",
+      "fileStatus": "READY",
+      "image": {
+        "url": "https://cdn.shopify.com/s/files/1/1024/2192/2091/files/fluxstep-gallery-3.jpg?v=1791185794",
+        "width": 900,
+        "height": 1200
+      }
+    },
+    {
+      "id": "gid://shopify/MediaImage/46381577765163",
+      "fileStatus": "READY",
+      "image": {
+        "url": "https://cdn.shopify.com/s/files/1/1024/2192/2091/files/fluxstep-gallery-5.jpg?v=1791185794",
+        "width": 1080,
+        "height": 1350
+      }
+    },
+    {
+      "id": "gid://shopify/MediaImage/46381577797931",
+      "fileStatus": "READY",
+      "image": {
+        "url": "https://cdn.shopify.com/s/files/1/1024/2192/2091/files/fluxstep-gallery-6.jpg?v=1791185795",
+        "width": 900,
+        "height": 1200
+      }
+    },
+    {
+      "id": "gid://shopify/MediaImage/46382467416363",
+      "fileStatus": "READY",
+      "image": {
+        "url": "https://cdn.shopify.com/s/files/1/1024/2192/2091/files/fluxstep-showcase-running.jpg?v=1791186680",
+        "width": 1080,
+        "height": 1080
+      }
+    },
+    {
+      "id": "gid://shopify/MediaImage/46382467449131",
+      "fileStatus": "READY",
+      "image": {
+        "url": "https://cdn.shopify.com/s/files/1/1024/2192/2091/files/fluxstep-showcase-trail.jpg?v=1791186680",
+        "width": 1200,
+        "height": 1200
+      }
+    },
+    {
+      "id": "gid://shopify/MediaImage/46382173454635",
+      "fileStatus": "READY",
+      "image": {
+        "url": "https://cdn.shopify.com/s/files/1/1024/2192/2091/files/fluxstep-category-trail-running.jpg?v=1791186384",
+        "width": 900,
+        "height": 1200
+      }
+    },
+    {
+      "id": "gid://shopify/MediaImage/46382173487403",
+      "fileStatus": "READY",
+      "image": {
+        "url": "https://cdn.shopify.com/s/files/1/1024/2192/2091/files/fluxstep-category-tennis.jpg?v=1791186384",
+        "width": 1080,
+        "height": 1350
+      }
+    },
+    {
+      "id": "gid://shopify/MediaImage/46382173520171",
+      "fileStatus": "READY",
+      "image": {
+        "url": "https://cdn.shopify.com/s/files/1/1024/2192/2091/files/fluxstep-category-hiking-outdoor.jpg?v=1791186384",
+        "width": 1080,
+        "height": 1080
+      }
+    }
+  ],
+  "blog_status": "Created and published: Fluxstep journal, three Figma cards; bound to homepage blog-list",
+  "blog": {
+    "title": "Fluxstep journal",
+    "handle": "fluxstep-journal",
+    "id": "gid://shopify/Blog/125737664811"
+  },
+  "articles": [
+    {
+      "id": "gid://shopify/Article/633694060843",
+      "title": "Discipline before speed",
+      "handle": "discipline-before-speed",
+      "publishedAt": "2025-11-17T12:02:00Z",
+      "image": {
+        "url": "https://cdn.shopify.com/s/files/1/1024/2192/2091/articles/fluxstep-blog-discipline-before-speed.jpg?v=1791189458"
+      }
+    },
+    {
+      "id": "gid://shopify/Article/633694093611",
+      "title": "Warm up to go further",
+      "handle": "warm-up-to-go-further",
+      "publishedAt": "2025-11-17T12:01:00Z",
+      "image": {
+        "url": "https://cdn.shopify.com/s/files/1/1024/2192/2091/articles/fluxstep-blog-warm-up-to-go-further.jpg?v=1791189471"
+      }
+    },
+    {
+      "id": "gid://shopify/Article/633694126379",
+      "title": "Where training meets elevation",
+      "handle": "where-training-meets-elevation",
+      "publishedAt": "2025-11-17T12:00:00Z",
+      "image": {
+        "url": "https://cdn.shopify.com/s/files/1/1024/2192/2091/articles/fluxstep-blog-where-training-meets-elevation.jpg?v=1791189480"
+      }
+    }
+  ]
+}

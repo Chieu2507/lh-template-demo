@@ -1,0 +1,94 @@
+{
+  "blog": {
+    "title": "Fluxstep journal",
+    "handle": "fluxstep-journal",
+    "id": "gid://shopify/Blog/125737664811"
+  },
+  "articles": [
+    {
+      "title": "Discipline before speed",
+      "handle": "discipline-before-speed",
+      "author": {
+        "name": "LayoutHub"
+      },
+      "body": "<p>A good run begins before the first fast step. The quiet ritual of preparing your shoes, choosing your route, and making time to move sets the tone for everything that follows.</p><p>Consistency gives each stride a purpose. Some days are about pace; others are simply about showing up and enjoying the distance. Give yourself space to settle into the run and find a rhythm that feels natural.</p><p>At Fluxstep, we celebrate the daily practice behind every personal milestone. Lace up, take the first step, and let progress grow one run at a time.</p>",
+      "summary": "<p>Prepare your body and your stride for stronger, more effortless runs with mindful warm ups.</p>",
+      "image": {
+        "url": "https://cdn.shopify.com/s/files/1/1024/2192/2091/files/fluxstep-blog-discipline-before-speed.jpg?v=1791185794",
+        "altText": "Discipline before speed"
+      },
+      "isPublished": true,
+      "publishDate": "2025-11-17T12:02:00Z",
+      "tags": [
+        "Fluxstep",
+        "Running"
+      ],
+      "created_resource": {
+        "id": "gid://shopify/Article/633694060843",
+        "title": "Discipline before speed",
+        "handle": "discipline-before-speed",
+        "publishedAt": "2025-11-17T12:02:00Z",
+        "image": {
+          "url": "https://cdn.shopify.com/s/files/1/1024/2192/2091/articles/fluxstep-blog-discipline-before-speed.jpg?v=1791189458"
+        }
+      }
+    },
+    {
+      "title": "Warm up to go further",
+      "handle": "warm-up-to-go-further",
+      "author": {
+        "name": "LayoutHub"
+      },
+      "body": "<p>The moments before a run are part of the journey. Leave room in your routine to prepare, check your gear, and ease into movement before the route opens up ahead of you.</p><p>A familiar starting ritual can turn a busy day into time that belongs to you. Notice the ground beneath your feet, the weather around you, and the pace you want to explore. There is no need to rush the beginning.</p><p>From the first easy steps to the final stretch of road, keep the experience your own. The best running routine is one you look forward to returning to.</p>",
+      "summary": "<p>A simple stretch can unlock better power, smoother transitions, and longer lasting endurance.</p>",
+      "image": {
+        "url": "https://cdn.shopify.com/s/files/1/1024/2192/2091/files/fluxstep-blog-warm-up-to-go-further.jpg?v=1791185794",
+        "altText": "Warm up to go further"
+      },
+      "isPublished": true,
+      "publishDate": "2025-11-17T12:01:00Z",
+      "tags": [
+        "Fluxstep",
+        "Running"
+      ],
+      "created_resource": {
+        "id": "gid://shopify/Article/633694093611",
+        "title": "Warm up to go further",
+        "handle": "warm-up-to-go-further",
+        "publishedAt": "2025-11-17T12:01:00Z",
+        "image": {
+          "url": "https://cdn.shopify.com/s/files/1/1024/2192/2091/articles/fluxstep-blog-warm-up-to-go-further.jpg?v=1791189471"
+        }
+      }
+    },
+    {
+      "title": "Where training meets elevation",
+      "handle": "where-training-meets-elevation",
+      "author": {
+        "name": "LayoutHub"
+      },
+      "body": "<p>Some routes offer more than distance. Mountain roads and elevated trails bring wide views, changing light, and a fresh perspective on the everyday act of putting one foot in front of the other.</p><p>Choose a route that suits your experience and the conditions, and leave space to enjoy the landscape. A new setting can make a familiar running routine feel like an adventure.</p><p>Whether your next outing follows a city street or a hillside path, movement is a way to discover your surroundings. Go at your own pace and collect the moments that make the journey memorable.</p>",
+      "summary": "<p>High altitude runs sharpen endurance, strengthen every breath, and push performance to new heights.</p>",
+      "image": {
+        "url": "https://cdn.shopify.com/s/files/1/1024/2192/2091/files/fluxstep-blog-where-training-meets-elevation.jpg?v=1791185794",
+        "altText": "Where training meets elevation"
+      },
+      "isPublished": true,
+      "publishDate": "2025-11-17T12:00:00Z",
+      "tags": [
+        "Fluxstep",
+        "Running"
+      ],
+      "created_resource": {
+        "id": "gid://shopify/Article/633694126379",
+        "title": "Where training meets elevation",
+        "handle": "where-training-meets-elevation",
+        "publishedAt": "2025-11-17T12:00:00Z",
+        "image": {
+          "url": "https://cdn.shopify.com/s/files/1/1024/2192/2091/articles/fluxstep-blog-where-training-meets-elevation.jpg?v=1791189480"
+        }
+      }
+    }
+  ],
+  "status": "Created and published; selected in homepage Blog posts"
+}

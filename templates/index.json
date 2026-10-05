@@ -1567,24 +1567,11 @@
             "heading-0"
           ]
         },
-        "blog-posts-view-all": {
-          "type": "view-all-button",
-          "static": true,
-          "settings": {
-            "button_label": "View all posts",
-            "button_style": "tertiary",
-            "show_icon": false,
-            "button_style_mobile": "secondary",
-            "button_height_mobile": "inherit",
-            "full_width_mobile": true,
-            "show_icon_mobile": false
-          }
-        },
         "blog-list": {
           "type": "blog-list",
           "static": true,
           "settings": {
-            "blog": "",
+            "blog": "fluxstep-journal",
             "max_posts": 3,
             "layout_type": "grid",
             "columns_desktop": "3",
@@ -1681,6 +1668,19 @@
                 "blog-card-title-1",
                 "blog-card-description-2"
               ]
+            },
+            "blog-posts-view-all": {
+              "type": "view-all-button",
+              "static": true,
+              "settings": {
+                "button_label": "View all posts",
+                "button_style": "tertiary",
+                "show_icon": false,
+                "button_style_mobile": "secondary",
+                "button_height_mobile": "inherit",
+                "full_width_mobile": true,
+                "show_icon_mobile": false
+              }
             }
           },
           "block_order": []
