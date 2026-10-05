@@ -72,7 +72,10 @@ const initialize = (section) => {
     // Tabs switch on hover. Prevent the pointer interaction from moving focus
     // to the button, which can make the Theme Editor scroll the viewport.
     tab.addEventListener('pointerdown', (event) => event.preventDefault(), { signal: controller.signal });
-    tab.addEventListener('click', (event) => event.preventDefault(), { signal: controller.signal });
+    tab.addEventListener('click', (event) => {
+      event.preventDefault();
+      activate(tab.dataset.collectionsWithTabsId);
+    }, { signal: controller.signal });
   });
   section.addEventListener('collections-with-tabs:activate', (event) => {
     activate(event.detail?.id);

@@ -1271,7 +1271,7 @@
       }
     },
     "collections_image_list": {
-      "type": "collection-list-two-image",
+      "type": "collections-with-tabs",
       "blocks": {
         "look-header": {
           "type": "header",
@@ -1298,48 +1298,43 @@
           ]
         },
         "collection_1": {
-          "type": "collection-two-image-item",
+          "type": "collections-with-tabs-item",
           "settings": {
             "collection": "cloud-strideo",
             "custom_title": "Cloud",
-            "custom_image": "shopify://shop_images/strideo-lines-1-figma.jpg",
-            "secondary_image": "shopify://shop_images/strideo-lines-2-figma.jpg"
+            "custom_image": "shopify://shop_images/strideo-lines-1-figma.jpg"
           }
         },
         "collection_2": {
-          "type": "collection-two-image-item",
+          "type": "collections-with-tabs-item",
           "settings": {
             "collection": "the-roger-strideo",
             "custom_title": "The Roger",
-            "custom_image": "shopify://shop_images/strideo-cards-3-figma.jpg",
-            "secondary_image": "shopify://shop_images/strideo-cards-1-figma.jpg"
+            "custom_image": "shopify://shop_images/strideo-cards-3-figma.jpg"
           }
         },
         "collection_3": {
-          "type": "collection-two-image-item",
+          "type": "collections-with-tabs-item",
           "settings": {
             "collection": "cloudmonster-strideo",
             "custom_title": "Cloudmonster",
-            "custom_image": "shopify://shop_images/strideo-categories-2-figma.jpg",
-            "secondary_image": "shopify://shop_images/strideo-cards-5-figma.jpg"
+            "custom_image": "shopify://shop_images/strideo-categories-2-figma.jpg"
           }
         },
         "collection_4": {
-          "type": "collection-two-image-item",
+          "type": "collections-with-tabs-item",
           "settings": {
             "collection": "cloudtilt-strideo",
             "custom_title": "Cloudtilt",
-            "custom_image": "shopify://shop_images/strideo-lines-2-figma.jpg",
-            "secondary_image": "shopify://shop_images/strideo-cards-5-figma.jpg"
+            "custom_image": "shopify://shop_images/strideo-lines-2-figma.jpg"
           }
         },
         "collection_5": {
-          "type": "collection-two-image-item",
+          "type": "collections-with-tabs-item",
           "settings": {
             "collection": "cloudsurfer-strideo",
             "custom_title": "Cloudsurfer",
-            "custom_image": "shopify://shop_images/strideo-categories-1-figma.jpg",
-            "secondary_image": "shopify://shop_images/strideo-categories-6-figma.jpg"
+            "custom_image": "shopify://shop_images/strideo-categories-1-figma.jpg"
           }
         }
       },
@@ -1352,13 +1347,17 @@
       ],
       "settings": {
         "section_width": "page_width",
-        "title_size": "display",
-        "title_tag": "h2",
-        "image_size": "medium",
+        "boxed_layout": false,
         "gap_desktop": 112,
         "gap_mobile": 16,
-        "header_gap_desktop": 40,
-        "header_gap_mobile": 36,
+        "image_position": "right",
+        "image_ratio": "1",
+        "show_featured_products": false,
+        "title_size": "heading_1",
+        "title_tag": "h2",
+        "show_product_count": false,
+        "auto_rotate": false,
+        "background_media": "none",
         "color_scheme": "scheme-1",
         "padding_top": 40,
         "padding_bottom": 144,
