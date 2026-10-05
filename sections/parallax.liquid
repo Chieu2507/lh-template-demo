@@ -20,21 +20,11 @@
     assign padding_top_mobile = section.settings.padding_top_mobile
     assign padding_bottom_mobile = section.settings.padding_bottom_mobile
   endif
-  assign top_delta = section.settings.padding_top | minus: padding_top_mobile
-  assign top_slope = top_delta | divided_by: 5.12
-  assign top_intercept_delta = top_delta | times: 1.5
-  assign top_intercept = padding_top_mobile | minus: top_intercept_delta
-  assign bottom_delta = section.settings.padding_bottom | minus: padding_bottom_mobile
-  assign bottom_slope = bottom_delta | divided_by: 5.12
-  assign bottom_intercept_delta = bottom_delta | times: 1.5
-  assign bottom_intercept = padding_bottom_mobile | minus: bottom_intercept_delta
 %}
 {% capture responsive_style %}
   --parallax-header-gap-fluid: calc({{ gap_slope }}vw + {{ gap_intercept }}px);
   --section-padding-top-mobile: {{ padding_top_mobile }}px;
   --section-padding-bottom-mobile: {{ padding_bottom_mobile }}px;
-  --parallax-padding-top-fluid: calc({{ top_slope }}vw + {{ top_intercept }}px);
-  --parallax-padding-bottom-fluid: calc({{ bottom_slope }}vw + {{ bottom_intercept }}px);
 {% endcapture %}
 <div class="parallax-section section-spacing color-scheme section-color-scope {{ scheme }}"
   style="--section-padding-top: {{ section.settings.padding_top }}px; --section-padding-bottom: {{ section.settings.padding_bottom }}px; --parallax-header-gap: {{ section.settings.gap_desktop }}px; --parallax-header-gap-mobile: {{ section.settings.gap_mobile }}px; --parallax-content-gap: {{ section.settings.content_gap_desktop }}px; --parallax-content-gap-mobile: {{ section.settings.content_gap_mobile }}px; {{ responsive_style | strip }}">

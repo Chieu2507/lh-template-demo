@@ -737,6 +737,7 @@
       "default": "progress_bar",
       "visible_if": "{{ section.settings.layout_type == 'carousel' and section.settings.show_pagination_on_desktop }}"
     },
+    { "type": "select", "id": "pagination_thickness", "label": "Progress bar thickness", "options": [{ "value": "standard", "label": "Standard" }, { "value": "thin", "label": "Thin" }], "default": "standard", "visible_if": "{{ section.settings.layout_type == 'carousel' and section.settings.show_pagination_on_desktop and section.settings.pagination_type == 'progress_bar' }}" },
     {
       "type": "range",
       "id": "pagination_top_padding_desktop",
@@ -824,7 +825,7 @@
     {
       "type": "range",
       "id": "padding_top",
-      "label": "t:options.position.top",
+      "label": "t:labels.top_padding",
       "min": 0,
       "max": 100,
       "step": 1,
@@ -834,7 +835,7 @@
     {
       "type": "range",
       "id": "padding_bottom",
-      "label": "t:options.position.bottom",
+      "label": "t:labels.bottom_padding",
       "min": 0,
       "max": 100,
       "step": 1,

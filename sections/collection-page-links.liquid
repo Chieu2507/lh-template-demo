@@ -2,7 +2,7 @@
   assign links_scheme = section.settings.color_scheme.id | default: section.settings.color_scheme | default: 'scheme-1' | handleize
 %}
 
-<div class="collection-page-links color-scheme section-color-scope {{ links_scheme }}" style="--collection-page-links-gap: {{ section.settings.column_gap }}px; --collection-page-links-top: {{ section.settings.padding_top }}px; --collection-page-links-bottom: {{ section.settings.padding_bottom }}px;">
+<div class="collection-page-links color-scheme section-color-scope {{ links_scheme }}" style="--collection-page-links-gap: {{ section.settings.column_gap }}px; --collection-page-links-top: {{ section.settings.padding_top }}px; --collection-page-links-bottom: {{ section.settings.padding_bottom }}px; {% if section.settings.customize_mobile_padding %}--collection-page-links-top-mobile: {{ section.settings.padding_top_mobile }}px; --collection-page-links-bottom-mobile: {{ section.settings.padding_bottom_mobile }}px;{% endif %}">
   <div class="collection-page-links__inner">
     <ul class="collection-page-links__list" role="list">
       {% for block in section.blocks %}
@@ -61,6 +61,7 @@
   .collection-page-links__eyebrow, .collection-page-links__count, .collection-page-links__button { font-size: var(--font-body-sm); }
   .collection-page-links__button { border-bottom: 1px solid currentcolor; }
   @media (max-width: 767.98px) {
+    .collection-page-links { padding-block: var(--collection-page-links-top-mobile, var(--collection-page-links-top)) var(--collection-page-links-bottom-mobile, var(--collection-page-links-bottom)); }
     .collection-page-links__list { grid-auto-columns: minmax(240px, 72vw); gap: 12px; padding-inline: var(--page-margin-mobile); }
     .collection-page-links__item { scroll-snap-align: start; }
     .collection-page-links__card, .collection-page-links__content { min-height: 320px; }
@@ -79,9 +80,12 @@
     { "type": "range", "id": "column_gap", "label": "Desktop column gap", "min": 0, "max": 40, "step": 4, "unit": "px", "default": 20 },
     { "type": "header", "content": "Appearance" },
     { "type": "color_scheme", "id": "color_scheme", "label": "Color scheme", "default": "scheme-1" },
-    { "type": "header", "content": "Section padding" },
-    { "type": "range", "id": "padding_top", "label": "Top padding", "min": 0, "max": 80, "step": 4, "unit": "px", "default": 12 },
-    { "type": "range", "id": "padding_bottom", "label": "Bottom padding", "min": 0, "max": 80, "step": 4, "unit": "px", "default": 12 }
+    { "type": "header", "content": "t:general.padding" },
+    { "type": "range", "id": "padding_top", "label": "t:labels.top_padding", "min": 0, "max": 80, "step": 4, "unit": "px", "default": 12 },
+    { "type": "range", "id": "padding_bottom", "label": "t:labels.bottom_padding", "min": 0, "max": 80, "step": 4, "unit": "px", "default": 12 },
+    {"type": "checkbox", "id": "customize_mobile_padding", "label": "t:labels.customize_mobile_padding", "default": false},
+    {"type": "range", "id": "padding_top_mobile", "label": "t:labels.mobile_top_padding", "min": 0, "max": 80, "step": 4, "unit": "px", "default": 12, "visible_if": "{{ section.settings.customize_mobile_padding }}"},
+    {"type": "range", "id": "padding_bottom_mobile", "label": "t:labels.mobile_bottom_padding", "min": 0, "max": 80, "step": 4, "unit": "px", "default": 12, "visible_if": "{{ section.settings.customize_mobile_padding }}"}
   ],
   "blocks": [
     { "type": "collection_card", "name": "Collection card", "limit": 6, "settings": [

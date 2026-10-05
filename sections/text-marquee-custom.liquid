@@ -110,12 +110,9 @@
     padding-top: calc(var(--text-marquee-custom-padding-top, 0px) * var(--text-marquee-custom-padding-scale));
     padding-bottom: calc(var(--text-marquee-custom-padding-bottom, 0px) * var(--text-marquee-custom-padding-scale));
   }
-  @media (min-width: 768px) and (max-width: 1149.98px) {
-    .section-text-marquee-custom .text-marquee-custom { --text-marquee-custom-padding-scale: 0.75; }
-  }
   @media (max-width: 767.98px) {
     .section-text-marquee-custom .text-marquee-custom {
-      --text-marquee-custom-padding-scale: 0.5;
+      --text-marquee-custom-padding-scale: 1;
       padding-top: var(--text-marquee-custom-padding-top-mobile, calc(var(--text-marquee-custom-padding-top, 0px) * var(--text-marquee-custom-padding-scale)));
       padding-bottom: var(--text-marquee-custom-padding-bottom-mobile, calc(var(--text-marquee-custom-padding-bottom, 0px) * var(--text-marquee-custom-padding-scale)));
     }
@@ -350,12 +347,12 @@
     },
     {
       "type": "header",
-      "content": "Section padding"
+      "content": "t:general.padding"
     },
     {
       "type": "range",
       "id": "padding_top",
-      "label": "Top padding",
+      "label": "t:labels.top_padding",
       "min": 0,
       "max": 100,
       "step": 1,
@@ -365,7 +362,7 @@
     {
       "type": "range",
       "id": "padding_bottom",
-      "label": "Bottom padding",
+      "label": "t:labels.bottom_padding",
       "min": 0,
       "max": 100,
       "step": 1,
@@ -381,7 +378,7 @@
     {
       "type": "range",
       "id": "padding_top_mobile",
-      "label": "Mobile top padding",
+      "label": "t:labels.mobile_top_padding",
       "min": 0,
       "max": 100,
       "step": 1,
@@ -392,7 +389,7 @@
     {
       "type": "range",
       "id": "padding_bottom_mobile",
-      "label": "Mobile bottom padding",
+      "label": "t:labels.mobile_bottom_padding",
       "min": 0,
       "max": 100,
       "step": 1,

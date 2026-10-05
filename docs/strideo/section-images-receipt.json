@@ -1,0 +1,234 @@
+{
+  "themeId": "191953273131",
+  "store": "layouthub-template-v2.myshopify.com",
+  "slots": [
+    {
+      "path": [
+        "sections",
+        "slideshow",
+        "blocks",
+        "slide-primary",
+        "settings",
+        "image"
+      ],
+      "filename": "strideo-slideshow-1-figma.jpg"
+    },
+    {
+      "path": [
+        "sections",
+        "slideshow",
+        "blocks",
+        "slide-primary",
+        "settings",
+        "mobile_image"
+      ],
+      "filename": "strideo-slideshow-1-figma.jpg"
+    },
+    {
+      "path": [
+        "sections",
+        "slideshow",
+        "blocks",
+        "slide-women",
+        "settings",
+        "image"
+      ],
+      "filename": "strideo-categories-2-figma.jpg"
+    },
+    {
+      "path": [
+        "sections",
+        "slideshow",
+        "blocks",
+        "slide-women",
+        "settings",
+        "mobile_image"
+      ],
+      "filename": "strideo-categories-2-figma.jpg"
+    },
+    {
+      "path": [
+        "sections",
+        "slideshow",
+        "blocks",
+        "slide-training",
+        "settings",
+        "image"
+      ],
+      "filename": "strideo-cards-6-figma.jpg"
+    },
+    {
+      "path": [
+        "sections",
+        "slideshow",
+        "blocks",
+        "slide-training",
+        "settings",
+        "mobile_image"
+      ],
+      "filename": "strideo-cards-6-figma.jpg"
+    },
+    {
+      "path": [
+        "sections",
+        "scroll_reading_text",
+        "settings",
+        "background_image"
+      ],
+      "filename": "strideo-scroll-1-figma.jpg"
+    },
+    {
+      "path": [
+        "sections",
+        "scroll_reading_text",
+        "settings",
+        "mobile_image"
+      ],
+      "filename": "strideo-scroll-1-figma.jpg"
+    },
+    {
+      "path": [
+        "sections",
+        "multiple_images_text",
+        "blocks",
+        "item_1",
+        "blocks",
+        "image",
+        "settings",
+        "image"
+      ],
+      "filename": "strideo-multiple-6-figma.jpg"
+    },
+    {
+      "path": [
+        "sections",
+        "multiple_images_text",
+        "blocks",
+        "item_1",
+        "blocks",
+        "image",
+        "settings",
+        "mobile_image"
+      ],
+      "filename": "strideo-multiple-6-figma.jpg"
+    },
+    {
+      "path": [
+        "sections",
+        "multiple_images_text",
+        "blocks",
+        "item_2",
+        "blocks",
+        "image",
+        "settings",
+        "image"
+      ],
+      "filename": "strideo-multiple-5-figma.jpg"
+    },
+    {
+      "path": [
+        "sections",
+        "multiple_images_text",
+        "blocks",
+        "item_2",
+        "blocks",
+        "image",
+        "settings",
+        "mobile_image"
+      ],
+      "filename": "strideo-multiple-5-figma.jpg"
+    },
+    {
+      "path": [
+        "sections",
+        "multiple_images_text",
+        "blocks",
+        "item_3",
+        "blocks",
+        "image",
+        "settings",
+        "image"
+      ],
+      "filename": "strideo-multiple-4-figma.jpg"
+    },
+    {
+      "path": [
+        "sections",
+        "multiple_images_text",
+        "blocks",
+        "item_3",
+        "blocks",
+        "image",
+        "settings",
+        "mobile_image"
+      ],
+      "filename": "strideo-multiple-4-figma.jpg"
+    },
+    {
+      "path": [
+        "sections",
+        "countdown_timer",
+        "settings",
+        "banner_image"
+      ],
+      "filename": "strideo-countdown-1-figma.jpg"
+    },
+    {
+      "path": [
+        "sections",
+        "countdown_timer",
+        "settings",
+        "mobile_banner_image"
+      ],
+      "filename": "strideo-countdown-1-figma.jpg"
+    }
+  ],
+  "status": "uploaded-bound-and-remote-verified",
+  "notes": [
+    "Slideshow primary and backgrounds match Figma. Two extra slides use editorial images from the same design. Multiple images front-to-back: tennis court, running track, yellow shoes."
+  ],
+  "verification": {
+    "onlyImageSlotsChanged": 16,
+    "remoteTemplateMatches": true,
+    "desktopAll8ImagesLoaded": true,
+    "mobileAll8ImagesLoaded": true
+  },
+  "uploaded": {
+    "slideshow-1": {
+      "url": "https://cdn.shopify.com/s/files/1/1024/2192/2091/files/strideo-slideshow-1-figma.jpg?v=1791166202",
+      "fileId": "gid://shopify/MediaImage/46366382031147",
+      "filename": "strideo-slideshow-1-figma.jpg",
+      "alt": "Strideo — slideshow-1 — Figma source"
+    },
+    "scroll-1": {
+      "url": "https://cdn.shopify.com/s/files/1/1024/2192/2091/files/strideo-scroll-1-figma.jpg?v=1791166215",
+      "fileId": "gid://shopify/MediaImage/46366383800619",
+      "filename": "strideo-scroll-1-figma.jpg",
+      "alt": "Strideo — scroll-1 — Figma source"
+    },
+    "multiple-6": {
+      "url": "https://cdn.shopify.com/s/files/1/1024/2192/2091/files/strideo-multiple-6-figma.jpg?v=1791166228",
+      "fileId": "gid://shopify/MediaImage/46366386127147",
+      "filename": "strideo-multiple-6-figma.jpg",
+      "alt": "Strideo — multiple-6 — Figma source"
+    },
+    "multiple-5": {
+      "url": "https://cdn.shopify.com/s/files/1/1024/2192/2091/files/strideo-multiple-5-figma.jpg?v=1791166236",
+      "fileId": "gid://shopify/MediaImage/46366387044651",
+      "filename": "strideo-multiple-5-figma.jpg",
+      "alt": "Strideo — multiple-5 — Figma source"
+    },
+    "multiple-4": {
+      "url": "https://cdn.shopify.com/s/files/1/1024/2192/2091/files/strideo-multiple-4-figma.jpg?v=1791166246",
+      "fileId": "gid://shopify/MediaImage/46366452351275",
+      "filename": "strideo-multiple-4-figma.jpg",
+      "alt": "Strideo — multiple-4 — Figma source"
+    },
+    "countdown-1": {
+      "url": "https://cdn.shopify.com/s/files/1/1024/2192/2091/files/strideo-countdown-1-figma.jpg?v=1791166256",
+      "fileId": "gid://shopify/MediaImage/46366453956907",
+      "filename": "strideo-countdown-1-figma.jpg",
+      "alt": "Strideo — countdown-1 — Figma source"
+    }
+  }
+}

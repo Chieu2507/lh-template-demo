@@ -110,6 +110,7 @@
 %}
 
 {% capture collection_card_title_style %}
+  {% if block.settings.content_gap != blank %}--collection-card-title-gap: {{ block.settings.content_gap }}px;{% endif %}
   {% if collection_card_title_size == 'custom' %}--collection-card-title-custom-size: {{ collection_card_title_custom_size }}px;{% endif %}
   {% if collection_card_title_padding_top != 0 %}--collection-card-title-padding-top: {{ collection_card_title_padding_top }}px;{% endif %}
   {% if collection_card_title_padding_right != 0 %}--collection-card-title-padding-right: {{ collection_card_title_padding_right }}px;{% endif %}
@@ -152,7 +153,7 @@
     display: flex;
     flex-direction: column;
     align-items: var(--collection-card-title-align, inherit);
-    gap: 0.2rem;
+    gap: var(--collection-card-title-gap, 0.2rem);
     padding-top: var(--collection-card-title-padding-top, 0px);
     padding-right: var(--collection-card-title-padding-right, 0px);
     padding-bottom: var(--collection-card-title-padding-bottom, 0px);
@@ -176,7 +177,7 @@
     color: color-mix(in srgb, currentColor 70%, transparent);
   }
 
-  .collection-card-title--count-below { gap: 2px; }
+  .collection-card-title--count-below { gap: var(--collection-card-title-gap, 2px); }
   .collection-card-title--count-below .collection-card-title__count { padding: 0; color: var(--body-color); }
   .collection-card-title--uppercase .collection-card-title__heading { text-transform: uppercase; }
   .collection-card-title--truncate .collection-card-title__heading { overflow: hidden; white-space: nowrap; text-overflow: ellipsis; }
@@ -196,6 +197,7 @@
   "name": "t:labels.title",
   "tag": null,
   "settings": [
+    { "type": "range", "id": "content_gap", "label": "Title and count gap", "min": 0, "max": 20, "step": 1, "unit": "px", "default": 2 },
     {
       "type": "checkbox",
       "id": "show_product_count",

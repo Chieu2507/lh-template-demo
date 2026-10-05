@@ -100,6 +100,7 @@
   <div
     class="{{ text_class }}"
     {% if text_style != blank %}style="{{ text_style }}"{% endif %}
+    {% render 'block-animation-attributes', settings: block.settings %}
     {{ block.shopify_attributes }}
   >
     {% if block.settings.height_limit != blank and block.settings.height_limit != 'none' %}
@@ -181,12 +182,30 @@
       "id": "text_size",
       "label": "t:labels.text_size",
       "options": [
-        { "value": "xs", "label": "t:options.text_size.xs" },
-        { "value": "sm", "label": "t:options.text_size.sm" },
-        { "value": "md", "label": "t:options.text_size.md" },
-        { "value": "lg", "label": "t:options.text_size.lg" },
-        { "value": "xl", "label": "t:options.text_size.xl" },
-        { "value": "xxl", "label": "t:options.text_size.xxl" }
+        {
+          "value": "xs",
+          "label": "t:options.text_size.xs"
+        },
+        {
+          "value": "sm",
+          "label": "t:options.text_size.sm"
+        },
+        {
+          "value": "md",
+          "label": "t:options.text_size.md"
+        },
+        {
+          "value": "lg",
+          "label": "t:options.text_size.lg"
+        },
+        {
+          "value": "xl",
+          "label": "t:options.text_size.xl"
+        },
+        {
+          "value": "xxl",
+          "label": "t:options.text_size.xxl"
+        }
       ],
       "default": "md"
     },
@@ -195,10 +214,22 @@
       "id": "height_limit",
       "label": "t:labels.height_limit",
       "options": [
-        { "value": "none", "label": "t:options.product_description_height.none" },
-        { "value": "small", "label": "t:options.product_description_height.small" },
-        { "value": "medium", "label": "t:options.product_description_height.medium" },
-        { "value": "large", "label": "t:options.product_description_height.large" }
+        {
+          "value": "none",
+          "label": "t:options.product_description_height.none"
+        },
+        {
+          "value": "small",
+          "label": "t:options.product_description_height.small"
+        },
+        {
+          "value": "medium",
+          "label": "t:options.product_description_height.medium"
+        },
+        {
+          "value": "large",
+          "label": "t:options.product_description_height.large"
+        }
       ],
       "default": "none"
     },
@@ -217,9 +248,18 @@
       "id": "width",
       "label": "t:labels.width",
       "options": [
-        { "value": "fit", "label": "t:options.width.fit" },
-        { "value": "fill", "label": "t:options.width.fill" },
-        { "value": "custom", "label": "t:options.width.custom" }
+        {
+          "value": "fit",
+          "label": "t:options.width.fit"
+        },
+        {
+          "value": "fill",
+          "label": "t:options.width.fill"
+        },
+        {
+          "value": "custom",
+          "label": "t:options.width.custom"
+        }
       ],
       "default": "fit"
     },
@@ -245,9 +285,18 @@
       "id": "width_mobile",
       "label": "t:labels.mobile_width",
       "options": [
-        { "value": "fit", "label": "t:options.width.fit" },
-        { "value": "fill", "label": "t:options.width.fill" },
-        { "value": "custom", "label": "t:options.width.custom" }
+        {
+          "value": "fit",
+          "label": "t:options.width.fit"
+        },
+        {
+          "value": "fill",
+          "label": "t:options.width.fill"
+        },
+        {
+          "value": "custom",
+          "label": "t:options.width.custom"
+        }
       ],
       "default": "fit",
       "visible_if": "{{ block.settings.customize_mobile_size }}"
@@ -262,6 +311,57 @@
       "unit": "px",
       "default": 480,
       "visible_if": "{{ block.settings.customize_mobile_size and block.settings.width_mobile == 'custom' }}"
+    },
+    {
+      "type": "header",
+      "content": "Animation"
+    },
+    {
+      "type": "select",
+      "id": "animation_type",
+      "label": "Type",
+      "options": [
+        {
+          "value": "none",
+          "label": "None"
+        },
+        {
+          "value": "fade",
+          "label": "Fade"
+        },
+        {
+          "value": "scale",
+          "label": "Scale"
+        },
+        {
+          "value": "slide-left",
+          "label": "Slide from left"
+        },
+        {
+          "value": "slide-right",
+          "label": "Slide from right"
+        },
+        {
+          "value": "slide-bottom",
+          "label": "Slide from bottom"
+        },
+        {
+          "value": "rotate-words",
+          "label": "Rotate words"
+        }
+      ],
+      "default": "none"
+    },
+    {
+      "type": "range",
+      "id": "animation_delay",
+      "label": "Delay",
+      "min": 0,
+      "max": 1000,
+      "step": 50,
+      "unit": "ms",
+      "default": 0,
+      "visible_if": "{{ block.settings.animation_type != 'none' }}"
     },
     {
       "type": "header",

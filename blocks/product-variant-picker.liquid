@@ -14,7 +14,7 @@
   endif
 
   assign color_option_display = block.settings.color_option_display | default: 'color'
-  unless color_option_display == 'text'
+  unless color_option_display == 'text' or color_option_display == 'variant_image'
     assign color_option_display = 'color'
   endunless
 
@@ -128,7 +128,8 @@
       "label": "t:labels.color_option_display",
       "options": [
         { "value": "text", "label": "t:options.color_option_display.text" },
-        { "value": "color", "label": "t:options.color_option_display.color" }
+        { "value": "color", "label": "t:options.color_option_display.color" },
+        { "value": "variant_image", "label": "t:options.swatch_type.variant_image" }
       ],
       "default": "color",
       "info": "t:info.color_option_display"

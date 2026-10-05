@@ -158,7 +158,8 @@
 <div
   class="{{ image_class }}"
   style="{{ image_style }}"
-  {{ block.shopify_attributes }}
+  {% render 'block-animation-attributes', settings: block.settings %}
+    {{ block.shopify_attributes }}
 >
   {% capture image_sizes %}(min-width: 768px) {{ image_size_desktop }}, {{ image_size_mobile }}{% endcapture %}
   {% render 'image',
@@ -192,6 +193,7 @@
   }
 
   .image-block .image-block__media > picture,
+  .image-block .image-block__media > picture > img,
   .image-block .image-block__media > img,
   .image-block .image-block__media .image__placeholder {
     display: block;
@@ -221,6 +223,7 @@
     }
 
     .image-block .image-block__media > picture,
+    .image-block .image-block__media > picture > img,
     .image-block .image-block__media > img,
     .image-block .image-block__media .image__placeholder {
       height: var(--image-block-image-height-mobile, var(--image-block-image-height, auto));
@@ -278,8 +281,14 @@
       "id": "device",
       "label": "t:labels.device",
       "options": [
-        { "value": "desktop", "label": "t:options.device.desktop" },
-        { "value": "mobile", "label": "t:options.device.mobile" }
+        {
+          "value": "desktop",
+          "label": "t:options.device.desktop"
+        },
+        {
+          "value": "mobile",
+          "label": "t:options.device.mobile"
+        }
       ],
       "default": "desktop"
     },
@@ -288,13 +297,34 @@
       "id": "image_ratio_desktop",
       "label": "t:labels.image_ratio",
       "options": [
-        { "value": "auto", "label": "t:options.image_ratio.auto" },
-        { "value": "square", "label": "t:options.image_ratio.square" },
-        { "value": "portrait", "label": "t:options.image_ratio.portrait" },
-        { "value": "landscape", "label": "t:options.image_ratio.landscape" },
-        { "value": "ratio_7_6", "label": "t:options.image_ratio.ratio_7_6" },
-        { "value": "wide", "label": "t:options.image_ratio.wide" },
-        { "value": "custom", "label": "t:options.image_ratio.custom" }
+        {
+          "value": "auto",
+          "label": "t:options.image_ratio.auto"
+        },
+        {
+          "value": "square",
+          "label": "t:options.image_ratio.square"
+        },
+        {
+          "value": "portrait",
+          "label": "t:options.image_ratio.portrait"
+        },
+        {
+          "value": "landscape",
+          "label": "t:options.image_ratio.landscape"
+        },
+        {
+          "value": "ratio_7_6",
+          "label": "t:options.image_ratio.ratio_7_6"
+        },
+        {
+          "value": "wide",
+          "label": "t:options.image_ratio.wide"
+        },
+        {
+          "value": "custom",
+          "label": "t:options.image_ratio.custom"
+        }
       ],
       "default": "auto",
       "visible_if": "{{ block.settings.device == 'desktop' }}"
@@ -318,9 +348,18 @@
       "id": "width_desktop",
       "label": "t:labels.width",
       "options": [
-        { "value": "fit", "label": "t:options.width.fit" },
-        { "value": "fill", "label": "t:options.width.fill" },
-        { "value": "custom", "label": "t:options.width.custom" }
+        {
+          "value": "fit",
+          "label": "t:options.width.fit"
+        },
+        {
+          "value": "fill",
+          "label": "t:options.width.fill"
+        },
+        {
+          "value": "custom",
+          "label": "t:options.width.custom"
+        }
       ],
       "default": "fit",
       "visible_if": "{{ block.settings.device == 'desktop' }}"
@@ -359,13 +398,34 @@
       "id": "image_ratio_mobile",
       "label": "t:labels.image_ratio_mobile",
       "options": [
-        { "value": "auto", "label": "t:options.image_ratio.auto" },
-        { "value": "square", "label": "t:options.image_ratio.square" },
-        { "value": "portrait", "label": "t:options.image_ratio.portrait" },
-        { "value": "landscape", "label": "t:options.image_ratio.landscape" },
-        { "value": "ratio_7_6", "label": "t:options.image_ratio.ratio_7_6" },
-        { "value": "wide", "label": "t:options.image_ratio.wide" },
-        { "value": "custom", "label": "t:options.image_ratio.custom" }
+        {
+          "value": "auto",
+          "label": "t:options.image_ratio.auto"
+        },
+        {
+          "value": "square",
+          "label": "t:options.image_ratio.square"
+        },
+        {
+          "value": "portrait",
+          "label": "t:options.image_ratio.portrait"
+        },
+        {
+          "value": "landscape",
+          "label": "t:options.image_ratio.landscape"
+        },
+        {
+          "value": "ratio_7_6",
+          "label": "t:options.image_ratio.ratio_7_6"
+        },
+        {
+          "value": "wide",
+          "label": "t:options.image_ratio.wide"
+        },
+        {
+          "value": "custom",
+          "label": "t:options.image_ratio.custom"
+        }
       ],
       "default": "auto",
       "visible_if": "{{ block.settings.device == 'mobile' }}"
@@ -389,9 +449,18 @@
       "id": "width_mobile",
       "label": "t:labels.width_mobile",
       "options": [
-        { "value": "fit", "label": "t:options.width.fit" },
-        { "value": "fill", "label": "t:options.width.fill" },
-        { "value": "custom", "label": "t:options.width.custom" }
+        {
+          "value": "fit",
+          "label": "t:options.width.fit"
+        },
+        {
+          "value": "fill",
+          "label": "t:options.width.fill"
+        },
+        {
+          "value": "custom",
+          "label": "t:options.width.custom"
+        }
       ],
       "default": "fit",
       "visible_if": "{{ block.settings.device == 'mobile' }}"
@@ -434,11 +503,26 @@
       "id": "corner_radius",
       "label": "t:labels.corner_radius",
       "options": [
-        { "value": "inherit", "label": "t:options.radius_preset.inherit" },
-        { "value": "square", "label": "t:options.radius_preset.square" },
-        { "value": "rounded", "label": "t:options.radius_preset.rounded" },
-        { "value": "full", "label": "t:options.radius_preset.full" },
-        { "value": "custom", "label": "t:options.radius_preset.custom" }
+        {
+          "value": "inherit",
+          "label": "t:options.radius_preset.inherit"
+        },
+        {
+          "value": "square",
+          "label": "t:options.radius_preset.square"
+        },
+        {
+          "value": "rounded",
+          "label": "t:options.radius_preset.rounded"
+        },
+        {
+          "value": "full",
+          "label": "t:options.radius_preset.full"
+        },
+        {
+          "value": "custom",
+          "label": "t:options.radius_preset.custom"
+        }
       ],
       "default": "square"
     },
@@ -452,6 +536,53 @@
       "unit": "px",
       "default": 0,
       "visible_if": "{{ block.settings.corner_radius == 'custom' }}"
+    },
+    {
+      "type": "header",
+      "content": "Animation"
+    },
+    {
+      "type": "select",
+      "id": "animation_type",
+      "label": "Type",
+      "options": [
+        {
+          "value": "none",
+          "label": "None"
+        },
+        {
+          "value": "fade",
+          "label": "Fade"
+        },
+        {
+          "value": "scale",
+          "label": "Scale"
+        },
+        {
+          "value": "slide-left",
+          "label": "Slide from left"
+        },
+        {
+          "value": "slide-right",
+          "label": "Slide from right"
+        },
+        {
+          "value": "slide-bottom",
+          "label": "Slide from bottom"
+        }
+      ],
+      "default": "none"
+    },
+    {
+      "type": "range",
+      "id": "animation_delay",
+      "label": "Delay",
+      "min": 0,
+      "max": 1000,
+      "step": 50,
+      "unit": "ms",
+      "default": 0,
+      "visible_if": "{{ block.settings.animation_type != 'none' }}"
     },
     {
       "type": "header",

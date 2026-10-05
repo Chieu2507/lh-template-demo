@@ -1,0 +1,3492 @@
+{
+  "store": "layouthub-template-v2.myshopify.com",
+  "products": [
+    {
+      "id": "gid://shopify/Product/15402863264043",
+      "title": "Cloudsurfer Max",
+      "handle": "strideo-cloudsurfer-max",
+      "category": {
+        "id": "gid://shopify/TaxonomyCategory/aa-8-1",
+        "name": "Athletic Shoes"
+      },
+      "options": [
+        {
+          "id": "gid://shopify/ProductOption/17865597255979",
+          "name": "Color",
+          "linkedMetafield": {
+            "namespace": "shopify",
+            "key": "color-pattern"
+          },
+          "optionValues": [
+            {
+              "id": "gid://shopify/ProductOptionValue/14970048839979",
+              "name": "Sand | Coral",
+              "linkedMetafieldValue": "gid://shopify/Metaobject/619569283371"
+            },
+            {
+              "id": "gid://shopify/ProductOptionValue/14970048872747",
+              "name": "Blue | Ivory",
+              "linkedMetafieldValue": "gid://shopify/Metaobject/619569316139"
+            },
+            {
+              "id": "gid://shopify/ProductOptionValue/14970048905515",
+              "name": "Grey | Ivory",
+              "linkedMetafieldValue": "gid://shopify/Metaobject/619569381675"
+            },
+            {
+              "id": "gid://shopify/ProductOptionValue/14970048938283",
+              "name": "Peach | Orange",
+              "linkedMetafieldValue": "gid://shopify/Metaobject/619569414443"
+            },
+            {
+              "id": "gid://shopify/ProductOptionValue/14970048971051",
+              "name": "Sand | Yellow",
+              "linkedMetafieldValue": "gid://shopify/Metaobject/619569447211"
+            },
+            {
+              "id": "gid://shopify/ProductOptionValue/14970049003819",
+              "name": "Black | Black",
+              "linkedMetafieldValue": "gid://shopify/Metaobject/619569479979"
+            },
+            {
+              "id": "gid://shopify/ProductOptionValue/14970049036587",
+              "name": "White | White",
+              "linkedMetafieldValue": "gid://shopify/Metaobject/619569512747"
+            },
+            {
+              "id": "gid://shopify/ProductOptionValue/14970049069355",
+              "name": "White | Green",
+              "linkedMetafieldValue": "gid://shopify/Metaobject/619569545515"
+            }
+          ]
+        }
+      ],
+      "variants": {
+        "nodes": [
+          {
+            "id": "gid://shopify/ProductVariant/67651657335083",
+            "title": "Sand | Coral",
+            "price": "180.00",
+            "compareAtPrice": null,
+            "inventoryQuantity": 100,
+            "selectedOptions": [
+              {
+                "name": "Color",
+                "value": "Sand | Coral"
+              }
+            ]
+          },
+          {
+            "id": "gid://shopify/ProductVariant/67651657367851",
+            "title": "Blue | Ivory",
+            "price": "180.00",
+            "compareAtPrice": null,
+            "inventoryQuantity": 100,
+            "selectedOptions": [
+              {
+                "name": "Color",
+                "value": "Blue | Ivory"
+              }
+            ]
+          },
+          {
+            "id": "gid://shopify/ProductVariant/67651657400619",
+            "title": "Grey | Ivory",
+            "price": "180.00",
+            "compareAtPrice": null,
+            "inventoryQuantity": 100,
+            "selectedOptions": [
+              {
+                "name": "Color",
+                "value": "Grey | Ivory"
+              }
+            ]
+          },
+          {
+            "id": "gid://shopify/ProductVariant/67651657433387",
+            "title": "Peach | Orange",
+            "price": "180.00",
+            "compareAtPrice": null,
+            "inventoryQuantity": 100,
+            "selectedOptions": [
+              {
+                "name": "Color",
+                "value": "Peach | Orange"
+              }
+            ]
+          },
+          {
+            "id": "gid://shopify/ProductVariant/67651657466155",
+            "title": "Sand | Yellow",
+            "price": "180.00",
+            "compareAtPrice": null,
+            "inventoryQuantity": 100,
+            "selectedOptions": [
+              {
+                "name": "Color",
+                "value": "Sand | Yellow"
+              }
+            ]
+          },
+          {
+            "id": "gid://shopify/ProductVariant/67651657498923",
+            "title": "Black | Black",
+            "price": "180.00",
+            "compareAtPrice": null,
+            "inventoryQuantity": 100,
+            "selectedOptions": [
+              {
+                "name": "Color",
+                "value": "Black | Black"
+              }
+            ]
+          },
+          {
+            "id": "gid://shopify/ProductVariant/67651657531691",
+            "title": "White | White",
+            "price": "180.00",
+            "compareAtPrice": null,
+            "inventoryQuantity": 100,
+            "selectedOptions": [
+              {
+                "name": "Color",
+                "value": "White | White"
+              }
+            ]
+          },
+          {
+            "id": "gid://shopify/ProductVariant/67651657564459",
+            "title": "White | Green",
+            "price": "180.00",
+            "compareAtPrice": null,
+            "inventoryQuantity": 100,
+            "selectedOptions": [
+              {
+                "name": "Color",
+                "value": "White | Green"
+              }
+            ]
+          }
+        ],
+        "pageInfo": {
+          "hasNextPage": false,
+          "endCursor": "eyJsYXN0X2lkIjo2NzY1MTY1NzU2NDQ1OSwibGFzdF92YWx1ZSI6OH0="
+        }
+      },
+      "media": {
+        "nodes": [
+          {
+            "id": "gid://shopify/MediaImage/46367696847147",
+            "status": "READY",
+            "alt": "Cloudsurfer Max \u2014 Sand | Coral \u2014 Figma catalog",
+            "image": {
+              "url": "https://cdn.shopify.com/s/files/1/1024/2192/2091/files/strideo-cloudsurfer-max-sand-coral-catalog.png?v=1791167716"
+            }
+          },
+          {
+            "id": "gid://shopify/MediaImage/46367696879915",
+            "status": "READY",
+            "alt": "Cloudsurfer Max \u2014 Blue | Ivory \u2014 Figma catalog",
+            "image": {
+              "url": "https://cdn.shopify.com/s/files/1/1024/2192/2091/files/strideo-cloudsurfer-max-blue-ivory-catalog.png?v=1791167716"
+            }
+          },
+          {
+            "id": "gid://shopify/MediaImage/46367696912683",
+            "status": "READY",
+            "alt": "Cloudsurfer Max \u2014 Grey | Ivory \u2014 Figma catalog",
+            "image": {
+              "url": "https://cdn.shopify.com/s/files/1/1024/2192/2091/files/strideo-cloudsurfer-max-grey-ivory-catalog.png?v=1791167716"
+            }
+          },
+          {
+            "id": "gid://shopify/MediaImage/46367696945451",
+            "status": "READY",
+            "alt": "Cloudsurfer Max \u2014 Peach | Orange \u2014 Figma catalog",
+            "image": {
+              "url": "https://cdn.shopify.com/s/files/1/1024/2192/2091/files/strideo-cloudsurfer-max-peach-orange-catalog.png?v=1791167716"
+            }
+          },
+          {
+            "id": "gid://shopify/MediaImage/46367696978219",
+            "status": "READY",
+            "alt": "Cloudsurfer Max \u2014 Sand | Yellow \u2014 Figma catalog",
+            "image": {
+              "url": "https://cdn.shopify.com/s/files/1/1024/2192/2091/files/strideo-cloudsurfer-max-sand-yellow-catalog.png?v=1791167716"
+            }
+          },
+          {
+            "id": "gid://shopify/MediaImage/46367697010987",
+            "status": "READY",
+            "alt": "Cloudsurfer Max \u2014 Black | Black \u2014 Figma catalog",
+            "image": {
+              "url": "https://cdn.shopify.com/s/files/1/1024/2192/2091/files/strideo-cloudsurfer-max-black-black-catalog.png?v=1791167715"
+            }
+          },
+          {
+            "id": "gid://shopify/MediaImage/46367697043755",
+            "status": "READY",
+            "alt": "Cloudsurfer Max \u2014 White | White \u2014 Figma catalog",
+            "image": {
+              "url": "https://cdn.shopify.com/s/files/1/1024/2192/2091/files/strideo-cloudsurfer-max-white-white-catalog.png?v=1791167716"
+            }
+          },
+          {
+            "id": "gid://shopify/MediaImage/46367697076523",
+            "status": "READY",
+            "alt": "Cloudsurfer Max \u2014 White | Green \u2014 Figma catalog",
+            "image": {
+              "url": "https://cdn.shopify.com/s/files/1/1024/2192/2091/files/strideo-cloudsurfer-max-white-green-catalog.png?v=1791167716"
+            }
+          },
+          {
+            "id": "gid://shopify/MediaImage/46368172736811",
+            "status": "UPLOADED",
+            "alt": "Cloudsurfer Max \u2014 Sand | Coral \u2014 lifestyle",
+            "image": null
+          },
+          {
+            "id": "gid://shopify/MediaImage/46368172769579",
+            "status": "UPLOADED",
+            "alt": "Cloudsurfer Max \u2014 Blue | Ivory \u2014 lifestyle",
+            "image": null
+          },
+          {
+            "id": "gid://shopify/MediaImage/46368172802347",
+            "status": "UPLOADED",
+            "alt": "Cloudsurfer Max \u2014 Grey | Ivory \u2014 lifestyle",
+            "image": null
+          },
+          {
+            "id": "gid://shopify/MediaImage/46368172835115",
+            "status": "UPLOADED",
+            "alt": "Cloudsurfer Max \u2014 Peach | Orange \u2014 lifestyle",
+            "image": null
+          },
+          {
+            "id": "gid://shopify/MediaImage/46368172867883",
+            "status": "UPLOADED",
+            "alt": "Cloudsurfer Max \u2014 Sand | Yellow \u2014 lifestyle",
+            "image": null
+          },
+          {
+            "id": "gid://shopify/MediaImage/46368172900651",
+            "status": "UPLOADED",
+            "alt": "Cloudsurfer Max \u2014 Black | Black \u2014 lifestyle",
+            "image": null
+          },
+          {
+            "id": "gid://shopify/MediaImage/46368172933419",
+            "status": "UPLOADED",
+            "alt": "Cloudsurfer Max \u2014 White | White \u2014 lifestyle",
+            "image": null
+          },
+          {
+            "id": "gid://shopify/MediaImage/46368172966187",
+            "status": "UPLOADED",
+            "alt": "Cloudsurfer Max \u2014 White | Green \u2014 lifestyle",
+            "image": null
+          }
+        ],
+        "pageInfo": {
+          "hasNextPage": false,
+          "endCursor": "eyJsYXN0X2lkIjo0NjM2ODE3Mjk2NjE4NywibGFzdF92YWx1ZSI6IjE2In0="
+        }
+      },
+      "colorLinked": true,
+      "lifestyleUploaded": true,
+      "lifestyleLinked": true,
+      "mediaReordered": true
+    },
+    {
+      "id": "gid://shopify/Product/15402864705835",
+      "title": "Cloudflow 5",
+      "handle": "strideo-cloudflow-5",
+      "category": {
+        "id": "gid://shopify/TaxonomyCategory/aa-8-1",
+        "name": "Athletic Shoes"
+      },
+      "options": [
+        {
+          "id": "gid://shopify/ProductOption/17865599254827",
+          "name": "Color",
+          "linkedMetafield": {
+            "namespace": "shopify",
+            "key": "color-pattern"
+          },
+          "optionValues": [
+            {
+              "id": "gid://shopify/ProductOptionValue/14970055983403",
+              "name": "Grey | White",
+              "linkedMetafieldValue": "gid://shopify/Metaobject/619569611051"
+            },
+            {
+              "id": "gid://shopify/ProductOptionValue/14970056016171",
+              "name": "Aqua | Black",
+              "linkedMetafieldValue": "gid://shopify/Metaobject/619569643819"
+            },
+            {
+              "id": "gid://shopify/ProductOptionValue/14970056048939",
+              "name": "Orange | Grey",
+              "linkedMetafieldValue": "gid://shopify/Metaobject/619569676587"
+            },
+            {
+              "id": "gid://shopify/ProductOptionValue/14970056081707",
+              "name": "Black | Black",
+              "linkedMetafieldValue": "gid://shopify/Metaobject/619569479979"
+            },
+            {
+              "id": "gid://shopify/ProductOptionValue/14970056114475",
+              "name": "White | Lime",
+              "linkedMetafieldValue": "gid://shopify/Metaobject/619569709355"
+            }
+          ]
+        }
+      ],
+      "variants": {
+        "nodes": [
+          {
+            "id": "gid://shopify/ProductVariant/67651664937259",
+            "title": "Grey | White",
+            "price": "180.00",
+            "compareAtPrice": null,
+            "inventoryQuantity": 100,
+            "selectedOptions": [
+              {
+                "name": "Color",
+                "value": "Grey | White"
+              }
+            ]
+          },
+          {
+            "id": "gid://shopify/ProductVariant/67651664970027",
+            "title": "Aqua | Black",
+            "price": "180.00",
+            "compareAtPrice": null,
+            "inventoryQuantity": 100,
+            "selectedOptions": [
+              {
+                "name": "Color",
+                "value": "Aqua | Black"
+              }
+            ]
+          },
+          {
+            "id": "gid://shopify/ProductVariant/67651665002795",
+            "title": "Orange | Grey",
+            "price": "180.00",
+            "compareAtPrice": null,
+            "inventoryQuantity": 100,
+            "selectedOptions": [
+              {
+                "name": "Color",
+                "value": "Orange | Grey"
+              }
+            ]
+          },
+          {
+            "id": "gid://shopify/ProductVariant/67651665035563",
+            "title": "Black | Black",
+            "price": "180.00",
+            "compareAtPrice": null,
+            "inventoryQuantity": 100,
+            "selectedOptions": [
+              {
+                "name": "Color",
+                "value": "Black | Black"
+              }
+            ]
+          },
+          {
+            "id": "gid://shopify/ProductVariant/67651665068331",
+            "title": "White | Lime",
+            "price": "180.00",
+            "compareAtPrice": null,
+            "inventoryQuantity": 100,
+            "selectedOptions": [
+              {
+                "name": "Color",
+                "value": "White | Lime"
+              }
+            ]
+          }
+        ],
+        "pageInfo": {
+          "hasNextPage": false,
+          "endCursor": "eyJsYXN0X2lkIjo2NzY1MTY2NTA2ODMzMSwibGFzdF92YWx1ZSI6NX0="
+        }
+      },
+      "media": {
+        "nodes": [
+          {
+            "id": "gid://shopify/MediaImage/46367705071915",
+            "status": "READY",
+            "alt": "Cloudflow 5 \u2014 Grey | White \u2014 Figma catalog",
+            "image": {
+              "url": "https://cdn.shopify.com/s/files/1/1024/2192/2091/files/strideo-cloudflow-5-grey-white-catalog.png?v=1791167737"
+            }
+          },
+          {
+            "id": "gid://shopify/MediaImage/46367705104683",
+            "status": "READY",
+            "alt": "Cloudflow 5 \u2014 Aqua | Black \u2014 Figma catalog",
+            "image": {
+              "url": "https://cdn.shopify.com/s/files/1/1024/2192/2091/files/strideo-cloudflow-5-aqua-black-catalog.png?v=1791167736"
+            }
+          },
+          {
+            "id": "gid://shopify/MediaImage/46367705137451",
+            "status": "READY",
+            "alt": "Cloudflow 5 \u2014 Orange | Grey \u2014 Figma catalog",
+            "image": {
+              "url": "https://cdn.shopify.com/s/files/1/1024/2192/2091/files/strideo-cloudflow-5-orange-grey-catalog.png?v=1791167736"
+            }
+          },
+          {
+            "id": "gid://shopify/MediaImage/46367705170219",
+            "status": "READY",
+            "alt": "Cloudflow 5 \u2014 Black | Black \u2014 Figma catalog",
+            "image": {
+              "url": "https://cdn.shopify.com/s/files/1/1024/2192/2091/files/strideo-cloudflow-5-black-black-catalog.png?v=1791167736"
+            }
+          },
+          {
+            "id": "gid://shopify/MediaImage/46367705202987",
+            "status": "READY",
+            "alt": "Cloudflow 5 \u2014 White | Lime \u2014 Figma catalog",
+            "image": {
+              "url": "https://cdn.shopify.com/s/files/1/1024/2192/2091/files/strideo-cloudflow-5-white-lime-catalog.png?v=1791167737"
+            }
+          },
+          {
+            "id": "gid://shopify/MediaImage/46368490979627",
+            "status": "PROCESSING",
+            "alt": "Cloudflow 5 \u2014 Grey | White \u2014 lifestyle",
+            "image": null
+          },
+          {
+            "id": "gid://shopify/MediaImage/46368491012395",
+            "status": "UPLOADED",
+            "alt": "Cloudflow 5 \u2014 Aqua | Black \u2014 lifestyle",
+            "image": null
+          },
+          {
+            "id": "gid://shopify/MediaImage/46368491045163",
+            "status": "UPLOADED",
+            "alt": "Cloudflow 5 \u2014 Orange | Grey \u2014 lifestyle",
+            "image": null
+          },
+          {
+            "id": "gid://shopify/MediaImage/46368491077931",
+            "status": "UPLOADED",
+            "alt": "Cloudflow 5 \u2014 Black | Black \u2014 lifestyle",
+            "image": null
+          },
+          {
+            "id": "gid://shopify/MediaImage/46368491110699",
+            "status": "UPLOADED",
+            "alt": "Cloudflow 5 \u2014 White | Lime \u2014 lifestyle",
+            "image": null
+          }
+        ],
+        "pageInfo": {
+          "hasNextPage": false,
+          "endCursor": "eyJsYXN0X2lkIjo0NjM2ODQ5MTExMDY5OSwibGFzdF92YWx1ZSI6IjEwIn0="
+        }
+      },
+      "colorLinked": true,
+      "lifestyleUploaded": true,
+      "lifestyleLinked": true,
+      "mediaReordered": true
+    },
+    {
+      "id": "gid://shopify/Product/15402866934059",
+      "title": "Cloud 6 Waterproof",
+      "handle": "strideo-cloud-6-waterproof",
+      "category": {
+        "id": "gid://shopify/TaxonomyCategory/aa-8-1",
+        "name": "Athletic Shoes"
+      },
+      "options": [
+        {
+          "id": "gid://shopify/ProductOption/17865601909035",
+          "name": "Color",
+          "linkedMetafield": {
+            "namespace": "shopify",
+            "key": "color-pattern"
+          },
+          "optionValues": [
+            {
+              "id": "gid://shopify/ProductOptionValue/14970060341547",
+              "name": "Navy | Black",
+              "linkedMetafieldValue": "gid://shopify/Metaobject/619569742123"
+            },
+            {
+              "id": "gid://shopify/ProductOptionValue/14970060374315",
+              "name": "Ivory | Sand",
+              "linkedMetafieldValue": "gid://shopify/Metaobject/619569774891"
+            },
+            {
+              "id": "gid://shopify/ProductOptionValue/14970060407083",
+              "name": "Green | Black",
+              "linkedMetafieldValue": "gid://shopify/Metaobject/619569807659"
+            },
+            {
+              "id": "gid://shopify/ProductOptionValue/14970060439851",
+              "name": "Lavender | Black",
+              "linkedMetafieldValue": "gid://shopify/Metaobject/619569840427"
+            },
+            {
+              "id": "gid://shopify/ProductOptionValue/14970060472619",
+              "name": "Charcoal | Black",
+              "linkedMetafieldValue": "gid://shopify/Metaobject/619569873195"
+            }
+          ]
+        }
+      ],
+      "variants": {
+        "nodes": [
+          {
+            "id": "gid://shopify/ProductVariant/67651669459243",
+            "title": "Navy | Black",
+            "price": "130.00",
+            "compareAtPrice": "180.00",
+            "inventoryQuantity": 100,
+            "selectedOptions": [
+              {
+                "name": "Color",
+                "value": "Navy | Black"
+              }
+            ]
+          },
+          {
+            "id": "gid://shopify/ProductVariant/67651669492011",
+            "title": "Ivory | Sand",
+            "price": "130.00",
+            "compareAtPrice": "180.00",
+            "inventoryQuantity": 100,
+            "selectedOptions": [
+              {
+                "name": "Color",
+                "value": "Ivory | Sand"
+              }
+            ]
+          },
+          {
+            "id": "gid://shopify/ProductVariant/67651669524779",
+            "title": "Green | Black",
+            "price": "130.00",
+            "compareAtPrice": "180.00",
+            "inventoryQuantity": 100,
+            "selectedOptions": [
+              {
+                "name": "Color",
+                "value": "Green | Black"
+              }
+            ]
+          },
+          {
+            "id": "gid://shopify/ProductVariant/67651669557547",
+            "title": "Lavender | Black",
+            "price": "130.00",
+            "compareAtPrice": "180.00",
+            "inventoryQuantity": 100,
+            "selectedOptions": [
+              {
+                "name": "Color",
+                "value": "Lavender | Black"
+              }
+            ]
+          },
+          {
+            "id": "gid://shopify/ProductVariant/67651669590315",
+            "title": "Charcoal | Black",
+            "price": "130.00",
+            "compareAtPrice": "180.00",
+            "inventoryQuantity": 100,
+            "selectedOptions": [
+              {
+                "name": "Color",
+                "value": "Charcoal | Black"
+              }
+            ]
+          }
+        ],
+        "pageInfo": {
+          "hasNextPage": false,
+          "endCursor": "eyJsYXN0X2lkIjo2NzY1MTY2OTU5MDMxNSwibGFzdF92YWx1ZSI6NX0="
+        }
+      },
+      "media": {
+        "nodes": [
+          {
+            "id": "gid://shopify/MediaImage/46367709495595",
+            "status": "READY",
+            "alt": "Cloud 6 Waterproof \u2014 Navy | Black \u2014 Figma catalog",
+            "image": {
+              "url": "https://cdn.shopify.com/s/files/1/1024/2192/2091/files/strideo-cloud-6-waterproof-navy-black-catalog.png?v=1791167758"
+            }
+          },
+          {
+            "id": "gid://shopify/MediaImage/46367709528363",
+            "status": "READY",
+            "alt": "Cloud 6 Waterproof \u2014 Ivory | Sand \u2014 Figma catalog",
+            "image": {
+              "url": "https://cdn.shopify.com/s/files/1/1024/2192/2091/files/strideo-cloud-6-waterproof-ivory-sand-catalog.png?v=1791167758"
+            }
+          },
+          {
+            "id": "gid://shopify/MediaImage/46367709561131",
+            "status": "READY",
+            "alt": "Cloud 6 Waterproof \u2014 Green | Black \u2014 Figma catalog",
+            "image": {
+              "url": "https://cdn.shopify.com/s/files/1/1024/2192/2091/files/strideo-cloud-6-waterproof-green-black-catalog.png?v=1791167758"
+            }
+          },
+          {
+            "id": "gid://shopify/MediaImage/46367709593899",
+            "status": "READY",
+            "alt": "Cloud 6 Waterproof \u2014 Lavender | Black \u2014 Figma catalog",
+            "image": {
+              "url": "https://cdn.shopify.com/s/files/1/1024/2192/2091/files/strideo-cloud-6-waterproof-lavender-black-catalog.png?v=1791167758"
+            }
+          },
+          {
+            "id": "gid://shopify/MediaImage/46367709626667",
+            "status": "READY",
+            "alt": "Cloud 6 Waterproof \u2014 Charcoal | Black \u2014 Figma catalog",
+            "image": {
+              "url": "https://cdn.shopify.com/s/files/1/1024/2192/2091/files/strideo-cloud-6-waterproof-charcoal-black-catalog.png?v=1791167758"
+            }
+          },
+          {
+            "id": "gid://shopify/MediaImage/46368494125355",
+            "status": "UPLOADED",
+            "alt": "Cloud 6 Waterproof \u2014 Navy | Black \u2014 lifestyle",
+            "image": null
+          },
+          {
+            "id": "gid://shopify/MediaImage/46368494158123",
+            "status": "UPLOADED",
+            "alt": "Cloud 6 Waterproof \u2014 Ivory | Sand \u2014 lifestyle",
+            "image": null
+          },
+          {
+            "id": "gid://shopify/MediaImage/46368494190891",
+            "status": "UPLOADED",
+            "alt": "Cloud 6 Waterproof \u2014 Green | Black \u2014 lifestyle",
+            "image": null
+          },
+          {
+            "id": "gid://shopify/MediaImage/46368494223659",
+            "status": "UPLOADED",
+            "alt": "Cloud 6 Waterproof \u2014 Lavender | Black \u2014 lifestyle",
+            "image": null
+          },
+          {
+            "id": "gid://shopify/MediaImage/46368494256427",
+            "status": "PROCESSING",
+            "alt": "Cloud 6 Waterproof \u2014 Charcoal | Black \u2014 lifestyle",
+            "image": null
+          }
+        ],
+        "pageInfo": {
+          "hasNextPage": false,
+          "endCursor": "eyJsYXN0X2lkIjo0NjM2ODQ5NDI1NjQyNywibGFzdF92YWx1ZSI6IjEwIn0="
+        }
+      },
+      "colorLinked": true,
+      "lifestyleUploaded": true,
+      "lifestyleLinked": true,
+      "mediaReordered": true
+    },
+    {
+      "id": "gid://shopify/Product/15402868015403",
+      "title": "The Roger Pro Ace",
+      "handle": "strideo-the-roger-pro-ace",
+      "category": {
+        "id": "gid://shopify/TaxonomyCategory/aa-8-1",
+        "name": "Athletic Shoes"
+      },
+      "options": [
+        {
+          "id": "gid://shopify/ProductOption/17865603252523",
+          "name": "Color",
+          "linkedMetafield": {
+            "namespace": "shopify",
+            "key": "color-pattern"
+          },
+          "optionValues": [
+            {
+              "id": "gid://shopify/ProductOptionValue/14970062995755",
+              "name": "Ivory | Sand",
+              "linkedMetafieldValue": "gid://shopify/Metaobject/619569774891"
+            }
+          ]
+        }
+      ],
+      "variants": {
+        "nodes": [
+          {
+            "id": "gid://shopify/ProductVariant/67651672998187",
+            "title": "Ivory | Sand",
+            "price": "220.00",
+            "compareAtPrice": null,
+            "inventoryQuantity": 100,
+            "selectedOptions": [
+              {
+                "name": "Color",
+                "value": "Ivory | Sand"
+              }
+            ]
+          }
+        ],
+        "pageInfo": {
+          "hasNextPage": false,
+          "endCursor": "eyJsYXN0X2lkIjo2NzY1MTY3Mjk5ODE4NywibGFzdF92YWx1ZSI6MX0="
+        }
+      },
+      "media": {
+        "nodes": [
+          {
+            "id": "gid://shopify/MediaImage/46367713591595",
+            "status": "READY",
+            "alt": "The Roger Pro Ace \u2014 Ivory | Sand \u2014 Figma catalog",
+            "image": {
+              "url": "https://cdn.shopify.com/s/files/1/1024/2192/2091/files/strideo-the-roger-pro-ace-ivory-sand-catalog.png?v=1791167772"
+            }
+          },
+          {
+            "id": "gid://shopify/MediaImage/46368628015403",
+            "status": "UPLOADED",
+            "alt": "The Roger Pro Ace \u2014 Ivory | Sand \u2014 lifestyle",
+            "image": null
+          }
+        ],
+        "pageInfo": {
+          "hasNextPage": false,
+          "endCursor": "eyJsYXN0X2lkIjo0NjM2ODYyODAxNTQwMywibGFzdF92YWx1ZSI6IjIifQ=="
+        }
+      },
+      "colorLinked": true,
+      "lifestyleUploaded": true,
+      "lifestyleLinked": true,
+      "mediaReordered": true
+    },
+    {
+      "id": "gid://shopify/Product/15402868834603",
+      "title": "Cloud 6 Coast",
+      "handle": "strideo-cloud-6-coast",
+      "category": {
+        "id": "gid://shopify/TaxonomyCategory/aa-8-1",
+        "name": "Athletic Shoes"
+      },
+      "options": [
+        {
+          "id": "gid://shopify/ProductOption/17865604399403",
+          "name": "Color",
+          "linkedMetafield": {
+            "namespace": "shopify",
+            "key": "color-pattern"
+          },
+          "optionValues": [
+            {
+              "id": "gid://shopify/ProductOptionValue/14970065453355",
+              "name": "White | Lavender",
+              "linkedMetafieldValue": "gid://shopify/Metaobject/619569905963"
+            },
+            {
+              "id": "gid://shopify/ProductOptionValue/14970065486123",
+              "name": "Sand | Ivory",
+              "linkedMetafieldValue": "gid://shopify/Metaobject/619569938731"
+            },
+            {
+              "id": "gid://shopify/ProductOptionValue/14970065518891",
+              "name": "Pink | Ivory",
+              "linkedMetafieldValue": "gid://shopify/Metaobject/619569971499"
+            }
+          ]
+        }
+      ],
+      "variants": {
+        "nodes": [
+          {
+            "id": "gid://shopify/ProductVariant/67651676143915",
+            "title": "White | Lavender",
+            "price": "170.00",
+            "compareAtPrice": null,
+            "inventoryQuantity": 100,
+            "selectedOptions": [
+              {
+                "name": "Color",
+                "value": "White | Lavender"
+              }
+            ]
+          },
+          {
+            "id": "gid://shopify/ProductVariant/67651676176683",
+            "title": "Sand | Ivory",
+            "price": "170.00",
+            "compareAtPrice": null,
+            "inventoryQuantity": 100,
+            "selectedOptions": [
+              {
+                "name": "Color",
+                "value": "Sand | Ivory"
+              }
+            ]
+          },
+          {
+            "id": "gid://shopify/ProductVariant/67651676209451",
+            "title": "Pink | Ivory",
+            "price": "170.00",
+            "compareAtPrice": null,
+            "inventoryQuantity": 100,
+            "selectedOptions": [
+              {
+                "name": "Color",
+                "value": "Pink | Ivory"
+              }
+            ]
+          }
+        ],
+        "pageInfo": {
+          "hasNextPage": false,
+          "endCursor": "eyJsYXN0X2lkIjo2NzY1MTY3NjIwOTQ1MSwibGFzdF92YWx1ZSI6M30="
+        }
+      },
+      "media": {
+        "nodes": [
+          {
+            "id": "gid://shopify/MediaImage/46367716147499",
+            "status": "READY",
+            "alt": "Cloud 6 Coast \u2014 White | Lavender \u2014 Figma catalog",
+            "image": {
+              "url": "https://cdn.shopify.com/s/files/1/1024/2192/2091/files/strideo-cloud-6-coast-white-lavender-catalog.png?v=1791167789"
+            }
+          },
+          {
+            "id": "gid://shopify/MediaImage/46367716180267",
+            "status": "READY",
+            "alt": "Cloud 6 Coast \u2014 Sand | Ivory \u2014 Figma catalog",
+            "image": {
+              "url": "https://cdn.shopify.com/s/files/1/1024/2192/2091/files/strideo-cloud-6-coast-sand-ivory-catalog.png?v=1791167789"
+            }
+          },
+          {
+            "id": "gid://shopify/MediaImage/46367716213035",
+            "status": "READY",
+            "alt": "Cloud 6 Coast \u2014 Pink | Ivory \u2014 Figma catalog",
+            "image": {
+              "url": "https://cdn.shopify.com/s/files/1/1024/2192/2091/files/strideo-cloud-6-coast-pink-ivory-catalog.png?v=1791167789"
+            }
+          },
+          {
+            "id": "gid://shopify/MediaImage/46368643547435",
+            "status": "UPLOADED",
+            "alt": "Cloud 6 Coast \u2014 White | Lavender \u2014 lifestyle",
+            "image": null
+          },
+          {
+            "id": "gid://shopify/MediaImage/46368643580203",
+            "status": "UPLOADED",
+            "alt": "Cloud 6 Coast \u2014 Sand | Ivory \u2014 lifestyle",
+            "image": null
+          },
+          {
+            "id": "gid://shopify/MediaImage/46368643612971",
+            "status": "UPLOADED",
+            "alt": "Cloud 6 Coast \u2014 Pink | Ivory \u2014 lifestyle",
+            "image": null
+          }
+        ],
+        "pageInfo": {
+          "hasNextPage": false,
+          "endCursor": "eyJsYXN0X2lkIjo0NjM2ODY0MzYxMjk3MSwibGFzdF92YWx1ZSI6IjYifQ=="
+        }
+      },
+      "colorLinked": true,
+      "lifestyleUploaded": true,
+      "lifestyleLinked": true,
+      "mediaReordered": true
+    },
+    {
+      "id": "gid://shopify/Product/15402870276395",
+      "title": "Cloud X 4",
+      "handle": "strideo-cloud-x-4",
+      "category": {
+        "id": "gid://shopify/TaxonomyCategory/aa-8-1",
+        "name": "Athletic Shoes"
+      },
+      "options": [
+        {
+          "id": "gid://shopify/ProductOption/17865606168875",
+          "name": "Color",
+          "linkedMetafield": {
+            "namespace": "shopify",
+            "key": "color-pattern"
+          },
+          "optionValues": [
+            {
+              "id": "gid://shopify/ProductOptionValue/14970068697387",
+              "name": "Charcoal | Ivory",
+              "linkedMetafieldValue": "gid://shopify/Metaobject/619570004267"
+            },
+            {
+              "id": "gid://shopify/ProductOptionValue/14970068730155",
+              "name": "Ivory | Lime",
+              "linkedMetafieldValue": "gid://shopify/Metaobject/619570037035"
+            },
+            {
+              "id": "gid://shopify/ProductOptionValue/14970068762923",
+              "name": "Black | Black",
+              "linkedMetafieldValue": "gid://shopify/Metaobject/619569479979"
+            },
+            {
+              "id": "gid://shopify/ProductOptionValue/14970068795691",
+              "name": "White | Black",
+              "linkedMetafieldValue": "gid://shopify/Metaobject/619570069803"
+            },
+            {
+              "id": "gid://shopify/ProductOptionValue/14970068828459",
+              "name": "Navy | Ivory",
+              "linkedMetafieldValue": "gid://shopify/Metaobject/619570102571"
+            }
+          ]
+        }
+      ],
+      "variants": {
+        "nodes": [
+          {
+            "id": "gid://shopify/ProductVariant/67651680174379",
+            "title": "Charcoal | Ivory",
+            "price": "160.00",
+            "compareAtPrice": null,
+            "inventoryQuantity": 100,
+            "selectedOptions": [
+              {
+                "name": "Color",
+                "value": "Charcoal | Ivory"
+              }
+            ]
+          },
+          {
+            "id": "gid://shopify/ProductVariant/67651680207147",
+            "title": "Ivory | Lime",
+            "price": "160.00",
+            "compareAtPrice": null,
+            "inventoryQuantity": 100,
+            "selectedOptions": [
+              {
+                "name": "Color",
+                "value": "Ivory | Lime"
+              }
+            ]
+          },
+          {
+            "id": "gid://shopify/ProductVariant/67651680239915",
+            "title": "Black | Black",
+            "price": "160.00",
+            "compareAtPrice": null,
+            "inventoryQuantity": 100,
+            "selectedOptions": [
+              {
+                "name": "Color",
+                "value": "Black | Black"
+              }
+            ]
+          },
+          {
+            "id": "gid://shopify/ProductVariant/67651680272683",
+            "title": "White | Black",
+            "price": "160.00",
+            "compareAtPrice": null,
+            "inventoryQuantity": 100,
+            "selectedOptions": [
+              {
+                "name": "Color",
+                "value": "White | Black"
+              }
+            ]
+          },
+          {
+            "id": "gid://shopify/ProductVariant/67651680305451",
+            "title": "Navy | Ivory",
+            "price": "160.00",
+            "compareAtPrice": null,
+            "inventoryQuantity": 100,
+            "selectedOptions": [
+              {
+                "name": "Color",
+                "value": "Navy | Ivory"
+              }
+            ]
+          }
+        ],
+        "pageInfo": {
+          "hasNextPage": false,
+          "endCursor": "eyJsYXN0X2lkIjo2NzY1MTY4MDMwNTQ1MSwibGFzdF92YWx1ZSI6NX0="
+        }
+      },
+      "media": {
+        "nodes": [
+          {
+            "id": "gid://shopify/MediaImage/46367719653675",
+            "status": "READY",
+            "alt": "Cloud X 4 \u2014 Charcoal | Ivory \u2014 Figma catalog",
+            "image": {
+              "url": "https://cdn.shopify.com/s/files/1/1024/2192/2091/files/strideo-cloud-x-4-charcoal-ivory-catalog.png?v=1791167809"
+            }
+          },
+          {
+            "id": "gid://shopify/MediaImage/46367719686443",
+            "status": "READY",
+            "alt": "Cloud X 4 \u2014 Ivory | Lime \u2014 Figma catalog",
+            "image": {
+              "url": "https://cdn.shopify.com/s/files/1/1024/2192/2091/files/strideo-cloud-x-4-ivory-lime-catalog.png?v=1791167810"
+            }
+          },
+          {
+            "id": "gid://shopify/MediaImage/46367719719211",
+            "status": "READY",
+            "alt": "Cloud X 4 \u2014 Black | Black \u2014 Figma catalog",
+            "image": {
+              "url": "https://cdn.shopify.com/s/files/1/1024/2192/2091/files/strideo-cloud-x-4-black-black-catalog.png?v=1791167809"
+            }
+          },
+          {
+            "id": "gid://shopify/MediaImage/46367719751979",
+            "status": "READY",
+            "alt": "Cloud X 4 \u2014 White | Black \u2014 Figma catalog",
+            "image": {
+              "url": "https://cdn.shopify.com/s/files/1/1024/2192/2091/files/strideo-cloud-x-4-white-black-catalog.png?v=1791167810"
+            }
+          },
+          {
+            "id": "gid://shopify/MediaImage/46367719784747",
+            "status": "READY",
+            "alt": "Cloud X 4 \u2014 Navy | Ivory \u2014 Figma catalog",
+            "image": {
+              "url": "https://cdn.shopify.com/s/files/1/1024/2192/2091/files/strideo-cloud-x-4-navy-ivory-catalog.png?v=1791167809"
+            }
+          },
+          {
+            "id": "gid://shopify/MediaImage/46368667337003",
+            "status": "PROCESSING",
+            "alt": "Cloud X 4 \u2014 Charcoal | Ivory \u2014 lifestyle",
+            "image": null
+          },
+          {
+            "id": "gid://shopify/MediaImage/46368667369771",
+            "status": "PROCESSING",
+            "alt": "Cloud X 4 \u2014 Ivory | Lime \u2014 lifestyle",
+            "image": null
+          },
+          {
+            "id": "gid://shopify/MediaImage/46368667402539",
+            "status": "PROCESSING",
+            "alt": "Cloud X 4 \u2014 Black | Black \u2014 lifestyle",
+            "image": null
+          },
+          {
+            "id": "gid://shopify/MediaImage/46368667435307",
+            "status": "PROCESSING",
+            "alt": "Cloud X 4 \u2014 White | Black \u2014 lifestyle",
+            "image": null
+          },
+          {
+            "id": "gid://shopify/MediaImage/46368667468075",
+            "status": "PROCESSING",
+            "alt": "Cloud X 4 \u2014 Navy | Ivory \u2014 lifestyle",
+            "image": null
+          }
+        ],
+        "pageInfo": {
+          "hasNextPage": false,
+          "endCursor": "eyJsYXN0X2lkIjo0NjM2ODY2NzQ2ODA3NSwibGFzdF92YWx1ZSI6IjEwIn0="
+        }
+      },
+      "colorLinked": true,
+      "lifestyleUploaded": true,
+      "lifestyleLinked": true,
+      "mediaReordered": true
+    },
+    {
+      "id": "gid://shopify/Product/15402872275243",
+      "title": "Cloudrunner 2",
+      "handle": "strideo-cloudrunner-2",
+      "category": {
+        "id": "gid://shopify/TaxonomyCategory/aa-8-1",
+        "name": "Athletic Shoes"
+      },
+      "options": [
+        {
+          "id": "gid://shopify/ProductOption/17865608429867",
+          "name": "Color",
+          "linkedMetafield": {
+            "namespace": "shopify",
+            "key": "color-pattern"
+          },
+          "optionValues": [
+            {
+              "id": "gid://shopify/ProductOptionValue/14970073514283",
+              "name": "Pearl | Desert",
+              "linkedMetafieldValue": "gid://shopify/Metaobject/619570135339"
+            },
+            {
+              "id": "gid://shopify/ProductOptionValue/14970073547051",
+              "name": "Grey | White",
+              "linkedMetafieldValue": "gid://shopify/Metaobject/619569611051"
+            },
+            {
+              "id": "gid://shopify/ProductOptionValue/14970073579819",
+              "name": "Grey | Black",
+              "linkedMetafieldValue": "gid://shopify/Metaobject/619570168107"
+            },
+            {
+              "id": "gid://shopify/ProductOptionValue/14970073612587",
+              "name": "Black | Ivory",
+              "linkedMetafieldValue": "gid://shopify/Metaobject/619570200875"
+            },
+            {
+              "id": "gid://shopify/ProductOptionValue/14970073645355",
+              "name": "White | Green",
+              "linkedMetafieldValue": "gid://shopify/Metaobject/619569545515"
+            }
+          ]
+        },
+        {
+          "id": "gid://shopify/ProductOption/17865608462635",
+          "name": "Size",
+          "linkedMetafield": null,
+          "optionValues": [
+            {
+              "id": "gid://shopify/ProductOptionValue/14970073678123",
+              "name": "7",
+              "linkedMetafieldValue": null
+            },
+            {
+              "id": "gid://shopify/ProductOptionValue/14970073710891",
+              "name": "7.5",
+              "linkedMetafieldValue": null
+            },
+            {
+              "id": "gid://shopify/ProductOptionValue/14970073743659",
+              "name": "8",
+              "linkedMetafieldValue": null
+            },
+            {
+              "id": "gid://shopify/ProductOptionValue/14970073776427",
+              "name": "8.5",
+              "linkedMetafieldValue": null
+            },
+            {
+              "id": "gid://shopify/ProductOptionValue/14970073809195",
+              "name": "9",
+              "linkedMetafieldValue": null
+            },
+            {
+              "id": "gid://shopify/ProductOptionValue/14970073841963",
+              "name": "9.5",
+              "linkedMetafieldValue": null
+            },
+            {
+              "id": "gid://shopify/ProductOptionValue/14970073874731",
+              "name": "10",
+              "linkedMetafieldValue": null
+            },
+            {
+              "id": "gid://shopify/ProductOptionValue/14970073907499",
+              "name": "10.5",
+              "linkedMetafieldValue": null
+            },
+            {
+              "id": "gid://shopify/ProductOptionValue/14970073940267",
+              "name": "11",
+              "linkedMetafieldValue": null
+            },
+            {
+              "id": "gid://shopify/ProductOptionValue/14970073973035",
+              "name": "11.5",
+              "linkedMetafieldValue": null
+            },
+            {
+              "id": "gid://shopify/ProductOptionValue/14970074005803",
+              "name": "12",
+              "linkedMetafieldValue": null
+            },
+            {
+              "id": "gid://shopify/ProductOptionValue/14970074038571",
+              "name": "13",
+              "linkedMetafieldValue": null
+            },
+            {
+              "id": "gid://shopify/ProductOptionValue/14970074071339",
+              "name": "14",
+              "linkedMetafieldValue": null
+            }
+          ]
+        }
+      ],
+      "variants": {
+        "nodes": [
+          {
+            "id": "gid://shopify/ProductVariant/67651688202539",
+            "title": "Pearl | Desert / 7",
+            "price": "130.00",
+            "compareAtPrice": "160.00",
+            "inventoryQuantity": 15,
+            "selectedOptions": [
+              {
+                "name": "Color",
+                "value": "Pearl | Desert"
+              },
+              {
+                "name": "Size",
+                "value": "7"
+              }
+            ]
+          },
+          {
+            "id": "gid://shopify/ProductVariant/67651688235307",
+            "title": "Pearl | Desert / 7.5",
+            "price": "130.00",
+            "compareAtPrice": "160.00",
+            "inventoryQuantity": 15,
+            "selectedOptions": [
+              {
+                "name": "Color",
+                "value": "Pearl | Desert"
+              },
+              {
+                "name": "Size",
+                "value": "7.5"
+              }
+            ]
+          },
+          {
+            "id": "gid://shopify/ProductVariant/67651688268075",
+            "title": "Pearl | Desert / 8",
+            "price": "130.00",
+            "compareAtPrice": "160.00",
+            "inventoryQuantity": 15,
+            "selectedOptions": [
+              {
+                "name": "Color",
+                "value": "Pearl | Desert"
+              },
+              {
+                "name": "Size",
+                "value": "8"
+              }
+            ]
+          },
+          {
+            "id": "gid://shopify/ProductVariant/67651688300843",
+            "title": "Pearl | Desert / 8.5",
+            "price": "130.00",
+            "compareAtPrice": "160.00",
+            "inventoryQuantity": 15,
+            "selectedOptions": [
+              {
+                "name": "Color",
+                "value": "Pearl | Desert"
+              },
+              {
+                "name": "Size",
+                "value": "8.5"
+              }
+            ]
+          },
+          {
+            "id": "gid://shopify/ProductVariant/67651688333611",
+            "title": "Pearl | Desert / 9",
+            "price": "130.00",
+            "compareAtPrice": "160.00",
+            "inventoryQuantity": 0,
+            "selectedOptions": [
+              {
+                "name": "Color",
+                "value": "Pearl | Desert"
+              },
+              {
+                "name": "Size",
+                "value": "9"
+              }
+            ]
+          },
+          {
+            "id": "gid://shopify/ProductVariant/67651688366379",
+            "title": "Pearl | Desert / 9.5",
+            "price": "130.00",
+            "compareAtPrice": "160.00",
+            "inventoryQuantity": 15,
+            "selectedOptions": [
+              {
+                "name": "Color",
+                "value": "Pearl | Desert"
+              },
+              {
+                "name": "Size",
+                "value": "9.5"
+              }
+            ]
+          },
+          {
+            "id": "gid://shopify/ProductVariant/67651688399147",
+            "title": "Pearl | Desert / 10",
+            "price": "130.00",
+            "compareAtPrice": "160.00",
+            "inventoryQuantity": 15,
+            "selectedOptions": [
+              {
+                "name": "Color",
+                "value": "Pearl | Desert"
+              },
+              {
+                "name": "Size",
+                "value": "10"
+              }
+            ]
+          },
+          {
+            "id": "gid://shopify/ProductVariant/67651688431915",
+            "title": "Pearl | Desert / 10.5",
+            "price": "130.00",
+            "compareAtPrice": "160.00",
+            "inventoryQuantity": 15,
+            "selectedOptions": [
+              {
+                "name": "Color",
+                "value": "Pearl | Desert"
+              },
+              {
+                "name": "Size",
+                "value": "10.5"
+              }
+            ]
+          },
+          {
+            "id": "gid://shopify/ProductVariant/67651688464683",
+            "title": "Pearl | Desert / 11",
+            "price": "130.00",
+            "compareAtPrice": "160.00",
+            "inventoryQuantity": 15,
+            "selectedOptions": [
+              {
+                "name": "Color",
+                "value": "Pearl | Desert"
+              },
+              {
+                "name": "Size",
+                "value": "11"
+              }
+            ]
+          },
+          {
+            "id": "gid://shopify/ProductVariant/67651688497451",
+            "title": "Pearl | Desert / 11.5",
+            "price": "130.00",
+            "compareAtPrice": "160.00",
+            "inventoryQuantity": 0,
+            "selectedOptions": [
+              {
+                "name": "Color",
+                "value": "Pearl | Desert"
+              },
+              {
+                "name": "Size",
+                "value": "11.5"
+              }
+            ]
+          },
+          {
+            "id": "gid://shopify/ProductVariant/67651688530219",
+            "title": "Pearl | Desert / 12",
+            "price": "130.00",
+            "compareAtPrice": "160.00",
+            "inventoryQuantity": 0,
+            "selectedOptions": [
+              {
+                "name": "Color",
+                "value": "Pearl | Desert"
+              },
+              {
+                "name": "Size",
+                "value": "12"
+              }
+            ]
+          },
+          {
+            "id": "gid://shopify/ProductVariant/67651688562987",
+            "title": "Pearl | Desert / 13",
+            "price": "130.00",
+            "compareAtPrice": "160.00",
+            "inventoryQuantity": 15,
+            "selectedOptions": [
+              {
+                "name": "Color",
+                "value": "Pearl | Desert"
+              },
+              {
+                "name": "Size",
+                "value": "13"
+              }
+            ]
+          },
+          {
+            "id": "gid://shopify/ProductVariant/67651688595755",
+            "title": "Pearl | Desert / 14",
+            "price": "130.00",
+            "compareAtPrice": "160.00",
+            "inventoryQuantity": 15,
+            "selectedOptions": [
+              {
+                "name": "Color",
+                "value": "Pearl | Desert"
+              },
+              {
+                "name": "Size",
+                "value": "14"
+              }
+            ]
+          },
+          {
+            "id": "gid://shopify/ProductVariant/67651688628523",
+            "title": "Grey | White / 7",
+            "price": "130.00",
+            "compareAtPrice": "160.00",
+            "inventoryQuantity": 15,
+            "selectedOptions": [
+              {
+                "name": "Color",
+                "value": "Grey | White"
+              },
+              {
+                "name": "Size",
+                "value": "7"
+              }
+            ]
+          },
+          {
+            "id": "gid://shopify/ProductVariant/67651688661291",
+            "title": "Grey | White / 7.5",
+            "price": "130.00",
+            "compareAtPrice": "160.00",
+            "inventoryQuantity": 15,
+            "selectedOptions": [
+              {
+                "name": "Color",
+                "value": "Grey | White"
+              },
+              {
+                "name": "Size",
+                "value": "7.5"
+              }
+            ]
+          },
+          {
+            "id": "gid://shopify/ProductVariant/67651688694059",
+            "title": "Grey | White / 8",
+            "price": "130.00",
+            "compareAtPrice": "160.00",
+            "inventoryQuantity": 15,
+            "selectedOptions": [
+              {
+                "name": "Color",
+                "value": "Grey | White"
+              },
+              {
+                "name": "Size",
+                "value": "8"
+              }
+            ]
+          },
+          {
+            "id": "gid://shopify/ProductVariant/67651688726827",
+            "title": "Grey | White / 8.5",
+            "price": "130.00",
+            "compareAtPrice": "160.00",
+            "inventoryQuantity": 15,
+            "selectedOptions": [
+              {
+                "name": "Color",
+                "value": "Grey | White"
+              },
+              {
+                "name": "Size",
+                "value": "8.5"
+              }
+            ]
+          },
+          {
+            "id": "gid://shopify/ProductVariant/67651688759595",
+            "title": "Grey | White / 9",
+            "price": "130.00",
+            "compareAtPrice": "160.00",
+            "inventoryQuantity": 0,
+            "selectedOptions": [
+              {
+                "name": "Color",
+                "value": "Grey | White"
+              },
+              {
+                "name": "Size",
+                "value": "9"
+              }
+            ]
+          },
+          {
+            "id": "gid://shopify/ProductVariant/67651688792363",
+            "title": "Grey | White / 9.5",
+            "price": "130.00",
+            "compareAtPrice": "160.00",
+            "inventoryQuantity": 15,
+            "selectedOptions": [
+              {
+                "name": "Color",
+                "value": "Grey | White"
+              },
+              {
+                "name": "Size",
+                "value": "9.5"
+              }
+            ]
+          },
+          {
+            "id": "gid://shopify/ProductVariant/67651688825131",
+            "title": "Grey | White / 10",
+            "price": "130.00",
+            "compareAtPrice": "160.00",
+            "inventoryQuantity": 15,
+            "selectedOptions": [
+              {
+                "name": "Color",
+                "value": "Grey | White"
+              },
+              {
+                "name": "Size",
+                "value": "10"
+              }
+            ]
+          },
+          {
+            "id": "gid://shopify/ProductVariant/67651688857899",
+            "title": "Grey | White / 10.5",
+            "price": "130.00",
+            "compareAtPrice": "160.00",
+            "inventoryQuantity": 15,
+            "selectedOptions": [
+              {
+                "name": "Color",
+                "value": "Grey | White"
+              },
+              {
+                "name": "Size",
+                "value": "10.5"
+              }
+            ]
+          },
+          {
+            "id": "gid://shopify/ProductVariant/67651688890667",
+            "title": "Grey | White / 11",
+            "price": "130.00",
+            "compareAtPrice": "160.00",
+            "inventoryQuantity": 15,
+            "selectedOptions": [
+              {
+                "name": "Color",
+                "value": "Grey | White"
+              },
+              {
+                "name": "Size",
+                "value": "11"
+              }
+            ]
+          },
+          {
+            "id": "gid://shopify/ProductVariant/67651688923435",
+            "title": "Grey | White / 11.5",
+            "price": "130.00",
+            "compareAtPrice": "160.00",
+            "inventoryQuantity": 0,
+            "selectedOptions": [
+              {
+                "name": "Color",
+                "value": "Grey | White"
+              },
+              {
+                "name": "Size",
+                "value": "11.5"
+              }
+            ]
+          },
+          {
+            "id": "gid://shopify/ProductVariant/67651688956203",
+            "title": "Grey | White / 12",
+            "price": "130.00",
+            "compareAtPrice": "160.00",
+            "inventoryQuantity": 0,
+            "selectedOptions": [
+              {
+                "name": "Color",
+                "value": "Grey | White"
+              },
+              {
+                "name": "Size",
+                "value": "12"
+              }
+            ]
+          },
+          {
+            "id": "gid://shopify/ProductVariant/67651688988971",
+            "title": "Grey | White / 13",
+            "price": "130.00",
+            "compareAtPrice": "160.00",
+            "inventoryQuantity": 15,
+            "selectedOptions": [
+              {
+                "name": "Color",
+                "value": "Grey | White"
+              },
+              {
+                "name": "Size",
+                "value": "13"
+              }
+            ]
+          },
+          {
+            "id": "gid://shopify/ProductVariant/67651689021739",
+            "title": "Grey | White / 14",
+            "price": "130.00",
+            "compareAtPrice": "160.00",
+            "inventoryQuantity": 15,
+            "selectedOptions": [
+              {
+                "name": "Color",
+                "value": "Grey | White"
+              },
+              {
+                "name": "Size",
+                "value": "14"
+              }
+            ]
+          },
+          {
+            "id": "gid://shopify/ProductVariant/67651689054507",
+            "title": "Grey | Black / 7",
+            "price": "130.00",
+            "compareAtPrice": "160.00",
+            "inventoryQuantity": 15,
+            "selectedOptions": [
+              {
+                "name": "Color",
+                "value": "Grey | Black"
+              },
+              {
+                "name": "Size",
+                "value": "7"
+              }
+            ]
+          },
+          {
+            "id": "gid://shopify/ProductVariant/67651689087275",
+            "title": "Grey | Black / 7.5",
+            "price": "130.00",
+            "compareAtPrice": "160.00",
+            "inventoryQuantity": 15,
+            "selectedOptions": [
+              {
+                "name": "Color",
+                "value": "Grey | Black"
+              },
+              {
+                "name": "Size",
+                "value": "7.5"
+              }
+            ]
+          },
+          {
+            "id": "gid://shopify/ProductVariant/67651689120043",
+            "title": "Grey | Black / 8",
+            "price": "130.00",
+            "compareAtPrice": "160.00",
+            "inventoryQuantity": 15,
+            "selectedOptions": [
+              {
+                "name": "Color",
+                "value": "Grey | Black"
+              },
+              {
+                "name": "Size",
+                "value": "8"
+              }
+            ]
+          },
+          {
+            "id": "gid://shopify/ProductVariant/67651689152811",
+            "title": "Grey | Black / 8.5",
+            "price": "130.00",
+            "compareAtPrice": "160.00",
+            "inventoryQuantity": 15,
+            "selectedOptions": [
+              {
+                "name": "Color",
+                "value": "Grey | Black"
+              },
+              {
+                "name": "Size",
+                "value": "8.5"
+              }
+            ]
+          },
+          {
+            "id": "gid://shopify/ProductVariant/67651689185579",
+            "title": "Grey | Black / 9",
+            "price": "130.00",
+            "compareAtPrice": "160.00",
+            "inventoryQuantity": 0,
+            "selectedOptions": [
+              {
+                "name": "Color",
+                "value": "Grey | Black"
+              },
+              {
+                "name": "Size",
+                "value": "9"
+              }
+            ]
+          },
+          {
+            "id": "gid://shopify/ProductVariant/67651689218347",
+            "title": "Grey | Black / 9.5",
+            "price": "130.00",
+            "compareAtPrice": "160.00",
+            "inventoryQuantity": 15,
+            "selectedOptions": [
+              {
+                "name": "Color",
+                "value": "Grey | Black"
+              },
+              {
+                "name": "Size",
+                "value": "9.5"
+              }
+            ]
+          },
+          {
+            "id": "gid://shopify/ProductVariant/67651689251115",
+            "title": "Grey | Black / 10",
+            "price": "130.00",
+            "compareAtPrice": "160.00",
+            "inventoryQuantity": 15,
+            "selectedOptions": [
+              {
+                "name": "Color",
+                "value": "Grey | Black"
+              },
+              {
+                "name": "Size",
+                "value": "10"
+              }
+            ]
+          },
+          {
+            "id": "gid://shopify/ProductVariant/67651689283883",
+            "title": "Grey | Black / 10.5",
+            "price": "130.00",
+            "compareAtPrice": "160.00",
+            "inventoryQuantity": 15,
+            "selectedOptions": [
+              {
+                "name": "Color",
+                "value": "Grey | Black"
+              },
+              {
+                "name": "Size",
+                "value": "10.5"
+              }
+            ]
+          },
+          {
+            "id": "gid://shopify/ProductVariant/67651689316651",
+            "title": "Grey | Black / 11",
+            "price": "130.00",
+            "compareAtPrice": "160.00",
+            "inventoryQuantity": 15,
+            "selectedOptions": [
+              {
+                "name": "Color",
+                "value": "Grey | Black"
+              },
+              {
+                "name": "Size",
+                "value": "11"
+              }
+            ]
+          },
+          {
+            "id": "gid://shopify/ProductVariant/67651689349419",
+            "title": "Grey | Black / 11.5",
+            "price": "130.00",
+            "compareAtPrice": "160.00",
+            "inventoryQuantity": 0,
+            "selectedOptions": [
+              {
+                "name": "Color",
+                "value": "Grey | Black"
+              },
+              {
+                "name": "Size",
+                "value": "11.5"
+              }
+            ]
+          },
+          {
+            "id": "gid://shopify/ProductVariant/67651689382187",
+            "title": "Grey | Black / 12",
+            "price": "130.00",
+            "compareAtPrice": "160.00",
+            "inventoryQuantity": 0,
+            "selectedOptions": [
+              {
+                "name": "Color",
+                "value": "Grey | Black"
+              },
+              {
+                "name": "Size",
+                "value": "12"
+              }
+            ]
+          },
+          {
+            "id": "gid://shopify/ProductVariant/67651689414955",
+            "title": "Grey | Black / 13",
+            "price": "130.00",
+            "compareAtPrice": "160.00",
+            "inventoryQuantity": 15,
+            "selectedOptions": [
+              {
+                "name": "Color",
+                "value": "Grey | Black"
+              },
+              {
+                "name": "Size",
+                "value": "13"
+              }
+            ]
+          },
+          {
+            "id": "gid://shopify/ProductVariant/67651689447723",
+            "title": "Grey | Black / 14",
+            "price": "130.00",
+            "compareAtPrice": "160.00",
+            "inventoryQuantity": 15,
+            "selectedOptions": [
+              {
+                "name": "Color",
+                "value": "Grey | Black"
+              },
+              {
+                "name": "Size",
+                "value": "14"
+              }
+            ]
+          },
+          {
+            "id": "gid://shopify/ProductVariant/67651689480491",
+            "title": "Black | Ivory / 7",
+            "price": "130.00",
+            "compareAtPrice": "160.00",
+            "inventoryQuantity": 15,
+            "selectedOptions": [
+              {
+                "name": "Color",
+                "value": "Black | Ivory"
+              },
+              {
+                "name": "Size",
+                "value": "7"
+              }
+            ]
+          },
+          {
+            "id": "gid://shopify/ProductVariant/67651689513259",
+            "title": "Black | Ivory / 7.5",
+            "price": "130.00",
+            "compareAtPrice": "160.00",
+            "inventoryQuantity": 15,
+            "selectedOptions": [
+              {
+                "name": "Color",
+                "value": "Black | Ivory"
+              },
+              {
+                "name": "Size",
+                "value": "7.5"
+              }
+            ]
+          },
+          {
+            "id": "gid://shopify/ProductVariant/67651689546027",
+            "title": "Black | Ivory / 8",
+            "price": "130.00",
+            "compareAtPrice": "160.00",
+            "inventoryQuantity": 15,
+            "selectedOptions": [
+              {
+                "name": "Color",
+                "value": "Black | Ivory"
+              },
+              {
+                "name": "Size",
+                "value": "8"
+              }
+            ]
+          },
+          {
+            "id": "gid://shopify/ProductVariant/67651689578795",
+            "title": "Black | Ivory / 8.5",
+            "price": "130.00",
+            "compareAtPrice": "160.00",
+            "inventoryQuantity": 15,
+            "selectedOptions": [
+              {
+                "name": "Color",
+                "value": "Black | Ivory"
+              },
+              {
+                "name": "Size",
+                "value": "8.5"
+              }
+            ]
+          },
+          {
+            "id": "gid://shopify/ProductVariant/67651689611563",
+            "title": "Black | Ivory / 9",
+            "price": "130.00",
+            "compareAtPrice": "160.00",
+            "inventoryQuantity": 0,
+            "selectedOptions": [
+              {
+                "name": "Color",
+                "value": "Black | Ivory"
+              },
+              {
+                "name": "Size",
+                "value": "9"
+              }
+            ]
+          },
+          {
+            "id": "gid://shopify/ProductVariant/67651689644331",
+            "title": "Black | Ivory / 9.5",
+            "price": "130.00",
+            "compareAtPrice": "160.00",
+            "inventoryQuantity": 15,
+            "selectedOptions": [
+              {
+                "name": "Color",
+                "value": "Black | Ivory"
+              },
+              {
+                "name": "Size",
+                "value": "9.5"
+              }
+            ]
+          },
+          {
+            "id": "gid://shopify/ProductVariant/67651689677099",
+            "title": "Black | Ivory / 10",
+            "price": "130.00",
+            "compareAtPrice": "160.00",
+            "inventoryQuantity": 15,
+            "selectedOptions": [
+              {
+                "name": "Color",
+                "value": "Black | Ivory"
+              },
+              {
+                "name": "Size",
+                "value": "10"
+              }
+            ]
+          },
+          {
+            "id": "gid://shopify/ProductVariant/67651689709867",
+            "title": "Black | Ivory / 10.5",
+            "price": "130.00",
+            "compareAtPrice": "160.00",
+            "inventoryQuantity": 15,
+            "selectedOptions": [
+              {
+                "name": "Color",
+                "value": "Black | Ivory"
+              },
+              {
+                "name": "Size",
+                "value": "10.5"
+              }
+            ]
+          },
+          {
+            "id": "gid://shopify/ProductVariant/67651689742635",
+            "title": "Black | Ivory / 11",
+            "price": "130.00",
+            "compareAtPrice": "160.00",
+            "inventoryQuantity": 15,
+            "selectedOptions": [
+              {
+                "name": "Color",
+                "value": "Black | Ivory"
+              },
+              {
+                "name": "Size",
+                "value": "11"
+              }
+            ]
+          },
+          {
+            "id": "gid://shopify/ProductVariant/67651689775403",
+            "title": "Black | Ivory / 11.5",
+            "price": "130.00",
+            "compareAtPrice": "160.00",
+            "inventoryQuantity": 0,
+            "selectedOptions": [
+              {
+                "name": "Color",
+                "value": "Black | Ivory"
+              },
+              {
+                "name": "Size",
+                "value": "11.5"
+              }
+            ]
+          },
+          {
+            "id": "gid://shopify/ProductVariant/67651689808171",
+            "title": "Black | Ivory / 12",
+            "price": "130.00",
+            "compareAtPrice": "160.00",
+            "inventoryQuantity": 0,
+            "selectedOptions": [
+              {
+                "name": "Color",
+                "value": "Black | Ivory"
+              },
+              {
+                "name": "Size",
+                "value": "12"
+              }
+            ]
+          },
+          {
+            "id": "gid://shopify/ProductVariant/67651689840939",
+            "title": "Black | Ivory / 13",
+            "price": "130.00",
+            "compareAtPrice": "160.00",
+            "inventoryQuantity": 15,
+            "selectedOptions": [
+              {
+                "name": "Color",
+                "value": "Black | Ivory"
+              },
+              {
+                "name": "Size",
+                "value": "13"
+              }
+            ]
+          },
+          {
+            "id": "gid://shopify/ProductVariant/67651689873707",
+            "title": "Black | Ivory / 14",
+            "price": "130.00",
+            "compareAtPrice": "160.00",
+            "inventoryQuantity": 15,
+            "selectedOptions": [
+              {
+                "name": "Color",
+                "value": "Black | Ivory"
+              },
+              {
+                "name": "Size",
+                "value": "14"
+              }
+            ]
+          },
+          {
+            "id": "gid://shopify/ProductVariant/67651689906475",
+            "title": "White | Green / 7",
+            "price": "130.00",
+            "compareAtPrice": "160.00",
+            "inventoryQuantity": 15,
+            "selectedOptions": [
+              {
+                "name": "Color",
+                "value": "White | Green"
+              },
+              {
+                "name": "Size",
+                "value": "7"
+              }
+            ]
+          },
+          {
+            "id": "gid://shopify/ProductVariant/67651689939243",
+            "title": "White | Green / 7.5",
+            "price": "130.00",
+            "compareAtPrice": "160.00",
+            "inventoryQuantity": 15,
+            "selectedOptions": [
+              {
+                "name": "Color",
+                "value": "White | Green"
+              },
+              {
+                "name": "Size",
+                "value": "7.5"
+              }
+            ]
+          },
+          {
+            "id": "gid://shopify/ProductVariant/67651689972011",
+            "title": "White | Green / 8",
+            "price": "130.00",
+            "compareAtPrice": "160.00",
+            "inventoryQuantity": 15,
+            "selectedOptions": [
+              {
+                "name": "Color",
+                "value": "White | Green"
+              },
+              {
+                "name": "Size",
+                "value": "8"
+              }
+            ]
+          },
+          {
+            "id": "gid://shopify/ProductVariant/67651690004779",
+            "title": "White | Green / 8.5",
+            "price": "130.00",
+            "compareAtPrice": "160.00",
+            "inventoryQuantity": 15,
+            "selectedOptions": [
+              {
+                "name": "Color",
+                "value": "White | Green"
+              },
+              {
+                "name": "Size",
+                "value": "8.5"
+              }
+            ]
+          },
+          {
+            "id": "gid://shopify/ProductVariant/67651690037547",
+            "title": "White | Green / 9",
+            "price": "130.00",
+            "compareAtPrice": "160.00",
+            "inventoryQuantity": 0,
+            "selectedOptions": [
+              {
+                "name": "Color",
+                "value": "White | Green"
+              },
+              {
+                "name": "Size",
+                "value": "9"
+              }
+            ]
+          },
+          {
+            "id": "gid://shopify/ProductVariant/67651690070315",
+            "title": "White | Green / 9.5",
+            "price": "130.00",
+            "compareAtPrice": "160.00",
+            "inventoryQuantity": 15,
+            "selectedOptions": [
+              {
+                "name": "Color",
+                "value": "White | Green"
+              },
+              {
+                "name": "Size",
+                "value": "9.5"
+              }
+            ]
+          },
+          {
+            "id": "gid://shopify/ProductVariant/67651690103083",
+            "title": "White | Green / 10",
+            "price": "130.00",
+            "compareAtPrice": "160.00",
+            "inventoryQuantity": 15,
+            "selectedOptions": [
+              {
+                "name": "Color",
+                "value": "White | Green"
+              },
+              {
+                "name": "Size",
+                "value": "10"
+              }
+            ]
+          },
+          {
+            "id": "gid://shopify/ProductVariant/67651690135851",
+            "title": "White | Green / 10.5",
+            "price": "130.00",
+            "compareAtPrice": "160.00",
+            "inventoryQuantity": 15,
+            "selectedOptions": [
+              {
+                "name": "Color",
+                "value": "White | Green"
+              },
+              {
+                "name": "Size",
+                "value": "10.5"
+              }
+            ]
+          },
+          {
+            "id": "gid://shopify/ProductVariant/67651690168619",
+            "title": "White | Green / 11",
+            "price": "130.00",
+            "compareAtPrice": "160.00",
+            "inventoryQuantity": 15,
+            "selectedOptions": [
+              {
+                "name": "Color",
+                "value": "White | Green"
+              },
+              {
+                "name": "Size",
+                "value": "11"
+              }
+            ]
+          },
+          {
+            "id": "gid://shopify/ProductVariant/67651690201387",
+            "title": "White | Green / 11.5",
+            "price": "130.00",
+            "compareAtPrice": "160.00",
+            "inventoryQuantity": 0,
+            "selectedOptions": [
+              {
+                "name": "Color",
+                "value": "White | Green"
+              },
+              {
+                "name": "Size",
+                "value": "11.5"
+              }
+            ]
+          },
+          {
+            "id": "gid://shopify/ProductVariant/67651690234155",
+            "title": "White | Green / 12",
+            "price": "130.00",
+            "compareAtPrice": "160.00",
+            "inventoryQuantity": 0,
+            "selectedOptions": [
+              {
+                "name": "Color",
+                "value": "White | Green"
+              },
+              {
+                "name": "Size",
+                "value": "12"
+              }
+            ]
+          },
+          {
+            "id": "gid://shopify/ProductVariant/67651690266923",
+            "title": "White | Green / 13",
+            "price": "130.00",
+            "compareAtPrice": "160.00",
+            "inventoryQuantity": 15,
+            "selectedOptions": [
+              {
+                "name": "Color",
+                "value": "White | Green"
+              },
+              {
+                "name": "Size",
+                "value": "13"
+              }
+            ]
+          },
+          {
+            "id": "gid://shopify/ProductVariant/67651690299691",
+            "title": "White | Green / 14",
+            "price": "130.00",
+            "compareAtPrice": "160.00",
+            "inventoryQuantity": 15,
+            "selectedOptions": [
+              {
+                "name": "Color",
+                "value": "White | Green"
+              },
+              {
+                "name": "Size",
+                "value": "14"
+              }
+            ]
+          }
+        ],
+        "pageInfo": {
+          "hasNextPage": false,
+          "endCursor": "eyJsYXN0X2lkIjo2NzY1MTY5MDI5OTY5MSwibGFzdF92YWx1ZSI6NjV9"
+        }
+      },
+      "media": {
+        "nodes": [
+          {
+            "id": "gid://shopify/MediaImage/46367723651371",
+            "status": "READY",
+            "alt": "Cloudrunner 2 \u2014 Pearl | Desert \u2014 Figma catalog",
+            "image": {
+              "url": "https://cdn.shopify.com/s/files/1/1024/2192/2091/files/strideo-cloudrunner-2-pearl-desert-catalog.png?v=1791167832"
+            }
+          },
+          {
+            "id": "gid://shopify/MediaImage/46367723684139",
+            "status": "READY",
+            "alt": "Cloudrunner 2 \u2014 Grey | White \u2014 Figma catalog",
+            "image": {
+              "url": "https://cdn.shopify.com/s/files/1/1024/2192/2091/files/strideo-cloudrunner-2-grey-white-catalog.png?v=1791167832"
+            }
+          },
+          {
+            "id": "gid://shopify/MediaImage/46367723716907",
+            "status": "READY",
+            "alt": "Cloudrunner 2 \u2014 Grey | Black \u2014 Figma catalog",
+            "image": {
+              "url": "https://cdn.shopify.com/s/files/1/1024/2192/2091/files/strideo-cloudrunner-2-grey-black-catalog.png?v=1791167832"
+            }
+          },
+          {
+            "id": "gid://shopify/MediaImage/46367723749675",
+            "status": "READY",
+            "alt": "Cloudrunner 2 \u2014 Black | Ivory \u2014 Figma catalog",
+            "image": {
+              "url": "https://cdn.shopify.com/s/files/1/1024/2192/2091/files/strideo-cloudrunner-2-black-ivory-catalog.png?v=1791167832"
+            }
+          },
+          {
+            "id": "gid://shopify/MediaImage/46367723782443",
+            "status": "READY",
+            "alt": "Cloudrunner 2 \u2014 White | Green \u2014 Figma catalog",
+            "image": {
+              "url": "https://cdn.shopify.com/s/files/1/1024/2192/2091/files/strideo-cloudrunner-2-white-green-catalog.png?v=1791167832"
+            }
+          },
+          {
+            "id": "gid://shopify/MediaImage/46368713343275",
+            "status": "PROCESSING",
+            "alt": "Cloudrunner 2 \u2014 Pearl | Desert \u2014 lifestyle",
+            "image": null
+          },
+          {
+            "id": "gid://shopify/MediaImage/46368713376043",
+            "status": "PROCESSING",
+            "alt": "Cloudrunner 2 \u2014 Grey | White \u2014 lifestyle",
+            "image": null
+          },
+          {
+            "id": "gid://shopify/MediaImage/46368713408811",
+            "status": "PROCESSING",
+            "alt": "Cloudrunner 2 \u2014 Grey | Black \u2014 lifestyle",
+            "image": null
+          },
+          {
+            "id": "gid://shopify/MediaImage/46368713441579",
+            "status": "UPLOADED",
+            "alt": "Cloudrunner 2 \u2014 Black | Ivory \u2014 lifestyle",
+            "image": null
+          },
+          {
+            "id": "gid://shopify/MediaImage/46368713474347",
+            "status": "UPLOADED",
+            "alt": "Cloudrunner 2 \u2014 White | Green \u2014 lifestyle",
+            "image": null
+          }
+        ],
+        "pageInfo": {
+          "hasNextPage": false,
+          "endCursor": "eyJsYXN0X2lkIjo0NjM2ODcxMzQ3NDM0NywibGFzdF92YWx1ZSI6IjEwIn0="
+        }
+      },
+      "colorLinked": true,
+      "lifestyleUploaded": true,
+      "lifestyleLinked": true,
+      "mediaReordered": true
+    },
+    {
+      "id": "gid://shopify/Product/15402873454891",
+      "title": "Cloudswift 4",
+      "handle": "strideo-cloudswift-4",
+      "category": {
+        "id": "gid://shopify/TaxonomyCategory/aa-8-1",
+        "name": "Athletic Shoes"
+      },
+      "options": [
+        {
+          "id": "gid://shopify/ProductOption/17865610101035",
+          "name": "Color",
+          "linkedMetafield": {
+            "namespace": "shopify",
+            "key": "color-pattern"
+          },
+          "optionValues": [
+            {
+              "id": "gid://shopify/ProductOptionValue/14970077872427",
+              "name": "Grey | White",
+              "linkedMetafieldValue": "gid://shopify/Metaobject/619569611051"
+            },
+            {
+              "id": "gid://shopify/ProductOptionValue/14970077905195",
+              "name": "Grey | Lime",
+              "linkedMetafieldValue": "gid://shopify/Metaobject/619570233643"
+            },
+            {
+              "id": "gid://shopify/ProductOptionValue/14970077937963",
+              "name": "White | Black",
+              "linkedMetafieldValue": "gid://shopify/Metaobject/619570069803"
+            },
+            {
+              "id": "gid://shopify/ProductOptionValue/14970077970731",
+              "name": "White | White",
+              "linkedMetafieldValue": "gid://shopify/Metaobject/619569512747"
+            },
+            {
+              "id": "gid://shopify/ProductOptionValue/14970078003499",
+              "name": "Ivory | Blue",
+              "linkedMetafieldValue": "gid://shopify/Metaobject/619570266411"
+            },
+            {
+              "id": "gid://shopify/ProductOptionValue/14970078036267",
+              "name": "Charcoal | Grey",
+              "linkedMetafieldValue": "gid://shopify/Metaobject/619570299179"
+            },
+            {
+              "id": "gid://shopify/ProductOptionValue/14970078069035",
+              "name": "Black | Black",
+              "linkedMetafieldValue": "gid://shopify/Metaobject/619569479979"
+            }
+          ]
+        }
+      ],
+      "variants": {
+        "nodes": [
+          {
+            "id": "gid://shopify/ProductVariant/67651696001323",
+            "title": "Grey | White",
+            "price": "170.00",
+            "compareAtPrice": null,
+            "inventoryQuantity": 100,
+            "selectedOptions": [
+              {
+                "name": "Color",
+                "value": "Grey | White"
+              }
+            ]
+          },
+          {
+            "id": "gid://shopify/ProductVariant/67651696034091",
+            "title": "Grey | Lime",
+            "price": "170.00",
+            "compareAtPrice": null,
+            "inventoryQuantity": 100,
+            "selectedOptions": [
+              {
+                "name": "Color",
+                "value": "Grey | Lime"
+              }
+            ]
+          },
+          {
+            "id": "gid://shopify/ProductVariant/67651696066859",
+            "title": "White | Black",
+            "price": "170.00",
+            "compareAtPrice": null,
+            "inventoryQuantity": 100,
+            "selectedOptions": [
+              {
+                "name": "Color",
+                "value": "White | Black"
+              }
+            ]
+          },
+          {
+            "id": "gid://shopify/ProductVariant/67651696099627",
+            "title": "White | White",
+            "price": "170.00",
+            "compareAtPrice": null,
+            "inventoryQuantity": 100,
+            "selectedOptions": [
+              {
+                "name": "Color",
+                "value": "White | White"
+              }
+            ]
+          },
+          {
+            "id": "gid://shopify/ProductVariant/67651696132395",
+            "title": "Ivory | Blue",
+            "price": "170.00",
+            "compareAtPrice": null,
+            "inventoryQuantity": 100,
+            "selectedOptions": [
+              {
+                "name": "Color",
+                "value": "Ivory | Blue"
+              }
+            ]
+          },
+          {
+            "id": "gid://shopify/ProductVariant/67651696165163",
+            "title": "Charcoal | Grey",
+            "price": "170.00",
+            "compareAtPrice": null,
+            "inventoryQuantity": 100,
+            "selectedOptions": [
+              {
+                "name": "Color",
+                "value": "Charcoal | Grey"
+              }
+            ]
+          },
+          {
+            "id": "gid://shopify/ProductVariant/67651696197931",
+            "title": "Black | Black",
+            "price": "170.00",
+            "compareAtPrice": null,
+            "inventoryQuantity": 100,
+            "selectedOptions": [
+              {
+                "name": "Color",
+                "value": "Black | Black"
+              }
+            ]
+          }
+        ],
+        "pageInfo": {
+          "hasNextPage": false,
+          "endCursor": "eyJsYXN0X2lkIjo2NzY1MTY5NjE5NzkzMSwibGFzdF92YWx1ZSI6N30="
+        }
+      },
+      "media": {
+        "nodes": [
+          {
+            "id": "gid://shopify/MediaImage/46367803179307",
+            "status": "READY",
+            "alt": "Cloudswift 4 \u2014 Grey | White \u2014 Figma catalog",
+            "image": {
+              "url": "https://cdn.shopify.com/s/files/1/1024/2192/2091/files/strideo-cloudswift-4-grey-white-catalog.png?v=1791167857"
+            }
+          },
+          {
+            "id": "gid://shopify/MediaImage/46367803212075",
+            "status": "READY",
+            "alt": "Cloudswift 4 \u2014 Grey | Lime \u2014 Figma catalog",
+            "image": {
+              "url": "https://cdn.shopify.com/s/files/1/1024/2192/2091/files/strideo-cloudswift-4-grey-lime-catalog.png?v=1791167857"
+            }
+          },
+          {
+            "id": "gid://shopify/MediaImage/46367803244843",
+            "status": "READY",
+            "alt": "Cloudswift 4 \u2014 White | Black \u2014 Figma catalog",
+            "image": {
+              "url": "https://cdn.shopify.com/s/files/1/1024/2192/2091/files/strideo-cloudswift-4-white-black-catalog.png?v=1791167857"
+            }
+          },
+          {
+            "id": "gid://shopify/MediaImage/46367803277611",
+            "status": "READY",
+            "alt": "Cloudswift 4 \u2014 White | White \u2014 Figma catalog",
+            "image": {
+              "url": "https://cdn.shopify.com/s/files/1/1024/2192/2091/files/strideo-cloudswift-4-white-white-catalog.png?v=1791167857"
+            }
+          },
+          {
+            "id": "gid://shopify/MediaImage/46367803310379",
+            "status": "READY",
+            "alt": "Cloudswift 4 \u2014 Ivory | Blue \u2014 Figma catalog",
+            "image": {
+              "url": "https://cdn.shopify.com/s/files/1/1024/2192/2091/files/strideo-cloudswift-4-ivory-blue-catalog.png?v=1791167857"
+            }
+          },
+          {
+            "id": "gid://shopify/MediaImage/46367803343147",
+            "status": "READY",
+            "alt": "Cloudswift 4 \u2014 Charcoal | Grey \u2014 Figma catalog",
+            "image": {
+              "url": "https://cdn.shopify.com/s/files/1/1024/2192/2091/files/strideo-cloudswift-4-charcoal-grey-catalog.png?v=1791167857"
+            }
+          },
+          {
+            "id": "gid://shopify/MediaImage/46367803375915",
+            "status": "READY",
+            "alt": "Cloudswift 4 \u2014 Black | Black \u2014 Figma catalog",
+            "image": {
+              "url": "https://cdn.shopify.com/s/files/1/1024/2192/2091/files/strideo-cloudswift-4-black-black-catalog.png?v=1791167857"
+            }
+          },
+          {
+            "id": "gid://shopify/MediaImage/46368738574635",
+            "status": "UPLOADED",
+            "alt": "Cloudswift 4 \u2014 Grey | White \u2014 lifestyle",
+            "image": null
+          },
+          {
+            "id": "gid://shopify/MediaImage/46368738607403",
+            "status": "UPLOADED",
+            "alt": "Cloudswift 4 \u2014 Grey | Lime \u2014 lifestyle",
+            "image": null
+          },
+          {
+            "id": "gid://shopify/MediaImage/46368738640171",
+            "status": "UPLOADED",
+            "alt": "Cloudswift 4 \u2014 White | Black \u2014 lifestyle",
+            "image": null
+          },
+          {
+            "id": "gid://shopify/MediaImage/46368738672939",
+            "status": "UPLOADED",
+            "alt": "Cloudswift 4 \u2014 White | White \u2014 lifestyle",
+            "image": null
+          },
+          {
+            "id": "gid://shopify/MediaImage/46368738705707",
+            "status": "UPLOADED",
+            "alt": "Cloudswift 4 \u2014 Ivory | Blue \u2014 lifestyle",
+            "image": null
+          },
+          {
+            "id": "gid://shopify/MediaImage/46368738738475",
+            "status": "UPLOADED",
+            "alt": "Cloudswift 4 \u2014 Charcoal | Grey \u2014 lifestyle",
+            "image": null
+          },
+          {
+            "id": "gid://shopify/MediaImage/46368738771243",
+            "status": "UPLOADED",
+            "alt": "Cloudswift 4 \u2014 Black | Black \u2014 lifestyle",
+            "image": null
+          }
+        ],
+        "pageInfo": {
+          "hasNextPage": false,
+          "endCursor": "eyJsYXN0X2lkIjo0NjM2ODczODc3MTI0MywibGFzdF92YWx1ZSI6IjE0In0="
+        }
+      },
+      "colorLinked": true,
+      "lifestyleUploaded": true,
+      "lifestyleLinked": true,
+      "mediaReordered": true
+    }
+  ],
+  "colors": {
+    "strideo-sand-coral": {
+      "id": "gid://shopify/Metaobject/619569283371",
+      "handle": "strideo-sand-coral",
+      "fields": [
+        {
+          "key": "label",
+          "value": "Sand | Coral"
+        },
+        {
+          "key": "color",
+          "value": "#c5b8a0"
+        },
+        {
+          "key": "image",
+          "value": null
+        },
+        {
+          "key": "color_taxonomy_reference",
+          "value": "[\"gid://shopify/TaxonomyValue/6\",\"gid://shopify/TaxonomyValue/13\"]"
+        },
+        {
+          "key": "pattern_taxonomy_reference",
+          "value": "gid://shopify/TaxonomyValue/2874"
+        }
+      ]
+    },
+    "strideo-blue-ivory": {
+      "id": "gid://shopify/Metaobject/619569316139",
+      "handle": "strideo-blue-ivory",
+      "fields": [
+        {
+          "key": "label",
+          "value": "Blue | Ivory"
+        },
+        {
+          "key": "color",
+          "value": "#5793ac"
+        },
+        {
+          "key": "image",
+          "value": null
+        },
+        {
+          "key": "color_taxonomy_reference",
+          "value": "[\"gid://shopify/TaxonomyValue/2\",\"gid://shopify/TaxonomyValue/6\"]"
+        },
+        {
+          "key": "pattern_taxonomy_reference",
+          "value": "gid://shopify/TaxonomyValue/2874"
+        }
+      ]
+    },
+    "strideo-grey-ivory": {
+      "id": "gid://shopify/Metaobject/619569381675",
+      "handle": "strideo-grey-ivory",
+      "fields": [
+        {
+          "key": "label",
+          "value": "Grey | Ivory"
+        },
+        {
+          "key": "color",
+          "value": "#a0a1a2"
+        },
+        {
+          "key": "image",
+          "value": null
+        },
+        {
+          "key": "color_taxonomy_reference",
+          "value": "[\"gid://shopify/TaxonomyValue/8\",\"gid://shopify/TaxonomyValue/6\"]"
+        },
+        {
+          "key": "pattern_taxonomy_reference",
+          "value": "gid://shopify/TaxonomyValue/2874"
+        }
+      ]
+    },
+    "strideo-peach-orange": {
+      "id": "gid://shopify/Metaobject/619569414443",
+      "handle": "strideo-peach-orange",
+      "fields": [
+        {
+          "key": "label",
+          "value": "Peach | Orange"
+        },
+        {
+          "key": "color",
+          "value": "#f3c9b8"
+        },
+        {
+          "key": "image",
+          "value": null
+        },
+        {
+          "key": "color_taxonomy_reference",
+          "value": "[\"gid://shopify/TaxonomyValue/11\",\"gid://shopify/TaxonomyValue/10\"]"
+        },
+        {
+          "key": "pattern_taxonomy_reference",
+          "value": "gid://shopify/TaxonomyValue/2874"
+        }
+      ]
+    },
+    "strideo-sand-yellow": {
+      "id": "gid://shopify/Metaobject/619569447211",
+      "handle": "strideo-sand-yellow",
+      "fields": [
+        {
+          "key": "label",
+          "value": "Sand | Yellow"
+        },
+        {
+          "key": "color",
+          "value": "#c5b8a0"
+        },
+        {
+          "key": "image",
+          "value": null
+        },
+        {
+          "key": "color_taxonomy_reference",
+          "value": "[\"gid://shopify/TaxonomyValue/6\",\"gid://shopify/TaxonomyValue/14\"]"
+        },
+        {
+          "key": "pattern_taxonomy_reference",
+          "value": "gid://shopify/TaxonomyValue/2874"
+        }
+      ]
+    },
+    "strideo-black-black": {
+      "id": "gid://shopify/Metaobject/619569479979",
+      "handle": "strideo-black-black",
+      "fields": [
+        {
+          "key": "label",
+          "value": "Black | Black"
+        },
+        {
+          "key": "color",
+          "value": "#242727"
+        },
+        {
+          "key": "image",
+          "value": null
+        },
+        {
+          "key": "color_taxonomy_reference",
+          "value": "[\"gid://shopify/TaxonomyValue/1\"]"
+        },
+        {
+          "key": "pattern_taxonomy_reference",
+          "value": "gid://shopify/TaxonomyValue/2874"
+        }
+      ]
+    },
+    "strideo-white-white": {
+      "id": "gid://shopify/Metaobject/619569512747",
+      "handle": "strideo-white-white",
+      "fields": [
+        {
+          "key": "label",
+          "value": "White | White"
+        },
+        {
+          "key": "color",
+          "value": "#f2f3f1"
+        },
+        {
+          "key": "image",
+          "value": null
+        },
+        {
+          "key": "color_taxonomy_reference",
+          "value": "[\"gid://shopify/TaxonomyValue/3\"]"
+        },
+        {
+          "key": "pattern_taxonomy_reference",
+          "value": "gid://shopify/TaxonomyValue/2874"
+        }
+      ]
+    },
+    "strideo-white-green": {
+      "id": "gid://shopify/Metaobject/619569545515",
+      "handle": "strideo-white-green",
+      "fields": [
+        {
+          "key": "label",
+          "value": "White | Green"
+        },
+        {
+          "key": "color",
+          "value": "#f2f3f1"
+        },
+        {
+          "key": "image",
+          "value": null
+        },
+        {
+          "key": "color_taxonomy_reference",
+          "value": "[\"gid://shopify/TaxonomyValue/3\",\"gid://shopify/TaxonomyValue/9\"]"
+        },
+        {
+          "key": "pattern_taxonomy_reference",
+          "value": "gid://shopify/TaxonomyValue/2874"
+        }
+      ]
+    },
+    "strideo-grey-white": {
+      "id": "gid://shopify/Metaobject/619569611051",
+      "handle": "strideo-grey-white",
+      "fields": [
+        {
+          "key": "label",
+          "value": "Grey | White"
+        },
+        {
+          "key": "color",
+          "value": "#a0a1a2"
+        },
+        {
+          "key": "image",
+          "value": null
+        },
+        {
+          "key": "color_taxonomy_reference",
+          "value": "[\"gid://shopify/TaxonomyValue/8\",\"gid://shopify/TaxonomyValue/3\"]"
+        },
+        {
+          "key": "pattern_taxonomy_reference",
+          "value": "gid://shopify/TaxonomyValue/2874"
+        }
+      ]
+    },
+    "strideo-aqua-black": {
+      "id": "gid://shopify/Metaobject/619569643819",
+      "handle": "strideo-aqua-black",
+      "fields": [
+        {
+          "key": "label",
+          "value": "Aqua | Black"
+        },
+        {
+          "key": "color",
+          "value": "#83b8b9"
+        },
+        {
+          "key": "image",
+          "value": null
+        },
+        {
+          "key": "color_taxonomy_reference",
+          "value": "[\"gid://shopify/TaxonomyValue/2\",\"gid://shopify/TaxonomyValue/1\"]"
+        },
+        {
+          "key": "pattern_taxonomy_reference",
+          "value": "gid://shopify/TaxonomyValue/2874"
+        }
+      ]
+    },
+    "strideo-orange-grey": {
+      "id": "gid://shopify/Metaobject/619569676587",
+      "handle": "strideo-orange-grey",
+      "fields": [
+        {
+          "key": "label",
+          "value": "Orange | Grey"
+        },
+        {
+          "key": "color",
+          "value": "#eb793b"
+        },
+        {
+          "key": "image",
+          "value": null
+        },
+        {
+          "key": "color_taxonomy_reference",
+          "value": "[\"gid://shopify/TaxonomyValue/10\",\"gid://shopify/TaxonomyValue/8\"]"
+        },
+        {
+          "key": "pattern_taxonomy_reference",
+          "value": "gid://shopify/TaxonomyValue/2874"
+        }
+      ]
+    },
+    "strideo-white-lime": {
+      "id": "gid://shopify/Metaobject/619569709355",
+      "handle": "strideo-white-lime",
+      "fields": [
+        {
+          "key": "label",
+          "value": "White | Lime"
+        },
+        {
+          "key": "color",
+          "value": "#f2f3f1"
+        },
+        {
+          "key": "image",
+          "value": null
+        },
+        {
+          "key": "color_taxonomy_reference",
+          "value": "[\"gid://shopify/TaxonomyValue/3\",\"gid://shopify/TaxonomyValue/14\"]"
+        },
+        {
+          "key": "pattern_taxonomy_reference",
+          "value": "gid://shopify/TaxonomyValue/2874"
+        }
+      ]
+    },
+    "strideo-navy-black": {
+      "id": "gid://shopify/Metaobject/619569742123",
+      "handle": "strideo-navy-black",
+      "fields": [
+        {
+          "key": "label",
+          "value": "Navy | Black"
+        },
+        {
+          "key": "color",
+          "value": "#303948"
+        },
+        {
+          "key": "image",
+          "value": null
+        },
+        {
+          "key": "color_taxonomy_reference",
+          "value": "[\"gid://shopify/TaxonomyValue/15\",\"gid://shopify/TaxonomyValue/1\"]"
+        },
+        {
+          "key": "pattern_taxonomy_reference",
+          "value": "gid://shopify/TaxonomyValue/2874"
+        }
+      ]
+    },
+    "strideo-ivory-sand": {
+      "id": "gid://shopify/Metaobject/619569774891",
+      "handle": "strideo-ivory-sand",
+      "fields": [
+        {
+          "key": "label",
+          "value": "Ivory | Sand"
+        },
+        {
+          "key": "color",
+          "value": "#e5e2d6"
+        },
+        {
+          "key": "image",
+          "value": null
+        },
+        {
+          "key": "color_taxonomy_reference",
+          "value": "[\"gid://shopify/TaxonomyValue/6\"]"
+        },
+        {
+          "key": "pattern_taxonomy_reference",
+          "value": "gid://shopify/TaxonomyValue/2874"
+        }
+      ]
+    },
+    "strideo-green-black": {
+      "id": "gid://shopify/Metaobject/619569807659",
+      "handle": "strideo-green-black",
+      "fields": [
+        {
+          "key": "label",
+          "value": "Green | Black"
+        },
+        {
+          "key": "color",
+          "value": "#5b9962"
+        },
+        {
+          "key": "image",
+          "value": null
+        },
+        {
+          "key": "color_taxonomy_reference",
+          "value": "[\"gid://shopify/TaxonomyValue/9\",\"gid://shopify/TaxonomyValue/1\"]"
+        },
+        {
+          "key": "pattern_taxonomy_reference",
+          "value": "gid://shopify/TaxonomyValue/2874"
+        }
+      ]
+    },
+    "strideo-lavender-black": {
+      "id": "gid://shopify/Metaobject/619569840427",
+      "handle": "strideo-lavender-black",
+      "fields": [
+        {
+          "key": "label",
+          "value": "Lavender | Black"
+        },
+        {
+          "key": "color",
+          "value": "#bbc0d3"
+        },
+        {
+          "key": "image",
+          "value": null
+        },
+        {
+          "key": "color_taxonomy_reference",
+          "value": "[\"gid://shopify/TaxonomyValue/12\",\"gid://shopify/TaxonomyValue/1\"]"
+        },
+        {
+          "key": "pattern_taxonomy_reference",
+          "value": "gid://shopify/TaxonomyValue/2874"
+        }
+      ]
+    },
+    "strideo-charcoal-black": {
+      "id": "gid://shopify/Metaobject/619569873195",
+      "handle": "strideo-charcoal-black",
+      "fields": [
+        {
+          "key": "label",
+          "value": "Charcoal | Black"
+        },
+        {
+          "key": "color",
+          "value": "#52535a"
+        },
+        {
+          "key": "image",
+          "value": null
+        },
+        {
+          "key": "color_taxonomy_reference",
+          "value": "[\"gid://shopify/TaxonomyValue/8\",\"gid://shopify/TaxonomyValue/1\"]"
+        },
+        {
+          "key": "pattern_taxonomy_reference",
+          "value": "gid://shopify/TaxonomyValue/2874"
+        }
+      ]
+    },
+    "strideo-white-lavender": {
+      "id": "gid://shopify/Metaobject/619569905963",
+      "handle": "strideo-white-lavender",
+      "fields": [
+        {
+          "key": "label",
+          "value": "White | Lavender"
+        },
+        {
+          "key": "color",
+          "value": "#f2f3f1"
+        },
+        {
+          "key": "image",
+          "value": null
+        },
+        {
+          "key": "color_taxonomy_reference",
+          "value": "[\"gid://shopify/TaxonomyValue/3\",\"gid://shopify/TaxonomyValue/12\"]"
+        },
+        {
+          "key": "pattern_taxonomy_reference",
+          "value": "gid://shopify/TaxonomyValue/2874"
+        }
+      ]
+    },
+    "strideo-sand-ivory": {
+      "id": "gid://shopify/Metaobject/619569938731",
+      "handle": "strideo-sand-ivory",
+      "fields": [
+        {
+          "key": "label",
+          "value": "Sand | Ivory"
+        },
+        {
+          "key": "color",
+          "value": "#c5b8a0"
+        },
+        {
+          "key": "image",
+          "value": null
+        },
+        {
+          "key": "color_taxonomy_reference",
+          "value": "[\"gid://shopify/TaxonomyValue/6\"]"
+        },
+        {
+          "key": "pattern_taxonomy_reference",
+          "value": "gid://shopify/TaxonomyValue/2874"
+        }
+      ]
+    },
+    "strideo-pink-ivory": {
+      "id": "gid://shopify/Metaobject/619569971499",
+      "handle": "strideo-pink-ivory",
+      "fields": [
+        {
+          "key": "label",
+          "value": "Pink | Ivory"
+        },
+        {
+          "key": "color",
+          "value": "#e7cfd1"
+        },
+        {
+          "key": "image",
+          "value": null
+        },
+        {
+          "key": "color_taxonomy_reference",
+          "value": "[\"gid://shopify/TaxonomyValue/11\",\"gid://shopify/TaxonomyValue/6\"]"
+        },
+        {
+          "key": "pattern_taxonomy_reference",
+          "value": "gid://shopify/TaxonomyValue/2874"
+        }
+      ]
+    },
+    "strideo-charcoal-ivory": {
+      "id": "gid://shopify/Metaobject/619570004267",
+      "handle": "strideo-charcoal-ivory",
+      "fields": [
+        {
+          "key": "label",
+          "value": "Charcoal | Ivory"
+        },
+        {
+          "key": "color",
+          "value": "#52535a"
+        },
+        {
+          "key": "image",
+          "value": null
+        },
+        {
+          "key": "color_taxonomy_reference",
+          "value": "[\"gid://shopify/TaxonomyValue/8\",\"gid://shopify/TaxonomyValue/6\"]"
+        },
+        {
+          "key": "pattern_taxonomy_reference",
+          "value": "gid://shopify/TaxonomyValue/2874"
+        }
+      ]
+    },
+    "strideo-ivory-lime": {
+      "id": "gid://shopify/Metaobject/619570037035",
+      "handle": "strideo-ivory-lime",
+      "fields": [
+        {
+          "key": "label",
+          "value": "Ivory | Lime"
+        },
+        {
+          "key": "color",
+          "value": "#e5e2d6"
+        },
+        {
+          "key": "image",
+          "value": null
+        },
+        {
+          "key": "color_taxonomy_reference",
+          "value": "[\"gid://shopify/TaxonomyValue/6\",\"gid://shopify/TaxonomyValue/14\"]"
+        },
+        {
+          "key": "pattern_taxonomy_reference",
+          "value": "gid://shopify/TaxonomyValue/2874"
+        }
+      ]
+    },
+    "strideo-white-black": {
+      "id": "gid://shopify/Metaobject/619570069803",
+      "handle": "strideo-white-black",
+      "fields": [
+        {
+          "key": "label",
+          "value": "White | Black"
+        },
+        {
+          "key": "color",
+          "value": "#f2f3f1"
+        },
+        {
+          "key": "image",
+          "value": null
+        },
+        {
+          "key": "color_taxonomy_reference",
+          "value": "[\"gid://shopify/TaxonomyValue/3\",\"gid://shopify/TaxonomyValue/1\"]"
+        },
+        {
+          "key": "pattern_taxonomy_reference",
+          "value": "gid://shopify/TaxonomyValue/2874"
+        }
+      ]
+    },
+    "strideo-navy-ivory": {
+      "id": "gid://shopify/Metaobject/619570102571",
+      "handle": "strideo-navy-ivory",
+      "fields": [
+        {
+          "key": "label",
+          "value": "Navy | Ivory"
+        },
+        {
+          "key": "color",
+          "value": "#303948"
+        },
+        {
+          "key": "image",
+          "value": null
+        },
+        {
+          "key": "color_taxonomy_reference",
+          "value": "[\"gid://shopify/TaxonomyValue/15\",\"gid://shopify/TaxonomyValue/6\"]"
+        },
+        {
+          "key": "pattern_taxonomy_reference",
+          "value": "gid://shopify/TaxonomyValue/2874"
+        }
+      ]
+    },
+    "strideo-pearl-desert": {
+      "id": "gid://shopify/Metaobject/619570135339",
+      "handle": "strideo-pearl-desert",
+      "fields": [
+        {
+          "key": "label",
+          "value": "Pearl | Desert"
+        },
+        {
+          "key": "color",
+          "value": "#e2decc"
+        },
+        {
+          "key": "image",
+          "value": null
+        },
+        {
+          "key": "color_taxonomy_reference",
+          "value": "[\"gid://shopify/TaxonomyValue/3\",\"gid://shopify/TaxonomyValue/6\"]"
+        },
+        {
+          "key": "pattern_taxonomy_reference",
+          "value": "gid://shopify/TaxonomyValue/2874"
+        }
+      ]
+    },
+    "strideo-grey-black": {
+      "id": "gid://shopify/Metaobject/619570168107",
+      "handle": "strideo-grey-black",
+      "fields": [
+        {
+          "key": "label",
+          "value": "Grey | Black"
+        },
+        {
+          "key": "color",
+          "value": "#a0a1a2"
+        },
+        {
+          "key": "image",
+          "value": null
+        },
+        {
+          "key": "color_taxonomy_reference",
+          "value": "[\"gid://shopify/TaxonomyValue/8\",\"gid://shopify/TaxonomyValue/1\"]"
+        },
+        {
+          "key": "pattern_taxonomy_reference",
+          "value": "gid://shopify/TaxonomyValue/2874"
+        }
+      ]
+    },
+    "strideo-black-ivory": {
+      "id": "gid://shopify/Metaobject/619570200875",
+      "handle": "strideo-black-ivory",
+      "fields": [
+        {
+          "key": "label",
+          "value": "Black | Ivory"
+        },
+        {
+          "key": "color",
+          "value": "#242727"
+        },
+        {
+          "key": "image",
+          "value": null
+        },
+        {
+          "key": "color_taxonomy_reference",
+          "value": "[\"gid://shopify/TaxonomyValue/1\",\"gid://shopify/TaxonomyValue/6\"]"
+        },
+        {
+          "key": "pattern_taxonomy_reference",
+          "value": "gid://shopify/TaxonomyValue/2874"
+        }
+      ]
+    },
+    "strideo-grey-lime": {
+      "id": "gid://shopify/Metaobject/619570233643",
+      "handle": "strideo-grey-lime",
+      "fields": [
+        {
+          "key": "label",
+          "value": "Grey | Lime"
+        },
+        {
+          "key": "color",
+          "value": "#a0a1a2"
+        },
+        {
+          "key": "image",
+          "value": null
+        },
+        {
+          "key": "color_taxonomy_reference",
+          "value": "[\"gid://shopify/TaxonomyValue/8\",\"gid://shopify/TaxonomyValue/14\"]"
+        },
+        {
+          "key": "pattern_taxonomy_reference",
+          "value": "gid://shopify/TaxonomyValue/2874"
+        }
+      ]
+    },
+    "strideo-ivory-blue": {
+      "id": "gid://shopify/Metaobject/619570266411",
+      "handle": "strideo-ivory-blue",
+      "fields": [
+        {
+          "key": "label",
+          "value": "Ivory | Blue"
+        },
+        {
+          "key": "color",
+          "value": "#e5e2d6"
+        },
+        {
+          "key": "image",
+          "value": null
+        },
+        {
+          "key": "color_taxonomy_reference",
+          "value": "[\"gid://shopify/TaxonomyValue/6\",\"gid://shopify/TaxonomyValue/2\"]"
+        },
+        {
+          "key": "pattern_taxonomy_reference",
+          "value": "gid://shopify/TaxonomyValue/2874"
+        }
+      ]
+    },
+    "strideo-charcoal-grey": {
+      "id": "gid://shopify/Metaobject/619570299179",
+      "handle": "strideo-charcoal-grey",
+      "fields": [
+        {
+          "key": "label",
+          "value": "Charcoal | Grey"
+        },
+        {
+          "key": "color",
+          "value": "#52535a"
+        },
+        {
+          "key": "image",
+          "value": null
+        },
+        {
+          "key": "color_taxonomy_reference",
+          "value": "[\"gid://shopify/TaxonomyValue/8\"]"
+        },
+        {
+          "key": "pattern_taxonomy_reference",
+          "value": "gid://shopify/TaxonomyValue/2874"
+        }
+      ]
+    }
+  },
+  "published": [
+    "gid://shopify/Product/15402863264043",
+    "gid://shopify/Product/15402864705835",
+    "gid://shopify/Product/15402866934059",
+    "gid://shopify/Product/15402868015403",
+    "gid://shopify/Product/15402868834603",
+    "gid://shopify/Product/15402870276395",
+    "gid://shopify/Product/15402872275243",
+    "gid://shopify/Product/15402873454891"
+  ],
+  "secondaryImageDefinition": {
+    "id": "gid://shopify/MetafieldDefinition/299506434347",
+    "ownerType": "PRODUCTVARIANT",
+    "namespace": "custom",
+    "key": "secondary_image",
+    "type": "file_reference"
+  }
+}

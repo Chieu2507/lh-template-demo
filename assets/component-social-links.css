@@ -92,12 +92,6 @@
   min-width: 0;
 }
 
-@media (min-width: 768px) and (max-width: 1149.98px) {
-  .social-links-block {
-    padding-block: calc(var(--social-padding-top, 0px) * 0.75) calc(var(--social-padding-bottom, 0px) * 0.75);
-  }
-}
-
 @media (max-width: 767.98px) {
   .social-links.social-links {
     gap: var(--social-gap-mobile, 10px);

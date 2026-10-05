@@ -19,6 +19,12 @@
     assign media_desktop_layout = 'left_thumbnails'
   endunless
 
+  assign media_overlay_thumbnails = false
+  if block.settings.desktop_layout == 'carousel_thumbnails'
+    assign media_overlay_thumbnails = true
+    assign media_desktop_layout = 'bottom_thumbnails'
+  endif
+
   assign media_mobile_layout = block.settings.mobile_layout | default: 'slider'
   unless media_mobile_layout == 'thumbnails' or media_mobile_layout == 'slider'
     assign media_mobile_layout = 'slider'
@@ -63,6 +69,9 @@
     assign media_gap_mobile = 10
   endif
   assign media_thumbnail_gap = media_gap | plus: 4
+  if media_overlay_thumbnails
+    assign media_thumbnail_gap = 'var(--product-media-overlay-thumbnail-gap, 4px)'
+  endif
   assign media_thumbnail_gap_mobile = media_gap_mobile | plus: 2
   assign media_thumbnail_width = block.settings.bottom_thumbnail_width | default: 72 | plus: 0
   if media_thumbnail_width < 48 or media_thumbnail_width > 200
@@ -141,17 +150,18 @@
 
 <product-media-gallery
   id="{{ gallery_id }}"
-  class="media-gallery product-media-gallery motion-block product-media-gallery--desktop-{{ media_desktop_layout }} product-media-gallery--mobile-{{ media_mobile_layout }} product-media-gallery--radius-{{ media_container_radius }}{% if media_full_width %} product-media-gallery--mobile-full-width{% endif %}"
+  class="media-gallery product-media-gallery motion-block product-media-gallery--desktop-{{ media_desktop_layout }} product-media-gallery--mobile-{{ media_mobile_layout }} product-media-gallery--radius-{{ media_container_radius }}{% if media_overlay_thumbnails %} product-media-gallery--overlay-thumbnails{% endif %}{% if media_full_width %} product-media-gallery--mobile-full-width{% endif %}"
   data-product-media-gallery
   data-desktop-layout="{{ media_desktop_layout }}"
   data-mobile-layout="{{ media_mobile_layout }}"
+  data-overlay-thumbnails="{{ media_overlay_thumbnails }}"
   data-mobile-show-pagination="{{ media_mobile_show_pagination }}"
   data-zoom="{{ media_zoom }}"
   data-block-animations="{{ media_block_motion_enabled }}"
   data-current-variant-id="{{ current_variant.id | default: '' }}"
   data-current-variant-media-id="{{ current_variant.featured_media.id | default: '' }}"
   data-filter-variant-media="{{ settings.variant_picker_only_selected_media }}"
-  style="--product-media-thumbnail-aspect-ratio: {{ media_thumbnail_ratio }};--product-media-thumbnail-width: {{ media_thumbnail_width }}px;--product-media-thumbnail-width-mobile: {{ media_thumbnail_width_mobile }}px;--product-media-thumbnail-gap: {{ media_thumbnail_gap }}px;--product-media-thumbnail-gap-mobile: {{ media_thumbnail_gap_mobile }}px;{% if media_gap != 12 %}--product-media-gap: {{ media_gap }}px;{% endif %}{% if media_gap_mobile != 10 %}--product-media-gap-mobile: {{ media_gap_mobile }}px;{% endif %}"
+  style="--product-media-visible-count: {{ media_product.media.size | default: 6 }};--product-media-thumbnail-aspect-ratio: {{ media_thumbnail_ratio }};--product-media-thumbnail-width: {{ media_thumbnail_width }}px;--product-media-thumbnail-width-mobile: {{ media_thumbnail_width_mobile }}px;--product-media-thumbnail-gap: {% if media_overlay_thumbnails %}{{ media_thumbnail_gap }}{% else %}{{ media_thumbnail_gap }}px{% endif %};--product-media-thumbnail-gap-mobile: {{ media_thumbnail_gap_mobile }}px;{% if media_gap != 12 %}--product-media-gap: {{ media_gap }}px;{% endif %}{% if media_gap_mobile != 10 %}--product-media-gap-mobile: {{ media_gap_mobile }}px;{% endif %}"
   {{ block.shopify_attributes }}
 >
   {% if media_product != blank and media_product.media.size > 0 %}
@@ -243,6 +253,33 @@
     </div>
 
     {% render 'product-media-lightbox', product: media_product, id: lightbox_swiper_id, controls_color_scheme: media_controls_color_scheme %}
+  {% elsif media_overlay_thumbnails %}
+    <div class="media-gallery__layout product-media-gallery__layout" data-product-media-empty>
+      <div class="media-gallery__carousel swiper-carousel__container">
+        {% capture placeholder_main %}
+          {% for index in (1..6) %}
+            {% assign placeholder_name = 'product-' | append: index %}
+            <div class="swiper-slide product-media-gallery__slide" data-product-media data-media-id="placeholder-{{ index }}">
+              <div class="product-media placeholder-image">
+                {{ placeholder_name | placeholder_svg_tag: 'product-media-gallery__placeholder' }}
+              </div>
+            </div>
+          {% endfor %}
+        {% endcapture %}
+        {% render 'swiper-carousel', id: main_swiper_id, content: placeholder_main, root_class: 'media-gallery__main product-media-gallery__main', root_attributes: 'data-product-main-swiper', aria_label: media_main_aria_label %}
+      </div>
+      <div class="media-thumbnails__carousel">
+        {% capture placeholder_thumbnails %}
+          {% for index in (1..6) %}
+            {% assign placeholder_name = 'product-' | append: index %}
+            <button class="swiper-slide product-media-gallery__thumbnail placeholder-image" type="button" data-product-media-thumbnail data-media-id="placeholder-{{ index }}" aria-label="{{ 'products.view_media' | t: index: index | escape }}">
+              {{ placeholder_name | placeholder_svg_tag: 'product-media-gallery__thumbnail-placeholder' }}
+            </button>
+          {% endfor %}
+        {% endcapture %}
+        {% render 'swiper-carousel', id: thumbnail_swiper_id, content: placeholder_thumbnails, root_class: 'media-gallery__thumbnails product-media-gallery__thumbnails', root_attributes: 'data-product-thumbnail-swiper', aria_label: media_thumbnails_aria_label %}
+      </div>
+    </div>
   {% else %}
     <div class="product-media-gallery__empty placeholder-image" data-product-media-empty>
       {{ 'product-1' | placeholder_svg_tag: 'product-media-gallery__placeholder' }}
@@ -270,6 +307,7 @@
       "options": [
         { "value": "left_thumbnails", "label": "t:options.product_media_layout.left_thumbnails" },
         { "value": "bottom_thumbnails", "label": "t:options.product_media_layout.bottom_thumbnails" },
+        { "value": "carousel_thumbnails", "label": "t:options.product_media_layout.carousel_thumbnails" },
         { "value": "grid", "label": "t:options.product_media_layout.grid" },
         { "value": "stacked", "label": "t:options.product_media_layout.stacked" },
         { "value": "stacked_thumbnails", "label": "t:options.product_media_layout.stacked_thumbnails" },

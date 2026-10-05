@@ -116,18 +116,11 @@
 @media (min-width: 768px) and (max-width: 1024px) {
   .parallax-section__grid { column-gap: min(var(--parallax-content-gap), 40px); }
 }
-/* The requested reference keeps padding unchanged without a mobile override,
-   and interpolates independent mobile values through the wide-tablet range. */
+/* Interpolate the header gap through the wide-tablet range. */
 @media (min-width: 768px) and (max-width: 1279px) {
   .parallax-section__inner {
     gap: clamp(max(var(--parallax-header-gap-mobile), calc(var(--parallax-header-gap) * .3)),
       var(--parallax-header-gap-fluid), var(--parallax-header-gap));
-  }
-  .parallax-section {
-    padding-top: clamp(max(var(--section-padding-top-mobile), calc(var(--section-padding-top) * .3)),
-      var(--parallax-padding-top-fluid), var(--section-padding-top));
-    padding-bottom: clamp(max(var(--section-padding-bottom-mobile), calc(var(--section-padding-bottom) * .3)),
-      var(--parallax-padding-bottom-fluid), var(--section-padding-bottom));
   }
 }
 @media (max-width: 767.98px) {

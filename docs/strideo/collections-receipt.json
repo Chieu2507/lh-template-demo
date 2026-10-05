@@ -1,0 +1,180 @@
+{
+  "store": "layouthub-template-v2.myshopify.com",
+  "themeId": "191953273131",
+  "collections": [
+    {
+      "id": "gid://shopify/Collection/534673719595",
+      "title": "Marathon Strideo",
+      "handle": "marathon-strideo",
+      "descriptionHtml": "",
+      "imageUrl": null,
+      "imageAltText": null,
+      "sortOrder": "MANUAL",
+      "collectionType": "manual",
+      "productsCount": 0,
+      "products": [],
+      "rules": null,
+      "updatedAt": "2026-10-05T01:51:56Z",
+      "currencyCode": "USD"
+    },
+    {
+      "id": "gid://shopify/Collection/534673752363",
+      "title": "Road running Strideo",
+      "handle": "road-running-strideo",
+      "descriptionHtml": "",
+      "imageUrl": null,
+      "imageAltText": null,
+      "sortOrder": "MANUAL",
+      "collectionType": "manual",
+      "productsCount": 0,
+      "products": [],
+      "rules": null,
+      "updatedAt": "2026-10-05T01:52:00Z",
+      "currencyCode": "USD"
+    },
+    {
+      "id": "gid://shopify/Collection/534673785131",
+      "title": "Running Strideo",
+      "handle": "running-strideo",
+      "descriptionHtml": "",
+      "imageUrl": null,
+      "imageAltText": null,
+      "sortOrder": "MANUAL",
+      "collectionType": "manual",
+      "productsCount": 0,
+      "products": [],
+      "rules": null,
+      "updatedAt": "2026-10-05T01:52:04Z",
+      "currencyCode": "USD"
+    },
+    {
+      "id": "gid://shopify/Collection/534673817899",
+      "title": "Cloud Strideo",
+      "handle": "cloud-strideo",
+      "descriptionHtml": "",
+      "imageUrl": null,
+      "imageAltText": null,
+      "sortOrder": "MANUAL",
+      "collectionType": "manual",
+      "productsCount": 0,
+      "products": [],
+      "rules": null,
+      "updatedAt": "2026-10-05T01:52:08Z",
+      "currencyCode": "USD"
+    },
+    {
+      "id": "gid://shopify/Collection/534673850667",
+      "title": "The Roger Strideo",
+      "handle": "the-roger-strideo",
+      "descriptionHtml": "",
+      "imageUrl": null,
+      "imageAltText": null,
+      "sortOrder": "MANUAL",
+      "collectionType": "manual",
+      "productsCount": 0,
+      "products": [],
+      "rules": null,
+      "updatedAt": "2026-10-05T01:52:12Z",
+      "currencyCode": "USD"
+    },
+    {
+      "id": "gid://shopify/Collection/534673883435",
+      "title": "Cloudmonster Strideo",
+      "handle": "cloudmonster-strideo",
+      "descriptionHtml": "",
+      "imageUrl": null,
+      "imageAltText": null,
+      "sortOrder": "MANUAL",
+      "collectionType": "manual",
+      "productsCount": 0,
+      "products": [],
+      "rules": null,
+      "updatedAt": "2026-10-05T01:52:17Z",
+      "currencyCode": "USD"
+    },
+    {
+      "id": "gid://shopify/Collection/534673916203",
+      "title": "Cloudtilt Strideo",
+      "handle": "cloudtilt-strideo",
+      "descriptionHtml": "",
+      "imageUrl": null,
+      "imageAltText": null,
+      "sortOrder": "MANUAL",
+      "collectionType": "manual",
+      "productsCount": 0,
+      "products": [],
+      "rules": null,
+      "updatedAt": "2026-10-05T01:52:21Z",
+      "currencyCode": "USD"
+    },
+    {
+      "id": "gid://shopify/Collection/534673948971",
+      "title": "Cloudsurfer Strideo",
+      "handle": "cloudsurfer-strideo",
+      "descriptionHtml": "",
+      "imageUrl": null,
+      "imageAltText": null,
+      "sortOrder": "MANUAL",
+      "collectionType": "manual",
+      "productsCount": 0,
+      "products": [],
+      "rules": null,
+      "updatedAt": "2026-10-05T01:52:26Z",
+      "currencyCode": "USD"
+    },
+    {
+      "id": "gid://shopify/Collection/534673981739",
+      "title": "This week’s top picks Strideo",
+      "handle": "this-week-s-top-picks-strideo",
+      "descriptionHtml": "",
+      "imageUrl": null,
+      "imageAltText": null,
+      "sortOrder": "MANUAL",
+      "collectionType": "manual",
+      "productsCount": 0,
+      "products": [],
+      "rules": null,
+      "updatedAt": "2026-10-05T01:52:31Z",
+      "currencyCode": "USD"
+    },
+    {
+      "id": "gid://shopify/Collection/534674014507",
+      "title": "New Arrivals Strideo",
+      "handle": "new-arrivals-strideo",
+      "descriptionHtml": "",
+      "imageUrl": null,
+      "imageAltText": null,
+      "sortOrder": "MANUAL",
+      "collectionType": "manual",
+      "productsCount": 0,
+      "products": [],
+      "rules": null,
+      "updatedAt": "2026-10-05T01:52:38Z",
+      "currencyCode": "USD"
+    }
+  ],
+  "bindings": {
+    "collection_list": [
+      "marathon-strideo",
+      "road-running-strideo",
+      "running-strideo"
+    ],
+    "featured_collection": "this-week-s-top-picks-strideo",
+    "collections_image_list": [
+      "cloud-strideo",
+      "the-roger-strideo",
+      "cloudmonster-strideo",
+      "cloudtilt-strideo",
+      "cloudsurfer-strideo"
+    ],
+    "new_arrivals_tabs": {
+      "Men": "new-arrivals-strideo",
+      "Women": "new-arrivals-strideo"
+    }
+  },
+  "status": "created-bound-and-verified",
+  "verification": "Remote template re-read verified all 9 resource picker settings. Editor shows three selected categories; Save disabled.",
+  "notes": [
+    "Collections are empty; images and products pending. Both existing Men/Women tabs use New Arrivals Strideo until gender-specific products are assigned."
+  ]
+}

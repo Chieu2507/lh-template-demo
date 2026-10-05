@@ -9,6 +9,8 @@
  */
 {
   "general": {
+    "multiple_images_text": "Multiple images with text",
+    "multiple_images_text_item": "Image with text item",
     "404": "Not found",
     "article": "Article",
     "appearance": "Appearance",
@@ -237,6 +239,7 @@
     "accordion_options": "Accordion options"
   },
   "labels": {
+    "multiple_images_navigation": "Show navigation",
     "outline_text": "Outline text",
     "font_weight": "Font weight",
     "badge_new_background_color": "New badge background",
@@ -362,7 +365,7 @@
     "number_color": "Number color",
     "desktop_height": "Desktop height",
     "mobile_height": "Mobile height",
-    "desktop_tablet_horizontal_padding": "Desktop and tablet horizontal padding",
+    "desktop_horizontal_padding": "Desktop horizontal padding",
     "mobile_horizontal_padding": "Mobile horizontal padding",
     "disabled_opacity": "Disabled opacity",
     "border_thickness": "Border thickness",
@@ -712,9 +715,7 @@
     "media_aspect_ratio": "Media aspect ratio",
     "media_corner_radius": "Media corner radius",
     "unit_layout": "Unit layout",
-    "customize_tablet_padding": "Customize tablet padding",
     "hover_zoom": "Hover zoom",
-    "tablet_padding": "Tablet padding",
     "collection_tabs_header_layout": "Header layout",
     "show_view_all_button": "Show view all button"
   },
@@ -1002,6 +1003,7 @@
     "product_media_layout": {
       "left_thumbnails": "Thumbnail rail — left",
       "bottom_thumbnails": "Thumbnail rail — below",
+      "carousel_thumbnails": "Carousel with overlay thumbnails",
       "grid": "Gallery grid",
       "stacked": "Single-column stack",
       "stacked_thumbnails": "Stack + thumbnail rail",

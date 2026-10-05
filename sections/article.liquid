@@ -13,8 +13,10 @@
     --article-posts-max-width: {{ section.settings.max_width }}px;
     --article-posts-padding-top: {{ section.settings.padding_top }}px;
     --article-posts-padding-bottom: {{ section.settings.padding_bottom }}px;
+    {% if section.settings.custom_mobile_padding %}
     --article-posts-padding-top-mobile: {{ section.settings.padding_top_mobile }}px;
     --article-posts-padding-bottom-mobile: {{ section.settings.padding_bottom_mobile }}px;
+    {% endif %}
   "
 >
   <div class="container page-width article-posts__container">
@@ -75,12 +77,12 @@
     { "type": "range", "id": "gap_desktop", "label": "Desktop", "min": 0, "max": 120, "step": 2, "unit": "px", "default": 50 },
     { "type": "range", "id": "gap_mobile", "label": "Mobile", "min": 0, "max": 120, "step": 2, "unit": "px", "default": 30 },
     { "type": "color_scheme", "id": "color_scheme", "label": "Color scheme", "default": "scheme-1" },
-    { "type": "header", "content": "Padding" },
-    { "type": "range", "id": "padding_top", "label": "Top", "min": 0, "max": 200, "step": 2, "unit": "px", "default": 100 },
-    { "type": "range", "id": "padding_bottom", "label": "Bottom", "min": 0, "max": 200, "step": 2, "unit": "px", "default": 120 },
-    { "type": "checkbox", "id": "custom_mobile_padding", "label": "Custom for mobile", "default": false },
-    { "type": "range", "id": "padding_top_mobile", "label": "Top (mobile)", "min": 0, "max": 200, "step": 2, "unit": "px", "default": 50, "visible_if": "{{ section.settings.custom_mobile_padding }}" },
-    { "type": "range", "id": "padding_bottom_mobile", "label": "Bottom (mobile)", "min": 0, "max": 200, "step": 2, "unit": "px", "default": 60, "visible_if": "{{ section.settings.custom_mobile_padding }}" }
+    { "type": "header", "content": "t:general.padding" },
+    { "type": "range", "id": "padding_top", "label": "t:labels.top_padding", "min": 0, "max": 200, "step": 2, "unit": "px", "default": 100 },
+    { "type": "range", "id": "padding_bottom", "label": "t:labels.bottom_padding", "min": 0, "max": 200, "step": 2, "unit": "px", "default": 120 },
+    { "type": "checkbox", "id": "custom_mobile_padding", "label": "t:labels.customize_mobile_padding", "default": false },
+    { "type": "range", "id": "padding_top_mobile", "label": "t:labels.mobile_top_padding", "min": 0, "max": 200, "step": 2, "unit": "px", "default": 50, "visible_if": "{{ section.settings.custom_mobile_padding }}" },
+    { "type": "range", "id": "padding_bottom_mobile", "label": "t:labels.mobile_bottom_padding", "min": 0, "max": 200, "step": 2, "unit": "px", "default": 60, "visible_if": "{{ section.settings.custom_mobile_padding }}" }
   ]
 }
 {% endschema %}

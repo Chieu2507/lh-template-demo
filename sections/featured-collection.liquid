@@ -42,6 +42,7 @@
 %}
 
 {% capture featured_collection_style %}
+
   {% if featured_collection_gap_desktop != 32 %}--featured-collection-gap-desktop: {{ featured_collection_gap_desktop }}px;{% endif %}
   {% if featured_collection_gap_mobile != 24 %}--featured-collection-gap-mobile: {{ featured_collection_gap_mobile }}px;{% endif %}
   {% if featured_collection_padding_top != 0 %}--featured-collection-padding-top: {{ featured_collection_padding_top }}px;{% endif %}
@@ -60,6 +61,7 @@
   <div
     class="container {{ featured_collection_container_width }} featured-collection__container"
     data-featured-collection
+    {% if section.settings.hide_view_all_mobile %}data-hide-view-all-mobile="true"{% endif %}
     data-desktop-alignment="{{ featured_collection_desktop_alignment }}"
     data-mobile-alignment="{{ featured_collection_mobile_alignment }}"
   >
@@ -295,6 +297,18 @@
       padding-bottom: var(--featured-collection-padding-bottom-mobile, var(--featured-collection-padding-bottom, 0px));
     }
   }
+  @media (max-width: 767.98px) {
+    .featured-collection__container[data-hide-view-all-mobile] .featured-collection__actions { display: none; }
+  }
+  @media (min-width: 768px) {
+    .featured-collection__container[data-desktop-alignment='left']:not(:has(.product-list__navigation--top)) {
+      grid-template-columns: minmax(0, 1fr) auto;
+      grid-template-areas: 'header actions' 'products products' 'additional-blocks additional-blocks';
+    }
+    .featured-collection__container[data-desktop-alignment='left']:not(:has(.product-list__navigation--top, .featured-collection__additional-blocks)) {
+      grid-template-areas: 'header actions' 'products products';
+    }
+  }
 {% endstylesheet %}
 
 {% javascript %}
@@ -426,7 +440,7 @@
     {
       "type": "range",
       "id": "padding_top",
-      "label": "t:options.position.top",
+      "label": "t:labels.top_padding",
       "min": 0,
       "max": 100,
       "step": 1,
@@ -436,13 +450,14 @@
     {
       "type": "range",
       "id": "padding_bottom",
-      "label": "t:options.position.bottom",
+      "label": "t:labels.bottom_padding",
       "min": 0,
       "max": 100,
       "step": 1,
       "unit": "px",
       "default": 0
     },
+    { "type": "checkbox", "id": "hide_view_all_mobile", "label": "Hide View all on mobile", "default": false },
     {
       "type": "checkbox",
       "id": "customize_mobile_padding",

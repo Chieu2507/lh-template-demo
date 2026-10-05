@@ -659,3 +659,31 @@ html.product-media-lightbox-open {
     height: 5rem;
   }
 }
+
+.product-media-gallery--overlay-thumbnails {
+  --product-media-overlay-thumbnail-gap: 8px;
+}
+
+/* Overlay thumbnails retain the normal bottom gallery at tablet/mobile sizes. */
+@media (min-width: 1150px) {
+  .product-media-gallery--overlay-thumbnails {
+    --product-media-overlay-thumbnail-gap: 4px;
+  }
+
+  .product-media-gallery--overlay-thumbnails .product-media-gallery__layout {
+    display: block;
+  }
+
+  .product-media-gallery--overlay-thumbnails .media-thumbnails__carousel {
+    position: absolute;
+    z-index: 2;
+    inset: auto auto 20px 28px;
+    --overlay-thumbnail-count: clamp(1, var(--product-media-visible-count, 6), 6);
+    width: calc(var(--product-media-thumbnail-width) * var(--overlay-thumbnail-count) + var(--product-media-thumbnail-gap) * (var(--overlay-thumbnail-count) - 1) + 8px);
+    max-width: min(calc(100% - 56px), calc(var(--product-media-thumbnail-width) * 6 + var(--product-media-thumbnail-gap) * 5 + 8px));
+    padding: 4px;
+    border-radius: var(--radius-slight);
+    background: var(--color-background, #fff);
+    box-shadow: 0 1px 3px color-mix(in srgb, var(--shadow-color) 10%, transparent);
+  }
+}

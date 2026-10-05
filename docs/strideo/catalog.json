@@ -1,0 +1,480 @@
+{
+  "store": "layouthub-template-v2.myshopify.com",
+  "source": "aYEcYZ49ACT2yTfaIKRacc",
+  "colorLabelNote": "Descriptive labels based on visible Figma colours; Pearl | Desert follows the Featured product text.",
+  "products": [
+    {
+      "title": "Cloudsurfer Max",
+      "handle": "strideo-cloudsurfer-max",
+      "price": "180.00",
+      "compareAtPrice": null,
+      "badge": "Bestseller",
+      "sourceNode": "49117:13902",
+      "descriptionHtml": "<p>Choose a colourway to bring the Cloudsurfer Max silhouette into your running rotation. Its sculpted sole and mesh-style upper pair with training wear and everyday layers.</p>",
+      "category": "gid://shopify/TaxonomyCategory/aa-8-1",
+      "tags": [
+        "strideo",
+        "strideo-shoes",
+        "strideo-top-picks",
+        "Bestseller",
+        "badge: Bestseller"
+      ],
+      "collections": [
+        "this-week-s-top-picks-strideo",
+        "running-strideo",
+        "marathon-strideo",
+        "road-running-strideo",
+        "cloudsurfer-strideo"
+      ],
+      "colors": [
+        {
+          "name": "Sand | Coral",
+          "hex": "#c5b8a0",
+          "sourcePath": "/Users/chieutrinh/Documents/GitHub/lh-template-demo/output/strideo-products/49117-13896-imgImage.png",
+          "lifestylePath": "/Users/chieutrinh/Documents/GitHub/lh-template-demo/output/strideo-products/strideo-0-0-lifestyle.png"
+        },
+        {
+          "name": "Blue | Ivory",
+          "hex": "#5793ac",
+          "sourcePath": "/Users/chieutrinh/Documents/GitHub/lh-template-demo/output/strideo-products/49117-13896-imgImage1.png",
+          "lifestylePath": "/Users/chieutrinh/Documents/GitHub/lh-template-demo/output/strideo-products/strideo-0-1-lifestyle.png"
+        },
+        {
+          "name": "Grey | Ivory",
+          "hex": "#a0a1a2",
+          "sourcePath": "/Users/chieutrinh/Documents/GitHub/lh-template-demo/output/strideo-products/49117-13896-imgImage2.png",
+          "lifestylePath": "/Users/chieutrinh/Documents/GitHub/lh-template-demo/output/strideo-products/strideo-0-2-lifestyle.png"
+        },
+        {
+          "name": "Peach | Orange",
+          "hex": "#f3c9b8",
+          "sourcePath": "/Users/chieutrinh/Documents/GitHub/lh-template-demo/output/strideo-products/49117-13896-imgImage3.png",
+          "lifestylePath": "/Users/chieutrinh/Documents/GitHub/lh-template-demo/output/strideo-products/strideo-0-3-lifestyle.png"
+        },
+        {
+          "name": "Sand | Yellow",
+          "hex": "#c5b8a0",
+          "sourcePath": "/Users/chieutrinh/Documents/GitHub/lh-template-demo/output/strideo-products/49117-13896-imgImage4.png",
+          "lifestylePath": "/Users/chieutrinh/Documents/GitHub/lh-template-demo/output/strideo-products/strideo-0-4-lifestyle.png"
+        },
+        {
+          "name": "Black | Black",
+          "hex": "#242727",
+          "sourcePath": "/Users/chieutrinh/Documents/GitHub/lh-template-demo/output/strideo-products/49117-13896-imgImage5.png",
+          "lifestylePath": "/Users/chieutrinh/Documents/GitHub/lh-template-demo/output/strideo-products/strideo-0-5-lifestyle.png"
+        },
+        {
+          "name": "White | White",
+          "hex": "#f2f3f1",
+          "sourcePath": "/Users/chieutrinh/Documents/GitHub/lh-template-demo/output/strideo-products/49117-13896-imgImage6.png",
+          "lifestylePath": "/Users/chieutrinh/Documents/GitHub/lh-template-demo/output/strideo-products/strideo-0-6-lifestyle.png"
+        },
+        {
+          "name": "White | Green",
+          "hex": "#f2f3f1",
+          "sourcePath": "/Users/chieutrinh/Documents/GitHub/lh-template-demo/output/strideo-products/49117-13896-imgImage7.png",
+          "lifestylePath": "/Users/chieutrinh/Documents/GitHub/lh-template-demo/output/strideo-products/strideo-0-7-lifestyle.png"
+        }
+      ],
+      "sizes": [],
+      "inventoryQuantity": 100,
+      "soldOutSizes": []
+    },
+    {
+      "title": "Cloudflow 5",
+      "handle": "strideo-cloudflow-5",
+      "price": "180.00",
+      "compareAtPrice": null,
+      "badge": null,
+      "sourceNode": "49145:33424",
+      "descriptionHtml": "<p>Add Cloudflow 5 to your running-inspired wardrobe. The lace-up silhouette and distinctive rounded sole are shown in the Strideo colour selection.</p>",
+      "category": "gid://shopify/TaxonomyCategory/aa-8-1",
+      "tags": [
+        "strideo",
+        "strideo-shoes",
+        "strideo-top-picks"
+      ],
+      "collections": [
+        "this-week-s-top-picks-strideo",
+        "running-strideo",
+        "marathon-strideo",
+        "road-running-strideo",
+        "cloud-strideo"
+      ],
+      "colors": [
+        {
+          "name": "Grey | White",
+          "hex": "#a0a1a2",
+          "sourcePath": "/Users/chieutrinh/Documents/GitHub/lh-template-demo/output/strideo-products/49117-13896-imgImage8.png",
+          "lifestylePath": "/Users/chieutrinh/Documents/GitHub/lh-template-demo/output/strideo-products/strideo-1-0-lifestyle.png"
+        },
+        {
+          "name": "Aqua | Black",
+          "hex": "#83b8b9",
+          "sourcePath": "/Users/chieutrinh/Documents/GitHub/lh-template-demo/output/strideo-products/49117-13896-imgImage9.png",
+          "lifestylePath": "/Users/chieutrinh/Documents/GitHub/lh-template-demo/output/strideo-products/strideo-1-1-lifestyle.png"
+        },
+        {
+          "name": "Orange | Grey",
+          "hex": "#eb793b",
+          "sourcePath": "/Users/chieutrinh/Documents/GitHub/lh-template-demo/output/strideo-products/49117-13896-imgImage10.png",
+          "lifestylePath": "/Users/chieutrinh/Documents/GitHub/lh-template-demo/output/strideo-products/strideo-1-2-lifestyle.png"
+        },
+        {
+          "name": "Black | Black",
+          "hex": "#242727",
+          "sourcePath": "/Users/chieutrinh/Documents/GitHub/lh-template-demo/output/strideo-products/49117-13896-imgImage11.png",
+          "lifestylePath": "/Users/chieutrinh/Documents/GitHub/lh-template-demo/output/strideo-products/strideo-1-3-lifestyle.png"
+        },
+        {
+          "name": "White | Lime",
+          "hex": "#f2f3f1",
+          "sourcePath": "/Users/chieutrinh/Documents/GitHub/lh-template-demo/output/strideo-products/49117-13896-imgImage12.png",
+          "lifestylePath": "/Users/chieutrinh/Documents/GitHub/lh-template-demo/output/strideo-products/strideo-1-4-lifestyle.png"
+        }
+      ],
+      "sizes": [],
+      "inventoryQuantity": 100,
+      "soldOutSizes": []
+    },
+    {
+      "title": "Cloud 6 Waterproof",
+      "handle": "strideo-cloud-6-waterproof",
+      "price": "130.00",
+      "compareAtPrice": "180.00",
+      "badge": "Sale",
+      "sourceNode": "49117:14143",
+      "descriptionHtml": "<p>A clean, low-profile silhouette for your daily rotation. Explore the Cloud 6 Waterproof finishes shown in the Strideo collection.</p>",
+      "category": "gid://shopify/TaxonomyCategory/aa-8-1",
+      "tags": [
+        "strideo",
+        "strideo-shoes",
+        "strideo-top-picks"
+      ],
+      "collections": [
+        "this-week-s-top-picks-strideo",
+        "running-strideo",
+        "road-running-strideo",
+        "cloud-strideo"
+      ],
+      "colors": [
+        {
+          "name": "Navy | Black",
+          "hex": "#303948",
+          "sourcePath": "/Users/chieutrinh/Documents/GitHub/lh-template-demo/output/strideo-products/49117-13896-imgImage13.png",
+          "lifestylePath": "/Users/chieutrinh/Documents/GitHub/lh-template-demo/output/strideo-products/strideo-2-0-lifestyle.png"
+        },
+        {
+          "name": "Ivory | Sand",
+          "hex": "#e5e2d6",
+          "sourcePath": "/Users/chieutrinh/Documents/GitHub/lh-template-demo/output/strideo-products/49117-13896-imgImage14.png",
+          "lifestylePath": "/Users/chieutrinh/Documents/GitHub/lh-template-demo/output/strideo-products/strideo-2-1-lifestyle.png"
+        },
+        {
+          "name": "Green | Black",
+          "hex": "#5b9962",
+          "sourcePath": "/Users/chieutrinh/Documents/GitHub/lh-template-demo/output/strideo-products/49117-13896-imgImage15.png",
+          "lifestylePath": "/Users/chieutrinh/Documents/GitHub/lh-template-demo/output/strideo-products/strideo-2-2-lifestyle.png"
+        },
+        {
+          "name": "Lavender | Black",
+          "hex": "#bbc0d3",
+          "sourcePath": "/Users/chieutrinh/Documents/GitHub/lh-template-demo/output/strideo-products/49117-13896-imgImage16.png",
+          "lifestylePath": "/Users/chieutrinh/Documents/GitHub/lh-template-demo/output/strideo-products/strideo-2-3-lifestyle.png"
+        },
+        {
+          "name": "Charcoal | Black",
+          "hex": "#52535a",
+          "sourcePath": "/Users/chieutrinh/Documents/GitHub/lh-template-demo/output/strideo-products/49117-13896-imgImage17.png",
+          "lifestylePath": "/Users/chieutrinh/Documents/GitHub/lh-template-demo/output/strideo-products/strideo-2-4-lifestyle.png"
+        }
+      ],
+      "sizes": [],
+      "inventoryQuantity": 100,
+      "soldOutSizes": []
+    },
+    {
+      "title": "The Roger Pro Ace",
+      "handle": "strideo-the-roger-pro-ace",
+      "price": "220.00",
+      "compareAtPrice": null,
+      "badge": "New",
+      "sourceNode": "49117:14117",
+      "descriptionHtml": "<p>The Roger Pro Ace pairs an ivory upper with understated court-inspired detailing. Style it with your preferred sportswear for a coordinated look.</p>",
+      "category": "gid://shopify/TaxonomyCategory/aa-8-1",
+      "tags": [
+        "strideo",
+        "strideo-shoes",
+        "strideo-top-picks",
+        "New",
+        "badge: New"
+      ],
+      "collections": [
+        "this-week-s-top-picks-strideo",
+        "running-strideo",
+        "road-running-strideo",
+        "the-roger-strideo"
+      ],
+      "colors": [
+        {
+          "name": "Ivory | Sand",
+          "hex": "#e5e2d6",
+          "sourcePath": "/Users/chieutrinh/Documents/GitHub/lh-template-demo/output/strideo-products/49117-13896-imgImage18.png",
+          "lifestylePath": "/Users/chieutrinh/Documents/GitHub/lh-template-demo/output/strideo-products/strideo-3-0-lifestyle.png"
+        }
+      ],
+      "sizes": [],
+      "inventoryQuantity": 100,
+      "soldOutSizes": []
+    },
+    {
+      "title": "Cloud 6 Coast",
+      "handle": "strideo-cloud-6-coast",
+      "price": "170.00",
+      "compareAtPrice": null,
+      "badge": "New",
+      "sourceNode": "49152:33904",
+      "descriptionHtml": "<p>Cloud 6 Coast brings soft neutral colourways to a versatile lace-up silhouette. Choose your favourite finish for your everyday movement.</p>",
+      "category": "gid://shopify/TaxonomyCategory/aa-8-1",
+      "tags": [
+        "strideo",
+        "strideo-shoes",
+        "strideo-new-arrivals",
+        "New",
+        "badge: New"
+      ],
+      "collections": [
+        "new-arrivals-strideo",
+        "running-strideo",
+        "road-running-strideo",
+        "cloud-strideo"
+      ],
+      "colors": [
+        {
+          "name": "White | Lavender",
+          "hex": "#f2f3f1",
+          "sourcePath": "/Users/chieutrinh/Documents/GitHub/lh-template-demo/output/strideo-products/49152-33898-imgImage.png",
+          "lifestylePath": "/Users/chieutrinh/Documents/GitHub/lh-template-demo/output/strideo-products/strideo-4-0-lifestyle.png"
+        },
+        {
+          "name": "Sand | Ivory",
+          "hex": "#c5b8a0",
+          "sourcePath": "/Users/chieutrinh/Documents/GitHub/lh-template-demo/output/strideo-products/49152-33898-imgImage1.png",
+          "lifestylePath": "/Users/chieutrinh/Documents/GitHub/lh-template-demo/output/strideo-products/strideo-4-1-lifestyle.png"
+        },
+        {
+          "name": "Pink | Ivory",
+          "hex": "#e7cfd1",
+          "sourcePath": "/Users/chieutrinh/Documents/GitHub/lh-template-demo/output/strideo-products/49152-33898-imgImage2.png",
+          "lifestylePath": "/Users/chieutrinh/Documents/GitHub/lh-template-demo/output/strideo-products/strideo-4-2-lifestyle.png"
+        }
+      ],
+      "sizes": [],
+      "inventoryQuantity": 100,
+      "soldOutSizes": []
+    },
+    {
+      "title": "Cloud X 4",
+      "handle": "strideo-cloud-x-4",
+      "price": "160.00",
+      "compareAtPrice": null,
+      "badge": "New",
+      "sourceNode": "49152:33905",
+      "descriptionHtml": "<p>Refresh your training-inspired wardrobe with Cloud X 4. Its low-profile upper and contrasting sole are available in the listed colourways.</p>",
+      "category": "gid://shopify/TaxonomyCategory/aa-8-1",
+      "tags": [
+        "strideo",
+        "strideo-shoes",
+        "strideo-new-arrivals",
+        "New",
+        "badge: New"
+      ],
+      "collections": [
+        "new-arrivals-strideo",
+        "running-strideo",
+        "road-running-strideo",
+        "cloud-strideo"
+      ],
+      "colors": [
+        {
+          "name": "Charcoal | Ivory",
+          "hex": "#52535a",
+          "sourcePath": "/Users/chieutrinh/Documents/GitHub/lh-template-demo/output/strideo-products/49152-33898-imgImage3.png",
+          "lifestylePath": "/Users/chieutrinh/Documents/GitHub/lh-template-demo/output/strideo-products/strideo-5-0-lifestyle.png"
+        },
+        {
+          "name": "Ivory | Lime",
+          "hex": "#e5e2d6",
+          "sourcePath": "/Users/chieutrinh/Documents/GitHub/lh-template-demo/output/strideo-products/49152-33898-imgImage4.png",
+          "lifestylePath": "/Users/chieutrinh/Documents/GitHub/lh-template-demo/output/strideo-products/strideo-5-1-lifestyle.png"
+        },
+        {
+          "name": "Black | Black",
+          "hex": "#242727",
+          "sourcePath": "/Users/chieutrinh/Documents/GitHub/lh-template-demo/output/strideo-products/49152-33898-imgImage5.png",
+          "lifestylePath": "/Users/chieutrinh/Documents/GitHub/lh-template-demo/output/strideo-products/strideo-5-2-lifestyle.png"
+        },
+        {
+          "name": "White | Black",
+          "hex": "#f2f3f1",
+          "sourcePath": "/Users/chieutrinh/Documents/GitHub/lh-template-demo/output/strideo-products/49152-33898-imgImage6.png",
+          "lifestylePath": "/Users/chieutrinh/Documents/GitHub/lh-template-demo/output/strideo-products/strideo-5-3-lifestyle.png"
+        },
+        {
+          "name": "Navy | Ivory",
+          "hex": "#303948",
+          "sourcePath": "/Users/chieutrinh/Documents/GitHub/lh-template-demo/output/strideo-products/49152-33898-imgImage7.png",
+          "lifestylePath": "/Users/chieutrinh/Documents/GitHub/lh-template-demo/output/strideo-products/strideo-5-4-lifestyle.png"
+        }
+      ],
+      "sizes": [],
+      "inventoryQuantity": 100,
+      "soldOutSizes": []
+    },
+    {
+      "title": "Cloudrunner 2",
+      "handle": "strideo-cloudrunner-2",
+      "price": "130.00",
+      "compareAtPrice": "160.00",
+      "badge": "Sale",
+      "sourceNode": "49152:33906",
+      "descriptionHtml": "<p>The legend, leveled up. With more support, more comfort and more cushioning – for more fun on every run.</p>",
+      "category": "gid://shopify/TaxonomyCategory/aa-8-1",
+      "tags": [
+        "strideo",
+        "strideo-shoes",
+        "strideo-new-arrivals"
+      ],
+      "collections": [
+        "new-arrivals-strideo",
+        "running-strideo",
+        "road-running-strideo",
+        "cloud-strideo",
+        "marathon-strideo"
+      ],
+      "colors": [
+        {
+          "name": "Pearl | Desert",
+          "hex": "#e2decc",
+          "sourcePath": "/Users/chieutrinh/Documents/GitHub/lh-template-demo/output/strideo-products/49056-7375-imgImage.png",
+          "lifestylePath": "/Users/chieutrinh/Documents/GitHub/lh-template-demo/output/strideo-products/strideo-6-0-lifestyle.png"
+        },
+        {
+          "name": "Grey | White",
+          "hex": "#a0a1a2",
+          "sourcePath": "/Users/chieutrinh/Documents/GitHub/lh-template-demo/output/strideo-products/49056-7375-imgImage6.png",
+          "lifestylePath": "/Users/chieutrinh/Documents/GitHub/lh-template-demo/output/strideo-products/strideo-6-1-lifestyle.png"
+        },
+        {
+          "name": "Grey | Black",
+          "hex": "#a0a1a2",
+          "sourcePath": "/Users/chieutrinh/Documents/GitHub/lh-template-demo/output/strideo-products/49056-7375-imgImage7.png",
+          "lifestylePath": "/Users/chieutrinh/Documents/GitHub/lh-template-demo/output/strideo-products/strideo-6-2-lifestyle.png"
+        },
+        {
+          "name": "Black | Ivory",
+          "hex": "#242727",
+          "sourcePath": "/Users/chieutrinh/Documents/GitHub/lh-template-demo/output/strideo-products/49056-7375-imgImage8.png",
+          "lifestylePath": "/Users/chieutrinh/Documents/GitHub/lh-template-demo/output/strideo-products/strideo-6-3-lifestyle.png"
+        },
+        {
+          "name": "White | Green",
+          "hex": "#f2f3f1",
+          "sourcePath": "/Users/chieutrinh/Documents/GitHub/lh-template-demo/output/strideo-products/49056-7375-imgImage9.png",
+          "lifestylePath": "/Users/chieutrinh/Documents/GitHub/lh-template-demo/output/strideo-products/strideo-6-4-lifestyle.png"
+        }
+      ],
+      "sizes": [
+        "7",
+        "7.5",
+        "8",
+        "8.5",
+        "9",
+        "9.5",
+        "10",
+        "10.5",
+        "11",
+        "11.5",
+        "12",
+        "13",
+        "14"
+      ],
+      "inventoryQuantity": 15,
+      "soldOutSizes": [
+        "9",
+        "11.5",
+        "12"
+      ]
+    },
+    {
+      "title": "Cloudswift 4",
+      "handle": "strideo-cloudswift-4",
+      "price": "170.00",
+      "compareAtPrice": null,
+      "badge": "New",
+      "sourceNode": "49152:33907",
+      "descriptionHtml": "<p>Cloudswift 4 combines a mesh-style upper with a distinctive sculpted sole. Explore its neutral and bright-accent colourways for your daily rotation.</p>",
+      "category": "gid://shopify/TaxonomyCategory/aa-8-1",
+      "tags": [
+        "strideo",
+        "strideo-shoes",
+        "strideo-new-arrivals",
+        "New",
+        "badge: New"
+      ],
+      "collections": [
+        "new-arrivals-strideo",
+        "running-strideo",
+        "road-running-strideo",
+        "cloud-strideo"
+      ],
+      "colors": [
+        {
+          "name": "Grey | White",
+          "hex": "#a0a1a2",
+          "sourcePath": "/Users/chieutrinh/Documents/GitHub/lh-template-demo/output/strideo-products/49152-33898-imgImage13.png",
+          "lifestylePath": "/Users/chieutrinh/Documents/GitHub/lh-template-demo/output/strideo-products/strideo-7-0-lifestyle.png"
+        },
+        {
+          "name": "Grey | Lime",
+          "hex": "#a0a1a2",
+          "sourcePath": "/Users/chieutrinh/Documents/GitHub/lh-template-demo/output/strideo-products/49152-33898-imgImage14.png",
+          "lifestylePath": "/Users/chieutrinh/Documents/GitHub/lh-template-demo/output/strideo-products/strideo-7-1-lifestyle.png"
+        },
+        {
+          "name": "White | Black",
+          "hex": "#f2f3f1",
+          "sourcePath": "/Users/chieutrinh/Documents/GitHub/lh-template-demo/output/strideo-products/49152-33898-imgImage15.png",
+          "lifestylePath": "/Users/chieutrinh/Documents/GitHub/lh-template-demo/output/strideo-products/strideo-7-2-lifestyle.png"
+        },
+        {
+          "name": "White | White",
+          "hex": "#f2f3f1",
+          "sourcePath": "/Users/chieutrinh/Documents/GitHub/lh-template-demo/output/strideo-products/49152-33898-imgImage16.png",
+          "lifestylePath": "/Users/chieutrinh/Documents/GitHub/lh-template-demo/output/strideo-products/strideo-7-3-lifestyle.png"
+        },
+        {
+          "name": "Ivory | Blue",
+          "hex": "#e5e2d6",
+          "sourcePath": "/Users/chieutrinh/Documents/GitHub/lh-template-demo/output/strideo-products/49152-33898-imgImage17.png",
+          "lifestylePath": "/Users/chieutrinh/Documents/GitHub/lh-template-demo/output/strideo-products/strideo-7-4-lifestyle.png"
+        },
+        {
+          "name": "Charcoal | Grey",
+          "hex": "#52535a",
+          "sourcePath": "/Users/chieutrinh/Documents/GitHub/lh-template-demo/output/strideo-products/49152-33898-imgImage18.png",
+          "lifestylePath": "/Users/chieutrinh/Documents/GitHub/lh-template-demo/output/strideo-products/strideo-7-5-lifestyle.png"
+        },
+        {
+          "name": "Black | Black",
+          "hex": "#242727",
+          "sourcePath": "/Users/chieutrinh/Documents/GitHub/lh-template-demo/output/strideo-products/49152-33898-imgImage19.png",
+          "lifestylePath": "/Users/chieutrinh/Documents/GitHub/lh-template-demo/output/strideo-products/strideo-7-6-lifestyle.png"
+        }
+      ],
+      "sizes": [],
+      "inventoryQuantity": 100,
+      "soldOutSizes": []
+    }
+  ]
+}

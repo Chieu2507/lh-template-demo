@@ -168,20 +168,24 @@
   if product != blank
     assign current_variant = product.selected_or_first_available_variant
     assign card_image = current_variant.featured_image | default: product.featured_image
+    assign variant_secondary_media = current_variant.metafields.custom.secondary_image.value
+    assign secondary_image = variant_secondary_media.preview_image | default: variant_secondary_media
     if card_image != blank
-      for product_image in product.images
-        if product_image.id != card_image.id and product_image.variants != blank
-          for image_variant in product_image.variants
-            if image_variant.id == current_variant.id
-              assign secondary_image = product_image
+      if secondary_image == blank
+        for product_image in product.images
+          if product_image.id != card_image.id and product_image.variants != blank
+            for image_variant in product_image.variants
+              if image_variant.id == current_variant.id
+                assign secondary_image = product_image
+                break
+              endif
+            endfor
+            if secondary_image != blank
               break
             endif
-          endfor
-          if secondary_image != blank
-            break
           endif
-        endif
-      endfor
+        endfor
+      endif
 
       if secondary_image == blank
         for product_image in product.images
@@ -234,7 +238,8 @@
       {% render 'product-badges',
         product: product,
         show_sale_badge: show_sale_badge,
-        show_sold_out_badge: show_sold_out_badge
+        show_sold_out_badge: show_sold_out_badge,
+        show_manual_badges: true
       %}
     </div>
 

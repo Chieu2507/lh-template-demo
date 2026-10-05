@@ -33,6 +33,7 @@
 %}
 
 {% capture collection_list_style %}
+
   {% if collection_list_mobile_justify != collection_list_desktop_justify %}--collection-list-justify-mobile: {{ collection_list_mobile_justify }};{% endif %}
   {% if collection_list_gap_desktop != 40 %}--collection-list-gap: {{ collection_list_gap_desktop }}px;{% endif %}
   {% if collection_list_gap_mobile != 30 %}--collection-list-gap-mobile: {{ collection_list_gap_mobile }}px;{% endif %}
@@ -118,7 +119,6 @@
   .collection-list__container {
     position: relative;
   }
-
 
   .collection-list__header,
   .collection-list__actions,
@@ -403,7 +403,7 @@
     {
       "type": "range",
       "id": "padding_top",
-      "label": "t:options.position.top",
+      "label": "t:labels.top_padding",
       "min": 0,
       "max": 100,
       "step": 1,
@@ -413,7 +413,7 @@
     {
       "type": "range",
       "id": "padding_bottom",
-      "label": "t:options.position.bottom",
+      "label": "t:labels.bottom_padding",
       "min": 0,
       "max": 100,
       "step": 1,

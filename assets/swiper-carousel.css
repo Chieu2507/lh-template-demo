@@ -80,7 +80,7 @@
 }
 
 .swiper > .swiper-pagination--below[data-pagination-type='progress_bar'] {
-  --swiper-pagination-progressbar-bg-color: color-mix(in srgb, var(--body-color) 20%, transparent);
+  --swiper-pagination-progressbar-bg-color: var(--background-bar-color, color-mix(in srgb, var(--body-color) 20%, transparent));
   --swiper-pagination-color: var(--body-color);
 }
 

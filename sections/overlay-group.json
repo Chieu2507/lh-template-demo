@@ -137,12 +137,14 @@
             },
             "variant-picker": {
               "type": "product-variant-picker",
-              "settings": {}
+              "settings": {
+                "color_option_display": "variant_image"
+              }
             },
             "inventory": {
               "type": "product-inventory",
               "settings": {
-                "display_mode": "status",
+                "display_mode": "status_and_count",
                 "low_stock_threshold": 5
               }
             },
@@ -162,6 +164,20 @@
                 "padding_bottom_mobile": 0,
                 "padding_left_mobile": 0,
                 "padding_right_mobile": 0
+              },
+              "blocks": {
+                "quantity": {
+                  "type": "product-buy-quantity",
+                  "static": true,
+                  "settings": {
+                    "style": "custom",
+                    "background_color": "#FFFFFF00",
+                    "text_color": "#1A1A1A",
+                    "border_color": "#E6E6E6",
+                    "border_thickness": 1,
+                    "corner_radius": 100
+                  }
+                }
               }
             },
             "view-details": {
@@ -265,12 +281,14 @@
             },
             "variant-picker": {
               "type": "product-variant-picker",
-              "settings": {}
+              "settings": {
+                "color_option_display": "variant_image"
+              }
             },
             "inventory": {
               "type": "product-inventory",
               "settings": {
-                "display_mode": "status",
+                "display_mode": "status_and_count",
                 "low_stock_threshold": 5
               }
             },
@@ -290,6 +308,20 @@
                 "padding_bottom_mobile": 0,
                 "padding_left_mobile": 0,
                 "padding_right_mobile": 0
+              },
+              "blocks": {
+                "quantity": {
+                  "type": "product-buy-quantity",
+                  "static": true,
+                  "settings": {
+                    "style": "custom",
+                    "background_color": "#FFFFFF00",
+                    "text_color": "#1A1A1A",
+                    "border_color": "#E6E6E6",
+                    "border_thickness": 1,
+                    "corner_radius": 100
+                  }
+                }
               }
             },
             "view-details": {

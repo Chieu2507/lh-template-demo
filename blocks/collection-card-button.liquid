@@ -44,6 +44,11 @@
     endif
   endif
 
+  assign collection_card_button_icon_only = false
+  if block.settings.show_icon and block.settings.icon_only
+    assign collection_card_button_icon_only = true
+  endif
+
   assign collection_card_button_icon_position = block.settings.icon_position | default: 'after'
   unless collection_card_button_icon_position == 'before' or collection_card_button_icon_position == 'after'
     assign collection_card_button_icon_position = 'after'
@@ -93,12 +98,17 @@
     assign collection_card_button_padding_right_mobile = 0
   endif
 
+  assign collection_card_button_is_placeholder = false
+  if collection_card_button_collection.url == blank
+    assign collection_card_button_is_placeholder = true
+  endif
+
   assign collection_card_button_class = 'collection-card-button size-style collection-card-button--width-' | append: collection_card_button_width
   assign collection_card_button_class = collection_card_button_class | append: ' collection-card-button--width-mobile-' | append: collection_card_button_width_mobile
   assign collection_card_button_should_render = false
   if collection_card_button_collection.url != blank and collection_card_button_label != blank
     assign collection_card_button_should_render = true
-  elsif request.design_mode
+  elsif collection_card_button_label != blank
     assign collection_card_button_should_render = true
   endif
   if collection_card_button_label == blank
@@ -132,6 +142,8 @@
   >
     {% render 'theme-button',
       label: collection_card_button_label,
+      icon_only: collection_card_button_icon_only,
+      disabled: collection_card_button_is_placeholder,
       url: collection_card_button_collection.url,
       open_in_new_tab: collection_card_button_open_in_new_tab,
       variant: collection_card_button_style,
@@ -214,6 +226,7 @@
       "label": "t:labels.show_icon",
       "default": false
     },
+    { "type": "checkbox", "id": "icon_only", "label": "Icon only", "default": false, "visible_if": "{{ block.settings.show_icon }}" },
     {
       "type": "select",
       "id": "icon",

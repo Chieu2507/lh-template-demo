@@ -65,7 +65,7 @@
   data-announcement-direction="{{ announcement_direction }}"
   data-announcement-autoplay="{{ announcement_autoplay | times: 1000 }}"
   data-announcement-pause-on-hover="{{ announcement_pause_on_hover }}"
-  style="--announcement-bar-font-weight: {{ announcement_font_weight }}; --announcement-bar-gap: {{ announcement_gap }}px; --announcement-bar-speed: {{ announcement_speed }}; --announcement-bar-padding-top: {{ announcement_padding_top }}px; --announcement-bar-padding-right: {{ announcement_padding_right }}px; --announcement-bar-padding-bottom: {{ announcement_padding_bottom }}px; --announcement-bar-padding-left: {{ announcement_padding_left }}px;{% if announcement_overlay and section.settings.overlay_color != blank %} --announcement-bar-overlay-color: {{ section.settings.overlay_color | escape }};{% endif %}"
+  style="--announcement-bar-font-weight: {{ announcement_font_weight }}; --announcement-bar-gap: {{ announcement_gap }}px; --announcement-bar-speed: {{ announcement_speed }}; --announcement-bar-padding-top: {{ announcement_padding_top }}px; --announcement-bar-padding-right: {{ announcement_padding_right }}px; --announcement-bar-padding-bottom: {{ announcement_padding_bottom }}px; --announcement-bar-padding-left: {{ announcement_padding_left }}px;{% if section.settings.customize_mobile_padding %} --announcement-bar-padding-top-mobile: {{ section.settings.padding_top_mobile }}px; --announcement-bar-padding-bottom-mobile: {{ section.settings.padding_bottom_mobile }}px;{% endif %}{% if announcement_overlay and section.settings.overlay_color != blank %} --announcement-bar-overlay-color: {{ section.settings.overlay_color | escape }};{% endif %}"
 >
   {% if announcement_background_type == 'image' and section.settings.background_image != blank %}
     <div class="announcement-bar__background" aria-hidden="true">
@@ -132,6 +132,7 @@
   @keyframes announcement-scroll-left { from { transform: translate3d(0, 0, 0); } to { transform: translate3d(calc(-1 * var(--announcement-bar-loop-distance)), 0, 0); } }
   @keyframes announcement-scroll-right { from { transform: translate3d(calc(-1 * var(--announcement-bar-loop-distance)), 0, 0); } to { transform: translate3d(0, 0, 0); } }
   @media (prefers-reduced-motion: reduce) { .announcement-bar__slides, .announcement-bar__viewport, .announcement-bar__slides > .text-block { transition-duration: 0.01ms; } .announcement-bar--scrolling .announcement-bar__slides { animation: none; transform: none; } }
+  @media (max-width: 767.98px) { .announcement-bar { padding-top: var(--announcement-bar-padding-top-mobile, var(--announcement-bar-padding-top, 8px)); padding-bottom: var(--announcement-bar-padding-bottom-mobile, var(--announcement-bar-padding-bottom, 8px)); } }
 {% endstylesheet %}
 
 {% schema %}
@@ -167,11 +168,14 @@
     { "type": "range", "id": "gap", "label": "Gap", "min": 0, "max": 100, "step": 1, "unit": "px", "default": 16 },
     { "type": "header", "content": "Color" },
     { "type": "color_scheme", "id": "color_scheme", "label": "t:labels.color_scheme", "default": "scheme-3" },
-    { "type": "header", "content": "Padding" },
-    { "type": "range", "id": "padding_top", "label": "Top", "min": 0, "max": 100, "step": 1, "unit": "px", "default": 8 },
-    { "type": "range", "id": "padding_right", "label": "Right", "min": 0, "max": 100, "step": 1, "unit": "px", "default": 0 },
-    { "type": "range", "id": "padding_bottom", "label": "Bottom", "min": 0, "max": 100, "step": 1, "unit": "px", "default": 8 },
-    { "type": "range", "id": "padding_left", "label": "Left", "min": 0, "max": 100, "step": 1, "unit": "px", "default": 0 }
+    { "type": "header", "content": "t:general.padding" },
+    { "type": "range", "id": "padding_top", "label": "t:labels.top_padding", "min": 0, "max": 100, "step": 1, "unit": "px", "default": 8 },
+    { "type": "range", "id": "padding_right", "label": "t:labels.right_padding", "min": 0, "max": 100, "step": 1, "unit": "px", "default": 0 },
+    { "type": "range", "id": "padding_bottom", "label": "t:labels.bottom_padding", "min": 0, "max": 100, "step": 1, "unit": "px", "default": 8 },
+    { "type": "range", "id": "padding_left", "label": "t:labels.left_padding", "min": 0, "max": 100, "step": 1, "unit": "px", "default": 0 },
+    {"type": "checkbox", "id": "customize_mobile_padding", "label": "t:labels.customize_mobile_padding", "default": false},
+    {"type": "range", "id": "padding_top_mobile", "label": "t:labels.mobile_top_padding", "min": 0, "max": 100, "step": 1, "unit": "px", "default": 8, "visible_if": "{{ section.settings.customize_mobile_padding }}"},
+    {"type": "range", "id": "padding_bottom_mobile", "label": "t:labels.mobile_bottom_padding", "min": 0, "max": 100, "step": 1, "unit": "px", "default": 8, "visible_if": "{{ section.settings.customize_mobile_padding }}"}
   ],
   "presets": [{
     "name": "Announcement bar",

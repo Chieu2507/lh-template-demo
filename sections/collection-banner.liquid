@@ -148,11 +148,10 @@
   .collection-banner__breadcrumb a { color: inherit; text-decoration: none; }
   .collection-banner__breadcrumb a:hover { text-decoration: underline; }
   @media (min-width: 768px) and (max-width: 1149.98px) {
-    .collection-banner:not(.collection-banner--classic).section-spacing { padding-block: calc(var(--section-padding-top, 0px) * .75) calc(var(--section-padding-bottom, 0px) * .75); }
     .collection-banner:not(.collection-banner--classic) .collection-banner__content { padding: 38px; }
   }
   @media (max-width: 767.98px) {
-    .collection-banner.section-spacing { padding-block: var(--section-padding-top-mobile, calc(var(--section-padding-top, 0px) * .5)) var(--section-padding-bottom-mobile, calc(var(--section-padding-bottom, 0px) * .5)); }
+    .collection-banner.section-spacing { padding-block: var(--section-padding-top-mobile, var(--section-padding-top, 0px)) var(--section-padding-bottom-mobile, var(--section-padding-bottom, 0px)); }
     .collection-banner__content { gap: var(--banner-gap-mobile, var(--banner-gap, 16px)); }
     .collection-banner:not(.collection-banner--classic) .collection-banner__content { padding: 32px 16px; }
     .collection-banner--background .collection-banner__surface,
@@ -510,12 +509,12 @@
     },
     {
       "type": "header",
-      "content": "Section padding"
+      "content": "t:general.padding"
     },
     {
       "type": "range",
       "id": "padding_top",
-      "label": "Top padding",
+      "label": "t:labels.top_padding",
       "min": 0,
       "max": 200,
       "step": 4,
@@ -526,7 +525,7 @@
     {
       "type": "range",
       "id": "padding_bottom",
-      "label": "Bottom padding",
+      "label": "t:labels.bottom_padding",
       "min": 0,
       "max": 200,
       "step": 4,
@@ -537,7 +536,7 @@
     {
       "type": "range",
       "id": "classic_padding_top",
-      "label": "Top padding",
+      "label": "t:labels.top_padding",
       "min": 0,
       "max": 200,
       "step": 2,
@@ -548,7 +547,7 @@
     {
       "type": "range",
       "id": "classic_padding_bottom",
-      "label": "Bottom padding",
+      "label": "t:labels.bottom_padding",
       "min": 0,
       "max": 200,
       "step": 2,
@@ -565,7 +564,7 @@
     {
       "type": "range",
       "id": "padding_top_mobile",
-      "label": "Mobile top padding",
+      "label": "t:labels.mobile_top_padding",
       "min": 0,
       "max": 100,
       "step": 2,
@@ -576,7 +575,7 @@
     {
       "type": "range",
       "id": "padding_bottom_mobile",
-      "label": "Mobile bottom padding",
+      "label": "t:labels.mobile_bottom_padding",
       "min": 0,
       "max": 100,
       "step": 2,

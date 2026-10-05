@@ -6,7 +6,7 @@
   endif
 %}
 
-<div class="collection-page-breadcrumb color-scheme section-color-scope {{ breadcrumb_scheme }}{% if section.settings.text_case == 'uppercase' %} collection-page-breadcrumb--uppercase{% endif %}" style="--collection-page-breadcrumb-gap: {{ section.settings.item_gap }}px; --collection-page-breadcrumb-top: {{ section.settings.padding_top }}px; --collection-page-breadcrumb-bottom: {{ section.settings.padding_bottom }}px; --collection-page-breadcrumb-align: {{ section.settings.alignment }};">
+<div class="collection-page-breadcrumb color-scheme section-color-scope {{ breadcrumb_scheme }}{% if section.settings.text_case == 'uppercase' %} collection-page-breadcrumb--uppercase{% endif %}" style="--collection-page-breadcrumb-gap: {{ section.settings.item_gap }}px; --collection-page-breadcrumb-top: {{ section.settings.padding_top }}px; --collection-page-breadcrumb-bottom: {{ section.settings.padding_bottom }}px; {% if section.settings.customize_mobile_padding %}--collection-page-breadcrumb-top-mobile: {{ section.settings.padding_top_mobile }}px; --collection-page-breadcrumb-bottom-mobile: {{ section.settings.padding_bottom_mobile }}px;{% endif %} --collection-page-breadcrumb-align: {{ section.settings.alignment }};">
   <nav class="collection-page-breadcrumb__nav{% if section.settings.section_width == 'page' %} container page-width{% endif %}" aria-label="{{ 'breadcrumbs.navigation_label' | t | escape }}">
     {% if section.settings.show_home_link %}
       <a href="{{ routes.root_url }}">{{ section.settings.home_label | escape }}</a>
@@ -28,7 +28,7 @@
   .collection-page-breadcrumb__nav a:focus-visible { outline: 2px solid currentcolor; outline-offset: 3px; }
   .collection-page-breadcrumb__nav svg { width: 12px; height: 12px; }
   .collection-page-breadcrumb--uppercase { text-transform: uppercase; }
-  @media (max-width: 767.98px) { .collection-page-breadcrumb__nav { padding-block: calc(var(--collection-page-breadcrumb-top, 20px) * .5) calc(var(--collection-page-breadcrumb-bottom, 20px) * .5); } }
+  @media (max-width: 767.98px) { .collection-page-breadcrumb__nav { padding-block: var(--collection-page-breadcrumb-top-mobile, var(--collection-page-breadcrumb-top)) var(--collection-page-breadcrumb-bottom-mobile, var(--collection-page-breadcrumb-bottom)); } }
 {% endstylesheet %}
 
 {% schema %}
@@ -53,9 +53,12 @@
     { "type": "select", "id": "separator_style", "label": "Separator style", "options": [{ "value": "slash", "label": "Slash" }, { "value": "chevron", "label": "Chevron" }, { "value": "dot", "label": "Dot" }], "default": "slash" },
     { "type": "header", "content": "Appearance" },
     { "type": "color_scheme", "id": "color_scheme", "label": "Color scheme", "default": "scheme-1" },
-    { "type": "header", "content": "Section padding" },
-    { "type": "range", "id": "padding_top", "label": "Top padding", "min": 0, "max": 80, "step": 4, "unit": "px", "default": 20 },
-    { "type": "range", "id": "padding_bottom", "label": "Bottom padding", "min": 0, "max": 80, "step": 4, "unit": "px", "default": 20 }
+    { "type": "header", "content": "t:general.padding" },
+    { "type": "range", "id": "padding_top", "label": "t:labels.top_padding", "min": 0, "max": 80, "step": 4, "unit": "px", "default": 20 },
+    { "type": "range", "id": "padding_bottom", "label": "t:labels.bottom_padding", "min": 0, "max": 80, "step": 4, "unit": "px", "default": 20 },
+    {"type": "checkbox", "id": "customize_mobile_padding", "label": "t:labels.customize_mobile_padding", "default": false},
+    {"type": "range", "id": "padding_top_mobile", "label": "t:labels.mobile_top_padding", "min": 0, "max": 80, "step": 4, "unit": "px", "default": 20, "visible_if": "{{ section.settings.customize_mobile_padding }}"},
+    {"type": "range", "id": "padding_bottom_mobile", "label": "t:labels.mobile_bottom_padding", "min": 0, "max": 80, "step": 4, "unit": "px", "default": 20, "visible_if": "{{ section.settings.customize_mobile_padding }}"}
   ],
   "presets": [{ "name": "Collection breadcrumb" }]
 }

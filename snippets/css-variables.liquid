@@ -276,6 +276,8 @@
       assign eyebrow_letter_spacing = '0.02em'
     when 'loose'
       assign eyebrow_letter_spacing = '0.08em'
+    when 'reference'
+      assign eyebrow_letter_spacing = '0.12em'
     when 'extra_loose'
       assign eyebrow_letter_spacing = '0.2em'
   endcase
@@ -1152,10 +1154,10 @@
     --bottom-sheet-radius: {{ bottom_sheet_radius }};
     --overlay-radius: {{ overlay_radius }};
     --badge-font-family: var(--font-body-family);
-    --badge-font-size: var(--font-body-xs);
+    --badge-font-size: {{ settings.badge_font_size | default: 12 }}px;
     --badge-font-weight: 500;
-    --badge-letter-spacing: var(--font-body-letter-spacing);
-    --badge-padding: 0.2rem 0.55rem;
+    --badge-letter-spacing: {% if settings.badge_letter_spacing == 'reference' %}0.01em{% else %}var(--font-body-letter-spacing){% endif %};
+    --badge-padding: {{ settings.badge_padding_vertical | default: 2 }}px {{ settings.badge_padding_horizontal | default: 6 }}px;
     --badge-sale-price: {{ badge_sale_price }};
     --badge-sale-background: {{ badge_sale_background }};
     --badge-sale-color: {{ badge_sale_color }};
@@ -1246,6 +1248,9 @@
     {% assign scheme_secondary_hover_border = scheme.settings.button_secondary_hover_border | default: default_secondary_hover_border %}
     {% assign scheme_tertiary_text = scheme.settings.button_tertiary_text | default: default_tertiary_text %}
     {% assign scheme_tertiary_hover_text = scheme.settings.button_tertiary_hover_text | default: default_tertiary_hover_text %}
+    {% assign scheme_variant_overlay = scheme.settings.variant_overlay | default: 'rgba(0,0,0,0.2)' %}
+    {% assign scheme_background_bar = scheme.settings.background_bar | default: scheme_border %}
+    {% assign scheme_background_component = scheme.settings.background_component | default: 'color-mix(in srgb, var(--background-color) 94%, var(--body-color))' %}
     {% assign scheme_body_rgb = scheme_body | color_to_rgb | remove: 'rgba(' | remove: 'rgb(' | remove: ')' | split: ',' | slice: 0, 3 | join: ' ' | strip %}
     .{{ scheme.id }} {
       --background-color: {{ scheme_background }};
@@ -1283,12 +1288,16 @@
       --button-tertiary-hover-text: {{ scheme_tertiary_hover_text }};
       --button-tertiary-hover-border: transparent;
 
+      --overlay-color: {{ scheme_variant_overlay }};
+      --background-bar-color: {{ scheme_background_bar }};
+      --background-component-color: {{ scheme_background_component }};
+      --swiper-pagination-progressbar-bg-color: var(--background-bar-color);
       --color-background: var(--background-color);
       --color-foreground: var(--body-color);
       --color-foreground-rgb: {{ scheme_body_rgb }};
       --color-accent: var(--accent-color);
       --color-border: var(--border-color);
-      --color-surface: color-mix(in srgb, var(--background-color) 94%, var(--body-color));
+      --color-surface: var(--background-component-color);
       --placeholder-background-color: color-mix(in srgb, var(--background-color) 92%, var(--body-color));
       --placeholder-fill-color: color-mix(in srgb, var(--body-color) 30%, transparent);
       --button-background: var(--button-{{ button_default_variant }}-background);

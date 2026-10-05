@@ -44,6 +44,10 @@
   --faq-section-gap-mobile: {{ section.settings.gap_mobile | default: 40 }}px;
   --faq-section-padding-top: {{ section.settings.padding_top | default: 0 }}px;
   --faq-section-padding-bottom: {{ section.settings.padding_bottom | default: 0 }}px;
+  {% if section.settings.customize_mobile_padding %}
+    --faq-section-padding-top-mobile: {{ section.settings.padding_top_mobile }}px;
+    --faq-section-padding-bottom-mobile: {{ section.settings.padding_bottom_mobile }}px;
+  {% endif %}
   {% if section.settings.background_color != blank %}--faq-section-background: {{ section.settings.background_color | escape }};{% endif %}
 {% endcapture %}
 
@@ -86,11 +90,8 @@
   .faq-section--horizontal.faq-section--align-space-between .faq-section__content { justify-content: space-between; }
   .faq-section__content > * { flex: 1 1 0; min-width: 0; width: auto; }
   .faq-section--vertical .faq-section__content > * { flex: 0 1 auto; width: 100%; }
-  @media (min-width: 768px) and (max-width: 1149.98px) {
-    .section-faq-accordion .faq-section__content { padding-top: calc(var(--faq-section-padding-top, 0px) * 0.75); padding-bottom: calc(var(--faq-section-padding-bottom, 0px) * 0.75); }
-  }
   @media (max-width: 767.98px) {
-    .section-faq-accordion .faq-section__content { padding-top: calc(var(--faq-section-padding-top, 0px) * 0.5); padding-bottom: calc(var(--faq-section-padding-bottom, 0px) * 0.5); }
+    .section-faq-accordion .faq-section__content { padding-top: var(--faq-section-padding-top-mobile, var(--faq-section-padding-top, 0px)); padding-bottom: var(--faq-section-padding-bottom-mobile, var(--faq-section-padding-bottom, 0px)); }
     .faq-section__content { gap: var(--faq-section-gap-mobile, 40px); }
     .faq-section--vertical-mobile .faq-section__content { flex-direction: column; }
     .faq-section--horizontal.faq-section--vertical-mobile .faq-section__content > * { flex: 0 1 auto; width: 100%; }
@@ -128,9 +129,12 @@
     { "type": "header", "content": "Appearance" },
     { "type": "color_scheme", "id": "color_scheme", "label": "Color scheme", "default": "scheme-1" },
     { "type": "color", "alpha": true, "id": "background_color", "label": "Background color" },
-    { "type": "header", "content": "Section padding" },
-    { "type": "range", "id": "padding_top", "label": "Top padding", "min": 0, "max": 100, "step": 1, "unit": "px", "default": 0 },
-    { "type": "range", "id": "padding_bottom", "label": "Bottom padding", "min": 0, "max": 100, "step": 1, "unit": "px", "default": 0 }
+    { "type": "header", "content": "t:general.padding" },
+    { "type": "range", "id": "padding_top", "label": "t:labels.top_padding", "min": 0, "max": 100, "step": 1, "unit": "px", "default": 0 },
+    { "type": "range", "id": "padding_bottom", "label": "t:labels.bottom_padding", "min": 0, "max": 100, "step": 1, "unit": "px", "default": 0 },
+    {"type": "checkbox", "id": "customize_mobile_padding", "label": "t:labels.customize_mobile_padding", "default": false},
+    {"type": "range", "id": "padding_top_mobile", "label": "t:labels.mobile_top_padding", "min": 0, "max": 100, "step": 1, "unit": "px", "default": 0, "visible_if": "{{ section.settings.customize_mobile_padding }}"},
+    {"type": "range", "id": "padding_bottom_mobile", "label": "t:labels.mobile_bottom_padding", "min": 0, "max": 100, "step": 1, "unit": "px", "default": 0, "visible_if": "{{ section.settings.customize_mobile_padding }}"}
   ],
   "presets": [{
     "name": "FAQ accordion",

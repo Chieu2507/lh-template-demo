@@ -123,9 +123,9 @@
   .collection-background-item__trigger:focus-visible { outline: 2px solid currentColor; outline-offset: .25rem; }
   @media (prefers-reduced-motion: reduce) { .collection-background-item__panel, .collection-background-item__media :is(.media__inner > img, .media__inner > video, .media__inner > svg, .media__inner > picture > img) { transition: none; } }
   .is-sticky-title .collections-with-background__titles { position: fixed; z-index: var(--z-sticky, 20); }
-  @media (min-width: 768px) and (max-width: 1149.98px) { .collections-with-background { --page-margin-current: var(--page-margin-tablet); --section-padding-top: calc(var(--collections-background-padding-top) * .75); --section-padding-bottom: calc(var(--collections-background-padding-bottom) * .75); } }
+  @media (min-width: 768px) and (max-width: 1149.98px) { .collections-with-background { --page-margin-current: var(--page-margin-tablet); } }
   @media (max-width: 767.98px) {
-    .collections-with-background { --page-margin-current: var(--page-margin-mobile); --section-padding-top: var(--collections-background-padding-top-mobile, calc(var(--collections-background-padding-top) * .5)); --section-padding-bottom: var(--collections-background-padding-bottom-mobile, calc(var(--collections-background-padding-bottom) * .5)); }
+    .collections-with-background { --page-margin-current: var(--page-margin-mobile); --section-padding-top: var(--collections-background-padding-top-mobile, var(--collections-background-padding-top)); --section-padding-bottom: var(--collections-background-padding-bottom-mobile, var(--collections-background-padding-bottom)); }
     .collections-with-background__frame { min-height: 0; overflow: visible; }
     .collections-with-background__frame--mobile-page { width: calc(100% - (var(--page-margin-current) * 2)); margin-inline: auto; }
     .collections-with-background__frame--mobile-full { width: 100%; margin-inline: 0; }

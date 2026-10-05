@@ -1,0 +1,259 @@
+{
+  "store": "layouthub-template-v2.myshopify.com",
+  "themeId": "191953273131",
+  "uploaded": [
+    {
+      "key": "categories-1",
+      "url": "https://cdn.shopify.com/s/files/1/1024/2192/2091/files/strideo-categories-1-figma.jpg?v=1791165615",
+      "fileId": "gid://shopify/MediaImage/46365973512491",
+      "filename": "strideo-categories-1-figma.jpg",
+      "alt": "Strideo — categories-1 — Figma source"
+    },
+    {
+      "key": "categories-6",
+      "url": "https://cdn.shopify.com/s/files/1/1024/2192/2091/files/strideo-categories-6-figma.jpg?v=1791165623",
+      "fileId": "gid://shopify/MediaImage/46365975183659",
+      "filename": "strideo-categories-6-figma.jpg",
+      "alt": "Strideo — categories-6 — Figma source"
+    },
+    {
+      "key": "categories-2",
+      "url": "https://cdn.shopify.com/s/files/1/1024/2192/2091/files/strideo-categories-2-figma.jpg?v=1791165634",
+      "fileId": "gid://shopify/MediaImage/46365976756523",
+      "filename": "strideo-categories-2-figma.jpg",
+      "alt": "Strideo — categories-2 — Figma source"
+    },
+    {
+      "key": "lines-1",
+      "url": "https://cdn.shopify.com/s/files/1/1024/2192/2091/files/strideo-lines-1-figma.jpg?v=1791165644",
+      "fileId": "gid://shopify/MediaImage/46365978820907",
+      "filename": "strideo-lines-1-figma.jpg",
+      "alt": "Strideo — lines-1 — Figma source"
+    },
+    {
+      "key": "lines-2",
+      "url": "https://cdn.shopify.com/s/files/1/1024/2192/2091/files/strideo-lines-2-figma.jpg?v=1791165652",
+      "fileId": "gid://shopify/MediaImage/46365980786987",
+      "filename": "strideo-lines-2-figma.jpg",
+      "alt": "Strideo — lines-2 — Figma source"
+    },
+    {
+      "key": "cards-1",
+      "url": "https://cdn.shopify.com/s/files/1/1024/2192/2091/files/strideo-cards-1-figma.jpg?v=1791165665",
+      "fileId": "gid://shopify/MediaImage/46365982621995",
+      "filename": "strideo-cards-1-figma.jpg",
+      "alt": "Strideo — cards-1 — Figma source"
+    },
+    {
+      "key": "cards-3",
+      "url": "https://cdn.shopify.com/s/files/1/1024/2192/2091/files/strideo-cards-3-figma.jpg?v=1791165676",
+      "fileId": "gid://shopify/MediaImage/46365984751915",
+      "filename": "strideo-cards-3-figma.jpg",
+      "alt": "Strideo — cards-3 — Figma source"
+    },
+    {
+      "key": "cards-5",
+      "url": "https://cdn.shopify.com/s/files/1/1024/2192/2091/files/strideo-cards-5-figma.jpg?v=1791165685",
+      "fileId": "gid://shopify/MediaImage/46365986881835",
+      "filename": "strideo-cards-5-figma.jpg",
+      "alt": "Strideo — cards-5 — Figma source"
+    },
+    {
+      "key": "cards-6",
+      "url": "https://cdn.shopify.com/s/files/1/1024/2192/2091/files/strideo-cards-6-figma.jpg?v=1791165693",
+      "fileId": "gid://shopify/MediaImage/46365988454699",
+      "filename": "strideo-cards-6-figma.jpg",
+      "alt": "Strideo — cards-6 — Figma source"
+    }
+  ],
+  "collections": [
+    {
+      "handle": "marathon-strideo",
+      "id": "gid://shopify/Collection/534673719595",
+      "title": "Marathon Strideo",
+      "descriptionHtml": "",
+      "imageUrl": "https://cdn.shopify.com/s/files/1/1024/2192/2091/collections/strideo-categories-1-figma.jpg?v=1791165725",
+      "imageAltText": "marathon strideo — Figma lifestyle",
+      "sortOrder": "MANUAL",
+      "collectionType": "manual",
+      "productsCount": 0,
+      "products": [],
+      "rules": null,
+      "updatedAt": "2026-10-05T02:02:05Z",
+      "currencyCode": "USD"
+    },
+    {
+      "handle": "road-running-strideo",
+      "id": "gid://shopify/Collection/534673752363",
+      "title": "Road running Strideo",
+      "descriptionHtml": "",
+      "imageUrl": "https://cdn.shopify.com/s/files/1/1024/2192/2091/collections/strideo-categories-6-figma.jpg?v=1791165731",
+      "imageAltText": "road running strideo — Figma lifestyle",
+      "sortOrder": "MANUAL",
+      "collectionType": "manual",
+      "productsCount": 0,
+      "products": [],
+      "rules": null,
+      "updatedAt": "2026-10-05T02:02:11Z",
+      "currencyCode": "USD"
+    },
+    {
+      "handle": "running-strideo",
+      "id": "gid://shopify/Collection/534673785131",
+      "title": "Running Strideo",
+      "descriptionHtml": "",
+      "imageUrl": "https://cdn.shopify.com/s/files/1/1024/2192/2091/collections/strideo-categories-2-figma.jpg?v=1791165736",
+      "imageAltText": "running strideo — Figma lifestyle",
+      "sortOrder": "MANUAL",
+      "collectionType": "manual",
+      "productsCount": 0,
+      "products": [],
+      "rules": null,
+      "updatedAt": "2026-10-05T02:02:16Z",
+      "currencyCode": "USD"
+    },
+    {
+      "handle": "cloud-strideo",
+      "id": "gid://shopify/Collection/534673817899",
+      "title": "Cloud Strideo",
+      "descriptionHtml": "",
+      "imageUrl": "https://cdn.shopify.com/s/files/1/1024/2192/2091/collections/strideo-lines-1-figma.jpg?v=1791165741",
+      "imageAltText": "cloud strideo — Figma lifestyle",
+      "sortOrder": "MANUAL",
+      "collectionType": "manual",
+      "productsCount": 0,
+      "products": [],
+      "rules": null,
+      "updatedAt": "2026-10-05T02:02:21Z",
+      "currencyCode": "USD"
+    },
+    {
+      "handle": "the-roger-strideo",
+      "id": "gid://shopify/Collection/534673850667",
+      "title": "The Roger Strideo",
+      "descriptionHtml": "",
+      "imageUrl": "https://cdn.shopify.com/s/files/1/1024/2192/2091/collections/strideo-cards-3-figma.jpg?v=1791165747",
+      "imageAltText": "the roger strideo — Figma lifestyle",
+      "sortOrder": "MANUAL",
+      "collectionType": "manual",
+      "productsCount": 0,
+      "products": [],
+      "rules": null,
+      "updatedAt": "2026-10-05T02:02:27Z",
+      "currencyCode": "USD"
+    },
+    {
+      "handle": "cloudmonster-strideo",
+      "id": "gid://shopify/Collection/534673883435",
+      "title": "Cloudmonster Strideo",
+      "descriptionHtml": "",
+      "imageUrl": "https://cdn.shopify.com/s/files/1/1024/2192/2091/collections/strideo-categories-2-figma_3b4c260e-173b-4cc6-9b74-12764802787f.jpg?v=1791165757",
+      "imageAltText": "cloudmonster strideo — Figma lifestyle",
+      "sortOrder": "MANUAL",
+      "collectionType": "manual",
+      "productsCount": 0,
+      "products": [],
+      "rules": null,
+      "updatedAt": "2026-10-05T02:02:37Z",
+      "currencyCode": "USD"
+    },
+    {
+      "handle": "cloudtilt-strideo",
+      "id": "gid://shopify/Collection/534673916203",
+      "title": "Cloudtilt Strideo",
+      "descriptionHtml": "",
+      "imageUrl": "https://cdn.shopify.com/s/files/1/1024/2192/2091/collections/strideo-lines-2-figma.jpg?v=1791165763",
+      "imageAltText": "cloudtilt strideo — Figma lifestyle",
+      "sortOrder": "MANUAL",
+      "collectionType": "manual",
+      "productsCount": 0,
+      "products": [],
+      "rules": null,
+      "updatedAt": "2026-10-05T02:02:43Z",
+      "currencyCode": "USD"
+    },
+    {
+      "handle": "cloudsurfer-strideo",
+      "id": "gid://shopify/Collection/534673948971",
+      "title": "Cloudsurfer Strideo",
+      "descriptionHtml": "",
+      "imageUrl": "https://cdn.shopify.com/s/files/1/1024/2192/2091/collections/strideo-categories-1-figma_706317a7-426a-464d-889c-6e325a92065c.jpg?v=1791165769",
+      "imageAltText": "cloudsurfer strideo — Figma lifestyle",
+      "sortOrder": "MANUAL",
+      "collectionType": "manual",
+      "productsCount": 0,
+      "products": [],
+      "rules": null,
+      "updatedAt": "2026-10-05T02:02:49Z",
+      "currencyCode": "USD"
+    },
+    {
+      "handle": "this-week-s-top-picks-strideo",
+      "id": "gid://shopify/Collection/534673981739",
+      "title": "This week’s top picks Strideo",
+      "descriptionHtml": "",
+      "imageUrl": "https://cdn.shopify.com/s/files/1/1024/2192/2091/collections/strideo-cards-5-figma.jpg?v=1791165776",
+      "imageAltText": "this week s top picks strideo — Figma lifestyle",
+      "sortOrder": "MANUAL",
+      "collectionType": "manual",
+      "productsCount": 0,
+      "products": [],
+      "rules": null,
+      "updatedAt": "2026-10-05T02:02:56Z",
+      "currencyCode": "USD"
+    },
+    {
+      "handle": "new-arrivals-strideo",
+      "id": "gid://shopify/Collection/534674014507",
+      "title": "New Arrivals Strideo",
+      "descriptionHtml": "",
+      "imageUrl": "https://cdn.shopify.com/s/files/1/1024/2192/2091/collections/strideo-cards-6-figma.jpg?v=1791165781",
+      "imageAltText": "new arrivals strideo — Figma lifestyle",
+      "sortOrder": "MANUAL",
+      "collectionType": "manual",
+      "productsCount": 0,
+      "products": [],
+      "rules": null,
+      "updatedAt": "2026-10-05T02:03:01Z",
+      "currencyCode": "USD"
+    }
+  ],
+  "pairs": [
+    [
+      "lines-1",
+      "lines-2"
+    ],
+    [
+      "cards-3",
+      "cards-1"
+    ],
+    [
+      "categories-2",
+      "cards-5"
+    ],
+    [
+      "lines-2",
+      "cards-5"
+    ],
+    [
+      "categories-1",
+      "categories-6"
+    ]
+  ],
+  "imageCards": [
+    "cards-1",
+    "cards-3",
+    "cards-5",
+    "cards-6"
+  ],
+  "status": "uploaded-bound-and-verified",
+  "notes": [
+    "Three category images and four image cards match visible Figma slots. Cloud uses the exact visible pair. Other named line collections have no separate visible pairs; assigned suitable editorial photos from the same Strideo Figma design. Original files used; no thumbnail or theme assets uploads."
+  ],
+  "verification": [
+    "10 collection update responses contain permanent cover image URLs.",
+    "18 image picker values saved to remote draft; re-read matched both affected sections.",
+    "Desktop: all 3 category images, 10 paired images, and 4 image card images loaded.",
+    "Mobile 375px: active card image loaded at 343x400px, no horizontal document overflow; inactive images lazy loaded."
+  ]
+}

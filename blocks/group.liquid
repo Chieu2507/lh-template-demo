@@ -279,12 +279,7 @@
   {% if padding_bottom != 0 %}--group-padding-bottom: {{ padding_bottom }}px;{% endif %}
   {% if padding_left != 0 %}--group-padding-left: {{ padding_left }}px;{% endif %}
   {% if padding_right != 0 %}--group-padding-right: {{ padding_right }}px;{% endif %}
-  {% if block.settings.customize_tablet_padding %}
-    --group-padding-top-tablet: {{ block.settings.padding_tablet | default: 0 | at_least: 0 | at_most: 100 }}px;
-    --group-padding-bottom-tablet: {{ block.settings.padding_tablet | default: 0 | at_least: 0 | at_most: 100 }}px;
-    --group-padding-left-tablet: {{ block.settings.padding_tablet | default: 0 | at_least: 0 | at_most: 100 }}px;
-    --group-padding-right-tablet: {{ block.settings.padding_tablet | default: 0 | at_least: 0 | at_most: 100 }}px;
-  {% endif %}
+
   {% if block.settings.customize_mobile_padding %}
     {% if padding_top_mobile != padding_top %}--group-padding-top-mobile: {{ padding_top_mobile }}px;{% endif %}
     {% if padding_bottom_mobile != padding_bottom %}--group-padding-bottom-mobile: {{ padding_bottom_mobile }}px;{% endif %}
@@ -303,7 +298,8 @@
 <div
   class="{{ group_class }}"
   {% if group_style != blank %}style="{{ group_style }}"{% endif %}
-  {{ block.shopify_attributes }}
+  {% render 'block-animation-attributes', settings: block.settings %}
+    {{ block.shopify_attributes }}
 >
   {% content_for 'blocks' %}
 </div>
@@ -316,10 +312,9 @@
     --group-padding-right: initial;
     --group-padding-bottom: initial;
     --group-padding-left: initial;
-    --group-padding-top-tablet: initial;
-    --group-padding-bottom-tablet: initial;
-    --group-padding-left-tablet: initial;
-    --group-padding-right-tablet: initial;
+
+
+
     --group-padding-top-mobile: initial;
     --group-padding-right-mobile: initial;
     --group-padding-bottom-mobile: initial;
@@ -437,15 +432,6 @@
 
   .group > * {
     min-width: 0;
-  }
-
-  @media (min-width: 768px) and (max-width: 1149.98px) {
-    .group {
-      padding-top: var(--group-padding-top-tablet, var(--group-padding-top, 0px));
-      padding-bottom: var(--group-padding-bottom-tablet, var(--group-padding-bottom, 0px));
-      padding-left: var(--group-padding-left-tablet, var(--group-padding-left, 0px));
-      padding-right: var(--group-padding-right-tablet, var(--group-padding-right, 0px));
-    }
   }
 
   @media (max-width: 767.98px) {
@@ -954,7 +940,54 @@
       "max": 40,
       "step": 1,
       "unit": "px",
-      "default": 20
+      "default": 0
+    },
+    {
+      "type": "header",
+      "content": "Animation"
+    },
+    {
+      "type": "select",
+      "id": "animation_type",
+      "label": "Type",
+      "options": [
+        {
+          "value": "none",
+          "label": "None"
+        },
+        {
+          "value": "fade",
+          "label": "Fade"
+        },
+        {
+          "value": "scale",
+          "label": "Scale"
+        },
+        {
+          "value": "slide-left",
+          "label": "Slide from left"
+        },
+        {
+          "value": "slide-right",
+          "label": "Slide from right"
+        },
+        {
+          "value": "slide-bottom",
+          "label": "Slide from bottom"
+        }
+      ],
+      "default": "none"
+    },
+    {
+      "type": "range",
+      "id": "animation_delay",
+      "label": "Delay",
+      "min": 0,
+      "max": 1000,
+      "step": 50,
+      "unit": "ms",
+      "default": 0,
+      "visible_if": "{{ block.settings.animation_type != 'none' }}"
     },
     {
       "type": "header",
@@ -999,23 +1032,6 @@
       "step": 1,
       "unit": "px",
       "default": 0
-    },
-    {
-      "type": "checkbox",
-      "id": "customize_tablet_padding",
-      "label": "t:labels.customize_tablet_padding",
-      "default": false
-    },
-    {
-      "type": "range",
-      "id": "padding_tablet",
-      "label": "t:labels.tablet_padding",
-      "min": 0,
-      "max": 100,
-      "step": 1,
-      "unit": "px",
-      "default": 0,
-      "visible_if": "{{ block.settings.customize_tablet_padding }}"
     },
     {
       "type": "checkbox",

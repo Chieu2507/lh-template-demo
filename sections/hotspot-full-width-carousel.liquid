@@ -496,7 +496,6 @@
   @media (min-width: 768px) and (max-width: 1149.98px) {
     .hotspot-full-width-carousel {
       --page-margin-current: var(--page-margin-tablet);
-      padding-block: calc(var(--hotspot-carousel-padding-top, 0px) * 0.75) calc(var(--hotspot-carousel-padding-bottom, 0px) * 0.75);
     }
 
     .hotspot-full-width-carousel--width-full .hotspot-full-width-carousel__container {
@@ -508,7 +507,7 @@
   @media (max-width: 767.98px) {
     .hotspot-full-width-carousel {
       --page-margin-current: var(--page-margin-mobile);
-      padding-block: var(--hotspot-carousel-padding-top-mobile, calc(var(--hotspot-carousel-padding-top, 0px) * 0.5)) var(--hotspot-carousel-padding-bottom-mobile, calc(var(--hotspot-carousel-padding-bottom, 0px) * 0.5));
+      padding-block: var(--hotspot-carousel-padding-top-mobile, var(--hotspot-carousel-padding-top, 0px)) var(--hotspot-carousel-padding-bottom-mobile, var(--hotspot-carousel-padding-bottom, 0px));
     }
 
     .hotspot-full-width-carousel--width-full .hotspot-full-width-carousel__container {
@@ -832,7 +831,7 @@
     {
       "type": "range",
       "id": "padding_top",
-      "label": "t:options.position.top",
+      "label": "t:labels.top_padding",
       "min": 0,
       "max": 100,
       "step": 1,
@@ -843,7 +842,7 @@
     {
       "type": "range",
       "id": "padding_bottom",
-      "label": "t:options.position.bottom",
+      "label": "t:labels.bottom_padding",
       "min": 0,
       "max": 100,
       "step": 1,
@@ -867,7 +866,7 @@
       "step": 1,
       "unit": "px",
       "default": 40,
-      "visible_if": "{{ section.settings.width != 'full_bleed' and section.settings.customize_mobile_padding }}"
+      "visible_if": "{{ section.settings.customize_mobile_padding }}"
     },
     {
       "type": "range",
@@ -878,7 +877,7 @@
       "step": 1,
       "unit": "px",
       "default": 40,
-      "visible_if": "{{ section.settings.width != 'full_bleed' and section.settings.customize_mobile_padding }}"
+      "visible_if": "{{ section.settings.customize_mobile_padding }}"
     }
   ],
   "presets": [

@@ -783,7 +783,6 @@
       "blocks": {
         "text": {
           "type": "text",
-          "static": true,
           "settings": {
             "text": "<p>The pavilion standard</p>",
             "text_size": "md",
@@ -807,7 +806,6 @@
         },
         "editorial-text": {
           "type": "editorial-text",
-          "static": true,
           "settings": {
             "text": "<p>Every piece that leaves our studio passes through no fewer than forty pairs of hands. We believe jewelry should outlive trends and outlive us.</p>",
             "size": "lg",
@@ -832,7 +830,6 @@
         },
         "button": {
           "type": "button",
-          "static": true,
           "settings": {
             "button_label": "Our story",
             "button_link": "",
@@ -872,7 +869,12 @@
         "padding_right_mobile": 0,
         "padding_bottom_mobile": 24,
         "padding_left_mobile": 0
-      }
+      },
+      "block_order": [
+        "text",
+        "editorial-text",
+        "button"
+      ]
     },
     "image_cards_XhxqHQ": {
       "type": "image-cards",

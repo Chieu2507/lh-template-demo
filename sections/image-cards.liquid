@@ -126,17 +126,38 @@
     {% endif %}
 
     <div class="container {{ image_cards_container_width }} image-cards-section__container{% if image_cards_container_no_padding %} image-cards-section__container--no-padding{% endif %}">
+      {% if section.settings.show_header %}<div class="image-cards-section__header" style="margin-bottom:{{ section.settings.header_gap }}px">{% content_for 'block', type: 'header', id: 'header' %}</div>{% endif %}
+      {% capture image_cards_slides %}{% content_for 'blocks' %}{% endcapture %}
+      {% if section.settings.card_layout == 'carousel' %}
+        {% capture image_cards_carousel_attributes %}
+          data-product-carousel data-layout="carousel"
+          data-swiper-columns-desktop="{{ section.settings.columns_desktop }}"
+          data-swiper-columns-tablet="{{ section.settings.columns_tablet }}"
+          data-swiper-columns-mobile="{{ section.settings.columns_mobile }}"
+          data-swiper-gap-desktop="{{ image_cards_gap_desktop }}"
+          data-swiper-gap-tablet="{{ image_cards_gap_desktop }}"
+          data-swiper-gap-mobile="{{ image_cards_gap_mobile }}"
+        {% endcapture %}
+        {% capture image_cards_pagination %}{% render 'swiper-pagination', show: section.settings.show_pagination, type: 'progress_bar', style: '--swiper-pagination-progressbar-size:2px;--swiper-pagination-spacing:40px;--swiper-pagination-spacing-mobile:40px;' %}{% endcapture %}
+        {% render 'swiper-carousel', content: image_cards_slides, root_class: 'image-cards-section__carousel', root_attributes: image_cards_carousel_attributes, pagination: image_cards_pagination %}
+        <script type="module" src="{{ 'product-collection-carousel.js' | asset_url }}"></script>
+      {% else %}
       <div
         class="image-cards-section__grid layout-flow layout-flow--responsive"
         {% if image_cards_grid_style != blank %}style="{{ image_cards_grid_style }}"{% endif %}
       >
-        {% content_for 'blocks' %}
+        {{ image_cards_slides }}
       </div>
+      {% endif %}
     </div>
   </div>
 {% endif %}
 
 {% stylesheet %}
+  .image-cards-section__carousel {width:100%;min-width:0;overflow:clip;}
+  .image-cards-section__carousel > .swiper-wrapper {align-items:stretch;}
+  .image-cards-section__carousel > .swiper-wrapper > .image-card {flex-shrink:0;height:auto;}
+  .image-cards-section__carousel .swiper-pagination-lock {display:none;}
   .image-cards-section {
     position: relative;
     overflow: clip;
@@ -237,14 +258,134 @@
 {
   "name": "t:general.image_cards",
   "class": "section-image-cards",
-  "enabled_on": { "templates": ["*"] },
+  "enabled_on": {
+    "templates": [
+      "*"
+    ]
+  },
   "blocks": [
-    { "type": "image-card" }
+    {
+      "type": "image-card"
+    },
+    {
+      "type": "header"
+    }
   ],
   "settings": [
     {
       "type": "header",
       "content": "t:general.layout"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_header",
+      "label": "Show header",
+      "default": false
+    },
+    {
+      "type": "range",
+      "id": "header_gap",
+      "label": "Header gap",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "default": 40,
+      "visible_if": "{{ section.settings.show_header }}"
+    },
+    {
+      "type": "select",
+      "id": "card_layout",
+      "label": "Card layout",
+      "options": [
+        {
+          "value": "flow",
+          "label": "Flow"
+        },
+        {
+          "value": "carousel",
+          "label": "Carousel"
+        }
+      ],
+      "default": "flow"
+    },
+    {
+      "type": "select",
+      "id": "columns_desktop",
+      "label": "Desktop columns",
+      "options": [
+        {
+          "value": "1",
+          "label": "1"
+        },
+        {
+          "value": "2",
+          "label": "2"
+        },
+        {
+          "value": "3",
+          "label": "3"
+        },
+        {
+          "value": "4",
+          "label": "4"
+        },
+        {
+          "value": "5",
+          "label": "5"
+        },
+        {
+          "value": "6",
+          "label": "6"
+        }
+      ],
+      "default": "4",
+      "visible_if": "{{ section.settings.card_layout == 'carousel' }}"
+    },
+    {
+      "type": "select",
+      "id": "columns_tablet",
+      "label": "Tablet columns",
+      "options": [
+        {
+          "value": "2",
+          "label": "2"
+        },
+        {
+          "value": "3",
+          "label": "3"
+        },
+        {
+          "value": "4",
+          "label": "4"
+        }
+      ],
+      "default": "2",
+      "visible_if": "{{ section.settings.card_layout == 'carousel' }}"
+    },
+    {
+      "type": "select",
+      "id": "columns_mobile",
+      "label": "Mobile columns",
+      "options": [
+        {
+          "value": "1",
+          "label": "1"
+        },
+        {
+          "value": "2",
+          "label": "2"
+        }
+      ],
+      "default": "1",
+      "visible_if": "{{ section.settings.card_layout == 'carousel' }}"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_pagination",
+      "label": "Show pagination",
+      "default": true,
+      "visible_if": "{{ section.settings.card_layout == 'carousel' }}"
     },
     {
       "type": "select",
@@ -302,16 +443,24 @@
       "id": "direction",
       "label": "t:labels.direction",
       "options": [
-        { "value": "horizontal", "label": "t:options.direction.horizontal" },
-        { "value": "vertical", "label": "t:options.direction.vertical" }
+        {
+          "value": "horizontal",
+          "label": "t:options.direction.horizontal"
+        },
+        {
+          "value": "vertical",
+          "label": "t:options.direction.vertical"
+        }
       ],
-      "default": "horizontal"
+      "default": "horizontal",
+      "visible_if": "{{ section.settings.card_layout == 'flow' }}"
     },
     {
       "type": "checkbox",
       "id": "vertical_on_mobile",
       "label": "t:labels.vertical_on_mobile",
-      "default": true
+      "default": true,
+      "visible_if": "{{ section.settings.card_layout == 'flow' }}"
     },
     {
       "type": "header",
@@ -365,7 +514,7 @@
     {
       "type": "range",
       "id": "padding_top",
-      "label": "t:options.position.top",
+      "label": "t:labels.top_padding",
       "min": 0,
       "max": 100,
       "step": 1,
@@ -375,7 +524,7 @@
     {
       "type": "range",
       "id": "padding_bottom",
-      "label": "t:options.position.bottom",
+      "label": "t:labels.bottom_padding",
       "min": 0,
       "max": 100,
       "step": 1,

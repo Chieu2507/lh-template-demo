@@ -19,23 +19,23 @@
             "link": "",
             "open_in_new_tab": false,
             "media_type": "image",
+            "image": "shopify://shop_images/strideo-slideshow-1-figma.jpg",
+            "mobile_image": "shopify://shop_images/strideo-slideshow-1-figma.jpg",
             "media_2_type": "image",
             "show_overlay": true,
             "overlay_color": "#00000033",
             "parallax_effect": "none",
-            "content_width": "custom",
-            "content_max_width": 512,
-            "desktop_position": "center_left",
-            "mobile_position": "center_left",
-            "desktop_gap": 0,
-            "mobile_gap": 0,
-            "color_scheme": "scheme-3",
             "content_padding_top": 80,
             "content_padding_bottom": 80,
-            "content_padding_top_mobile": 80,
-            "content_padding_bottom_mobile": 80,
-            "image": "shopify://shop_images/figma-original-1.jpg",
-            "mobile_image": "shopify://shop_images/figma-original-1.jpg"
+            "content_padding_top_mobile": 64,
+            "content_padding_bottom_mobile": 64,
+            "content_width": "custom",
+            "content_max_width": 576,
+            "desktop_position": "bottom_left",
+            "mobile_position": "bottom_left",
+            "desktop_gap": 0,
+            "mobile_gap": 0,
+            "color_scheme": "scheme-3"
           },
           "blocks": {
             "column": {
@@ -44,17 +44,17 @@
                 "direction": "vertical",
                 "alignment": "left",
                 "alignment_mobile": "left",
-                "height": "fit",
+                "gap_desktop": 40,
+                "gap_mobile": 40,
                 "width": "fill",
+                "height": "fit",
                 "width_mobile": "fill",
-                "gap_desktop": 32,
-                "gap_mobile": 32,
                 "appearance_type": "inherit",
+                "backdrop_blur": 0,
                 "padding_top": 0,
                 "padding_bottom": 0,
                 "padding_left": 0,
-                "padding_right": 0,
-                "backdrop_blur": 0
+                "padding_right": 0
               },
               "blocks": {
                 "content": {
@@ -63,46 +63,23 @@
                     "direction": "vertical",
                     "alignment": "left",
                     "alignment_mobile": "left",
-                    "height": "fit",
-                    "width": "fill",
-                    "width_mobile": "fill",
                     "gap_desktop": 16,
                     "gap_mobile": 16,
+                    "width": "fill",
+                    "height": "fit",
+                    "width_mobile": "fill",
                     "appearance_type": "inherit",
+                    "backdrop_blur": 0,
                     "padding_top": 0,
                     "padding_bottom": 0,
                     "padding_left": 0,
-                    "padding_right": 0,
-                    "backdrop_blur": 0
+                    "padding_right": 0
                   },
                   "blocks": {
-                    "eyebrow": {
-                      "type": "eyebrow",
-                      "settings": {
-                        "text": "<p>PREMIUM TENNIS GEAR</p>",
-                        "color": "",
-                        "show_background": false,
-                        "show_icon": false,
-                        "icon": "circle",
-                        "border_thickness": 0,
-                        "corner_radius": "square",
-                        "color_scheme": "",
-                        "padding_top": 0,
-                        "padding_bottom": 0,
-                        "padding_left": 0,
-                        "padding_right": 0,
-                        "customize_mobile_padding": false,
-                        "padding_top_mobile": 0,
-                        "padding_bottom_mobile": 0,
-                        "padding_left_mobile": 0,
-                        "padding_right_mobile": 0
-                      },
-                      "blocks": {}
-                    },
                     "heading": {
                       "type": "heading",
                       "settings": {
-                        "text": "<p>PLAY YOUR BEST TENNIS</p>",
+                        "text": "<p>Endless speed immortal style</p>",
                         "heading_size": "display",
                         "custom_heading_size": 24,
                         "html_tag": "h1",
@@ -110,7 +87,7 @@
                         "width": "fill",
                         "max_width": 640,
                         "customize_mobile_size": false,
-                        "width_mobile": "fit",
+                        "width_mobile": "fill",
                         "max_width_mobile": 480,
                         "padding_top": 0,
                         "padding_bottom": 0,
@@ -120,46 +97,125 @@
                         "padding_top_mobile": 0,
                         "padding_bottom_mobile": 0,
                         "padding_left_mobile": 0,
-                        "padding_right_mobile": 0
+                        "padding_right_mobile": 0,
+                        "animation_type": "rotate-words",
+                        "animation_delay": 50
+                      },
+                      "blocks": {}
+                    },
+                    "description": {
+                      "type": "text",
+                      "settings": {
+                        "text": "<p>Engineered for everyday performance, comfort, and speed built to keep you moving on your terms.</p>",
+                        "text_size": "lg",
+                        "height_limit": "none",
+                        "text_color": "",
+                        "width": "fill",
+                        "customize_mobile_size": false,
+                        "width_mobile": "fill",
+                        "padding_top": 0,
+                        "padding_bottom": 0,
+                        "padding_left": 0,
+                        "padding_right": 0,
+                        "animation_type": "fade",
+                        "animation_delay": 0
                       },
                       "blocks": {}
                     }
                   },
                   "block_order": [
-                    "eyebrow",
-                    "heading"
+                    "heading",
+                    "description"
                   ]
                 },
-                "button": {
-                  "type": "button",
+                "actions": {
+                  "type": "group",
                   "settings": {
-                    "button_label": "Shop Now",
-                    "button_link": "shopify://collections/all",
-                    "button_open_in_new_tab": false,
-                    "button_style": "primary",
-                    "show_icon": false,
-                    "icon": "arrow_right",
-                    "icon_position": "after",
-                    "icon_size": "inherit",
-                    "icon_width": 20,
-                    "width": "fit",
-                    "width_mobile": "fit",
+                    "direction": "horizontal",
+                    "position_horizontal": "center",
+                    "horizontal_alignment": "left",
+                    "customize_mobile_alignment": false,
+                    "alignment": "left",
+                    "alignment_mobile": "left",
+                    "gap_desktop": 20,
+                    "gap_mobile": 20,
+                    "width": "fill",
+                    "height": "fit",
+                    "width_mobile": "fill",
+                    "appearance_type": "inherit",
+                    "backdrop_blur": 0,
                     "padding_top": 0,
                     "padding_bottom": 0,
                     "padding_left": 0,
-                    "padding_right": 0,
-                    "customize_mobile_padding": false,
-                    "padding_top_mobile": 0,
-                    "padding_bottom_mobile": 0,
-                    "padding_left_mobile": 0,
-                    "padding_right_mobile": 0
+                    "padding_right": 0
                   },
-                  "blocks": {}
+                  "blocks": {
+                    "shop-men": {
+                      "type": "button",
+                      "settings": {
+                        "button_label": "Shop Men",
+                        "button_link": "shopify://collections/all",
+                        "button_open_in_new_tab": false,
+                        "button_style": "primary",
+                        "show_icon": false,
+                        "icon": "arrow_right",
+                        "icon_position": "after",
+                        "icon_size": "inherit",
+                        "icon_width": 20,
+                        "width": "fit",
+                        "width_mobile": "fit",
+                        "padding_top": 0,
+                        "padding_bottom": 0,
+                        "padding_left": 0,
+                        "padding_right": 0,
+                        "customize_mobile_padding": false,
+                        "padding_top_mobile": 0,
+                        "padding_bottom_mobile": 0,
+                        "padding_left_mobile": 0,
+                        "padding_right_mobile": 0,
+                        "animation_type": "slide-bottom",
+                        "animation_delay": 100
+                      },
+                      "blocks": {}
+                    },
+                    "shop-women": {
+                      "type": "button",
+                      "settings": {
+                        "button_label": "Shop Women",
+                        "button_link": "shopify://collections/all",
+                        "button_open_in_new_tab": false,
+                        "button_style": "primary",
+                        "show_icon": false,
+                        "icon": "arrow_right",
+                        "icon_position": "after",
+                        "icon_size": "inherit",
+                        "icon_width": 20,
+                        "width": "fit",
+                        "width_mobile": "fit",
+                        "padding_top": 0,
+                        "padding_bottom": 0,
+                        "padding_left": 0,
+                        "padding_right": 0,
+                        "customize_mobile_padding": false,
+                        "padding_top_mobile": 0,
+                        "padding_bottom_mobile": 0,
+                        "padding_left_mobile": 0,
+                        "padding_right_mobile": 0,
+                        "animation_type": "slide-bottom",
+                        "animation_delay": 100
+                      },
+                      "blocks": {}
+                    }
+                  },
+                  "block_order": [
+                    "shop-men",
+                    "shop-women"
+                  ]
                 }
               },
               "block_order": [
                 "content",
-                "button"
+                "actions"
               ]
             }
           },
@@ -167,7 +223,7 @@
             "column"
           ]
         },
-        "slide-apparel": {
+        "slide-women": {
           "type": "slideshow-slide",
           "settings": {
             "layout": "classic",
@@ -178,94 +234,71 @@
             "show_overlay": true,
             "overlay_color": "#00000033",
             "parallax_effect": "none",
+            "content_padding_top": 80,
+            "content_padding_bottom": 80,
+            "content_padding_top_mobile": 64,
+            "content_padding_bottom_mobile": 64,
             "content_width": "custom",
-            "content_max_width": 512,
-            "desktop_position": "center_left",
-            "mobile_position": "top_left",
+            "content_max_width": 576,
+            "desktop_position": "bottom_left",
+            "mobile_position": "bottom_left",
             "desktop_gap": 0,
             "mobile_gap": 0,
             "color_scheme": "scheme-3",
-            "content_padding_top": 80,
-            "content_padding_bottom": 80,
-            "content_padding_top_mobile": 80,
-            "content_padding_bottom_mobile": 80,
-            "image": "shopify://shop_images/apparel-desktop.png",
-            "mobile_image": "shopify://shop_images/apparel-mobile.png"
+            "image": "shopify://shop_images/strideo-categories-2-figma.jpg",
+            "mobile_image": "shopify://shop_images/strideo-categories-2-figma.jpg"
           },
           "blocks": {
-            "column-slide-apparel": {
+            "column": {
               "type": "group",
               "settings": {
                 "direction": "vertical",
                 "alignment": "left",
                 "alignment_mobile": "left",
-                "height": "fit",
+                "gap_desktop": 40,
+                "gap_mobile": 40,
                 "width": "fill",
+                "height": "fit",
                 "width_mobile": "fill",
-                "gap_desktop": 32,
-                "gap_mobile": 32,
                 "appearance_type": "inherit",
+                "backdrop_blur": 0,
                 "padding_top": 0,
                 "padding_bottom": 0,
                 "padding_left": 0,
-                "padding_right": 0,
-                "backdrop_blur": 0
+                "padding_right": 0
               },
               "blocks": {
-                "content-slide-apparel": {
+                "content": {
                   "type": "group",
                   "settings": {
                     "direction": "vertical",
                     "alignment": "left",
                     "alignment_mobile": "left",
-                    "height": "fit",
-                    "width": "fill",
-                    "width_mobile": "fill",
                     "gap_desktop": 16,
                     "gap_mobile": 16,
+                    "width": "fill",
+                    "height": "fit",
+                    "width_mobile": "fill",
                     "appearance_type": "inherit",
+                    "backdrop_blur": 0,
                     "padding_top": 0,
                     "padding_bottom": 0,
                     "padding_left": 0,
-                    "padding_right": 0,
-                    "backdrop_blur": 0
+                    "padding_right": 0
                   },
                   "blocks": {
-                    "eyebrow-slide-apparel": {
-                      "type": "eyebrow",
-                      "settings": {
-                        "text": "<p>MOVE WITH CONFIDENCE</p>",
-                        "color": "",
-                        "show_background": false,
-                        "show_icon": false,
-                        "icon": "circle",
-                        "border_thickness": 0,
-                        "corner_radius": "square",
-                        "color_scheme": "",
-                        "padding_top": 0,
-                        "padding_bottom": 0,
-                        "padding_left": 0,
-                        "padding_right": 0,
-                        "customize_mobile_padding": false,
-                        "padding_top_mobile": 0,
-                        "padding_bottom_mobile": 0,
-                        "padding_left_mobile": 0,
-                        "padding_right_mobile": 0
-                      },
-                      "blocks": {}
-                    },
-                    "heading-slide-apparel": {
+                    "heading": {
                       "type": "heading",
                       "settings": {
-                        "text": "<p>BUILT FOR EVERY MATCH</p>",
+                        "text": "<p>Find your own rhythm</p>",
                         "heading_size": "display",
                         "custom_heading_size": 24,
-                        "html_tag": "h2",
+                        "html_tag": "h1",
                         "text_color": "",
                         "width": "fill",
                         "max_width": 640,
                         "customize_mobile_size": false,
-                        "width_mobile": "fit",
+                        "width_mobile": "fill",
                         "max_width_mobile": 480,
                         "padding_top": 0,
                         "padding_bottom": 0,
@@ -275,54 +308,133 @@
                         "padding_top_mobile": 0,
                         "padding_bottom_mobile": 0,
                         "padding_left_mobile": 0,
-                        "padding_right_mobile": 0
+                        "padding_right_mobile": 0,
+                        "animation_type": "rotate-words",
+                        "animation_delay": 50
+                      },
+                      "blocks": {}
+                    },
+                    "description": {
+                      "type": "text",
+                      "settings": {
+                        "text": "<p>Lightweight layers and effortless comfort, made for every run and every pace.</p>",
+                        "text_size": "lg",
+                        "height_limit": "none",
+                        "text_color": "",
+                        "width": "fill",
+                        "customize_mobile_size": false,
+                        "width_mobile": "fill",
+                        "padding_top": 0,
+                        "padding_bottom": 0,
+                        "padding_left": 0,
+                        "padding_right": 0,
+                        "animation_type": "fade",
+                        "animation_delay": 0
                       },
                       "blocks": {}
                     }
                   },
                   "block_order": [
-                    "eyebrow-slide-apparel",
-                    "heading-slide-apparel"
+                    "heading",
+                    "description"
                   ]
                 },
-                "button-slide-apparel": {
-                  "type": "button",
+                "actions": {
+                  "type": "group",
                   "settings": {
-                    "button_label": "Explore Apparel",
-                    "button_link": "shopify://collections/all",
-                    "button_open_in_new_tab": false,
-                    "button_style": "primary",
-                    "show_icon": false,
-                    "icon": "arrow_right",
-                    "icon_position": "after",
-                    "icon_size": "inherit",
-                    "icon_width": 20,
-                    "width": "fit",
-                    "width_mobile": "fit",
+                    "direction": "horizontal",
+                    "position_horizontal": "center",
+                    "horizontal_alignment": "left",
+                    "customize_mobile_alignment": false,
+                    "alignment": "left",
+                    "alignment_mobile": "left",
+                    "gap_desktop": 20,
+                    "gap_mobile": 20,
+                    "width": "fill",
+                    "height": "fit",
+                    "width_mobile": "fill",
+                    "appearance_type": "inherit",
+                    "backdrop_blur": 0,
                     "padding_top": 0,
                     "padding_bottom": 0,
                     "padding_left": 0,
-                    "padding_right": 0,
-                    "customize_mobile_padding": false,
-                    "padding_top_mobile": 0,
-                    "padding_bottom_mobile": 0,
-                    "padding_left_mobile": 0,
-                    "padding_right_mobile": 0
+                    "padding_right": 0
                   },
-                  "blocks": {}
+                  "blocks": {
+                    "shop-men": {
+                      "type": "button",
+                      "settings": {
+                        "button_label": "Shop Men",
+                        "button_link": "shopify://collections/all",
+                        "button_open_in_new_tab": false,
+                        "button_style": "primary",
+                        "show_icon": false,
+                        "icon": "arrow_right",
+                        "icon_position": "after",
+                        "icon_size": "inherit",
+                        "icon_width": 20,
+                        "width": "fit",
+                        "width_mobile": "fit",
+                        "padding_top": 0,
+                        "padding_bottom": 0,
+                        "padding_left": 0,
+                        "padding_right": 0,
+                        "customize_mobile_padding": false,
+                        "padding_top_mobile": 0,
+                        "padding_bottom_mobile": 0,
+                        "padding_left_mobile": 0,
+                        "padding_right_mobile": 0,
+                        "animation_type": "slide-bottom",
+                        "animation_delay": 100
+                      },
+                      "blocks": {}
+                    },
+                    "shop-women": {
+                      "type": "button",
+                      "settings": {
+                        "button_label": "Shop Women",
+                        "button_link": "shopify://collections/all",
+                        "button_open_in_new_tab": false,
+                        "button_style": "primary",
+                        "show_icon": false,
+                        "icon": "arrow_right",
+                        "icon_position": "after",
+                        "icon_size": "inherit",
+                        "icon_width": 20,
+                        "width": "fit",
+                        "width_mobile": "fit",
+                        "padding_top": 0,
+                        "padding_bottom": 0,
+                        "padding_left": 0,
+                        "padding_right": 0,
+                        "customize_mobile_padding": false,
+                        "padding_top_mobile": 0,
+                        "padding_bottom_mobile": 0,
+                        "padding_left_mobile": 0,
+                        "padding_right_mobile": 0,
+                        "animation_type": "slide-bottom",
+                        "animation_delay": 100
+                      },
+                      "blocks": {}
+                    }
+                  },
+                  "block_order": [
+                    "shop-men",
+                    "shop-women"
+                  ]
                 }
               },
               "block_order": [
-                "content-slide-apparel",
-                "button-slide-apparel"
+                "content",
+                "actions"
               ]
             }
           },
           "block_order": [
-            "column-slide-apparel"
+            "column"
           ]
         },
-        "slide-equipment": {
+        "slide-training": {
           "type": "slideshow-slide",
           "settings": {
             "layout": "classic",
@@ -333,94 +445,71 @@
             "show_overlay": true,
             "overlay_color": "#00000033",
             "parallax_effect": "none",
+            "content_padding_top": 80,
+            "content_padding_bottom": 80,
+            "content_padding_top_mobile": 64,
+            "content_padding_bottom_mobile": 64,
             "content_width": "custom",
-            "content_max_width": 512,
-            "desktop_position": "center_left",
-            "mobile_position": "top_left",
+            "content_max_width": 576,
+            "desktop_position": "bottom_left",
+            "mobile_position": "bottom_left",
             "desktop_gap": 0,
             "mobile_gap": 0,
             "color_scheme": "scheme-3",
-            "content_padding_top": 80,
-            "content_padding_bottom": 80,
-            "content_padding_top_mobile": 80,
-            "content_padding_bottom_mobile": 80,
-            "image": "shopify://shop_images/equipment-desktop.png",
-            "mobile_image": "shopify://shop_images/equipment-mobile.png"
+            "image": "shopify://shop_images/strideo-cards-6-figma.jpg",
+            "mobile_image": "shopify://shop_images/strideo-cards-6-figma.jpg"
           },
           "blocks": {
-            "column-slide-equipment": {
+            "column": {
               "type": "group",
               "settings": {
                 "direction": "vertical",
                 "alignment": "left",
                 "alignment_mobile": "left",
-                "height": "fit",
+                "gap_desktop": 40,
+                "gap_mobile": 40,
                 "width": "fill",
+                "height": "fit",
                 "width_mobile": "fill",
-                "gap_desktop": 32,
-                "gap_mobile": 32,
                 "appearance_type": "inherit",
+                "backdrop_blur": 0,
                 "padding_top": 0,
                 "padding_bottom": 0,
                 "padding_left": 0,
-                "padding_right": 0,
-                "backdrop_blur": 0
+                "padding_right": 0
               },
               "blocks": {
-                "content-slide-equipment": {
+                "content": {
                   "type": "group",
                   "settings": {
                     "direction": "vertical",
                     "alignment": "left",
                     "alignment_mobile": "left",
-                    "height": "fit",
-                    "width": "fill",
-                    "width_mobile": "fill",
                     "gap_desktop": 16,
                     "gap_mobile": 16,
+                    "width": "fill",
+                    "height": "fit",
+                    "width_mobile": "fill",
                     "appearance_type": "inherit",
+                    "backdrop_blur": 0,
                     "padding_top": 0,
                     "padding_bottom": 0,
                     "padding_left": 0,
-                    "padding_right": 0,
-                    "backdrop_blur": 0
+                    "padding_right": 0
                   },
                   "blocks": {
-                    "eyebrow-slide-equipment": {
-                      "type": "eyebrow",
-                      "settings": {
-                        "text": "<p>FIND YOUR WINNING EDGE</p>",
-                        "color": "",
-                        "show_background": false,
-                        "show_icon": false,
-                        "icon": "circle",
-                        "border_thickness": 0,
-                        "corner_radius": "square",
-                        "color_scheme": "",
-                        "padding_top": 0,
-                        "padding_bottom": 0,
-                        "padding_left": 0,
-                        "padding_right": 0,
-                        "customize_mobile_padding": false,
-                        "padding_top_mobile": 0,
-                        "padding_bottom_mobile": 0,
-                        "padding_left_mobile": 0,
-                        "padding_right_mobile": 0
-                      },
-                      "blocks": {}
-                    },
-                    "heading-slide-equipment": {
+                    "heading": {
                       "type": "heading",
                       "settings": {
-                        "text": "<p>GEAR UP FOR GREATNESS</p>",
+                        "text": "<p>Ready for every move</p>",
                         "heading_size": "display",
                         "custom_heading_size": 24,
-                        "html_tag": "h2",
+                        "html_tag": "h1",
                         "text_color": "",
                         "width": "fill",
                         "max_width": 640,
                         "customize_mobile_size": false,
-                        "width_mobile": "fit",
+                        "width_mobile": "fill",
                         "max_width_mobile": 480,
                         "padding_top": 0,
                         "padding_bottom": 0,
@@ -430,58 +519,137 @@
                         "padding_top_mobile": 0,
                         "padding_bottom_mobile": 0,
                         "padding_left_mobile": 0,
-                        "padding_right_mobile": 0
+                        "padding_right_mobile": 0,
+                        "animation_type": "rotate-words",
+                        "animation_delay": 50
+                      },
+                      "blocks": {}
+                    },
+                    "description": {
+                      "type": "text",
+                      "settings": {
+                        "text": "<p>Performance essentials that move with you, from the first warm-up to the final mile.</p>",
+                        "text_size": "lg",
+                        "height_limit": "none",
+                        "text_color": "",
+                        "width": "fill",
+                        "customize_mobile_size": false,
+                        "width_mobile": "fill",
+                        "padding_top": 0,
+                        "padding_bottom": 0,
+                        "padding_left": 0,
+                        "padding_right": 0,
+                        "animation_type": "fade",
+                        "animation_delay": 0
                       },
                       "blocks": {}
                     }
                   },
                   "block_order": [
-                    "eyebrow-slide-equipment",
-                    "heading-slide-equipment"
+                    "heading",
+                    "description"
                   ]
                 },
-                "button-slide-equipment": {
-                  "type": "button",
+                "actions": {
+                  "type": "group",
                   "settings": {
-                    "button_label": "Discover Gear",
-                    "button_link": "shopify://collections/all",
-                    "button_open_in_new_tab": false,
-                    "button_style": "primary",
-                    "show_icon": false,
-                    "icon": "arrow_right",
-                    "icon_position": "after",
-                    "icon_size": "inherit",
-                    "icon_width": 20,
-                    "width": "fit",
-                    "width_mobile": "fit",
+                    "direction": "horizontal",
+                    "position_horizontal": "center",
+                    "horizontal_alignment": "left",
+                    "customize_mobile_alignment": false,
+                    "alignment": "left",
+                    "alignment_mobile": "left",
+                    "gap_desktop": 20,
+                    "gap_mobile": 20,
+                    "width": "fill",
+                    "height": "fit",
+                    "width_mobile": "fill",
+                    "appearance_type": "inherit",
+                    "backdrop_blur": 0,
                     "padding_top": 0,
                     "padding_bottom": 0,
                     "padding_left": 0,
-                    "padding_right": 0,
-                    "customize_mobile_padding": false,
-                    "padding_top_mobile": 0,
-                    "padding_bottom_mobile": 0,
-                    "padding_left_mobile": 0,
-                    "padding_right_mobile": 0
+                    "padding_right": 0
                   },
-                  "blocks": {}
+                  "blocks": {
+                    "shop-men": {
+                      "type": "button",
+                      "settings": {
+                        "button_label": "Shop Men",
+                        "button_link": "shopify://collections/all",
+                        "button_open_in_new_tab": false,
+                        "button_style": "primary",
+                        "show_icon": false,
+                        "icon": "arrow_right",
+                        "icon_position": "after",
+                        "icon_size": "inherit",
+                        "icon_width": 20,
+                        "width": "fit",
+                        "width_mobile": "fit",
+                        "padding_top": 0,
+                        "padding_bottom": 0,
+                        "padding_left": 0,
+                        "padding_right": 0,
+                        "customize_mobile_padding": false,
+                        "padding_top_mobile": 0,
+                        "padding_bottom_mobile": 0,
+                        "padding_left_mobile": 0,
+                        "padding_right_mobile": 0,
+                        "animation_type": "slide-bottom",
+                        "animation_delay": 100
+                      },
+                      "blocks": {}
+                    },
+                    "shop-women": {
+                      "type": "button",
+                      "settings": {
+                        "button_label": "Shop Women",
+                        "button_link": "shopify://collections/all",
+                        "button_open_in_new_tab": false,
+                        "button_style": "primary",
+                        "show_icon": false,
+                        "icon": "arrow_right",
+                        "icon_position": "after",
+                        "icon_size": "inherit",
+                        "icon_width": 20,
+                        "width": "fit",
+                        "width_mobile": "fit",
+                        "padding_top": 0,
+                        "padding_bottom": 0,
+                        "padding_left": 0,
+                        "padding_right": 0,
+                        "customize_mobile_padding": false,
+                        "padding_top_mobile": 0,
+                        "padding_bottom_mobile": 0,
+                        "padding_left_mobile": 0,
+                        "padding_right_mobile": 0,
+                        "animation_type": "slide-bottom",
+                        "animation_delay": 100
+                      },
+                      "blocks": {}
+                    }
+                  },
+                  "block_order": [
+                    "shop-men",
+                    "shop-women"
+                  ]
                 }
               },
               "block_order": [
-                "content-slide-equipment",
-                "button-slide-equipment"
+                "content",
+                "actions"
               ]
             }
           },
           "block_order": [
-            "column-slide-equipment"
+            "column"
           ]
         }
       },
       "block_order": [
         "slide-primary",
-        "slide-apparel",
-        "slide-equipment"
+        "slide-women",
+        "slide-training"
       ],
       "settings": {
         "width": "full_bleed",
@@ -489,14 +657,18 @@
         "transition_style": "fade",
         "full_width_content": false,
         "desktop_height": "custom",
+        "desktop_height_custom": 950,
+        "customize_tablet_height": true,
+        "tablet_height_custom": 800,
         "mobile_height": "custom",
+        "mobile_height_custom": 640,
         "autoplay": false,
         "pause_on_hover": true,
         "autoplay_delay": 6,
         "show_navigation": true,
         "navigation_style": "primary",
         "navigation_icon": "arrow",
-        "navigation_behavior": "show_on_hover",
+        "navigation_behavior": "always",
         "show_pagination": true,
         "pagination_type": "bullets",
         "pagination_position_desktop": "center",
@@ -508,11 +680,7 @@
         "padding_bottom": 0,
         "customize_mobile_padding": false,
         "padding_top_mobile": 0,
-        "padding_bottom_mobile": 0,
-        "desktop_height_custom": 810,
-        "customize_tablet_height": true,
-        "tablet_height_custom": 720,
-        "mobile_height_custom": 670
+        "padding_bottom_mobile": 0
       }
     },
     "collection_list": {
@@ -521,20 +689,6 @@
         "header": {
           "type": "header",
           "static": true,
-          "blocks": {
-            "category-heading-0": {
-              "type": "heading",
-              "settings": {
-                "text": "<p>SHOP BY CATEGORIES</p>",
-                "heading_size": "xl",
-                "html_tag": "h2",
-                "width": "fill"
-              }
-            }
-          },
-          "block_order": [
-            "category-heading-0"
-          ],
           "settings": {
             "width": "fill",
             "alignment": "left",
@@ -542,150 +696,181 @@
             "padding_bottom": 0,
             "padding_left": 0,
             "padding_right": 0
-          }
+          },
+          "blocks": {
+            "category-heading-0": {
+              "type": "heading",
+              "settings": {
+                "text": "<p>Shop by category</p>",
+                "heading_size": "xl",
+                "html_tag": "h2",
+                "width": "fill",
+                "animation_type": "rotate-words",
+                "animation_delay": 50
+              }
+            }
+          },
+          "block_order": [
+            "category-heading-0"
+          ]
         },
         "view-all": {
           "type": "view-all-button",
+          "disabled": true,
           "static": true,
-          "settings": {},
-          "disabled": true
+          "settings": {}
         },
         "collection-list": {
           "type": "collection-list-items",
           "static": true,
+          "settings": {
+            "collections": [
+              "marathon-strideo",
+              "road-running-strideo",
+              "running-strideo"
+            ],
+            "layout": "carousel",
+            "columns_desktop": "3",
+            "columns_tablet": "2",
+            "columns_mobile": "1",
+            "show_next_slide_preview_on_desktop": false,
+            "show_next_slide_preview_on_mobile": false,
+            "gap_desktop": 28,
+            "customize_tablet_gap": true,
+            "gap_tablet": 20,
+            "gap_mobile": 16,
+            "show_navigation_on_desktop": true,
+            "navigation_position": "inside",
+            "navigation_style": "primary",
+            "navigation_icon": "arrow",
+            "navigation_behavior": "show_on_hover",
+            "show_pagination_on_desktop": true,
+            "pagination_visibility": "tablet_mobile",
+            "pagination_type": "progress_bar",
+            "pagination_thickness": "thin",
+            "pagination_top_padding_desktop": 40,
+            "pagination_top_padding_mobile": 36,
+            "pagination_limit_width": false,
+            "autoplay": false
+          },
           "blocks": {
             "collection-card": {
               "type": "collection-card",
               "static": true,
+              "settings": {
+                "ratio": "ratio_6_7",
+                "placement": "below_image",
+                "alignment": "left",
+                "gap_desktop": 0,
+                "gap_mobile": 0,
+                "border_thickness": 0,
+                "corner_radius": "rounded",
+                "shadow": "none",
+                "color_type": "color_scheme",
+                "color_scheme": "scheme-3",
+                "padding_top": 0,
+                "padding_bottom": 0,
+                "padding_left": 0,
+                "padding_right": 0,
+                "hover_zoom": true
+              },
               "blocks": {
                 "content-area": {
                   "type": "group",
                   "name": "Content area",
                   "settings": {
-                    "direction": "vertical",
+                    "direction": "horizontal",
+                    "position_horizontal": "center",
+                    "horizontal_alignment": "space-between",
+                    "customize_mobile_alignment": false,
+                    "gap_desktop": 16,
+                    "gap_mobile": 16,
                     "width": "fill",
                     "height": "fit",
-                    "alignment": "center",
-                    "alignment_mobile": "center",
-                    "gap_desktop": 0,
-                    "gap_mobile": 0,
+                    "width_mobile": "fill",
                     "appearance_type": "inherit",
                     "backdrop_blur": 0,
-                    "padding_top": 16,
-                    "padding_bottom": 16,
-                    "padding_left": 16,
-                    "padding_right": 16,
-                    "width_mobile": "fill"
+                    "padding_top": 20,
+                    "padding_bottom": 20,
+                    "padding_left": 24,
+                    "padding_right": 24
                   },
                   "blocks": {
-                    "wrapper": {
+                    "text": {
                       "type": "group",
-                      "name": "Wrapper",
+                      "name": "Title and count",
                       "settings": {
                         "direction": "vertical",
-                        "width": "fill",
-                        "height": "fit",
-                        "alignment": "center",
-                        "alignment_mobile": "center",
                         "gap_desktop": 0,
                         "gap_mobile": 0,
-                        "appearance_type": "scheme",
-                        "backdrop_blur": 20,
-                        "color_scheme": "scheme-3",
-                        "background_color": "rgba(114, 114, 114, 0.1)",
-                        "border_type": "solid",
-                        "border_color": "rgba(255, 255, 255, 0.2)",
-                        "corner_radius": "slightly_rounded",
-                        "padding_top": 10,
-                        "padding_bottom": 10,
-                        "padding_left": 10,
-                        "padding_right": 10,
-                        "width_mobile": "fill"
+                        "width": "fill",
+                        "height": "fit",
+                        "width_mobile": "fill",
+                        "appearance_type": "inherit",
+                        "padding_top": 0,
+                        "padding_bottom": 0,
+                        "padding_left": 0,
+                        "padding_right": 0
                       },
                       "blocks": {
                         "title": {
                           "type": "collection-card-title",
                           "settings": {
-                            "heading_size": "sm",
-                            "html_tag": "h3",
+                            "content_gap": 4,
                             "show_product_count": true,
+                            "heading_size": "md",
+                            "html_tag": "h3",
                             "product_count_font": "body",
-                            "product_count_font_size": "sm",
+                            "product_count_font_size": "md",
                             "product_count_placement": "below",
-                            "uppercase_title": true,
-                            "truncate_title": true
+                            "uppercase_title": false,
+                            "truncate_title": false
                           }
                         }
                       },
                       "block_order": [
                         "title"
                       ]
+                    },
+                    "button": {
+                      "type": "collection-card-button",
+                      "settings": {
+                        "button_label": "Shop collection",
+                        "button_style": "secondary",
+                        "show_icon": true,
+                        "icon_only": true,
+                        "icon": "arrow_up_right",
+                        "icon_size": "custom",
+                        "icon_width": 24,
+                        "width": "fit",
+                        "width_mobile": "fit"
+                      }
                     }
                   },
                   "block_order": [
-                    "wrapper"
+                    "text",
+                    "button"
                   ]
                 }
               },
               "block_order": [
                 "content-area"
-              ],
-              "settings": {
-                "placement": "on_image",
-                "ratio": "portrait",
-                "corner_radius": "rounded",
-                "alignment": "center",
-                "color_type": "color_scheme",
-                "color_scheme": "scheme-3",
-                "border_thickness": 0,
-                "shadow": "none",
-                "gap_desktop": 0,
-                "gap_mobile": 0,
-                "padding_top": 0,
-                "padding_bottom": 0,
-                "padding_left": 0,
-                "padding_right": 0,
-                "hover_zoom": true
-              }
+              ]
             }
           },
-          "block_order": [],
-          "settings": {
-            "layout": "carousel",
-            "collections": [
-              "rackets-stroken",
-              "apparel-stroken",
-              "tennis-shoes-stroken",
-              "tennis-bags-stroken",
-              "tennis-balls-stroken"
-            ],
-            "columns_desktop": "4",
-            "columns_tablet": "2",
-            "columns_mobile": "1",
-            "gap_desktop": 20,
-            "gap_mobile": 20,
-            "show_next_slide_preview_on_desktop": true,
-            "show_next_slide_preview_on_mobile": true,
-            "show_navigation_on_desktop": true,
-            "navigation_position": "top",
-            "navigation_style": "outline",
-            "navigation_icon": "chevron",
-            "show_pagination_on_desktop": false,
-            "autoplay": false
-          }
+          "block_order": []
         }
       },
-      "block_order": [],
       "settings": {
         "section_width": "page_width",
         "desktop_alignment": "left",
         "mobile_alignment": "left",
-        "gap_desktop": 32,
-        "gap_mobile": 32,
-        "color_scheme": "scheme-1",
+        "gap_desktop": 40,
+        "gap_mobile": 36,
         "background_media": "none",
-        "padding_top": 80,
-        "padding_bottom": 80,
+        "color_scheme": "scheme-1",
+        "padding_top": 96,
+        "padding_bottom": 96,
         "customize_mobile_padding": true,
         "padding_top_mobile": 64,
         "padding_bottom_mobile": 64
@@ -693,35 +878,6 @@
     },
     "countdown_timer": {
       "type": "hero",
-      "name": "Countdown timer",
-      "settings": {
-        "width": "page",
-        "layout": "stack",
-        "stack_on_tablet": true,
-        "desktop_content_position": "last",
-        "media_type": "image",
-        "media_aspect_ratio": "ratio_7_6",
-        "media_corner_radius": "rounded",
-        "hover_zoom": true,
-        "overlay": "rgba(0,0,0,0)",
-        "desktop_height": "adapt",
-        "mobile_height": "adapt",
-        "content_width": "fill",
-        "desktop_position": "center_center",
-        "mobile_position": "center_center",
-        "desktop_gap": 0,
-        "mobile_gap": 0,
-        "page_content_padding": 0,
-        "page_content_padding_mobile": 0,
-        "color_scheme": "scheme-1",
-        "content_color_scheme": "scheme-1",
-        "padding_top": 0,
-        "padding_bottom": 80,
-        "customize_mobile_padding": true,
-        "padding_top_mobile": 0,
-        "padding_bottom_mobile": 64,
-        "banner_image": "shopify://shop_images/image_coutndowntimmer.jpg"
-      },
       "blocks": {
         "content-area": {
           "type": "group",
@@ -730,68 +886,66 @@
             "direction": "vertical",
             "width": "fill",
             "width_mobile": "fill",
-            "height": "fit",
-            "alignment": "center",
-            "alignment_mobile": "center",
-            "gap_desktop": 32,
-            "gap_mobile": 32,
+            "alignment": "left",
+            "alignment_mobile": "left",
+            "height": "fill",
             "backdrop_blur": 0,
-            "padding_left": 96,
-            "padding_right": 96,
-            "customize_tablet_padding": true,
-            "customize_mobile_padding": true,
-            "padding_top_mobile": 40,
-            "padding_bottom_mobile": 0,
-            "padding_left_mobile": 0,
-            "padding_right_mobile": 0,
-            "padding_tablet": 40
+            "position": "space-between",
+            "gap_desktop": 64,
+            "gap_mobile": 40
           },
           "blocks": {
-            "wrapper": {
+            "content": {
               "type": "group",
-              "name": "Wrapper",
+              "name": "Content",
               "settings": {
                 "direction": "vertical",
                 "width": "fill",
                 "width_mobile": "fill",
+                "alignment": "left",
+                "alignment_mobile": "left",
                 "height": "fit",
-                "alignment": "center",
-                "alignment_mobile": "center",
-                "gap_desktop": 32,
+                "backdrop_blur": 0,
+                "gap_desktop": 40,
                 "gap_mobile": 32,
-                "backdrop_blur": 0
+                "limit_width": true,
+                "max_width": 580
               },
               "blocks": {
-                "content": {
+                "heading-content": {
                   "type": "group",
-                  "name": "Content",
+                  "name": "Heading and description",
                   "settings": {
                     "direction": "vertical",
                     "width": "fill",
                     "width_mobile": "fill",
+                    "alignment": "left",
+                    "alignment_mobile": "left",
                     "height": "fit",
-                    "alignment": "center",
-                    "alignment_mobile": "center",
+                    "backdrop_blur": 0,
                     "gap_desktop": 16,
-                    "gap_mobile": 16,
-                    "backdrop_blur": 0
+                    "gap_mobile": 16
                   },
                   "blocks": {
                     "heading": {
                       "type": "heading",
                       "settings": {
-                        "text": "<p>LIMITED TIME ONLY</p>",
-                        "heading_size": "xl",
+                        "text": "<p>Run into savings</p>",
+                        "heading_size": "display",
                         "html_tag": "h2",
-                        "width": "fill"
+                        "width": "fill",
+                        "animation_type": "rotate-words",
+                        "animation_delay": 50
                       }
                     },
                     "text": {
                       "type": "text",
                       "settings": {
-                        "text": "<p>Don't miss your chance! Secure your gear now before the time runs out - these offers are only available for a limited period.</p>",
-                        "text_size": "md",
-                        "width": "fill"
+                        "text": "<p>Your next stride just got lighter. Grab up to 40% off select styles built to move with you on the track, in the city, and everywhere in between.</p>",
+                        "text_size": "lg",
+                        "width": "fill",
+                        "animation_type": "fade",
+                        "animation_delay": 0
                       }
                     }
                   },
@@ -800,87 +954,460 @@
                     "text"
                   ]
                 },
+                "button": {
+                  "type": "button",
+                  "settings": {
+                    "button_label": "Shop now",
+                    "button_link": "shopify://collections/all",
+                    "button_style": "primary",
+                    "show_icon": false,
+                    "animation_type": "slide-bottom",
+                    "animation_delay": 100
+                  }
+                }
+              },
+              "block_order": [
+                "heading-content",
+                "button"
+              ]
+            },
+            "countdown": {
+              "type": "group",
+              "name": "Countdown",
+              "settings": {
+                "direction": "vertical",
+                "width": "fill",
+                "width_mobile": "fill",
+                "alignment": "left",
+                "alignment_mobile": "left",
+                "height": "fit",
+                "backdrop_blur": 0,
+                "limit_width": true,
+                "max_width": 430,
+                "appearance_type": "scheme",
+                "color_scheme": "scheme-4",
+                "corner_radius": "slightly_rounded",
+                "gap_desktop": 0,
+                "gap_mobile": 0
+              },
+              "blocks": {
                 "timer": {
                   "type": "countdown-timer",
                   "settings": {
                     "style": "with_labels",
                     "unit_layout": "connected",
-                    "max_width": 448,
+                    "max_width": 428,
+                    "show_background": false,
+                    "corner_radius": "slightly_rounded",
                     "type": "recurring",
                     "duration_hours": 37,
                     "duration_minutes": 34,
-                    "number_size": "lg",
+                    "number_size": "custom",
                     "label_size": "sm",
-                    "show_background": false,
-                    "corner_radius": "slightly_rounded"
-                  }
-                },
-                "button": {
-                  "type": "button",
-                  "settings": {
-                    "button_label": "Explore Sale",
-                    "button_link": "shopify://collections/all",
-                    "button_style": "primary",
-                    "show_icon": false
+                    "custom_number_size": 24
                   }
                 }
               },
               "block_order": [
-                "content",
-                "timer",
-                "button"
+                "timer"
               ]
             }
           },
           "block_order": [
-            "wrapper"
+            "content",
+            "countdown"
           ]
         }
       },
       "block_order": [
         "content-area"
+      ],
+      "name": "Countdown timer",
+      "settings": {
+        "width": "full",
+        "layout": "classic",
+        "desktop_content_position": "last",
+        "stack_on_tablet": false,
+        "media_type": "image",
+        "banner_image": "shopify://shop_images/strideo-countdown-1-figma.jpg",
+        "media_aspect_ratio": "ratio_7_6",
+        "media_corner_radius": "rounded",
+        "hover_zoom": false,
+        "overlay": "rgba(0,0,0,0.25)",
+        "desktop_height": "medium",
+        "mobile_height": "medium",
+        "content_width": "fill",
+        "desktop_position": "center_center",
+        "mobile_position": "center_center",
+        "desktop_gap": 0,
+        "mobile_gap": 0,
+        "page_content_padding": 0,
+        "page_content_padding_mobile": 0,
+        "color_scheme": "scheme-3",
+        "content_color_scheme": "scheme-3",
+        "padding_top": 0,
+        "padding_bottom": 0,
+        "customize_mobile_padding": true,
+        "padding_top_mobile": 0,
+        "padding_bottom_mobile": 0,
+        "mobile_banner_image": "shopify://shop_images/strideo-countdown-1-figma.jpg"
+      },
+      "custom_css": [
+        ".hero {--ct-h:750px;--ct-p:80px}",
+        ".hero__surface {--hero-min-height:var(--ct-h)}",
+        ".hero__container {padding-block:var(--ct-p)}",
+        ".hero__content {height:calc(var(--ct-h) - var(--ct-p)*2);max-width:calc(var(--page-width) - var(--page-margin-current)*2)}",
+        ".countdown-timer * {border:0!important}",
+        "@media (max-width:1149.98px) {.hero {--ct-h:640px}}",
+        "@media (max-width:767.98px) {.hero {--ct-h:570px;--ct-p:64px}}"
       ]
     },
     "featured_collection": {
-      "type": "collection-tabs",
-      "name": "Featured collection",
+      "type": "featured-collection",
+      "blocks": {
+        "header": {
+          "type": "header",
+          "static": true,
+          "settings": {
+            "width": "fill",
+            "gap_desktop": 12,
+            "gap_mobile": 12
+          },
+          "blocks": {
+            "heading": {
+              "type": "heading",
+              "settings": {
+                "text": "<p>This week’s top picks</p>",
+                "heading_size": "xl",
+                "html_tag": "h2",
+                "animation_type": "rotate-words",
+                "animation_delay": 50
+              }
+            }
+          },
+          "block_order": [
+            "heading"
+          ]
+        },
+        "featured-collection-view-all": {
+          "type": "view-all-button",
+          "static": true,
+          "settings": {
+            "button_label": "View All",
+            "button_style": "tertiary",
+            "show_icon": false,
+            "button_style_mobile": "tertiary",
+            "show_icon_mobile": false
+          }
+        },
+        "product-list": {
+          "type": "product-list",
+          "static": true,
+          "settings": {
+            "collection": "this-week-s-top-picks-strideo",
+            "max_products": 6,
+            "layout_type": "carousel",
+            "columns_desktop": "3",
+            "columns_tablet": "1",
+            "show_next_slide_preview_on_tablet": true,
+            "columns_mobile": "1",
+            "show_next_slide_preview_on_desktop": false,
+            "product_gap_desktop": 10,
+            "product_gap_mobile": 10,
+            "show_navigation_on_desktop": true,
+            "navigation_position": "bottom",
+            "navigation_style": "icon_only",
+            "navigation_icon": "arrow",
+            "navigation_behavior": "always",
+            "show_pagination_on_desktop": true,
+            "pagination_type": "progress_bar",
+            "pagination_thickness": "thin",
+            "pagination_top_padding_desktop": 60,
+            "pagination_top_padding_mobile": 40,
+            "pagination_limit_width": false,
+            "autoplay": false
+          },
+          "blocks": {
+            "product-card": {
+              "type": "product-card",
+              "static": true,
+              "settings": {
+                "color_type": "inherit"
+              }
+            }
+          },
+          "block_order": []
+        }
+      },
       "settings": {
         "section_width": "page_width",
-        "layout_direction": "vertical",
-        "tab_position": "left",
+        "desktop_alignment": "left",
         "mobile_alignment": "left",
-        "gap_desktop": 32,
-        "gap_mobile": 24,
-        "max_products": 8,
-        "layout_type": "carousel",
-        "columns_desktop": "5",
-        "columns_mobile": "2",
-        "show_next_slide_preview_on_desktop": false,
-        "product_gap_desktop": 20,
-        "product_gap_mobile": 16,
-        "show_navigation_on_desktop": true,
-        "navigation_position": "bottom",
-        "navigation_style": "outline",
-        "navigation_icon": "chevron",
-        "navigation_behavior": "always",
-        "show_pagination_on_desktop": true,
-        "pagination_type": "progress_bar",
-        "pagination_top_padding_desktop": 32,
-        "pagination_top_padding_mobile": 24,
-        "pagination_limit_width": true,
-        "pagination_max_width": 100,
-        "autoplay": false,
-        "autoplay_pause_on_hover": true,
-        "autoplay_speed": 4,
+        "gap_desktop": 40,
+        "gap_mobile": 40,
         "color_scheme": "scheme-1",
-        "padding_top": 0,
-        "padding_bottom": 80,
+        "padding_top": 20,
+        "padding_bottom": 96,
+        "hide_view_all_mobile": true,
         "customize_mobile_padding": true,
-        "padding_top_mobile": 0,
-        "padding_bottom_mobile": 64,
-        "header_layout": "inline",
-        "columns_tablet": "3"
+        "padding_top_mobile": 10,
+        "padding_bottom_mobile": 64
+      }
+    },
+    "scrolling_text": {
+      "type": "text-marquee-custom",
+      "blocks": {
+        "marquee": {
+          "type": "marquee",
+          "settings": {
+            "animation_direction": "backward",
+            "animation_speed": 1,
+            "gap_desktop": 12,
+            "gap_mobile": 12,
+            "padding_top": 0,
+            "padding_bottom": 0,
+            "padding_left": 0,
+            "padding_right": 0
+          },
+          "blocks": {
+            "text-1": {
+              "type": "marquee-item",
+              "settings": {
+                "direction": "horizontal",
+                "position": "center",
+                "customize_mobile_alignment": false,
+                "gap_desktop": 0,
+                "gap_mobile": 0,
+                "backdrop_blur": 0,
+                "padding_left": 24,
+                "padding_right": 24,
+                "padding_top": 0,
+                "padding_bottom": 0
+              },
+              "blocks": {
+                "heading-1": {
+                  "type": "heading",
+                  "settings": {
+                    "text": "<p>Power</p>",
+                    "heading_size": "lg",
+                    "html_tag": "div",
+                    "outline_text": false,
+                    "width": "fit",
+                    "text_color": "",
+                    "animation_type": "rotate-words",
+                    "animation_delay": 50
+                  }
+                }
+              },
+              "block_order": [
+                "heading-1"
+              ]
+            },
+            "text-2": {
+              "type": "marquee-item",
+              "settings": {
+                "direction": "horizontal",
+                "position": "center",
+                "customize_mobile_alignment": false,
+                "gap_desktop": 0,
+                "gap_mobile": 0,
+                "backdrop_blur": 0,
+                "padding_left": 24,
+                "padding_right": 24,
+                "padding_top": 0,
+                "padding_bottom": 0
+              },
+              "blocks": {
+                "heading-2": {
+                  "type": "heading",
+                  "settings": {
+                    "text": "<p>Performance</p>",
+                    "heading_size": "lg",
+                    "html_tag": "div",
+                    "outline_text": false,
+                    "width": "fit",
+                    "text_color": "#FDFFE5",
+                    "animation_type": "rotate-words",
+                    "animation_delay": 50
+                  }
+                }
+              },
+              "block_order": [
+                "heading-2"
+              ]
+            }
+          },
+          "block_order": [
+            "text-1",
+            "text-2"
+          ]
+        }
       },
+      "block_order": [
+        "marquee"
+      ],
+      "name": "Scrolling text",
+      "settings": {
+        "section_width": "full_width_no_padding",
+        "direction": "vertical",
+        "position_vertical": "left",
+        "gap_desktop": 0,
+        "gap_mobile": 0,
+        "color_scheme": "scheme-5",
+        "padding_top": 24,
+        "padding_right": 0,
+        "padding_bottom": 24,
+        "padding_left": 0,
+        "customize_mobile_padding": true,
+        "padding_top_mobile": 20,
+        "padding_bottom_mobile": 20,
+        "padding_left_mobile": 0,
+        "padding_right_mobile": 0
+      }
+    },
+    "collections_image_list": {
+      "type": "collection-list-two-image",
+      "blocks": {
+        "look-header": {
+          "type": "header",
+          "static": true,
+          "settings": {
+            "width": "fill",
+            "inherit_alignment": true,
+            "gap_desktop": 12,
+            "gap_mobile": 12
+          },
+          "blocks": {
+            "eyebrow": {
+              "type": "eyebrow",
+              "settings": {
+                "text": "<p>COLLECTIONS</p>",
+                "show_background": false,
+                "animation_type": "fade",
+                "animation_delay": 0
+              }
+            }
+          },
+          "block_order": [
+            "eyebrow"
+          ]
+        },
+        "collection_1": {
+          "type": "collection-two-image-item",
+          "settings": {
+            "collection": "cloud-strideo",
+            "custom_title": "Cloud",
+            "custom_image": "shopify://shop_images/strideo-lines-1-figma.jpg",
+            "secondary_image": "shopify://shop_images/strideo-lines-2-figma.jpg"
+          }
+        },
+        "collection_2": {
+          "type": "collection-two-image-item",
+          "settings": {
+            "collection": "the-roger-strideo",
+            "custom_title": "The Roger",
+            "custom_image": "shopify://shop_images/strideo-cards-3-figma.jpg",
+            "secondary_image": "shopify://shop_images/strideo-cards-1-figma.jpg"
+          }
+        },
+        "collection_3": {
+          "type": "collection-two-image-item",
+          "settings": {
+            "collection": "cloudmonster-strideo",
+            "custom_title": "Cloudmonster",
+            "custom_image": "shopify://shop_images/strideo-categories-2-figma.jpg",
+            "secondary_image": "shopify://shop_images/strideo-cards-5-figma.jpg"
+          }
+        },
+        "collection_4": {
+          "type": "collection-two-image-item",
+          "settings": {
+            "collection": "cloudtilt-strideo",
+            "custom_title": "Cloudtilt",
+            "custom_image": "shopify://shop_images/strideo-lines-2-figma.jpg",
+            "secondary_image": "shopify://shop_images/strideo-cards-5-figma.jpg"
+          }
+        },
+        "collection_5": {
+          "type": "collection-two-image-item",
+          "settings": {
+            "collection": "cloudsurfer-strideo",
+            "custom_title": "Cloudsurfer",
+            "custom_image": "shopify://shop_images/strideo-categories-1-figma.jpg",
+            "secondary_image": "shopify://shop_images/strideo-categories-6-figma.jpg"
+          }
+        }
+      },
+      "block_order": [
+        "collection_1",
+        "collection_2",
+        "collection_3",
+        "collection_4",
+        "collection_5"
+      ],
+      "settings": {
+        "section_width": "page_width",
+        "gap_desktop": 112,
+        "gap_mobile": 16,
+        "title_size": "display",
+        "title_tag": "h2",
+        "color_scheme": "scheme-1",
+        "padding_top": 40,
+        "padding_bottom": 144,
+        "customize_mobile_padding": true,
+        "padding_top_mobile": 20,
+        "padding_bottom_mobile": 112,
+        "image_size": "medium",
+        "header_gap_desktop": 40,
+        "header_gap_mobile": 36
+      }
+    },
+    "scroll_reading_text": {
+      "type": "scroll-reading-text",
+      "blocks": {
+        "editorial-text": {
+          "type": "editorial-text",
+          "settings": {
+            "text": "<p>True balance begins from the ground up.</p>",
+            "size": "display",
+            "width": "fill",
+            "enable_scroll_reveal": true,
+            "scroll_speed": "medium",
+            "start_opacity": 30
+          }
+        }
+      },
+      "settings": {
+        "section_width": "page_width",
+        "desktop_height": "large",
+        "mobile_height": "large",
+        "content_width": "medium",
+        "alignment": "center",
+        "desktop_gap": 40,
+        "mobile_gap": 40,
+        "color_scheme": "scheme-3",
+        "overlay": true,
+        "overlay_color": "#000000",
+        "overlay_opacity": 10,
+        "padding_top": 80,
+        "padding_bottom": 80,
+        "padding_left": 0,
+        "padding_right": 0,
+        "customize_mobile_padding": true,
+        "padding_top_mobile": 80,
+        "padding_bottom_mobile": 80,
+        "padding_left_mobile": 0,
+        "padding_right_mobile": 0,
+        "background_image": "shopify://shop_images/strideo-scroll-1-figma.jpg",
+        "mobile_image": "shopify://shop_images/strideo-scroll-1-figma.jpg"
+      },
+      "block_order": [
+        "editorial-text"
+      ]
+    },
+    "new_arrivals_tabs": {
+      "type": "collection-tabs",
+      "name": "New arrivals — Tabs",
       "blocks": {
         "header": {
           "type": "header",
@@ -891,17 +1418,19 @@
             "gap_mobile": 8
           },
           "blocks": {
-            "child_0": {
+            "heading": {
               "type": "heading",
               "settings": {
-                "text": "<p>BEST SELLERS</p>",
+                "text": "<p>New arrivals</p>",
                 "heading_size": "xl",
-                "html_tag": "h2"
+                "html_tag": "h2",
+                "animation_type": "rotate-words",
+                "animation_delay": 50
               }
             }
           },
           "block_order": [
-            "child_0"
+            "heading"
           ]
         },
         "tab-layout": {
@@ -909,19 +1438,20 @@
           "static": true,
           "settings": {
             "vertical_layout": false,
-            "style": "button",
-            "active_style": "secondary",
-            "gap_desktop": 8,
-            "gap_mobile": 8,
+            "style": "underline",
+            "active_style": "primary",
+            "gap_desktop": 24,
+            "gap_mobile": 24,
             "font": "body",
-            "heading_size": "md"
+            "alignment": "right",
+            "heading_size": "lg"
           }
         },
         "tab_2": {
           "type": "collection-tab",
           "settings": {
-            "label": "Rackets",
-            "collection": "rackets-stroken"
+            "label": "Men",
+            "collection": "new-arrivals-strideo"
           },
           "blocks": {
             "product-card": {
@@ -938,8 +1468,8 @@
         "tab_3": {
           "type": "collection-tab",
           "settings": {
-            "label": "Apparel",
-            "collection": "apparel-stroken"
+            "label": "Women",
+            "collection": "new-arrivals-strideo"
           },
           "blocks": {
             "product-card": {
@@ -957,7 +1487,7 @@
           "type": "tabs-view-all-button",
           "static": true,
           "settings": {
-            "button_label": "",
+            "button_label": "View all",
             "button_style": "tertiary",
             "show_icon": false,
             "icon": "arrow",
@@ -966,471 +1496,594 @@
             "icon_width": 20,
             "width": "fit",
             "width_mobile": "fit",
-            "customize_mobile_padding": false,
-            "show_button": false
+            "customize_mobile_padding": false
           }
         }
       },
       "block_order": [
         "tab_2",
         "tab_3"
+      ],
+      "settings": {
+        "section_width": "page_width",
+        "layout_direction": "vertical",
+        "tab_position": "left",
+        "mobile_alignment": "left",
+        "gap_desktop": 40,
+        "gap_mobile": 36,
+        "max_products": 8,
+        "layout_type": "carousel",
+        "columns_desktop": "4",
+        "columns_mobile": "1",
+        "show_next_slide_preview_on_desktop": false,
+        "product_gap_desktop": 10,
+        "product_gap_mobile": 10,
+        "show_navigation_on_desktop": true,
+        "navigation_position": "bottom",
+        "navigation_style": "icon_only",
+        "navigation_icon": "arrow",
+        "navigation_behavior": "always",
+        "show_pagination_on_desktop": true,
+        "pagination_type": "progress_bar",
+        "pagination_top_padding_desktop": 40,
+        "pagination_top_padding_mobile": 36,
+        "pagination_limit_width": false,
+        "pagination_max_width": 260,
+        "autoplay": false,
+        "autoplay_pause_on_hover": true,
+        "autoplay_speed": 4,
+        "color_scheme": "scheme-1",
+        "padding_top": 96,
+        "padding_bottom": 96,
+        "customize_mobile_padding": true,
+        "padding_top_mobile": 64,
+        "padding_bottom_mobile": 64,
+        "header_layout": "inline",
+        "columns_tablet": "2",
+        "pagination_thickness": "thin"
+      },
+      "custom_css": [
+        "@media (min-width: 768px) and (max-width: 1149.98px) {.collection-tabs__spacing {padding-top: 80px; padding-bottom: 80px;}}"
       ]
     },
-    "scrolling_text": {
-      "type": "text-marquee-custom",
-      "name": "Scrolling text",
+    "featured_product": {
+      "type": "featured-product",
       "settings": {
-        "section_width": "full_width_no_padding",
-        "direction": "vertical",
-        "position_vertical": "left",
-        "gap_desktop": 0,
-        "gap_mobile": 0,
-        "color_scheme": "scheme-3",
-        "padding_top": 32,
-        "padding_bottom": 32,
-        "padding_left": 0,
-        "padding_right": 0,
-        "customize_mobile_padding": false
+        "sticky_content": true,
+        "width": "page",
+        "media_width": "large",
+        "gap": 48,
+        "gap_mobile": 36,
+        "color_scheme": "scheme-1",
+        "padding_top": 96,
+        "padding_bottom": 96,
+        "customize_mobile_padding": true,
+        "product": "strideo-cloudrunner-2",
+        "padding_top_mobile": 64,
+        "padding_bottom_mobile": 64
       },
       "blocks": {
-        "marquee": {
-          "type": "marquee",
+        "product-media": {
+          "type": "_product-media",
+          "static": true,
           "settings": {
-            "animation_direction": "backward",
-            "animation_speed": 1,
-            "gap_desktop": 16,
-            "gap_mobile": 16,
+            "desktop_layout": "carousel_thumbnails",
+            "mobile_layout": "thumbnails",
+            "full_width_media": false,
+            "autoplay": false,
+            "loop_video": false,
+            "zoom": "open_lightbox",
+            "gap": 10,
+            "gap_mobile": 6,
+            "bottom_thumbnail_width": 64,
+            "thumbnail_width_mobile": 64,
+            "thumbnail_ratio": "square"
+          }
+        },
+        "product-details": {
+          "type": "_product-details",
+          "static": true,
+          "settings": {
+            "alignment": "left",
+            "limit_width": true,
+            "max_width": 510,
+            "container_position": "right",
+            "gap_desktop": 24,
+            "gap_mobile": 20,
+            "border_thickness": 0,
+            "corner_radius": "square",
+            "shadow": "none",
+            "appearance_type": "inherit",
+            "color_scheme": "scheme-1",
             "padding_top": 0,
             "padding_bottom": 0,
             "padding_left": 0,
-            "padding_right": 0
+            "padding_right": 0,
+            "customize_mobile_padding": false,
+            "padding_top_mobile": 0,
+            "padding_bottom_mobile": 0,
+            "padding_left_mobile": 0,
+            "padding_right_mobile": 0
           },
           "blocks": {
-            "text-1": {
-              "type": "marquee-item",
-              "settings": {
-                "direction": "horizontal",
-                "position": "center",
-                "width": "fit",
-                "customize_mobile_alignment": false,
-                "gap_desktop": 0,
-                "gap_mobile": 0,
-                "padding_left": 24,
-                "padding_right": 24,
-                "backdrop_blur": 0
-              },
-              "blocks": {
-                "heading-1": {
-                  "type": "heading",
-                  "settings": {
-                    "text": "<p>BUILT FOR THE COURT</p>",
-                    "heading_size": "xl",
-                    "html_tag": "div",
-                    "width": "fit",
-                    "outline_text": false
-                  }
-                }
-              },
-              "block_order": [
-                "heading-1"
-              ]
-            },
-            "text-2": {
-              "type": "marquee-item",
-              "settings": {
-                "direction": "horizontal",
-                "position": "center",
-                "width": "fit",
-                "customize_mobile_alignment": false,
-                "gap_desktop": 0,
-                "gap_mobile": 0,
-                "padding_left": 24,
-                "padding_right": 24,
-                "backdrop_blur": 0
-              },
-              "blocks": {
-                "heading-2": {
-                  "type": "heading",
-                  "settings": {
-                    "text": "<p>MADE FOR PLAYERS</p>",
-                    "heading_size": "xl",
-                    "html_tag": "div",
-                    "width": "fit",
-                    "outline_text": true
-                  }
-                }
-              },
-              "block_order": [
-                "heading-2"
-              ]
-            }
-          },
-          "block_order": [
-            "text-1",
-            "text-2"
-          ]
-        }
-      },
-      "block_order": [
-        "marquee"
-      ]
-    },
-    "parallax": {
-      "type": "parallax",
-      "settings": {
-        "section_width": "page_width",
-        "gap_desktop": 100,
-        "gap_mobile": 30,
-        "content_gap_desktop": 100,
-        "content_gap_mobile": 50,
-        "background_media": "none",
-        "color_scheme": "scheme-1",
-        "padding_top": 50,
-        "padding_bottom": 50,
-        "customize_mobile_padding": false,
-        "padding_top_mobile": 50,
-        "padding_bottom_mobile": 50
-      },
-      "blocks": {
-        "header": {
-          "type": "header",
-          "static": true,
-          "settings": {
-            "width": "custom",
-            "max_width": 900,
-            "alignment": "center",
-            "gap_desktop": 32,
-            "gap_mobile": 32,
-            "customize_mobile_size": true,
-            "width_mobile": "fill"
-          },
-          "blocks": {
-            "content": {
+            "group-0": {
               "type": "group",
               "settings": {
                 "direction": "vertical",
-                "alignment": "center",
-                "alignment_mobile": "center",
-                "horizontal_alignment": "center",
-                "height": "fit",
+                "alignment": "left",
                 "width": "fill",
-                "width_mobile": "fill",
-                "gap_desktop": 16,
-                "gap_mobile": 16,
-                "appearance_type": "inherit"
+                "gap_desktop": 8,
+                "gap_mobile": 8
               },
               "blocks": {
-                "heading": {
-                  "type": "heading",
+                "product-title-1": {
+                  "type": "product-title",
                   "settings": {
-                    "text": "<p>ADVANCING EVERYDAY PERFORMANCE</p>",
-                    "heading_size": "display",
+                    "heading_size": "lg",
                     "html_tag": "h2",
-                    "width": "fill",
-                    "customize_mobile_size": true,
-                    "width_mobile": "fill"
+                    "text_case": "original"
                   }
                 },
-                "description": {
-                  "type": "text",
+                "product-price-2": {
+                  "type": "product-price",
                   "settings": {
-                    "text": "<p>Trusted by Thousands of Players and Enthusiasts</p>",
-                    "text_size": "md",
-                    "width": "fill",
-                    "customize_mobile_size": true,
-                    "width_mobile": "fill"
+                    "font_size": "xl"
                   }
                 }
               },
               "block_order": [
-                "heading",
-                "description"
+                "product-title-1",
+                "product-price-2"
               ]
             },
-            "button": {
-              "type": "button",
+            "product-description-1": {
+              "type": "product-description",
+              "settings": {}
+            },
+            "product-variant-picker-2": {
+              "type": "product-variant-picker",
               "settings": {
-                "button_label": "About Us",
-                "button_link": "shopify://pages/about-us",
-                "button_style": "primary",
-                "width": "fit",
-                "width_mobile": "fit",
-                "show_icon": false
+                "color_option_display": "variant_image"
+              }
+            },
+            "product-buy-buttons-3": {
+              "type": "product-buy-buttons",
+              "settings": {},
+              "blocks": {
+                "quantity": {
+                  "type": "product-buy-quantity",
+                  "static": true,
+                  "settings": {
+                    "style": "custom",
+                    "background_color": "#FFFFFF00",
+                    "text_color": "#1A1A1A",
+                    "border_color": "#E6E6E6",
+                    "border_thickness": 1,
+                    "corner_radius": 100
+                  }
+                },
+                "add-to-cart": {
+                  "type": "product-buy-add-to-cart",
+                  "static": true,
+                  "settings": {
+                    "style": "secondary",
+                    "show_price": false
+                  }
+                },
+                "accelerated-checkout": {
+                  "type": "product-buy-accelerated-checkout",
+                  "static": true,
+                  "settings": {
+                    "style": "primary"
+                  }
+                }
+              }
+            },
+            "divider": {
+              "type": "divider",
+              "settings": {
+                "thickness": "thin",
+                "desktop_spacing": 0,
+                "mobile_spacing": 0
+              }
+            },
+            "inventory": {
+              "type": "product-inventory",
+              "settings": {
+                "display_mode": "status_and_count"
+              }
+            },
+            "view-details": {
+              "type": "button-view-details",
+              "settings": {
+                "label": "View details",
+                "show_icon": true,
+                "icon": "arrow",
+                "icon_position": "after",
+                "icon_size": "inherit",
+                "icon_width": 20,
+                "padding_top": 0,
+                "padding_bottom": 0,
+                "customize_mobile_padding": false
               }
             }
           },
           "block_order": [
-            "content",
-            "button"
+            "group-0",
+            "divider",
+            "product-description-1",
+            "product-variant-picker-2",
+            "inventory",
+            "product-buy-buttons-3",
+            "view-details"
           ]
-        },
+        }
+      },
+      "name": "Featured product",
+      "custom_css": [
+        "@media (min-width:768px) and (max-width:1149.98px) {.featured-product {padding-block:80px}}",
+        "@media (min-width:768px) and (max-width:1149.98px) {.product-information__layout {grid-template-columns:repeat(2,minmax(0,1fr));gap:40px}}",
+        ".product-price .price {--price-font-size:18px}"
+      ]
+    },
+    "multiple_images_text": {
+      "type": "multiple-images-with-text",
+      "name": "Multiple images with text",
+      "settings": {
+        "section_width": "page_width",
+        "gap_desktop": 64,
+        "gap_mobile": 40,
+        "show_navigation": true,
+        "color_scheme": "scheme-1",
+        "padding_top": 112,
+        "padding_bottom": 112,
+        "customize_mobile_padding": true,
+        "padding_top_mobile": 80,
+        "padding_bottom_mobile": 80,
+        "enable_boxed_layout": false,
+        "boxed_color_scheme": "scheme-2",
+        "corner_radius": "rounded",
+        "shadow": "none",
+        "boxed_padding_block": 70,
+        "boxed_padding_inline": 70,
+        "boxed_padding_block_mobile": 50,
+        "boxed_padding_inline_mobile": 30
+      },
+      "blocks": {
         "item_1": {
-          "type": "parallax-item",
-          "settings": {
-            "position": "left"
-          },
+          "type": "multiple-images-text-item",
+          "settings": {},
           "blocks": {
             "image": {
               "type": "image",
+              "static": true,
               "settings": {
-                "image_ratio_desktop": "square",
-                "image_ratio_mobile": "square",
                 "width_desktop": "fill",
                 "width_mobile": "fill",
-                "corner_radius": "rounded",
-                "image": "shopify://shop_images/stroken-t-fight-300-ig-tour-racket-strung-orange-red-lifestyle.png"
+                "image_ratio_desktop": "custom",
+                "image_ratio_custom_width_desktop": 6,
+                "image_ratio_custom_height_desktop": 7,
+                "image_ratio_mobile": "custom",
+                "image_ratio_custom_width_mobile": 6,
+                "image_ratio_custom_height_mobile": 7,
+                "corner_radius": "custom",
+                "custom_corner_radius": 4,
+                "animation_type": "scale",
+                "animation_delay": 0,
+                "image": "shopify://shop_images/strideo-multiple-6-figma.jpg",
+                "mobile_image": "shopify://shop_images/strideo-multiple-6-figma.jpg"
               }
+            },
+            "group-1": {
+              "type": "group",
+              "settings": {
+                "direction": "vertical",
+                "width": "fill",
+                "width_mobile": "fill",
+                "height": "fit",
+                "alignment": "left",
+                "alignment_mobile": "center",
+                "gap_desktop": 40,
+                "gap_mobile": 40,
+                "backdrop_blur": 0
+              },
+              "blocks": {
+                "group-0": {
+                  "type": "group",
+                  "settings": {
+                    "direction": "vertical",
+                    "width": "fill",
+                    "width_mobile": "fill",
+                    "height": "fit",
+                    "alignment": "left",
+                    "alignment_mobile": "center",
+                    "gap_desktop": 16,
+                    "gap_mobile": 16,
+                    "backdrop_blur": 0
+                  },
+                  "blocks": {
+                    "heading-0": {
+                      "type": "heading",
+                      "settings": {
+                        "text": "<p>Built for motion, designed for life.</p>",
+                        "heading_size": "xl",
+                        "html_tag": "h2",
+                        "width": "fill",
+                        "width_mobile": "fill",
+                        "animation_type": "rotate-words",
+                        "animation_delay": 50
+                      }
+                    },
+                    "text-1": {
+                      "type": "text",
+                      "settings": {
+                        "text": "<p>Engineered for athletes who demand more from every stride. STRIDEO merges advanced geometry, responsive cushioning, and aerodynamic design to deliver effortless speed and all-day stability from track intensity to urban movement.</p>",
+                        "text_size": "md",
+                        "width": "fill",
+                        "width_mobile": "fill",
+                        "animation_type": "fade",
+                        "animation_delay": 0
+                      }
+                    }
+                  },
+                  "block_order": [
+                    "heading-0",
+                    "text-1"
+                  ]
+                },
+                "button-1": {
+                  "type": "button",
+                  "settings": {
+                    "button_label": "Shop now",
+                    "button_link": "shopify://collections/all",
+                    "button_style": "primary",
+                    "show_icon": false,
+                    "animation_type": "slide-bottom",
+                    "animation_delay": 100
+                  }
+                }
+              },
+              "block_order": [
+                "group-0",
+                "button-1"
+              ]
             }
           },
           "block_order": [
-            "image"
+            "group-1"
           ]
         },
         "item_2": {
-          "type": "parallax-item",
-          "settings": {
-            "position": "center"
-          },
+          "type": "multiple-images-text-item",
+          "settings": {},
           "blocks": {
             "image": {
               "type": "image",
+              "static": true,
               "settings": {
-                "image_ratio_desktop": "portrait",
-                "image_ratio_mobile": "portrait",
                 "width_desktop": "fill",
                 "width_mobile": "fill",
-                "corner_radius": "rounded",
-                "image": "shopify://shop_images/stroken-mini-skirt-set-pink-lifestyle.png"
+                "image_ratio_desktop": "custom",
+                "image_ratio_custom_width_desktop": 6,
+                "image_ratio_custom_height_desktop": 7,
+                "image_ratio_mobile": "custom",
+                "image_ratio_custom_width_mobile": 6,
+                "image_ratio_custom_height_mobile": 7,
+                "corner_radius": "custom",
+                "custom_corner_radius": 4,
+                "animation_type": "scale",
+                "animation_delay": 0,
+                "image": "shopify://shop_images/strideo-multiple-5-figma.jpg",
+                "mobile_image": "shopify://shop_images/strideo-multiple-5-figma.jpg"
               }
+            },
+            "group-1": {
+              "type": "group",
+              "settings": {
+                "direction": "vertical",
+                "width": "fill",
+                "width_mobile": "fill",
+                "height": "fit",
+                "alignment": "left",
+                "alignment_mobile": "center",
+                "gap_desktop": 40,
+                "gap_mobile": 40,
+                "backdrop_blur": 0
+              },
+              "blocks": {
+                "group-0": {
+                  "type": "group",
+                  "settings": {
+                    "direction": "vertical",
+                    "width": "fill",
+                    "width_mobile": "fill",
+                    "height": "fit",
+                    "alignment": "left",
+                    "alignment_mobile": "center",
+                    "gap_desktop": 16,
+                    "gap_mobile": 16,
+                    "backdrop_blur": 0
+                  },
+                  "blocks": {
+                    "heading-0": {
+                      "type": "heading",
+                      "settings": {
+                        "text": "<p>Comfort that keeps pace.</p>",
+                        "heading_size": "xl",
+                        "html_tag": "h2",
+                        "width": "fill",
+                        "width_mobile": "fill",
+                        "animation_type": "rotate-words",
+                        "animation_delay": 50
+                      }
+                    },
+                    "text-1": {
+                      "type": "text",
+                      "settings": {
+                        "text": "<p>Find your rhythm with lightweight essentials designed for steady support, easy movement, and comfort from your first step to your last.</p>",
+                        "text_size": "md",
+                        "width": "fill",
+                        "width_mobile": "fill",
+                        "animation_type": "fade",
+                        "animation_delay": 0
+                      }
+                    }
+                  },
+                  "block_order": [
+                    "heading-0",
+                    "text-1"
+                  ]
+                },
+                "button-1": {
+                  "type": "button",
+                  "settings": {
+                    "button_label": "Shop now",
+                    "button_link": "shopify://collections/all",
+                    "button_style": "primary",
+                    "show_icon": false,
+                    "animation_type": "slide-bottom",
+                    "animation_delay": 100
+                  }
+                }
+              },
+              "block_order": [
+                "group-0",
+                "button-1"
+              ]
             }
           },
           "block_order": [
-            "image"
+            "group-1"
           ]
         },
         "item_3": {
-          "type": "parallax-item",
-          "settings": {
-            "position": "right"
-          },
+          "type": "multiple-images-text-item",
+          "settings": {},
           "blocks": {
             "image": {
               "type": "image",
+              "static": true,
               "settings": {
-                "image_ratio_desktop": "wide",
-                "image_ratio_mobile": "wide",
                 "width_desktop": "fill",
                 "width_mobile": "fill",
-                "corner_radius": "rounded",
-                "image": "shopify://shop_images/equipment-desktop.png"
+                "image_ratio_desktop": "custom",
+                "image_ratio_custom_width_desktop": 6,
+                "image_ratio_custom_height_desktop": 7,
+                "image_ratio_mobile": "custom",
+                "image_ratio_custom_width_mobile": 6,
+                "image_ratio_custom_height_mobile": 7,
+                "corner_radius": "custom",
+                "custom_corner_radius": 4,
+                "animation_type": "scale",
+                "animation_delay": 0,
+                "image": "shopify://shop_images/strideo-multiple-4-figma.jpg",
+                "mobile_image": "shopify://shop_images/strideo-multiple-4-figma.jpg"
               }
+            },
+            "group-1": {
+              "type": "group",
+              "settings": {
+                "direction": "vertical",
+                "width": "fill",
+                "width_mobile": "fill",
+                "height": "fit",
+                "alignment": "left",
+                "alignment_mobile": "center",
+                "gap_desktop": 40,
+                "gap_mobile": 40,
+                "backdrop_blur": 0
+              },
+              "blocks": {
+                "group-0": {
+                  "type": "group",
+                  "settings": {
+                    "direction": "vertical",
+                    "width": "fill",
+                    "width_mobile": "fill",
+                    "height": "fit",
+                    "alignment": "left",
+                    "alignment_mobile": "center",
+                    "gap_desktop": 16,
+                    "gap_mobile": 16,
+                    "backdrop_blur": 0
+                  },
+                  "blocks": {
+                    "heading-0": {
+                      "type": "heading",
+                      "settings": {
+                        "text": "<p>Made for your everyday miles.</p>",
+                        "heading_size": "xl",
+                        "html_tag": "h2",
+                        "width": "fill",
+                        "width_mobile": "fill",
+                        "animation_type": "rotate-words",
+                        "animation_delay": 50
+                      }
+                    },
+                    "text-1": {
+                      "type": "text",
+                      "settings": {
+                        "text": "<p>From morning runs to city routes, discover versatile performance styles that move with you throughout the day.</p>",
+                        "text_size": "md",
+                        "width": "fill",
+                        "width_mobile": "fill",
+                        "animation_type": "fade",
+                        "animation_delay": 0
+                      }
+                    }
+                  },
+                  "block_order": [
+                    "heading-0",
+                    "text-1"
+                  ]
+                },
+                "button-1": {
+                  "type": "button",
+                  "settings": {
+                    "button_label": "Shop now",
+                    "button_link": "shopify://collections/all",
+                    "button_style": "primary",
+                    "show_icon": false,
+                    "animation_type": "slide-bottom",
+                    "animation_delay": 100
+                  }
+                }
+              },
+              "block_order": [
+                "group-0",
+                "button-1"
+              ]
             }
           },
           "block_order": [
-            "image"
-          ]
-        },
-        "item_4": {
-          "type": "parallax-item",
-          "settings": {
-            "position": "left"
-          },
-          "blocks": {
-            "image": {
-              "type": "image",
-              "settings": {
-                "image_ratio_desktop": "portrait",
-                "image_ratio_mobile": "portrait",
-                "width_desktop": "fill",
-                "width_mobile": "fill",
-                "corner_radius": "rounded",
-                "image": "shopify://shop_images/stroken-dri-fit-advantage-t-shirt-light-lime-lifestyle.png"
-              }
-            }
-          },
-          "block_order": [
-            "image"
-          ]
-        },
-        "item_5": {
-          "type": "parallax-item",
-          "settings": {
-            "position": "center"
-          },
-          "blocks": {
-            "image": {
-              "type": "image",
-              "settings": {
-                "image_ratio_desktop": "square",
-                "image_ratio_mobile": "square",
-                "width_desktop": "fill",
-                "width_mobile": "fill",
-                "corner_radius": "rounded",
-                "image": "shopify://shop_images/stroken-pure-drive-rh6-racket-dark-navy-lifestyle.png"
-              }
-            }
-          },
-          "block_order": [
-            "image"
-          ]
-        },
-        "item_6": {
-          "type": "parallax-item",
-          "settings": {
-            "position": "right"
-          },
-          "blocks": {
-            "image": {
-              "type": "image",
-              "settings": {
-                "image_ratio_desktop": "portrait",
-                "image_ratio_mobile": "portrait",
-                "width_desktop": "fill",
-                "width_mobile": "fill",
-                "corner_radius": "rounded",
-                "image": "shopify://shop_images/stroken-court-dri-fit-advantage-slam-sage-green-lifestyle.png"
-              }
-            }
-          },
-          "block_order": [
-            "image"
+            "group-1"
           ]
         }
       },
       "block_order": [
         "item_1",
         "item_2",
-        "item_3",
-        "item_4",
-        "item_5",
-        "item_6"
+        "item_3"
       ]
     },
-    "featured_collection_background": {
-      "type": "featured-collection-background-custom",
-      "settings": {
-        "layout_desktop": "side",
-        "gap_desktop": 10,
-        "gap_mobile": 40,
-        "header_width": 21,
-        "content_top_padding_mobile": 40,
-        "padding_bottom": 80,
-        "customize_mobile_padding": true,
-        "padding_bottom_mobile": 16
-      },
-      "blocks": {
-        "background": {
-          "type": "collection-background",
-          "settings": {
-            "height_desktop": "custom",
-            "height_unit_desktop": "percent",
-            "height_percent_desktop": 52,
-            "placement_desktop": "below",
-            "overlap_desktop": 80,
-            "height_mobile": "medium",
-            "placement_mobile": "stack",
-            "image": "shopify://shop_images/background-desktop-1920.png",
-            "mobile_image": "shopify://shop_images/background-mobile-750.png",
-            "overlay": "#00000000"
-          },
-          "static": true
-        },
-        "header": {
-          "type": "header",
-          "settings": {
-            "width": "fill",
-            "gap_desktop": 16,
-            "gap_mobile": 16
-          },
-          "static": true,
-          "blocks": {
-            "item_1": {
-              "type": "heading",
-              "settings": {
-                "text": "<p>BUILT FOR THE BASELINE</p>",
-                "heading_size": "lg",
-                "html_tag": "h2"
-              }
-            },
-            "item_2": {
-              "type": "text",
-              "settings": {
-                "text": "<p>Our performance-driven sports products designed to elevate your game.</p>"
-              }
-            }
-          },
-          "block_order": [
-            "item_1",
-            "item_2"
-          ]
-        },
-        "featured-collection-view-all": {
-          "type": "view-all-button",
-          "settings": {
-            "button_label": "View all",
-            "button_style": "primary",
-            "button_style_mobile": "primary",
-            "button_height_mobile": "inherit",
-            "full_width_mobile": false,
-            "show_icon": false,
-            "show_icon_mobile": false
-          },
-          "static": true
-        },
-        "product-list": {
-          "type": "product-list",
-          "settings": {
-            "collection": "apparel-stroken",
-            "max_products": 6,
-            "layout_type": "carousel",
-            "columns_desktop": "4",
-            "columns_mobile": "2",
-            "show_next_slide_preview_on_desktop": false,
-            "product_gap_desktop": 20,
-            "product_gap_mobile": 20,
-            "show_navigation_on_desktop": true,
-            "navigation_position": "inside",
-            "navigation_style": "secondary",
-            "navigation_icon": "chevron",
-            "show_pagination_on_desktop": true,
-            "pagination_type": "progress_bar",
-            "pagination_top_padding_desktop": 50,
-            "pagination_top_padding_mobile": 24,
-            "pagination_limit_width": true,
-            "pagination_max_width": 260,
-            "autoplay": false,
-            "autoplay_pause_on_hover": true,
-            "autoplay_speed": 4
-          },
-          "static": true,
-          "blocks": {
-            "product-card": {
-              "type": "product-card",
-              "settings": {
-                "color_type": "inherit",
-                "color_scheme": "scheme-1"
-              },
-              "static": true
-            }
-          }
-        }
-      }
-    },
-    "new_arrivals_banner": {
-      "type": "featured-collection-banner",
-      "name": "New arrivals — Banner",
+    "collection_list_03": {
+      "type": "image-cards",
+      "name": "Collection list",
       "settings": {
         "section_width": "page_width",
-        "banner_position": "after",
-        "banner_max_width": "medium",
-        "banner_height": "ratio",
+        "height": "auto",
+        "card_layout": "carousel",
+        "show_header": true,
+        "header_gap": 40,
+        "columns_desktop": "4",
+        "columns_tablet": "2",
+        "columns_mobile": "1",
+        "show_pagination": true,
         "gap_desktop": 20,
-        "gap_mobile": 24,
-        "header_gap_desktop": 32,
-        "header_gap_mobile": 24,
+        "gap_mobile": 16,
         "color_scheme": "scheme-1",
         "padding_top": 0,
-        "padding_bottom": 80,
+        "padding_bottom": 96,
         "customize_mobile_padding": true,
         "padding_top_mobile": 0,
         "padding_bottom_mobile": 64
@@ -1443,84 +2096,79 @@
             "width": "fill",
             "inherit_alignment": false,
             "alignment": "left",
-            "gap_desktop": 0,
-            "gap_mobile": 0
+            "customize_mobile_alignment": true,
+            "alignment_mobile": "left"
           },
           "blocks": {
-            "heading": {
+            "title": {
               "type": "heading",
               "settings": {
-                "text": "<p>NEW ARRIVALS</p>",
+                "text": "<p>Every stride has a story</p>",
                 "heading_size": "xl",
-                "html_tag": "h2"
+                "html_tag": "h2",
+                "width": "fill",
+                "width_mobile": "fill",
+                "animation_type": "rotate-words",
+                "animation_delay": 50
               }
             }
           },
           "block_order": [
-            "heading"
+            "title"
           ]
         },
-        "banner": {
-          "type": "banner",
-          "static": true,
+        "card_1": {
+          "type": "image-card",
           "settings": {
-            "background_type": "image",
+            "width_desktop": "fill",
+            "width_mobile": "fill",
+            "height_desktop": "ratio_6_7",
+            "height_mobile": "ratio_6_7",
+            "position_desktop": "bottom_left",
+            "position_mobile": "bottom_left",
+            "corner_radius": "slightly_rounded",
             "color_scheme": "scheme-3",
-            "show_overlay": false,
-            "image_ratio_desktop": "portrait",
-            "image_ratio_custom_width_desktop": 612,
-            "image_ratio_custom_height_desktop": 928,
-            "image_ratio_mobile": "portrait",
-            "position_desktop": "center_center",
-            "position_mobile": "center_center",
-            "corner_radius": "rounded",
-            "padding_top": 32,
-            "padding_bottom": 32,
-            "padding_left": 32,
-            "padding_right": 32,
-            "gap_desktop": 16,
-            "gap_mobile": 12,
-            "image": "shopify://shop_images/stroken-new-arrivals-banner.png",
-            "mobile_image": "shopify://shop_images/stroken-new-arrivals-banner.png"
+            "show_overlay": true,
+            "overlay_style": "solid",
+            "overlay_opacity": 20,
+            "padding_top": 0,
+            "padding_bottom": 0,
+            "padding_left": 0,
+            "padding_right": 0,
+            "enable_sticky": false,
+            "zoom_on_hover": true,
+            "image": "shopify://shop_images/strideo-cards-1-figma.jpg",
+            "mobile_image": "shopify://shop_images/strideo-cards-1-figma.jpg"
           },
           "blocks": {
             "content": {
               "type": "group",
               "settings": {
-                "direction": "vertical",
                 "width": "fill",
                 "width_mobile": "fill",
                 "height": "fit",
-                "alignment": "center",
-                "alignment_mobile": "center",
-                "position": "center",
-                "gap_desktop": 16,
-                "gap_mobile": 12,
-                "backdrop_blur": 0
+                "direction": "vertical",
+                "alignment": "left",
+                "alignment_mobile": "left",
+                "padding_top": 24,
+                "padding_bottom": 24,
+                "padding_left": 24,
+                "padding_right": 24
               },
               "blocks": {
-                "heading": {
+                "title": {
                   "type": "heading",
                   "settings": {
-                    "text": "<p>ELEVATED ESSENTIALS</p>",
+                    "text": "<p>Multi-purpose sports shoes</p>",
                     "heading_size": "md",
                     "html_tag": "h3",
-                    "width": "fill"
-                  }
-                },
-                "button": {
-                  "type": "button",
-                  "settings": {
-                    "button_label": "Explore Collection",
-                    "button_link": "shopify://collections/new-arrivals-stroken",
-                    "button_style": "tertiary",
-                    "show_icon": false
+                    "width": "fill",
+                    "width_mobile": "fill"
                   }
                 }
               },
               "block_order": [
-                "heading",
-                "button"
+                "title"
               ]
             }
           },
@@ -1528,632 +2176,203 @@
             "content"
           ]
         },
-        "product-list": {
-          "type": "product-list-banner",
-          "static": true,
+        "card_2": {
+          "type": "image-card",
           "settings": {
-            "collection": "new-arrivals-stroken",
-            "max_products": 6,
-            "columns_desktop": "3",
-            "columns_tablet": "2",
-            "columns_mobile": "2",
-            "enable_swipe_mobile": false,
-            "gap_horizontal": 20,
-            "gap_vertical": 32,
-            "gap_horizontal_mobile": 16,
-            "gap_vertical_mobile": 24
-          },
-          "blocks": {
-            "product-card": {
-              "type": "product-card",
-              "static": true,
-              "settings": {
-                "color_type": "inherit",
-                "color_scheme": "scheme-1"
-              }
-            }
-          }
-        }
-      }
-    },
-    "hotspot_active_gear": {
-      "type": "hotspot",
-      "blocks": {
-        "header": {
-          "type": "header",
-          "static": true,
-          "settings": {
-            "width": "fill",
-            "gap_desktop": 0,
-            "gap_mobile": 0,
-            "padding_bottom": 32,
-            "padding_bottom_mobile": 32,
-            "alignment": "center"
-          },
-          "blocks": {
-            "heading": {
-              "type": "heading",
-              "settings": {
-                "text": "<p>LATEST IN ACTIVE GEAR</p>",
-                "heading_size": "xl",
-                "html_tag": "h2"
-              }
-            }
-          },
-          "block_order": [
-            "heading"
-          ]
-        },
-        "product-callout": {
-          "type": "product-callout",
-          "static": true,
-          "settings": {
-            "editor_title": "Latest in active gear",
-            "image_ratio_desktop": "wide_21_9",
-            "image_ratio_mobile": "ratio_7_6",
-            "corner_radius": "custom",
-            "custom_corner_radius": 12,
-            "overlay": "rgba(0,0,0,0)",
-            "desktop_height": "adapt",
-            "mobile_height": "adapt",
-            "content_layout": "below",
-            "preheading": "",
-            "heading": "",
-            "text": "",
-            "button_label": "",
-            "hotspot_icon_style": "plus",
-            "hotspot_behavior": "click",
-            "hotspot_color_scheme": "scheme-1",
-            "content_color_scheme": "scheme-1",
-            "image": "shopify://shop_images/stroken-hotspot-desktop.jpg",
-            "mobile_image": "shopify://shop_images/stroken-hotspot-mobile.jpg"
-          },
-          "blocks": {
-            "racket": {
-              "type": "hotspot",
-              "settings": {
-                "product": "stroken-speed-mp-tour-racket-strung",
-                "use_content": false,
-                "horizontal_position": 32,
-                "vertical_position": 62,
-                "customize_mobile_position": true,
-                "mobile_horizontal_position": 15,
-                "mobile_vertical_position": 64
-              }
-            },
-            "polo": {
-              "type": "hotspot",
-              "settings": {
-                "product": "stroken-dri-fit-advantage-polo",
-                "use_content": false,
-                "horizontal_position": 54,
-                "vertical_position": 37,
-                "customize_mobile_position": true,
-                "mobile_horizontal_position": 56,
-                "mobile_vertical_position": 37
-              }
-            },
-            "skirt": {
-              "type": "hotspot",
-              "settings": {
-                "product": "stroken-rg-pro-skirt-women",
-                "use_content": false,
-                "horizontal_position": 53,
-                "vertical_position": 66,
-                "customize_mobile_position": true,
-                "mobile_horizontal_position": 57,
-                "mobile_vertical_position": 69
-              }
-            }
-          },
-          "block_order": [
-            "racket",
-            "polo",
-            "skirt"
-          ]
-        }
-      },
-      "block_order": [],
-      "settings": {
-        "section_width": "page_width",
-        "product_card_layout": "compact",
-        "show_product_type": false,
-        "show_product_image": true,
-        "show_price": true,
-        "color_scheme": "scheme-1",
-        "padding_top": 0,
-        "padding_bottom": 80,
-        "customize_mobile_padding": true,
-        "padding_top_mobile": 0,
-        "padding_bottom_mobile": 64
-      }
-    },
-    "testimonials_products": {
-      "type": "testimonials-product",
-      "settings": {
-        "section_width": "page_width",
-        "color_scheme": "scheme-2",
-        "columns_desktop": "3",
-        "columns_tablet": "2",
-        "columns_mobile": "1",
-        "gap": 20,
-        "header_gap": 40,
-        "header_gap_mobile": 36,
-        "padding_top": 80,
-        "padding_bottom": 80,
-        "customize_mobile_padding": true,
-        "padding_top_mobile": 64,
-        "padding_bottom_mobile": 64,
-        "show_pagination": true,
-        "show_navigation": true
-      },
-      "blocks": {
-        "header": {
-          "type": "header",
-          "settings": {
-            "width": "fill",
-            "inherit_alignment": true,
-            "gap_desktop": 16,
-            "gap_mobile": 16
-          },
-          "blocks": {
-            "heading": {
-              "type": "heading",
-              "settings": {
-                "text": "<p>LOVED BY OUR COMMUNITY</p>",
-                "heading_size": "xl",
-                "html_tag": "h2",
-                "width": "fill"
-              }
-            },
-            "text": {
-              "type": "text",
-              "settings": {
-                "text": "<p>See what our customers are saying about our products</p>",
-                "text_size": "md",
-                "width": "fill"
-              }
-            }
-          },
-          "block_order": [
-            "heading",
-            "text"
-          ],
-          "static": true
-        },
-        "emily": {
-          "type": "_testimonial-product-card",
-          "settings": {
-            "color_scheme": "scheme-1",
-            "padding": 24,
-            "gap": 20
-          },
-          "blocks": {
-            "content": {
-              "type": "group",
-              "settings": {
-                "width": "fill",
-                "width_mobile": "fill",
-                "height": "fit",
-                "alignment": "left",
-                "alignment_mobile": "left",
-                "gap_desktop": 16,
-                "gap_mobile": 16
-              },
-              "blocks": {
-                "stars": {
-                  "type": "icon",
-                  "settings": {
-                    "icon": "five-stars",
-                    "icon_width": 84
-                  }
-                },
-                "copy": {
-                  "type": "group",
-                  "settings": {
-                    "width": "fill",
-                    "width_mobile": "fill",
-                    "height": "fit",
-                    "alignment": "left",
-                    "alignment_mobile": "left",
-                    "gap_desktop": 12,
-                    "gap_mobile": 12
-                  },
-                  "blocks": {
-                    "quote": {
-                      "type": "text",
-                      "settings": {
-                        "text": "<p>“The stretch, movement, and fit are spot on. Nothing distracts you during play, which is exactly what good tenniswear should do.”</p>",
-                        "text_size": "lg",
-                        "width": "fill",
-                        "text_color": "#0a0a0a"
-                      }
-                    },
-                    "author": {
-                      "type": "text",
-                      "settings": {
-                        "text": "<p>Emily R.</p>",
-                        "text_size": "md",
-                        "width": "fill"
-                      }
-                    }
-                  },
-                  "block_order": [
-                    "quote",
-                    "author"
-                  ]
-                }
-              },
-              "block_order": [
-                "stars",
-                "copy"
-              ]
-            },
-            "divider": {
-              "type": "divider",
-              "settings": {
-                "desktop_spacing": 0,
-                "mobile_spacing": 0
-              }
-            },
-            "product": {
-              "type": "_product-card-compact",
-              "settings": {
-                "product": "stroken-short-sleeve-polo-pleated-dress",
-                "show_price": true
-              }
-            }
-          },
-          "block_order": [
-            "content",
-            "divider",
-            "product"
-          ]
-        },
-        "jason": {
-          "type": "_testimonial-product-card",
-          "settings": {
-            "color_scheme": "scheme-1",
-            "padding": 24,
-            "gap": 20
-          },
-          "blocks": {
-            "content": {
-              "type": "group",
-              "settings": {
-                "width": "fill",
-                "width_mobile": "fill",
-                "height": "fit",
-                "alignment": "left",
-                "alignment_mobile": "left",
-                "gap_desktop": 16,
-                "gap_mobile": 16
-              },
-              "blocks": {
-                "stars": {
-                  "type": "icon",
-                  "settings": {
-                    "icon": "five-stars",
-                    "icon_width": 84
-                  }
-                },
-                "copy": {
-                  "type": "group",
-                  "settings": {
-                    "width": "fill",
-                    "width_mobile": "fill",
-                    "height": "fit",
-                    "alignment": "left",
-                    "alignment_mobile": "left",
-                    "gap_desktop": 12,
-                    "gap_mobile": 12
-                  },
-                  "blocks": {
-                    "quote": {
-                      "type": "text",
-                      "settings": {
-                        "text": "<p>“Played a full weekend tournament in this kit and stayed comfortable the entire time. Breathability is seriously impressive.”</p>",
-                        "text_size": "lg",
-                        "width": "fill",
-                        "text_color": "#0a0a0a"
-                      }
-                    },
-                    "author": {
-                      "type": "text",
-                      "settings": {
-                        "text": "<p>Jason M.</p>",
-                        "text_size": "md",
-                        "width": "fill"
-                      }
-                    }
-                  },
-                  "block_order": [
-                    "quote",
-                    "author"
-                  ]
-                }
-              },
-              "block_order": [
-                "stars",
-                "copy"
-              ]
-            },
-            "divider": {
-              "type": "divider",
-              "settings": {
-                "desktop_spacing": 0,
-                "mobile_spacing": 0
-              }
-            },
-            "product": {
-              "type": "_product-card-compact",
-              "settings": {
-                "product": "stroken-blx-pro-open-tour-racket-strung",
-                "show_price": true
-              }
-            }
-          },
-          "block_order": [
-            "content",
-            "divider",
-            "product"
-          ]
-        },
-        "sophia": {
-          "type": "_testimonial-product-card",
-          "settings": {
-            "color_scheme": "scheme-1",
-            "padding": 24,
-            "gap": 20
-          },
-          "blocks": {
-            "content": {
-              "type": "group",
-              "settings": {
-                "width": "fill",
-                "width_mobile": "fill",
-                "height": "fit",
-                "alignment": "left",
-                "alignment_mobile": "left",
-                "gap_desktop": 16,
-                "gap_mobile": 16
-              },
-              "blocks": {
-                "stars": {
-                  "type": "icon",
-                  "settings": {
-                    "icon": "five-stars",
-                    "icon_width": 84
-                  }
-                },
-                "copy": {
-                  "type": "group",
-                  "settings": {
-                    "width": "fill",
-                    "width_mobile": "fill",
-                    "height": "fit",
-                    "alignment": "left",
-                    "alignment_mobile": "left",
-                    "gap_desktop": 12,
-                    "gap_mobile": 12
-                  },
-                  "blocks": {
-                    "quote": {
-                      "type": "text",
-                      "settings": {
-                        "text": "<p>“I love that it actually looks elevated while still feeling performance-driven. Easily my favorite tennis collection right now.”</p>",
-                        "text_size": "lg",
-                        "width": "fill",
-                        "text_color": "#0a0a0a"
-                      }
-                    },
-                    "author": {
-                      "type": "text",
-                      "settings": {
-                        "text": "<p>Sophia L.</p>",
-                        "text_size": "md",
-                        "width": "fill"
-                      }
-                    }
-                  },
-                  "block_order": [
-                    "quote",
-                    "author"
-                  ]
-                }
-              },
-              "block_order": [
-                "stars",
-                "copy"
-              ]
-            },
-            "divider": {
-              "type": "divider",
-              "settings": {
-                "desktop_spacing": 0,
-                "mobile_spacing": 0
-              }
-            },
-            "product": {
-              "type": "_product-card-compact",
-              "settings": {
-                "product": "stroken-rg-pro-dress-women",
-                "show_price": true
-              }
-            }
-          },
-          "block_order": [
-            "content",
-            "divider",
-            "product"
-          ]
-        }
-      },
-      "block_order": [
-        "emily",
-        "jason",
-        "sophia"
-      ]
-    },
-    "questions_answers": {
-      "type": "faq-accordion",
-      "settings": {
-        "section_width": "page_width",
-        "limit_width": true,
-        "max_width": 768,
-        "layout": "vertical",
-        "alignment": "center",
-        "gap_desktop": 40,
-        "gap_mobile": 32,
-        "color_scheme": "scheme-1",
-        "padding_top": 80,
-        "padding_bottom": 80
-      },
-      "blocks": {
-        "header": {
-          "type": "group",
-          "settings": {
-            "direction": "vertical",
-            "alignment": "center",
-            "alignment_mobile": "center",
-            "width": "fill",
+            "width_desktop": "fill",
             "width_mobile": "fill",
-            "gap_desktop": 16,
-            "gap_mobile": 16
+            "height_desktop": "ratio_6_7",
+            "height_mobile": "ratio_6_7",
+            "position_desktop": "bottom_left",
+            "position_mobile": "bottom_left",
+            "corner_radius": "slightly_rounded",
+            "color_scheme": "scheme-3",
+            "show_overlay": true,
+            "overlay_style": "solid",
+            "overlay_opacity": 20,
+            "padding_top": 0,
+            "padding_bottom": 0,
+            "padding_left": 0,
+            "padding_right": 0,
+            "enable_sticky": false,
+            "zoom_on_hover": true,
+            "image": "shopify://shop_images/strideo-cards-3-figma.jpg",
+            "mobile_image": "shopify://shop_images/strideo-cards-3-figma.jpg"
           },
           "blocks": {
-            "heading": {
-              "type": "heading",
+            "content": {
+              "type": "group",
               "settings": {
-                "text": "<p>QUESTIONS &amp; ANSWERS</p>",
-                "heading_size": "xl",
-                "html_tag": "h2",
-                "width": "fill"
-              }
+                "width": "fill",
+                "width_mobile": "fill",
+                "height": "fit",
+                "direction": "vertical",
+                "alignment": "left",
+                "alignment_mobile": "left",
+                "padding_top": 24,
+                "padding_bottom": 24,
+                "padding_left": 24,
+                "padding_right": 24
+              },
+              "blocks": {
+                "title": {
+                  "type": "heading",
+                  "settings": {
+                    "text": "<p>Not just for tennis courts</p>",
+                    "heading_size": "md",
+                    "html_tag": "h3",
+                    "width": "fill",
+                    "width_mobile": "fill"
+                  }
+                }
+              },
+              "block_order": [
+                "title"
+              ]
             }
           },
           "block_order": [
-            "heading"
+            "content"
           ]
         },
-        "accordion": {
-          "type": "faq_accordion",
+        "card_3": {
+          "type": "image-card",
           "settings": {
-            "style": "simple",
-            "icon": "plus",
-            "dividers": true,
-            "question_font_size": "sm",
-            "answer_font_size": "md",
-            "width": "fill",
-            "limit_width": false
+            "width_desktop": "fill",
+            "width_mobile": "fill",
+            "height_desktop": "ratio_6_7",
+            "height_mobile": "ratio_6_7",
+            "position_desktop": "bottom_left",
+            "position_mobile": "bottom_left",
+            "corner_radius": "slightly_rounded",
+            "color_scheme": "scheme-3",
+            "show_overlay": true,
+            "overlay_style": "solid",
+            "overlay_opacity": 20,
+            "padding_top": 0,
+            "padding_bottom": 0,
+            "padding_left": 0,
+            "padding_right": 0,
+            "enable_sticky": false,
+            "zoom_on_hover": true,
+            "image": "shopify://shop_images/strideo-cards-5-figma.jpg",
+            "mobile_image": "shopify://shop_images/strideo-cards-5-figma.jpg"
           },
           "blocks": {
-            "question_1": {
-              "type": "faq_item",
+            "content": {
+              "type": "group",
               "settings": {
-                "question": "1. HOW DO I CARE FOR MY STROKEN GEAR?",
-                "show_question_icon": false,
-                "initially_open": true
+                "width": "fill",
+                "width_mobile": "fill",
+                "height": "fit",
+                "direction": "vertical",
+                "alignment": "left",
+                "alignment_mobile": "left",
+                "padding_top": 24,
+                "padding_bottom": 24,
+                "padding_left": 24,
+                "padding_right": 24
               },
               "blocks": {
-                "answer": {
-                  "type": "faq_answer_text",
+                "title": {
+                  "type": "heading",
                   "settings": {
-                    "text": "<p>Machine wash cold, inside out, with like colours. Avoid fabric softeners they break down performance fibres over time. Tumble dry on low or air dry for best results.</p>"
+                    "text": "<p>Discipline before speed</p>",
+                    "heading_size": "md",
+                    "html_tag": "h3",
+                    "width": "fill",
+                    "width_mobile": "fill"
                   }
                 }
               },
               "block_order": [
-                "answer"
-              ]
-            },
-            "question_2": {
-              "type": "faq_item",
-              "settings": {
-                "question": "2. CAN I TRACK MY ORDER?",
-                "show_question_icon": false,
-                "initially_open": false
-              },
-              "blocks": {
-                "answer": {
-                  "type": "faq_answer_text",
-                  "settings": {
-                    "text": "<p>Contact our support team for help tracking your order.</p>"
-                  }
-                }
-              },
-              "block_order": [
-                "answer"
-              ]
-            },
-            "question_3": {
-              "type": "faq_item",
-              "settings": {
-                "question": "3. DO YOU SHIP INTERNATIONALLY?",
-                "show_question_icon": false,
-                "initially_open": false
-              },
-              "blocks": {
-                "answer": {
-                  "type": "faq_answer_text",
-                  "settings": {
-                    "text": "<p>Contact our support team to check shipping availability for your destination.</p>"
-                  }
-                }
-              },
-              "block_order": [
-                "answer"
-              ]
-            },
-            "question_4": {
-              "type": "faq_item",
-              "settings": {
-                "question": "4. WHAT IS YOUR RETURN POLICY?",
-                "show_question_icon": false,
-                "initially_open": false
-              },
-              "blocks": {
-                "answer": {
-                  "type": "faq_answer_text",
-                  "settings": {
-                    "text": "<p>Contact our support team for details about returns and exchanges.</p>"
-                  }
-                }
-              },
-              "block_order": [
-                "answer"
+                "title"
               ]
             }
           },
           "block_order": [
-            "question_1",
-            "question_2",
-            "question_3",
-            "question_4"
+            "content"
+          ]
+        },
+        "card_4": {
+          "type": "image-card",
+          "settings": {
+            "width_desktop": "fill",
+            "width_mobile": "fill",
+            "height_desktop": "ratio_6_7",
+            "height_mobile": "ratio_6_7",
+            "position_desktop": "bottom_left",
+            "position_mobile": "bottom_left",
+            "corner_radius": "slightly_rounded",
+            "color_scheme": "scheme-3",
+            "show_overlay": true,
+            "overlay_style": "solid",
+            "overlay_opacity": 10,
+            "padding_top": 0,
+            "padding_bottom": 0,
+            "padding_left": 0,
+            "padding_right": 0,
+            "enable_sticky": false,
+            "zoom_on_hover": true,
+            "image": "shopify://shop_images/strideo-cards-6-figma.jpg",
+            "mobile_image": "shopify://shop_images/strideo-cards-6-figma.jpg"
+          },
+          "blocks": {
+            "content": {
+              "type": "group",
+              "settings": {
+                "width": "fill",
+                "width_mobile": "fill",
+                "height": "fit",
+                "direction": "vertical",
+                "alignment": "left",
+                "alignment_mobile": "left",
+                "padding_top": 24,
+                "padding_bottom": 24,
+                "padding_left": 24,
+                "padding_right": 24
+              },
+              "blocks": {
+                "title": {
+                  "type": "heading",
+                  "settings": {
+                    "text": "<p>Discover our athletes</p>",
+                    "heading_size": "md",
+                    "html_tag": "h3",
+                    "width": "fill",
+                    "width_mobile": "fill"
+                  }
+                }
+              },
+              "block_order": [
+                "title"
+              ]
+            }
+          },
+          "block_order": [
+            "content"
           ]
         }
       },
       "block_order": [
-        "header",
-        "accordion"
-      ],
-      "custom_css": [
-        ".faq-item__summary {padding-right: 12px; gap: 20px;}",
-        ".faq-item__content-inner {padding: 0 48px 20px 0;}"
+        "card_1",
+        "card_2",
+        "card_3",
+        "card_4"
       ]
     }
   },
   "order": [
     "slideshow",
     "collection_list",
-    "countdown_timer",
     "featured_collection",
+    "collections_image_list",
+    "scroll_reading_text",
+    "multiple_images_text",
     "scrolling_text",
-    "parallax",
-    "featured_collection_background",
-    "hotspot_active_gear",
-    "new_arrivals_banner",
-    "testimonials_products",
-    "questions_answers"
+    "new_arrivals_tabs",
+    "countdown_timer",
+    "featured_product",
+    "collection_list_03"
   ]
 }

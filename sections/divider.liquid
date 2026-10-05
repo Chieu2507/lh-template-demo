@@ -14,7 +14,7 @@
 %}
 <div
   class="collection-divider color-scheme section-color-scope {{ section.settings.color_scheme }}{% if section.settings.width == 'page' %} container page-width{% elsif section.settings.width == 'full' %} container full-width{% endif %}"
-  style="--divider-thickness:{{ section.settings.thickness }}px;--divider-width:{{ divider_width }};--divider-max-width:{{ divider_max_width }};--divider-color:{{ divider_color }};--divider-padding-top:{{ section.settings.padding_top }}px;--divider-padding-bottom:{{ section.settings.padding_bottom }}px;--divider-padding-top-mobile:{{ section.settings.padding_top_mobile }}px;--divider-padding-bottom-mobile:{{ section.settings.padding_bottom_mobile }}px"
+  style="--divider-thickness:{{ section.settings.thickness }}px;--divider-width:{{ divider_width }};--divider-max-width:{{ divider_max_width }};--divider-color:{{ divider_color }};--divider-padding-top:{{ section.settings.padding_top }}px;--divider-padding-bottom:{{ section.settings.padding_bottom }}px;{% if section.settings.customize_mobile_padding %}--divider-padding-top-mobile:{{ section.settings.padding_top_mobile }}px;--divider-padding-bottom-mobile:{{ section.settings.padding_bottom_mobile }}px;{% endif %}"
 >
   <hr class="collection-divider__line" role="separator">
 </div>
@@ -115,11 +115,11 @@
       "label": "Border color",
       "visible_if": "{{ section.settings.border_type == 'custom' }}"
     },
-    { "type": "header", "content": "Section padding" },
+    { "type": "header", "content": "t:general.padding" },
     {
       "type": "range",
       "id": "padding_top",
-      "label": "Top padding",
+      "label": "t:labels.top_padding",
       "min": 0,
       "max": 200,
       "step": 4,
@@ -129,7 +129,7 @@
     {
       "type": "range",
       "id": "padding_bottom",
-      "label": "Bottom padding",
+      "label": "t:labels.bottom_padding",
       "min": 0,
       "max": 200,
       "step": 4,
@@ -139,13 +139,13 @@
     {
       "type": "checkbox",
       "id": "customize_mobile_padding",
-      "label": "Custom for mobile",
+      "label": "t:labels.customize_mobile_padding",
       "default": false
     },
     {
       "type": "range",
       "id": "padding_top_mobile",
-      "label": "Mobile top padding",
+      "label": "t:labels.mobile_top_padding",
       "min": 0,
       "max": 120,
       "step": 2,
@@ -156,7 +156,7 @@
     {
       "type": "range",
       "id": "padding_bottom_mobile",
-      "label": "Mobile bottom padding",
+      "label": "t:labels.mobile_bottom_padding",
       "min": 0,
       "max": 120,
       "step": 2,
