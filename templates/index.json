@@ -1738,7 +1738,7 @@
           "type": "marquee",
           "settings": {
             "animation_direction": "backward",
-            "animation_speed": 0.5,
+            "animation_speed": 1,
             "gap_desktop": 10,
             "gap_mobile": 10,
             "padding_top": 0,
