@@ -1293,35 +1293,45 @@
           "type": "collection-two-image-item",
           "settings": {
             "collection": "cloud-strideo",
-            "custom_title": "Cloud"
+            "custom_title": "Cloud",
+            "custom_image": "shopify://shop_images/strideo-lines-1-figma.jpg",
+            "secondary_image": "shopify://shop_images/strideo-lines-2-figma.jpg"
           }
         },
         "collection_2": {
           "type": "collection-two-image-item",
           "settings": {
             "collection": "the-roger-strideo",
-            "custom_title": "The Roger"
+            "custom_title": "The Roger",
+            "custom_image": "shopify://shop_images/strideo-cards-3-figma.jpg",
+            "secondary_image": "shopify://shop_images/strideo-cards-1-figma.jpg"
           }
         },
         "collection_3": {
           "type": "collection-two-image-item",
           "settings": {
             "collection": "cloudmonster-strideo",
-            "custom_title": "Cloudmonster"
+            "custom_title": "Cloudmonster",
+            "custom_image": "shopify://shop_images/strideo-categories-2-figma.jpg",
+            "secondary_image": "shopify://shop_images/strideo-cards-5-figma.jpg"
           }
         },
         "collection_4": {
           "type": "collection-two-image-item",
           "settings": {
             "collection": "cloudtilt-strideo",
-            "custom_title": "Cloudtilt"
+            "custom_title": "Cloudtilt",
+            "custom_image": "shopify://shop_images/strideo-lines-2-figma.jpg",
+            "secondary_image": "shopify://shop_images/strideo-cards-5-figma.jpg"
           }
         },
         "collection_5": {
           "type": "collection-two-image-item",
           "settings": {
             "collection": "cloudsurfer-strideo",
-            "custom_title": "Cloudsurfer"
+            "custom_title": "Cloudsurfer",
+            "custom_image": "shopify://shop_images/strideo-categories-1-figma.jpg",
+            "secondary_image": "shopify://shop_images/strideo-categories-6-figma.jpg"
           }
         }
       },
@@ -2066,7 +2076,9 @@
             "padding_top": 0,
             "padding_bottom": 0,
             "padding_left": 0,
-            "padding_right": 0
+            "padding_right": 0,
+            "image": "shopify://shop_images/strideo-cards-1-figma.jpg",
+            "mobile_image": "shopify://shop_images/strideo-cards-1-figma.jpg"
           },
           "blocks": {
             "content": {
@@ -2123,7 +2135,9 @@
             "padding_top": 0,
             "padding_bottom": 0,
             "padding_left": 0,
-            "padding_right": 0
+            "padding_right": 0,
+            "image": "shopify://shop_images/strideo-cards-3-figma.jpg",
+            "mobile_image": "shopify://shop_images/strideo-cards-3-figma.jpg"
           },
           "blocks": {
             "content": {
@@ -2180,7 +2194,9 @@
             "padding_top": 0,
             "padding_bottom": 0,
             "padding_left": 0,
-            "padding_right": 0
+            "padding_right": 0,
+            "image": "shopify://shop_images/strideo-cards-5-figma.jpg",
+            "mobile_image": "shopify://shop_images/strideo-cards-5-figma.jpg"
           },
           "blocks": {
             "content": {
@@ -2237,7 +2253,9 @@
             "padding_top": 0,
             "padding_bottom": 0,
             "padding_left": 0,
-            "padding_right": 0
+            "padding_right": 0,
+            "image": "shopify://shop_images/strideo-cards-6-figma.jpg",
+            "mobile_image": "shopify://shop_images/strideo-cards-6-figma.jpg"
           },
           "blocks": {
             "content": {
