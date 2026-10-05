@@ -9,6 +9,8 @@
 .showcase-carousel--boxed .showcase-carousel__swiper.swiper { overflow: hidden; }
 .showcase-item.swiper-slide { width: var(--showcase-width); height: auto; display: flex; flex-direction: column; gap: var(--showcase-image-spacing, 30px); }
 .showcase-item__media { display: grid; align-items: center; position: relative; flex: 0 0 auto; }
+.showcase-carousel.is-ready .showcase-item__media { transform: scale(.85); transform-origin: center; transition: transform .55s ease; }
+.showcase-carousel.is-ready .swiper-slide-active .showcase-item__media { transform: scale(1); }
 .showcase-item__image { grid-area: 1/1; min-width: 0; transform: none; }
 .showcase-item__content { padding: var(--showcase-content-padding-top, 32px) var(--showcase-content-padding-right, 32px) var(--showcase-content-padding-bottom, 32px) var(--showcase-content-padding-left, 32px); opacity: 0; transition: opacity .3s ease; }
 .swiper-slide-active > .showcase-item__content { opacity: 1; }
@@ -59,9 +61,9 @@
   .showcase-item.swiper-slide { gap: var(--showcase-image-spacing-mobile, 30px); }
   .showcase-carousel--overlay .showcase-item { gap: 0; }
 }
-@media (prefers-reduced-motion: reduce) { .showcase-carousel, .showcase-item__image, .showcase-item__content { transition: none !important; } .showcase-carousel__background--fixed .background-media__image img { position: static; height: 100%; } }
-.showcase-carousel.is-loop-reset .showcase-item__image, .showcase-carousel.is-loop-reset .showcase-item__content, .showcase-carousel.is-loop-reset .showcase-item__background { transition: none; }
+@media (prefers-reduced-motion: reduce) { .showcase-carousel, .showcase-item__media, .showcase-item__image, .showcase-item__content { transition: none !important; } .showcase-carousel__background--fixed .background-media__image img { position: static; height: 100%; } }
+.showcase-carousel.is-loop-reset .showcase-item__media, .showcase-carousel.is-loop-reset .showcase-item__image, .showcase-carousel.is-loop-reset .showcase-item__content, .showcase-carousel.is-loop-reset .showcase-item__background { transition: none; }
 
-/* Keep Showcase media steady on hover and navigation; Swiper owns horizontal motion. */
+/* Hover leaves media scale unchanged; the active slide owns its scale. */
 .showcase-carousel .media-hover-zoom { --motion-image-zoom: 1; }
 .showcase-carousel .showcase-item__image .media-hover-zoom__media :is(img, svg) { transform: none; transition: none; }
