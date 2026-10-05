@@ -137,12 +137,14 @@
             },
             "variant-picker": {
               "type": "product-variant-picker",
-              "settings": {}
+              "settings": {
+                "color_option_display": "variant_image"
+              }
             },
             "inventory": {
               "type": "product-inventory",
               "settings": {
-                "display_mode": "status",
+                "display_mode": "status_and_count",
                 "low_stock_threshold": 5
               }
             },
@@ -265,12 +267,14 @@
             },
             "variant-picker": {
               "type": "product-variant-picker",
-              "settings": {}
+              "settings": {
+                "color_option_display": "variant_image"
+              }
             },
             "inventory": {
               "type": "product-inventory",
               "settings": {
-                "display_mode": "status",
+                "display_mode": "status_and_count",
                 "low_stock_threshold": 5
               }
             },
