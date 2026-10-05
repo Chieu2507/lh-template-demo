@@ -35,8 +35,8 @@
     endif
   endif
 %}
-<div class="collections-with-tabs__item" {{ block.shopify_attributes }}>
-<div class="collections-with-tabs__tab-row">
+<div class="collections-with-tabs__item">
+<div class="collections-with-tabs__tab-row" {{ block.shopify_attributes }}>
   <button id="CollectionsWithTabsTab-{{ item_id }}" class="collections-with-tabs__tab" type="button" role="tab" aria-controls="CollectionsWithTabsPanel-{{ item_id }}" aria-selected="{{ is_first_item }}" tabindex="{% if is_first_item %}0{% else %}-1{% endif %}" data-collections-with-tabs-tab data-collections-with-tabs-id="{{ item_id }}">
     <span class="collections-with-tabs__tab-content">
       <{{ item_title_tag }} class="collections-with-tabs__tab-title heading-text heading-{{ item_title_size }}"{% if item_title_size == 'custom' %} style="--heading-block-custom-size: {{ custom_title_size }}px"{% endif %}>{{ item_title | escape }}</{{ item_title_tag }}>
