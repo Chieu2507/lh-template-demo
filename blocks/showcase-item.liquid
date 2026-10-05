@@ -2,28 +2,13 @@
   One centered Showcase carousel item. The parent controls card geometry and
   active state; Image and Group retain their shared editable content contracts.
 {% enddoc %}
-{% liquid
-  assign item_scheme = blank
-  if block.settings.color_type == 'scheme'
-    assign item_scheme = block.settings.color_scheme.id | default: block.settings.color_scheme | default: 'scheme-1' | handleize
-  endif
-%}
-<div class="swiper-slide showcase-item" data-showcase-item data-block-id="{{ block.id }}"{% if item_scheme != blank %} data-color-scheme="{{ item_scheme }}"{% endif %}{% if block.settings.background_color != blank %} data-background-color="{{ block.settings.background_color | escape }}"{% endif %} style="--showcase-image-spacing: {{ block.settings.image_spacing }}px; --showcase-image-spacing-mobile: {{ block.settings.image_spacing_mobile }}px;" {{ block.shopify_attributes }}>
+<div class="swiper-slide showcase-item" data-showcase-item data-block-id="{{ block.id }}" style="--showcase-image-spacing: {{ block.settings.image_spacing }}px; --showcase-image-spacing-mobile: {{ block.settings.image_spacing_mobile }}px;" {{ block.shopify_attributes }}>
   <div class="showcase-item__media">
-    {% unless block.settings.background == 'none' %}
-      <div class="showcase-item__background" aria-hidden="true">
-        {% if block.settings.background == 'shape' %}
-          <div class="showcase-item__shape"></div>
-        {% elsif block.settings.background_image != blank %}
-          {% render 'image', image: block.settings.background_image, width: 1600, sizes: '(min-width: 768px) 45vw, 100vw' %}
-        {% endif %}
-      </div>
-    {% endunless %}
     <div class="showcase-item__image">
       {% content_for 'block', type: 'image', id: 'image' %}
     </div>
   </div>
-  <div class="showcase-item__content align-content">
+  <div class="showcase-item__content align-content" style="--showcase-content-padding-top: {{ block.settings.padding_top }}px; --showcase-content-padding-bottom: {{ block.settings.padding_bottom }}px; --showcase-content-padding-left: {{ block.settings.padding_left }}px; --showcase-content-padding-right: {{ block.settings.padding_right }}px;{% if block.settings.customize_mobile_padding %} --showcase-content-padding-top-mobile: {{ block.settings.padding_top_mobile }}px; --showcase-content-padding-bottom-mobile: {{ block.settings.padding_bottom_mobile }}px; --showcase-content-padding-left-mobile: {{ block.settings.padding_left_mobile }}px; --showcase-content-padding-right-mobile: {{ block.settings.padding_right_mobile }}px;{% endif %}">
     {% content_for 'block', type: 'group', id: 'content' %}
   </div>
 </div>
@@ -58,63 +43,97 @@
     },
     {
       "type": "header",
-      "content": "Appearance"
+      "content": "Content padding"
     },
     {
-      "type": "select",
-      "id": "background",
-      "label": "Image background",
-      "info": "Only visible when this slide is centered.",
-      "options": [
-        {
-          "value": "none",
-          "label": "None"
-        },
-        {
-          "value": "shape",
-          "label": "Shape"
-        },
-        {
-          "value": "image",
-          "label": "Image"
-        }
-      ],
-      "default": "none"
+      "type": "range",
+      "id": "padding_top",
+      "label": "t:labels.top_padding",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "default": 32
     },
     {
-      "type": "image_picker",
-      "id": "background_image",
-      "label": "Background image",
-      "visible_if": "{{ block.settings.background == 'image' }}"
+      "type": "range",
+      "id": "padding_bottom",
+      "label": "t:labels.bottom_padding",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "default": 32
     },
     {
-      "type": "select",
-      "id": "color_type",
-      "label": "Color type",
-      "options": [
-        {
-          "value": "inherit",
-          "label": "Inherit"
-        },
-        {
-          "value": "scheme",
-          "label": "Color scheme"
-        }
-      ],
-      "default": "inherit"
+      "type": "range",
+      "id": "padding_left",
+      "label": "t:labels.left_padding",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "default": 32
     },
     {
-      "type": "color_scheme",
-      "id": "color_scheme",
-      "label": "t:labels.color_scheme",
-      "default": "scheme-1",
-      "visible_if": "{{ block.settings.color_type == 'scheme' }}"
+      "type": "range",
+      "id": "padding_right",
+      "label": "t:labels.right_padding",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "default": 32
     },
     {
-      "type": "color",
-      "alpha": true,
-      "id": "background_color",
-      "label": "Background color"
+      "type": "checkbox",
+      "id": "customize_mobile_padding",
+      "label": "t:labels.customize_mobile_padding",
+      "default": true
+    },
+    {
+      "type": "range",
+      "id": "padding_top_mobile",
+      "label": "Top padding (mobile)",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "default": 16,
+      "visible_if": "{{ block.settings.customize_mobile_padding }}"
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_mobile",
+      "label": "Bottom padding (mobile)",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "default": 16,
+      "visible_if": "{{ block.settings.customize_mobile_padding }}"
+    },
+    {
+      "type": "range",
+      "id": "padding_left_mobile",
+      "label": "Left padding (mobile)",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "default": 16,
+      "visible_if": "{{ block.settings.customize_mobile_padding }}"
+    },
+    {
+      "type": "range",
+      "id": "padding_right_mobile",
+      "label": "Right padding (mobile)",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "default": 16,
+      "visible_if": "{{ block.settings.customize_mobile_padding }}"
     }
   ],
   "presets": [

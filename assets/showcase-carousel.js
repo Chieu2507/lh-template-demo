@@ -45,9 +45,15 @@ const init = (root) => {
   const initial = Math.min(count - 1, Math.max(0, Number(root.dataset.initialSlide || 1) - 1));
   const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
   const finePointer = window.matchMedia('(min-width: 1150px) and (hover: hover) and (pointer: fine)');
-  let scheme = root.dataset.defaultScheme;
   let swiper;
   let resetting = false;
+  const alignNavigation = () => {
+    const media = wrapper.querySelector('.swiper-slide-active .showcase-item__media');
+    if (!media || !stage) return;
+    const mediaBox = media.getBoundingClientRect();
+    const stageBox = stage.getBoundingClientRect();
+    root.style.setProperty('--showcase-navigation-y', `${mediaBox.top - stageBox.top + mediaBox.height / 2}px`);
+  };
   const current = () => wrap(swiper?.activeIndex ?? initial, count);
   const go = (index, speed = swiper.params.speed) => {
     if (swiper.destroyed || swiper.animating || count < 2) return;
@@ -69,12 +75,7 @@ const init = (root) => {
     if (!swiper || swiper.destroyed) return;
     const logical = current();
     [...wrapper.children].forEach((slide, index) => slide.setAttribute('aria-label', `${wrap(index, count) + 1} / ${count}`));
-    const source = originals[logical];
-    const nextScheme = source.dataset.colorScheme || root.dataset.defaultScheme;
-    if (nextScheme !== scheme) { root.classList.remove(scheme); root.classList.add(nextScheme); scheme = nextScheme; }
-    const background = source.dataset.backgroundColor || root.dataset.defaultBackground;
-    if (background) root.style.setProperty('--showcase-background', background);
-    else root.style.removeProperty('--showcase-background');
+    alignNavigation();
     originals.forEach((slide, index) => {
       // Hide only content from focus so media remains selectable in the editor.
       const content = slide.querySelector('.showcase-item__content');
@@ -151,15 +152,18 @@ const init = (root) => {
   }, { signal });
   root.classList.add('is-ready');
   restore();
+  const mediaObserver = new ResizeObserver(alignNavigation);
+  originals.forEach((slide) => mediaObserver.observe(slide.querySelector('.showcase-item__media')));
+  mediaObserver.observe(stage);
   states.set(root, () => {
     controller.abort();
+    mediaObserver.disconnect();
     destroySwiperCarousel(viewport);
     clones.forEach((clone) => clone.remove());
     bullets.forEach((button) => button.remove());
     originals.forEach((slide) => { const content = slide.querySelector('.showcase-item__content'); content.inert = false; content.removeAttribute('aria-hidden'); });
-    root.classList.remove('is-ready', 'is-cursor-active', scheme);
-    root.classList.add(root.dataset.defaultScheme);
-    root.style.removeProperty('--showcase-background');
+    root.classList.remove('is-ready', 'is-cursor-active');
+    root.style.removeProperty('--showcase-navigation-y');
     states.delete(root);
   });
 };

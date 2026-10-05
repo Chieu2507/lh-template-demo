@@ -13,12 +13,12 @@
   #shopify-section-{{ section.id }} { background: {{ section.settings.background_color | default: section.settings.color_scheme.settings.background }}; }
 {% endstyle %}
 <div class="section-spacing showcase-carousel color-scheme section-color-scope {{ scheme }} showcase-carousel--{{ section.settings.content_position }} showcase-carousel--media-{{ section.settings.media_size }} showcase-carousel--navigation-{{ section.settings.navigation_mode }}{% if section.settings.boxed_layout %} showcase-carousel--boxed{% endif %}"
-  data-showcase-carousel data-default-scheme="{{ scheme }}" data-default-background="{{ section.settings.background_color | escape }}" data-initial-slide="{{ section.settings.initial_slide }}" data-hero-surface{% if section.settings.parallax != 'none' %} data-hero-parallax="{{ section.settings.parallax }}"{% endif %}
+  data-showcase-carousel data-initial-slide="{{ section.settings.initial_slide }}" data-hero-surface{% if section.settings.parallax != 'none' %} data-hero-parallax="{{ section.settings.parallax }}"{% endif %}
   style="--flex-align: center; --showcase-gap: {{ section.settings.content_gap }}px; --showcase-gap-mobile: {{ section.settings.content_gap_mobile }}px; --showcase-slide-gap: {{ section.settings.slide_gap }}px; --showcase-slide-gap-mobile: {{ section.settings.slide_gap_mobile }}px; --showcase-padding-top: {{ section.settings.padding_top }}px; --showcase-padding-bottom: {{ section.settings.padding_bottom }}px; --showcase-overlay-opacity: {{ section.settings.overlay_opacity | divided_by: 100.0 }};{% if section.settings.customize_mobile_padding %} --showcase-padding-top-mobile: {{ section.settings.padding_top_mobile }}px; --showcase-padding-bottom-mobile: {{ section.settings.padding_bottom_mobile }}px;{% endif %}{% if section.settings.background_color != blank %} --showcase-background: {{ section.settings.background_color }};{% endif %}">
   {% if section.settings.background_media != 'none' %}
     <div class="showcase-carousel__background{% if section.settings.parallax == 'fixed' %} showcase-carousel__background--fixed{% endif %}">
       <div data-hero-media>
-        {% render 'media-background', media_type: section.settings.background_media, image: section.settings.background_image, mobile_image: section.settings.mobile_image, video: section.settings.background_video, aria_hidden: true, sizes: '100vw' %}
+        {% render 'media-background', media_type: section.settings.background_media, image: section.settings.background_image, mobile_image: section.settings.mobile_image, video: section.settings.background_video, aria_hidden: true, sizes: '100vw', placeholder: 'lifestyle-1' %}
       </div>
       {% if section.settings.show_overlay %}<div class="showcase-carousel__overlay"></div>{% endif %}
     </div>
