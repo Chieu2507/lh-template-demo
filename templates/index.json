@@ -1235,9 +1235,7 @@
         "tab_2",
         "tab_3"
       ],
-      "custom_css": [
-        "@media (min-width: 768px) and (max-width: 1149.98px) {.collection-tabs__spacing {padding-top: 80px; padding-bottom: 80px;}}"
-      ],
+      "custom_css": [],
       "name": "New arrivals — Tabs",
       "settings": {
         "section_width": "page_width",
