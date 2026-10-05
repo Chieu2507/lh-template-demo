@@ -2570,7 +2570,7 @@ legend {
 }
 
 /* Image swatches use a separate underline, preserving the image frame size. */
-.variant-picker__option--swatches .swatches--selected-underline {
+.variant-picker__option--swatches .swatches--selected-underline .variant-picker__choice {
   padding-block-end: 9px;
 }
 
@@ -2584,13 +2584,23 @@ legend {
   border-color: transparent;
 }
 
-.variant-picker__option--swatches .swatches--selected-underline .swatch__input:checked + .swatch__label::before {
+.variant-picker__option--swatches .swatches--selected-underline .variant-picker__choice:has(.swatch__input:checked)::after {
   content: '';
   position: absolute;
   inset-inline: 0;
-  inset-block-end: -9px;
+  inset-block-end: 0;
   height: 1px;
   background: var(--body-color);
+}
+
+.variant-picker__option--swatches .swatches--selected-underline .swatch__input:checked + .swatch__label .swatch {
+  outline: none;
+  box-shadow: none;
+}
+
+.variant-picker__option--swatches .swatches--selected-underline .swatch__input:checked:not(:focus-visible) + .swatch__label {
+  outline: none;
+  box-shadow: none;
 }
 
 .variant-picker__option--native-color-swatches .swatch__input:checked + .swatch__label {
