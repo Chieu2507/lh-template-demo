@@ -1722,7 +1722,7 @@
           "type": "carousel",
           "settings": {
             "columns_desktop": "4",
-            "columns_mobile": "1",
+            "columns_mobile": "2",
             "loop": true,
             "show_next_slide_preview_on_desktop": true,
             "gap_desktop": 10,

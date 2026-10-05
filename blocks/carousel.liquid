@@ -228,6 +228,10 @@
 {% endcapture %}
 
 {% capture carousel_style %}
+  --carousel-columns-desktop: {{ carousel_columns_desktop }};
+  --carousel-columns-mobile: {{ carousel_columns_mobile }};
+  --carousel-gap-desktop: {{ carousel_gap_desktop }}px;
+  --carousel-gap-mobile: {{ carousel_gap_mobile }}px;
   --carousel-padding-top: {{ carousel_padding_top }}px;
   --carousel-padding-bottom: {{ carousel_padding_bottom }}px;
   {% if carousel_customize_mobile_padding %}
@@ -285,8 +289,7 @@
       show_next_slide_preview: carousel_show_next_slide_preview,
       autoplay: carousel_autoplay,
       pause_on_hover: carousel_pause_on_hover,
-      autoplay_delay: carousel_delay,
-      show_next_slide_preview: carousel_show_next_slide_preview
+      autoplay_delay: carousel_delay
     %}
     {% if carousel_has_multiple_items and carousel_controls_style == 'standard' %}
       {% render 'swiper-navigation',
@@ -324,6 +327,12 @@
   .carousel-block { width: var(--carousel-width, 100%); min-width: 0; padding-block: var(--carousel-padding-top) var(--carousel-padding-bottom); }
   .carousel-block__container { position: relative; min-width: 0; }
   .carousel-block__viewport { width: 100%; }
+  .carousel-block__viewport:not(.swiper-initialized) > .swiper-wrapper { gap: var(--carousel-gap-desktop, 32px); }
+  .carousel-block__viewport:not(.swiper-initialized) > .swiper-wrapper > .swiper-slide { width: calc((100% - (var(--carousel-columns-desktop, 4) - 1) * var(--carousel-gap-desktop, 32px)) / var(--carousel-columns-desktop, 4)); }
+  @media (max-width: 767.98px) {
+    .carousel-block__viewport:not(.swiper-initialized) > .swiper-wrapper { gap: var(--carousel-gap-mobile, 24px); }
+    .carousel-block__viewport:not(.swiper-initialized) > .swiper-wrapper > .swiper-slide { width: calc((100% - (var(--carousel-columns-mobile, 1) - 1) * var(--carousel-gap-mobile, 24px)) / var(--carousel-columns-mobile, 1)); }
+  }
   .carousel-block__viewport > .swiper-wrapper { column-gap: 0; }
   .carousel-block__navigation { position: absolute; z-index: 2; inset: 50% 0 auto; display: flex; justify-content: space-between; padding-inline: 0.5rem; transform: translateY(-50%); pointer-events: none; }
   .carousel-block__navigation.swiper-carousel__navigation--outside { padding-inline: 0; }
