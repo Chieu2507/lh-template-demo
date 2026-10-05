@@ -19,6 +19,9 @@
   if collection_list_view_all_product_list != blank
     assign collection_list_view_all_url = collection_list_view_all_product_list.settings.collection.url
     assign collection_list_view_all_is_dynamic = true
+  elsif closest.blog != blank
+    assign collection_list_view_all_url = closest.blog.url
+    assign collection_list_view_all_is_dynamic = true
   elsif closest.collection != blank
     assign collection_list_view_all_url = closest.collection.url
     assign collection_list_view_all_is_dynamic = true
