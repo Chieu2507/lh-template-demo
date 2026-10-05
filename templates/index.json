@@ -888,187 +888,58 @@
     "countdown_timer": {
       "type": "hero",
       "blocks": {
-        "content-area": {
-          "type": "group",
-          "name": "Content area",
+        "heading": {
+          "type": "heading",
           "settings": {
-            "direction": "vertical",
-            "position": "space-between",
-            "alignment": "left",
-            "alignment_mobile": "left",
-            "gap_desktop": 64,
-            "gap_mobile": 40,
-            "width": "fill",
-            "height": "fill",
-            "width_mobile": "fill",
-            "backdrop_blur": 0
-          },
-          "blocks": {
-            "content": {
-              "type": "group",
-              "name": "Content",
-              "settings": {
-                "direction": "vertical",
-                "alignment": "left",
-                "alignment_mobile": "left",
-                "gap_desktop": 40,
-                "gap_mobile": 32,
-                "width": "fill",
-                "limit_width": true,
-                "max_width": 580,
-                "height": "fit",
-                "width_mobile": "fill",
-                "backdrop_blur": 0
-              },
-              "blocks": {
-                "heading-content": {
-                  "type": "group",
-                  "name": "Heading and description",
-                  "settings": {
-                    "direction": "vertical",
-                    "alignment": "left",
-                    "alignment_mobile": "left",
-                    "gap_desktop": 16,
-                    "gap_mobile": 16,
-                    "width": "fill",
-                    "height": "fit",
-                    "width_mobile": "fill",
-                    "backdrop_blur": 0
-                  },
-                  "blocks": {
-                    "heading": {
-                      "type": "heading",
-                      "settings": {
-                        "text": "<p>Run into savings</p>",
-                        "heading_size": "display",
-                        "html_tag": "h2",
-                        "width": "fill",
-                        "animation_type": "rotate-words",
-                        "animation_delay": 50
-                      }
-                    },
-                    "text": {
-                      "type": "text",
-                      "settings": {
-                        "text": "<p>Your next stride just got lighter. Grab up to 40% off select styles built to move with you on the track, in the city, and everywhere in between.</p>",
-                        "text_size": "lg",
-                        "width": "fill",
-                        "animation_type": "fade",
-                        "animation_delay": 0
-                      }
-                    }
-                  },
-                  "block_order": [
-                    "heading",
-                    "text"
-                  ]
-                },
-                "button": {
-                  "type": "button",
-                  "settings": {
-                    "button_label": "Shop now",
-                    "button_link": "shopify://collections/all",
-                    "button_style": "primary",
-                    "show_icon": false,
-                    "animation_type": "slide-bottom",
-                    "animation_delay": 100
-                  }
-                }
-              },
-              "block_order": [
-                "heading-content",
-                "button"
-              ]
-            },
-            "countdown": {
-              "type": "group",
-              "name": "Countdown",
-              "settings": {
-                "direction": "vertical",
-                "alignment": "left",
-                "alignment_mobile": "left",
-                "gap_desktop": 0,
-                "gap_mobile": 0,
-                "width": "fill",
-                "limit_width": true,
-                "max_width": 430,
-                "height": "fit",
-                "width_mobile": "fill",
-                "appearance_type": "scheme",
-                "color_scheme": "scheme-4",
-                "corner_radius": "slightly_rounded",
-                "backdrop_blur": 0
-              },
-              "blocks": {
-                "timer": {
-                  "type": "countdown-timer",
-                  "settings": {
-                    "style": "with_labels",
-                    "unit_layout": "connected",
-                    "max_width": 428,
-                    "show_background": false,
-                    "corner_radius": "slightly_rounded",
-                    "type": "recurring",
-                    "duration_hours": 37,
-                    "duration_minutes": 34,
-                    "number_size": "custom",
-                    "custom_number_size": 24,
-                    "label_size": "sm"
-                  }
-                }
-              },
-              "block_order": [
-                "timer"
-              ]
-            }
-          },
-          "block_order": [
-            "content",
-            "countdown"
-          ]
+            "text": "<p>Save up to 50%</p>",
+            "heading_size": "display",
+            "html_tag": "h2",
+            "text_color": "#F0FF2D",
+            "width": "fit",
+            "animation_type": "none"
+          }
+        },
+        "button": {
+          "type": "button",
+          "settings": {
+            "button_label": "Shop now",
+            "button_link": "shopify://collections/all",
+            "button_style": "primary",
+            "show_icon": false
+          }
         }
       },
       "block_order": [
-        "content-area"
+        "heading",
+        "button"
       ],
-      "custom_css": [
-        ".hero {--ct-h:750px;--ct-p:80px}",
-        ".hero__surface {--hero-min-height:var(--ct-h)}",
-        ".hero__container {padding-block:var(--ct-p)}",
-        ".hero__content {height:calc(var(--ct-h) - var(--ct-p)*2);max-width:calc(var(--page-width) - var(--page-margin-current)*2)}",
-        ".countdown-timer * {border:0!important}",
-        "@media (max-width:1149.98px) {.hero {--ct-h:640px}}",
-        "@media (max-width:767.98px) {.hero {--ct-h:570px;--ct-p:64px}}"
-      ],
-      "name": "Countdown timer",
+      "name": "Hero banner",
       "settings": {
-        "width": "full",
+        "width": "full_padded",
         "layout": "classic",
-        "desktop_content_position": "last",
-        "stack_on_tablet": false,
         "media_type": "image",
-        "banner_image": "shopify://shop_images/strideo-countdown-1-figma.jpg",
-        "mobile_banner_image": "shopify://shop_images/strideo-countdown-1-figma.jpg",
-        "media_aspect_ratio": "ratio_7_6",
-        "media_corner_radius": "rounded",
+        "banner_image": "shopify://shop_images/strideo-scroll-1-figma.jpg",
+        "media_corner_radius": "slightly_rounded",
         "hover_zoom": false,
-        "overlay": "rgba(0,0,0,0.25)",
-        "desktop_height": "medium",
-        "mobile_height": "medium",
-        "content_width": "fill",
+        "overlay": "rgba(0, 0, 0, 0.2)",
+        "desktop_height": "custom",
+        "custom_height_desktop": 750,
+        "mobile_height": "custom",
+        "custom_height_mobile": 400,
+        "content_width": "fit",
         "desktop_position": "center_center",
         "mobile_position": "center_center",
-        "desktop_gap": 0,
-        "mobile_gap": 0,
-        "page_content_padding": 0,
-        "page_content_padding_mobile": 0,
-        "color_scheme": "scheme-3",
+        "desktop_gap": 24,
+        "mobile_gap": 20,
+        "page_content_padding": 56,
+        "page_content_padding_mobile": 24,
+        "color_scheme": "scheme-1",
         "content_color_scheme": "scheme-3",
-        "padding_top": 0,
-        "padding_bottom": 0,
+        "padding_top": 40,
+        "padding_bottom": 96,
         "customize_mobile_padding": true,
-        "padding_top_mobile": 0,
-        "padding_bottom_mobile": 0
+        "padding_top_mobile": 24,
+        "padding_bottom_mobile": 48
       }
     },
     "featured_collection": {
@@ -1155,119 +1026,12 @@
         "gap_desktop": 40,
         "gap_mobile": 40,
         "color_scheme": "scheme-1",
-        "padding_top": 20,
+        "padding_top": 96,
         "padding_bottom": 96,
         "hide_view_all_mobile": true,
         "customize_mobile_padding": true,
         "padding_top_mobile": 10,
         "padding_bottom_mobile": 64
-      }
-    },
-    "scrolling_text": {
-      "type": "text-marquee-custom",
-      "blocks": {
-        "marquee": {
-          "type": "marquee",
-          "settings": {
-            "animation_direction": "backward",
-            "animation_speed": 1,
-            "gap_desktop": 12,
-            "gap_mobile": 12,
-            "padding_top": 0,
-            "padding_bottom": 0,
-            "padding_left": 0,
-            "padding_right": 0
-          },
-          "blocks": {
-            "text-1": {
-              "type": "marquee-item",
-              "settings": {
-                "direction": "horizontal",
-                "position": "center",
-                "customize_mobile_alignment": false,
-                "gap_desktop": 0,
-                "gap_mobile": 0,
-                "backdrop_blur": 0,
-                "padding_top": 0,
-                "padding_bottom": 0,
-                "padding_left": 24,
-                "padding_right": 24
-              },
-              "blocks": {
-                "heading-1": {
-                  "type": "heading",
-                  "settings": {
-                    "text": "<p>Power</p>",
-                    "heading_size": "lg",
-                    "html_tag": "div",
-                    "text_color": "",
-                    "outline_text": false,
-                    "width": "fit",
-                    "animation_type": "rotate-words",
-                    "animation_delay": 50
-                  }
-                }
-              },
-              "block_order": [
-                "heading-1"
-              ]
-            },
-            "text-2": {
-              "type": "marquee-item",
-              "settings": {
-                "direction": "horizontal",
-                "position": "center",
-                "customize_mobile_alignment": false,
-                "gap_desktop": 0,
-                "gap_mobile": 0,
-                "backdrop_blur": 0,
-                "padding_top": 0,
-                "padding_bottom": 0,
-                "padding_left": 24,
-                "padding_right": 24
-              },
-              "blocks": {
-                "heading-2": {
-                  "type": "heading",
-                  "settings": {
-                    "text": "<p>Performance</p>",
-                    "heading_size": "lg",
-                    "html_tag": "div",
-                    "text_color": "#FDFFE5",
-                    "outline_text": false,
-                    "width": "fit",
-                    "animation_type": "rotate-words",
-                    "animation_delay": 50
-                  }
-                }
-              },
-              "block_order": [
-                "heading-2"
-              ]
-            }
-          },
-          "block_order": [
-            "text-1",
-            "text-2"
-          ]
-        }
-      },
-      "block_order": [
-        "marquee"
-      ],
-      "name": "Scrolling text",
-      "settings": {
-        "section_width": "full_width_no_padding",
-        "direction": "vertical",
-        "position_vertical": "left",
-        "gap_desktop": 0,
-        "gap_mobile": 0,
-        "color_scheme": "scheme-5",
-        "padding_top": 24,
-        "padding_bottom": 24,
-        "customize_mobile_padding": true,
-        "padding_top_mobile": 20,
-        "padding_bottom_mobile": 20
       }
     },
     "collections_image_list": {
@@ -1360,53 +1124,10 @@
         "background_media": "none",
         "color_scheme": "scheme-1",
         "padding_top": 40,
-        "padding_bottom": 144,
+        "padding_bottom": 96,
         "customize_mobile_padding": true,
         "padding_top_mobile": 20,
         "padding_bottom_mobile": 112
-      }
-    },
-    "scroll_reading_text": {
-      "type": "scroll-reading-text",
-      "blocks": {
-        "editorial-text": {
-          "type": "editorial-text",
-          "settings": {
-            "text": "<p>True balance begins from the ground up.</p>",
-            "size": "display",
-            "width": "fill",
-            "enable_scroll_reveal": true,
-            "scroll_speed": "medium",
-            "start_opacity": 30
-          }
-        }
-      },
-      "block_order": [
-        "editorial-text"
-      ],
-      "settings": {
-        "section_width": "page_width",
-        "desktop_height": "large",
-        "mobile_height": "large",
-        "content_width": "medium",
-        "alignment": "center",
-        "desktop_gap": 40,
-        "mobile_gap": 40,
-        "color_scheme": "scheme-3",
-        "background_image": "shopify://shop_images/strideo-scroll-1-figma.jpg",
-        "mobile_image": "shopify://shop_images/strideo-scroll-1-figma.jpg",
-        "overlay": true,
-        "overlay_color": "#000000",
-        "overlay_opacity": 10,
-        "padding_top": 80,
-        "padding_right": 0,
-        "padding_bottom": 80,
-        "padding_left": 0,
-        "customize_mobile_padding": true,
-        "padding_top_mobile": 80,
-        "padding_right_mobile": 0,
-        "padding_bottom_mobile": 80,
-        "padding_left_mobile": 0
       }
     },
     "new_arrivals_tabs": {
@@ -1547,821 +1268,6 @@
         "padding_bottom": 96,
         "customize_mobile_padding": true,
         "padding_top_mobile": 64,
-        "padding_bottom_mobile": 64
-      }
-    },
-    "featured_product": {
-      "type": "featured-product",
-      "blocks": {
-        "product-media": {
-          "type": "_product-media",
-          "static": true,
-          "settings": {
-            "desktop_layout": "carousel_thumbnails",
-            "bottom_thumbnail_width": 64,
-            "thumbnail_ratio": "square",
-            "mobile_layout": "thumbnails",
-            "thumbnail_width_mobile": 64,
-            "full_width_media": false,
-            "zoom": "open_lightbox",
-            "autoplay": false,
-            "loop_video": false,
-            "gap": 10,
-            "gap_mobile": 6
-          }
-        },
-        "product-details": {
-          "type": "_product-details",
-          "static": true,
-          "settings": {
-            "alignment": "left",
-            "limit_width": true,
-            "max_width": 510,
-            "container_position": "right",
-            "gap_desktop": 24,
-            "gap_mobile": 20,
-            "border_thickness": 0,
-            "corner_radius": "square",
-            "shadow": "none",
-            "appearance_type": "inherit",
-            "color_scheme": "scheme-1",
-            "padding_top": 0,
-            "padding_bottom": 0,
-            "padding_left": 0,
-            "padding_right": 0,
-            "customize_mobile_padding": false,
-            "padding_top_mobile": 0,
-            "padding_bottom_mobile": 0,
-            "padding_left_mobile": 0,
-            "padding_right_mobile": 0
-          },
-          "blocks": {
-            "group-0": {
-              "type": "group",
-              "settings": {
-                "direction": "vertical",
-                "alignment": "left",
-                "gap_desktop": 8,
-                "gap_mobile": 8,
-                "width": "fill"
-              },
-              "blocks": {
-                "product-title-1": {
-                  "type": "product-title",
-                  "settings": {
-                    "heading_size": "lg",
-                    "html_tag": "h2",
-                    "text_case": "original"
-                  }
-                },
-                "product-price-2": {
-                  "type": "product-price",
-                  "settings": {
-                    "font_size": "xl"
-                  }
-                }
-              },
-              "block_order": [
-                "product-title-1",
-                "product-price-2"
-              ]
-            },
-            "product-description-1": {
-              "type": "product-description",
-              "settings": {}
-            },
-            "product-variant-picker-2": {
-              "type": "product-variant-picker",
-              "settings": {
-                "color_option_display": "variant_image"
-              }
-            },
-            "product-buy-buttons-3": {
-              "type": "product-buy-buttons",
-              "settings": {},
-              "blocks": {
-                "quantity": {
-                  "type": "product-buy-quantity",
-                  "static": true,
-                  "settings": {
-                    "style": "custom",
-                    "background_color": "#FFFFFF00",
-                    "text_color": "#1A1A1A",
-                    "border_color": "#E6E6E6",
-                    "border_thickness": 1,
-                    "corner_radius": 100
-                  }
-                },
-                "add-to-cart": {
-                  "type": "product-buy-add-to-cart",
-                  "static": true,
-                  "settings": {
-                    "show_price": false,
-                    "style": "secondary"
-                  }
-                },
-                "accelerated-checkout": {
-                  "type": "product-buy-accelerated-checkout",
-                  "static": true,
-                  "settings": {
-                    "style": "primary"
-                  }
-                }
-              }
-            },
-            "divider": {
-              "type": "divider",
-              "settings": {
-                "thickness": "thin",
-                "desktop_spacing": 0,
-                "mobile_spacing": 0
-              }
-            },
-            "inventory": {
-              "type": "product-inventory",
-              "settings": {
-                "display_mode": "status_and_count"
-              }
-            },
-            "view-details": {
-              "type": "button-view-details",
-              "settings": {
-                "label": "View details",
-                "show_icon": true,
-                "icon": "arrow",
-                "icon_position": "after",
-                "icon_size": "inherit",
-                "icon_width": 20,
-                "padding_top": 0,
-                "padding_bottom": 0,
-                "customize_mobile_padding": false
-              }
-            }
-          },
-          "block_order": [
-            "group-0",
-            "divider",
-            "product-description-1",
-            "product-variant-picker-2",
-            "inventory",
-            "product-buy-buttons-3",
-            "view-details"
-          ]
-        }
-      },
-      "custom_css": [
-        "@media (min-width:768px) and (max-width:1149.98px) {.featured-product {padding-block:80px}}",
-        "@media (min-width:768px) and (max-width:1149.98px) {.product-information__layout {grid-template-columns:repeat(2,minmax(0,1fr));gap:40px}}",
-        ".product-price .price {--price-font-size:18px}"
-      ],
-      "name": "Featured product",
-      "settings": {
-        "product": "strideo-cloudrunner-2",
-        "sticky_content": true,
-        "width": "page",
-        "media_width": "large",
-        "gap": 48,
-        "gap_mobile": 36,
-        "color_scheme": "scheme-1",
-        "padding_top": 96,
-        "padding_bottom": 96,
-        "customize_mobile_padding": true,
-        "padding_top_mobile": 64,
-        "padding_bottom_mobile": 64
-      }
-    },
-    "multiple_images_text": {
-      "type": "multiple-images-with-text",
-      "blocks": {
-        "item_1": {
-          "type": "multiple-images-text-item",
-          "settings": {},
-          "blocks": {
-            "image": {
-              "type": "image",
-              "static": true,
-              "settings": {
-                "image": "shopify://shop_images/strideo-multiple-6-figma.jpg",
-                "mobile_image": "shopify://shop_images/strideo-multiple-6-figma.jpg",
-                "image_ratio_desktop": "custom",
-                "image_ratio_custom_width_desktop": 6,
-                "image_ratio_custom_height_desktop": 7,
-                "width_desktop": "fill",
-                "image_ratio_mobile": "custom",
-                "image_ratio_custom_width_mobile": 6,
-                "image_ratio_custom_height_mobile": 7,
-                "width_mobile": "fill",
-                "corner_radius": "custom",
-                "custom_corner_radius": 4,
-                "animation_type": "scale",
-                "animation_delay": 0
-              }
-            },
-            "group-1": {
-              "type": "group",
-              "settings": {
-                "direction": "vertical",
-                "alignment": "left",
-                "alignment_mobile": "center",
-                "gap_desktop": 40,
-                "gap_mobile": 40,
-                "width": "fill",
-                "height": "fit",
-                "width_mobile": "fill",
-                "backdrop_blur": 0
-              },
-              "blocks": {
-                "group-0": {
-                  "type": "group",
-                  "settings": {
-                    "direction": "vertical",
-                    "alignment": "left",
-                    "alignment_mobile": "center",
-                    "gap_desktop": 16,
-                    "gap_mobile": 16,
-                    "width": "fill",
-                    "height": "fit",
-                    "width_mobile": "fill",
-                    "backdrop_blur": 0
-                  },
-                  "blocks": {
-                    "heading-0": {
-                      "type": "heading",
-                      "settings": {
-                        "text": "<p>Built for motion, designed for life.</p>",
-                        "heading_size": "xl",
-                        "html_tag": "h2",
-                        "width": "fill",
-                        "width_mobile": "fill",
-                        "animation_type": "rotate-words",
-                        "animation_delay": 50
-                      }
-                    },
-                    "text-1": {
-                      "type": "text",
-                      "settings": {
-                        "text": "<p>Engineered for athletes who demand more from every stride. STRIDEO merges advanced geometry, responsive cushioning, and aerodynamic design to deliver effortless speed and all-day stability from track intensity to urban movement.</p>",
-                        "text_size": "md",
-                        "width": "fill",
-                        "width_mobile": "fill",
-                        "animation_type": "fade",
-                        "animation_delay": 0
-                      }
-                    }
-                  },
-                  "block_order": [
-                    "heading-0",
-                    "text-1"
-                  ]
-                },
-                "button-1": {
-                  "type": "button",
-                  "settings": {
-                    "button_label": "Shop now",
-                    "button_link": "shopify://collections/all",
-                    "button_style": "primary",
-                    "show_icon": false,
-                    "animation_type": "slide-bottom",
-                    "animation_delay": 100
-                  }
-                }
-              },
-              "block_order": [
-                "group-0",
-                "button-1"
-              ]
-            }
-          },
-          "block_order": [
-            "group-1"
-          ]
-        },
-        "item_2": {
-          "type": "multiple-images-text-item",
-          "settings": {},
-          "blocks": {
-            "image": {
-              "type": "image",
-              "static": true,
-              "settings": {
-                "image": "shopify://shop_images/strideo-multiple-5-figma.jpg",
-                "mobile_image": "shopify://shop_images/strideo-multiple-5-figma.jpg",
-                "image_ratio_desktop": "custom",
-                "image_ratio_custom_width_desktop": 6,
-                "image_ratio_custom_height_desktop": 7,
-                "width_desktop": "fill",
-                "image_ratio_mobile": "custom",
-                "image_ratio_custom_width_mobile": 6,
-                "image_ratio_custom_height_mobile": 7,
-                "width_mobile": "fill",
-                "corner_radius": "custom",
-                "custom_corner_radius": 4,
-                "animation_type": "scale",
-                "animation_delay": 0
-              }
-            },
-            "group-1": {
-              "type": "group",
-              "settings": {
-                "direction": "vertical",
-                "alignment": "left",
-                "alignment_mobile": "center",
-                "gap_desktop": 40,
-                "gap_mobile": 40,
-                "width": "fill",
-                "height": "fit",
-                "width_mobile": "fill",
-                "backdrop_blur": 0
-              },
-              "blocks": {
-                "group-0": {
-                  "type": "group",
-                  "settings": {
-                    "direction": "vertical",
-                    "alignment": "left",
-                    "alignment_mobile": "center",
-                    "gap_desktop": 16,
-                    "gap_mobile": 16,
-                    "width": "fill",
-                    "height": "fit",
-                    "width_mobile": "fill",
-                    "backdrop_blur": 0
-                  },
-                  "blocks": {
-                    "heading-0": {
-                      "type": "heading",
-                      "settings": {
-                        "text": "<p>Comfort that keeps pace.</p>",
-                        "heading_size": "xl",
-                        "html_tag": "h2",
-                        "width": "fill",
-                        "width_mobile": "fill",
-                        "animation_type": "rotate-words",
-                        "animation_delay": 50
-                      }
-                    },
-                    "text-1": {
-                      "type": "text",
-                      "settings": {
-                        "text": "<p>Find your rhythm with lightweight essentials designed for steady support, easy movement, and comfort from your first step to your last.</p>",
-                        "text_size": "md",
-                        "width": "fill",
-                        "width_mobile": "fill",
-                        "animation_type": "fade",
-                        "animation_delay": 0
-                      }
-                    }
-                  },
-                  "block_order": [
-                    "heading-0",
-                    "text-1"
-                  ]
-                },
-                "button-1": {
-                  "type": "button",
-                  "settings": {
-                    "button_label": "Shop now",
-                    "button_link": "shopify://collections/all",
-                    "button_style": "primary",
-                    "show_icon": false,
-                    "animation_type": "slide-bottom",
-                    "animation_delay": 100
-                  }
-                }
-              },
-              "block_order": [
-                "group-0",
-                "button-1"
-              ]
-            }
-          },
-          "block_order": [
-            "group-1"
-          ]
-        },
-        "item_3": {
-          "type": "multiple-images-text-item",
-          "settings": {},
-          "blocks": {
-            "image": {
-              "type": "image",
-              "static": true,
-              "settings": {
-                "image": "shopify://shop_images/strideo-multiple-4-figma.jpg",
-                "mobile_image": "shopify://shop_images/strideo-multiple-4-figma.jpg",
-                "image_ratio_desktop": "custom",
-                "image_ratio_custom_width_desktop": 6,
-                "image_ratio_custom_height_desktop": 7,
-                "width_desktop": "fill",
-                "image_ratio_mobile": "custom",
-                "image_ratio_custom_width_mobile": 6,
-                "image_ratio_custom_height_mobile": 7,
-                "width_mobile": "fill",
-                "corner_radius": "custom",
-                "custom_corner_radius": 4,
-                "animation_type": "scale",
-                "animation_delay": 0
-              }
-            },
-            "group-1": {
-              "type": "group",
-              "settings": {
-                "direction": "vertical",
-                "alignment": "left",
-                "alignment_mobile": "center",
-                "gap_desktop": 40,
-                "gap_mobile": 40,
-                "width": "fill",
-                "height": "fit",
-                "width_mobile": "fill",
-                "backdrop_blur": 0
-              },
-              "blocks": {
-                "group-0": {
-                  "type": "group",
-                  "settings": {
-                    "direction": "vertical",
-                    "alignment": "left",
-                    "alignment_mobile": "center",
-                    "gap_desktop": 16,
-                    "gap_mobile": 16,
-                    "width": "fill",
-                    "height": "fit",
-                    "width_mobile": "fill",
-                    "backdrop_blur": 0
-                  },
-                  "blocks": {
-                    "heading-0": {
-                      "type": "heading",
-                      "settings": {
-                        "text": "<p>Made for your everyday miles.</p>",
-                        "heading_size": "xl",
-                        "html_tag": "h2",
-                        "width": "fill",
-                        "width_mobile": "fill",
-                        "animation_type": "rotate-words",
-                        "animation_delay": 50
-                      }
-                    },
-                    "text-1": {
-                      "type": "text",
-                      "settings": {
-                        "text": "<p>From morning runs to city routes, discover versatile performance styles that move with you throughout the day.</p>",
-                        "text_size": "md",
-                        "width": "fill",
-                        "width_mobile": "fill",
-                        "animation_type": "fade",
-                        "animation_delay": 0
-                      }
-                    }
-                  },
-                  "block_order": [
-                    "heading-0",
-                    "text-1"
-                  ]
-                },
-                "button-1": {
-                  "type": "button",
-                  "settings": {
-                    "button_label": "Shop now",
-                    "button_link": "shopify://collections/all",
-                    "button_style": "primary",
-                    "show_icon": false,
-                    "animation_type": "slide-bottom",
-                    "animation_delay": 100
-                  }
-                }
-              },
-              "block_order": [
-                "group-0",
-                "button-1"
-              ]
-            }
-          },
-          "block_order": [
-            "group-1"
-          ]
-        }
-      },
-      "block_order": [
-        "item_1",
-        "item_2",
-        "item_3"
-      ],
-      "name": "Multiple images with text",
-      "settings": {
-        "section_width": "page_width",
-        "enable_boxed_layout": false,
-        "gap_desktop": 64,
-        "gap_mobile": 40,
-        "show_navigation": true,
-        "color_scheme": "scheme-1",
-        "boxed_color_scheme": "scheme-2",
-        "corner_radius": "rounded",
-        "shadow": "none",
-        "boxed_padding_block": 70,
-        "boxed_padding_inline": 70,
-        "boxed_padding_block_mobile": 50,
-        "boxed_padding_inline_mobile": 30,
-        "padding_top": 112,
-        "padding_bottom": 112,
-        "customize_mobile_padding": true,
-        "padding_top_mobile": 80,
-        "padding_bottom_mobile": 80
-      }
-    },
-    "collection_list_03": {
-      "type": "image-cards",
-      "blocks": {
-        "header": {
-          "type": "header",
-          "static": true,
-          "settings": {
-            "width": "fill",
-            "inherit_alignment": false,
-            "alignment": "left",
-            "customize_mobile_alignment": true,
-            "alignment_mobile": "left"
-          },
-          "blocks": {
-            "title": {
-              "type": "heading",
-              "settings": {
-                "text": "<p>Every stride has a story</p>",
-                "heading_size": "xl",
-                "html_tag": "h2",
-                "width": "fill",
-                "width_mobile": "fill",
-                "animation_type": "rotate-words",
-                "animation_delay": 50
-              }
-            }
-          },
-          "block_order": [
-            "title"
-          ]
-        },
-        "card_1": {
-          "type": "image-card",
-          "settings": {
-            "image": "shopify://shop_images/strideo-cards-1-figma.jpg",
-            "mobile_image": "shopify://shop_images/strideo-cards-1-figma.jpg",
-            "zoom_on_hover": true,
-            "show_overlay": true,
-            "overlay_style": "solid",
-            "overlay_opacity": 20,
-            "width_desktop": "fill",
-            "height_desktop": "ratio_6_7",
-            "width_mobile": "fill",
-            "height_mobile": "ratio_6_7",
-            "enable_sticky": false,
-            "position_desktop": "bottom_left",
-            "position_mobile": "bottom_left",
-            "corner_radius": "slightly_rounded",
-            "color_scheme": "scheme-3",
-            "padding_top": 0,
-            "padding_bottom": 0,
-            "padding_left": 0,
-            "padding_right": 0
-          },
-          "blocks": {
-            "content": {
-              "type": "group",
-              "settings": {
-                "direction": "vertical",
-                "alignment": "left",
-                "alignment_mobile": "left",
-                "width": "fill",
-                "height": "fit",
-                "width_mobile": "fill",
-                "padding_top": 24,
-                "padding_bottom": 24,
-                "padding_left": 24,
-                "padding_right": 24
-              },
-              "blocks": {
-                "title": {
-                  "type": "heading",
-                  "settings": {
-                    "text": "<p>Multi-purpose sports shoes</p>",
-                    "heading_size": "md",
-                    "html_tag": "h3",
-                    "width": "fill",
-                    "width_mobile": "fill"
-                  }
-                }
-              },
-              "block_order": [
-                "title"
-              ]
-            }
-          },
-          "block_order": [
-            "content"
-          ]
-        },
-        "card_2": {
-          "type": "image-card",
-          "settings": {
-            "image": "shopify://shop_images/strideo-cards-3-figma.jpg",
-            "mobile_image": "shopify://shop_images/strideo-cards-3-figma.jpg",
-            "zoom_on_hover": true,
-            "show_overlay": true,
-            "overlay_style": "solid",
-            "overlay_opacity": 20,
-            "width_desktop": "fill",
-            "height_desktop": "ratio_6_7",
-            "width_mobile": "fill",
-            "height_mobile": "ratio_6_7",
-            "enable_sticky": false,
-            "position_desktop": "bottom_left",
-            "position_mobile": "bottom_left",
-            "corner_radius": "slightly_rounded",
-            "color_scheme": "scheme-3",
-            "padding_top": 0,
-            "padding_bottom": 0,
-            "padding_left": 0,
-            "padding_right": 0
-          },
-          "blocks": {
-            "content": {
-              "type": "group",
-              "settings": {
-                "direction": "vertical",
-                "alignment": "left",
-                "alignment_mobile": "left",
-                "width": "fill",
-                "height": "fit",
-                "width_mobile": "fill",
-                "padding_top": 24,
-                "padding_bottom": 24,
-                "padding_left": 24,
-                "padding_right": 24
-              },
-              "blocks": {
-                "title": {
-                  "type": "heading",
-                  "settings": {
-                    "text": "<p>Not just for tennis courts</p>",
-                    "heading_size": "md",
-                    "html_tag": "h3",
-                    "width": "fill",
-                    "width_mobile": "fill"
-                  }
-                }
-              },
-              "block_order": [
-                "title"
-              ]
-            }
-          },
-          "block_order": [
-            "content"
-          ]
-        },
-        "card_3": {
-          "type": "image-card",
-          "settings": {
-            "image": "shopify://shop_images/strideo-cards-5-figma.jpg",
-            "mobile_image": "shopify://shop_images/strideo-cards-5-figma.jpg",
-            "zoom_on_hover": true,
-            "show_overlay": true,
-            "overlay_style": "solid",
-            "overlay_opacity": 20,
-            "width_desktop": "fill",
-            "height_desktop": "ratio_6_7",
-            "width_mobile": "fill",
-            "height_mobile": "ratio_6_7",
-            "enable_sticky": false,
-            "position_desktop": "bottom_left",
-            "position_mobile": "bottom_left",
-            "corner_radius": "slightly_rounded",
-            "color_scheme": "scheme-3",
-            "padding_top": 0,
-            "padding_bottom": 0,
-            "padding_left": 0,
-            "padding_right": 0
-          },
-          "blocks": {
-            "content": {
-              "type": "group",
-              "settings": {
-                "direction": "vertical",
-                "alignment": "left",
-                "alignment_mobile": "left",
-                "width": "fill",
-                "height": "fit",
-                "width_mobile": "fill",
-                "padding_top": 24,
-                "padding_bottom": 24,
-                "padding_left": 24,
-                "padding_right": 24
-              },
-              "blocks": {
-                "title": {
-                  "type": "heading",
-                  "settings": {
-                    "text": "<p>Discipline before speed</p>",
-                    "heading_size": "md",
-                    "html_tag": "h3",
-                    "width": "fill",
-                    "width_mobile": "fill"
-                  }
-                }
-              },
-              "block_order": [
-                "title"
-              ]
-            }
-          },
-          "block_order": [
-            "content"
-          ]
-        },
-        "card_4": {
-          "type": "image-card",
-          "settings": {
-            "image": "shopify://shop_images/strideo-cards-6-figma.jpg",
-            "mobile_image": "shopify://shop_images/strideo-cards-6-figma.jpg",
-            "zoom_on_hover": true,
-            "show_overlay": true,
-            "overlay_style": "solid",
-            "overlay_opacity": 10,
-            "width_desktop": "fill",
-            "height_desktop": "ratio_6_7",
-            "width_mobile": "fill",
-            "height_mobile": "ratio_6_7",
-            "enable_sticky": false,
-            "position_desktop": "bottom_left",
-            "position_mobile": "bottom_left",
-            "corner_radius": "slightly_rounded",
-            "color_scheme": "scheme-3",
-            "padding_top": 0,
-            "padding_bottom": 0,
-            "padding_left": 0,
-            "padding_right": 0
-          },
-          "blocks": {
-            "content": {
-              "type": "group",
-              "settings": {
-                "direction": "vertical",
-                "alignment": "left",
-                "alignment_mobile": "left",
-                "width": "fill",
-                "height": "fit",
-                "width_mobile": "fill",
-                "padding_top": 24,
-                "padding_bottom": 24,
-                "padding_left": 24,
-                "padding_right": 24
-              },
-              "blocks": {
-                "title": {
-                  "type": "heading",
-                  "settings": {
-                    "text": "<p>Discover our athletes</p>",
-                    "heading_size": "md",
-                    "html_tag": "h3",
-                    "width": "fill",
-                    "width_mobile": "fill"
-                  }
-                }
-              },
-              "block_order": [
-                "title"
-              ]
-            }
-          },
-          "block_order": [
-            "content"
-          ]
-        }
-      },
-      "block_order": [
-        "card_1",
-        "card_2",
-        "card_3",
-        "card_4"
-      ],
-      "name": "Collection list",
-      "settings": {
-        "show_header": true,
-        "header_gap": 40,
-        "card_layout": "carousel",
-        "columns_desktop": "4",
-        "columns_tablet": "2",
-        "columns_mobile": "1",
-        "show_pagination": true,
-        "section_width": "page_width",
-        "height": "auto",
-        "gap_desktop": 20,
-        "gap_mobile": 16,
-        "color_scheme": "scheme-1",
-        "padding_top": 0,
-        "padding_bottom": 96,
-        "customize_mobile_padding": true,
-        "padding_top_mobile": 0,
         "padding_bottom_mobile": 64
       }
     },
@@ -2622,6 +1528,391 @@
         "padding_top_mobile": 64,
         "padding_bottom_mobile": 64
       }
+    },
+    "blog_posts": {
+      "type": "blog-posts",
+      "blocks": {
+        "header": {
+          "type": "header",
+          "static": true,
+          "settings": {
+            "width": "fit",
+            "gap_desktop": 12,
+            "gap_mobile": 8
+          },
+          "blocks": {
+            "heading-0": {
+              "type": "heading",
+              "settings": {
+                "text": "<p>Every stride has a story</p>",
+                "heading_size": "xl",
+                "html_tag": "h2"
+              }
+            }
+          },
+          "block_order": [
+            "heading-0"
+          ]
+        },
+        "blog-posts-view-all": {
+          "type": "view-all-button",
+          "static": true,
+          "settings": {
+            "button_label": "View all posts",
+            "button_style": "tertiary",
+            "show_icon": false,
+            "button_style_mobile": "tertiary",
+            "button_height_mobile": "inherit",
+            "full_width_mobile": false,
+            "show_icon_mobile": false
+          }
+        },
+        "blog-list": {
+          "type": "blog-list",
+          "static": true,
+          "settings": {
+            "blog": "",
+            "max_posts": 3,
+            "layout_type": "grid",
+            "columns_desktop": "3",
+            "columns_mobile": "1",
+            "show_next_slide_preview_on_desktop": false,
+            "gap_desktop": 24,
+            "gap_mobile": 32,
+            "show_navigation_on_desktop": false,
+            "navigation_position": "top",
+            "navigation_style": "secondary",
+            "navigation_icon": "chevron",
+            "navigation_behavior": "show_on_hover",
+            "show_pagination_on_desktop": false,
+            "pagination_type": "progress_bar",
+            "pagination_padding_desktop": 50,
+            "pagination_padding_mobile": 24,
+            "pagination_limit_width": true,
+            "pagination_max_width": 260,
+            "autoplay": false,
+            "autoplay_pause_on_hover": true,
+            "autoplay_speed": 4
+          },
+          "blocks": {
+            "blog-card": {
+              "type": "blog-card",
+              "static": true,
+              "settings": {
+                "ratio": "landscape",
+                "alignment": "left",
+                "desktop_gap": 8,
+                "mobile_gap": 8,
+                "border_thickness": 0,
+                "corner_radius": "inherit",
+                "shadow": "none",
+                "color_type": "inherit",
+                "color_scheme": "scheme-1",
+                "padding_top": 20,
+                "padding_bottom": 0,
+                "padding_left": 0,
+                "padding_right": 0,
+                "customize_mobile_padding": false
+              },
+              "blocks": {
+                "blog-card-title-1": {
+                  "type": "blog-card-title",
+                  "settings": {
+                    "line_limit": "no_limit",
+                    "heading_size": "sm",
+                    "html_tag": "h3",
+                    "padding_top": 8,
+                    "padding_bottom": 0,
+                    "customize_mobile_padding": false
+                  }
+                },
+                "blog-card-description-2": {
+                  "type": "blog-card-description",
+                  "settings": {
+                    "text_limit": "two",
+                    "size": "sm",
+                    "padding_top": 0,
+                    "padding_bottom": 6,
+                    "customize_mobile_padding": false
+                  }
+                },
+                "blog-card-meta-3": {
+                  "type": "blog-card-meta",
+                  "settings": {
+                    "show_date": true,
+                    "show_author": true,
+                    "show_comment_count": false,
+                    "details_order": "date_author_comment",
+                    "author_display_type": "text",
+                    "author_prefix": "by",
+                    "show_date_icon": false,
+                    "date_icon": "calendar",
+                    "date_format": "long",
+                    "show_comment_icon": false,
+                    "comment_icon": "comment",
+                    "separator_icon": "vertical-rule",
+                    "size": "xs",
+                    "text_color": "",
+                    "layout": "horizontal",
+                    "gap": 12,
+                    "icon_size": 18,
+                    "icon_gap": 6,
+                    "padding_top": 0,
+                    "padding_bottom": 4,
+                    "customize_mobile_padding": false
+                  }
+                }
+              },
+              "block_order": [
+                "blog-card-meta-3",
+                "blog-card-title-1",
+                "blog-card-description-2"
+              ]
+            }
+          },
+          "block_order": []
+        }
+      },
+      "settings": {
+        "section_width": "page_width",
+        "desktop_alignment": "left",
+        "mobile_alignment": "left",
+        "gap_desktop": 40,
+        "gap_mobile": 24,
+        "color_scheme": "scheme-1",
+        "padding_top": 0,
+        "padding_bottom": 80,
+        "customize_mobile_padding": true,
+        "padding_top_mobile": 0,
+        "padding_bottom_mobile": 40
+      }
+    },
+    "divider": {
+      "type": "divider",
+      "settings": {
+        "width": "page",
+        "padding_top": 0,
+        "padding_bottom": 0
+      }
+    },
+    "gallery": {
+      "type": "gallery-carousel",
+      "blocks": {
+        "gallery-header-group-0": {
+          "type": "gallery-header-group",
+          "settings": {
+            "alignment": "left",
+            "gap": 8
+          },
+          "blocks": {
+            "heading-1": {
+              "type": "heading",
+              "settings": {
+                "text": "<p>Follow us @Strideo</p>",
+                "heading_size": "xl",
+                "html_tag": "h2"
+              }
+            }
+          },
+          "block_order": [
+            "heading-1"
+          ]
+        },
+        "carousel-1": {
+          "type": "carousel",
+          "settings": {
+            "columns_desktop": "4",
+            "columns_mobile": "1",
+            "loop": true,
+            "show_next_slide_preview_on_desktop": true,
+            "gap_desktop": 10,
+            "gap_mobile": 10,
+            "border_thickness": 0,
+            "show_navigation_on_desktop": false,
+            "navigation_style": "secondary",
+            "navigation_icon": "chevron",
+            "navigation_behavior": "always",
+            "pagination_type": "progress_bar",
+            "show_pagination_on_desktop": false,
+            "show_pagination_on_mobile": false
+          },
+          "blocks": {
+            "0": {
+              "type": "slide",
+              "settings": {
+                "gap_desktop": 0,
+                "gap_mobile": 0
+              },
+              "blocks": {
+                "image": {
+                  "type": "image",
+                  "settings": {
+                    "alt_text": "Strideo running community",
+                    "image_ratio_desktop": "square",
+                    "width_desktop": "fill",
+                    "image_ratio_mobile": "square",
+                    "width_mobile": "fill",
+                    "corner_radius": "custom",
+                    "custom_corner_radius": 4
+                  }
+                }
+              },
+              "block_order": [
+                "image"
+              ]
+            },
+            "1": {
+              "type": "slide",
+              "settings": {
+                "gap_desktop": 0,
+                "gap_mobile": 0
+              },
+              "blocks": {
+                "image": {
+                  "type": "image",
+                  "settings": {
+                    "alt_text": "Strideo running community",
+                    "image_ratio_desktop": "square",
+                    "width_desktop": "fill",
+                    "image_ratio_mobile": "square",
+                    "width_mobile": "fill",
+                    "corner_radius": "custom",
+                    "custom_corner_radius": 4
+                  }
+                }
+              },
+              "block_order": [
+                "image"
+              ]
+            },
+            "2": {
+              "type": "slide",
+              "settings": {
+                "gap_desktop": 0,
+                "gap_mobile": 0
+              },
+              "blocks": {
+                "image": {
+                  "type": "image",
+                  "settings": {
+                    "alt_text": "Strideo running community",
+                    "image_ratio_desktop": "square",
+                    "width_desktop": "fill",
+                    "image_ratio_mobile": "square",
+                    "width_mobile": "fill",
+                    "corner_radius": "custom",
+                    "custom_corner_radius": 4
+                  }
+                }
+              },
+              "block_order": [
+                "image"
+              ]
+            },
+            "3": {
+              "type": "slide",
+              "settings": {
+                "gap_desktop": 0,
+                "gap_mobile": 0
+              },
+              "blocks": {
+                "image": {
+                  "type": "image",
+                  "settings": {
+                    "alt_text": "Strideo running community",
+                    "image_ratio_desktop": "square",
+                    "width_desktop": "fill",
+                    "image_ratio_mobile": "square",
+                    "width_mobile": "fill",
+                    "corner_radius": "custom",
+                    "custom_corner_radius": 4
+                  }
+                }
+              },
+              "block_order": [
+                "image"
+              ]
+            },
+            "4": {
+              "type": "slide",
+              "settings": {
+                "gap_desktop": 0,
+                "gap_mobile": 0
+              },
+              "blocks": {
+                "image": {
+                  "type": "image",
+                  "settings": {
+                    "image": "shopify://shop_images/strideo-multiple-5-figma.jpg",
+                    "alt_text": "Strideo running community",
+                    "image_ratio_desktop": "square",
+                    "width_desktop": "fill",
+                    "image_ratio_mobile": "square",
+                    "width_mobile": "fill",
+                    "corner_radius": "custom",
+                    "custom_corner_radius": 4
+                  }
+                }
+              },
+              "block_order": [
+                "image"
+              ]
+            },
+            "5": {
+              "type": "slide",
+              "settings": {
+                "gap_desktop": 0,
+                "gap_mobile": 0
+              },
+              "blocks": {
+                "image": {
+                  "type": "image",
+                  "settings": {
+                    "alt_text": "Strideo running community",
+                    "image_ratio_desktop": "square",
+                    "width_desktop": "fill",
+                    "image_ratio_mobile": "square",
+                    "width_mobile": "fill",
+                    "corner_radius": "custom",
+                    "custom_corner_radius": 4
+                  }
+                }
+              },
+              "block_order": [
+                "image"
+              ]
+            }
+          },
+          "block_order": [
+            "0",
+            "1",
+            "2",
+            "3",
+            "4",
+            "5"
+          ]
+        }
+      },
+      "block_order": [
+        "gallery-header-group-0",
+        "carousel-1"
+      ],
+      "settings": {
+        "direction": "vertical",
+        "position": "center",
+        "horizontal_alignment": "space-between",
+        "alignment": "left",
+        "customize_mobile_alignment": true,
+        "alignment_mobile": "left",
+        "content_gap": 48,
+        "customize_mobile_gap": true,
+        "content_gap_mobile": 24,
+        "padding_top": 80,
+        "padding_bottom": 96,
+        "customize_mobile_padding": true,
+        "padding_top_mobile": 40,
+        "padding_bottom_mobile": 48
+      }
     }
   },
   "order": [
@@ -2629,13 +1920,11 @@
     "featured_collection",
     "collection_list",
     "showcase_carousel",
-    "collections_image_list",
-    "scroll_reading_text",
-    "multiple_images_text",
-    "scrolling_text",
     "new_arrivals_tabs",
+    "collections_image_list",
     "countdown_timer",
-    "featured_product",
-    "collection_list_03"
+    "blog_posts",
+    "divider",
+    "gallery"
   ]
 }
