@@ -282,9 +282,30 @@
 }
 
 .product-inventory__status--in_stock::before {
-  width: 18px;
-  height: 18px;
-  background: url('inventory-in-stock.svg') center / 18px 18px no-repeat;
+  width: 10px;
+  height: 10px;
+  margin: 4px;
+  background: #26d943;
+  box-shadow: 0 0 0 4px rgb(38 217 67 / 18%);
+  animation: inventory-stock-rings 2.4s ease-out infinite;
+}
+
+@keyframes inventory-stock-rings {
+  0% {
+    box-shadow: 0 0 0 0 rgb(38 217 67 / 30%), 0 0 0 3px rgb(38 217 67 / 12%);
+  }
+  50% {
+    box-shadow: 0 0 0 3px rgb(38 217 67 / 12%), 0 0 0 6px rgb(38 217 67 / 0%);
+  }
+  100% {
+    box-shadow: 0 0 0 6px rgb(38 217 67 / 0%), 0 0 0 9px rgb(38 217 67 / 0%);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .product-inventory__status--in_stock::before {
+    animation: none;
+  }
 }
 
 .product-inventory__status--low_stock {
