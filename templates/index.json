@@ -1692,7 +1692,7 @@
       ],
       "name": "Featured product",
       "settings": {
-        "product": "",
+        "product": "strideo-cloudrunner-2",
         "sticky_content": false,
         "width": "page",
         "media_width": "large",
