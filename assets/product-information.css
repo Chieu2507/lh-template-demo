@@ -277,7 +277,14 @@
 }
 
 .product-inventory__status--in_stock {
-  color: var(--accent-color);
+  gap: 8px;
+  color: var(--body-color);
+}
+
+.product-inventory__status--in_stock::before {
+  width: 18px;
+  height: 18px;
+  background: url('inventory-in-stock.svg') center / 18px 18px no-repeat;
 }
 
 .product-inventory__status--low_stock {
