@@ -247,6 +247,11 @@ svg {
   height: auto;
 }
 
+/* Image corners follow the theme media shape unless a component owns them. */
+:where(img) {
+  border-radius: var(--media-radius, 0px);
+}
+
 /* Reusable media surface: a section supplies placement and dimensions, while
  * this primitive keeps media, placeholders, and overlay in one clipped box. */
 /* Hover media opts into the global zoom token without transforming content,
@@ -256,6 +261,19 @@ svg {
 }
 
 @media (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) {
+  /* Images without a component hover owner still follow the global setting.
+   * Clip the scaled image to its original bounds without changing its parent. */
+  :where(img):not(:where(.media-hover-zoom .media-hover-zoom__media img, .image-card--zoom .background-media img, .product-card__image > img, .product-card__secondary-image > img, .product-media-gallery[data-zoom='click_hover'] .product-media--image img, .product-media-lightbox__image)) {
+    scale: 1;
+    clip-path: inset(0 round var(--media-radius, 0px));
+    transition: scale var(--motion-duration-slow, 500ms) var(--motion-ease-standard, ease), clip-path var(--motion-duration-slow, 500ms) var(--motion-ease-standard, ease);
+  }
+
+  :where(img):not(:where(.media-hover-zoom .media-hover-zoom__media img, .image-card--zoom .background-media img, .product-card__image > img, .product-card__secondary-image > img, .product-media-gallery[data-zoom='click_hover'] .product-media--image img, .product-media-lightbox__image)):hover {
+    scale: var(--motion-image-zoom, 1);
+    clip-path: inset(calc(50% - 50% / var(--motion-image-zoom, 1)) round var(--media-radius, 0px));
+  }
+
   .media-hover-zoom .media-hover-zoom__media :where(img, svg) {
     transition: transform var(--motion-duration-slow, 500ms) var(--motion-ease-standard, ease);
   }
