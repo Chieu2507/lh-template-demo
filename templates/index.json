@@ -1673,6 +1673,20 @@
               "settings": {
                 "display_mode": "status_and_count"
               }
+            },
+            "view-details": {
+              "type": "button-view-details",
+              "settings": {
+                "label": "View details",
+                "show_icon": true,
+                "icon": "arrow",
+                "icon_position": "after",
+                "icon_size": "inherit",
+                "icon_width": 20,
+                "padding_top": 0,
+                "padding_bottom": 0,
+                "customize_mobile_padding": false
+              }
             }
           },
           "block_order": [
@@ -1681,7 +1695,8 @@
             "product-description-1",
             "product-variant-picker-2",
             "inventory",
-            "product-buy-buttons-3"
+            "product-buy-buttons-3",
+            "view-details"
           ]
         }
       },
@@ -1693,7 +1708,7 @@
       "name": "Featured product",
       "settings": {
         "product": "strideo-cloudrunner-2",
-        "sticky_content": false,
+        "sticky_content": true,
         "width": "page",
         "media_width": "large",
         "gap": 48,
