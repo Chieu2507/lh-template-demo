@@ -773,7 +773,7 @@
                 "gap_desktop": 0,
                 "gap_mobile": 0,
                 "border_thickness": 0,
-                "corner_radius": "square",
+                "corner_radius": "slightly_rounded",
                 "shadow": "none",
                 "color_type": "color_scheme",
                 "color_scheme": "scheme-3",
@@ -1335,7 +1335,7 @@
                 "image_ratio_custom_width_mobile": 5,
                 "image_ratio_custom_height_mobile": 4,
                 "width_mobile": "fill",
-                "corner_radius": "square",
+                "corner_radius": "slightly_rounded",
                 "animation_type": "none",
                 "alt_text": "Runner on a green track"
               }
@@ -1400,7 +1400,7 @@
                 "image_ratio_custom_width_mobile": 5,
                 "image_ratio_custom_height_mobile": 4,
                 "width_mobile": "fill",
-                "corner_radius": "square",
+                "corner_radius": "slightly_rounded",
                 "animation_type": "none",
                 "image": "shopify://shop_images/strideo-multiple-6-figma.jpg",
                 "alt_text": "Tennis player on a blue court"
@@ -1466,7 +1466,7 @@
                 "image_ratio_custom_width_mobile": 5,
                 "image_ratio_custom_height_mobile": 4,
                 "width_mobile": "fill",
-                "corner_radius": "square",
+                "corner_radius": "slightly_rounded",
                 "animation_type": "none",
                 "image": "shopify://shop_images/fluxstep-showcase-trail.jpg",
                 "alt_text": "Orange trail running shoes on rocks"

@@ -23,6 +23,8 @@
   case block.settings.corner_radius
     when 'square'
       assign collection_card_radius = 'var(--radius-square)'
+    when 'slightly_rounded'
+      assign collection_card_radius = 'var(--radius-slight)'
     when 'rounded'
       assign collection_card_radius = 'var(--radius-rounded)'
   endcase
@@ -386,6 +388,10 @@
         {
           "value": "square",
           "label": "Square"
+        },
+        {
+          "value": "slightly_rounded",
+          "label": "t:options.radius_preset.slightly_rounded"
         },
         {
           "value": "rounded",
