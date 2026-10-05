@@ -202,8 +202,8 @@
 
     const prepareClone = (clone) => {
       clone.setAttribute('aria-hidden', 'true');
-      clone.setAttribute('inert', '');
-      // Copies are decorative, never additional selectable Theme Editor blocks.
+      if (!window.Shopify?.designMode) clone.setAttribute('inert', '');
+      // Keep Shopify block attributes so copies select their source in the editor.
       [clone, ...clone.querySelectorAll('*')].forEach((element) => {
         element.removeAttribute('id');
         // Hidden/inert copies cannot enter the shared reveal lifecycle.
@@ -213,9 +213,6 @@
           element.setAttribute('data-block-animation', 'none');
           element.removeAttribute('data-component-reveal');
         }
-        [...element.attributes].forEach(({ name }) => {
-          if (name.startsWith('data-shopify-editor')) element.removeAttribute(name);
-        });
         if (element.matches('a, button, input, select, textarea, [tabindex]')) {
           element.setAttribute('tabindex', '-1');
         }
