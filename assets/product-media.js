@@ -976,6 +976,7 @@ class ProductMediaGallery extends HTMLElement {
     const visibleMediaCount = this.visibleSlides().length;
     const hasOverflow = visibleMediaCount > 1;
     this.dataset.visibleMediaCount = String(visibleMediaCount);
+    this.style.setProperty('--product-media-visible-count', String(visibleMediaCount));
     this.syncQuickAddStripSlidesPerView();
     this.classList.toggle('product-media-gallery--single-media', !hasOverflow);
 

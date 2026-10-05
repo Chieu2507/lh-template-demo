@@ -678,7 +678,9 @@ html.product-media-lightbox-open {
     position: absolute;
     z-index: 2;
     inset: auto auto 20px 28px;
-    width: min(calc(100% - 56px), calc(var(--product-media-thumbnail-width) * 6 + var(--product-media-thumbnail-gap) * 5 + 8px));
+    --overlay-thumbnail-count: clamp(1, var(--product-media-visible-count, 6), 6);
+    width: calc(var(--product-media-thumbnail-width) * var(--overlay-thumbnail-count) + var(--product-media-thumbnail-gap) * (var(--overlay-thumbnail-count) - 1) + 8px);
+    max-width: min(calc(100% - 56px), calc(var(--product-media-thumbnail-width) * 6 + var(--product-media-thumbnail-gap) * 5 + 8px));
     padding: 4px;
     border-radius: var(--radius-slight);
     background: var(--color-background, #fff);
