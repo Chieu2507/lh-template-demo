@@ -1643,7 +1643,14 @@
                 "quantity": {
                   "type": "product-buy-quantity",
                   "static": true,
-                  "settings": {}
+                  "settings": {
+                    "style": "custom",
+                    "background_color": "#FFFFFF00",
+                    "text_color": "#1A1A1A",
+                    "border_color": "#E6E6E6",
+                    "border_thickness": 1,
+                    "corner_radius": 100
+                  }
                 },
                 "add-to-cart": {
                   "type": "product-buy-add-to-cart",

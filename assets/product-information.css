@@ -318,7 +318,7 @@
 }
 
 .product-buy-buttons__purchase {
-  --product-buy-quantity-max-width: 12rem;
+  --product-buy-quantity-max-width: 141px;
   display: grid;
   grid-template-columns: minmax(0, var(--product-buy-quantity-max-width)) minmax(0, 1fr);
   align-items: end;
@@ -346,7 +346,9 @@
 
 .product-buy-buttons__quantity-control {
   display: grid;
-  grid-template-columns: var(--input-height, var(--button-height)) minmax(2.5rem, 1fr) var(--input-height, var(--button-height));
+  grid-template-columns: 36px minmax(0, 1fr) 36px;
+  padding-inline: 8px;
+  height: var(--input-height, var(--button-height));
   align-items: center;
   width: 100%;
   max-width: 100%;
@@ -366,7 +368,8 @@
 .product-buy-buttons__quantity-control .form__control {
   width: 100%;
   min-width: 0;
-  min-height: var(--input-height, var(--button-height));
+  min-height: 0;
+  height: 100%;
   padding-inline: 0.25rem;
   border: 0 !important;
   border-radius: 0 !important;
@@ -387,7 +390,8 @@
   display: inline-flex;
   width: 100%;
   min-width: 0;
-  min-height: var(--input-height, var(--button-height));
+  min-height: 0;
+  height: 100%;
   align-items: center;
   justify-content: center;
   padding: 0;
@@ -409,13 +413,13 @@
 }
 
 .product-buy-buttons__quantity-button:disabled {
-  opacity: 0.35;
+  opacity: 0.6;
 }
 
 .product-buy-buttons__quantity-button .icon,
 .product-buy-buttons__quantity-button svg {
-  width: var(--icon-size-small);
-  height: var(--icon-size-small);
+  width: 20px;
+  height: 20px;
 }
 
 .product-buy-buttons__add-to-cart,
@@ -873,18 +877,18 @@ product-sticky-layout.product-information__layout > .product-details {
   }
 
   .product-buy-buttons__purchase {
-    grid-template-columns: minmax(0, var(--product-buy-quantity-max-width, 12rem)) minmax(0, 1fr);
+    grid-template-columns: minmax(0, var(--product-buy-quantity-max-width, 141px)) minmax(0, 1fr);
     gap: var(--product-buy-buttons-gap-mobile, var(--product-buy-buttons-gap, 12px));
   }
 
   .product-buy-buttons__quantity-control {
-    grid-template-columns: var(--input-height-mobile, var(--button-height-mobile)) minmax(2.5rem, 1fr) var(--input-height-mobile, var(--button-height-mobile));
+    height: var(--input-height-mobile, var(--button-height-mobile));
     min-height: var(--input-height-mobile, var(--button-height-mobile));
   }
 
   .product-buy-buttons__quantity-control .form__control,
   .product-buy-buttons__quantity-button {
-    min-height: var(--input-height-mobile, var(--button-height-mobile));
+    min-height: 0;
   }
 
   .product-buy-buttons__back-in-stock {
