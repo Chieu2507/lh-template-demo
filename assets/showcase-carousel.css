@@ -62,4 +62,4 @@
   .showcase-carousel--overlay .showcase-item { gap: 0; }
 }
 @media (prefers-reduced-motion: reduce) { .showcase-carousel, .showcase-item__media, .showcase-item__image, .showcase-item__content { transition: none !important; } .showcase-carousel__background--fixed .background-media__image img { position: static; height: 100%; } }
-.showcase-carousel.is-loop-reset .showcase-item__media, .showcase-carousel.is-loop-reset .showcase-item__image, .showcase-carousel.is-loop-reset .showcase-item__content, .showcase-carousel.is-loop-reset .showcase-item__background { transition: none; }
+.showcase-carousel.is-loop-reset .showcase-item__media, .showcase-carousel.is-loop-reset .showcase-item__image, .showcase-carousel.is-loop-reset .showcase-item__image img, .showcase-carousel.is-loop-reset .showcase-item__content, .showcase-carousel.is-loop-reset .showcase-item__background { transition: none; }

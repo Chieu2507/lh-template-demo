@@ -93,6 +93,9 @@ const init = (root) => {
       resetting = true;
       root.classList.add('is-loop-reset');
       swiper.slideTo(offset + current(), 0, false);
+      // Commit the equivalent original slide while transitions are disabled.
+      // Otherwise the browser batches both class changes and scales it again.
+      void viewport.offsetWidth;
       root.classList.remove('is-loop-reset');
       resetting = false;
     }
