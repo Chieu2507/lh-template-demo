@@ -143,7 +143,7 @@
   assign collection_tab_is_placeholder = false
   if collection_tab_has_products
     assign collection_tab_items = collection_tab_collection.products
-  elsif collection_tab_collection == blank
+  else
     assign collection_tab_placeholder_count = collection_tab_max_products
     assign collection_tab_items = (1..collection_tab_placeholder_count)
     assign collection_tab_item_limit = collection_tab_placeholder_count
@@ -153,7 +153,7 @@
   assign collection_tab_show_grid = false
   if collection_tab_has_products
     assign collection_tab_show_grid = true
-  elsif collection_tab_collection == blank
+  elsif collection_tab_is_placeholder
     assign collection_tab_show_grid = true
   endif
 %}
@@ -246,6 +246,7 @@
           gap_horizontal_mobile: section.settings.product_gap_mobile,
           gap_vertical_mobile: section.settings.product_gap_mobile,
           show_placeholders: collection_tab_is_placeholder,
+          show_placeholders_for_empty_collection: true,
           placeholder_count: collection_tab_max_products,
           grid_class: 'collection-tab__products',
           item_class: 'collection-tab__product',
@@ -293,9 +294,6 @@
       </div>
     {% endif %}
 
-    {% if collection_tab_collection != blank and collection_tab_has_products == false %}
-      <p class="collection-tab__empty body-text body-sm">{{ 'collection_tabs.empty_collection' | t }}</p>
-    {% endif %}
   </div>
 </div>
 {% stylesheet %}
@@ -371,11 +369,6 @@
 
   .collection-tab__carousel-button {
     pointer-events: auto;
-  }
-
-  .collection-tab__empty {
-    margin-block-start: 1rem;
-    color: color-mix(in srgb, var(--body-color) 72%, transparent);
   }
 
   @media (max-width: 767.98px) {
