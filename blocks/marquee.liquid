@@ -119,7 +119,7 @@
     gap: var(--marquee-gap, 48px);
     width: max-content;
     min-width: 0;
-    max-width: min-content;
+    max-width: none;
     animation: none;
     will-change: transform;
   }
@@ -200,10 +200,18 @@
     const selector = '.marquee--block';
     const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
 
-    const setFocusableState = (element) => {
-      element.setAttribute('aria-hidden', 'true');
-      element.querySelectorAll('a, button, input, select, textarea, [tabindex]').forEach((focusable) => {
-        focusable.setAttribute('tabindex', '-1');
+    const prepareClone = (clone) => {
+      clone.setAttribute('aria-hidden', 'true');
+      clone.setAttribute('inert', '');
+      // Copies are decorative, never additional selectable Theme Editor blocks.
+      [clone, ...clone.querySelectorAll('*')].forEach((element) => {
+        element.removeAttribute('id');
+        [...element.attributes].forEach(({ name }) => {
+          if (name.startsWith('data-shopify-editor')) element.removeAttribute(name);
+        });
+        if (element.matches('a, button, input, select, textarea, [tabindex]')) {
+          element.setAttribute('tabindex', '-1');
+        }
       });
     };
 
@@ -212,93 +220,100 @@
 
       const track = marquee.querySelector('.marquee__track');
       const viewport = marquee.querySelector('.marquee__viewport');
-      if (!track || !viewport || track.children.length === 0) return;
+      if (!track || !viewport) return;
 
-      let clones = [];
-      let isSyncing = false;
+      let frame = 0;
+      let destroyed = false;
+      let measuredLayout = '';
+      const originalItems = () => [...track.children].filter((item) => !item.hasAttribute('data-marquee-clone'));
+      const observeMutations = () => mutationObserver.observe(track, {
+        attributes: true,
+        childList: true,
+        characterData: true,
+        subtree: true
+      });
 
       const syncClones = () => {
-        if (isSyncing) return;
-        isSyncing = true;
+        if (destroyed) return;
         mutationObserver.disconnect();
+        track.querySelectorAll('[data-marquee-clone]').forEach((clone) => clone.remove());
+        const items = originalItems();
+        resizeObserver.disconnect();
+        resizeObserver.observe(viewport);
+        items.forEach((item) => resizeObserver.observe(item));
 
-        clones.forEach((clone) => clone.remove());
-        const originalItems = [...track.children].filter((item) => !item.hasAttribute('data-marquee-clone'));
-        if (originalItems.length === 0) {
-          isSyncing = false;
+        const gap = parseFloat(getComputedStyle(track).columnGap) || 0;
+        // Include the trailing gap so the next cycle starts at the exact seam.
+        const distance = items.reduce((width, item) => width + item.getBoundingClientRect().width + gap, 0);
+        measuredLayout = layoutSignature();
+        if (items.length === 0 || distance <= 0 || viewport.clientWidth === 0) {
+          marquee.classList.remove('marquee--ready');
+          track.style.removeProperty('--marquee-loop-distance');
+          observeMutations();
           return;
         }
 
-        const appendCloneSet = (setIndex) => {
-          originalItems.forEach((item, itemIndex) => {
+        // Keep a full viewport of content beyond the end of one animation cycle.
+        const copyCount = Math.max(1, Math.ceil(viewport.clientWidth / distance));
+        const fragment = document.createDocumentFragment();
+        for (let setIndex = 0; setIndex < copyCount; setIndex += 1) {
+          items.forEach((item) => {
             const clone = item.cloneNode(true);
-            setFocusableState(clone);
+            prepareClone(clone);
             clone.dataset.marqueeClone = 'true';
-            clone.dataset.marqueeCloneIndex = String(setIndex * originalItems.length + itemIndex);
-            track.appendChild(clone);
+            fragment.appendChild(clone);
           });
-        };
-
-        // One clone set is the loop distance. Add more sets until the track
-        // still covers the viewport after it has moved by that distance.
-        appendCloneSet(1);
-        const firstClone = track.querySelector('[data-marquee-clone]');
-        const loopDistance = firstClone.getBoundingClientRect().left - track.getBoundingClientRect().left;
-        let setIndex = 2;
-        while (track.scrollWidth < viewport.clientWidth + loopDistance && setIndex <= 100) {
-          appendCloneSet(setIndex);
-          setIndex += 1;
         }
-
-        clones = [...track.children].filter((item) => item.hasAttribute('data-marquee-clone'));
-
-        mutationObserver.observe(track, {
-          attributes: true,
-          childList: true,
-          subtree: true
-        });
-        isSyncing = false;
+        track.appendChild(fragment);
+        track.style.setProperty('--marquee-loop-distance', `${distance}px`);
+        marquee.classList.add('marquee--ready');
+        observeMutations();
       };
 
+      const scheduleSync = () => {
+        if (destroyed || frame) return;
+        frame = requestAnimationFrame(() => {
+          frame = 0;
+          syncClones();
+        });
+      };
+      const layoutSignature = () => [
+        viewport.clientWidth,
+        getComputedStyle(track).columnGap,
+        ...originalItems().map((item) => item.getBoundingClientRect().width.toFixed(2))
+      ].join(':');
       const mutationObserver = new MutationObserver((mutations) => {
         if (mutations.some((mutation) => {
+          const element = mutation.target.nodeType === Node.ELEMENT_NODE ? mutation.target : mutation.target.parentElement;
+          if (element?.closest('[data-marquee-clone]')) return false;
           if (mutation.type === 'attributes') {
-            if (mutation.attributeName === 'class' || mutation.attributeName === 'style') return false;
+            if (mutation.target === track) return false;
             if (mutation.attributeName.startsWith('data-shopify-editor')) return false;
           }
-          return !mutation.target.closest?.('[data-marquee-clone]');
-        })) {
-          syncClones();
-          updateDistance();
+          return true;
+        })) scheduleSync();
+      });
+      const resizeObserver = new ResizeObserver(() => {
+        if (layoutSignature() !== measuredLayout) scheduleSync();
+      });
+
+      instances.set(marquee, {
+        destroy: () => {
+          destroyed = true;
+          cancelAnimationFrame(frame);
+          resizeObserver.disconnect();
+          mutationObserver.disconnect();
         }
       });
-
       syncClones();
-
-      const updateDistance = () => {
-        const firstClone = clones[0];
-        if (!firstClone) return;
-        const distance = firstClone.getBoundingClientRect().left - track.getBoundingClientRect().left;
-        track.style.setProperty('--marquee-loop-distance', `${distance}px`);
-      };
-
-      const resizeObserver = new ResizeObserver(() => {
-        syncClones();
-        updateDistance();
-      });
-      resizeObserver.observe(viewport);
-      updateDistance();
-      marquee.classList.add('marquee--ready');
-
-      instances.set(marquee, { clones, resizeObserver, mutationObserver });
     };
 
     const destroy = (marquee) => {
       const state = instances.get(marquee);
       if (!state) return;
-      state.resizeObserver.disconnect();
-      state.mutationObserver.disconnect();
+      state.destroy();
       marquee.querySelectorAll('[data-marquee-clone]').forEach((clone) => clone.remove());
+      marquee.querySelector('.marquee__track')?.style.removeProperty('--marquee-loop-distance');
       marquee.classList.remove('marquee--ready');
       instances.delete(marquee);
     };
