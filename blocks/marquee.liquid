@@ -56,6 +56,10 @@
   else
     assign marquee_gap_mobile = marquee_gap_mobile | plus: 0
   endif
+  assign padding_top_mobile = block.settings.padding_top_mobile | default: padding_top | plus: 0
+  assign padding_bottom_mobile = block.settings.padding_bottom_mobile | default: padding_bottom | plus: 0
+  assign padding_left_mobile = block.settings.padding_left_mobile | default: padding_left | plus: 0
+  assign padding_right_mobile = block.settings.padding_right_mobile | default: padding_right | plus: 0
 %}
 
 {% capture marquee_style %}
@@ -67,6 +71,12 @@
   {% if padding_right != 0 %}--marquee-padding-right: {{ padding_right }}px;{% endif %}
   {% if marquee_gap_desktop != 48 %}--marquee-gap: {{ marquee_gap_desktop }}px;{% endif %}
   {% if marquee_gap_mobile != 32 %}--marquee-gap-mobile: {{ marquee_gap_mobile }}px;{% endif %}
+  {% if block.settings.customize_mobile_padding %}
+    --marquee-padding-top-mobile: {{ padding_top_mobile }}px;
+    --marquee-padding-bottom-mobile: {{ padding_bottom_mobile }}px;
+    --marquee-padding-left-mobile: {{ padding_left_mobile }}px;
+    --marquee-padding-right-mobile: {{ padding_right_mobile }}px;
+  {% endif %}
 {% endcapture %}
 {% assign marquee_style = marquee_style | strip | replace: '\n', ' ' %}
 
@@ -142,6 +152,14 @@
   }
 
   @media (max-width: 767.98px) {
+    .marquee--block {
+      padding-top: var(--marquee-padding-top-mobile, var(--marquee-padding-top, 24px));
+      padding-bottom: var(--marquee-padding-bottom-mobile, var(--marquee-padding-bottom, 24px));
+    }
+    .marquee--block .container.full-width.marquee__container {
+      padding-left: var(--marquee-padding-left-mobile, var(--marquee-padding-left, 0px));
+      padding-right: var(--marquee-padding-right-mobile, var(--marquee-padding-right, 0px));
+    }
     .marquee--block .marquee__track {
       gap: var(--marquee-gap-mobile, var(--marquee-gap, 48px));
     }
@@ -451,7 +469,7 @@
     {
       "type": "range",
       "id": "padding_top",
-      "label": "t:options.position.top",
+      "label": "Top padding",
       "min": 0,
       "max": 100,
       "step": 1,
@@ -461,7 +479,7 @@
     {
       "type": "range",
       "id": "padding_bottom",
-      "label": "t:options.position.bottom",
+      "label": "Bottom padding",
       "min": 0,
       "max": 100,
       "step": 1,
@@ -471,7 +489,7 @@
     {
       "type": "range",
       "id": "padding_left",
-      "label": "t:labels.left_padding",
+      "label": "Left padding",
       "min": 0,
       "max": 100,
       "step": 1,
@@ -481,12 +499,62 @@
     {
       "type": "range",
       "id": "padding_right",
-      "label": "t:labels.right_padding",
+      "label": "Right padding",
       "min": 0,
       "max": 100,
       "step": 1,
       "unit": "px",
       "default": 0
+    },
+    {
+      "type": "checkbox",
+      "id": "customize_mobile_padding",
+      "label": "t:labels.customize_mobile_padding",
+      "default": false
+    },
+    {
+      "type": "range",
+      "id": "padding_top_mobile",
+      "label": "Mobile top padding",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "default": 24,
+      "visible_if": "{{ block.settings.customize_mobile_padding }}"
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_mobile",
+      "label": "Mobile bottom padding",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "default": 24,
+      "visible_if": "{{ block.settings.customize_mobile_padding }}"
+    },
+    {
+      "type": "range",
+      "id": "padding_left_mobile",
+      "label": "Mobile left padding",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "default": 0,
+      "visible_if": "{{ block.settings.customize_mobile_padding }}"
+    },
+    {
+      "type": "range",
+      "id": "padding_right_mobile",
+      "label": "Mobile right padding",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "default": 0,
+      "visible_if": "{{ block.settings.customize_mobile_padding }}"
     }
   ],
   "presets": [
