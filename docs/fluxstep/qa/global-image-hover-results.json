@@ -1,0 +1,66 @@
+{
+  "on": [
+    {
+      "clip": "inset(1.92308%)",
+      "id": "raw",
+      "scale": "1.04",
+      "transform": "none"
+    },
+    {
+      "clip": "none",
+      "id": "kernel",
+      "scale": "none",
+      "transform": "matrix(1.03338, 0, 0, 1.03338, 0, 0)"
+    },
+    {
+      "clip": "none",
+      "id": "product",
+      "scale": "none",
+      "transform": "matrix(1.06, 0, 0, 1.06, 0, 0)"
+    },
+    {
+      "clip": "inset(1.60311%)",
+      "id": "gallery",
+      "scale": "1.03334",
+      "transform": "none"
+    },
+    {
+      "clip": "none",
+      "id": "showcase",
+      "scale": "none",
+      "transform": "matrix(1.0321, 0, 0, 1.0321, 0, 0)"
+    }
+  ],
+  "off": [
+    {
+      "clip": "inset(0%)",
+      "id": "raw",
+      "scale": "1",
+      "transform": "none"
+    },
+    {
+      "clip": "none",
+      "id": "kernel",
+      "scale": "none",
+      "transform": "matrix(1, 0, 0, 1, 0, 0)"
+    },
+    {
+      "clip": "none",
+      "id": "product",
+      "scale": "none",
+      "transform": "matrix(1, 0, 0, 1, 0, 0)"
+    },
+    {
+      "clip": "inset(0%)",
+      "id": "gallery",
+      "scale": "1",
+      "transform": "none"
+    },
+    {
+      "clip": "none",
+      "id": "showcase",
+      "scale": "none",
+      "transform": "matrix(1, 0, 0, 1, 0, 0)"
+    }
+  ]
+}
