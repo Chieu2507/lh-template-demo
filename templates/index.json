@@ -19,8 +19,8 @@
             "link": "",
             "open_in_new_tab": false,
             "media_type": "image",
-            "image": "shopify://shop_images/figma-original-1.jpg",
-            "mobile_image": "shopify://shop_images/figma-original-1.jpg",
+            "image": "shopify://shop_images/strideo-slideshow-1-figma.jpg",
+            "mobile_image": "shopify://shop_images/strideo-slideshow-1-figma.jpg",
             "media_2_type": "image",
             "show_overlay": true,
             "overlay_color": "#00000033",
@@ -244,7 +244,9 @@
             "mobile_position": "bottom_left",
             "desktop_gap": 0,
             "mobile_gap": 0,
-            "color_scheme": "scheme-3"
+            "color_scheme": "scheme-3",
+            "image": "shopify://shop_images/strideo-categories-2-figma.jpg",
+            "mobile_image": "shopify://shop_images/strideo-categories-2-figma.jpg"
           },
           "blocks": {
             "column": {
@@ -453,7 +455,9 @@
             "mobile_position": "bottom_left",
             "desktop_gap": 0,
             "mobile_gap": 0,
-            "color_scheme": "scheme-3"
+            "color_scheme": "scheme-3",
+            "image": "shopify://shop_images/strideo-cards-6-figma.jpg",
+            "mobile_image": "shopify://shop_images/strideo-cards-6-figma.jpg"
           },
           "blocks": {
             "column": {
@@ -1036,8 +1040,8 @@
         "desktop_content_position": "last",
         "stack_on_tablet": false,
         "media_type": "image",
-        "banner_image": "",
-        "mobile_banner_image": "",
+        "banner_image": "shopify://shop_images/strideo-countdown-1-figma.jpg",
+        "mobile_banner_image": "shopify://shop_images/strideo-countdown-1-figma.jpg",
         "media_aspect_ratio": "ratio_7_6",
         "media_corner_radius": "rounded",
         "hover_zoom": false,
@@ -1400,7 +1404,9 @@
         "padding_top_mobile": 80,
         "padding_right_mobile": 0,
         "padding_bottom_mobile": 80,
-        "padding_left_mobile": 0
+        "padding_left_mobile": 0,
+        "background_image": "shopify://shop_images/strideo-scroll-1-figma.jpg",
+        "mobile_image": "shopify://shop_images/strideo-scroll-1-figma.jpg"
       }
     },
     "new_arrivals_tabs": {
@@ -1722,7 +1728,9 @@
                 "corner_radius": "custom",
                 "custom_corner_radius": 4,
                 "animation_type": "scale",
-                "animation_delay": 0
+                "animation_delay": 0,
+                "image": "shopify://shop_images/strideo-multiple-6-figma.jpg",
+                "mobile_image": "shopify://shop_images/strideo-multiple-6-figma.jpg"
               }
             },
             "group-1": {
@@ -1823,7 +1831,9 @@
                 "corner_radius": "custom",
                 "custom_corner_radius": 4,
                 "animation_type": "scale",
-                "animation_delay": 0
+                "animation_delay": 0,
+                "image": "shopify://shop_images/strideo-multiple-5-figma.jpg",
+                "mobile_image": "shopify://shop_images/strideo-multiple-5-figma.jpg"
               }
             },
             "group-1": {
@@ -1924,7 +1934,9 @@
                 "corner_radius": "custom",
                 "custom_corner_radius": 4,
                 "animation_type": "scale",
-                "animation_delay": 0
+                "animation_delay": 0,
+                "image": "shopify://shop_images/strideo-multiple-4-figma.jpg",
+                "mobile_image": "shopify://shop_images/strideo-multiple-4-figma.jpg"
               }
             },
             "group-1": {
