@@ -773,7 +773,7 @@
                 "gap_desktop": 0,
                 "gap_mobile": 0,
                 "border_thickness": 0,
-                "corner_radius": "square",
+                "corner_radius": "slightly_rounded",
                 "shadow": "none",
                 "color_type": "color_scheme",
                 "color_scheme": "scheme-3",
@@ -1335,9 +1335,10 @@
                 "image_ratio_custom_width_mobile": 5,
                 "image_ratio_custom_height_mobile": 4,
                 "width_mobile": "fill",
-                "corner_radius": "square",
+                "corner_radius": "custom",
                 "animation_type": "none",
-                "alt_text": "Runner on a green track"
+                "alt_text": "Runner on a green track",
+                "custom_corner_radius": 4
               }
             },
             "content": {
@@ -1400,10 +1401,11 @@
                 "image_ratio_custom_width_mobile": 5,
                 "image_ratio_custom_height_mobile": 4,
                 "width_mobile": "fill",
-                "corner_radius": "square",
+                "corner_radius": "custom",
                 "animation_type": "none",
                 "image": "shopify://shop_images/strideo-multiple-6-figma.jpg",
-                "alt_text": "Tennis player on a blue court"
+                "alt_text": "Tennis player on a blue court",
+                "custom_corner_radius": 4
               }
             },
             "content": {
@@ -1466,10 +1468,11 @@
                 "image_ratio_custom_width_mobile": 5,
                 "image_ratio_custom_height_mobile": 4,
                 "width_mobile": "fill",
-                "corner_radius": "square",
+                "corner_radius": "custom",
                 "animation_type": "none",
                 "image": "shopify://shop_images/fluxstep-showcase-trail.jpg",
-                "alt_text": "Orange trail running shoes on rocks"
+                "alt_text": "Orange trail running shoes on rocks",
+                "custom_corner_radius": 4
               }
             },
             "content": {
