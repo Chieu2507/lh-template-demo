@@ -112,7 +112,14 @@
             },
             "buy-buttons": {
               "type": "product-buy-buttons",
-              "settings": {}
+              "settings": {},
+              "blocks": {
+                "quantity": {
+                  "type": "product-buy-quantity",
+                  "static": true,
+                  "settings": {"style": "custom", "background_color": "#FFFFFF", "text_color": "#1A1A1A", "border_color": "#E6E6E6", "border_thickness": 1, "corner_radius": 100}
+                }
+              }
             },
             "benefits": {
               "type": "group",
