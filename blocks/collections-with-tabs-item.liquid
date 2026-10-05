@@ -10,8 +10,18 @@
     assign is_first_item = true
   endif
   assign item_title_tag = section.settings.title_tag | default: 'div'
-  assign item_title_size = section.settings.title_size | default: 'heading_2'
-  assign item_title_size = item_title_size | replace: 'heading_1', 'display' | replace: 'heading_2', 'xl' | replace: 'heading_3', 'lg' | replace: 'heading_4', 'md'
+  unless item_title_tag == 'div' or item_title_tag == 'h1' or item_title_tag == 'h2' or item_title_tag == 'h3' or item_title_tag == 'h4' or item_title_tag == 'h5' or item_title_tag == 'h6'
+    assign item_title_tag = 'div'
+  endunless
+  assign item_title_size = section.settings.title_size | default: 'xl'
+  assign item_title_size = item_title_size | replace: 'heading_1', 'xl' | replace: 'heading_2', 'xl' | replace: 'heading_3', 'lg' | replace: 'heading_4', 'md'
+  unless item_title_size == 'display' or item_title_size == 'xl' or item_title_size == 'lg' or item_title_size == 'md' or item_title_size == 'sm' or item_title_size == 'xs' or item_title_size == 'custom'
+    assign item_title_size = 'xl'
+  endunless
+  assign custom_title_size = section.settings.custom_heading_size | default: 24 | plus: 0
+  if custom_title_size < 10 or custom_title_size > 100
+    assign custom_title_size = 24
+  endif
   assign image_ratio = section.settings.image_ratio | default: 'auto'
   if image_ratio == 'auto'
     if item_image != blank and item_image.aspect_ratio > 0
@@ -25,7 +35,7 @@
 <div class="collections-with-tabs__tab-row">
   <button id="CollectionsWithTabsTab-{{ item_id }}" class="collections-with-tabs__tab" type="button" role="tab" aria-controls="CollectionsWithTabsPanel-{{ item_id }}" aria-selected="{{ is_first_item }}" tabindex="{% if is_first_item %}0{% else %}-1{% endif %}" data-collections-with-tabs-tab data-collections-with-tabs-id="{{ item_id }}">
     <span class="collections-with-tabs__tab-content">
-      <{{ item_title_tag }} class="collections-with-tabs__tab-title heading-text heading-{{ item_title_size }}">{{ item_title | escape }}</{{ item_title_tag }}>
+      <{{ item_title_tag }} class="collections-with-tabs__tab-title heading-text heading-{{ item_title_size }}"{% if item_title_size == 'custom' %} style="--heading-block-custom-size: {{ custom_title_size }}px"{% endif %}>{{ item_title | escape }}</{{ item_title_tag }}>
       {% if section.settings.show_product_count and item_collection != blank %}<sup class="collections-with-tabs__tab-count">{{ item_collection.products_count }}</sup>{% endif %}
     </span>
   </button>
