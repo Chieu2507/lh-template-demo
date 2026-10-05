@@ -2570,10 +2570,6 @@ legend {
 }
 
 /* Image swatches use a separate underline, preserving the image frame size. */
-.variant-picker__option--swatches .swatches--selected-underline .variant-picker__choice {
-  padding-block-end: 9px;
-}
-
 .variant-picker__option--swatches .swatches--selected-underline .swatch__input:checked + .swatch__label {
   padding-block-end: 0;
   border-block-end: 0;
@@ -2588,9 +2584,13 @@ legend {
   content: '';
   position: absolute;
   inset-inline: 0;
-  inset-block-end: 0;
+  inset-block-end: -4px;
   height: 1px;
   background: var(--body-color);
+}
+
+.variant-picker__option--swatches .swatches--selected-underline .swatch__input:checked + .swatch__label::before {
+  inset-block-end: -4px;
 }
 
 .variant-picker__option--swatches .swatches--selected-underline .swatch__input:checked + .swatch__label .swatch {
