@@ -427,11 +427,11 @@
     pointer-events: none;
   }
 
-  .bundle-card__options .variant-picker__option--swatches .swatch__label:has(.swatch--white) {
+  .bundle-card__options .variant-picker__option--swatches .swatch__label:has(.swatch--color.swatch--white) {
     box-shadow: 0 0 0 1px color-mix(in srgb, var(--body-color) 15%, transparent);
   }
 
-  .bundle-card__options .variant-swatch--selected-style-border .variant-picker__option--swatches .swatch__label:not(:has(.swatch--white)) {
+  .bundle-card__options .variant-swatch--selected-style-border .variant-picker__option--swatches .swatch__label:not(:has(.swatch--color.swatch--white)):not(:has(.swatch--variant_image)) {
     box-shadow: 0 0 0 1px color-mix(in srgb, var(--body-color) 5%, transparent);
   }
 
@@ -473,7 +473,7 @@
     border-block-end: 0;
   }
 
-  .bundle-card__options .variant-swatch--selected-style-underline .variant-picker__option--swatches .swatch__label:has(.swatch--white) {
+  .bundle-card__options .variant-swatch--selected-style-underline .variant-picker__option--swatches .swatch__label:has(.swatch--color.swatch--white) {
     box-shadow: 0 0 0 1px color-mix(in srgb, var(--body-color) 15%, transparent);
   }
 

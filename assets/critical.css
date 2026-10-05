@@ -2160,6 +2160,10 @@ legend {
   cursor: pointer;
 }
 
+.product-card__swatch-label:has(.swatch--variant_image) {
+  border-color: transparent;
+}
+
 .product-card__swatch-input {
   position: absolute;
   inset: 0;
@@ -2235,11 +2239,11 @@ legend {
   display: none;
 }
 
-.product-card__swatches--selected-underline .product-card__swatch-label:not(:has(.swatch--white)) {
+.product-card__swatches--selected-underline .product-card__swatch-label:not(:has(.swatch--color.swatch--white)) {
   border-width: 0;
 }
 
-.product-card__swatches--selected-underline .product-card__swatch-label:has(.swatch--white) {
+.product-card__swatches--selected-underline .product-card__swatch-label:has(.swatch--color.swatch--white) {
   border-color: color-mix(in srgb, var(--body-color) 15%, transparent);
 }
 
@@ -2516,6 +2520,12 @@ legend {
   border: var(--shape-border-width) solid var(--border-color);
   border-radius: var(--swatch-radius);
   background-color: var(--swatch-color, var(--input-background-color));
+}
+
+/* Image thumbnails must not expose the color swatch fallback at their edges. */
+.swatch--variant_image {
+  background-color: transparent;
+  border-color: transparent;
 }
 
 .swatches--selected-border:not(.product-card__swatches) [data-swatch-selected] .swatch,
