@@ -42,7 +42,6 @@
   .showcase-carousel--navigation-cursor.is-cursor-active .showcase-item__media { cursor: none; }
   .showcase-carousel--navigation-cursor.is-cursor-active .showcase-carousel__navigation { inset: 0; transform: none; }
   .showcase-carousel--navigation-cursor.is-cursor-active .showcase-carousel__arrow { position: absolute; left: var(--showcase-cursor-x); top: var(--showcase-cursor-y); translate: -50% -50%; width: 84px; height: 84px; backdrop-filter: blur(5px); }
-  .showcase-carousel--navigation-cursor.is-cursor-active .showcase-carousel__arrow { background: rgb(255 255 255 / .4); color: #1a1a1a; }
   .showcase-carousel--navigation-cursor.is-cursor-active[data-cursor-direction='next'] [data-showcase-previous], .showcase-carousel--navigation-cursor.is-cursor-active[data-cursor-direction='previous'] [data-showcase-next] { visibility: hidden; }
 }
 @media (min-width: 768px) and (max-width: 1149.98px) {

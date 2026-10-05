@@ -4,6 +4,11 @@
     assign container_width = 'full-width'
   endif
   assign scheme = section.settings.color_scheme.id | default: section.settings.color_scheme | default: 'scheme-1' | handleize
+  assign navigation_style = section.settings.navigation_style | default: 'primary'
+  unless navigation_style == 'primary' or navigation_style == 'secondary'
+    assign navigation_style = 'primary'
+  endunless
+  assign navigation_icon = section.settings.navigation_icon | default: 'arrow'
   assign carousel_id = 'Showcase-' | append: section.id
 %}
 {{ 'showcase-carousel.css' | asset_url | stylesheet_tag }}
@@ -31,12 +36,12 @@
         {% render 'swiper-carousel', content: slides, id: carousel_id, root_class: 'showcase-carousel__swiper', aria_label: section.settings.aria_label %}
         {% if section.settings.show_navigation %}
           <div class="showcase-carousel__navigation" data-showcase-controls>
-            <button class="btn btn-primary btn--primary btn--icon swiper-nav-button showcase-carousel__arrow" type="button" data-showcase-previous aria-label="{{ 'collection_tabs.previous' | t }}" aria-controls="{{ carousel_id }}">{% render 'carousel-navigation-icon', icon: 'arrow', direction: 'previous' %}</button>
-            <button class="btn btn-primary btn--primary btn--icon swiper-nav-button showcase-carousel__arrow" type="button" data-showcase-next aria-label="{{ 'collection_tabs.next' | t }}" aria-controls="{{ carousel_id }}">{% render 'carousel-navigation-icon', icon: 'arrow', direction: 'next' %}</button>
+            <button class="btn btn-{{ navigation_style }} btn--{{ navigation_style }} btn--icon swiper-nav-button showcase-carousel__arrow" type="button" data-showcase-previous aria-label="{{ 'collection_tabs.previous' | t }}" aria-controls="{{ carousel_id }}">{% render 'carousel-navigation-icon', icon: navigation_icon, direction: 'previous' %}</button>
+            <button class="btn btn-{{ navigation_style }} btn--{{ navigation_style }} btn--icon swiper-nav-button showcase-carousel__arrow" type="button" data-showcase-next aria-label="{{ 'collection_tabs.next' | t }}" aria-controls="{{ carousel_id }}">{% render 'carousel-navigation-icon', icon: navigation_icon, direction: 'next' %}</button>
           </div>
         {% endif %}
       </div>
-      {% if section.settings.show_pagination %}<div class="showcase-carousel__pagination swiper-pagination" data-showcase-pagination data-bullet-label="{{ 'showcase_carousel.go_to_slide' | t | escape }}"></div>{% endif %}
+      {% if section.settings.show_navigation %}<div class="showcase-carousel__pagination swiper-pagination" data-showcase-pagination data-bullet-label="{{ 'showcase_carousel.go_to_slide' | t | escape }}"></div>{% endif %}
     </div>
   </div>
 </div>
@@ -62,8 +67,9 @@
     { "type": "header", "content": "Navigation" },
     { "type": "range", "id": "initial_slide", "label": "Starting slide", "min": 1, "max": 50, "step": 1, "default": 1 },
     { "type": "checkbox", "id": "show_navigation", "label": "Show navigation", "default": true },
-    { "type": "select", "id": "navigation_mode", "label": "Navigation style", "options": [{ "value": "cursor", "label": "Follow cursor" }, { "value": "arrows", "label": "Arrows" }], "default": "cursor", "visible_if": "{{ section.settings.show_navigation }}" },
-    { "type": "checkbox", "id": "show_pagination", "label": "Show pagination", "default": false },
+    { "type": "select", "id": "navigation_mode", "label": "Mode", "options": [{ "value": "cursor", "label": "Follow cursor" }, { "value": "arrows", "label": "Arrows" }], "default": "cursor", "visible_if": "{{ section.settings.show_navigation }}" },
+    { "type": "select", "id": "navigation_style", "label": "Style", "options": [{ "value": "primary", "label": "Primary" }, { "value": "secondary", "label": "Secondary" }], "default": "primary", "visible_if": "{{ section.settings.show_navigation }}" },
+    { "type": "select", "id": "navigation_icon", "label": "Icon", "options": [{ "value": "chevron", "label": "Chevron" }, { "value": "arrow", "label": "Arrow" }, { "value": "long_arrow", "label": "Long arrow" }], "default": "arrow", "visible_if": "{{ section.settings.show_navigation }}" },
     { "type": "header", "content": "Appearance" },
     { "type": "color_scheme", "id": "color_scheme", "label": "t:labels.color_scheme", "default": "scheme-1" },
     { "type": "color", "alpha": true, "id": "background_color", "label": "Background color" },
