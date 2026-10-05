@@ -2036,7 +2036,7 @@
         "customize_mobile_padding": true,
         "padding_top_mobile": 80,
         "padding_bottom_mobile": 80,
-        "enable_boxed_layout": true,
+        "enable_boxed_layout": false,
         "boxed_color_scheme": "scheme-2",
         "corner_radius": "rounded",
         "shadow": "none",
