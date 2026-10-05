@@ -1059,7 +1059,8 @@
           },
           "block_order": [
             "eyebrow"
-          ]
+          ],
+          "disabled": true
         },
         "collection_1": {
           "type": "collections-with-tabs-item",
@@ -1112,7 +1113,7 @@
       "settings": {
         "section_width": "page_width",
         "boxed_layout": false,
-        "gap_desktop": 112,
+        "gap_desktop": 64,
         "gap_mobile": 16,
         "image_position": "right",
         "image_ratio": "1",
@@ -1127,7 +1128,8 @@
         "padding_bottom": 96,
         "customize_mobile_padding": true,
         "padding_top_mobile": 20,
-        "padding_bottom_mobile": 112
+        "padding_bottom_mobile": 112,
+        "inactive_title_color": "#999999"
       }
     },
     "new_arrivals_tabs": {

@@ -38,6 +38,8 @@ const initialize = (section) => {
       tab.tabIndex = active ? 0 : -1;
     });
     const activePanel = panels.find((panel) => panel.dataset.collectionsWithTabsId === activeId) || panels[0];
+    const activeMedia = activePanel.querySelector('.collections-with-tabs__media');
+    if (activeMedia) section.style.setProperty('--collections-with-tabs-image-ratio', activeMedia.style.getPropertyValue('--collections-with-tabs-panel-ratio'));
     window.cancelAnimationFrame(activationFrame);
     panels.forEach((panel) => {
       const active = panel === activePanel;
