@@ -35,6 +35,7 @@ class MultipleImagesText extends HTMLElement {
   show(index, announce = false) {
     const count = this.items.length;
     if (!count) return;
+    const previous = this.index;
     this.index = ((index % count) + count) % count;
     this.items.forEach((item, position) => {
       const active = position === this.index;
@@ -51,6 +52,9 @@ class MultipleImagesText extends HTMLElement {
       image.inert = !active;
       image.setAttribute('aria-hidden', String(!active));
     });
+    this.dispatchEvent(new CustomEvent('multiple-images-text:change', {
+      bubbles: true, detail: { previous, index: this.index }
+    }));
     const status = this.querySelector('[data-multi-status]');
     if (announce && status) status.textContent = `${this.index + 1} / ${count}`;
   }

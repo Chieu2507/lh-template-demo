@@ -7,7 +7,7 @@
   const reduced = matchMedia('(prefers-reduced-motion: reduce)');
   const enabled = () => document.body.dataset.blockAnimations !== 'false' && !reduced.matches;
   const selector = '[data-block-animation], [data-component-reveal]';
-  const scopeSelector = '[role="tabpanel"], [data-multi-item], [data-multi-image], .slideshow__swiper .swiper-slide';
+  const scopeSelector = '[role="tabpanel"], .slideshow__swiper .swiper-slide';
   const active = element => {
     if (!element.isConnected || !element.getClientRects().length) return false;
     if (element.closest('[hidden], [aria-hidden="true"], [inert]')) return false;
@@ -61,6 +61,13 @@
     });
   };
   const initialize = element => {
+    // The stack controller owns media motion. Inert back cards are still visible.
+    if (element.closest('[data-multi-image]')) {
+      const state = nodes.get(element);
+      if (state) {stop(state);observer.unobserve(element);nodes.delete(element);}
+      element.classList.remove('reveal-pending');
+      return;
+    }
     if (nodes.has(element) || element.dataset.blockAnimation === 'none') return;
     // Explicitly animated parents own the entrance; avoid nested double transforms.
     const parent = element.parentElement?.closest('[data-block-animation]:not([data-block-animation="none"]),[data-component-reveal]');
@@ -108,6 +115,19 @@
   scan();
   mutations.observe(document.body,{childList:true,subtree:true,attributes:true,attributeFilter:['hidden','aria-hidden','inert','class']});
   document.addEventListener('shopify:section:load',event => scan(event.target));
+  // Reconcile after all Item accessibility and visibility changes are complete.
+  document.addEventListener('multiple-images-text:change',event => {
+    scan(event.target);
+    nodes.forEach((state, element) => {
+      const item = element.closest('[data-multi-item]');
+      if (!item || !event.target.contains(item)) return;
+      if (event.detail.previous !== event.detail.index || !active(element)) {
+        stop(state);state.played = false;
+        element.classList.toggle('reveal-pending', enabled());
+      }
+      if (active(element) && inView(element)) show(element);
+    });
+  });
   document.addEventListener('shopify:block:select',event => {
     requestAnimationFrame(() => nodes.forEach((state, element) => {
       if (event.target.contains(element) || element.contains(event.target)) {
