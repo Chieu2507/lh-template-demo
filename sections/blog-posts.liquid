@@ -66,9 +66,6 @@
     <div class="blog-posts__header">
       {% content_for 'block', type: 'header', id: 'header' %}
     </div>
-    <div class="blog-posts__actions">
-      {% content_for 'block', type: 'view-all-button', id: 'blog-posts-view-all', closest.collection: blog_posts_source %}
-    </div>
     <div class="blog-posts__list">
       {% content_for 'block', type: 'blog-list', id: 'blog-list', closest.blog: blog_posts_source %}
     </div>
@@ -264,6 +261,7 @@
   @media (max-width: 767.98px) {
     .blog-posts__header { order: 1; }
     .blog-posts__list { order: 2; }
+    .blog-posts__list > .blog-list { display: flex; flex-direction: column; gap: var(--blog-posts-gap-mobile, 24px); }
     .blog-posts__actions { order: 3; width: 100%; }
     .blog-posts__actions:has(> .collection-list-view-all--hide-mobile) { display: none; }
   }
@@ -274,12 +272,21 @@
   "name": "Blog posts",
   "class": "section-blog-posts",
   "disabled_on": {
-    "templates": ["article", "blog"]
+    "templates": [
+      "article",
+      "blog"
+    ]
   },
   "blocks": [
-    { "type": "header" },
-    { "type": "view-all-button" },
-    { "type": "blog-list" }
+    {
+      "type": "header"
+    },
+    {
+      "type": "view-all-button"
+    },
+    {
+      "type": "blog-list"
+    }
   ],
   "settings": [
     {
@@ -291,8 +298,14 @@
       "id": "section_width",
       "label": "t:labels.section_width",
       "options": [
-        { "value": "page_width", "label": "t:options.section_width.page_width" },
-        { "value": "full_width", "label": "t:options.section_width.full_width" }
+        {
+          "value": "page_width",
+          "label": "t:options.section_width.page_width"
+        },
+        {
+          "value": "full_width",
+          "label": "t:options.section_width.full_width"
+        }
       ],
       "default": "page_width"
     },
@@ -301,9 +314,18 @@
       "id": "desktop_alignment",
       "label": "t:labels.desktop_alignment",
       "options": [
-        { "value": "left", "label": "t:options.alignment.left" },
-        { "value": "center", "label": "t:options.alignment.center" },
-        { "value": "right", "label": "t:options.alignment.right" }
+        {
+          "value": "left",
+          "label": "t:options.alignment.left"
+        },
+        {
+          "value": "center",
+          "label": "t:options.alignment.center"
+        },
+        {
+          "value": "right",
+          "label": "t:options.alignment.right"
+        }
       ],
       "default": "left"
     },
@@ -312,9 +334,18 @@
       "id": "mobile_alignment",
       "label": "t:labels.mobile_alignment",
       "options": [
-        { "value": "left", "label": "t:options.alignment.left" },
-        { "value": "center", "label": "t:options.alignment.center" },
-        { "value": "right", "label": "t:options.alignment.right" }
+        {
+          "value": "left",
+          "label": "t:options.alignment.left"
+        },
+        {
+          "value": "center",
+          "label": "t:options.alignment.center"
+        },
+        {
+          "value": "right",
+          "label": "t:options.alignment.right"
+        }
       ],
       "default": "left"
     },
@@ -448,20 +479,6 @@
           ]
         },
         {
-          "type": "view-all-button",
-          "id": "blog-posts-view-all",
-          "static": true,
-          "settings": {
-            "button_label": "View all",
-            "button_style": "text",
-            "button_style_mobile": "outline",
-            "button_height_mobile": "inherit",
-            "full_width_mobile": true,
-            "show_icon": false,
-            "show_icon_mobile": false
-          }
-        },
-        {
           "type": "blog-list",
           "id": "blog-list",
           "static": true,
@@ -576,6 +593,20 @@
                   }
                 }
               ]
+            },
+            {
+              "type": "view-all-button",
+              "id": "blog-posts-view-all",
+              "static": true,
+              "settings": {
+                "button_label": "View all",
+                "button_style": "text",
+                "button_style_mobile": "outline",
+                "button_height_mobile": "inherit",
+                "full_width_mobile": true,
+                "show_icon": false,
+                "show_icon_mobile": false
+              }
             }
           ]
         }

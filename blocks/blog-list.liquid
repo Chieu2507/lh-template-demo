@@ -285,6 +285,9 @@
     %}
     {% if blog_list_navigation_position != 'top' %}{{ blog_list_navigation }}{% endif %}
   </div>
+  <div class="blog-posts__actions">
+    {% content_for 'block', type: 'view-all-button', id: 'blog-posts-view-all', closest.blog: blog_list_source %}
+  </div>
 </div>
 {% endif %}
 
@@ -391,6 +394,7 @@
   "name": "Blog list",
   "tag": null,
   "blocks": [
+    { "type": "view-all-button" },
     { "type": "blog-card" }
   ],
   "settings": [
