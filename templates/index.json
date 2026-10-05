@@ -733,7 +733,10 @@
             "collections": [
               "marathon-strideo",
               "road-running-strideo",
-              "running-strideo"
+              "running-strideo",
+              "trail-running-fluxstep",
+              "tennis-fluxstep",
+              "hiking-outdoor-fluxstep"
             ],
             "layout": "grid",
             "columns_desktop": "3",
@@ -1323,7 +1326,7 @@
               "type": "image",
               "static": true,
               "settings": {
-                "image": "shopify://shop_images/strideo-multiple-6-figma.jpg",
+                "image": "shopify://shop_images/fluxstep-showcase-running.jpg",
                 "image_ratio_desktop": "custom",
                 "image_ratio_custom_width_desktop": 5,
                 "image_ratio_custom_height_desktop": 4,
@@ -1333,7 +1336,8 @@
                 "image_ratio_custom_height_mobile": 4,
                 "width_mobile": "fill",
                 "corner_radius": "square",
-                "animation_type": "none"
+                "animation_type": "none",
+                "alt_text": "Runner on a green track"
               }
             },
             "content": {
@@ -1362,7 +1366,7 @@
                   "type": "button",
                   "settings": {
                     "button_label": "Shop Now",
-                    "button_link": "shopify://collections/all",
+                    "button_link": "shopify://collections/running-strideo",
                     "button_style": "secondary",
                     "show_icon": false,
                     "animation_type": "none"
@@ -1397,7 +1401,9 @@
                 "image_ratio_custom_height_mobile": 4,
                 "width_mobile": "fill",
                 "corner_radius": "square",
-                "animation_type": "none"
+                "animation_type": "none",
+                "image": "shopify://shop_images/strideo-multiple-6-figma.jpg",
+                "alt_text": "Tennis player on a blue court"
               }
             },
             "content": {
@@ -1426,7 +1432,7 @@
                   "type": "button",
                   "settings": {
                     "button_label": "Shop Now",
-                    "button_link": "shopify://collections/all",
+                    "button_link": "shopify://collections/tennis-fluxstep",
                     "button_style": "secondary",
                     "show_icon": false,
                     "animation_type": "none"
@@ -1461,7 +1467,9 @@
                 "image_ratio_custom_height_mobile": 4,
                 "width_mobile": "fill",
                 "corner_radius": "square",
-                "animation_type": "none"
+                "animation_type": "none",
+                "image": "shopify://shop_images/fluxstep-showcase-trail.jpg",
+                "alt_text": "Orange trail running shoes on rocks"
               }
             },
             "content": {
@@ -1490,7 +1498,7 @@
                   "type": "button",
                   "settings": {
                     "button_label": "Shop Now",
-                    "button_link": "shopify://collections/all",
+                    "button_link": "shopify://collections/trail-running-fluxstep",
                     "button_style": "secondary",
                     "show_icon": false,
                     "animation_type": "none"
@@ -1755,13 +1763,14 @@
                 "image": {
                   "type": "image",
                   "settings": {
-                    "alt_text": "Strideo running community",
+                    "alt_text": "Runner stretching against a blue sky",
                     "image_ratio_desktop": "square",
                     "width_desktop": "fill",
                     "image_ratio_mobile": "square",
                     "width_mobile": "fill",
                     "corner_radius": "custom",
-                    "custom_corner_radius": 4
+                    "custom_corner_radius": 4,
+                    "image": "shopify://shop_images/fluxstep-gallery-1.jpg"
                   }
                 }
               },
@@ -1779,13 +1788,14 @@
                 "image": {
                   "type": "image",
                   "settings": {
-                    "alt_text": "Strideo running community",
+                    "alt_text": "Lacing white running shoes on a green track",
                     "image_ratio_desktop": "square",
                     "width_desktop": "fill",
                     "image_ratio_mobile": "square",
                     "width_mobile": "fill",
                     "corner_radius": "custom",
-                    "custom_corner_radius": 4
+                    "custom_corner_radius": 4,
+                    "image": "shopify://shop_images/fluxstep-gallery-2.jpg"
                   }
                 }
               },
@@ -1803,13 +1813,14 @@
                 "image": {
                   "type": "image",
                   "settings": {
-                    "alt_text": "Strideo running community",
+                    "alt_text": "Runner jumping over a rocky trail",
                     "image_ratio_desktop": "square",
                     "width_desktop": "fill",
                     "image_ratio_mobile": "square",
                     "width_mobile": "fill",
                     "corner_radius": "custom",
-                    "custom_corner_radius": 4
+                    "custom_corner_radius": 4,
+                    "image": "shopify://shop_images/fluxstep-gallery-3.jpg"
                   }
                 }
               },
@@ -1827,13 +1838,14 @@
                 "image": {
                   "type": "image",
                   "settings": {
-                    "alt_text": "Strideo running community",
+                    "alt_text": "Green running shoe sole in motion",
                     "image_ratio_desktop": "square",
                     "width_desktop": "fill",
                     "image_ratio_mobile": "square",
                     "width_mobile": "fill",
                     "corner_radius": "custom",
-                    "custom_corner_radius": 4
+                    "custom_corner_radius": 4,
+                    "image": "shopify://shop_images/strideo-multiple-5-figma.jpg"
                   }
                 }
               },
@@ -1851,8 +1863,8 @@
                 "image": {
                   "type": "image",
                   "settings": {
-                    "image": "shopify://shop_images/strideo-multiple-5-figma.jpg",
-                    "alt_text": "Strideo running community",
+                    "image": "shopify://shop_images/fluxstep-gallery-5.jpg",
+                    "alt_text": "Runner beneath a bridge",
                     "image_ratio_desktop": "square",
                     "width_desktop": "fill",
                     "image_ratio_mobile": "square",
@@ -1876,13 +1888,14 @@
                 "image": {
                   "type": "image",
                   "settings": {
-                    "alt_text": "Strideo running community",
+                    "alt_text": "Beige and white running shoes",
                     "image_ratio_desktop": "square",
                     "width_desktop": "fill",
                     "image_ratio_mobile": "square",
                     "width_mobile": "fill",
                     "corner_radius": "custom",
-                    "custom_corner_radius": 4
+                    "custom_corner_radius": 4,
+                    "image": "shopify://shop_images/fluxstep-gallery-6.jpg"
                   }
                 }
               },
