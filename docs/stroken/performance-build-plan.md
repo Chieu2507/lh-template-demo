@@ -24,3 +24,15 @@
 - NOT TESTED: exhaustive Theme Editor add/remove/reorder/save lifecycle, no-JavaScript browser and reduced-motion browser emulation. No preview watcher started. Uploaded only layout, slide block and shared snippet to the unpublished Stroken theme; remote template/settings preserved.
 - Reports: `output/stroken-lighthouse/2026-10-06/mobile-optimized-2.report.html` and `mobile-optimized-final.report.html`; screenshots and report files remain QA output. Authentication headers are redacted from saved reports.
 - Desktop recheck PASS: Performance **97** (baseline 94), LCP **0.7s**, FCP 0.6s, TBT 0ms, CLS 0.05. Report: `desktop-optimized-final.report.html`. An interrupted Chrome connection in the first desktop attempt was retried successfully; no Lighthouse process left running.
+
+
+## Base update integration — 2026-10-06
+
+Integrated upstream commits c74a839c, 58edd486, 87b329a5 and 2f42a2d2 from theme-base/dev at 2f42a2d2. Scoped cherry-picks avoid importing older unrelated base page/template history. The upstream cart inventory-limit change aa4772a9 is outside this announcement/performance update.
+
+- Critical CSS now supplies overlay and announcement geometry before deferred styles load. Quick add/view decoration styles load asynchronously on storefronts and synchronously in the Theme Editor.
+- Overlay header wrapper is stable before first paint; sticky measurements use the visible header surface.
+- Slideshow keeps Stroken custom pixel height alongside all five fixed presets, capped source-resolution crop densities and uncropped merchant focal points. Saved custom 800px height and preload/source parity have regression coverage.
+- Preserved Stroken tablet collection grid CSS, announcement font weight, single-announcement hidden controls/full viewport, slideshow padding/schema and all templates/settings.
+- Validation: full local Node suite 68/68 PASS; header.js syntax PASS; Shopify Theme Check 0 errors and 35 warnings; diff check PASS.
+- Fresh Theme Editor lifecycle, storefront browser interaction and Lighthouse: NOT TESTED for this integration. Earlier 91–92 mobile scores belong to the previous optimization and do not measure this update. Upstream QA in docs/qa/performance-regressions-2026-10-06.md describes base development QA, not a fresh Stroken run. No Shopify CLI upload or preview watcher started.
