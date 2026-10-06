@@ -43,6 +43,21 @@
   endunless
 %}
 
+{% if section.index == 1 and section.location == 'template' %}
+  {% liquid
+    assign first_slide = section.blocks.first
+    assign first_slide_mobile_height = 0
+    if slideshow_mobile_height == 'custom'
+      assign first_slide_mobile_height = section.settings.mobile_height_custom | default: 670
+    endif
+  %}
+  {% if first_slide.settings.image != blank and first_slide.settings.media_type != 'video' %}
+    <!-- theme-lcp-preloads:start -->
+    {% render 'slideshow-image', image: first_slide.settings.image, mobile_image: first_slide.settings.mobile_image, mobile_height: first_slide_mobile_height, preload: true %}
+    <!-- theme-lcp-preloads:end -->
+  {% endif %}
+{% endif %}
+
 {% capture slideshow_style %}
   {% if slideshow_desktop_height == 'custom' %}--slideshow-height: {{ section.settings.desktop_height_custom | default: 810 }}px;{% endif %}
   {% if section.settings.customize_tablet_height %}--slideshow-height-tablet: {{ section.settings.tablet_height_custom | default: 720 }}px;{% endif %}

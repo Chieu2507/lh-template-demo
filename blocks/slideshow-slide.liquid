@@ -18,9 +18,9 @@
   assign slide_scheme = slide_scheme | handleize
   assign slide_image_loading = 'lazy'
   assign slide_image_fetchpriority = 'auto'
-  assign slide_mobile_image_width = 1200
-  if section.settings.mobile_height == 'custom' and block.settings.mobile_image != blank
-    assign slide_mobile_image_width = section.settings.mobile_height_custom | times: 2 | times: block.settings.mobile_image.aspect_ratio | ceil | at_least: 750
+  assign slide_mobile_height = 0
+  if section.settings.mobile_height == 'custom'
+    assign slide_mobile_height = section.settings.mobile_height_custom | default: 670
   endif
   if section.blocks.first != blank and section.blocks.first.id == block.id
     assign slide_image_loading = 'eager'
@@ -53,10 +53,7 @@
         {% if slide_media_type == 'video' and block.settings.video != blank %}
           {{ block.settings.video | video_tag: image_size: '2400x', autoplay: true, loop: true, muted: true, controls: false, playsinline: true, class: 'slideshow-slide__video' }}
         {% elsif block.settings.image != blank %}
-          <picture>
-            {% if block.settings.mobile_image != blank %}<source media="(max-width: 767.98px)" srcset="{{ block.settings.mobile_image | image_url: width: slide_mobile_image_width }}">{% endif %}
-            {{ block.settings.image | image_url: width: 2400 | image_tag: widths: '750, 1100, 1500, 2000, 2400', sizes: '100vw', loading: slide_image_loading, fetchpriority: slide_image_fetchpriority, alt: '' }}
-          </picture>
+          {% render 'slideshow-image', image: block.settings.image, mobile_image: block.settings.mobile_image, mobile_height: slide_mobile_height, loading: slide_image_loading, fetchpriority: slide_image_fetchpriority %}
         {% else %}
           {{ 'lifestyle-1' | placeholder_svg_tag: 'hero__placeholder' }}
         {% endif %}
