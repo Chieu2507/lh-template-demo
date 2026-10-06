@@ -24,7 +24,7 @@ async function render(height, settings = {}) {
   const block = { id: 'first', settings: { image, ...settings } };
   return engine.parseAndRender(source, { block, section: { index: 1, blocks: [block], settings: { mobile_height: height } } });
 }
-const fixed = { extra_small: 320, small: 440, medium: 560, large: 680, extra_large: 820 };
+const fixed = { extra_small: 320, small: 440, medium: 560, large: 680, extra_large: 820, custom: 670 };
 for (const option of schema.settings.find(s => s.id === 'mobile_height').options) {
   test(`real slide caller: ${option.value} matches CSS and preload/picture sources`, async () => {
     for (const mobile of [undefined, { ...image, name: 'mobile.jpg' }]) {
@@ -35,7 +35,7 @@ for (const option of schema.settings.find(s => s.id === 'mobile_height').options
       assert.ok(sources.every(s => s.includes(mobile ? '/mobile.jpg?' : '/desktop.jpg?')));
       if (fixed[option.value]) {
         const height = fixed[option.value];
-        assert.ok(sectionSource.includes(`.slideshow--mobile-${option.value} { --slideshow-height-mobile: ${height / 10}rem; }`));
+        if (option.value !== "custom") assert.ok(sectionSource.includes(`.slideshow--mobile-${option.value} { --slideshow-height-mobile: ${height / 10}rem; }`));
         assert.equal(sources.length, 2);
         assert.ok(sources[0].includes(`width=480&amp;height=${height}&amp;crop=center 1x`));
         assert.ok(sources[1].includes(`width=768&amp;height=${height}&amp;crop=center 1x`));

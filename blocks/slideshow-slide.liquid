@@ -35,6 +35,8 @@
       assign slide_mobile_height = 680
     when 'extra_large'
       assign slide_mobile_height = 820
+    when 'custom'
+      assign slide_mobile_height = section.settings.mobile_height_custom | default: 670
   endcase
   if section.blocks.first != blank and section.blocks.first.id == block.id
     assign slide_image_loading = 'eager'
