@@ -39,6 +39,12 @@
   {% if slide_content_width == 'custom' %}--hero-content-max-width: {{ block.settings.content_max_width | default: 640 }}px;{% endif %}
 {% endcapture %}
 
+{% if slide_image_loading == 'eager' and section.index == 1 and slide_media_type == 'image' and block.settings.image != blank %}
+  <!-- theme-lcp-preloads:start -->
+  {% render 'slideshow-image', image: block.settings.image, mobile_image: block.settings.mobile_image, mobile_height: slide_mobile_height, preload: true %}
+  <!-- theme-lcp-preloads:end -->
+{% endif %}
+
 <div
   class="swiper-slide slideshow-slide slideshow-slide--{{ slide_layout }} hero hero--width-full hero--classic hero--content-{{ slide_content_width }} hero--desktop-adapt hero--mobile-adapt color-scheme section-color-scope {{ slide_scheme }}"
   data-slideshow-slide
