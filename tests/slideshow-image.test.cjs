@@ -20,11 +20,11 @@ const source = stripShopifyMetadata(fs.readFileSync('blocks/slideshow-slide.liqu
 const sectionSource = fs.readFileSync('sections/slideshow.liquid', 'utf8');
 const schema = JSON.parse(sectionSource.match(/{% schema %}([\s\S]*?){% endschema %}/)[1]);
 const image = { name: 'desktop.jpg', aspect_ratio: 3, width: 6000, height: 2000, presentation: { focal_point: '50.0% 50.0%' } };
-async function render(height, settings = {}) {
+async function render(height, settings = {}, sectionSettings = {}) {
   const block = { id: 'first', settings: { image, ...settings } };
-  return engine.parseAndRender(source, { block, section: { index: 1, blocks: [block], settings: { mobile_height: height } } });
+  return engine.parseAndRender(source, { block, section: { index: 1, blocks: [block], settings: { mobile_height: height, ...sectionSettings } } });
 }
-const fixed = { extra_small: 320, small: 440, medium: 560, large: 680, extra_large: 820 };
+const fixed = { extra_small: 320, small: 440, medium: 560, large: 680, extra_large: 820, custom: 670 };
 for (const option of schema.settings.find(s => s.id === 'mobile_height').options) {
   test(`real slide caller: ${option.value} matches CSS and preload/picture sources`, async () => {
     for (const mobile of [undefined, { ...image, name: 'mobile.jpg' }]) {
@@ -35,7 +35,11 @@ for (const option of schema.settings.find(s => s.id === 'mobile_height').options
       assert.ok(sources.every(s => s.includes(mobile ? '/mobile.jpg?' : '/desktop.jpg?')));
       if (fixed[option.value]) {
         const height = fixed[option.value];
-        assert.ok(sectionSource.includes(`.slideshow--mobile-${option.value} { --slideshow-height-mobile: ${height / 10}rem; }`));
+        if (option.value === 'custom') {
+          assert.ok(sectionSource.includes('section.settings.mobile_height_custom | default: 670'));
+        } else {
+          assert.ok(sectionSource.includes(`.slideshow--mobile-${option.value} { --slideshow-height-mobile: ${height / 10}rem; }`));
+        }
         assert.equal(sources.length, 2);
         assert.ok(sources[0].includes(`width=480&amp;height=${height}&amp;crop=center 1x`));
         assert.ok(sources[1].includes(`width=768&amp;height=${height}&amp;crop=center 1x`));
@@ -49,6 +53,11 @@ for (const option of schema.settings.find(s => s.id === 'mobile_height').options
     }
   });
 }
+test('Strideo saved custom mobile height controls responsive crops', async () => {
+  const html = await render('custom', {}, { mobile_height_custom: 530 });
+  assert.ok(html.includes('height=530&amp;crop=center'));
+  assert.ok(!html.includes('height=670&amp;crop=center'));
+});
 test('missing preset uses the actual small default and focal points avoid center crops', async () => {
   assert.ok((await render(undefined)).includes('height=440&amp;crop=center'));
   const focal = { ...image, presentation: { focal_point: '75% 25%' } };
