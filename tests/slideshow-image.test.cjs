@@ -20,9 +20,9 @@ const source = stripShopifyMetadata(fs.readFileSync('blocks/slideshow-slide.liqu
 const sectionSource = fs.readFileSync('sections/slideshow.liquid', 'utf8');
 const schema = JSON.parse(sectionSource.match(/{% schema %}([\s\S]*?){% endschema %}/)[1]);
 const image = { name: 'desktop.jpg', aspect_ratio: 3, width: 6000, height: 2000, presentation: { focal_point: '50.0% 50.0%' } };
-async function render(height, settings = {}) {
+async function render(height, settings = {}, sectionSettings = {}) {
   const block = { id: 'first', settings: { image, ...settings } };
-  return engine.parseAndRender(source, { block, section: { index: 1, blocks: [block], settings: { mobile_height: height } } });
+  return engine.parseAndRender(source, { block, section: { index: 1, blocks: [block], settings: { mobile_height: height, ...sectionSettings } } });
 }
 const fixed = { custom: 670, extra_small: 320, small: 440, medium: 560, large: 680, extra_large: 820 };
 for (const option of schema.settings.find(s => s.id === 'mobile_height').options) {
@@ -64,3 +64,10 @@ test('portrait art and source resolution limits preserve valid responsive candid
   assert.ok(!small.includes('height=680&amp;crop=center'));
 });
 module.exports = { render };
+
+test('Stroken custom mobile height follows the saved pixel value', async () => {
+  const html = await render('custom', {}, { mobile_height_custom: 800 });
+  assert.ok(html.includes('width=480&amp;height=800&amp;crop=center 1x'));
+  assert.ok(html.includes('width=960&amp;height=1600&amp;crop=center 2x'));
+  assert.ok(!html.includes('height=670&amp;crop=center'));
+});
