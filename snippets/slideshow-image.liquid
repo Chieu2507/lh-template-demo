@@ -52,7 +52,7 @@
       echo ' 1x, '
       echo mobile_artwork | image_url: width: 1536, height: double_height, crop: 'center'
       echo ' 2x'
-    else
+    elsif frame_height > 0
       echo mobile_artwork | image_url: width: 750
       echo ' 750w, '
       echo mobile_artwork | image_url: width: 1100
@@ -63,6 +63,12 @@
       echo ' 2000w, '
       echo mobile_artwork | image_url: width: 2400
       echo ' 2400w'
+    else
+      comment
+        Adapt/preset frames have no known pixel height in Liquid. Keep their
+        previous 1200px source rather than undersizing a cover image.
+      endcomment
+      echo mobile_artwork | image_url: width: 1200
     endif
   endcapture
   assign mobile_sizes = '100vw'
