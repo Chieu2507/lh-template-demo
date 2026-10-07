@@ -366,6 +366,7 @@
     "desktop_height": "Desktop height",
     "mobile_height": "Mobile height",
     "desktop_horizontal_padding": "Desktop horizontal padding",
+    "tablet_horizontal_padding": "Tablet horizontal padding",
     "mobile_horizontal_padding": "Mobile horizontal padding",
     "disabled_opacity": "Disabled opacity",
     "border_thickness": "Border thickness",

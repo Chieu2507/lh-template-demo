@@ -391,7 +391,7 @@
         "id": "type_heading_1_size_desktop",
         "min": 40,
         "max": 96,
-        "step": 4,
+        "step": 2,
         "unit": "px",
         "label": "t:labels.font_size_desktop",
         "default": 68
@@ -447,7 +447,7 @@
         "id": "type_heading_2_size_desktop",
         "min": 32,
         "max": 72,
-        "step": 4,
+        "step": 2,
         "unit": "px",
         "label": "t:labels.font_size_desktop",
         "default": 40
@@ -501,9 +501,9 @@
       {
         "type": "range",
         "id": "type_heading_3_size_desktop",
-        "min": 28,
+        "min": 26,
         "max": 60,
-        "step": 4,
+        "step": 2,
         "unit": "px",
         "label": "t:labels.font_size_desktop",
         "default": 28
@@ -613,7 +613,7 @@
       {
         "type": "range",
         "id": "type_heading_5_size_desktop",
-        "min": 18,
+        "min": 16,
         "max": 36,
         "step": 2,
         "unit": "px",
@@ -986,6 +986,16 @@
       },
       {
         "type": "range",
+        "id": "button_padding_inline_tablet",
+        "min": 12,
+        "max": 32,
+        "step": 1,
+        "unit": "px",
+        "label": "t:labels.tablet_horizontal_padding",
+        "default": 28
+      },
+      {
+        "type": "range",
         "id": "button_padding_inline_mobile",
         "min": 12,
         "max": 32,
@@ -1088,7 +1098,8 @@
         "label": "t:labels.text_case",
         "options": [
           { "value": "original", "label": "t:options.text_case.original" },
-          { "value": "uppercase", "label": "t:options.text_case.uppercase" }
+          { "value": "uppercase", "label": "t:options.text_case.uppercase" },
+          { "value": "capitalize", "label": "t:options.text_case.capitalize" }
         ],
         "default": "original"
       },
@@ -1122,7 +1133,8 @@
         "label": "t:labels.text_case",
         "options": [
           { "value": "original", "label": "t:options.text_case.original" },
-          { "value": "uppercase", "label": "t:options.text_case.uppercase" }
+          { "value": "uppercase", "label": "t:options.text_case.uppercase" },
+          { "value": "capitalize", "label": "t:options.text_case.capitalize" }
         ],
         "default": "original"
       },
@@ -1156,7 +1168,8 @@
         "label": "t:labels.text_case",
         "options": [
           { "value": "original", "label": "t:options.text_case.original" },
-          { "value": "uppercase", "label": "t:options.text_case.uppercase" }
+          { "value": "uppercase", "label": "t:options.text_case.uppercase" },
+          { "value": "capitalize", "label": "t:options.text_case.capitalize" }
         ],
         "default": "original"
       },
@@ -1823,6 +1836,12 @@
       {
         "type": "header",
         "content": "Typography and spacing"
+      },
+      {
+        "type": "font_picker",
+        "id": "badge_font",
+        "label": "t:labels.font",
+        "default": "instrument_sans_n6"
       },
       {
         "type": "range",

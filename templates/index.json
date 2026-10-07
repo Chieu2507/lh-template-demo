@@ -89,6 +89,8 @@
                         "customize_mobile_size": false,
                         "width_mobile": "fill",
                         "max_width_mobile": 480,
+                        "animation_type": "rotate-words",
+                        "animation_delay": 50,
                         "padding_top": 0,
                         "padding_bottom": 0,
                         "padding_left": 0,
@@ -97,9 +99,7 @@
                         "padding_top_mobile": 0,
                         "padding_bottom_mobile": 0,
                         "padding_left_mobile": 0,
-                        "padding_right_mobile": 0,
-                        "animation_type": "rotate-words",
-                        "animation_delay": 50
+                        "padding_right_mobile": 0
                       },
                       "blocks": {}
                     },
@@ -113,12 +113,12 @@
                         "width": "fill",
                         "customize_mobile_size": false,
                         "width_mobile": "fill",
+                        "animation_type": "fade",
+                        "animation_delay": 0,
                         "padding_top": 0,
                         "padding_bottom": 0,
                         "padding_left": 0,
-                        "padding_right": 0,
-                        "animation_type": "fade",
-                        "animation_delay": 0
+                        "padding_right": 0
                       },
                       "blocks": {}
                     }
@@ -164,6 +164,8 @@
                         "icon_width": 20,
                         "width": "fit",
                         "width_mobile": "fit",
+                        "animation_type": "slide-bottom",
+                        "animation_delay": 100,
                         "padding_top": 0,
                         "padding_bottom": 0,
                         "padding_left": 0,
@@ -172,9 +174,7 @@
                         "padding_top_mobile": 0,
                         "padding_bottom_mobile": 0,
                         "padding_left_mobile": 0,
-                        "padding_right_mobile": 0,
-                        "animation_type": "slide-bottom",
-                        "animation_delay": 100
+                        "padding_right_mobile": 0
                       },
                       "blocks": {}
                     },
@@ -192,6 +192,8 @@
                         "icon_width": 20,
                         "width": "fit",
                         "width_mobile": "fit",
+                        "animation_type": "slide-bottom",
+                        "animation_delay": 100,
                         "padding_top": 0,
                         "padding_bottom": 0,
                         "padding_left": 0,
@@ -200,9 +202,7 @@
                         "padding_top_mobile": 0,
                         "padding_bottom_mobile": 0,
                         "padding_left_mobile": 0,
-                        "padding_right_mobile": 0,
-                        "animation_type": "slide-bottom",
-                        "animation_delay": 100
+                        "padding_right_mobile": 0
                       },
                       "blocks": {}
                     }
@@ -230,6 +230,8 @@
             "link": "",
             "open_in_new_tab": false,
             "media_type": "image",
+            "image": "shopify://shop_images/strideo-categories-2-figma.jpg",
+            "mobile_image": "shopify://shop_images/strideo-categories-2-figma.jpg",
             "media_2_type": "image",
             "show_overlay": true,
             "overlay_color": "#00000033",
@@ -244,9 +246,7 @@
             "mobile_position": "bottom_left",
             "desktop_gap": 0,
             "mobile_gap": 0,
-            "color_scheme": "scheme-3",
-            "image": "shopify://shop_images/strideo-categories-2-figma.jpg",
-            "mobile_image": "shopify://shop_images/strideo-categories-2-figma.jpg"
+            "color_scheme": "scheme-3"
           },
           "blocks": {
             "column": {
@@ -300,6 +300,8 @@
                         "customize_mobile_size": false,
                         "width_mobile": "fill",
                         "max_width_mobile": 480,
+                        "animation_type": "rotate-words",
+                        "animation_delay": 50,
                         "padding_top": 0,
                         "padding_bottom": 0,
                         "padding_left": 0,
@@ -308,9 +310,7 @@
                         "padding_top_mobile": 0,
                         "padding_bottom_mobile": 0,
                         "padding_left_mobile": 0,
-                        "padding_right_mobile": 0,
-                        "animation_type": "rotate-words",
-                        "animation_delay": 50
+                        "padding_right_mobile": 0
                       },
                       "blocks": {}
                     },
@@ -324,12 +324,12 @@
                         "width": "fill",
                         "customize_mobile_size": false,
                         "width_mobile": "fill",
+                        "animation_type": "fade",
+                        "animation_delay": 0,
                         "padding_top": 0,
                         "padding_bottom": 0,
                         "padding_left": 0,
-                        "padding_right": 0,
-                        "animation_type": "fade",
-                        "animation_delay": 0
+                        "padding_right": 0
                       },
                       "blocks": {}
                     }
@@ -375,6 +375,8 @@
                         "icon_width": 20,
                         "width": "fit",
                         "width_mobile": "fit",
+                        "animation_type": "slide-bottom",
+                        "animation_delay": 100,
                         "padding_top": 0,
                         "padding_bottom": 0,
                         "padding_left": 0,
@@ -383,9 +385,7 @@
                         "padding_top_mobile": 0,
                         "padding_bottom_mobile": 0,
                         "padding_left_mobile": 0,
-                        "padding_right_mobile": 0,
-                        "animation_type": "slide-bottom",
-                        "animation_delay": 100
+                        "padding_right_mobile": 0
                       },
                       "blocks": {}
                     },
@@ -403,6 +403,8 @@
                         "icon_width": 20,
                         "width": "fit",
                         "width_mobile": "fit",
+                        "animation_type": "slide-bottom",
+                        "animation_delay": 100,
                         "padding_top": 0,
                         "padding_bottom": 0,
                         "padding_left": 0,
@@ -411,9 +413,7 @@
                         "padding_top_mobile": 0,
                         "padding_bottom_mobile": 0,
                         "padding_left_mobile": 0,
-                        "padding_right_mobile": 0,
-                        "animation_type": "slide-bottom",
-                        "animation_delay": 100
+                        "padding_right_mobile": 0
                       },
                       "blocks": {}
                     }
@@ -441,6 +441,8 @@
             "link": "",
             "open_in_new_tab": false,
             "media_type": "image",
+            "image": "shopify://shop_images/strideo-cards-6-figma.jpg",
+            "mobile_image": "shopify://shop_images/strideo-cards-6-figma.jpg",
             "media_2_type": "image",
             "show_overlay": true,
             "overlay_color": "#00000033",
@@ -455,9 +457,7 @@
             "mobile_position": "bottom_left",
             "desktop_gap": 0,
             "mobile_gap": 0,
-            "color_scheme": "scheme-3",
-            "image": "shopify://shop_images/strideo-cards-6-figma.jpg",
-            "mobile_image": "shopify://shop_images/strideo-cards-6-figma.jpg"
+            "color_scheme": "scheme-3"
           },
           "blocks": {
             "column": {
@@ -511,6 +511,8 @@
                         "customize_mobile_size": false,
                         "width_mobile": "fill",
                         "max_width_mobile": 480,
+                        "animation_type": "rotate-words",
+                        "animation_delay": 50,
                         "padding_top": 0,
                         "padding_bottom": 0,
                         "padding_left": 0,
@@ -519,9 +521,7 @@
                         "padding_top_mobile": 0,
                         "padding_bottom_mobile": 0,
                         "padding_left_mobile": 0,
-                        "padding_right_mobile": 0,
-                        "animation_type": "rotate-words",
-                        "animation_delay": 50
+                        "padding_right_mobile": 0
                       },
                       "blocks": {}
                     },
@@ -535,12 +535,12 @@
                         "width": "fill",
                         "customize_mobile_size": false,
                         "width_mobile": "fill",
+                        "animation_type": "fade",
+                        "animation_delay": 0,
                         "padding_top": 0,
                         "padding_bottom": 0,
                         "padding_left": 0,
-                        "padding_right": 0,
-                        "animation_type": "fade",
-                        "animation_delay": 0
+                        "padding_right": 0
                       },
                       "blocks": {}
                     }
@@ -586,6 +586,8 @@
                         "icon_width": 20,
                         "width": "fit",
                         "width_mobile": "fit",
+                        "animation_type": "slide-bottom",
+                        "animation_delay": 100,
                         "padding_top": 0,
                         "padding_bottom": 0,
                         "padding_left": 0,
@@ -594,9 +596,7 @@
                         "padding_top_mobile": 0,
                         "padding_bottom_mobile": 0,
                         "padding_left_mobile": 0,
-                        "padding_right_mobile": 0,
-                        "animation_type": "slide-bottom",
-                        "animation_delay": 100
+                        "padding_right_mobile": 0
                       },
                       "blocks": {}
                     },
@@ -614,6 +614,8 @@
                         "icon_width": 20,
                         "width": "fit",
                         "width_mobile": "fit",
+                        "animation_type": "slide-bottom",
+                        "animation_delay": 100,
                         "padding_top": 0,
                         "padding_bottom": 0,
                         "padding_left": 0,
@@ -622,9 +624,7 @@
                         "padding_top_mobile": 0,
                         "padding_bottom_mobile": 0,
                         "padding_left_mobile": 0,
-                        "padding_right_mobile": 0,
-                        "animation_type": "slide-bottom",
-                        "animation_delay": 100
+                        "padding_right_mobile": 0
                       },
                       "blocks": {}
                     }
@@ -884,15 +884,15 @@
           "name": "Content area",
           "settings": {
             "direction": "vertical",
-            "width": "fill",
-            "width_mobile": "fill",
+            "position": "space-between",
             "alignment": "left",
             "alignment_mobile": "left",
-            "height": "fill",
-            "backdrop_blur": 0,
-            "position": "space-between",
             "gap_desktop": 64,
-            "gap_mobile": 40
+            "gap_mobile": 40,
+            "width": "fill",
+            "height": "fill",
+            "width_mobile": "fill",
+            "backdrop_blur": 0
           },
           "blocks": {
             "content": {
@@ -900,16 +900,16 @@
               "name": "Content",
               "settings": {
                 "direction": "vertical",
-                "width": "fill",
-                "width_mobile": "fill",
                 "alignment": "left",
                 "alignment_mobile": "left",
-                "height": "fit",
-                "backdrop_blur": 0,
                 "gap_desktop": 40,
                 "gap_mobile": 32,
+                "width": "fill",
                 "limit_width": true,
-                "max_width": 580
+                "max_width": 580,
+                "height": "fit",
+                "width_mobile": "fill",
+                "backdrop_blur": 0
               },
               "blocks": {
                 "heading-content": {
@@ -917,14 +917,14 @@
                   "name": "Heading and description",
                   "settings": {
                     "direction": "vertical",
-                    "width": "fill",
-                    "width_mobile": "fill",
                     "alignment": "left",
                     "alignment_mobile": "left",
-                    "height": "fit",
-                    "backdrop_blur": 0,
                     "gap_desktop": 16,
-                    "gap_mobile": 16
+                    "gap_mobile": 16,
+                    "width": "fill",
+                    "height": "fit",
+                    "width_mobile": "fill",
+                    "backdrop_blur": 0
                   },
                   "blocks": {
                     "heading": {
@@ -976,19 +976,19 @@
               "name": "Countdown",
               "settings": {
                 "direction": "vertical",
-                "width": "fill",
-                "width_mobile": "fill",
                 "alignment": "left",
                 "alignment_mobile": "left",
-                "height": "fit",
-                "backdrop_blur": 0,
+                "gap_desktop": 0,
+                "gap_mobile": 0,
+                "width": "fill",
                 "limit_width": true,
                 "max_width": 430,
+                "height": "fit",
+                "width_mobile": "fill",
                 "appearance_type": "scheme",
                 "color_scheme": "scheme-4",
                 "corner_radius": "slightly_rounded",
-                "gap_desktop": 0,
-                "gap_mobile": 0
+                "backdrop_blur": 0
               },
               "blocks": {
                 "timer": {
@@ -1003,8 +1003,8 @@
                     "duration_hours": 37,
                     "duration_minutes": 34,
                     "number_size": "custom",
-                    "label_size": "sm",
-                    "custom_number_size": 24
+                    "custom_number_size": 24,
+                    "label_size": "sm"
                   }
                 }
               },
@@ -1022,6 +1022,15 @@
       "block_order": [
         "content-area"
       ],
+      "custom_css": [
+        ".hero {--ct-h:750px;--ct-p:80px}",
+        ".hero__surface {--hero-min-height:var(--ct-h)}",
+        ".hero__container {padding-block:var(--ct-p)}",
+        ".hero__content {height:calc(var(--ct-h) - var(--ct-p)*2);max-width:calc(var(--page-width) - var(--page-margin-current)*2)}",
+        ".countdown-timer * {border:0!important}",
+        "@media (max-width:1149.98px) {.hero {--ct-h:640px}}",
+        "@media (max-width:767.98px) {.hero {--ct-h:570px;--ct-p:64px}}"
+      ],
       "name": "Countdown timer",
       "settings": {
         "width": "full",
@@ -1030,6 +1039,7 @@
         "stack_on_tablet": false,
         "media_type": "image",
         "banner_image": "shopify://shop_images/strideo-countdown-1-figma.jpg",
+        "mobile_banner_image": "shopify://shop_images/strideo-countdown-1-figma.jpg",
         "media_aspect_ratio": "ratio_7_6",
         "media_corner_radius": "rounded",
         "hover_zoom": false,
@@ -1049,18 +1059,8 @@
         "padding_bottom": 0,
         "customize_mobile_padding": true,
         "padding_top_mobile": 0,
-        "padding_bottom_mobile": 0,
-        "mobile_banner_image": "shopify://shop_images/strideo-countdown-1-figma.jpg"
-      },
-      "custom_css": [
-        ".hero {--ct-h:750px;--ct-p:80px}",
-        ".hero__surface {--hero-min-height:var(--ct-h)}",
-        ".hero__container {padding-block:var(--ct-p)}",
-        ".hero__content {height:calc(var(--ct-h) - var(--ct-p)*2);max-width:calc(var(--page-width) - var(--page-margin-current)*2)}",
-        ".countdown-timer * {border:0!important}",
-        "@media (max-width:1149.98px) {.hero {--ct-h:640px}}",
-        "@media (max-width:767.98px) {.hero {--ct-h:570px;--ct-p:64px}}"
-      ]
+        "padding_bottom_mobile": 0
+      }
     },
     "featured_collection": {
       "type": "featured-collection",
@@ -1179,10 +1179,10 @@
                 "gap_desktop": 0,
                 "gap_mobile": 0,
                 "backdrop_blur": 0,
-                "padding_left": 24,
-                "padding_right": 24,
                 "padding_top": 0,
-                "padding_bottom": 0
+                "padding_bottom": 0,
+                "padding_left": 24,
+                "padding_right": 24
               },
               "blocks": {
                 "heading-1": {
@@ -1191,9 +1191,9 @@
                     "text": "<p>Power</p>",
                     "heading_size": "lg",
                     "html_tag": "div",
+                    "text_color": "",
                     "outline_text": false,
                     "width": "fit",
-                    "text_color": "",
                     "animation_type": "rotate-words",
                     "animation_delay": 50
                   }
@@ -1212,10 +1212,10 @@
                 "gap_desktop": 0,
                 "gap_mobile": 0,
                 "backdrop_blur": 0,
-                "padding_left": 24,
-                "padding_right": 24,
                 "padding_top": 0,
-                "padding_bottom": 0
+                "padding_bottom": 0,
+                "padding_left": 24,
+                "padding_right": 24
               },
               "blocks": {
                 "heading-2": {
@@ -1224,9 +1224,9 @@
                     "text": "<p>Performance</p>",
                     "heading_size": "lg",
                     "html_tag": "div",
+                    "text_color": "#FDFFE5",
                     "outline_text": false,
                     "width": "fit",
-                    "text_color": "#FDFFE5",
                     "animation_type": "rotate-words",
                     "animation_delay": 50
                   }
@@ -1255,14 +1255,10 @@
         "gap_mobile": 0,
         "color_scheme": "scheme-5",
         "padding_top": 24,
-        "padding_right": 0,
         "padding_bottom": 24,
-        "padding_left": 0,
         "customize_mobile_padding": true,
         "padding_top_mobile": 20,
-        "padding_bottom_mobile": 20,
-        "padding_left_mobile": 0,
-        "padding_right_mobile": 0
+        "padding_bottom_mobile": 20
       }
     },
     "collections_image_list": {
@@ -1347,19 +1343,19 @@
       ],
       "settings": {
         "section_width": "page_width",
-        "gap_desktop": 112,
-        "gap_mobile": 16,
         "title_size": "display",
         "title_tag": "h2",
+        "image_size": "medium",
+        "gap_desktop": 112,
+        "gap_mobile": 16,
+        "header_gap_desktop": 40,
+        "header_gap_mobile": 36,
         "color_scheme": "scheme-1",
         "padding_top": 40,
         "padding_bottom": 144,
         "customize_mobile_padding": true,
         "padding_top_mobile": 20,
-        "padding_bottom_mobile": 112,
-        "image_size": "medium",
-        "header_gap_desktop": 40,
-        "header_gap_mobile": 36
+        "padding_bottom_mobile": 112
       }
     },
     "scroll_reading_text": {
@@ -1377,6 +1373,9 @@
           }
         }
       },
+      "block_order": [
+        "editorial-text"
+      ],
       "settings": {
         "section_width": "page_width",
         "desktop_height": "large",
@@ -1386,28 +1385,24 @@
         "desktop_gap": 40,
         "mobile_gap": 40,
         "color_scheme": "scheme-3",
+        "background_image": "shopify://shop_images/strideo-scroll-1-figma.jpg",
+        "mobile_image": "shopify://shop_images/strideo-scroll-1-figma.jpg",
         "overlay": true,
         "overlay_color": "#000000",
         "overlay_opacity": 10,
         "padding_top": 80,
+        "padding_right": 0,
         "padding_bottom": 80,
         "padding_left": 0,
-        "padding_right": 0,
         "customize_mobile_padding": true,
         "padding_top_mobile": 80,
-        "padding_bottom_mobile": 80,
-        "padding_left_mobile": 0,
         "padding_right_mobile": 0,
-        "background_image": "shopify://shop_images/strideo-scroll-1-figma.jpg",
-        "mobile_image": "shopify://shop_images/strideo-scroll-1-figma.jpg"
-      },
-      "block_order": [
-        "editorial-text"
-      ]
+        "padding_bottom_mobile": 80,
+        "padding_left_mobile": 0
+      }
     },
     "new_arrivals_tabs": {
       "type": "collection-tabs",
-      "name": "New arrivals — Tabs",
       "blocks": {
         "header": {
           "type": "header",
@@ -1437,13 +1432,13 @@
           "type": "tab-layout",
           "static": true,
           "settings": {
+            "alignment": "right",
             "vertical_layout": false,
             "style": "underline",
             "active_style": "primary",
             "gap_desktop": 24,
             "gap_mobile": 24,
             "font": "body",
-            "alignment": "right",
             "heading_size": "lg"
           }
         },
@@ -1504,9 +1499,14 @@
         "tab_2",
         "tab_3"
       ],
+      "custom_css": [
+        "@media (min-width: 768px) and (max-width: 1149.98px) {.collection-tabs__spacing {padding-top: 80px; padding-bottom: 80px;}}"
+      ],
+      "name": "New arrivals — Tabs",
       "settings": {
         "section_width": "page_width",
         "layout_direction": "vertical",
+        "header_layout": "inline",
         "tab_position": "left",
         "mobile_alignment": "left",
         "gap_desktop": 40,
@@ -1514,6 +1514,7 @@
         "max_products": 8,
         "layout_type": "carousel",
         "columns_desktop": "4",
+        "columns_tablet": "2",
         "columns_mobile": "1",
         "show_next_slide_preview_on_desktop": false,
         "product_gap_desktop": 10,
@@ -1525,6 +1526,7 @@
         "navigation_behavior": "always",
         "show_pagination_on_desktop": true,
         "pagination_type": "progress_bar",
+        "pagination_thickness": "thin",
         "pagination_top_padding_desktop": 40,
         "pagination_top_padding_mobile": 36,
         "pagination_limit_width": false,
@@ -1537,47 +1539,27 @@
         "padding_bottom": 96,
         "customize_mobile_padding": true,
         "padding_top_mobile": 64,
-        "padding_bottom_mobile": 64,
-        "header_layout": "inline",
-        "columns_tablet": "2",
-        "pagination_thickness": "thin"
-      },
-      "custom_css": [
-        "@media (min-width: 768px) and (max-width: 1149.98px) {.collection-tabs__spacing {padding-top: 80px; padding-bottom: 80px;}}"
-      ]
+        "padding_bottom_mobile": 64
+      }
     },
     "featured_product": {
       "type": "featured-product",
-      "settings": {
-        "sticky_content": true,
-        "width": "page",
-        "media_width": "large",
-        "gap": 48,
-        "gap_mobile": 36,
-        "color_scheme": "scheme-1",
-        "padding_top": 96,
-        "padding_bottom": 96,
-        "customize_mobile_padding": true,
-        "product": "strideo-cloudrunner-2",
-        "padding_top_mobile": 64,
-        "padding_bottom_mobile": 64
-      },
       "blocks": {
         "product-media": {
           "type": "_product-media",
           "static": true,
           "settings": {
             "desktop_layout": "carousel_thumbnails",
+            "bottom_thumbnail_width": 64,
+            "thumbnail_ratio": "square",
             "mobile_layout": "thumbnails",
+            "thumbnail_width_mobile": 64,
             "full_width_media": false,
+            "zoom": "open_lightbox",
             "autoplay": false,
             "loop_video": false,
-            "zoom": "open_lightbox",
             "gap": 10,
-            "gap_mobile": 6,
-            "bottom_thumbnail_width": 64,
-            "thumbnail_width_mobile": 64,
-            "thumbnail_ratio": "square"
+            "gap_mobile": 6
           }
         },
         "product-details": {
@@ -1611,9 +1593,9 @@
               "settings": {
                 "direction": "vertical",
                 "alignment": "left",
-                "width": "fill",
                 "gap_desktop": 8,
-                "gap_mobile": 8
+                "gap_mobile": 8,
+                "width": "fill"
               },
               "blocks": {
                 "product-title-1": {
@@ -1666,8 +1648,8 @@
                   "type": "product-buy-add-to-cart",
                   "static": true,
                   "settings": {
-                    "style": "secondary",
-                    "show_price": false
+                    "show_price": false,
+                    "style": "secondary"
                   }
                 },
                 "accelerated-checkout": {
@@ -1719,36 +1701,29 @@
           ]
         }
       },
-      "name": "Featured product",
       "custom_css": [
         "@media (min-width:768px) and (max-width:1149.98px) {.featured-product {padding-block:80px}}",
         "@media (min-width:768px) and (max-width:1149.98px) {.product-information__layout {grid-template-columns:repeat(2,minmax(0,1fr));gap:40px}}",
         ".product-price .price {--price-font-size:18px}"
-      ]
+      ],
+      "name": "Featured product",
+      "settings": {
+        "product": "strideo-cloudrunner-2",
+        "sticky_content": true,
+        "width": "page",
+        "media_width": "large",
+        "gap": 48,
+        "gap_mobile": 36,
+        "color_scheme": "scheme-1",
+        "padding_top": 96,
+        "padding_bottom": 96,
+        "customize_mobile_padding": true,
+        "padding_top_mobile": 64,
+        "padding_bottom_mobile": 64
+      }
     },
     "multiple_images_text": {
       "type": "multiple-images-with-text",
-      "name": "Multiple images with text",
-      "settings": {
-        "section_width": "page_width",
-        "gap_desktop": 64,
-        "gap_mobile": 40,
-        "show_navigation": true,
-        "color_scheme": "scheme-1",
-        "padding_top": 112,
-        "padding_bottom": 112,
-        "customize_mobile_padding": true,
-        "padding_top_mobile": 80,
-        "padding_bottom_mobile": 80,
-        "enable_boxed_layout": false,
-        "boxed_color_scheme": "scheme-2",
-        "corner_radius": "rounded",
-        "shadow": "none",
-        "boxed_padding_block": 70,
-        "boxed_padding_inline": 70,
-        "boxed_padding_block_mobile": 50,
-        "boxed_padding_inline_mobile": 30
-      },
       "blocks": {
         "item_1": {
           "type": "multiple-images-text-item",
@@ -1758,33 +1733,33 @@
               "type": "image",
               "static": true,
               "settings": {
-                "width_desktop": "fill",
-                "width_mobile": "fill",
+                "image": "shopify://shop_images/strideo-multiple-6-figma.jpg",
+                "mobile_image": "shopify://shop_images/strideo-multiple-6-figma.jpg",
                 "image_ratio_desktop": "custom",
                 "image_ratio_custom_width_desktop": 6,
                 "image_ratio_custom_height_desktop": 7,
+                "width_desktop": "fill",
                 "image_ratio_mobile": "custom",
                 "image_ratio_custom_width_mobile": 6,
                 "image_ratio_custom_height_mobile": 7,
+                "width_mobile": "fill",
                 "corner_radius": "custom",
                 "custom_corner_radius": 4,
                 "animation_type": "scale",
-                "animation_delay": 0,
-                "image": "shopify://shop_images/strideo-multiple-6-figma.jpg",
-                "mobile_image": "shopify://shop_images/strideo-multiple-6-figma.jpg"
+                "animation_delay": 0
               }
             },
             "group-1": {
               "type": "group",
               "settings": {
                 "direction": "vertical",
-                "width": "fill",
-                "width_mobile": "fill",
-                "height": "fit",
                 "alignment": "left",
                 "alignment_mobile": "center",
                 "gap_desktop": 40,
                 "gap_mobile": 40,
+                "width": "fill",
+                "height": "fit",
+                "width_mobile": "fill",
                 "backdrop_blur": 0
               },
               "blocks": {
@@ -1792,13 +1767,13 @@
                   "type": "group",
                   "settings": {
                     "direction": "vertical",
-                    "width": "fill",
-                    "width_mobile": "fill",
-                    "height": "fit",
                     "alignment": "left",
                     "alignment_mobile": "center",
                     "gap_desktop": 16,
                     "gap_mobile": 16,
+                    "width": "fill",
+                    "height": "fit",
+                    "width_mobile": "fill",
                     "backdrop_blur": 0
                   },
                   "blocks": {
@@ -1861,33 +1836,33 @@
               "type": "image",
               "static": true,
               "settings": {
-                "width_desktop": "fill",
-                "width_mobile": "fill",
+                "image": "shopify://shop_images/strideo-multiple-5-figma.jpg",
+                "mobile_image": "shopify://shop_images/strideo-multiple-5-figma.jpg",
                 "image_ratio_desktop": "custom",
                 "image_ratio_custom_width_desktop": 6,
                 "image_ratio_custom_height_desktop": 7,
+                "width_desktop": "fill",
                 "image_ratio_mobile": "custom",
                 "image_ratio_custom_width_mobile": 6,
                 "image_ratio_custom_height_mobile": 7,
+                "width_mobile": "fill",
                 "corner_radius": "custom",
                 "custom_corner_radius": 4,
                 "animation_type": "scale",
-                "animation_delay": 0,
-                "image": "shopify://shop_images/strideo-multiple-5-figma.jpg",
-                "mobile_image": "shopify://shop_images/strideo-multiple-5-figma.jpg"
+                "animation_delay": 0
               }
             },
             "group-1": {
               "type": "group",
               "settings": {
                 "direction": "vertical",
-                "width": "fill",
-                "width_mobile": "fill",
-                "height": "fit",
                 "alignment": "left",
                 "alignment_mobile": "center",
                 "gap_desktop": 40,
                 "gap_mobile": 40,
+                "width": "fill",
+                "height": "fit",
+                "width_mobile": "fill",
                 "backdrop_blur": 0
               },
               "blocks": {
@@ -1895,13 +1870,13 @@
                   "type": "group",
                   "settings": {
                     "direction": "vertical",
-                    "width": "fill",
-                    "width_mobile": "fill",
-                    "height": "fit",
                     "alignment": "left",
                     "alignment_mobile": "center",
                     "gap_desktop": 16,
                     "gap_mobile": 16,
+                    "width": "fill",
+                    "height": "fit",
+                    "width_mobile": "fill",
                     "backdrop_blur": 0
                   },
                   "blocks": {
@@ -1964,33 +1939,33 @@
               "type": "image",
               "static": true,
               "settings": {
-                "width_desktop": "fill",
-                "width_mobile": "fill",
+                "image": "shopify://shop_images/strideo-multiple-4-figma.jpg",
+                "mobile_image": "shopify://shop_images/strideo-multiple-4-figma.jpg",
                 "image_ratio_desktop": "custom",
                 "image_ratio_custom_width_desktop": 6,
                 "image_ratio_custom_height_desktop": 7,
+                "width_desktop": "fill",
                 "image_ratio_mobile": "custom",
                 "image_ratio_custom_width_mobile": 6,
                 "image_ratio_custom_height_mobile": 7,
+                "width_mobile": "fill",
                 "corner_radius": "custom",
                 "custom_corner_radius": 4,
                 "animation_type": "scale",
-                "animation_delay": 0,
-                "image": "shopify://shop_images/strideo-multiple-4-figma.jpg",
-                "mobile_image": "shopify://shop_images/strideo-multiple-4-figma.jpg"
+                "animation_delay": 0
               }
             },
             "group-1": {
               "type": "group",
               "settings": {
                 "direction": "vertical",
-                "width": "fill",
-                "width_mobile": "fill",
-                "height": "fit",
                 "alignment": "left",
                 "alignment_mobile": "center",
                 "gap_desktop": 40,
                 "gap_mobile": 40,
+                "width": "fill",
+                "height": "fit",
+                "width_mobile": "fill",
                 "backdrop_blur": 0
               },
               "blocks": {
@@ -1998,13 +1973,13 @@
                   "type": "group",
                   "settings": {
                     "direction": "vertical",
-                    "width": "fill",
-                    "width_mobile": "fill",
-                    "height": "fit",
                     "alignment": "left",
                     "alignment_mobile": "center",
                     "gap_desktop": 16,
                     "gap_mobile": 16,
+                    "width": "fill",
+                    "height": "fit",
+                    "width_mobile": "fill",
                     "backdrop_blur": 0
                   },
                   "blocks": {
@@ -2064,30 +2039,31 @@
         "item_1",
         "item_2",
         "item_3"
-      ]
+      ],
+      "name": "Multiple images with text",
+      "settings": {
+        "section_width": "page_width",
+        "enable_boxed_layout": false,
+        "gap_desktop": 64,
+        "gap_mobile": 40,
+        "show_navigation": true,
+        "color_scheme": "scheme-1",
+        "boxed_color_scheme": "scheme-2",
+        "corner_radius": "rounded",
+        "shadow": "none",
+        "boxed_padding_block": 70,
+        "boxed_padding_inline": 70,
+        "boxed_padding_block_mobile": 50,
+        "boxed_padding_inline_mobile": 30,
+        "padding_top": 112,
+        "padding_bottom": 112,
+        "customize_mobile_padding": true,
+        "padding_top_mobile": 80,
+        "padding_bottom_mobile": 80
+      }
     },
     "collection_list_03": {
       "type": "image-cards",
-      "name": "Collection list",
-      "settings": {
-        "section_width": "page_width",
-        "height": "auto",
-        "card_layout": "carousel",
-        "show_header": true,
-        "header_gap": 40,
-        "columns_desktop": "4",
-        "columns_tablet": "2",
-        "columns_mobile": "1",
-        "show_pagination": true,
-        "gap_desktop": 20,
-        "gap_mobile": 16,
-        "color_scheme": "scheme-1",
-        "padding_top": 0,
-        "padding_bottom": 96,
-        "customize_mobile_padding": true,
-        "padding_top_mobile": 0,
-        "padding_bottom_mobile": 64
-      },
       "blocks": {
         "header": {
           "type": "header",
@@ -2120,36 +2096,36 @@
         "card_1": {
           "type": "image-card",
           "settings": {
+            "image": "shopify://shop_images/strideo-cards-1-figma.jpg",
+            "mobile_image": "shopify://shop_images/strideo-cards-1-figma.jpg",
+            "zoom_on_hover": true,
+            "show_overlay": true,
+            "overlay_style": "solid",
+            "overlay_opacity": 20,
             "width_desktop": "fill",
-            "width_mobile": "fill",
             "height_desktop": "ratio_6_7",
+            "width_mobile": "fill",
             "height_mobile": "ratio_6_7",
+            "enable_sticky": false,
             "position_desktop": "bottom_left",
             "position_mobile": "bottom_left",
             "corner_radius": "slightly_rounded",
             "color_scheme": "scheme-3",
-            "show_overlay": true,
-            "overlay_style": "solid",
-            "overlay_opacity": 20,
             "padding_top": 0,
             "padding_bottom": 0,
             "padding_left": 0,
-            "padding_right": 0,
-            "enable_sticky": false,
-            "zoom_on_hover": true,
-            "image": "shopify://shop_images/strideo-cards-1-figma.jpg",
-            "mobile_image": "shopify://shop_images/strideo-cards-1-figma.jpg"
+            "padding_right": 0
           },
           "blocks": {
             "content": {
               "type": "group",
               "settings": {
-                "width": "fill",
-                "width_mobile": "fill",
-                "height": "fit",
                 "direction": "vertical",
                 "alignment": "left",
                 "alignment_mobile": "left",
+                "width": "fill",
+                "height": "fit",
+                "width_mobile": "fill",
                 "padding_top": 24,
                 "padding_bottom": 24,
                 "padding_left": 24,
@@ -2179,36 +2155,36 @@
         "card_2": {
           "type": "image-card",
           "settings": {
+            "image": "shopify://shop_images/strideo-cards-3-figma.jpg",
+            "mobile_image": "shopify://shop_images/strideo-cards-3-figma.jpg",
+            "zoom_on_hover": true,
+            "show_overlay": true,
+            "overlay_style": "solid",
+            "overlay_opacity": 20,
             "width_desktop": "fill",
-            "width_mobile": "fill",
             "height_desktop": "ratio_6_7",
+            "width_mobile": "fill",
             "height_mobile": "ratio_6_7",
+            "enable_sticky": false,
             "position_desktop": "bottom_left",
             "position_mobile": "bottom_left",
             "corner_radius": "slightly_rounded",
             "color_scheme": "scheme-3",
-            "show_overlay": true,
-            "overlay_style": "solid",
-            "overlay_opacity": 20,
             "padding_top": 0,
             "padding_bottom": 0,
             "padding_left": 0,
-            "padding_right": 0,
-            "enable_sticky": false,
-            "zoom_on_hover": true,
-            "image": "shopify://shop_images/strideo-cards-3-figma.jpg",
-            "mobile_image": "shopify://shop_images/strideo-cards-3-figma.jpg"
+            "padding_right": 0
           },
           "blocks": {
             "content": {
               "type": "group",
               "settings": {
-                "width": "fill",
-                "width_mobile": "fill",
-                "height": "fit",
                 "direction": "vertical",
                 "alignment": "left",
                 "alignment_mobile": "left",
+                "width": "fill",
+                "height": "fit",
+                "width_mobile": "fill",
                 "padding_top": 24,
                 "padding_bottom": 24,
                 "padding_left": 24,
@@ -2238,36 +2214,36 @@
         "card_3": {
           "type": "image-card",
           "settings": {
+            "image": "shopify://shop_images/strideo-cards-5-figma.jpg",
+            "mobile_image": "shopify://shop_images/strideo-cards-5-figma.jpg",
+            "zoom_on_hover": true,
+            "show_overlay": true,
+            "overlay_style": "solid",
+            "overlay_opacity": 20,
             "width_desktop": "fill",
-            "width_mobile": "fill",
             "height_desktop": "ratio_6_7",
+            "width_mobile": "fill",
             "height_mobile": "ratio_6_7",
+            "enable_sticky": false,
             "position_desktop": "bottom_left",
             "position_mobile": "bottom_left",
             "corner_radius": "slightly_rounded",
             "color_scheme": "scheme-3",
-            "show_overlay": true,
-            "overlay_style": "solid",
-            "overlay_opacity": 20,
             "padding_top": 0,
             "padding_bottom": 0,
             "padding_left": 0,
-            "padding_right": 0,
-            "enable_sticky": false,
-            "zoom_on_hover": true,
-            "image": "shopify://shop_images/strideo-cards-5-figma.jpg",
-            "mobile_image": "shopify://shop_images/strideo-cards-5-figma.jpg"
+            "padding_right": 0
           },
           "blocks": {
             "content": {
               "type": "group",
               "settings": {
-                "width": "fill",
-                "width_mobile": "fill",
-                "height": "fit",
                 "direction": "vertical",
                 "alignment": "left",
                 "alignment_mobile": "left",
+                "width": "fill",
+                "height": "fit",
+                "width_mobile": "fill",
                 "padding_top": 24,
                 "padding_bottom": 24,
                 "padding_left": 24,
@@ -2297,36 +2273,36 @@
         "card_4": {
           "type": "image-card",
           "settings": {
+            "image": "shopify://shop_images/strideo-cards-6-figma.jpg",
+            "mobile_image": "shopify://shop_images/strideo-cards-6-figma.jpg",
+            "zoom_on_hover": true,
+            "show_overlay": true,
+            "overlay_style": "solid",
+            "overlay_opacity": 10,
             "width_desktop": "fill",
-            "width_mobile": "fill",
             "height_desktop": "ratio_6_7",
+            "width_mobile": "fill",
             "height_mobile": "ratio_6_7",
+            "enable_sticky": false,
             "position_desktop": "bottom_left",
             "position_mobile": "bottom_left",
             "corner_radius": "slightly_rounded",
             "color_scheme": "scheme-3",
-            "show_overlay": true,
-            "overlay_style": "solid",
-            "overlay_opacity": 10,
             "padding_top": 0,
             "padding_bottom": 0,
             "padding_left": 0,
-            "padding_right": 0,
-            "enable_sticky": false,
-            "zoom_on_hover": true,
-            "image": "shopify://shop_images/strideo-cards-6-figma.jpg",
-            "mobile_image": "shopify://shop_images/strideo-cards-6-figma.jpg"
+            "padding_right": 0
           },
           "blocks": {
             "content": {
               "type": "group",
               "settings": {
-                "width": "fill",
-                "width_mobile": "fill",
-                "height": "fit",
                 "direction": "vertical",
                 "alignment": "left",
                 "alignment_mobile": "left",
+                "width": "fill",
+                "height": "fit",
+                "width_mobile": "fill",
                 "padding_top": 24,
                 "padding_bottom": 24,
                 "padding_left": 24,
@@ -2359,7 +2335,27 @@
         "card_2",
         "card_3",
         "card_4"
-      ]
+      ],
+      "name": "Collection list",
+      "settings": {
+        "show_header": true,
+        "header_gap": 40,
+        "card_layout": "carousel",
+        "columns_desktop": "4",
+        "columns_tablet": "2",
+        "columns_mobile": "1",
+        "show_pagination": true,
+        "section_width": "page_width",
+        "height": "auto",
+        "gap_desktop": 20,
+        "gap_mobile": 16,
+        "color_scheme": "scheme-1",
+        "padding_top": 0,
+        "padding_bottom": 96,
+        "customize_mobile_padding": true,
+        "padding_top_mobile": 0,
+        "padding_bottom_mobile": 64
+      }
     }
   },
   "order": [
