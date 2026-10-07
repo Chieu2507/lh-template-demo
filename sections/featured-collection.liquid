@@ -67,7 +67,7 @@
       {% content_for 'block', type: 'header', id: 'header' %}
     </div>
     <div class="featured-collection__actions" data-featured-collection-actions>
-      {% content_for 'block', type: 'view-all-button', id: 'featured-collection-view-all', closest.collection: featured_collection_collection %}
+      {% content_for 'block', type: 'view-all-button', id: 'featured-collection-view-all', closest.collection: featured_collection_collection, require_more_items: true %}
     </div>
     <div class="featured-collection__products">
       {% content_for 'block', type: 'product-list', id: 'product-list' %}
@@ -297,46 +297,7 @@
   }
 {% endstylesheet %}
 
-{% javascript %}
-  (() => {
-    const featuredCollectionSelector = '[data-featured-collection]';
 
-    const synchronizeViewAll = (featuredCollection) => {
-      const viewAllButtons = Array.from(featuredCollection.querySelectorAll('[data-featured-collection-actions] [data-view-all-button-dynamic]'));
-      if (!viewAllButtons.length) return;
-
-      const collectionUrl = featuredCollection.querySelector('[data-product-list]')?.dataset.collectionUrl?.trim() || '';
-      if (collectionUrl) {
-        viewAllButtons.forEach((viewAllButton) => {
-          viewAllButton.setAttribute('href', collectionUrl);
-          viewAllButton.removeAttribute('aria-disabled');
-          viewAllButton.removeAttribute('tabindex');
-        });
-      } else {
-        viewAllButtons.forEach((viewAllButton) => {
-          viewAllButton.removeAttribute('href');
-          viewAllButton.setAttribute('aria-disabled', 'true');
-          viewAllButton.setAttribute('tabindex', '-1');
-        });
-      }
-    };
-
-    const initializeRoot = (root = document) => {
-      const featuredCollections = [];
-      if (root.matches?.(featuredCollectionSelector)) featuredCollections.push(root);
-      root.querySelectorAll?.(featuredCollectionSelector).forEach((featuredCollection) => featuredCollections.push(featuredCollection));
-      featuredCollections.forEach(synchronizeViewAll);
-    };
-
-    document.addEventListener('shopify:section:load', (event) => initializeRoot(event.target));
-
-    if (document.readyState === 'loading') {
-      document.addEventListener('DOMContentLoaded', () => initializeRoot(), { once: true });
-    } else {
-      initializeRoot();
-    }
-  })();
-{% endjavascript %}
 
 {% schema %}
 {

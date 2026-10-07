@@ -262,6 +262,9 @@
 <div
   class="blog-list"
   data-blog-list
+  data-blog-url="{{ blog_list_source.url | escape }}"
+  data-resource-count="{{ blog_list_source.articles_count | default: 0 }}"
+  data-resource-limit="{{ blog_list_max_posts }}"
   data-layout="{{ blog_list_layout }}"
   data-swiper-autoplay="{{ blog_list_autoplay_enabled }}"
   data-swiper-autoplay-pause-on-hover="{{ blog_list_autoplay_pause_on_hover }}"

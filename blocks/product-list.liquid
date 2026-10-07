@@ -216,6 +216,8 @@
 <div
   class="product-list"
   data-product-list
+  data-resource-count="{{ product_list_collection.products_count | default: 0 }}"
+  data-resource-limit="{{ product_list_max_products }}"
   data-layout="{{ product_list_layout }}"
   data-collection-url="{{ product_list_collection.url | escape }}"
   {{ block.shopify_attributes }}
