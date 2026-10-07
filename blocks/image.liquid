@@ -1,7 +1,8 @@
 {% doc %}
   Renders an independent responsive image kernel with an optional link.
 
-  The block owns its image source, responsive ratio, width, radius and padding,
+  The block owns its image source, responsive ratio, relative or fixed width,
+  optional background, radius and padding,
   while the shared image snippet owns semantic media markup and image loading.
 
   @example
@@ -33,7 +34,7 @@
   endif
 
   assign image_width_desktop_setting = block.settings.width_desktop | default: 'fit'
-  unless image_width_desktop_setting == 'fit' or image_width_desktop_setting == 'fill' or image_width_desktop_setting == 'custom'
+  unless image_width_desktop_setting == 'fit' or image_width_desktop_setting == 'fill' or image_width_desktop_setting == 'custom' or image_width_desktop_setting == 'fixed'
     assign image_width_desktop_setting = 'fit'
   endunless
   assign image_width_desktop = 'fit-content'
@@ -50,7 +51,7 @@
   endif
 
   assign image_width_mobile_setting = block.settings.width_mobile | default: 'fit'
-  unless image_width_mobile_setting == 'fit' or image_width_mobile_setting == 'fill' or image_width_mobile_setting == 'custom'
+  unless image_width_mobile_setting == 'fit' or image_width_mobile_setting == 'fill' or image_width_mobile_setting == 'custom' or image_width_mobile_setting == 'fixed'
     assign image_width_mobile_setting = 'fit'
   endunless
   assign image_width_mobile = 'fit-content'
@@ -66,6 +67,12 @@
     assign image_size_mobile = image_width_mobile
   endif
 
+  if image_width_desktop_setting == 'fixed'
+    assign image_fixed_width_desktop = block.settings.width_fixed_desktop | default: 70 | at_least: 20 | at_most: 200
+    assign image_width_desktop = image_fixed_width_desktop | append: 'px'
+    assign image_size_desktop = image_width_desktop
+  endif
+
   assign image_max_width_desktop = '100%'
   assign max_width_desktop = block.settings.max_width_desktop | default: 1600 | plus: 0
   if max_width_desktop < 0 or max_width_desktop > 1600
@@ -73,6 +80,12 @@
   endif
   if block.settings.limit_width_desktop and max_width_desktop > 0
     assign image_max_width_desktop = max_width_desktop | append: 'px'
+  endif
+
+  if image_width_mobile_setting == 'fixed'
+    assign image_fixed_width_mobile = block.settings.width_fixed_mobile | default: 70 | at_least: 20 | at_most: 200
+    assign image_width_mobile = image_fixed_width_mobile | append: 'px'
+    assign image_size_mobile = image_width_mobile
   endif
 
   assign image_max_width_mobile = '100%'
@@ -125,6 +138,7 @@
   assign padding_right_mobile = block.settings.padding_right_mobile | default: 0 | plus: 0
 
   assign image_class = 'image-block media-hover-zoom size-style size-style--contain image-block--ratio-desktop-' | append: image_ratio_desktop_setting
+  assign image_class = image_class | append: ' image-block--width-' | append: image_width_desktop_setting
   if block.settings.image_fit == 'contain' and block.settings.limit_width_desktop and image_width_desktop_setting == 'fit'
     assign image_class = image_class | append: ' image-block--contained-frame'
   endif
@@ -165,6 +179,7 @@
     --image-block-padding-right-mobile: {{ padding_right_mobile }}px;
   {% endif %}
   --image-block-radius: {{ image_radius_value }};
+  {% if block.settings.background_color != blank %}--image-block-background: {{ block.settings.background_color }};{% endif %}
   {% if block.settings.image_fit == 'contain' %}--image-block-fit: contain;{% endif %}
 {% endcapture %}
 {% assign image_style = image_style | strip | replace: '\n', ' ' %}
@@ -184,7 +199,7 @@
     alt: block.settings.alt_text,
     class: 'image-block__media media-hover-zoom__media',
     width: 2400,
-    widths: '400, 600, 800, 1200, 1600, 2400',
+    widths: '70, 140, 200, 400, 600, 800, 1200, 1600, 2400',
     sizes: image_sizes
   %}
 </div>
@@ -200,6 +215,7 @@
   }
 
   .image-block__media {
+    background-color: var(--image-block-background, transparent);
     width: 100%;
     max-width: 100%;
     aspect-ratio: var(--image-block-ratio, auto);
@@ -380,6 +396,7 @@
       "id": "width_desktop",
       "label": "t:labels.width",
       "options": [
+        { "value": "fixed", "label": "Fixed" },
         {
           "value": "fit",
           "label": "t:options.width.fit"
@@ -396,6 +413,7 @@
       "default": "fit",
       "visible_if": "{{ block.settings.device == 'desktop' }}"
     },
+    { "type": "range", "id": "width_fixed_desktop", "label": "Fixed width", "min": 20, "max": 200, "step": 2, "unit": "px", "default": 70, "visible_if": "{{ block.settings.device == 'desktop' and block.settings.width_desktop == 'fixed' }}" },
     {
       "type": "range",
       "id": "width_custom_desktop",
@@ -481,6 +499,7 @@
       "id": "width_mobile",
       "label": "t:labels.width_mobile",
       "options": [
+        { "value": "fixed", "label": "Fixed" },
         {
           "value": "fit",
           "label": "t:options.width.fit"
@@ -497,6 +516,7 @@
       "default": "fit",
       "visible_if": "{{ block.settings.device == 'mobile' }}"
     },
+    { "type": "range", "id": "width_fixed_mobile", "label": "Mobile fixed width", "min": 20, "max": 200, "step": 2, "unit": "px", "default": 70, "visible_if": "{{ block.settings.device == 'mobile' and block.settings.width_mobile == 'fixed' }}" },
     {
       "type": "range",
       "id": "width_custom_mobile",
@@ -530,6 +550,7 @@
       "type": "header",
       "content": "t:general.border"
     },
+    { "type": "color", "id": "background_color", "label": "Background color" },
     {
       "type": "select",
       "id": "corner_radius",

@@ -1,0 +1,388 @@
+{% doc %}
+  Private review card for Testimonials: Cards. Uses the shared testimonial
+  renderer and Group/Heading/Text/Image/Rating kernels; its preset recreates
+  the owning section's card layout when a merchant adds a new review.
+{% enddoc %}
+{{ 'component-testimonial-item.css' | asset_url | stylesheet_tag }}
+{% capture content %}{% content_for 'blocks' %}{% endcapture %}
+{% render 'testimonial-item', block: block, content: content %}
+
+{% schema %}
+{
+  "name": "Testimonial card",
+  "tag": null,
+  "blocks": [
+    {
+      "type": "image"
+    },
+    {
+      "type": "group"
+    }
+  ],
+  "settings": [
+    {
+      "type": "header",
+      "content": "Layout"
+    },
+    {
+      "type": "select",
+      "id": "direction",
+      "label": "Direction",
+      "options": [
+        {
+          "value": "horizontal",
+          "label": "Horizontal"
+        },
+        {
+          "value": "vertical",
+          "label": "Vertical"
+        }
+      ],
+      "default": "vertical"
+    },
+    {
+      "type": "select",
+      "id": "position",
+      "label": "Position",
+      "options": [
+        {
+          "value": "top",
+          "label": "Top"
+        },
+        {
+          "value": "center",
+          "label": "Center"
+        },
+        {
+          "value": "bottom",
+          "label": "Bottom"
+        }
+      ],
+      "default": "center"
+    },
+    {
+      "type": "select",
+      "id": "alignment",
+      "label": "Alignment",
+      "options": [
+        {
+          "value": "left",
+          "label": "Left"
+        },
+        {
+          "value": "center",
+          "label": "Center"
+        },
+        {
+          "value": "right",
+          "label": "Right"
+        },
+        {
+          "value": "space-between",
+          "label": "Space between"
+        }
+      ],
+      "default": "center"
+    },
+    {
+      "type": "checkbox",
+      "id": "vertical_on_mobile",
+      "label": "Vertical on mobile",
+      "default": true,
+      "visible_if": "{{ block.settings.direction == 'horizontal' }}"
+    },
+    {
+      "type": "select",
+      "id": "alignment_mobile",
+      "label": "Mobile alignment",
+      "options": [
+        {
+          "value": "left",
+          "label": "Left"
+        },
+        {
+          "value": "center",
+          "label": "Center"
+        },
+        {
+          "value": "right",
+          "label": "Right"
+        }
+      ],
+      "default": "center",
+      "visible_if": "{{ block.settings.direction == 'vertical' or block.settings.vertical_on_mobile }}"
+    },
+    {
+      "type": "header",
+      "content": "Gap"
+    },
+    {
+      "type": "range",
+      "id": "gap_desktop",
+      "label": "Desktop gap",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "gap_mobile",
+      "label": "Mobile gap",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "default": 0
+    },
+    {
+      "type": "header",
+      "content": "Appearance"
+    },
+    {
+      "type": "range",
+      "id": "border_thickness",
+      "label": "Border thickness",
+      "min": 0,
+      "max": 8,
+      "step": 1,
+      "unit": "px",
+      "default": 0
+    },
+    {
+      "type": "select",
+      "id": "corner_radius",
+      "label": "Corner radius",
+      "options": [
+        {
+          "value": "square",
+          "label": "Square"
+        },
+        {
+          "value": "slightly_rounded",
+          "label": "Slightly rounded"
+        },
+        {
+          "value": "rounded",
+          "label": "Rounded"
+        },
+        {
+          "value": "pill",
+          "label": "Pill"
+        },
+        {
+          "value": "custom",
+          "label": "Custom"
+        }
+      ],
+      "default": "custom"
+    },
+    {
+      "type": "range",
+      "id": "custom_corner_radius",
+      "label": "t:labels.custom_corner_radius",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "default": 24,
+      "visible_if": "{{ block.settings.corner_radius == 'custom' }}"
+    },
+    {
+      "type": "select",
+      "id": "shadow",
+      "label": "Shadow",
+      "options": [
+        {
+          "value": "none",
+          "label": "None"
+        },
+        {
+          "value": "small",
+          "label": "Small"
+        },
+        {
+          "value": "medium",
+          "label": "Medium"
+        },
+        {
+          "value": "large",
+          "label": "Large"
+        }
+      ],
+      "default": "none"
+    },
+    {
+      "type": "header",
+      "content": "Background"
+    },
+    {
+      "type": "color",
+      "alpha": true,
+      "id": "background_color",
+      "label": "Background color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "image_picker",
+      "id": "background_image",
+      "label": "Background image"
+    },
+    {
+      "type": "header",
+      "content": "Overlay"
+    },
+    {
+      "type": "color",
+      "alpha": true,
+      "id": "overlay_color",
+      "label": "Overlay color"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Testimonial card",
+      "category": "Trust & social proof",
+      "settings": {
+        "direction": "vertical",
+        "gap_desktop": 0,
+        "gap_mobile": 0,
+        "corner_radius": "custom",
+        "custom_corner_radius": 24,
+        "background_color": "#ffffff"
+      },
+      "blocks": {
+        "card": {
+          "type": "group",
+          "settings": {
+            "direction": "vertical",
+            "alignment": "center",
+            "alignment_mobile": "center",
+            "gap_desktop": 28,
+            "gap_mobile": 28,
+            "width": "fill",
+            "height": "fit",
+            "padding_top": 36,
+            "padding_bottom": 36,
+            "padding_left": 28,
+            "padding_right": 28
+          },
+          "blocks": {
+            "content": {
+              "type": "group",
+              "settings": {
+                "direction": "vertical",
+                "alignment": "center",
+                "alignment_mobile": "center",
+                "gap_desktop": 16,
+                "gap_mobile": 16,
+                "width": "fill",
+                "height": "fit"
+              },
+              "blocks": {
+                "rating": {
+                  "type": "testimonial-rating",
+                  "settings": {}
+                },
+                "copy": {
+                  "type": "group",
+                  "settings": {
+                    "direction": "vertical",
+                    "alignment": "center",
+                    "alignment_mobile": "center",
+                    "gap_desktop": 10,
+                    "gap_mobile": 10,
+                    "width": "fill",
+                    "height": "fit"
+                  },
+                  "blocks": {
+                    "title": {
+                      "type": "heading",
+                      "settings": {
+                        "text": "<p>Review title</p>",
+                        "heading_size": "md",
+                        "html_tag": "h3",
+                        "width": "fill"
+                      }
+                    },
+                    "quote": {
+                      "type": "text",
+                      "settings": {
+                        "text": "<p>Share a customer testimonial that builds trust in your products and brand. Describe what they loved and how your product made a difference.</p>",
+                        "text_size": "md",
+                        "width": "fill",
+                        "customize_letter_spacing": true,
+                        "letter_spacing": 0
+                      }
+                    }
+                  },
+                  "block_order": [
+                    "title",
+                    "quote"
+                  ]
+                }
+              },
+              "block_order": [
+                "rating",
+                "copy"
+              ]
+            },
+            "author": {
+              "type": "group",
+              "settings": {
+                "direction": "vertical",
+                "alignment": "center",
+                "alignment_mobile": "center",
+                "gap_desktop": 12,
+                "gap_mobile": 12,
+                "width": "fill",
+                "height": "fit"
+              },
+              "blocks": {
+                "avatar": {
+                  "type": "image",
+                  "settings": {
+                    "image_ratio_desktop": "square",
+                    "width_desktop": "fixed",
+                    "width_fixed_desktop": 70,
+                    "limit_width_desktop": false,
+                    "max_width_desktop": 1600,
+                    "image_ratio_mobile": "square",
+                    "width_mobile": "fixed",
+                    "width_fixed_mobile": 70,
+                    "limit_width_mobile": false,
+                    "max_width_mobile": 1600,
+                    "background_color": "#fed7a2",
+                    "corner_radius": "full",
+                    "image_fit": "contain"
+                  }
+                },
+                "name": {
+                  "type": "text",
+                  "settings": {
+                    "text": "<p>Customer name</p>",
+                    "text_size": "md",
+                    "text_color": "#181818"
+                  }
+                }
+              },
+              "block_order": [
+                "avatar",
+                "name"
+              ]
+            }
+          },
+          "block_order": [
+            "content",
+            "author"
+          ]
+        }
+      },
+      "block_order": [
+        "card"
+      ]
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,78 @@
+{% doc %}
+  Shared testimonial item renderer used by editorial items and review cards.
+  @param {object} block - The owning Theme Block, including settings/editor attributes
+  @param {string} content - Rendered child Theme Blocks in their configured order
+{% enddoc %}
+{% liquid
+  assign testimonial_direction = block.settings.direction | default: 'horizontal'
+  unless testimonial_direction == 'horizontal' or testimonial_direction == 'vertical'
+    assign testimonial_direction = 'horizontal'
+  endunless
+
+  assign testimonial_position = block.settings.position | default: 'center'
+  unless testimonial_position == 'top' or testimonial_position == 'center' or testimonial_position == 'bottom'
+    assign testimonial_position = 'center'
+  endunless
+
+  assign testimonial_alignment = block.settings.alignment | default: 'center'
+  unless testimonial_alignment == 'left' or testimonial_alignment == 'center' or testimonial_alignment == 'right' or testimonial_alignment == 'space-between'
+    assign testimonial_alignment = 'center'
+  endunless
+
+  assign testimonial_alignment_mobile = block.settings.alignment_mobile | default: 'center'
+  unless testimonial_alignment_mobile == 'left' or testimonial_alignment_mobile == 'center' or testimonial_alignment_mobile == 'right'
+    assign testimonial_alignment_mobile = 'center'
+  endunless
+
+  assign testimonial_gap_desktop = block.settings.gap_desktop | default: 80 | plus: 0
+  assign testimonial_gap_mobile = block.settings.gap_mobile | default: 36 | plus: 0
+  assign testimonial_border_thickness = block.settings.border_thickness | default: 0 | plus: 0
+  if testimonial_border_thickness < 0 or testimonial_border_thickness > 8
+    assign testimonial_border_thickness = 0
+  endif
+
+  assign testimonial_radius = block.settings.corner_radius | default: 'square'
+  unless testimonial_radius == 'square' or testimonial_radius == 'slightly_rounded' or testimonial_radius == 'rounded' or testimonial_radius == 'pill' or testimonial_radius == 'custom'
+    assign testimonial_radius = 'square'
+  endunless
+
+  assign testimonial_shadow = block.settings.shadow | default: 'none'
+  unless testimonial_shadow == 'none' or testimonial_shadow == 'small' or testimonial_shadow == 'medium' or testimonial_shadow == 'large'
+    assign testimonial_shadow = 'none'
+  endunless
+
+  assign testimonial_position_value = 'center'
+  if testimonial_position == 'top'
+    assign testimonial_position_value = 'start'
+  elsif testimonial_position == 'bottom'
+    assign testimonial_position_value = 'end'
+  endif
+
+  assign testimonial_alignment_mobile_value = 'center'
+  if testimonial_alignment_mobile == 'left'
+    assign testimonial_alignment_mobile_value = 'start'
+  elsif testimonial_alignment_mobile == 'right'
+    assign testimonial_alignment_mobile_value = 'end'
+  endif
+
+%}
+
+{% capture testimonial_style %}
+  --testimonial-gap-desktop: {{ testimonial_gap_desktop }}px;
+  --testimonial-gap-mobile: {{ testimonial_gap_mobile }}px;
+  --testimonial-border-width: {{ testimonial_border_thickness }}px;
+  {% if block.settings.background_color != blank %}--testimonial-background-color: {{ block.settings.background_color | escape }};{% endif %}
+  {% if block.settings.background_image != blank %}--testimonial-background-image: url('{{ block.settings.background_image | image_url: width: 2400 }}');{% endif %}
+  {% if block.settings.overlay_color != blank %}--testimonial-overlay-color: {{ block.settings.overlay_color | escape }};{% endif %}
+  {% if testimonial_radius == 'custom' %}--testimonial-radius: {{ block.settings.custom_corner_radius | default: 24 | at_least: 0 | at_most: 100 }}px;{% endif %}
+  --testimonial-overlay-opacity: 1;
+  --testimonial-mobile-justify: {{ testimonial_alignment_mobile_value }};
+{% endcapture %}
+
+<article
+  class="testimonial-item testimonial-item--{{ testimonial_direction }} testimonial-item--position-{{ testimonial_position }} testimonial-item--align-{{ testimonial_alignment }} testimonial-item--radius-{{ testimonial_radius }} testimonial-item--shadow-{{ testimonial_shadow }}{% if block.settings.vertical_on_mobile and testimonial_direction == 'horizontal' %} testimonial-item--vertical-mobile{% endif %}{% if block.settings.overlay_color != blank %} testimonial-item--has-overlay{% endif %} swiper-slide"
+  style="{{ testimonial_style | strip }}"
+  {{ block.shopify_attributes }}
+>
+  {{ content }}
+</article>

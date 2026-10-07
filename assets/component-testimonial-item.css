@@ -1,0 +1,77 @@
+.testimonial-item {
+    position: relative;
+    display: grid;
+    width: 100%;
+    min-width: 0;
+    gap: var(--testimonial-gap-desktop, 80px);
+    align-items: var(--testimonial-position, center);
+    border: var(--testimonial-border-width, 0px) solid var(--border-color);
+    border-radius: var(--testimonial-radius, var(--radius-square));
+    background-color: var(--testimonial-background-color, var(--background-color));
+    background-image: var(--testimonial-background-image, none);
+    background-position: center;
+    background-size: cover;
+    box-shadow: var(--testimonial-shadow, none);
+    isolation: isolate;
+  }
+  .testimonial-item--horizontal.swiper-slide {
+    display: flex !important;
+    flex-direction: row;
+  }
+  .testimonial-item--horizontal > .image-block,
+  .testimonial-item--horizontal > .group {
+    flex: 1 1 0%;
+  }
+  .testimonial-item--vertical.swiper-slide {
+    display: grid !important;
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .testimonial-item--position-top { --testimonial-position: start; }
+  .testimonial-item--position-center { --testimonial-position: center; }
+  .testimonial-item--position-bottom { --testimonial-position: end; }
+  .testimonial-item--position-top > .group { --layout-flow-justify-content: flex-start !important; }
+  .testimonial-item--position-center > .group { --layout-flow-justify-content: center !important; }
+  .testimonial-item--position-bottom > .group { --layout-flow-justify-content: flex-end !important; }
+  .testimonial-item--align-left { justify-items: start; }
+  .testimonial-item--align-center { justify-items: center; }
+  .testimonial-item--align-right { justify-items: end; }
+  .testimonial-item--align-space-between { justify-content: space-between; }
+  .testimonial-item--radius-square { --testimonial-radius: var(--radius-square); }
+  .testimonial-item--radius-slightly_rounded { --testimonial-radius: var(--radius-slight); }
+  .testimonial-item--radius-rounded { --testimonial-radius: var(--radius-rounded); }
+  .testimonial-item--radius-pill { --testimonial-radius: var(--radius-pill); }
+  .testimonial-item--shadow-small { --testimonial-shadow: 0 0.25rem 0.75rem color-mix(in srgb, var(--shadow-color) 12%, transparent); }
+  .testimonial-item--shadow-medium { --testimonial-shadow: 0 0.5rem 1.25rem color-mix(in srgb, var(--shadow-color) 18%, transparent); }
+  .testimonial-item--shadow-large { --testimonial-shadow: 0 1rem 2rem color-mix(in srgb, var(--shadow-color) 24%, transparent); }
+  .testimonial-item--has-overlay::before {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    border-radius: inherit;
+    background: var(--testimonial-overlay-color, transparent);
+    opacity: var(--testimonial-overlay-opacity, 0);
+    content: '';
+    pointer-events: none;
+  }
+  .testimonial-item > .image-block,
+  .testimonial-item > .group { min-width: 0; width: 100%; max-width: none; }
+  .testimonial-item > .image-block,
+  .testimonial-item > .group { position: relative; z-index: 1; }
+  .testimonial-item > .image-block { align-self: var(--testimonial-position, center); }
+  .testimonial-item > .image-block .image-block__media { height: 100%; min-height: 100%; border-radius: inherit; }
+  .testimonial-item > .group { align-self: var(--testimonial-position, center); justify-content: center; }
+  .testimonial-item > .group .eyebrow-block { margin-bottom: 1rem; letter-spacing: 0.12em; }
+  .testimonial-item > .group .text-block:first-of-type { letter-spacing: var(--text-block-letter-spacing, 0.05em); }
+  @media (max-width: 767.98px) {
+    .testimonial-item { gap: var(--testimonial-gap-mobile, 36px); }
+    .testimonial-item--vertical.swiper-slide,
+    .testimonial-item--vertical-mobile.swiper-slide {
+      display: grid !important;
+      grid-template-columns: minmax(0, 1fr);
+    }
+    .testimonial-item--align-left { justify-items: start; }
+    .testimonial-item--align-center { justify-items: center; }
+    .testimonial-item--align-right { justify-items: end; }
+    .testimonial-item--align-space-between { justify-content: space-between; }
+    .testimonial-item { justify-items: var(--testimonial-mobile-justify, center); }
+  }

@@ -1417,7 +1417,8 @@
     },
     "countdown_unit_layout": {
       "separated": "Separated",
-      "connected": "Connected"
+      "connected": "Connected",
+      "colon": "Colon separators"
     },
     "collection_tabs_header_layout": {
       "stacked": "Stacked",

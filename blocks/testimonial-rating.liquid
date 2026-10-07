@@ -1,0 +1,24 @@
+{% doc %}
+  Renders an accessible customer rating with the theme's testimonial star asset.
+  The parent Group owns alignment and spacing; this block owns only the score.
+{% enddoc %}
+{% assign rating = block.settings.rating | default: 5 | at_least: 1 | at_most: 5 %}
+<div class="testimonial-rating" role="img" aria-label="{{ 'accessibility.testimonial_rating' | t: rating: rating }}" {{ block.shopify_attributes }}>
+  {% for star in (1..rating) %}
+    <img src="{{ 'perky-testimonial-star.svg' | asset_url }}" alt="" width="18" height="18" loading="lazy">
+  {% endfor %}
+</div>
+{% stylesheet %}
+.testimonial-rating { display: flex; gap: 4px; align-items: center; }
+.testimonial-rating img { display: block; flex: 0 0 auto; }
+{% endstylesheet %}
+{% schema %}
+{
+  "name": "Star rating",
+  "tag": null,
+  "settings": [
+    { "type": "range", "id": "rating", "label": "Rating", "min": 1, "max": 5, "step": 1, "default": 5 }
+  ],
+  "presets": [{ "name": "Star rating", "category": "Trust & social proof" }]
+}
+{% endschema %}

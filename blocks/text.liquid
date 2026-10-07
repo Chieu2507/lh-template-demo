@@ -2,7 +2,7 @@
   Renders rich text with a body typography role, responsive layout and spacing.
 
   The block owns editorial text, body-size role, local color override, size and
-  padding. Width is configurable while text alignment is inherited from the
+  padding, with opt-in line height and letter spacing. Width is configurable while text alignment is inherited from the
   parent composition.
 
   @example
@@ -93,6 +93,7 @@
     {% if padding_right_mobile != padding_right %}--text-padding-right-mobile: {{ padding_right_mobile }}px;{% endif %}
   {% endif %}
   {% if block.settings.text_color != blank %}--text-block-color: {{ block.settings.text_color | escape }};{% endif %}
+  {% if block.settings.customize_letter_spacing %}--text-block-letter-spacing: {{ block.settings.letter_spacing | default: 0 | at_least: 0 | at_most: 3 }}px;{% endif %}
   {% if block.settings.customize_line_height %}
     {% assign text_line_height = block.settings.line_height | default: 26 | at_least: 1 %}
     --text-block-line-height: {{ text_line_height }}px;
@@ -148,6 +149,7 @@
     text-align: var(--text-align-default, inherit);
     overflow-wrap: anywhere;
     line-height: var(--text-block-line-height, var(--font-body-line-height));
+    letter-spacing: var(--text-block-letter-spacing, var(--font-body-letter-spacing));
   }
 
   .text-block a {
@@ -214,6 +216,8 @@
       ],
       "default": "md"
     },
+    { "type": "checkbox", "id": "customize_letter_spacing", "label": "Customize letter spacing", "default": false },
+    { "type": "range", "id": "letter_spacing", "label": "Letter spacing", "min": 0, "max": 3, "step": 0.1, "unit": "px", "default": 0, "visible_if": "{{ block.settings.customize_letter_spacing }}" },
     {
       "type": "checkbox",
       "id": "customize_line_height",
