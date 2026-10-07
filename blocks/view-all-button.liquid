@@ -54,6 +54,8 @@
   <div
     class="collection-list-view-all{% if block.settings.full_width_mobile %} collection-list-view-all--full-width-mobile{% endif %}"
     {% if collection_list_view_all_style_attribute != blank %}style="{{ collection_list_view_all_style_attribute }}"{% endif %}
+    data-resource-view-all data-design-mode="{{ request.design_mode }}"
+    {% if require_more_items %}{% unless request.design_mode %}hidden{% endunless %}{% endif %}
     {{ block.shopify_attributes }}
   >
     {% render 'view-all-button',
@@ -91,6 +93,7 @@
   </div>
 
 {% stylesheet %}
+  .collection-list-view-all[hidden] { display: none; }
   .collection-list-view-all .collection-list-view-all__button--mobile {
     display: none;
   }

@@ -3053,6 +3053,7 @@ legend {
 .component-overlay {
   --overlay-inset: var(--overlay-drawer-content-padding-desktop, 1.5rem);
   --overlay-drawer-inset: var(--overlay-drawer-padding-desktop, 0px);
+  --overlay-drawer-edge-radius: var(--overlay-drawer-edge-radius-desktop, 0px);
   position: fixed;
   z-index: var(--z-modal, 1000);
   inset: 0;
@@ -3107,12 +3108,14 @@ legend {
     height: calc(100dvh - var(--overlay-drawer-inset) - var(--overlay-drawer-inset));
     max-height: calc(100dvh - var(--overlay-drawer-inset) - var(--overlay-drawer-inset));
     margin: 0;
+    border-radius: var(--drawer-radius) var(--overlay-drawer-edge-radius) var(--overlay-drawer-edge-radius) var(--drawer-radius);
   }
 }
 @media (max-width: 767.98px) {
   .component-overlay {
     --overlay-inset: var(--overlay-drawer-content-padding-mobile, 1rem);
     --overlay-drawer-inset: var(--overlay-drawer-padding-mobile, 0px);
+    --overlay-drawer-edge-radius: var(--overlay-drawer-edge-radius-mobile, 0px);
   }
   .component-overlay[data-mobile-layout='bottom_sheet'] .component-overlay__panel {
     position: absolute;
@@ -3128,6 +3131,7 @@ legend {
     height: calc(100dvh - var(--overlay-drawer-inset) - var(--overlay-drawer-inset));
     max-height: calc(100dvh - var(--overlay-drawer-inset) - var(--overlay-drawer-inset));
     margin: 0;
+    border-radius: var(--drawer-radius) var(--overlay-drawer-edge-radius) var(--overlay-drawer-edge-radius) var(--drawer-radius);
   }
 }
 
@@ -3163,3 +3167,9 @@ legend {
 .announcement-bar--bottom-separator { border-bottom: 1px solid var(--border-color); }
 
 .announcement-bar__slides > .announcement-text-block { font-weight: inherit; }
+
+@media (max-width: 767.98px) {
+  .component-overlay[data-mobile-layout='drawer'] .component-overlay__panel {
+    border-radius: 0;
+  }
+}
