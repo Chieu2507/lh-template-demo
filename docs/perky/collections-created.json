@@ -1,0 +1,126 @@
+{
+  "store": "layouthub-template-v2.myshopify.com",
+  "collections": [
+    {
+      "id": "gid://shopify/Collection/534802137387",
+      "title": "Rattles Perky",
+      "handle": "rattles-perky",
+      "image": {
+        "url": "https://cdn.shopify.com/s/files/1/1024/2192/2091/collections/perky-rattles.jpg?v=1791356170",
+        "altText": "Rattles"
+      }
+    },
+    {
+      "id": "gid://shopify/Collection/534802170155",
+      "title": "Baby Toys Perky",
+      "handle": "baby-toys-perky",
+      "image": {
+        "url": "https://cdn.shopify.com/s/files/1/1024/2192/2091/collections/perky-baby-toys.jpg?v=1791356171",
+        "altText": "Baby Toys"
+      }
+    },
+    {
+      "id": "gid://shopify/Collection/534802202923",
+      "title": "Art & Crafts Perky",
+      "handle": "art-crafts-perky",
+      "image": {
+        "url": "https://cdn.shopify.com/s/files/1/1024/2192/2091/collections/perky-art-crafts.jpg?v=1791356173",
+        "altText": "Art & Crafts"
+      }
+    },
+    {
+      "id": "gid://shopify/Collection/534802235691",
+      "title": "Handmade Perky",
+      "handle": "handmade-perky",
+      "image": {
+        "url": "https://cdn.shopify.com/s/files/1/1024/2192/2091/collections/perky-handmade.jpg?v=1791356174",
+        "altText": "Handmade"
+      }
+    },
+    {
+      "id": "gid://shopify/Collection/534802268459",
+      "title": "Puzzles Perky",
+      "handle": "puzzles-perky",
+      "image": {
+        "url": "https://cdn.shopify.com/s/files/1/1024/2192/2091/collections/perky-puzzles.jpg?v=1791356176",
+        "altText": "Puzzles"
+      }
+    },
+    {
+      "id": "gid://shopify/Collection/534802333995",
+      "title": "Plush Perky",
+      "handle": "plush-perky",
+      "image": {
+        "url": "https://cdn.shopify.com/s/files/1/1024/2192/2091/collections/perky-plush.jpg?v=1791356177",
+        "altText": "Plush"
+      }
+    },
+    {
+      "id": "gid://shopify/Collection/534802366763",
+      "title": "0–6 Months Perky",
+      "handle": "0-6-months-perky",
+      "image": {
+        "url": "https://cdn.shopify.com/s/files/1/1024/2192/2091/collections/perky-age-0-6-months.jpg?v=1791356179",
+        "altText": "0–6 Months"
+      }
+    },
+    {
+      "id": "gid://shopify/Collection/534802399531",
+      "title": "6–12 Months Perky",
+      "handle": "6-12-months-perky",
+      "image": {
+        "url": "https://cdn.shopify.com/s/files/1/1024/2192/2091/collections/perky-age-6-12-months.jpg?v=1791356181",
+        "altText": "6–12 Months"
+      }
+    },
+    {
+      "id": "gid://shopify/Collection/534802432299",
+      "title": "1–2 Years Perky",
+      "handle": "1-2-years-perky",
+      "image": {
+        "url": "https://cdn.shopify.com/s/files/1/1024/2192/2091/collections/perky-age-1-2-years.jpg?v=1791356183",
+        "altText": "1–2 Years"
+      }
+    },
+    {
+      "id": "gid://shopify/Collection/534802465067",
+      "title": "2–3 Years Perky",
+      "handle": "2-3-years-perky",
+      "image": {
+        "url": "https://cdn.shopify.com/s/files/1/1024/2192/2091/collections/perky-age-2-3-years.jpg?v=1791356184",
+        "altText": "2–3 Years"
+      }
+    },
+    {
+      "id": "gid://shopify/Collection/534802497835",
+      "title": "New Arrivals Perky",
+      "handle": "new-arrivals-perky",
+      "image": {
+        "url": "https://cdn.shopify.com/s/files/1/1024/2192/2091/collections/perky-tinker.jpg?v=1791356186",
+        "altText": "New Arrivals"
+      }
+    },
+    {
+      "id": "gid://shopify/Collection/534802530603",
+      "title": "Playsets Perky",
+      "handle": "playsets-perky",
+      "image": {
+        "url": "https://cdn.shopify.com/s/files/1/1024/2192/2091/collections/perky-playsets-banner.jpg?v=1791356187",
+        "altText": "Playsets"
+      }
+    },
+    {
+      "id": "gid://shopify/Collection/534802563371",
+      "title": "Sale Perky",
+      "handle": "sale-perky",
+      "image": {
+        "url": "https://cdn.shopify.com/s/files/1/1024/2192/2091/collections/perky-hotspot-room.jpg?v=1791356189",
+        "altText": "Sale"
+      }
+    }
+  ],
+  "publication": "Online Store",
+  "publication_id": "gid://shopify/Publication/322604237099",
+  "bound_template": "templates/index.json",
+  "products_created": 0
+}

@@ -1,0 +1,2014 @@
+{
+  "shop": {
+    "name": "Layouthub template v2",
+    "myshopifyDomain": "layouthub-template-v2.myshopify.com",
+    "currencyCode": "USD"
+  },
+  "products": {
+    "nodes": []
+  },
+  "blogs": {
+    "nodes": [
+      {
+        "id": "gid://shopify/Blog/125679272235",
+        "title": "News",
+        "handle": "news",
+        "articles": {
+          "nodes": []
+        }
+      },
+      {
+        "id": "gid://shopify/Blog/125731602731",
+        "title": "From the Blog - Essen",
+        "handle": "from-the-blog-essen",
+        "articles": {
+          "nodes": [
+            {
+              "id": "gid://shopify/Article/633691996459",
+              "title": "Where quality meets nature",
+              "handle": "where-quality-meets-nature",
+              "author": {
+                "name": "Essen"
+              },
+              "publishedAt": "2025-09-18T16:04:00Z"
+            },
+            {
+              "id": "gid://shopify/Article/633692029227",
+              "title": "Where contemporary style meets architectural form",
+              "handle": "where-contemporary-style-meets-architectural-form",
+              "author": {
+                "name": "Essen"
+              },
+              "publishedAt": "2025-09-18T16:03:00Z"
+            },
+            {
+              "id": "gid://shopify/Article/633692061995",
+              "title": "Discovering the connection between structure, space",
+              "handle": "discovering-the-connection-between-structure-space",
+              "author": {
+                "name": "Essen"
+              },
+              "publishedAt": "2025-09-18T16:02:00Z"
+            },
+            {
+              "id": "gid://shopify/Article/633692422443",
+              "title": "Selection SS2025 April collection",
+              "handle": "selection-ss2025-april-collection",
+              "author": {
+                "name": "Essen Editorial"
+              },
+              "publishedAt": "2025-09-18T16:01:00Z"
+            },
+            {
+              "id": "gid://shopify/Article/633692455211",
+              "title": "Forma moves forward with its transformation process",
+              "handle": "forma-moves-forward-with-its-transformation-process",
+              "author": {
+                "name": "Essen Editorial"
+              },
+              "publishedAt": "2025-09-18T16:00:00Z"
+            }
+          ]
+        }
+      },
+      {
+        "id": "gid://shopify/Blog/125737664811",
+        "title": "Fluxstep journal",
+        "handle": "fluxstep-journal",
+        "articles": {
+          "nodes": [
+            {
+              "id": "gid://shopify/Article/633694060843",
+              "title": "Discipline before speed",
+              "handle": "discipline-before-speed",
+              "author": {
+                "name": "LayoutHub"
+              },
+              "publishedAt": "2025-11-17T12:02:00Z"
+            },
+            {
+              "id": "gid://shopify/Article/633694093611",
+              "title": "Warm up to go further",
+              "handle": "warm-up-to-go-further",
+              "author": {
+                "name": "LayoutHub"
+              },
+              "publishedAt": "2025-11-17T12:01:00Z"
+            },
+            {
+              "id": "gid://shopify/Article/633694126379",
+              "title": "Where training meets elevation",
+              "handle": "where-training-meets-elevation",
+              "author": {
+                "name": "LayoutHub"
+              },
+              "publishedAt": "2025-11-17T12:00:00Z"
+            },
+            {
+              "id": "gid://shopify/Article/633694159147",
+              "title": "Find your everyday rhythm",
+              "handle": "find-your-everyday-rhythm",
+              "author": {
+                "name": "LayoutHub"
+              },
+              "publishedAt": "2025-11-16T12:00:00Z"
+            },
+            {
+              "id": "gid://shopify/Article/633694191915",
+              "title": "Take the scenic route",
+              "handle": "take-the-scenic-route",
+              "author": {
+                "name": "LayoutHub"
+              },
+              "publishedAt": "2025-11-15T12:00:00Z"
+            }
+          ]
+        }
+      },
+      {
+        "id": "gid://shopify/Blog/125780099371",
+        "title": "Discover Our Story - Elara",
+        "handle": "discover-our-story-elara",
+        "articles": {
+          "nodes": []
+        }
+      }
+    ]
+  },
+  "locations": {
+    "nodes": [
+      {
+        "id": "gid://shopify/Location/117337882923",
+        "name": "My Custom Location",
+        "isActive": true
+      },
+      {
+        "id": "gid://shopify/Location/117337850155",
+        "name": "Shop location",
+        "isActive": true
+      }
+    ]
+  },
+  "productDefinitions": {
+    "nodes": [
+      {
+        "id": "gid://shopify/MetafieldDefinition/298425090347",
+        "namespace": "test_data",
+        "key": "binding_mount",
+        "type": {
+          "name": "single_line_text_field"
+        }
+      },
+      {
+        "id": "gid://shopify/MetafieldDefinition/298425123115",
+        "namespace": "test_data",
+        "key": "snowboard_length",
+        "type": {
+          "name": "dimension"
+        }
+      },
+      {
+        "id": "gid://shopify/MetafieldDefinition/298509762859",
+        "namespace": "shopify",
+        "key": "color-pattern",
+        "type": {
+          "name": "list.metaobject_reference"
+        }
+      },
+      {
+        "id": "gid://shopify/MetafieldDefinition/299935170859",
+        "namespace": "shopify",
+        "key": "age-group",
+        "type": {
+          "name": "list.metaobject_reference"
+        }
+      },
+      {
+        "id": "gid://shopify/MetafieldDefinition/299935203627",
+        "namespace": "shopify",
+        "key": "jewelry-type",
+        "type": {
+          "name": "list.metaobject_reference"
+        }
+      },
+      {
+        "id": "gid://shopify/MetafieldDefinition/299935236395",
+        "namespace": "shopify",
+        "key": "target-gender",
+        "type": {
+          "name": "list.metaobject_reference"
+        }
+      },
+      {
+        "id": "gid://shopify/MetafieldDefinition/299935269163",
+        "namespace": "shopify",
+        "key": "jewelry-material",
+        "type": {
+          "name": "list.metaobject_reference"
+        }
+      },
+      {
+        "id": "gid://shopify/MetafieldDefinition/299935301931",
+        "namespace": "shopify",
+        "key": "earring-design",
+        "type": {
+          "name": "list.metaobject_reference"
+        }
+      },
+      {
+        "id": "gid://shopify/MetafieldDefinition/300058804523",
+        "namespace": "custom",
+        "key": "material",
+        "type": {
+          "name": "single_line_text_field"
+        }
+      }
+    ]
+  },
+  "variantDefinitions": {
+    "nodes": [
+      {
+        "id": "gid://shopify/MetafieldDefinition/299506434347",
+        "namespace": "custom",
+        "key": "secondary_image",
+        "type": {
+          "name": "file_reference"
+        }
+      }
+    ]
+  },
+  "colors": {
+    "nodes": [
+      {
+        "id": "gid://shopify/Metaobject/618123002155",
+        "handle": "pink",
+        "fields": [
+          {
+            "key": "label",
+            "value": "Pink"
+          },
+          {
+            "key": "color",
+            "value": "#FFC0CB"
+          },
+          {
+            "key": "image",
+            "value": null
+          },
+          {
+            "key": "color_taxonomy_reference",
+            "value": "[\"gid://shopify/TaxonomyValue/11\"]"
+          },
+          {
+            "key": "pattern_taxonomy_reference",
+            "value": "gid://shopify/TaxonomyValue/2874"
+          }
+        ]
+      },
+      {
+        "id": "gid://shopify/Metaobject/618123034923",
+        "handle": "beige",
+        "fields": [
+          {
+            "key": "label",
+            "value": "Beige"
+          },
+          {
+            "key": "color",
+            "value": "#EAD8AB"
+          },
+          {
+            "key": "image",
+            "value": null
+          },
+          {
+            "key": "color_taxonomy_reference",
+            "value": "[\"gid://shopify/TaxonomyValue/6\"]"
+          },
+          {
+            "key": "pattern_taxonomy_reference",
+            "value": "gid://shopify/TaxonomyValue/2874"
+          }
+        ]
+      },
+      {
+        "id": "gid://shopify/Metaobject/618126311723",
+        "handle": "stroken-white-f2f2f2",
+        "fields": [
+          {
+            "key": "label",
+            "value": "White"
+          },
+          {
+            "key": "color",
+            "value": "#f2f2f2"
+          },
+          {
+            "key": "image",
+            "value": null
+          },
+          {
+            "key": "color_taxonomy_reference",
+            "value": "[\"gid://shopify/TaxonomyValue/3\"]"
+          },
+          {
+            "key": "pattern_taxonomy_reference",
+            "value": "gid://shopify/TaxonomyValue/2874"
+          }
+        ]
+      },
+      {
+        "id": "gid://shopify/Metaobject/618126344491",
+        "handle": "stroken-dark-green-06785f",
+        "fields": [
+          {
+            "key": "label",
+            "value": "Dark green"
+          },
+          {
+            "key": "color",
+            "value": "#06785f"
+          },
+          {
+            "key": "image",
+            "value": null
+          },
+          {
+            "key": "color_taxonomy_reference",
+            "value": "[\"gid://shopify/TaxonomyValue/9\"]"
+          },
+          {
+            "key": "pattern_taxonomy_reference",
+            "value": "gid://shopify/TaxonomyValue/2874"
+          }
+        ]
+      },
+      {
+        "id": "gid://shopify/Metaobject/618126377259",
+        "handle": "stroken-yellow-f8d933",
+        "fields": [
+          {
+            "key": "label",
+            "value": "Yellow"
+          },
+          {
+            "key": "color",
+            "value": "#f8d933"
+          },
+          {
+            "key": "image",
+            "value": null
+          },
+          {
+            "key": "color_taxonomy_reference",
+            "value": "[\"gid://shopify/TaxonomyValue/14\"]"
+          },
+          {
+            "key": "pattern_taxonomy_reference",
+            "value": "gid://shopify/TaxonomyValue/2874"
+          }
+        ]
+      },
+      {
+        "id": "gid://shopify/Metaobject/618126410027",
+        "handle": "stroken-orange-red-fb421d",
+        "fields": [
+          {
+            "key": "label",
+            "value": "Orange red"
+          },
+          {
+            "key": "color",
+            "value": "#fb421d"
+          },
+          {
+            "key": "image",
+            "value": null
+          },
+          {
+            "key": "color_taxonomy_reference",
+            "value": "[\"gid://shopify/TaxonomyValue/10\",\"gid://shopify/TaxonomyValue/13\"]"
+          },
+          {
+            "key": "pattern_taxonomy_reference",
+            "value": "gid://shopify/TaxonomyValue/2874"
+          }
+        ]
+      },
+      {
+        "id": "gid://shopify/Metaobject/618126442795",
+        "handle": "stroken-white-efefef",
+        "fields": [
+          {
+            "key": "label",
+            "value": "White"
+          },
+          {
+            "key": "color",
+            "value": "#efefef"
+          },
+          {
+            "key": "image",
+            "value": null
+          },
+          {
+            "key": "color_taxonomy_reference",
+            "value": "[\"gid://shopify/TaxonomyValue/3\"]"
+          },
+          {
+            "key": "pattern_taxonomy_reference",
+            "value": "gid://shopify/TaxonomyValue/2874"
+          }
+        ]
+      },
+      {
+        "id": "gid://shopify/Metaobject/618126475563",
+        "handle": "stroken-blue-grey-8399ae",
+        "fields": [
+          {
+            "key": "label",
+            "value": "Blue grey"
+          },
+          {
+            "key": "color",
+            "value": "#8399ae"
+          },
+          {
+            "key": "image",
+            "value": null
+          },
+          {
+            "key": "color_taxonomy_reference",
+            "value": "[\"gid://shopify/TaxonomyValue/2\",\"gid://shopify/TaxonomyValue/8\"]"
+          },
+          {
+            "key": "pattern_taxonomy_reference",
+            "value": "gid://shopify/TaxonomyValue/2874"
+          }
+        ]
+      },
+      {
+        "id": "gid://shopify/Metaobject/618126508331",
+        "handle": "stroken-white-f1f2f4",
+        "fields": [
+          {
+            "key": "label",
+            "value": "White"
+          },
+          {
+            "key": "color",
+            "value": "#f1f2f4"
+          },
+          {
+            "key": "image",
+            "value": null
+          },
+          {
+            "key": "color_taxonomy_reference",
+            "value": "[\"gid://shopify/TaxonomyValue/3\"]"
+          },
+          {
+            "key": "pattern_taxonomy_reference",
+            "value": "gid://shopify/TaxonomyValue/2874"
+          }
+        ]
+      },
+      {
+        "id": "gid://shopify/Metaobject/618126541099",
+        "handle": "stroken-dark-grey-393939",
+        "fields": [
+          {
+            "key": "label",
+            "value": "Dark grey"
+          },
+          {
+            "key": "color",
+            "value": "#393939"
+          },
+          {
+            "key": "image",
+            "value": null
+          },
+          {
+            "key": "color_taxonomy_reference",
+            "value": "[\"gid://shopify/TaxonomyValue/8\"]"
+          },
+          {
+            "key": "pattern_taxonomy_reference",
+            "value": "gid://shopify/TaxonomyValue/2874"
+          }
+        ]
+      },
+      {
+        "id": "gid://shopify/Metaobject/618126573867",
+        "handle": "stroken-light-lime-c5ed7c",
+        "fields": [
+          {
+            "key": "label",
+            "value": "Light lime"
+          },
+          {
+            "key": "color",
+            "value": "#c5ed7c"
+          },
+          {
+            "key": "image",
+            "value": null
+          },
+          {
+            "key": "color_taxonomy_reference",
+            "value": "[\"gid://shopify/TaxonomyValue/9\"]"
+          },
+          {
+            "key": "pattern_taxonomy_reference",
+            "value": "gid://shopify/TaxonomyValue/2874"
+          }
+        ]
+      },
+      {
+        "id": "gid://shopify/Metaobject/618126606635",
+        "handle": "stroken-dark-brown-4c3d31",
+        "fields": [
+          {
+            "key": "label",
+            "value": "Dark brown"
+          },
+          {
+            "key": "color",
+            "value": "#4c3d31"
+          },
+          {
+            "key": "image",
+            "value": null
+          },
+          {
+            "key": "color_taxonomy_reference",
+            "value": "[\"gid://shopify/TaxonomyValue/7\"]"
+          },
+          {
+            "key": "pattern_taxonomy_reference",
+            "value": "gid://shopify/TaxonomyValue/2874"
+          }
+        ]
+      },
+      {
+        "id": "gid://shopify/Metaobject/618126639403",
+        "handle": "stroken-white-f5f6f8",
+        "fields": [
+          {
+            "key": "label",
+            "value": "White"
+          },
+          {
+            "key": "color",
+            "value": "#f5f6f8"
+          },
+          {
+            "key": "image",
+            "value": null
+          },
+          {
+            "key": "color_taxonomy_reference",
+            "value": "[\"gid://shopify/TaxonomyValue/3\"]"
+          },
+          {
+            "key": "pattern_taxonomy_reference",
+            "value": "gid://shopify/TaxonomyValue/2874"
+          }
+        ]
+      },
+      {
+        "id": "gid://shopify/Metaobject/618126672171",
+        "handle": "stroken-light-pink-e5bed7",
+        "fields": [
+          {
+            "key": "label",
+            "value": "Light pink"
+          },
+          {
+            "key": "color",
+            "value": "#e5bed7"
+          },
+          {
+            "key": "image",
+            "value": null
+          },
+          {
+            "key": "color_taxonomy_reference",
+            "value": "[\"gid://shopify/TaxonomyValue/11\"]"
+          },
+          {
+            "key": "pattern_taxonomy_reference",
+            "value": "gid://shopify/TaxonomyValue/2874"
+          }
+        ]
+      },
+      {
+        "id": "gid://shopify/Metaobject/618126704939",
+        "handle": "stroken-light-yellow-edf0ca",
+        "fields": [
+          {
+            "key": "label",
+            "value": "Light yellow"
+          },
+          {
+            "key": "color",
+            "value": "#edf0ca"
+          },
+          {
+            "key": "image",
+            "value": null
+          },
+          {
+            "key": "color_taxonomy_reference",
+            "value": "[\"gid://shopify/TaxonomyValue/14\"]"
+          },
+          {
+            "key": "pattern_taxonomy_reference",
+            "value": "gid://shopify/TaxonomyValue/2874"
+          }
+        ]
+      },
+      {
+        "id": "gid://shopify/Metaobject/618126737707",
+        "handle": "stroken-light-blue-grey-ced5dd",
+        "fields": [
+          {
+            "key": "label",
+            "value": "Light blue grey"
+          },
+          {
+            "key": "color",
+            "value": "#ced5dd"
+          },
+          {
+            "key": "image",
+            "value": null
+          },
+          {
+            "key": "color_taxonomy_reference",
+            "value": "[\"gid://shopify/TaxonomyValue/2\",\"gid://shopify/TaxonomyValue/8\"]"
+          },
+          {
+            "key": "pattern_taxonomy_reference",
+            "value": "gid://shopify/TaxonomyValue/2874"
+          }
+        ]
+      },
+      {
+        "id": "gid://shopify/Metaobject/618126770475",
+        "handle": "stroken-dark-navy-334875",
+        "fields": [
+          {
+            "key": "label",
+            "value": "Dark navy"
+          },
+          {
+            "key": "color",
+            "value": "#334875"
+          },
+          {
+            "key": "image",
+            "value": null
+          },
+          {
+            "key": "color_taxonomy_reference",
+            "value": "[\"gid://shopify/TaxonomyValue/15\"]"
+          },
+          {
+            "key": "pattern_taxonomy_reference",
+            "value": "gid://shopify/TaxonomyValue/2874"
+          }
+        ]
+      },
+      {
+        "id": "gid://shopify/Metaobject/618126803243",
+        "handle": "stroken-grey-918f95",
+        "fields": [
+          {
+            "key": "label",
+            "value": "Grey"
+          },
+          {
+            "key": "color",
+            "value": "#918f95"
+          },
+          {
+            "key": "image",
+            "value": null
+          },
+          {
+            "key": "color_taxonomy_reference",
+            "value": "[\"gid://shopify/TaxonomyValue/8\"]"
+          },
+          {
+            "key": "pattern_taxonomy_reference",
+            "value": "gid://shopify/TaxonomyValue/2874"
+          }
+        ]
+      },
+      {
+        "id": "gid://shopify/Metaobject/618126836011",
+        "handle": "stroken-sage-green-9bbca9",
+        "fields": [
+          {
+            "key": "label",
+            "value": "Sage green"
+          },
+          {
+            "key": "color",
+            "value": "#9bbca9"
+          },
+          {
+            "key": "image",
+            "value": null
+          },
+          {
+            "key": "color_taxonomy_reference",
+            "value": "[\"gid://shopify/TaxonomyValue/9\"]"
+          },
+          {
+            "key": "pattern_taxonomy_reference",
+            "value": "gid://shopify/TaxonomyValue/2874"
+          }
+        ]
+      },
+      {
+        "id": "gid://shopify/Metaobject/618126901547",
+        "handle": "stroken-black-343338",
+        "fields": [
+          {
+            "key": "label",
+            "value": "Black"
+          },
+          {
+            "key": "color",
+            "value": "#343338"
+          },
+          {
+            "key": "image",
+            "value": null
+          },
+          {
+            "key": "color_taxonomy_reference",
+            "value": "[\"gid://shopify/TaxonomyValue/1\"]"
+          },
+          {
+            "key": "pattern_taxonomy_reference",
+            "value": "gid://shopify/TaxonomyValue/2874"
+          }
+        ]
+      },
+      {
+        "id": "gid://shopify/Metaobject/618126934315",
+        "handle": "stroken-periwinkle-6578dc",
+        "fields": [
+          {
+            "key": "label",
+            "value": "Periwinkle"
+          },
+          {
+            "key": "color",
+            "value": "#6578dc"
+          },
+          {
+            "key": "image",
+            "value": null
+          },
+          {
+            "key": "color_taxonomy_reference",
+            "value": "[\"gid://shopify/TaxonomyValue/2\"]"
+          },
+          {
+            "key": "pattern_taxonomy_reference",
+            "value": "gid://shopify/TaxonomyValue/2874"
+          }
+        ]
+      },
+      {
+        "id": "gid://shopify/Metaobject/618126967083",
+        "handle": "stroken-navy-394058",
+        "fields": [
+          {
+            "key": "label",
+            "value": "Navy"
+          },
+          {
+            "key": "color",
+            "value": "#394058"
+          },
+          {
+            "key": "image",
+            "value": null
+          },
+          {
+            "key": "color_taxonomy_reference",
+            "value": "[\"gid://shopify/TaxonomyValue/15\"]"
+          },
+          {
+            "key": "pattern_taxonomy_reference",
+            "value": "gid://shopify/TaxonomyValue/2874"
+          }
+        ]
+      },
+      {
+        "id": "gid://shopify/Metaobject/618126999851",
+        "handle": "stroken-navy-313b56",
+        "fields": [
+          {
+            "key": "label",
+            "value": "Navy"
+          },
+          {
+            "key": "color",
+            "value": "#313b56"
+          },
+          {
+            "key": "image",
+            "value": null
+          },
+          {
+            "key": "color_taxonomy_reference",
+            "value": "[\"gid://shopify/TaxonomyValue/15\"]"
+          },
+          {
+            "key": "pattern_taxonomy_reference",
+            "value": "gid://shopify/TaxonomyValue/2874"
+          }
+        ]
+      },
+      {
+        "id": "gid://shopify/Metaobject/618127032619",
+        "handle": "stroken-dark-green-364e48",
+        "fields": [
+          {
+            "key": "label",
+            "value": "Dark green"
+          },
+          {
+            "key": "color",
+            "value": "#364e48"
+          },
+          {
+            "key": "image",
+            "value": null
+          },
+          {
+            "key": "color_taxonomy_reference",
+            "value": "[\"gid://shopify/TaxonomyValue/9\"]"
+          },
+          {
+            "key": "pattern_taxonomy_reference",
+            "value": "gid://shopify/TaxonomyValue/2874"
+          }
+        ]
+      },
+      {
+        "id": "gid://shopify/Metaobject/618127065387",
+        "handle": "stroken-cream-f0ece3",
+        "fields": [
+          {
+            "key": "label",
+            "value": "Cream"
+          },
+          {
+            "key": "color",
+            "value": "#f0ece3"
+          },
+          {
+            "key": "image",
+            "value": null
+          },
+          {
+            "key": "color_taxonomy_reference",
+            "value": "[\"gid://shopify/TaxonomyValue/6\"]"
+          },
+          {
+            "key": "pattern_taxonomy_reference",
+            "value": "gid://shopify/TaxonomyValue/2874"
+          }
+        ]
+      },
+      {
+        "id": "gid://shopify/Metaobject/618127098155",
+        "handle": "stroken-pink-e7c7ce",
+        "fields": [
+          {
+            "key": "label",
+            "value": "Pink"
+          },
+          {
+            "key": "color",
+            "value": "#e7c7ce"
+          },
+          {
+            "key": "image",
+            "value": null
+          },
+          {
+            "key": "color_taxonomy_reference",
+            "value": "[\"gid://shopify/TaxonomyValue/11\"]"
+          },
+          {
+            "key": "pattern_taxonomy_reference",
+            "value": "gid://shopify/TaxonomyValue/2874"
+          }
+        ]
+      },
+      {
+        "id": "gid://shopify/Metaobject/618127130923",
+        "handle": "stroken-light-yellow-f6eabb",
+        "fields": [
+          {
+            "key": "label",
+            "value": "Light yellow"
+          },
+          {
+            "key": "color",
+            "value": "#f6eabb"
+          },
+          {
+            "key": "image",
+            "value": null
+          },
+          {
+            "key": "color_taxonomy_reference",
+            "value": "[\"gid://shopify/TaxonomyValue/14\"]"
+          },
+          {
+            "key": "pattern_taxonomy_reference",
+            "value": "gid://shopify/TaxonomyValue/2874"
+          }
+        ]
+      },
+      {
+        "id": "gid://shopify/Metaobject/619564433707",
+        "handle": "assen-black-221f25",
+        "fields": [
+          {
+            "key": "label",
+            "value": "Black"
+          },
+          {
+            "key": "color",
+            "value": "#221f25"
+          },
+          {
+            "key": "image",
+            "value": null
+          },
+          {
+            "key": "color_taxonomy_reference",
+            "value": "[\"gid://shopify/TaxonomyValue/1\"]"
+          },
+          {
+            "key": "pattern_taxonomy_reference",
+            "value": "gid://shopify/TaxonomyValue/2874"
+          }
+        ]
+      },
+      {
+        "id": "gid://shopify/Metaobject/619564466475",
+        "handle": "assen-anthracite-797679",
+        "fields": [
+          {
+            "key": "label",
+            "value": "Anthracite"
+          },
+          {
+            "key": "color",
+            "value": "#797679"
+          },
+          {
+            "key": "image",
+            "value": null
+          },
+          {
+            "key": "color_taxonomy_reference",
+            "value": "[\"gid://shopify/TaxonomyValue/8\"]"
+          },
+          {
+            "key": "pattern_taxonomy_reference",
+            "value": "gid://shopify/TaxonomyValue/2874"
+          }
+        ]
+      },
+      {
+        "id": "gid://shopify/Metaobject/619564532011",
+        "handle": "assen-chocolate-3d3636",
+        "fields": [
+          {
+            "key": "label",
+            "value": "Chocolate"
+          },
+          {
+            "key": "color",
+            "value": "#3d3636"
+          },
+          {
+            "key": "image",
+            "value": null
+          },
+          {
+            "key": "color_taxonomy_reference",
+            "value": "[\"gid://shopify/TaxonomyValue/7\"]"
+          },
+          {
+            "key": "pattern_taxonomy_reference",
+            "value": "gid://shopify/TaxonomyValue/2874"
+          }
+        ]
+      },
+      {
+        "id": "gid://shopify/Metaobject/619564597547",
+        "handle": "assen-white-ffffff",
+        "fields": [
+          {
+            "key": "label",
+            "value": "White"
+          },
+          {
+            "key": "color",
+            "value": "#ffffff"
+          },
+          {
+            "key": "image",
+            "value": null
+          },
+          {
+            "key": "color_taxonomy_reference",
+            "value": "[\"gid://shopify/TaxonomyValue/3\"]"
+          },
+          {
+            "key": "pattern_taxonomy_reference",
+            "value": "gid://shopify/TaxonomyValue/2874"
+          }
+        ]
+      },
+      {
+        "id": "gid://shopify/Metaobject/619564630315",
+        "handle": "assen-blueberry-25324a",
+        "fields": [
+          {
+            "key": "label",
+            "value": "Blueberry"
+          },
+          {
+            "key": "color",
+            "value": "#25324a"
+          },
+          {
+            "key": "image",
+            "value": null
+          },
+          {
+            "key": "color_taxonomy_reference",
+            "value": "[\"gid://shopify/TaxonomyValue/15\"]"
+          },
+          {
+            "key": "pattern_taxonomy_reference",
+            "value": "gid://shopify/TaxonomyValue/2874"
+          }
+        ]
+      },
+      {
+        "id": "gid://shopify/Metaobject/619564663083",
+        "handle": "assen-sand-d8d2c4",
+        "fields": [
+          {
+            "key": "label",
+            "value": "Sand"
+          },
+          {
+            "key": "color",
+            "value": "#d8d2c4"
+          },
+          {
+            "key": "image",
+            "value": null
+          },
+          {
+            "key": "color_taxonomy_reference",
+            "value": "[\"gid://shopify/TaxonomyValue/6\"]"
+          },
+          {
+            "key": "pattern_taxonomy_reference",
+            "value": "gid://shopify/TaxonomyValue/2874"
+          }
+        ]
+      },
+      {
+        "id": "gid://shopify/Metaobject/619569283371",
+        "handle": "strideo-sand-coral",
+        "fields": [
+          {
+            "key": "label",
+            "value": "Sand | Coral"
+          },
+          {
+            "key": "color",
+            "value": "#c5b8a0"
+          },
+          {
+            "key": "image",
+            "value": null
+          },
+          {
+            "key": "color_taxonomy_reference",
+            "value": "[\"gid://shopify/TaxonomyValue/6\",\"gid://shopify/TaxonomyValue/13\"]"
+          },
+          {
+            "key": "pattern_taxonomy_reference",
+            "value": "gid://shopify/TaxonomyValue/2874"
+          }
+        ]
+      },
+      {
+        "id": "gid://shopify/Metaobject/619569316139",
+        "handle": "strideo-blue-ivory",
+        "fields": [
+          {
+            "key": "label",
+            "value": "Blue | Ivory"
+          },
+          {
+            "key": "color",
+            "value": "#5793ac"
+          },
+          {
+            "key": "image",
+            "value": null
+          },
+          {
+            "key": "color_taxonomy_reference",
+            "value": "[\"gid://shopify/TaxonomyValue/2\",\"gid://shopify/TaxonomyValue/6\"]"
+          },
+          {
+            "key": "pattern_taxonomy_reference",
+            "value": "gid://shopify/TaxonomyValue/2874"
+          }
+        ]
+      },
+      {
+        "id": "gid://shopify/Metaobject/619569381675",
+        "handle": "strideo-grey-ivory",
+        "fields": [
+          {
+            "key": "label",
+            "value": "Grey | Ivory"
+          },
+          {
+            "key": "color",
+            "value": "#a0a1a2"
+          },
+          {
+            "key": "image",
+            "value": null
+          },
+          {
+            "key": "color_taxonomy_reference",
+            "value": "[\"gid://shopify/TaxonomyValue/8\",\"gid://shopify/TaxonomyValue/6\"]"
+          },
+          {
+            "key": "pattern_taxonomy_reference",
+            "value": "gid://shopify/TaxonomyValue/2874"
+          }
+        ]
+      },
+      {
+        "id": "gid://shopify/Metaobject/619569414443",
+        "handle": "strideo-peach-orange",
+        "fields": [
+          {
+            "key": "label",
+            "value": "Peach | Orange"
+          },
+          {
+            "key": "color",
+            "value": "#f3c9b8"
+          },
+          {
+            "key": "image",
+            "value": null
+          },
+          {
+            "key": "color_taxonomy_reference",
+            "value": "[\"gid://shopify/TaxonomyValue/11\",\"gid://shopify/TaxonomyValue/10\"]"
+          },
+          {
+            "key": "pattern_taxonomy_reference",
+            "value": "gid://shopify/TaxonomyValue/2874"
+          }
+        ]
+      },
+      {
+        "id": "gid://shopify/Metaobject/619569447211",
+        "handle": "strideo-sand-yellow",
+        "fields": [
+          {
+            "key": "label",
+            "value": "Sand | Yellow"
+          },
+          {
+            "key": "color",
+            "value": "#c5b8a0"
+          },
+          {
+            "key": "image",
+            "value": null
+          },
+          {
+            "key": "color_taxonomy_reference",
+            "value": "[\"gid://shopify/TaxonomyValue/6\",\"gid://shopify/TaxonomyValue/14\"]"
+          },
+          {
+            "key": "pattern_taxonomy_reference",
+            "value": "gid://shopify/TaxonomyValue/2874"
+          }
+        ]
+      },
+      {
+        "id": "gid://shopify/Metaobject/619569479979",
+        "handle": "strideo-black-black",
+        "fields": [
+          {
+            "key": "label",
+            "value": "Black | Black"
+          },
+          {
+            "key": "color",
+            "value": "#242727"
+          },
+          {
+            "key": "image",
+            "value": null
+          },
+          {
+            "key": "color_taxonomy_reference",
+            "value": "[\"gid://shopify/TaxonomyValue/1\"]"
+          },
+          {
+            "key": "pattern_taxonomy_reference",
+            "value": "gid://shopify/TaxonomyValue/2874"
+          }
+        ]
+      },
+      {
+        "id": "gid://shopify/Metaobject/619569512747",
+        "handle": "strideo-white-white",
+        "fields": [
+          {
+            "key": "label",
+            "value": "White | White"
+          },
+          {
+            "key": "color",
+            "value": "#f2f3f1"
+          },
+          {
+            "key": "image",
+            "value": null
+          },
+          {
+            "key": "color_taxonomy_reference",
+            "value": "[\"gid://shopify/TaxonomyValue/3\"]"
+          },
+          {
+            "key": "pattern_taxonomy_reference",
+            "value": "gid://shopify/TaxonomyValue/2874"
+          }
+        ]
+      },
+      {
+        "id": "gid://shopify/Metaobject/619569545515",
+        "handle": "strideo-white-green",
+        "fields": [
+          {
+            "key": "label",
+            "value": "White | Green"
+          },
+          {
+            "key": "color",
+            "value": "#f2f3f1"
+          },
+          {
+            "key": "image",
+            "value": null
+          },
+          {
+            "key": "color_taxonomy_reference",
+            "value": "[\"gid://shopify/TaxonomyValue/3\",\"gid://shopify/TaxonomyValue/9\"]"
+          },
+          {
+            "key": "pattern_taxonomy_reference",
+            "value": "gid://shopify/TaxonomyValue/2874"
+          }
+        ]
+      },
+      {
+        "id": "gid://shopify/Metaobject/619569611051",
+        "handle": "strideo-grey-white",
+        "fields": [
+          {
+            "key": "label",
+            "value": "Grey | White"
+          },
+          {
+            "key": "color",
+            "value": "#a0a1a2"
+          },
+          {
+            "key": "image",
+            "value": null
+          },
+          {
+            "key": "color_taxonomy_reference",
+            "value": "[\"gid://shopify/TaxonomyValue/8\",\"gid://shopify/TaxonomyValue/3\"]"
+          },
+          {
+            "key": "pattern_taxonomy_reference",
+            "value": "gid://shopify/TaxonomyValue/2874"
+          }
+        ]
+      },
+      {
+        "id": "gid://shopify/Metaobject/619569643819",
+        "handle": "strideo-aqua-black",
+        "fields": [
+          {
+            "key": "label",
+            "value": "Aqua | Black"
+          },
+          {
+            "key": "color",
+            "value": "#83b8b9"
+          },
+          {
+            "key": "image",
+            "value": null
+          },
+          {
+            "key": "color_taxonomy_reference",
+            "value": "[\"gid://shopify/TaxonomyValue/2\",\"gid://shopify/TaxonomyValue/1\"]"
+          },
+          {
+            "key": "pattern_taxonomy_reference",
+            "value": "gid://shopify/TaxonomyValue/2874"
+          }
+        ]
+      },
+      {
+        "id": "gid://shopify/Metaobject/619569676587",
+        "handle": "strideo-orange-grey",
+        "fields": [
+          {
+            "key": "label",
+            "value": "Orange | Grey"
+          },
+          {
+            "key": "color",
+            "value": "#eb793b"
+          },
+          {
+            "key": "image",
+            "value": null
+          },
+          {
+            "key": "color_taxonomy_reference",
+            "value": "[\"gid://shopify/TaxonomyValue/10\",\"gid://shopify/TaxonomyValue/8\"]"
+          },
+          {
+            "key": "pattern_taxonomy_reference",
+            "value": "gid://shopify/TaxonomyValue/2874"
+          }
+        ]
+      },
+      {
+        "id": "gid://shopify/Metaobject/619569709355",
+        "handle": "strideo-white-lime",
+        "fields": [
+          {
+            "key": "label",
+            "value": "White | Lime"
+          },
+          {
+            "key": "color",
+            "value": "#f2f3f1"
+          },
+          {
+            "key": "image",
+            "value": null
+          },
+          {
+            "key": "color_taxonomy_reference",
+            "value": "[\"gid://shopify/TaxonomyValue/3\",\"gid://shopify/TaxonomyValue/14\"]"
+          },
+          {
+            "key": "pattern_taxonomy_reference",
+            "value": "gid://shopify/TaxonomyValue/2874"
+          }
+        ]
+      },
+      {
+        "id": "gid://shopify/Metaobject/619569742123",
+        "handle": "strideo-navy-black",
+        "fields": [
+          {
+            "key": "label",
+            "value": "Navy | Black"
+          },
+          {
+            "key": "color",
+            "value": "#303948"
+          },
+          {
+            "key": "image",
+            "value": null
+          },
+          {
+            "key": "color_taxonomy_reference",
+            "value": "[\"gid://shopify/TaxonomyValue/15\",\"gid://shopify/TaxonomyValue/1\"]"
+          },
+          {
+            "key": "pattern_taxonomy_reference",
+            "value": "gid://shopify/TaxonomyValue/2874"
+          }
+        ]
+      },
+      {
+        "id": "gid://shopify/Metaobject/619569774891",
+        "handle": "strideo-ivory-sand",
+        "fields": [
+          {
+            "key": "label",
+            "value": "Ivory | Sand"
+          },
+          {
+            "key": "color",
+            "value": "#e5e2d6"
+          },
+          {
+            "key": "image",
+            "value": null
+          },
+          {
+            "key": "color_taxonomy_reference",
+            "value": "[\"gid://shopify/TaxonomyValue/6\"]"
+          },
+          {
+            "key": "pattern_taxonomy_reference",
+            "value": "gid://shopify/TaxonomyValue/2874"
+          }
+        ]
+      },
+      {
+        "id": "gid://shopify/Metaobject/619569807659",
+        "handle": "strideo-green-black",
+        "fields": [
+          {
+            "key": "label",
+            "value": "Green | Black"
+          },
+          {
+            "key": "color",
+            "value": "#5b9962"
+          },
+          {
+            "key": "image",
+            "value": null
+          },
+          {
+            "key": "color_taxonomy_reference",
+            "value": "[\"gid://shopify/TaxonomyValue/9\",\"gid://shopify/TaxonomyValue/1\"]"
+          },
+          {
+            "key": "pattern_taxonomy_reference",
+            "value": "gid://shopify/TaxonomyValue/2874"
+          }
+        ]
+      },
+      {
+        "id": "gid://shopify/Metaobject/619569840427",
+        "handle": "strideo-lavender-black",
+        "fields": [
+          {
+            "key": "label",
+            "value": "Lavender | Black"
+          },
+          {
+            "key": "color",
+            "value": "#bbc0d3"
+          },
+          {
+            "key": "image",
+            "value": null
+          },
+          {
+            "key": "color_taxonomy_reference",
+            "value": "[\"gid://shopify/TaxonomyValue/12\",\"gid://shopify/TaxonomyValue/1\"]"
+          },
+          {
+            "key": "pattern_taxonomy_reference",
+            "value": "gid://shopify/TaxonomyValue/2874"
+          }
+        ]
+      },
+      {
+        "id": "gid://shopify/Metaobject/619569873195",
+        "handle": "strideo-charcoal-black",
+        "fields": [
+          {
+            "key": "label",
+            "value": "Charcoal | Black"
+          },
+          {
+            "key": "color",
+            "value": "#52535a"
+          },
+          {
+            "key": "image",
+            "value": null
+          },
+          {
+            "key": "color_taxonomy_reference",
+            "value": "[\"gid://shopify/TaxonomyValue/8\",\"gid://shopify/TaxonomyValue/1\"]"
+          },
+          {
+            "key": "pattern_taxonomy_reference",
+            "value": "gid://shopify/TaxonomyValue/2874"
+          }
+        ]
+      },
+      {
+        "id": "gid://shopify/Metaobject/619569905963",
+        "handle": "strideo-white-lavender",
+        "fields": [
+          {
+            "key": "label",
+            "value": "White | Lavender"
+          },
+          {
+            "key": "color",
+            "value": "#f2f3f1"
+          },
+          {
+            "key": "image",
+            "value": null
+          },
+          {
+            "key": "color_taxonomy_reference",
+            "value": "[\"gid://shopify/TaxonomyValue/3\",\"gid://shopify/TaxonomyValue/12\"]"
+          },
+          {
+            "key": "pattern_taxonomy_reference",
+            "value": "gid://shopify/TaxonomyValue/2874"
+          }
+        ]
+      },
+      {
+        "id": "gid://shopify/Metaobject/619569938731",
+        "handle": "strideo-sand-ivory",
+        "fields": [
+          {
+            "key": "label",
+            "value": "Sand | Ivory"
+          },
+          {
+            "key": "color",
+            "value": "#c5b8a0"
+          },
+          {
+            "key": "image",
+            "value": null
+          },
+          {
+            "key": "color_taxonomy_reference",
+            "value": "[\"gid://shopify/TaxonomyValue/6\"]"
+          },
+          {
+            "key": "pattern_taxonomy_reference",
+            "value": "gid://shopify/TaxonomyValue/2874"
+          }
+        ]
+      },
+      {
+        "id": "gid://shopify/Metaobject/619569971499",
+        "handle": "strideo-pink-ivory",
+        "fields": [
+          {
+            "key": "label",
+            "value": "Pink | Ivory"
+          },
+          {
+            "key": "color",
+            "value": "#e7cfd1"
+          },
+          {
+            "key": "image",
+            "value": null
+          },
+          {
+            "key": "color_taxonomy_reference",
+            "value": "[\"gid://shopify/TaxonomyValue/11\",\"gid://shopify/TaxonomyValue/6\"]"
+          },
+          {
+            "key": "pattern_taxonomy_reference",
+            "value": "gid://shopify/TaxonomyValue/2874"
+          }
+        ]
+      },
+      {
+        "id": "gid://shopify/Metaobject/619570004267",
+        "handle": "strideo-charcoal-ivory",
+        "fields": [
+          {
+            "key": "label",
+            "value": "Charcoal | Ivory"
+          },
+          {
+            "key": "color",
+            "value": "#52535a"
+          },
+          {
+            "key": "image",
+            "value": null
+          },
+          {
+            "key": "color_taxonomy_reference",
+            "value": "[\"gid://shopify/TaxonomyValue/8\",\"gid://shopify/TaxonomyValue/6\"]"
+          },
+          {
+            "key": "pattern_taxonomy_reference",
+            "value": "gid://shopify/TaxonomyValue/2874"
+          }
+        ]
+      },
+      {
+        "id": "gid://shopify/Metaobject/619570037035",
+        "handle": "strideo-ivory-lime",
+        "fields": [
+          {
+            "key": "label",
+            "value": "Ivory | Lime"
+          },
+          {
+            "key": "color",
+            "value": "#e5e2d6"
+          },
+          {
+            "key": "image",
+            "value": null
+          },
+          {
+            "key": "color_taxonomy_reference",
+            "value": "[\"gid://shopify/TaxonomyValue/6\",\"gid://shopify/TaxonomyValue/14\"]"
+          },
+          {
+            "key": "pattern_taxonomy_reference",
+            "value": "gid://shopify/TaxonomyValue/2874"
+          }
+        ]
+      },
+      {
+        "id": "gid://shopify/Metaobject/619570069803",
+        "handle": "strideo-white-black",
+        "fields": [
+          {
+            "key": "label",
+            "value": "White | Black"
+          },
+          {
+            "key": "color",
+            "value": "#f2f3f1"
+          },
+          {
+            "key": "image",
+            "value": null
+          },
+          {
+            "key": "color_taxonomy_reference",
+            "value": "[\"gid://shopify/TaxonomyValue/3\",\"gid://shopify/TaxonomyValue/1\"]"
+          },
+          {
+            "key": "pattern_taxonomy_reference",
+            "value": "gid://shopify/TaxonomyValue/2874"
+          }
+        ]
+      },
+      {
+        "id": "gid://shopify/Metaobject/619570102571",
+        "handle": "strideo-navy-ivory",
+        "fields": [
+          {
+            "key": "label",
+            "value": "Navy | Ivory"
+          },
+          {
+            "key": "color",
+            "value": "#303948"
+          },
+          {
+            "key": "image",
+            "value": null
+          },
+          {
+            "key": "color_taxonomy_reference",
+            "value": "[\"gid://shopify/TaxonomyValue/15\",\"gid://shopify/TaxonomyValue/6\"]"
+          },
+          {
+            "key": "pattern_taxonomy_reference",
+            "value": "gid://shopify/TaxonomyValue/2874"
+          }
+        ]
+      },
+      {
+        "id": "gid://shopify/Metaobject/619570135339",
+        "handle": "strideo-pearl-desert",
+        "fields": [
+          {
+            "key": "label",
+            "value": "Pearl | Desert"
+          },
+          {
+            "key": "color",
+            "value": "#e2decc"
+          },
+          {
+            "key": "image",
+            "value": null
+          },
+          {
+            "key": "color_taxonomy_reference",
+            "value": "[\"gid://shopify/TaxonomyValue/3\",\"gid://shopify/TaxonomyValue/6\"]"
+          },
+          {
+            "key": "pattern_taxonomy_reference",
+            "value": "gid://shopify/TaxonomyValue/2874"
+          }
+        ]
+      },
+      {
+        "id": "gid://shopify/Metaobject/619570168107",
+        "handle": "strideo-grey-black",
+        "fields": [
+          {
+            "key": "label",
+            "value": "Grey | Black"
+          },
+          {
+            "key": "color",
+            "value": "#a0a1a2"
+          },
+          {
+            "key": "image",
+            "value": null
+          },
+          {
+            "key": "color_taxonomy_reference",
+            "value": "[\"gid://shopify/TaxonomyValue/8\",\"gid://shopify/TaxonomyValue/1\"]"
+          },
+          {
+            "key": "pattern_taxonomy_reference",
+            "value": "gid://shopify/TaxonomyValue/2874"
+          }
+        ]
+      },
+      {
+        "id": "gid://shopify/Metaobject/619570200875",
+        "handle": "strideo-black-ivory",
+        "fields": [
+          {
+            "key": "label",
+            "value": "Black | Ivory"
+          },
+          {
+            "key": "color",
+            "value": "#242727"
+          },
+          {
+            "key": "image",
+            "value": null
+          },
+          {
+            "key": "color_taxonomy_reference",
+            "value": "[\"gid://shopify/TaxonomyValue/1\",\"gid://shopify/TaxonomyValue/6\"]"
+          },
+          {
+            "key": "pattern_taxonomy_reference",
+            "value": "gid://shopify/TaxonomyValue/2874"
+          }
+        ]
+      },
+      {
+        "id": "gid://shopify/Metaobject/619570233643",
+        "handle": "strideo-grey-lime",
+        "fields": [
+          {
+            "key": "label",
+            "value": "Grey | Lime"
+          },
+          {
+            "key": "color",
+            "value": "#a0a1a2"
+          },
+          {
+            "key": "image",
+            "value": null
+          },
+          {
+            "key": "color_taxonomy_reference",
+            "value": "[\"gid://shopify/TaxonomyValue/8\",\"gid://shopify/TaxonomyValue/14\"]"
+          },
+          {
+            "key": "pattern_taxonomy_reference",
+            "value": "gid://shopify/TaxonomyValue/2874"
+          }
+        ]
+      },
+      {
+        "id": "gid://shopify/Metaobject/619570266411",
+        "handle": "strideo-ivory-blue",
+        "fields": [
+          {
+            "key": "label",
+            "value": "Ivory | Blue"
+          },
+          {
+            "key": "color",
+            "value": "#e5e2d6"
+          },
+          {
+            "key": "image",
+            "value": null
+          },
+          {
+            "key": "color_taxonomy_reference",
+            "value": "[\"gid://shopify/TaxonomyValue/6\",\"gid://shopify/TaxonomyValue/2\"]"
+          },
+          {
+            "key": "pattern_taxonomy_reference",
+            "value": "gid://shopify/TaxonomyValue/2874"
+          }
+        ]
+      },
+      {
+        "id": "gid://shopify/Metaobject/619570299179",
+        "handle": "strideo-charcoal-grey",
+        "fields": [
+          {
+            "key": "label",
+            "value": "Charcoal | Grey"
+          },
+          {
+            "key": "color",
+            "value": "#52535a"
+          },
+          {
+            "key": "image",
+            "value": null
+          },
+          {
+            "key": "color_taxonomy_reference",
+            "value": "[\"gid://shopify/TaxonomyValue/8\"]"
+          },
+          {
+            "key": "pattern_taxonomy_reference",
+            "value": "gid://shopify/TaxonomyValue/2874"
+          }
+        ]
+      },
+      {
+        "id": "gid://shopify/Metaobject/620189614379",
+        "handle": "silver",
+        "fields": [
+          {
+            "key": "label",
+            "value": "Silver"
+          },
+          {
+            "key": "color",
+            "value": "#D3D3D3"
+          },
+          {
+            "key": "image",
+            "value": null
+          },
+          {
+            "key": "color_taxonomy_reference",
+            "value": "[\"gid://shopify/TaxonomyValue/5\"]"
+          },
+          {
+            "key": "pattern_taxonomy_reference",
+            "value": "gid://shopify/TaxonomyValue/2874"
+          }
+        ]
+      }
+    ]
+  },
+  "taxonomy": {
+    "categories": {
+      "nodes": [
+        {
+          "id": "gid://shopify/TaxonomyCategory/tg-5",
+          "name": "Toys",
+          "fullName": "Toys & Games > Toys"
+        },
+        {
+          "id": "gid://shopify/TaxonomyCategory/tg",
+          "name": "Toys & Games",
+          "fullName": "Toys & Games"
+        },
+        {
+          "id": "gid://shopify/TaxonomyCategory/tg-5-26-3",
+          "name": "Toy Blasters & Projectile Toys",
+          "fullName": "Toys & Games > Toys > Toy Weapons & Gadgets > Toy Blasters & Projectile Toys"
+        },
+        {
+          "id": "gid://shopify/TaxonomyCategory/bt-5",
+          "name": "Baby Toys & Activity Equipment",
+          "fullName": "Baby & Toddler > Baby Toys & Activity Equipment"
+        },
+        {
+          "id": "gid://shopify/TaxonomyCategory/tg-5-23",
+          "name": "Sports Toys",
+          "fullName": "Toys & Games > Toys > Sports Toys"
+        },
+        {
+          "id": "gid://shopify/TaxonomyCategory/tg-5-23-12",
+          "name": "Hockey Toys",
+          "fullName": "Toys & Games > Toys > Sports Toys > Hockey Toys"
+        },
+        {
+          "id": "gid://shopify/TaxonomyCategory/ma-1-4",
+          "name": "Sex Toys & Erotic Games",
+          "fullName": "Mature > Erotic > Sex Toys & Erotic Games"
+        },
+        {
+          "id": "gid://shopify/TaxonomyCategory/ap-2-2-5-10",
+          "name": "Stuffed Toys & Plushies",
+          "fullName": "Animals & Pet Supplies > Pet Supplies > Cat Supplies > Cat Toys > Stuffed Toys & Plushies"
+        },
+        {
+          "id": "gid://shopify/TaxonomyCategory/tg-5-9-2",
+          "name": "Astronomy Toys & Models",
+          "fullName": "Toys & Games > Toys > Educational Toys > Astronomy Toys & Models"
+        },
+        {
+          "id": "gid://shopify/TaxonomyCategory/tg-5-29",
+          "name": "Sensory Toys",
+          "fullName": "Toys & Games > Toys > Sensory Toys"
+        },
+        {
+          "id": "gid://shopify/TaxonomyCategory/tg-5-23-8",
+          "name": "Fitness Toys",
+          "fullName": "Toys & Games > Toys > Sports Toys > Fitness Toys"
+        },
+        {
+          "id": "gid://shopify/TaxonomyCategory/tg-5-1",
+          "name": "Activity Toys",
+          "fullName": "Toys & Games > Toys > Activity Toys"
+        },
+        {
+          "id": "gid://shopify/TaxonomyCategory/tg-5-5-1",
+          "name": "Bath Book Toys",
+          "fullName": "Toys & Games > Toys > Bath Toys > Bath Book Toys"
+        },
+        {
+          "id": "gid://shopify/TaxonomyCategory/tg-5-9",
+          "name": "Educational Toys",
+          "fullName": "Toys & Games > Toys > Educational Toys"
+        },
+        {
+          "id": "gid://shopify/TaxonomyCategory/tg-5-23-14",
+          "name": "Racquet Sport Toys",
+          "fullName": "Toys & Games > Toys > Sports Toys > Racquet Sport Toys"
+        },
+        {
+          "id": "gid://shopify/TaxonomyCategory/tg-5-1-5",
+          "name": "Coiled Spring Toys",
+          "fullName": "Toys & Games > Toys > Activity Toys > Coiled Spring Toys"
+        },
+        {
+          "id": "gid://shopify/TaxonomyCategory/tg-5-27-4",
+          "name": "Light Projection Toys",
+          "fullName": "Toys & Games > Toys > Visual Toys > Light Projection Toys"
+        },
+        {
+          "id": "gid://shopify/TaxonomyCategory/tg-5-20-4",
+          "name": "Rocking & Spring Riding Toys",
+          "fullName": "Toys & Games > Toys > Riding Toys > Rocking & Spring Riding Toys"
+        },
+        {
+          "id": "gid://shopify/TaxonomyCategory/tg-5-27-3",
+          "name": "Optical Illusion Toys",
+          "fullName": "Toys & Games > Toys > Visual Toys > Optical Illusion Toys"
+        },
+        {
+          "id": "gid://shopify/TaxonomyCategory/tg-5-7-8",
+          "name": "Construction Set Toys",
+          "fullName": "Toys & Games > Toys > Building Toys > Construction Set Toys"
+        }
+      ]
+    }
+  }
+}

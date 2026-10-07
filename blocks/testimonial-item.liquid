@@ -73,13 +73,7 @@
       "type": "select",
       "id": "corner_radius",
       "label": "Corner radius",
-      "options": [
-        { "value": "square", "label": "Square" },
-        { "value": "slightly_rounded", "label": "Slightly rounded" },
-        { "value": "rounded", "label": "Rounded" },
-        { "value": "pill", "label": "Pill" },
-        { "value": "custom", "label": "Custom" }
-      ],
+      "options": [{"value": "square", "label": "Square"}, {"value": "radius_2", "label": "t:options.radius_preset.size_2"}, {"value": "slightly_rounded", "label": "Slightly rounded"}, {"value": "radius_4", "label": "t:options.radius_preset.size_4"}, {"value": "radius_6", "label": "t:options.radius_preset.size_6"}, {"value": "rounded", "label": "Rounded"}, {"value": "radius_8", "label": "t:options.radius_preset.size_8"}, {"value": "radius_12", "label": "t:options.radius_preset.size_12"}, {"value": "radius_16", "label": "t:options.radius_preset.size_16"}, {"value": "radius_24", "label": "t:options.radius_preset.size_24"}, {"value": "radius_32", "label": "t:options.radius_preset.size_32"}, {"value": "pill", "label": "Pill"}, {"value": "custom", "label": "Custom"}],
       "default": "square"
     },
     { "type": "range", "id": "custom_corner_radius", "label": "t:labels.custom_corner_radius", "min": 0, "max": 100, "step": 1, "unit": "px", "default": 24, "visible_if": "{{ block.settings.corner_radius == 'custom' }}" },

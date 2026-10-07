@@ -520,8 +520,7 @@ svg {
 }
 
 button,
-input,
-textarea,
+:where(input, textarea),
 :where(.form__control--select, select:not(.form__control)) {
   font: inherit;
 }
@@ -534,13 +533,13 @@ input[type='reset'] {
 }
 
 .input-style--solid {
-  --input-background-color: var(--input-background-color-solid);
+  --input-background-color: var(--input-background-color-override, var(--input-background-color-solid));
   --input-background: var(--input-background-color);
   --input-border-width: 0px;
 }
 
 .input-style--outline {
-  --input-background-color: transparent;
+  --input-background-color: var(--input-background-color-override, transparent);
   --input-background: var(--input-background-color);
   --input-border-width: var(--input-border-width-outline);
 }
@@ -553,7 +552,7 @@ input[type='reset'] {
 ) {
   width: 100%;
   min-height: var(--input-height);
-  padding: 0.65rem 0.875rem;
+  padding: 0.65rem var(--input-padding-inline);
   border: var(--input-border-width) solid var(--input-border-color);
   border-radius: var(--input-radius);
   background-color: var(--input-background-color);
@@ -562,6 +561,8 @@ input[type='reset'] {
 }
 
 :where(.form__control--textarea, textarea:not(.form__control)) {
+  border-radius: var(--textarea-radius);
+  padding-block: var(--input-padding-inline);
   min-height: 8rem;
   resize: vertical;
 }
@@ -3043,7 +3044,6 @@ legend {
   }
 
   .product-card--quick-add-mobile .product-card__quick-add .product-card__quick-add-button {
-    --button-radius: 0;
     --button-icon-size: 18px;
     width: 36px;
     min-width: 36px;

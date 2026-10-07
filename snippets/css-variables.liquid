@@ -304,6 +304,8 @@
 
   assign radius_badges_subheadings = 'var(--radius-square)'
   case settings.radius_badges_subheadings
+    when 'radius_2', 'radius_4', 'radius_6', 'radius_8', 'radius_12', 'radius_16', 'radius_24', 'radius_32'
+      assign radius_badges_subheadings = settings.radius_badges_subheadings | replace: 'radius_', 'var(--radius-' | append: ')'
     when 'slightly_rounded'
       assign radius_badges_subheadings = 'var(--radius-slight)'
     when 'rounded'
@@ -314,6 +316,8 @@
 
   assign radius_variant_pickers = 'var(--radius-square)'
   case settings.radius_variant_pickers
+    when 'radius_2', 'radius_4', 'radius_6', 'radius_8', 'radius_12', 'radius_16', 'radius_24', 'radius_32'
+      assign radius_variant_pickers = settings.radius_variant_pickers | replace: 'radius_', 'var(--radius-' | append: ')'
     when 'slightly_rounded'
       assign radius_variant_pickers = 'var(--radius-slight)'
     when 'rounded'
@@ -324,6 +328,8 @@
 
   assign radius_swatches = 'var(--radius-square)'
   case settings.radius_swatches
+    when 'radius_2', 'radius_4', 'radius_6', 'radius_8', 'radius_12', 'radius_16', 'radius_24', 'radius_32'
+      assign radius_swatches = settings.radius_swatches | replace: 'radius_', 'var(--radius-' | append: ')'
     when 'slightly_rounded'
       assign radius_swatches = 'var(--radius-slight)'
     when 'rounded'
@@ -334,6 +340,8 @@
 
   assign radius_navigation = 'var(--radius-square)'
   case settings.radius_navigation
+    when 'radius_2', 'radius_4', 'radius_6', 'radius_8', 'radius_12', 'radius_16', 'radius_24', 'radius_32'
+      assign radius_navigation = settings.radius_navigation | replace: 'radius_', 'var(--radius-' | append: ')'
     when 'slightly_rounded'
       assign radius_navigation = 'var(--radius-slight)'
     when 'rounded'
@@ -344,6 +352,8 @@
 
   assign radius_tags = 'var(--radius-square)'
   case settings.radius_tags
+    when 'radius_2', 'radius_4', 'radius_6', 'radius_8', 'radius_12', 'radius_16', 'radius_24', 'radius_32'
+      assign radius_tags = settings.radius_tags | replace: 'radius_', 'var(--radius-' | append: ')'
     when 'slightly_rounded'
       assign radius_tags = 'var(--radius-slight)'
     when 'rounded'
@@ -354,6 +364,8 @@
 
   assign media_container_radius = 'var(--radius-square)'
   case settings.radius_media_containers
+    when 'radius_2', 'radius_4', 'radius_6', 'radius_8', 'radius_12', 'radius_16', 'radius_24', 'radius_32'
+      assign media_container_radius = settings.radius_media_containers | replace: 'radius_', 'var(--radius-' | append: ')'
     when 'slightly_rounded'
       assign media_container_radius = 'var(--radius-slight)'
     when 'rounded'
@@ -364,6 +376,8 @@
 
   assign drawer_radius = 'var(--radius-square)'
   case settings.radius_drawers
+    when 'radius_2', 'radius_4', 'radius_6', 'radius_8', 'radius_12', 'radius_16', 'radius_24', 'radius_32'
+      assign drawer_radius = settings.radius_drawers | replace: 'radius_', 'var(--radius-' | append: ')'
     when 'slightly_rounded'
       assign drawer_radius = 'var(--radius-slight)'
     when 'rounded'
@@ -373,12 +387,14 @@
   endcase
 
   assign overlay_close_radius = 'var(--radius-square)'
-  if settings.radius_drawers == 'slightly_rounded' or settings.radius_drawers == 'rounded' or settings.radius_drawers == 'extra_rounded'
+  if settings.radius_drawers contains 'radius_' or settings.radius_drawers == 'slightly_rounded' or settings.radius_drawers == 'rounded' or settings.radius_drawers == 'extra_rounded'
     assign overlay_close_radius = 'var(--radius-pill)'
   endif
 
   assign bottom_sheet_radius = 'var(--radius-square)'
   case settings.radius_bottom_sheets
+    when 'radius_2', 'radius_4', 'radius_6', 'radius_8', 'radius_12', 'radius_16', 'radius_24', 'radius_32'
+      assign bottom_sheet_radius = settings.radius_bottom_sheets | replace: 'radius_', 'var(--radius-' | append: ')'
     when 'slightly_rounded'
       assign bottom_sheet_radius = 'var(--radius-slight)'
     when 'rounded'
@@ -401,6 +417,8 @@
 
   assign button_radius = 'var(--radius-square)'
   case settings.button_radius_style
+    when 'radius_2', 'radius_4', 'radius_6', 'radius_8', 'radius_12', 'radius_16', 'radius_24', 'radius_32'
+      assign button_radius = settings.button_radius_style | replace: 'radius_', 'var(--radius-' | append: ')'
     when 'slightly_rounded'
       assign button_radius = 'var(--radius-slight)'
     when 'rounded'
@@ -410,7 +428,7 @@
   endcase
 
   assign icon_button_radius = 'var(--radius-square)'
-  if settings.button_radius_style == 'slightly_rounded' or settings.button_radius_style == 'rounded' or settings.button_radius_style == 'pill'
+  if settings.button_radius_style contains 'radius_' or settings.button_radius_style == 'slightly_rounded' or settings.button_radius_style == 'rounded' or settings.button_radius_style == 'pill'
     assign icon_button_radius = 'var(--radius-pill)'
   endif
 
@@ -505,6 +523,8 @@
   endif
   assign input_radius = 'var(--radius-rounded)'
   case settings.input_radius_style
+    when 'radius_2', 'radius_4', 'radius_6', 'radius_8', 'radius_12', 'radius_16', 'radius_24', 'radius_32'
+      assign input_radius = settings.input_radius_style | replace: 'radius_', 'var(--radius-' | append: ')'
     when 'square'
       assign input_radius = 'var(--radius-square)'
     when 'slightly_rounded'
@@ -994,6 +1014,14 @@
     --motion-block-animation: {{ motion_block_animation }};
 
     --radius-square: 0px;
+    --radius-2: 2px;
+    --radius-4: 4px;
+    --radius-6: 6px;
+    --radius-8: 8px;
+    --radius-12: 12px;
+    --radius-16: 16px;
+    --radius-24: 24px;
+    --radius-32: 32px;
     --radius-slight: 4px;
     --radius-rounded: 8px;
     --radius-pill: 1000px;
@@ -1083,8 +1111,13 @@
     --input-height: {{ input_height_desktop }}px;
     --input-height-mobile: {{ input_height_mobile }}px;
     --input-radius: {{ input_radius }};
+    --input-padding-inline: {{ settings.input_padding_inline | default: 20 }}px;
+    --textarea-radius: {{ settings.textarea_radius_style | default: 'radius_24' | replace: 'radius_', 'var(--radius-' | append: ')' }};
     --input-border-width-outline: {{ input_border_width }}px;
     --input-border-width: 0px;
+    {% if settings.input_background_color != blank %}
+      --input-background-color-override: {{ settings.input_background_color }};
+    {% endif %}
     --input-background-color-solid: color-mix(in srgb, var(--body-color) 6%, transparent);
     --input-background-color: var(--input-background-color-solid);
     --input-border-color: var(--border-color);

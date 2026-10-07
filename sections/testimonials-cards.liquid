@@ -14,7 +14,7 @@
 {% if section.settings.background_color != blank %}
   {% style %}#shopify-section-{{ section.id }} { background-color: {{ section.settings.background_color }}; }{% endstyle %}
 {% endif %}
-<div class="section-spacing testimonials-cards testimonials-cards--height-{{ card_height }} color-scheme section-color-scope {{ section.settings.color_scheme }}" style="--testimonials-padding-top: {{ section.settings.padding_top }}px; --testimonials-padding-bottom: {{ section.settings.padding_bottom }}px; --testimonials-header-gap: {{ section.settings.header_gap }}px; --testimonials-header-gap-mobile: {{ section.settings.header_gap_mobile }}px;{% if section.settings.background_color != blank %} background-color: {{ section.settings.background_color }};{% endif %}">
+<div class="section-spacing testimonials-cards testimonials-cards--height-{{ card_height }} color-scheme section-color-scope {{ section.settings.color_scheme }}" style="--testimonials-padding-top: {{ section.settings.padding_top }}px; --testimonials-padding-bottom: {{ section.settings.padding_bottom }}px; --testimonials-header-gap: {{ section.settings.header_gap }}px; --testimonials-header-gap-mobile: {{ section.settings.header_gap_mobile }}px; --testimonials-pagination-gap-mobile: {{ section.settings.pagination_top_padding_mobile | default: 28 }}px;{% if section.settings.customize_mobile_padding %} --testimonials-padding-top-mobile: {{ section.settings.padding_top_mobile }}px; --testimonials-padding-bottom-mobile: {{ section.settings.padding_bottom_mobile }}px;{% endif %}{% if section.settings.background_color != blank %} background-color: {{ section.settings.background_color }};{% endif %}">
   <div class="container {% if section.settings.section_width == 'full_width' %}full-width{% else %}page-width{% endif %} testimonials-cards__content">
     <div class="testimonials-cards__header align-content">{% content_for 'block', type: 'header', id: 'header' %}</div>
     {% capture slides %}{% content_for 'blocks' %}{% endcapture %}
@@ -28,7 +28,7 @@
 .testimonials-cards { padding-block: var(--testimonials-padding-top, 80px) var(--testimonials-padding-bottom, 80px); }
 .testimonials-cards__content { display: flex; flex-direction: column; gap: var(--testimonials-header-gap, 56px); }
 .testimonials-cards__header { --flex-align: center; --flex-align-mobile: center; width: 100%; max-width: 768px; margin-inline: auto; }
-.testimonials-cards__carousel { min-width: 0; --swiper-pagination-spacing: 36px; --swiper-pagination-spacing-mobile: 28px; }
+.testimonials-cards__carousel { min-width: 0; --swiper-pagination-spacing: 36px; --swiper-pagination-spacing-mobile: var(--testimonials-pagination-gap-mobile, 28px); }
 .testimonials-cards__carousel.carousel-block--locked .swiper-pagination { display: none; }
 .testimonials-cards__carousel .swiper-wrapper { align-items: stretch; }
 /* Stretch fills the auto-sized Swiper row without a fixed pixel height. */
@@ -41,7 +41,7 @@
  .testimonials-cards__header { max-width: 576px; }
 }
 @media (max-width: 767.98px) {
- .testimonials-cards { padding-block: calc(var(--testimonials-padding-top, 80px) * .5) calc(var(--testimonials-padding-bottom, 80px) * .5); }
+ .testimonials-cards { padding-block: var(--testimonials-padding-top-mobile, calc(var(--testimonials-padding-top, 80px) * .5)) var(--testimonials-padding-bottom-mobile, calc(var(--testimonials-padding-bottom, 80px) * .5)); }
  .testimonials-cards__content { gap: var(--testimonials-header-gap-mobile, 32px); }
  .testimonials-cards__header { max-width: 448px; }
 }
@@ -183,6 +183,16 @@
       "default": 32
     },
     {
+      "type": "range",
+      "id": "pagination_top_padding_mobile",
+      "label": "t:labels.pagination_mobile_top_padding",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "default": 28
+    },
+    {
       "type": "checkbox",
       "id": "show_pagination",
       "label": "t:labels.show_pagination",
@@ -246,6 +256,34 @@
       "step": 1,
       "unit": "px",
       "default": 80
+    },
+    {
+      "type": "checkbox",
+      "id": "customize_mobile_padding",
+      "label": "t:labels.customize_mobile_padding",
+      "default": false
+    },
+    {
+      "type": "range",
+      "id": "padding_top_mobile",
+      "label": "t:labels.mobile_top_padding",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "default": 40,
+      "visible_if": "{{ section.settings.customize_mobile_padding }}"
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_mobile",
+      "label": "t:labels.mobile_bottom_padding",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "default": 40,
+      "visible_if": "{{ section.settings.customize_mobile_padding }}"
     }
   ],
   "presets": [
@@ -281,14 +319,18 @@
           "type": "_testimonial-review-card",
           "settings": {
             "direction": "vertical",
-            "gap_desktop": 0,
-            "gap_mobile": 0,
+            "gap_desktop": 28,
+            "gap_mobile": 28,
             "background_color": "#ffffff",
             "corner_radius": "custom",
-            "custom_corner_radius": 24
+            "custom_corner_radius": 24,
+            "padding_top": 36,
+            "padding_bottom": 36,
+            "padding_left": 28,
+            "padding_right": 28
           },
           "blocks": {
-            "card": {
+            "content": {
               "type": "group",
               "settings": {
                 "direction": "vertical",
@@ -296,74 +338,15 @@
                 "alignment_mobile": "center",
                 "width": "fill",
                 "height": "fit",
-                "gap_desktop": 28,
-                "gap_mobile": 28,
-                "padding_top": 36,
-                "padding_bottom": 36,
-                "padding_left": 28,
-                "padding_right": 28
+                "gap_desktop": 16,
+                "gap_mobile": 16
               },
               "blocks": {
-                "content": {
-                  "type": "group",
-                  "settings": {
-                    "direction": "vertical",
-                    "alignment": "center",
-                    "alignment_mobile": "center",
-                    "width": "fill",
-                    "height": "fit",
-                    "gap_desktop": 16,
-                    "gap_mobile": 16
-                  },
-                  "blocks": {
-                    "rating": {
-                      "type": "testimonial-rating",
-                      "settings": {}
-                    },
-                    "copy": {
-                      "type": "group",
-                      "settings": {
-                        "direction": "vertical",
-                        "alignment": "center",
-                        "alignment_mobile": "center",
-                        "width": "fill",
-                        "height": "fit",
-                        "gap_desktop": 10,
-                        "gap_mobile": 10
-                      },
-                      "blocks": {
-                        "title": {
-                          "type": "heading",
-                          "settings": {
-                            "text": "<p>Safe, Colorful, and Engaging!</p>",
-                            "heading_size": "md",
-                            "html_tag": "h3",
-                            "width": "fill"
-                          }
-                        },
-                        "quote": {
-                          "type": "text",
-                          "settings": {
-                            "text": "<p>The toys are made from safe materials and the bright colors really capture my son's attention. It\u2019s been a joy watching him explore and play independently.</p>",
-                            "text_size": "md",
-                            "width": "fill",
-                            "customize_letter_spacing": true,
-                            "letter_spacing": 0
-                          }
-                        }
-                      },
-                      "block_order": [
-                        "title",
-                        "quote"
-                      ]
-                    }
-                  },
-                  "block_order": [
-                    "rating",
-                    "copy"
-                  ]
+                "rating": {
+                  "type": "testimonial-rating",
+                  "settings": {}
                 },
-                "author": {
+                "copy": {
                   "type": "group",
                   "settings": {
                     "direction": "vertical",
@@ -371,65 +354,107 @@
                     "alignment_mobile": "center",
                     "width": "fill",
                     "height": "fit",
-                    "gap_desktop": 12,
-                    "gap_mobile": 12
+                    "gap_desktop": 10,
+                    "gap_mobile": 10
                   },
                   "blocks": {
-                    "avatar": {
-                      "type": "image",
+                    "title": {
+                      "type": "heading",
                       "settings": {
-                        "image_ratio_desktop": "square",
-                        "image_ratio_mobile": "square",
-                        "width_desktop": "fixed",
-                        "width_mobile": "fixed",
-                        "limit_width_desktop": false,
-                        "max_width_desktop": 1600,
-                        "limit_width_mobile": false,
-                        "max_width_mobile": 1600,
-                        "corner_radius": "full",
-                        "alt_text": "Jason K.",
-                        "width_fixed_desktop": 70,
-                        "width_fixed_mobile": 70,
-                        "image_fit": "contain"
+                        "text": "<p>Safe, Colorful, and Engaging!</p>",
+                        "heading_size": "md",
+                        "html_tag": "h3",
+                        "width": "fill"
                       }
                     },
-                    "name": {
+                    "quote": {
                       "type": "text",
                       "settings": {
-                        "text": "<p>Jason K.</p>",
+                        "text": "<p>The toys are made from safe materials and the bright colors really capture my son's attention. It’s been a joy watching him explore and play independently.</p>",
                         "text_size": "md",
-                        "text_color": "#181818"
+                        "width": "fill",
+                        "customize_letter_spacing": true,
+                        "letter_spacing": 0
                       }
                     }
                   },
                   "block_order": [
-                    "avatar",
-                    "name"
+                    "title",
+                    "quote"
                   ]
                 }
               },
               "block_order": [
-                "content",
-                "author"
+                "rating",
+                "copy"
+              ]
+            },
+            "author": {
+              "type": "group",
+              "settings": {
+                "direction": "vertical",
+                "alignment": "center",
+                "alignment_mobile": "center",
+                "width": "fill",
+                "height": "fit",
+                "gap_desktop": 12,
+                "gap_mobile": 12
+              },
+              "blocks": {
+                "avatar": {
+                  "type": "image",
+                  "settings": {
+                    "image_ratio_desktop": "square",
+                    "image_ratio_mobile": "square",
+                    "width_desktop": "fixed",
+                    "width_mobile": "fixed",
+                    "limit_width_desktop": false,
+                    "max_width_desktop": 1600,
+                    "limit_width_mobile": false,
+                    "max_width_mobile": 1600,
+                    "corner_radius": "full",
+                    "alt_text": "Jason K.",
+                    "width_fixed_desktop": 70,
+                    "width_fixed_mobile": 70,
+                    "image_fit": "contain"
+                  }
+                },
+                "name": {
+                  "type": "text",
+                  "settings": {
+                    "text": "<p>Jason K.</p>",
+                    "text_size": "md",
+                    "text_color": "#181818"
+                  }
+                }
+              },
+              "block_order": [
+                "avatar",
+                "name"
               ]
             }
           },
           "block_order": [
-            "card"
+            "content",
+            "author"
           ]
         },
         "sarah": {
           "type": "_testimonial-review-card",
           "settings": {
             "direction": "vertical",
-            "gap_desktop": 0,
-            "gap_mobile": 0,
+            "gap_desktop": 28,
+            "gap_mobile": 28,
             "background_color": "#ffffff",
             "corner_radius": "custom",
-            "custom_corner_radius": 24
+            "custom_corner_radius": 24,
+            "padding_top": 36,
+            "padding_bottom": 36,
+            "padding_left": 28,
+            "padding_right": 28
           },
           "blocks": {
-            "card": {
+            "content": {
               "type": "group",
               "settings": {
                 "direction": "vertical",
@@ -437,74 +462,15 @@
                 "alignment_mobile": "center",
                 "width": "fill",
                 "height": "fit",
-                "gap_desktop": 28,
-                "gap_mobile": 28,
-                "padding_top": 36,
-                "padding_bottom": 36,
-                "padding_left": 28,
-                "padding_right": 28
+                "gap_desktop": 16,
+                "gap_mobile": 16
               },
               "blocks": {
-                "content": {
-                  "type": "group",
-                  "settings": {
-                    "direction": "vertical",
-                    "alignment": "center",
-                    "alignment_mobile": "center",
-                    "width": "fill",
-                    "height": "fit",
-                    "gap_desktop": 16,
-                    "gap_mobile": 16
-                  },
-                  "blocks": {
-                    "rating": {
-                      "type": "testimonial-rating",
-                      "settings": {}
-                    },
-                    "copy": {
-                      "type": "group",
-                      "settings": {
-                        "direction": "vertical",
-                        "alignment": "center",
-                        "alignment_mobile": "center",
-                        "width": "fill",
-                        "height": "fit",
-                        "gap_desktop": 10,
-                        "gap_mobile": 10
-                      },
-                      "blocks": {
-                        "title": {
-                          "type": "heading",
-                          "settings": {
-                            "text": "<p>Hours of Fun and Learning!</p>",
-                            "heading_size": "md",
-                            "html_tag": "h3",
-                            "width": "fill"
-                          }
-                        },
-                        "quote": {
-                          "type": "text",
-                          "settings": {
-                            "text": "<p>My daughter absolutely loves these toys. Not they keep her entertained, but I can also see how much she's learning through play.</p>",
-                            "text_size": "md",
-                            "width": "fill",
-                            "customize_letter_spacing": true,
-                            "letter_spacing": 0
-                          }
-                        }
-                      },
-                      "block_order": [
-                        "title",
-                        "quote"
-                      ]
-                    }
-                  },
-                  "block_order": [
-                    "rating",
-                    "copy"
-                  ]
+                "rating": {
+                  "type": "testimonial-rating",
+                  "settings": {}
                 },
-                "author": {
+                "copy": {
                   "type": "group",
                   "settings": {
                     "direction": "vertical",
@@ -512,65 +478,107 @@
                     "alignment_mobile": "center",
                     "width": "fill",
                     "height": "fit",
-                    "gap_desktop": 12,
-                    "gap_mobile": 12
+                    "gap_desktop": 10,
+                    "gap_mobile": 10
                   },
                   "blocks": {
-                    "avatar": {
-                      "type": "image",
+                    "title": {
+                      "type": "heading",
                       "settings": {
-                        "image_ratio_desktop": "square",
-                        "image_ratio_mobile": "square",
-                        "width_desktop": "fixed",
-                        "width_mobile": "fixed",
-                        "limit_width_desktop": false,
-                        "max_width_desktop": 1600,
-                        "limit_width_mobile": false,
-                        "max_width_mobile": 1600,
-                        "corner_radius": "full",
-                        "alt_text": "Sarah L",
-                        "width_fixed_desktop": 70,
-                        "width_fixed_mobile": 70,
-                        "image_fit": "contain"
+                        "text": "<p>Hours of Fun and Learning!</p>",
+                        "heading_size": "md",
+                        "html_tag": "h3",
+                        "width": "fill"
                       }
                     },
-                    "name": {
+                    "quote": {
                       "type": "text",
                       "settings": {
-                        "text": "<p>Sarah L</p>",
+                        "text": "<p>My daughter absolutely loves these toys. Not they keep her entertained, but I can also see how much she's learning through play.</p>",
                         "text_size": "md",
-                        "text_color": "#181818"
+                        "width": "fill",
+                        "customize_letter_spacing": true,
+                        "letter_spacing": 0
                       }
                     }
                   },
                   "block_order": [
-                    "avatar",
-                    "name"
+                    "title",
+                    "quote"
                   ]
                 }
               },
               "block_order": [
-                "content",
-                "author"
+                "rating",
+                "copy"
+              ]
+            },
+            "author": {
+              "type": "group",
+              "settings": {
+                "direction": "vertical",
+                "alignment": "center",
+                "alignment_mobile": "center",
+                "width": "fill",
+                "height": "fit",
+                "gap_desktop": 12,
+                "gap_mobile": 12
+              },
+              "blocks": {
+                "avatar": {
+                  "type": "image",
+                  "settings": {
+                    "image_ratio_desktop": "square",
+                    "image_ratio_mobile": "square",
+                    "width_desktop": "fixed",
+                    "width_mobile": "fixed",
+                    "limit_width_desktop": false,
+                    "max_width_desktop": 1600,
+                    "limit_width_mobile": false,
+                    "max_width_mobile": 1600,
+                    "corner_radius": "full",
+                    "alt_text": "Sarah L",
+                    "width_fixed_desktop": 70,
+                    "width_fixed_mobile": 70,
+                    "image_fit": "contain"
+                  }
+                },
+                "name": {
+                  "type": "text",
+                  "settings": {
+                    "text": "<p>Sarah L</p>",
+                    "text_size": "md",
+                    "text_color": "#181818"
+                  }
+                }
+              },
+              "block_order": [
+                "avatar",
+                "name"
               ]
             }
           },
           "block_order": [
-            "card"
+            "content",
+            "author"
           ]
         },
         "emily": {
           "type": "_testimonial-review-card",
           "settings": {
             "direction": "vertical",
-            "gap_desktop": 0,
-            "gap_mobile": 0,
+            "gap_desktop": 28,
+            "gap_mobile": 28,
             "background_color": "#ffffff",
             "corner_radius": "custom",
-            "custom_corner_radius": 24
+            "custom_corner_radius": 24,
+            "padding_top": 36,
+            "padding_bottom": 36,
+            "padding_left": 28,
+            "padding_right": 28
           },
           "blocks": {
-            "card": {
+            "content": {
               "type": "group",
               "settings": {
                 "direction": "vertical",
@@ -578,74 +586,15 @@
                 "alignment_mobile": "center",
                 "width": "fill",
                 "height": "fit",
-                "gap_desktop": 28,
-                "gap_mobile": 28,
-                "padding_top": 36,
-                "padding_bottom": 36,
-                "padding_left": 28,
-                "padding_right": 28
+                "gap_desktop": 16,
+                "gap_mobile": 16
               },
               "blocks": {
-                "content": {
-                  "type": "group",
-                  "settings": {
-                    "direction": "vertical",
-                    "alignment": "center",
-                    "alignment_mobile": "center",
-                    "width": "fill",
-                    "height": "fit",
-                    "gap_desktop": 16,
-                    "gap_mobile": 16
-                  },
-                  "blocks": {
-                    "rating": {
-                      "type": "testimonial-rating",
-                      "settings": {}
-                    },
-                    "copy": {
-                      "type": "group",
-                      "settings": {
-                        "direction": "vertical",
-                        "alignment": "center",
-                        "alignment_mobile": "center",
-                        "width": "fill",
-                        "height": "fit",
-                        "gap_desktop": 10,
-                        "gap_mobile": 10
-                      },
-                      "blocks": {
-                        "title": {
-                          "type": "heading",
-                          "settings": {
-                            "text": "<p>Great product</p>",
-                            "heading_size": "md",
-                            "html_tag": "h3",
-                            "width": "fill"
-                          }
-                        },
-                        "quote": {
-                          "type": "text",
-                          "settings": {
-                            "text": "<p>We\u2019ve tried many toys, but these are the ones my always come back to. Durable, creative, and so much fun. Even the grandparents love playing with.</p>",
-                            "text_size": "md",
-                            "width": "fill",
-                            "customize_letter_spacing": true,
-                            "letter_spacing": 0
-                          }
-                        }
-                      },
-                      "block_order": [
-                        "title",
-                        "quote"
-                      ]
-                    }
-                  },
-                  "block_order": [
-                    "rating",
-                    "copy"
-                  ]
+                "rating": {
+                  "type": "testimonial-rating",
+                  "settings": {}
                 },
-                "author": {
+                "copy": {
                   "type": "group",
                   "settings": {
                     "direction": "vertical",
@@ -653,51 +602,89 @@
                     "alignment_mobile": "center",
                     "width": "fill",
                     "height": "fit",
-                    "gap_desktop": 12,
-                    "gap_mobile": 12
+                    "gap_desktop": 10,
+                    "gap_mobile": 10
                   },
                   "blocks": {
-                    "avatar": {
-                      "type": "image",
+                    "title": {
+                      "type": "heading",
                       "settings": {
-                        "image_ratio_desktop": "square",
-                        "image_ratio_mobile": "square",
-                        "width_desktop": "fixed",
-                        "width_mobile": "fixed",
-                        "limit_width_desktop": false,
-                        "max_width_desktop": 1600,
-                        "limit_width_mobile": false,
-                        "max_width_mobile": 1600,
-                        "corner_radius": "full",
-                        "alt_text": "Emily R.",
-                        "width_fixed_desktop": 70,
-                        "width_fixed_mobile": 70,
-                        "image_fit": "contain"
+                        "text": "<p>Great product</p>",
+                        "heading_size": "md",
+                        "html_tag": "h3",
+                        "width": "fill"
                       }
                     },
-                    "name": {
+                    "quote": {
                       "type": "text",
                       "settings": {
-                        "text": "<p>Emily R.</p>",
+                        "text": "<p>We’ve tried many toys, but these are the ones my always come back to. Durable, creative, and so much fun. Even the grandparents love playing with.</p>",
                         "text_size": "md",
-                        "text_color": "#181818"
+                        "width": "fill",
+                        "customize_letter_spacing": true,
+                        "letter_spacing": 0
                       }
                     }
                   },
                   "block_order": [
-                    "avatar",
-                    "name"
+                    "title",
+                    "quote"
                   ]
                 }
               },
               "block_order": [
-                "content",
-                "author"
+                "rating",
+                "copy"
+              ]
+            },
+            "author": {
+              "type": "group",
+              "settings": {
+                "direction": "vertical",
+                "alignment": "center",
+                "alignment_mobile": "center",
+                "width": "fill",
+                "height": "fit",
+                "gap_desktop": 12,
+                "gap_mobile": 12
+              },
+              "blocks": {
+                "avatar": {
+                  "type": "image",
+                  "settings": {
+                    "image_ratio_desktop": "square",
+                    "image_ratio_mobile": "square",
+                    "width_desktop": "fixed",
+                    "width_mobile": "fixed",
+                    "limit_width_desktop": false,
+                    "max_width_desktop": 1600,
+                    "limit_width_mobile": false,
+                    "max_width_mobile": 1600,
+                    "corner_radius": "full",
+                    "alt_text": "Emily R.",
+                    "width_fixed_desktop": 70,
+                    "width_fixed_mobile": 70,
+                    "image_fit": "contain"
+                  }
+                },
+                "name": {
+                  "type": "text",
+                  "settings": {
+                    "text": "<p>Emily R.</p>",
+                    "text_size": "md",
+                    "text_color": "#181818"
+                  }
+                }
+              },
+              "block_order": [
+                "avatar",
+                "name"
               ]
             }
           },
           "block_order": [
-            "card"
+            "content",
+            "author"
           ]
         }
       },

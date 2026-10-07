@@ -26,6 +26,7 @@ const getSlidesPerView = (value) => {
 };
 
 const getMobileSlidesPerView = (carousel) => {
+  if (toNumber(carousel.dataset.swiperCardWidthMobile, 0) > 0) return 'auto';
   const columns = getSlidesPerView(carousel.dataset.swiperColumnsMobile);
 
   if (carousel.dataset.swiperNextSlidePreviewMobile === 'true') {

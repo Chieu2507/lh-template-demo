@@ -1,0 +1,1287 @@
+{
+  "products": {
+    "nodes": [
+      {
+        "id": "gid://shopify/Product/15408920658219",
+        "title": "Rocking Horse",
+        "handle": "perky-rocking-horse",
+        "status": "ACTIVE",
+        "category": {
+          "id": "gid://shopify/TaxonomyCategory/tg-5-20-4",
+          "fullName": "Toys & Games > Toys > Riding Toys > Rocking & Spring Riding Toys"
+        },
+        "tags": [
+          "New",
+          "Perky"
+        ],
+        "publishedOnPublication": true,
+        "media": {
+          "nodes": [
+            {
+              "id": "gid://shopify/MediaImage/46437924831531",
+              "status": "READY",
+              "image": {
+                "url": "https://cdn.shopify.com/s/files/1/1024/2192/2091/files/perky-rocking-horse-catalog.jpg?v=1791359349",
+                "altText": "Rocking Horse — Sage — catalog view",
+                "width": 1500,
+                "height": 1500
+              }
+            },
+            {
+              "id": "gid://shopify/MediaImage/46437924864299",
+              "status": "READY",
+              "image": {
+                "url": "https://cdn.shopify.com/s/files/1/1024/2192/2091/files/perky-rocking-horse-lifestyle.png?v=1791359350",
+                "altText": "Rocking Horse — Sage — playroom view",
+                "width": 1254,
+                "height": 1254
+              }
+            },
+            {
+              "id": "gid://shopify/MediaImage/46437924897067",
+              "status": "READY",
+              "image": {
+                "url": "https://cdn.shopify.com/s/files/1/1024/2192/2091/files/perky-rocking-horse-angle.png?v=1791359350",
+                "altText": "Rocking Horse — Sage — alternate view",
+                "width": 1254,
+                "height": 1254
+              }
+            },
+            {
+              "id": "gid://shopify/MediaImage/46437924929835",
+              "status": "READY",
+              "image": {
+                "url": "https://cdn.shopify.com/s/files/1/1024/2192/2091/files/perky-rocking-horse-detail.png?v=1791359349",
+                "altText": "Rocking Horse — Sage — detail view",
+                "width": 1254,
+                "height": 1254
+              }
+            }
+          ]
+        },
+        "options": [
+          {
+            "name": "Color",
+            "linkedMetafield": {
+              "namespace": "shopify",
+              "key": "color-pattern"
+            }
+          }
+        ],
+        "variants": {
+          "nodes": [
+            {
+              "id": "gid://shopify/ProductVariant/67680022233387",
+              "price": "15.00",
+              "compareAtPrice": "30.00",
+              "inventoryQuantity": 20,
+              "image": {
+                "url": "https://cdn.shopify.com/s/files/1/1024/2192/2091/files/perky-rocking-horse-catalog.jpg?v=1791359349"
+              },
+              "metafield": {
+                "type": "file_reference",
+                "value": "gid://shopify/MediaImage/46437924864299"
+              }
+            }
+          ]
+        },
+        "summary": {
+          "type": "multi_line_text_field",
+          "value": "A pale sage rocking horse with white spots, an orange-red seat and natural wood rockers."
+        },
+        "color": {
+          "type": "list.metaobject_reference",
+          "value": "[\"gid://shopify/Metaobject/618126836011\"]"
+        },
+        "collections": {
+          "nodes": [
+            {
+              "id": "gid://shopify/Collection/534802235691",
+              "title": "Handmade Perky",
+              "handle": "handmade-perky"
+            },
+            {
+              "id": "gid://shopify/Collection/534802497835",
+              "title": "New Arrivals Perky",
+              "handle": "new-arrivals-perky"
+            },
+            {
+              "id": "gid://shopify/Collection/534802563371",
+              "title": "Sale Perky",
+              "handle": "sale-perky"
+            }
+          ]
+        }
+      },
+      {
+        "id": "gid://shopify/Product/15408922132779",
+        "title": "Wooden Baby Toy",
+        "handle": "perky-wooden-baby-toy",
+        "status": "ACTIVE",
+        "category": {
+          "id": "gid://shopify/TaxonomyCategory/bt-5",
+          "fullName": "Baby & Toddler > Baby Toys & Activity Equipment"
+        },
+        "tags": [
+          "New",
+          "Perky"
+        ],
+        "publishedOnPublication": true,
+        "media": {
+          "nodes": [
+            {
+              "id": "gid://shopify/MediaImage/46437924962603",
+              "status": "READY",
+              "image": {
+                "url": "https://cdn.shopify.com/s/files/1/1024/2192/2091/files/perky-wooden-baby-toy-catalog.png?v=1791359349",
+                "altText": "Wooden Baby Toy — Pink — catalog view",
+                "width": 1000,
+                "height": 1142
+              }
+            },
+            {
+              "id": "gid://shopify/MediaImage/46437924995371",
+              "status": "READY",
+              "image": {
+                "url": "https://cdn.shopify.com/s/files/1/1024/2192/2091/files/perky-wooden-baby-toy-lifestyle.png?v=1791359350",
+                "altText": "Wooden Baby Toy — Pink — playroom view",
+                "width": 1254,
+                "height": 1254
+              }
+            },
+            {
+              "id": "gid://shopify/MediaImage/46437925028139",
+              "status": "READY",
+              "image": {
+                "url": "https://cdn.shopify.com/s/files/1/1024/2192/2091/files/perky-wooden-baby-toy-angle.png?v=1791359349",
+                "altText": "Wooden Baby Toy — Pink — alternate view",
+                "width": 1254,
+                "height": 1254
+              }
+            },
+            {
+              "id": "gid://shopify/MediaImage/46437925060907",
+              "status": "READY",
+              "image": {
+                "url": "https://cdn.shopify.com/s/files/1/1024/2192/2091/files/perky-wooden-baby-toy-detail.png?v=1791359350",
+                "altText": "Wooden Baby Toy — Pink — detail view",
+                "width": 1254,
+                "height": 1254
+              }
+            }
+          ]
+        },
+        "options": [
+          {
+            "name": "Color",
+            "linkedMetafield": {
+              "namespace": "shopify",
+              "key": "color-pattern"
+            }
+          }
+        ],
+        "variants": {
+          "nodes": [
+            {
+              "id": "gid://shopify/ProductVariant/67680023839019",
+              "price": "22.00",
+              "compareAtPrice": "30.00",
+              "inventoryQuantity": 20,
+              "image": {
+                "url": "https://cdn.shopify.com/s/files/1/1024/2192/2091/files/perky-wooden-baby-toy-catalog.png?v=1791359349"
+              },
+              "metafield": {
+                "type": "file_reference",
+                "value": "gid://shopify/MediaImage/46437924995371"
+              }
+            }
+          ]
+        },
+        "summary": {
+          "type": "multi_line_text_field",
+          "value": "A cloud-shaped wooden toy with pastel beads and a white star detail."
+        },
+        "color": {
+          "type": "list.metaobject_reference",
+          "value": "[\"gid://shopify/Metaobject/618123002155\"]"
+        },
+        "collections": {
+          "nodes": [
+            {
+              "id": "gid://shopify/Collection/534802137387",
+              "title": "Rattles Perky",
+              "handle": "rattles-perky"
+            },
+            {
+              "id": "gid://shopify/Collection/534802170155",
+              "title": "Baby Toys Perky",
+              "handle": "baby-toys-perky"
+            },
+            {
+              "id": "gid://shopify/Collection/534802497835",
+              "title": "New Arrivals Perky",
+              "handle": "new-arrivals-perky"
+            },
+            {
+              "id": "gid://shopify/Collection/534802563371",
+              "title": "Sale Perky",
+              "handle": "sale-perky"
+            }
+          ]
+        }
+      },
+      {
+        "id": "gid://shopify/Product/15408923640107",
+        "title": "Colorful Stacking Toy",
+        "handle": "perky-colorful-stacking-toy",
+        "status": "ACTIVE",
+        "category": {
+          "id": "gid://shopify/TaxonomyCategory/bt-5-12",
+          "fullName": "Baby & Toddler > Baby Toys & Activity Equipment > Sorting & Stacking Toys"
+        },
+        "tags": [
+          "New",
+          "Perky"
+        ],
+        "publishedOnPublication": true,
+        "media": {
+          "nodes": [
+            {
+              "id": "gid://shopify/MediaImage/46437925093675",
+              "status": "READY",
+              "image": {
+                "url": "https://cdn.shopify.com/s/files/1/1024/2192/2091/files/perky-colorful-stacking-toy-catalog.png?v=1791359349",
+                "altText": "Colorful Stacking Toy — Multicolor — catalog view",
+                "width": 1000,
+                "height": 1059
+              }
+            },
+            {
+              "id": "gid://shopify/MediaImage/46437925126443",
+              "status": "READY",
+              "image": {
+                "url": "https://cdn.shopify.com/s/files/1/1024/2192/2091/files/perky-colorful-stacking-toy-lifestyle.png?v=1791359349",
+                "altText": "Colorful Stacking Toy — Multicolor — playroom view",
+                "width": 1254,
+                "height": 1254
+              }
+            },
+            {
+              "id": "gid://shopify/MediaImage/46437925159211",
+              "status": "READY",
+              "image": {
+                "url": "https://cdn.shopify.com/s/files/1/1024/2192/2091/files/perky-colorful-stacking-toy-angle.png?v=1791359350",
+                "altText": "Colorful Stacking Toy — Multicolor — alternate view",
+                "width": 1254,
+                "height": 1254
+              }
+            },
+            {
+              "id": "gid://shopify/MediaImage/46437925191979",
+              "status": "READY",
+              "image": {
+                "url": "https://cdn.shopify.com/s/files/1/1024/2192/2091/files/perky-colorful-stacking-toy-detail.png?v=1791359350",
+                "altText": "Colorful Stacking Toy — Multicolor — detail view",
+                "width": 1254,
+                "height": 1254
+              }
+            }
+          ]
+        },
+        "options": [
+          {
+            "name": "Color",
+            "linkedMetafield": {
+              "namespace": "shopify",
+              "key": "color-pattern"
+            }
+          }
+        ],
+        "variants": {
+          "nodes": [
+            {
+              "id": "gid://shopify/ProductVariant/67680029671723",
+              "price": "25.00",
+              "compareAtPrice": "35.00",
+              "inventoryQuantity": 20,
+              "image": {
+                "url": "https://cdn.shopify.com/s/files/1/1024/2192/2091/files/perky-colorful-stacking-toy-catalog.png?v=1791359349"
+              },
+              "metafield": {
+                "type": "file_reference",
+                "value": "gid://shopify/MediaImage/46437925126443"
+              }
+            }
+          ]
+        },
+        "summary": {
+          "type": "multi_line_text_field",
+          "value": "A sunshine-shaped stacking toy with nested yellow, orange and red arches."
+        },
+        "color": {
+          "type": "list.metaobject_reference",
+          "value": "[\"gid://shopify/Metaobject/621074055467\"]"
+        },
+        "collections": {
+          "nodes": [
+            {
+              "id": "gid://shopify/Collection/534802170155",
+              "title": "Baby Toys Perky",
+              "handle": "baby-toys-perky"
+            },
+            {
+              "id": "gid://shopify/Collection/534802497835",
+              "title": "New Arrivals Perky",
+              "handle": "new-arrivals-perky"
+            },
+            {
+              "id": "gid://shopify/Collection/534802563371",
+              "title": "Sale Perky",
+              "handle": "sale-perky"
+            }
+          ]
+        }
+      },
+      {
+        "id": "gid://shopify/Product/15408925147435",
+        "title": "Stacking Wooden Toy",
+        "handle": "perky-stacking-wooden-toy",
+        "status": "ACTIVE",
+        "category": {
+          "id": "gid://shopify/TaxonomyCategory/tg-5-7-8",
+          "fullName": "Toys & Games > Toys > Building Toys > Construction Set Toys"
+        },
+        "tags": [
+          "New",
+          "Perky"
+        ],
+        "publishedOnPublication": true,
+        "media": {
+          "nodes": [
+            {
+              "id": "gid://shopify/MediaImage/46437925224747",
+              "status": "READY",
+              "image": {
+                "url": "https://cdn.shopify.com/s/files/1/1024/2192/2091/files/perky-stacking-wooden-toy-catalog.png?v=1791359349",
+                "altText": "Stacking Wooden Toy — Natural — catalog view",
+                "width": 1000,
+                "height": 1142
+              }
+            },
+            {
+              "id": "gid://shopify/MediaImage/46437925257515",
+              "status": "READY",
+              "image": {
+                "url": "https://cdn.shopify.com/s/files/1/1024/2192/2091/files/perky-stacking-wooden-toy-lifestyle.png?v=1791359350",
+                "altText": "Stacking Wooden Toy — Natural — playroom view",
+                "width": 1254,
+                "height": 1254
+              }
+            },
+            {
+              "id": "gid://shopify/MediaImage/46437925290283",
+              "status": "READY",
+              "image": {
+                "url": "https://cdn.shopify.com/s/files/1/1024/2192/2091/files/perky-stacking-wooden-toy-angle.png?v=1791359350",
+                "altText": "Stacking Wooden Toy — Natural — alternate view",
+                "width": 1254,
+                "height": 1254
+              }
+            },
+            {
+              "id": "gid://shopify/MediaImage/46437925323051",
+              "status": "READY",
+              "image": {
+                "url": "https://cdn.shopify.com/s/files/1/1024/2192/2091/files/perky-stacking-wooden-toy-detail.png?v=1791359350",
+                "altText": "Stacking Wooden Toy — Natural — detail view",
+                "width": 1254,
+                "height": 1254
+              }
+            }
+          ]
+        },
+        "options": [
+          {
+            "name": "Color",
+            "linkedMetafield": {
+              "namespace": "shopify",
+              "key": "color-pattern"
+            }
+          }
+        ],
+        "variants": {
+          "nodes": [
+            {
+              "id": "gid://shopify/ProductVariant/67680034095403",
+              "price": "25.00",
+              "compareAtPrice": "35.00",
+              "inventoryQuantity": 20,
+              "image": {
+                "url": "https://cdn.shopify.com/s/files/1/1024/2192/2091/files/perky-stacking-wooden-toy-catalog.png?v=1791359349"
+              },
+              "metafield": {
+                "type": "file_reference",
+                "value": "gid://shopify/MediaImage/46437925257515"
+              }
+            }
+          ]
+        },
+        "summary": {
+          "type": "multi_line_text_field",
+          "value": "A natural wood block tower for building, balancing and rearranging."
+        },
+        "color": {
+          "type": "list.metaobject_reference",
+          "value": "[\"gid://shopify/Metaobject/618123034923\"]"
+        },
+        "collections": {
+          "nodes": [
+            {
+              "id": "gid://shopify/Collection/534802235691",
+              "title": "Handmade Perky",
+              "handle": "handmade-perky"
+            },
+            {
+              "id": "gid://shopify/Collection/534802497835",
+              "title": "New Arrivals Perky",
+              "handle": "new-arrivals-perky"
+            },
+            {
+              "id": "gid://shopify/Collection/534802563371",
+              "title": "Sale Perky",
+              "handle": "sale-perky"
+            }
+          ]
+        }
+      },
+      {
+        "id": "gid://shopify/Product/15408926490923",
+        "title": "Toddler Activity Cube",
+        "handle": "perky-toddler-activity-cube",
+        "status": "ACTIVE",
+        "category": {
+          "id": "gid://shopify/TaxonomyCategory/tg-5-1",
+          "fullName": "Toys & Games > Toys > Activity Toys"
+        },
+        "tags": [
+          "New",
+          "Perky"
+        ],
+        "publishedOnPublication": true,
+        "media": {
+          "nodes": [
+            {
+              "id": "gid://shopify/MediaImage/46437925355819",
+              "status": "READY",
+              "image": {
+                "url": "https://cdn.shopify.com/s/files/1/1024/2192/2091/files/perky-toddler-activity-cube-catalog.jpg?v=1791359349",
+                "altText": "Toddler Activity Cube — Multicolor — catalog view",
+                "width": 1500,
+                "height": 1500
+              }
+            },
+            {
+              "id": "gid://shopify/MediaImage/46437925388587",
+              "status": "READY",
+              "image": {
+                "url": "https://cdn.shopify.com/s/files/1/1024/2192/2091/files/perky-toddler-activity-cube-lifestyle.png?v=1791359350",
+                "altText": "Toddler Activity Cube — Multicolor — playroom view",
+                "width": 1254,
+                "height": 1254
+              }
+            },
+            {
+              "id": "gid://shopify/MediaImage/46437925421355",
+              "status": "READY",
+              "image": {
+                "url": "https://cdn.shopify.com/s/files/1/1024/2192/2091/files/perky-toddler-activity-cube-angle.png?v=1791359350",
+                "altText": "Toddler Activity Cube — Multicolor — alternate view",
+                "width": 1254,
+                "height": 1254
+              }
+            },
+            {
+              "id": "gid://shopify/MediaImage/46437925454123",
+              "status": "READY",
+              "image": {
+                "url": "https://cdn.shopify.com/s/files/1/1024/2192/2091/files/perky-toddler-activity-cube-detail.png?v=1791359350",
+                "altText": "Toddler Activity Cube — Multicolor — detail view",
+                "width": 1254,
+                "height": 1254
+              }
+            }
+          ]
+        },
+        "options": [
+          {
+            "name": "Color",
+            "linkedMetafield": {
+              "namespace": "shopify",
+              "key": "color-pattern"
+            }
+          }
+        ],
+        "variants": {
+          "nodes": [
+            {
+              "id": "gid://shopify/ProductVariant/67680035406123",
+              "price": "15.00",
+              "compareAtPrice": "20.00",
+              "inventoryQuantity": 20,
+              "image": {
+                "url": "https://cdn.shopify.com/s/files/1/1024/2192/2091/files/perky-toddler-activity-cube-catalog.jpg?v=1791359349"
+              },
+              "metafield": {
+                "type": "file_reference",
+                "value": "gid://shopify/MediaImage/46437925388587"
+              }
+            }
+          ]
+        },
+        "summary": {
+          "type": "multi_line_text_field",
+          "value": "A colorful wooden activity cube with picture tiles and a clock face."
+        },
+        "color": {
+          "type": "list.metaobject_reference",
+          "value": "[\"gid://shopify/Metaobject/621074055467\"]"
+        },
+        "collections": {
+          "nodes": [
+            {
+              "id": "gid://shopify/Collection/534802170155",
+              "title": "Baby Toys Perky",
+              "handle": "baby-toys-perky"
+            },
+            {
+              "id": "gid://shopify/Collection/534802268459",
+              "title": "Puzzles Perky",
+              "handle": "puzzles-perky"
+            },
+            {
+              "id": "gid://shopify/Collection/534802530603",
+              "title": "Playsets Perky",
+              "handle": "playsets-perky"
+            },
+            {
+              "id": "gid://shopify/Collection/534802563371",
+              "title": "Sale Perky",
+              "handle": "sale-perky"
+            }
+          ]
+        }
+      },
+      {
+        "id": "gid://shopify/Product/15408927277355",
+        "title": "Stacking Tree With Bird",
+        "handle": "perky-stacking-tree-with-bird",
+        "status": "ACTIVE",
+        "category": {
+          "id": "gid://shopify/TaxonomyCategory/bt-5-12",
+          "fullName": "Baby & Toddler > Baby Toys & Activity Equipment > Sorting & Stacking Toys"
+        },
+        "tags": [
+          "New",
+          "Perky"
+        ],
+        "publishedOnPublication": true,
+        "media": {
+          "nodes": [
+            {
+              "id": "gid://shopify/MediaImage/46437925486891",
+              "status": "READY",
+              "image": {
+                "url": "https://cdn.shopify.com/s/files/1/1024/2192/2091/files/perky-stacking-tree-with-bird-catalog.jpg?v=1791359349",
+                "altText": "Stacking Tree With Bird — Multicolor — catalog view",
+                "width": 1500,
+                "height": 1500
+              }
+            },
+            {
+              "id": "gid://shopify/MediaImage/46437925519659",
+              "status": "READY",
+              "image": {
+                "url": "https://cdn.shopify.com/s/files/1/1024/2192/2091/files/perky-stacking-tree-with-bird-lifestyle.png?v=1791359350",
+                "altText": "Stacking Tree With Bird — Multicolor — playroom view",
+                "width": 1254,
+                "height": 1254
+              }
+            },
+            {
+              "id": "gid://shopify/MediaImage/46437925552427",
+              "status": "READY",
+              "image": {
+                "url": "https://cdn.shopify.com/s/files/1/1024/2192/2091/files/perky-stacking-tree-with-bird-angle.png?v=1791359350",
+                "altText": "Stacking Tree With Bird — Multicolor — alternate view",
+                "width": 1254,
+                "height": 1254
+              }
+            },
+            {
+              "id": "gid://shopify/MediaImage/46437925585195",
+              "status": "READY",
+              "image": {
+                "url": "https://cdn.shopify.com/s/files/1/1024/2192/2091/files/perky-stacking-tree-with-bird-detail.png?v=1791359350",
+                "altText": "Stacking Tree With Bird — Multicolor — detail view",
+                "width": 1254,
+                "height": 1254
+              }
+            }
+          ]
+        },
+        "options": [
+          {
+            "name": "Color",
+            "linkedMetafield": {
+              "namespace": "shopify",
+              "key": "color-pattern"
+            }
+          }
+        ],
+        "variants": {
+          "nodes": [
+            {
+              "id": "gid://shopify/ProductVariant/67680038977835",
+              "price": "35.00",
+              "compareAtPrice": "45.00",
+              "inventoryQuantity": 20,
+              "image": {
+                "url": "https://cdn.shopify.com/s/files/1/1024/2192/2091/files/perky-stacking-tree-with-bird-catalog.jpg?v=1791359349"
+              },
+              "metafield": {
+                "type": "file_reference",
+                "value": "gid://shopify/MediaImage/46437925519659"
+              }
+            }
+          ]
+        },
+        "summary": {
+          "type": "multi_line_text_field",
+          "value": "A bird-topped stacking toy with four rounded rings in green, aqua and natural tones."
+        },
+        "color": {
+          "type": "list.metaobject_reference",
+          "value": "[\"gid://shopify/Metaobject/621074055467\"]"
+        },
+        "collections": {
+          "nodes": [
+            {
+              "id": "gid://shopify/Collection/534802170155",
+              "title": "Baby Toys Perky",
+              "handle": "baby-toys-perky"
+            },
+            {
+              "id": "gid://shopify/Collection/534802530603",
+              "title": "Playsets Perky",
+              "handle": "playsets-perky"
+            },
+            {
+              "id": "gid://shopify/Collection/534802563371",
+              "title": "Sale Perky",
+              "handle": "sale-perky"
+            }
+          ]
+        }
+      },
+      {
+        "id": "gid://shopify/Product/15408972824875",
+        "title": "Plush Doll",
+        "handle": "perky-plush-doll",
+        "status": "ACTIVE",
+        "category": {
+          "id": "gid://shopify/TaxonomyCategory/tg-5-8-11",
+          "fullName": "Toys & Games > Toys > Dolls, Playsets & Toy Figures > Stuffed Animals"
+        },
+        "tags": [
+          "New",
+          "Perky"
+        ],
+        "publishedOnPublication": true,
+        "media": {
+          "nodes": [
+            {
+              "id": "gid://shopify/MediaImage/46438505480491",
+              "status": "READY",
+              "image": {
+                "url": "https://cdn.shopify.com/s/files/1/1024/2192/2091/files/perky-plush-doll-catalog.png?v=1791361547",
+                "altText": "Plush Doll — Brown and mustard yellow — catalog view",
+                "width": 1254,
+                "height": 1254
+              }
+            },
+            {
+              "id": "gid://shopify/MediaImage/46438505513259",
+              "status": "READY",
+              "image": {
+                "url": "https://cdn.shopify.com/s/files/1/1024/2192/2091/files/perky-plush-doll-product-life.png?v=1791361547",
+                "altText": "A child aged 3+ playing with the Plush Doll while an adult sits nearby",
+                "width": 1254,
+                "height": 1254
+              }
+            },
+            {
+              "id": "gid://shopify/MediaImage/46438505546027",
+              "status": "READY",
+              "image": {
+                "url": "https://cdn.shopify.com/s/files/1/1024/2192/2091/files/perky-plush-doll-angle.png?v=1791361547",
+                "altText": "Plush Doll — Brown and mustard yellow — three-quarter view",
+                "width": 1254,
+                "height": 1254
+              }
+            },
+            {
+              "id": "gid://shopify/MediaImage/46438505578795",
+              "status": "READY",
+              "image": {
+                "url": "https://cdn.shopify.com/s/files/1/1024/2192/2091/files/perky-plush-doll-detail.png?v=1791361547",
+                "altText": "Close view of Plush Doll embroidered face, yellow bow and polka-dot dress",
+                "width": 1254,
+                "height": 1254
+              }
+            }
+          ]
+        },
+        "options": [
+          {
+            "name": "Color",
+            "linkedMetafield": {
+              "namespace": "shopify",
+              "key": "color-pattern"
+            }
+          }
+        ],
+        "variants": {
+          "nodes": [
+            {
+              "id": "gid://shopify/ProductVariant/67680583614763",
+              "price": "18.00",
+              "compareAtPrice": "24.00",
+              "inventoryQuantity": 20,
+              "image": {
+                "url": "https://cdn.shopify.com/s/files/1/1024/2192/2091/files/perky-plush-doll-catalog.png?v=1791361547"
+              },
+              "metafield": {
+                "type": "file_reference",
+                "value": "gid://shopify/MediaImage/46438505513259"
+              }
+            }
+          ]
+        },
+        "summary": {
+          "type": "multi_line_text_field",
+          "value": "A brown plush doll with a cream smiling face, yellow bow and matching polka-dot dress. Recommended for ages 3 and up."
+        },
+        "color": {
+          "type": "list.metaobject_reference",
+          "value": "[\"gid://shopify/Metaobject/621074055467\"]"
+        },
+        "collections": {
+          "nodes": [
+            {
+              "id": "gid://shopify/Collection/534802333995",
+              "title": "Plush Perky",
+              "handle": "plush-perky"
+            },
+            {
+              "id": "gid://shopify/Collection/534802497835",
+              "title": "New Arrivals Perky",
+              "handle": "new-arrivals-perky"
+            },
+            {
+              "id": "gid://shopify/Collection/534802563371",
+              "title": "Sale Perky",
+              "handle": "sale-perky"
+            }
+          ]
+        }
+      },
+      {
+        "id": "gid://shopify/Product/15408972857643",
+        "title": "Striped Baby Blanket",
+        "handle": "perky-striped-baby-blanket",
+        "status": "ACTIVE",
+        "category": {
+          "id": "gid://shopify/TaxonomyCategory/bt-12",
+          "fullName": "Baby & Toddler > Swaddling & Receiving Blankets"
+        },
+        "tags": [
+          "New",
+          "Perky"
+        ],
+        "publishedOnPublication": true,
+        "media": {
+          "nodes": [
+            {
+              "id": "gid://shopify/MediaImage/46438505611563",
+              "status": "READY",
+              "image": {
+                "url": "https://cdn.shopify.com/s/files/1/1024/2192/2091/files/perky-striped-baby-blanket-catalog.png?v=1791361547",
+                "altText": "Striped Baby Blanket — ivory with blue, mustard, lavender and peach stripes — catalog view",
+                "width": 1254,
+                "height": 1254
+              }
+            },
+            {
+              "id": "gid://shopify/MediaImage/46438505644331",
+              "status": "READY",
+              "image": {
+                "url": "https://cdn.shopify.com/s/files/1/1024/2192/2091/files/perky-striped-baby-blanket-product-life.png?v=1791361547",
+                "altText": "Awake infant held by an adult during supervised daytime use of the Striped Baby Blanket",
+                "width": 1254,
+                "height": 1254
+              }
+            },
+            {
+              "id": "gid://shopify/MediaImage/46438505677099",
+              "status": "READY",
+              "image": {
+                "url": "https://cdn.shopify.com/s/files/1/1024/2192/2091/files/perky-striped-baby-blanket-angle.png?v=1791361548",
+                "altText": "Striped Baby Blanket — folded alternate view",
+                "width": 1254,
+                "height": 1254
+              }
+            },
+            {
+              "id": "gid://shopify/MediaImage/46438505709867",
+              "status": "READY",
+              "image": {
+                "url": "https://cdn.shopify.com/s/files/1/1024/2192/2091/files/perky-striped-baby-blanket-detail.png?v=1791361547",
+                "altText": "Close view of knit texture and colored stripes on the Striped Baby Blanket",
+                "width": 1254,
+                "height": 1254
+              }
+            }
+          ]
+        },
+        "options": [
+          {
+            "name": "Color",
+            "linkedMetafield": {
+              "namespace": "shopify",
+              "key": "color-pattern"
+            }
+          }
+        ],
+        "variants": {
+          "nodes": [
+            {
+              "id": "gid://shopify/ProductVariant/67680583647531",
+              "price": "24.00",
+              "compareAtPrice": "32.00",
+              "inventoryQuantity": 20,
+              "image": {
+                "url": "https://cdn.shopify.com/s/files/1/1024/2192/2091/files/perky-striped-baby-blanket-catalog.png?v=1791361547"
+              },
+              "metafield": {
+                "type": "file_reference",
+                "value": "gid://shopify/MediaImage/46438505644331"
+              }
+            }
+          ]
+        },
+        "summary": {
+          "type": "multi_line_text_field",
+          "value": "An ivory infant blanket with narrow blue, mustard, lavender and peach stripes and a visible knit texture."
+        },
+        "color": {
+          "type": "list.metaobject_reference",
+          "value": "[\"gid://shopify/Metaobject/621074055467\"]"
+        },
+        "collections": {
+          "nodes": [
+            {
+              "id": "gid://shopify/Collection/534802497835",
+              "title": "New Arrivals Perky",
+              "handle": "new-arrivals-perky"
+            },
+            {
+              "id": "gid://shopify/Collection/534802563371",
+              "title": "Sale Perky",
+              "handle": "sale-perky"
+            }
+          ]
+        }
+      },
+      {
+        "id": "gid://shopify/Product/15408983867691",
+        "title": "Wooden Bowling Set",
+        "handle": "perky-wooden-bowling-set",
+        "status": "ACTIVE",
+        "category": {
+          "id": "gid://shopify/TaxonomyCategory/tg-5-23-5",
+          "fullName": "Toys & Games > Toys > Sports Toys > Bowling Toys"
+        },
+        "tags": [
+          "New",
+          "Perky"
+        ],
+        "publishedOnPublication": true,
+        "media": {
+          "nodes": [
+            {
+              "id": "gid://shopify/MediaImage/46438640517419",
+              "status": "READY",
+              "image": {
+                "url": "https://cdn.shopify.com/s/files/1/1024/2192/2091/files/perky-wooden-bowling-set-catalog.png?v=1791362047",
+                "altText": "Wooden Bowling Set — three wooden pins with colored accents — catalog view",
+                "width": 1254,
+                "height": 1254
+              }
+            },
+            {
+              "id": "gid://shopify/MediaImage/46438640550187",
+              "status": "READY",
+              "image": {
+                "url": "https://cdn.shopify.com/s/files/1/1024/2192/2091/files/perky-wooden-bowling-set-product-life.png?v=1791362047",
+                "altText": "A child aged 3+ arranging the three Wooden Bowling Set pins with an adult nearby",
+                "width": 1254,
+                "height": 1254
+              }
+            },
+            {
+              "id": "gid://shopify/MediaImage/46438640582955",
+              "status": "READY",
+              "image": {
+                "url": "https://cdn.shopify.com/s/files/1/1024/2192/2091/files/perky-wooden-bowling-set-angle.png?v=1791362046",
+                "altText": "Wooden Bowling Set — three pins — alternate view",
+                "width": 1254,
+                "height": 1254
+              }
+            },
+            {
+              "id": "gid://shopify/MediaImage/46438640615723",
+              "status": "READY",
+              "image": {
+                "url": "https://cdn.shopify.com/s/files/1/1024/2192/2091/files/perky-wooden-bowling-set-detail.png?v=1791362046",
+                "altText": "Close view of the colored accents and bands on the wooden bowling pins",
+                "width": 1254,
+                "height": 1254
+              }
+            }
+          ]
+        },
+        "options": [
+          {
+            "name": "Color",
+            "linkedMetafield": {
+              "namespace": "shopify",
+              "key": "color-pattern"
+            }
+          }
+        ],
+        "variants": {
+          "nodes": [
+            {
+              "id": "gid://shopify/ProductVariant/67680644825387",
+              "price": "20.00",
+              "compareAtPrice": "28.00",
+              "inventoryQuantity": 20,
+              "image": {
+                "url": "https://cdn.shopify.com/s/files/1/1024/2192/2091/files/perky-wooden-bowling-set-catalog.png?v=1791362047"
+              },
+              "metafield": {
+                "type": "file_reference",
+                "value": "gid://shopify/MediaImage/46438640550187"
+              }
+            }
+          ]
+        },
+        "summary": {
+          "type": "multi_line_text_field",
+          "value": "Three natural wood bowling pins with yellow, blue and red accents. Recommended for ages 3 and up."
+        },
+        "color": {
+          "type": "list.metaobject_reference",
+          "value": "[\"gid://shopify/Metaobject/621074055467\"]"
+        },
+        "collections": {
+          "nodes": [
+            {
+              "id": "gid://shopify/Collection/534802497835",
+              "title": "New Arrivals Perky",
+              "handle": "new-arrivals-perky"
+            },
+            {
+              "id": "gid://shopify/Collection/534802530603",
+              "title": "Playsets Perky",
+              "handle": "playsets-perky"
+            },
+            {
+              "id": "gid://shopify/Collection/534802563371",
+              "title": "Sale Perky",
+              "handle": "sale-perky"
+            }
+          ]
+        }
+      }
+    ]
+  },
+  "blogs": {
+    "nodes": [
+      {
+        "id": "gid://shopify/Blog/125679272235",
+        "title": "News",
+        "handle": "news",
+        "articles": {
+          "nodes": []
+        }
+      },
+      {
+        "id": "gid://shopify/Blog/125731602731",
+        "title": "From the Blog - Essen",
+        "handle": "from-the-blog-essen",
+        "articles": {
+          "nodes": [
+            {
+              "id": "gid://shopify/Article/633691996459",
+              "title": "Where quality meets nature",
+              "handle": "where-quality-meets-nature",
+              "author": {
+                "name": "Essen"
+              },
+              "publishedAt": "2025-09-18T16:04:00Z",
+              "image": {
+                "url": "https://cdn.shopify.com/s/files/1/1024/2192/2091/articles/essen-blog-quality-nature.jpg?v=1791165364"
+              },
+              "blog": {
+                "id": "gid://shopify/Blog/125731602731",
+                "title": "From the Blog - Essen",
+                "handle": "from-the-blog-essen"
+              }
+            },
+            {
+              "id": "gid://shopify/Article/633692029227",
+              "title": "Where contemporary style meets architectural form",
+              "handle": "where-contemporary-style-meets-architectural-form",
+              "author": {
+                "name": "Essen"
+              },
+              "publishedAt": "2025-09-18T16:03:00Z",
+              "image": {
+                "url": "https://cdn.shopify.com/s/files/1/1024/2192/2091/articles/essen-blog-contemporary-architecture.jpg?v=1791165371"
+              },
+              "blog": {
+                "id": "gid://shopify/Blog/125731602731",
+                "title": "From the Blog - Essen",
+                "handle": "from-the-blog-essen"
+              }
+            },
+            {
+              "id": "gid://shopify/Article/633692061995",
+              "title": "Discovering the connection between structure, space",
+              "handle": "discovering-the-connection-between-structure-space",
+              "author": {
+                "name": "Essen"
+              },
+              "publishedAt": "2025-09-18T16:02:00Z",
+              "image": {
+                "url": "https://cdn.shopify.com/s/files/1/1024/2192/2091/articles/essen-blog-structure-space.jpg?v=1791165377"
+              },
+              "blog": {
+                "id": "gid://shopify/Blog/125731602731",
+                "title": "From the Blog - Essen",
+                "handle": "from-the-blog-essen"
+              }
+            },
+            {
+              "id": "gid://shopify/Article/633692422443",
+              "title": "Selection SS2025 April collection",
+              "handle": "selection-ss2025-april-collection",
+              "author": {
+                "name": "Essen Editorial"
+              },
+              "publishedAt": "2025-09-18T16:01:00Z",
+              "image": {
+                "url": "https://cdn.shopify.com/s/files/1/1024/2192/2091/articles/essen-blog-ss2025-april.png?v=1791169246"
+              },
+              "blog": {
+                "id": "gid://shopify/Blog/125731602731",
+                "title": "From the Blog - Essen",
+                "handle": "from-the-blog-essen"
+              }
+            },
+            {
+              "id": "gid://shopify/Article/633692455211",
+              "title": "Forma moves forward with its transformation process",
+              "handle": "forma-moves-forward-with-its-transformation-process",
+              "author": {
+                "name": "Essen Editorial"
+              },
+              "publishedAt": "2025-09-18T16:00:00Z",
+              "image": {
+                "url": "https://cdn.shopify.com/s/files/1/1024/2192/2091/articles/essen-blog-forma-transformation.jpg?v=1791169252"
+              },
+              "blog": {
+                "id": "gid://shopify/Blog/125731602731",
+                "title": "From the Blog - Essen",
+                "handle": "from-the-blog-essen"
+              }
+            }
+          ]
+        }
+      },
+      {
+        "id": "gid://shopify/Blog/125737664811",
+        "title": "Fluxstep journal",
+        "handle": "fluxstep-journal",
+        "articles": {
+          "nodes": [
+            {
+              "id": "gid://shopify/Article/633694060843",
+              "title": "Discipline before speed",
+              "handle": "discipline-before-speed",
+              "author": {
+                "name": "LayoutHub"
+              },
+              "publishedAt": "2025-11-17T12:02:00Z",
+              "image": {
+                "url": "https://cdn.shopify.com/s/files/1/1024/2192/2091/articles/fluxstep-blog-discipline-before-speed.jpg?v=1791189458"
+              },
+              "blog": {
+                "id": "gid://shopify/Blog/125737664811",
+                "title": "Fluxstep journal",
+                "handle": "fluxstep-journal"
+              }
+            },
+            {
+              "id": "gid://shopify/Article/633694093611",
+              "title": "Warm up to go further",
+              "handle": "warm-up-to-go-further",
+              "author": {
+                "name": "LayoutHub"
+              },
+              "publishedAt": "2025-11-17T12:01:00Z",
+              "image": {
+                "url": "https://cdn.shopify.com/s/files/1/1024/2192/2091/articles/fluxstep-blog-warm-up-to-go-further.jpg?v=1791189471"
+              },
+              "blog": {
+                "id": "gid://shopify/Blog/125737664811",
+                "title": "Fluxstep journal",
+                "handle": "fluxstep-journal"
+              }
+            },
+            {
+              "id": "gid://shopify/Article/633694126379",
+              "title": "Where training meets elevation",
+              "handle": "where-training-meets-elevation",
+              "author": {
+                "name": "LayoutHub"
+              },
+              "publishedAt": "2025-11-17T12:00:00Z",
+              "image": {
+                "url": "https://cdn.shopify.com/s/files/1/1024/2192/2091/articles/fluxstep-blog-where-training-meets-elevation.jpg?v=1791189480"
+              },
+              "blog": {
+                "id": "gid://shopify/Blog/125737664811",
+                "title": "Fluxstep journal",
+                "handle": "fluxstep-journal"
+              }
+            },
+            {
+              "id": "gid://shopify/Article/633694159147",
+              "title": "Find your everyday rhythm",
+              "handle": "find-your-everyday-rhythm",
+              "author": {
+                "name": "LayoutHub"
+              },
+              "publishedAt": "2025-11-16T12:00:00Z",
+              "image": {
+                "url": "https://cdn.shopify.com/s/files/1/1024/2192/2091/articles/fluxstep-gallery-2.jpg?v=1791190154"
+              },
+              "blog": {
+                "id": "gid://shopify/Blog/125737664811",
+                "title": "Fluxstep journal",
+                "handle": "fluxstep-journal"
+              }
+            },
+            {
+              "id": "gid://shopify/Article/633694191915",
+              "title": "Take the scenic route",
+              "handle": "take-the-scenic-route",
+              "author": {
+                "name": "LayoutHub"
+              },
+              "publishedAt": "2025-11-15T12:00:00Z",
+              "image": {
+                "url": "https://cdn.shopify.com/s/files/1/1024/2192/2091/articles/fluxstep-gallery-3.jpg?v=1791190165"
+              },
+              "blog": {
+                "id": "gid://shopify/Blog/125737664811",
+                "title": "Fluxstep journal",
+                "handle": "fluxstep-journal"
+              }
+            }
+          ]
+        }
+      },
+      {
+        "id": "gid://shopify/Blog/125780099371",
+        "title": "Discover Our Story - Elara",
+        "handle": "discover-our-story-elara",
+        "articles": {
+          "nodes": []
+        }
+      },
+      {
+        "id": "gid://shopify/Blog/125784097067",
+        "title": "Perky",
+        "handle": "perky",
+        "articles": {
+          "nodes": [
+            {
+              "id": "gid://shopify/Article/633709396267",
+              "title": "The Importance Of Arts And Crafts For Early Childhood Development",
+              "handle": "perky-the-importance-of-arts-and-crafts-for-early-childhood-development",
+              "author": {
+                "name": "Perky Editorial"
+              },
+              "publishedAt": "2025-09-15T09:00:00Z",
+              "image": {
+                "url": "https://cdn.shopify.com/s/files/1/1024/2192/2091/articles/perky-blog-1.png?v=1791359562"
+              },
+              "blog": {
+                "id": "gid://shopify/Blog/125784097067",
+                "title": "Perky",
+                "handle": "perky"
+              }
+            },
+            {
+              "id": "gid://shopify/Article/633709429035",
+              "title": "Fun Halloween Arts And Crafts Activities For Kids",
+              "handle": "perky-fun-halloween-arts-and-crafts-activities-for-kids",
+              "author": {
+                "name": "Perky Editorial"
+              },
+              "publishedAt": "2025-07-18T09:00:00Z",
+              "image": {
+                "url": "https://cdn.shopify.com/s/files/1/1024/2192/2091/articles/perky-blog-2.jpg?v=1791359569"
+              },
+              "blog": {
+                "id": "gid://shopify/Blog/125784097067",
+                "title": "Perky",
+                "handle": "perky"
+              }
+            },
+            {
+              "id": "gid://shopify/Article/633709461803",
+              "title": "Amazing Bubble Science Facts For Kids Of All Ages",
+              "handle": "perky-amazing-bubble-science-facts-for-kids-of-all-ages",
+              "author": {
+                "name": "Perky Editorial"
+              },
+              "publishedAt": "2025-06-11T09:00:00Z",
+              "image": {
+                "url": "https://cdn.shopify.com/s/files/1/1024/2192/2091/articles/perky-blog-3.jpg?v=1791359577"
+              },
+              "blog": {
+                "id": "gid://shopify/Blog/125784097067",
+                "title": "Perky",
+                "handle": "perky"
+              }
+            }
+          ]
+        }
+      }
+    ]
+  }
+}

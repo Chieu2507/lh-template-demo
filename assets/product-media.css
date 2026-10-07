@@ -15,6 +15,14 @@
 .product-media-gallery--radius-rounded {
   --media-radius: var(--radius-rounded);
 }
+  .product-media-gallery--radius-radius_2 { --media-radius: var(--radius-2); }
+  .product-media-gallery--radius-radius_4 { --media-radius: var(--radius-4); }
+  .product-media-gallery--radius-radius_6 { --media-radius: var(--radius-6); }
+  .product-media-gallery--radius-radius_8 { --media-radius: var(--radius-8); }
+  .product-media-gallery--radius-radius_12 { --media-radius: var(--radius-12); }
+  .product-media-gallery--radius-radius_16 { --media-radius: var(--radius-16); }
+  .product-media-gallery--radius-radius_24 { --media-radius: var(--radius-24); }
+  .product-media-gallery--radius-radius_32 { --media-radius: var(--radius-32); }
 
 .product-media-gallery--radius-extra_rounded {
   --media-radius: var(--radius-extra);

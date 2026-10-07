@@ -640,6 +640,14 @@
 .product-details--radius-rounded {
   --product-details-radius: var(--radius-rounded);
 }
+  .product-details--radius-radius_2 { --product-details-radius: var(--radius-2); }
+  .product-details--radius-radius_4 { --product-details-radius: var(--radius-4); }
+  .product-details--radius-radius_6 { --product-details-radius: var(--radius-6); }
+  .product-details--radius-radius_8 { --product-details-radius: var(--radius-8); }
+  .product-details--radius-radius_12 { --product-details-radius: var(--radius-12); }
+  .product-details--radius-radius_16 { --product-details-radius: var(--radius-16); }
+  .product-details--radius-radius_24 { --product-details-radius: var(--radius-24); }
+  .product-details--radius-radius_32 { --product-details-radius: var(--radius-32); }
 
 .product-details--radius-pill {
   --product-details-radius: var(--radius-pill);

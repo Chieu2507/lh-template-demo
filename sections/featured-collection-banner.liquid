@@ -259,6 +259,13 @@
   }
 
   @media (max-width: 767.98px) {
+    .featured-collection-banner__content--header-products .featured-collection-banner__banner {
+      margin-bottom: calc(var(--featured-collection-banner-gap-mobile, 20px) - var(--featured-collection-banner-header-gap-mobile, 20px));
+    }
+    .featured-collection-banner__content--header-products:has([data-banner-position='after']) .featured-collection-banner__banner {
+      margin-bottom: 0;
+      margin-top: calc(var(--featured-collection-banner-gap-mobile, 20px) - var(--featured-collection-banner-header-gap-mobile, 20px));
+    }
     .featured-collection-banner__spacing {
       padding-top: var(--featured-collection-banner-padding-top-mobile, var(--featured-collection-banner-padding-top, 50px));
       padding-bottom: var(--featured-collection-banner-padding-bottom-mobile, var(--featured-collection-banner-padding-bottom, 50px));

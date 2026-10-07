@@ -71,7 +71,7 @@
   assign swatch_product_url = product.url | split: '?' | first
 %}
 
-{% if swatch_option != blank and swatch_option_value_count > 0 %}
+{% if product.variants.size > 1 and swatch_option != blank and swatch_option_value_count > 0 %}
   <swatches-variant-picker-component
     class="product-card__swatches-variant-picker"
     data-product-id="{{ product.id }}"

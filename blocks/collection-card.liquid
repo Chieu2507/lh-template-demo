@@ -21,6 +21,8 @@
   assign collection_card_placement = block.settings.placement | default: 'below_image'
   assign collection_card_radius = 'var(--card-radius)'
   case block.settings.corner_radius
+    when 'radius_2', 'radius_4', 'radius_6', 'radius_8', 'radius_12', 'radius_16', 'radius_24', 'radius_32'
+      assign collection_card_radius = block.settings.corner_radius | replace: 'radius_', 'var(--radius-' | append: ')'
     when 'square'
       assign collection_card_radius = 'var(--radius-square)'
     when 'rounded'
@@ -113,6 +115,7 @@
 %}
 
 {% capture collection_card_padding_style %}
+  {% if block.settings.customize_mobile_media_padding %}--collection-card-media-padding-mobile: {{ block.settings.media_padding_mobile | default: 0 }}px;{% endif %}
   {% if collection_card_gap_desktop != 4 %}--card-content-gap: {{ collection_card_gap_desktop }}px;{% endif %}
   {% if collection_card_gap_mobile != collection_card_gap_desktop %}--card-content-gap-mobile: {{ collection_card_gap_mobile }}px;{% endif %}
   {% if collection_card_padding_top != 16 %}--card-padding-top: {{ collection_card_padding_top }}px;{% endif %}
@@ -239,6 +242,9 @@
   }
 
   @media (max-width: 767.98px) {
+    .collection-card-kernel__media {
+      margin: var(--collection-card-media-padding-mobile, var(--collection-card-media-padding, 0px)) var(--collection-card-media-padding-mobile, var(--collection-card-media-padding, 0px)) 0;
+    }
     .collection-card-kernel__content {
       gap: var(--card-content-gap-mobile, var(--card-content-gap, 4px));
       padding: var(--card-padding-top-mobile, var(--card-padding-top, 16px)) var(--card-padding-right-mobile, var(--card-padding-right, 0px)) var(--card-padding-bottom-mobile, var(--card-padding-bottom, 0px)) var(--card-padding-left-mobile, var(--card-padding-left, 0px));
@@ -335,6 +341,23 @@
       "default": 0
     },
     {
+      "type": "checkbox",
+      "id": "customize_mobile_media_padding",
+      "label": "Customize media padding for mobile",
+      "default": false
+    },
+    {
+      "type": "range",
+      "id": "media_padding_mobile",
+      "label": "Mobile media padding",
+      "min": 0,
+      "max": 40,
+      "step": 1,
+      "unit": "px",
+      "default": 0,
+      "visible_if": "{{ block.settings.customize_mobile_media_padding }}"
+    },
+    {
       "type": "select",
       "id": "placement",
       "label": "Placement",
@@ -408,8 +431,40 @@
           "label": "Square"
         },
         {
+          "value": "radius_2",
+          "label": "t:options.radius_preset.size_2"
+        },
+        {
+          "value": "radius_4",
+          "label": "t:options.radius_preset.size_4"
+        },
+        {
+          "value": "radius_6",
+          "label": "t:options.radius_preset.size_6"
+        },
+        {
           "value": "rounded",
           "label": "Rounded"
+        },
+        {
+          "value": "radius_8",
+          "label": "t:options.radius_preset.size_8"
+        },
+        {
+          "value": "radius_12",
+          "label": "t:options.radius_preset.size_12"
+        },
+        {
+          "value": "radius_16",
+          "label": "t:options.radius_preset.size_16"
+        },
+        {
+          "value": "radius_24",
+          "label": "t:options.radius_preset.size_24"
+        },
+        {
+          "value": "radius_32",
+          "label": "t:options.radius_preset.size_32"
         },
         {
           "value": "custom",

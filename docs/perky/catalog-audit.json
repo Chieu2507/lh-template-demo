@@ -1,0 +1,146 @@
+{
+  "store": "layouthub-template-v2.myshopify.com",
+  "branch": "Perky-template",
+  "status": "audit-only-no-resources-created",
+  "existingPerkyResources": {
+    "collections": 0,
+    "products": 0,
+    "verification": "Shopify Admin query Perky returned no results; Rocking Horse query returned no products. Unrelated catalog not exhaustively audited for identical assets."
+  },
+  "collections": [
+    {
+      "title": "Rattles Perky",
+      "role": "category",
+      "type": "manual"
+    },
+    {
+      "title": "Baby Toys Perky",
+      "role": "category",
+      "type": "manual"
+    },
+    {
+      "title": "Art & Crafts Perky",
+      "role": "category",
+      "type": "manual"
+    },
+    {
+      "title": "Handmade Perky",
+      "role": "category",
+      "type": "manual"
+    },
+    {
+      "title": "Puzzles Perky",
+      "role": "category",
+      "type": "manual"
+    },
+    {
+      "title": "Plush Perky",
+      "role": "category",
+      "type": "manual"
+    },
+    {
+      "title": "0–6 Months Perky",
+      "role": "age",
+      "type": "manual"
+    },
+    {
+      "title": "6–12 Months Perky",
+      "role": "age",
+      "type": "manual"
+    },
+    {
+      "title": "1–2 Years Perky",
+      "role": "age",
+      "type": "manual"
+    },
+    {
+      "title": "2–3 Years Perky",
+      "role": "age",
+      "type": "manual"
+    },
+    {
+      "title": "New Arrivals Perky",
+      "role": "featured",
+      "type": "manual"
+    },
+    {
+      "title": "Playsets Perky",
+      "role": "featured",
+      "type": "manual"
+    },
+    {
+      "title": "Sale Perky",
+      "role": "hotspot CTA",
+      "type": "manual"
+    }
+  ],
+  "products": [
+    {
+      "title": "Rocking Horse",
+      "source": "49005:7530",
+      "handlePrefix": "perky-"
+    },
+    {
+      "title": "Wooden Baby Toy",
+      "source": "49005:7530",
+      "handlePrefix": "perky-"
+    },
+    {
+      "title": "Colorful Stacking Toy",
+      "source": "49005:7530",
+      "handlePrefix": "perky-"
+    },
+    {
+      "title": "Stacking Wooden Toy",
+      "source": "49005:7530 and hotspot",
+      "handlePrefix": "perky-"
+    },
+    {
+      "title": "Toddler Activity Cube",
+      "source": "49141:20177",
+      "handlePrefix": "perky-"
+    },
+    {
+      "title": "Stacking Tree With Bird",
+      "source": "49141:20177",
+      "handlePrefix": "perky-"
+    },
+    {
+      "title": "Giraffe Plush",
+      "source": "proposed from hotspot scene; name is demo copy",
+      "handlePrefix": "perky-"
+    },
+    {
+      "title": "Baby Blanket",
+      "source": "proposed from hotspot scene; name is demo copy",
+      "handlePrefix": "perky-"
+    }
+  ],
+  "counts": {
+    "requiredCollections": 13,
+    "directFigmaProductCards": 6,
+    "additionalHotspotProducts": 2,
+    "minimumProducts": 8,
+    "optionalCategoryProducts": 2,
+    "recommendedProductsForPopulatedCategories": 10
+  },
+  "optionalProducts": [
+    "Shape Puzzle for Puzzles Perky",
+    "Arts & Crafts Kit for Art & Crafts Perky"
+  ],
+  "deduplication": "Stacking Wooden Toy appears in Featured collection and hotspot; create once. Collection and decorative scene images do not automatically require separate products. Carousel pagination dots do not imply extra unique SKUs.",
+  "previousRecipeSource": "docs/strideo/product-import-qa.md and docs/strideo/catalog.json",
+  "previousRecipe": {
+    "collectionTitle": "<Name> Perky",
+    "collectionHandle": "<slug>-perky",
+    "productTitle": "Design name; no template suffix",
+    "productHandle": "perky-<slug>",
+    "pricing": "Figma price and compare-at where present; do not fabricate missing prices",
+    "media": "Catalog plus lifestyle for each actual colorway, upload to Shopify Files/product media; never theme assets",
+    "variants": "Actual design color/size options; no invented variant count",
+    "inventory": "Previous generic demo inventory100; exceptions follow explicit design inventory",
+    "mediaBinding": "Catalog primary per variant; matching lifestyle secondary via existing variant custom.secondary_image contract",
+    "publication": "Previous import used ACTIVE and Online Store; new audit has not published anything"
+  },
+  "pending": "Final color/size inventory and prices of proposed demo items need definition before import. Images of category and hotspot items need product-slot verification; exact asset export was not done in this audit."
+}

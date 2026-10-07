@@ -28,7 +28,7 @@
   endcase
 
   assign press_item_radius = block.settings.corner_radius | default: 'square'
-  unless press_item_radius == 'inherit' or press_item_radius == 'square' or press_item_radius == 'rounded' or press_item_radius == 'full' or press_item_radius == 'custom'
+  unless press_item_radius == 'inherit' or press_item_radius == 'square' or press_item_radius == 'rounded' or press_item_radius == 'full' or press_item_radius == 'custom' or press_item_radius == 'radius_2' or press_item_radius == 'radius_4' or press_item_radius == 'radius_6' or press_item_radius == 'radius_8' or press_item_radius == 'radius_12' or press_item_radius == 'radius_16' or press_item_radius == 'radius_24' or press_item_radius == 'radius_32'
     assign press_item_radius = 'square'
   endunless
 
@@ -39,6 +39,8 @@
 
   assign press_item_radius_value = 'var(--media-radius, var(--radius-square))'
   case press_item_radius
+    when 'radius_2', 'radius_4', 'radius_6', 'radius_8', 'radius_12', 'radius_16', 'radius_24', 'radius_32'
+      assign press_item_radius_value = press_item_radius | replace: 'radius_', 'var(--radius-' | append: ')'
     when 'square'
       assign press_item_radius_value = 'var(--radius-square)'
     when 'rounded'
@@ -161,13 +163,7 @@
       "type": "select",
       "id": "corner_radius",
       "label": "t:labels.corner_radius",
-      "options": [
-        { "value": "inherit", "label": "t:options.radius_preset.inherit" },
-        { "value": "square", "label": "t:options.radius_preset.square" },
-        { "value": "rounded", "label": "t:options.radius_preset.rounded" },
-        { "value": "full", "label": "t:options.radius_preset.full" },
-        { "value": "custom", "label": "t:options.radius_preset.custom" }
-      ],
+      "options": [{"value": "inherit", "label": "t:options.radius_preset.inherit"}, {"value": "square", "label": "t:options.radius_preset.square"}, {"value": "radius_2", "label": "t:options.radius_preset.size_2"}, {"value": "radius_4", "label": "t:options.radius_preset.size_4"}, {"value": "radius_6", "label": "t:options.radius_preset.size_6"}, {"value": "rounded", "label": "t:options.radius_preset.rounded"}, {"value": "radius_8", "label": "t:options.radius_preset.size_8"}, {"value": "radius_12", "label": "t:options.radius_preset.size_12"}, {"value": "radius_16", "label": "t:options.radius_preset.size_16"}, {"value": "radius_24", "label": "t:options.radius_preset.size_24"}, {"value": "radius_32", "label": "t:options.radius_preset.size_32"}, {"value": "full", "label": "t:options.radius_preset.full"}, {"value": "custom", "label": "t:options.radius_preset.custom"}],
       "default": "square"
     },
     {

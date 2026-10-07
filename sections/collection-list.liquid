@@ -33,6 +33,7 @@
 %}
 
 {% capture collection_list_style %}
+  {% if section.settings.mobile_action_position == 'header' %}--collection-list-header-action-gap-mobile: {{ section.settings.header_action_gap_mobile | default: 20 }}px;{% endif %}
 
   {% if collection_list_mobile_justify != collection_list_desktop_justify %}--collection-list-justify-mobile: {{ collection_list_mobile_justify }};{% endif %}
   {% if collection_list_gap_desktop != 40 %}--collection-list-gap: {{ collection_list_gap_desktop }}px;{% endif %}
@@ -66,7 +67,7 @@
     {% endif %}
 
     <div
-      class="container {{ collection_list_container_width }} collection-list__container"
+      class="container {{ collection_list_container_width }} collection-list__container{% if section.settings.mobile_action_position == 'header' %} collection-list__container--mobile-action-header{% endif %}"
       data-desktop-alignment="{{ collection_list_desktop_alignment }}"
       data-mobile-alignment="{{ collection_list_mobile_alignment }}"
     >
@@ -233,6 +234,12 @@
       gap: var(--collection-list-gap-mobile, var(--collection-list-gap, 40px));
     }
 
+    .collection-list__container--mobile-action-header .collection-list__actions {
+      order: 1;
+      margin-top: calc(var(--collection-list-header-action-gap-mobile, 20px) - var(--collection-list-gap-mobile, var(--collection-list-gap, 40px)));
+      width: auto;
+    }
+
     .collection-list__header {
       display: contents;
       margin-bottom: 0;
@@ -360,6 +367,33 @@
       "step": 1,
       "unit": "px",
       "default": 30
+    },
+    {
+      "type": "select",
+      "id": "mobile_action_position",
+      "label": "Mobile action position",
+      "options": [
+        {
+          "value": "after",
+          "label": "After list"
+        },
+        {
+          "value": "header",
+          "label": "Below heading"
+        }
+      ],
+      "default": "after"
+    },
+    {
+      "type": "range",
+      "id": "header_action_gap_mobile",
+      "label": "Mobile heading to action gap",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "default": 20,
+      "visible_if": "{{ section.settings.mobile_action_position == 'header' }}"
     },
     {
       "type": "header",

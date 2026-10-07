@@ -213,6 +213,8 @@
     assign comparison_custom_radius = 0
   endif
   case comparison_corner_radius
+    when 'radius_2', 'radius_4', 'radius_6', 'radius_8', 'radius_12', 'radius_16', 'radius_24', 'radius_32'
+      assign comparison_radius = comparison_corner_radius | replace: 'radius_', 'var(--radius-' | append: ')'
     when 'square'
       assign comparison_radius = 'var(--radius-square)'
     when 'rounded'
@@ -589,12 +591,7 @@
       "type": "select",
       "id": "corner_radius",
       "label": "t:labels.corner_radius",
-      "options": [
-        { "value": "inherit", "label": "t:options.radius_preset.inherit" },
-        { "value": "square", "label": "t:options.radius_preset.square" },
-        { "value": "rounded", "label": "t:options.radius_preset.rounded" },
-        { "value": "custom", "label": "t:options.radius_preset.custom" }
-      ],
+      "options": [{"value": "inherit", "label": "t:options.radius_preset.inherit"}, {"value": "square", "label": "t:options.radius_preset.square"}, {"value": "radius_2", "label": "t:options.radius_preset.size_2"}, {"value": "radius_4", "label": "t:options.radius_preset.size_4"}, {"value": "radius_6", "label": "t:options.radius_preset.size_6"}, {"value": "rounded", "label": "t:options.radius_preset.rounded"}, {"value": "radius_8", "label": "t:options.radius_preset.size_8"}, {"value": "radius_12", "label": "t:options.radius_preset.size_12"}, {"value": "radius_16", "label": "t:options.radius_preset.size_16"}, {"value": "radius_24", "label": "t:options.radius_preset.size_24"}, {"value": "radius_32", "label": "t:options.radius_preset.size_32"}, {"value": "custom", "label": "t:options.radius_preset.custom"}],
       "default": "inherit"
     },
     {

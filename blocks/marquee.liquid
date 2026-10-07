@@ -220,11 +220,14 @@
 
     const prepareClone = (clone) => {
       clone.setAttribute('aria-hidden', 'true');
-      if (!window.Shopify?.designMode) clone.setAttribute('inert', '');
+      // Interactive media copies must still receive pointer hover/click.
+      // aria-hidden and tabindex below keep duplicate links out of keyboard navigation.
+      const interactive = clone.matches('[data-marquee-interactive]') || clone.querySelector('[data-marquee-interactive]');
+      if (!window.Shopify?.designMode && !interactive) clone.setAttribute('inert', '');
       // Keep Shopify block attributes so copies select their source in the editor.
       [clone, ...clone.querySelectorAll('*')].forEach((element) => {
         element.removeAttribute('id');
-        // Hidden/inert copies cannot enter the shared reveal lifecycle.
+        // Hidden copies cannot enter the shared reveal lifecycle.
         // Render their content immediately instead of inheriting opacity: 0.
         element.classList.remove('reveal-pending');
         if (element.hasAttribute('data-block-animation') || element.hasAttribute('data-component-reveal')) {

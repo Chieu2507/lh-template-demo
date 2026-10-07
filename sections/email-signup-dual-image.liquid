@@ -93,6 +93,9 @@
 {% capture section_style %}
   --email-signup-dual-image-gap-desktop: {{ gap_desktop }}px;
   --email-signup-dual-image-gap-mobile: {{ gap_mobile }}px;
+  --email-signup-dual-image-radius: var(--radius-{{ section.settings.corner_radius | default: 'square' | remove: 'radius_' }});
+  --email-signup-dual-image-left-position: {{ section.settings.image_left_position | default: 50 }}%;
+  --email-signup-dual-image-right-position: {{ section.settings.image_right_position | default: 50 }}%;
   {% if direction == 'horizontal' %}
     --email-signup-dual-image-align-items: {{ position_value }};
     --email-signup-dual-image-justify-content: {{ horizontal_alignment_value }};
@@ -125,7 +128,7 @@
 {% stylesheet %}
   .email-signup-dual-image__spacing { width: 100%; min-width: 0; padding-top: var(--email-signup-dual-image-padding-top, 0px); padding-bottom: var(--email-signup-dual-image-padding-bottom, 0px); }
   .email-signup-dual-image__container { min-width: 0; }
-  .container.full-width.email-signup-dual-image__container--no-padding { padding-inline: 0; }
+  .container.full-width.email-signup-dual-image__container--no-padding { width: 100%; max-width: none; padding-inline: 0; }
   .email-signup-dual-image__grid { display: grid; grid-template-columns: minmax(0, 1fr); align-items: var(--email-signup-dual-image-align-items, start); justify-content: var(--email-signup-dual-image-justify-content, start); gap: var(--email-signup-dual-image-gap-desktop, 0px); min-width: 0; }
   .email-signup-dual-image--direction-horizontal .email-signup-dual-image__grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
   .email-signup-dual-image--direction-vertical .email-signup-dual-image__grid { justify-items: var(--email-signup-dual-image-align-items, start); }
@@ -142,9 +145,21 @@
   .email-signup-dual-image__grid > .image-block .image-block__media > img,
   .email-signup-dual-image__grid > .image-block .image-block__media .image__placeholder { height: 100%; }
   .email-signup-dual-image__grid > .image-block .image-block__media > img,
-  .email-signup-dual-image__grid > .image-block .image-block__media > picture > img { object-fit: cover; }
+  .email-signup-dual-image__grid > .image-block .image-block__media > picture > img { object-fit: cover; border-radius: var(--image-block-radius, var(--radius-square)); }
+  .email-signup-dual-image__grid { border-radius: var(--email-signup-dual-image-radius, var(--radius-square)); overflow: clip; }
+  .email-signup-dual-image__grid > .image-block:first-child img { object-position: var(--email-signup-dual-image-left-position, 50%) center; }
+  .email-signup-dual-image__grid > .image-block:last-child img { object-position: var(--email-signup-dual-image-right-position, 50%) center; }
+  .email-signup-dual-image__grid .email-signup-block { background-color: transparent; }
+  @media (min-width: 1150px) {
+    .email-signup-dual-image--direction-horizontal .email-signup-dual-image__grid > .group { padding-left: min(var(--group-padding-left, 0px), max(24px, calc(10vw - 91px))); padding-right: min(var(--group-padding-right, 0px), max(24px, calc(10vw - 91px))); }
+  }
+  @media (min-width: 768px) and (max-width: 1149.98px) {
+    .email-signup-dual-image__spacing { padding-top: calc(var(--email-signup-dual-image-padding-top, 0px) * .75); padding-bottom: calc(var(--email-signup-dual-image-padding-bottom, 0px) * .75); }
+    .email-signup-dual-image--direction-horizontal .email-signup-dual-image__grid { grid-template-columns: minmax(0, 1fr) minmax(0, 2fr) minmax(0, 1fr); }
+    .email-signup-dual-image--direction-horizontal .email-signup-dual-image__grid > .group { padding-left: min(var(--group-padding-left, 0px), 32px); padding-right: min(var(--group-padding-right, 0px), 32px); }
+  }
   @media (max-width: 767.98px) {
-    .email-signup-dual-image__spacing { padding-top: var(--email-signup-dual-image-padding-top-mobile, var(--email-signup-dual-image-padding-top, 0px)); padding-bottom: var(--email-signup-dual-image-padding-bottom-mobile, var(--email-signup-dual-image-padding-bottom, 0px)); }
+    .email-signup-dual-image__spacing { padding-top: var(--email-signup-dual-image-padding-top-mobile, calc(var(--email-signup-dual-image-padding-top, 0px) * .5)); padding-bottom: var(--email-signup-dual-image-padding-bottom-mobile, calc(var(--email-signup-dual-image-padding-bottom, 0px) * .5)); }
     .email-signup-dual-image__grid { gap: var(--email-signup-dual-image-gap-mobile, var(--email-signup-dual-image-gap-desktop, 0px)); }
     .email-signup-dual-image--vertical-mobile .email-signup-dual-image__grid { grid-template-columns: minmax(0, 1fr); align-items: var(--email-signup-dual-image-align-items-mobile, var(--email-signup-dual-image-align-items, start)); }
     .email-signup-dual-image--direction-vertical .email-signup-dual-image__grid { justify-items: var(--email-signup-dual-image-align-items, start); }
@@ -154,6 +169,8 @@
     .email-signup-dual-image--vertical-mobile .email-signup-dual-image__grid > .image-block .image-block__media > picture,
     .email-signup-dual-image--vertical-mobile .email-signup-dual-image__grid > .image-block .image-block__media > img,
     .email-signup-dual-image--vertical-mobile .email-signup-dual-image__grid > .image-block .image-block__media .image__placeholder { height: auto; }
+    .email-signup-dual-image--vertical-mobile .email-signup-dual-image__grid > .image-block .image-block__media > img,
+    .email-signup-dual-image--vertical-mobile .email-signup-dual-image__grid > .image-block .image-block__media > picture > img { height: var(--image-block-image-height-mobile, auto); }
   }
 {% endstylesheet %}
 
@@ -193,6 +210,9 @@
     { "type": "range", "id": "gap_mobile", "label": "t:labels.mobile_gap", "min": 0, "max": 100, "step": 1, "unit": "px", "default": 0 },
     { "type": "header", "content": "t:general.appearance" },
     { "type": "color_scheme", "id": "color_scheme", "label": "t:labels.color_scheme", "default": "scheme-1" },
+    {"type": "select", "id": "corner_radius", "label": "t:labels.corner_radius", "options": [{"value": "square", "label": "t:options.radius_preset.square"}, {"value": "radius_8", "label": "8 px"}, {"value": "radius_16", "label": "16 px"}, {"value": "radius_24", "label": "24 px"}], "default": "square"},
+    {"type": "range", "id": "image_left_position", "label": "Left image horizontal position", "min": 0, "max": 100, "step": 1, "unit": "%", "default": 50},
+    {"type": "range", "id": "image_right_position", "label": "Right image horizontal position", "min": 0, "max": 100, "step": 1, "unit": "%", "default": 50},
     { "type": "header", "content": "t:general.padding" },
     { "type": "range", "id": "padding_top", "label": "t:labels.top_padding", "min": 0, "max": 100, "step": 1, "unit": "px", "default": 0 },
     { "type": "range", "id": "padding_bottom", "label": "t:labels.bottom_padding", "min": 0, "max": 100, "step": 1, "unit": "px", "default": 0 },

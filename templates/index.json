@@ -48,7 +48,7 @@
                 "alignment": "center",
                 "alignment_mobile": "center",
                 "gap_desktop": 40,
-                "gap_mobile": 40,
+                "gap_mobile": 36,
                 "device": "desktop",
                 "width": "fill",
                 "width_custom": 100,
@@ -92,7 +92,7 @@
                     "alignment": "center",
                     "alignment_mobile": "center",
                     "gap_desktop": 16,
-                    "gap_mobile": 16,
+                    "gap_mobile": 12,
                     "device": "desktop",
                     "width": "fill",
                     "width_custom": 100,
@@ -235,7 +235,7 @@
                       "type": "button",
                       "settings": {
                         "button_label": "Shop now",
-                        "button_link": "shopify://collections/all",
+                        "button_link": "shopify://collections/baby-toys-perky",
                         "button_open_in_new_tab": false,
                         "button_style": "primary",
                         "show_icon": false,
@@ -310,7 +310,7 @@
                 "alignment": "center",
                 "alignment_mobile": "center",
                 "gap_desktop": 40,
-                "gap_mobile": 40,
+                "gap_mobile": 36,
                 "device": "desktop",
                 "width": "fill",
                 "width_custom": 100,
@@ -354,7 +354,7 @@
                     "alignment": "center",
                     "alignment_mobile": "center",
                     "gap_desktop": 16,
-                    "gap_mobile": 16,
+                    "gap_mobile": 12,
                     "device": "desktop",
                     "width": "fill",
                     "width_custom": 100,
@@ -497,7 +497,7 @@
                       "type": "button",
                       "settings": {
                         "button_label": "Explore essentials",
-                        "button_link": "shopify://collections/all",
+                        "button_link": "shopify://collections/new-arrivals-perky",
                         "button_open_in_new_tab": false,
                         "button_style": "primary",
                         "show_icon": false,
@@ -572,7 +572,7 @@
                 "alignment": "center",
                 "alignment_mobile": "center",
                 "gap_desktop": 40,
-                "gap_mobile": 40,
+                "gap_mobile": 36,
                 "device": "desktop",
                 "width": "fill",
                 "width_custom": 100,
@@ -616,7 +616,7 @@
                     "alignment": "center",
                     "alignment_mobile": "center",
                     "gap_desktop": 16,
-                    "gap_mobile": 16,
+                    "gap_mobile": 12,
                     "device": "desktop",
                     "width": "fill",
                     "width_custom": 100,
@@ -759,7 +759,7 @@
                       "type": "button",
                       "settings": {
                         "button_label": "Discover more",
-                        "button_link": "shopify://collections/all",
+                        "button_link": "shopify://collections/playsets-perky",
                         "button_open_in_new_tab": false,
                         "button_style": "primary",
                         "show_icon": false,
@@ -816,7 +816,7 @@
         "customize_tablet_height": true,
         "tablet_height_custom": 800,
         "mobile_height": "custom",
-        "mobile_height_custom": 640,
+        "mobile_height_custom": 600,
         "autoplay": false,
         "pause_on_hover": true,
         "autoplay_delay": 6,
@@ -844,62 +844,84 @@
         "rattles": {
           "type": "collection-thumbnail",
           "settings": {
-            "collection": "",
+            "collection": "rattles-perky",
             "custom_title": "Rattles",
-            "custom_link": "shopify://collections/all",
-            "image": "shopify://shop_images/perky-rattles.jpg"
+            "custom_link": "",
+            "image": ""
           },
           "blocks": {}
         },
         "baby-toys": {
           "type": "collection-thumbnail",
           "settings": {
-            "collection": "",
+            "collection": "baby-toys-perky",
             "custom_title": "Baby Toys",
-            "custom_link": "shopify://collections/all",
-            "image": "shopify://shop_images/perky-baby-toys.jpg"
+            "custom_link": "",
+            "image": ""
           },
           "blocks": {}
         },
         "art-crafts": {
           "type": "collection-thumbnail",
           "settings": {
-            "collection": "",
+            "collection": "art-crafts-perky",
             "custom_title": "Art & Crafts",
-            "custom_link": "shopify://collections/all",
-            "image": "shopify://shop_images/perky-art-crafts.jpg"
+            "custom_link": "",
+            "image": ""
           },
           "blocks": {}
         },
         "handmade": {
           "type": "collection-thumbnail",
           "settings": {
-            "collection": "",
+            "collection": "handmade-perky",
             "custom_title": "Handmade",
-            "custom_link": "shopify://collections/all",
-            "image": "shopify://shop_images/perky-handmade.jpg"
+            "custom_link": "",
+            "image": ""
           },
           "blocks": {}
         },
         "puzzles": {
           "type": "collection-thumbnail",
           "settings": {
-            "collection": "",
+            "collection": "puzzles-perky",
             "custom_title": "Puzzles",
-            "custom_link": "shopify://collections/all",
-            "image": "shopify://shop_images/perky-puzzles.jpg"
+            "custom_link": "",
+            "image": ""
           },
           "blocks": {}
         },
         "plush": {
           "type": "collection-thumbnail",
           "settings": {
-            "collection": "",
+            "collection": "plush-perky",
             "custom_title": "Plush",
-            "custom_link": "shopify://collections/all",
-            "image": "shopify://shop_images/perky-plush.jpg"
+            "custom_link": "",
+            "image": ""
           },
           "blocks": {}
+        },
+        "header": {
+          "type": "header",
+          "static": true,
+          "settings": {
+            "width": "fill",
+            "inherit_alignment": true
+          },
+          "blocks": {
+            "heading": {
+              "type": "heading",
+              "settings": {
+                "text": "<p>Shop by products</p>",
+                "heading_size": "xl",
+                "html_tag": "h2",
+                "width": "fill"
+              }
+            }
+          },
+          "block_order": [
+            "heading"
+          ]
         }
       },
       "block_order": [
@@ -942,7 +964,9 @@
         "padding_bottom": 80,
         "customize_mobile_padding": true,
         "padding_top_mobile": 56,
-        "padding_bottom_mobile": 56
+        "padding_bottom_mobile": 56,
+        "content_gap_desktop": 48,
+        "content_gap_mobile": 36
       }
     },
     "featured_collection": {
@@ -1059,7 +1083,7 @@
           "type": "product-list",
           "static": true,
           "settings": {
-            "collection": "",
+            "collection": "new-arrivals-perky",
             "max_products": 4,
             "layout_type": "grid",
             "columns_desktop": "4",
@@ -1082,7 +1106,9 @@
             "pagination_max_width": 260,
             "autoplay": false,
             "autoplay_pause_on_hover": true,
-            "autoplay_speed": 4
+            "autoplay_speed": 4,
+            "customize_mobile_row_gap": true,
+            "product_row_gap_mobile": 24
           },
           "blocks": {
             "product-card": {
@@ -1176,11 +1202,11 @@
             "text_alignment": "left",
             "text_position": "bottom_left",
             "button_label": "Shop Sale",
-            "button_link": "/collections/all",
+            "button_link": "shopify://collections/sale-perky",
             "open_in_new_tab": false,
             "button_style": "primary",
             "gap_desktop": 20,
-            "gap_mobile": 14,
+            "gap_mobile": 20,
             "customize_content_spacing": true,
             "content_horizontal_spacing": 60,
             "content_padding_desktop": 63,
@@ -1196,7 +1222,7 @@
             "hotspot-1": {
               "type": "hotspot",
               "settings": {
-                "product": "",
+                "product": "perky-striped-baby-blanket",
                 "use_content": false,
                 "content_heading": "Medium Heading",
                 "content_text": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros elementum tristique.</p>",
@@ -1211,7 +1237,7 @@
             "hotspot-2": {
               "type": "hotspot",
               "settings": {
-                "product": "",
+                "product": "perky-plush-doll",
                 "use_content": false,
                 "content_heading": "Medium Heading",
                 "content_text": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros elementum tristique.</p>",
@@ -1226,7 +1252,7 @@
             "hotspot-3": {
               "type": "hotspot",
               "settings": {
-                "product": "",
+                "product": "perky-wooden-bowling-set",
                 "use_content": false,
                 "content_heading": "Medium Heading",
                 "content_text": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros elementum tristique.</p>",
@@ -1380,11 +1406,16 @@
           "type": "collection-list-items",
           "static": true,
           "settings": {
-            "collections": [],
-            "layout": "grid",
+            "collections": [
+              "0-6-months-perky",
+              "6-12-months-perky",
+              "1-2-years-perky",
+              "2-3-years-perky"
+            ],
+            "layout": "carousel",
             "columns_desktop": "4",
             "columns_tablet": "4",
-            "columns_mobile": "2",
+            "columns_mobile": "1",
             "show_next_slide_preview_on_desktop": false,
             "show_next_slide_preview_on_mobile": false,
             "gap_desktop": 28,
@@ -1406,7 +1437,9 @@
             "pagination_max_width": 260,
             "autoplay": false,
             "autoplay_pause_on_hover": true,
-            "autoplay_speed": 4
+            "autoplay_speed": 4,
+            "mobile_card_sizing": "fixed",
+            "mobile_card_width": 256
           },
           "blocks": {
             "collection-card": {
@@ -1421,21 +1454,23 @@
                 "gap_desktop": 4,
                 "gap_mobile": 4,
                 "border_thickness": 0,
-                "corner_radius": "custom",
+                "corner_radius": "radius_24",
                 "custom_corner_radius": 24,
                 "shadow": "none",
                 "color_type": "color_scheme",
                 "color_scheme": "scheme-2",
                 "padding_top": 16,
                 "padding_bottom": 20,
-                "padding_left": 20,
-                "padding_right": 20,
-                "customize_mobile_padding": false,
+                "padding_left": 36,
+                "padding_right": 36,
+                "customize_mobile_padding": true,
                 "padding_top_mobile": 16,
-                "padding_bottom_mobile": 0,
-                "padding_left_mobile": 0,
-                "padding_right_mobile": 0,
-                "hover_zoom": false
+                "padding_bottom_mobile": 16,
+                "padding_left_mobile": 32,
+                "padding_right_mobile": 32,
+                "hover_zoom": true,
+                "customize_mobile_media_padding": true,
+                "media_padding_mobile": 16
               },
               "blocks": {
                 "title": {
@@ -1443,7 +1478,7 @@
                   "settings": {
                     "content_gap": 2,
                     "show_product_count": false,
-                    "heading_size": "sm",
+                    "heading_size": "md",
                     "custom_heading_size": 24,
                     "html_tag": "h3",
                     "product_count_font": "body",
@@ -1475,16 +1510,18 @@
       "settings": {
         "section_width": "page_width",
         "desktop_alignment": "left",
-        "mobile_alignment": "center",
+        "mobile_alignment": "left",
         "gap_desktop": 40,
-        "gap_mobile": 32,
+        "gap_mobile": 36,
         "background_media": "none",
         "color_scheme": "scheme-1",
         "padding_top": 80,
         "padding_bottom": 80,
         "customize_mobile_padding": true,
         "padding_top_mobile": 56,
-        "padding_bottom_mobile": 56
+        "padding_bottom_mobile": 56,
+        "mobile_action_position": "header",
+        "header_action_gap_mobile": 20
       }
     },
     "perky_playsets_banner": {
@@ -1561,12 +1598,12 @@
                 "animation_type": "none",
                 "animation_delay": 0,
                 "padding_top": 0,
-                "padding_bottom": 0,
+                "padding_bottom": 12,
                 "padding_left": 0,
                 "padding_right": 0,
-                "customize_mobile_padding": false,
+                "customize_mobile_padding": true,
                 "padding_top_mobile": 0,
-                "padding_bottom_mobile": 0,
+                "padding_bottom_mobile": 4,
                 "padding_left_mobile": 0,
                 "padding_right_mobile": 0
               },
@@ -1576,7 +1613,7 @@
               "type": "button",
               "settings": {
                 "button_label": "Shop Now",
-                "button_link": "shopify://collections/all",
+                "button_link": "shopify://collections/playsets-perky",
                 "button_open_in_new_tab": false,
                 "button_style": "primary",
                 "show_icon": false,
@@ -1611,7 +1648,7 @@
           "type": "banner",
           "static": true,
           "settings": {
-            "link": "",
+            "link": "shopify://collections/playsets-perky",
             "open_in_new_tab": false,
             "background_type": "image",
             "image": "shopify://shop_images/perky-playsets-banner.jpg",
@@ -1627,7 +1664,7 @@
             "position_mobile": "bottom_left",
             "gap_desktop": 20,
             "gap_mobile": 16,
-            "corner_radius": "custom",
+            "corner_radius": "radius_24",
             "custom_corner_radius": 24,
             "color_scheme": "scheme-2",
             "padding_top": 0,
@@ -1646,7 +1683,7 @@
           "type": "product-list",
           "static": true,
           "settings": {
-            "collection": "",
+            "collection": "playsets-perky",
             "max_products": 6,
             "layout_type": "carousel",
             "columns_desktop": "2",
@@ -1663,8 +1700,8 @@
             "show_pagination_on_desktop": true,
             "pagination_type": "bullets",
             "pagination_thickness": "standard",
-            "pagination_top_padding_desktop": 24,
-            "pagination_top_padding_mobile": 24,
+            "pagination_top_padding_desktop": 28,
+            "pagination_top_padding_mobile": 28,
             "pagination_limit_width": true,
             "pagination_max_width": 260,
             "autoplay": false,
@@ -1692,9 +1729,9 @@
         "banner_max_width": "large",
         "banner_height": "ratio",
         "gap_desktop": 36,
-        "gap_mobile": 32,
+        "gap_mobile": 48,
         "header_gap_desktop": 48,
-        "header_gap_mobile": 32,
+        "header_gap_mobile": 36,
         "color_scheme": "scheme-2",
         "padding_top": 80,
         "padding_bottom": 80,
@@ -1741,7 +1778,7 @@
             "animation_speed": 1,
             "background_color": "",
             "gap_desktop": 48,
-            "gap_mobile": 32,
+            "gap_mobile": 48,
             "padding_top": 0,
             "padding_bottom": 0,
             "padding_left": 0,
@@ -2215,7 +2252,7 @@
         "customize_mobile_alignment": false,
         "alignment_mobile": "left",
         "gap_desktop": 40,
-        "gap_mobile": 28,
+        "gap_mobile": 36,
         "color_scheme": "scheme-1",
         "background_color": "",
         "padding_top": 80,
@@ -2669,7 +2706,7 @@
                 "width_custom_mobile": 100,
                 "limit_width_mobile": false,
                 "max_width_mobile": 1600,
-                "corner_radius": "custom",
+                "corner_radius": "radius_4",
                 "custom_corner_radius": 4,
                 "animation_type": "scale",
                 "animation_delay": 0,
@@ -2906,7 +2943,7 @@
                 "width_custom_mobile": 100,
                 "limit_width_mobile": false,
                 "max_width_mobile": 1600,
-                "corner_radius": "custom",
+                "corner_radius": "radius_4",
                 "custom_corner_radius": 4,
                 "animation_type": "scale",
                 "animation_delay": 0,
@@ -3143,7 +3180,7 @@
                 "width_custom_mobile": 100,
                 "limit_width_mobile": false,
                 "max_width_mobile": 1600,
-                "corner_radius": "custom",
+                "corner_radius": "radius_4",
                 "custom_corner_radius": 4,
                 "animation_type": "scale",
                 "animation_delay": 0,
@@ -3594,7 +3631,7 @@
             "background_color": "",
             "border_type": "none",
             "border_color": "",
-            "corner_radius": "rounded",
+            "corner_radius": "radius_32",
             "shadow": "none",
             "overlay_color": "",
             "backdrop_blur": 0,
@@ -3851,7 +3888,7 @@
                   "type": "button",
                   "settings": {
                     "button_label": "Shop now",
-                    "button_link": "shopify://collections/all",
+                    "button_link": "shopify://collections/sale-perky",
                     "button_open_in_new_tab": false,
                     "button_style": "secondary",
                     "show_icon": false,
@@ -3903,7 +3940,7 @@
         "banner_image": "shopify://shop_images/perky-countdown.jpg",
         "mobile_banner_image": "",
         "media_aspect_ratio": "ratio_7_6",
-        "media_corner_radius": "rounded",
+        "media_corner_radius": "square",
         "hover_zoom": false,
         "overlay": "#00000033",
         "parallax_effect": "none",
@@ -4843,7 +4880,7 @@
             "width_desktop": "fill",
             "image_ratio_mobile": "ratio_7_6",
             "width_mobile": "fill",
-            "corner_radius": "rounded"
+            "corner_radius": "radius_24"
           }
         },
         "content": {
@@ -4854,22 +4891,22 @@
             "alignment": "center",
             "alignment_mobile": "center",
             "gap_desktop": 16,
-            "gap_mobile": 16,
+            "gap_mobile": 12,
             "width": "fill",
             "height": "fill",
             "width_mobile": "fill",
             "appearance_type": "scheme",
             "color_scheme": "scheme-3",
-            "corner_radius": "rounded",
+            "corner_radius": "radius_24",
             "padding_top": 64,
             "padding_bottom": 64,
             "padding_left": 64,
             "padding_right": 64,
             "customize_mobile_padding": true,
-            "padding_top_mobile": 40,
-            "padding_bottom_mobile": 40,
-            "padding_left_mobile": 24,
-            "padding_right_mobile": 24
+            "padding_top_mobile": 36,
+            "padding_bottom_mobile": 36,
+            "padding_left_mobile": 20,
+            "padding_right_mobile": 20
           },
           "blocks": {
             "bulb": {
@@ -4895,7 +4932,9 @@
                 "heading_size": "lg",
                 "html_tag": "h2",
                 "width": "fill",
-                "padding_bottom": 4
+                "padding_bottom": 4,
+                "customize_mobile_padding": true,
+                "padding_bottom_mobile": 0
               }
             },
             "text": {
@@ -4904,14 +4943,16 @@
                 "text": "<p>Inspire children to think beyond boundaries, explore their curiosity, and transform simple ideas into amazing creations. With every play, they learn to imagine, design, and innovate — building confidence, creativity, and a lifelong love for discovery.</p>",
                 "text_size": "md",
                 "width": "fill",
-                "padding_bottom": 16
+                "padding_bottom": 16,
+                "customize_mobile_padding": true,
+                "padding_bottom_mobile": 12
               }
             },
             "button": {
               "type": "button",
               "settings": {
                 "button_label": "Shop now",
-                "button_link": "shopify://collections/all",
+                "button_link": "shopify://collections/art-crafts-perky",
                 "button_style": "primary",
                 "width": "fit",
                 "width_mobile": "fit"
@@ -4947,7 +4988,10 @@
         "background_media": "none",
         "padding_unit": "pixel",
         "padding_top": 10,
-        "padding_bottom": 80
+        "padding_bottom": 80,
+        "customize_mobile_padding": true,
+        "padding_top_mobile": 10,
+        "padding_bottom_mobile": 56
       }
     },
     "perky_testimonials": {
@@ -4981,429 +5025,393 @@
           "type": "_testimonial-review-card",
           "settings": {
             "direction": "vertical",
-            "gap_desktop": 0,
-            "gap_mobile": 0,
-            "corner_radius": "custom",
+            "gap_desktop": 28,
+            "gap_mobile": 16,
+            "corner_radius": "radius_24",
             "custom_corner_radius": 24,
-            "background_color": "#ffffff"
+            "background_color": "#ffffff",
+            "padding_top": 36,
+            "padding_bottom": 36,
+            "padding_left": 28,
+            "padding_right": 28,
+            "customize_mobile_padding": true,
+            "padding_top_mobile": 28,
+            "padding_bottom_mobile": 24,
+            "padding_left_mobile": 20,
+            "padding_right_mobile": 20
           },
           "blocks": {
-            "card": {
+            "content": {
               "type": "group",
               "settings": {
                 "direction": "vertical",
                 "alignment": "center",
                 "alignment_mobile": "center",
-                "gap_desktop": 28,
-                "gap_mobile": 28,
+                "gap_desktop": 16,
+                "gap_mobile": 12,
                 "width": "fill",
-                "height": "fit",
-                "padding_top": 36,
-                "padding_bottom": 36,
-                "padding_left": 28,
-                "padding_right": 28
+                "height": "fit"
               },
               "blocks": {
-                "content": {
-                  "type": "group",
-                  "settings": {
-                    "direction": "vertical",
-                    "alignment": "center",
-                    "alignment_mobile": "center",
-                    "gap_desktop": 16,
-                    "gap_mobile": 16,
-                    "width": "fill",
-                    "height": "fit"
-                  },
-                  "blocks": {
-                    "rating": {
-                      "type": "testimonial-rating",
-                      "settings": {}
-                    },
-                    "copy": {
-                      "type": "group",
-                      "settings": {
-                        "direction": "vertical",
-                        "alignment": "center",
-                        "alignment_mobile": "center",
-                        "gap_desktop": 10,
-                        "gap_mobile": 10,
-                        "width": "fill",
-                        "height": "fit"
-                      },
-                      "blocks": {
-                        "title": {
-                          "type": "heading",
-                          "settings": {
-                            "text": "<p>Safe, Colorful, and Engaging!</p>",
-                            "heading_size": "md",
-                            "html_tag": "h3",
-                            "width": "fill"
-                          }
-                        },
-                        "quote": {
-                          "type": "text",
-                          "settings": {
-                            "text": "<p>The toys are made from safe materials and the bright colors really capture my son's attention. It’s been a joy watching him explore and play independently.</p>",
-                            "text_size": "md",
-                            "customize_letter_spacing": true,
-                            "letter_spacing": 0,
-                            "width": "fill"
-                          }
-                        }
-                      },
-                      "block_order": [
-                        "title",
-                        "quote"
-                      ]
-                    }
-                  },
-                  "block_order": [
-                    "rating",
-                    "copy"
-                  ]
+                "rating": {
+                  "type": "testimonial-rating",
+                  "settings": {}
                 },
-                "author": {
+                "copy": {
                   "type": "group",
                   "settings": {
                     "direction": "vertical",
                     "alignment": "center",
                     "alignment_mobile": "center",
-                    "gap_desktop": 12,
-                    "gap_mobile": 12,
+                    "gap_desktop": 10,
+                    "gap_mobile": 10,
                     "width": "fill",
                     "height": "fit"
                   },
                   "blocks": {
-                    "avatar": {
-                      "type": "image",
+                    "title": {
+                      "type": "heading",
                       "settings": {
-                        "image": "shopify://shop_images/381e9.png",
-                        "alt_text": "Jason K.",
-                        "image_fit": "contain",
-                        "image_ratio_desktop": "square",
-                        "width_desktop": "fixed",
-                        "width_fixed_desktop": 70,
-                        "limit_width_desktop": false,
-                        "max_width_desktop": 1600,
-                        "image_ratio_mobile": "square",
-                        "width_mobile": "fixed",
-                        "width_fixed_mobile": 70,
-                        "limit_width_mobile": false,
-                        "max_width_mobile": 1600,
-                        "background_color": "#fed7a2",
-                        "corner_radius": "full"
+                        "text": "<p>Safe, Colorful, and Engaging!</p>",
+                        "heading_size": "md",
+                        "html_tag": "h3",
+                        "width": "fill"
                       }
                     },
-                    "name": {
+                    "quote": {
                       "type": "text",
                       "settings": {
-                        "text": "<p>Jason K.</p>",
+                        "text": "<p>The toys are made from safe materials and the bright colors really capture my son's attention. It’s been a joy watching him explore and play independently.</p>",
                         "text_size": "md",
-                        "text_color": "#181818"
+                        "customize_letter_spacing": true,
+                        "letter_spacing": 0,
+                        "width": "fill"
                       }
                     }
                   },
                   "block_order": [
-                    "avatar",
-                    "name"
+                    "title",
+                    "quote"
                   ]
                 }
               },
               "block_order": [
-                "content",
-                "author"
+                "rating",
+                "copy"
+              ]
+            },
+            "author": {
+              "type": "group",
+              "settings": {
+                "direction": "vertical",
+                "alignment": "center",
+                "alignment_mobile": "center",
+                "gap_desktop": 12,
+                "gap_mobile": 12,
+                "width": "fill",
+                "height": "fit"
+              },
+              "blocks": {
+                "avatar": {
+                  "type": "image",
+                  "settings": {
+                    "image": "shopify://shop_images/381e9.png",
+                    "alt_text": "Jason K.",
+                    "image_fit": "contain",
+                    "image_ratio_desktop": "square",
+                    "width_desktop": "fixed",
+                    "width_fixed_desktop": 70,
+                    "limit_width_desktop": false,
+                    "max_width_desktop": 1600,
+                    "image_ratio_mobile": "square",
+                    "width_mobile": "fixed",
+                    "width_fixed_mobile": 70,
+                    "limit_width_mobile": false,
+                    "max_width_mobile": 1600,
+                    "background_color": "#fed7a2",
+                    "corner_radius": "full"
+                  }
+                },
+                "name": {
+                  "type": "text",
+                  "settings": {
+                    "text": "<p>Jason K.</p>",
+                    "text_size": "md",
+                    "text_color": "#181818"
+                  }
+                }
+              },
+              "block_order": [
+                "avatar",
+                "name"
               ]
             }
           },
           "block_order": [
-            "card"
+            "content",
+            "author"
           ]
         },
         "sarah": {
           "type": "_testimonial-review-card",
           "settings": {
             "direction": "vertical",
-            "gap_desktop": 0,
-            "gap_mobile": 0,
-            "corner_radius": "custom",
+            "gap_desktop": 28,
+            "gap_mobile": 16,
+            "corner_radius": "radius_24",
             "custom_corner_radius": 24,
-            "background_color": "#ffffff"
+            "background_color": "#ffffff",
+            "padding_top": 36,
+            "padding_bottom": 36,
+            "padding_left": 28,
+            "padding_right": 28,
+            "customize_mobile_padding": true,
+            "padding_top_mobile": 28,
+            "padding_bottom_mobile": 24,
+            "padding_left_mobile": 20,
+            "padding_right_mobile": 20
           },
           "blocks": {
-            "card": {
+            "content": {
               "type": "group",
               "settings": {
                 "direction": "vertical",
                 "alignment": "center",
                 "alignment_mobile": "center",
-                "gap_desktop": 28,
-                "gap_mobile": 28,
+                "gap_desktop": 16,
+                "gap_mobile": 12,
                 "width": "fill",
-                "height": "fit",
-                "padding_top": 36,
-                "padding_bottom": 36,
-                "padding_left": 28,
-                "padding_right": 28
+                "height": "fit"
               },
               "blocks": {
-                "content": {
-                  "type": "group",
-                  "settings": {
-                    "direction": "vertical",
-                    "alignment": "center",
-                    "alignment_mobile": "center",
-                    "gap_desktop": 16,
-                    "gap_mobile": 16,
-                    "width": "fill",
-                    "height": "fit"
-                  },
-                  "blocks": {
-                    "rating": {
-                      "type": "testimonial-rating",
-                      "settings": {}
-                    },
-                    "copy": {
-                      "type": "group",
-                      "settings": {
-                        "direction": "vertical",
-                        "alignment": "center",
-                        "alignment_mobile": "center",
-                        "gap_desktop": 10,
-                        "gap_mobile": 10,
-                        "width": "fill",
-                        "height": "fit"
-                      },
-                      "blocks": {
-                        "title": {
-                          "type": "heading",
-                          "settings": {
-                            "text": "<p>Hours of Fun and Learning!</p>",
-                            "heading_size": "md",
-                            "html_tag": "h3",
-                            "width": "fill"
-                          }
-                        },
-                        "quote": {
-                          "type": "text",
-                          "settings": {
-                            "text": "<p>My daughter absolutely loves these toys. Not they keep her entertained, but I can also see how much she's learning through play.</p>",
-                            "text_size": "md",
-                            "customize_letter_spacing": true,
-                            "letter_spacing": 0,
-                            "width": "fill"
-                          }
-                        }
-                      },
-                      "block_order": [
-                        "title",
-                        "quote"
-                      ]
-                    }
-                  },
-                  "block_order": [
-                    "rating",
-                    "copy"
-                  ]
+                "rating": {
+                  "type": "testimonial-rating",
+                  "settings": {}
                 },
-                "author": {
+                "copy": {
                   "type": "group",
                   "settings": {
                     "direction": "vertical",
                     "alignment": "center",
                     "alignment_mobile": "center",
-                    "gap_desktop": 12,
-                    "gap_mobile": 12,
+                    "gap_desktop": 10,
+                    "gap_mobile": 10,
                     "width": "fill",
                     "height": "fit"
                   },
                   "blocks": {
-                    "avatar": {
-                      "type": "image",
+                    "title": {
+                      "type": "heading",
                       "settings": {
-                        "image": "shopify://shop_images/2cff1.png",
-                        "alt_text": "Sarah L",
-                        "image_fit": "contain",
-                        "image_ratio_desktop": "square",
-                        "width_desktop": "fixed",
-                        "width_fixed_desktop": 70,
-                        "limit_width_desktop": false,
-                        "max_width_desktop": 1600,
-                        "image_ratio_mobile": "square",
-                        "width_mobile": "fixed",
-                        "width_fixed_mobile": 70,
-                        "limit_width_mobile": false,
-                        "max_width_mobile": 1600,
-                        "background_color": "#dcdbf5",
-                        "corner_radius": "full"
+                        "text": "<p>Hours of Fun and Learning!</p>",
+                        "heading_size": "md",
+                        "html_tag": "h3",
+                        "width": "fill"
                       }
                     },
-                    "name": {
+                    "quote": {
                       "type": "text",
                       "settings": {
-                        "text": "<p>Sarah L</p>",
+                        "text": "<p>My daughter absolutely loves these toys. Not they keep her entertained, but I can also see how much she's learning through play.</p>",
                         "text_size": "md",
-                        "text_color": "#181818"
+                        "customize_letter_spacing": true,
+                        "letter_spacing": 0,
+                        "width": "fill"
                       }
                     }
                   },
                   "block_order": [
-                    "avatar",
-                    "name"
+                    "title",
+                    "quote"
                   ]
                 }
               },
               "block_order": [
-                "content",
-                "author"
+                "rating",
+                "copy"
+              ]
+            },
+            "author": {
+              "type": "group",
+              "settings": {
+                "direction": "vertical",
+                "alignment": "center",
+                "alignment_mobile": "center",
+                "gap_desktop": 12,
+                "gap_mobile": 12,
+                "width": "fill",
+                "height": "fit"
+              },
+              "blocks": {
+                "avatar": {
+                  "type": "image",
+                  "settings": {
+                    "image": "shopify://shop_images/2cff1.png",
+                    "alt_text": "Sarah L",
+                    "image_fit": "contain",
+                    "image_ratio_desktop": "square",
+                    "width_desktop": "fixed",
+                    "width_fixed_desktop": 70,
+                    "limit_width_desktop": false,
+                    "max_width_desktop": 1600,
+                    "image_ratio_mobile": "square",
+                    "width_mobile": "fixed",
+                    "width_fixed_mobile": 70,
+                    "limit_width_mobile": false,
+                    "max_width_mobile": 1600,
+                    "background_color": "#dcdbf5",
+                    "corner_radius": "full"
+                  }
+                },
+                "name": {
+                  "type": "text",
+                  "settings": {
+                    "text": "<p>Sarah L</p>",
+                    "text_size": "md",
+                    "text_color": "#181818"
+                  }
+                }
+              },
+              "block_order": [
+                "avatar",
+                "name"
               ]
             }
           },
           "block_order": [
-            "card"
+            "content",
+            "author"
           ]
         },
         "emily": {
           "type": "_testimonial-review-card",
           "settings": {
             "direction": "vertical",
-            "gap_desktop": 0,
-            "gap_mobile": 0,
-            "corner_radius": "custom",
+            "gap_desktop": 28,
+            "gap_mobile": 16,
+            "corner_radius": "radius_24",
             "custom_corner_radius": 24,
-            "background_color": "#ffffff"
+            "background_color": "#ffffff",
+            "padding_top": 36,
+            "padding_bottom": 36,
+            "padding_left": 28,
+            "padding_right": 28,
+            "customize_mobile_padding": true,
+            "padding_top_mobile": 28,
+            "padding_bottom_mobile": 24,
+            "padding_left_mobile": 20,
+            "padding_right_mobile": 20
           },
           "blocks": {
-            "card": {
+            "content": {
               "type": "group",
               "settings": {
                 "direction": "vertical",
                 "alignment": "center",
                 "alignment_mobile": "center",
-                "gap_desktop": 28,
-                "gap_mobile": 28,
+                "gap_desktop": 16,
+                "gap_mobile": 12,
                 "width": "fill",
-                "height": "fit",
-                "padding_top": 36,
-                "padding_bottom": 36,
-                "padding_left": 28,
-                "padding_right": 28
+                "height": "fit"
               },
               "blocks": {
-                "content": {
-                  "type": "group",
-                  "settings": {
-                    "direction": "vertical",
-                    "alignment": "center",
-                    "alignment_mobile": "center",
-                    "gap_desktop": 16,
-                    "gap_mobile": 16,
-                    "width": "fill",
-                    "height": "fit"
-                  },
-                  "blocks": {
-                    "rating": {
-                      "type": "testimonial-rating",
-                      "settings": {}
-                    },
-                    "copy": {
-                      "type": "group",
-                      "settings": {
-                        "direction": "vertical",
-                        "alignment": "center",
-                        "alignment_mobile": "center",
-                        "gap_desktop": 10,
-                        "gap_mobile": 10,
-                        "width": "fill",
-                        "height": "fit"
-                      },
-                      "blocks": {
-                        "title": {
-                          "type": "heading",
-                          "settings": {
-                            "text": "<p>Great product</p>",
-                            "heading_size": "md",
-                            "html_tag": "h3",
-                            "width": "fill"
-                          }
-                        },
-                        "quote": {
-                          "type": "text",
-                          "settings": {
-                            "text": "<p>We’ve tried many toys, but these are the ones my always come back to. Durable, creative, and so much fun. Even the grandparents love playing with.</p>",
-                            "text_size": "md",
-                            "customize_letter_spacing": true,
-                            "letter_spacing": 0,
-                            "width": "fill"
-                          }
-                        }
-                      },
-                      "block_order": [
-                        "title",
-                        "quote"
-                      ]
-                    }
-                  },
-                  "block_order": [
-                    "rating",
-                    "copy"
-                  ]
+                "rating": {
+                  "type": "testimonial-rating",
+                  "settings": {}
                 },
-                "author": {
+                "copy": {
                   "type": "group",
                   "settings": {
                     "direction": "vertical",
                     "alignment": "center",
                     "alignment_mobile": "center",
-                    "gap_desktop": 12,
-                    "gap_mobile": 12,
+                    "gap_desktop": 10,
+                    "gap_mobile": 10,
                     "width": "fill",
                     "height": "fit"
                   },
                   "blocks": {
-                    "avatar": {
-                      "type": "image",
+                    "title": {
+                      "type": "heading",
                       "settings": {
-                        "image": "shopify://shop_images/b65dc.png",
-                        "alt_text": "Emily R.",
-                        "image_fit": "contain",
-                        "image_ratio_desktop": "square",
-                        "width_desktop": "fixed",
-                        "width_fixed_desktop": 70,
-                        "limit_width_desktop": false,
-                        "max_width_desktop": 1600,
-                        "image_ratio_mobile": "square",
-                        "width_mobile": "fixed",
-                        "width_fixed_mobile": 70,
-                        "limit_width_mobile": false,
-                        "max_width_mobile": 1600,
-                        "background_color": "#e2f4f0",
-                        "corner_radius": "full"
+                        "text": "<p>Great product</p>",
+                        "heading_size": "md",
+                        "html_tag": "h3",
+                        "width": "fill"
                       }
                     },
-                    "name": {
+                    "quote": {
                       "type": "text",
                       "settings": {
-                        "text": "<p>Emily R.</p>",
+                        "text": "<p>We’ve tried many toys, but these are the ones my always come back to. Durable, creative, and so much fun. Even the grandparents love playing with.</p>",
                         "text_size": "md",
-                        "text_color": "#181818"
+                        "customize_letter_spacing": true,
+                        "letter_spacing": 0,
+                        "width": "fill"
                       }
                     }
                   },
                   "block_order": [
-                    "avatar",
-                    "name"
+                    "title",
+                    "quote"
                   ]
                 }
               },
               "block_order": [
-                "content",
-                "author"
+                "rating",
+                "copy"
+              ]
+            },
+            "author": {
+              "type": "group",
+              "settings": {
+                "direction": "vertical",
+                "alignment": "center",
+                "alignment_mobile": "center",
+                "gap_desktop": 12,
+                "gap_mobile": 12,
+                "width": "fill",
+                "height": "fit"
+              },
+              "blocks": {
+                "avatar": {
+                  "type": "image",
+                  "settings": {
+                    "image": "shopify://shop_images/b65dc.png",
+                    "alt_text": "Emily R.",
+                    "image_fit": "contain",
+                    "image_ratio_desktop": "square",
+                    "width_desktop": "fixed",
+                    "width_fixed_desktop": 70,
+                    "limit_width_desktop": false,
+                    "max_width_desktop": 1600,
+                    "image_ratio_mobile": "square",
+                    "width_mobile": "fixed",
+                    "width_fixed_mobile": 70,
+                    "limit_width_mobile": false,
+                    "max_width_mobile": 1600,
+                    "background_color": "#e2f4f0",
+                    "corner_radius": "full"
+                  }
+                },
+                "name": {
+                  "type": "text",
+                  "settings": {
+                    "text": "<p>Emily R.</p>",
+                    "text_size": "md",
+                    "text_color": "#181818"
+                  }
+                }
+              },
+              "block_order": [
+                "avatar",
+                "name"
               ]
             }
           },
           "block_order": [
-            "card"
+            "content",
+            "author"
           ]
         }
       },
@@ -5418,13 +5426,734 @@
         "columns_tablet": "2",
         "columns_mobile": "1",
         "gap_desktop": 28,
-        "gap_mobile": 16,
+        "gap_mobile": 12,
         "header_gap": 56,
-        "header_gap_mobile": 32,
+        "header_gap_mobile": 36,
         "show_pagination": true,
         "color_scheme": "scheme-2",
         "padding_top": 80,
-        "padding_bottom": 80
+        "padding_bottom": 80,
+        "customize_mobile_padding": true,
+        "padding_top_mobile": 56,
+        "padding_bottom_mobile": 56,
+        "pagination_top_padding_mobile": 32
+      }
+    },
+    "perky_blog_posts": {
+      "type": "featured-blog-posts",
+      "blocks": {
+        "header": {
+          "type": "header",
+          "static": true,
+          "settings": {
+            "width": "fill",
+            "gap_desktop": 16,
+            "gap_mobile": 12
+          },
+          "blocks": {
+            "heading_0": {
+              "type": "heading",
+              "settings": {
+                "text": "<p>Blog Posts</p>",
+                "heading_size": "lg",
+                "html_tag": "h2"
+              },
+              "blocks": {}
+            },
+            "text_1": {
+              "type": "text",
+              "settings": {
+                "text": "<p>Explore our latest blog posts for inspiring stories, expert tips.</p>",
+                "text_size": "sm"
+              },
+              "blocks": {}
+            }
+          },
+          "block_order": [
+            "heading_0",
+            "text_1"
+          ]
+        },
+        "featured-blog-posts-view-all": {
+          "type": "view-all-button",
+          "static": true,
+          "settings": {
+            "button_label": "View All",
+            "button_style": "tertiary",
+            "show_icon": false,
+            "button_style_mobile": "tertiary",
+            "button_height_mobile": "inherit",
+            "full_width_mobile": false,
+            "show_icon_mobile": false
+          },
+          "blocks": {}
+        },
+        "blog-grid": {
+          "type": "blog-grid",
+          "static": true,
+          "settings": {
+            "blog": "perky",
+            "max_posts": 2,
+            "layout": "horizontal",
+            "sticky": false,
+            "horizontal_split": 50,
+            "gap_desktop": 28,
+            "gap_mobile": 28
+          },
+          "blocks": {
+            "first-card": {
+              "type": "first-card",
+              "static": true,
+              "settings": {
+                "media_layout": "overlay"
+              },
+              "blocks": {
+                "featured-image-card": {
+                  "type": "image-card",
+                  "static": true,
+                  "settings": {
+                    "media_source": "article",
+                    "background_type": "image",
+                    "show_overlay": true,
+                    "overlay_style": "gradient",
+                    "height_desktop": "ratio_4_3",
+                    "height_mobile": "ratio_4_3",
+                    "enable_sticky": false,
+                    "position_desktop": "bottom_left",
+                    "position_mobile": "bottom_left",
+                    "gap_desktop": 24,
+                    "gap_mobile": 16,
+                    "corner_radius": "radius_24",
+                    "color_scheme": "scheme-3",
+                    "padding_top": 36,
+                    "padding_bottom": 36,
+                    "padding_left": 36,
+                    "padding_right": 36,
+                    "customize_mobile_padding": true,
+                    "padding_top_mobile": 20,
+                    "padding_bottom_mobile": 20,
+                    "padding_left_mobile": 20,
+                    "padding_right_mobile": 20
+                  },
+                  "blocks": {
+                    "button": {
+                      "type": "blog-card-button",
+                      "settings": {
+                        "style": "primary",
+                        "show_icon": false
+                      }
+                    },
+                    "copy": {
+                      "type": "group",
+                      "settings": {
+                        "direction": "vertical",
+                        "alignment": "left",
+                        "width": "fill",
+                        "width_mobile": "fill",
+                        "gap_desktop": 8,
+                        "gap_mobile": 6
+                      },
+                      "blocks": {
+                        "meta": {
+                          "type": "blog-card-meta",
+                          "settings": {
+                            "show_date": true,
+                            "show_author": false,
+                            "show_comment_count": false,
+                            "show_date_icon": false,
+                            "date_format": "medium",
+                            "separator_icon": "none",
+                            "size": "xs",
+                            "gap": 0,
+                            "padding_top": 0,
+                            "padding_bottom": 0
+                          }
+                        },
+                        "title": {
+                          "type": "blog-card-title",
+                          "settings": {
+                            "line_limit": "two",
+                            "heading_size": "md",
+                            "html_tag": "h3",
+                            "padding_top": 0,
+                            "padding_bottom": 0
+                          }
+                        }
+                      },
+                      "block_order": [
+                        "meta",
+                        "title"
+                      ]
+                    }
+                  },
+                  "block_order": [
+                    "copy",
+                    "button"
+                  ]
+                }
+              }
+            },
+            "blog-card": {
+              "type": "blog-card",
+              "static": true,
+              "settings": {
+                "ratio": "original",
+                "media_layout": "horizontal",
+                "alignment": "left",
+                "position": "center",
+                "desktop_gap": 20,
+                "mobile_gap": 12,
+                "border_thickness": 0,
+                "corner_radius": "radius_24",
+                "shadow": "none",
+                "color_type": "color_scheme",
+                "color_scheme": "scheme-2",
+                "padding_top": 16,
+                "padding_bottom": 16,
+                "padding_left": 24,
+                "padding_right": 24,
+                "customize_mobile_padding": true,
+                "padding_top_mobile": 16,
+                "padding_bottom_mobile": 24,
+                "padding_left_mobile": 20,
+                "padding_right_mobile": 20
+              },
+              "blocks": {
+                "button": {
+                  "type": "blog-card-button",
+                  "settings": {
+                    "style": "tertiary",
+                    "show_icon": false
+                  }
+                },
+                "copy": {
+                  "type": "group",
+                  "settings": {
+                    "direction": "vertical",
+                    "alignment": "left",
+                    "width": "fill",
+                    "width_mobile": "fill",
+                    "gap_desktop": 6,
+                    "gap_mobile": 6
+                  },
+                  "blocks": {
+                    "meta": {
+                      "type": "blog-card-meta",
+                      "settings": {
+                        "show_date": true,
+                        "show_author": false,
+                        "show_comment_count": false,
+                        "show_date_icon": false,
+                        "date_format": "medium",
+                        "separator_icon": "none",
+                        "size": "xs",
+                        "gap": 0,
+                        "padding_top": 0,
+                        "padding_bottom": 0
+                      }
+                    },
+                    "body": {
+                      "type": "group",
+                      "settings": {
+                        "direction": "vertical",
+                        "alignment": "left",
+                        "width": "fill",
+                        "width_mobile": "fill",
+                        "gap_desktop": 8,
+                        "gap_mobile": 8
+                      },
+                      "blocks": {
+                        "title": {
+                          "type": "blog-card-title",
+                          "settings": {
+                            "line_limit": "two",
+                            "heading_size": "sm",
+                            "html_tag": "h3",
+                            "padding_top": 0,
+                            "padding_bottom": 0
+                          }
+                        },
+                        "description": {
+                          "type": "blog-card-description",
+                          "settings": {
+                            "text_limit": "two",
+                            "size": "sm",
+                            "padding_top": 0,
+                            "padding_bottom": 0
+                          }
+                        }
+                      },
+                      "block_order": [
+                        "title",
+                        "description"
+                      ]
+                    }
+                  },
+                  "block_order": [
+                    "meta",
+                    "body"
+                  ]
+                }
+              },
+              "block_order": [
+                "copy",
+                "button"
+              ]
+            }
+          }
+        }
+      },
+      "settings": {
+        "section_width": "page_width",
+        "desktop_alignment": "left",
+        "mobile_alignment": "left",
+        "gap_desktop": 48,
+        "gap_mobile": 36,
+        "color_scheme": "scheme-1",
+        "padding_top": 80,
+        "padding_bottom": 80,
+        "customize_mobile_padding": true,
+        "padding_top_mobile": 56,
+        "padding_bottom_mobile": 56
+      }
+    },
+    "perky_gallery": {
+      "type": "gallery-carousel",
+      "settings": {
+        "section_width": "full_width",
+        "direction": "vertical",
+        "alignment": "center",
+        "alignment_mobile": "center",
+        "customize_mobile_alignment": true,
+        "content_gap": 40,
+        "customize_mobile_gap": true,
+        "content_gap_mobile": 36,
+        "color_scheme": "scheme-1",
+        "padding_top": 10,
+        "padding_bottom": 80,
+        "customize_mobile_padding": true,
+        "padding_top_mobile": 10,
+        "padding_bottom_mobile": 56
+      },
+      "blocks": {
+        "header": {
+          "type": "header",
+          "settings": {
+            "width": "fill",
+            "alignment": "center",
+            "inherit_alignment": false,
+            "gap_desktop": 16,
+            "gap_mobile": 12
+          },
+          "blocks": {
+            "heading": {
+              "type": "heading",
+              "settings": {
+                "text": "<p>Join the Fun on Instagram</p>",
+                "heading_size": "xl",
+                "html_tag": "h2",
+                "width": "fill"
+              }
+            },
+            "text": {
+              "type": "text",
+              "settings": {
+                "text": "<p>@play_game88</p>",
+                "text_size": "md",
+                "width": "fill"
+              }
+            }
+          },
+          "block_order": [
+            "heading",
+            "text"
+          ]
+        },
+        "images": {
+          "type": "marquee",
+          "settings": {
+            "animation_direction": "backward",
+            "animation_speed": 1,
+            "gap_desktop": 16,
+            "gap_mobile": 12,
+            "padding_top": 0,
+            "padding_bottom": 0,
+            "padding_left": 0,
+            "padding_right": 0
+          },
+          "blocks": {
+            "image-1": {
+              "type": "marquee-item",
+              "settings": {
+                "direction": "vertical",
+                "width": "fill",
+                "gap_desktop": 0,
+                "gap_mobile": 0,
+                "padding_top": 0,
+                "padding_bottom": 0,
+                "padding_left": 0,
+                "padding_right": 0
+              },
+              "blocks": {
+                "image": {
+                  "type": "gallery-image",
+                  "settings": {
+                    "image": "shopify://shop_images/74231.jpg",
+                    "alt_text": "Child cuddling a baby",
+                    "tag": "@play_game88",
+                    "social_network": "instagram",
+                    "social_url": "https://www.instagram.com/play_game88/",
+                    "show_overlay": "hover",
+                    "overlay_style": "minimal",
+                    "social_background": "#00000000",
+                    "social_color": "#ffffff",
+                    "overlay_background": "#00000033",
+                    "corner_radius": "radius_12",
+                    "tag_font_size": "md"
+                  }
+                }
+              },
+              "block_order": [
+                "image"
+              ]
+            },
+            "image-2": {
+              "type": "marquee-item",
+              "settings": {
+                "direction": "vertical",
+                "width": "fill",
+                "gap_desktop": 0,
+                "gap_mobile": 0,
+                "padding_top": 0,
+                "padding_bottom": 0,
+                "padding_left": 0,
+                "padding_right": 0
+              },
+              "blocks": {
+                "image": {
+                  "type": "gallery-image",
+                  "settings": {
+                    "image": "shopify://shop_images/7c8f9.jpg",
+                    "alt_text": "Wooden animal toys and trees",
+                    "tag": "@play_game88",
+                    "social_network": "instagram",
+                    "social_url": "https://www.instagram.com/play_game88/",
+                    "show_overlay": "hover",
+                    "overlay_style": "minimal",
+                    "social_background": "#00000000",
+                    "social_color": "#ffffff",
+                    "overlay_background": "#00000033",
+                    "corner_radius": "radius_12",
+                    "tag_font_size": "md"
+                  }
+                }
+              },
+              "block_order": [
+                "image"
+              ]
+            },
+            "image-3": {
+              "type": "marquee-item",
+              "settings": {
+                "direction": "vertical",
+                "width": "fill",
+                "gap_desktop": 0,
+                "gap_mobile": 0,
+                "padding_top": 0,
+                "padding_bottom": 0,
+                "padding_left": 0,
+                "padding_right": 0
+              },
+              "blocks": {
+                "image": {
+                  "type": "gallery-image",
+                  "settings": {
+                    "image": "shopify://shop_images/39c2a.jpg",
+                    "alt_text": "Child stacking wooden rainbows",
+                    "tag": "@play_game88",
+                    "social_network": "instagram",
+                    "social_url": "https://www.instagram.com/play_game88/",
+                    "show_overlay": "hover",
+                    "overlay_style": "minimal",
+                    "social_background": "#00000000",
+                    "social_color": "#ffffff",
+                    "overlay_background": "#00000033",
+                    "corner_radius": "radius_12",
+                    "tag_font_size": "md"
+                  }
+                }
+              },
+              "block_order": [
+                "image"
+              ]
+            },
+            "image-4": {
+              "type": "marquee-item",
+              "settings": {
+                "direction": "vertical",
+                "width": "fill",
+                "gap_desktop": 0,
+                "gap_mobile": 0,
+                "padding_top": 0,
+                "padding_bottom": 0,
+                "padding_left": 0,
+                "padding_right": 0
+              },
+              "blocks": {
+                "image": {
+                  "type": "gallery-image",
+                  "settings": {
+                    "image": "shopify://shop_images/4a2cb.jpg",
+                    "alt_text": "Colorful wooden shapes",
+                    "tag": "@play_game88",
+                    "social_network": "instagram",
+                    "social_url": "https://www.instagram.com/play_game88/",
+                    "show_overlay": "hover",
+                    "overlay_style": "minimal",
+                    "social_background": "#00000000",
+                    "social_color": "#ffffff",
+                    "overlay_background": "#00000033",
+                    "corner_radius": "radius_12",
+                    "tag_font_size": "md"
+                  }
+                }
+              },
+              "block_order": [
+                "image"
+              ]
+            },
+            "image-5": {
+              "type": "marquee-item",
+              "settings": {
+                "direction": "vertical",
+                "width": "fill",
+                "gap_desktop": 0,
+                "gap_mobile": 0,
+                "padding_top": 0,
+                "padding_bottom": 0,
+                "padding_left": 0,
+                "padding_right": 0
+              },
+              "blocks": {
+                "image": {
+                  "type": "gallery-image",
+                  "settings": {
+                    "image": "shopify://shop_images/9056b.jpg",
+                    "alt_text": "Child playing with a backpack",
+                    "tag": "@play_game88",
+                    "social_network": "instagram",
+                    "social_url": "https://www.instagram.com/play_game88/",
+                    "show_overlay": "hover",
+                    "overlay_style": "minimal",
+                    "social_background": "#00000000",
+                    "social_color": "#ffffff",
+                    "overlay_background": "#00000033",
+                    "corner_radius": "radius_12",
+                    "tag_font_size": "md",
+                    "image_zoom": 143,
+                    "image_position_x": 52,
+                    "image_position_y": 65,
+                    "image_scale_y": 96.5
+                  }
+                }
+              },
+              "block_order": [
+                "image"
+              ]
+            }
+          },
+          "block_order": [
+            "image-1",
+            "image-2",
+            "image-3",
+            "image-4",
+            "image-5"
+          ]
+        }
+      },
+      "block_order": [
+        "header",
+        "images"
+      ]
+    },
+    "email_signup_dual_image_LphGLH": {
+      "type": "email-signup-dual-image",
+      "blocks": {
+        "image_left": {
+          "type": "image",
+          "static": true,
+          "settings": {
+            "image": "shopify://shop_images/81daf.jpg",
+            "show_image_first_mobile": false,
+            "alt_text": "Child enjoying creative play",
+            "image_ratio_desktop": "custom",
+            "image_ratio_custom_width_desktop": 5,
+            "image_ratio_custom_height_desktop": 4,
+            "width_desktop": "fill",
+            "limit_width_desktop": false,
+            "image_ratio_mobile": "custom",
+            "image_ratio_custom_width_mobile": 5,
+            "image_ratio_custom_height_mobile": 4,
+            "width_mobile": "fill",
+            "corner_radius": "square"
+          }
+        },
+        "content": {
+          "type": "group",
+          "static": true,
+          "settings": {
+            "direction": "vertical",
+            "position": "center",
+            "alignment": "center",
+            "alignment_mobile": "center",
+            "gap_desktop": 24,
+            "gap_mobile": 16,
+            "width": "fill",
+            "height": "fill",
+            "width_mobile": "fill",
+            "background_color": "#FFFAED",
+            "padding_top": 36,
+            "padding_bottom": 80,
+            "padding_left": 80,
+            "padding_right": 80,
+            "customize_mobile_padding": true,
+            "padding_top_mobile": 20,
+            "padding_bottom_mobile": 48,
+            "padding_left_mobile": 20,
+            "padding_right_mobile": 20,
+            "appearance_type": "scheme",
+            "color_scheme": "scheme-4"
+          },
+          "blocks": {
+            "icon": {
+              "type": "image",
+              "settings": {
+                "image": "shopify://shop_images/9df02.svg",
+                "image_fit": "contain",
+                "image_ratio_desktop": "square",
+                "width_desktop": "fixed",
+                "width_fixed_desktop": 60,
+                "image_ratio_mobile": "square",
+                "width_mobile": "fixed",
+                "width_fixed_mobile": 54,
+                "corner_radius": "square"
+              }
+            },
+            "stack": {
+              "type": "group",
+              "settings": {
+                "direction": "vertical",
+                "alignment": "center",
+                "alignment_mobile": "center",
+                "gap_desktop": 20,
+                "gap_mobile": 12,
+                "width": "fill",
+                "height": "fit",
+                "width_mobile": "fill"
+              },
+              "blocks": {
+                "header": {
+                  "type": "header",
+                  "settings": {
+                    "width": "fill",
+                    "inherit_alignment": true,
+                    "gap_desktop": 16,
+                    "gap_mobile": 12
+                  },
+                  "blocks": {
+                    "heading": {
+                      "type": "heading",
+                      "settings": {
+                        "text": "<p>Join the family</p>",
+                        "heading_size": "xl",
+                        "html_tag": "h2",
+                        "width": "fill"
+                      }
+                    },
+                    "text": {
+                      "type": "text",
+                      "settings": {
+                        "text": "<p>Discover exciting in-store events for kids and families–crafts, games, storytime!</p>",
+                        "text_size": "md",
+                        "width": "fill"
+                      }
+                    }
+                  },
+                  "block_order": [
+                    "heading",
+                    "text"
+                  ]
+                },
+                "signup": {
+                  "type": "email-signup",
+                  "settings": {
+                    "form_layout": "horizontal",
+                    "vertical_on_mobile": false,
+                    "gap_desktop": 8,
+                    "gap_mobile": 8,
+                    "width_desktop": "fill",
+                    "limit_width_desktop": false,
+                    "width_mobile": "fill",
+                    "limit_width_mobile": false,
+                    "field_height": "medium",
+                    "input_placeholder": "Name",
+                    "button_label": "Submit",
+                    "button_style": "primary",
+                    "show_icon": false,
+                    "color_scheme": "scheme-7",
+                    "corner_radius": "inherit",
+                    "input_style": "inherit"
+                  }
+                }
+              },
+              "block_order": [
+                "header",
+                "signup"
+              ]
+            }
+          },
+          "block_order": [
+            "icon",
+            "stack"
+          ]
+        },
+        "image_right": {
+          "type": "image",
+          "static": true,
+          "settings": {
+            "image": "shopify://shop_images/c55ed.png",
+            "show_image_first_mobile": false,
+            "alt_text": "Children and teacher playing with modeling clay",
+            "image_ratio_desktop": "custom",
+            "image_ratio_custom_width_desktop": 5,
+            "image_ratio_custom_height_desktop": 4,
+            "width_desktop": "fill",
+            "limit_width_desktop": false,
+            "image_ratio_mobile": "custom",
+            "image_ratio_custom_width_mobile": 5,
+            "image_ratio_custom_height_mobile": 4,
+            "width_mobile": "fill",
+            "corner_radius": "square"
+          }
+        }
+      },
+      "name": "Email signup dual image",
+      "settings": {
+        "section_width": "full_width",
+        "direction": "horizontal",
+        "position": "center",
+        "vertical_on_mobile": true,
+        "gap_desktop": 0,
+        "gap_mobile": 0,
+        "color_scheme": "scheme-1",
+        "corner_radius": "radius_16",
+        "image_left_position": 8,
+        "image_right_position": 22,
+        "padding_top": 0,
+        "padding_bottom": 80,
+        "customize_mobile_padding": true,
+        "padding_top_mobile": 0,
+        "padding_bottom_mobile": 56
       }
     }
   },
@@ -5444,7 +6173,10 @@
     "scrolling_text",
     "new_arrivals_tabs",
     "countdown_timer",
+    "perky_blog_posts",
+    "perky_gallery",
     "featured_product",
-    "collection_list_03"
+    "collection_list_03",
+    "email_signup_dual_image_LphGLH"
   ]
 }

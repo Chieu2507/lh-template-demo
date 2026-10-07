@@ -1,0 +1,246 @@
+{
+  "productDefinitions": {
+    "nodes": [
+      {
+        "id": "gid://shopify/MetafieldDefinition/298425090347",
+        "namespace": "test_data",
+        "key": "binding_mount",
+        "type": {
+          "name": "single_line_text_field"
+        }
+      },
+      {
+        "id": "gid://shopify/MetafieldDefinition/298425123115",
+        "namespace": "test_data",
+        "key": "snowboard_length",
+        "type": {
+          "name": "dimension"
+        }
+      },
+      {
+        "id": "gid://shopify/MetafieldDefinition/298509762859",
+        "namespace": "shopify",
+        "key": "color-pattern",
+        "type": {
+          "name": "list.metaobject_reference"
+        }
+      },
+      {
+        "id": "gid://shopify/MetafieldDefinition/299935170859",
+        "namespace": "shopify",
+        "key": "age-group",
+        "type": {
+          "name": "list.metaobject_reference"
+        }
+      },
+      {
+        "id": "gid://shopify/MetafieldDefinition/299935203627",
+        "namespace": "shopify",
+        "key": "jewelry-type",
+        "type": {
+          "name": "list.metaobject_reference"
+        }
+      },
+      {
+        "id": "gid://shopify/MetafieldDefinition/299935236395",
+        "namespace": "shopify",
+        "key": "target-gender",
+        "type": {
+          "name": "list.metaobject_reference"
+        }
+      },
+      {
+        "id": "gid://shopify/MetafieldDefinition/299935269163",
+        "namespace": "shopify",
+        "key": "jewelry-material",
+        "type": {
+          "name": "list.metaobject_reference"
+        }
+      },
+      {
+        "id": "gid://shopify/MetafieldDefinition/299935301931",
+        "namespace": "shopify",
+        "key": "earring-design",
+        "type": {
+          "name": "list.metaobject_reference"
+        }
+      },
+      {
+        "id": "gid://shopify/MetafieldDefinition/300058804523",
+        "namespace": "custom",
+        "key": "material",
+        "type": {
+          "name": "single_line_text_field"
+        }
+      }
+    ]
+  },
+  "variantDefinitions": {
+    "nodes": [
+      {
+        "id": "gid://shopify/MetafieldDefinition/299506434347",
+        "namespace": "custom",
+        "key": "secondary_image",
+        "type": {
+          "name": "file_reference"
+        }
+      }
+    ]
+  },
+  "taxonomy": {
+    "categories": {
+      "nodes": [
+        {
+          "id": "gid://shopify/TaxonomyCategory/tg-5",
+          "name": "Toys",
+          "fullName": "Toys & Games > Toys"
+        },
+        {
+          "id": "gid://shopify/TaxonomyCategory/tg",
+          "name": "Toys & Games",
+          "fullName": "Toys & Games"
+        },
+        {
+          "id": "gid://shopify/TaxonomyCategory/tg-5-26-3",
+          "name": "Toy Blasters & Projectile Toys",
+          "fullName": "Toys & Games > Toys > Toy Weapons & Gadgets > Toy Blasters & Projectile Toys"
+        },
+        {
+          "id": "gid://shopify/TaxonomyCategory/bt-5",
+          "name": "Baby Toys & Activity Equipment",
+          "fullName": "Baby & Toddler > Baby Toys & Activity Equipment"
+        },
+        {
+          "id": "gid://shopify/TaxonomyCategory/tg-5-23",
+          "name": "Sports Toys",
+          "fullName": "Toys & Games > Toys > Sports Toys"
+        },
+        {
+          "id": "gid://shopify/TaxonomyCategory/tg-5-23-12",
+          "name": "Hockey Toys",
+          "fullName": "Toys & Games > Toys > Sports Toys > Hockey Toys"
+        },
+        {
+          "id": "gid://shopify/TaxonomyCategory/ma-1-4",
+          "name": "Sex Toys & Erotic Games",
+          "fullName": "Mature > Erotic > Sex Toys & Erotic Games"
+        },
+        {
+          "id": "gid://shopify/TaxonomyCategory/ap-2-2-5-10",
+          "name": "Stuffed Toys & Plushies",
+          "fullName": "Animals & Pet Supplies > Pet Supplies > Cat Supplies > Cat Toys > Stuffed Toys & Plushies"
+        },
+        {
+          "id": "gid://shopify/TaxonomyCategory/tg-5-9-2",
+          "name": "Astronomy Toys & Models",
+          "fullName": "Toys & Games > Toys > Educational Toys > Astronomy Toys & Models"
+        },
+        {
+          "id": "gid://shopify/TaxonomyCategory/tg-5-29",
+          "name": "Sensory Toys",
+          "fullName": "Toys & Games > Toys > Sensory Toys"
+        },
+        {
+          "id": "gid://shopify/TaxonomyCategory/tg-5-23-8",
+          "name": "Fitness Toys",
+          "fullName": "Toys & Games > Toys > Sports Toys > Fitness Toys"
+        },
+        {
+          "id": "gid://shopify/TaxonomyCategory/tg-5-1",
+          "name": "Activity Toys",
+          "fullName": "Toys & Games > Toys > Activity Toys"
+        },
+        {
+          "id": "gid://shopify/TaxonomyCategory/tg-5-5-1",
+          "name": "Bath Book Toys",
+          "fullName": "Toys & Games > Toys > Bath Toys > Bath Book Toys"
+        },
+        {
+          "id": "gid://shopify/TaxonomyCategory/tg-5-9",
+          "name": "Educational Toys",
+          "fullName": "Toys & Games > Toys > Educational Toys"
+        },
+        {
+          "id": "gid://shopify/TaxonomyCategory/tg-5-23-14",
+          "name": "Racquet Sport Toys",
+          "fullName": "Toys & Games > Toys > Sports Toys > Racquet Sport Toys"
+        },
+        {
+          "id": "gid://shopify/TaxonomyCategory/tg-5-1-5",
+          "name": "Coiled Spring Toys",
+          "fullName": "Toys & Games > Toys > Activity Toys > Coiled Spring Toys"
+        },
+        {
+          "id": "gid://shopify/TaxonomyCategory/tg-5-27-4",
+          "name": "Light Projection Toys",
+          "fullName": "Toys & Games > Toys > Visual Toys > Light Projection Toys"
+        },
+        {
+          "id": "gid://shopify/TaxonomyCategory/tg-5-20-4",
+          "name": "Rocking & Spring Riding Toys",
+          "fullName": "Toys & Games > Toys > Riding Toys > Rocking & Spring Riding Toys"
+        },
+        {
+          "id": "gid://shopify/TaxonomyCategory/tg-5-27-3",
+          "name": "Optical Illusion Toys",
+          "fullName": "Toys & Games > Toys > Visual Toys > Optical Illusion Toys"
+        },
+        {
+          "id": "gid://shopify/TaxonomyCategory/tg-5-7-8",
+          "name": "Construction Set Toys",
+          "fullName": "Toys & Games > Toys > Building Toys > Construction Set Toys"
+        },
+        {
+          "id": "gid://shopify/TaxonomyCategory/tg-5-1-8",
+          "name": "Ribbon & Streamer Toys",
+          "fullName": "Toys & Games > Toys > Activity Toys > Ribbon & Streamer Toys"
+        },
+        {
+          "id": "gid://shopify/TaxonomyCategory/bt-5-12",
+          "name": "Sorting & Stacking Toys",
+          "fullName": "Baby & Toddler > Baby Toys & Activity Equipment > Sorting & Stacking Toys"
+        },
+        {
+          "id": "gid://shopify/TaxonomyCategory/tg-5-9-8",
+          "name": "Coding & Robotics Learning Toys",
+          "fullName": "Toys & Games > Toys > Educational Toys > Coding & Robotics Learning Toys"
+        },
+        {
+          "id": "gid://shopify/TaxonomyCategory/fr-4-13-2",
+          "name": "Toy Chests",
+          "fullName": "Furniture > Cabinets & Storage > Storage Chests > Toy Chests"
+        },
+        {
+          "id": "gid://shopify/TaxonomyCategory/ap-2-3-7",
+          "name": "Dog Toys",
+          "fullName": "Animals & Pet Supplies > Pet Supplies > Dog Supplies > Dog Toys"
+        },
+        {
+          "id": "gid://shopify/TaxonomyCategory/ap-2-2-5",
+          "name": "Cat Toys",
+          "fullName": "Animals & Pet Supplies > Pet Supplies > Cat Supplies > Cat Toys"
+        },
+        {
+          "id": "gid://shopify/TaxonomyCategory/tg-5-9-9",
+          "name": "Math Toys",
+          "fullName": "Toys & Games > Toys > Educational Toys > Math Toys"
+        },
+        {
+          "id": "gid://shopify/TaxonomyCategory/tg-5-23-11",
+          "name": "Golf Toys",
+          "fullName": "Toys & Games > Toys > Sports Toys > Golf Toys"
+        },
+        {
+          "id": "gid://shopify/TaxonomyCategory/tg-5-5",
+          "name": "Bath Toys",
+          "fullName": "Toys & Games > Toys > Bath Toys"
+        },
+        {
+          "id": "gid://shopify/TaxonomyCategory/hg-18-1-17",
+          "name": "Pool Toys",
+          "fullName": "Home & Garden > Pool & Spa > Pool & Spa Accessories > Pool Toys"
+        }
+      ]
+    }
+  }
+}

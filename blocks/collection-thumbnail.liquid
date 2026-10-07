@@ -7,6 +7,10 @@ assign url = block.settings.custom_link | default: collection.url
 assign image = block.settings.image | default: collection.image
 assign radius = section.settings.image_corner_radius | default: 'full'
 assign radius_value = 'var(--image-corner-radius)'
+case radius
+ when 'radius_2', 'radius_4', 'radius_6', 'radius_8', 'radius_12', 'radius_16', 'radius_24', 'radius_32'
+  assign radius_value = radius | replace: 'radius_', 'var(--radius-' | append: ')'
+endcase
 if radius == 'square' or radius == 'custom'
  assign radius_value = section.settings.image_corner_radius_custom | default: 0 | append: 'px'
 elsif radius == 'full'

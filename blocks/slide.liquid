@@ -102,7 +102,7 @@
   endunless
 
   assign group_radius = block.settings.corner_radius | default: 'square'
-  unless group_radius == 'square' or group_radius == 'slightly_rounded' or group_radius == 'rounded' or group_radius == 'pill'
+  unless group_radius == 'square' or group_radius == 'slightly_rounded' or group_radius == 'rounded' or group_radius == 'pill' or group_radius == 'radius_2' or group_radius == 'radius_4' or group_radius == 'radius_6' or group_radius == 'radius_8' or group_radius == 'radius_12' or group_radius == 'radius_16' or group_radius == 'radius_24' or group_radius == 'radius_32'
     assign group_radius = 'square'
   endunless
 
@@ -323,6 +323,14 @@
   .carousel-slide-layout--radius-rounded {
     --group-radius: var(--radius-rounded);
   }
+  .carousel-slide-layout--radius-radius_2 { --group-radius: var(--radius-2); }
+  .carousel-slide-layout--radius-radius_4 { --group-radius: var(--radius-4); }
+  .carousel-slide-layout--radius-radius_6 { --group-radius: var(--radius-6); }
+  .carousel-slide-layout--radius-radius_8 { --group-radius: var(--radius-8); }
+  .carousel-slide-layout--radius-radius_12 { --group-radius: var(--radius-12); }
+  .carousel-slide-layout--radius-radius_16 { --group-radius: var(--radius-16); }
+  .carousel-slide-layout--radius-radius_24 { --group-radius: var(--radius-24); }
+  .carousel-slide-layout--radius-radius_32 { --group-radius: var(--radius-32); }
 
   .carousel-slide-layout--radius-pill {
     --group-radius: var(--radius-pill);
@@ -678,24 +686,7 @@
       "type": "select",
       "id": "corner_radius",
       "label": "t:labels.corner_radius",
-      "options": [
-        {
-          "value": "square",
-          "label": "t:options.radius_preset.square"
-        },
-        {
-          "value": "slightly_rounded",
-          "label": "t:options.radius_preset.slightly_rounded"
-        },
-        {
-          "value": "rounded",
-          "label": "t:options.radius_preset.rounded"
-        },
-        {
-          "value": "pill",
-          "label": "t:options.radius_preset.pill"
-        }
-      ],
+      "options": [{"value": "square", "label": "t:options.radius_preset.square"}, {"value": "radius_2", "label": "t:options.radius_preset.size_2"}, {"value": "slightly_rounded", "label": "t:options.radius_preset.slightly_rounded"}, {"value": "radius_4", "label": "t:options.radius_preset.size_4"}, {"value": "radius_6", "label": "t:options.radius_preset.size_6"}, {"value": "rounded", "label": "t:options.radius_preset.rounded"}, {"value": "radius_8", "label": "t:options.radius_preset.size_8"}, {"value": "radius_12", "label": "t:options.radius_preset.size_12"}, {"value": "radius_16", "label": "t:options.radius_preset.size_16"}, {"value": "radius_24", "label": "t:options.radius_preset.size_24"}, {"value": "radius_32", "label": "t:options.radius_preset.size_32"}, {"value": "pill", "label": "t:options.radius_preset.pill"}],
       "default": "square"
     },
     {

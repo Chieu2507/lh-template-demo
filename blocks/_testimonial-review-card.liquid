@@ -5,7 +5,7 @@
 {% enddoc %}
 {{ 'component-testimonial-item.css' | asset_url | stylesheet_tag }}
 {% capture content %}{% content_for 'blocks' %}{% endcapture %}
-{% render 'testimonial-item', block: block, content: content %}
+{% render 'testimonial-item', block: block, content: content, composition_card: true %}
 
 {% schema %}
 {
@@ -13,10 +13,19 @@
   "tag": null,
   "blocks": [
     {
+      "type": "group"
+    },
+    {
       "type": "image"
     },
     {
-      "type": "group"
+      "type": "heading"
+    },
+    {
+      "type": "text"
+    },
+    {
+      "type": "testimonial-rating"
     }
   ],
   "settings": [
@@ -124,7 +133,7 @@
       "max": 100,
       "step": 1,
       "unit": "px",
-      "default": 0
+      "default": 28
     },
     {
       "type": "range",
@@ -134,7 +143,7 @@
       "max": 100,
       "step": 1,
       "unit": "px",
-      "default": 0
+      "default": 28
     },
     {
       "type": "header",
@@ -154,28 +163,7 @@
       "type": "select",
       "id": "corner_radius",
       "label": "Corner radius",
-      "options": [
-        {
-          "value": "square",
-          "label": "Square"
-        },
-        {
-          "value": "slightly_rounded",
-          "label": "Slightly rounded"
-        },
-        {
-          "value": "rounded",
-          "label": "Rounded"
-        },
-        {
-          "value": "pill",
-          "label": "Pill"
-        },
-        {
-          "value": "custom",
-          "label": "Custom"
-        }
-      ],
+      "options": [{"value": "square", "label": "Square"}, {"value": "radius_2", "label": "t:options.radius_preset.size_2"}, {"value": "slightly_rounded", "label": "Slightly rounded"}, {"value": "radius_4", "label": "t:options.radius_preset.size_4"}, {"value": "radius_6", "label": "t:options.radius_preset.size_6"}, {"value": "rounded", "label": "Rounded"}, {"value": "radius_8", "label": "t:options.radius_preset.size_8"}, {"value": "radius_12", "label": "t:options.radius_preset.size_12"}, {"value": "radius_16", "label": "t:options.radius_preset.size_16"}, {"value": "radius_24", "label": "t:options.radius_preset.size_24"}, {"value": "radius_32", "label": "t:options.radius_preset.size_32"}, {"value": "pill", "label": "Pill"}, {"value": "custom", "label": "Custom"}],
       "default": "custom"
     },
     {
@@ -238,6 +226,100 @@
       "alpha": true,
       "id": "overlay_color",
       "label": "Overlay color"
+    },
+    {
+      "type": "header",
+      "content": "Padding"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "label": "Top padding",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "default": 36
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "label": "Bottom padding",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "default": 36
+    },
+    {
+      "type": "range",
+      "id": "padding_left",
+      "label": "Left padding",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "default": 28
+    },
+    {
+      "type": "range",
+      "id": "padding_right",
+      "label": "Right padding",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "default": 28
+    },
+    {
+      "type": "checkbox",
+      "id": "customize_mobile_padding",
+      "label": "Customize for mobile",
+      "default": false
+    },
+    {
+      "type": "range",
+      "id": "padding_top_mobile",
+      "label": "Mobile top padding",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "default": 36,
+      "visible_if": "{{ block.settings.customize_mobile_padding }}"
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_mobile",
+      "label": "Mobile bottom padding",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "default": 36,
+      "visible_if": "{{ block.settings.customize_mobile_padding }}"
+    },
+    {
+      "type": "range",
+      "id": "padding_left_mobile",
+      "label": "Mobile left padding",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "default": 28,
+      "visible_if": "{{ block.settings.customize_mobile_padding }}"
+    },
+    {
+      "type": "range",
+      "id": "padding_right_mobile",
+      "label": "Mobile right padding",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "default": 28,
+      "visible_if": "{{ block.settings.customize_mobile_padding }}"
     }
   ],
   "presets": [
@@ -246,141 +328,124 @@
       "category": "Trust & social proof",
       "settings": {
         "direction": "vertical",
-        "gap_desktop": 0,
-        "gap_mobile": 0,
-        "corner_radius": "custom",
+        "gap_desktop": 28,
+        "gap_mobile": 28,
+        "corner_radius": "radius_24",
         "custom_corner_radius": 24,
-        "background_color": "#ffffff"
+        "background_color": "#ffffff",
+        "padding_top": 36,
+        "padding_bottom": 36,
+        "padding_left": 28,
+        "padding_right": 28
       },
       "blocks": {
-        "card": {
+        "content": {
           "type": "group",
           "settings": {
             "direction": "vertical",
             "alignment": "center",
             "alignment_mobile": "center",
-            "gap_desktop": 28,
-            "gap_mobile": 28,
+            "gap_desktop": 16,
+            "gap_mobile": 16,
             "width": "fill",
-            "height": "fit",
-            "padding_top": 36,
-            "padding_bottom": 36,
-            "padding_left": 28,
-            "padding_right": 28
+            "height": "fit"
           },
           "blocks": {
-            "content": {
-              "type": "group",
-              "settings": {
-                "direction": "vertical",
-                "alignment": "center",
-                "alignment_mobile": "center",
-                "gap_desktop": 16,
-                "gap_mobile": 16,
-                "width": "fill",
-                "height": "fit"
-              },
-              "blocks": {
-                "rating": {
-                  "type": "testimonial-rating",
-                  "settings": {}
-                },
-                "copy": {
-                  "type": "group",
-                  "settings": {
-                    "direction": "vertical",
-                    "alignment": "center",
-                    "alignment_mobile": "center",
-                    "gap_desktop": 10,
-                    "gap_mobile": 10,
-                    "width": "fill",
-                    "height": "fit"
-                  },
-                  "blocks": {
-                    "title": {
-                      "type": "heading",
-                      "settings": {
-                        "text": "<p>Review title</p>",
-                        "heading_size": "md",
-                        "html_tag": "h3",
-                        "width": "fill"
-                      }
-                    },
-                    "quote": {
-                      "type": "text",
-                      "settings": {
-                        "text": "<p>Share a customer testimonial that builds trust in your products and brand. Describe what they loved and how your product made a difference.</p>",
-                        "text_size": "md",
-                        "width": "fill",
-                        "customize_letter_spacing": true,
-                        "letter_spacing": 0
-                      }
-                    }
-                  },
-                  "block_order": [
-                    "title",
-                    "quote"
-                  ]
-                }
-              },
-              "block_order": [
-                "rating",
-                "copy"
-              ]
+            "rating": {
+              "type": "testimonial-rating",
+              "settings": {}
             },
-            "author": {
+            "copy": {
               "type": "group",
               "settings": {
                 "direction": "vertical",
                 "alignment": "center",
                 "alignment_mobile": "center",
-                "gap_desktop": 12,
-                "gap_mobile": 12,
+                "gap_desktop": 10,
+                "gap_mobile": 10,
                 "width": "fill",
                 "height": "fit"
               },
               "blocks": {
-                "avatar": {
-                  "type": "image",
+                "title": {
+                  "type": "heading",
                   "settings": {
-                    "image_ratio_desktop": "square",
-                    "width_desktop": "fixed",
-                    "width_fixed_desktop": 70,
-                    "limit_width_desktop": false,
-                    "max_width_desktop": 1600,
-                    "image_ratio_mobile": "square",
-                    "width_mobile": "fixed",
-                    "width_fixed_mobile": 70,
-                    "limit_width_mobile": false,
-                    "max_width_mobile": 1600,
-                    "background_color": "#fed7a2",
-                    "corner_radius": "full",
-                    "image_fit": "contain"
+                    "text": "<p>Review title</p>",
+                    "heading_size": "md",
+                    "html_tag": "h3",
+                    "width": "fill"
                   }
                 },
-                "name": {
+                "quote": {
                   "type": "text",
                   "settings": {
-                    "text": "<p>Customer name</p>",
+                    "text": "<p>Share a customer testimonial that builds trust in your products and brand. Describe what they loved and how your product made a difference.</p>",
                     "text_size": "md",
-                    "text_color": "#181818"
+                    "width": "fill",
+                    "customize_letter_spacing": true,
+                    "letter_spacing": 0
                   }
                 }
               },
               "block_order": [
-                "avatar",
-                "name"
+                "title",
+                "quote"
               ]
             }
           },
           "block_order": [
-            "content",
-            "author"
+            "rating",
+            "copy"
+          ]
+        },
+        "author": {
+          "type": "group",
+          "settings": {
+            "direction": "vertical",
+            "alignment": "center",
+            "alignment_mobile": "center",
+            "gap_desktop": 12,
+            "gap_mobile": 12,
+            "width": "fill",
+            "height": "fit"
+          },
+          "blocks": {
+            "avatar": {
+              "type": "image",
+              "settings": {
+                "image_ratio_desktop": "square",
+                "width_desktop": "fixed",
+                "width_fixed_desktop": 70,
+                "limit_width_desktop": false,
+                "max_width_desktop": 1600,
+                "image_ratio_mobile": "square",
+                "width_mobile": "fixed",
+                "width_fixed_mobile": 70,
+                "limit_width_mobile": false,
+                "max_width_mobile": 1600,
+                "background_color": "#fed7a2",
+                "corner_radius": "full",
+                "image_fit": "contain"
+              }
+            },
+            "name": {
+              "type": "text",
+              "settings": {
+                "text": "<p>Customer name</p>",
+                "text_size": "md",
+                "text_color": "#181818"
+              }
+            }
+          },
+          "block_order": [
+            "avatar",
+            "name"
           ]
         }
       },
       "block_order": [
-        "card"
+        "content",
+        "author"
       ]
     }
   ]

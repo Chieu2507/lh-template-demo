@@ -2,6 +2,7 @@
   Shared testimonial item renderer used by editorial items and review cards.
   @param {object} block - The owning Theme Block, including settings/editor attributes
   @param {string} content - Rendered child Theme Blocks in their configured order
+  @param {boolean} [composition_card] - Card directly owns child flow, gap and padding
 {% enddoc %}
 {% liquid
   assign testimonial_direction = block.settings.direction | default: 'horizontal'
@@ -32,7 +33,7 @@
   endif
 
   assign testimonial_radius = block.settings.corner_radius | default: 'square'
-  unless testimonial_radius == 'square' or testimonial_radius == 'slightly_rounded' or testimonial_radius == 'rounded' or testimonial_radius == 'pill' or testimonial_radius == 'custom'
+  unless testimonial_radius == 'square' or testimonial_radius == 'slightly_rounded' or testimonial_radius == 'rounded' or testimonial_radius == 'pill' or testimonial_radius == 'custom' or testimonial_radius == 'radius_2' or testimonial_radius == 'radius_4' or testimonial_radius == 'radius_6' or testimonial_radius == 'radius_8' or testimonial_radius == 'radius_12' or testimonial_radius == 'radius_16' or testimonial_radius == 'radius_24' or testimonial_radius == 'radius_32'
     assign testimonial_radius = 'square'
   endunless
 
@@ -58,6 +59,69 @@
 %}
 
 {% capture testimonial_style %}
+  {% if composition_card %}
+    {% liquid
+      assign card_text_align = testimonial_alignment
+      if testimonial_alignment == 'space-between'
+        assign card_text_align = 'center'
+      endif
+      assign card_flow = 'column'
+      assign card_align = testimonial_alignment
+      assign card_justify = testimonial_position_value
+      if testimonial_alignment == 'left'
+        assign card_align = 'start'
+      elsif testimonial_alignment == 'right'
+        assign card_align = 'end'
+      elsif testimonial_alignment == 'space-between'
+        assign card_align = 'center'
+      endif
+      if testimonial_direction == 'horizontal'
+        assign card_flow = 'row'
+        assign card_align = testimonial_position_value
+        assign card_justify = testimonial_alignment
+        if testimonial_alignment == 'left'
+          assign card_justify = 'flex-start'
+        elsif testimonial_alignment == 'right'
+          assign card_justify = 'flex-end'
+        endif
+      endif
+      assign card_flow_mobile = card_flow
+      assign card_align_mobile = card_align
+      if testimonial_direction == 'vertical' or block.settings.vertical_on_mobile
+        assign card_flow_mobile = 'column'
+        assign card_align_mobile = testimonial_alignment_mobile_value
+      endif
+    %}
+    --review-card-text-align: {{ card_text_align }};
+    --flex-align: {{ card_text_align }};
+    --flex-align-mobile: {{ testimonial_alignment_mobile_value }};
+    {% render 'layout-flow-style', direction: card_flow, align_items: card_align, justify_content: card_justify, gap: testimonial_gap_desktop, direction_mobile: card_flow_mobile, align_items_mobile: card_align_mobile, justify_content_mobile: testimonial_position_value, gap_mobile: testimonial_gap_mobile %}
+    {% for side in (1..4) %}
+      {% liquid
+        case side
+          when 1
+            assign padding_side = 'top'
+            assign padding_default = 36
+          when 2
+            assign padding_side = 'bottom'
+            assign padding_default = 36
+          when 3
+            assign padding_side = 'left'
+            assign padding_default = 28
+          when 4
+            assign padding_side = 'right'
+            assign padding_default = 28
+        endcase
+        assign padding_key = 'padding_' | append: padding_side
+        assign padding_value = block.settings[padding_key] | default: padding_default | at_least: 0 | at_most: 100
+      %}
+      --review-card-padding-{{ padding_side }}: {{ padding_value }}px;
+      {% if block.settings.customize_mobile_padding %}
+        {% assign mobile_padding_key = padding_key | append: '_mobile' %}
+        --review-card-padding-{{ padding_side }}-mobile: {{ block.settings[mobile_padding_key] | default: padding_value | at_least: 0 | at_most: 100 }}px;
+      {% endif %}
+    {% endfor %}
+  {% endif %}
   --testimonial-gap-desktop: {{ testimonial_gap_desktop }}px;
   --testimonial-gap-mobile: {{ testimonial_gap_mobile }}px;
   --testimonial-border-width: {{ testimonial_border_thickness }}px;
@@ -70,7 +134,7 @@
 {% endcapture %}
 
 <article
-  class="testimonial-item testimonial-item--{{ testimonial_direction }} testimonial-item--position-{{ testimonial_position }} testimonial-item--align-{{ testimonial_alignment }} testimonial-item--radius-{{ testimonial_radius }} testimonial-item--shadow-{{ testimonial_shadow }}{% if block.settings.vertical_on_mobile and testimonial_direction == 'horizontal' %} testimonial-item--vertical-mobile{% endif %}{% if block.settings.overlay_color != blank %} testimonial-item--has-overlay{% endif %} swiper-slide"
+  class="testimonial-item{% if composition_card %} testimonial-item--review-card layout-flow layout-flow--responsive{% endif %} testimonial-item--{{ testimonial_direction }} testimonial-item--position-{{ testimonial_position }} testimonial-item--align-{{ testimonial_alignment }} testimonial-item--radius-{{ testimonial_radius }} testimonial-item--shadow-{{ testimonial_shadow }}{% if block.settings.vertical_on_mobile and testimonial_direction == 'horizontal' %} testimonial-item--vertical-mobile{% endif %}{% if block.settings.overlay_color != blank %} testimonial-item--has-overlay{% endif %} swiper-slide"
   style="{{ testimonial_style | strip }}"
   {{ block.shopify_attributes }}
 >

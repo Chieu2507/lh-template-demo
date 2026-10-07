@@ -18,7 +18,7 @@
 {% capture item_style %}
   --parallax-item-align: {{ block.settings.alignment }};
   --parallax-item-border: {{ block.settings.border_width }}px;
-  --parallax-item-radius: {% case block.settings.corner_radius %}{% when 'square' %}var(--radius-square){% when 'rounded' %}var(--radius-rounded){% when 'custom' %}{{ block.settings.custom_corner_radius }}px{% else %}var(--media-radius, var(--radius-square)){% endcase %};
+  --parallax-item-radius: {% case block.settings.corner_radius %}{% when 'radius_2', 'radius_4', 'radius_6', 'radius_8', 'radius_12', 'radius_16', 'radius_24', 'radius_32' %}var(--radius-{{ block.settings.corner_radius | remove: 'radius_' }}){% when 'square' %}var(--radius-square){% when 'rounded' %}var(--radius-rounded){% when 'custom' %}{{ block.settings.custom_corner_radius }}px{% else %}var(--media-radius, var(--radius-square)){% endcase %};
   --parallax-item-padding-top: {{ block.settings.padding_top }}px;
   --parallax-item-padding-right: {{ block.settings.padding_right }}px;
   --parallax-item-padding-bottom: {{ block.settings.padding_bottom }}px;
@@ -180,24 +180,7 @@
       "type": "select",
       "id": "corner_radius",
       "label": "Corner radius",
-      "options": [
-        {
-          "value": "inherit",
-          "label": "Inherit"
-        },
-        {
-          "value": "square",
-          "label": "Square"
-        },
-        {
-          "value": "rounded",
-          "label": "Rounded"
-        },
-        {
-          "value": "custom",
-          "label": "Custom"
-        }
-      ],
+      "options": [{"value": "inherit", "label": "Inherit"}, {"value": "square", "label": "Square"}, {"value": "radius_2", "label": "t:options.radius_preset.size_2"}, {"value": "radius_4", "label": "t:options.radius_preset.size_4"}, {"value": "radius_6", "label": "t:options.radius_preset.size_6"}, {"value": "rounded", "label": "Rounded"}, {"value": "radius_8", "label": "t:options.radius_preset.size_8"}, {"value": "radius_12", "label": "t:options.radius_preset.size_12"}, {"value": "radius_16", "label": "t:options.radius_preset.size_16"}, {"value": "radius_24", "label": "t:options.radius_preset.size_24"}, {"value": "radius_32", "label": "t:options.radius_preset.size_32"}, {"value": "custom", "label": "Custom"}],
       "default": "inherit"
     },
     {

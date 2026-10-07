@@ -1077,8 +1077,16 @@
       "pill": "Pill",
       "full": "Full",
       "custom": "Custom",
-      "extra_rounded": "Extra rounded"
-    },
+      "extra_rounded": "Extra rounded",
+      "size_2": "Subtly rounded",
+      "size_4": "Slightly rounded",
+      "size_6": "Softly rounded",
+      "size_8": "Rounded",
+      "size_12": "Moderately rounded",
+      "size_16": "Extra rounded",
+      "size_24": "Highly rounded",
+      "size_32": "Ultra rounded"
+},
     "countdown_style": {
       "with_labels": "With labels",
       "numbers_only": "Numbers only",

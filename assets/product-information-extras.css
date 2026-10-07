@@ -136,3 +136,12 @@
 @media (prefers-reduced-motion: reduce) {
   .product-sticky-add-to-cart { transition: none; }
 }
+
+.product-pickup-availability--radius-radius_2 { border-radius: var(--radius-2); }
+.product-pickup-availability--radius-radius_4 { border-radius: var(--radius-4); }
+.product-pickup-availability--radius-radius_6 { border-radius: var(--radius-6); }
+.product-pickup-availability--radius-radius_8 { border-radius: var(--radius-8); }
+.product-pickup-availability--radius-radius_12 { border-radius: var(--radius-12); }
+.product-pickup-availability--radius-radius_16 { border-radius: var(--radius-16); }
+.product-pickup-availability--radius-radius_24 { border-radius: var(--radius-24); }
+.product-pickup-availability--radius-radius_32 { border-radius: var(--radius-32); }

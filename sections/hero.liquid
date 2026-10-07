@@ -86,7 +86,7 @@
 
 {% capture hero_style %}
   --hero-media-ratio: {{ hero_media_ratio }};
-  --hero-media-radius: {% case hero_media_radius %}{% when 'rounded' %}var(--radius-rounded){% when 'slightly_rounded' %}var(--radius-slight){% else %}var(--radius-square){% endcase %};
+  --hero-media-radius: {% case hero_media_radius %}{% when 'radius_2', 'radius_4', 'radius_6', 'radius_8', 'radius_12', 'radius_16', 'radius_24', 'radius_32' %}var(--radius-{{ hero_media_radius | remove: 'radius_' }}){% when 'rounded' %}var(--radius-rounded){% when 'slightly_rounded' %}var(--radius-slight){% else %}var(--radius-square){% endcase %};
   {% if hero_desktop_gap != 12 %}--hero-content-gap: {{ hero_desktop_gap }}px;{% endif %}
   {% if hero_mobile_gap != hero_desktop_gap %}--hero-content-gap-mobile: {{ hero_mobile_gap }}px;{% endif %}
   {% if hero_content_width == 'custom' and hero_content_max_width != 640 %}--hero-content-max-width: {{ hero_content_max_width }}px;{% endif %}
@@ -662,20 +662,7 @@
       "id": "media_corner_radius",
       "label": "t:labels.media_corner_radius",
       "default": "square",
-      "options": [
-        {
-          "value": "square",
-          "label": "t:options.radius_preset.square"
-        },
-        {
-          "value": "slightly_rounded",
-          "label": "t:options.radius_preset.slightly_rounded"
-        },
-        {
-          "value": "rounded",
-          "label": "t:options.radius_preset.rounded"
-        }
-      ],
+      "options": [{"value": "square", "label": "t:options.radius_preset.square"}, {"value": "radius_2", "label": "t:options.radius_preset.size_2"}, {"value": "slightly_rounded", "label": "t:options.radius_preset.slightly_rounded"}, {"value": "radius_4", "label": "t:options.radius_preset.size_4"}, {"value": "radius_6", "label": "t:options.radius_preset.size_6"}, {"value": "rounded", "label": "t:options.radius_preset.rounded"}, {"value": "radius_8", "label": "t:options.radius_preset.size_8"}, {"value": "radius_12", "label": "t:options.radius_preset.size_12"}, {"value": "radius_16", "label": "t:options.radius_preset.size_16"}, {"value": "radius_24", "label": "t:options.radius_preset.size_24"}, {"value": "radius_32", "label": "t:options.radius_preset.size_32"}],
       "visible_if": "{{ section.settings.layout == 'stack' }}"
     },
     {

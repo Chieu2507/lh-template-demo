@@ -51,3 +51,18 @@
 - Removed Height from Testimonial card schema/preset and its renderer parameter. Normalized `section.settings.card_height` maps to the section root modifier and card cross-axis sizing. No individual card overrides remain. Labels reuse canonical Height, Auto and Fill translations; Card item is the user-requested group name.
 - PASS: schema has Card item → Height with translated Auto / Fill options and Fill default; private card schema and shared renderer no longer expose individual height. Theme Check0 errors/36 existing warnings; git diff --check.
 - NOT TESTED: updated section control in live editor. Automatic browser approval review blocked admin reload because workspace credits were exhausted; a retry after the user asked to continue was also rejected. No alternate browser/API route attempted. Previous sizing runtime evidence remains applicable to the same CSS stretch/center behavior.
+
+## Vertical card alignment ownership
+- Nested Group owns its local content alignment. Removed the attempted card-level override so Group controls continue to work independently.
+- Private Testimonial card Alignment is visible only for Horizontal layout; Mobile alignment is visible only for Horizontal with Vertical on mobile enabled. Vertical layout uses the nested Group controls for stars, text and author composition. Saved setting IDs/values and presets remain intact.
+
+## Remove redundant outer Group
+- Testimonial card now owns child flow, alignment, position, gap and padding through the shared layout-flow primitive. Removed only the redundant outer Group in active reviews, section presets and Add-block preset; its Content and Author Groups become direct card children, preserving all child IDs/content/settings/order.
+- Transferred28px gaps and36/28px padding to card settings. Restored card Alignment for Vertical to position direct children; nested Groups keep their own alignment and padding without forced overrides. Expanded card allow-list to shared Group/Image/Heading/Text/Rating kernels for direct composition. Section Card item still owns common Auto/Fill height.
+- PASS: active/preset migration audit, schema budgets, Theme Check0 errors/35 existing warnings and git diff --check.
+- NOT TESTED: live editor/runtime after flattening; earlier preview tab is no longer available. No save/publish performed. Concurrent gallery/image-card changes preserved.
+
+## Dependency upload ordering
+- Reported remote preset error: undefined padding_top on private review card. Local block schema already defines all eight padding controls; all section preset setting IDs pass the block-schema cross-check.
+- Existing general watcher and a separate restricted image-card watcher are active. Retriggered private block first, then section/template after validation to recover from dependency ordering against the remote old block schema. Theme Check0 errors/35 existing warnings.
+- PASS: localhost development response after retrigger has no Invalid preset/undefined setting/Liquid error, renders three flattened review card roots and36px top padding on all three.

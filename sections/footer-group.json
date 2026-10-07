@@ -27,7 +27,7 @@
             "customize_mobile_alignment": true,
             "alignment_mobile": "left",
             "gap_desktop": 100,
-            "gap_mobile": 32,
+            "gap_mobile": 40,
             "appearance_type": "inherit"
           },
           "blocks": {
@@ -44,7 +44,7 @@
                 "customize_mobile_alignment": false,
                 "alignment_mobile": "left",
                 "gap_desktop": 24,
-                "gap_mobile": 20,
+                "gap_mobile": 16,
                 "appearance_type": "inherit",
                 "width_custom": 37,
                 "limit_width": true,
@@ -735,7 +735,7 @@
                     "copyright": {
                       "type": "text",
                       "settings": {
-                        "text": "<p>\u00a9 2026 LayoutHub. Powered by Shopify.</p>",
+                        "text": "<p>© 2026 LayoutHub. Powered by Shopify.</p>",
                         "text_size": "sm",
                         "width": "fit"
                       }
@@ -846,13 +846,13 @@
       "settings": {
         "section_width": "page_width",
         "gap_desktop": 56,
-        "gap_mobile": 32,
+        "gap_mobile": 40,
         "color_scheme": "scheme-2",
         "padding_top": 64,
         "padding_bottom": 64,
         "customize_mobile_padding": true,
-        "padding_top_mobile": 40,
-        "padding_bottom_mobile": 40
+        "padding_top_mobile": 48,
+        "padding_bottom_mobile": 48
       },
       "custom_css": [
         ".icon-block {flex: 0 0 var(--icon-block-width); width: var(--icon-block-width);}"

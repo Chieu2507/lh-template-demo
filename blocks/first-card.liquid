@@ -1,8 +1,9 @@
 {% doc %}
   Renders the lead article card in a Blog Grid.
 
-  The Blog Grid supplies the current article and blog through `closest`. This
-  composition owns the lead card layout and reuses the shared Blog Card child
+  The Blog Grid supplies the current article and blog through `closest`.
+  Overlay mode delegates media, appearance, and spacing to its static Image card.
+  This composition owns the lead card layout and reuses the shared Blog Card child
   blocks for article content.
 {% enddoc %}
 
@@ -58,6 +59,8 @@
 
   assign first_card_radius = 'var(--media-radius)'
   case block.settings.corner_radius
+    when 'radius_2', 'radius_4', 'radius_6', 'radius_8', 'radius_12', 'radius_16', 'radius_24', 'radius_32'
+      assign first_card_radius = block.settings.corner_radius | replace: 'radius_', 'var(--radius-' | append: ')'
     when 'square'
       assign first_card_radius = 'var(--radius-square)'
     when 'rounded'
@@ -148,7 +151,11 @@
 {% endcapture %}
 {% assign first_card_style = first_card_style | strip %}
 
-{% if first_card_article != blank or request.design_mode %}
+  {% if block.settings.media_layout == 'overlay' %}
+    <div {{ block.shopify_attributes }}>
+      {% content_for 'block', type: 'image-card', id: 'featured-image-card', closest.article: first_card_article %}
+    </div>
+  {% else %}
   <article
     class="{{ first_card_class }}"
     {% if first_card_article != blank %}data-article-url="{{ first_card_url | escape }}"{% endif %}
@@ -169,7 +176,7 @@
       {% content_for 'blocks' %}
     </div>
   </article>
-{% endif %}
+  {% endif %}
 
 {% stylesheet %}
   .blog-first-card {
@@ -340,12 +347,24 @@
   "name": "Featured post",
   "tag": null,
   "blocks": [
-    { "type": "@theme" },
-    { "type": "blog-card-tag" },
-    { "type": "blog-card-title" },
-    { "type": "blog-card-description" },
-    { "type": "blog-card-button" },
-    { "type": "blog-card-meta" }
+    {
+      "type": "@theme"
+    },
+    {
+      "type": "blog-card-tag"
+    },
+    {
+      "type": "blog-card-title"
+    },
+    {
+      "type": "blog-card-description"
+    },
+    {
+      "type": "blog-card-button"
+    },
+    {
+      "type": "blog-card-meta"
+    }
   ],
   "settings": [
     {
@@ -357,30 +376,61 @@
       "id": "ratio",
       "label": "Ratio",
       "options": [
-        { "value": "original", "label": "Auto" },
-        { "value": "square", "label": "Square" },
-        { "value": "portrait", "label": "Portrait" },
-        { "value": "landscape", "label": "Landscape" },
-        { "value": "wide", "label": "Wide" }
+        {
+          "value": "original",
+          "label": "Auto"
+        },
+        {
+          "value": "square",
+          "label": "Square"
+        },
+        {
+          "value": "portrait",
+          "label": "Portrait"
+        },
+        {
+          "value": "landscape",
+          "label": "Landscape"
+        },
+        {
+          "value": "wide",
+          "label": "Wide"
+        }
       ],
-      "default": "original"
+      "default": "original",
+      "visible_if": "{{ block.settings.media_layout != 'overlay' }}"
     },
     {
       "type": "select",
       "id": "media_layout",
       "label": "Media layout",
       "options": [
-        { "value": "stacked", "label": "Stacked" },
-        { "value": "horizontal", "label": "Horizontal" }
+        {
+          "value": "stacked",
+          "label": "Stacked"
+        },
+        {
+          "value": "horizontal",
+          "label": "Horizontal"
+        },
+        {
+          "value": "overlay",
+          "label": "Overlay"
+        }
       ],
       "default": "horizontal"
+    },
+    {
+      "type": "paragraph",
+      "content": "Configure overlay media, appearance and content in the Image card block.",
+      "visible_if": "{{ block.settings.media_layout == 'overlay' }}"
     },
     {
       "type": "checkbox",
       "id": "media_first",
       "label": "Media first",
       "default": true,
-      "visible_if": "{{ block.settings.media_layout == 'horizontal' }}"
+      "visible_if": "{{ block.settings.media_layout != 'overlay' and block.settings.media_layout == 'horizontal' }}"
     },
     {
       "type": "header",
@@ -391,24 +441,46 @@
       "id": "alignment",
       "label": "t:labels.alignment",
       "options": [
-        { "value": "left", "label": "Left" },
-        { "value": "center", "label": "Center" },
-        { "value": "right", "label": "Right" }
+        {
+          "value": "left",
+          "label": "Left"
+        },
+        {
+          "value": "center",
+          "label": "Center"
+        },
+        {
+          "value": "right",
+          "label": "Right"
+        }
       ],
-      "default": "left"
+      "default": "left",
+      "visible_if": "{{ block.settings.media_layout != 'overlay' }}"
     },
     {
       "type": "select",
       "id": "position",
       "label": "t:labels.position",
       "options": [
-        { "value": "flex-start", "label": "Start" },
-        { "value": "center", "label": "Center" },
-        { "value": "flex-end", "label": "End" },
-        { "value": "space-between", "label": "Space between" }
+        {
+          "value": "flex-start",
+          "label": "Start"
+        },
+        {
+          "value": "center",
+          "label": "Center"
+        },
+        {
+          "value": "flex-end",
+          "label": "End"
+        },
+        {
+          "value": "space-between",
+          "label": "Space between"
+        }
       ],
       "default": "flex-start",
-      "visible_if": "{{ block.settings.media_layout == 'horizontal' }}"
+      "visible_if": "{{ block.settings.media_layout != 'overlay' and block.settings.media_layout == 'horizontal' }}"
     },
     {
       "type": "range",
@@ -418,7 +490,8 @@
       "max": 100,
       "step": 1,
       "unit": "px",
-      "default": 8
+      "default": 8,
+      "visible_if": "{{ block.settings.media_layout != 'overlay' }}"
     },
     {
       "type": "range",
@@ -428,7 +501,8 @@
       "max": 100,
       "step": 1,
       "unit": "px",
-      "default": 8
+      "default": 8,
+      "visible_if": "{{ block.settings.media_layout != 'overlay' }}"
     },
     {
       "type": "header",
@@ -442,29 +516,37 @@
       "max": 10,
       "step": 1,
       "unit": "px",
-      "default": 1
+      "default": 1,
+      "visible_if": "{{ block.settings.media_layout != 'overlay' }}"
     },
     {
       "type": "select",
       "id": "corner_radius",
       "label": "t:labels.corner_radius",
-      "options": [
-        { "value": "inherit", "label": "Inherit" },
-        { "value": "square", "label": "Square" },
-        { "value": "rounded", "label": "Rounded" }
-      ],
-      "default": "inherit"
+      "options": [{"value": "inherit", "label": "Inherit"}, {"value": "square", "label": "Square"}, {"value": "radius_2", "label": "t:options.radius_preset.size_2"}, {"value": "radius_4", "label": "t:options.radius_preset.size_4"}, {"value": "radius_6", "label": "t:options.radius_preset.size_6"}, {"value": "rounded", "label": "Rounded"}, {"value": "radius_8", "label": "t:options.radius_preset.size_8"}, {"value": "radius_12", "label": "t:options.radius_preset.size_12"}, {"value": "radius_16", "label": "t:options.radius_preset.size_16"}, {"value": "radius_24", "label": "t:options.radius_preset.size_24"}, {"value": "radius_32", "label": "t:options.radius_preset.size_32"}],
+      "default": "inherit",
+      "visible_if": "{{ block.settings.media_layout != 'overlay' }}"
     },
     {
       "type": "select",
       "id": "shadow",
       "label": "t:labels.shadow",
       "options": [
-        { "value": "none", "label": "None" },
-        { "value": "small", "label": "Small" },
-        { "value": "medium", "label": "Medium" }
+        {
+          "value": "none",
+          "label": "None"
+        },
+        {
+          "value": "small",
+          "label": "Small"
+        },
+        {
+          "value": "medium",
+          "label": "Medium"
+        }
       ],
-      "default": "none"
+      "default": "none",
+      "visible_if": "{{ block.settings.media_layout != 'overlay' }}"
     },
     {
       "type": "header",
@@ -475,17 +557,24 @@
       "id": "color_type",
       "label": "t:labels.type",
       "options": [
-        { "value": "inherit", "label": "t:options.color_type.inherit" },
-        { "value": "color_scheme", "label": "t:options.color_type.color_scheme" }
+        {
+          "value": "inherit",
+          "label": "t:options.color_type.inherit"
+        },
+        {
+          "value": "color_scheme",
+          "label": "t:options.color_type.color_scheme"
+        }
       ],
-      "default": "inherit"
+      "default": "inherit",
+      "visible_if": "{{ block.settings.media_layout != 'overlay' }}"
     },
     {
       "type": "color_scheme",
       "id": "color_scheme",
       "label": "t:labels.color_scheme",
       "default": "scheme-1",
-      "visible_if": "{{ block.settings.color_type == 'color_scheme' }}"
+      "visible_if": "{{ block.settings.media_layout != 'overlay' and block.settings.color_type == 'color_scheme' }}"
     },
     {
       "type": "header",
@@ -499,7 +588,8 @@
       "max": 100,
       "step": 1,
       "unit": "px",
-      "default": 16
+      "default": 16,
+      "visible_if": "{{ block.settings.media_layout != 'overlay' }}"
     },
     {
       "type": "range",
@@ -509,7 +599,8 @@
       "max": 100,
       "step": 1,
       "unit": "px",
-      "default": 16
+      "default": 16,
+      "visible_if": "{{ block.settings.media_layout != 'overlay' }}"
     },
     {
       "type": "range",
@@ -519,7 +610,8 @@
       "max": 100,
       "step": 1,
       "unit": "px",
-      "default": 16
+      "default": 16,
+      "visible_if": "{{ block.settings.media_layout != 'overlay' }}"
     },
     {
       "type": "range",
@@ -529,13 +621,15 @@
       "max": 100,
       "step": 1,
       "unit": "px",
-      "default": 16
+      "default": 16,
+      "visible_if": "{{ block.settings.media_layout != 'overlay' }}"
     },
     {
       "type": "checkbox",
       "id": "customize_mobile_padding",
       "label": "t:labels.customize_mobile_padding",
-      "default": false
+      "default": false,
+      "visible_if": "{{ block.settings.media_layout != 'overlay' }}"
     },
     {
       "type": "range",
@@ -546,7 +640,7 @@
       "step": 1,
       "unit": "px",
       "default": 16,
-      "visible_if": "{{ block.settings.customize_mobile_padding }}"
+      "visible_if": "{{ block.settings.media_layout != 'overlay' and block.settings.customize_mobile_padding }}"
     },
     {
       "type": "range",
@@ -557,7 +651,7 @@
       "step": 1,
       "unit": "px",
       "default": 16,
-      "visible_if": "{{ block.settings.customize_mobile_padding }}"
+      "visible_if": "{{ block.settings.media_layout != 'overlay' and block.settings.customize_mobile_padding }}"
     },
     {
       "type": "range",
@@ -568,7 +662,7 @@
       "step": 1,
       "unit": "px",
       "default": 16,
-      "visible_if": "{{ block.settings.customize_mobile_padding }}"
+      "visible_if": "{{ block.settings.media_layout != 'overlay' and block.settings.customize_mobile_padding }}"
     },
     {
       "type": "range",
@@ -579,7 +673,7 @@
       "step": 1,
       "unit": "px",
       "default": 16,
-      "visible_if": "{{ block.settings.customize_mobile_padding }}"
+      "visible_if": "{{ block.settings.media_layout != 'overlay' and block.settings.customize_mobile_padding }}"
     }
   ],
   "presets": [

@@ -1,0 +1,297 @@
+{
+  "store": "layouthub-template-v2.myshopify.com",
+  "branch": "Perky-template",
+  "status": "content-created-and-resource-pickers-bound; desktop-editor-verified",
+  "products": [
+    {
+      "title": "Rocking Horse",
+      "handle": "perky-rocking-horse",
+      "reference": "output/perky-content/figma-0-imgImage.png",
+      "color": "Sage",
+      "price": 15,
+      "compareAtPrice": 30,
+      "summary": "A pale sage rocking horse with white spots, an orange-red seat and natural wood rockers.",
+      "descriptionHtml": "<p>Bring a familiar playroom shape into view with this spotted Rocking Horse. Its pale sage body, brown mane and orange-red seat create a cheerful contrast with the curved wood rockers.</p><h2>A closer look</h2><ul><li>Horse-shaped profile with a painted bridle and spotted sides.</li><li>Wooden handles beside the head and a curved rocker base.</li><li>Bright seat and small raised backrest, as shown in the product image.</li></ul><p>Check the product instructions for assembly, care and suitability before use. Adult supervision is recommended for play.</p>",
+      "tag": "New",
+      "quantityPerVariant": 20,
+      "additionalImagesRequired": 0,
+      "preparedImages": [
+        "output/perky-content/figma-0-imgImage.png",
+        "output/perky-content/rocking-horse-lifestyle.png",
+        "output/perky-content/rocking-horse-angle.png",
+        "output/perky-content/rocking-horse-detail.png"
+      ],
+      "proposedCategoryId": "gid://shopify/TaxonomyCategory/tg-5-20-4",
+      "pricingSource": "Figma sale price; original price chosen as demo data with user authorization (Rocking Horse both prices from Figma)."
+    },
+    {
+      "title": "Wooden Baby Toy",
+      "handle": "perky-wooden-baby-toy",
+      "reference": "output/perky-content/figma-0-imgImage1.png",
+      "color": "Pink",
+      "price": 22,
+      "compareAtPrice": 30,
+      "summary": "A cloud-shaped wooden toy with pastel beads and a white star detail.",
+      "descriptionHtml": "<p>A cloud-shaped frame gives the Wooden Baby Toy its distinctive outline. Pink, yellow and lavender beads sit alongside white letter blocks and a dangling white star.</p><h2>Details to explore</h2><ul><li>Natural wood cloud shape.</li><li>Pastel bead arrangement with visible BABY lettering.</li><li>White star detail and contrasting bead shapes.</li></ul><p>Refer to the manufacturer’s instructions for age suitability, cleaning and use. Inspect before each use and keep play supervised.</p>",
+      "tag": "New",
+      "quantityPerVariant": 20,
+      "additionalImagesRequired": 0,
+      "preparedImages": [
+        "output/perky-content/figma-0-imgImage1.png",
+        "output/perky-content/wooden-baby-toy-lifestyle.png",
+        "output/perky-content/wooden-baby-toy-angle.png",
+        "output/perky-content/wooden-baby-toy-detail.png"
+      ],
+      "pricingSource": "Figma sale price; original price chosen as demo data with user authorization (Rocking Horse both prices from Figma)."
+    },
+    {
+      "title": "Colorful Stacking Toy",
+      "handle": "perky-colorful-stacking-toy",
+      "reference": "output/perky-content/figma-0-imgImage2.png",
+      "color": "Multicolor",
+      "price": 25,
+      "compareAtPrice": 35,
+      "summary": "A sunshine-shaped stacking toy with nested yellow, orange and red arches.",
+      "descriptionHtml": "<p>Warm colors and nested arches make this Colorful Stacking Toy easy to recognize. A yellow sunshine-shaped outer piece frames a progression of orange and red inner arches.</p><h2>Simple shapes, many arrangements</h2><ul><li>Sunshine silhouette with a rounded, scalloped edge.</li><li>Nested arches in a warm yellow-to-red palette.</li><li>Pieces can be arranged together or explored separately.</li></ul><p>Use on a clear play surface and follow the supplied product instructions for care and suitability. Store the pieces together after play.</p>",
+      "tag": "New",
+      "quantityPerVariant": 20,
+      "additionalImagesRequired": 0,
+      "proposedCategoryId": "gid://shopify/TaxonomyCategory/bt-5-12",
+      "preparedImages": [
+        "output/perky-content/figma-0-imgImage2.png",
+        "output/perky-content/colorful-stacking-toy-lifestyle.png",
+        "output/perky-content/colorful-stacking-toy-angle.png",
+        "output/perky-content/colorful-stacking-toy-detail.png"
+      ],
+      "imageReview": "Inspected all generated images: square framing; original visible product shape, component palette and identity retained. Shopify upload and runtime check pending.",
+      "pricingSource": "Figma sale price; original price chosen as demo data with user authorization (Rocking Horse both prices from Figma)."
+    },
+    {
+      "title": "Stacking Wooden Toy",
+      "handle": "perky-stacking-wooden-toy",
+      "reference": "output/perky-content/figma-0-imgImage3.png",
+      "color": "Natural",
+      "price": 25,
+      "compareAtPrice": 35,
+      "summary": "A natural wood block tower for building, balancing and rearranging.",
+      "descriptionHtml": "<p>The Stacking Wooden Toy brings the simple shape of a rectangular block to a tall, layered tower. The natural wood finish keeps the focus on the arrangement and visible grain.</p><h2>Build your own arrangement</h2><ul><li>Matching rectangular wooden blocks.</li><li>Natural finish with visible wood grain.</li><li>Suitable for exploring different stacked arrangements on a flat surface.</li></ul><p>Keep the play area clear and follow the supplied age and safety guidance. Gather loose pieces after play and keep them together for next time.</p>",
+      "tag": "New",
+      "quantityPerVariant": 20,
+      "additionalImagesRequired": 0,
+      "proposedCategoryId": "gid://shopify/TaxonomyCategory/tg-5-7-8",
+      "preparedImages": [
+        "output/perky-content/figma-0-imgImage3.png",
+        "output/perky-content/stacking-wooden-toy-lifestyle.png",
+        "output/perky-content/stacking-wooden-toy-angle.png",
+        "output/perky-content/stacking-wooden-toy-detail.png"
+      ],
+      "imageReview": "Inspected all generated images: square framing; original visible product shape, component palette and identity retained. Shopify upload and runtime check pending.",
+      "pricingSource": "Figma sale price; original price chosen as demo data with user authorization (Rocking Horse both prices from Figma)."
+    },
+    {
+      "title": "Toddler Activity Cube",
+      "handle": "perky-toddler-activity-cube",
+      "reference": "output/perky-content/figma-1-imgImage1.png",
+      "color": "Multicolor",
+      "price": 15,
+      "compareAtPrice": 20,
+      "summary": "A colorful wooden activity cube with picture tiles and a clock face.",
+      "descriptionHtml": "<p>The Toddler Activity Cube combines a natural wood frame with colorful details on several sides. The photographed cube includes rotating picture tiles, a clock face with movable hands and a small picture panel on top.</p><h2>Explore one side at a time</h2><ul><li>Wooden cube frame with curved upper edges.</li><li>Bright picture tiles and contrasting shapes.</li><li>Clock-face panel with visible numbers and hands.</li></ul><p>Use the supplied product guidance to confirm suitability and care. Let an adult guide play and check moving parts before use.</p>",
+      "tag": "New",
+      "quantityPerVariant": 20,
+      "additionalImagesRequired": 0,
+      "proposedCategoryId": "gid://shopify/TaxonomyCategory/tg-5-1",
+      "preparedImages": [
+        "output/perky-content/figma-1-imgImage1.png",
+        "output/perky-content/toddler-activity-cube-lifestyle.png",
+        "output/perky-content/toddler-activity-cube-angle.png",
+        "output/perky-content/toddler-activity-cube-detail.png"
+      ],
+      "imageReview": "Inspected all generated images: square framing; original visible product shape, component palette and identity retained. Shopify upload and runtime check pending.",
+      "pricingSource": "Figma sale price; original price chosen as demo data with user authorization (Rocking Horse both prices from Figma)."
+    },
+    {
+      "title": "Stacking Tree With Bird",
+      "handle": "perky-stacking-tree-with-bird",
+      "reference": "output/perky-content/figma-1-imgImage2.png",
+      "color": "Multicolor",
+      "price": 35,
+      "compareAtPrice": 45,
+      "summary": "A bird-topped stacking toy with four rounded rings in green, aqua and natural tones.",
+      "descriptionHtml": "<p>A coral bird with a yellow wing sits above four rounded rings in the Stacking Tree With Bird. The rings graduate from natural wood and yellow-green to aqua and teal.</p><h2>A bright stacking shape</h2><ul><li>Bird-shaped top piece with a painted eye and wing.</li><li>Four rounded rings in graduated sizes.</li><li>Colorful stacked profile with visible wood texture.</li></ul><p>Arrange the pieces on a clear surface and follow the product instructions for age suitability and care. Keep all pieces together after use.</p>",
+      "tag": "New",
+      "quantityPerVariant": 20,
+      "additionalImagesRequired": 0,
+      "proposedCategoryId": "gid://shopify/TaxonomyCategory/bt-5-12",
+      "preparedImages": [
+        "output/perky-content/figma-1-imgImage2.png",
+        "output/perky-content/stacking-tree-with-bird-lifestyle.png",
+        "output/perky-content/stacking-tree-with-bird-angle.png",
+        "output/perky-content/stacking-tree-with-bird-detail.png"
+      ],
+      "imageReview": "Inspected all generated images: square framing; original visible product shape, component palette and identity retained. Shopify upload and runtime check pending.",
+      "pricingSource": "Figma sale price; original price chosen as demo data with user authorization (Rocking Horse both prices from Figma)."
+    },
+    {
+      "title": "Plush Doll",
+      "handle": "perky-plush-doll",
+      "reference": "output/perky-content/hotspot-reference.png",
+      "color": "Multicolor",
+      "price": 18,
+      "compareAtPrice": 24,
+      "summary": "A brown plush doll with a cream smiling face, yellow bow and matching polka-dot dress. Recommended for ages 3 and up.",
+      "descriptionHtml": "<p>This brown plush doll has a cream smiling face, a mustard-yellow bow and a matching polka-dot dress.</p><h2>Details</h2><ul><li>Brown plush body with a contrasting cream face.</li><li>Embroidered eyes and a stitched smile.</li><li>Matching yellow bow and spotted dress.</li></ul><p>Recommended for ages 3 and up.</p>",
+      "tag": "New",
+      "quantityPerVariant": 20,
+      "additionalImagesRequired": 0,
+      "preparedImages": [
+        "/Users/chieutrinh/Documents/GitHub/lh-template-demo/output/perky-content/perky-brown-plush-doll-catalog.png",
+        "/Users/chieutrinh/Documents/GitHub/lh-template-demo/output/perky-content/perky-brown-plush-doll-product-life.png",
+        "/Users/chieutrinh/Documents/GitHub/lh-template-demo/output/perky-content/perky-brown-plush-doll-angle.png",
+        "/Users/chieutrinh/Documents/GitHub/lh-template-demo/output/perky-content/perky-brown-plush-doll-detail.png"
+      ],
+      "proposedCategoryId": "gid://shopify/TaxonomyCategory/tg-5-8-11",
+      "pricingSource": "Demo sale/original prices selected under user authorization.",
+      "ageGuidanceSource": "User confirmed: doll and bowling set 3+; blanket infant.",
+      "imageReview": "All four images inspected, square 1254x1254. Catalog, real product-use scene, alternate view, detail. Same visible product identity retained."
+    },
+    {
+      "title": "Striped Baby Blanket",
+      "handle": "perky-striped-baby-blanket",
+      "reference": "output/perky-content/hotspot-reference.png",
+      "color": "Multicolor",
+      "price": 24,
+      "compareAtPrice": 32,
+      "summary": "An ivory infant blanket with narrow blue, mustard, lavender and peach stripes and a visible knit texture.",
+      "descriptionHtml": "<p>An ivory infant blanket with narrow stripes in muted blue, mustard, lavender and peach. The folded layers show the color pattern and visible knit texture.</p><h2>Details</h2><ul><li>Ivory base with four muted stripe colors.</li><li>Textured knit appearance.</li><li>For infant use as directed by the product manufacturer.</li></ul>",
+      "tag": "New",
+      "quantityPerVariant": 20,
+      "additionalImagesRequired": 0,
+      "preparedImages": [
+        "/Users/chieutrinh/Documents/GitHub/lh-template-demo/output/perky-content/perky-striped-ivory-knit-blanket-catalog.png",
+        "/Users/chieutrinh/Documents/GitHub/lh-template-demo/output/perky-content/perky-striped-ivory-knit-blanket-product-life.png",
+        "/Users/chieutrinh/Documents/GitHub/lh-template-demo/output/perky-content/perky-striped-ivory-knit-blanket-angle.png",
+        "/Users/chieutrinh/Documents/GitHub/lh-template-demo/output/perky-content/perky-striped-ivory-knit-blanket-detail.png"
+      ],
+      "proposedCategoryId": "gid://shopify/TaxonomyCategory/bt-12",
+      "pricingSource": "Demo sale/original prices selected under user authorization.",
+      "ageGuidanceSource": "User confirmed: doll and bowling set 3+; blanket infant.",
+      "imageReview": "All four images inspected, square 1254x1254. Catalog, real product-use scene, alternate view, detail. Same visible product identity retained."
+    },
+    {
+      "title": "Wooden Bowling Set",
+      "handle": "perky-wooden-bowling-set",
+      "reference": "output/perky-content/hotspot-reference.png",
+      "color": "Multicolor",
+      "price": 20,
+      "compareAtPrice": 28,
+      "summary": "Three natural wood bowling pins with yellow, blue and red accents. Recommended for ages 3 and up.",
+      "descriptionHtml": "<p>Three wooden bowling pins bring a simple play shape into view. The natural wood bodies have rounded top accents and contrasting yellow, blue and red bands.</p><h2>Details</h2><ul><li>Three pins with visible wood grain.</li><li>Rounded colored top details and neck bands.</li><li>Recommended for ages 3 and up.</li></ul>",
+      "tag": "New",
+      "quantityPerVariant": 20,
+      "additionalImagesRequired": 0,
+      "preparedImages": [
+        "/Users/chieutrinh/Documents/GitHub/lh-template-demo/output/perky-content/perky-wooden-animal-bowling-set-catalog.png",
+        "/Users/chieutrinh/Documents/GitHub/lh-template-demo/output/perky-content/perky-wooden-animal-bowling-set-product-life.png",
+        "/Users/chieutrinh/Documents/GitHub/lh-template-demo/output/perky-content/perky-wooden-animal-bowling-set-angle.png",
+        "/Users/chieutrinh/Documents/GitHub/lh-template-demo/output/perky-content/perky-wooden-animal-bowling-set-detail.png"
+      ],
+      "proposedCategoryId": "gid://shopify/TaxonomyCategory/tg-5-23-5",
+      "pricingSource": "Demo sale/original prices selected under user authorization.",
+      "ageGuidanceSource": "User confirmed: doll and bowling set 3+; blanket infant.",
+      "imageReview": "All four images inspected, square 1254x1254. Catalog, real product-use scene, alternate view, detail. Same visible product identity retained."
+    }
+  ],
+  "proposedHotspotProducts": [
+    "Plush Doll",
+    "Striped Baby Blanket",
+    "Wooden Bowling Set"
+  ],
+  "missing": [],
+  "articles": [
+    {
+      "title": "The Importance Of Arts And Crafts For Early Childhood Development",
+      "handle": "perky-the-importance-of-arts-and-crafts-for-early-childhood-development",
+      "publishedAt": "2025-09-15T09:00:00Z",
+      "image": "output/perky-content/figma-2-imgImage.png",
+      "imageAlt": "Children and a teacher making colorful clay crafts together at a classroom table.",
+      "excerpt": "Make room for creative play with simple arts and crafts that invite children to explore shapes, tell stories and make their own choices.",
+      "seoDescription": "Explore simple ways to make arts and crafts part of creative play, with open-ended projects, thoughtful setup and room for children’s ideas.",
+      "tags": [
+        "Perky",
+        "Creative Play",
+        "Arts and Crafts"
+      ],
+      "bodyHtml": "<p>A piece of paper, a few colors and time to explore can turn an ordinary afternoon into a creative adventure. Arts and crafts give children a place to try ideas, make choices and describe what they have made. The most interesting part is often the process itself.</p><h2>Give ideas room to grow</h2><p>Start with an invitation rather than a finished example to copy. Offer paper in different shapes or a small selection of colors and ask, “What would you like to make?” A collage might become a garden, a creature or something that has no name yet. Let children decide when their work feels finished.</p><h2>Explore with hands and eyes</h2><p>Rolling clay, drawing lines and arranging paper pieces involve different movements and decisions. Keep the setup manageable: a clear surface, a few suitable materials and tools that match the child’s abilities. An adult can help with tasks such as cutting while leaving the creative choices to the child.</p><h2>Make space for conversation</h2><p>Ask about the story behind the picture or the shape a child has chosen. Try open questions such as “Tell me about this part” or “What might happen next?” Listen without deciding what the artwork should represent. Working alongside one another also creates opportunities to share materials and exchange ideas.</p><h2>Keep the invitation simple</h2><ul><li>Try a collage using large paper shapes and glue suitable for the activity.</li><li>Draw a make-believe place with a small selection of crayons.</li><li>Explore rolling and shaping modeling material with adult guidance.</li><li>Make a shared picture where each person adds one detail.</li></ul><p>Choose materials and tools with the manufacturer’s age guidance in mind, supervise the activity and keep small parts away from children who mouth objects. Finish by putting tools away together. A welcoming creative routine does not need a perfect result; it needs room for curiosity and a chance to try again.</p>",
+      "author": "Perky Editorial",
+      "blogHandle": "news",
+      "seoTitle": "The Importance Of Arts And Crafts For Early Childhood Development",
+      "contentSource": "Title, date and image from Figma 49005:7458; full body and excerpt newly written as demo editorial content."
+    },
+    {
+      "title": "Fun Halloween Arts And Crafts Activities For Kids",
+      "handle": "perky-fun-halloween-arts-and-crafts-activities-for-kids",
+      "publishedAt": "2025-07-18T09:00:00Z",
+      "image": "output/perky-content/figma-2-imgImage1.png",
+      "imageAlt": "A child’s hand playing with a wooden train on a wooden track.",
+      "excerpt": "Bring a playful Halloween mood to craft time with paper pumpkins, friendly ghosts and colorful scenes children can make in their own way.",
+      "seoDescription": "Try playful Halloween craft ideas with paper pumpkins, friendly ghost pictures and make-believe scenes for a supervised creative afternoon.",
+      "tags": [
+        "Perky",
+        "Halloween",
+        "Arts and Crafts"
+      ],
+      "bodyHtml": "<p>Halloween can be an invitation to invent friendly characters and colorful worlds. A few simple materials are enough for an afternoon of making paper pumpkins, drawing gentle ghosts or building a scene for a favorite toy. Keep the mood playful and let children choose the details.</p><h2>Make a paper pumpkin patch</h2><p>An adult can prepare large pumpkin shapes from orange paper. Offer crayons and larger paper pieces for children to add faces, leaves or patterns. Some pumpkins might be smiling and others might have stripes. Arrange the finished shapes on a larger sheet to make a shared pumpkin patch.</p><h2>Create friendly ghost pictures</h2><p>Use a white crayon or white paper shapes on a darker background. Invite children to give each ghost a name and a story. Rather than making the picture frightening, try asking where the character lives or what it likes to do. Add stars, windows or a moon to complete the scene.</p><h2>Build a make-believe Halloween scene</h2><p>Place a paper backdrop beside a toy train, a few blocks or another familiar toy. Draw a tiny pumpkin stop or a moonlit house and use the scene as a starting point for a story. Keep paper decorations separate from moving toy parts so that play remains easy to manage.</p><h2>Let everyone take part</h2><p>Set out a small number of materials and offer one activity at a time. Children can draw, arrange shapes or describe a character while an adult handles cutting and any task that needs extra help. There is no need for every project to look alike.</p><p>Use age-appropriate supplies and supervise throughout. Choose battery-operated decorations if a light is needed and keep craft materials away from heat and flames. At the end, display the pictures together and invite each maker to share one favorite detail.</p>",
+      "author": "Perky Editorial",
+      "blogHandle": "news",
+      "seoTitle": "Fun Halloween Arts And Crafts Activities For Kids",
+      "contentSource": "Title, date and image from Figma 49005:7458; full body and excerpt newly written as demo editorial content."
+    },
+    {
+      "title": "Amazing Bubble Science Facts For Kids Of All Ages",
+      "handle": "perky-amazing-bubble-science-facts-for-kids-of-all-ages",
+      "publishedAt": "2025-06-11T09:00:00Z",
+      "image": "output/perky-content/figma-2-imgImage2.png",
+      "imageAlt": "Young children playing together at a colorful activity table.",
+      "excerpt": "Look closely at floating bubbles and discover what their round shapes and shifting colors can tell us about soap films and light.",
+      "seoDescription": "Discover the science of round bubbles and shimmering colors, plus a simple supervised observation activity for curious children.",
+      "tags": [
+        "Perky",
+        "Science",
+        "Play Ideas"
+      ],
+      "bodyHtml": "<p>A floating bubble is a small invitation to look closely. Its round shape and changing colors can lead to questions about what we see. Bring a bubble wand outdoors and turn a familiar play activity into a short observation game.</p><h2>Why do bubbles look round?</h2><p>A bubble has a thin liquid film around a pocket of air. Surface tension pulls the film inward. A free bubble tends toward a sphere because that shape encloses its air with the least surface area. A large bubble may wobble before it settles, so there is plenty to watch.</p><h2>Where do the colors come from?</h2><p>Light reflects from the outer and inner surfaces of the film. The reflected waves interact, and the colors we see change with the film’s thickness. Look for swirls and bands as the bubble moves. The colors are a light effect rather than paint in the liquid.</p><h2>Try an observation game</h2><p>Use ready-made bubble solution and a wand according to the product instructions. An adult can blow a few bubbles while children watch from a comfortable distance. Ask what shapes appear, which colors they notice and how the bubbles move in the breeze. Draw a picture of one observation afterward.</p><h2>Keep wondering</h2><p>Try making a small bubble and a larger one. Watch how they move rather than promising which will last longest. Repeat the observation in a sheltered spot and compare what you notice. There is no need to create an “unpoppable” bubble; noticing a short-lived one can be just as interesting.</p><p>Supervise bubble play, keep solution out of mouths and eyes, and clear up spills to avoid slippery surfaces. Simple questions and patient observation are enough to make an everyday activity feel like a discovery.</p><p>Explore more: <a href=\"https://annex.exploratorium.edu/ronh/bubbles/shape_of_bubbles.html\">The Shape of Bubbles</a> and <a href=\"https://annex.exploratorium.edu/ronh/bubbles/bubble_colors.html\">Bubble Colors</a> from the Exploratorium.</p>",
+      "author": "Perky Editorial",
+      "blogHandle": "news",
+      "seoTitle": "Amazing Bubble Science Facts For Kids Of All Ages",
+      "contentSource": "Title, date and image from Figma 49005:7458; full body and excerpt newly written as demo editorial content."
+    }
+  ],
+  "audit": {
+    "storeConfirmed": "layouthub-template-v2.myshopify.com",
+    "currency": "USD",
+    "existingPerkyProductCount": 0,
+    "productQuery": "handle:perky-*",
+    "secondaryImageDefinition": {
+      "id": "gid://shopify/MetafieldDefinition/299506434347",
+      "namespace": "custom",
+      "key": "secondary_image",
+      "type": "file_reference"
+    },
+    "summaryDefinition": "No summary definition in complete returned product definitions. No summary field found in first 50 existing products. Resolve merchant-owned summary field and theme binding before write.",
+    "createdProductCount": 0,
+    "createdArticleCount": 0,
+    "preparedProductImages": 24,
+    "shopifyScopes": "CLI auth succeeded; full read audit succeeded"
+  },
+  "workflowSource": {
+    "url": "https://github.com/Chieu2507/shopify-theme-base/blob/dev/docs/content-creation-workflow.md",
+    "ref": "dev",
+    "sha": "c204810a85e4ca6aef67898efb5251702a9c499d"
+  },
+  "nextSteps": [
+    "Keep existing six products and their images unchanged per user request.",
+    "Mobile visual QA remains pending.",
+    "View All controls in Featured collection and Featured Blog Posts render disabled; shared resource URL resolution needs follow-up."
+  ]
+}

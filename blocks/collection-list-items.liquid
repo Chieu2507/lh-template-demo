@@ -236,6 +236,7 @@
       data-layout="carousel"
       data-swiper-columns-desktop="{{ collection_list_desktop_columns }}"
       data-swiper-columns-mobile="{{ collection_list_mobile_columns }}"
+      {% if block.settings.mobile_card_sizing == 'fixed' %}data-swiper-card-width-mobile="{{ block.settings.mobile_card_width | default: 256 }}" style="--collection-list-card-width-mobile: {{ block.settings.mobile_card_width | default: 256 }}px;"{% endif %}
       data-swiper-columns-tablet="{{ collection_list_tablet_columns }}"
       data-swiper-gap-desktop="{{ collection_list_gap_desktop }}"
       data-swiper-gap-tablet="{{ collection_list_gap_tablet }}"
@@ -384,6 +385,9 @@
   }
 
   @media (max-width: 767.98px) {
+    .collection-card-list__carousel[data-swiper-card-width-mobile] .collection-card-list__item {
+      width: min(100%, var(--collection-list-card-width-mobile));
+    }
     .collection-card-list__grid {
       grid-template-columns: repeat(var(--cards-mobile), minmax(0, 1fr));
       gap: var(--gap-mobile);
@@ -503,6 +507,34 @@
       "default": "1"
     },
     {
+      "type": "select",
+      "id": "mobile_card_sizing",
+      "label": "Mobile card sizing",
+      "options": [
+        {
+          "value": "columns",
+          "label": "Columns"
+        },
+        {
+          "value": "fixed",
+          "label": "Fixed width"
+        }
+      ],
+      "default": "columns",
+      "visible_if": "{{ block.settings.layout == 'carousel' }}"
+    },
+    {
+      "type": "range",
+      "id": "mobile_card_width",
+      "label": "Mobile card width",
+      "min": 160,
+      "max": 400,
+      "step": 4,
+      "unit": "px",
+      "default": 256,
+      "visible_if": "{{ block.settings.layout == 'carousel' and block.settings.mobile_card_sizing == 'fixed' }}"
+    },
+    {
       "type": "checkbox",
       "id": "show_next_slide_preview_on_desktop",
       "label": "t:labels.show_next_slide_preview_on_desktop",
@@ -530,8 +562,23 @@
       "unit": "px",
       "default": 12
     },
-    { "type": "checkbox", "id": "customize_tablet_gap", "label": "Customize tablet gap", "default": false },
-    { "type": "range", "id": "gap_tablet", "label": "Tablet gap", "min": 0, "max": 40, "step": 1, "unit": "px", "default": 20, "visible_if": "{{ block.settings.customize_tablet_gap }}" },
+    {
+      "type": "checkbox",
+      "id": "customize_tablet_gap",
+      "label": "Customize tablet gap",
+      "default": false
+    },
+    {
+      "type": "range",
+      "id": "gap_tablet",
+      "label": "Tablet gap",
+      "min": 0,
+      "max": 40,
+      "step": 1,
+      "unit": "px",
+      "default": 20,
+      "visible_if": "{{ block.settings.customize_tablet_gap }}"
+    },
     {
       "type": "range",
       "id": "gap_mobile",
@@ -650,7 +697,23 @@
       "default": true,
       "visible_if": "{{ block.settings.layout == 'carousel' }}"
     },
-    { "type": "select", "id": "pagination_visibility", "label": "Show pagination on", "options": [{ "value": "all", "label": "All devices" }, { "value": "tablet_mobile", "label": "Tablet and mobile" }], "default": "all", "visible_if": "{{ block.settings.layout == 'carousel' and block.settings.show_pagination_on_desktop }}" },
+    {
+      "type": "select",
+      "id": "pagination_visibility",
+      "label": "Show pagination on",
+      "options": [
+        {
+          "value": "all",
+          "label": "All devices"
+        },
+        {
+          "value": "tablet_mobile",
+          "label": "Tablet and mobile"
+        }
+      ],
+      "default": "all",
+      "visible_if": "{{ block.settings.layout == 'carousel' and block.settings.show_pagination_on_desktop }}"
+    },
     {
       "type": "select",
       "id": "pagination_type",
@@ -668,7 +731,23 @@
       "default": "progress_bar",
       "visible_if": "{{ block.settings.layout == 'carousel' and block.settings.show_pagination_on_desktop }}"
     },
-    { "type": "select", "id": "pagination_thickness", "label": "Progress bar thickness", "options": [{ "value": "standard", "label": "Standard" }, { "value": "thin", "label": "Thin" }], "default": "standard", "visible_if": "{{ block.settings.layout == 'carousel' and block.settings.show_pagination_on_desktop and block.settings.pagination_type == 'progress_bar' }}" },
+    {
+      "type": "select",
+      "id": "pagination_thickness",
+      "label": "Progress bar thickness",
+      "options": [
+        {
+          "value": "standard",
+          "label": "Standard"
+        },
+        {
+          "value": "thin",
+          "label": "Thin"
+        }
+      ],
+      "default": "standard",
+      "visible_if": "{{ block.settings.layout == 'carousel' and block.settings.show_pagination_on_desktop and block.settings.pagination_type == 'progress_bar' }}"
+    },
     {
       "type": "range",
       "id": "pagination_top_padding_desktop",

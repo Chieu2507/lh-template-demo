@@ -83,11 +83,13 @@
     assign carousel_border_thickness = 1
   endif
   assign carousel_corner_radius = block.settings.corner_radius | default: 'square'
-  unless carousel_corner_radius == 'square' or carousel_corner_radius == 'slightly_rounded' or carousel_corner_radius == 'rounded' or carousel_corner_radius == 'pill'
+  unless carousel_corner_radius == 'square' or carousel_corner_radius == 'slightly_rounded' or carousel_corner_radius == 'rounded' or carousel_corner_radius == 'pill' or carousel_corner_radius == 'radius_2' or carousel_corner_radius == 'radius_4' or carousel_corner_radius == 'radius_6' or carousel_corner_radius == 'radius_8' or carousel_corner_radius == 'radius_12' or carousel_corner_radius == 'radius_16' or carousel_corner_radius == 'radius_24' or carousel_corner_radius == 'radius_32'
     assign carousel_corner_radius = 'square'
   endunless
   assign image_text_card_radius = '0px'
   case carousel_corner_radius
+    when 'radius_2', 'radius_4', 'radius_6', 'radius_8', 'radius_12', 'radius_16', 'radius_24', 'radius_32'
+      assign image_text_card_radius = carousel_corner_radius | replace: 'radius_', 'var(--radius-' | append: ')'
     when 'slightly_rounded'
       assign image_text_card_radius = '6px'
     when 'rounded'
@@ -507,12 +509,7 @@
       "type": "select",
       "id": "corner_radius",
       "label": "Corner radius",
-      "options": [
-        { "value": "square", "label": "Square" },
-        { "value": "slightly_rounded", "label": "Slightly rounded" },
-        { "value": "rounded", "label": "Rounded" },
-        { "value": "pill", "label": "Pill" }
-      ],
+      "options": [{"value": "square", "label": "Square"}, {"value": "radius_2", "label": "t:options.radius_preset.size_2"}, {"value": "radius_4", "label": "t:options.radius_preset.size_4"}, {"value": "slightly_rounded", "label": "Slightly rounded"}, {"value": "radius_6", "label": "t:options.radius_preset.size_6"}, {"value": "radius_8", "label": "t:options.radius_preset.size_8"}, {"value": "rounded", "label": "Rounded"}, {"value": "radius_12", "label": "t:options.radius_preset.size_12"}, {"value": "radius_16", "label": "t:options.radius_preset.size_16"}, {"value": "radius_24", "label": "t:options.radius_preset.size_24"}, {"value": "radius_32", "label": "t:options.radius_preset.size_32"}, {"value": "pill", "label": "Pill"}],
       "default": "square"
     },
     {

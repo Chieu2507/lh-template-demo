@@ -8,6 +8,7 @@
 {% assign featured_article = blog_source.articles | first %}
 {% assign featured_radius = 'var(--radius-square)' %}
 {% if block.settings.corner_radius == 'rounded' %}{% assign featured_radius = 'var(--radius-rounded)' %}{% endif %}
+{% case block.settings.corner_radius %}{% when 'radius_2', 'radius_4', 'radius_6', 'radius_8', 'radius_12', 'radius_16', 'radius_24', 'radius_32' %}{% assign featured_radius = block.settings.corner_radius | replace: 'radius_', 'var(--radius-' | append: ')' %}{% endcase %}
 {% assign featured_shadow = 'none' %}
 {% if block.settings.shadow == 'small' %}{% assign featured_shadow = '0 2px 8px rgb(0 0 0 / 0.12)' %}{% elsif block.settings.shadow == 'medium' %}{% assign featured_shadow = '0 8px 24px rgb(0 0 0 / 0.16)' %}{% endif %}
 {% assign featured_content_align = 'start' %}
@@ -106,7 +107,7 @@
     { "type": "range", "id": "mobile_gap", "label": "Mobile gap", "min": 0, "max": 100, "step": 1, "unit": "px", "default": 8 },
     { "type": "header", "content": "Appearance" },
     { "type": "range", "id": "border_thickness", "label": "Border thickness", "min": 0, "max": 10, "step": 1, "unit": "px", "default": 0 },
-    { "type": "select", "id": "corner_radius", "label": "Corner radius", "options": [ { "value": "inherit", "label": "Inherit" }, { "value": "square", "label": "Square" }, { "value": "rounded", "label": "Rounded" } ], "default": "inherit" },
+    { "type": "select", "id": "corner_radius", "label": "Corner radius", "options": [{"value": "inherit", "label": "Inherit"}, {"value": "square", "label": "Square"}, {"value": "radius_2", "label": "t:options.radius_preset.size_2"}, {"value": "radius_4", "label": "t:options.radius_preset.size_4"}, {"value": "radius_6", "label": "t:options.radius_preset.size_6"}, {"value": "rounded", "label": "Rounded"}, {"value": "radius_8", "label": "t:options.radius_preset.size_8"}, {"value": "radius_12", "label": "t:options.radius_preset.size_12"}, {"value": "radius_16", "label": "t:options.radius_preset.size_16"}, {"value": "radius_24", "label": "t:options.radius_preset.size_24"}, {"value": "radius_32", "label": "t:options.radius_preset.size_32"}], "default": "inherit" },
     { "type": "select", "id": "shadow", "label": "Shadow", "options": [ { "value": "none", "label": "None" }, { "value": "small", "label": "Small" }, { "value": "medium", "label": "Medium" } ], "default": "none" },
     { "type": "color_scheme", "id": "color_scheme", "label": "Color scheme", "default": "scheme-1" },
     { "type": "header", "content": "Content" },

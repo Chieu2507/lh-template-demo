@@ -25,7 +25,7 @@
     assign comparison_table_border_width = 0
   endif
   assign comparison_table_corner_radius = block.settings.corner_radius | default: 'rounded'
-  unless comparison_table_corner_radius == 'inherit' or comparison_table_corner_radius == 'square' or comparison_table_corner_radius == 'rounded' or comparison_table_corner_radius == 'custom'
+  unless comparison_table_corner_radius == 'inherit' or comparison_table_corner_radius == 'square' or comparison_table_corner_radius == 'rounded' or comparison_table_corner_radius == 'custom' or comparison_table_corner_radius == 'radius_2' or comparison_table_corner_radius == 'radius_4' or comparison_table_corner_radius == 'radius_6' or comparison_table_corner_radius == 'radius_8' or comparison_table_corner_radius == 'radius_12' or comparison_table_corner_radius == 'radius_16' or comparison_table_corner_radius == 'radius_24' or comparison_table_corner_radius == 'radius_32'
     assign comparison_table_corner_radius = 'rounded'
   endunless
   assign comparison_table_custom_corner_radius = block.settings.custom_corner_radius | default: 0 | plus: 0
@@ -34,6 +34,8 @@
   endif
   assign comparison_table_corner_radius_value = 'var(--radius-rounded)'
   case comparison_table_corner_radius
+    when 'radius_2', 'radius_4', 'radius_6', 'radius_8', 'radius_12', 'radius_16', 'radius_24', 'radius_32'
+      assign comparison_table_corner_radius_value = comparison_table_corner_radius | replace: 'radius_', 'var(--radius-' | append: ')'
     when 'inherit'
       assign comparison_table_corner_radius_value = 'var(--media-radius, var(--radius-square))'
     when 'square'
@@ -42,7 +44,7 @@
       assign comparison_table_corner_radius_value = comparison_table_custom_corner_radius | append: 'px'
   endcase
   assign comparison_table_row_corner_radius = block.settings.row_corner_radius | default: 'rounded'
-  unless comparison_table_row_corner_radius == 'inherit' or comparison_table_row_corner_radius == 'square' or comparison_table_row_corner_radius == 'rounded' or comparison_table_row_corner_radius == 'full' or comparison_table_row_corner_radius == 'custom'
+  unless comparison_table_row_corner_radius == 'inherit' or comparison_table_row_corner_radius == 'square' or comparison_table_row_corner_radius == 'rounded' or comparison_table_row_corner_radius == 'full' or comparison_table_row_corner_radius == 'custom' or comparison_table_row_corner_radius == 'radius_2' or comparison_table_row_corner_radius == 'radius_4' or comparison_table_row_corner_radius == 'radius_6' or comparison_table_row_corner_radius == 'radius_8' or comparison_table_row_corner_radius == 'radius_12' or comparison_table_row_corner_radius == 'radius_16' or comparison_table_row_corner_radius == 'radius_24' or comparison_table_row_corner_radius == 'radius_32'
     assign comparison_table_row_corner_radius = 'rounded'
   endunless
   assign comparison_table_custom_row_corner_radius = block.settings.custom_row_corner_radius | default: 0 | plus: 0
@@ -51,6 +53,8 @@
   endif
   assign comparison_table_row_corner_radius_value = 'var(--radius-rounded)'
   case comparison_table_row_corner_radius
+    when 'radius_2', 'radius_4', 'radius_6', 'radius_8', 'radius_12', 'radius_16', 'radius_24', 'radius_32'
+      assign comparison_table_row_corner_radius_value = comparison_table_row_corner_radius | replace: 'radius_', 'var(--radius-' | append: ')'
     when 'inherit'
       assign comparison_table_row_corner_radius_value = 'var(--media-radius, var(--radius-square))'
     when 'square'
@@ -917,12 +921,7 @@
       "type": "select",
       "id": "corner_radius",
       "label": "t:labels.corner_radius",
-      "options": [
-        { "value": "inherit", "label": "t:options.radius_preset.inherit" },
-        { "value": "square", "label": "t:options.radius_preset.square" },
-        { "value": "rounded", "label": "t:options.radius_preset.rounded" },
-        { "value": "custom", "label": "t:options.radius_preset.custom" }
-      ],
+      "options": [{"value": "inherit", "label": "t:options.radius_preset.inherit"}, {"value": "square", "label": "t:options.radius_preset.square"}, {"value": "radius_2", "label": "t:options.radius_preset.size_2"}, {"value": "radius_4", "label": "t:options.radius_preset.size_4"}, {"value": "radius_6", "label": "t:options.radius_preset.size_6"}, {"value": "rounded", "label": "t:options.radius_preset.rounded"}, {"value": "radius_8", "label": "t:options.radius_preset.size_8"}, {"value": "radius_12", "label": "t:options.radius_preset.size_12"}, {"value": "radius_16", "label": "t:options.radius_preset.size_16"}, {"value": "radius_24", "label": "t:options.radius_preset.size_24"}, {"value": "radius_32", "label": "t:options.radius_preset.size_32"}, {"value": "custom", "label": "t:options.radius_preset.custom"}],
       "default": "rounded",
       "visible_if": "{{ block.settings.boxed_layout }}"
     },
@@ -941,13 +940,7 @@
       "type": "select",
       "id": "row_corner_radius",
       "label": "Row corner radius",
-      "options": [
-        { "value": "inherit", "label": "t:options.radius_preset.inherit" },
-        { "value": "square", "label": "t:options.radius_preset.square" },
-        { "value": "rounded", "label": "t:options.radius_preset.rounded" },
-        { "value": "full", "label": "t:options.radius_preset.full" },
-        { "value": "custom", "label": "t:options.radius_preset.custom" }
-      ],
+      "options": [{"value": "inherit", "label": "t:options.radius_preset.inherit"}, {"value": "square", "label": "t:options.radius_preset.square"}, {"value": "radius_2", "label": "t:options.radius_preset.size_2"}, {"value": "radius_4", "label": "t:options.radius_preset.size_4"}, {"value": "radius_6", "label": "t:options.radius_preset.size_6"}, {"value": "rounded", "label": "t:options.radius_preset.rounded"}, {"value": "radius_8", "label": "t:options.radius_preset.size_8"}, {"value": "radius_12", "label": "t:options.radius_preset.size_12"}, {"value": "radius_16", "label": "t:options.radius_preset.size_16"}, {"value": "radius_24", "label": "t:options.radius_preset.size_24"}, {"value": "radius_32", "label": "t:options.radius_preset.size_32"}, {"value": "full", "label": "t:options.radius_preset.full"}, {"value": "custom", "label": "t:options.radius_preset.custom"}],
       "default": "rounded",
       "visible_if": "{{ block.settings.boxed_layout and block.settings.row_style == 'background' }}"
     },

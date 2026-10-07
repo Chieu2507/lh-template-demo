@@ -130,7 +130,7 @@
   endif
 
   assign media_container_radius = settings.radius_media_containers | default: 'square'
-  unless media_container_radius == 'square' or media_container_radius == 'slightly_rounded' or media_container_radius == 'rounded' or media_container_radius == 'extra_rounded'
+  unless media_container_radius == 'square' or media_container_radius == 'slightly_rounded' or media_container_radius == 'rounded' or media_container_radius == 'extra_rounded' or media_container_radius == 'radius_2' or media_container_radius == 'radius_4' or media_container_radius == 'radius_6' or media_container_radius == 'radius_8' or media_container_radius == 'radius_12' or media_container_radius == 'radius_16' or media_container_radius == 'radius_24' or media_container_radius == 'radius_32'
     assign media_container_radius = 'square'
   endunless
 

@@ -177,7 +177,7 @@
   endif
 
   assign image_card_radius = media_card_block.settings.corner_radius | default: 'square'
-  unless image_card_radius == 'inherit' or image_card_radius == 'square' or image_card_radius == 'slightly_rounded' or image_card_radius == 'rounded' or image_card_radius == 'pill' or image_card_radius == 'custom'
+  unless image_card_radius == 'inherit' or image_card_radius == 'square' or image_card_radius == 'slightly_rounded' or image_card_radius == 'rounded' or image_card_radius == 'pill' or image_card_radius == 'custom' or image_card_radius == 'radius_2' or image_card_radius == 'radius_4' or image_card_radius == 'radius_6' or image_card_radius == 'radius_8' or image_card_radius == 'radius_12' or image_card_radius == 'radius_16' or image_card_radius == 'radius_24' or image_card_radius == 'radius_32'
     assign image_card_radius = 'square'
   endunless
   assign image_card_custom_radius = media_card_block.settings.custom_corner_radius | default: 0 | plus: 0
@@ -389,6 +389,14 @@
   .image-card--radius-rounded {
     --image-card-radius: var(--radius-rounded);
   }
+  .image-card--radius-radius_2 { --image-card-radius: var(--radius-2); }
+  .image-card--radius-radius_4 { --image-card-radius: var(--radius-4); }
+  .image-card--radius-radius_6 { --image-card-radius: var(--radius-6); }
+  .image-card--radius-radius_8 { --image-card-radius: var(--radius-8); }
+  .image-card--radius-radius_12 { --image-card-radius: var(--radius-12); }
+  .image-card--radius-radius_16 { --image-card-radius: var(--radius-16); }
+  .image-card--radius-radius_24 { --image-card-radius: var(--radius-24); }
+  .image-card--radius-radius_32 { --image-card-radius: var(--radius-32); }
 
   .image-card--radius-pill {
     --image-card-radius: var(--radius-pill);

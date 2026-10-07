@@ -1,0 +1,10 @@
+{
+  "shop": {
+    "name": "Layouthub template v2",
+    "myshopifyDomain": "layouthub-template-v2.myshopify.com",
+    "currencyCode": "USD"
+  },
+  "products": {
+    "nodes": []
+  }
+}

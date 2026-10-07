@@ -43,13 +43,14 @@
     assign blog_grid_class = blog_grid_class | append: ' blog-grid--sticky'
   endif
   assign blog_grid_layout_class = 'blog-grid__layout blog-grid__layout--' | append: blog_grid_layout
-  if blog_grid_source != blank and blog_grid_source.articles.size < 2
+  if blog_grid_source != blank and blog_grid_source.articles.size == 1
     assign blog_grid_layout_class = blog_grid_layout_class | append: ' blog-grid__layout--single'
   endif
 %}
 
 <div
   class="{{ blog_grid_class }}"
+  data-blog-url="{{ blog_grid_source.url | escape }}"
   style="--blog-grid-gap-desktop: {{ blog_grid_gap_desktop }}px; --blog-grid-gap-mobile: {{ blog_grid_gap_mobile }}px; --blog-grid-columns-horizontal: {{ blog_grid_horizontal_columns }}; --blog-grid-columns-desktop: {{ blog_grid_columns_desktop }}; --blog-grid-columns-mobile: {{ blog_grid_columns_mobile }};"
   {{ block.shopify_attributes }}
 >
@@ -69,7 +70,7 @@
         </div>
       {% endif %}
     </div>
-  {% elsif request.design_mode %}
+  {% else %}
     <div class="{{ blog_grid_layout_class }}">
       <div class="blog-grid__first-card">
         {% content_for 'block', type: 'first-card', id: 'first-card', closest.article: blog_grid_placeholder_article, blog: blog_grid_source, placeholder: true %}

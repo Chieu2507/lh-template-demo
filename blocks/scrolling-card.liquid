@@ -65,6 +65,8 @@
   assign scrolling_card_radius = 'var(--card-radius)'
   assign scrolling_card_radius_setting = block.settings.corner_radius | default: 'inherit'
   case scrolling_card_radius_setting
+    when 'radius_2', 'radius_4', 'radius_6', 'radius_8', 'radius_12', 'radius_16', 'radius_24', 'radius_32'
+      assign scrolling_card_radius = scrolling_card_radius_setting | replace: 'radius_', 'var(--radius-' | append: ')'
     when 'square'
       assign scrolling_card_radius = 'var(--radius-square)'
     when 'slightly_rounded'
@@ -265,6 +267,14 @@
   .scrolling-card--radius-square { --scrolling-card-radius: var(--radius-square); }
   .scrolling-card--radius-slightly_rounded { --scrolling-card-radius: var(--radius-slight); }
   .scrolling-card--radius-rounded { --scrolling-card-radius: var(--radius-rounded); }
+  .scrolling-card--radius-radius_2 { --scrolling-card-radius: var(--radius-2); }
+  .scrolling-card--radius-radius_4 { --scrolling-card-radius: var(--radius-4); }
+  .scrolling-card--radius-radius_6 { --scrolling-card-radius: var(--radius-6); }
+  .scrolling-card--radius-radius_8 { --scrolling-card-radius: var(--radius-8); }
+  .scrolling-card--radius-radius_12 { --scrolling-card-radius: var(--radius-12); }
+  .scrolling-card--radius-radius_16 { --scrolling-card-radius: var(--radius-16); }
+  .scrolling-card--radius-radius_24 { --scrolling-card-radius: var(--radius-24); }
+  .scrolling-card--radius-radius_32 { --scrolling-card-radius: var(--radius-32); }
   .scrolling-card--radius-pill { --scrolling-card-radius: var(--radius-pill); }
 
   @media (max-width: 767.98px) {
@@ -403,13 +413,7 @@
       "type": "select",
       "id": "corner_radius",
       "label": "Corner radius",
-      "options": [
-        { "value": "inherit", "label": "Inherit" },
-        { "value": "square", "label": "Square" },
-        { "value": "slightly_rounded", "label": "Slightly rounded" },
-        { "value": "rounded", "label": "Rounded" },
-        { "value": "pill", "label": "Pill" }
-      ],
+      "options": [{"value": "inherit", "label": "Inherit"}, {"value": "square", "label": "Square"}, {"value": "radius_2", "label": "t:options.radius_preset.size_2"}, {"value": "slightly_rounded", "label": "Slightly rounded"}, {"value": "radius_4", "label": "t:options.radius_preset.size_4"}, {"value": "radius_6", "label": "t:options.radius_preset.size_6"}, {"value": "rounded", "label": "Rounded"}, {"value": "radius_8", "label": "t:options.radius_preset.size_8"}, {"value": "radius_12", "label": "t:options.radius_preset.size_12"}, {"value": "radius_16", "label": "t:options.radius_preset.size_16"}, {"value": "radius_24", "label": "t:options.radius_preset.size_24"}, {"value": "radius_32", "label": "t:options.radius_preset.size_32"}, {"value": "pill", "label": "Pill"}],
       "default": "inherit"
     },
     {

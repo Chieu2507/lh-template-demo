@@ -25,6 +25,9 @@
     assign collection_list_view_all_url = closest.collection.url
     assign collection_list_view_all_is_dynamic = true
   endif
+  if section.type == 'featured-collection' or section.type == 'featured-blog-posts'
+    assign collection_list_view_all_is_dynamic = true
+  endif
   assign collection_list_view_all_attributes = 'data-view-all-button'
   if collection_list_view_all_is_dynamic
     assign collection_list_view_all_attributes = collection_list_view_all_attributes | append: ' data-view-all-button-dynamic'
@@ -113,6 +116,47 @@
     }
   }
 {% endstylesheet %}
+
+{% javascript %}
+  (() => {
+    const featuredCollectionSelector = '[data-featured-collection], [data-featured-blog-posts]';
+
+    const synchronizeViewAll = (featuredCollection) => {
+      const viewAllButtons = Array.from(featuredCollection.querySelectorAll('[data-view-all-button-dynamic]'));
+      if (!viewAllButtons.length) return;
+
+      const collectionUrl = featuredCollection.querySelector('[data-product-list]')?.dataset.collectionUrl?.trim() || featuredCollection.querySelector('[data-blog-url]')?.dataset.blogUrl?.trim() || '';
+      if (collectionUrl) {
+        viewAllButtons.forEach((viewAllButton) => {
+          viewAllButton.setAttribute('href', collectionUrl);
+          viewAllButton.removeAttribute('aria-disabled');
+          viewAllButton.removeAttribute('tabindex');
+        });
+      } else {
+        viewAllButtons.forEach((viewAllButton) => {
+          viewAllButton.removeAttribute('href');
+          viewAllButton.setAttribute('aria-disabled', 'true');
+          viewAllButton.setAttribute('tabindex', '-1');
+        });
+      }
+    };
+
+    const initializeRoot = (root = document) => {
+      const featuredCollections = [];
+      if (root.matches?.(featuredCollectionSelector)) featuredCollections.push(root);
+      root.querySelectorAll?.(featuredCollectionSelector).forEach((featuredCollection) => featuredCollections.push(featuredCollection));
+      featuredCollections.forEach(synchronizeViewAll);
+    };
+
+    document.addEventListener('shopify:section:load', (event) => initializeRoot(event.target));
+
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', () => initializeRoot(), { once: true });
+    } else {
+      initializeRoot();
+    }
+  })();
+{% endjavascript %}
 
 {% schema %}
 {
