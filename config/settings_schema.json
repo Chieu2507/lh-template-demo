@@ -1361,11 +1361,11 @@
         "id": "product_card_title_font",
         "label": "t:labels.font",
         "options": [
-          { "value": "display", "label": "t:options.product_title_font.display" },
           { "value": "heading", "label": "t:options.product_title_font.heading" },
-          { "value": "body", "label": "t:options.product_title_font.body" }
+          { "value": "body", "label": "t:options.product_title_font.body" },
+          { "value": "accent", "label": "t:options.product_title_font.accent" }
         ],
-        "default": "display"
+        "default": "heading"
       },
       {
         "type": "range",

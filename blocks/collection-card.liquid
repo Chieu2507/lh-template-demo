@@ -25,6 +25,8 @@
       assign collection_card_radius = 'var(--radius-square)'
     when 'rounded'
       assign collection_card_radius = 'var(--radius-rounded)'
+    when 'custom'
+      assign collection_card_radius = block.settings.custom_corner_radius | default: 0 | at_least: 0 | at_most: 40 | append: 'px'
   endcase
 
   assign collection_card_shadow = 'none'
@@ -129,7 +131,7 @@
 <article
   class="collection-card-kernel collection-card-kernel--{{ collection_card_placement }} collection-card-kernel--{{ collection_card_ratio_setting }}{% if block.settings.hover_zoom %} collection-card-kernel--zoom media-hover-zoom{% endif %}{% if collection_card_is_placeholder %} collection-card-kernel--placeholder{% else %} collection-card-kernel--linked{% endif %}{% if request.design_mode %} collection-card-kernel--design-mode{% endif %}{% if block.settings.color_type == 'color_scheme' %} color-scheme section-color-scope {{ collection_card_scheme }}{% endif %}"
   data-collection-card
-  style="--card-border:{{ block.settings.border_thickness | default: 0 }}px;--card-align:{{ block.settings.alignment | default: 'left' }};--collection-card-radius:{{ collection_card_radius }};--collection-card-shadow:{{ collection_card_shadow }};--collection-card-ratio:{{ collection_card_ratio }};{% if collection_card_padding_style != blank %}{{ collection_card_padding_style }}{% endif %}"
+  style="--collection-card-media-padding:{{ block.settings.media_padding | default: 0 }}px;--card-border:{{ block.settings.border_thickness | default: 0 }}px;--card-align:{{ block.settings.alignment | default: 'left' }};--collection-card-radius:{{ collection_card_radius }};--collection-card-shadow:{{ collection_card_shadow }};--collection-card-ratio:{{ collection_card_ratio }};{% if collection_card_padding_style != blank %}{{ collection_card_padding_style }}{% endif %}"
   {{ block.shopify_attributes }}
 >
   <div class="collection-card-kernel__media media-hover-zoom__media{% if collection_card_image == blank %} placeholder-image{% endif %}">
@@ -187,6 +189,8 @@
     z-index: 0;
     overflow: hidden;
     aspect-ratio: var(--collection-card-ratio, auto);
+    margin: var(--collection-card-media-padding, 0px) var(--collection-card-media-padding, 0px) 0;
+    border-radius: var(--media-radius, 0px);
   }
 
   .collection-card-kernel__media img,
@@ -287,8 +291,14 @@
           "value": "landscape",
           "label": "t:options.image_ratio.landscape"
         },
-        { "value": "ratio_6_7", "label": "Portrait (6:7)" },
-        { "value": "ratio_7_6", "label": "t:options.image_ratio.ratio_7_6" },
+        {
+          "value": "ratio_6_7",
+          "label": "Portrait (6:7)"
+        },
+        {
+          "value": "ratio_7_6",
+          "label": "t:options.image_ratio.ratio_7_6"
+        },
         {
           "value": "wide",
           "label": "t:options.image_ratio.wide"
@@ -313,6 +323,16 @@
     {
       "type": "header",
       "content": "t:general.content"
+    },
+    {
+      "type": "range",
+      "id": "media_padding",
+      "label": "Media padding",
+      "min": 0,
+      "max": 40,
+      "step": 1,
+      "unit": "px",
+      "default": 0
     },
     {
       "type": "select",
@@ -390,9 +410,24 @@
         {
           "value": "rounded",
           "label": "Rounded"
+        },
+        {
+          "value": "custom",
+          "label": "t:options.radius_preset.custom"
         }
       ],
       "default": "inherit"
+    },
+    {
+      "type": "range",
+      "id": "custom_corner_radius",
+      "label": "t:labels.custom_corner_radius",
+      "min": 0,
+      "max": 40,
+      "step": 1,
+      "unit": "px",
+      "default": 0,
+      "visible_if": "{{ block.settings.corner_radius == 'custom' }}"
     },
     {
       "type": "select",

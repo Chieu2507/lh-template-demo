@@ -24,6 +24,12 @@
   if section.settings.product_card_layout == 'compact'
     assign hotspot_compact_card = true
   endif
+  assign hotspot_card_image_size = 56
+  if hotspot_compact_card
+    assign hotspot_card_image_size = section.settings.product_image_size | default: 64
+  endif
+  assign hotspot_card_image_width = hotspot_card_image_size | times: 2
+  assign hotspot_card_image_sizes = hotspot_card_image_size | append: 'px'
   assign hotspot_has_product = false
   if hotspot_type == 'product' and hotspot_product != blank and hotspot_product.id != blank and hotspot_product.url != blank
     assign hotspot_has_product = true
@@ -192,7 +198,7 @@
           {% if hotspot_show_product_image %}
             {% if hotspot_has_product and hotspot_product.featured_image != blank %}
               <div class="product-callout__product-card-media">
-                {{ hotspot_product.featured_image | image_url: width: 180 | image_tag: widths: '90, 180', sizes: '5.5rem', alt: hotspot_product.title, loading: 'lazy' }}
+                {{ hotspot_product.featured_image | image_url: width: hotspot_card_image_width | image_tag: sizes: hotspot_card_image_sizes, alt: hotspot_product.title, loading: 'lazy' }}
               </div>
             {% else %}
               <div class="product-callout__product-card-media placeholder-image" aria-hidden="true">
@@ -225,6 +231,9 @@
               {% endif %}
               {% endunless %}
             {% else %}
+              {% if hotspot_show_price %}
+                {% render 'product-card-price', placeholder: true, class: 'product-callout__product-card-price' %}
+              {% endif %}
               {% unless hotspot_compact_card %}
               <span class="product-callout__product-card-action product-callout__product-card-action--disabled" aria-disabled="true">{{ hotspot_product_link_label | escape }}</span>
               {% endunless %}

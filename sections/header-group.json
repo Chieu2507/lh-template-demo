@@ -13,42 +13,54 @@
   "sections": {
     "announcement-bar": {
       "type": "announcement-bar",
-      "settings": {
-        "type": "slider",
-        "speed": 1,
-        "direction": "left",
-        "autoplay": 5,
-        "pause_on_hover": true,
-        "navigation_behavior": "show_on_hover",
-        "navigation_icon": "arrow",
-        "font_size": "sm",
-        "background_type": "none",
-        "overlay": false,
-        "gap": 16,
-        "color_scheme": "scheme-4",
-        "bottom_separator": false,
-        "padding_top": 10,
-        "padding_right": 0,
-        "padding_bottom": 10,
-        "padding_left": 0,
-        "overlay_color": "#00000033",
-        "font_weight": "500"
-      },
       "blocks": {
         "announcement-text": {
           "type": "announcement-text",
           "settings": {
-            "text": "Free shipping on orders over $75 - unlimited play",
+            "text": "\ud83c\udf1f Limited Time Offer: Enjoy 20% Off Orders!",
+            "text_color": "",
             "width": "fill",
-            "text_color": "#0A0A0A",
+            "max_width": 640
+          },
+          "blocks": {}
+        },
+        "announcement-text-2": {
+          "type": "announcement-text",
+          "settings": {
+            "text": "\u2728 Discover Your New Favorites Today!",
+            "text_color": "",
+            "width": "fill",
             "max_width": 640
           },
           "blocks": {}
         }
       },
       "block_order": [
-        "announcement-text"
-      ]
+        "announcement-text",
+        "announcement-text-2"
+      ],
+      "settings": {
+        "bottom_separator": false,
+        "type": "slider",
+        "speed": 1,
+        "direction": "left",
+        "autoplay": 5,
+        "pause_on_hover": true,
+        "navigation_behavior": "show_on_hover",
+        "navigation_icon": "rounded_chevron",
+        "font_size": "md",
+        "font_weight": "700",
+        "background_type": "none",
+        "overlay": false,
+        "overlay_color": "#00000033",
+        "gap": 64,
+        "color_scheme": "scheme-5",
+        "padding_top": 10,
+        "padding_right": 0,
+        "padding_bottom": 10,
+        "padding_left": 0,
+        "text_style": "heading"
+      }
     },
     "header": {
       "type": "header",
@@ -239,7 +251,7 @@
             "header-account": {
               "type": "_header-account",
               "settings": {
-                "type": "text",
+                "type": "icon",
                 "label": "Account",
                 "font": "accent",
                 "font_size": "md",
@@ -250,7 +262,7 @@
             "header-cart": {
               "type": "_header-cart",
               "settings": {
-                "type": "text",
+                "type": "icon",
                 "label": "Cart",
                 "badge_type": "primary"
               },
@@ -274,7 +286,7 @@
         "icon_size": 20,
         "sticky_type": "scroll_up",
         "color_scheme": "scheme-1",
-        "header_overlay": true,
+        "header_overlay": false,
         "transparent_color_scheme": "scheme-3"
       }
     }

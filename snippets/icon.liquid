@@ -5,6 +5,7 @@
   provided; decorative output is hidden from assistive technology.
 
   @param {string} [icon] - Registered Heroicons key or a supported legacy alias
+  @param {string} [library] - heroicons or social
   @param {string} [source] - Icon source: library or custom
   @param {string} [custom_icon] - Custom SVG markup from the Theme Editor
   @param {boolean} [bare] - Render only the SVG, without the shared wrapper
@@ -26,9 +27,16 @@
   endunless
 
   assign icon_name = icon | default: 'arrow-right'
-  unless icon_name == 'arrow' or icon_name == 'arrow-left' or icon_name == 'arrow-right' or icon_name == 'paper-airplane' or icon_name == 'bars-3' or icon_name == 'bars' or icon_name == 'grip-vertical' or icon_name == 'compare' or icon_name == 'menu' or icon_name == 'chevron' or icon_name == 'chevron-down' or icon_name == 'chevron-left' or icon_name == 'chevron-right' or icon_name == 'x-mark' or icon_name == 'close' or icon_name == 'eye' or icon_name == 'magnifying-glass' or icon_name == 'search' or icon_name == 'shopping-bag' or icon_name == 'bag' or icon_name == 'cart' or icon_name == 'shopping-cart' or icon_name == 'cube' or icon_name == 'user' or icon_name == 'users' or icon_name == 'account' or icon_name == 'truck' or icon_name == 'shipping' or icon_name == 'tag' or icon_name == 'discount' or icon_name == 'trash' or icon_name == 'remove' or icon_name == 'document-text' or icon_name == 'note' or icon_name == 'receipt-percent' or icon_name == 'coupon' or icon_name == 'share' or icon_name == 'play' or icon_name == 'pause' or icon_name == 'plus' or icon_name == 'minus' or icon_name == 'check' or icon_name == 'check-circle' or icon_name == 'x-circle' or icon_name == 'comparison-yes' or icon_name == 'comparison-no' or icon_name == 'information-circle' or icon_name == 'circle' or icon_name == 'square' or icon_name == 'triangle' or icon_name == 'diamond' or icon_name == 'star' or icon_name == 'four-stars' or icon_name == 'five-stars' or icon_name == 'calendar' or icon_name == 'calendar-days' or icon_name == 'clock' or icon_name == 'comment' or icon_name == 'chat-bubble' or icon_name == 'chat-bubble-left-right' or icon_name == 'shield-check' or icon_name == 'vertical-rule' or icon_name == 'funnel' or icon_name == 'sliders' or icon_name == 'arrow_right' or icon_name == 'long_arrow_right' or icon_name == 'chevron_right' or icon_name == 'arrow_up_right' or icon_name == 'circle_arrow' or icon_name == 'circle_chevron' or icon_name == 'long_arrow_up' or icon_name == 'double_chevron' or icon_name == 'arrow_outline' or icon_name == 'square_chevron'
+  unless icon_name == 'arrow' or icon_name == 'envelope' or icon_name == 'phone' or icon_name == 'arrow-left' or icon_name == 'arrow-right' or icon_name == 'paper-airplane' or icon_name == 'bars-3' or icon_name == 'bars' or icon_name == 'grip-vertical' or icon_name == 'compare' or icon_name == 'menu' or icon_name == 'chevron' or icon_name == 'chevron-down' or icon_name == 'chevron-left' or icon_name == 'chevron-right' or icon_name == 'x-mark' or icon_name == 'close' or icon_name == 'eye' or icon_name == 'magnifying-glass' or icon_name == 'search' or icon_name == 'shopping-bag' or icon_name == 'bag' or icon_name == 'cart' or icon_name == 'shopping-cart' or icon_name == 'cube' or icon_name == 'user' or icon_name == 'users' or icon_name == 'account' or icon_name == 'truck' or icon_name == 'shipping' or icon_name == 'tag' or icon_name == 'discount' or icon_name == 'trash' or icon_name == 'remove' or icon_name == 'document-text' or icon_name == 'note' or icon_name == 'receipt-percent' or icon_name == 'coupon' or icon_name == 'share' or icon_name == 'play' or icon_name == 'pause' or icon_name == 'plus' or icon_name == 'minus' or icon_name == 'check' or icon_name == 'check-circle' or icon_name == 'x-circle' or icon_name == 'comparison-yes' or icon_name == 'comparison-no' or icon_name == 'information-circle' or icon_name == 'circle' or icon_name == 'square' or icon_name == 'triangle' or icon_name == 'diamond' or icon_name == 'star' or icon_name == 'four-stars' or icon_name == 'five-stars' or icon_name == 'calendar' or icon_name == 'calendar-days' or icon_name == 'clock' or icon_name == 'comment' or icon_name == 'chat-bubble' or icon_name == 'chat-bubble-left-right' or icon_name == 'shield-check' or icon_name == 'vertical-rule' or icon_name == 'funnel' or icon_name == 'sliders' or icon_name == 'arrow_right' or icon_name == 'long_arrow_right' or icon_name == 'chevron_right' or icon_name == 'arrow_up_right' or icon_name == 'circle_arrow' or icon_name == 'circle_chevron' or icon_name == 'long_arrow_up' or icon_name == 'double_chevron' or icon_name == 'arrow_outline' or icon_name == 'square_chevron'
     assign icon_name = 'arrow-right'
   endunless
+
+  if icon_source == 'library' and library == 'social'
+    assign icon_name = icon | default: 'instagram'
+    unless icon_name == 'instagram' or icon_name == 'pinterest' or icon_name == 'x' or icon_name == 'facebook' or icon_name == 'tiktok' or icon_name == 'youtube' or icon_name == 'linkedin'
+      assign icon_name = 'instagram'
+    endunless
+  endif
 
   assign icon_width = width | default: 24 | plus: 0
   if icon_width < 8 or icon_width > 100
@@ -61,9 +69,17 @@
     if custom_icon_valid
       assign icon_body = custom_icon_markup
     endif
+  elsif library == 'social'
+    capture icon_body
+      render 'social-icon', icon: icon_name
+    endcapture
   else
     capture icon_body
       case icon_name
+        when 'envelope'
+          echo '<svg viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false"><path d="M21.75 6.75v10.5A2.25 2.25 0 0 1 19.5 19.5h-15a2.25 2.25 0 0 1-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0 0 19.5 4.5h-15a2.25 2.25 0 0 0-2.25 2.25m19.5 0v.243a2.25 2.25 0 0 1-1.07 1.916l-7.5 4.615a2.25 2.25 0 0 1-2.36 0l-7.5-4.615a2.25 2.25 0 0 1-1.07-1.916V6.75" stroke="currentColor" stroke-width="var(--icon-stroke-width)" stroke-linecap="round" stroke-linejoin="round"/></svg>'
+        when 'phone'
+          echo '<svg viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false"><path d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 0 0 2.25-2.25v-1.372a1.125 1.125 0 0 0-.852-1.091l-4.423-1.106a1.125 1.125 0 0 0-1.173.417l-.97 1.293a1.125 1.125 0 0 1-1.21.38 12.035 12.035 0 0 1-7.143-7.143 1.125 1.125 0 0 1 .38-1.21l1.293-.97a1.125 1.125 0 0 0 .417-1.173L4.963 3.102a1.125 1.125 0 0 0-1.091-.852H4.5a2.25 2.25 0 0 0-2.25 2.25v2.25Z" stroke="currentColor" stroke-width="var(--icon-stroke-width)" stroke-linecap="round" stroke-linejoin="round"/></svg>'
         when 'arrow', 'arrow-right', 'arrow_right'
           echo '<svg viewBox="0 0 24 24" fill="none" focusable="false" aria-hidden="true"><path d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="var(--icon-stroke-width)" /></svg>'
         when 'long_arrow_right'
@@ -227,32 +243,3 @@
     {% endif %}
   >{{ icon_body }}</{{ icon_wrapper }}>
 {% endif %}
-
-{% stylesheet %}
-  .icon-renderer {
-    box-sizing: content-box;
-    display: inline-flex;
-    flex: 0 0 auto;
-    align-items: center;
-    justify-content: center;
-    width: var(--icon-width, var(--icon-size-medium, 20px));
-    height: auto;
-    max-width: 100%;
-    padding: var(--icon-padding, 0px);
-    color: inherit;
-    line-height: 0;
-    overflow: hidden;
-  }
-
-  .icon-renderer > svg {
-    display: block;
-    width: 100%;
-    height: auto;
-    max-width: none;
-  }
-
-  .icon-renderer:is(a) {
-    color: inherit;
-    text-decoration: none;
-  }
-{% endstylesheet %}

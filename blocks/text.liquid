@@ -93,6 +93,10 @@
     {% if padding_right_mobile != padding_right %}--text-padding-right-mobile: {{ padding_right_mobile }}px;{% endif %}
   {% endif %}
   {% if block.settings.text_color != blank %}--text-block-color: {{ block.settings.text_color | escape }};{% endif %}
+  {% if block.settings.customize_line_height %}
+    {% assign text_line_height = block.settings.line_height | default: 26 | at_least: 1 %}
+    --text-block-line-height: {{ text_line_height }}px;
+  {% endif %}
 {% endcapture %}
 {% assign text_style = text_style | strip %}
 
@@ -143,6 +147,7 @@
     color: var(--text-block-color, var(--body-color));
     text-align: var(--text-align-default, inherit);
     overflow-wrap: anywhere;
+    line-height: var(--text-block-line-height, var(--font-body-line-height));
   }
 
   .text-block a {
@@ -208,6 +213,19 @@
         }
       ],
       "default": "md"
+    },
+    {
+      "type": "checkbox",
+      "id": "customize_line_height",
+      "label": "t:labels.customize_text_line_height",
+      "default": false
+    },
+    {
+      "type": "number",
+      "id": "line_height",
+      "label": "t:labels.text_line_height_px",
+      "default": 26,
+      "visible_if": "{{ block.settings.customize_line_height }}"
     },
     {
       "type": "select",

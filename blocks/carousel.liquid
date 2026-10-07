@@ -125,9 +125,9 @@
   unless carousel_navigation_icon == 'chevron' or carousel_navigation_icon == 'arrow' or carousel_navigation_icon == 'long_arrow'
     assign carousel_navigation_icon = 'chevron'
   endunless
-  assign carousel_navigation_behavior = block.settings.navigation_behavior | default: 'always'
+  assign carousel_navigation_behavior = block.settings.navigation_behavior | default: 'show_on_hover'
   unless carousel_navigation_behavior == 'always' or carousel_navigation_behavior == 'show_on_hover'
-    assign carousel_navigation_behavior = 'always'
+    assign carousel_navigation_behavior = 'show_on_hover'
   endunless
 
   assign carousel_controls_style = block.settings.controls_style | default: 'standard'
@@ -286,7 +286,7 @@
       autoplay: carousel_autoplay,
       pause_on_hover: carousel_pause_on_hover,
       autoplay_delay: carousel_delay,
-      show_next_slide_preview: carousel_show_next_slide_preview
+      show_next_slide_preview_on_mobile: block.settings.show_next_slide_preview_on_mobile
     %}
     {% if carousel_has_multiple_items and carousel_controls_style == 'standard' %}
       {% render 'swiper-navigation',
@@ -443,6 +443,7 @@
       "label": "t:labels.show_next_slide_preview_on_desktop",
       "default": false
     },
+    {"type": "checkbox", "id": "show_next_slide_preview_on_mobile", "label": "t:labels.show_next_slide_preview_on_mobile", "default": false},
     {
       "type": "header",
       "content": "t:general.gap"
@@ -776,7 +777,7 @@
           "label": "t:options.collection_navigation_behavior.show_on_hover"
         }
       ],
-      "default": "always",
+      "default": "show_on_hover",
       "visible_if": "{{ block.settings.show_navigation_on_desktop }}"
     },
     {
@@ -976,7 +977,7 @@
         "width": "fill",
         "navigation_style": "secondary",
         "navigation_icon": "chevron",
-        "navigation_behavior": "always",
+        "navigation_behavior": "show_on_hover",
         "pagination_type": "progress_bar",
         "show_pagination_on_desktop": true,
         "show_pagination_on_mobile": true,

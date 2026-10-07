@@ -1,0 +1,21 @@
+{% doc %}
+  An editable navigation link inside a Menu block. Uses the shared menu styles.
+{% enddoc %}
+<li class="menu-block__item" {{ block.shopify_attributes }}>
+  {% if block.settings.link != blank %}
+    <a class="menu-block__link link-underline" href="{{ block.settings.link | escape }}">{{ block.settings.label | escape }}</a>
+  {% else %}
+    <span class="menu-block__link menu-block__link--placeholder">{{ block.settings.label | escape }}</span>
+  {% endif %}
+</li>
+{% schema %}
+{
+  "name": "Menu link",
+  "tag": null,
+  "settings": [
+    { "type": "text", "id": "label", "label": "Label", "default": "Menu link" },
+    { "type": "url", "id": "link", "label": "Link" }
+  ],
+  "presets": [{ "name": "Menu link" }]
+}
+{% endschema %}

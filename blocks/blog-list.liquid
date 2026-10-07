@@ -72,8 +72,8 @@
     assign blog_list_navigation_icon = 'chevron'
   endunless
 
-  assign blog_list_navigation_behavior = 'always'
-  if blog_list_navigation_position != 'top'
+  assign blog_list_navigation_behavior = 'show_on_hover'
+  if blog_list_navigation_position != blank
     assign blog_list_navigation_behavior = block.settings.navigation_behavior | default: 'show_on_hover'
     unless blog_list_navigation_behavior == 'always' or blog_list_navigation_behavior == 'show_on_hover'
       assign blog_list_navigation_behavior = 'show_on_hover'
@@ -279,11 +279,12 @@
       layout: blog_list_layout,
       pagination: blog_list_pagination,
       show_next_slide_preview: blog_list_show_next_slide_preview,
+      show_next_slide_preview_on_mobile: block.settings.show_next_slide_preview_on_mobile,
       autoplay: blog_list_autoplay_enabled,
       pause_on_hover: blog_list_autoplay_pause_on_hover,
       autoplay_delay: blog_list_autoplay_delay
     %}
-    {% if blog_list_navigation_position != 'top' %}{{ blog_list_navigation }}{% endif %}
+    {% if blog_list_navigation_position != blank %}{{ blog_list_navigation }}{% endif %}
   </div>
 </div>
 {% endif %}
@@ -452,6 +453,7 @@
       "default": false,
       "visible_if": "{{ block.settings.layout_type == 'carousel' }}"
     },
+    {"type": "checkbox", "id": "show_next_slide_preview_on_mobile", "label": "t:labels.show_next_slide_preview_on_mobile", "default": false, "visible_if": "{{ block.settings.layout_type == 'carousel' }}"},
     {
       "type": "header",
       "content": "t:general.gap"

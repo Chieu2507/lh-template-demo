@@ -7,13 +7,15 @@
   presentation are configured independently while both controls retain the
   same accessible link target.
 
+  @param {string} [fallback_url] - Destination supplied by a resource-list section
+
   @example
   {% content_for 'block', type: 'view-all-button', id: 'view-all' %}
 {% enddoc %}
 
 {% liquid
   assign collection_list_view_all_fallback_label = 'collection_tabs.view_all' | t
-  assign collection_list_view_all_url = blank
+  assign collection_list_view_all_url = fallback_url | default: blank
   assign collection_list_view_all_is_dynamic = false
   assign collection_list_view_all_product_list = section.blocks | where: 'type', 'product-list' | first
   if collection_list_view_all_product_list != blank

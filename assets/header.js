@@ -880,9 +880,14 @@
             scheduleUpdate();
             return;
           }
-          if (!details.open) return;
           event.preventDefault();
-          closeHeaderDetails(details);
+          if (details.open && !details.classList.contains('is-submenu-closing')) {
+            closeHeaderDetails(details);
+          } else {
+            clearSubmenuClose(details);
+            details.open = true;
+            scheduleUpdate();
+          }
         }, { signal: controller.signal });
         details.addEventListener('toggle', () => {
           if (details.open && !details.classList.contains('is-submenu-closing')) {

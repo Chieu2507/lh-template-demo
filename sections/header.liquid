@@ -1,30 +1,6 @@
 {% content_for "block", type: "_header-top", id: "header-top" %}
 
 {% stylesheet %}
-  .header {
-    position: relative;
-    width: 100%;
-    color: var(--body-color);
-    background-color: var(--background-color);
-    transition: background-color var(--motion-duration-standard) var(--motion-ease-standard);
-  }
-
-  .header.header--overlay {
-    background-color: transparent;
-  }
-
-  .header--overlay:is(.header--is-scrolled, .header--submenu-open, .header--search-open, .header--cart-open) {
-    background-color: var(--background-color);
-  }
-
-  .header--overlay:is(.header--is-scrolled, .header--submenu-open, .header--search-open, .header--cart-open) .header-top {
-    background-color: var(--background-color);
-  }
-
-  .header--overlay:has(.header-top--transparent-scheme) .header-top {
-    background-color: transparent;
-  }
-
   .header--overlap-first-section {
     z-index: var(--z-drawer);
     margin-block-end: calc(var(--header-layout-height, 0px) * -1);

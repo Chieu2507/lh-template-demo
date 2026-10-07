@@ -15,13 +15,20 @@
   endunless
 
   assign icon_name = block.settings.icon | default: 'arrow-right'
-  unless icon_name == 'arrow' or icon_name == 'arrow-left' or icon_name == 'arrow-right' or icon_name == 'paper-airplane' or icon_name == 'bars-3' or icon_name == 'menu' or icon_name == 'chevron-down' or icon_name == 'chevron-left' or icon_name == 'chevron-right' or icon_name == 'x-mark' or icon_name == 'close' or icon_name == 'magnifying-glass' or icon_name == 'search' or icon_name == 'shopping-bag' or icon_name == 'bag' or icon_name == 'cart' or icon_name == 'shopping-cart' or icon_name == 'cube' or icon_name == 'user' or icon_name == 'account' or icon_name == 'truck' or icon_name == 'shipping' or icon_name == 'tag' or icon_name == 'discount' or icon_name == 'trash' or icon_name == 'remove' or icon_name == 'document-text' or icon_name == 'note' or icon_name == 'receipt-percent' or icon_name == 'coupon' or icon_name == 'share' or icon_name == 'play' or icon_name == 'pause' or icon_name == 'plus' or icon_name == 'minus' or icon_name == 'check' or icon_name == 'chat-bubble' or icon_name == 'shield-check' or icon_name == 'circle' or icon_name == 'square' or icon_name == 'triangle' or icon_name == 'diamond' or icon_name == 'star' or icon_name == 'four-stars' or icon_name == 'five-stars'
+  unless icon_name == 'arrow' or icon_name == 'envelope' or icon_name == 'phone' or icon_name == 'arrow-left' or icon_name == 'arrow-right' or icon_name == 'paper-airplane' or icon_name == 'bars-3' or icon_name == 'menu' or icon_name == 'chevron-down' or icon_name == 'chevron-left' or icon_name == 'chevron-right' or icon_name == 'x-mark' or icon_name == 'close' or icon_name == 'magnifying-glass' or icon_name == 'search' or icon_name == 'shopping-bag' or icon_name == 'bag' or icon_name == 'cart' or icon_name == 'shopping-cart' or icon_name == 'cube' or icon_name == 'user' or icon_name == 'account' or icon_name == 'truck' or icon_name == 'shipping' or icon_name == 'tag' or icon_name == 'discount' or icon_name == 'trash' or icon_name == 'remove' or icon_name == 'document-text' or icon_name == 'note' or icon_name == 'receipt-percent' or icon_name == 'coupon' or icon_name == 'share' or icon_name == 'play' or icon_name == 'pause' or icon_name == 'plus' or icon_name == 'minus' or icon_name == 'check' or icon_name == 'chat-bubble' or icon_name == 'shield-check' or icon_name == 'circle' or icon_name == 'square' or icon_name == 'triangle' or icon_name == 'diamond' or icon_name == 'star' or icon_name == 'four-stars' or icon_name == 'five-stars'
     assign icon_name = 'arrow-right'
   endunless
 
+  assign icon_library = block.settings.icon_library | default: 'heroicons'
+  if icon_source == 'library' and icon_library == 'social'
+    assign icon_name = block.settings.social_icon | default: 'instagram'
+  endif
+
   assign icon_label = block.settings.accessible_label
   if icon_source == 'library'
-    if icon_label == blank
+    if icon_library == 'social' and icon_label == blank
+      assign icon_label = icon_name | capitalize
+    elsif icon_label == blank
       assign icon_label_key = 'accessibility.icon_' | append: icon_name | replace: '-', '_'
       if icon_name == 'four-stars' or icon_name == 'five-stars'
         assign icon_label_key = 'accessibility.icon_' | append: icon_name
@@ -97,6 +104,7 @@
   {% render 'icon',
     icon: icon_name,
     source: icon_source,
+    library: icon_library,
     custom_icon: block.settings.custom_icon,
     url: icon_url,
     label: icon_label,
@@ -105,39 +113,7 @@
   %}
 </div>
 
-{% stylesheet %}
-  .icon-block {
-    display: block;
-    width: fit-content;
-    max-width: 100%;
-    min-width: 0;
-    line-height: 0;
-    padding-top: var(--icon-block-padding-top, 0px);
-    padding-right: var(--icon-block-padding-right, 0px);
-    padding-bottom: var(--icon-block-padding-bottom, 0px);
-    padding-left: var(--icon-block-padding-left, 0px);
-    color: inherit;
-  }
 
-  .icon-block__icon {
-    --icon-width: var(--icon-block-width, 24px);
-    --icon-padding: var(--icon-block-padding, 0px);
-  }
-
-  @media (max-width: 767.98px) {
-    .icon-block {
-      padding-top: var(--icon-block-padding-top-mobile, var(--icon-block-padding-top, 0px));
-      padding-right: var(--icon-block-padding-right-mobile, var(--icon-block-padding-right, 0px));
-      padding-bottom: var(--icon-block-padding-bottom-mobile, var(--icon-block-padding-bottom, 0px));
-      padding-left: var(--icon-block-padding-left-mobile, var(--icon-block-padding-left, 0px));
-    }
-
-    .icon-block__icon {
-      --icon-width: var(--icon-block-width-mobile, var(--icon-block-width, 24px));
-      --icon-padding: var(--icon-block-padding-mobile, var(--icon-block-padding, 0px));
-    }
-  }
-{% endstylesheet %}
 
 {% schema %}
 {
@@ -153,52 +129,219 @@
       "id": "source",
       "label": "t:labels.source",
       "options": [
-        { "value": "library", "label": "t:options.icon_source.library" },
-        { "value": "custom", "label": "t:options.icon_source.custom" }
+        {
+          "value": "library",
+          "label": "t:options.icon_source.library"
+        },
+        {
+          "value": "custom",
+          "label": "t:options.icon_source.custom"
+        }
       ],
       "default": "library"
+    },
+    {
+      "type": "select",
+      "id": "icon_library",
+      "label": "Icon library",
+      "options": [
+        {
+          "value": "heroicons",
+          "label": "Default"
+        },
+        {
+          "value": "social",
+          "label": "Social"
+        }
+      ],
+      "default": "heroicons",
+      "visible_if": "{{ block.settings.source == 'library' }}"
     },
     {
       "type": "select",
       "id": "icon",
       "label": "t:labels.icon",
       "options": [
-        { "value": "arrow-left", "label": "t:options.icon_library.arrow_left" },
-        { "value": "arrow-right", "label": "t:options.icon_library.arrow_right" },
-        { "value": "bars-3", "label": "t:options.icon_library.bars_3" },
-        { "value": "chevron-down", "label": "t:options.icon_library.chevron_down" },
-        { "value": "chevron-left", "label": "t:options.icon_library.chevron_left" },
-        { "value": "chevron-right", "label": "t:options.icon_library.chevron_right" },
-        { "value": "x-mark", "label": "t:options.icon_library.x_mark" },
-        { "value": "magnifying-glass", "label": "t:options.icon_library.magnifying_glass" },
-        { "value": "shopping-bag", "label": "t:options.icon_library.shopping_bag" },
-        { "value": "shopping-cart", "label": "t:options.icon_library.shopping_cart" },
-        { "value": "user", "label": "t:options.icon_library.user" },
-        { "value": "paper-airplane", "label": "t:options.icon_library.paper_airplane" },
-        { "value": "chat-bubble", "label": "t:options.icon_library.chat_bubble" },
-        { "value": "cube", "label": "t:options.icon_library.cube" },
-        { "value": "truck", "label": "t:options.icon_library.truck" },
-        { "value": "tag", "label": "t:options.icon_library.tag" },
-        { "value": "trash", "label": "t:options.icon_library.trash" },
-        { "value": "document-text", "label": "t:options.icon_library.document_text" },
-        { "value": "receipt-percent", "label": "t:options.icon_library.receipt_percent" },
-        { "value": "share", "label": "t:options.icon_library.share" },
-        { "value": "play", "label": "t:options.icon_library.play" },
-        { "value": "pause", "label": "t:options.icon_library.pause" },
-        { "value": "plus", "label": "t:options.icon_library.plus" },
-        { "value": "minus", "label": "t:options.icon_library.minus" },
-        { "value": "check", "label": "t:options.icon_library.check" },
-        { "value": "shield-check", "label": "t:options.icon_library.shield_check" },
-        { "value": "circle", "label": "t:options.icon_library.circle" },
-        { "value": "square", "label": "t:options.icon_library.square" },
-        { "value": "triangle", "label": "t:options.icon_library.triangle" },
-        { "value": "diamond", "label": "t:options.icon_library.diamond" },
-        { "value": "star", "label": "t:options.icon_library.star" },
-        { "value": "four-stars", "label": "t:options.icon_library.four_stars" },
-        { "value": "five-stars", "label": "t:options.icon_library.five_stars" }
+        {
+          "value": "arrow-left",
+          "label": "t:options.icon_library.arrow_left"
+        },
+        {
+          "value": "arrow-right",
+          "label": "t:options.icon_library.arrow_right"
+        },
+        {
+          "value": "bars-3",
+          "label": "t:options.icon_library.bars_3"
+        },
+        {
+          "value": "chevron-down",
+          "label": "t:options.icon_library.chevron_down"
+        },
+        {
+          "value": "chevron-left",
+          "label": "t:options.icon_library.chevron_left"
+        },
+        {
+          "value": "chevron-right",
+          "label": "t:options.icon_library.chevron_right"
+        },
+        {
+          "value": "x-mark",
+          "label": "t:options.icon_library.x_mark"
+        },
+        {
+          "value": "magnifying-glass",
+          "label": "t:options.icon_library.magnifying_glass"
+        },
+        {
+          "value": "shopping-bag",
+          "label": "t:options.icon_library.shopping_bag"
+        },
+        {
+          "value": "shopping-cart",
+          "label": "t:options.icon_library.shopping_cart"
+        },
+        {
+          "value": "user",
+          "label": "t:options.icon_library.user"
+        },
+        {
+          "value": "paper-airplane",
+          "label": "t:options.icon_library.paper_airplane"
+        },
+        {
+          "value": "chat-bubble",
+          "label": "t:options.icon_library.chat_bubble"
+        },
+        {
+          "value": "cube",
+          "label": "t:options.icon_library.cube"
+        },
+        {
+          "value": "truck",
+          "label": "t:options.icon_library.truck"
+        },
+        {
+          "value": "tag",
+          "label": "t:options.icon_library.tag"
+        },
+        {
+          "value": "trash",
+          "label": "t:options.icon_library.trash"
+        },
+        {
+          "value": "document-text",
+          "label": "t:options.icon_library.document_text"
+        },
+        {
+          "value": "receipt-percent",
+          "label": "t:options.icon_library.receipt_percent"
+        },
+        {
+          "value": "share",
+          "label": "t:options.icon_library.share"
+        },
+        {
+          "value": "play",
+          "label": "t:options.icon_library.play"
+        },
+        {
+          "value": "pause",
+          "label": "t:options.icon_library.pause"
+        },
+        {
+          "value": "plus",
+          "label": "t:options.icon_library.plus"
+        },
+        {
+          "value": "minus",
+          "label": "t:options.icon_library.minus"
+        },
+        {
+          "value": "check",
+          "label": "t:options.icon_library.check"
+        },
+        {
+          "value": "shield-check",
+          "label": "t:options.icon_library.shield_check"
+        },
+        {
+          "value": "circle",
+          "label": "t:options.icon_library.circle"
+        },
+        {
+          "value": "square",
+          "label": "t:options.icon_library.square"
+        },
+        {
+          "value": "triangle",
+          "label": "t:options.icon_library.triangle"
+        },
+        {
+          "value": "diamond",
+          "label": "t:options.icon_library.diamond"
+        },
+        {
+          "value": "star",
+          "label": "t:options.icon_library.star"
+        },
+        {
+          "value": "four-stars",
+          "label": "t:options.icon_library.four_stars"
+        },
+        {
+          "value": "five-stars",
+          "label": "t:options.icon_library.five_stars"
+        },
+        {
+          "value": "envelope",
+          "label": "Envelope"
+        },
+        {
+          "value": "phone",
+          "label": "Phone"
+        }
       ],
       "default": "arrow-right",
-      "visible_if": "{{ block.settings.source == 'library' }}"
+      "visible_if": "{{ block.settings.source == 'library' and block.settings.icon_library != 'social' }}"
+    },
+    {
+      "type": "select",
+      "id": "social_icon",
+      "label": "Social icon",
+      "options": [
+        {
+          "value": "instagram",
+          "label": "Instagram"
+        },
+        {
+          "value": "pinterest",
+          "label": "Pinterest"
+        },
+        {
+          "value": "x",
+          "label": "X / Twitter"
+        },
+        {
+          "value": "facebook",
+          "label": "Facebook"
+        },
+        {
+          "value": "tiktok",
+          "label": "TikTok"
+        },
+        {
+          "value": "youtube",
+          "label": "YouTube"
+        },
+        {
+          "value": "linkedin",
+          "label": "LinkedIn"
+        }
+      ],
+      "default": "instagram",
+      "visible_if": "{{ block.settings.source == 'library' and block.settings.icon_library == 'social' }}"
     },
     {
       "type": "html",

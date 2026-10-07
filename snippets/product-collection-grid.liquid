@@ -23,7 +23,7 @@
   @param {string} [grid_class] - Additional class for the grid root
   @param {string} [item_class] - Additional class for each grid item
   @param {string} [items_data_attributes] - Additional grid data attributes
-  @param {boolean} [next_slide_preview_tablet] - Whether tablet shows one third of the next card
+  @param {boolean} [next_slide_preview_mobile] - Whether mobile shows configured columns plus 0.2
   @param {boolean} [next_slide_preview] - Whether to reveal the next slide on desktop
   @param {string} [carousel_id] - Stable ID for the carousel root
   @param {string} [aria_label] - Accessible name for the carousel
@@ -90,9 +90,9 @@
   endif
 
   assign product_collection_grid_columns_desktop = columns_desktop | default: 3 | plus: 0
-  assign product_collection_grid_columns_tablet = columns_tablet | default: product_collection_grid_columns_desktop | plus: 0
-  if product_collection_grid_columns_tablet < 1 or product_collection_grid_columns_tablet > 4
-    assign product_collection_grid_columns_tablet = product_collection_grid_columns_desktop
+  assign product_collection_grid_columns_tablet = columns_tablet | default: 2 | plus: 0
+  if product_collection_grid_columns_tablet < 2 or product_collection_grid_columns_tablet > 4
+    assign product_collection_grid_columns_tablet = 2
   endif
   assign product_collection_grid_columns_mobile = columns_mobile | default: 1 | plus: 0
   if product_collection_grid_columns_desktop < 1 or product_collection_grid_columns_desktop > 6
@@ -250,8 +250,7 @@
       data-layout="carousel"
       data-product-carousel
       data-swiper-columns-desktop="{{ product_collection_grid_columns_desktop }}"
-      {% if columns_tablet != blank and columns_tablet != 'inherit' %}data-swiper-columns-tablet="{{ product_collection_grid_columns_tablet }}"{% endif %}
-      {% if next_slide_preview_tablet %}data-swiper-next-slide-preview-tablet="true"{% endif %}
+      data-swiper-columns-tablet="{{ product_collection_grid_columns_tablet }}"
       data-swiper-columns-mobile="{{ product_collection_grid_columns_mobile }}"
       data-swiper-gap-desktop="{{ product_collection_grid_gap_horizontal }}"
       data-swiper-gap-mobile="{{ product_collection_grid_gap_horizontal_mobile }}"
@@ -287,6 +286,7 @@
       aria_label: product_collection_grid_aria_label,
       pagination: product_collection_grid_pagination,
       show_next_slide_preview: next_slide_preview,
+      show_next_slide_preview_on_mobile: next_slide_preview_mobile,
       autoplay: autoplay,
       pause_on_hover: autoplay_pause_on_hover,
       autoplay_delay: autoplay_delay
@@ -298,8 +298,7 @@
       data-product-carousel
       data-swiper-mobile-only="true"
       data-swiper-columns-desktop="{{ product_collection_grid_columns_desktop }}"
-      {% if columns_tablet != blank and columns_tablet != 'inherit' %}data-swiper-columns-tablet="{{ product_collection_grid_columns_tablet }}"{% endif %}
-      {% if next_slide_preview_tablet %}data-swiper-next-slide-preview-tablet="true"{% endif %}
+      data-swiper-columns-tablet="{{ product_collection_grid_columns_tablet }}"
       data-swiper-columns-mobile="{{ product_collection_grid_columns_mobile }}"
       data-swiper-gap-desktop="{{ product_collection_grid_gap_horizontal }}"
       data-swiper-gap-mobile="{{ product_collection_grid_gap_horizontal_mobile }}"

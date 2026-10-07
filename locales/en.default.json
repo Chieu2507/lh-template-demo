@@ -76,7 +76,9 @@
     "share": "Share",
     "link_copied": "Link copied.",
     "share_error": "Unable to share.",
-    "image_card_link": "Open image card"
+    "image_card_link": "Open image card",
+    "icon_envelope": "Email",
+    "icon_phone": "Phone"
   },
   "comparison_table": {
     "features_heading": "Features",
@@ -129,7 +131,7 @@
     "share_cart": "Share cart",
     "cart_link_copied": "Cart link copied.",
     "share_error": "Unable to share cart.",
-    "shipping_calculating": "Calculating shipping\u2026",
+    "shipping_calculating": "Calculating shipping…",
     "shipping_unavailable": "Shipping rates unavailable.",
     "shipping_no_rates": "No shipping rates found.",
     "country": "Country",
@@ -272,7 +274,7 @@
     "back_in_stock_phone": "Phone number (optional)",
     "back_in_stock_submit": "Notify me",
     "close_back_in_stock": "Close back-in-stock form",
-    "back_in_stock_success": "Thanks \u2014 we'll let you know when it's back in stock.",
+    "back_in_stock_success": "Thanks — we'll let you know when it's back in stock.",
     "read_more": "Read more",
     "read_less": "Read less"
   },

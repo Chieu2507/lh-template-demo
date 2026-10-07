@@ -9,10 +9,11 @@
  */
 {
   "current": {
-    "logo_width": 180,
-    "logo_width_mobile": 140,
+    "logo": "shopify://shop_images/perky-logo.svg",
+    "logo_width": 92,
+    "logo_width_mobile": 92,
     "default_color_scheme": "scheme-1",
-    "max_page_width": 1400,
+    "max_page_width": 1500,
     "layout_desktop_margin": 48,
     "layout_tablet_margin": 30,
     "layout_mobile_margin": 16,
@@ -98,7 +99,7 @@
     "product_card_border_width": 0,
     "product_card_shadow": "none",
     "product_card_color_scheme": "scheme-1",
-    "product_card_title_font": "body",
+    "product_card_title_font": "heading",
     "product_card_title_size_desktop": 16,
     "product_card_title_size_mobile": 16,
     "product_card_alignment": "left",
@@ -319,6 +320,35 @@
           "background_bar": "#CCCCCC",
           "background_component": "#E6E6E6"
         }
+      },
+      "scheme-6": {
+        "settings": {
+          "background": "#1A1A1A",
+          "heading": "#FFFFFF",
+          "heading_highlight": "#FFFFFF",
+          "text": "#FFFFFF",
+          "accent": "#FFFFFF",
+          "border": "rgba(255,255,255,0.2)",
+          "shadow": "#1c1b1a1a",
+          "sale_price": "#DD2F2E",
+          "button_primary_background": "#FFFFFF",
+          "button_primary_text": "#1A1A1A",
+          "button_primary_border": "#FFFFFF",
+          "button_primary_hover_background": "rgba(0,0,0,0)",
+          "button_primary_hover_text": "#FFFFFF",
+          "button_primary_hover_border": "#FFFFFF",
+          "button_secondary_background": "#F0FF2D",
+          "button_secondary_text": "#1A1A1A",
+          "button_secondary_border": "#F0FF2D",
+          "button_secondary_hover_background": "rgba(0,0,0,0)",
+          "button_secondary_hover_text": "#FFFFFF",
+          "button_secondary_hover_border": "#FFFFFF",
+          "button_tertiary_text": "#FFFFFF",
+          "button_tertiary_hover_text": "#FFFFFF",
+          "variant_overlay": "rgba(0,0,0,0.2)",
+          "background_bar": "rgba(255,255,255,0.5)",
+          "background_component": "#808080"
+        }
       }
     },
     "type_eyebrow_weight": "500",
@@ -342,7 +372,7 @@
       "logo_width": 180,
       "logo_width_mobile": 140,
       "default_color_scheme": "scheme-1",
-      "max_page_width": 1400,
+      "max_page_width": 1500,
       "layout_desktop_margin": 48,
       "layout_tablet_margin": 30,
       "layout_mobile_margin": 16,
@@ -428,7 +458,7 @@
       "product_card_border_width": 0,
       "product_card_shadow": "none",
       "product_card_color_scheme": "scheme-1",
-      "product_card_title_font": "body",
+      "product_card_title_font": "heading",
       "product_card_title_size_desktop": 14,
       "product_card_title_size_mobile": 14,
       "product_card_alignment": "left",
@@ -648,6 +678,35 @@
             "variant_overlay": "rgba(33,33,33,0.5)",
             "background_bar": "#CCCCCC",
             "background_component": "#E6E6E6"
+          }
+        },
+        "scheme-6": {
+          "settings": {
+            "background": "#1A1A1A",
+            "heading": "#FFFFFF",
+            "heading_highlight": "#FFFFFF",
+            "text": "#FFFFFF",
+            "accent": "#FFFFFF",
+            "border": "rgba(255,255,255,0.2)",
+            "shadow": "#1c1b1a1a",
+            "sale_price": "#DD2F2E",
+            "button_primary_background": "#FFFFFF",
+            "button_primary_text": "#1A1A1A",
+            "button_primary_border": "#FFFFFF",
+            "button_primary_hover_background": "rgba(0,0,0,0)",
+            "button_primary_hover_text": "#FFFFFF",
+            "button_primary_hover_border": "#FFFFFF",
+            "button_secondary_background": "#F0FF2D",
+            "button_secondary_text": "#1A1A1A",
+            "button_secondary_border": "#F0FF2D",
+            "button_secondary_hover_background": "rgba(0,0,0,0)",
+            "button_secondary_hover_text": "#FFFFFF",
+            "button_secondary_hover_border": "#FFFFFF",
+            "button_tertiary_text": "#FFFFFF",
+            "button_tertiary_hover_text": "#FFFFFF",
+            "variant_overlay": "rgba(0,0,0,0.2)",
+            "background_bar": "rgba(255,255,255,0.5)",
+            "background_component": "#808080"
           }
         }
       },

@@ -16,7 +16,7 @@
   endif
 
   assign grid_columns_tablet = block.settings.columns_tablet | default: 2 | plus: 0
-  if grid_columns_tablet < 1 or grid_columns_tablet > 6
+  if grid_columns_tablet < 2 or grid_columns_tablet > 4
     assign grid_columns_tablet = 2
   endif
 
@@ -194,13 +194,15 @@
       "default": 3
     },
     {
-      "type": "range",
+      "type": "select",
       "id": "columns_tablet",
       "label": "t:labels.tablet_columns",
-      "min": 1,
-      "max": 6,
-      "step": 1,
-      "default": 2
+      "options": [
+        { "value": "2", "label": "2" },
+        { "value": "3", "label": "3" },
+        { "value": "4", "label": "4" }
+      ],
+      "default": "2"
     },
     {
       "type": "range",
@@ -365,7 +367,7 @@
       "category": "t:general.layout",
       "settings": {
         "columns_desktop": 3,
-        "columns_tablet": 2,
+        "columns_tablet": "2",
         "columns_mobile": 1,
         "gap": 24,
         "gap_mobile": 16,

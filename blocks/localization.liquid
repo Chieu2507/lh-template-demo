@@ -55,8 +55,10 @@
   endif
 
   assign has_language_selector = false
-  if show_current_language and localization.available_languages.size > 1
-    assign has_language_selector = true
+  if show_current_language
+    if localization.available_languages.size > 1 or show_language_selector_desktop
+      assign has_language_selector = true
+    endif
   endif
 
   assign has_localization = false

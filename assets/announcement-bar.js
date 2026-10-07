@@ -129,10 +129,9 @@ const initSlider = (root, slides, track) => {
   const move = (direction) => {
     const now = Date.now();
     if (isAnimating || slides.length < 2 || now - lastMoveAt < 900) return;
-    if (direction < 0 && activeIndex === 0) return;
     lastMoveAt = now;
     const previousIndex = activeIndex;
-    const nextIndex = activeIndex + direction;
+    const nextIndex = direction < 0 && activeIndex === 0 ? slides.length - 1 : activeIndex + direction;
     const isLoop = direction > 0 && nextIndex === slides.length;
     const nextSlide = isLoop ? firstClone : slides[nextIndex];
     if (!nextSlide) return;

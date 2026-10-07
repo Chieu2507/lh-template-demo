@@ -29,6 +29,38 @@ body {
   color: var(--body-color);
 }
 
+/* Header background belongs in the blocking stylesheet. Section stylesheet
+ * bundles can arrive after first paint; the server-rendered overlay attributes
+ * also cover the period before header.js adds its runtime classes. */
+.header {
+  position: relative;
+  width: 100%;
+  color: var(--body-color);
+  background-color: var(--background-color);
+  transition: background-color var(--motion-duration-standard) var(--motion-ease-standard);
+}
+
+.header.header--overlay {
+  background-color: transparent;
+}
+
+.header--overlay:is(.header--is-scrolled, .header--submenu-open, .header--search-open, .header--cart-open) {
+  background-color: var(--background-color);
+}
+
+.header--overlay:is(.header--is-scrolled, .header--submenu-open, .header--search-open, .header--cart-open) .header-top {
+  background-color: var(--background-color);
+}
+
+.header--overlay:has(.header-top--transparent-scheme) .header-top {
+  background-color: transparent;
+}
+
+.section-header:has(.header-top--transparent-scheme[data-header-overlay]),
+.header-top.header-top--transparent-scheme[data-header-overlay] {
+  background-color: transparent;
+}
+
 /*
  * Header first-paint layout:
  * Header Theme Blocks are organized into their final columns by header.js.
@@ -262,14 +294,15 @@ svg {
 
 @media (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) {
   /* Images without a component hover owner still follow the global setting.
-   * Clip the scaled image to its original bounds without changing its parent. */
-  :where(img):not(:where(.media-hover-zoom .media-hover-zoom__media img, .image-card--zoom .background-media img, .product-card__image > img, .product-card__secondary-image > img, .product-media-gallery[data-zoom='click_hover'] .product-media--image img, .product-media-lightbox__image)) {
+   * Clip the scaled image to its original bounds without changing its parent.
+   * Hotspot images stay fixed so product markers remain anchored to the image. */
+  :where(img):not(:where(.media-hover-zoom .media-hover-zoom__media img, .image-card--zoom .background-media img, .product-card__image > img, .product-card__secondary-image > img, .product-media-gallery[data-zoom='click_hover'] .product-media--image img, .product-media-lightbox__image, .site-logo__image, .section-hotspot img, .section-hotspot-gallery img, .section-hotspot-full-width-carousel img, [data-product-callout] img)) {
     scale: 1;
     clip-path: inset(0 round var(--media-radius, 0px));
     transition: scale var(--motion-duration-slow, 500ms) var(--motion-ease-standard, ease), clip-path var(--motion-duration-slow, 500ms) var(--motion-ease-standard, ease);
   }
 
-  :where(img):not(:where(.media-hover-zoom .media-hover-zoom__media img, .image-card--zoom .background-media img, .product-card__image > img, .product-card__secondary-image > img, .product-media-gallery[data-zoom='click_hover'] .product-media--image img, .product-media-lightbox__image)):hover {
+  :where(img):not(:where(.media-hover-zoom .media-hover-zoom__media img, .image-card--zoom .background-media img, .product-card__image > img, .product-card__secondary-image > img, .product-media-gallery[data-zoom='click_hover'] .product-media--image img, .product-media-lightbox__image, .site-logo__image, .section-hotspot img, .section-hotspot-gallery img, .section-hotspot-full-width-carousel img, [data-product-callout] img)):hover {
     scale: var(--motion-image-zoom, 1);
     clip-path: inset(calc(50% - 50% / var(--motion-image-zoom, 1)) round var(--media-radius, 0px));
   }
@@ -2072,6 +2105,8 @@ legend {
 .product-card__title {
   min-width: 0;
   font-family: var(--product-card-title-font-family);
+  font-weight: var(--product-card-title-font-weight);
+  font-style: var(--product-card-title-font-style);
   font-size: var(--product-card-title-size);
   line-height: var(--font-heading-md-line-height);
   letter-spacing: var(--font-heading-letter-spacing);
@@ -3164,3 +3199,64 @@ legend {
 .announcement-bar--bottom-separator { border-bottom: 1px solid var(--border-color); }
 
 .announcement-bar__slides > .announcement-text-block { font-weight: inherit; }
+
+/* Icon geometry is required at first paint, including on slow connections. */
+.icon-renderer {
+    box-sizing: content-box;
+    display: inline-flex;
+    flex: 0 0 auto;
+    align-items: center;
+    justify-content: center;
+    width: var(--icon-width, var(--icon-size-medium, 20px));
+    height: auto;
+    max-width: 100%;
+    padding: var(--icon-padding, 0px);
+    color: inherit;
+    line-height: 0;
+    overflow: hidden;
+  }
+
+  .icon-renderer > svg {
+    display: block;
+    width: 100%;
+    height: auto;
+    max-width: none;
+  }
+
+  .icon-renderer:is(a) {
+    color: inherit;
+    text-decoration: none;
+  }
+
+/* Icon geometry is required at first paint, including on slow connections. */
+.icon-block {
+    display: block;
+    width: fit-content;
+    max-width: 100%;
+    min-width: 0;
+    line-height: 0;
+    padding-top: var(--icon-block-padding-top, 0px);
+    padding-right: var(--icon-block-padding-right, 0px);
+    padding-bottom: var(--icon-block-padding-bottom, 0px);
+    padding-left: var(--icon-block-padding-left, 0px);
+    color: inherit;
+  }
+
+  .icon-block__icon {
+    --icon-width: var(--icon-block-width, 24px);
+    --icon-padding: var(--icon-block-padding, 0px);
+  }
+
+  @media (max-width: 767.98px) {
+    .icon-block {
+      padding-top: var(--icon-block-padding-top-mobile, var(--icon-block-padding-top, 0px));
+      padding-right: var(--icon-block-padding-right-mobile, var(--icon-block-padding-right, 0px));
+      padding-bottom: var(--icon-block-padding-bottom-mobile, var(--icon-block-padding-bottom, 0px));
+      padding-left: var(--icon-block-padding-left-mobile, var(--icon-block-padding-left, 0px));
+    }
+
+    .icon-block__icon {
+      --icon-width: var(--icon-block-width-mobile, var(--icon-block-width, 24px));
+      --icon-padding: var(--icon-block-padding-mobile, var(--icon-block-padding, 0px));
+    }
+  }

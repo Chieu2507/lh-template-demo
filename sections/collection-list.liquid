@@ -73,7 +73,7 @@
       <div class="collection-list__header">
         {% content_for 'block', type: 'header', id: 'header' %}
       </div>
-      {% capture collection_list_actions %}{% content_for 'block', type: 'view-all-button', id: 'view-all' %}{% endcapture %}
+      {% capture collection_list_actions %}{% content_for 'block', type: 'view-all-button', id: 'view-all', fallback_url: routes.collections_url %}{% endcapture %}
       {% assign collection_list_actions = collection_list_actions | strip %}
       {% if collection_list_actions != blank %}
         <div class="collection-list__actions">{{ collection_list_actions }}</div>
@@ -154,6 +154,13 @@
         'content content content';
       column-gap: var(--collection-list-gap, 40px);
       row-gap: var(--collection-list-gap, 40px);
+    }
+
+    .collection-list__container[data-desktop-alignment='left']:not(:has(.collection-card-list__navigation--top)) {
+      grid-template-columns: minmax(0, 1fr) auto;
+      grid-template-areas:
+        'header actions'
+        'content content';
     }
 
     .collection-list__container[data-desktop-alignment='center'] {

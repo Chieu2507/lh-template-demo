@@ -593,9 +593,18 @@
     endcase
   endif
   assign product_card_title_font_family = 'var(--font-heading-family)'
-  if settings.product_card_title_font == 'body'
-    assign product_card_title_font_family = 'var(--font-body-family)'
-  endif
+  assign product_card_title_font_weight = 'var(--font-heading-weight)'
+  assign product_card_title_font_style = 'var(--font-heading-style)'
+  case settings.product_card_title_font
+    when 'body'
+      assign product_card_title_font_family = 'var(--font-body-family)'
+      assign product_card_title_font_weight = 'var(--font-body-weight)'
+      assign product_card_title_font_style = 'var(--font-body-style)'
+    when 'accent'
+      assign product_card_title_font_family = 'var(--font-accent-family)'
+      assign product_card_title_font_weight = 'var(--font-accent-weight)'
+      assign product_card_title_font_style = 'var(--font-accent-style)'
+  endcase
   assign product_card_title_size_desktop = settings.product_card_title_size_desktop | default: 20
   assign product_card_title_size_mobile = settings.product_card_title_size_mobile | default: 18
   assign product_card_ratio = settings.product_card_ratio | default: 'natural'
@@ -1103,6 +1112,8 @@
     --product-card-border-width: {{ product_card_border_width }}px;
     --product-card-shadow: {{ product_card_shadow }};
     --product-card-title-font-family: {{ product_card_title_font_family }};
+    --product-card-title-font-weight: {{ product_card_title_font_weight }};
+    --product-card-title-font-style: {{ product_card_title_font_style }};
     --product-card-title-size: {{ product_card_title_size_desktop }}px;
     --product-card-title-size-mobile: {{ product_card_title_size_mobile }}px;
     --product-card-image-ratio: {{ product_card_image_ratio }};

@@ -2,8 +2,8 @@
   Renders selected collections with one shared Collection Card child. The
   block owns the collection query, layout, carousel controls, pagination, and
   autoplay contract; Collection Card owns the item presentation. When no
-  collections are selected, six placeholder cards preserve the composition in
-  both the editor and storefront preview.
+  collections are selected, a grid renders one desktop row; a carousel renders
+  two cards beyond its desktop capacity to preserve actionable navigation.
 
   @example
   {% content_for 'block', type: 'collection-list-items', id: 'collection-list' %}
@@ -17,6 +17,10 @@
 
   assign collection_list_desktop_columns = block.settings.columns_desktop | default: 4 | plus: 0
   assign collection_list_mobile_columns = block.settings.columns_mobile | default: 1 | plus: 0
+  assign collection_list_tablet_columns = block.settings.columns_tablet | default: 2 | plus: 0
+  if collection_list_tablet_columns < 2 or collection_list_tablet_columns > 4
+    assign collection_list_tablet_columns = 2
+  endif
   if collection_list_desktop_columns < 1 or collection_list_desktop_columns > 6
     assign collection_list_desktop_columns = 4
   endif
@@ -68,8 +72,8 @@
     assign collection_list_navigation_icon = 'chevron'
   endunless
 
-  assign collection_list_navigation_behavior = 'always'
-  if collection_list_navigation_position != 'top'
+  assign collection_list_navigation_behavior = 'show_on_hover'
+  if collection_list_navigation_position != blank
     assign collection_list_navigation_behavior = block.settings.navigation_behavior | default: 'show_on_hover'
     unless collection_list_navigation_behavior == 'show_on_hover' or collection_list_navigation_behavior == 'always'
       assign collection_list_navigation_behavior = 'show_on_hover'
@@ -147,7 +151,11 @@
   assign collection_list_is_placeholder = false
   if collection_list_source_items == blank
     assign collection_list_is_placeholder = true
-    assign collection_list_source_items = '1,2,3,4,5,6' | split: ','
+    assign collection_list_placeholder_count = collection_list_desktop_columns
+    if collection_list_layout == 'carousel'
+      assign collection_list_placeholder_count = collection_list_placeholder_count | plus: 2
+    endif
+    assign collection_list_source_items = (1..collection_list_placeholder_count)
   endif
 %}
 
@@ -228,7 +236,7 @@
       data-layout="carousel"
       data-swiper-columns-desktop="{{ collection_list_desktop_columns }}"
       data-swiper-columns-mobile="{{ collection_list_mobile_columns }}"
-      {% if block.settings.columns_tablet != 'inherit' and block.settings.columns_tablet != blank %}data-swiper-columns-tablet="{{ block.settings.columns_tablet }}"{% endif %}
+      data-swiper-columns-tablet="{{ collection_list_tablet_columns }}"
       data-swiper-gap-desktop="{{ collection_list_gap_desktop }}"
       data-swiper-gap-tablet="{{ collection_list_gap_tablet }}"
       data-swiper-gap-mobile="{{ collection_list_gap_mobile }}"
@@ -261,12 +269,12 @@
         autoplay_delay: collection_list_autoplay_delay
       %}
 
-      {% if collection_list_navigation_position != 'top' %}{{ collection_list_navigation }}{% endif %}
+      {% if collection_list_navigation_position != blank %}{{ collection_list_navigation }}{% endif %}
     </div>
   {% else %}
     <div
       class="collection-card-list__grid"
-      style="--cards: {{ collection_list_desktop_columns }}; --cards-mobile: {{ collection_list_mobile_columns }}; --cards-tablet: {{ block.settings.columns_tablet | default: collection_list_desktop_columns | replace: 'inherit', collection_list_desktop_columns }}; --gap: {{ collection_list_gap_desktop }}px; --gap-mobile: {{ collection_list_gap_mobile }}px; --gap-tablet: {{ collection_list_gap_tablet }}px;"
+      style="--cards: {{ collection_list_desktop_columns }}; --cards-mobile: {{ collection_list_mobile_columns }}; --cards-tablet: {{ collection_list_tablet_columns }}; --gap: {{ collection_list_gap_desktop }}px; --gap-mobile: {{ collection_list_gap_mobile }}px; --gap-tablet: {{ collection_list_gap_tablet }}px;"
     >
       {{ collection_list_items }}
     </div>

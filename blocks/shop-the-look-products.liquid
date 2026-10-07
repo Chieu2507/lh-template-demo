@@ -74,9 +74,9 @@
     assign shop_the_look_products_navigation_icon = 'chevron'
   endunless
 
-  assign shop_the_look_products_navigation_behavior = block.settings.navigation_behavior | default: 'always'
+  assign shop_the_look_products_navigation_behavior = block.settings.navigation_behavior | default: 'show_on_hover'
   unless shop_the_look_products_navigation_behavior == 'show_on_hover' or shop_the_look_products_navigation_behavior == 'always'
-    assign shop_the_look_products_navigation_behavior = 'always'
+    assign shop_the_look_products_navigation_behavior = 'show_on_hover'
   endunless
 
   assign shop_the_look_products_pagination_type = block.settings.pagination_type | default: 'progress_bar'
@@ -712,7 +712,7 @@
         { "value": "show_on_hover", "label": "t:options.collection_navigation_behavior.show_on_hover" },
         { "value": "always", "label": "t:options.collection_navigation_behavior.always" }
       ],
-      "default": "always",
+      "default": "show_on_hover",
       "visible_if": "{{ block.settings.layout_type == 'carousel' and block.settings.show_navigation_on_desktop }}"
     },
     {
@@ -823,7 +823,7 @@
         "show_navigation_on_desktop": true,
         "navigation_position": "outside",
         "navigation_style": "icon_only",
-        "navigation_behavior": "always",
+        "navigation_behavior": "show_on_hover",
         "show_pagination_on_desktop": true,
         "pagination_type": "progress_bar",
         "pagination_top_padding_desktop": 50,

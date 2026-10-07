@@ -125,12 +125,25 @@
   assign padding_right_mobile = block.settings.padding_right_mobile | default: 0 | plus: 0
 
   assign image_class = 'image-block media-hover-zoom size-style size-style--contain image-block--ratio-desktop-' | append: image_ratio_desktop_setting
+  if block.settings.image_fit == 'contain' and block.settings.limit_width_desktop and image_width_desktop_setting == 'fit'
+    assign image_class = image_class | append: ' image-block--contained-frame'
+  endif
   if block.settings.show_image_first_mobile
     assign image_class = image_class | append: ' image-block--first-mobile'
   endif
 %}
 
 {% capture image_style %}
+  {% liquid
+    if block.settings.image_fit == 'contain'
+      if block.settings.limit_width_desktop and image_width_desktop_setting == 'fit'
+        assign image_width_desktop = image_max_width_desktop
+      endif
+      if block.settings.limit_width_mobile and image_width_mobile_setting == 'fit'
+        assign image_width_mobile = image_max_width_mobile
+      endif
+    endif
+  %}
   {% render 'size-style',
     width: image_width_desktop,
     max_width: image_max_width_desktop,
@@ -152,6 +165,7 @@
     --image-block-padding-right-mobile: {{ padding_right_mobile }}px;
   {% endif %}
   --image-block-radius: {{ image_radius_value }};
+  {% if block.settings.image_fit == 'contain' %}--image-block-fit: contain;{% endif %}
 {% endcapture %}
 {% assign image_style = image_style | strip | replace: '\n', ' ' %}
 
@@ -192,6 +206,11 @@
     border-radius: var(--image-block-radius, 0px);
   }
 
+  .image-block--contained-frame {
+    contain: inline-size;
+    contain-intrinsic-inline-size: var(--size-style-width);
+  }
+
   .image-block .image-block__media > picture,
   .image-block .image-block__media > picture > img,
   .image-block .image-block__media > img,
@@ -203,10 +222,13 @@
 
   .image-block .image-block__media > img,
   .image-block .image-block__media > picture > img {
-    object-fit: cover;
+    object-fit: var(--image-block-fit, cover);
   }
 
   @media (max-width: 767.98px) {
+    .image-block--contained-frame {
+      contain-intrinsic-inline-size: var(--size-style-width-mobile, var(--size-style-width));
+    }
     .image-block--first-mobile {
       order: -1;
     }
@@ -291,6 +313,16 @@
         }
       ],
       "default": "desktop"
+    },
+    {
+      "type": "select",
+      "id": "image_fit",
+      "label": "Image fit",
+      "options": [
+        { "value": "cover", "label": "Cover" },
+        { "value": "contain", "label": "Contain" }
+      ],
+      "default": "cover"
     },
     {
       "type": "select",

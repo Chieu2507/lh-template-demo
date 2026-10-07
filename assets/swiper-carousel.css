@@ -55,12 +55,14 @@
   .swiper:not(.swiper-carousel--grid)[data-swiper-next-slide-preview-mobile='true'] {
     --swiper-carousel-preview-size: 15%;
     overflow: visible;
-    clip-path: inset(
-      0
-      calc(-1 * var(--swiper-carousel-preview-size))
-      0
-      calc(-1 * var(--swiper-carousel-preview-size))
-    );
+    clip-path: inset(0 calc(-1 * var(--swiper-carousel-preview-size)) 0 calc(-1 * var(--swiper-carousel-preview-size)));
+  }
+
+  .swiper[data-product-carousel][data-swiper-next-slide-preview-mobile='true'],
+  [data-carousel-block] .swiper[data-swiper-next-slide-preview-mobile='true'] {
+    /* Fractional slides per view already include the next-card preview. */
+    overflow: hidden;
+    clip-path: none;
   }
 }
 

@@ -79,8 +79,8 @@
     assign product_list_navigation_icon = 'chevron'
   endunless
 
-  assign product_list_navigation_behavior = 'always'
-  if product_list_navigation_position != 'top'
+  assign product_list_navigation_behavior = 'show_on_hover'
+  if product_list_navigation_position != blank
     assign product_list_navigation_behavior = block.settings.navigation_behavior | default: 'show_on_hover'
     unless product_list_navigation_behavior == 'show_on_hover' or product_list_navigation_behavior == 'always'
       assign product_list_navigation_behavior = 'show_on_hover'
@@ -231,7 +231,6 @@
       columns_desktop: block.settings.columns_desktop,
       columns_mobile: block.settings.columns_mobile,
       columns_tablet: block.settings.columns_tablet,
-      next_slide_preview_tablet: block.settings.show_next_slide_preview_on_tablet,
       gap_horizontal: product_list_gap_desktop,
       gap_vertical: product_list_gap_desktop,
       gap_horizontal_mobile: product_list_gap_mobile,
@@ -243,6 +242,7 @@
       item_class: 'product-list__item',
       items_data_attributes: 'data-product-list-items',
       next_slide_preview: product_list_show_next_slide_preview,
+      next_slide_preview_mobile: block.settings.show_next_slide_preview_on_mobile,
       carousel_id: product_list_carousel_id,
       aria_label: product_list_aria_label,
       previous_selector: '[data-product-list-previous]',
@@ -257,7 +257,7 @@
       items_content: product_list_items_content
     %}
 
-    {% if product_list_navigation_position != 'top' %}{{ product_list_navigation_markup }}{% endif %}
+    {% if product_list_navigation_position != blank %}{{ product_list_navigation_markup }}{% endif %}
   </div>
 </div>
 
@@ -393,8 +393,7 @@
       ],
       "default": "4"
     },
-    { "type": "select", "id": "columns_tablet", "label": "Tablet columns", "options": [{ "value": "inherit", "label": "Same as desktop" }, { "value": "1", "label": "1" }, { "value": "2", "label": "2" }, { "value": "3", "label": "3" }, { "value": "4", "label": "4" }], "default": "inherit" },
-    { "type": "checkbox", "id": "show_next_slide_preview_on_tablet", "label": "Show next slide preview on tablet", "info": "Reveal one third of the next card.", "default": false, "visible_if": "{{ block.settings.layout_type == 'carousel' and block.settings.columns_tablet != 'inherit' }}" },
+    { "type": "select", "id": "columns_tablet", "label": "Tablet columns", "options": [{ "value": "2", "label": "2" }, { "value": "3", "label": "3" }, { "value": "4", "label": "4" }], "default": "2" },
     {
       "type": "select",
       "id": "columns_mobile",
@@ -412,6 +411,7 @@
       "default": false,
       "visible_if": "{{ block.settings.layout_type == 'carousel' }}"
     },
+    {"type": "checkbox", "id": "show_next_slide_preview_on_mobile", "label": "t:labels.show_next_slide_preview_on_mobile", "default": false, "visible_if": "{{ block.settings.layout_type == 'carousel' }}"},
     {
       "type": "header",
       "content": "t:general.products_gap"

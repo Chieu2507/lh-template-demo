@@ -61,10 +61,10 @@
   if timeline_list_navigation_position == 'inside'
     assign timeline_list_navigation_centered = true
   endif
-  assign timeline_list_navigation_behavior = 'always'
-  if timeline_list_navigation_position == 'inside' and block.settings.navigation_behavior == 'show_on_hover'
+  assign timeline_list_navigation_behavior = block.settings.navigation_behavior | default: 'show_on_hover'
+  unless timeline_list_navigation_behavior == 'show_on_hover' or timeline_list_navigation_behavior == 'always'
     assign timeline_list_navigation_behavior = 'show_on_hover'
-  endif
+  endunless
   assign timeline_list_navigation_style = block.settings.navigation_style | default: 'secondary'
   unless timeline_list_navigation_style == 'primary' or timeline_list_navigation_style == 'secondary' or timeline_list_navigation_style == 'outline' or timeline_list_navigation_style == 'icon_only'
     assign timeline_list_navigation_style = 'secondary'
@@ -724,7 +724,7 @@
         { "value": "always", "label": "t:options.collection_navigation_behavior.always" },
         { "value": "show_on_hover", "label": "t:options.collection_navigation_behavior.show_on_hover" }
       ],
-      "default": "always",
+      "default": "show_on_hover",
       "visible_if": "{{ block.settings.navigation_position == 'inside' }}"
     },
     {

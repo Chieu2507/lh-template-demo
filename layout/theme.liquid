@@ -31,11 +31,9 @@
     <link rel="stylesheet" href="{{ 'component-overlay.css' | asset_url }}" media="print" onload="this.media='all'">
     <noscript>{{ 'component-overlay.css' | asset_url | stylesheet_tag }}</noscript>
     <script src="{{ 'component-overlay.js' | asset_url }}" defer></script>
-    {% comment %} Footer-only disclosure styles should not delay the first paint. {% endcomment %}
-    <link rel="stylesheet" href="{{ 'accordion-details.css' | asset_url }}" media="print" onload="this.media='all'">
-    <noscript>{{ 'accordion-details.css' | asset_url | stylesheet_tag }}</noscript>
-    <link rel="stylesheet" href="{{ 'menu.css' | asset_url }}" media="print" onload="this.media='all'">
-    <noscript>{{ 'menu.css' | asset_url | stylesheet_tag }}</noscript>
+    {% comment %} Disclosure geometry must be styled before first paint. {% endcomment %}
+    {{ 'accordion-details.css' | asset_url | stylesheet_tag }}
+    {{ 'menu.css' | asset_url | stylesheet_tag }}
     {% render 'swiper-stylesheet' %}
     {{ 'block-animations.css' | asset_url | stylesheet_tag }}
     <script src="{{ 'block-animations.js' | asset_url }}" defer></script>

@@ -90,12 +90,12 @@
     "spacing": "Spacing",
     "paragraph": "Paragraph",
     "headings": "Headings",
-    "heading_1": "H1",
-    "heading_2": "H2",
-    "heading_3": "H3",
-    "heading_4": "H4",
-    "heading_5": "H5",
-    "heading_6": "H6",
+    "heading_1": "Display",
+    "heading_2": "Extra large",
+    "heading_3": "Large",
+    "heading_4": "Medium",
+    "heading_5": "Small",
+    "heading_6": "Extra small",
     "heading": "Heading",
     "height": "Height",
     "logo": "Logo",
@@ -718,7 +718,10 @@
     "unit_layout": "Unit layout",
     "hover_zoom": "Hover zoom",
     "collection_tabs_header_layout": "Header layout",
-    "show_view_all_button": "Show view all button"
+    "show_view_all_button": "Show view all button",
+    "slideshow_content_container_width": "Content container width",
+    "customize_text_line_height": "Customize line height",
+    "text_line_height_px": "Line height (px)"
   },
   "options": {
     "product_quantity_style": {
@@ -1126,12 +1129,12 @@
       "strong": "Strong"
     },
     "overlay_title_size": {
-      "heading_1": "Heading 1",
-      "heading_2": "Heading 2",
-      "heading_3": "Heading 3",
-      "heading_4": "Heading 4",
-      "heading_5": "Heading 5",
-      "heading_6": "Heading 6"
+      "heading_1": "Display",
+      "heading_2": "Extra large",
+      "heading_3": "Large",
+      "heading_4": "Medium",
+      "heading_5": "Small",
+      "heading_6": "Extra small"
     },
     "overlay_shadow": {
       "none": "None",
@@ -1151,9 +1154,9 @@
       "bottom_sheet": "Bottom sheet"
     },
     "product_title_font": {
-      "display": "Display",
       "heading": "Heading",
-      "body": "Body"
+      "body": "Body",
+      "accent": "Accent"
     },
     "title_line_limit": {
       "no_limit": "No limit",
@@ -1419,7 +1422,8 @@
     "collection_tabs_header_layout": {
       "stacked": "Stacked",
       "inline": "Heading and tabs in one row"
-    }
+    },
+    "rounded_chevron": "Rounded chevron"
   },
   "info": {
     "collection_filter_search_discovery": "Customize filters with the [Search & Discovery app](https://admin.shopify.com/store/spinel-theme/apps/search-and-discovery).",

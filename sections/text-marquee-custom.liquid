@@ -119,6 +119,13 @@
   }
   .text-marquee-custom .container.full-width--no-padding { padding-inline: 0; }
   .text-marquee-custom__container { min-width: 0; }
+  .section-text-marquee-custom .text-marquee-custom__container {
+    display: flex;
+    flex-direction: inherit;
+    align-items: inherit;
+    justify-content: inherit;
+    gap: inherit;
+  }
   .text-marquee-custom__content > .marquee .container.full-width { padding-inline: 0; }
 
   .text-marquee-custom--horizontal {
@@ -133,6 +140,7 @@
   .text-marquee-custom--align-center {
     --text-marquee-custom-align: center;
     --text-marquee-custom-justify: center;
+    --text-align-default: center;
   }
 
   .text-marquee-custom--align-right {
