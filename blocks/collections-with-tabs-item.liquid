@@ -1,3 +1,5 @@
+{% capture item_title_size %}{% render 'heading-size-token', size: section.settings.title_size, fallback: 'xl' %}{% endcapture %}
+{% assign item_title_size = item_title_size | strip %}
 {% liquid
   assign item_collection = block.settings.collection
   assign item_title = block.settings.custom_title | default: item_collection.title | default: 'Collection title'
@@ -17,8 +19,6 @@
   unless item_title_tag == 'div' or item_title_tag == 'h1' or item_title_tag == 'h2' or item_title_tag == 'h3' or item_title_tag == 'h4' or item_title_tag == 'h5' or item_title_tag == 'h6'
     assign item_title_tag = 'div'
   endunless
-  assign item_title_size = section.settings.title_size | default: 'xl'
-  assign item_title_size = item_title_size | replace: 'heading_1', 'xl' | replace: 'heading_2', 'xl' | replace: 'heading_3', 'lg' | replace: 'heading_4', 'md'
   unless item_title_size == 'display' or item_title_size == 'xl' or item_title_size == 'lg' or item_title_size == 'md' or item_title_size == 'sm' or item_title_size == 'xs' or item_title_size == 'custom'
     assign item_title_size = 'xl'
   endunless
