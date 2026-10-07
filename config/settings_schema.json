@@ -384,7 +384,7 @@
       },
       {
         "type": "header",
-        "content": "t:general.heading_1"
+        "content": "t:options.heading_size.display"
       },
       {
         "type": "range",
@@ -440,7 +440,7 @@
       },
       {
         "type": "header",
-        "content": "t:general.heading_2"
+        "content": "t:options.heading_size.xl"
       },
       {
         "type": "range",
@@ -496,7 +496,7 @@
       },
       {
         "type": "header",
-        "content": "t:general.heading_3"
+        "content": "t:options.heading_size.lg"
       },
       {
         "type": "range",
@@ -552,7 +552,7 @@
       },
       {
         "type": "header",
-        "content": "t:general.heading_4"
+        "content": "t:options.heading_size.md"
       },
       {
         "type": "range",
@@ -608,7 +608,7 @@
       },
       {
         "type": "header",
-        "content": "t:general.heading_5"
+        "content": "t:options.heading_size.sm"
       },
       {
         "type": "range",
@@ -664,7 +664,7 @@
       },
       {
         "type": "header",
-        "content": "t:general.heading_6"
+        "content": "t:options.heading_size.xs"
       },
       {
         "type": "range",
