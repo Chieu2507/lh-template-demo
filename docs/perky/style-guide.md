@@ -36,7 +36,19 @@ Saved scheme IDs remain stable for inherited section references.
 | Background bar | #E6E6E6 | #CCCCCC | #666666 | #CCCCCC | #CCCCCC |
 | Component background | #F2F2F2 | #E6E6E6 | #808080 | #E6E6E6 | #E6E6E6 |
 
-Variant overlay: scheme 1 #5A5A5A at 50%; scheme 3 white at 50%; others #212121 at 50%. Heading highlight and accent reuse heading color because no separate tokens exist in this guide. Hover is unspecified: retain the inherited transparent hover behavior with the scheme's tertiary label/outline colors. Shadow values remain unchanged; the Shadows frame is hidden.
+Variant overlay: scheme 1 #5A5A5A at 50%; scheme 3 white at 50%; others #212121 at 50%. Heading highlight and accent reuse heading color because no separate tokens exist in this guide. Hover is unspecified in Figma. Per the user's follow-up, filled buttons retain a solid surface on hover; colors are designed locally as recorded below. Shadow values remain unchanged; the Shadows frame is hidden.
+
+## Button hover
+
+Applied to current settings and the Perky preset using the existing scheme controls and shared button CSS. Primary retains its borderless shape; secondary hover borders match the hover fill. Existing motion, underline, focus and reduced-motion behavior remain intact.
+
+| Token | Scheme 1 | Scheme 2 | Scheme 3 | Scheme 4 | Scheme 5 |
+| --- | --- | --- | --- | --- | --- |
+| Primary hover background | #48674D | #48674D | #ECECEC | #3D3D3D | #3D3D3D |
+| Primary hover label | #FFFFFF | #FFFFFF | #1C1C1C | #FFFFFF | #FFFFFF |
+| Secondary hover background | #DCDCDC | #D2D2D2 | #1F1F1F | #AC3F47 | #AC3F47 |
+| Secondary hover label | #1E1E1E | #1E1E1E | #FFFFFF | #FFFFFF | #FFFFFF |
+| Tertiary hover label | #2F4D35 | #2F4D35 | #FFFFFF | #2F4D35 | #2F4D35 |
 
 ## Layout and controls
 
@@ -55,7 +67,7 @@ Variant overlay: scheme 1 #5A5A5A at 50%; scheme 3 white at 50%; others #212121 
 Heading ranges now accept 54/34/26/16px desktop values while preserving previously supported values. Button text-case controls reuse the existing capitalize translation and now map capitalize in Liquid. Two additional controls extend the shared schema: `button_padding_inline_tablet` maps into the existing button padding token inside the tablet media query, with desktop fallback when unset; `badge_font` loads the selected Shopify font with display swap and supplies badge family/weight. Existing IDs and section composition remain intact.
 
 
-## Validation
+## Initial style-guide validation (before local preview setup)
 
 - PASS: settings/preset values satisfy schema range/step and select constraints; new translation references resolve.
 - PASS: Liquid rendering verifies 54/46/40px H1, tablet button padding, mobile button height, all button text cases, badge family/weight/font-face output and legacy fallback. Font objects are mocked for local rendering; Shopify font delivery is not verified.
@@ -64,3 +76,12 @@ Heading ranges now accept 54/34/26/16px desktop values while preserving previous
 - PASS: Shopify Theme Check, 0 errors and 36 warnings. The warnings concern inherited theme files and the existing complexity warning in css-variables.liquid; no warning-free claim is made.
 - NOT TESTED: remote theme upload, Shopify Theme Editor save/reload, actual font delivery, live storefront desktop/mobile visual comparison, and contrast verification. CLI reports no development theme configured for this checkout. The selected Perky remote theme has not been edited or uploaded in this task.
 - No preview watcher was started; no commit or push was performed.
+
+## Hover validation
+
+- PASS: current and Perky preset constraints and Liquid token rendering.
+- PASS: hover label contrast for primary, secondary and tertiary in all five schemes; minimum 4.75:1 against configured solid fills/section backgrounds. Custom section backgrounds require their own visual check.
+- PASS: existing local development watcher synced settings to theme 192069828907; storefront computed hover tokens resolve to #ECECEC / #1C1C1C on scheme 3 primary buttons.
+- PASS: Theme Check, 0 errors and 36 existing warnings; git diff --check.
+- NOT TESTED: direct pointer hover interaction across every scheme, Theme Editor save round-trip and custom background combinations. No layout, schema, focus or motion rules were changed.
+- The user-requested local preview watcher remains running.
