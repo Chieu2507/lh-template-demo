@@ -7,6 +7,7 @@
   presentation are configured independently while both controls retain the
   same accessible link target.
 
+  @param {boolean} [require_more_items] - Hide until the selected resource exceeds its list limit
   @param {string} [fallback_url] - Destination supplied by a resource-list section
 
   @example
@@ -59,6 +60,7 @@
   <div
     class="collection-list-view-all{% if block.settings.full_width_mobile %} collection-list-view-all--full-width-mobile{% endif %}"
     {% if collection_list_view_all_style_attribute != blank %}style="{{ collection_list_view_all_style_attribute }}"{% endif %}
+    {% if require_more_items %}data-resource-view-all data-design-mode="{{ request.design_mode }}"{% unless request.design_mode %} hidden{% endunless %}{% endif %}
     {{ block.shopify_attributes }}
   >
     {% render 'view-all-button',
@@ -96,6 +98,7 @@
   </div>
 
 {% stylesheet %}
+  .collection-list-view-all[hidden] { display: none; }
   .collection-list-view-all .collection-list-view-all__button--mobile {
     display: none;
   }
@@ -117,46 +120,7 @@
   }
 {% endstylesheet %}
 
-{% javascript %}
-  (() => {
-    const featuredCollectionSelector = '[data-featured-collection], [data-featured-blog-posts]';
 
-    const synchronizeViewAll = (featuredCollection) => {
-      const viewAllButtons = Array.from(featuredCollection.querySelectorAll('[data-view-all-button-dynamic]'));
-      if (!viewAllButtons.length) return;
-
-      const collectionUrl = featuredCollection.querySelector('[data-product-list]')?.dataset.collectionUrl?.trim() || featuredCollection.querySelector('[data-blog-url]')?.dataset.blogUrl?.trim() || '';
-      if (collectionUrl) {
-        viewAllButtons.forEach((viewAllButton) => {
-          viewAllButton.setAttribute('href', collectionUrl);
-          viewAllButton.removeAttribute('aria-disabled');
-          viewAllButton.removeAttribute('tabindex');
-        });
-      } else {
-        viewAllButtons.forEach((viewAllButton) => {
-          viewAllButton.removeAttribute('href');
-          viewAllButton.setAttribute('aria-disabled', 'true');
-          viewAllButton.setAttribute('tabindex', '-1');
-        });
-      }
-    };
-
-    const initializeRoot = (root = document) => {
-      const featuredCollections = [];
-      if (root.matches?.(featuredCollectionSelector)) featuredCollections.push(root);
-      root.querySelectorAll?.(featuredCollectionSelector).forEach((featuredCollection) => featuredCollections.push(featuredCollection));
-      featuredCollections.forEach(synchronizeViewAll);
-    };
-
-    document.addEventListener('shopify:section:load', (event) => initializeRoot(event.target));
-
-    if (document.readyState === 'loading') {
-      document.addEventListener('DOMContentLoaded', () => initializeRoot(), { once: true });
-    } else {
-      initializeRoot();
-    }
-  })();
-{% endjavascript %}
 
 {% schema %}
 {

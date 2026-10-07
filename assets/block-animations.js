@@ -7,6 +7,8 @@
   const reduced = matchMedia('(prefers-reduced-motion: reduce)');
   const enabled = () => document.body.dataset.blockAnimations !== 'false' && !reduced.matches;
   const selector = '[data-block-animation], [data-component-reveal]';
+  const cardSelector = '.product-card, .collection-card, .collection-card-kernel, .blog-card, .collection-thumbnail__link, .image-card > .image-card__media';
+  const listSelector = '[data-product-carousel], .collection-card-list__grid, .product-list__grid, [data-product-list], .image-cards-section__grid, .blog-grid, .collection-thumbnails__items';
   const scopeSelector = '[role="tabpanel"], .slideshow__swiper .swiper-slide';
   const active = element => {
     if (!element.isConnected || !element.getClientRects().length) return false;
@@ -79,14 +81,14 @@
     if (!enabled() || (active(element) && inView(element))) show(element);
   };
   const scan = (root = document) => {
-    const cards = root.querySelectorAll?.('.product-card, .collection-card, .image-card > .image-card__media') || [];
+    const cards = root.querySelectorAll?.(cardSelector) || [];
     cards.forEach(card => {
       if (card.closest('.slideshow, .announcement-bar, dialog')) return;
       card.dataset.componentReveal = '';
       if (!card.dataset.blockAnimation) card.dataset.blockAnimation = 'slide-bottom';
-      const list = card.closest('[data-product-carousel], .collection-card-list__grid, .product-list__grid, .image-cards-section__grid');
+      const list = card.closest(listSelector);
       if (list) {
-        const siblings = [...list.querySelectorAll('.product-card, .collection-card, .image-card > .image-card__media')].filter(e => e.closest('[data-product-carousel], .collection-card-list__grid, .product-list__grid, .image-cards-section__grid') === list);
+        const siblings = [...list.querySelectorAll(cardSelector)].filter(e => e.closest(listSelector) === list);
         card.dataset.animationDelay = String(Math.max(0,siblings.indexOf(card)) * 75);
       }
     });

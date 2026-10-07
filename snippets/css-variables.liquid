@@ -841,13 +841,17 @@
     when 'large'
       assign overlay_popover_shadow = '0 1rem 2rem color-mix(in srgb, var(--overlay-shadow-color) 24%, transparent)'
   endcase
+  assign overlay_drawer_edge_radius_desktop = '0px'
+  assign overlay_drawer_edge_radius_mobile = '0px'
   assign overlay_drawer_padding_desktop = '0px'
   if settings.overlay_drawer_padding_desktop
     assign overlay_drawer_padding_desktop = '1.5rem'
+    assign overlay_drawer_edge_radius_desktop = 'var(--drawer-radius)'
   endif
   assign overlay_drawer_padding_mobile = '0px'
   if settings.overlay_drawer_padding_mobile
     assign overlay_drawer_padding_mobile = '1.5rem'
+    assign overlay_drawer_edge_radius_mobile = 'var(--drawer-radius)'
   endif
   assign overlay_drawer_content_padding_desktop = '1.5rem'
   assign overlay_drawer_content_padding_mobile = '1rem'
@@ -1246,6 +1250,8 @@
     --overlay-title-size: {{ overlay_title_size }};
     --overlay-drawer-padding-desktop: {{ overlay_drawer_padding_desktop }};
     --overlay-drawer-padding-mobile: {{ overlay_drawer_padding_mobile }};
+    --overlay-drawer-edge-radius-desktop: {{ overlay_drawer_edge_radius_desktop }};
+    --overlay-drawer-edge-radius-mobile: {{ overlay_drawer_edge_radius_mobile }};
     --overlay-drawer-content-padding-desktop: {{ overlay_drawer_content_padding_desktop }};
     --overlay-drawer-content-padding-mobile: {{ overlay_drawer_content_padding_mobile }};
     --z-base: {{ overlay_z_base | default: 10 }};

@@ -1,0 +1,36 @@
+{
+  "nodes": [
+    {
+      "id": "gid://shopify/MediaImage/46439153107243",
+      "fileStatus": "READY",
+      "image": {
+        "url": "https://cdn.shopify.com/s/files/1/1024/2192/2091/files/perky-slideshow-essentials-desktop.jpg?v=1791363962",
+        "altText": "Soft baby essentials in a sage nursery"
+      }
+    },
+    {
+      "id": "gid://shopify/MediaImage/46439153140011",
+      "fileStatus": "READY",
+      "image": {
+        "url": "https://cdn.shopify.com/s/files/1/1024/2192/2091/files/perky-slideshow-essentials-mobile.jpg?v=1791363963",
+        "altText": "Soft baby essentials in a sage nursery"
+      }
+    },
+    {
+      "id": "gid://shopify/MediaImage/46439153172779",
+      "fileStatus": "READY",
+      "image": {
+        "url": "https://cdn.shopify.com/s/files/1/1024/2192/2091/files/perky-slideshow-moments-desktop.jpg?v=1791363963",
+        "altText": "Mother and child enjoying wooden block play"
+      }
+    },
+    {
+      "id": "gid://shopify/MediaImage/46439153205547",
+      "fileStatus": "READY",
+      "image": {
+        "url": "https://cdn.shopify.com/s/files/1/1024/2192/2091/files/perky-slideshow-moments-mobile.jpg?v=1791363962",
+        "altText": "Mother and child enjoying wooden block play"
+      }
+    }
+  ]
+}

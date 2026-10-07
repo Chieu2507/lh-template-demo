@@ -139,7 +139,7 @@
                         "customize_mobile_size": false,
                         "width_mobile": "fill",
                         "max_width_mobile": 480,
-                        "animation_type": "none",
+                        "animation_type": "slide-bottom",
                         "animation_delay": 0,
                         "padding_top": 0,
                         "padding_bottom": 0,
@@ -167,7 +167,7 @@
                         "customize_mobile_size": false,
                         "width_mobile": "fill",
                         "max_width_mobile": 480,
-                        "animation_type": "none",
+                        "animation_type": "fade",
                         "animation_delay": 0,
                         "padding_top": 0,
                         "padding_bottom": 0,
@@ -245,7 +245,7 @@
                         "icon_width": 20,
                         "width": "fit",
                         "width_mobile": "fit",
-                        "animation_type": "none",
+                        "animation_type": "slide-bottom",
                         "animation_delay": 0,
                         "padding_top": 0,
                         "padding_bottom": 0,
@@ -293,10 +293,12 @@
             "content_width": "custom",
             "content_max_width": 512,
             "desktop_position": "center_center",
-            "mobile_position": "center_center",
+            "mobile_position": "top_center",
             "desktop_gap": 0,
             "mobile_gap": 0,
-            "color_scheme": "scheme-3"
+            "color_scheme": "scheme-3",
+            "image": "shopify://shop_images/perky-slideshow-essentials-desktop.jpg",
+            "mobile_image": "shopify://shop_images/perky-slideshow-essentials-mobile.jpg"
           },
           "blocks": {
             "column": {
@@ -401,7 +403,7 @@
                         "customize_mobile_size": false,
                         "width_mobile": "fill",
                         "max_width_mobile": 480,
-                        "animation_type": "none",
+                        "animation_type": "slide-bottom",
                         "animation_delay": 0,
                         "padding_top": 0,
                         "padding_bottom": 0,
@@ -429,7 +431,7 @@
                         "customize_mobile_size": false,
                         "width_mobile": "fill",
                         "max_width_mobile": 480,
-                        "animation_type": "none",
+                        "animation_type": "fade",
                         "animation_delay": 0,
                         "padding_top": 0,
                         "padding_bottom": 0,
@@ -507,7 +509,7 @@
                         "icon_width": 20,
                         "width": "fit",
                         "width_mobile": "fit",
-                        "animation_type": "none",
+                        "animation_type": "slide-bottom",
                         "animation_delay": 0,
                         "padding_top": 0,
                         "padding_bottom": 0,
@@ -555,10 +557,12 @@
             "content_width": "custom",
             "content_max_width": 512,
             "desktop_position": "center_center",
-            "mobile_position": "center_center",
+            "mobile_position": "top_center",
             "desktop_gap": 0,
             "mobile_gap": 0,
-            "color_scheme": "scheme-3"
+            "color_scheme": "scheme-3",
+            "image": "shopify://shop_images/perky-slideshow-moments-desktop.jpg",
+            "mobile_image": "shopify://shop_images/perky-slideshow-moments-mobile.jpg"
           },
           "blocks": {
             "column": {
@@ -663,7 +667,7 @@
                         "customize_mobile_size": false,
                         "width_mobile": "fill",
                         "max_width_mobile": 480,
-                        "animation_type": "none",
+                        "animation_type": "slide-bottom",
                         "animation_delay": 0,
                         "padding_top": 0,
                         "padding_bottom": 0,
@@ -691,7 +695,7 @@
                         "customize_mobile_size": false,
                         "width_mobile": "fill",
                         "max_width_mobile": 480,
-                        "animation_type": "none",
+                        "animation_type": "fade",
                         "animation_delay": 0,
                         "padding_top": 0,
                         "padding_bottom": 0,
@@ -769,7 +773,7 @@
                         "icon_width": 20,
                         "width": "fit",
                         "width_mobile": "fit",
-                        "animation_type": "none",
+                        "animation_type": "slide-bottom",
                         "animation_delay": 0,
                         "padding_top": 0,
                         "padding_bottom": 0,
@@ -915,7 +919,9 @@
                 "text": "<p>Shop by products</p>",
                 "heading_size": "xl",
                 "html_tag": "h2",
-                "width": "fill"
+                "width": "fill",
+                "animation_type": "slide-bottom",
+                "animation_delay": 0
               }
             }
           },
@@ -1012,8 +1018,8 @@
                 "customize_mobile_size": false,
                 "width_mobile": "fit",
                 "max_width_mobile": 480,
-                "animation_type": "none",
-                "animation_delay": 50,
+                "animation_type": "slide-bottom",
+                "animation_delay": 0,
                 "padding_top": 0,
                 "padding_bottom": 0,
                 "padding_left": 0,
@@ -1040,7 +1046,7 @@
                 "customize_mobile_size": false,
                 "width_mobile": "fit",
                 "max_width_mobile": 480,
-                "animation_type": "none",
+                "animation_type": "fade",
                 "animation_delay": 0,
                 "padding_top": 0,
                 "padding_bottom": 0,
@@ -1335,7 +1341,7 @@
                 "customize_mobile_size": false,
                 "width_mobile": "fit",
                 "max_width_mobile": 480,
-                "animation_type": "none",
+                "animation_type": "slide-bottom",
                 "animation_delay": 0,
                 "padding_top": 0,
                 "padding_bottom": 0,
@@ -1363,7 +1369,7 @@
                 "customize_mobile_size": false,
                 "width_mobile": "fit",
                 "max_width_mobile": 480,
-                "animation_type": "none",
+                "animation_type": "fade",
                 "animation_delay": 0,
                 "padding_top": 0,
                 "padding_bottom": 0,
@@ -1567,7 +1573,7 @@
                 "customize_mobile_size": false,
                 "width_mobile": "fit",
                 "max_width_mobile": 480,
-                "animation_type": "none",
+                "animation_type": "slide-bottom",
                 "animation_delay": 0,
                 "padding_top": 0,
                 "padding_bottom": 0,
@@ -1595,7 +1601,7 @@
                 "customize_mobile_size": false,
                 "width_mobile": "fit",
                 "max_width_mobile": 480,
-                "animation_type": "none",
+                "animation_type": "fade",
                 "animation_delay": 0,
                 "padding_top": 0,
                 "padding_bottom": 12,
@@ -1623,7 +1629,7 @@
                 "icon_width": 20,
                 "width": "fit",
                 "width_mobile": "fit",
-                "animation_type": "none",
+                "animation_type": "slide-bottom",
                 "animation_delay": 0,
                 "padding_top": 0,
                 "padding_bottom": 0,
@@ -3752,8 +3758,8 @@
                         "customize_mobile_size": false,
                         "width_mobile": "fit",
                         "max_width_mobile": 480,
-                        "animation_type": "none",
-                        "animation_delay": 50,
+                        "animation_type": "slide-bottom",
+                        "animation_delay": 0,
                         "padding_top": 0,
                         "padding_bottom": 0,
                         "padding_left": 0,
@@ -3780,7 +3786,7 @@
                         "customize_mobile_size": false,
                         "width_mobile": "fit",
                         "max_width_mobile": 480,
-                        "animation_type": "none",
+                        "animation_type": "fade",
                         "animation_delay": 0,
                         "padding_top": 0,
                         "padding_bottom": 0,
@@ -3898,8 +3904,8 @@
                     "icon_width": 20,
                     "width": "fit",
                     "width_mobile": "fit",
-                    "animation_type": "none",
-                    "animation_delay": 100,
+                    "animation_type": "slide-bottom",
+                    "animation_delay": 0,
                     "padding_top": 0,
                     "padding_bottom": 0,
                     "padding_left": 0,
@@ -4934,7 +4940,9 @@
                 "width": "fill",
                 "padding_bottom": 4,
                 "customize_mobile_padding": true,
-                "padding_bottom_mobile": 0
+                "padding_bottom_mobile": 0,
+                "animation_type": "slide-bottom",
+                "animation_delay": 0
               }
             },
             "text": {
@@ -4945,7 +4953,9 @@
                 "width": "fill",
                 "padding_bottom": 16,
                 "customize_mobile_padding": true,
-                "padding_bottom_mobile": 12
+                "padding_bottom_mobile": 12,
+                "animation_type": "fade",
+                "animation_delay": 0
               }
             },
             "button": {
@@ -4955,7 +4965,9 @@
                 "button_link": "shopify://collections/art-crafts-perky",
                 "button_style": "primary",
                 "width": "fit",
-                "width_mobile": "fit"
+                "width_mobile": "fit",
+                "animation_type": "slide-bottom",
+                "animation_delay": 0
               }
             }
           },
@@ -5013,7 +5025,9 @@
                 "text": "<p>What Parents Are Saying</p>",
                 "heading_size": "xl",
                 "html_tag": "h2",
-                "width": "fill"
+                "width": "fill",
+                "animation_type": "slide-bottom",
+                "animation_delay": 0
               }
             }
           },
@@ -5075,7 +5089,9 @@
                         "text": "<p>Safe, Colorful, and Engaging!</p>",
                         "heading_size": "md",
                         "html_tag": "h3",
-                        "width": "fill"
+                        "width": "fill",
+                        "animation_type": "slide-bottom",
+                        "animation_delay": 0
                       }
                     },
                     "quote": {
@@ -5085,7 +5101,9 @@
                         "text_size": "md",
                         "customize_letter_spacing": true,
                         "letter_spacing": 0,
-                        "width": "fill"
+                        "width": "fill",
+                        "animation_type": "fade",
+                        "animation_delay": 0
                       }
                     }
                   },
@@ -5137,7 +5155,9 @@
                   "settings": {
                     "text": "<p>Jason K.</p>",
                     "text_size": "md",
-                    "text_color": "#181818"
+                    "text_color": "#181818",
+                    "animation_type": "fade",
+                    "animation_delay": 0
                   }
                 }
               },
@@ -5206,7 +5226,9 @@
                         "text": "<p>Hours of Fun and Learning!</p>",
                         "heading_size": "md",
                         "html_tag": "h3",
-                        "width": "fill"
+                        "width": "fill",
+                        "animation_type": "slide-bottom",
+                        "animation_delay": 0
                       }
                     },
                     "quote": {
@@ -5216,7 +5238,9 @@
                         "text_size": "md",
                         "customize_letter_spacing": true,
                         "letter_spacing": 0,
-                        "width": "fill"
+                        "width": "fill",
+                        "animation_type": "fade",
+                        "animation_delay": 0
                       }
                     }
                   },
@@ -5268,7 +5292,9 @@
                   "settings": {
                     "text": "<p>Sarah L</p>",
                     "text_size": "md",
-                    "text_color": "#181818"
+                    "text_color": "#181818",
+                    "animation_type": "fade",
+                    "animation_delay": 0
                   }
                 }
               },
@@ -5337,7 +5363,9 @@
                         "text": "<p>Great product</p>",
                         "heading_size": "md",
                         "html_tag": "h3",
-                        "width": "fill"
+                        "width": "fill",
+                        "animation_type": "slide-bottom",
+                        "animation_delay": 0
                       }
                     },
                     "quote": {
@@ -5347,7 +5375,9 @@
                         "text_size": "md",
                         "customize_letter_spacing": true,
                         "letter_spacing": 0,
-                        "width": "fill"
+                        "width": "fill",
+                        "animation_type": "fade",
+                        "animation_delay": 0
                       }
                     }
                   },
@@ -5399,7 +5429,9 @@
                   "settings": {
                     "text": "<p>Emily R.</p>",
                     "text_size": "md",
-                    "text_color": "#181818"
+                    "text_color": "#181818",
+                    "animation_type": "fade",
+                    "animation_delay": 0
                   }
                 }
               },
@@ -5456,7 +5488,9 @@
               "settings": {
                 "text": "<p>Blog Posts</p>",
                 "heading_size": "lg",
-                "html_tag": "h2"
+                "html_tag": "h2",
+                "animation_type": "slide-bottom",
+                "animation_delay": 0
               },
               "blocks": {}
             },
@@ -5464,7 +5498,9 @@
               "type": "text",
               "settings": {
                 "text": "<p>Explore our latest blog posts for inspiring stories, expert tips.</p>",
-                "text_size": "sm"
+                "text_size": "sm",
+                "animation_type": "fade",
+                "animation_delay": 0
               },
               "blocks": {}
             }
@@ -6067,7 +6103,9 @@
                         "text": "<p>Join the family</p>",
                         "heading_size": "xl",
                         "html_tag": "h2",
-                        "width": "fill"
+                        "width": "fill",
+                        "animation_type": "slide-bottom",
+                        "animation_delay": 0
                       }
                     },
                     "text": {
@@ -6075,7 +6113,9 @@
                       "settings": {
                         "text": "<p>Discover exciting in-store events for kids and families–crafts, games, storytime!</p>",
                         "text_size": "md",
-                        "width": "fill"
+                        "width": "fill",
+                        "animation_type": "fade",
+                        "animation_delay": 0
                       }
                     }
                   },

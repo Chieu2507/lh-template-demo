@@ -69,7 +69,7 @@
       {% content_for 'block', type: 'header', id: 'header' %}
     </div>
     <div class="featured-collection__actions" data-featured-collection-actions>
-      {% content_for 'block', type: 'view-all-button', id: 'featured-collection-view-all', closest.collection: featured_collection_collection %}
+      {% content_for 'block', type: 'view-all-button', id: 'featured-collection-view-all', closest.collection: featured_collection_collection, require_more_items: true %}
     </div>
     <div class="featured-collection__products">
       {% content_for 'block', type: 'product-list', id: 'product-list' %}
