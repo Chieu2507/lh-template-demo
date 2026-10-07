@@ -13,7 +13,7 @@
   <div class="container {{ container_width }} featured-collection-background__content" data-collection-background-content data-content-layout="{{ section.settings.layout_desktop }}">
     <div class="featured-collection-background__intro align-content">
       {% content_for 'block', type: 'header', id: 'header' %}
-      {% content_for 'block', type: 'view-all-button', id: 'featured-collection-view-all' %}
+      {% content_for 'block', type: 'view-all-button', id: 'featured-collection-view-all', require_more_items: true %}
     </div>
     <div class="featured-collection-background__products">
       {% content_for 'block', type: 'product-list', id: 'product-list' %}

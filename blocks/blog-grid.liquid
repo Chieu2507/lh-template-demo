@@ -50,6 +50,9 @@
 
 <div
   class="{{ blog_grid_class }}"
+  data-blog-url="{{ blog_grid_source.url | escape }}"
+  data-resource-count="{{ blog_grid_source.articles_count | default: 0 }}"
+  data-resource-limit="{{ blog_grid_secondary_limit | plus: 1 }}"
   style="--blog-grid-gap-desktop: {{ blog_grid_gap_desktop }}px; --blog-grid-gap-mobile: {{ blog_grid_gap_mobile }}px; --blog-grid-columns-horizontal: {{ blog_grid_horizontal_columns }}; --blog-grid-columns-desktop: {{ blog_grid_columns_desktop }}; --blog-grid-columns-mobile: {{ blog_grid_columns_mobile }};"
   {{ block.shopify_attributes }}
 >
