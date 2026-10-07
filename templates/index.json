@@ -5589,7 +5589,9 @@
                         "width": "fill",
                         "width_mobile": "fill",
                         "gap_desktop": 8,
-                        "gap_mobile": 6
+                        "gap_mobile": 6,
+                        "height": "fit",
+                        "position": "top"
                       },
                       "blocks": {
                         "meta": {
