@@ -324,6 +324,7 @@
     data-countdown-expired-label="{{ 'countdown.expired' | t | escape }}"
     style="--countdown-max-width: {{ block.settings.max_width | default: 448 | at_least: 200 | at_most: 1000 }}px; --countdown-number-size: {{ countdown_number_font_size }}; --countdown-number-line-height: {{ countdown_number_line_height }}; --countdown-number-letter-spacing: {{ countdown_number_letter_spacing }}; --countdown-number-text-transform: {{ countdown_number_text_transform }}; --countdown-label-size: {{ countdown_label_font_size }}; --countdown-inline-font-family: {{ countdown_inline_font_family }}; --countdown-inline-font-style: {{ countdown_inline_font_style }}; --countdown-inline-font-weight: {{ countdown_inline_font_weight }}; --countdown-inline-font-size: {{ countdown_inline_font_size_token }}; --countdown-inline-letter-spacing: {{ countdown_inline_letter_spacing_token }}; --countdown-inline-text-transform: {{ countdown_inline_text_transform_token }}; --countdown-number-color: {{ countdown_number_color }}; --countdown-background: {{ countdown_background_color }}; --countdown-radius: {{ countdown_radius }}; --countdown-padding-top: {{ countdown_padding_top }}px; --countdown-padding-bottom: {{ countdown_padding_bottom }}px; --countdown-padding-left: {{ countdown_padding_left }}px; --countdown-padding-right: {{ countdown_padding_right }}px;{% if countdown_customize_mobile_padding %} --countdown-padding-top-mobile: {{ countdown_padding_top_mobile }}px; --countdown-padding-bottom-mobile: {{ countdown_padding_bottom_mobile }}px; --countdown-padding-left-mobile: {{ countdown_padding_left_mobile }}px; --countdown-padding-right-mobile: {{ countdown_padding_right_mobile }}px;{% endif %}"
     role="timer"
+    {% render 'block-animation-attributes', settings: block.settings %}
     {{ block.shopify_attributes }}
   >
     <div class="countdown-timer__units" aria-hidden="true">
@@ -857,7 +858,56 @@
       "type": "select",
       "id": "corner_radius",
       "label": "t:labels.corner_radius",
-      "options": [{"value": "square", "label": "t:options.radius_preset.square"}, {"value": "radius_2", "label": "t:options.radius_preset.size_2"}, {"value": "slightly_rounded", "label": "t:options.radius_preset.slightly_rounded"}, {"value": "radius_4", "label": "t:options.radius_preset.size_4"}, {"value": "radius_6", "label": "t:options.radius_preset.size_6"}, {"value": "rounded", "label": "t:options.radius_preset.rounded"}, {"value": "radius_8", "label": "t:options.radius_preset.size_8"}, {"value": "radius_12", "label": "t:options.radius_preset.size_12"}, {"value": "radius_16", "label": "t:options.radius_preset.size_16"}, {"value": "radius_24", "label": "t:options.radius_preset.size_24"}, {"value": "radius_32", "label": "t:options.radius_preset.size_32"}, {"value": "pill", "label": "t:options.radius_preset.pill"}],
+      "options": [
+        {
+          "value": "square",
+          "label": "t:options.radius_preset.square"
+        },
+        {
+          "value": "radius_2",
+          "label": "t:options.radius_preset.size_2"
+        },
+        {
+          "value": "slightly_rounded",
+          "label": "t:options.radius_preset.slightly_rounded"
+        },
+        {
+          "value": "radius_4",
+          "label": "t:options.radius_preset.size_4"
+        },
+        {
+          "value": "radius_6",
+          "label": "t:options.radius_preset.size_6"
+        },
+        {
+          "value": "rounded",
+          "label": "t:options.radius_preset.rounded"
+        },
+        {
+          "value": "radius_8",
+          "label": "t:options.radius_preset.size_8"
+        },
+        {
+          "value": "radius_12",
+          "label": "t:options.radius_preset.size_12"
+        },
+        {
+          "value": "radius_16",
+          "label": "t:options.radius_preset.size_16"
+        },
+        {
+          "value": "radius_24",
+          "label": "t:options.radius_preset.size_24"
+        },
+        {
+          "value": "radius_32",
+          "label": "t:options.radius_preset.size_32"
+        },
+        {
+          "value": "pill",
+          "label": "t:options.radius_preset.pill"
+        }
+      ],
       "default": "square",
       "visible_if": "{{ block.settings.style != 'with_labels' or block.settings.unit_layout != 'colon' }}"
     },
@@ -1213,6 +1263,57 @@
       "unit": "px",
       "default": 0,
       "visible_if": "{{ block.settings.customize_mobile_padding }}"
+    },
+    {
+      "type": "header",
+      "content": "Animation"
+    },
+    {
+      "type": "select",
+      "id": "animation_type",
+      "label": "Type",
+      "options": [
+        {
+          "value": "none",
+          "label": "None"
+        },
+        {
+          "value": "fade",
+          "label": "Fade"
+        },
+        {
+          "value": "scale",
+          "label": "Scale"
+        },
+        {
+          "value": "slide-left",
+          "label": "Slide from left"
+        },
+        {
+          "value": "slide-right",
+          "label": "Slide from right"
+        },
+        {
+          "value": "slide-bottom",
+          "label": "Slide from bottom"
+        },
+        {
+          "value": "rotate-words",
+          "label": "Rotate words"
+        }
+      ],
+      "default": "none"
+    },
+    {
+      "type": "range",
+      "id": "animation_delay",
+      "label": "Delay",
+      "min": 0,
+      "max": 1000,
+      "step": 50,
+      "unit": "ms",
+      "default": 0,
+      "visible_if": "{{ block.settings.animation_type != 'none' }}"
     }
   ],
   "presets": [

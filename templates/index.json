@@ -140,7 +140,7 @@
                         "width_mobile": "fill",
                         "max_width_mobile": 480,
                         "animation_type": "slide-bottom",
-                        "animation_delay": 0,
+                        "animation_delay": 150,
                         "padding_top": 0,
                         "padding_bottom": 0,
                         "padding_left": 0,
@@ -168,7 +168,7 @@
                         "width_mobile": "fill",
                         "max_width_mobile": 480,
                         "animation_type": "fade",
-                        "animation_delay": 0,
+                        "animation_delay": 350,
                         "padding_top": 0,
                         "padding_bottom": 0,
                         "padding_left": 0,
@@ -246,7 +246,7 @@
                         "width": "fit",
                         "width_mobile": "fit",
                         "animation_type": "slide-bottom",
-                        "animation_delay": 0,
+                        "animation_delay": 550,
                         "padding_top": 0,
                         "padding_bottom": 0,
                         "padding_left": 0,
@@ -404,7 +404,7 @@
                         "width_mobile": "fill",
                         "max_width_mobile": 480,
                         "animation_type": "slide-bottom",
-                        "animation_delay": 0,
+                        "animation_delay": 150,
                         "padding_top": 0,
                         "padding_bottom": 0,
                         "padding_left": 0,
@@ -432,7 +432,7 @@
                         "width_mobile": "fill",
                         "max_width_mobile": 480,
                         "animation_type": "fade",
-                        "animation_delay": 0,
+                        "animation_delay": 350,
                         "padding_top": 0,
                         "padding_bottom": 0,
                         "padding_left": 0,
@@ -510,7 +510,7 @@
                         "width": "fit",
                         "width_mobile": "fit",
                         "animation_type": "slide-bottom",
-                        "animation_delay": 0,
+                        "animation_delay": 550,
                         "padding_top": 0,
                         "padding_bottom": 0,
                         "padding_left": 0,
@@ -668,7 +668,7 @@
                         "width_mobile": "fill",
                         "max_width_mobile": 480,
                         "animation_type": "slide-bottom",
-                        "animation_delay": 0,
+                        "animation_delay": 150,
                         "padding_top": 0,
                         "padding_bottom": 0,
                         "padding_left": 0,
@@ -696,7 +696,7 @@
                         "width_mobile": "fill",
                         "max_width_mobile": 480,
                         "animation_type": "fade",
-                        "animation_delay": 0,
+                        "animation_delay": 350,
                         "padding_top": 0,
                         "padding_bottom": 0,
                         "padding_left": 0,
@@ -774,7 +774,7 @@
                         "width": "fit",
                         "width_mobile": "fit",
                         "animation_type": "slide-bottom",
-                        "animation_delay": 0,
+                        "animation_delay": 550,
                         "padding_top": 0,
                         "padding_bottom": 0,
                         "padding_left": 0,
@@ -921,7 +921,7 @@
                 "html_tag": "h2",
                 "width": "fill",
                 "animation_type": "slide-bottom",
-                "animation_delay": 0
+                "animation_delay": 150
               }
             }
           },
@@ -1019,7 +1019,7 @@
                 "width_mobile": "fit",
                 "max_width_mobile": 480,
                 "animation_type": "slide-bottom",
-                "animation_delay": 0,
+                "animation_delay": 150,
                 "padding_top": 0,
                 "padding_bottom": 0,
                 "padding_left": 0,
@@ -1047,7 +1047,7 @@
                 "width_mobile": "fit",
                 "max_width_mobile": 480,
                 "animation_type": "fade",
-                "animation_delay": 0,
+                "animation_delay": 300,
                 "padding_top": 0,
                 "padding_bottom": 0,
                 "padding_left": 0,
@@ -1342,7 +1342,7 @@
                 "width_mobile": "fit",
                 "max_width_mobile": 480,
                 "animation_type": "slide-bottom",
-                "animation_delay": 0,
+                "animation_delay": 150,
                 "padding_top": 0,
                 "padding_bottom": 0,
                 "padding_left": 0,
@@ -1370,7 +1370,7 @@
                 "width_mobile": "fit",
                 "max_width_mobile": 480,
                 "animation_type": "fade",
-                "animation_delay": 0,
+                "animation_delay": 300,
                 "padding_top": 0,
                 "padding_bottom": 0,
                 "padding_left": 0,
@@ -1574,7 +1574,7 @@
                 "width_mobile": "fit",
                 "max_width_mobile": 480,
                 "animation_type": "slide-bottom",
-                "animation_delay": 0,
+                "animation_delay": 150,
                 "padding_top": 0,
                 "padding_bottom": 0,
                 "padding_left": 0,
@@ -1602,7 +1602,7 @@
                 "width_mobile": "fit",
                 "max_width_mobile": 480,
                 "animation_type": "fade",
-                "animation_delay": 0,
+                "animation_delay": 300,
                 "padding_top": 0,
                 "padding_bottom": 12,
                 "padding_left": 0,
@@ -1630,7 +1630,7 @@
                 "width": "fit",
                 "width_mobile": "fit",
                 "animation_type": "slide-bottom",
-                "animation_delay": 0,
+                "animation_delay": 450,
                 "padding_top": 0,
                 "padding_bottom": 0,
                 "padding_left": 0,
@@ -1763,8 +1763,8 @@
             "customize_mobile_size": false,
             "width_mobile": "fit",
             "max_width_mobile": 480,
-            "animation_type": "none",
-            "animation_delay": 0,
+            "animation_type": "slide-bottom",
+            "animation_delay": 150,
             "padding_top": 0,
             "padding_bottom": 0,
             "padding_left": 0,
@@ -2359,7 +2359,7 @@
                 "corner_radius": "square",
                 "color_scheme": "",
                 "animation_type": "fade",
-                "animation_delay": 0,
+                "animation_delay": 150,
                 "padding_top": 0,
                 "padding_bottom": 0,
                 "padding_left": 0,
@@ -2605,7 +2605,7 @@
                         "width_mobile": "fill",
                         "max_width_mobile": 480,
                         "animation_type": "rotate-words",
-                        "animation_delay": 50,
+                        "animation_delay": 150,
                         "padding_top": 0,
                         "padding_bottom": 0,
                         "padding_left": 0,
@@ -2633,7 +2633,7 @@
                         "width_mobile": "fill",
                         "max_width_mobile": 480,
                         "animation_type": "fade",
-                        "animation_delay": 0,
+                        "animation_delay": 150,
                         "padding_top": 0,
                         "padding_bottom": 0,
                         "padding_left": 0,
@@ -2667,7 +2667,7 @@
                     "width": "fit",
                     "width_mobile": "fit",
                     "animation_type": "slide-bottom",
-                    "animation_delay": 100,
+                    "animation_delay": 150,
                     "padding_top": 0,
                     "padding_bottom": 0,
                     "padding_left": 0,
@@ -2715,7 +2715,7 @@
                 "corner_radius": "radius_4",
                 "custom_corner_radius": 4,
                 "animation_type": "scale",
-                "animation_delay": 0,
+                "animation_delay": 150,
                 "padding_top": 0,
                 "padding_bottom": 0,
                 "padding_left": 0,
@@ -2842,7 +2842,7 @@
                         "width_mobile": "fill",
                         "max_width_mobile": 480,
                         "animation_type": "rotate-words",
-                        "animation_delay": 50,
+                        "animation_delay": 150,
                         "padding_top": 0,
                         "padding_bottom": 0,
                         "padding_left": 0,
@@ -2870,7 +2870,7 @@
                         "width_mobile": "fill",
                         "max_width_mobile": 480,
                         "animation_type": "fade",
-                        "animation_delay": 0,
+                        "animation_delay": 150,
                         "padding_top": 0,
                         "padding_bottom": 0,
                         "padding_left": 0,
@@ -2904,7 +2904,7 @@
                     "width": "fit",
                     "width_mobile": "fit",
                     "animation_type": "slide-bottom",
-                    "animation_delay": 100,
+                    "animation_delay": 150,
                     "padding_top": 0,
                     "padding_bottom": 0,
                     "padding_left": 0,
@@ -2952,7 +2952,7 @@
                 "corner_radius": "radius_4",
                 "custom_corner_radius": 4,
                 "animation_type": "scale",
-                "animation_delay": 0,
+                "animation_delay": 150,
                 "padding_top": 0,
                 "padding_bottom": 0,
                 "padding_left": 0,
@@ -3079,7 +3079,7 @@
                         "width_mobile": "fill",
                         "max_width_mobile": 480,
                         "animation_type": "rotate-words",
-                        "animation_delay": 50,
+                        "animation_delay": 150,
                         "padding_top": 0,
                         "padding_bottom": 0,
                         "padding_left": 0,
@@ -3107,7 +3107,7 @@
                         "width_mobile": "fill",
                         "max_width_mobile": 480,
                         "animation_type": "fade",
-                        "animation_delay": 0,
+                        "animation_delay": 150,
                         "padding_top": 0,
                         "padding_bottom": 0,
                         "padding_left": 0,
@@ -3141,7 +3141,7 @@
                     "width": "fit",
                     "width_mobile": "fit",
                     "animation_type": "slide-bottom",
-                    "animation_delay": 100,
+                    "animation_delay": 150,
                     "padding_top": 0,
                     "padding_bottom": 0,
                     "padding_left": 0,
@@ -3189,7 +3189,7 @@
                 "corner_radius": "radius_4",
                 "custom_corner_radius": 4,
                 "animation_type": "scale",
-                "animation_delay": 0,
+                "animation_delay": 150,
                 "padding_top": 0,
                 "padding_bottom": 0,
                 "padding_left": 0,
@@ -3305,7 +3305,7 @@
                     "width_mobile": "fit",
                     "max_width_mobile": 480,
                     "animation_type": "rotate-words",
-                    "animation_delay": 50,
+                    "animation_delay": 150,
                     "padding_top": 0,
                     "padding_bottom": 0,
                     "padding_left": 0,
@@ -3366,7 +3366,7 @@
                     "width_mobile": "fit",
                     "max_width_mobile": 480,
                     "animation_type": "rotate-words",
-                    "animation_delay": 50,
+                    "animation_delay": 150,
                     "padding_top": 0,
                     "padding_bottom": 0,
                     "padding_left": 0,
@@ -3497,7 +3497,7 @@
                 "width_mobile": "fit",
                 "max_width_mobile": 480,
                 "animation_type": "rotate-words",
-                "animation_delay": 50,
+                "animation_delay": 150,
                 "padding_top": 0,
                 "padding_bottom": 0,
                 "padding_left": 0,
@@ -3759,7 +3759,7 @@
                         "width_mobile": "fit",
                         "max_width_mobile": 480,
                         "animation_type": "slide-bottom",
-                        "animation_delay": 0,
+                        "animation_delay": 150,
                         "padding_top": 0,
                         "padding_bottom": 0,
                         "padding_left": 0,
@@ -3787,7 +3787,7 @@
                         "width_mobile": "fit",
                         "max_width_mobile": 480,
                         "animation_type": "fade",
-                        "animation_delay": 0,
+                        "animation_delay": 300,
                         "padding_top": 0,
                         "padding_bottom": 0,
                         "padding_left": 0,
@@ -3886,7 +3886,9 @@
                     "padding_top_mobile": 0,
                     "padding_bottom_mobile": 0,
                     "padding_left_mobile": 0,
-                    "padding_right_mobile": 0
+                    "padding_right_mobile": 0,
+                    "animation_type": "fade",
+                    "animation_delay": 450
                   },
                   "blocks": {}
                 },
@@ -3905,7 +3907,7 @@
                     "width": "fit",
                     "width_mobile": "fit",
                     "animation_type": "slide-bottom",
-                    "animation_delay": 0,
+                    "animation_delay": 600,
                     "padding_top": 0,
                     "padding_bottom": 0,
                     "padding_left": 0,
@@ -4823,7 +4825,7 @@
                 "width_mobile": "fill",
                 "max_width_mobile": 480,
                 "animation_type": "rotate-words",
-                "animation_delay": 50,
+                "animation_delay": 150,
                 "padding_top": 0,
                 "padding_bottom": 0,
                 "padding_left": 0,
@@ -4942,7 +4944,7 @@
                 "customize_mobile_padding": true,
                 "padding_bottom_mobile": 0,
                 "animation_type": "slide-bottom",
-                "animation_delay": 0
+                "animation_delay": 150
               }
             },
             "text": {
@@ -4955,7 +4957,7 @@
                 "customize_mobile_padding": true,
                 "padding_bottom_mobile": 12,
                 "animation_type": "fade",
-                "animation_delay": 0
+                "animation_delay": 300
               }
             },
             "button": {
@@ -4967,7 +4969,7 @@
                 "width": "fit",
                 "width_mobile": "fit",
                 "animation_type": "slide-bottom",
-                "animation_delay": 0
+                "animation_delay": 450
               }
             }
           },
@@ -5027,7 +5029,7 @@
                 "html_tag": "h2",
                 "width": "fill",
                 "animation_type": "slide-bottom",
-                "animation_delay": 0
+                "animation_delay": 150
               }
             }
           },
@@ -5090,7 +5092,7 @@
                         "heading_size": "md",
                         "html_tag": "h3",
                         "width": "fill",
-                        "animation_type": "slide-bottom",
+                        "animation_type": "none",
                         "animation_delay": 0
                       }
                     },
@@ -5102,7 +5104,7 @@
                         "customize_letter_spacing": true,
                         "letter_spacing": 0,
                         "width": "fill",
-                        "animation_type": "fade",
+                        "animation_type": "none",
                         "animation_delay": 0
                       }
                     }
@@ -5156,7 +5158,7 @@
                     "text": "<p>Jason K.</p>",
                     "text_size": "md",
                     "text_color": "#181818",
-                    "animation_type": "fade",
+                    "animation_type": "none",
                     "animation_delay": 0
                   }
                 }
@@ -5227,7 +5229,7 @@
                         "heading_size": "md",
                         "html_tag": "h3",
                         "width": "fill",
-                        "animation_type": "slide-bottom",
+                        "animation_type": "none",
                         "animation_delay": 0
                       }
                     },
@@ -5239,7 +5241,7 @@
                         "customize_letter_spacing": true,
                         "letter_spacing": 0,
                         "width": "fill",
-                        "animation_type": "fade",
+                        "animation_type": "none",
                         "animation_delay": 0
                       }
                     }
@@ -5293,7 +5295,7 @@
                     "text": "<p>Sarah L</p>",
                     "text_size": "md",
                     "text_color": "#181818",
-                    "animation_type": "fade",
+                    "animation_type": "none",
                     "animation_delay": 0
                   }
                 }
@@ -5364,7 +5366,7 @@
                         "heading_size": "md",
                         "html_tag": "h3",
                         "width": "fill",
-                        "animation_type": "slide-bottom",
+                        "animation_type": "none",
                         "animation_delay": 0
                       }
                     },
@@ -5376,7 +5378,7 @@
                         "customize_letter_spacing": true,
                         "letter_spacing": 0,
                         "width": "fill",
-                        "animation_type": "fade",
+                        "animation_type": "none",
                         "animation_delay": 0
                       }
                     }
@@ -5430,7 +5432,7 @@
                     "text": "<p>Emily R.</p>",
                     "text_size": "md",
                     "text_color": "#181818",
-                    "animation_type": "fade",
+                    "animation_type": "none",
                     "animation_delay": 0
                   }
                 }
@@ -5490,7 +5492,7 @@
                 "heading_size": "lg",
                 "html_tag": "h2",
                 "animation_type": "slide-bottom",
-                "animation_delay": 0
+                "animation_delay": 150
               },
               "blocks": {}
             },
@@ -5500,7 +5502,7 @@
                 "text": "<p>Explore our latest blog posts for inspiring stories, expert tips.</p>",
                 "text_size": "sm",
                 "animation_type": "fade",
-                "animation_delay": 0
+                "animation_delay": 300
               },
               "blocks": {}
             }
@@ -5788,7 +5790,9 @@
                 "text": "<p>Join the Fun on Instagram</p>",
                 "heading_size": "xl",
                 "html_tag": "h2",
-                "width": "fill"
+                "width": "fill",
+                "animation_type": "slide-bottom",
+                "animation_delay": 150
               }
             },
             "text": {
@@ -5796,7 +5800,9 @@
               "settings": {
                 "text": "<p>@play_game88</p>",
                 "text_size": "md",
-                "width": "fill"
+                "width": "fill",
+                "animation_type": "fade",
+                "animation_delay": 300
               }
             }
           },
@@ -6105,7 +6111,7 @@
                         "html_tag": "h2",
                         "width": "fill",
                         "animation_type": "slide-bottom",
-                        "animation_delay": 0
+                        "animation_delay": 150
                       }
                     },
                     "text": {
@@ -6115,7 +6121,7 @@
                         "text_size": "md",
                         "width": "fill",
                         "animation_type": "fade",
-                        "animation_delay": 0
+                        "animation_delay": 300
                       }
                     }
                   },

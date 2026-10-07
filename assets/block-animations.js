@@ -7,8 +7,8 @@
   const reduced = matchMedia('(prefers-reduced-motion: reduce)');
   const enabled = () => document.body.dataset.blockAnimations !== 'false' && !reduced.matches;
   const selector = '[data-block-animation], [data-component-reveal]';
-  const cardSelector = '.product-card, .collection-card, .collection-card-kernel, .blog-card, .collection-thumbnail__link, .image-card > .image-card__media';
-  const listSelector = '[data-product-carousel], .collection-card-list__grid, .product-list__grid, [data-product-list], .image-cards-section__grid, .blog-grid, .collection-thumbnails__items';
+  const cardSelector = 'article.testimonial-item, .product-card, .collection-card, .collection-card-kernel, .blog-card, .blog-first-card, .blog-grid article.image-card, .collection-thumbnail__link, .image-card > .image-card__media:not(.blog-grid .image-card__media)';
+  const listSelector = '[data-product-carousel], .collection-card-list__grid, .product-list__grid, [data-product-list], .image-cards-section__grid, .blog-grid, .collection-thumbnails__grid, .collection-thumbnails__carousel, .testimonial-carousel, .testimonials-cards__carousel';
   const scopeSelector = '[role="tabpanel"], .slideshow__swiper .swiper-slide';
   const active = element => {
     if (!element.isConnected || !element.getClientRects().length) return false;
@@ -27,9 +27,9 @@
     state.played = true;
     element.classList.remove('reveal-pending');
     if (!enabled()) return;
-    const delay = Math.min(1500, Math.max(0, Number(element.dataset.animationDelay) || 0));
+    const delay = Math.min(1500, Math.max(150, Number(element.dataset.animationDelay) || 0));
     const tokens = getComputedStyle(element);
-    const duration = parseFloat(tokens.getPropertyValue('--motion-duration-slow')) || 600;
+    const duration = Math.max(650, parseFloat(tokens.getPropertyValue('--motion-duration-slow')) || 600);
     const options = {duration, delay, easing:tokens.getPropertyValue('--motion-ease-standard').trim() || 'cubic-bezier(.22,1,.36,1)', fill:'backwards'};
     const type = element.dataset.blockAnimation || 'slide-bottom';
     const from = {opacity:0};
@@ -47,7 +47,7 @@
   };
   const observer = new IntersectionObserver(entries => {
     entries.forEach(entry => {if (entry.isIntersecting) show(entry.target);});
-  }, {threshold:0.05});
+  }, {threshold:0.05, rootMargin:'0px 0px -40px 0px'});
   const splitWords = element => {
     if (element.querySelector('.reveal-word')) return;
     const walker = document.createTreeWalker(element, NodeFilter.SHOW_TEXT);
@@ -85,12 +85,26 @@
     cards.forEach(card => {
       if (card.closest('.slideshow, .announcement-bar, dialog')) return;
       card.dataset.componentReveal = '';
-      if (!card.dataset.blockAnimation) card.dataset.blockAnimation = 'slide-bottom';
+      if (!card.dataset.blockAnimation) card.dataset.blockAnimation = card.matches('article.testimonial-item') ? 'fade' : 'slide-bottom';
       const list = card.closest(listSelector);
       if (list) {
         const siblings = [...list.querySelectorAll(cardSelector)].filter(e => e.closest(listSelector) === list);
-        card.dataset.animationDelay = String(Math.max(0,siblings.indexOf(card)) * 75);
+        // Stagger within the visible row; later rows must not inherit a long list-wide wait.
+        const top = card.getBoundingClientRect().top;
+        const row = siblings.filter(sibling => Math.abs(sibling.getBoundingClientRect().top - top) < 8);
+        card.dataset.animationDelay = String(Math.min(600, 180 + Math.max(0, row.indexOf(card)) * 140));
       }
+    });
+    // Resource actions and forms share the entrance order of their content blocks.
+    root.querySelectorAll?.('.collection-list-view-all, .email-signup-block, .product-callout__content').forEach(element => {
+      if (element.closest('dialog, .announcement-bar')) return;
+      element.dataset.componentReveal = '';
+      if (!element.dataset.blockAnimation || element.dataset.blockAnimation === 'none') element.dataset.blockAnimation = 'fade';
+      const section = element.closest('.shopify-section');
+      const preceding = section ? [...section.querySelectorAll('[data-block-animation]:not([data-block-animation="none"])')].filter(other =>
+        other !== element && !other.closest(cardSelector) && (other.compareDocumentPosition(element) & Node.DOCUMENT_POSITION_FOLLOWING)
+      ).length : 0;
+      element.dataset.animationDelay = String(Math.min(750, 150 + preceding * 150));
     });
     if (root.matches?.(selector)) initialize(root);
     root.querySelectorAll?.(selector).forEach(initialize);
