@@ -3008,7 +3008,6 @@ legend {
   }
 
   .product-card--quick-add-mobile .product-card__quick-add .product-card__quick-add-button {
-    --button-radius: 0;
     --button-icon-size: 18px;
     width: 36px;
     min-width: 36px;
