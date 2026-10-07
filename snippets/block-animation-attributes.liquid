@@ -1,0 +1,5 @@
+{% doc %}
+  Maps canonical block Animation settings to the shared reveal controller.
+  @param {object} settings - Block settings with animation_type and animation_delay
+{% enddoc %}
+data-block-animation="{{ settings.animation_type | default: 'none' }}" data-animation-delay="{{ settings.animation_delay | default: 0 }}"

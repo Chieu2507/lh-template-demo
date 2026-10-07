@@ -95,7 +95,9 @@
                         "padding_top_mobile": 0,
                         "padding_bottom_mobile": 0,
                         "padding_left_mobile": 0,
-                        "padding_right_mobile": 0
+                        "padding_right_mobile": 0,
+                        "animation_type": "slide-bottom",
+                        "animation_delay": 150
                       },
                       "blocks": {}
                     },
@@ -120,7 +122,9 @@
                         "padding_top_mobile": 0,
                         "padding_bottom_mobile": 0,
                         "padding_left_mobile": 0,
-                        "padding_right_mobile": 0
+                        "padding_right_mobile": 0,
+                        "animation_type": "slide-bottom",
+                        "animation_delay": 350
                       },
                       "blocks": {}
                     }
@@ -152,7 +156,9 @@
                     "padding_top_mobile": 0,
                     "padding_bottom_mobile": 0,
                     "padding_left_mobile": 0,
-                    "padding_right_mobile": 0
+                    "padding_right_mobile": 0,
+                    "animation_type": "slide-bottom",
+                    "animation_delay": 550
                   },
                   "blocks": {}
                 }
@@ -250,7 +256,9 @@
                         "padding_top_mobile": 0,
                         "padding_bottom_mobile": 0,
                         "padding_left_mobile": 0,
-                        "padding_right_mobile": 0
+                        "padding_right_mobile": 0,
+                        "animation_type": "slide-bottom",
+                        "animation_delay": 150
                       },
                       "blocks": {}
                     },
@@ -275,7 +283,9 @@
                         "padding_top_mobile": 0,
                         "padding_bottom_mobile": 0,
                         "padding_left_mobile": 0,
-                        "padding_right_mobile": 0
+                        "padding_right_mobile": 0,
+                        "animation_type": "slide-bottom",
+                        "animation_delay": 350
                       },
                       "blocks": {}
                     }
@@ -307,7 +317,9 @@
                     "padding_top_mobile": 0,
                     "padding_bottom_mobile": 0,
                     "padding_left_mobile": 0,
-                    "padding_right_mobile": 0
+                    "padding_right_mobile": 0,
+                    "animation_type": "slide-bottom",
+                    "animation_delay": 550
                   },
                   "blocks": {}
                 }
@@ -405,7 +417,9 @@
                         "padding_top_mobile": 0,
                         "padding_bottom_mobile": 0,
                         "padding_left_mobile": 0,
-                        "padding_right_mobile": 0
+                        "padding_right_mobile": 0,
+                        "animation_type": "slide-bottom",
+                        "animation_delay": 150
                       },
                       "blocks": {}
                     },
@@ -430,7 +444,9 @@
                         "padding_top_mobile": 0,
                         "padding_bottom_mobile": 0,
                         "padding_left_mobile": 0,
-                        "padding_right_mobile": 0
+                        "padding_right_mobile": 0,
+                        "animation_type": "slide-bottom",
+                        "animation_delay": 350
                       },
                       "blocks": {}
                     }
@@ -462,7 +478,9 @@
                     "padding_top_mobile": 0,
                     "padding_bottom_mobile": 0,
                     "padding_left_mobile": 0,
-                    "padding_right_mobile": 0
+                    "padding_right_mobile": 0,
+                    "animation_type": "slide-bottom",
+                    "animation_delay": 550
                   },
                   "blocks": {}
                 }
@@ -528,7 +546,9 @@
                 "text": "<p>SHOP BY CATEGORIES</p>",
                 "heading_size": "xl",
                 "html_tag": "h2",
-                "width": "fill"
+                "width": "fill",
+                "animation_type": "slide-bottom",
+                "animation_delay": 150
               }
             }
           },
@@ -783,7 +803,9 @@
                         "text": "<p>LIMITED TIME ONLY</p>",
                         "heading_size": "xl",
                         "html_tag": "h2",
-                        "width": "fill"
+                        "width": "fill",
+                        "animation_type": "slide-bottom",
+                        "animation_delay": 150
                       }
                     },
                     "text": {
@@ -791,7 +813,9 @@
                       "settings": {
                         "text": "<p>Don't miss your chance! Secure your gear now before the time runs out - these offers are only available for a limited period.</p>",
                         "text_size": "md",
-                        "width": "fill"
+                        "width": "fill",
+                        "animation_type": "fade",
+                        "animation_delay": 300
                       }
                     }
                   },
@@ -812,7 +836,9 @@
                     "number_size": "lg",
                     "label_size": "sm",
                     "show_background": false,
-                    "corner_radius": "slightly_rounded"
+                    "corner_radius": "slightly_rounded",
+                    "animation_type": "fade",
+                    "animation_delay": 450
                   }
                 },
                 "button": {
@@ -821,7 +847,9 @@
                     "button_label": "Explore Sale",
                     "button_link": "shopify://collections/all",
                     "button_style": "primary",
-                    "show_icon": false
+                    "show_icon": false,
+                    "animation_type": "slide-bottom",
+                    "animation_delay": 600
                   }
                 }
               },
@@ -896,7 +924,9 @@
               "settings": {
                 "text": "<p>BEST SELLERS</p>",
                 "heading_size": "xl",
-                "html_tag": "h2"
+                "html_tag": "h2",
+                "animation_type": "slide-bottom",
+                "animation_delay": 150
               }
             }
           },
@@ -1027,7 +1057,9 @@
                     "heading_size": "xl",
                     "html_tag": "div",
                     "width": "fit",
-                    "outline_text": false
+                    "outline_text": false,
+                    "animation_type": "slide-bottom",
+                    "animation_delay": 150
                   }
                 }
               },
@@ -1056,7 +1088,9 @@
                     "heading_size": "xl",
                     "html_tag": "div",
                     "width": "fit",
-                    "outline_text": true
+                    "outline_text": true,
+                    "animation_type": "slide-bottom",
+                    "animation_delay": 300
                   }
                 }
               },
@@ -1128,7 +1162,9 @@
                     "html_tag": "h2",
                     "width": "fill",
                     "customize_mobile_size": true,
-                    "width_mobile": "fill"
+                    "width_mobile": "fill",
+                    "animation_type": "slide-bottom",
+                    "animation_delay": 150
                   }
                 },
                 "description": {
@@ -1138,7 +1174,9 @@
                     "text_size": "md",
                     "width": "fill",
                     "customize_mobile_size": true,
-                    "width_mobile": "fill"
+                    "width_mobile": "fill",
+                    "animation_type": "fade",
+                    "animation_delay": 300
                   }
                 }
               },
@@ -1155,7 +1193,9 @@
                 "button_style": "primary",
                 "width": "fit",
                 "width_mobile": "fit",
-                "show_icon": false
+                "show_icon": false,
+                "animation_type": "slide-bottom",
+                "animation_delay": 450
               }
             }
           },
@@ -1349,13 +1389,17 @@
               "settings": {
                 "text": "<p>BUILT FOR THE BASELINE</p>",
                 "heading_size": "lg",
-                "html_tag": "h2"
+                "html_tag": "h2",
+                "animation_type": "slide-bottom",
+                "animation_delay": 150
               }
             },
             "item_2": {
               "type": "text",
               "settings": {
-                "text": "<p>Our performance-driven sports products designed to elevate your game.</p>"
+                "text": "<p>Our performance-driven sports products designed to elevate your game.</p>",
+                "animation_type": "fade",
+                "animation_delay": 300
               }
             }
           },
@@ -1452,7 +1496,9 @@
               "settings": {
                 "text": "<p>NEW ARRIVALS</p>",
                 "heading_size": "xl",
-                "html_tag": "h2"
+                "html_tag": "h2",
+                "animation_type": "slide-bottom",
+                "animation_delay": 150
               }
             }
           },
@@ -1505,7 +1551,9 @@
                     "text": "<p>ELEVATED ESSENTIALS</p>",
                     "heading_size": "md",
                     "html_tag": "h3",
-                    "width": "fill"
+                    "width": "fill",
+                    "animation_type": "slide-bottom",
+                    "animation_delay": 300
                   }
                 },
                 "button": {
@@ -1514,7 +1562,9 @@
                     "button_label": "Explore Collection",
                     "button_link": "shopify://collections/new-arrivals-stroken",
                     "button_style": "tertiary",
-                    "show_icon": false
+                    "show_icon": false,
+                    "animation_type": "slide-bottom",
+                    "animation_delay": 450
                   }
                 }
               },
@@ -1576,7 +1626,9 @@
               "settings": {
                 "text": "<p>LATEST IN ACTIVE GEAR</p>",
                 "heading_size": "xl",
-                "html_tag": "h2"
+                "html_tag": "h2",
+                "animation_type": "slide-bottom",
+                "animation_delay": 150
               }
             }
           },
@@ -1703,7 +1755,9 @@
                 "text": "<p>LOVED BY OUR COMMUNITY</p>",
                 "heading_size": "xl",
                 "html_tag": "h2",
-                "width": "fill"
+                "width": "fill",
+                "animation_type": "slide-bottom",
+                "animation_delay": 150
               }
             },
             "text": {
@@ -1711,7 +1765,9 @@
               "settings": {
                 "text": "<p>See what our customers are saying about our products</p>",
                 "text_size": "md",
-                "width": "fill"
+                "width": "fill",
+                "animation_type": "fade",
+                "animation_delay": 300
               }
             }
           },
@@ -1766,7 +1822,9 @@
                         "text": "<p>“The stretch, movement, and fit are spot on. Nothing distracts you during play, which is exactly what good tenniswear should do.”</p>",
                         "text_size": "lg",
                         "width": "fill",
-                        "text_color": "#0a0a0a"
+                        "text_color": "#0a0a0a",
+                        "animation_type": "fade",
+                        "animation_delay": 450
                       }
                     },
                     "author": {
@@ -1774,7 +1832,9 @@
                       "settings": {
                         "text": "<p>Emily R.</p>",
                         "text_size": "md",
-                        "width": "fill"
+                        "width": "fill",
+                        "animation_type": "fade",
+                        "animation_delay": 600
                       }
                     }
                   },
@@ -1855,7 +1915,9 @@
                         "text": "<p>“Played a full weekend tournament in this kit and stayed comfortable the entire time. Breathability is seriously impressive.”</p>",
                         "text_size": "lg",
                         "width": "fill",
-                        "text_color": "#0a0a0a"
+                        "text_color": "#0a0a0a",
+                        "animation_type": "fade",
+                        "animation_delay": 750
                       }
                     },
                     "author": {
@@ -1863,7 +1925,9 @@
                       "settings": {
                         "text": "<p>Jason M.</p>",
                         "text_size": "md",
-                        "width": "fill"
+                        "width": "fill",
+                        "animation_type": "fade",
+                        "animation_delay": 750
                       }
                     }
                   },
@@ -1944,7 +2008,9 @@
                         "text": "<p>“I love that it actually looks elevated while still feeling performance-driven. Easily my favorite tennis collection right now.”</p>",
                         "text_size": "lg",
                         "width": "fill",
-                        "text_color": "#0a0a0a"
+                        "text_color": "#0a0a0a",
+                        "animation_type": "fade",
+                        "animation_delay": 750
                       }
                     },
                     "author": {
@@ -1952,7 +2018,9 @@
                       "settings": {
                         "text": "<p>Sophia L.</p>",
                         "text_size": "md",
-                        "width": "fill"
+                        "width": "fill",
+                        "animation_type": "fade",
+                        "animation_delay": 750
                       }
                     }
                   },
@@ -2028,7 +2096,9 @@
                 "text": "<p>QUESTIONS &amp; ANSWERS</p>",
                 "heading_size": "xl",
                 "html_tag": "h2",
-                "width": "fill"
+                "width": "fill",
+                "animation_type": "slide-bottom",
+                "animation_delay": 150
               }
             }
           },
