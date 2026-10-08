@@ -18,6 +18,8 @@
   @param {string} [crop] - The crop position of the image
   @param {string} [widths] - Optional responsive image widths
   @param {string} [sizes] - Optional responsive image sizes
+  @param {string} [loading] - Explicit image loading strategy; below-fold images default to lazy
+  @param {boolean} [auto_sizes] - Use automatic sizing for lazy images unless disabled for a known bounded width
   @param {string} [fetchpriority] - Image request priority; below-fold sections default to low
   @param {string} [placeholder] - Optional Shopify placeholder name when no image is selected
 
@@ -35,6 +37,10 @@
 {% enddoc %}
 
 {% liquid
+  assign image_loading = loading | default: 'eager'
+  if loading == blank and fetchpriority != 'high' and section.index > 2
+    assign image_loading = 'lazy'
+  endif
   assign image_fetchpriority = fetchpriority | default: 'auto'
   if fetchpriority == blank and section.index > 1
     assign image_fetchpriority = 'low'
@@ -58,7 +64,10 @@
     endif
 
     assign image_widths = widths | default: blank
-    assign image_sizes = sizes | default: blank
+    assign image_sizes = sizes | default: '100vw'
+    if image_loading == 'lazy' and auto_sizes != false
+      assign image_sizes = image_sizes | prepend: 'auto, '
+    endif
   endif
 
   if url != blank
@@ -93,29 +102,29 @@
         <source media="(max-width: 767.98px)" srcset="{{ mobile_srcset | strip }}" sizes="{{ image_sizes | default: '100vw' }}">
         {% if image_widths != blank or image_sizes != blank %}
           {% if has_image_height %}
-            {{ image | image_url: width: width, height: image_height_value, crop: crop | image_tag: widths: image_widths, sizes: image_sizes, alt: image_alt, fetchpriority: image_fetchpriority }}
+            {{ image | image_url: width: width, height: image_height_value, crop: crop | image_tag: widths: image_widths, sizes: image_sizes, alt: image_alt, fetchpriority: image_fetchpriority, loading: image_loading }}
           {% else %}
-            {{ image | image_url: width: width | image_tag: widths: image_widths, sizes: image_sizes, alt: image_alt, fetchpriority: image_fetchpriority }}
+            {{ image | image_url: width: width | image_tag: widths: image_widths, sizes: image_sizes, alt: image_alt, fetchpriority: image_fetchpriority, loading: image_loading }}
           {% endif %}
         {% else %}
           {% if has_image_height %}
-            {{ image | image_url: width: width, height: image_height_value, crop: crop | image_tag: alt: image_alt, fetchpriority: image_fetchpriority }}
+            {{ image | image_url: width: width, height: image_height_value, crop: crop | image_tag: alt: image_alt, fetchpriority: image_fetchpriority, loading: image_loading }}
           {% else %}
-            {{ image | image_url: width: width | image_tag: alt: image_alt, fetchpriority: image_fetchpriority }}
+            {{ image | image_url: width: width | image_tag: alt: image_alt, fetchpriority: image_fetchpriority, loading: image_loading }}
           {% endif %}
         {% endif %}
       </picture>
     {% elsif image_widths != blank or image_sizes != blank %}
       {% if has_image_height %}
-        {{ image | image_url: width: width, height: image_height_value, crop: crop | image_tag: widths: image_widths, sizes: image_sizes, alt: image_alt, fetchpriority: image_fetchpriority }}
+        {{ image | image_url: width: width, height: image_height_value, crop: crop | image_tag: widths: image_widths, sizes: image_sizes, alt: image_alt, fetchpriority: image_fetchpriority, loading: image_loading }}
       {% else %}
-        {{ image | image_url: width: width | image_tag: widths: image_widths, sizes: image_sizes, alt: image_alt, fetchpriority: image_fetchpriority }}
+        {{ image | image_url: width: width | image_tag: widths: image_widths, sizes: image_sizes, alt: image_alt, fetchpriority: image_fetchpriority, loading: image_loading }}
       {% endif %}
     {% else %}
       {% if has_image_height %}
-        {{ image | image_url: width: width, height: image_height_value, crop: crop | image_tag: alt: image_alt, fetchpriority: image_fetchpriority }}
+        {{ image | image_url: width: width, height: image_height_value, crop: crop | image_tag: alt: image_alt, fetchpriority: image_fetchpriority, loading: image_loading }}
       {% else %}
-        {{ image | image_url: width: width | image_tag: alt: image_alt, fetchpriority: image_fetchpriority }}
+        {{ image | image_url: width: width | image_tag: alt: image_alt, fetchpriority: image_fetchpriority, loading: image_loading }}
       {% endif %}
     {% endif %}
   {% else %}

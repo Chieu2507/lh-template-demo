@@ -39,3 +39,21 @@ test('mobile sources use width descriptors and an explicit high priority overrid
   const html = await engine.parseAndRender(shared, {section:{index:5},image,fetchpriority:''});
   assert.match(html, /fetchpriority="low"/);
  });
+
+test('lazy shared images use rendered width and retain a fallback, eager images keep explicit sizes', async () => {
+  const shared = stripShopifyMetadata(fs.readFileSync('snippets/image.liquid','utf8'));
+  const lazy = await engine.parseAndRender(shared, {section:{index:6},image,sizes:'100vw',loading:'lazy'});
+  assert.match(lazy, /sizes="auto, 100vw"/);
+  assert.match(lazy, /loading="lazy"/);
+  const eager = await engine.parseAndRender(shared, {section:{index:6},image,sizes:'380px',loading:'eager'});
+  assert.match(eager, /sizes="380px"/);
+  assert.ok(!eager.includes('auto, 380px'));
+});
+
+test('product primary and hover images both expose a full set of smaller candidates', async () => {
+  const card = stripShopifyMetadata(fs.readFileSync('snippets/product-card-image.liquid','utf8'));
+  const html = await engine.parseAndRender(card, {image,secondary_image:{...image,src:'hover.png'},width:800,height:800,crop:'center',url:'/products/toy'});
+  const imgs = html.match(/<img[^>]*>/g);
+  assert.equal(imgs.length,2);
+  for (const img of imgs) assert.match(img, /widths="160, 240, 320, 400, 480, 640, 800"/);
+});

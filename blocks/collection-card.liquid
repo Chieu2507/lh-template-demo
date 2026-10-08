@@ -139,7 +139,7 @@
 >
   <div class="collection-card-kernel__media media-hover-zoom__media{% if collection_card_image == blank %} placeholder-image{% endif %}">
     {% if collection_card_image != blank %}
-      {{ collection_card_image | image_url: width: 1200 | image_tag: widths: '288, 369, 576, 738, 1000, 1200', sizes: '(min-width: 1150px) 25vw, (min-width: 768px) 50vw, 288px', loading: 'lazy', alt: collection_card_collection.title }}
+      {{ collection_card_image | image_url: width: 1200 | image_tag: widths: '160, 224, 288, 369, 448, 576, 738, 1000, 1200', sizes: 'auto, (min-width: 1150px) 25vw, (min-width: 768px) 50vw, 288px', loading: 'lazy', alt: collection_card_collection.title }}
     {% else %}
       {% assign collection_card_placeholder_index = placeholder_index | default: 1 | minus: 1 | modulo: 6 | plus: 1 %}
       {% assign collection_card_placeholder_name = 'collection-' | append: collection_card_placeholder_index %}

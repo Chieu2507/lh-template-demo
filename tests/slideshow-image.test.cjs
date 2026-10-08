@@ -64,8 +64,8 @@ test('Peekoo art direction preserves the source and preloads the displayed respo
   assert.ok(!html.includes('crop=center'));
   const picture = html.match(/<picture>[\s\S]*?<\/picture>/)[0];
   const mobileSource = picture.match(/<source[^>]*srcset="([^"]+)" sizes="([^"]+)"/);
-  assert.equal(mobileSource[2], '440vw');
-  assert.ok(html.includes(`imagesrcset="${mobileSource[1]}" imagesizes="440vw"`));
+  assert.equal(mobileSource[2], '1860px');
+  assert.ok(html.includes(`imagesrcset="${mobileSource[1]}" imagesizes="1860px"`));
   assert.ok(picture.includes('sizes="(max-width: 1149.98px) 278vw, 107vw"'));
 });
 test('missing preset uses the actual small default and focal points avoid center crops', async () => {
@@ -83,3 +83,12 @@ test('portrait art and source resolution limits preserve valid responsive candid
   assert.ok(!small.includes('height=620&amp;crop=center'));
 });
 module.exports = { render };
+
+test('Peekoo mobile image hints follow frame height and each artwork scale', async () => {
+  for (const [src, ratio, scale] of [['5282e-peekoo-optimized.webp', 2400/1025, 1.0312], ['f9b22.jpg', 2001/801, 1.0645], ['561ad.jpg', 2.5, 1.029]]) {
+    const html = await render('large', {image:{...image,src,aspect_ratio:ratio}}, {layout_preset:'peekoo'});
+    const expected = `${Math.ceil(620*ratio*scale)}px`;
+    assert.ok(html.includes(`imagesizes="${expected}"`));
+    assert.match(html, new RegExp(`<source[^>]*sizes="${expected}"`));
+  }
+});
