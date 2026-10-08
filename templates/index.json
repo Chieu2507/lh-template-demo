@@ -7407,7 +7407,7 @@
           "static": true,
           "settings": {
             "collection": "new-arrivals-perky",
-            "max_products": 8,
+            "max_products": 6,
             "layout_type": "carousel",
             "columns_desktop": "4",
             "columns_tablet": "3",
