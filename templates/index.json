@@ -1031,7 +1031,7 @@
           "type": "collection-thumbnail",
           "settings": {
             "collection": "",
-            "custom_title": "0–6 Months",
+            "custom_title": "0\u20136 Months",
             "custom_link": "",
             "image": "shopify://shop_images/peekoo-age-0-6-months.jpg"
           },
@@ -1041,7 +1041,7 @@
           "type": "collection-thumbnail",
           "settings": {
             "collection": "",
-            "custom_title": "6–12 Months",
+            "custom_title": "6\u201312 Months",
             "custom_link": "",
             "image": "shopify://shop_images/peekoo-age-6-12-months.jpg"
           },
@@ -1051,7 +1051,7 @@
           "type": "collection-thumbnail",
           "settings": {
             "collection": "",
-            "custom_title": "1–2 Years",
+            "custom_title": "1\u20132 Years",
             "custom_link": "",
             "image": "shopify://shop_images/peekoo-age-1-2-years.jpg"
           },
@@ -1061,7 +1061,7 @@
           "type": "collection-thumbnail",
           "settings": {
             "collection": "",
-            "custom_title": "3–4 Years",
+            "custom_title": "3\u20134 Years",
             "custom_link": "",
             "image": "shopify://shop_images/peekoo-age-3-4-years.jpg"
           },
@@ -1357,7 +1357,7 @@
           "type": "product-callout",
           "static": true,
           "settings": {
-            "editor_title": "Perky — Shop sale",
+            "editor_title": "Perky \u2014 Shop sale",
             "image": "shopify://shop_images/perky-hotspot-room.jpg",
             "image_ratio_desktop": "auto",
             "image_ratio_mobile": "ratio_16_9",
@@ -3475,7 +3475,7 @@
                 "heading-1": {
                   "type": "heading",
                   "settings": {
-                    "text": "<p>Enjoy saving 20% ☀️</p>",
+                    "text": "<p>Enjoy saving 20% \u2600\ufe0f</p>",
                     "heading_size": "lg",
                     "custom_heading_size": 24,
                     "html_tag": "div",
@@ -3536,7 +3536,7 @@
                 "heading-2": {
                   "type": "heading",
                   "settings": {
-                    "text": "<p>Imagination begins with play 🧩</p>",
+                    "text": "<p>Imagination begins with play \ud83e\udde9</p>",
                     "heading_size": "lg",
                     "custom_heading_size": 24,
                     "html_tag": "div",
@@ -3597,7 +3597,7 @@
                 "heading-3": {
                   "type": "heading",
                   "settings": {
-                    "text": "<p>Enjoy saving 20% ☀️</p>",
+                    "text": "<p>Enjoy saving 20% \u2600\ufe0f</p>",
                     "heading_size": "lg",
                     "custom_heading_size": 24,
                     "html_tag": "div",
@@ -3658,7 +3658,7 @@
                 "heading-4": {
                   "type": "heading",
                   "settings": {
-                    "text": "<p>Imagination begins with play 🧩</p>",
+                    "text": "<p>Imagination begins with play \ud83e\udde9</p>",
                     "heading_size": "lg",
                     "custom_heading_size": 24,
                     "html_tag": "div",
@@ -3719,7 +3719,7 @@
                 "heading-5": {
                   "type": "heading",
                   "settings": {
-                    "text": "<p>Enjoy saving up to 15% ⭐️</p>",
+                    "text": "<p>Enjoy saving up to 15% \u2b50\ufe0f</p>",
                     "heading_size": "lg",
                     "custom_heading_size": 24,
                     "html_tag": "div",
@@ -3780,7 +3780,7 @@
                 "heading-6": {
                   "type": "heading",
                   "settings": {
-                    "text": "<p>Imagination begins with play 🧩</p>",
+                    "text": "<p>Imagination begins with play \ud83e\udde9</p>",
                     "heading_size": "lg",
                     "custom_heading_size": 24,
                     "html_tag": "div",
@@ -4037,7 +4037,7 @@
       "custom_css": [
         ".collection-tabs__controls{display:contents!important}.tab-layout__navigation{column-gap:28px;flex-wrap:nowrap;overflow:auto}.product-card{--product-card-alignment:center;--product-card-content-alignment:center}@media(max-width:1149.98px){.collection-tabs__controls-group{display:flex!important;flex-direction:column!important;gap:24px!important}}@media(min-width:768px) and (max-width:1149.98px){.collection-tabs__spacing{padding:64px 0}.collection-tab__products{gap:20px!important}}"
       ],
-      "name": "Shop new arrivals — Age tabs",
+      "name": "Shop new arrivals \u2014 Age tabs",
       "settings": {
         "section_width": "page_width",
         "layout_direction": "vertical",
@@ -4157,7 +4157,7 @@
             "text": {
               "type": "text",
               "settings": {
-                "text": "<p>Get ready! The Holiday Jellycat collection is arriving soon. Count down to launch day and be first to cuddle up with this year’s festive favorites!</p>",
+                "text": "<p>Get ready! The Holiday Jellycat collection is arriving soon. Count down to launch day and be first to cuddle up with this year\u2019s festive favorites!</p>",
                 "text_size": "md",
                 "customize_line_height": false,
                 "line_height": 26,
@@ -5342,7 +5342,7 @@
                     "text": {
                       "type": "text",
                       "settings": {
-                        "text": "<p>Inspire children to think beyond boundaries, explore their curiosity, and transform simple ideas into amazing creations. With every play, they learn to imagine, design, and innovate — building confidence, creativity, and a lifelong love for discovery.</p>",
+                        "text": "<p>Inspire children to think beyond boundaries, explore their curiosity, and transform simple ideas into amazing creations. With every play, they learn to imagine, design, and innovate \u2014 building confidence, creativity, and a lifelong love for discovery.</p>",
                         "text_size": "md",
                         "width": "fill",
                         "animation_type": "fade",
@@ -5390,7 +5390,7 @@
       "custom_css": [
         ".split-banner__content>.group{padding-inline:128px}.split-banner__content>.image-block{align-self:stretch}@media(max-width:1149px){.split-banner__content>.group{padding:40px 20px!important;gap:24px!important}.split-banner__content>.group .group{gap:12px!important}}@media(min-width:768px) and (max-width:1149px){.image-block__media,.image-block__media img{height:100%;aspect-ratio:auto}}"
       ],
-      "name": "Image with text — Tinker",
+      "name": "Image with text \u2014 Tinker",
       "settings": {
         "section_width": "full_width_no_padding",
         "height": "auto",
@@ -5504,7 +5504,7 @@
                     "quote": {
                       "type": "text",
                       "settings": {
-                        "text": "<p>The toys are made from safe materials and the bright colors really capture my son's attention. It’s been a joy watching him explore and play independently.</p>",
+                        "text": "<p>The toys are made from safe materials and the bright colors really capture my son's attention. It\u2019s been a joy watching him explore and play independently.</p>",
                         "text_size": "md",
                         "customize_letter_spacing": true,
                         "letter_spacing": 0,
@@ -5778,7 +5778,7 @@
                     "quote": {
                       "type": "text",
                       "settings": {
-                        "text": "<p>We’ve tried many toys, but these are the ones my always come back to. Durable, creative, and so much fun. Even the grandparents love playing with.</p>",
+                        "text": "<p>We\u2019ve tried many toys, but these are the ones my always come back to. Durable, creative, and so much fun. Even the grandparents love playing with.</p>",
                         "text_size": "md",
                         "customize_letter_spacing": true,
                         "letter_spacing": 0,
@@ -6519,7 +6519,7 @@
                     "text": {
                       "type": "text",
                       "settings": {
-                        "text": "<p>Discover exciting in-store events for kids and families–crafts, games, storytime!</p>",
+                        "text": "<p>Discover exciting in-store events for kids and families\u2013crafts, games, storytime!</p>",
                         "text_size": "md",
                         "width": "fill",
                         "animation_type": "fade",
@@ -7075,7 +7075,7 @@
                 "text": {
                   "type": "text",
                   "settings": {
-                    "text": "<p>Mastermind has a magical selection of games, and activities– the latest and the ones kids.</p>",
+                    "text": "<p>Mastermind has a magical selection of games, and activities\u2013 the latest and the ones kids.</p>",
                     "text_size": "md",
                     "customize_line_height": true,
                     "line_height": 24,
@@ -7154,7 +7154,7 @@
                 "text": {
                   "type": "text",
                   "settings": {
-                    "text": "<p>Getting a gift from Mastermind we bring a smile to anyone’s face. Stop by our stores and we’ll.</p>",
+                    "text": "<p>Getting a gift from Mastermind we bring a smile to anyone\u2019s face. Stop by our stores and we\u2019ll.</p>",
                     "text_size": "md",
                     "customize_line_height": true,
                     "line_height": 24,
@@ -7272,8 +7272,8 @@
         "@media(min-width:768px) and (max-width:1149px){.icon-text-cards__spacing{padding-block:64px}.icon-text-cards__content{--icon-text-cards-gap:40px}}"
       ],
       "settings": {
-        "layout": "grid",
-        "columns_desktop": "4",
+        "layout": "carousel",
+        "columns_desktop": "3",
         "grid_gap_desktop": 32,
         "columns_tablet": "2",
         "grid_gap_tablet": 20,
@@ -7289,7 +7289,18 @@
         "padding_bottom": 80,
         "customize_mobile_padding": true,
         "padding_top_mobile": 56,
-        "padding_bottom_mobile": 56
+        "padding_bottom_mobile": 56,
+        "navigation_position": "bottom",
+        "navigation_style": "icon_only",
+        "navigation_icon": "arrow",
+        "navigation_behavior": "always",
+        "show_navigation_on_desktop": true,
+        "show_pagination_on_desktop": true,
+        "pagination_type": "progress_bar",
+        "pagination_thickness": "thin",
+        "pagination_top_padding_desktop": 60,
+        "pagination_top_padding_mobile": 40,
+        "pagination_limit_width": false
       }
     },
     "peekoo_featured_07": {
@@ -7482,7 +7493,7 @@
           ]
         }
       },
-      "name": "Featured collection 07 — Trending this week",
+      "name": "Featured collection 07 \u2014 Trending this week",
       "settings": {
         "section_width": "page_width",
         "desktop_alignment": "left",
