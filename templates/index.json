@@ -6668,6 +6668,327 @@
         "padding_top_mobile": 0,
         "padding_bottom_mobile": 56
       }
+    },
+    "peekoo_image_cards": {
+      "type": "image-cards",
+      "blocks": {
+        "imagination": {
+          "type": "image-card",
+          "settings": {
+            "media_source": "manual",
+            "link": "",
+            "open_in_new_tab": false,
+            "background_type": "image",
+            "image": "",
+            "mobile_image": "",
+            "zoom_on_hover": false,
+            "show_overlay": true,
+            "overlay_style": "solid",
+            "overlay_opacity": 10,
+            "device": "desktop",
+            "width_desktop": "fill",
+            "width_custom_desktop": 100,
+            "limit_width_desktop": false,
+            "max_width_desktop": 1600,
+            "height_desktop": "ratio_4_3",
+            "width_mobile": "fill",
+            "width_custom_mobile": 100,
+            "limit_width_mobile": false,
+            "max_width_mobile": 1600,
+            "height_mobile": "ratio_4_3",
+            "enable_sticky": false,
+            "position_desktop": "center_left",
+            "position_mobile": "bottom_left",
+            "gap_desktop": 24,
+            "gap_mobile": 16,
+            "corner_radius": "radius_24",
+            "color_scheme": "scheme-3",
+            "padding_top": 32,
+            "padding_bottom": 32,
+            "padding_left": 40,
+            "padding_right": 40,
+            "customize_mobile_padding": true,
+            "padding_top_mobile": 20,
+            "padding_bottom_mobile": 20,
+            "padding_left_mobile": 16,
+            "padding_right_mobile": 16
+          },
+          "blocks": {
+            "header": {
+              "type": "header",
+              "settings": {
+                "width": "custom",
+                "max_width": 420,
+                "customize_mobile_size": true,
+                "width_mobile": "fill",
+                "max_width_mobile": 480,
+                "inherit_alignment": true,
+                "alignment": "left",
+                "customize_mobile_alignment": false,
+                "alignment_mobile": "center",
+                "gap_desktop": 8,
+                "gap_mobile": 8,
+                "padding_top": 0,
+                "padding_bottom": 0,
+                "padding_left": 0,
+                "padding_right": 0,
+                "customize_mobile_padding": false,
+                "padding_top_mobile": 0,
+                "padding_bottom_mobile": 0,
+                "padding_left_mobile": 0,
+                "padding_right_mobile": 0
+              },
+              "blocks": {
+                "eyebrow": {
+                  "type": "eyebrow",
+                  "settings": {
+                    "text": "<p>Imagination toys</p>",
+                    "color": "",
+                    "show_background": false,
+                    "show_icon": false,
+                    "animation_type": "none",
+                    "animation_delay": 0
+                  }
+                },
+                "heading": {
+                  "type": "heading",
+                  "settings": {
+                    "text": "<p>The Ultimate Playtime</p>",
+                    "heading_size": "display",
+                    "custom_heading_size": 24,
+                    "html_tag": "h2",
+                    "text_color": "",
+                    "outline_text": false,
+                    "width": "fill",
+                    "max_width": 640,
+                    "customize_mobile_size": false,
+                    "width_mobile": "fill",
+                    "max_width_mobile": 480,
+                    "animation_type": "none",
+                    "animation_delay": 0,
+                    "padding_top": 0,
+                    "padding_bottom": 0,
+                    "padding_left": 0,
+                    "padding_right": 0,
+                    "customize_mobile_padding": false,
+                    "padding_top_mobile": 0,
+                    "padding_bottom_mobile": 0,
+                    "padding_left_mobile": 0,
+                    "padding_right_mobile": 0
+                  },
+                  "blocks": {}
+                }
+              },
+              "block_order": [
+                "eyebrow",
+                "heading"
+              ]
+            },
+            "button": {
+              "type": "button",
+              "settings": {
+                "button_label": "Shop now",
+                "button_link": "shopify://collections/playsets-perky",
+                "button_open_in_new_tab": false,
+                "button_style": "primary",
+                "show_icon": false,
+                "icon": "arrow_right",
+                "icon_position": "after",
+                "icon_size": "inherit",
+                "icon_width": 20,
+                "width": "fit",
+                "width_mobile": "fit",
+                "animation_type": "none",
+                "animation_delay": 0,
+                "padding_top": 0,
+                "padding_bottom": 0,
+                "padding_left": 0,
+                "padding_right": 0,
+                "customize_mobile_padding": false,
+                "padding_top_mobile": 0,
+                "padding_bottom_mobile": 0,
+                "padding_left_mobile": 0,
+                "padding_right_mobile": 0
+              },
+              "blocks": {}
+            }
+          },
+          "block_order": [
+            "header",
+            "button"
+          ]
+        },
+        "holiday": {
+          "type": "image-card",
+          "settings": {
+            "media_source": "manual",
+            "link": "",
+            "open_in_new_tab": false,
+            "background_type": "image",
+            "image": "",
+            "mobile_image": "",
+            "zoom_on_hover": false,
+            "show_overlay": true,
+            "overlay_style": "solid",
+            "overlay_opacity": 10,
+            "device": "desktop",
+            "width_desktop": "fill",
+            "width_custom_desktop": 100,
+            "limit_width_desktop": false,
+            "max_width_desktop": 1600,
+            "height_desktop": "ratio_4_3",
+            "width_mobile": "fill",
+            "width_custom_mobile": 100,
+            "limit_width_mobile": false,
+            "max_width_mobile": 1600,
+            "height_mobile": "ratio_4_3",
+            "enable_sticky": false,
+            "position_desktop": "center_left",
+            "position_mobile": "bottom_left",
+            "gap_desktop": 24,
+            "gap_mobile": 16,
+            "corner_radius": "radius_24",
+            "color_scheme": "scheme-3",
+            "padding_top": 32,
+            "padding_bottom": 32,
+            "padding_left": 40,
+            "padding_right": 40,
+            "customize_mobile_padding": true,
+            "padding_top_mobile": 20,
+            "padding_bottom_mobile": 20,
+            "padding_left_mobile": 16,
+            "padding_right_mobile": 16
+          },
+          "blocks": {
+            "header": {
+              "type": "header",
+              "settings": {
+                "width": "custom",
+                "max_width": 420,
+                "customize_mobile_size": true,
+                "width_mobile": "fill",
+                "max_width_mobile": 480,
+                "inherit_alignment": true,
+                "alignment": "left",
+                "customize_mobile_alignment": false,
+                "alignment_mobile": "center",
+                "gap_desktop": 8,
+                "gap_mobile": 8,
+                "padding_top": 0,
+                "padding_bottom": 0,
+                "padding_left": 0,
+                "padding_right": 0,
+                "customize_mobile_padding": false,
+                "padding_top_mobile": 0,
+                "padding_bottom_mobile": 0,
+                "padding_left_mobile": 0,
+                "padding_right_mobile": 0
+              },
+              "blocks": {
+                "eyebrow": {
+                  "type": "eyebrow",
+                  "settings": {
+                    "text": "<p>Flash Sale: 10% Off</p>",
+                    "color": "",
+                    "show_background": false,
+                    "show_icon": false,
+                    "animation_type": "none",
+                    "animation_delay": 0
+                  }
+                },
+                "heading": {
+                  "type": "heading",
+                  "settings": {
+                    "text": "<p>Find Great Holiday Gifts</p>",
+                    "heading_size": "display",
+                    "custom_heading_size": 24,
+                    "html_tag": "h2",
+                    "text_color": "",
+                    "outline_text": false,
+                    "width": "fill",
+                    "max_width": 640,
+                    "customize_mobile_size": false,
+                    "width_mobile": "fill",
+                    "max_width_mobile": 480,
+                    "animation_type": "none",
+                    "animation_delay": 0,
+                    "padding_top": 0,
+                    "padding_bottom": 0,
+                    "padding_left": 0,
+                    "padding_right": 0,
+                    "customize_mobile_padding": false,
+                    "padding_top_mobile": 0,
+                    "padding_bottom_mobile": 0,
+                    "padding_left_mobile": 0,
+                    "padding_right_mobile": 0
+                  },
+                  "blocks": {}
+                }
+              },
+              "block_order": [
+                "eyebrow",
+                "heading"
+              ]
+            },
+            "button": {
+              "type": "button",
+              "settings": {
+                "button_label": "Grab the deal",
+                "button_link": "shopify://collections/sale-perky",
+                "button_open_in_new_tab": false,
+                "button_style": "primary",
+                "show_icon": false,
+                "icon": "arrow_right",
+                "icon_position": "after",
+                "icon_size": "inherit",
+                "icon_width": 20,
+                "width": "fit",
+                "width_mobile": "fit",
+                "animation_type": "none",
+                "animation_delay": 0,
+                "padding_top": 0,
+                "padding_bottom": 0,
+                "padding_left": 0,
+                "padding_right": 0,
+                "customize_mobile_padding": false,
+                "padding_top_mobile": 0,
+                "padding_bottom_mobile": 0,
+                "padding_left_mobile": 0,
+                "padding_right_mobile": 0
+              },
+              "blocks": {}
+            }
+          },
+          "block_order": [
+            "header",
+            "button"
+          ]
+        }
+      },
+      "block_order": [
+        "imagination",
+        "holiday"
+      ],
+      "custom_css": [
+        "@media(max-width:1149px){.image-cards-section{padding:64px 0}.image-cards-section__grid{flex-direction:column;gap:16px}.image-card{border-radius:16px}.image-card__content{padding:32px}.block-header{max-width:100%}}@media(max-width:767px){.image-cards-section{padding:56px 0}.image-card__content{padding:20px 16px}}"
+      ],
+      "settings": {
+        "show_header": false,
+        "header_gap": 40,
+        "card_layout": "flow",
+        "section_width": "full_width",
+        "height": "auto",
+        "direction": "horizontal",
+        "vertical_on_mobile": true,
+        "gap_desktop": 24,
+        "gap_mobile": 16,
+        "color_scheme": "scheme-1",
+        "padding_top": 80,
+        "padding_bottom": 80,
+        "customize_mobile_padding": true,
+        "padding_top_mobile": 56,
+        "padding_bottom_mobile": 56
+      }
     }
   },
   "order": [
@@ -6675,6 +6996,7 @@
     "scrolling_text",
     "collection_list",
     "new_arrivals_tabs",
+    "peekoo_image_cards",
     "featured_collection",
     "perky_hotspot",
     "perky_age_collections",
