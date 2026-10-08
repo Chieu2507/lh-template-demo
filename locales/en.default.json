@@ -390,5 +390,9 @@
   },
   "showcase_carousel": {
     "go_to_slide": "Go to slide {{ index }}"
-  }
+  },
+  "marquee": {
+  "copied": "Coupon code copied",
+  "copy_failed": "Could not copy. Select and copy the code."
+}
 }
