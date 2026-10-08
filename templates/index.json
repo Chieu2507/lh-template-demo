@@ -1030,60 +1030,50 @@
         "rattles": {
           "type": "collection-thumbnail",
           "settings": {
-            "collection": "rattles-perky",
-            "custom_title": "Rattles",
+            "collection": "",
+            "custom_title": "0–6 Months",
             "custom_link": "",
-            "image": ""
+            "image": "shopify://shop_images/peekoo-age-0-6-months.jpg"
           },
           "blocks": {}
         },
         "baby-toys": {
           "type": "collection-thumbnail",
           "settings": {
-            "collection": "baby-toys-perky",
-            "custom_title": "Baby Toys",
+            "collection": "",
+            "custom_title": "6–12 Months",
             "custom_link": "",
-            "image": ""
+            "image": "shopify://shop_images/peekoo-age-6-12-months.jpg"
           },
           "blocks": {}
         },
         "art-crafts": {
           "type": "collection-thumbnail",
           "settings": {
-            "collection": "art-crafts-perky",
-            "custom_title": "Art & Crafts",
+            "collection": "",
+            "custom_title": "1–2 Years",
             "custom_link": "",
-            "image": ""
+            "image": "shopify://shop_images/peekoo-age-1-2-years.jpg"
           },
           "blocks": {}
         },
         "handmade": {
           "type": "collection-thumbnail",
           "settings": {
-            "collection": "handmade-perky",
-            "custom_title": "Handmade",
+            "collection": "",
+            "custom_title": "3–4 Years",
             "custom_link": "",
-            "image": ""
+            "image": "shopify://shop_images/peekoo-age-3-4-years.jpg"
           },
           "blocks": {}
         },
         "puzzles": {
           "type": "collection-thumbnail",
           "settings": {
-            "collection": "puzzles-perky",
-            "custom_title": "Puzzles",
+            "collection": "",
+            "custom_title": "5+ Years",
             "custom_link": "",
-            "image": ""
-          },
-          "blocks": {}
-        },
-        "plush": {
-          "type": "collection-thumbnail",
-          "settings": {
-            "collection": "plush-perky",
-            "custom_title": "Plush",
-            "custom_link": "",
-            "image": ""
+            "image": "shopify://shop_images/peekoo-age-5-plus-years.jpg"
           },
           "blocks": {}
         },
@@ -1098,7 +1088,7 @@
             "heading": {
               "type": "heading",
               "settings": {
-                "text": "<p>Shop by products</p>",
+                "text": "<p>Shop Gifts by Age</p>",
                 "heading_size": "xl",
                 "html_tag": "h2",
                 "width": "fill",
@@ -1117,23 +1107,27 @@
         "baby-toys",
         "art-crafts",
         "handmade",
-        "puzzles",
-        "plush"
+        "puzzles"
+      ],
+      "custom_css": [
+        ".collection-thumbnail__title {display: none;}",
+        ".collection-thumbnails {--collection-thumbnail-image-width: 160px;}",
+        "@media (min-width: 768px) and (max-width: 1149.98px) {.collection-thumbnails {padding-block: 64px;} .collection-thumbnail:not(:last-child) {padding-right: 4px;}}"
       ],
       "settings": {
         "section_width": "page_width",
         "alignment": "center",
         "layout": "carousel",
-        "gap_desktop": 32,
+        "gap_desktop": 48,
         "gap_mobile": 16,
         "content_gap_desktop": 48,
         "content_gap_mobile": 36,
         "card_layout": "vertical",
-        "card_gap": 24,
-        "image_width_desktop": 207,
-        "image_width_mobile": 134,
+        "card_gap": 0,
+        "image_width_desktop": 159,
+        "image_width_mobile": 160,
         "image_ratio": "square",
-        "image_corner_radius": "full",
+        "image_corner_radius": "custom",
         "image_corner_radius_custom": 0,
         "title_font": "heading",
         "html_tag": "h3",
@@ -1151,7 +1145,7 @@
         "color_scheme": "scheme-1",
         "background_color": "#ffffff",
         "padding_top": 80,
-        "padding_bottom": 80,
+        "padding_bottom": 96,
         "customize_mobile_padding": true,
         "padding_top_mobile": 56,
         "padding_bottom_mobile": 56
