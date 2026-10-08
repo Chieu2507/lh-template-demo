@@ -44,7 +44,19 @@
   endcomment
   assign slide_image_sizes = '100vw'
   assign slide_mobile_image_sizes = blank
+  assign slide_narrow_crop_left = 0
+  assign slide_narrow_crop_width = 0
   if section.settings.layout_preset == 'peekoo'
+    comment
+      At the saved 620px height, this artwork's existing narrow-phone placement
+      never exposes the outer panorama. Trim only those pixels, preserving scale.
+      Other heights, artwork and merchant-selected mobile images stay uncropped.
+    endcomment
+    if slide_mobile_height == 620 and block.settings.mobile_image == blank and block.settings.image.src contains '5282e'
+      assign slide_narrow_crop_left = block.settings.image.width | divided_by: 6 | floor
+      assign slide_narrow_crop_width = block.settings.image.width | times: 13 | divided_by: 24 | floor
+      assign slide_narrow_crop_offset = slide_narrow_crop_left | times: 1.0312 | divided_by: block.settings.image.height
+    endif
     assign slide_mobile_height = 0
     assign slide_image_sizes = '(max-width: 1149.98px) 278vw, 107vw'
     assign slide_mobile_image_sizes = '440vw'
@@ -56,6 +68,7 @@
 %}
 
 {% capture slide_style %}
+  {% if slide_narrow_crop_width > 0 %}--slideshow-narrow-crop-offset: {{ slide_narrow_crop_offset }};{% endif %}
   --slideshow-content-padding-top: {{ block.settings.content_padding_top | default: 70 }}px;
   --slideshow-content-padding-bottom: {{ block.settings.content_padding_bottom | default: 70 }}px;
   --slideshow-content-padding-top-mobile: {{ block.settings.content_padding_top_mobile | default: 50 }}px;
@@ -68,13 +81,14 @@
 
 {% if slide_image_loading == 'eager' and section.index == 1 and slide_media_type == 'image' and block.settings.image != blank %}
   <!-- theme-lcp-preloads:start -->
-  {% render 'slideshow-image', image: block.settings.image, mobile_image: block.settings.mobile_image, mobile_height: slide_mobile_height, sizes: slide_image_sizes, mobile_image_sizes: slide_mobile_image_sizes, preload: true %}
+  {% render 'slideshow-image', image: block.settings.image, mobile_image: block.settings.mobile_image, mobile_height: slide_mobile_height, sizes: slide_image_sizes, mobile_image_sizes: slide_mobile_image_sizes, narrow_crop_left: slide_narrow_crop_left, narrow_crop_width: slide_narrow_crop_width, preload: true %}
   <!-- theme-lcp-preloads:end -->
 {% endif %}
 
 <div
   class="swiper-slide slideshow-slide slideshow-slide--{{ slide_layout }} hero hero--width-full hero--classic hero--content-{{ slide_content_width }} hero--desktop-adapt hero--mobile-adapt color-scheme section-color-scope {{ slide_scheme }}"
   data-slideshow-slide
+  {% if slide_narrow_crop_width > 0 %}data-slideshow-narrow-crop{% endif %}
   data-slideshow-color-scheme="{{ slide_scheme | escape }}"
   data-parallax="{{ block.settings.parallax_effect | default: 'none' }}"
   {% if slide_style != blank %}style="{{ slide_style | strip }}"{% endif %}
@@ -86,7 +100,7 @@
         {% if slide_media_type == 'video' and block.settings.video != blank %}
           {{ block.settings.video | video_tag: image_size: '2400x', autoplay: true, loop: true, muted: true, controls: false, playsinline: true, class: 'slideshow-slide__video' }}
         {% elsif block.settings.image != blank %}
-          {% render 'slideshow-image', image: block.settings.image, mobile_image: block.settings.mobile_image, mobile_height: slide_mobile_height, sizes: slide_image_sizes, mobile_image_sizes: slide_mobile_image_sizes, loading: slide_image_loading, fetchpriority: slide_image_fetchpriority %}
+          {% render 'slideshow-image', image: block.settings.image, mobile_image: block.settings.mobile_image, mobile_height: slide_mobile_height, sizes: slide_image_sizes, mobile_image_sizes: slide_mobile_image_sizes, narrow_crop_left: slide_narrow_crop_left, narrow_crop_width: slide_narrow_crop_width, loading: slide_image_loading, fetchpriority: slide_image_fetchpriority %}
         {% else %}
           {{ 'lifestyle-1' | placeholder_svg_tag: 'hero__placeholder' }}
         {% endif %}

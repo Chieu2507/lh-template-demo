@@ -90,6 +90,12 @@
     top: 0;
   }
 }
+/* Compensate the CDN region's removed pixels at the original artwork scale. */
+@media (min-width: 320px) and (max-width: 479.98px) {
+  .slideshow--peekoo .slideshow-slide[data-slideshow-narrow-crop]:has(img[src*="5282e"]) .slideshow-slide__media img {
+    left: calc(-106.65% + var(--slideshow-height-mobile) * var(--slideshow-narrow-crop-offset));
+  }
+}
 @media (max-width: 767.98px) {
   .slideshow--peekoo .slideshow-slide:has(img[src*="5282e"]) .slideshow-slide__media img {
     width: auto;
