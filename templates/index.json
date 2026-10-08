@@ -1306,6 +1306,7 @@
           "block_order": []
         }
       },
+      "disabled": true,
       "settings": {
         "section_width": "page_width",
         "desktop_alignment": "left",
@@ -3847,15 +3848,15 @@
         "tab_2": {
           "type": "collection-tab",
           "settings": {
-            "label": "Men",
-            "collection": "new-arrivals-strideo"
+            "label": "0-6 Months",
+            "collection": "new-arrivals-perky"
           },
           "blocks": {
             "product-card": {
               "type": "product-card",
               "static": true,
               "settings": {
-                "color_type": "inherit",
+                "color_type": "color_scheme",
                 "color_scheme": "scheme-1"
               },
               "blocks": {}
@@ -3866,15 +3867,15 @@
         "tab_3": {
           "type": "collection-tab",
           "settings": {
-            "label": "Women",
-            "collection": "new-arrivals-strideo"
+            "label": "6-12 Months",
+            "collection": "new-arrivals-perky"
           },
           "blocks": {
             "product-card": {
               "type": "product-card",
               "static": true,
               "settings": {
-                "color_type": "inherit",
+                "color_type": "color_scheme",
                 "color_scheme": "scheme-1"
               },
               "blocks": {}
@@ -3887,14 +3888,14 @@
           "static": true,
           "settings": {
             "width": "fit",
-            "max_width": 750,
-            "customize_mobile_size": false,
-            "width_mobile": "fit",
+            "max_width": 620,
+            "customize_mobile_size": true,
+            "width_mobile": "fill",
             "max_width_mobile": 480,
             "inherit_alignment": false,
             "alignment": "left",
-            "customize_mobile_alignment": false,
-            "alignment_mobile": "left",
+            "customize_mobile_alignment": true,
+            "alignment_mobile": "center",
             "gap_desktop": 12,
             "gap_mobile": 8,
             "padding_top": 0,
@@ -3911,7 +3912,7 @@
             "heading": {
               "type": "heading",
               "settings": {
-                "text": "<p>New arrivals</p>",
+                "text": "<p>Shop new arrivals</p>",
                 "heading_size": "xl",
                 "custom_heading_size": 24,
                 "html_tag": "h2",
@@ -3922,7 +3923,7 @@
                 "customize_mobile_size": false,
                 "width_mobile": "fit",
                 "max_width_mobile": 480,
-                "animation_type": "rotate-words",
+                "animation_type": "slide-bottom",
                 "animation_delay": 150,
                 "padding_top": 0,
                 "padding_bottom": 0,
@@ -3949,10 +3950,10 @@
             "vertical_layout": false,
             "style": "underline",
             "active_style": "primary",
-            "gap_desktop": 24,
-            "gap_mobile": 24,
-            "font": "body",
-            "heading_size": "lg",
+            "gap_desktop": 28,
+            "gap_mobile": 28,
+            "font": "heading",
+            "heading_size": "md",
             "custom_heading_size": 24
           },
           "blocks": {}
@@ -3962,7 +3963,7 @@
           "static": true,
           "settings": {
             "show_button": true,
-            "button_label": "View all",
+            "button_label": "View all products",
             "button_style": "tertiary",
             "show_icon": false,
             "icon": "arrow",
@@ -3982,39 +3983,78 @@
             "padding_right_mobile": 0
           },
           "blocks": {}
+        },
+        "tab_1_2": {
+          "type": "collection-tab",
+          "settings": {
+            "label": "1-2 Years",
+            "collection": "new-arrivals-perky"
+          },
+          "blocks": {
+            "product-card": {
+              "type": "product-card",
+              "static": true,
+              "settings": {
+                "color_type": "color_scheme",
+                "color_scheme": "scheme-1"
+              },
+              "blocks": {}
+            }
+          },
+          "block_order": []
+        },
+        "tab_3_4": {
+          "type": "collection-tab",
+          "settings": {
+            "label": "3-4 Years",
+            "collection": "new-arrivals-perky"
+          },
+          "blocks": {
+            "product-card": {
+              "type": "product-card",
+              "static": true,
+              "settings": {
+                "color_type": "color_scheme",
+                "color_scheme": "scheme-1"
+              },
+              "blocks": {}
+            }
+          },
+          "block_order": []
         }
       },
       "block_order": [
         "tab_2",
-        "tab_3"
+        "tab_3",
+        "tab_1_2",
+        "tab_3_4"
       ],
-      "disabled": true,
       "custom_css": [
-        "@media (min-width: 768px) and (max-width: 1149.98px) {.collection-tabs__spacing {padding-top: 80px; padding-bottom: 80px; }}"
+        ".tab-layout__navigation{column-gap:28px;flex-wrap:nowrap;overflow:auto}.product-card{--product-card-alignment:center;--product-card-content-alignment:center}@media(max-width:1149.98px){.collection-tabs__controls-group{display:flex!important;flex-direction:column!important;gap:24px!important}}@media(min-width:768px) and (max-width:1149.98px){.collection-tabs__spacing{padding:64px 0}.collection-tab__products{gap:20px!important}.tab-layout__navigation{justify-content:center!important}}"
       ],
-      "name": "New arrivals — Tabs",
+      "name": "Shop new arrivals — Age tabs",
       "settings": {
         "section_width": "page_width",
         "layout_direction": "vertical",
         "header_layout": "inline",
         "tab_position": "left",
         "mobile_alignment": "left",
-        "gap_desktop": 40,
+        "gap_desktop": 48,
         "gap_mobile": 36,
-        "max_products": 8,
-        "layout_type": "carousel",
+        "max_products": 4,
+        "layout_type": "grid",
         "columns_desktop": "4",
-        "columns_tablet": "2",
-        "columns_mobile": "1",
+        "columns_tablet": "4",
+        "columns_mobile": "2",
         "show_next_slide_preview_on_desktop": false,
-        "product_gap_desktop": 10,
-        "product_gap_mobile": 10,
-        "show_navigation_on_desktop": true,
+        "product_gap_desktop": 32,
+        "product_gap_mobile": 12,
+        "show_navigation_on_desktop": false,
         "navigation_position": "bottom",
         "navigation_style": "icon_only",
         "navigation_icon": "arrow",
         "navigation_behavior": "show_on_hover",
-        "show_pagination_on_desktop": true,
+        "show_pagination_on_desktop": false,
         "pagination_type": "progress_bar",
         "pagination_thickness": "thin",
         "pagination_top_padding_desktop": 40,
@@ -4024,12 +4064,12 @@
         "autoplay": false,
         "autoplay_pause_on_hover": true,
         "autoplay_speed": 4,
-        "color_scheme": "scheme-1",
-        "padding_top": 96,
-        "padding_bottom": 96,
+        "color_scheme": "scheme-2",
+        "padding_top": 80,
+        "padding_bottom": 80,
         "customize_mobile_padding": true,
-        "padding_top_mobile": 64,
-        "padding_bottom_mobile": 64
+        "padding_top_mobile": 56,
+        "padding_bottom_mobile": 56
       }
     },
     "countdown_timer": {
@@ -6630,6 +6670,7 @@
     "slideshow",
     "scrolling_text",
     "collection_list",
+    "new_arrivals_tabs",
     "featured_collection",
     "perky_hotspot",
     "perky_age_collections",
@@ -6640,7 +6681,6 @@
     "collections_image_list",
     "scroll_reading_text",
     "multiple_images_text",
-    "new_arrivals_tabs",
     "countdown_timer",
     "perky_blog_posts",
     "perky_gallery",
