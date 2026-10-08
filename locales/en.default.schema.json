@@ -237,7 +237,8 @@
     "collection_badges": "Collection badges",
     "tag_badges": "Tag-based badges",
     "accordion_options": "Accordion options",
-    "image_text_card_settings": "Image text cards"
+    "image_text_card_settings": "Image text cards",
+    "section_padding_label": "Section padding"
   },
   "labels": {
     "multiple_images_navigation": "Show navigation",
@@ -739,7 +740,12 @@
     "mobile_controls_alignment": "Mobile controls alignment",
     "limit_pagination_width": "Limit pagination width",
     "pagination_max_width": "Pagination maximum width",
-    "layout": "Layout"
+    "layout": "Layout",
+    "background_color_label": "Background color",
+    "top_padding_label": "Top padding",
+    "bottom_padding_label": "Bottom padding",
+    "mobile_top_padding_label": "Mobile top padding",
+    "mobile_bottom_padding_label": "Mobile bottom padding"
   },
   "options": {
     "product_quantity_style": {
