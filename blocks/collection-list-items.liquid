@@ -55,7 +55,7 @@
   endif
 
   assign collection_list_navigation_position = block.settings.navigation_position | default: 'inside'
-  unless collection_list_navigation_position == 'inside' or collection_list_navigation_position == 'outside' or collection_list_navigation_position == 'top'
+  unless collection_list_navigation_position == 'inside' or collection_list_navigation_position == 'outside' or collection_list_navigation_position == 'top' or collection_list_navigation_position == 'bottom'
     assign collection_list_navigation_position = 'inside'
   endunless
 
@@ -169,7 +169,7 @@
 {% assign collection_list_pagination_style = collection_list_pagination_style | strip %}
 
 {% capture collection_list_navigation_center_style %}
-  {% if collection_list_show_pagination and collection_list_navigation_position != 'top' and block.settings.pagination_visibility != 'tablet_mobile' %}--swiper-navigation-center-offset: calc(({{ collection_list_pagination_top_padding_desktop }}px + {{ collection_list_pagination_size }}) / 2);{% endif %}
+  {% if collection_list_show_pagination and collection_list_navigation_position != 'top' and collection_list_navigation_position != 'bottom' and block.settings.pagination_visibility != 'tablet_mobile' %}--swiper-navigation-center-offset: calc(({{ collection_list_pagination_top_padding_desktop }}px + {{ collection_list_pagination_size }}) / 2);{% endif %}
 {% endcapture %}
 {% assign collection_list_navigation_center_style = collection_list_navigation_center_style | strip %}
 
@@ -180,7 +180,7 @@
       position: 'inside',
       style: collection_list_navigation_style,
       icon: collection_list_navigation_icon,
-      behavior: collection_list_navigation_behavior,
+      behavior: 'always',
       centered: false,
       wrapper_class: 'collection-card-list__navigation collection-card-list__navigation--top',
       wrapper_attributes: 'data-collection-list-navigation',
@@ -190,6 +190,8 @@
       previous_label: collection_list_previous_label,
       next_label: collection_list_next_label
     %}
+  {% elsif collection_list_navigation_position == 'bottom' %}
+    {% render 'swiper-navigation', show: collection_list_show_navigation, style: collection_list_navigation_style, icon: collection_list_navigation_icon, behavior: collection_list_navigation_behavior, centered: false, wrapper_class: 'collection-card-list__navigation collection-card-list__navigation--bottom', wrapper_attributes: 'data-collection-list-navigation', button_class: 'collection-card-list__carousel-button', previous_attribute: 'data-collection-list-previous', next_attribute: 'data-collection-list-next', previous_label: collection_list_previous_label, next_label: collection_list_next_label %}
   {% else %}
     {% render 'swiper-navigation',
       show: collection_list_show_navigation,
@@ -340,15 +342,11 @@
     margin-inline-end: calc(-1 * var(--swiper-nav-size) / 2);
   }
 
-  @media (min-width: 768px) and (hover: hover) and (pointer: fine) {
-    .collection-card-list__navigation.swiper-carousel__navigation--show_on_hover {
-      opacity: 0;
-      transition: opacity var(--motion-duration-standard) var(--motion-ease-standard);
-    }
-
-    .collection-card-list__carousel-wrap:is(:hover, :focus-within) .swiper-carousel__navigation--show_on_hover {
-      opacity: 1;
-    }
+  .collection-card-list__navigation.collection-card-list__navigation--bottom { position: absolute; inset: auto 0 0 auto; width: 76px; padding: 0; gap: 28px; transform: translateY(50%); }
+  .collection-card-list__navigation--bottom .swiper-nav-button { --swiper-nav-size: 24px; --swiper-nav-icon-size: 24px; flex: 0 0 24px; }
+  @media (min-width: 768px) {
+    .collection-card-list__carousel-wrap:has(> .collection-card-list__navigation--bottom) .collection-card-list__pagination { max-width: calc(100% - 116px); margin-inline: 0; }
+    .collection-card-list__carousel-wrap:has(> .collection-card-list__navigation--bottom):not(:has(.collection-card-list__pagination)) { padding-bottom: 50px; }
   }
 
   .collection-card-list__carousel-button {
@@ -361,23 +359,6 @@
 
   @media (min-width: 768px) and (max-width: 1149.98px) {
     .collection-card-list__carousel-wrap:has(.collection-card-list__pagination--tablet-mobile) .collection-card-list__navigation { display: none; }
-  }
-
-  .collection-card-list__pagination--progress_bar {
-    --swiper-pagination-progressbar-bg-color: color-mix(in srgb, var(--body-color) 20%, transparent);
-    --swiper-pagination-color: var(--body-color);
-  }
-
-  .collection-card-list__pagination--bullets {
-    --swiper-pagination-bullet-size: 0.5rem;
-    --swiper-pagination-bullet-horizontal-gap: 0;
-    --swiper-pagination-bullet-inactive-color: color-mix(in srgb, var(--body-color) 30%, transparent);
-    --swiper-pagination-bullet-inactive-opacity: 1;
-    --swiper-pagination-color: var(--body-color);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 0.5rem;
   }
 
   @media (min-width: 768px) and (max-width: 1149.98px) {
@@ -617,6 +598,10 @@
         {
           "value": "top",
           "label": "t:options.position.top"
+        },
+        {
+          "value": "bottom",
+          "label": "t:options.position.bottom"
         }
       ],
       "default": "inside",
@@ -683,7 +668,7 @@
         }
       ],
       "default": "show_on_hover",
-      "visible_if": "{{ block.settings.layout == 'carousel' and block.settings.show_navigation_on_desktop }}"
+      "visible_if": "{{ block.settings.layout == 'carousel' and block.settings.show_navigation_on_desktop and block.settings.navigation_position != 'top' }}"
     },
     {
       "type": "header",
