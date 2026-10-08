@@ -79,6 +79,7 @@
           data-gap-tablet="{{ section.settings.grid_gap_tablet | default: 20 }}"
           data-gap-mobile="{{ section.settings.grid_gap_mobile | default: 16 }}"
           data-pagination-type="{{ section.settings.pagination_type | default: 'bullets' }}"
+          data-pagination-label="{{ 'carousel.go_to_slide' | t: index: '[index]' | escape }}"
         >
           {% capture icon_cards_pagination %}
             {% if section.settings.show_pagination_on_desktop or section.settings.show_pagination_on_mobile %}

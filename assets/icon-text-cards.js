@@ -46,7 +46,7 @@ export const initializeThemeModule = (scope = document) => {
         el: pagination,
         type: carousel.dataset.paginationType === 'progress_bar' ? 'progressbar' : 'bullets',
         clickable: true,
-        renderBullet: (index, className) => `<button type="button" class="${className}"></button>`,
+        renderBullet: (index, className) => `<button type="button" class="${className}" aria-label="${carousel.dataset.paginationLabel.replace('[index]', index + 1).replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/</g, '&lt;')}"></button>`,
       } } : {}),
     });
     instances.set(root, { swiper, viewport, source, carousel, moved });
