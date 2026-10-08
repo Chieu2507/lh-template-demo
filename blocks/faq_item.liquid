@@ -1,3 +1,56 @@
+{% comment %}
+  Elara compatibility: saved instances retain their original rendering and
+  responsive contract. New presets explicitly opt into the rebuilt layout.
+{% endcomment %}
+{% if block.settings.use_elara_layout %}
+{% liquid
+  assign faq_item_id = 'faq-' | append: block.id
+  assign faq_content_id = faq_item_id | append: '-content'
+  assign faq_question = block.settings.question | default: 'Frequently asked question'
+  assign faq_question_icon = block.settings.question_icon | default: 'check'
+  assign faq_question_icon_gap = block.settings.question_icon_gap | default: 8 | plus: 0
+  assign faq_question_icon_size = block.settings.question_icon_size | default: 20 | plus: 0
+  if faq_question_icon_gap < 0 or faq_question_icon_gap > 100
+    assign faq_question_icon_gap = 8
+  endif
+  if faq_question_icon_size < 0 or faq_question_icon_size > 100
+    assign faq_question_icon_size = 20
+  endif
+%}
+
+{% capture faq_nested_answer %}{% content_for 'blocks' %}{% endcapture %}
+{% assign faq_nested_answer = faq_nested_answer | strip %}
+{% capture faq_answer %}
+  {% if faq_nested_answer != blank %}
+    {{ faq_nested_answer }}
+  {% elsif block.settings.answer != blank %}
+    {{ block.settings.answer }}
+  {% elsif request.design_mode %}
+    <p>Share the answer to this question here.</p>
+  {% endif %}
+{% endcapture %}
+{% assign faq_answer = faq_answer | strip %}
+
+{% capture faq_summary %}
+  <span class="elara-faq-item__question-wrap" style="--faq-question-icon-gap: {{ faq_question_icon_gap }}px;">
+    {% if block.settings.show_question_icon %}
+      <span class="elara-faq-item__question-icon" style="--faq-question-icon-size: {{ faq_question_icon_size }}px;" aria-hidden="true">
+        {% render 'icon', icon: faq_question_icon, bare: true %}
+      </span>
+    {% endif %}
+    <span class="elara-faq-item__question">{{ faq_question | escape }}</span>
+  </span>
+  <span class="elara-faq-item__expand-icon" aria-hidden="true">
+    <span class="elara-faq-item__chevron">{% render 'icon', icon: 'chevron-down', bare: true %}</span>
+    <svg class="elara-faq-item__plus" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M4.16667 10H15.8333" stroke="currentColor" stroke-width="var(--icon-stroke-width)" stroke-linecap="round"></path>
+      <path class="elara-faq-item__plus-vertical" d="M10 4.16667V15.8333" stroke="currentColor" stroke-width="var(--icon-stroke-width)" stroke-linecap="round"></path>
+    </svg>
+  </span>
+{% endcapture %}
+
+{% render 'accordion-details', id: faq_item_id, content_id: faq_content_id, class: 'elara-faq-item', summary_class: 'elara-faq-item__summary', content_class: 'elara-faq-item__content', content_inner_class: 'elara-faq-item__content-inner', summary: faq_summary, content: faq_answer, initially_open: block.settings.initially_open, attributes: block.shopify_attributes %}
+{% else %}
 {% liquid
   assign faq_item_id = 'faq-' | append: block.id
   assign faq_content_id = faq_item_id | append: '-content'
@@ -45,6 +98,7 @@
 {% if faq_answer != blank %}
   {% render 'accordion-details', id: faq_item_id, content_id: faq_content_id, class: 'faq-item', summary_class: 'faq-item__summary', content_class: 'faq-item__content', content_inner_class: 'faq-item__content-inner', summary: faq_summary, content: faq_answer, initially_open: block.settings.initially_open, attributes: block.shopify_attributes %}
 {% endif %}
+{% endif %}
 
 {% stylesheet %}
   .faq-item { min-width: 0; }
@@ -62,21 +116,233 @@
   .faq-item__content-inner > :first-child { margin-top: 0; }
   .faq-item__content-inner > :last-child { margin-bottom: 0; }
   @media (prefers-reduced-motion: reduce) { .faq-item__expand-icon::after { transition: none; } }
+
+
+  .elara-faq-item { min-width: 0; }
+  .elara-faq-item__summary { display: flex; align-items: center; justify-content: space-between; gap: 20px; min-height: 64px; padding: 20px 0; color: var(--heading-color); }
+  .elara-faq-item__question-wrap { display: inline-flex; min-width: 0; align-items: center; gap: var(--faq-question-icon-gap, 8px); }
+  .elara-faq-item__question { min-width: 0; overflow-wrap: anywhere; }
+  .elara-faq-item__question-icon { display: inline-flex; flex: 0 0 var(--faq-question-icon-size, 20px); width: var(--faq-question-icon-size, 20px); height: var(--faq-question-icon-size, 20px); align-items: center; justify-content: center; }
+  .elara-faq-item__question-icon svg { display: block; width: 100%; height: 100%; }
+  .elara-faq-item__expand-icon { position: relative; display: inline-flex; flex: 0 0 20px; width: 20px; height: 20px; align-items: center; justify-content: center; }
+  .elara-faq-item__expand-icon svg { display: block; flex: 0 0 20px; width: 20px; height: 20px; }
+  .elara-faq-item__expand-icon .elara-faq-item__plus { display: none; }
+  .elara-faq-accordion--icon-plus > .elara-faq-accordion__items > .elara-faq-item > .elara-faq-item__summary .elara-faq-item__plus { display: block; }
+  .section-faq-image-accordion .elara-faq-accordion--style-simple.elara-faq-accordion--icon-chevron > .elara-faq-accordion__items > .elara-faq-item > .elara-faq-item__summary > .elara-faq-item__expand-icon { flex-basis: 24px; width: 24px; height: 24px; }
+  .section-faq-image-accordion .elara-faq-accordion--style-simple.elara-faq-accordion--icon-chevron > .elara-faq-accordion__items > .elara-faq-item > .elara-faq-item__summary .elara-faq-item__chevron svg { flex-basis: 24px; width: 24px; height: 24px; }
+  .elara-faq-accordion--icon-plus > .elara-faq-accordion__items > .elara-faq-item > .elara-faq-item__summary > .elara-faq-item__expand-icon { flex-basis: 20px; width: 20px; height: 20px; }
+  .elara-faq-accordion--style-simple > .elara-faq-accordion__items > .elara-faq-item > .elara-faq-item__summary { align-items: flex-start; }
+  .elara-faq-item__question-wrap { flex: 1; }
+  .elara-faq-item__expand-icon::before, .elara-faq-item__expand-icon::after { display: none; }
+  .elara-faq-item__expand-icon svg { transition: transform var(--motion-duration-standard) var(--motion-ease-standard); }
+  .elara-faq-item[open] > .elara-faq-item__summary > .elara-faq-item__expand-icon svg { transform: rotate(180deg); }
+  .elara-faq-item__content-inner { display: flex; flex-direction: column; align-items: flex-start; min-width: 0; --flex-align: start; --flex-align-mobile: start; --text-align: left; width: 100%; padding: 0 32px 24px 0; color: var(--body-color); text-align: left; --text-align-default: left; }
+  .elara-faq-item__content-inner > :first-child { margin-top: 0; }
+  .elara-faq-item__content-inner > :last-child { margin-bottom: 0; }
+  @media (prefers-reduced-motion: reduce) { .elara-faq-item__expand-icon svg { transition: none; } }
 {% endstylesheet %}
 
 {% schema %}
 {
   "name": "Accordion row",
   "tag": null,
-  "blocks": [{ "type": "faq_answer_text" }],
+  "blocks": [
+    {
+      "type": "@theme"
+    },
+    {
+      "type": "@app"
+    }
+  ],
   "settings": [
-    { "type": "header", "content": "Question" },
-    { "type": "text", "id": "question", "label": "Question", "default": "Frequently asked question" },
-    { "type": "checkbox", "id": "show_question_icon", "label": "Show icon", "default": false },
-    { "type": "select", "id": "question_icon", "label": "Icon", "options": [{ "value": "arrow", "label": "Arrow" }, { "value": "arrow-left", "label": "Arrow left" }, { "value": "arrow-right", "label": "Arrow right" }, { "value": "bars-3", "label": "Menu" }, { "value": "chevron", "label": "Chevron" }, { "value": "chevron-down", "label": "Chevron down" }, { "value": "chevron-left", "label": "Chevron left" }, { "value": "chevron-right", "label": "Chevron right" }, { "value": "x-mark", "label": "Close" }, { "value": "magnifying-glass", "label": "Search" }, { "value": "shopping-bag", "label": "Shopping bag" }, { "value": "cart", "label": "Cart" }, { "value": "user", "label": "Account" }, { "value": "truck", "label": "Shipping" }, { "value": "tag", "label": "Tag" }, { "value": "discount", "label": "Discount" }, { "value": "trash", "label": "Trash" }, { "value": "document-text", "label": "Document" }, { "value": "receipt-percent", "label": "Receipt" }, { "value": "share", "label": "Share" }, { "value": "play", "label": "Play" }, { "value": "pause", "label": "Pause" }, { "value": "plus", "label": "Plus" }, { "value": "minus", "label": "Minus" }, { "value": "check", "label": "Check" }, { "value": "circle", "label": "Circle" }, { "value": "square", "label": "Square" }, { "value": "triangle", "label": "Triangle" }, { "value": "diamond", "label": "Diamond" }, { "value": "star", "label": "Star" }, { "value": "four-stars", "label": "Four stars" }, { "value": "five-stars", "label": "Five stars" }], "default": "check", "visible_if": "{{ block.settings.show_question_icon }}" },
-    { "type": "range", "id": "question_icon_gap", "label": "Gap", "min": 0, "max": 100, "step": 1, "unit": "px", "default": 8, "visible_if": "{{ block.settings.show_question_icon }}" },
-    { "type": "range", "id": "question_icon_size", "label": "Icon size", "min": 0, "max": 100, "step": 1, "unit": "px", "default": 20, "visible_if": "{{ block.settings.show_question_icon }}" },
-    { "type": "checkbox", "id": "initially_open", "label": "t:labels.initially_open", "default": false }
+    {
+      "type": "checkbox",
+      "id": "use_elara_layout",
+      "label": "Use Elara layout",
+      "default": false,
+      "info": "Enable the rebuilt layout. Existing content keeps its original appearance until enabled."
+    },
+    {
+      "type": "header",
+      "content": "Question"
+    },
+    {
+      "type": "text",
+      "id": "question",
+      "label": "Question",
+      "default": "Frequently asked question"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_question_icon",
+      "label": "Show icon",
+      "default": false
+    },
+    {
+      "type": "select",
+      "id": "question_icon",
+      "label": "Icon",
+      "options": [
+        {
+          "value": "arrow",
+          "label": "Arrow"
+        },
+        {
+          "value": "arrow-left",
+          "label": "Arrow left"
+        },
+        {
+          "value": "arrow-right",
+          "label": "Arrow right"
+        },
+        {
+          "value": "bars-3",
+          "label": "Menu"
+        },
+        {
+          "value": "chevron",
+          "label": "Chevron"
+        },
+        {
+          "value": "chevron-down",
+          "label": "Chevron down"
+        },
+        {
+          "value": "chevron-left",
+          "label": "Chevron left"
+        },
+        {
+          "value": "chevron-right",
+          "label": "Chevron right"
+        },
+        {
+          "value": "x-mark",
+          "label": "Close"
+        },
+        {
+          "value": "magnifying-glass",
+          "label": "Search"
+        },
+        {
+          "value": "shopping-bag",
+          "label": "Shopping bag"
+        },
+        {
+          "value": "cart",
+          "label": "Cart"
+        },
+        {
+          "value": "user",
+          "label": "Account"
+        },
+        {
+          "value": "truck",
+          "label": "Shipping"
+        },
+        {
+          "value": "tag",
+          "label": "Tag"
+        },
+        {
+          "value": "discount",
+          "label": "Discount"
+        },
+        {
+          "value": "trash",
+          "label": "Trash"
+        },
+        {
+          "value": "document-text",
+          "label": "Document"
+        },
+        {
+          "value": "receipt-percent",
+          "label": "Receipt"
+        },
+        {
+          "value": "share",
+          "label": "Share"
+        },
+        {
+          "value": "play",
+          "label": "Play"
+        },
+        {
+          "value": "pause",
+          "label": "Pause"
+        },
+        {
+          "value": "plus",
+          "label": "Plus"
+        },
+        {
+          "value": "minus",
+          "label": "Minus"
+        },
+        {
+          "value": "check",
+          "label": "Check"
+        },
+        {
+          "value": "circle",
+          "label": "Circle"
+        },
+        {
+          "value": "square",
+          "label": "Square"
+        },
+        {
+          "value": "triangle",
+          "label": "Triangle"
+        },
+        {
+          "value": "diamond",
+          "label": "Diamond"
+        },
+        {
+          "value": "star",
+          "label": "Star"
+        },
+        {
+          "value": "four-stars",
+          "label": "Four stars"
+        },
+        {
+          "value": "five-stars",
+          "label": "Five stars"
+        }
+      ],
+      "default": "check",
+      "visible_if": "{{ block.settings.show_question_icon }}"
+    },
+    {
+      "type": "range",
+      "id": "question_icon_gap",
+      "label": "Gap",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "default": 8,
+      "visible_if": "{{ block.settings.show_question_icon }}"
+    },
+    {
+      "type": "range",
+      "id": "question_icon_size",
+      "label": "Icon size",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "default": 20,
+      "visible_if": "{{ block.settings.show_question_icon }}"
+    },
+    {
+      "type": "checkbox",
+      "id": "initially_open",
+      "label": "t:labels.initially_open",
+      "default": false
+    }
   ],
   "presets": [
     {
@@ -85,8 +351,19 @@
         "question": "Frequently asked question",
         "show_question_icon": true,
         "question_icon": "circle",
-        "initially_open": false
-      }
+        "initially_open": false,
+        "use_elara_layout": true
+      },
+      "blocks": [
+        {
+          "type": "text",
+          "settings": {
+            "text": "<p>Use this space to provide detailed answers to common customer questions about products, shipping, returns, payments, or store policies.</p>",
+            "text_size": "md",
+            "width": "fill"
+          }
+        }
+      ]
     }
   ]
 }
