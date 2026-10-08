@@ -6931,7 +6931,7 @@
           "type": "heading",
           "settings": {
             "text": "<p>Play Comes First</p>",
-            "heading_size": "lg",
+            "heading_size": "xl",
             "html_tag": "h2",
             "width": "fill",
             "customize_mobile_size": true,
@@ -6947,6 +6947,7 @@
             "gap_desktop": 24,
             "gap_mobile": 24,
             "width": "fill",
+            "height": "fit",
             "width_mobile": "fill",
             "appearance_type": "scheme",
             "color_scheme": "scheme-1",
@@ -6975,6 +6976,7 @@
                 "gap_desktop": 12,
                 "gap_mobile": 12,
                 "width": "fill",
+                "height": "fit",
                 "width_mobile": "fill"
               },
               "blocks": {
@@ -6982,7 +6984,8 @@
                   "type": "heading",
                   "settings": {
                     "text": "<p>Play With Purpose</p>",
-                    "heading_size": "sm",
+                    "heading_size": "custom",
+                    "custom_heading_size": 20,
                     "html_tag": "h3",
                     "width": "fill",
                     "customize_mobile_size": true,
@@ -7023,6 +7026,7 @@
             "gap_desktop": 24,
             "gap_mobile": 24,
             "width": "fill",
+            "height": "fit",
             "width_mobile": "fill",
             "appearance_type": "scheme",
             "color_scheme": "scheme-1",
@@ -7051,6 +7055,7 @@
                 "gap_desktop": 12,
                 "gap_mobile": 12,
                 "width": "fill",
+                "height": "fit",
                 "width_mobile": "fill"
               },
               "blocks": {
@@ -7058,7 +7063,8 @@
                   "type": "heading",
                   "settings": {
                     "text": "<p>Play Comes First</p>",
-                    "heading_size": "sm",
+                    "heading_size": "custom",
+                    "custom_heading_size": 20,
                     "html_tag": "h3",
                     "width": "fill",
                     "customize_mobile_size": true,
@@ -7099,6 +7105,7 @@
             "gap_desktop": 24,
             "gap_mobile": 24,
             "width": "fill",
+            "height": "fit",
             "width_mobile": "fill",
             "appearance_type": "scheme",
             "color_scheme": "scheme-1",
@@ -7127,6 +7134,7 @@
                 "gap_desktop": 12,
                 "gap_mobile": 12,
                 "width": "fill",
+                "height": "fit",
                 "width_mobile": "fill"
               },
               "blocks": {
@@ -7134,7 +7142,8 @@
                   "type": "heading",
                   "settings": {
                     "text": "<p>Wrapped in Delight</p>",
-                    "heading_size": "sm",
+                    "heading_size": "custom",
+                    "custom_heading_size": 20,
                     "html_tag": "h3",
                     "width": "fill",
                     "customize_mobile_size": true,
@@ -7175,6 +7184,7 @@
             "gap_desktop": 24,
             "gap_mobile": 24,
             "width": "fill",
+            "height": "fit",
             "width_mobile": "fill",
             "appearance_type": "scheme",
             "color_scheme": "scheme-1",
@@ -7208,6 +7218,7 @@
                 "gap_desktop": 12,
                 "gap_mobile": 12,
                 "width": "fill",
+                "height": "fit",
                 "width_mobile": "fill"
               },
               "blocks": {
@@ -7215,7 +7226,8 @@
                   "type": "heading",
                   "settings": {
                     "text": "<p>Right to your Door</p>",
-                    "heading_size": "sm",
+                    "heading_size": "custom",
+                    "custom_heading_size": 20,
                     "html_tag": "h3",
                     "width": "fill",
                     "customize_mobile_size": true,
