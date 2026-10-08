@@ -3856,8 +3856,8 @@
               "type": "product-card",
               "static": true,
               "settings": {
-                "color_type": "color_scheme",
-                "color_scheme": "scheme-1"
+                "color_type": "inherit",
+                "color_scheme": ""
               },
               "blocks": {}
             }
@@ -3875,8 +3875,8 @@
               "type": "product-card",
               "static": true,
               "settings": {
-                "color_type": "color_scheme",
-                "color_scheme": "scheme-1"
+                "color_type": "inherit",
+                "color_scheme": ""
               },
               "blocks": {}
             }
@@ -3995,8 +3995,8 @@
               "type": "product-card",
               "static": true,
               "settings": {
-                "color_type": "color_scheme",
-                "color_scheme": "scheme-1"
+                "color_type": "inherit",
+                "color_scheme": ""
               },
               "blocks": {}
             }
@@ -4014,8 +4014,8 @@
               "type": "product-card",
               "static": true,
               "settings": {
-                "color_type": "color_scheme",
-                "color_scheme": "scheme-1"
+                "color_type": "inherit",
+                "color_scheme": ""
               },
               "blocks": {}
             }
