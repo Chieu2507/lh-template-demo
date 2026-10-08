@@ -43,7 +43,14 @@ const initialize = (list) => {
     if (host.contains(item)) item.scrollIntoView({ block: 'nearest' });
     else if (swiper && !swiper.destroyed) {
       const index = [...swiper.slides].indexOf(item);
-      if (index >= 0) swiper.slideTo(index, 0);
+      if (index < 0) return;
+      // Selecting a visible card must not make its configured slot look like slot 1.
+      const bounds = carousel.getBoundingClientRect();
+      const cardBounds = item.getBoundingClientRect();
+      if (cardBounds.left >= bounds.left - 1 && cardBounds.right <= bounds.right + 1) return;
+      const visibleCount = Math.max(1, Math.floor(Number(swiper.params.slidesPerView) || 1));
+      const target = index < swiper.activeIndex ? index : Math.max(0, index - visibleCount + 1);
+      swiper.slideTo(target, 0);
     }
   };
   query.addEventListener('change', update);
