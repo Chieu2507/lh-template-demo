@@ -942,6 +942,7 @@
         const account = template?.content.firstElementChild?.cloneNode(true);
         if (!account || !window.customElements?.get('shopify-account')) return;
         event.preventDefault();
+        event.stopPropagation();
         for (const attribute of link.attributes) {
           if (attribute.name.startsWith('data-shopify-editor')) account.setAttribute(attribute.name, attribute.value);
         }
