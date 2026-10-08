@@ -1,10 +1,11 @@
 const instances = new WeakMap();
+const listSelector = '[data-product-list], [data-collection-tab-panel]';
 
 const initialize = (list) => {
   if (instances.has(list)) return;
   const host = list.querySelector('[data-product-list-mobile-promos]');
   const cards = [...list.querySelectorAll('[data-product-list-promo-item]')]
-    .filter((item) => item.closest('[data-product-list]') === list);
+    .filter((item) => item.closest(listSelector) === list);
   if (!host || !cards.length) return;
 
   const entries = cards.map((item) => {
@@ -60,8 +61,8 @@ const initialize = (list) => {
 };
 
 export const initializeThemeModule = (root = document) => {
-  if (root.matches?.('[data-product-list]')) initialize(root);
-  root.querySelectorAll?.('[data-product-list]').forEach(initialize);
+  if (root.matches?.(listSelector)) initialize(root);
+  root.querySelectorAll?.(listSelector).forEach(initialize);
 };
 
 const destroy = (list) => {
@@ -79,8 +80,8 @@ const destroy = (list) => {
 
 document.addEventListener('shopify:section:load', (event) => initializeThemeModule(event.target));
 document.addEventListener('shopify:section:unload', (event) => {
-  if (event.target.matches?.('[data-product-list]')) destroy(event.target);
-  event.target.querySelectorAll?.('[data-product-list]').forEach(destroy);
+  if (event.target.matches?.(listSelector)) destroy(event.target);
+  event.target.querySelectorAll?.(listSelector).forEach(destroy);
 });
 
 if (document.readyState === 'loading') {
