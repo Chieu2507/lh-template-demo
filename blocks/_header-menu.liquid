@@ -203,11 +203,24 @@
       </div>
       <footer class="header__mobile-drawer-footer">
         {% if shop.customer_accounts_enabled %}
+          {% if customer %}
           <shopify-account class="header__mobile-drawer-account body-text" menu="customer-account-main-menu">
             <span slot="signed-out-avatar" class="header__mobile-drawer-account-avatar">
               <span>{{ 'customers.login.submit' | t }}</span>
             </span>
           </shopify-account>
+          {% else %}
+            <a class="header__mobile-drawer-account btn btn--primary body-text" href="{{ routes.account_login_url }}" data-deferred-account>
+              {{ 'customers.login.submit' | t }}
+              <template data-deferred-account-template>
+          <shopify-account class="header__mobile-drawer-account body-text" menu="customer-account-main-menu">
+            <span slot="signed-out-avatar" class="header__mobile-drawer-account-avatar">
+              <span>{{ 'customers.login.submit' | t }}</span>
+            </span>
+          </shopify-account>
+              </template>
+            </a>
+          {% endif %}
         {% else %}
           <a class="header__mobile-drawer-account btn btn--primary body-text" href="{{ routes.account_login_url }}">{{ 'customers.login.submit' | t }}</a>
         {% endif %}
