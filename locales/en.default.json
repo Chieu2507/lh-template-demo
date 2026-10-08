@@ -391,5 +391,8 @@
     "pinterest": "Pinterest",
     "x": "X",
     "linkedin": "LinkedIn"
+  },
+  "general": {
+    "icon_text_cards": "Icon text cards"
   }
 }

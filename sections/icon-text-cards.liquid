@@ -55,7 +55,7 @@
   endif
 %}
 
-<div class="icon-text-cards icon-text-cards--{{ section_width }}">
+<div class="icon-text-cards icon-text-cards--{{ section_width }}"{% if section.settings.layout == 'carousel' %} data-icon-text-cards-carousel{% endif %}>
   <div
     class="section-spacing icon-text-cards__spacing color-scheme section-color-scope {{ color_scheme | handleize }}"
     style="--icon-text-cards-text-align: {{ alignment }}; --icon-text-cards-text-align-mobile: {{ mobile_alignment }}; --icon-text-cards-align: {{ flex_align }}; --icon-text-cards-align-mobile: {{ mobile_flex_align }}; --icon-text-cards-gap: {{ content_gap }}px; --icon-text-cards-gap-mobile: {{ content_gap_mobile }}px; --icon-text-cards-padding-top: {{ padding_top }}px; --icon-text-cards-padding-bottom: {{ padding_bottom }}px; --icon-text-cards-padding-top-mobile: {{ padding_top_mobile }}px; --icon-text-cards-padding-bottom-mobile: {{ padding_bottom_mobile }}px;{% if section.settings.background_color != blank %} --icon-text-cards-background: {{ section.settings.background_color | escape }};{% endif %}"
@@ -66,9 +66,40 @@
       </div>
     {% endif %}
     <div class="container {{ container_width }} icon-text-cards__container{% if container_no_padding %} icon-text-cards__container--no-padding{% endif %}">
-      <div class="icon-text-cards__content{% if section.settings.layout == 'grid' %} icon-text-cards__content--grid{% endif %}"{% if section.settings.layout == 'grid' %} style="--icon-cards-columns: {{ section.settings.columns_desktop | default: 4 }}; --icon-cards-columns-tablet: {{ section.settings.columns_tablet | default: 2 }}; --icon-cards-columns-mobile: {{ section.settings.columns_mobile | default: 1 }}; --icon-cards-grid-gap: {{ section.settings.grid_gap_desktop | default: 32 }}px; --icon-cards-grid-gap-tablet: {{ section.settings.grid_gap_tablet | default: 20 }}px; --icon-cards-grid-gap-mobile: {{ section.settings.grid_gap_mobile | default: 16 }}px;"{% endif %}>
+      <div class="icon-text-cards__content{% if section.settings.layout == 'grid' or section.settings.layout == 'carousel' %} icon-text-cards__content--grid{% endif %}"{% if section.settings.layout == 'grid' or section.settings.layout == 'carousel' %} style="--icon-cards-columns: {{ section.settings.columns_desktop | default: 4 }}; --icon-cards-columns-tablet: {{ section.settings.columns_tablet | default: 2 }}; --icon-cards-columns-mobile: {{ section.settings.columns_mobile | default: 1 }}; --icon-cards-grid-gap: {{ section.settings.grid_gap_desktop | default: 32 }}px; --icon-cards-grid-gap-tablet: {{ section.settings.grid_gap_tablet | default: 20 }}px; --icon-cards-grid-gap-mobile: {{ section.settings.grid_gap_mobile | default: 16 }}px;"{% endif %}>
         {% content_for 'blocks' %}
       </div>
+      {% if section.settings.layout == 'carousel' %}
+        <div class="icon-text-cards__carousel swiper-carousel__container" hidden
+          data-icon-cards-carousel
+          data-columns-desktop="{{ section.settings.columns_desktop | default: 4 }}"
+          data-columns-tablet="{{ section.settings.columns_tablet | default: 2 }}"
+          data-columns-mobile="{{ section.settings.columns_mobile | default: 1 }}"
+          data-gap-desktop="{{ section.settings.grid_gap_desktop | default: 32 }}"
+          data-gap-tablet="{{ section.settings.grid_gap_tablet | default: 20 }}"
+          data-gap-mobile="{{ section.settings.grid_gap_mobile | default: 16 }}"
+          data-pagination-type="{{ section.settings.pagination_type | default: 'bullets' }}"
+        >
+          {% capture icon_cards_pagination %}
+            {% if section.settings.show_pagination_on_desktop or section.settings.show_pagination_on_mobile %}
+              <div class="swiper-pagination swiper-pagination--below icon-text-cards__pagination"
+                data-icon-cards-pagination
+                data-pagination-type="{{ section.settings.pagination_type | default: 'bullets' }}"
+                data-visible-desktop="{{ section.settings.show_pagination_on_desktop }}"
+                data-visible-mobile="{{ section.settings.show_pagination_on_mobile }}"
+              ></div>
+            {% endif %}
+          {% endcapture %}
+          {% assign icon_cards_id = 'IconCards-' | append: section.id %}
+          {% assign icon_cards_label = 'general.icon_text_cards' | t %}
+          {% render 'swiper-carousel', id: icon_cards_id, root_class: 'icon-text-cards__viewport', aria_label: icon_cards_label, pagination: icon_cards_pagination %}
+          {% if section.settings.show_navigation_on_desktop or section.settings.show_navigation_on_mobile %}
+            {% capture icon_cards_navigation_attributes %}data-icon-cards-navigation data-visible-desktop="{{ section.settings.show_navigation_on_desktop }}" data-visible-mobile="{{ section.settings.show_navigation_on_mobile }}"{% endcapture %}
+            {% render 'swiper-navigation', behavior: 'always', centered: false, wrapper_class: 'icon-text-cards__navigation', wrapper_attributes: icon_cards_navigation_attributes %}
+          {% endif %}
+        </div>
+        <script type="application/json" data-theme-module="{{ 'icon-text-cards.js' | asset_url }}"></script>
+      {% endif %}
     </div>
   </div>
 </div>
@@ -96,6 +127,19 @@
     flex-direction: column;
     align-items: var(--icon-text-cards-align);
     gap: var(--icon-text-cards-gap);
+  }
+  .icon-text-cards__carousel { min-width: 0; margin-top: var(--icon-text-cards-gap); }
+  .icon-text-cards__content:not(:has(> *)) + .icon-text-cards__carousel { margin-top: 0; }
+  .icon-text-cards__carousel[hidden] { display: none; }
+  .icon-text-cards__carousel .swiper-slide { height: auto; }
+  .icon-text-cards__navigation { display: flex; justify-content: center; gap: 12px; margin-top: 24px; }
+  .icon-text-cards__pagination { --swiper-pagination-spacing: 24px; }
+  @media (min-width: 768px) {
+    .icon-text-cards__carousel [data-visible-desktop='false'] { display: none; }
+  }
+  @media (max-width: 767.98px) {
+    .icon-text-cards__carousel { margin-top: var(--icon-text-cards-gap-mobile); }
+    .icon-text-cards__carousel [data-visible-mobile='false'] { display: none; }
   }
   .icon-text-cards__content > * { min-width: 0; max-width: 100%; }
   .icon-text-cards .carousel-slide-layout--vertical { flex-direction: column; }
@@ -163,127 +207,7 @@
   "settings": [
     {
       "type": "header",
-      "content": "t:general.layout"
-    },
-    {
-      "type": "select",
-      "id": "layout",
-      "label": "t:labels.layout",
-      "options": [
-        {
-          "value": "stacked",
-          "label": "t:options.icon_text_layout.stacked"
-        },
-        {
-          "value": "grid",
-          "label": "t:options.icon_text_layout.grid"
-        }
-      ],
-      "default": "stacked"
-    },
-    {
-      "type": "select",
-      "id": "columns_desktop",
-      "label": "t:labels.desktop_columns",
-      "default": "4",
-      "visible_if": "{{ section.settings.layout == 'grid' }}",
-      "options": [
-        {
-          "value": "2",
-          "label": "2"
-        },
-        {
-          "value": "3",
-          "label": "3"
-        },
-        {
-          "value": "4",
-          "label": "4"
-        },
-        {
-          "value": "5",
-          "label": "5"
-        },
-        {
-          "value": "6",
-          "label": "6"
-        }
-      ]
-    },
-    {
-      "type": "range",
-      "id": "grid_gap_desktop",
-      "label": "t:labels.desktop_card_gap",
-      "min": 0,
-      "max": 100,
-      "step": 1,
-      "unit": "px",
-      "default": 32,
-      "visible_if": "{{ section.settings.layout == 'grid' }}"
-    },
-    {
-      "type": "select",
-      "id": "columns_tablet",
-      "label": "t:labels.tablet_columns",
-      "default": "2",
-      "visible_if": "{{ section.settings.layout == 'grid' }}",
-      "options": [
-        {
-          "value": "1",
-          "label": "1"
-        },
-        {
-          "value": "2",
-          "label": "2"
-        },
-        {
-          "value": "3",
-          "label": "3"
-        },
-        {
-          "value": "4",
-          "label": "4"
-        }
-      ]
-    },
-    {
-      "type": "range",
-      "id": "grid_gap_tablet",
-      "label": "t:labels.tablet_card_gap",
-      "min": 0,
-      "max": 100,
-      "step": 1,
-      "unit": "px",
-      "default": 20,
-      "visible_if": "{{ section.settings.layout == 'grid' }}"
-    },
-    {
-      "type": "select",
-      "id": "columns_mobile",
-      "label": "t:labels.mobile_columns",
-      "default": "1",
-      "visible_if": "{{ section.settings.layout == 'grid' }}",
-      "options": [
-        {
-          "value": "1",
-          "label": "1"
-        },
-        {
-          "value": "2",
-          "label": "2"
-        }
-      ]
-    },
-    {
-      "type": "range",
-      "id": "grid_gap_mobile",
-      "label": "t:labels.mobile_card_gap",
-      "min": 0,
-      "max": 100,
-      "step": 1,
-      "unit": "px",
-      "default": 16,
-      "visible_if": "{{ section.settings.layout == 'grid' }}"
+      "content": "t:general.section"
     },
     {
       "type": "select",
@@ -350,6 +274,194 @@
       "unit": "px",
       "default": 12,
       "visible_if": "{{ section.settings.customize_mobile_gap }}"
+    },
+    {
+      "type": "header",
+      "content": "t:general.layout"
+    },
+    {
+      "type": "select",
+      "id": "layout",
+      "label": "t:labels.layout",
+      "options": [
+        {
+          "value": "stacked",
+          "label": "t:options.icon_text_layout.stacked"
+        },
+        {
+          "value": "grid",
+          "label": "t:options.icon_text_layout.grid"
+        },
+        {
+          "value": "carousel",
+          "label": "t:general.carousel"
+        }
+      ],
+      "default": "stacked"
+    },
+    {
+      "type": "select",
+      "id": "columns_desktop",
+      "label": "t:labels.desktop_columns",
+      "default": "4",
+      "visible_if": "{{ section.settings.layout != 'stacked' }}",
+      "options": [
+        {
+          "value": "2",
+          "label": "2"
+        },
+        {
+          "value": "3",
+          "label": "3"
+        },
+        {
+          "value": "4",
+          "label": "4"
+        },
+        {
+          "value": "5",
+          "label": "5"
+        },
+        {
+          "value": "6",
+          "label": "6"
+        }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "columns_tablet",
+      "label": "t:labels.tablet_columns",
+      "default": "2",
+      "visible_if": "{{ section.settings.layout != 'stacked' }}",
+      "options": [
+        {
+          "value": "1",
+          "label": "1"
+        },
+        {
+          "value": "2",
+          "label": "2"
+        },
+        {
+          "value": "3",
+          "label": "3"
+        },
+        {
+          "value": "4",
+          "label": "4"
+        }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "columns_mobile",
+      "label": "t:labels.mobile_columns",
+      "default": "1",
+      "visible_if": "{{ section.settings.layout != 'stacked' }}",
+      "options": [
+        {
+          "value": "1",
+          "label": "1"
+        },
+        {
+          "value": "2",
+          "label": "2"
+        }
+      ]
+    },
+    {
+      "type": "header",
+      "content": "t:general.gap",
+      "visible_if": "{{ section.settings.layout != 'stacked' }}"
+    },
+    {
+      "type": "range",
+      "id": "grid_gap_desktop",
+      "label": "t:options.device.desktop",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "default": 32,
+      "visible_if": "{{ section.settings.layout != 'stacked' }}"
+    },
+    {
+      "type": "range",
+      "id": "grid_gap_tablet",
+      "label": "t:options.device.tablet",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "default": 20,
+      "visible_if": "{{ section.settings.layout != 'stacked' }}"
+    },
+    {
+      "type": "range",
+      "id": "grid_gap_mobile",
+      "label": "t:options.device.mobile",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "default": 16,
+      "visible_if": "{{ section.settings.layout != 'stacked' }}"
+    },
+    {
+      "type": "header",
+      "content": "t:general.navigation",
+      "visible_if": "{{ section.settings.layout == 'carousel' }}"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_navigation_on_desktop",
+      "label": "t:labels.show_navigation_on_desktop",
+      "default": true,
+      "visible_if": "{{ section.settings.layout == 'carousel' }}"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_navigation_on_mobile",
+      "label": "t:labels.show_navigation_on_mobile",
+      "default": true,
+      "visible_if": "{{ section.settings.layout == 'carousel' }}"
+    },
+    {
+      "type": "header",
+      "content": "t:general.pagination",
+      "visible_if": "{{ section.settings.layout == 'carousel' }}"
+    },
+    {
+      "type": "select",
+      "id": "pagination_type",
+      "label": "t:labels.pagination_type",
+      "options": [
+        {
+          "value": "bullets",
+          "label": "t:options.collection_pagination.bullets"
+        },
+        {
+          "value": "progress_bar",
+          "label": "t:options.collection_pagination.progress_bar"
+        }
+      ],
+      "default": "bullets",
+      "visible_if": "{{ section.settings.layout == 'carousel' }}"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_pagination_on_desktop",
+      "label": "t:labels.show_pagination_on_desktop",
+      "default": true,
+      "visible_if": "{{ section.settings.layout == 'carousel' }}"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_pagination_on_mobile",
+      "label": "t:labels.show_pagination_on_mobile",
+      "default": true,
+      "visible_if": "{{ section.settings.layout == 'carousel' }}"
     },
     {
       "type": "header",

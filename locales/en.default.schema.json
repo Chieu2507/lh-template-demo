@@ -1239,6 +1239,7 @@
     },
     "device": {
       "desktop": "Desktop",
+      "tablet": "Tablet",
       "mobile": "Mobile"
     },
     "unit": {
