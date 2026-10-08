@@ -3431,8 +3431,8 @@
             "animation_direction": "backward",
             "animation_speed": 1,
             "background_color": "",
-            "gap_desktop": 12,
-            "gap_mobile": 12,
+            "gap_desktop": 16,
+            "gap_mobile": 10,
             "padding_top": 0,
             "padding_bottom": 0,
             "padding_left": 0,
@@ -3463,8 +3463,8 @@
                 "backdrop_blur": 0,
                 "padding_top": 0,
                 "padding_bottom": 0,
-                "padding_left": 24,
-                "padding_right": 24,
+                "padding_left": 16,
+                "padding_right": 16,
                 "customize_mobile_padding": false,
                 "padding_top_mobile": 0,
                 "padding_bottom_mobile": 0,
@@ -3475,7 +3475,7 @@
                 "heading-1": {
                   "type": "heading",
                   "settings": {
-                    "text": "<p>Power</p>",
+                    "text": "<p>Enjoy saving 20% ☀️</p>",
                     "heading_size": "lg",
                     "custom_heading_size": 24,
                     "html_tag": "div",
@@ -3486,8 +3486,8 @@
                     "customize_mobile_size": false,
                     "width_mobile": "fit",
                     "max_width_mobile": 480,
-                    "animation_type": "rotate-words",
-                    "animation_delay": 150,
+                    "animation_type": "none",
+                    "animation_delay": 0,
                     "padding_top": 0,
                     "padding_bottom": 0,
                     "padding_left": 0,
@@ -3524,8 +3524,8 @@
                 "backdrop_blur": 0,
                 "padding_top": 0,
                 "padding_bottom": 0,
-                "padding_left": 24,
-                "padding_right": 24,
+                "padding_left": 16,
+                "padding_right": 16,
                 "customize_mobile_padding": false,
                 "padding_top_mobile": 0,
                 "padding_bottom_mobile": 0,
@@ -3536,19 +3536,19 @@
                 "heading-2": {
                   "type": "heading",
                   "settings": {
-                    "text": "<p>Performance</p>",
+                    "text": "<p>Imagination begins with play 🧩</p>",
                     "heading_size": "lg",
                     "custom_heading_size": 24,
                     "html_tag": "div",
-                    "text_color": "#fdffe5",
+                    "text_color": "",
                     "outline_text": false,
                     "width": "fit",
                     "max_width": 640,
                     "customize_mobile_size": false,
                     "width_mobile": "fit",
                     "max_width_mobile": 480,
-                    "animation_type": "rotate-words",
-                    "animation_delay": 150,
+                    "animation_type": "none",
+                    "animation_delay": 0,
                     "padding_top": 0,
                     "padding_bottom": 0,
                     "padding_left": 0,
@@ -3565,18 +3565,268 @@
               "block_order": [
                 "heading-2"
               ]
+            },
+            "text-3": {
+              "type": "marquee-item",
+              "settings": {
+                "direction": "horizontal",
+                "position": "center",
+                "horizontal_alignment": "left",
+                "customize_mobile_alignment": false,
+                "alignment_mobile": "left",
+                "alignment": "left",
+                "gap_desktop": 0,
+                "gap_mobile": 0,
+                "border_type": "none",
+                "border_color": "",
+                "corner_radius": "square",
+                "shadow": "none",
+                "overlay_color": "",
+                "backdrop_blur": 0,
+                "padding_top": 0,
+                "padding_bottom": 0,
+                "padding_left": 16,
+                "padding_right": 16,
+                "customize_mobile_padding": false,
+                "padding_top_mobile": 0,
+                "padding_bottom_mobile": 0,
+                "padding_left_mobile": 0,
+                "padding_right_mobile": 0
+              },
+              "blocks": {
+                "heading-3": {
+                  "type": "heading",
+                  "settings": {
+                    "text": "<p>Enjoy saving 20% ☀️</p>",
+                    "heading_size": "lg",
+                    "custom_heading_size": 24,
+                    "html_tag": "div",
+                    "text_color": "",
+                    "outline_text": false,
+                    "width": "fit",
+                    "max_width": 640,
+                    "customize_mobile_size": false,
+                    "width_mobile": "fit",
+                    "max_width_mobile": 480,
+                    "animation_type": "none",
+                    "animation_delay": 0,
+                    "padding_top": 0,
+                    "padding_bottom": 0,
+                    "padding_left": 0,
+                    "padding_right": 0,
+                    "customize_mobile_padding": false,
+                    "padding_top_mobile": 0,
+                    "padding_bottom_mobile": 0,
+                    "padding_left_mobile": 0,
+                    "padding_right_mobile": 0
+                  },
+                  "blocks": {}
+                }
+              },
+              "block_order": [
+                "heading-3"
+              ]
+            },
+            "text-4": {
+              "type": "marquee-item",
+              "settings": {
+                "direction": "horizontal",
+                "position": "center",
+                "horizontal_alignment": "left",
+                "customize_mobile_alignment": false,
+                "alignment_mobile": "left",
+                "alignment": "left",
+                "gap_desktop": 0,
+                "gap_mobile": 0,
+                "border_type": "none",
+                "border_color": "",
+                "corner_radius": "square",
+                "shadow": "none",
+                "overlay_color": "",
+                "backdrop_blur": 0,
+                "padding_top": 0,
+                "padding_bottom": 0,
+                "padding_left": 16,
+                "padding_right": 16,
+                "customize_mobile_padding": false,
+                "padding_top_mobile": 0,
+                "padding_bottom_mobile": 0,
+                "padding_left_mobile": 0,
+                "padding_right_mobile": 0
+              },
+              "blocks": {
+                "heading-4": {
+                  "type": "heading",
+                  "settings": {
+                    "text": "<p>Imagination begins with play 🧩</p>",
+                    "heading_size": "lg",
+                    "custom_heading_size": 24,
+                    "html_tag": "div",
+                    "text_color": "",
+                    "outline_text": false,
+                    "width": "fit",
+                    "max_width": 640,
+                    "customize_mobile_size": false,
+                    "width_mobile": "fit",
+                    "max_width_mobile": 480,
+                    "animation_type": "none",
+                    "animation_delay": 0,
+                    "padding_top": 0,
+                    "padding_bottom": 0,
+                    "padding_left": 0,
+                    "padding_right": 0,
+                    "customize_mobile_padding": false,
+                    "padding_top_mobile": 0,
+                    "padding_bottom_mobile": 0,
+                    "padding_left_mobile": 0,
+                    "padding_right_mobile": 0
+                  },
+                  "blocks": {}
+                }
+              },
+              "block_order": [
+                "heading-4"
+              ]
+            },
+            "text-5": {
+              "type": "marquee-item",
+              "settings": {
+                "direction": "horizontal",
+                "position": "center",
+                "horizontal_alignment": "left",
+                "customize_mobile_alignment": false,
+                "alignment_mobile": "left",
+                "alignment": "left",
+                "gap_desktop": 0,
+                "gap_mobile": 0,
+                "border_type": "none",
+                "border_color": "",
+                "corner_radius": "square",
+                "shadow": "none",
+                "overlay_color": "",
+                "backdrop_blur": 0,
+                "padding_top": 0,
+                "padding_bottom": 0,
+                "padding_left": 16,
+                "padding_right": 16,
+                "customize_mobile_padding": false,
+                "padding_top_mobile": 0,
+                "padding_bottom_mobile": 0,
+                "padding_left_mobile": 0,
+                "padding_right_mobile": 0
+              },
+              "blocks": {
+                "heading-5": {
+                  "type": "heading",
+                  "settings": {
+                    "text": "<p>Enjoy saving up to 15% ⭐️</p>",
+                    "heading_size": "lg",
+                    "custom_heading_size": 24,
+                    "html_tag": "div",
+                    "text_color": "",
+                    "outline_text": false,
+                    "width": "fit",
+                    "max_width": 640,
+                    "customize_mobile_size": false,
+                    "width_mobile": "fit",
+                    "max_width_mobile": 480,
+                    "animation_type": "none",
+                    "animation_delay": 0,
+                    "padding_top": 0,
+                    "padding_bottom": 0,
+                    "padding_left": 0,
+                    "padding_right": 0,
+                    "customize_mobile_padding": false,
+                    "padding_top_mobile": 0,
+                    "padding_bottom_mobile": 0,
+                    "padding_left_mobile": 0,
+                    "padding_right_mobile": 0
+                  },
+                  "blocks": {}
+                }
+              },
+              "block_order": [
+                "heading-5"
+              ]
+            },
+            "text-6": {
+              "type": "marquee-item",
+              "settings": {
+                "direction": "horizontal",
+                "position": "center",
+                "horizontal_alignment": "left",
+                "customize_mobile_alignment": false,
+                "alignment_mobile": "left",
+                "alignment": "left",
+                "gap_desktop": 0,
+                "gap_mobile": 0,
+                "border_type": "none",
+                "border_color": "",
+                "corner_radius": "square",
+                "shadow": "none",
+                "overlay_color": "",
+                "backdrop_blur": 0,
+                "padding_top": 0,
+                "padding_bottom": 0,
+                "padding_left": 16,
+                "padding_right": 16,
+                "customize_mobile_padding": false,
+                "padding_top_mobile": 0,
+                "padding_bottom_mobile": 0,
+                "padding_left_mobile": 0,
+                "padding_right_mobile": 0
+              },
+              "blocks": {
+                "heading-6": {
+                  "type": "heading",
+                  "settings": {
+                    "text": "<p>Imagination begins with play 🧩</p>",
+                    "heading_size": "lg",
+                    "custom_heading_size": 24,
+                    "html_tag": "div",
+                    "text_color": "",
+                    "outline_text": false,
+                    "width": "fit",
+                    "max_width": 640,
+                    "customize_mobile_size": false,
+                    "width_mobile": "fit",
+                    "max_width_mobile": 480,
+                    "animation_type": "none",
+                    "animation_delay": 0,
+                    "padding_top": 0,
+                    "padding_bottom": 0,
+                    "padding_left": 0,
+                    "padding_right": 0,
+                    "customize_mobile_padding": false,
+                    "padding_top_mobile": 0,
+                    "padding_bottom_mobile": 0,
+                    "padding_left_mobile": 0,
+                    "padding_right_mobile": 0
+                  },
+                  "blocks": {}
+                }
+              },
+              "block_order": [
+                "heading-6"
+              ]
             }
           },
           "block_order": [
             "text-1",
-            "text-2"
+            "text-2",
+            "text-3",
+            "text-4",
+            "text-5",
+            "text-6"
           ]
         }
       },
       "block_order": [
         "marquee"
       ],
-      "disabled": true,
+      "custom_css": [
+        "@media (min-width: 768px) and (max-width: 1149.98px) {.text-marquee-custom {padding-block: 24px;} .marquee__track {gap: 12px;}}"
+      ],
       "name": "Scrolling text",
       "settings": {
         "section_width": "full_width_no_padding",
@@ -3588,10 +3838,10 @@
         "alignment_mobile": "left",
         "gap_desktop": 0,
         "gap_mobile": 0,
-        "color_scheme": "scheme-5",
+        "color_scheme": "scheme-4",
         "background_color": "",
-        "padding_top": 24,
-        "padding_bottom": 24,
+        "padding_top": 28,
+        "padding_bottom": 28,
         "customize_mobile_padding": true,
         "padding_top_mobile": 20,
         "padding_bottom_mobile": 20
@@ -6384,6 +6634,7 @@
   },
   "order": [
     "slideshow",
+    "scrolling_text",
     "collection_list",
     "featured_collection",
     "perky_hotspot",
@@ -6395,7 +6646,6 @@
     "collections_image_list",
     "scroll_reading_text",
     "multiple_images_text",
-    "scrolling_text",
     "new_arrivals_tabs",
     "countdown_timer",
     "perky_blog_posts",
