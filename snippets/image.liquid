@@ -83,8 +83,9 @@
   {% if image != blank %}
     {% if mobile_image != blank %}
       {% capture mobile_srcset %}
-        {% assign responsive_widths = image_widths | default: '400, 600, 800, 1200, 1600, 2400' | split: ', ' %}
+        {% assign responsive_widths = image_widths | default: '400, 600, 800, 1200, 1600, 2400' | split: ',' %}
         {% for responsive_width in responsive_widths %}
+          {% assign responsive_width = responsive_width | strip %}
           {{ mobile_image | image_url: width: responsive_width }} {{ responsive_width }}w{% unless forloop.last %}, {% endunless %}
         {% endfor %}
       {% endcapture %}
