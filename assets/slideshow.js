@@ -84,9 +84,12 @@ const updateParallax = (root) => {
   });
 };
 
+const usesCircularPagination = (root, type) => type === 'numbers' ||
+  (type === 'bullets' && root.classList.contains('slideshow--peekoo'));
+
 const paginationOptions = (root) => {
   const element = root.querySelector('[data-slideshow-pagination]');
-  if (!element || element.dataset.paginationType === 'progress_bar' || element.dataset.paginationType === 'numbers') return {};
+  if (!element || element.dataset.paginationType === 'progress_bar' || usesCircularPagination(root, element.dataset.paginationType)) return {};
   return {
     pagination: {
       el: element,
@@ -176,7 +179,8 @@ const createSegmentedPagination = (root, swiper, loop, slideCount) => {
 
 const createNumberedPagination = (root, swiper, loop, slideCount) => {
   const element = root.querySelector('[data-slideshow-pagination]');
-  if (!element || element.dataset.paginationType !== 'numbers' || slideCount < 1) return null;
+  if (!element || !usesCircularPagination(root, element.dataset.paginationType) || slideCount < 1) return null;
+  const dots = element.dataset.paginationType === 'bullets';
 
   const controller = new AbortController();
   const controlsId = carouselId(swiper);
@@ -194,6 +198,7 @@ const createNumberedPagination = (root, swiper, loop, slideCount) => {
     svg.setAttribute('width', '100%');
     svg.setAttribute('height', '100%');
     svg.setAttribute('aria-hidden', 'true');
+    if (dots) svg.setAttribute('viewBox', '0 0 32 32');
     svg.style.setProperty('--percent', '0');
 
     const backgroundCircle = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
@@ -210,7 +215,8 @@ const createNumberedPagination = (root, swiper, loop, slideCount) => {
     svg.append(backgroundCircle, progressCircle);
 
     const label = document.createElement('span');
-    label.textContent = String(index + 1);
+    if (dots) label.className = 'slideshow__pagination-dot';
+    else label.textContent = String(index + 1);
     number.append(svg, label);
     return number;
   });
@@ -273,7 +279,7 @@ const createLoopPagination = (root, swiper, loop, slideCount) => {
   if (!element || !loop) return null;
   const type = element.dataset.paginationType;
   if (type === 'progress_bar') return createSegmentedPagination(root, swiper, loop, slideCount);
-  if (type === 'numbers') return createNumberedPagination(root, swiper, loop, slideCount);
+  if (usesCircularPagination(root, type)) return createNumberedPagination(root, swiper, loop, slideCount);
   const controller = new AbortController();
   const update = () => {
     const current = loop.logicalIndex(swiper.activeIndex);
@@ -316,7 +322,7 @@ const startAutoplay = (root, swiper, loop) => {
   const paint = () => {
     const progress = Math.max(0, Math.min(1, elapsed / delay));
     root.style.setProperty('--slideshow-autoplay-progress', String(progress));
-    root.querySelectorAll('[data-slideshow-pagination][data-pagination-type="numbers"] .slideshow__pagination-number').forEach((number) => {
+    root.querySelectorAll('[data-slideshow-pagination] .slideshow__pagination-number').forEach((number) => {
       number.querySelector('svg')?.style.setProperty('--percent', number.getAttribute('aria-current') === 'true' ? String(progress) : '0');
     });
   };
@@ -421,7 +427,7 @@ const init = (root) => {
   const fade = !showNextSlidePreview && root.dataset.transition === 'fade';
   const autoplay = root.dataset.autoplay === 'true' && !reducedMotion();
   const paginationType = root.querySelector('[data-slideshow-pagination]')?.dataset.paginationType;
-  const paginationModules = paginationType === 'progress_bar' || paginationType === 'numbers' ? [] : [Pagination];
+  const paginationModules = paginationType === 'progress_bar' || usesCircularPagination(root, paginationType) ? [] : [Pagination];
   const options = {
     modules: manualLoop ? [] : (fade ? [EffectFade, ...paginationModules] : paginationModules),
     slidesPerView: 1,
@@ -447,7 +453,7 @@ const init = (root) => {
   }
   const customPagination = manualLoop
     ? createLoopPagination(root, swiper, manualLoop, slideCount)
-    : paginationType === 'numbers'
+    : usesCircularPagination(root, paginationType)
       ? createNumberedPagination(root, swiper, null, slideCount)
       : createSegmentedPagination(root, swiper, null, slideCount);
   if (manualLoop) {
@@ -501,17 +507,28 @@ const destroyWithin = (root) => {
   root.querySelectorAll?.(selector).forEach(destroy);
 };
 
-document.addEventListener('shopify:section:load', (event) => initWithin(event.target));
+// Cached module imports must initialize newly rendered editor markup too.
+export { initWithin as initializeThemeModule };
+
+document.addEventListener('shopify:section:load', (event) => {
+  destroyWithin(event.target);
+  initWithin(event.target);
+});
 document.addEventListener('shopify:section:unload', (event) => destroyWithin(event.target));
 document.addEventListener('shopify:block:select', (event) => {
   const root = event.target.closest?.(selector);
+  if (root) init(root);
   const state = root && states.get(root);
   const slide = event.target.closest?.('[data-slideshow-slide]');
   // The page-width loop adds inert clones to the wrapper. Keep editor
   // selection mapped to its logical source slides.
   const slides = state?.carousel.querySelectorAll('.swiper-wrapper > [data-slideshow-slide]');
   const index = slides ? [...slides].indexOf(slide) : -1;
-  if (state && slide && index >= 0) state.swiper.slideTo(state.manualLoop?.originalIndex(index) ?? index);
+  if (!state || !slide || index < 0) return;
+  // Editor selection must not wait on a transition on markup being replaced.
+  if (state.manualLoop) state.swiper.slideTo(state.manualLoop.originalIndex(index), 0);
+  else if (state.swiper.params.loop) state.swiper.slideToLoop(Number(slide.dataset.swiperSlideIndex ?? index), 0);
+  else state.swiper.slideTo(index, 0);
 });
 
 if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', () => initWithin(), { once: true });

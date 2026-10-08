@@ -147,11 +147,11 @@
 %}
 
 {% capture split_section_style %}
-  --split-banner-padding-top: {{ split_section_padding_top }}{% if section.settings.padding_unit == 'percent' %}%{% else %}px{% endif %};
+  --split-banner-padding-top: {{ split_section_padding_top }}px;
   --split-height: {% case section.settings.height %}{% when 'full_screen' %}100svh{% when 'custom' %}{{ section.settings.custom_height | default: 100 }}svh{% else %}auto{% endcase %};
   {% if section.settings.background_color != blank %}--split-background: {{ section.settings.background_color }};{% endif %}
   {% if section.settings.overlay_color != blank %}--split-overlay: {{ section.settings.overlay_color }};{% endif %}
-  --split-banner-padding-bottom: {{ split_section_padding_bottom }}{% if section.settings.padding_unit == 'percent' %}%{% else %}px{% endif %};
+  --split-banner-padding-bottom: {{ split_section_padding_bottom }}px;
   {% if section.settings.customize_mobile_padding %}
     --split-banner-padding-top-mobile: {{ split_section_padding_top_mobile }}px;
     --split-banner-padding-bottom-mobile: {{ split_section_padding_bottom_mobile }}px;
@@ -253,8 +253,8 @@
 
   @media (max-width: 767.98px) {
     .split-banner {
-      padding-top: var(--split-banner-padding-top-mobile, calc(var(--split-banner-padding-top, 16px) * .5));
-      padding-bottom: var(--split-banner-padding-bottom-mobile, calc(var(--split-banner-padding-bottom, 16px) * .5));
+      padding-top: var(--split-banner-padding-top-mobile, var(--split-banner-padding-top, 16px));
+      padding-bottom: var(--split-banner-padding-bottom-mobile, var(--split-banner-padding-bottom, 16px));
     }
 
     .split-banner__box--boxed {
@@ -267,16 +267,13 @@
 
   }
 
-  .split-banner__container--no-padding { padding-inline: 0; }
+  .container.full-width.split-banner__container--no-padding { padding-inline: 0; }
   .split-banner__overlay { position: absolute; inset: 0; background: var(--split-overlay); pointer-events: none; }
   .split-banner--top-divider { border-top: 1px solid var(--border-color); }
   .split-banner--bottom-divider { border-bottom: 1px solid var(--border-color); }
   .split-banner__content--direction-horizontal > :is(.group--width-fill, .image-block--width-fill) { flex: 1 1 calc((100% - (var(--split-distribution-gap, 0px) * (var(--split-child-count, 1) - 1))) / var(--split-child-count, 1)); }
   .split-banner__content--direction-horizontal > .group--height-fill { align-self: stretch; height: auto; }
   .split-banner--sticky .split-banner__content > .group { position: sticky; top: calc(var(--header-height, 0px) + 2rem); align-self: flex-start; }
-  @media (min-width: 768px) and (max-width: 1149.98px) {
-    .split-banner { padding-block: calc(var(--split-banner-padding-top, 16px) * .75) calc(var(--split-banner-padding-bottom, 16px) * .75); }
-  }
   @media (max-width: 767.98px) {
     .split-banner__content--mobile-vertical > :is(.group, .image-block) { flex: 0 1 auto; }
     .split-banner--sticky .split-banner__content > .group { position: static; }
@@ -742,28 +739,12 @@
     },
     {
       "type": "header",
-      "content": "Section padding"
-    },
-    {
-      "type": "select",
-      "id": "padding_unit",
-      "label": "t:labels.unit",
-      "options": [
-        {
-          "value": "pixel",
-          "label": "Pixel"
-        },
-        {
-          "value": "percent",
-          "label": "Percent"
-        }
-      ],
-      "default": "pixel"
+      "content": "t:general.padding"
     },
     {
       "type": "range",
       "id": "padding_top",
-      "label": "Top padding",
+      "label": "t:labels.top_padding",
       "min": 0,
       "max": 200,
       "step": 2,
@@ -773,7 +754,7 @@
     {
       "type": "range",
       "id": "padding_bottom",
-      "label": "Bottom padding",
+      "label": "t:labels.bottom_padding",
       "min": 0,
       "max": 200,
       "step": 2,
@@ -789,7 +770,7 @@
     {
       "type": "range",
       "id": "padding_top_mobile",
-      "label": "Mobile top padding",
+      "label": "t:labels.mobile_top_padding",
       "min": 0,
       "max": 200,
       "step": 2,
@@ -800,7 +781,7 @@
     {
       "type": "range",
       "id": "padding_bottom_mobile",
-      "label": "Mobile bottom padding",
+      "label": "t:labels.mobile_bottom_padding",
       "min": 0,
       "max": 200,
       "step": 2,

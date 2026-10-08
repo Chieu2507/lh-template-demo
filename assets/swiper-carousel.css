@@ -173,7 +173,7 @@
   box-sizing: border-box;
   align-items: center;
   justify-content: var(--swiper-pagination-justify, center);
-  gap: var(--swiper-pagination-bullet-gap, 8px);
+  gap: 0px;
 }
 
 .swiper > :is(
@@ -251,8 +251,6 @@
   .swiper-pagination.swiper-pagination-bullets
 ) .swiper-pagination-bullet-active {
   opacity: var(--swiper-pagination-bullet-opacity, 1);
-  width: var(--swiper-pagination-bullet-active-hit-width, 48px);
-  min-width: var(--swiper-pagination-bullet-active-hit-width, 48px);
 }
 
 .swiper > :is(
@@ -263,7 +261,6 @@
   .swiper-pagination[data-pagination-type='bullets'],
   .swiper-pagination.swiper-pagination-bullets
 ) .swiper-pagination-bullet-active::after {
-  width: var(--swiper-pagination-bullet-active-width, var(--swiper-pagination-bullet-width, 32px));
   height: var(--swiper-pagination-bullet-active-height, var(--swiper-pagination-bullet-height, 8px));
 }
 

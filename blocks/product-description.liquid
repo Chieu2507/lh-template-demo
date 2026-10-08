@@ -7,6 +7,9 @@
 {% liquid
   assign description_product = closest.product | default: product
   assign description_height = block.settings.height_limit | default: 'none'
+  if block.settings.show_summary
+    assign description_height = 'none'
+  endif
   unless description_height == 'none' or description_height == 'small' or description_height == 'medium' or description_height == 'large'
     assign description_height = 'none'
   endunless
@@ -99,7 +102,11 @@
     <div id="{{ description_content_id }}" class="product-description__content" data-description-content>
       <div class="product-description__flow" data-description-flow>
         {% if description_has_content %}
-          {{ description_product.description }}
+          {% if block.settings.show_summary %}
+            <p>{{ description_product.description | split: '</p>' | first | strip_html | strip | escape }}</p>
+          {% else %}
+            {{ description_product.description }}
+          {% endif %}
         {% else %}
           {% if description_product == blank %}
             <p>{{ 'products.product_description_placeholder' | t }}</p>
@@ -136,14 +143,32 @@
       "content": "t:general.description_options"
     },
     {
+      "type": "checkbox",
+      "id": "show_summary",
+      "label": "Show first paragraph only",
+      "default": false
+    },
+    {
       "type": "select",
       "id": "height_limit",
       "label": "t:labels.height_limit",
       "options": [
-        { "value": "none", "label": "t:options.product_description_height.none" },
-        { "value": "small", "label": "t:options.product_description_height.small" },
-        { "value": "medium", "label": "t:options.product_description_height.medium" },
-        { "value": "large", "label": "t:options.product_description_height.large" }
+        {
+          "value": "none",
+          "label": "t:options.product_description_height.none"
+        },
+        {
+          "value": "small",
+          "label": "t:options.product_description_height.small"
+        },
+        {
+          "value": "medium",
+          "label": "t:options.product_description_height.medium"
+        },
+        {
+          "value": "large",
+          "label": "t:options.product_description_height.large"
+        }
       ],
       "default": "none"
     },
@@ -152,12 +177,30 @@
       "id": "text_size",
       "label": "t:labels.text_size",
       "options": [
-        { "value": "xs", "label": "t:options.text_size.xs" },
-        { "value": "sm", "label": "t:options.text_size.sm" },
-        { "value": "md", "label": "t:options.text_size.md" },
-        { "value": "lg", "label": "t:options.text_size.lg" },
-        { "value": "xl", "label": "t:options.text_size.xl" },
-        { "value": "xxl", "label": "t:options.text_size.xxl" }
+        {
+          "value": "xs",
+          "label": "t:options.text_size.xs"
+        },
+        {
+          "value": "sm",
+          "label": "t:options.text_size.sm"
+        },
+        {
+          "value": "md",
+          "label": "t:options.text_size.md"
+        },
+        {
+          "value": "lg",
+          "label": "t:options.text_size.lg"
+        },
+        {
+          "value": "xl",
+          "label": "t:options.text_size.xl"
+        },
+        {
+          "value": "xxl",
+          "label": "t:options.text_size.xxl"
+        }
       ],
       "default": "md"
     },

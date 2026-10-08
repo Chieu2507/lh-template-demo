@@ -76,7 +76,7 @@
     {% if custom_section_style != blank %}style="{{ custom_section_style }}"{% endif %}
   >
     {% if section.settings.background_image != blank %}
-      <div class="custom-section__background" aria-hidden="true">
+      <div class="media-background-surface custom-section__background" aria-hidden="true">
         {{ section.settings.background_image | image_url: width: 2000 | image_tag }}
       </div>
     {% endif %}

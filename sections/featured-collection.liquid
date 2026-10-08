@@ -238,23 +238,6 @@
   }
 
   @media (max-width: 767.98px) {
-    /* Grid collections keep the resource action below the complete product list. */
-    .featured-collection__container:has(.product-list[data-layout='grid']) .featured-collection__header {
-      order: 0;
-    }
-
-    .featured-collection__container:has(.product-list[data-layout='grid']) .featured-collection__products {
-      order: 1;
-    }
-
-    .featured-collection__container:has(.product-list[data-layout='grid']) .featured-collection__actions {
-      order: 2;
-    }
-
-    .featured-collection__container:has(.product-list[data-layout='grid']) .featured-collection__additional-blocks {
-      order: 3;
-    }
-
     .featured-collection__container {
       gap: var(--featured-collection-gap-mobile, var(--featured-collection-gap-desktop, 32px));
     }
@@ -326,6 +309,13 @@
       grid-template-areas: 'header actions' 'products products';
     }
   }
+  @media (max-width: 767.98px) {
+    .featured-collection__header { order: 0; }
+    .featured-collection__products { order: 1; }
+    .featured-collection__actions { order: 2; }
+    .featured-collection__additional-blocks { order: 3; }
+    .featured-collection__actions:has(> .collection-list-view-all--hide-mobile) { display: none; }
+  }
 {% endstylesheet %}
 
 
@@ -334,11 +324,21 @@
 {
   "name": "t:general.featured_collection",
   "class": "section-featured-collection",
-  "enabled_on": { "templates": ["*"] },
+  "enabled_on": {
+    "templates": [
+      "*"
+    ]
+  },
   "blocks": [
-    { "type": "header" },
-    { "type": "view-all-button" },
-    { "type": "product-list" }
+    {
+      "type": "header"
+    },
+    {
+      "type": "view-all-button"
+    },
+    {
+      "type": "product-list"
+    }
   ],
   "settings": [
     {
@@ -350,8 +350,14 @@
       "id": "section_width",
       "label": "t:labels.section_width",
       "options": [
-        { "value": "page_width", "label": "t:options.section_width.page_width" },
-        { "value": "full_width", "label": "t:options.section_width.full_width" }
+        {
+          "value": "page_width",
+          "label": "t:options.section_width.page_width"
+        },
+        {
+          "value": "full_width",
+          "label": "t:options.section_width.full_width"
+        }
       ],
       "default": "page_width"
     },
@@ -360,9 +366,18 @@
       "id": "desktop_alignment",
       "label": "t:labels.desktop_alignment",
       "options": [
-        { "value": "left", "label": "t:options.alignment.left" },
-        { "value": "center", "label": "t:options.alignment.center" },
-        { "value": "right", "label": "t:options.alignment.right" }
+        {
+          "value": "left",
+          "label": "t:options.alignment.left"
+        },
+        {
+          "value": "center",
+          "label": "t:options.alignment.center"
+        },
+        {
+          "value": "right",
+          "label": "t:options.alignment.right"
+        }
       ],
       "default": "left"
     },
@@ -371,9 +386,18 @@
       "id": "mobile_alignment",
       "label": "t:labels.mobile_alignment",
       "options": [
-        { "value": "left", "label": "t:options.alignment.left" },
-        { "value": "center", "label": "t:options.alignment.center" },
-        { "value": "right", "label": "t:options.alignment.right" }
+        {
+          "value": "left",
+          "label": "t:options.alignment.left"
+        },
+        {
+          "value": "center",
+          "label": "t:options.alignment.center"
+        },
+        {
+          "value": "right",
+          "label": "t:options.alignment.right"
+        }
       ],
       "default": "left"
     },
@@ -435,7 +459,6 @@
       "unit": "px",
       "default": 0
     },
-    { "type": "checkbox", "id": "hide_view_all_mobile", "label": "Hide View all on mobile", "default": false },
     {
       "type": "checkbox",
       "id": "customize_mobile_padding",

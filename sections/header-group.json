@@ -17,7 +17,7 @@
         "announcement-text": {
           "type": "announcement-text",
           "settings": {
-            "text": "\ud83c\udf1f Limited Time Offer: Enjoy 20% Off Orders!",
+            "text": "🌟 Limited Time Offer: Enjoy 20% Off Orders!",
             "text_color": "",
             "width": "fill",
             "max_width": 640
@@ -27,7 +27,7 @@
         "announcement-text-2": {
           "type": "announcement-text",
           "settings": {
-            "text": "\u2728 Discover Your New Favorites Today!",
+            "text": "✨ Discover Your New Favorites Today!",
             "text_color": "",
             "width": "fill",
             "max_width": 640
@@ -70,9 +70,9 @@
           "static": true,
           "settings": {
             "bottom_separator": "line",
-            "gap": 16,
-            "padding_top": 12,
-            "padding_bottom": 12,
+            "gap": 4,
+            "padding_top": 16,
+            "padding_bottom": 16,
             "customize_mobile_padding": true,
             "padding_top_mobile": 12,
             "padding_bottom_mobile": 12
@@ -82,7 +82,7 @@
               "type": "_header-menu",
               "settings": {
                 "menu": "main-menu",
-                "gap": 24,
+                "gap": 32,
                 "show_dropdown_icon": true,
                 "dropdown_trigger": "hover",
                 "font": "accent",

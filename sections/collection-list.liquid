@@ -53,7 +53,7 @@
     {% if collection_list_style != blank %}style="{{ collection_list_style }}"{% endif %}
   >
     {% if section.settings.background_media != 'none' %}
-      <div class="collection-list__background" aria-hidden="true">
+      <div class="media-background-surface collection-list__background" aria-hidden="true">
         {% if section.settings.background_media == 'image' and section.settings.background_image != blank %}
           {{ section.settings.background_image | image_url: width: 2400 | image_tag: widths: '750, 1100, 1500, 2000, 2400', sizes: '100vw', alt: '' }}
         {% elsif section.settings.background_media == 'video' and section.settings.background_video != blank %}
@@ -175,6 +175,16 @@
       row-gap: var(--collection-list-gap, 40px);
     }
 
+    .collection-list__container[data-desktop-alignment='center']:not(:has(.collection-card-list__navigation--top)) {
+      grid-template-areas: 'header' 'content' 'actions';
+    }
+    .collection-list__container[data-desktop-alignment='center']:not(:has(.collection-list__actions)) {
+      grid-template-areas: 'header' 'navigation' 'content';
+    }
+    .collection-list__container[data-desktop-alignment='center']:not(:has(.collection-card-list__navigation--top)):not(:has(.collection-list__actions)) {
+      grid-template-areas: 'header' 'content';
+    }
+
     .collection-list__header {
       grid-area: header;
     }
@@ -264,6 +274,9 @@
     .collection-list__actions .collection-list-view-all__button--mobile {
       width: 100%;
     }
+  }
+  @media (max-width: 767.98px) {
+    .collection-list__actions:has(> .collection-list-view-all--hide-mobile) { display: none; }
   }
 {% endstylesheet %}
 

@@ -9,6 +9,7 @@
 {% enddoc %}
 
 {% capture quantity_style %}
+  --product-buy-quantity-max-width: {{ block.settings.width | default: 141 }}px;
   {% if block.settings.style == 'custom' %}
     {% if block.settings.background_color != blank %}--product-buy-quantity-background: {{ block.settings.background_color }};{% endif %}
     {% if block.settings.text_color != blank %}--product-buy-quantity-text: {{ block.settings.text_color }};{% endif %}
@@ -17,8 +18,8 @@
     --product-buy-quantity-radius: {{ block.settings.corner_radius }}px;
   {% endif %}
 {% endcapture %}
-<div class="product-buy-buttons__quantity form__field{% if block.settings.style == 'custom' %} product-buy-buttons__quantity--custom{% endif %}" data-buy-quantity{% if block.settings.style == 'custom' %} style="{{ quantity_style | strip }}"{% endif %} {{ block.shopify_attributes }}>
-  <label class="form__label visually-hidden" for="{{ form_id }}-quantity">{{ 'accessibility.quantity' | t }}</label>
+<div class="product-buy-buttons__quantity form__field{% if block.settings.style == 'custom' %} product-buy-buttons__quantity--custom{% endif %}" data-buy-quantity style="{{ quantity_style | strip }}" {{ block.shopify_attributes }}>
+  <label class="form__label{% unless block.settings.show_label %} visually-hidden{% endunless %}" for="{{ form_id }}-quantity">{{ 'accessibility.quantity' | t }}</label>
   <div class="product-buy-buttons__quantity-control">
     <button class="product-buy-buttons__quantity-button" type="button" aria-label="{{ 'cart.decrease' | t | escape }}" aria-controls="{{ form_id }}-quantity" data-quantity-decrease>
       {% render 'icon', icon: 'minus', bare: true %}
@@ -35,18 +36,95 @@
   "name": "t:general.quantity",
   "tag": null,
   "settings": [
-    { "type": "select", "id": "style", "label": "t:labels.style", "options": [
-      { "value": "default", "label": "t:options.product_quantity_style.default" },
-      { "value": "custom", "label": "t:options.product_quantity_style.custom" }
-    ], "default": "default" },
-    { "type": "paragraph", "content": "t:info.product_quantity_default_style", "visible_if": "{{ block.settings.style == 'default' }}" },
-    { "type": "paragraph", "content": "t:info.product_quantity_rules" },
-    { "type": "header", "content": "t:general.colors", "visible_if": "{{ block.settings.style == 'custom' }}" },
-    { "type": "color", "alpha": true, "id": "background_color", "label": "t:labels.background", "visible_if": "{{ block.settings.style == 'custom' }}" },
-    { "type": "color", "alpha": true, "id": "text_color", "label": "t:labels.text_color", "visible_if": "{{ block.settings.style == 'custom' }}" },
-    { "type": "color", "alpha": true, "id": "border_color", "label": "t:labels.border_color", "visible_if": "{{ block.settings.style == 'custom' }}" },
-    { "type": "range", "id": "border_thickness", "label": "t:labels.border_thickness", "min": 0, "max": 5, "step": 1, "unit": "px", "default": 1, "visible_if": "{{ block.settings.style == 'custom' }}" },
-    { "type": "range", "id": "corner_radius", "label": "t:labels.corner_radius", "min": 0, "max": 100, "step": 1, "unit": "px", "default": 4, "visible_if": "{{ block.settings.style == 'custom' }}" }
+    {
+      "type": "checkbox",
+      "id": "show_label",
+      "label": "Show quantity label",
+      "default": false
+    },
+    {
+      "type": "range",
+      "id": "width",
+      "label": "Width",
+      "min": 120,
+      "max": 200,
+      "step": 1,
+      "unit": "px",
+      "default": 141
+    },
+    {
+      "type": "select",
+      "id": "style",
+      "label": "t:labels.style",
+      "options": [
+        {
+          "value": "default",
+          "label": "t:options.product_quantity_style.default"
+        },
+        {
+          "value": "custom",
+          "label": "t:options.product_quantity_style.custom"
+        }
+      ],
+      "default": "default"
+    },
+    {
+      "type": "paragraph",
+      "content": "t:info.product_quantity_default_style",
+      "visible_if": "{{ block.settings.style == 'default' }}"
+    },
+    {
+      "type": "paragraph",
+      "content": "t:info.product_quantity_rules"
+    },
+    {
+      "type": "header",
+      "content": "t:general.colors",
+      "visible_if": "{{ block.settings.style == 'custom' }}"
+    },
+    {
+      "type": "color",
+      "alpha": true,
+      "id": "background_color",
+      "label": "t:labels.background",
+      "visible_if": "{{ block.settings.style == 'custom' }}"
+    },
+    {
+      "type": "color",
+      "alpha": true,
+      "id": "text_color",
+      "label": "t:labels.text_color",
+      "visible_if": "{{ block.settings.style == 'custom' }}"
+    },
+    {
+      "type": "color",
+      "alpha": true,
+      "id": "border_color",
+      "label": "t:labels.border_color",
+      "visible_if": "{{ block.settings.style == 'custom' }}"
+    },
+    {
+      "type": "range",
+      "id": "border_thickness",
+      "label": "t:labels.border_thickness",
+      "min": 0,
+      "max": 5,
+      "step": 1,
+      "unit": "px",
+      "default": 1,
+      "visible_if": "{{ block.settings.style == 'custom' }}"
+    },
+    {
+      "type": "range",
+      "id": "corner_radius",
+      "label": "t:labels.corner_radius",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "default": 4,
+      "visible_if": "{{ block.settings.style == 'custom' }}"
+    }
   ]
 }
 {% endschema %}

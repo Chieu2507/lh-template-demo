@@ -66,7 +66,7 @@
   {% if rich_text_style != blank %}style="{{ rich_text_style }}"{% endif %}
 >
   {% if section.settings.background_image != blank %}
-    <div class="rich-text__background" aria-hidden="true">
+    <div class="media-background-surface rich-text__background" aria-hidden="true">
       {{ section.settings.background_image | image_url: width: 2000 | image_tag }}
     </div>
   {% endif %}

@@ -2,6 +2,9 @@
   Renders article details inside Blog Card.
 
   The parent Blog Card supplies the current article through `closest.article`.
+  Display defaults to content for saved instances. Badge display overlays the
+  image when Meta is a direct child of a stacked Blog Card; other compositions
+  keep the badges in flow. No client-side relocation or duplicate markup.
 {% enddoc %}
 
 {% liquid
@@ -10,6 +13,16 @@
   if blog_card_meta_article == blank or request.design_mode
     assign blog_card_meta_is_placeholder = true
   endif
+  assign blog_card_meta_display = block.settings.display_type | default: 'content'
+  unless blog_card_meta_display == 'content' or blog_card_meta_display == 'badge'
+    assign blog_card_meta_display = 'content'
+  endunless
+  assign blog_card_meta_badge_scheme = block.settings.badge_color_scheme | default: 'scheme-1'
+  if block.settings.badge_color_scheme.id != blank
+    assign blog_card_meta_badge_scheme = block.settings.badge_color_scheme.id
+  endif
+  assign blog_card_meta_badge_scheme = blog_card_meta_badge_scheme | handleize
+
   assign blog_card_meta_size = block.settings.size | default: 'xs'
   unless blog_card_meta_size == 'xs' or blog_card_meta_size == 'sm' or blog_card_meta_size == 'md' or blog_card_meta_size == 'lg' or blog_card_meta_size == 'xl' or blog_card_meta_size == 'xxl'
     assign blog_card_meta_size = 'xs'
@@ -131,7 +144,7 @@
 
 {% if blog_card_meta_show_date or blog_card_meta_show_author or blog_card_meta_show_comment_count %}
   <div
-    class="blog-card-meta blog-card-meta--{{ blog_card_meta_layout }} body-{{ blog_card_meta_size }}"
+    class="blog-card-meta blog-card-meta--{{ blog_card_meta_layout }}{% if blog_card_meta_display == 'badge' %} blog-card-meta--badge{% endif %} body-{{ blog_card_meta_size }}"
     {% if blog_card_meta_style != blank %}style="{{ blog_card_meta_style }}"{% endif %}
     {{ block.shopify_attributes }}
   >
@@ -149,7 +162,7 @@
       %}
       {% if blog_card_meta_detail_visible %}
         <span class="blog-card-meta__item">
-          {% if blog_card_meta_rendered_details > 0 and blog_card_meta_layout == 'horizontal' and blog_card_meta_separator_icon != 'none' %}
+          {% if blog_card_meta_rendered_details > 0 and blog_card_meta_layout == 'horizontal' and blog_card_meta_separator_icon != 'none' and blog_card_meta_display != 'badge' %}
             <span class="blog-card-meta__separator" aria-hidden="true">
               {% case blog_card_meta_separator_icon %}
                 {% when 'vertical-rule', 'minus' %}
@@ -163,7 +176,7 @@
 
           {% case blog_card_meta_detail %}
             {% when 'author' %}
-              <span class="blog-card-meta__detail blog-card-meta__detail--author">
+              <span class="blog-card-meta__detail blog-card-meta__detail--author{% if blog_card_meta_display == 'badge' %} color-scheme section-color-scope {{ blog_card_meta_badge_scheme }}{% endif %}">
                 {% if blog_card_meta_author_display_type == 'icon' %}
                   {% render 'icon', icon: blog_card_meta_author_icon, bare: true, class: 'blog-card-meta__icon' %}
                 {% elsif blog_card_meta_author_prefix != blank %}
@@ -172,7 +185,7 @@
                 <span>{% if blog_card_meta_article.author != blank %}{{ blog_card_meta_article.author | escape }}{% else %}Author name{% endif %}</span>
               </span>
             {% when 'date' %}
-              <span class="blog-card-meta__detail blog-card-meta__detail--date">
+              <span class="blog-card-meta__detail blog-card-meta__detail--date{% if blog_card_meta_display == 'badge' %} color-scheme section-color-scope {{ blog_card_meta_badge_scheme }}{% endif %}">
                 {% if block.settings.show_date_icon %}
                   {% render 'icon', icon: blog_card_meta_date_icon, bare: true, class: 'blog-card-meta__icon' %}
                 {% endif %}
@@ -183,7 +196,7 @@
                 {% endif %}
               </span>
             {% when 'comment' %}
-              <span class="blog-card-meta__detail blog-card-meta__detail--comment">
+              <span class="blog-card-meta__detail blog-card-meta__detail--comment{% if blog_card_meta_display == 'badge' %} color-scheme section-color-scope {{ blog_card_meta_badge_scheme }}{% endif %}">
                 {% if block.settings.show_comment_icon %}
                   {% render 'icon', icon: blog_card_meta_comment_icon, bare: true, class: 'blog-card-meta__icon' %}
                 {% endif %}
@@ -210,6 +223,29 @@
     padding-bottom: var(--blog-card-meta-padding-bottom, 4px);
     color: var(--blog-card-meta-color, var(--text-color));
     text-align: inherit;
+  }
+
+  /* Reusable badge presentation; nested Meta and horizontal cards stay in flow. */
+  .blog-card-meta--badge .blog-card-meta__detail {
+    flex: 0 1 auto;
+    min-width: 0;
+    max-width: 100%;
+    padding: 6px 16px;
+    border-radius: var(--radius-pill);
+    background: var(--background-color);
+    color: var(--blog-card-meta-color, var(--heading-color));
+    overflow-wrap: anywhere;
+  }
+
+  .blog-card--layout-stacked > .blog-card__content > .blog-card-meta--badge {
+    position: absolute;
+    inset-block-start: 16px;
+    inset-inline-start: 16px;
+    z-index: 1;
+    width: fit-content;
+    max-width: calc(100% - 32px);
+    padding: 0;
+    justify-content: flex-start;
   }
 
   .blog-card-meta--vertical {
@@ -283,6 +319,30 @@
   "name": "Meta",
   "tag": null,
   "settings": [
+    {
+      "type": "select",
+      "id": "display_type",
+      "label": "t:general.display",
+      "options": [
+        {
+          "value": "content",
+          "label": "t:options.blog_meta_display.content"
+        },
+        {
+          "value": "badge",
+          "label": "t:options.blog_meta_display.badge"
+        }
+      ],
+      "default": "content",
+      "info": "t:info.blog_meta_badge_placement"
+    },
+    {
+      "type": "color_scheme",
+      "id": "badge_color_scheme",
+      "label": "t:labels.color_scheme",
+      "default": "scheme-1",
+      "visible_if": "{{ block.settings.display_type == 'badge' }}"
+    },
     {
       "type": "checkbox",
       "id": "show_date",
@@ -414,7 +474,7 @@
     {
       "type": "header",
       "content": "Separator",
-      "visible_if": "{{ block.settings.layout == 'horizontal' }}"
+      "visible_if": "{{ block.settings.layout == 'horizontal' and block.settings.display_type != 'badge' }}"
     },
     {
       "type": "select",
@@ -429,7 +489,7 @@
         { "value": "none", "label": "Space only" }
       ],
       "default": "vertical-rule",
-      "visible_if": "{{ block.settings.layout == 'horizontal' }}"
+      "visible_if": "{{ block.settings.layout == 'horizontal' and block.settings.display_type != 'badge' }}"
     },
     {
       "type": "header",

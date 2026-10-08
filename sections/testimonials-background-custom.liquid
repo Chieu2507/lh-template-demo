@@ -117,7 +117,7 @@
       {% if testimonials_background_custom_style != blank %}style="{{ testimonials_background_custom_style }}"{% endif %}
     >
       {% if testimonials_background_custom_media_type != 'none' %}
-        <div class="media testimonials-background-custom__media" aria-hidden="true">
+        <div class="media-background-surface media testimonials-background-custom__media" aria-hidden="true">
           <div class="media__inner testimonials-background-custom__media-inner{% if testimonials_background_custom_media_is_placeholder %} placeholder-image{% endif %}" data-hero-media>
             {% if testimonials_background_custom_media_type == 'video' and section.settings.video != blank %}
               {{ section.settings.video | video_tag: image_size: '2400x', autoplay: true, loop: true, muted: true, controls: false, playsinline: true, class: 'testimonials-background-custom__video testimonials-background-custom__video--desktop' }}

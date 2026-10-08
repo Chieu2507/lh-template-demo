@@ -1,0 +1,121 @@
+/* Peekoo homepage art direction from the supplied Figma frames. */
+.slideshow--peekoo .slideshow-slide .hero__container {
+  max-width: 1496px;
+}
+.slideshow--peekoo .slideshow__swiper > .slideshow__pagination {
+  --swiper-pagination-bullet-size: 10px;
+  --swiper-pagination-bullet-gap: 2px;
+  --swiper-pagination-bullet-active-hit-width: 24px;
+  --swiper-pagination-bullet-inactive-opacity: 1;
+  --swiper-pagination-bullet-inactive-color: #fff9;
+  padding-bottom: 33px !important;
+}
+.slideshow--peekoo .eyebrow-block {
+  gap: 6px;
+}
+.slideshow--peekoo .eyebrow-block::before {
+  content: "";
+  flex: 0 0 20px;
+  width: 20px;
+  height: 20px;
+  background: url(https://cdn.shopify.com/s/files/1/1024/2192/2091/files/786e6.svg?v=1791425634) center/14.7682px 19.9856px no-repeat;
+}
+.slideshow--peekoo .slideshow-slide:has(img[src*="5282e"]) .slideshow-slide__overlay {
+  background: linear-gradient(90deg,#0000 50%,#0003 68.88%);
+}
+.slideshow--peekoo .slideshow-slide:has(img[src*="f9b22"]) .slideshow-slide__overlay {
+  background: linear-gradient(#0000 87.5%,#0003);
+}
+.slideshow--peekoo .slideshow-slide:has(img[src*="561ad"]) .slideshow-slide__overlay {
+  background: none;
+}
+/* Reuse Numbers' SVG ring and autoplay clock, with a dot as the label. */
+.slideshow--peekoo .slideshow__pagination--bullets .slideshow__pagination-number {
+  flex-basis: 24px;
+  width: 24px;
+  height: 24px;
+  opacity: 1;
+}
+.slideshow--peekoo .slideshow__pagination--bullets .slideshow__pagination-number svg {
+  width: 20px;
+  height: 20px;
+}
+.slideshow--peekoo .slideshow__pagination--bullets .slideshow__pagination-number circle {
+  stroke-opacity: 0;
+}
+.slideshow--peekoo .slideshow__pagination--bullets .slideshow__pagination-number[aria-current='true'] circle:first-child {
+  stroke-opacity: .3;
+}
+.slideshow--peekoo .slideshow__pagination--bullets .slideshow__pagination-number[aria-current='true'] circle:last-child {
+  stroke-opacity: 1;
+}
+.slideshow--peekoo .slideshow__pagination--bullets .slideshow__pagination-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: currentColor;
+  opacity: .6;
+}
+.slideshow--peekoo .slideshow__pagination--bullets .slideshow__pagination-number[aria-current='true'] .slideshow__pagination-dot {
+  opacity: 1;
+}
+@media (max-width: 767.98px) {
+  .slideshow--peekoo .slideshow-slide__overlay {
+    background: #0003 !important;
+  }
+  .slideshow--peekoo .slideshow__swiper > .slideshow__pagination {
+    padding-bottom: 17px !important;
+  }
+}
+.slideshow--peekoo .slideshow-slide__media .media__inner {
+  position: relative;
+  overflow: hidden;
+}
+.slideshow--peekoo .slideshow-slide__media img {
+  position: absolute;
+  max-width: none;
+  object-fit: fill;
+}
+@media (min-width: 768px) {
+  .slideshow--peekoo .slideshow-slide:has(img[src*="f9b22"]) .slideshow-slide__media img {
+    width: auto;
+    height: 100%;
+    left: -.01%;
+    top: 0;
+  }
+  .slideshow--peekoo .slideshow-slide:has(img[src*="561ad"]) .slideshow-slide__media img {
+    width: auto;
+    height: 100%;
+    left: -.05%;
+    top: 0;
+  }
+}
+@media (max-width: 767.98px) {
+  .slideshow--peekoo .slideshow-slide:has(img[src*="5282e"]) .slideshow-slide__media img {
+    width: auto;
+    height: 103.12%;
+    left: -106.65%;
+    top: -1.56%;
+  }
+  .slideshow--peekoo .slideshow-slide:has(img[src*="f9b22"]) .slideshow-slide__media img {
+    width: auto;
+    height: 106.45%;
+    left: -49.95%;
+    top: -1.09%;
+  }
+  .slideshow--peekoo .slideshow-slide:has(img[src*="561ad"]) .slideshow-slide__media img {
+    width: auto;
+    height: 102.9%;
+    left: -20.44%;
+    top: -1.45%;
+  }
+}
+@media (min-width: 768px) {
+  .slideshow--peekoo .slideshow-slide:has(img[src*="5282e"]) .slideshow-slide__media img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    left: 0;
+    top: 0;
+  }
+}

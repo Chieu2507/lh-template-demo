@@ -243,6 +243,10 @@
     object-fit: var(--image-block-fit, cover);
   }
 
+  .image-block__media :where(picture, img) {
+    border-radius: inherit;
+  }
+
   @media (max-width: 767.98px) {
     .image-block--contained-frame {
       contain-intrinsic-inline-size: var(--size-style-width-mobile, var(--size-style-width));

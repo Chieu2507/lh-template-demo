@@ -15,7 +15,18 @@ Use this repository's current kernels and contracts as the source of truth when 
 
 ## Template layout builds
 
-When matching a design or building template sections/cards, read [Editable template composition](references/template-composition.md). It records the approved Group-based composition, responsive column controls, and the Stroken examples. Keep template-specific values in template JSON; do not turn them into universal component defaults.
+When matching a design or building template sections/cards, use the editable Group composition, block ownership, and settings contracts below. Keep template-specific values in template JSON; do not turn them into universal component defaults.
+
+### No template Custom CSS
+
+- Do not add `custom_css` in template JSON or Theme Editor to match Figma. Do not move the same overrides into a template-specific asset/preset, inline style, JavaScript, or shared stylesheet to bypass this rule. Settings-driven CSS variables produced by the component's implementation remain valid.
+- Use existing settings and block composition first. When the user authorizes a component fix or schema extension, implement it in the owning section/block and expose the intended value through settings. A convert request alone does not authorize adding styling capabilities; report any remaining gap. See [the convert workflow](../../../docs/convert-workflow.md) for that narrower scope.
+- Hide unwanted content through the Theme Editor sidebar, or remove a removable block when requested. Do not use `display: none` to hide a title. If title and image are inseparable in the current markup, an authorized component fix may make the title an independently hideable child while preserving the image, resource link, alt text, and editor attributes. Static children use saved `disabled: true` and stay out of `block_order`.
+- When a range cannot select the required value, fix the authorized schema contract rather than forcing it with CSS or `!important`. Keep min/max/step/default, Liquid bounds/fallbacks, image `sizes`, presets, and affected saved values consistent; respect Shopify's range step limit. Collection thumbnails use a 4px desktop image-width step, allowing 160px. Group padding must allow 128px; its current range is 0–200px in 2px increments. These values belong to those controls, not all ranges in the theme.
+- Tablet uses its existing dedicated settings when available. Otherwise inherit desktop through the component's normal responsive behavior. Section Top/Bottom padding always inherits desktop unchanged on tablet; do not scale it. Do not introduce tablet-only spacing, crop, radius, stacking, or gap overrides solely to match a Figma frame. Remove such overrides when cleaning up Custom CSS; do not invent new tablet controls without a request.
+- Fix layout behavior in the owning reusable code when authorized. For example, Tab Layout navigation must consume its own gap settings; Collection Tabs owns controls/actions placement; product-card alignment must follow Theme Settings or an explicit supported local override. Do not hard-code Peekoo values as shared defaults.
+
+Before handing off a template build or cleanup, inspect every section in the active index, nested blocks, and loaded assets for remaining overrides. Verify that Custom CSS is absent, sidebar visibility is represented in saved block data, settings affect the rendered output, and tablet fallback works. Report any retained template-specific stylesheet, accepted visual gap, or untested editor/storefront behavior explicitly; zero `custom_css` fields alone does not prove compliance.
 
 ## Section build preflight
 
@@ -72,6 +83,23 @@ Each section in `sections/<name>.liquid` owns composition-level concerns:
 - responsive section overrides and fallback behavior.
 
 Sections must not reimplement global typography, button, form, radius, or color logic. They map section settings to local custom properties such as `--flex-align`, `--flex-align-mobile`, and section padding tokens, then let blocks consume the context.
+
+### Section padding
+
+Use the shared `shopify-section-builder` section-padding contract:
+
+- Keep the final group `Padding` after `Appearance`: `Top`, `Bottom`,
+  `Customize for mobile`, `Top (mobile)`, `Bottom (mobile)`.
+- Use canonical section IDs `padding_top`, `padding_bottom`,
+  `customize_mobile_padding`, `padding_top_mobile`, `padding_bottom_mobile` and
+  existing schema locale keys. Preserve equivalent shipped IDs and saved values.
+- Tablet uses desktop Top/Bottom unchanged. Mobile inherits desktop when
+  customization is off; when on, use saved mobile values, including `0`.
+- Use px, conditional mobile ranges and CSS variable fallback. Do not add percent
+  units, automatic padding multipliers, tablet overrides or Custom CSS padding.
+- Preserve valid slider ranges; content/Group, Boxed and pagination spacing are
+  separate controls. Verify labels, toggle on/off, zero mobile padding, and
+  computed values at 767/768/1149/1150px.
 
 ### 4. Section base/kernel — shared implementation
 
@@ -155,7 +183,7 @@ Use one stable shell for every section:
 - Foundation CSS owns tokens, reset, semantic typography/utilities, radius, motion, focus, and shared section primitives. Section CSS owns only its layout/appearance; block CSS owns only internal content/layout.
 - Use one responsive DOM tree unless content order or interaction genuinely differs. Do not fork core block styles, duplicate global tokens, or let a child block set external section spacing or parent grid columns.
 - Do not put `{{ section.shopify_attributes }}` on the section shell. Shopify supplies the outer section wrapper; only the root element of a rendered block receives `{{ block.shopify_attributes }}`.
-- Shopify Custom CSS is an escape hatch scoped to the current section; it must not override Foundation tokens, the DOM contract, or accessibility states.
+- Template builds and conversions follow the no-Custom-CSS contract above; do not treat Shopify's Custom CSS field as an available implementation fallback.
 
 Changing a color scheme or spacing token should update the section through inherited variables/classes without editing its markup.
 

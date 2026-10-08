@@ -24,7 +24,7 @@ async function render(height, settings = {}, sectionSettings = {}) {
   const block = { id: 'first', settings: { image, ...settings } };
   return engine.parseAndRender(source, { block, section: { index: 1, blocks: [block], settings: { mobile_height: height, ...sectionSettings } } });
 }
-const fixed = { extra_small: 320, small: 440, medium: 560, large: 680, extra_large: 820, custom: 670 };
+const fixed = { extra_small: 320, small: 440, medium: 560, large: 620, extra_large: 820, custom: 670 };
 for (const option of schema.settings.find(s => s.id === 'mobile_height').options) {
   test(`real slide caller: ${option.value} matches CSS and preload/picture sources`, async () => {
     for (const mobile of [undefined, { ...image, name: 'mobile.jpg' }]) {
@@ -38,7 +38,8 @@ for (const option of schema.settings.find(s => s.id === 'mobile_height').options
         if (option.value === 'custom') {
           assert.ok(sectionSource.includes('section.settings.mobile_height_custom | default: 670'));
         } else {
-          assert.ok(sectionSource.includes(`.slideshow--mobile-${option.value} { --slideshow-height-mobile: ${height / 10}rem; }`));
+          const cssHeight = option.value === 'large' ? `${height}px` : `${height / 10}rem`;
+          assert.ok(sectionSource.includes(`.slideshow--mobile-${option.value} { --slideshow-height-mobile: ${cssHeight}; }`));
         }
         assert.equal(sources.length, 2);
         assert.ok(sources[0].includes(`width=480&amp;height=${height}&amp;crop=center 1x`));
@@ -58,18 +59,27 @@ test('Strideo saved custom mobile height controls responsive crops', async () =>
   assert.ok(html.includes('height=530&amp;crop=center'));
   assert.ok(!html.includes('height=670&amp;crop=center'));
 });
+test('Peekoo art direction preserves the source and preloads the displayed responsive candidate', async () => {
+  const html = await render('large', {}, { layout_preset: 'peekoo' });
+  assert.ok(!html.includes('crop=center'));
+  const picture = html.match(/<picture>[\s\S]*?<\/picture>/)[0];
+  const mobileSource = picture.match(/<source[^>]*srcset="([^"]+)" sizes="([^"]+)"/);
+  assert.equal(mobileSource[2], '440vw');
+  assert.ok(html.includes(`imagesrcset="${mobileSource[1]}" imagesizes="440vw"`));
+  assert.ok(picture.includes('sizes="(max-width: 1149.98px) 278vw, 107vw"'));
+});
 test('missing preset uses the actual small default and focal points avoid center crops', async () => {
   assert.ok((await render(undefined)).includes('height=440&amp;crop=center'));
   const focal = { ...image, presentation: { focal_point: '75% 25%' } };
   const html = await render('large', { image: focal });
   assert.ok(!html.includes('crop=center'));
-  assert.ok(html.includes('max(100vw, 2040px)'));
+  assert.ok(html.includes('max(100vw, 1860px)'));
 });
 test('portrait art and source resolution limits preserve valid responsive candidates', async () => {
   const portrait = await render('large', { mobile_image: { ...image, name: 'portrait.jpg', aspect_ratio: .5 } });
   assert.ok(!portrait.includes('crop=center'));
-  const small = await render('large', { image: { ...image, height: 340, width: 1020 } });
-  assert.ok(small.includes('width=240&amp;height=340&amp;crop=center 0.5x'));
-  assert.ok(!small.includes('height=680&amp;crop=center'));
+  const small = await render('large', { image: { ...image, height: 310, width: 930 } });
+  assert.ok(small.includes('width=240&amp;height=310&amp;crop=center 0.5x'));
+  assert.ok(!small.includes('height=620&amp;crop=center'));
 });
 module.exports = { render };

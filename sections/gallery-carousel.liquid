@@ -86,10 +86,10 @@
 <div class="gallery-carousel gallery-carousel--{{ section_width }}">
   <div
     class="section-spacing gallery-carousel__spacing color-scheme section-color-scope {{ color_scheme | handleize }}"
-    style="--gallery-carousel-content-gap: {{ content_gap }}px; --gallery-carousel-content-gap-mobile: {{ content_gap_mobile }}px; --gallery-carousel-section-padding-top: {{ padding_top }}px; --gallery-carousel-section-padding-bottom: {{ padding_bottom }}px; --gallery-carousel-section-padding-top-mobile: {{ padding_top_mobile }}px; --gallery-carousel-section-padding-bottom-mobile: {{ padding_bottom_mobile }}px;{% if background_color != blank %} --gallery-carousel-section-background: {{ background_color | escape }};{% endif %}"
+    style="--gallery-marquee-columns: {{ section.settings.marquee_columns_desktop | default: 5 }}; --gallery-marquee-width: {% if section.settings.marquee_full_bleed == false %}100%{% else %}100cqw{% endif %}; --gallery-marquee-inset: {% if section.settings.marquee_full_bleed == false %}0px{% else %}calc(var(--page-margin-current) * 2){% endif %}; --gallery-carousel-content-gap: {{ content_gap }}px; --gallery-carousel-content-gap-mobile: {{ content_gap_mobile }}px; --gallery-carousel-section-padding-top: {{ padding_top }}px; --gallery-carousel-section-padding-bottom: {{ padding_bottom }}px; --gallery-carousel-section-padding-top-mobile: {{ padding_top_mobile }}px; --gallery-carousel-section-padding-bottom-mobile: {{ padding_bottom_mobile }}px;{% if background_color != blank %} --gallery-carousel-section-background: {{ background_color | escape }};{% endif %}"
   >
     {% if section.settings.background_image != blank %}
-      <div class="gallery-carousel__background" aria-hidden="true">
+      <div class="media-background-surface gallery-carousel__background" aria-hidden="true">
         {{ section.settings.background_image | image_url: width: 2400 | image_tag }}
       </div>
     {% endif %}
@@ -105,7 +105,6 @@
   .gallery-carousel:has(.gallery-grid, .gallery-image) .block-header { --flex-align: var(--gallery-carousel-align); --flex-align-mobile: var(--gallery-carousel-align-mobile); --text-align: var(--gallery-carousel-text-align); max-width: 768px; }
   @media (min-width: 768px) and (max-width: 1149.98px) {
     .gallery-carousel:has(.gallery-grid, .gallery-image) .block-header { max-width: 576px; }
-    .gallery-carousel:has(.gallery-grid, .gallery-image) .gallery-carousel__spacing { padding-bottom: calc(var(--gallery-carousel-section-padding-bottom) * 0.8); }
   }
   @media (max-width: 767.98px) { .gallery-carousel:has(.gallery-grid, .gallery-image) .block-header { max-width: 448px; } }
   .gallery-carousel { width: 100%; min-width: 0; }
@@ -123,9 +122,9 @@
   .gallery-carousel__content--horizontal > .carousel-block--width-custom { flex: 0 1 var(--carousel-width); }
   /* Keep the header in the section container while the marquee spans the section. */
   .gallery-carousel__content--vertical > .marquee--block {
-    width: 100cqw;
+    width: var(--gallery-marquee-width, 100cqw);
     max-width: none;
-    margin-inline: calc((100% - 100cqw) / 2);
+    margin-inline: calc((100% - var(--gallery-marquee-width, 100cqw)) / 2);
   }
   /* The gallery owns card sizing; the shared marquee owns looping and motion. */
   .gallery-carousel__content > .marquee--block .marquee__viewport { container-type: inline-size; }
@@ -135,9 +134,9 @@
   }
   @media (max-width: 767.98px) {
     .gallery-carousel__content--mobile-vertical > .marquee--block {
-      width: 100cqw;
+      width: var(--gallery-marquee-width, 100cqw);
       max-width: none;
-      margin-inline: calc((100% - 100cqw) / 2);
+      margin-inline: calc((100% - var(--gallery-marquee-width, 100cqw)) / 2);
     }
     .gallery-carousel__content > .marquee--block .marquee__track > .marquee-item-layout {
       width: calc(50cqw - var(--marquee-gap-mobile, var(--marquee-gap, 48px)) * 0.5);
@@ -152,7 +151,7 @@
   }
   /* Gallery media keeps its design sizing while the shared marquee loops. */
   .gallery-carousel__content > .marquee--block:has(.gallery-image) .marquee__track > .marquee-item-layout {
-    width: calc(20cqw - var(--page-margin-current) * 0.4 - var(--marquee-gap, 16px) * 0.8);
+    width: calc((100cqw - var(--gallery-marquee-inset, calc(var(--page-margin-current) * 2)) - var(--marquee-gap, 16px) * (var(--gallery-marquee-columns, 5) - 1)) / var(--gallery-marquee-columns, 5));
   }
   .gallery-carousel .marquee-item-layout > .gallery-image { width: 100%; }
   @media (max-width: 1149.98px) {
@@ -164,37 +163,254 @@
 {
   "name": "Gallery",
   "class": "section-kernel",
-  "enabled_on": { "templates": ["*"] },
+  "enabled_on": {
+    "templates": [
+      "*"
+    ]
+  },
   "blocks": [
-    { "type": "gallery-header-group" },
-    { "type": "header" },
-    { "type": "gallery-grid" },
-    { "type": "carousel" },
-    { "type": "marquee" }
+    {
+      "type": "gallery-header-group"
+    },
+    {
+      "type": "header"
+    },
+    {
+      "type": "gallery-grid"
+    },
+    {
+      "type": "carousel"
+    },
+    {
+      "type": "marquee"
+    }
   ],
   "settings": [
-    { "type": "header", "content": "Layout" },
-    { "type": "select", "id": "section_width", "label": "t:labels.section_width", "options": [{ "value": "page_width", "label": "t:options.section_width.page_width" }, { "value": "full_width", "label": "t:options.section_width.full_width" }, { "value": "full_width_no_padding", "label": "Full width (no padding)" }], "default": "page_width" },
-    { "type": "select", "id": "direction", "label": "Direction", "options": [{ "value": "horizontal", "label": "Horizontal" }, { "value": "vertical", "label": "Vertical" }], "default": "vertical" },
-    { "type": "select", "id": "position", "label": "Vertical position", "options": [{ "value": "top", "label": "Top" }, { "value": "center", "label": "Center" }, { "value": "bottom", "label": "Bottom" }], "default": "center", "visible_if": "{{ section.settings.direction == 'horizontal' }}" },
-    { "type": "select", "id": "horizontal_alignment", "label": "Horizontal alignment", "options": [{ "value": "left", "label": "Left" }, { "value": "center", "label": "Center" }, { "value": "right", "label": "Right" }, { "value": "space-between", "label": "Space between" }], "default": "space-between", "visible_if": "{{ section.settings.direction == 'horizontal' }}" },
-    { "type": "text_alignment", "id": "alignment", "label": "Alignment", "default": "left" },
-    { "type": "checkbox", "id": "customize_mobile_alignment", "label": "Vertical on mobile", "default": true, "visible_if": "{{ section.settings.direction == 'horizontal' }}" },
-    { "type": "text_alignment", "id": "alignment_mobile", "label": "Mobile alignment", "default": "left", "visible_if": "{{ section.settings.customize_mobile_alignment }}" },
-    { "type": "header", "content": "Gap" },
-    { "type": "range", "id": "content_gap", "label": "Content gap", "min": 0, "max": 100, "step": 1, "unit": "px", "default": 48 },
-    { "type": "checkbox", "id": "customize_mobile_gap", "label": "Customize mobile gap", "default": false },
-    { "type": "range", "id": "content_gap_mobile", "label": "Mobile content gap", "min": 0, "max": 100, "step": 1, "unit": "px", "default": 32, "visible_if": "{{ section.settings.customize_mobile_gap }}" },
-    { "type": "header", "content": "Appearance" },
-    { "type": "color_scheme", "id": "color_scheme", "label": "t:labels.color_scheme", "default": "scheme-1" },
-    { "type": "color", "alpha": true, "id": "background_color", "label": "Background" },
-    { "type": "image_picker", "id": "background_image", "label": "Background image" },
-    { "type": "header", "content": "t:general.padding" },
-    { "type": "range", "id": "padding_top", "label": "t:labels.top_padding", "min": 0, "max": 100, "step": 1, "unit": "px", "default": 0 },
-    { "type": "range", "id": "padding_bottom", "label": "t:labels.bottom_padding", "min": 0, "max": 100, "step": 1, "unit": "px", "default": 0 },
-    { "type": "checkbox", "id": "customize_mobile_padding", "label": "t:labels.customize_mobile_padding", "default": false },
-    { "type": "range", "id": "padding_top_mobile", "label": "t:labels.mobile_top_padding", "min": 0, "max": 100, "step": 1, "unit": "px", "default": 0, "visible_if": "{{ section.settings.customize_mobile_padding }}" },
-    { "type": "range", "id": "padding_bottom_mobile", "label": "t:labels.mobile_bottom_padding", "min": 0, "max": 100, "step": 1, "unit": "px", "default": 0, "visible_if": "{{ section.settings.customize_mobile_padding }}" }
+    {
+      "type": "header",
+      "content": "Layout"
+    },
+    {
+      "type": "select",
+      "id": "section_width",
+      "label": "t:labels.section_width",
+      "options": [
+        {
+          "value": "page_width",
+          "label": "t:options.section_width.page_width"
+        },
+        {
+          "value": "full_width",
+          "label": "t:options.section_width.full_width"
+        },
+        {
+          "value": "full_width_no_padding",
+          "label": "Full width (no padding)"
+        }
+      ],
+      "default": "page_width"
+    },
+    {
+      "type": "checkbox",
+      "id": "marquee_full_bleed",
+      "label": "Extend marquee to section edges",
+      "default": true
+    },
+    {
+      "type": "range",
+      "id": "marquee_columns_desktop",
+      "label": "Gallery marquee columns (desktop)",
+      "min": 2,
+      "max": 6,
+      "step": 1,
+      "default": 5
+    },
+    {
+      "type": "select",
+      "id": "direction",
+      "label": "Direction",
+      "options": [
+        {
+          "value": "horizontal",
+          "label": "Horizontal"
+        },
+        {
+          "value": "vertical",
+          "label": "Vertical"
+        }
+      ],
+      "default": "vertical"
+    },
+    {
+      "type": "select",
+      "id": "position",
+      "label": "Vertical position",
+      "options": [
+        {
+          "value": "top",
+          "label": "Top"
+        },
+        {
+          "value": "center",
+          "label": "Center"
+        },
+        {
+          "value": "bottom",
+          "label": "Bottom"
+        }
+      ],
+      "default": "center",
+      "visible_if": "{{ section.settings.direction == 'horizontal' }}"
+    },
+    {
+      "type": "select",
+      "id": "horizontal_alignment",
+      "label": "Horizontal alignment",
+      "options": [
+        {
+          "value": "left",
+          "label": "Left"
+        },
+        {
+          "value": "center",
+          "label": "Center"
+        },
+        {
+          "value": "right",
+          "label": "Right"
+        },
+        {
+          "value": "space-between",
+          "label": "Space between"
+        }
+      ],
+      "default": "space-between",
+      "visible_if": "{{ section.settings.direction == 'horizontal' }}"
+    },
+    {
+      "type": "text_alignment",
+      "id": "alignment",
+      "label": "Alignment",
+      "default": "left"
+    },
+    {
+      "type": "checkbox",
+      "id": "customize_mobile_alignment",
+      "label": "Vertical on mobile",
+      "default": true,
+      "visible_if": "{{ section.settings.direction == 'horizontal' }}"
+    },
+    {
+      "type": "text_alignment",
+      "id": "alignment_mobile",
+      "label": "Mobile alignment",
+      "default": "left",
+      "visible_if": "{{ section.settings.customize_mobile_alignment }}"
+    },
+    {
+      "type": "header",
+      "content": "Gap"
+    },
+    {
+      "type": "range",
+      "id": "content_gap",
+      "label": "Content gap",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "default": 48
+    },
+    {
+      "type": "checkbox",
+      "id": "customize_mobile_gap",
+      "label": "Customize mobile gap",
+      "default": false
+    },
+    {
+      "type": "range",
+      "id": "content_gap_mobile",
+      "label": "Mobile content gap",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "default": 32,
+      "visible_if": "{{ section.settings.customize_mobile_gap }}"
+    },
+    {
+      "type": "header",
+      "content": "Appearance"
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "t:labels.color_scheme",
+      "default": "scheme-1"
+    },
+    {
+      "type": "color",
+      "alpha": true,
+      "id": "background_color",
+      "label": "Background"
+    },
+    {
+      "type": "image_picker",
+      "id": "background_image",
+      "label": "Background image"
+    },
+    {
+      "type": "header",
+      "content": "t:general.padding"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "label": "t:labels.top_padding",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "label": "t:labels.bottom_padding",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "default": 0
+    },
+    {
+      "type": "checkbox",
+      "id": "customize_mobile_padding",
+      "label": "t:labels.customize_mobile_padding",
+      "default": false
+    },
+    {
+      "type": "range",
+      "id": "padding_top_mobile",
+      "label": "t:labels.mobile_top_padding",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "default": 0,
+      "visible_if": "{{ section.settings.customize_mobile_padding }}"
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_mobile",
+      "label": "t:labels.mobile_bottom_padding",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "default": 0,
+      "visible_if": "{{ section.settings.customize_mobile_padding }}"
+    }
   ],
   "presets": [
     {
@@ -212,16 +428,73 @@
         "content_gap_mobile": 32
       },
       "blocks": [
-        { "type": "gallery-header-group", "settings": { "alignment": "left", "gap": 8 }, "blocks": [
-          { "type": "eyebrow", "settings": { "text": "<p>Section TAG</p>" } },
-          { "type": "heading", "settings": { "text": "<p>Follow Us On Instagram</p>", "html_tag": "h2" } }
-        ] },
-        { "type": "carousel", "settings": { "columns_desktop": "4", "columns_mobile": "1", "gap_desktop": 24, "gap_mobile": 16, "navigation_style": "secondary", "navigation_icon": "chevron", "navigation_behavior": "always", "pagination_type": "progress_bar", "show_pagination_on_desktop": true, "show_pagination_on_mobile": true }, "blocks": [
-          { "type": "gallery-item", "settings": { "text": "@pam_sam", "social_network": "instagram" } },
-          { "type": "gallery-item", "settings": { "text": "@pam_sam", "social_network": "instagram" } },
-          { "type": "gallery-item", "settings": { "text": "@pam_sam", "social_network": "instagram" } },
-          { "type": "gallery-item", "settings": { "text": "@pam_sam", "social_network": "instagram" } }
-        ] }
+        {
+          "type": "gallery-header-group",
+          "settings": {
+            "alignment": "left",
+            "gap": 8
+          },
+          "blocks": [
+            {
+              "type": "eyebrow",
+              "settings": {
+                "text": "<p>Section TAG</p>"
+              }
+            },
+            {
+              "type": "heading",
+              "settings": {
+                "text": "<p>Follow Us On Instagram</p>",
+                "html_tag": "h2"
+              }
+            }
+          ]
+        },
+        {
+          "type": "carousel",
+          "settings": {
+            "columns_desktop": "4",
+            "columns_mobile": "1",
+            "gap_desktop": 24,
+            "gap_mobile": 16,
+            "navigation_style": "secondary",
+            "navigation_icon": "chevron",
+            "navigation_behavior": "always",
+            "pagination_type": "progress_bar",
+            "show_pagination_on_desktop": true,
+            "show_pagination_on_mobile": true
+          },
+          "blocks": [
+            {
+              "type": "gallery-item",
+              "settings": {
+                "text": "@pam_sam",
+                "social_network": "instagram"
+              }
+            },
+            {
+              "type": "gallery-item",
+              "settings": {
+                "text": "@pam_sam",
+                "social_network": "instagram"
+              }
+            },
+            {
+              "type": "gallery-item",
+              "settings": {
+                "text": "@pam_sam",
+                "social_network": "instagram"
+              }
+            },
+            {
+              "type": "gallery-item",
+              "settings": {
+                "text": "@pam_sam",
+                "social_network": "instagram"
+              }
+            }
+          ]
+        }
       ]
     }
   ]

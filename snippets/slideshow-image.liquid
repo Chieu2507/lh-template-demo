@@ -8,6 +8,7 @@
   @param {image} image - Desktop artwork
   @param {image} [mobile_image] - Mobile artwork; falls back to desktop
   @param {number} [mobile_height] - Fixed mobile frame height, when configured
+  @param {string} [mobile_image_sizes] - Rendered width of uncropped mobile artwork
   @param {string} [sizes] - Desktop rendered width, defaults to 100vw
   @param {string} [loading] - eager for the first visible slide, otherwise lazy
   @param {string} [fetchpriority] - high only for the first visible slide
@@ -89,7 +90,7 @@
       echo ' 2400w'
     endif
   endcapture
-  assign mobile_sizes = '100vw'
+  assign mobile_sizes = mobile_image_sizes | default: '100vw'
   unless crop_mobile_panorama
     if mobile_cover_width > 0
       capture mobile_sizes

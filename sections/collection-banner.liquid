@@ -92,7 +92,7 @@
   <div class="container{% if banner_width == 'page' %} page-width{% elsif banner_width == 'full' %} full-width{% endif %}">
     <div class="collection-banner__surface">
       {% unless banner_layout == 'classic' %}
-        <div class="collection-banner__media{% if fallback_image == blank %} collection-banner__media--placeholder{% endif %}">
+        <div class="collection-banner__media{% if banner_layout == 'background' %} media-background-surface{% endif %}{% if fallback_image == blank %} collection-banner__media--placeholder{% endif %}">
           {% if fallback_image != blank %}
             <picture>
               {% if mobile_image != blank %}

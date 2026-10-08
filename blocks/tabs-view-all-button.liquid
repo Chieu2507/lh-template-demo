@@ -75,7 +75,7 @@
 {% if block.settings.show_button != false %}
 {% if collection_tabs_view_all_label != blank or request.design_mode %}
   <div
-    class="{{ collection_tabs_view_all_class }}"
+    class="{{ collection_tabs_view_all_class }}{% if block.settings.hide_view_all_mobile %} collection-tabs-view-all--hide-mobile{% endif %}"
     {% if collection_tabs_view_all_style_attribute != blank %}style="{{ collection_tabs_view_all_style_attribute }}"{% endif %}
     {{ block.shopify_attributes }}
   >
@@ -127,6 +127,9 @@
     .collection-tabs-view-all--width-mobile-fill .collection-tabs-view-all__button {
       width: 100%;
     }
+  }
+  @media (max-width: 767.98px) {
+    .collection-tabs-view-all--hide-mobile { display: none; }
   }
 {% endstylesheet %}
 
@@ -293,6 +296,12 @@
         }
       ],
       "default": "fit"
+    },
+    {
+      "type": "checkbox",
+      "id": "hide_view_all_mobile",
+      "label": "t:labels.hide_view_all_on_mobile",
+      "default": false
     },
     {
       "type": "select",

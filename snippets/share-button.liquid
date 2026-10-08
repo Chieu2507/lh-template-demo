@@ -8,6 +8,7 @@
   @param {string} [copied_label] - Feedback after copying the URL
   @param {string} [error_label] - Feedback when sharing and copying fail
   @param {string} [class] - Additional classes for the button
+  @param {string} [icon_asset] - Optional 16px icon asset for a caller-owned share surface
   @param {string} [attributes] - Additional HTML attributes owned by the caller
 
   @example
@@ -47,6 +48,10 @@
   data-share-error="{{ share_button_error_label | escape }}"
   {% if attributes != blank %}{{ attributes }}{% endif %}
 >
-  {% render 'icon', icon: 'share', bare: true %}
+  {% if icon_asset != blank %}
+    <img src="{{ icon_asset | asset_url }}" alt="" width="16" height="16" loading="lazy">
+  {% else %}
+    {% render 'icon', icon: 'share', bare: true %}
+  {% endif %}
 </button>
 <span class="share-button__status visually-hidden" data-share-status role="status" aria-live="polite"></span>

@@ -66,9 +66,11 @@
     <div class="blog-posts__header">
       {% content_for 'block', type: 'header', id: 'header' %}
     </div>
-    <div class="blog-posts__actions">
+    {% capture blog_posts_actions %}
       {% content_for 'block', type: 'view-all-button', id: 'blog-posts-view-all', closest.collection: blog_posts_source, require_more_items: true %}
-    </div>
+    {% endcapture %}
+    {% assign blog_posts_actions = blog_posts_actions | strip %}
+    {% if blog_posts_actions != blank %}<div class="blog-posts__actions">{{ blog_posts_actions }}</div>{% endif %}
     <div class="blog-posts__list">
       {% content_for 'block', type: 'blog-list', id: 'blog-list', closest.blog: blog_posts_source %}
     </div>
@@ -141,6 +143,16 @@
         'posts'
         'actions';
       row-gap: var(--blog-posts-gap-desktop, 32px);
+    }
+
+    .blog-posts__container[data-desktop-alignment='center']:not(:has(.blog-list__navigation--top)) {
+      grid-template-areas: 'header' 'posts' 'actions';
+    }
+    .blog-posts__container[data-desktop-alignment='center']:not(:has(.blog-posts__actions)) {
+      grid-template-areas: 'header' 'navigation' 'posts';
+    }
+    .blog-posts__container[data-desktop-alignment='center']:not(:has(.blog-list__navigation--top)):not(:has(.blog-posts__actions)) {
+      grid-template-areas: 'header' 'posts';
     }
 
     .blog-posts__header { grid-area: header; }
@@ -249,6 +261,12 @@
       padding-top: var(--blog-posts-padding-top-mobile, var(--blog-posts-padding-top, 0px));
       padding-bottom: var(--blog-posts-padding-bottom-mobile, var(--blog-posts-padding-bottom, 0px));
     }
+  }
+  @media (max-width: 767.98px) {
+    .blog-posts__header { order: 0; }
+    .blog-posts__list { order: 1; }
+    .blog-posts__actions { order: 2; }
+    .blog-posts__actions:has(> .collection-list-view-all--hide-mobile) { display: none; }
   }
 {% endstylesheet %}
 

@@ -1,0 +1,43 @@
+{% doc %}
+  Renders the selected product's standard Shopify review metafields.
+  Missing reviews are omitted; no placeholder rating is shown on the storefront.
+{% enddoc %}
+{% liquid
+  assign rating_product = closest.product | default: product
+  assign product_rating = rating_product.metafields.reviews.rating.value
+  assign rating_count = rating_product.metafields.reviews.rating_count.value | default: 0 | plus: 0
+  assign rating_max = product_rating.scale_max | default: 5 | at_least: 1
+  assign rating_value = product_rating.rating | default: 0 | times: 5.0 | divided_by: rating_max | at_least: 0 | at_most: 5
+  assign rating_percentage = rating_value | times: 20
+%}
+{% if product_rating != blank and rating_count > 0 %}
+  <div class="product-rating" {{ block.shopify_attributes }}>
+    <span class="product-rating__stars" role="img" aria-label="{{ 'products.rating_value' | t: rating: rating_value, max: 5 | escape }}">
+      <span class="product-rating__track" aria-hidden="true">
+        {% for star in (1..5) %}<img src="{{ 'product-rating-star.svg' | asset_url }}" alt="" width="18" height="18" loading="lazy">{% endfor %}
+      </span>
+      <span class="product-rating__fill" style="width: {{ rating_percentage }}%;" aria-hidden="true">
+        {% for star in (1..5) %}<img src="{{ 'product-rating-star.svg' | asset_url }}" alt="" width="18" height="18" loading="lazy">{% endfor %}
+      </span>
+    </span>
+    <span>({{ 'products.rating_count' | t: count: rating_count }})</span>
+  </div>
+{% elsif request.design_mode %}
+  <div class="product-rating" {{ block.shopify_attributes }}>{{ 'products.rating_empty' | t }}</div>
+{% endif %}
+{% stylesheet %}
+.product-rating { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; color: var(--body-color); }
+.product-rating__stars { display: block; position: relative; width: 106px; height: 18px; flex: 0 0 106px; }
+.product-rating__track, .product-rating__fill { display: flex; gap: 4px; }
+.product-rating__track { opacity: .2; }
+.product-rating__fill { position: absolute; inset: 0 auto 0 0; overflow: hidden; }
+.product-rating img { flex: 0 0 18px; display: block; }
+{% endstylesheet %}
+{% schema %}
+{
+  "name": "Product rating",
+  "tag": null,
+  "settings": [],
+  "presets": [{ "name": "Product rating", "category": "t:general.product" }]
+}
+{% endschema %}

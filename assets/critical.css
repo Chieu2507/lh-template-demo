@@ -284,6 +284,11 @@ svg {
   border-radius: var(--media-radius, 0px);
 }
 
+/* Background artwork has square pixels; its containing surface owns clipping. */
+.media-background-surface {
+  --media-radius: 0px;
+}
+
 /* Reusable media surface: a section supplies placement and dimensions, while
  * this primitive keeps media, placeholders, and overlay in one clipped box. */
 /* Hover media opts into the global zoom token without transforming content,

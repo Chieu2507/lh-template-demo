@@ -7,7 +7,7 @@
 <lh-collection-background class="section-spacing featured-collection-background color-scheme section-color-scope {{ section.settings.color_scheme }}" data-collection-background-section
   style="--collection-header-width: {{ section.settings.header_width | default: 21 }}%; --collection-content-gap: {{ section.settings.gap_desktop | default: 10 }}px; --collection-content-gap-mobile: {{ section.settings.gap_mobile | default: 40 }}px; --collection-content-top-mobile: {{ section.settings.content_top_padding_mobile | default: 40 }}px; --section-padding-top: {{ section.settings.padding_top | default: 0 }}px; --section-padding-bottom: {{ section.settings.padding_bottom | default: 80 }}px;{% if section.settings.customize_mobile_padding %} --section-padding-top-mobile: {{ section.settings.padding_top_mobile | default: 0 }}px; --section-padding-bottom-mobile: {{ section.settings.padding_bottom_mobile | default: 16 }}px;{% endif %}"
 >
-  <div class="featured-collection-background__background">
+  <div class="media-background-surface featured-collection-background__background">
     {% content_for 'block', type: 'collection-background', id: 'background' %}
   </div>
   <div class="container {{ container_width }} featured-collection-background__content" data-collection-background-content data-content-layout="{{ section.settings.layout_desktop }}">
@@ -36,6 +36,12 @@
   .featured-collection-background { --collection-background-height: var(--collection-background-height-mobile, 256px); --collection-background-overlap: var(--collection-background-overlap-mobile, 0px); }
   .featured-collection-background__content { padding-top: var(--collection-content-top-mobile, 40px); gap: var(--collection-content-gap-mobile, 40px); }
 }
+  @media (max-width: 767.98px) {
+    .featured-collection-background__intro { display: contents; }
+    .featured-collection-background__intro > .block-header { order: 0; }
+    .featured-collection-background__products { order: 1; }
+    .featured-collection-background__intro > .collection-list-view-all { order: 2; }
+  }
 {% endstylesheet %}
 
 {% schema %}

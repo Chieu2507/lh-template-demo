@@ -1,11 +1,15 @@
 {% liquid
+  assign layout_type = section.settings.layout_type | default: 'carousel'
+  unless layout_type == 'grid' or layout_type == 'carousel'
+    assign layout_type = 'carousel'
+  endunless
   assign card_height = section.settings.card_height | default: 'fill'
   unless card_height == 'auto' or card_height == 'fill'
     assign card_height = 'fill'
   endunless
 %}
 {% capture pagination %}
-  {% if section.settings.show_pagination %}
+  {% if layout_type == 'carousel' and section.settings.show_pagination %}
     <div class="swiper-pagination swiper-pagination--below" data-carousel-pagination data-pagination-type="bullets" data-pagination-visible-desktop="true" data-pagination-visible-mobile="true"></div>
   {% endif %}
 {% endcapture %}
@@ -14,21 +18,23 @@
 {% if section.settings.background_color != blank %}
   {% style %}#shopify-section-{{ section.id }} { background-color: {{ section.settings.background_color }}; }{% endstyle %}
 {% endif %}
-<div class="section-spacing testimonials-cards testimonials-cards--height-{{ card_height }} color-scheme section-color-scope {{ section.settings.color_scheme }}" style="--testimonials-padding-top: {{ section.settings.padding_top }}px; --testimonials-padding-bottom: {{ section.settings.padding_bottom }}px; --testimonials-header-gap: {{ section.settings.header_gap }}px; --testimonials-header-gap-mobile: {{ section.settings.header_gap_mobile }}px; --testimonials-pagination-gap-mobile: {{ section.settings.pagination_top_padding_mobile | default: 28 }}px;{% if section.settings.customize_mobile_padding %} --testimonials-padding-top-mobile: {{ section.settings.padding_top_mobile }}px; --testimonials-padding-bottom-mobile: {{ section.settings.padding_bottom_mobile }}px;{% endif %}{% if section.settings.background_color != blank %} background-color: {{ section.settings.background_color }};{% endif %}">
+<div class="section-spacing testimonials-cards testimonials-cards--height-{{ card_height }} color-scheme section-color-scope {{ section.settings.color_scheme }}" style="--testimonials-padding-top: {{ section.settings.padding_top }}px; --testimonials-padding-bottom: {{ section.settings.padding_bottom }}px; --testimonials-header-gap: {{ section.settings.header_gap }}px; --testimonials-header-gap-mobile: {{ section.settings.header_gap_mobile }}px; --testimonials-pagination-gap: {{ section.settings.pagination_top_padding_desktop | default: 36 }}px; --testimonials-pagination-gap-mobile: {{ section.settings.pagination_top_padding_mobile | default: 28 }}px;{% if section.settings.customize_mobile_padding %} --testimonials-padding-top-mobile: {{ section.settings.padding_top_mobile }}px; --testimonials-padding-bottom-mobile: {{ section.settings.padding_bottom_mobile }}px;{% endif %}{% if section.settings.background_color != blank %} background-color: {{ section.settings.background_color }};{% endif %}">
   <div class="container {% if section.settings.section_width == 'full_width' %}full-width{% else %}page-width{% endif %} testimonials-cards__content">
     <div class="testimonials-cards__header align-content">{% content_for 'block', type: 'header', id: 'header' %}</div>
     {% capture slides %}{% content_for 'blocks' %}{% endcapture %}
-    <div class="testimonials-cards__carousel" data-carousel-block data-swiper-columns-desktop="{{ section.settings.columns_desktop }}" data-swiper-columns-tablet="{{ section.settings.columns_tablet }}" data-swiper-columns-mobile="{{ section.settings.columns_mobile }}" data-swiper-gap-desktop="{{ section.settings.gap_desktop }}" data-swiper-gap-mobile="{{ section.settings.gap_mobile }}" data-swiper-pagination-type="bullets" data-swiper-pagination-desktop="{{ section.settings.show_pagination }}" data-swiper-pagination-mobile="{{ section.settings.show_pagination }}" data-carousel-loop="false">
-      {% render 'swiper-carousel', id: carousel_id, content: slides, pagination: pagination, aria_label: carousel_label %}
+    <div class="testimonials-cards__carousel testimonials-cards__carousel--{{ layout_type }}" style="--testimonials-columns-desktop: {{ section.settings.columns_desktop | default: 3 }}; --testimonials-columns-tablet: {{ section.settings.columns_tablet | default: 2 }}; --testimonials-columns-mobile: {{ section.settings.columns_mobile | default: 1 }}; --testimonials-gap-desktop: {{ section.settings.gap_desktop | default: 28 }}px; --testimonials-gap-mobile: {{ section.settings.gap_mobile | default: 16 }}px;"{% if layout_type == 'carousel' %} data-carousel-block{% endif %} data-swiper-columns-desktop="{{ section.settings.columns_desktop }}" data-swiper-columns-tablet="{{ section.settings.columns_tablet }}" data-swiper-columns-mobile="{{ section.settings.columns_mobile }}" data-swiper-gap-desktop="{{ section.settings.gap_desktop }}" data-swiper-gap-mobile="{{ section.settings.gap_mobile }}" data-swiper-pagination-type="bullets" data-swiper-pagination-desktop="{{ section.settings.show_pagination }}" data-swiper-pagination-mobile="{{ section.settings.show_pagination }}" data-carousel-loop="false">
+      {% render 'swiper-carousel', id: carousel_id, content: slides, layout: layout_type, pagination: pagination, aria_label: carousel_label %}
     </div>
   </div>
 </div>
+{% if layout_type == 'carousel' %}
 <script data-theme-module="{{ 'carousel-block.js' | asset_url }}"></script>
+{% endif %}
 {% stylesheet %}
 .testimonials-cards { padding-block: var(--testimonials-padding-top, 80px) var(--testimonials-padding-bottom, 80px); }
 .testimonials-cards__content { display: flex; flex-direction: column; gap: var(--testimonials-header-gap, 56px); }
 .testimonials-cards__header { --flex-align: center; --flex-align-mobile: center; width: 100%; max-width: 768px; margin-inline: auto; }
-.testimonials-cards__carousel { min-width: 0; --swiper-pagination-spacing: 36px; --swiper-pagination-spacing-mobile: var(--testimonials-pagination-gap-mobile, 28px); }
+.testimonials-cards__carousel { --swiper-carousel-grid-columns: var(--testimonials-columns-desktop, 3); --swiper-carousel-grid-gap: var(--testimonials-gap-desktop, 28px); min-width: 0; --swiper-pagination-spacing: var(--testimonials-pagination-gap, 36px); --swiper-pagination-spacing-mobile: var(--testimonials-pagination-gap-mobile, 28px); }
 .testimonials-cards__carousel.carousel-block--locked .swiper-pagination { display: none; }
 .testimonials-cards__carousel .swiper-wrapper { align-items: stretch; }
 /* Stretch fills the auto-sized Swiper row without a fixed pixel height. */
@@ -37,13 +43,14 @@
 .testimonials-cards .image-block { --motion-image-zoom: 1; }
 .testimonials-cards .image-block__media img { object-position: center bottom; }
 @media (min-width: 768px) and (max-width: 1149.98px) {
- .testimonials-cards { padding-block: calc(var(--testimonials-padding-top, 80px) * .75) calc(var(--testimonials-padding-bottom, 80px) * .75); }
  .testimonials-cards__header { max-width: 576px; }
+ .testimonials-cards__carousel { --swiper-carousel-grid-columns: var(--testimonials-columns-tablet, 2); }
 }
 @media (max-width: 767.98px) {
- .testimonials-cards { padding-block: var(--testimonials-padding-top-mobile, calc(var(--testimonials-padding-top, 80px) * .5)) var(--testimonials-padding-bottom-mobile, calc(var(--testimonials-padding-bottom, 80px) * .5)); }
+ .testimonials-cards { padding-block: var(--testimonials-padding-top-mobile, var(--testimonials-padding-top, 80px)) var(--testimonials-padding-bottom-mobile, var(--testimonials-padding-bottom, 80px)); }
  .testimonials-cards__content { gap: var(--testimonials-header-gap-mobile, 32px); }
  .testimonials-cards__header { max-width: 448px; }
+ .testimonials-cards__carousel { --swiper-carousel-grid-columns: var(--testimonials-columns-mobile, 1); --swiper-carousel-grid-gap: var(--testimonials-gap-mobile, 16px); }
 }
 {% endstylesheet %}
 {% schema %}
@@ -84,8 +91,24 @@
     },
     {
       "type": "select",
+      "id": "layout_type",
+      "label": "t:labels.type",
+      "options": [
+        {
+          "value": "grid",
+          "label": "t:options.product_list_layout.grid"
+        },
+        {
+          "value": "carousel",
+          "label": "t:options.product_list_layout.carousel"
+        }
+      ],
+      "default": "carousel"
+    },
+    {
+      "type": "select",
       "id": "columns_desktop",
-      "label": "Desktop items per view",
+      "label": "t:labels.desktop_columns",
       "options": [
         {
           "value": "1",
@@ -109,7 +132,7 @@
     {
       "type": "select",
       "id": "columns_tablet",
-      "label": "Tablet items per view",
+      "label": "t:labels.tablet_columns",
       "options": [
         {
           "value": "1",
@@ -129,7 +152,7 @@
     {
       "type": "select",
       "id": "columns_mobile",
-      "label": "Mobile items per view",
+      "label": "t:labels.mobile_columns",
       "options": [
         {
           "value": "1",
@@ -141,6 +164,30 @@
         }
       ],
       "default": "1"
+    },
+    {
+      "type": "header",
+      "content": "t:general.cards"
+    },
+    {
+      "type": "select",
+      "id": "card_height",
+      "label": "t:labels.height",
+      "options": [
+        {
+          "value": "auto",
+          "label": "t:options.section_height.auto"
+        },
+        {
+          "value": "fill",
+          "label": "t:options.width.fill"
+        }
+      ],
+      "default": "fill"
+    },
+    {
+      "type": "header",
+      "content": "t:general.gap"
     },
     {
       "type": "range",
@@ -165,7 +212,7 @@
     {
       "type": "range",
       "id": "header_gap",
-      "label": "Header gap",
+      "label": "Desktop header gap",
       "min": 0,
       "max": 100,
       "step": 1,
@@ -183,6 +230,28 @@
       "default": 32
     },
     {
+      "type": "header",
+      "content": "t:general.carousel"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_pagination",
+      "label": "t:labels.show_pagination",
+      "default": true,
+      "visible_if": "{{ section.settings.layout_type == 'carousel' }}"
+    },
+    {
+      "type": "range",
+      "id": "pagination_top_padding_desktop",
+      "label": "t:labels.pagination_desktop_top_padding",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "default": 36,
+      "visible_if": "{{ section.settings.layout_type == 'carousel' and section.settings.show_pagination }}"
+    },
+    {
       "type": "range",
       "id": "pagination_top_padding_mobile",
       "label": "t:labels.pagination_mobile_top_padding",
@@ -190,33 +259,8 @@
       "max": 100,
       "step": 1,
       "unit": "px",
-      "default": 28
-    },
-    {
-      "type": "checkbox",
-      "id": "show_pagination",
-      "label": "t:labels.show_pagination",
-      "default": true
-    },
-    {
-      "type": "header",
-      "content": "Card item"
-    },
-    {
-      "type": "select",
-      "id": "card_height",
-      "label": "t:labels.height",
-      "options": [
-        {
-          "value": "auto",
-          "label": "t:options.section_height.auto"
-        },
-        {
-          "value": "fill",
-          "label": "t:options.width.fill"
-        }
-      ],
-      "default": "fill"
+      "default": 28,
+      "visible_if": "{{ section.settings.layout_type == 'carousel' and section.settings.show_pagination }}"
     },
     {
       "type": "header",
@@ -230,17 +274,18 @@
     },
     {
       "type": "color",
+      "alpha": true,
       "id": "background_color",
-      "label": "Background color"
+      "label": "t:labels.background_color_label"
     },
     {
       "type": "header",
-      "content": "Section padding"
+      "content": "t:general.padding"
     },
     {
       "type": "range",
       "id": "padding_top",
-      "label": "Top padding",
+      "label": "t:labels.top_padding",
       "min": 0,
       "max": 100,
       "step": 1,
@@ -250,7 +295,7 @@
     {
       "type": "range",
       "id": "padding_bottom",
-      "label": "Bottom padding",
+      "label": "t:labels.bottom_padding",
       "min": 0,
       "max": 100,
       "step": 1,

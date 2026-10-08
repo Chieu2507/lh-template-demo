@@ -58,7 +58,7 @@
 {% assign collection_list_view_all_style_attribute = collection_list_view_all_style_attribute | strip %}
 
   <div
-    class="collection-list-view-all{% if block.settings.full_width_mobile %} collection-list-view-all--full-width-mobile{% endif %}"
+    class="collection-list-view-all{% if block.settings.hide_view_all_mobile %} collection-list-view-all--hide-mobile{% endif %}{% if block.settings.full_width_mobile %} collection-list-view-all--full-width-mobile{% endif %}"
     {% if collection_list_view_all_style_attribute != blank %}style="{{ collection_list_view_all_style_attribute }}"{% endif %}
     {% if require_more_items %}data-resource-view-all data-design-mode="{{ request.design_mode }}"{% unless request.design_mode %} hidden{% endunless %}{% endif %}
     {{ block.shopify_attributes }}
@@ -118,6 +118,9 @@
       width: 100%;
     }
   }
+  @media (max-width: 767.98px) {
+    .collection-list-view-all--hide-mobile { display: none; }
+  }
 {% endstylesheet %}
 
 
@@ -127,22 +130,52 @@
   "name": "t:general.view_all_button",
   "tag": null,
   "settings": [
-    { "type": "header", "content": "t:general.content" },
-    { "type": "text", "id": "button_label", "label": "t:labels.button_label", "default": "View all" },
-    { "type": "checkbox", "id": "button_open_in_new_tab", "label": "t:labels.open_in_new_tab", "default": false },
-    { "type": "header", "content": "t:labels.desktop" },
+    {
+      "type": "header",
+      "content": "t:general.content"
+    },
+    {
+      "type": "text",
+      "id": "button_label",
+      "label": "t:labels.button_label",
+      "default": "View all"
+    },
+    {
+      "type": "checkbox",
+      "id": "button_open_in_new_tab",
+      "label": "t:labels.open_in_new_tab",
+      "default": false
+    },
+    {
+      "type": "header",
+      "content": "t:labels.desktop"
+    },
     {
       "type": "select",
       "id": "button_style",
       "label": "t:labels.style",
       "options": [
-        { "value": "primary", "label": "t:options.button_variant.primary" },
-        { "value": "secondary", "label": "t:options.button_variant.secondary" },
-        { "value": "tertiary", "label": "t:options.button_variant.tertiary" }
+        {
+          "value": "primary",
+          "label": "t:options.button_variant.primary"
+        },
+        {
+          "value": "secondary",
+          "label": "t:options.button_variant.secondary"
+        },
+        {
+          "value": "tertiary",
+          "label": "t:options.button_variant.tertiary"
+        }
       ],
       "default": "tertiary"
     },
-    { "type": "checkbox", "id": "show_icon", "label": "t:labels.show_icon", "default": false },
+    {
+      "type": "checkbox",
+      "id": "show_icon",
+      "label": "t:labels.show_icon",
+      "default": false
+    },
     {
       "type": "select",
       "id": "icon",
@@ -218,8 +251,14 @@
       "id": "icon_size",
       "label": "t:labels.icon_size",
       "options": [
-        { "value": "inherit", "label": "t:options.icon_size.inherit" },
-        { "value": "custom", "label": "t:options.icon_size.custom" }
+        {
+          "value": "inherit",
+          "label": "t:options.icon_size.inherit"
+        },
+        {
+          "value": "custom",
+          "label": "t:options.icon_size.custom"
+        }
       ],
       "default": "inherit",
       "visible_if": "{{ block.settings.show_icon or block.settings.show_icon_mobile }}"
@@ -235,15 +274,33 @@
       "default": 20,
       "visible_if": "{{ block.settings.icon_size == 'custom' and block.settings.show_icon or block.settings.show_icon_mobile }}"
     },
-    { "type": "header", "content": "t:labels.mobile" },
+    {
+      "type": "header",
+      "content": "t:labels.mobile"
+    },
+    {
+      "type": "checkbox",
+      "id": "hide_view_all_mobile",
+      "label": "t:labels.hide_view_all_on_mobile",
+      "default": false
+    },
     {
       "type": "select",
       "id": "button_style_mobile",
       "label": "t:labels.style",
       "options": [
-        { "value": "primary", "label": "t:options.button_variant.primary" },
-        { "value": "secondary", "label": "t:options.button_variant.secondary" },
-        { "value": "tertiary", "label": "t:options.button_variant.tertiary" }
+        {
+          "value": "primary",
+          "label": "t:options.button_variant.primary"
+        },
+        {
+          "value": "secondary",
+          "label": "t:options.button_variant.secondary"
+        },
+        {
+          "value": "tertiary",
+          "label": "t:options.button_variant.tertiary"
+        }
       ],
       "default": "secondary"
     },
@@ -252,15 +309,37 @@
       "id": "button_height_mobile",
       "label": "Height",
       "options": [
-        { "value": "inherit", "label": "t:options.icon_size.inherit" },
-        { "value": "small", "label": "Small" },
-        { "value": "medium", "label": "Medium" },
-        { "value": "large", "label": "Large" }
+        {
+          "value": "inherit",
+          "label": "t:options.icon_size.inherit"
+        },
+        {
+          "value": "small",
+          "label": "Small"
+        },
+        {
+          "value": "medium",
+          "label": "Medium"
+        },
+        {
+          "value": "large",
+          "label": "Large"
+        }
       ],
       "default": "inherit"
     },
-    { "type": "checkbox", "id": "full_width_mobile", "label": "t:labels.full_width", "default": true },
-    { "type": "checkbox", "id": "show_icon_mobile", "label": "t:labels.show_icon", "default": false }
+    {
+      "type": "checkbox",
+      "id": "full_width_mobile",
+      "label": "t:labels.full_width",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "show_icon_mobile",
+      "label": "t:labels.show_icon",
+      "default": false
+    }
   ]
 }
 {% endschema %}

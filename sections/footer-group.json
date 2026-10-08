@@ -429,7 +429,7 @@
                 "customize_mobile_alignment": true,
                 "alignment_mobile": "left",
                 "gap_desktop": 40,
-                "gap_mobile": 0,
+                "gap_mobile": 24,
                 "appearance_type": "inherit",
                 "padding_left": 28,
                 "customize_mobile_padding": true,

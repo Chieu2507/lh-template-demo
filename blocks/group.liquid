@@ -195,28 +195,28 @@
   assign padding_left_mobile = block.settings.padding_left_mobile | default: 0 | plus: 0
   assign padding_right_mobile = block.settings.padding_right_mobile | default: 0 | plus: 0
 
-  if padding_top < 0 or padding_top > 100
+  if padding_top < 0 or padding_top > 200
     assign padding_top = 0
   endif
-  if padding_bottom < 0 or padding_bottom > 100
+  if padding_bottom < 0 or padding_bottom > 200
     assign padding_bottom = 0
   endif
-  if padding_left < 0 or padding_left > 100
+  if padding_left < 0 or padding_left > 200
     assign padding_left = 0
   endif
-  if padding_right < 0 or padding_right > 100
+  if padding_right < 0 or padding_right > 200
     assign padding_right = 0
   endif
-  if padding_top_mobile < 0 or padding_top_mobile > 100
+  if padding_top_mobile < 0 or padding_top_mobile > 200
     assign padding_top_mobile = 0
   endif
-  if padding_bottom_mobile < 0 or padding_bottom_mobile > 100
+  if padding_bottom_mobile < 0 or padding_bottom_mobile > 200
     assign padding_bottom_mobile = 0
   endif
-  if padding_left_mobile < 0 or padding_left_mobile > 100
+  if padding_left_mobile < 0 or padding_left_mobile > 200
     assign padding_left_mobile = 0
   endif
-  if padding_right_mobile < 0 or padding_right_mobile > 100
+  if padding_right_mobile < 0 or padding_right_mobile > 200
     assign padding_right_mobile = 0
   endif
 
@@ -989,8 +989,8 @@
       "id": "padding_top",
       "label": "t:labels.top_padding",
       "min": 0,
-      "max": 100,
-      "step": 1,
+      "max": 200,
+      "step": 2,
       "unit": "px",
       "default": 0
     },
@@ -999,8 +999,8 @@
       "id": "padding_bottom",
       "label": "t:labels.bottom_padding",
       "min": 0,
-      "max": 100,
-      "step": 1,
+      "max": 200,
+      "step": 2,
       "unit": "px",
       "default": 0
     },
@@ -1009,8 +1009,8 @@
       "id": "padding_left",
       "label": "t:labels.left_padding",
       "min": 0,
-      "max": 100,
-      "step": 1,
+      "max": 200,
+      "step": 2,
       "unit": "px",
       "default": 0
     },
@@ -1019,8 +1019,8 @@
       "id": "padding_right",
       "label": "t:labels.right_padding",
       "min": 0,
-      "max": 100,
-      "step": 1,
+      "max": 200,
+      "step": 2,
       "unit": "px",
       "default": 0
     },
@@ -1035,8 +1035,8 @@
       "id": "padding_top_mobile",
       "label": "t:labels.mobile_top_padding",
       "min": 0,
-      "max": 100,
-      "step": 1,
+      "max": 200,
+      "step": 2,
       "unit": "px",
       "default": 0,
       "visible_if": "{{ block.settings.customize_mobile_padding }}"
@@ -1046,8 +1046,8 @@
       "id": "padding_bottom_mobile",
       "label": "t:labels.mobile_bottom_padding",
       "min": 0,
-      "max": 100,
-      "step": 1,
+      "max": 200,
+      "step": 2,
       "unit": "px",
       "default": 0,
       "visible_if": "{{ block.settings.customize_mobile_padding }}"
@@ -1057,8 +1057,8 @@
       "id": "padding_left_mobile",
       "label": "t:labels.mobile_left_padding",
       "min": 0,
-      "max": 100,
-      "step": 1,
+      "max": 200,
+      "step": 2,
       "unit": "px",
       "default": 0,
       "visible_if": "{{ block.settings.customize_mobile_padding }}"
@@ -1068,8 +1068,8 @@
       "id": "padding_right_mobile",
       "label": "t:labels.mobile_right_padding",
       "min": 0,
-      "max": 100,
-      "step": 1,
+      "max": 200,
+      "step": 2,
       "unit": "px",
       "default": 0,
       "visible_if": "{{ block.settings.customize_mobile_padding }}"

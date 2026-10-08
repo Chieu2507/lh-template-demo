@@ -1,0 +1,11 @@
+{% doc %}
+  Renders the independently hideable title of a Collection thumbnail.
+  Typography continues to use the parent section's existing controls.
+  @param {string} thumbnail_title - Resolved custom or collection title
+{% enddoc %}
+{% capture thumbnail_heading_size %}{% render 'heading-size-token', size: section.settings.heading_size, fallback: 'sm' %}{% endcapture %}
+{% assign thumbnail_heading_size = thumbnail_heading_size | strip %}
+<{{ section.settings.html_tag | default: 'h2' }} class="collection-thumbnail__title collection-thumbnail__title--{{ section.settings.title_font | default: 'heading' }} heading-text heading-{{ thumbnail_heading_size }}"{% if thumbnail_heading_size == 'custom' %} style="font-size: {{ section.settings.custom_heading_size | default: 24 }}px;"{% endif %} {{ block.shopify_attributes }}>{{ thumbnail_title | escape }}</{{ section.settings.html_tag | default: 'h2' }}>
+{% schema %}
+{"name":"t:labels.title","tag":null,"settings":[]}
+{% endschema %}

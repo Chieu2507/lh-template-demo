@@ -180,6 +180,9 @@
   "policies": {
     "no_policies": "Add store policies in Shopify admin to show policy links."
   },
+  "carousel": {
+    "go_to_slide": "Go to slide {{ index }}"
+  },
   "collection_tabs": {
     "default_tab": "Collection tab",
     "empty_collection": "This collection has no products.",
@@ -278,7 +281,11 @@
     "close_back_in_stock": "Close back-in-stock form",
     "back_in_stock_success": "Thanks — we'll let you know when it's back in stock.",
     "read_more": "Read more",
-    "read_less": "Read less"
+    "read_less": "Read less",
+    "rating_value": "{{ rating }} out of {{ max }} stars",
+    "rating_count": "{{ count }} ratings",
+    "rating_empty": "Reviews appear when this product has review data.",
+    "share_on": "Share on {{ platform }}"
   },
   "collection": {
     "apply_filters": "Apply ({{ count }})",
@@ -391,5 +398,8 @@
     "pinterest": "Pinterest",
     "x": "X",
     "linkedin": "LinkedIn"
+  },
+  "general": {
+    "icon_text_cards": "Icon text cards"
   }
 }

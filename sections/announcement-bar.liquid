@@ -68,7 +68,7 @@
   style="--announcement-bar-font-weight: {{ announcement_font_weight }}; --announcement-bar-gap: {{ announcement_gap }}px; --announcement-bar-speed: {{ announcement_speed }}; --announcement-bar-padding-top: {{ announcement_padding_top }}px; --announcement-bar-padding-right: {{ announcement_padding_right }}px; --announcement-bar-padding-bottom: {{ announcement_padding_bottom }}px; --announcement-bar-padding-left: {{ announcement_padding_left }}px;{% if section.settings.customize_mobile_padding %} --announcement-bar-padding-top-mobile: {{ section.settings.padding_top_mobile }}px; --announcement-bar-padding-bottom-mobile: {{ section.settings.padding_bottom_mobile }}px;{% endif %}{% if announcement_overlay and section.settings.overlay_color != blank %} --announcement-bar-overlay-color: {{ section.settings.overlay_color | escape }};{% endif %}"
 >
   {% if announcement_background_type == 'image' and section.settings.background_image != blank %}
-    <div class="announcement-bar__background" aria-hidden="true">
+    <div class="media-background-surface announcement-bar__background" aria-hidden="true">
       {% render 'image', image: section.settings.background_image, mobile_image: section.settings.mobile_background_image, alt: '', widths: '480, 720, 960, 1200, 1600, 2400', sizes: '100vw', class: 'announcement-bar__background-image' %}
       {% if announcement_overlay %}<div class="announcement-bar__overlay"></div>{% endif %}
     </div>

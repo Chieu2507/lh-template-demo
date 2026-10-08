@@ -201,8 +201,9 @@
     display: flex;
     align-items: center;
     justify-content: var(--collection-tabs-controls-alignment, flex-start);
-    flex-wrap: wrap;
-    column-gap: calc(var(--layout-grid-gap, 24px) * 0.75);
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    column-gap: var(--tab-layout-gap-desktop, 16px);
     row-gap: 0.5rem;
     max-width: 100%;
     padding-block: 0;
@@ -326,7 +327,7 @@
 
     .tab-layout__navigation {
       justify-content: var(--collection-tabs-controls-alignment-mobile, var(--collection-tabs-controls-alignment, flex-start));
-      column-gap: calc(var(--layout-grid-gap, 24px) * 0.6);
+      column-gap: var(--tab-layout-gap-mobile, var(--tab-layout-gap-desktop, 16px));
       row-gap: 0.45rem;
     }
 

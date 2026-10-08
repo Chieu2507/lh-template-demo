@@ -20,7 +20,7 @@
   assign slide_image_fetchpriority = 'auto'
   assign slide_mobile_height = 0
   comment
-    Match the Slideshow mobile preset heights (rem at the foundation's 10px root).
+    Match the Slideshow mobile preset heights in pixels (1rem equals 10px).
     Adapt and full screen have no fixed pixel height, so retain uncropped sources.
   endcomment
   assign slide_mobile_height_preset = section.settings.mobile_height | default: 'small'
@@ -32,12 +32,23 @@
     when 'medium'
       assign slide_mobile_height = 560
     when 'large'
-      assign slide_mobile_height = 680
+      assign slide_mobile_height = 620
     when 'extra_large'
       assign slide_mobile_height = 820
     when 'custom'
       assign slide_mobile_height = section.settings.mobile_height_custom | default: 670
   endcase
+  comment
+    Peekoo uses Figma's per-device art direction on the original artwork.
+    Keep the source intact instead of requesting a centered mobile CDN crop.
+  endcomment
+  assign slide_image_sizes = '100vw'
+  assign slide_mobile_image_sizes = blank
+  if section.settings.layout_preset == 'peekoo'
+    assign slide_mobile_height = 0
+    assign slide_image_sizes = '(max-width: 1149.98px) 278vw, 107vw'
+    assign slide_mobile_image_sizes = '440vw'
+  endif
   if section.blocks.first != blank and section.blocks.first.id == block.id
     assign slide_image_loading = 'eager'
     assign slide_image_fetchpriority = 'high'
@@ -57,7 +68,7 @@
 
 {% if slide_image_loading == 'eager' and section.index == 1 and slide_media_type == 'image' and block.settings.image != blank %}
   <!-- theme-lcp-preloads:start -->
-  {% render 'slideshow-image', image: block.settings.image, mobile_image: block.settings.mobile_image, mobile_height: slide_mobile_height, preload: true %}
+  {% render 'slideshow-image', image: block.settings.image, mobile_image: block.settings.mobile_image, mobile_height: slide_mobile_height, sizes: slide_image_sizes, mobile_image_sizes: slide_mobile_image_sizes, preload: true %}
   <!-- theme-lcp-preloads:end -->
 {% endif %}
 
@@ -75,7 +86,7 @@
         {% if slide_media_type == 'video' and block.settings.video != blank %}
           {{ block.settings.video | video_tag: image_size: '2400x', autoplay: true, loop: true, muted: true, controls: false, playsinline: true, class: 'slideshow-slide__video' }}
         {% elsif block.settings.image != blank %}
-          {% render 'slideshow-image', image: block.settings.image, mobile_image: block.settings.mobile_image, mobile_height: slide_mobile_height, loading: slide_image_loading, fetchpriority: slide_image_fetchpriority %}
+          {% render 'slideshow-image', image: block.settings.image, mobile_image: block.settings.mobile_image, mobile_height: slide_mobile_height, sizes: slide_image_sizes, mobile_image_sizes: slide_mobile_image_sizes, loading: slide_image_loading, fetchpriority: slide_image_fetchpriority %}
         {% else %}
           {{ 'lifestyle-1' | placeholder_svg_tag: 'hero__placeholder' }}
         {% endif %}

@@ -322,6 +322,7 @@
 }
 
 .product-buy-buttons {
+  container-type: inline-size;
   display: block;
   width: 100%;
   min-width: 0;
@@ -353,7 +354,7 @@
 
 .product-buy-buttons__quantity {
   width: 100%;
-  max-width: var(--product-buy-quantity-max-width);
+  max-width: min(var(--product-buy-quantity-max-width), 40vw);
   min-width: 0;
 }
 
@@ -906,7 +907,7 @@ product-sticky-layout.product-information__layout > .product-details {
   }
 
   .product-buy-buttons__purchase {
-    grid-template-columns: minmax(0, var(--product-buy-quantity-max-width, 141px)) minmax(0, 1fr);
+    grid-template-columns: minmax(0, 1fr);
     gap: var(--product-buy-buttons-gap-mobile, var(--product-buy-buttons-gap, 12px));
   }
 
@@ -944,5 +945,25 @@ product-sticky-layout.product-information__layout > .product-details {
 
   .product-accordion__content {
     padding-block-end: var(--product-accordion-content-gap-mobile, var(--product-accordion-content-gap, 1rem));
+  }
+}
+
+@media (min-width: 768px) {
+  .product-buy-buttons__purchase:has(.product-buy-buttons__quantity) {
+    grid-template-columns: minmax(0, auto) minmax(max-content, 1fr);
+  }
+}
+.product-buy-buttons__quantity[style] {
+  width: min(var(--product-buy-quantity-max-width), 40vw);
+  max-width: 100%;
+}
+.product-buy-buttons__purchase .product-form__submit .btn__label {
+  white-space: nowrap;
+}
+
+/* Keep quantity usable when both controls cannot fit in the available column. */
+@container (max-width: 280px) {
+  .product-buy-buttons__purchase:has(.product-buy-buttons__quantity) {
+    grid-template-columns: minmax(0, 1fr);
   }
 }

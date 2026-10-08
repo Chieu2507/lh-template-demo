@@ -322,7 +322,7 @@
     data-countdown-hide-when-expired="{{ countdown_hide_when_expired }}"
     data-countdown-design-mode="{{ request.design_mode }}"
     data-countdown-expired-label="{{ 'countdown.expired' | t | escape }}"
-    style="--countdown-max-width: {{ block.settings.max_width | default: 448 | at_least: 200 | at_most: 1000 }}px; --countdown-number-size: {{ countdown_number_font_size }}; --countdown-number-line-height: {{ countdown_number_line_height }}; --countdown-number-letter-spacing: {{ countdown_number_letter_spacing }}; --countdown-number-text-transform: {{ countdown_number_text_transform }}; --countdown-label-size: {{ countdown_label_font_size }}; --countdown-inline-font-family: {{ countdown_inline_font_family }}; --countdown-inline-font-style: {{ countdown_inline_font_style }}; --countdown-inline-font-weight: {{ countdown_inline_font_weight }}; --countdown-inline-font-size: {{ countdown_inline_font_size_token }}; --countdown-inline-letter-spacing: {{ countdown_inline_letter_spacing_token }}; --countdown-inline-text-transform: {{ countdown_inline_text_transform_token }}; --countdown-number-color: {{ countdown_number_color }}; --countdown-background: {{ countdown_background_color }}; --countdown-radius: {{ countdown_radius }}; --countdown-padding-top: {{ countdown_padding_top }}px; --countdown-padding-bottom: {{ countdown_padding_bottom }}px; --countdown-padding-left: {{ countdown_padding_left }}px; --countdown-padding-right: {{ countdown_padding_right }}px;{% if countdown_customize_mobile_padding %} --countdown-padding-top-mobile: {{ countdown_padding_top_mobile }}px; --countdown-padding-bottom-mobile: {{ countdown_padding_bottom_mobile }}px; --countdown-padding-left-mobile: {{ countdown_padding_left_mobile }}px; --countdown-padding-right-mobile: {{ countdown_padding_right_mobile }}px;{% endif %}"
+    style="--countdown-colon-gap: {{ block.settings.unit_gap_desktop | default: 32 }}px; --countdown-colon-gap-mobile: {{ block.settings.unit_gap_mobile | default: 16 }}px; --countdown-separator-width: {{ block.settings.separator_width | default: 16 }}px; --countdown-separator-size: {% if block.settings.separator_size == 'lg' %}var(--font-heading-lg){% else %}var(--font-heading-md){% endif %}; --countdown-max-width: {{ block.settings.max_width | default: 448 | at_least: 200 | at_most: 1000 }}px; --countdown-number-size: {{ countdown_number_font_size }}; --countdown-number-line-height: {{ countdown_number_line_height }}; --countdown-number-letter-spacing: {{ countdown_number_letter_spacing }}; --countdown-number-text-transform: {{ countdown_number_text_transform }}; --countdown-label-size: {{ countdown_label_font_size }}; --countdown-inline-font-family: {{ countdown_inline_font_family }}; --countdown-inline-font-style: {{ countdown_inline_font_style }}; --countdown-inline-font-weight: {{ countdown_inline_font_weight }}; --countdown-inline-font-size: {{ countdown_inline_font_size_token }}; --countdown-inline-letter-spacing: {{ countdown_inline_letter_spacing_token }}; --countdown-inline-text-transform: {{ countdown_inline_text_transform_token }}; --countdown-number-color: {{ countdown_number_color }}; --countdown-background: {{ countdown_background_color }}; --countdown-radius: {{ countdown_radius }}; --countdown-padding-top: {{ countdown_padding_top }}px; --countdown-padding-bottom: {{ countdown_padding_bottom }}px; --countdown-padding-left: {{ countdown_padding_left }}px; --countdown-padding-right: {{ countdown_padding_right }}px;{% if countdown_customize_mobile_padding %} --countdown-padding-top-mobile: {{ countdown_padding_top_mobile }}px; --countdown-padding-bottom-mobile: {{ countdown_padding_bottom_mobile }}px; --countdown-padding-left-mobile: {{ countdown_padding_left_mobile }}px; --countdown-padding-right-mobile: {{ countdown_padding_right_mobile }}px;{% endif %}"
     role="timer"
     {% render 'block-animation-attributes', settings: block.settings %}
     {{ block.shopify_attributes }}
@@ -571,7 +571,7 @@
   .countdown-timer--colon .countdown-timer__units {
     display: grid;
     grid-template-columns: repeat(4, minmax(0, 1fr));
-    column-gap: 3.2rem;
+    column-gap: var(--countdown-colon-gap, 3.2rem);
   }
 
   .countdown-timer--colon .countdown-timer__unit {
@@ -588,15 +588,15 @@
   .countdown-timer--colon .countdown-timer__unit + .countdown-timer__unit::before {
     content: ':';
     position: absolute;
-    inset-inline-start: -2.4rem;
+    inset-inline-start: calc((var(--countdown-colon-gap, 3.2rem) + var(--countdown-separator-width, 1.6rem)) / -2);
     inset-block-start: 0;
     display: grid;
     place-items: center;
-    width: 1.6rem;
+    width: var(--countdown-separator-width, 1.6rem);
     height: calc(var(--countdown-number-size) * var(--countdown-number-line-height));
     font-family: var(--font-heading-family);
     font-weight: var(--font-heading-weight);
-    font-size: var(--font-heading-md);
+    font-size: var(--countdown-separator-size, var(--font-heading-md));
     line-height: var(--font-heading-md-line-height);
   }
 
@@ -608,8 +608,8 @@
   }
 
   @media (max-width: 767.98px) {
-    .countdown-timer--colon .countdown-timer__units { column-gap: 1.6rem; }
-    .countdown-timer--colon .countdown-timer__unit + .countdown-timer__unit::before { inset-inline-start: -1.6rem; }
+    .countdown-timer--colon .countdown-timer__units { column-gap: var(--countdown-colon-gap-mobile, 1.6rem); }
+    .countdown-timer--colon .countdown-timer__unit + .countdown-timer__unit::before { inset-inline-start: calc((var(--countdown-colon-gap-mobile, 1.6rem) + var(--countdown-separator-width, 1.6rem)) / -2); }
   }
 
   @media (prefers-reduced-motion: reduce) {
@@ -846,6 +846,56 @@
       "label": "t:labels.max_width",
       "default": 448,
       "visible_if": "{{ block.settings.style == 'with_labels' and block.settings.unit_layout != 'separated' }}"
+    },
+    {
+      "type": "range",
+      "id": "unit_gap_desktop",
+      "label": "Desktop unit gap",
+      "min": 0,
+      "max": 80,
+      "step": 1,
+      "unit": "px",
+      "default": 32,
+      "visible_if": "{{ block.settings.unit_layout == 'colon' and block.settings.style == 'with_labels' }}"
+    },
+    {
+      "type": "range",
+      "id": "unit_gap_mobile",
+      "label": "Mobile unit gap",
+      "min": 0,
+      "max": 80,
+      "step": 1,
+      "unit": "px",
+      "default": 16,
+      "visible_if": "{{ block.settings.unit_layout == 'colon' and block.settings.style == 'with_labels' }}"
+    },
+    {
+      "type": "range",
+      "id": "separator_width",
+      "label": "Separator width",
+      "min": 8,
+      "max": 32,
+      "step": 1,
+      "unit": "px",
+      "default": 16,
+      "visible_if": "{{ block.settings.unit_layout == 'colon' and block.settings.style == 'with_labels' }}"
+    },
+    {
+      "type": "select",
+      "id": "separator_size",
+      "label": "Separator size",
+      "options": [
+        {
+          "value": "md",
+          "label": "Small"
+        },
+        {
+          "value": "lg",
+          "label": "Medium"
+        }
+      ],
+      "default": "md",
+      "visible_if": "{{ block.settings.unit_layout == 'colon' and block.settings.style == 'with_labels' }}"
     },
     {
       "type": "checkbox",

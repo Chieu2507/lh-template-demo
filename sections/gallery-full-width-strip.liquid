@@ -56,7 +56,7 @@
     style="--gallery-strip-align: {{ flex_align }}; --gallery-strip-align-mobile: {{ mobile_flex_align }}; --gallery-strip-gap: {{ content_gap }}px; --gallery-strip-gap-mobile: {{ content_gap_mobile }}px; --gallery-strip-padding-top: {{ padding_top }}px; --gallery-strip-padding-bottom: {{ padding_bottom }}px; --gallery-strip-padding-top-mobile: {{ padding_top_mobile }}px; --gallery-strip-padding-bottom-mobile: {{ padding_bottom_mobile }}px;{% if background_color != blank %} --gallery-strip-background: {{ background_color | escape }};{% endif %}"
   >
     {% if section.settings.background_image != blank %}
-      <div class="gallery-full-width-strip__background" aria-hidden="true">
+      <div class="media-background-surface gallery-full-width-strip__background" aria-hidden="true">
         {{ section.settings.background_image | image_url: width: 2400 | image_tag }}
       </div>
     {% endif %}

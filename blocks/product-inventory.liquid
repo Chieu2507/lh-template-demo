@@ -82,7 +82,9 @@
       {% render 'product-inventory-status',
         variant: inventory_variant,
         low_stock_threshold: inventory_low_stock_threshold,
-        display_mode: inventory_display_mode
+        display_mode: inventory_display_mode,
+        show_progress: block.settings.show_progress,
+        progress_capacity: block.settings.progress_capacity
       %}
     </div>
 
@@ -93,7 +95,9 @@
             {% render 'product-inventory-status',
               variant: variant,
               low_stock_threshold: inventory_low_stock_threshold,
-              display_mode: inventory_display_mode
+              display_mode: inventory_display_mode,
+              show_progress: block.settings.show_progress,
+              progress_capacity: block.settings.progress_capacity
             %}
           </template>
         {% endfor %}
@@ -102,12 +106,21 @@
         {% render 'product-inventory-status',
           variant: blank,
           low_stock_threshold: inventory_low_stock_threshold,
-          display_mode: inventory_display_mode
+          display_mode: inventory_display_mode,
+          show_progress: block.settings.show_progress,
+          progress_capacity: block.settings.progress_capacity
         %}
       </template>
     </div>
   </product-inventory>
 {% endif %}
+
+{% stylesheet %}
+.product-inventory { width: 100%; }
+.product-inventory__progress { height: 5px; margin-block-start: 16px; border-radius: var(--radius-pill); background: var(--background-bar-color, var(--border-color)); overflow: hidden; }
+.product-inventory__progress-fill { display: block; height: 100%; width: var(--inventory-progress, 0%); border-radius: inherit; background: var(--sale-price-color, var(--accent-color)); }
+.product-inventory__message--progress .product-inventory__status::before { content: none; }
+{% endstylesheet %}
 
 {% schema %}
 {
@@ -127,8 +140,14 @@
       "id": "display_mode",
       "label": "t:labels.inventory_display",
       "options": [
-        { "value": "status", "label": "t:options.product_inventory_display.status" },
-        { "value": "status_and_count", "label": "t:options.product_inventory_display.status_and_count" }
+        {
+          "value": "status",
+          "label": "t:options.product_inventory_display.status"
+        },
+        {
+          "value": "status_and_count",
+          "label": "t:options.product_inventory_display.status_and_count"
+        }
       ],
       "default": "status"
     },
@@ -142,6 +161,22 @@
       "step": 1,
       "unit": "pcs",
       "default": 5
+    },
+    {
+      "type": "checkbox",
+      "id": "show_progress",
+      "label": "Show inventory bar",
+      "default": false
+    },
+    {
+      "type": "range",
+      "id": "progress_capacity",
+      "label": "Inventory bar capacity",
+      "min": 10,
+      "max": 200,
+      "step": 2,
+      "default": 40,
+      "visible_if": "{{ block.settings.show_progress }}"
     },
     {
       "type": "header",

@@ -1,0 +1,33 @@
+{% doc %}
+  Shares the parent product using the existing accessible share-button runtime.
+  Social network links open share composers; the first action opens the native
+  share sheet or copies the product link because Instagram has no web composer.
+{% enddoc %}
+{% liquid
+  assign share_product = closest.product | default: product
+  assign product_share_url = share_product.url | prepend: request.origin
+  assign encoded_url = product_share_url | url_encode
+  assign encoded_title = share_product.title | url_encode
+  assign encoded_image = share_product.featured_image | image_url: width: 1200 | prepend: 'https:' | url_encode
+  assign share_label = 'accessibility.share' | t
+%}
+{% if share_product != blank %}
+  <div class="product-share" {{ block.shopify_attributes }}>
+    <span>{{ 'accessibility.share' | t }}:</span>
+    <div class="product-share__links">
+      {% render 'share-button', label: share_label, url: product_share_url, title: share_product.title, class: 'btn btn-secondary btn--secondary btn--icon product-share__action', icon_asset: 'product-share-instagram.svg' %}
+      <a class="btn btn-secondary btn--secondary btn--icon product-share__action" href="https://pinterest.com/pin/create/button/?url={{ encoded_url }}&media={{ encoded_image }}&description={{ encoded_title }}" target="_blank" rel="noopener noreferrer" aria-label="{{ 'products.share_on' | t: platform: 'Pinterest' | escape }}"><img src="{{ 'product-share-pinterest.svg' | asset_url }}" alt="" width="16" height="16" loading="lazy"></a>
+      <a class="btn btn-secondary btn--secondary btn--icon product-share__action" href="https://twitter.com/intent/tweet?url={{ encoded_url }}&text={{ encoded_title }}" target="_blank" rel="noopener noreferrer" aria-label="{{ 'products.share_on' | t: platform: 'X' | escape }}"><img src="{{ 'product-share-twitter.svg' | asset_url }}" alt="" width="16" height="16" loading="lazy"></a>
+      <a class="btn btn-secondary btn--secondary btn--icon product-share__action" href="https://www.facebook.com/sharer/sharer.php?u={{ encoded_url }}" target="_blank" rel="noopener noreferrer" aria-label="{{ 'products.share_on' | t: platform: 'Facebook' | escape }}"><img src="{{ 'product-share-facebook.svg' | asset_url }}" alt="" width="16" height="16" loading="lazy"></a>
+    </div>
+  </div>
+{% endif %}
+{% stylesheet %}
+.product-share { display: flex; flex-wrap: wrap; align-items: center; gap: 16px; color: var(--heading-color); }
+.product-share__links { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; }
+.product-share .product-share__action { display: inline-flex; align-items: center; justify-content: center; width: 32px; height: 32px; min-width: 32px; min-height: 32px; padding: 8px; border: 0; border-radius: var(--button-radius); }
+.product-share__action img { display: block; flex: 0 0 auto; }
+{% endstylesheet %}
+{% schema %}
+{ "name": "Product share", "tag": null, "settings": [], "presets": [{ "name": "Product share", "category": "t:general.product" }] }
+{% endschema %}
