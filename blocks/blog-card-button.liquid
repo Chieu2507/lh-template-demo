@@ -48,6 +48,7 @@
 %}
 
 {% capture blog_card_button_style_attribute %}
+  {% if blog_card_button_style == 'tertiary' %}--blog-card-button-underline-space: var(--button-tertiary-underline-space, 4px);{% endif %}
   {% if blog_card_button_padding_top != 0 %}--blog-card-button-padding-top: {{ blog_card_button_padding_top }}px;{% endif %}
   {% if blog_card_button_padding_bottom != 0 %}--blog-card-button-padding-bottom: {{ blog_card_button_padding_bottom }}px;{% endif %}
   {% if block.settings.customize_mobile_padding %}
@@ -83,7 +84,8 @@
     width: fit-content;
     max-width: 100%;
     padding-top: var(--blog-card-button-padding-top, 0px);
-    padding-bottom: var(--blog-card-button-padding-bottom, 0px);
+    /* Keep the shared underline inside cards that clip their contents. */
+    padding-bottom: calc(var(--blog-card-button-padding-bottom, 0px) + var(--blog-card-button-underline-space, 0px));
   }
 
   .blog-card-button__button {
@@ -93,7 +95,7 @@
   @media (max-width: 767.98px) {
     .blog-card-button {
       padding-top: var(--blog-card-button-padding-top-mobile, var(--blog-card-button-padding-top, 0px));
-      padding-bottom: var(--blog-card-button-padding-bottom-mobile, var(--blog-card-button-padding-bottom, 0px));
+      padding-bottom: calc(var(--blog-card-button-padding-bottom-mobile, var(--blog-card-button-padding-bottom, 0px)) + var(--blog-card-button-underline-space, 0px));
     }
   }
 {% endstylesheet %}
