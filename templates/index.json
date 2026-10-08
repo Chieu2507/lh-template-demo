@@ -1127,7 +1127,7 @@
         "image_width_desktop": 159,
         "image_width_mobile": 160,
         "image_ratio": "square",
-        "image_corner_radius": "custom",
+        "image_corner_radius": "full",
         "image_corner_radius_custom": 0,
         "title_font": "heading",
         "html_tag": "h3",
