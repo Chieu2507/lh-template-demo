@@ -1,0 +1,13 @@
+{% doc %}
+  Preloads the existing first-viewport slideshow module graph without executing
+  it early. Relative ESM imports have no version query; use their exact resolved
+  URLs so the later import reuses these requests. The entry URL retains its
+  version to match the section's data-theme-module marker.
+{% enddoc %}
+<link rel="modulepreload" href="{{ 'slideshow.js' | asset_url }}" fetchpriority="low">
+{% liquid
+  assign dependencies = 'swiper-carousel.js,swiper-loader.js,swiper-12.2.0.min.mjs,swiper-12.2.0-swiper-core.min.mjs,swiper-12.2.0-utils.min.mjs,swiper-12.2.0-ssr-window.esm.min.mjs,swiper-12.2.0-a11y.min.mjs,swiper-12.2.0-pagination.min.mjs,swiper-12.2.0-thumbs.min.mjs,swiper-12.2.0-classes-to-selector.min.mjs,swiper-12.2.0-create-element-if-not-defined.min.mjs,swiper-12.2.0-effect-fade.min.mjs,swiper-12.2.0-effect-init.min.mjs,swiper-12.2.0-effect-target.min.mjs,swiper-12.2.0-effect-virtual-transition-end.min.mjs' | split: ','
+%}
+{% for dependency in dependencies %}
+  <link rel="modulepreload" href="{{ dependency | asset_url | split: '?' | first }}" fetchpriority="low">
+{% endfor %}

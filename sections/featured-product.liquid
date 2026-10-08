@@ -114,13 +114,12 @@
     </div>
   </div>
 
-  <script src="{{ 'share.js' | asset_url }}" defer="defer"></script>
-  <script type="module" src="{{ 'variant-picker.js' | asset_url }}"></script>
-  <script type="module" src="{{ 'product-buy-buttons.js' | asset_url }}"></script>
-  <script type="module" src="{{ 'product-description.js' | asset_url }}"></script>
-  <script type="module" src="{{ 'product-inventory.js' | asset_url }}"></script>
-  <script type="module" src="{{ 'product-media.js' | asset_url }}"></script>
-  <script type="module" src="{{ 'product-information-extras.js' | asset_url }}"></script>
+  <script data-theme-module="{{ 'variant-picker.js' | asset_url }}"></script>
+  <script data-theme-module="{{ 'product-buy-buttons.js' | asset_url }}"></script>
+  <script data-theme-module="{{ 'product-description.js' | asset_url }}"></script>
+  <script data-theme-module="{{ 'product-inventory.js' | asset_url }}"></script>
+  <script data-theme-module="{{ 'product-media.js' | asset_url }}"></script>
+  <script data-theme-module="{{ 'product-information-extras.js' | asset_url }}"></script>
 
 {% stylesheet %}
   .featured-product {

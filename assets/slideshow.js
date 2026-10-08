@@ -235,7 +235,7 @@ const createNumberedPagination = (root, swiper, loop, slideCount) => {
   const update = () => {
     if (swiper.destroyed) return;
     const currentIndex = getCurrentIndex();
-    const autoplayProgress = root.style.getPropertyValue('--slideshow-autoplay-progress').trim();
+    const autoplayProgress = element.style.getPropertyValue('--slideshow-autoplay-progress').trim();
     const hasAutoplayClock = autoplayProgress !== '';
     const progress = hasAutoplayClock ? Math.max(0, Math.min(1, Number(autoplayProgress) || 0)) : 1;
     numbers.forEach((number, index) => {
@@ -319,11 +319,23 @@ const startAutoplay = (root, swiper, loop) => {
   let previous = null;
   let frame = 0;
   let touching = false;
+  const pagination = root.querySelector('[data-slideshow-pagination]');
+  const rings = [...(pagination?.querySelectorAll('.slideshow__pagination-number') || [])]
+    .map((number) => ({ number, svg: number.querySelector('svg') }));
+  let visible = isVisible(root);
+  const visibilityObserver = typeof IntersectionObserver === 'function'
+    ? new IntersectionObserver(([entry]) => {
+      visible = entry.isIntersecting;
+      previous = null;
+    }) : null;
+  visibilityObserver?.observe(root);
   const paint = () => {
     const progress = Math.max(0, Math.min(1, elapsed / delay));
-    root.style.setProperty('--slideshow-autoplay-progress', String(progress));
-    root.querySelectorAll('[data-slideshow-pagination] .slideshow__pagination-number').forEach((number) => {
-      number.querySelector('svg')?.style.setProperty('--percent', number.getAttribute('aria-current') === 'true' ? String(progress) : '0');
+    // Scope the clock to controls. Updating an inherited property on the section
+    // invalidates every slide's styles and a geometry read then forces layout.
+    pagination?.style.setProperty('--slideshow-autoplay-progress', String(progress));
+    rings.forEach(({ number, svg }) => {
+      svg?.style.setProperty('--percent', number.getAttribute('aria-current') === 'true' ? String(progress) : '0');
     });
   };
   const reset = () => {
@@ -338,7 +350,7 @@ const startAutoplay = (root, swiper, loop) => {
   const touchEnd = () => { touching = false; previous = null; };
   const visibilityChange = () => { previous = null; };
   const tick = (now) => {
-    const paused = document.hidden || !isVisible(root) || reducedMotion() ||
+    const paused = document.hidden || !visible || reducedMotion() ||
       (pauseOnHover && root.matches(':hover')) ||
       Boolean(root.querySelector(':focus-visible')) || touching || swiper.isLocked || swiper.animating;
     if (paused) previous = null;
@@ -369,7 +381,8 @@ const startAutoplay = (root, swiper, loop) => {
       swiper.off('touchStart', touchStart);
       swiper.off('touchEnd', touchEnd);
       document.removeEventListener('visibilitychange', visibilityChange);
-      root.style.removeProperty('--slideshow-autoplay-progress');
+      visibilityObserver?.disconnect();
+      pagination?.style.removeProperty('--slideshow-autoplay-progress');
     },
   };
 };
