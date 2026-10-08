@@ -5560,7 +5560,7 @@
         "image"
       ],
       "custom_css": [
-        ".split-banner__content>.group{padding-inline:128px}.split-banner__content>.image-block{align-self:stretch}@media(min-width:768px) and (max-width:1149px){.split-banner__content>.group{padding:40px 20px}.image-block__media,.image-block__media img{height:100%;aspect-ratio:auto}}@media(max-width:767px){.split-banner__content>.group{padding:40px 20px}}"
+        ".split-banner__content>.group{padding-inline:128px}.split-banner__content>.image-block{align-self:stretch}@media(max-width:1149px){.split-banner__content>.group{padding:40px 20px!important;gap:24px!important}.split-banner__content>.group .group{gap:12px!important}}@media(min-width:768px) and (max-width:1149px){.image-block__media,.image-block__media img{height:100%;aspect-ratio:auto}}"
       ],
       "name": "Image with text — Tinker",
       "settings": {
