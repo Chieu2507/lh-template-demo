@@ -5,6 +5,7 @@
 .slideshow--peekoo .slideshow__swiper > .slideshow__pagination {
   --swiper-pagination-bullet-size: 10px;
   --swiper-pagination-bullet-gap: 2px;
+  --swiper-pagination-bullet-active-hit-width: 24px;
   --swiper-pagination-bullet-inactive-opacity: 1;
   --swiper-pagination-bullet-inactive-color: #fff9;
   padding-bottom: 33px !important;
@@ -37,6 +38,9 @@
   opacity: 0 !important;
 }
 @media (min-width: 768px) and (max-width: 1149.98px) {
+  .slideshow--peekoo {
+    --button-padding-inline-desktop: 28px;
+  }
   .slideshow--peekoo .slideshow-slide .hero__container {
     --hero-content-x: center;
     --flex-align: center;
