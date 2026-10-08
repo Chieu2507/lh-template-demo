@@ -4,6 +4,11 @@
     {% # Establish the viewport before evaluating responsive image hints. %}
     {% render 'meta-tags' %}
 
+    {% comment %}Shopify account, cart synchronization and accelerated checkout
+      share this origin. Establish their connection before the platform scripts
+      discover their module dependencies.{% endcomment %}
+    <link rel="preconnect" href="https://cdn.shopify.com" crossorigin>
+
     {% comment %}The owning section supplies matching art-directed hints; discover
       its LCP source before fonts, styles and header/overlay markup are parsed.{% endcomment %}
     {% if content_for_layout contains '<!-- theme-lcp-preloads:start -->' %}
