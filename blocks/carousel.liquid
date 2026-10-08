@@ -388,7 +388,7 @@
     {
       "type": "select",
       "id": "columns_desktop",
-      "label": "t:labels.desktop_columns",
+      "label": "t:labels.desktop_items_per_view",
       "options": [
         {
           "value": "1",
@@ -420,7 +420,7 @@
     {
       "type": "select",
       "id": "columns_mobile",
-      "label": "t:labels.mobile_columns",
+      "label": "t:labels.mobile_items_per_view",
       "options": [
         {
           "value": "1",
@@ -445,7 +445,12 @@
       "label": "t:labels.show_next_slide_preview_on_desktop",
       "default": false
     },
-    {"type": "checkbox", "id": "show_next_slide_preview_on_mobile", "label": "t:labels.show_next_slide_preview_on_mobile", "default": false},
+    {
+      "type": "checkbox",
+      "id": "show_next_slide_preview_on_mobile",
+      "label": "t:labels.show_next_slide_preview_on_mobile",
+      "default": false
+    },
     {
       "type": "header",
       "content": "t:general.gap"
@@ -472,20 +477,48 @@
     },
     {
       "type": "header",
-      "content": "Border"
+      "content": "t:general.image_text_card_settings"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_image_text_card_settings",
+      "label": "t:labels.show_image_text_card_settings",
+      "info": "t:info.show_image_text_card_settings",
+      "default": false
+    },
+    {
+      "type": "header",
+      "content": "Border",
+      "visible_if": "{{ block.settings.show_image_text_card_settings }}"
     },
     {
       "type": "select",
       "id": "border_type",
       "label": "Border style",
       "options": [
-        { "value": "none", "label": "None" },
-        { "value": "solid", "label": "Solid" },
-        { "value": "dashed", "label": "Dashed" },
-        { "value": "dotted", "label": "Dotted" },
-        { "value": "double", "label": "Double" }
+        {
+          "value": "none",
+          "label": "None"
+        },
+        {
+          "value": "solid",
+          "label": "Solid"
+        },
+        {
+          "value": "dashed",
+          "label": "Dashed"
+        },
+        {
+          "value": "dotted",
+          "label": "Dotted"
+        },
+        {
+          "value": "double",
+          "label": "Double"
+        }
       ],
-      "default": "solid"
+      "default": "solid",
+      "visible_if": "{{ block.settings.show_image_text_card_settings }}"
     },
     {
       "type": "range",
@@ -496,36 +529,97 @@
       "step": 1,
       "unit": "px",
       "default": 1,
-      "visible_if": "{{ block.settings.border_type != 'none' }}"
+      "visible_if": "{{ block.settings.show_image_text_card_settings and block.settings.border_type != 'none' }}"
     },
     {
       "type": "color",
       "alpha": true,
       "id": "border_color",
       "label": "Border color",
-      "visible_if": "{{ block.settings.border_type != 'none' }}"
+      "visible_if": "{{ block.settings.show_image_text_card_settings and block.settings.border_type != 'none' }}"
     },
     {
       "type": "select",
       "id": "corner_radius",
       "label": "Corner radius",
-      "options": [{"value": "square", "label": "Square"}, {"value": "radius_2", "label": "t:options.radius_preset.size_2"}, {"value": "radius_4", "label": "t:options.radius_preset.size_4"}, {"value": "slightly_rounded", "label": "Slightly rounded"}, {"value": "radius_6", "label": "t:options.radius_preset.size_6"}, {"value": "radius_8", "label": "t:options.radius_preset.size_8"}, {"value": "rounded", "label": "Rounded"}, {"value": "radius_12", "label": "t:options.radius_preset.size_12"}, {"value": "radius_16", "label": "t:options.radius_preset.size_16"}, {"value": "radius_24", "label": "t:options.radius_preset.size_24"}, {"value": "radius_32", "label": "t:options.radius_preset.size_32"}, {"value": "pill", "label": "Pill"}],
-      "default": "square"
+      "options": [
+        {
+          "value": "square",
+          "label": "Square"
+        },
+        {
+          "value": "radius_2",
+          "label": "t:options.radius_preset.size_2"
+        },
+        {
+          "value": "radius_4",
+          "label": "t:options.radius_preset.size_4"
+        },
+        {
+          "value": "slightly_rounded",
+          "label": "Slightly rounded"
+        },
+        {
+          "value": "radius_6",
+          "label": "t:options.radius_preset.size_6"
+        },
+        {
+          "value": "radius_8",
+          "label": "t:options.radius_preset.size_8"
+        },
+        {
+          "value": "rounded",
+          "label": "Rounded"
+        },
+        {
+          "value": "radius_12",
+          "label": "t:options.radius_preset.size_12"
+        },
+        {
+          "value": "radius_16",
+          "label": "t:options.radius_preset.size_16"
+        },
+        {
+          "value": "radius_24",
+          "label": "t:options.radius_preset.size_24"
+        },
+        {
+          "value": "radius_32",
+          "label": "t:options.radius_preset.size_32"
+        },
+        {
+          "value": "pill",
+          "label": "Pill"
+        }
+      ],
+      "default": "square",
+      "visible_if": "{{ block.settings.show_image_text_card_settings }}"
     },
     {
       "type": "header",
-      "content": "Card icon"
+      "content": "Card icon",
+      "visible_if": "{{ block.settings.show_image_text_card_settings }}"
     },
     {
       "type": "select",
       "id": "image_text_card_toggle_icon",
       "label": "Icon",
       "options": [
-        { "value": "plus", "label": "Plus" },
-        { "value": "arrow", "label": "Arrow" },
-        { "value": "chevron", "label": "Chevron" }
+        {
+          "value": "plus",
+          "label": "Plus"
+        },
+        {
+          "value": "arrow",
+          "label": "Arrow"
+        },
+        {
+          "value": "chevron",
+          "label": "Chevron"
+        }
       ],
-      "default": "plus"
+      "default": "plus",
+      "visible_if": "{{ block.settings.show_image_text_card_settings }}"
     },
     {
       "type": "range",
@@ -535,51 +629,117 @@
       "max": 40,
       "step": 1,
       "unit": "px",
-      "default": 24
+      "default": 24,
+      "visible_if": "{{ block.settings.show_image_text_card_settings }}"
     },
     {
       "type": "header",
-      "content": "Image"
+      "content": "Image",
+      "visible_if": "{{ block.settings.show_image_text_card_settings }}"
     },
     {
       "type": "select",
       "id": "image_text_card_ratio",
       "label": "Image ratio",
       "options": [
-        { "value": "auto", "label": "Auto" },
-        { "value": "square", "label": "Square - 1:1" },
-        { "value": "portrait", "label": "Portrait - 4:5" },
-        { "value": "landscape", "label": "Landscape - 4:3" },
-        { "value": "wide", "label": "Wide - 16:9" },
-        { "value": "custom", "label": "Custom" }
+        {
+          "value": "auto",
+          "label": "Auto"
+        },
+        {
+          "value": "square",
+          "label": "Square - 1:1"
+        },
+        {
+          "value": "portrait",
+          "label": "Portrait - 4:5"
+        },
+        {
+          "value": "landscape",
+          "label": "Landscape - 4:3"
+        },
+        {
+          "value": "wide",
+          "label": "Wide - 16:9"
+        },
+        {
+          "value": "custom",
+          "label": "Custom"
+        }
       ],
-      "default": "auto"
+      "default": "auto",
+      "visible_if": "{{ block.settings.show_image_text_card_settings }}"
     },
-    { "type": "number", "id": "image_text_card_ratio_width", "label": "Width", "default": 6, "visible_if": "{{ block.settings.image_text_card_ratio == 'custom' }}" },
-    { "type": "number", "id": "image_text_card_ratio_height", "label": "Height", "info": "Numbers only. Width 6 + Height 7 = 6:7.", "default": 7, "visible_if": "{{ block.settings.image_text_card_ratio == 'custom' }}" },
+    {
+      "type": "number",
+      "id": "image_text_card_ratio_width",
+      "label": "Width",
+      "default": 6,
+      "visible_if": "{{ block.settings.show_image_text_card_settings and block.settings.image_text_card_ratio == 'custom' }}"
+    },
+    {
+      "type": "number",
+      "id": "image_text_card_ratio_height",
+      "label": "Height",
+      "info": "Numbers only. Width 6 + Height 7 = 6:7.",
+      "default": 7,
+      "visible_if": "{{ block.settings.show_image_text_card_settings and block.settings.image_text_card_ratio == 'custom' }}"
+    },
     {
       "type": "checkbox",
       "id": "image_text_card_customize_mobile",
       "label": "Customize for mobile",
-      "default": false
+      "default": false,
+      "visible_if": "{{ block.settings.show_image_text_card_settings }}"
     },
     {
       "type": "select",
       "id": "image_text_card_ratio_mobile",
       "label": "Mobile image ratio",
       "options": [
-        { "value": "auto", "label": "Auto" },
-        { "value": "square", "label": "Square - 1:1" },
-        { "value": "portrait", "label": "Portrait - 4:5" },
-        { "value": "landscape", "label": "Landscape - 4:3" },
-        { "value": "wide", "label": "Wide - 16:9" },
-        { "value": "custom", "label": "Custom" }
+        {
+          "value": "auto",
+          "label": "Auto"
+        },
+        {
+          "value": "square",
+          "label": "Square - 1:1"
+        },
+        {
+          "value": "portrait",
+          "label": "Portrait - 4:5"
+        },
+        {
+          "value": "landscape",
+          "label": "Landscape - 4:3"
+        },
+        {
+          "value": "wide",
+          "label": "Wide - 16:9"
+        },
+        {
+          "value": "custom",
+          "label": "Custom"
+        }
       ],
       "default": "auto",
-      "visible_if": "{{ block.settings.image_text_card_customize_mobile }}"
+      "visible_if": "{{ block.settings.show_image_text_card_settings and block.settings.image_text_card_customize_mobile }}"
     },
-    { "type": "number", "id": "image_text_card_ratio_width_mobile", "label": "Mobile width", "default": 6, "visible_if": "{{ block.settings.image_text_card_customize_mobile and block.settings.image_text_card_ratio_mobile == 'custom' }}" },
-    { "type": "number", "id": "image_text_card_ratio_height_mobile", "label": "Mobile height", "info": "Numbers only. Width 6 + Height 7 = 6:7.", "default": 7, "visible_if": "{{ block.settings.image_text_card_customize_mobile and block.settings.image_text_card_ratio_mobile == 'custom' }}" },
+    {
+      "type": "number",
+      "id": "image_text_card_ratio_width_mobile",
+      "label": "Mobile width",
+      "default": 6,
+      "visible_if": "{{ block.settings.show_image_text_card_settings and block.settings.image_text_card_customize_mobile and block.settings.image_text_card_ratio_mobile == 'custom' }}"
+    },
+    {
+      "type": "number",
+      "id": "image_text_card_ratio_height_mobile",
+      "label": "Mobile height",
+      "info": "Numbers only. Width 6 + Height 7 = 6:7.",
+      "default": 7,
+      "visible_if": "{{ block.settings.show_image_text_card_settings and block.settings.image_text_card_customize_mobile and block.settings.image_text_card_ratio_mobile == 'custom' }}"
+    },
     {
       "type": "range",
       "id": "image_text_card_max_width",
@@ -588,7 +748,8 @@
       "max": 100,
       "step": 5,
       "unit": "%",
-      "default": 100
+      "default": 100,
+      "visible_if": "{{ block.settings.show_image_text_card_settings }}"
     },
     {
       "type": "range",
@@ -599,73 +760,113 @@
       "step": 5,
       "unit": "%",
       "default": 100,
-      "visible_if": "{{ block.settings.image_text_card_customize_mobile }}"
+      "visible_if": "{{ block.settings.show_image_text_card_settings and block.settings.image_text_card_customize_mobile }}"
     },
     {
       "type": "header",
-      "content": "Typography"
+      "content": "Typography",
+      "visible_if": "{{ block.settings.show_image_text_card_settings }}"
     },
     {
       "type": "select",
       "id": "image_text_card_heading_tag",
-      "label": "Heading HTML tag",
+      "label": "t:labels.html_tag",
       "options": [
-        { "value": "div", "label": "Paragraph" },
-        { "value": "h1", "label": "H1" },
-        { "value": "h2", "label": "H2" },
-        { "value": "h3", "label": "H3" },
-        { "value": "h4", "label": "H4" },
-        { "value": "h5", "label": "H5" },
-        { "value": "h6", "label": "H6" }
+        {
+          "value": "div",
+          "label": "Paragraph"
+        },
+        {
+          "value": "h1",
+          "label": "H1"
+        },
+        {
+          "value": "h2",
+          "label": "H2"
+        },
+        {
+          "value": "h3",
+          "label": "H3"
+        },
+        {
+          "value": "h4",
+          "label": "H4"
+        },
+        {
+          "value": "h5",
+          "label": "H5"
+        },
+        {
+          "value": "h6",
+          "label": "H6"
+        }
       ],
-      "default": "h4"
+      "default": "h4",
+      "visible_if": "{{ block.settings.show_image_text_card_settings }}"
     },
     {
       "type": "range",
       "id": "image_text_card_typo_size",
-      "label": "Heading size (desktop)",
+      "label": "t:labels.desktop_heading_font_size",
       "min": 10,
       "max": 40,
       "step": 1,
       "unit": "px",
-      "default": 14
+      "default": 14,
+      "visible_if": "{{ block.settings.show_image_text_card_settings }}"
     },
     {
       "type": "range",
       "id": "image_text_card_typo_size_mobile",
-      "label": "Heading size (mobile)",
+      "label": "t:labels.mobile_heading_font_size",
       "min": 10,
       "max": 40,
       "step": 1,
       "unit": "px",
-      "default": 14
+      "default": 14,
+      "visible_if": "{{ block.settings.show_image_text_card_settings }}"
     },
-    { "type": "color", "alpha": true, "id": "image_text_card_typo_color", "label": "Heading color" },
+    {
+      "type": "color",
+      "alpha": true,
+      "id": "image_text_card_typo_color",
+      "label": "Heading color",
+      "visible_if": "{{ block.settings.show_image_text_card_settings }}"
+    },
     {
       "type": "header",
-      "content": "Content"
+      "content": "Content",
+      "visible_if": "{{ block.settings.show_image_text_card_settings }}"
     },
     {
       "type": "range",
       "id": "image_text_card_content_size",
-      "label": "Font size (desktop)",
+      "label": "t:labels.desktop_text_font_size",
       "min": 10,
       "max": 32,
       "step": 1,
       "unit": "px",
-      "default": 14
+      "default": 14,
+      "visible_if": "{{ block.settings.show_image_text_card_settings }}"
     },
     {
       "type": "range",
       "id": "image_text_card_content_size_mobile",
-      "label": "Font size (mobile)",
+      "label": "t:labels.mobile_text_font_size",
       "min": 10,
       "max": 32,
       "step": 1,
       "unit": "px",
-      "default": 14
+      "default": 14,
+      "visible_if": "{{ block.settings.show_image_text_card_settings }}"
     },
-    { "type": "color", "alpha": true, "id": "image_text_card_content_color", "label": "Content color" },
+    {
+      "type": "color",
+      "alpha": true,
+      "id": "image_text_card_content_color",
+      "label": "Content color",
+      "visible_if": "{{ block.settings.show_image_text_card_settings }}"
+    },
     {
       "type": "header",
       "content": "t:general.size"
@@ -712,8 +913,14 @@
       "id": "navigation_position",
       "label": "t:labels.position",
       "options": [
-        { "value": "outside", "label": "t:options.collection_navigation_position.outside" },
-        { "value": "inside", "label": "t:options.collection_navigation_position.inside" }
+        {
+          "value": "outside",
+          "label": "t:options.collection_navigation_position.outside"
+        },
+        {
+          "value": "inside",
+          "label": "t:options.collection_navigation_position.inside"
+        }
       ],
       "default": "inside",
       "visible_if": "{{ block.settings.show_navigation_on_desktop }}"
@@ -783,8 +990,24 @@
     },
     {
       "type": "select",
+      "id": "controls_style",
+      "label": "t:labels.controls_style",
+      "options": [
+        {
+          "value": "standard",
+          "label": "Standard"
+        },
+        {
+          "value": "fraction",
+          "label": "Number / total"
+        }
+      ],
+      "default": "standard"
+    },
+    {
+      "type": "select",
       "id": "pagination_type",
-      "label": "t:labels.type",
+      "label": "t:labels.pagination_type",
       "options": [
         {
           "value": "progress_bar",
@@ -795,26 +1018,26 @@
           "label": "t:options.collection_pagination.bullets"
         }
       ],
-      "default": "progress_bar"
-    },
-    {
-      "type": "select",
-      "id": "controls_style",
-      "label": "Controls style",
-      "options": [
-        { "value": "standard", "label": "Standard" },
-        { "value": "fraction", "label": "Number / total" }
-      ],
-      "default": "standard"
+      "default": "progress_bar",
+      "visible_if": "{{ block.settings.controls_style == 'standard' and block.settings.show_pagination_on_desktop or block.settings.controls_style == 'standard' and block.settings.show_pagination_on_mobile }}"
     },
     {
       "type": "select",
       "id": "controls_alignment",
-      "label": "Controls alignment",
+      "label": "t:labels.desktop_controls_alignment",
       "options": [
-        { "value": "left", "label": "Left" },
-        { "value": "center", "label": "Center" },
-        { "value": "right", "label": "Right" }
+        {
+          "value": "left",
+          "label": "Left"
+        },
+        {
+          "value": "center",
+          "label": "Center"
+        },
+        {
+          "value": "right",
+          "label": "Right"
+        }
       ],
       "default": "center",
       "visible_if": "{{ block.settings.controls_style == 'fraction' }}"
@@ -822,11 +1045,20 @@
     {
       "type": "select",
       "id": "controls_alignment_mobile",
-      "label": "Controls alignment (mobile)",
+      "label": "t:labels.mobile_controls_alignment",
       "options": [
-        { "value": "left", "label": "Left" },
-        { "value": "center", "label": "Center" },
-        { "value": "right", "label": "Right" }
+        {
+          "value": "left",
+          "label": "Left"
+        },
+        {
+          "value": "center",
+          "label": "Center"
+        },
+        {
+          "value": "right",
+          "label": "Right"
+        }
       ],
       "default": "center",
       "visible_if": "{{ block.settings.controls_style == 'fraction' }}"
@@ -835,7 +1067,8 @@
       "type": "checkbox",
       "id": "show_pagination_on_desktop",
       "label": "t:labels.show_pagination_on_desktop",
-      "default": true
+      "default": true,
+      "visible_if": "{{ block.settings.controls_style == 'standard' }}"
     },
     {
       "type": "range",
@@ -846,13 +1079,14 @@
       "step": 1,
       "unit": "px",
       "default": 40,
-      "visible_if": "{{ block.settings.show_pagination_on_desktop }}"
+      "visible_if": "{{ block.settings.controls_style == 'standard' and block.settings.show_pagination_on_desktop }}"
     },
     {
       "type": "checkbox",
       "id": "show_pagination_on_mobile",
       "label": "t:labels.show_pagination_on_mobile",
-      "default": true
+      "default": true,
+      "visible_if": "{{ block.settings.controls_style == 'standard' }}"
     },
     {
       "type": "range",
@@ -863,25 +1097,25 @@
       "step": 1,
       "unit": "px",
       "default": 40,
-      "visible_if": "{{ block.settings.show_pagination_on_mobile }}"
+      "visible_if": "{{ block.settings.controls_style == 'standard' and block.settings.show_pagination_on_mobile }}"
     },
     {
       "type": "checkbox",
       "id": "pagination_limit_width",
-      "label": "t:labels.limit_width",
+      "label": "t:labels.limit_pagination_width",
       "default": false,
-      "visible_if": "{{ block.settings.pagination_type == 'progress_bar' }}"
+      "visible_if": "{{ block.settings.controls_style == 'standard' and block.settings.pagination_type == 'progress_bar' }}"
     },
     {
       "type": "range",
       "id": "pagination_max_width",
-      "label": "t:labels.max_width",
+      "label": "t:labels.pagination_max_width",
       "min": 100,
       "max": 500,
       "step": 10,
       "unit": "px",
       "default": 260,
-      "visible_if": "{{ block.settings.pagination_type == 'progress_bar' and block.settings.pagination_limit_width }}"
+      "visible_if": "{{ block.settings.controls_style == 'standard' and block.settings.pagination_type == 'progress_bar' and block.settings.pagination_limit_width }}"
     },
     {
       "type": "header",
