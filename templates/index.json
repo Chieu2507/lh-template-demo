@@ -1909,6 +1909,7 @@
           "block_order": []
         }
       },
+      "disabled": true,
       "settings": {
         "section_width": "page_width",
         "header_position": "products",
@@ -7290,6 +7291,212 @@
         "padding_top_mobile": 56,
         "padding_bottom_mobile": 56
       }
+    },
+    "peekoo_featured_07": {
+      "type": "featured-collection",
+      "blocks": {
+        "header": {
+          "type": "header",
+          "static": true,
+          "settings": {
+            "width": "fill",
+            "max_width": 760,
+            "customize_mobile_size": false,
+            "width_mobile": "fit",
+            "max_width_mobile": 480,
+            "inherit_alignment": true,
+            "alignment": "left",
+            "customize_mobile_alignment": false,
+            "alignment_mobile": "left",
+            "gap_desktop": 16,
+            "gap_mobile": 12,
+            "padding_top": 0,
+            "padding_bottom": 0,
+            "padding_left": 0,
+            "padding_right": 0,
+            "customize_mobile_padding": false,
+            "padding_top_mobile": 0,
+            "padding_bottom_mobile": 0,
+            "padding_left_mobile": 0,
+            "padding_right_mobile": 0
+          },
+          "blocks": {
+            "heading": {
+              "type": "heading",
+              "settings": {
+                "text": "<p>Trending this Week</p>",
+                "heading_size": "xl",
+                "custom_heading_size": 24,
+                "html_tag": "h2",
+                "text_color": "",
+                "outline_text": false,
+                "width": "fill",
+                "max_width": 640,
+                "customize_mobile_size": false,
+                "width_mobile": "fit",
+                "max_width_mobile": 480,
+                "animation_type": "none",
+                "animation_delay": 150,
+                "padding_top": 0,
+                "padding_bottom": 0,
+                "padding_left": 0,
+                "padding_right": 0,
+                "customize_mobile_padding": false,
+                "padding_top_mobile": 0,
+                "padding_bottom_mobile": 0,
+                "padding_left_mobile": 0,
+                "padding_right_mobile": 0
+              },
+              "blocks": {}
+            },
+            "text": {
+              "type": "text",
+              "settings": {
+                "text": "<p>Discover the most loved and sought-after items of the week!</p>",
+                "text_size": "md",
+                "customize_line_height": false,
+                "line_height": 26,
+                "height_limit": "none",
+                "text_color": "",
+                "width": "fit",
+                "max_width": 640,
+                "customize_mobile_size": false,
+                "width_mobile": "fit",
+                "max_width_mobile": 480,
+                "animation_type": "none",
+                "animation_delay": 300,
+                "padding_top": 0,
+                "padding_bottom": 0,
+                "padding_left": 0,
+                "padding_right": 0,
+                "customize_mobile_padding": false,
+                "padding_top_mobile": 0,
+                "padding_bottom_mobile": 4,
+                "padding_left_mobile": 0,
+                "padding_right_mobile": 0
+              },
+              "blocks": {}
+            }
+          },
+          "block_order": [
+            "heading",
+            "text"
+          ]
+        },
+        "featured-collection-view-all": {
+          "type": "view-all-button",
+          "static": true,
+          "settings": {
+            "button_label": "View All",
+            "button_open_in_new_tab": false,
+            "button_style": "tertiary",
+            "show_icon": false,
+            "icon": "arrow_right",
+            "icon_position": "after",
+            "icon_size": "inherit",
+            "icon_width": 20,
+            "button_style_mobile": "tertiary",
+            "button_height_mobile": "inherit",
+            "full_width_mobile": false,
+            "show_icon_mobile": false
+          },
+          "blocks": {}
+        },
+        "product-list": {
+          "type": "product-list",
+          "static": true,
+          "settings": {
+            "collection": "new-arrivals-perky",
+            "max_products": 8,
+            "layout_type": "carousel",
+            "columns_desktop": "4",
+            "columns_tablet": "3",
+            "columns_mobile": "2",
+            "show_next_slide_preview_on_desktop": false,
+            "product_gap_desktop": 32,
+            "product_gap_mobile": 12,
+            "customize_mobile_row_gap": true,
+            "product_row_gap_mobile": 24,
+            "show_navigation_on_desktop": true,
+            "navigation_position": "outside",
+            "navigation_style": "primary",
+            "navigation_icon": "arrow",
+            "navigation_behavior": "show_on_hover",
+            "show_pagination_on_desktop": true,
+            "pagination_type": "progress_bar",
+            "pagination_thickness": "thin",
+            "pagination_top_padding_desktop": 36,
+            "pagination_top_padding_mobile": 24,
+            "pagination_limit_width": false,
+            "pagination_max_width": 260,
+            "autoplay": false,
+            "autoplay_pause_on_hover": true,
+            "autoplay_speed": 4
+          },
+          "blocks": {
+            "product-card": {
+              "type": "product-card",
+              "static": true,
+              "settings": {
+                "color_type": "inherit",
+                "color_scheme": ""
+              },
+              "blocks": {}
+            },
+            "promo_sale": {
+              "type": "promo-card",
+              "settings": {
+                "card_position": 1,
+                "show_on_top_mobile": true,
+                "card_link": "shopify://collections/sale-perky",
+                "open_in_new_tab": false,
+                "media_type": "image",
+                "image": "shopify://shop_images/peekoo-clearance-promo.jpg",
+                "show_overlay": true,
+                "overlay_color": "#0000004D",
+                "subheading": "SALE UP TO 20%",
+                "heading": "Clearance sale!",
+                "text": "",
+                "content_alignment": "left",
+                "content_position": "bottom",
+                "heading_size": "lg",
+                "text_size": "md",
+                "button_label": "Shop Sale",
+                "button_style": "primary",
+                "show_icon": false,
+                "button_height": "medium",
+                "button_full_width": false,
+                "content_gap": 8,
+                "button_spacing": 20,
+                "color_scheme": "scheme-3",
+                "padding_vertical": 32,
+                "padding_horizontal": 32,
+                "customize_mobile_padding": false,
+                "padding_vertical_mobile": 20,
+                "padding_horizontal_mobile": 16
+              }
+            }
+          },
+          "block_order": [
+            "promo_sale"
+          ]
+        }
+      },
+      "name": "Featured collection 07 — Trending this week",
+      "settings": {
+        "section_width": "page_width",
+        "desktop_alignment": "left",
+        "mobile_alignment": "left",
+        "gap_desktop": 56,
+        "gap_mobile": 32,
+        "color_scheme": "scheme-2",
+        "padding_top": 80,
+        "padding_bottom": 80,
+        "hide_view_all_mobile": false,
+        "customize_mobile_padding": true,
+        "padding_top_mobile": 40,
+        "padding_bottom_mobile": 40
+      }
     }
   },
   "order": [
@@ -7303,6 +7510,7 @@
     "perky_age_collections",
     "perky_tinker",
     "peekoo_icon_text",
+    "peekoo_featured_07",
     "perky_playsets_banner",
     "perky_logos",
     "perky_testimonials",
