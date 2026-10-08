@@ -1692,7 +1692,7 @@
         }
       },
       "custom_css": [
-        ".collection-card-kernel__media{border-radius:16px}@media(min-width:768px) and (max-width:1149px){.collection-list__spacing{padding-bottom:64px}.collection-list__container{row-gap:40px}.collection-card-kernel{--collection-card-media-padding:16px;--card-padding-bottom:20px}.collection-list__header .block-header{max-width:576px}}.collection-list__actions{display:none}.swiper-pagination{--swiper-pagination-bullet-active-width:8px}"
+        ".collection-card-kernel__media{border-radius:16px}@media(min-width:768px) and (max-width:1149px){.collection-list__spacing{padding-bottom:64px}.collection-list__container{row-gap:40px}.collection-card-kernel{--collection-card-media-padding:16px;--card-padding-bottom:20px}.collection-list__header .block-header{max-width:576px}}.collection-list__actions{display:none}.swiper-pagination{--swiper-pagination-bullet-active-width:8px!important}"
       ],
       "settings": {
         "section_width": "page_width",
