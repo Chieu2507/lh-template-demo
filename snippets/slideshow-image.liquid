@@ -78,6 +78,10 @@
         endif
       endfor
     else
+      echo mobile_artwork | image_url: width: 375
+      echo ' 375w, '
+      echo mobile_artwork | image_url: width: 550
+      echo ' 550w, '
       echo mobile_artwork | image_url: width: 750
       echo ' 750w, '
       echo mobile_artwork | image_url: width: 1100

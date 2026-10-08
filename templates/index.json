@@ -20,7 +20,7 @@
             "open_in_new_tab": false,
             "media_type": "image",
             "image": "shopify://shop_images/5282e-peekoo-optimized.webp",
-            "mobile_image": "",
+            "mobile_image": "shopify://shop_images/peekoo-hero-baby-mobile.webp",
             "media_2_type": "image",
             "show_overlay": true,
             "overlay_color": "#00000033",

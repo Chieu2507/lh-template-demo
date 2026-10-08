@@ -66,6 +66,9 @@
       assign slide_mobile_image_sizes = slide_mobile_rendered_width | append: 'px'
     endif
     assign slide_mobile_height = 0
+    if block.settings.mobile_image != blank
+      assign slide_mobile_image_sizes = '100vw'
+    endif
   endif
   if section.blocks.first != blank and section.blocks.first.id == block.id
     assign slide_image_loading = 'eager'
@@ -91,7 +94,7 @@
 {% endif %}
 
 <div
-  class="swiper-slide slideshow-slide slideshow-slide--{{ slide_layout }} hero hero--width-full hero--classic hero--content-{{ slide_content_width }} hero--desktop-adapt hero--mobile-adapt color-scheme section-color-scope {{ slide_scheme }}"
+  class="swiper-slide slideshow-slide slideshow-slide--{{ slide_layout }}{% if block.settings.mobile_image != blank %} slideshow-slide--mobile-artwork{% endif %} hero hero--width-full hero--classic hero--content-{{ slide_content_width }} hero--desktop-adapt hero--mobile-adapt color-scheme section-color-scope {{ slide_scheme }}"
   data-slideshow-slide
   data-slideshow-color-scheme="{{ slide_scheme | escape }}"
   data-parallax="{{ block.settings.parallax_effect | default: 'none' }}"
