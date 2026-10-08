@@ -7,8 +7,8 @@
   const reduced = matchMedia('(prefers-reduced-motion: reduce)');
   const enabled = () => document.body.dataset.blockAnimations !== 'false' && !reduced.matches;
   const selector = '[data-block-animation], [data-component-reveal]';
-  const cardSelector = 'article.testimonial-item, .product-card, .collection-card, .collection-card-kernel, .blog-card, .blog-first-card, .blog-grid article.image-card, .collection-thumbnail__link, .image-card > .image-card__media:not(.blog-grid .image-card__media)';
-  const listSelector = '[data-product-carousel], .collection-card-list__grid, .product-list__grid, [data-product-list], .image-cards-section__grid, .blog-grid, .collection-thumbnails__grid, .collection-thumbnails__carousel, .testimonial-carousel, .testimonials-cards__carousel';
+  const cardSelector = 'article.testimonial-item, .product-card, .promo-card, .collection-card, .collection-card-kernel, .blog-card, .blog-first-card, .blog-grid article.image-card, .collection-thumbnail__link, .image-card > .image-card__media:not(.blog-grid .image-card__media)';
+  const listSelector = '[data-product-list-mobile-promos], [data-product-carousel], .product-collection-grid, .collection-card-list__grid, .product-list__grid, [data-product-list], .image-cards-section__grid, .blog-grid, .collection-thumbnails__grid, .collection-thumbnails__carousel, .testimonial-carousel, .testimonials-cards__carousel';
   const scopeSelector = '[role="tabpanel"], .slideshow__swiper .swiper-slide';
   const active = element => {
     if (!element.isConnected || !element.getClientRects().length) return false;
@@ -99,8 +99,9 @@
       if (list) {
         const siblings = [...list.querySelectorAll(cardSelector)].filter(e => e.closest(listSelector) === list);
         // Stagger within the visible row; later rows must not inherit a long list-wide wait.
-        const top = card.getBoundingClientRect().top;
-        const row = siblings.filter(sibling => Math.abs(sibling.getBoundingClientRect().top - top) < 8);
+        const rowTop = element => (element.closest('.product-collection-grid__item') || element).getBoundingClientRect().top;
+        const top = rowTop(card);
+        const row = siblings.filter(sibling => Math.abs(rowTop(sibling) - top) < 8);
         card.dataset.animationDelay = String(Math.min(600, 180 + Math.max(0, row.indexOf(card)) * 140));
       }
     });
@@ -136,7 +137,10 @@
       else if (record.target.matches?.(scopeSelector)) {
         // Deactivation arms this scope. Subsequent activation replays its own contents.
         if (!active(record.target)) resetScope(record.target);
-        else nodes.forEach((state, element) => {if (record.target.contains(element) && !state.played && inView(element)) show(element);});
+        else {
+          if (record.target.matches('[role="tabpanel"]')) scan(record.target);
+          nodes.forEach((state, element) => {if (record.target.contains(element) && !state.played && inView(element)) show(element);});
+        }
       }
     });
     nodes.forEach((state, element) => {if (!element.isConnected) {stop(state);observer.unobserve(element);nodes.delete(element);}});
