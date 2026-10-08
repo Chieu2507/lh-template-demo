@@ -36,6 +36,10 @@
   endif
 
   assign blog_card_button_label = 'products.read_more' | t
+  assign blog_card_button_accessible_label = blog_card_button_label
+  if blog_card_button_article.title != blank
+    assign blog_card_button_accessible_label = blog_card_button_label | append: ': ' | append: blog_card_button_article.title
+  endif
 
   assign blog_card_button_padding_top = block.settings.padding_top | default: 0 | plus: 0
   assign blog_card_button_padding_bottom = block.settings.padding_bottom | default: 0 | plus: 0
@@ -60,6 +64,7 @@
 >
   {% render 'theme-button',
     label: blog_card_button_label,
+    aria_label: blog_card_button_accessible_label,
     url: blog_card_button_article.url,
     force_link: true,
     variant: blog_card_button_style,

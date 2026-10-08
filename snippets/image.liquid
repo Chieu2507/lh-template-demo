@@ -49,7 +49,7 @@
 
     assign image_alt = alt
     if image_alt == blank
-      assign image_alt = image.alt
+      assign image_alt = image.alt | default: ''
     endif
 
     assign image_widths = widths | default: blank
