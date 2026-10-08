@@ -60,9 +60,12 @@
 <link rel="stylesheet" href="{{ 'swiper-12.2.0-effect-fade.min.css' | asset_url }}" media="print" onload="this.media='all'">
 <noscript>{{ 'swiper-12.2.0-effect-fade.min.css' | asset_url | stylesheet_tag }}</noscript>
 <script type="module" src="{{ 'slideshow.js' | asset_url }}"></script>
+{% if section.settings.layout_preset == 'peekoo' %}
+  {{ 'peekoo-slideshow.css' | asset_url | stylesheet_tag }}
+{% endif %}
 
 <div
-  class="slideshow slideshow--width-{{ slideshow_width }} slideshow--desktop-{{ slideshow_desktop_height }} slideshow--mobile-{{ slideshow_mobile_height }} color-scheme section-color-scope {{ slideshow_scheme }}"
+  class="slideshow{% if section.settings.layout_preset == 'peekoo' %} slideshow--peekoo{% endif %} slideshow--width-{{ slideshow_width }} slideshow--desktop-{{ slideshow_desktop_height }} slideshow--mobile-{{ slideshow_mobile_height }} color-scheme section-color-scope {{ slideshow_scheme }}"
   data-slideshow
   data-transition="{{ slideshow_transition }}"
   data-show-next-slide-preview-on-desktop="{{ slideshow_show_next_slide_preview_on_desktop }}"
@@ -221,6 +224,7 @@
   "blocks": [{ "type": "slideshow-slide" }],
   "settings": [
     { "type": "header", "content": "Layout" },
+    { "type": "select", "id": "layout_preset", "label": "Layout preset", "options": [{ "value": "standard", "label": "Standard" }, { "value": "peekoo", "label": "Peekoo" }], "default": "standard" },
     { "type": "select", "id": "width", "label": "Section width", "options": [{ "value": "page", "label": "Page" }, { "value": "full", "label": "Full" }, { "value": "full_bleed", "label": "Full (no padding)" }], "default": "full_bleed" },
     { "type": "checkbox", "id": "show_next_slide_preview_on_desktop", "label": "t:labels.show_next_slide_preview_on_desktop", "default": false, "visible_if": "{{ section.settings.width == 'page' }}" },
     { "type": "select", "id": "transition_style", "label": "Transition style", "options": [{ "value": "slide", "label": "Slide" }, { "value": "fade", "label": "Fade" }], "default": "slide", "visible_if": "{{ section.settings.width != 'page' or section.settings.show_next_slide_preview_on_desktop == false }}" },

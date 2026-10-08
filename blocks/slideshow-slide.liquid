@@ -38,6 +38,13 @@
     when 'custom'
       assign slide_mobile_height = section.settings.mobile_height_custom | default: 670
   endcase
+  comment
+    Peekoo uses Figma's per-device art direction on the original artwork.
+    Keep the source intact instead of requesting a centered mobile CDN crop.
+  endcomment
+  if section.settings.layout_preset == 'peekoo'
+    assign slide_mobile_height = 0
+  endif
   if section.blocks.first != blank and section.blocks.first.id == block.id
     assign slide_image_loading = 'eager'
     assign slide_image_fetchpriority = 'high'
