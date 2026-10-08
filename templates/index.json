@@ -1591,10 +1591,10 @@
           "static": true,
           "settings": {
             "collections": [
-              "baby-toys-perky",
-              "art-crafts-perky",
-              "puzzles-perky",
-              "handmade-perky"
+              "0-6-months-perky",
+              "6-12-months-perky",
+              "1-2-years-perky",
+              "2-3-years-perky"
             ],
             "layout": "carousel",
             "columns_desktop": "3",
