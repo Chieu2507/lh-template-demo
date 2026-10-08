@@ -89,7 +89,7 @@
     style="--gallery-carousel-content-gap: {{ content_gap }}px; --gallery-carousel-content-gap-mobile: {{ content_gap_mobile }}px; --gallery-carousel-section-padding-top: {{ padding_top }}px; --gallery-carousel-section-padding-bottom: {{ padding_bottom }}px; --gallery-carousel-section-padding-top-mobile: {{ padding_top_mobile }}px; --gallery-carousel-section-padding-bottom-mobile: {{ padding_bottom_mobile }}px;{% if background_color != blank %} --gallery-carousel-section-background: {{ background_color | escape }};{% endif %}"
   >
     {% if section.settings.background_image != blank %}
-      <div class="gallery-carousel__background" aria-hidden="true">
+      <div class="media-background-surface gallery-carousel__background" aria-hidden="true">
         {{ section.settings.background_image | image_url: width: 2400 | image_tag }}
       </div>
     {% endif %}

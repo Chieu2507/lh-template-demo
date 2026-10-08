@@ -68,7 +68,7 @@
     {% if image_text_split_style != blank %}style="{{ image_text_split_style }}"{% endif %}
   >
     {% if section.settings.background_image != blank %}
-      <div class="image-text-split-layout__background" aria-hidden="true">
+      <div class="media-background-surface image-text-split-layout__background" aria-hidden="true">
         {{ section.settings.background_image | image_url: width: 2000 | image_tag }}
       </div>
     {% endif %}

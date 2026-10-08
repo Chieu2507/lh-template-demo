@@ -60,7 +60,7 @@
     style="--icon-text-cards-align: {{ flex_align }}; --icon-text-cards-align-mobile: {{ mobile_flex_align }}; --icon-text-cards-gap: {{ content_gap }}px; --icon-text-cards-gap-mobile: {{ content_gap_mobile }}px; --icon-text-cards-padding-top: {{ padding_top }}px; --icon-text-cards-padding-bottom: {{ padding_bottom }}px; --icon-text-cards-padding-top-mobile: {{ padding_top_mobile }}px; --icon-text-cards-padding-bottom-mobile: {{ padding_bottom_mobile }}px;{% if section.settings.background_color != blank %} --icon-text-cards-background: {{ section.settings.background_color | escape }};{% endif %}"
   >
     {% if section.settings.background_image != blank %}
-      <div class="icon-text-cards__background" aria-hidden="true">
+      <div class="media-background-surface icon-text-cards__background" aria-hidden="true">
         {{ section.settings.background_image | image_url: width: 2400 | image_tag: widths: '750, 1100, 1500, 2000, 2400', sizes: '100vw', alt: '' }}
       </div>
     {% endif %}

@@ -81,7 +81,7 @@
 {% assign section_style = section_style | strip %}
 
 <div class="text-marquee-custom color-scheme {{ color_scheme }} text-marquee-custom--{{ section_direction }} text-marquee-custom--align-{{ section_alignment }} text-marquee-custom--position-{{ section_position }}{% if section_direction == 'horizontal' and section.settings.customize_mobile_alignment %} text-marquee-custom--mobile-vertical{% endif %}"{% if section_style != blank %} style="{{ section_style }}"{% endif %}>
-  {% if section.settings.background_image != blank %}<div class="text-marquee-custom__background" aria-hidden="true"></div>{% endif %}
+  {% if section.settings.background_image != blank %}<div class="media-background-surface text-marquee-custom__background" aria-hidden="true"></div>{% endif %}
   <div class="container {{ section_container_width }} text-marquee-custom__container"><div class="text-marquee-custom__content">{% content_for 'blocks' %}</div></div>
 </div>
 

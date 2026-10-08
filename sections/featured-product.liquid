@@ -80,7 +80,7 @@
     {% if featured_product_style != blank %}style="{{ featured_product_style }}"{% endif %}
   >
     {% if section.settings.background_image != blank %}
-      <div class="featured-product__background" aria-hidden="true">
+      <div class="media-background-surface featured-product__background" aria-hidden="true">
         {{ section.settings.background_image | image_url: width: 2400 | image_tag: widths: '750, 1100, 1500, 2000, 2400', sizes: '100vw', alt: '' }}
       </div>
     {% endif %}

@@ -120,7 +120,7 @@
     {% if image_cards_style != blank %}style="{{ image_cards_style }}"{% endif %}
   >
     {% if section.settings.background_image != blank %}
-      <div class="image-cards-section__background" aria-hidden="true">
+      <div class="media-background-surface image-cards-section__background" aria-hidden="true">
         {{ section.settings.background_image | image_url: width: 2000 | image_tag }}
       </div>
     {% endif %}

@@ -113,7 +113,7 @@
 >
   <div class="hero__surface{% if hero_width == 'full' %} hero__surface--full{% endif %}{% unless hero_layout == 'stack' %} color-scheme section-color-scope {{ hero_content_scheme }}{% endunless %}{% if hero_width == 'full' %} section-spacing{% endif %}" data-hero-surface>
     <div class="media{% if section.settings.hover_zoom and hero_layout == 'stack' %} media-hover-zoom{% endif %}"{% unless hero_layout == 'stack' and section.settings.link != blank %} aria-hidden="true"{% endunless %}>
-      <div class="media__inner media-hover-zoom__media{% if hero_media_is_placeholder %} placeholder-image{% endif %}" data-hero-media>
+      <div class="media-background-surface media__inner media-hover-zoom__media{% if hero_media_is_placeholder %} placeholder-image{% endif %}" data-hero-media>
       {% if hero_media_type == 'video' and section.settings.video != blank %}
         {{ section.settings.video | video_tag: image_size: '2400x', autoplay: true, loop: true, muted: true, controls: false, playsinline: true, class: 'hero__video hero__video--desktop' }}
         {% if section.settings.mobile_video != blank %}
