@@ -20,6 +20,7 @@
             "open_in_new_tab": false,
             "media_type": "image",
             "image": "shopify://shop_images/5282e.png",
+            "mobile_image": "",
             "media_2_type": "image",
             "show_overlay": true,
             "overlay_color": "#00000033",
@@ -34,8 +35,7 @@
             "mobile_position": "center_center",
             "desktop_gap": 0,
             "mobile_gap": 0,
-            "color_scheme": "scheme-3",
-            "mobile_image": ""
+            "color_scheme": "scheme-3"
           },
           "blocks": {
             "column": {
@@ -174,9 +174,9 @@
                           "type": "eyebrow",
                           "settings": {
                             "text": "<p>LIMITED TIME ONLY!</p>",
+                            "color": "",
                             "show_background": false,
                             "show_icon": false,
-                            "color": "",
                             "animation_type": "slide-bottom",
                             "animation_delay": 150
                           }
@@ -344,6 +344,8 @@
             "link": "",
             "open_in_new_tab": false,
             "media_type": "image",
+            "image": "shopify://shop_images/f9b22.jpg",
+            "mobile_image": "",
             "media_2_type": "image",
             "show_overlay": true,
             "overlay_color": "#00000033",
@@ -358,9 +360,7 @@
             "mobile_position": "center_center",
             "desktop_gap": 0,
             "mobile_gap": 0,
-            "color_scheme": "scheme-3",
-            "image": "shopify://shop_images/f9b22.jpg",
-            "mobile_image": ""
+            "color_scheme": "scheme-3"
           },
           "blocks": {
             "column": {
@@ -499,9 +499,9 @@
                           "type": "eyebrow",
                           "settings": {
                             "text": "<p>LIMITED TIME ONLY!</p>",
+                            "color": "",
                             "show_background": false,
                             "show_icon": false,
-                            "color": "",
                             "animation_type": "slide-bottom",
                             "animation_delay": 150
                           }
@@ -669,6 +669,8 @@
             "link": "",
             "open_in_new_tab": false,
             "media_type": "image",
+            "image": "shopify://shop_images/561ad.jpg",
+            "mobile_image": "",
             "media_2_type": "image",
             "show_overlay": true,
             "overlay_color": "#00000033",
@@ -683,9 +685,7 @@
             "mobile_position": "center_center",
             "desktop_gap": 0,
             "mobile_gap": 0,
-            "color_scheme": "scheme-3",
-            "image": "shopify://shop_images/561ad.jpg",
-            "mobile_image": ""
+            "color_scheme": "scheme-3"
           },
           "blocks": {
             "column": {
@@ -824,9 +824,9 @@
                           "type": "eyebrow",
                           "settings": {
                             "text": "<p>LIMITED TIME ONLY!</p>",
+                            "color": "",
                             "show_background": false,
                             "show_icon": false,
-                            "color": "",
                             "animation_type": "slide-bottom",
                             "animation_delay": 150
                           }
@@ -994,6 +994,7 @@
         "slide-moments"
       ],
       "settings": {
+        "layout_preset": "peekoo",
         "width": "full_bleed",
         "show_next_slide_preview_on_desktop": false,
         "transition_style": "fade",
@@ -1020,8 +1021,7 @@
         "padding_bottom": 0,
         "customize_mobile_padding": false,
         "padding_top_mobile": 0,
-        "padding_bottom_mobile": 0,
-        "layout_preset": "peekoo"
+        "padding_bottom_mobile": 0
       }
     },
     "collection_list": {
@@ -1038,8 +1038,8 @@
           "blocks": {
             "title": {
               "type": "_collection-thumbnail-title",
-              "static": true,
               "disabled": true,
+              "static": true,
               "settings": {}
             }
           }
@@ -1055,8 +1055,8 @@
           "blocks": {
             "title": {
               "type": "_collection-thumbnail-title",
-              "static": true,
               "disabled": true,
+              "static": true,
               "settings": {}
             }
           }
@@ -1072,8 +1072,8 @@
           "blocks": {
             "title": {
               "type": "_collection-thumbnail-title",
-              "static": true,
               "disabled": true,
+              "static": true,
               "settings": {}
             }
           }
@@ -1089,8 +1089,8 @@
           "blocks": {
             "title": {
               "type": "_collection-thumbnail-title",
-              "static": true,
               "disabled": true,
+              "static": true,
               "settings": {}
             }
           }
@@ -1106,8 +1106,8 @@
           "blocks": {
             "title": {
               "type": "_collection-thumbnail-title",
-              "static": true,
               "disabled": true,
+              "static": true,
               "settings": {}
             }
           }
@@ -1150,6 +1150,8 @@
         "layout": "carousel",
         "gap_desktop": 48,
         "gap_mobile": 16,
+        "content_gap_desktop": 48,
+        "content_gap_mobile": 36,
         "card_layout": "vertical",
         "card_gap": 0,
         "image_width_desktop": 160,
@@ -1176,9 +1178,7 @@
         "padding_bottom": 96,
         "customize_mobile_padding": true,
         "padding_top_mobile": 56,
-        "padding_bottom_mobile": 56,
-        "content_gap_desktop": 48,
-        "content_gap_mobile": 36
+        "padding_bottom_mobile": 56
       }
     },
     "perky_age_collections": {
@@ -1284,11 +1284,11 @@
             "icon_position": "after",
             "icon_size": "inherit",
             "icon_width": 20,
+            "hide_view_all_mobile": true,
             "button_style_mobile": "tertiary",
             "button_height_mobile": "inherit",
             "full_width_mobile": false,
-            "show_icon_mobile": false,
-            "hide_view_all_mobile": true
+            "show_icon_mobile": false
           },
           "blocks": {}
         },
@@ -1306,6 +1306,8 @@
             "columns_desktop": "3",
             "columns_tablet": "2",
             "columns_mobile": "1",
+            "mobile_card_sizing": "fixed",
+            "mobile_card_width": 256,
             "show_next_slide_preview_on_desktop": true,
             "show_next_slide_preview_on_mobile": false,
             "gap_desktop": 28,
@@ -1327,9 +1329,7 @@
             "pagination_max_width": 260,
             "autoplay": false,
             "autoplay_pause_on_hover": true,
-            "autoplay_speed": 4,
-            "mobile_card_sizing": "fixed",
-            "mobile_card_width": 256
+            "autoplay_speed": 4
           },
           "blocks": {
             "collection-card": {
@@ -1339,6 +1339,8 @@
                 "ratio": "square",
                 "ratio_custom": 1,
                 "media_padding": 20,
+                "customize_mobile_media_padding": true,
+                "media_padding_mobile": 16,
                 "placement": "below_image",
                 "alignment": "center",
                 "gap_desktop": 16,
@@ -1358,9 +1360,7 @@
                 "padding_bottom_mobile": 20,
                 "padding_left_mobile": 16,
                 "padding_right_mobile": 16,
-                "hover_zoom": true,
-                "customize_mobile_media_padding": true,
-                "media_padding_mobile": 16
+                "hover_zoom": true
               },
               "blocks": {
                 "title": {
@@ -1403,15 +1403,15 @@
         "mobile_alignment": "center",
         "gap_desktop": 48,
         "gap_mobile": 36,
+        "mobile_action_position": "after",
+        "header_action_gap_mobile": 20,
         "background_media": "none",
         "color_scheme": "scheme-1",
         "padding_top": 10,
         "padding_bottom": 80,
         "customize_mobile_padding": true,
         "padding_top_mobile": 10,
-        "padding_bottom_mobile": 56,
-        "mobile_action_position": "after",
-        "header_action_gap_mobile": 20
+        "padding_bottom_mobile": 56
       }
     },
     "perky_logos": {
@@ -2554,6 +2554,13 @@
         "mobile_alignment": "left",
         "gap_desktop": 48,
         "gap_mobile": 36,
+        "customize_header_gap_mobile": true,
+        "header_gap_mobile": 24,
+        "customize_action_gap": true,
+        "action_gap": 36,
+        "customize_mobile_row_gap": true,
+        "product_row_gap_mobile": 24,
+        "product_card_alignment": "center",
         "max_products": 4,
         "layout_type": "grid",
         "columns_desktop": "4",
@@ -2582,14 +2589,7 @@
         "padding_bottom": 80,
         "customize_mobile_padding": true,
         "padding_top_mobile": 56,
-        "padding_bottom_mobile": 56,
-        "product_card_alignment": "center",
-        "customize_header_gap_mobile": true,
-        "header_gap_mobile": 24,
-        "customize_action_gap": true,
-        "action_gap": 36,
-        "customize_mobile_row_gap": true,
-        "product_row_gap_mobile": 24
+        "padding_bottom_mobile": 56
       }
     },
     "countdown_timer": {
@@ -2848,6 +2848,10 @@
                     "style": "with_labels",
                     "unit_layout": "colon",
                     "max_width": 516,
+                    "unit_gap_desktop": 44,
+                    "unit_gap_mobile": 16,
+                    "separator_width": 24,
+                    "separator_size": "lg",
                     "show_background": false,
                     "corner_radius": "slightly_rounded",
                     "type": "recurring",
@@ -2874,11 +2878,7 @@
                     "padding_left_mobile": 0,
                     "padding_right_mobile": 0,
                     "animation_type": "slide-bottom",
-                    "animation_delay": 450,
-                    "unit_gap_desktop": 44,
-                    "unit_gap_mobile": 16,
-                    "separator_width": 24,
-                    "separator_size": "lg"
+                    "animation_delay": 450
                   },
                   "blocks": {}
                 },
@@ -2941,9 +2941,12 @@
         "media_corner_radius": "square",
         "hover_zoom": false,
         "overlay": "",
+        "overlay_gradient": "radial-gradient(ellipse 48.4% 82.1% at 50% 50%, rgba(11, 76, 114, 0.3) 0%, rgba(8, 57, 85, 0.225) 25%, rgba(5, 38, 57, 0.15) 50%, rgba(0, 0, 0, 0) 100%)",
         "parallax_effect": "none",
         "desktop_height": "custom",
+        "desktop_height_custom": 650,
         "mobile_height": "custom",
+        "mobile_height_custom": 490,
         "content_width": "custom",
         "content_max_width": 640,
         "enable_sticky": false,
@@ -2959,10 +2962,7 @@
         "padding_bottom": 0,
         "customize_mobile_padding": false,
         "padding_top_mobile": 0,
-        "padding_bottom_mobile": 0,
-        "desktop_height_custom": 650,
-        "overlay_gradient": "radial-gradient(ellipse 48.4% 82.1% at 50% 50%, rgba(11, 76, 114, 0.3) 0%, rgba(8, 57, 85, 0.225) 25%, rgba(5, 38, 57, 0.15) 50%, rgba(0, 0, 0, 0) 100%)",
-        "mobile_height_custom": 490
+        "padding_bottom_mobile": 0
       }
     },
     "perky_tinker": {
@@ -2972,17 +2972,17 @@
           "type": "image",
           "settings": {
             "image": "shopify://shop_images/peekoo-banner-split.webp",
+            "show_image_first_mobile": true,
             "alt_text": "Child stacking wooden rainbow blocks with colorful playful illustrations",
             "image_ratio_desktop": "custom",
-            "width_desktop": "fill",
-            "image_ratio_mobile": "custom",
-            "width_mobile": "fill",
-            "corner_radius": "square",
             "image_ratio_custom_width_desktop": 6,
             "image_ratio_custom_height_desktop": 5,
+            "width_desktop": "fill",
+            "image_ratio_mobile": "custom",
             "image_ratio_custom_width_mobile": 4,
             "image_ratio_custom_height_mobile": 5,
-            "show_image_first_mobile": true
+            "width_mobile": "fill",
+            "corner_radius": "square"
           }
         },
         "content": {
@@ -3123,11 +3123,11 @@
                         "heading_size": "display",
                         "html_tag": "h2",
                         "width": "fill",
+                        "animation_type": "slide-bottom",
+                        "animation_delay": 150,
                         "padding_bottom": 0,
                         "customize_mobile_padding": true,
-                        "padding_bottom_mobile": 0,
-                        "animation_type": "slide-bottom",
-                        "animation_delay": 150
+                        "padding_bottom_mobile": 0
                       }
                     },
                     "text": {
@@ -3136,11 +3136,11 @@
                         "text": "<p>Inspire children to think beyond boundaries, explore their curiosity, and transform simple ideas into amazing creations. With every play, they learn to imagine, design, and innovate — building confidence, creativity, and a lifelong love for discovery.</p>",
                         "text_size": "md",
                         "width": "fill",
+                        "animation_type": "fade",
+                        "animation_delay": 300,
                         "padding_bottom": 0,
                         "customize_mobile_padding": true,
-                        "padding_bottom_mobile": 0,
-                        "animation_type": "fade",
-                        "animation_delay": 300
+                        "padding_bottom_mobile": 0
                       }
                     }
                   },
@@ -3202,29 +3202,10 @@
     },
     "perky_testimonials": {
       "type": "testimonials-cards",
-      "settings": {
-        "section_width": "page_width",
-        "columns_desktop": "1",
-        "columns_tablet": "1",
-        "columns_mobile": "1",
-        "gap_desktop": 0,
-        "gap_mobile": 0,
-        "header_gap": 24,
-        "header_gap_mobile": 24,
-        "show_pagination": true,
-        "pagination_top_padding_mobile": 32,
-        "card_height": "auto",
-        "color_scheme": "scheme-1",
-        "padding_top": 80,
-        "padding_bottom": 80,
-        "customize_mobile_padding": true,
-        "padding_top_mobile": 56,
-        "padding_bottom_mobile": 56,
-        "pagination_top_padding_desktop": 32
-      },
       "blocks": {
         "header": {
           "type": "header",
+          "static": true,
           "settings": {
             "width": "fill",
             "inherit_alignment": true,
@@ -3246,16 +3227,15 @@
           },
           "block_order": [
             "quote_icon"
-          ],
-          "static": true
+          ]
         },
         "jason": {
           "type": "_testimonial-review-card",
           "settings": {
             "direction": "vertical",
+            "position": "top",
             "alignment": "center",
             "alignment_mobile": "center",
-            "position": "top",
             "gap_desktop": 24,
             "gap_mobile": 24,
             "corner_radius": "square",
@@ -3273,13 +3253,13 @@
                 "direction": "vertical",
                 "alignment": "center",
                 "alignment_mobile": "center",
+                "gap_desktop": 24,
+                "gap_mobile": 24,
                 "width": "fill",
                 "limit_width": true,
                 "max_width": 1020,
-                "width_mobile": "fill",
                 "height": "fit",
-                "gap_desktop": 24,
-                "gap_mobile": 24
+                "width_mobile": "fill"
               },
               "blocks": {
                 "quote": {
@@ -3297,12 +3277,12 @@
                   "settings": {
                     "text": "<p>MICHALE - USA</p>",
                     "text_size": "lg",
-                    "text_color": "#181818",
-                    "width": "fill",
                     "customize_letter_spacing": true,
                     "letter_spacing": 0,
                     "customize_line_height": true,
-                    "line_height": 27
+                    "line_height": 27,
+                    "text_color": "#181818",
+                    "width": "fill"
                   }
                 }
               },
@@ -3320,9 +3300,9 @@
           "type": "_testimonial-review-card",
           "settings": {
             "direction": "vertical",
+            "position": "top",
             "alignment": "center",
             "alignment_mobile": "center",
-            "position": "top",
             "gap_desktop": 24,
             "gap_mobile": 24,
             "corner_radius": "square",
@@ -3340,13 +3320,13 @@
                 "direction": "vertical",
                 "alignment": "center",
                 "alignment_mobile": "center",
+                "gap_desktop": 24,
+                "gap_mobile": 24,
                 "width": "fill",
                 "limit_width": true,
                 "max_width": 1020,
-                "width_mobile": "fill",
                 "height": "fit",
-                "gap_desktop": 24,
-                "gap_mobile": 24
+                "width_mobile": "fill"
               },
               "blocks": {
                 "quote": {
@@ -3364,12 +3344,12 @@
                   "settings": {
                     "text": "<p>Sarah L</p>",
                     "text_size": "lg",
-                    "text_color": "#181818",
-                    "width": "fill",
                     "customize_letter_spacing": true,
                     "letter_spacing": 0,
                     "customize_line_height": true,
-                    "line_height": 27
+                    "line_height": 27,
+                    "text_color": "#181818",
+                    "width": "fill"
                   }
                 }
               },
@@ -3387,9 +3367,9 @@
           "type": "_testimonial-review-card",
           "settings": {
             "direction": "vertical",
+            "position": "top",
             "alignment": "center",
             "alignment_mobile": "center",
-            "position": "top",
             "gap_desktop": 24,
             "gap_mobile": 24,
             "corner_radius": "square",
@@ -3407,13 +3387,13 @@
                 "direction": "vertical",
                 "alignment": "center",
                 "alignment_mobile": "center",
+                "gap_desktop": 24,
+                "gap_mobile": 24,
                 "width": "fill",
                 "limit_width": true,
                 "max_width": 1020,
-                "width_mobile": "fill",
                 "height": "fit",
-                "gap_desktop": 24,
-                "gap_mobile": 24
+                "width_mobile": "fill"
               },
               "blocks": {
                 "quote": {
@@ -3431,12 +3411,12 @@
                   "settings": {
                     "text": "<p>Emily R.</p>",
                     "text_size": "lg",
-                    "text_color": "#181818",
-                    "width": "fill",
                     "customize_letter_spacing": true,
                     "letter_spacing": 0,
                     "customize_line_height": true,
-                    "line_height": 27
+                    "line_height": 27,
+                    "text_color": "#181818",
+                    "width": "fill"
                   }
                 }
               },
@@ -3455,7 +3435,27 @@
         "jason",
         "sarah",
         "emily"
-      ]
+      ],
+      "settings": {
+        "section_width": "page_width",
+        "columns_desktop": "1",
+        "columns_tablet": "1",
+        "columns_mobile": "1",
+        "card_height": "auto",
+        "gap_desktop": 0,
+        "gap_mobile": 0,
+        "header_gap": 24,
+        "header_gap_mobile": 24,
+        "show_pagination": true,
+        "pagination_top_padding_desktop": 32,
+        "pagination_top_padding_mobile": 32,
+        "color_scheme": "scheme-1",
+        "padding_top": 80,
+        "padding_bottom": 80,
+        "customize_mobile_padding": true,
+        "padding_top_mobile": 56,
+        "padding_bottom_mobile": 56
+      }
     },
     "perky_blog_posts": {
       "type": "featured-blog-posts",
@@ -3569,13 +3569,13 @@
                       "type": "group",
                       "settings": {
                         "direction": "vertical",
+                        "position": "top",
                         "alignment": "left",
-                        "width": "fill",
-                        "width_mobile": "fill",
                         "gap_desktop": 8,
                         "gap_mobile": 6,
+                        "width": "fill",
                         "height": "fit",
-                        "position": "top"
+                        "width_mobile": "fill"
                       },
                       "blocks": {
                         "meta": {
@@ -3655,10 +3655,10 @@
                   "settings": {
                     "direction": "vertical",
                     "alignment": "left",
-                    "width": "fill",
-                    "width_mobile": "fill",
                     "gap_desktop": 6,
-                    "gap_mobile": 6
+                    "gap_mobile": 6,
+                    "width": "fill",
+                    "width_mobile": "fill"
                   },
                   "blocks": {
                     "meta": {
@@ -3681,10 +3681,10 @@
                       "settings": {
                         "direction": "vertical",
                         "alignment": "left",
-                        "width": "fill",
-                        "width_mobile": "fill",
                         "gap_desktop": 8,
-                        "gap_mobile": 8
+                        "gap_mobile": 8,
+                        "width": "fill",
+                        "width_mobile": "fill"
                       },
                       "blocks": {
                         "title": {
@@ -3727,6 +3727,7 @@
           }
         }
       },
+      "disabled": true,
       "settings": {
         "section_width": "page_width",
         "desktop_alignment": "left",
@@ -3739,36 +3740,17 @@
         "customize_mobile_padding": true,
         "padding_top_mobile": 56,
         "padding_bottom_mobile": 56
-      },
-      "disabled": true
+      }
     },
     "perky_gallery": {
       "type": "gallery-carousel",
-      "settings": {
-        "section_width": "full_width",
-        "direction": "vertical",
-        "alignment": "center",
-        "alignment_mobile": "center",
-        "customize_mobile_alignment": true,
-        "content_gap": 40,
-        "customize_mobile_gap": true,
-        "content_gap_mobile": 36,
-        "color_scheme": "scheme-1",
-        "padding_top": 0,
-        "padding_bottom": 64,
-        "customize_mobile_padding": true,
-        "padding_top_mobile": 0,
-        "padding_bottom_mobile": 56,
-        "marquee_full_bleed": false,
-        "marquee_columns_desktop": 4
-      },
       "blocks": {
         "header": {
           "type": "header",
           "settings": {
             "width": "fill",
-            "alignment": "center",
             "inherit_alignment": false,
+            "alignment": "center",
             "gap_desktop": 16,
             "gap_mobile": 12
           },
@@ -3817,7 +3799,6 @@
               "type": "marquee-item",
               "settings": {
                 "direction": "vertical",
-                "width": "fill",
                 "gap_desktop": 0,
                 "gap_mobile": 0,
                 "padding_top": 0,
@@ -3831,16 +3812,16 @@
                   "settings": {
                     "image": "shopify://shop_images/74231.jpg",
                     "alt_text": "Child cuddling a baby",
+                    "corner_radius": "radius_12",
+                    "overlay_style": "minimal",
                     "tag": "@play_game88",
+                    "tag_font_size": "md",
                     "social_network": "instagram",
                     "social_url": "https://www.instagram.com/play_game88/",
-                    "show_overlay": "hover",
-                    "overlay_style": "minimal",
                     "social_background": "#00000000",
                     "social_color": "#ffffff",
-                    "overlay_background": "#00000033",
-                    "corner_radius": "radius_12",
-                    "tag_font_size": "md"
+                    "show_overlay": "hover",
+                    "overlay_background": "#00000033"
                   }
                 }
               },
@@ -3852,7 +3833,6 @@
               "type": "marquee-item",
               "settings": {
                 "direction": "vertical",
-                "width": "fill",
                 "gap_desktop": 0,
                 "gap_mobile": 0,
                 "padding_top": 0,
@@ -3866,16 +3846,16 @@
                   "settings": {
                     "image": "shopify://shop_images/7c8f9.jpg",
                     "alt_text": "Wooden animal toys and trees",
+                    "corner_radius": "radius_12",
+                    "overlay_style": "minimal",
                     "tag": "@play_game88",
+                    "tag_font_size": "md",
                     "social_network": "instagram",
                     "social_url": "https://www.instagram.com/play_game88/",
-                    "show_overlay": "hover",
-                    "overlay_style": "minimal",
                     "social_background": "#00000000",
                     "social_color": "#ffffff",
-                    "overlay_background": "#00000033",
-                    "corner_radius": "radius_12",
-                    "tag_font_size": "md"
+                    "show_overlay": "hover",
+                    "overlay_background": "#00000033"
                   }
                 }
               },
@@ -3887,7 +3867,6 @@
               "type": "marquee-item",
               "settings": {
                 "direction": "vertical",
-                "width": "fill",
                 "gap_desktop": 0,
                 "gap_mobile": 0,
                 "padding_top": 0,
@@ -3901,16 +3880,16 @@
                   "settings": {
                     "image": "shopify://shop_images/39c2a.jpg",
                     "alt_text": "Child stacking wooden rainbows",
+                    "corner_radius": "radius_12",
+                    "overlay_style": "minimal",
                     "tag": "@play_game88",
+                    "tag_font_size": "md",
                     "social_network": "instagram",
                     "social_url": "https://www.instagram.com/play_game88/",
-                    "show_overlay": "hover",
-                    "overlay_style": "minimal",
                     "social_background": "#00000000",
                     "social_color": "#ffffff",
-                    "overlay_background": "#00000033",
-                    "corner_radius": "radius_12",
-                    "tag_font_size": "md"
+                    "show_overlay": "hover",
+                    "overlay_background": "#00000033"
                   }
                 }
               },
@@ -3922,7 +3901,6 @@
               "type": "marquee-item",
               "settings": {
                 "direction": "vertical",
-                "width": "fill",
                 "gap_desktop": 0,
                 "gap_mobile": 0,
                 "padding_top": 0,
@@ -3936,16 +3914,16 @@
                   "settings": {
                     "image": "shopify://shop_images/4a2cb.jpg",
                     "alt_text": "Colorful wooden shapes",
+                    "corner_radius": "radius_12",
+                    "overlay_style": "minimal",
                     "tag": "@play_game88",
+                    "tag_font_size": "md",
                     "social_network": "instagram",
                     "social_url": "https://www.instagram.com/play_game88/",
-                    "show_overlay": "hover",
-                    "overlay_style": "minimal",
                     "social_background": "#00000000",
                     "social_color": "#ffffff",
-                    "overlay_background": "#00000033",
-                    "corner_radius": "radius_12",
-                    "tag_font_size": "md"
+                    "show_overlay": "hover",
+                    "overlay_background": "#00000033"
                   }
                 }
               },
@@ -3957,7 +3935,6 @@
               "type": "marquee-item",
               "settings": {
                 "direction": "vertical",
-                "width": "fill",
                 "gap_desktop": 0,
                 "gap_mobile": 0,
                 "padding_top": 0,
@@ -3971,16 +3948,16 @@
                   "settings": {
                     "image": "shopify://shop_images/9056b.jpg",
                     "alt_text": "Child playing with a backpack",
+                    "corner_radius": "radius_12",
+                    "overlay_style": "minimal",
                     "tag": "@play_game88",
+                    "tag_font_size": "md",
                     "social_network": "instagram",
                     "social_url": "https://www.instagram.com/play_game88/",
-                    "show_overlay": "hover",
-                    "overlay_style": "minimal",
                     "social_background": "#00000000",
                     "social_color": "#ffffff",
-                    "overlay_background": "#00000033",
-                    "corner_radius": "radius_12",
-                    "tag_font_size": "md"
+                    "show_overlay": "hover",
+                    "overlay_background": "#00000033"
                   }
                 }
               },
@@ -4001,7 +3978,25 @@
       "block_order": [
         "header",
         "images"
-      ]
+      ],
+      "settings": {
+        "section_width": "full_width",
+        "marquee_full_bleed": false,
+        "marquee_columns_desktop": 4,
+        "direction": "vertical",
+        "alignment": "center",
+        "customize_mobile_alignment": true,
+        "alignment_mobile": "center",
+        "content_gap": 40,
+        "customize_mobile_gap": true,
+        "content_gap_mobile": 36,
+        "color_scheme": "scheme-1",
+        "padding_top": 0,
+        "padding_bottom": 64,
+        "customize_mobile_padding": true,
+        "padding_top_mobile": 0,
+        "padding_bottom_mobile": 56
+      }
     },
     "peekoo_image_cards": {
       "type": "image-cards",
@@ -4009,6 +4004,7 @@
         "imagination": {
           "type": "image-card",
           "settings": {
+            "media_source": "manual",
             "link": "",
             "open_in_new_tab": false,
             "background_type": "image",
@@ -4044,8 +4040,7 @@
             "padding_top_mobile": 20,
             "padding_bottom_mobile": 20,
             "padding_left_mobile": 16,
-            "padding_right_mobile": 16,
-            "media_source": "manual"
+            "padding_right_mobile": 16
           },
           "blocks": {
             "header": {
@@ -4077,9 +4072,9 @@
                   "type": "eyebrow",
                   "settings": {
                     "text": "<p>Imagination toys</p>",
+                    "color": "",
                     "show_background": false,
                     "show_icon": false,
-                    "color": "",
                     "animation_type": "none",
                     "animation_delay": 0
                   }
@@ -4155,6 +4150,7 @@
         "holiday": {
           "type": "image-card",
           "settings": {
+            "media_source": "manual",
             "link": "",
             "open_in_new_tab": false,
             "background_type": "image",
@@ -4190,8 +4186,7 @@
             "padding_top_mobile": 20,
             "padding_bottom_mobile": 20,
             "padding_left_mobile": 16,
-            "padding_right_mobile": 16,
-            "media_source": "manual"
+            "padding_right_mobile": 16
           },
           "blocks": {
             "header": {
@@ -4223,9 +4218,9 @@
                   "type": "eyebrow",
                   "settings": {
                     "text": "<p>Flash Sale: 10% Off</p>",
+                    "color": "",
                     "show_background": false,
                     "show_icon": false,
-                    "color": "",
                     "animation_type": "none",
                     "animation_delay": 0
                   }
@@ -4323,33 +4318,13 @@
     },
     "peekoo_icon_text": {
       "type": "icon-text-cards",
-      "settings": {
-        "layout": "grid",
-        "section_width": "page_width",
-        "color_scheme": "scheme-1",
-        "alignment": "center",
-        "content_gap": 48,
-        "customize_mobile_gap": true,
-        "content_gap_mobile": 36,
-        "columns_desktop": "4",
-        "columns_tablet": "2",
-        "columns_mobile": "1",
-        "grid_gap_desktop": 32,
-        "grid_gap_tablet": 20,
-        "grid_gap_mobile": 16,
-        "padding_top": 80,
-        "padding_bottom": 80,
-        "customize_mobile_padding": true,
-        "padding_top_mobile": 56,
-        "padding_bottom_mobile": 56
-      },
       "blocks": {
         "header": {
           "type": "heading",
           "settings": {
             "text": "<p>Play Comes First</p>",
-            "html_tag": "h2",
             "heading_size": "xl",
+            "html_tag": "h2",
             "width": "fill",
             "customize_mobile_size": true,
             "width_mobile": "fill"
@@ -4361,10 +4336,11 @@
             "direction": "vertical",
             "alignment": "center",
             "alignment_mobile": "center",
-            "width": "fill",
-            "width_mobile": "fill",
             "gap_desktop": 24,
             "gap_mobile": 24,
+            "width": "fill",
+            "height": "fit",
+            "width_mobile": "fill",
             "appearance_type": "scheme",
             "color_scheme": "scheme-1",
             "background_color": "#f8fafa",
@@ -4372,8 +4348,7 @@
             "padding_top": 36,
             "padding_bottom": 36,
             "padding_left": 36,
-            "padding_right": 36,
-            "height": "fit"
+            "padding_right": 36
           },
           "blocks": {
             "icon": {
@@ -4382,12 +4357,12 @@
                 "image": "shopify://shop_images/peekoo-blocks.svg",
                 "alt_text": "",
                 "image_fit": "contain",
+                "image_ratio_desktop": "square",
                 "width_desktop": "fixed",
                 "width_fixed_desktop": 64,
+                "image_ratio_mobile": "square",
                 "width_mobile": "fixed",
                 "width_fixed_mobile": 64,
-                "image_ratio_desktop": "square",
-                "image_ratio_mobile": "square",
                 "corner_radius": "square"
               }
             },
@@ -4397,23 +4372,23 @@
                 "direction": "vertical",
                 "alignment": "center",
                 "alignment_mobile": "center",
-                "width": "fill",
-                "width_mobile": "fill",
                 "gap_desktop": 12,
                 "gap_mobile": 12,
-                "height": "fit"
+                "width": "fill",
+                "height": "fit",
+                "width_mobile": "fill"
               },
               "blocks": {
                 "heading": {
                   "type": "heading",
                   "settings": {
                     "text": "<p>Play With Purpose</p>",
-                    "html_tag": "h3",
                     "heading_size": "custom",
+                    "custom_heading_size": 20,
+                    "html_tag": "h3",
                     "width": "fill",
                     "customize_mobile_size": true,
-                    "width_mobile": "fill",
-                    "custom_heading_size": 20
+                    "width_mobile": "fill"
                   }
                 },
                 "text": {
@@ -4421,12 +4396,12 @@
                   "settings": {
                     "text": "<p>Our Play Experts blend fun with fundamentals, guiding you to toys and gifts that do more than.</p>",
                     "text_size": "md",
+                    "customize_line_height": true,
+                    "line_height": 24,
+                    "text_color": "#626262",
                     "width": "fill",
                     "customize_mobile_size": true,
-                    "width_mobile": "fill",
-                    "text_color": "#626262",
-                    "customize_line_height": true,
-                    "line_height": 24
+                    "width_mobile": "fill"
                   }
                 }
               },
@@ -4447,10 +4422,11 @@
             "direction": "vertical",
             "alignment": "center",
             "alignment_mobile": "center",
-            "width": "fill",
-            "width_mobile": "fill",
             "gap_desktop": 24,
             "gap_mobile": 24,
+            "width": "fill",
+            "height": "fit",
+            "width_mobile": "fill",
             "appearance_type": "scheme",
             "color_scheme": "scheme-1",
             "background_color": "#f8fafa",
@@ -4458,8 +4434,7 @@
             "padding_top": 36,
             "padding_bottom": 36,
             "padding_left": 36,
-            "padding_right": 36,
-            "height": "fit"
+            "padding_right": 36
           },
           "blocks": {
             "icon": {
@@ -4468,12 +4443,12 @@
                 "image": "shopify://shop_images/peekoo-numbers.svg",
                 "alt_text": "",
                 "image_fit": "contain",
+                "image_ratio_desktop": "square",
                 "width_desktop": "fixed",
                 "width_fixed_desktop": 64,
+                "image_ratio_mobile": "square",
                 "width_mobile": "fixed",
                 "width_fixed_mobile": 64,
-                "image_ratio_desktop": "square",
-                "image_ratio_mobile": "square",
                 "corner_radius": "square"
               }
             },
@@ -4483,23 +4458,23 @@
                 "direction": "vertical",
                 "alignment": "center",
                 "alignment_mobile": "center",
-                "width": "fill",
-                "width_mobile": "fill",
                 "gap_desktop": 12,
                 "gap_mobile": 12,
-                "height": "fit"
+                "width": "fill",
+                "height": "fit",
+                "width_mobile": "fill"
               },
               "blocks": {
                 "heading": {
                   "type": "heading",
                   "settings": {
                     "text": "<p>Play Comes First</p>",
-                    "html_tag": "h3",
                     "heading_size": "custom",
+                    "custom_heading_size": 20,
+                    "html_tag": "h3",
                     "width": "fill",
                     "customize_mobile_size": true,
-                    "width_mobile": "fill",
-                    "custom_heading_size": 20
+                    "width_mobile": "fill"
                   }
                 },
                 "text": {
@@ -4507,12 +4482,12 @@
                   "settings": {
                     "text": "<p>Mastermind has a magical selection of games, and activities– the latest and the ones kids.</p>",
                     "text_size": "md",
+                    "customize_line_height": true,
+                    "line_height": 24,
+                    "text_color": "#626262",
                     "width": "fill",
                     "customize_mobile_size": true,
-                    "width_mobile": "fill",
-                    "text_color": "#626262",
-                    "customize_line_height": true,
-                    "line_height": 24
+                    "width_mobile": "fill"
                   }
                 }
               },
@@ -4533,10 +4508,11 @@
             "direction": "vertical",
             "alignment": "center",
             "alignment_mobile": "center",
-            "width": "fill",
-            "width_mobile": "fill",
             "gap_desktop": 24,
             "gap_mobile": 24,
+            "width": "fill",
+            "height": "fit",
+            "width_mobile": "fill",
             "appearance_type": "scheme",
             "color_scheme": "scheme-1",
             "background_color": "#f8fafa",
@@ -4544,8 +4520,7 @@
             "padding_top": 36,
             "padding_bottom": 36,
             "padding_left": 36,
-            "padding_right": 36,
-            "height": "fit"
+            "padding_right": 36
           },
           "blocks": {
             "icon": {
@@ -4554,12 +4529,12 @@
                 "image": "shopify://shop_images/peekoo-toys.svg",
                 "alt_text": "",
                 "image_fit": "contain",
+                "image_ratio_desktop": "square",
                 "width_desktop": "fixed",
                 "width_fixed_desktop": 64,
+                "image_ratio_mobile": "square",
                 "width_mobile": "fixed",
                 "width_fixed_mobile": 64,
-                "image_ratio_desktop": "square",
-                "image_ratio_mobile": "square",
                 "corner_radius": "square"
               }
             },
@@ -4569,23 +4544,23 @@
                 "direction": "vertical",
                 "alignment": "center",
                 "alignment_mobile": "center",
-                "width": "fill",
-                "width_mobile": "fill",
                 "gap_desktop": 12,
                 "gap_mobile": 12,
-                "height": "fit"
+                "width": "fill",
+                "height": "fit",
+                "width_mobile": "fill"
               },
               "blocks": {
                 "heading": {
                   "type": "heading",
                   "settings": {
                     "text": "<p>Wrapped in Delight</p>",
-                    "html_tag": "h3",
                     "heading_size": "custom",
+                    "custom_heading_size": 20,
+                    "html_tag": "h3",
                     "width": "fill",
                     "customize_mobile_size": true,
-                    "width_mobile": "fill",
-                    "custom_heading_size": 20
+                    "width_mobile": "fill"
                   }
                 },
                 "text": {
@@ -4593,12 +4568,12 @@
                   "settings": {
                     "text": "<p>Getting a gift from Mastermind we bring a smile to anyone’s face. Stop by our stores and we’ll.</p>",
                     "text_size": "md",
+                    "customize_line_height": true,
+                    "line_height": 24,
+                    "text_color": "#626262",
                     "width": "fill",
                     "customize_mobile_size": true,
-                    "width_mobile": "fill",
-                    "text_color": "#626262",
-                    "customize_line_height": true,
-                    "line_height": 24
+                    "width_mobile": "fill"
                   }
                 }
               },
@@ -4619,10 +4594,11 @@
             "direction": "vertical",
             "alignment": "center",
             "alignment_mobile": "center",
-            "width": "fill",
-            "width_mobile": "fill",
             "gap_desktop": 24,
             "gap_mobile": 24,
+            "width": "fill",
+            "height": "fit",
+            "width_mobile": "fill",
             "appearance_type": "scheme",
             "color_scheme": "scheme-1",
             "background_color": "#f8fafa",
@@ -4630,8 +4606,7 @@
             "padding_top": 36,
             "padding_bottom": 36,
             "padding_left": 36,
-            "padding_right": 36,
-            "height": "fit"
+            "padding_right": 36
           },
           "blocks": {
             "icon": {
@@ -4640,12 +4615,12 @@
                 "image": "shopify://shop_images/peekoo-lightbulb.svg",
                 "alt_text": "",
                 "image_fit": "contain",
+                "image_ratio_desktop": "square",
                 "width_desktop": "fixed",
                 "width_fixed_desktop": 64,
+                "image_ratio_mobile": "square",
                 "width_mobile": "fixed",
                 "width_fixed_mobile": 64,
-                "image_ratio_desktop": "square",
-                "image_ratio_mobile": "square",
                 "corner_radius": "square"
               }
             },
@@ -4655,23 +4630,23 @@
                 "direction": "vertical",
                 "alignment": "center",
                 "alignment_mobile": "center",
-                "width": "fill",
-                "width_mobile": "fill",
                 "gap_desktop": 12,
                 "gap_mobile": 12,
-                "height": "fit"
+                "width": "fill",
+                "height": "fit",
+                "width_mobile": "fill"
               },
               "blocks": {
                 "heading": {
                   "type": "heading",
                   "settings": {
                     "text": "<p>Right to your Door</p>",
-                    "html_tag": "h3",
                     "heading_size": "custom",
+                    "custom_heading_size": 20,
+                    "html_tag": "h3",
                     "width": "fill",
                     "customize_mobile_size": true,
-                    "width_mobile": "fill",
-                    "custom_heading_size": 20
+                    "width_mobile": "fill"
                   }
                 },
                 "text": {
@@ -4679,12 +4654,12 @@
                   "settings": {
                     "text": "<p>Ordering from us is joyful too. We easy checkout and speedy delivery across Canada, fun is always.</p>",
                     "text_size": "md",
+                    "customize_line_height": true,
+                    "line_height": 24,
+                    "text_color": "#626262",
                     "width": "fill",
                     "customize_mobile_size": true,
-                    "width_mobile": "fill",
-                    "text_color": "#626262",
-                    "customize_line_height": true,
-                    "line_height": 24
+                    "width_mobile": "fill"
                   }
                 }
               },
@@ -4706,7 +4681,27 @@
         "card_2",
         "card_3",
         "card_4"
-      ]
+      ],
+      "settings": {
+        "section_width": "page_width",
+        "alignment": "center",
+        "content_gap": 48,
+        "customize_mobile_gap": true,
+        "content_gap_mobile": 36,
+        "layout": "grid",
+        "columns_desktop": "4",
+        "columns_tablet": "2",
+        "columns_mobile": "1",
+        "grid_gap_desktop": 32,
+        "grid_gap_tablet": 20,
+        "grid_gap_mobile": 16,
+        "color_scheme": "scheme-1",
+        "padding_top": 80,
+        "padding_bottom": 80,
+        "customize_mobile_padding": true,
+        "padding_top_mobile": 56,
+        "padding_bottom_mobile": 56
+      }
     },
     "peekoo_featured_07": {
       "type": "featured-collection",
@@ -4811,11 +4806,11 @@
             "icon_position": "after",
             "icon_size": "inherit",
             "icon_width": 20,
+            "hide_view_all_mobile": true,
             "button_style_mobile": "tertiary",
             "button_height_mobile": "inherit",
             "full_width_mobile": false,
-            "show_icon_mobile": false,
-            "hide_view_all_mobile": true
+            "show_icon_mobile": false
           },
           "blocks": {}
         },
@@ -4830,8 +4825,13 @@
             "columns_tablet": "3",
             "columns_mobile": "1",
             "show_next_slide_preview_on_desktop": false,
+            "show_next_slide_preview_on_mobile": true,
             "product_gap_desktop": 32,
             "product_gap_mobile": 12,
+            "mobile_promo_gap": 16,
+            "mobile_promo_height": 400,
+            "customize_mobile_row_gap": true,
+            "product_row_gap_mobile": 24,
             "show_navigation_on_desktop": true,
             "navigation_position": "outside",
             "navigation_style": "primary",
@@ -4846,12 +4846,7 @@
             "pagination_max_width": 260,
             "autoplay": false,
             "autoplay_pause_on_hover": true,
-            "autoplay_speed": 4,
-            "customize_mobile_row_gap": true,
-            "product_row_gap_mobile": 24,
-            "mobile_promo_gap": 16,
-            "mobile_promo_height": 400,
-            "show_next_slide_preview_on_mobile": true
+            "autoplay_speed": 4
           },
           "blocks": {
             "product-card": {
@@ -4868,10 +4863,13 @@
               "settings": {
                 "card_position": 1,
                 "show_on_top_mobile": true,
+                "card_link": "shopify://collections/sale-perky",
                 "open_in_new_tab": false,
                 "media_type": "image",
+                "image": "shopify://shop_images/peekoo-clearance-promo.jpg",
                 "show_overlay": true,
                 "overlay_color": "#0000004D",
+                "subheading": "SALE UP TO 20%",
                 "heading": "Clearance sale!",
                 "text": "",
                 "content_alignment": "left",
@@ -4890,10 +4888,7 @@
                 "padding_horizontal": 32,
                 "customize_mobile_padding": false,
                 "padding_vertical_mobile": 20,
-                "padding_horizontal_mobile": 16,
-                "card_link": "shopify://collections/sale-perky",
-                "image": "shopify://shop_images/peekoo-clearance-promo.jpg",
-                "subheading": "SALE UP TO 20%"
+                "padding_horizontal_mobile": 16
               }
             }
           },
@@ -4902,6 +4897,7 @@
           ]
         }
       },
+      "name": "Featured collection 07 — Trending this week",
       "settings": {
         "section_width": "page_width",
         "desktop_alignment": "left",
@@ -4914,39 +4910,23 @@
         "customize_mobile_padding": true,
         "padding_top_mobile": 56,
         "padding_bottom_mobile": 56
-      },
-      "disabled": false,
-      "name": "Featured collection 07 — Trending this week"
+      }
     },
     "peekoo_blog_posts": {
       "type": "blog-posts",
-      "name": "Blog posts — Peekoo",
-      "settings": {
-        "section_width": "page_width",
-        "desktop_alignment": "center",
-        "mobile_alignment": "center",
-        "gap_desktop": 40,
-        "gap_mobile": 36,
-        "color_scheme": "scheme-1",
-        "padding_top": 80,
-        "padding_bottom": 80,
-        "customize_mobile_padding": true,
-        "padding_top_mobile": 56,
-        "padding_bottom_mobile": 56
-      },
       "blocks": {
         "header": {
           "type": "header",
           "static": true,
           "settings": {
             "width": "custom",
-            "gap_desktop": 8,
-            "gap_mobile": 8,
             "max_width": 570,
             "inherit_alignment": false,
             "alignment": "center",
             "customize_mobile_alignment": false,
-            "alignment_mobile": "center"
+            "alignment_mobile": "center",
+            "gap_desktop": 8,
+            "gap_mobile": 8
           },
           "blocks": {
             "heading": {
@@ -4965,17 +4945,17 @@
         },
         "blog-posts-view-all": {
           "type": "view-all-button",
+          "disabled": true,
           "static": true,
           "settings": {
             "button_label": "View all",
             "button_style": "tertiary",
+            "show_icon": false,
             "button_style_mobile": "tertiary",
             "button_height_mobile": "inherit",
             "full_width_mobile": false,
-            "show_icon": false,
             "show_icon_mobile": false
-          },
-          "disabled": true
+          }
         },
         "blog-list": {
           "type": "blog-list",
@@ -4986,6 +4966,8 @@
             "layout_type": "grid",
             "columns_desktop": "3",
             "columns_mobile": "1",
+            "mobile_layout": "scroll",
+            "mobile_card_width": 288,
             "show_next_slide_preview_on_desktop": false,
             "gap_desktop": 32,
             "gap_mobile": 16,
@@ -5002,9 +4984,7 @@
             "pagination_max_width": 260,
             "autoplay": false,
             "autoplay_pause_on_hover": true,
-            "autoplay_speed": 4,
-            "mobile_layout": "scroll",
-            "mobile_card_width": 288
+            "autoplay_speed": 4
           },
           "blocks": {
             "blog-card": {
@@ -5012,7 +4992,9 @@
               "static": true,
               "settings": {
                 "ratio": "square",
+                "media_layout": "stacked",
                 "alignment": "left",
+                "position": "flex-start",
                 "desktop_gap": 12,
                 "mobile_gap": 12,
                 "border_thickness": 0,
@@ -5025,8 +5007,6 @@
                 "padding_left": 0,
                 "padding_right": 0,
                 "customize_mobile_padding": true,
-                "media_layout": "stacked",
-                "position": "flex-start",
                 "padding_top_mobile": 20,
                 "padding_bottom_mobile": 0,
                 "padding_left_mobile": 0,
@@ -5036,6 +5016,8 @@
                 "meta": {
                   "type": "blog-card-meta",
                   "settings": {
+                    "display_type": "badge",
+                    "badge_color_scheme": "scheme-1",
                     "show_date": true,
                     "show_author": false,
                     "show_comment_count": false,
@@ -5045,9 +5027,7 @@
                     "size": "sm",
                     "gap": 0,
                     "padding_top": 0,
-                    "padding_bottom": 0,
-                    "display_type": "badge",
-                    "badge_color_scheme": "scheme-1"
+                    "padding_bottom": 0
                   }
                 },
                 "copy": {
@@ -5055,18 +5035,18 @@
                   "settings": {
                     "direction": "vertical",
                     "alignment": "left",
-                    "width": "fill",
-                    "width_mobile": "fill",
                     "gap_desktop": 6,
-                    "gap_mobile": 6
+                    "gap_mobile": 6,
+                    "width": "fill",
+                    "width_mobile": "fill"
                   },
                   "blocks": {
                     "title": {
                       "type": "blog-card-title",
                       "settings": {
+                        "line_limit": "no_limit",
                         "heading_size": "md",
                         "html_tag": "h3",
-                        "line_limit": "no_limit",
                         "padding_top": 0,
                         "padding_bottom": 0
                       }
@@ -5074,8 +5054,8 @@
                     "description": {
                       "type": "blog-card-description",
                       "settings": {
-                        "size": "md",
                         "text_limit": "two",
+                        "size": "md",
                         "padding_top": 0,
                         "padding_bottom": 0
                       }
@@ -5104,47 +5084,35 @@
             }
           }
         }
-      }
-    },
-    "peekoo_featured_product": {
-      "type": "featured-product",
+      },
+      "name": "Blog posts — Peekoo",
       "settings": {
-        "product": "perky-stacking-tree-with-bird",
-        "show_header": true,
-        "header_gap": 48,
-        "sticky_content": false,
-        "width": "page",
-        "media_width": "equal",
-        "gap": 64,
-        "gap_mobile": 48,
-        "boxed": true,
-        "box_color_scheme": "scheme-1",
-        "box_corner_radius": "radius_24",
-        "box_padding_vertical": 48,
-        "box_padding_horizontal": 40,
-        "box_padding_mobile": 20,
-        "color_scheme": "scheme-2",
+        "section_width": "page_width",
+        "desktop_alignment": "center",
+        "mobile_alignment": "center",
+        "gap_desktop": 40,
+        "gap_mobile": 36,
+        "color_scheme": "scheme-1",
         "padding_top": 80,
         "padding_bottom": 80,
         "customize_mobile_padding": true,
         "padding_top_mobile": 56,
-        "padding_bottom_mobile": 56,
-        "customize_mobile_header_gap": true,
-        "header_gap_mobile": 36,
-        "customize_mobile_box_bottom_padding": true,
-        "box_padding_bottom_mobile": 28
-      },
+        "padding_bottom_mobile": 56
+      }
+    },
+    "peekoo_featured_product": {
+      "type": "featured-product",
       "blocks": {
         "header": {
           "type": "header",
+          "static": true,
           "settings": {
-            "alignment": "center",
             "width": "custom",
             "max_width": 760,
+            "alignment": "center",
             "gap_desktop": 8,
             "gap_mobile": 8
           },
-          "static": true,
           "blocks": {
             "heading": {
               "type": "heading",
@@ -5166,16 +5134,16 @@
           "static": true,
           "settings": {
             "desktop_layout": "left_thumbnails",
-            "mobile_layout": "thumbnails",
-            "full_width_media": false,
-            "autoplay": false,
-            "loop_video": false,
-            "zoom": "open_lightbox",
-            "gap": 16,
-            "gap_mobile": 16,
             "bottom_thumbnail_width": 80,
             "thumbnail_ratio": "square",
-            "thumbnail_width_mobile": 64
+            "mobile_layout": "thumbnails",
+            "thumbnail_width_mobile": 64,
+            "full_width_media": false,
+            "zoom": "open_lightbox",
+            "autoplay": false,
+            "loop_video": false,
+            "gap": 16,
+            "gap_mobile": 16
           }
         },
         "product-details": {
@@ -5209,9 +5177,9 @@
               "settings": {
                 "direction": "vertical",
                 "alignment": "left",
-                "width": "fill",
                 "gap_desktop": 24,
-                "gap_mobile": 24
+                "gap_mobile": 24,
+                "width": "fill"
               },
               "blocks": {
                 "name": {
@@ -5219,9 +5187,9 @@
                   "settings": {
                     "direction": "vertical",
                     "alignment": "left",
-                    "width": "fill",
                     "gap_desktop": 8,
-                    "gap_mobile": 8
+                    "gap_mobile": 8,
+                    "width": "fill"
                   },
                   "blocks": {
                     "rating_title": {
@@ -5229,9 +5197,9 @@
                       "settings": {
                         "direction": "vertical",
                         "alignment": "left",
-                        "width": "fill",
                         "gap_desktop": 6,
-                        "gap_mobile": 6
+                        "gap_mobile": 6,
+                        "width": "fill"
                       },
                       "blocks": {
                         "rating": {
@@ -5270,9 +5238,9 @@
                 "description": {
                   "type": "product-description",
                   "settings": {
+                    "show_summary": true,
                     "height_limit": "none",
-                    "text_size": "md",
-                    "show_summary": true
+                    "text_size": "md"
                   }
                 },
                 "inventory": {
@@ -5296,22 +5264,23 @@
               "settings": {
                 "direction": "vertical",
                 "alignment": "left",
-                "width": "fill",
                 "gap_desktop": 20,
-                "gap_mobile": 20
+                "gap_mobile": 20,
+                "width": "fill"
               },
               "blocks": {
                 "buy": {
                   "type": "product-buy-buttons",
                   "settings": {
-                    "gap_desktop": 16,
-                    "gap_mobile": 16,
                     "show_back_in_stock_button": false,
-                    "show_gift_card_form": false
+                    "show_gift_card_form": false,
+                    "gap_desktop": 16,
+                    "gap_mobile": 16
                   },
                   "blocks": {
                     "quantity": {
                       "type": "product-buy-quantity",
+                      "static": true,
                       "settings": {
                         "show_label": true,
                         "width": 170,
@@ -5321,23 +5290,22 @@
                         "border_color": "#e6e6e6",
                         "border_thickness": 1,
                         "corner_radius": 100
-                      },
-                      "static": true
+                      }
                     },
                     "add-to-cart": {
                       "type": "product-buy-add-to-cart",
+                      "static": true,
                       "settings": {
-                        "style": "secondary",
-                        "show_price": false
-                      },
-                      "static": true
+                        "show_price": false,
+                        "style": "secondary"
+                      }
                     },
                     "accelerated-checkout": {
                       "type": "product-buy-accelerated-checkout",
+                      "static": true,
                       "settings": {
                         "style": "primary"
-                      },
-                      "static": true
+                      }
                     }
                   },
                   "block_order": []
@@ -5368,7 +5336,32 @@
           ]
         }
       },
-      "block_order": []
+      "settings": {
+        "product": "perky-stacking-tree-with-bird",
+        "show_header": true,
+        "header_gap": 48,
+        "customize_mobile_header_gap": true,
+        "header_gap_mobile": 36,
+        "sticky_content": false,
+        "width": "page",
+        "media_width": "equal",
+        "gap": 64,
+        "gap_mobile": 48,
+        "boxed": true,
+        "box_color_scheme": "scheme-1",
+        "box_corner_radius": "radius_24",
+        "box_padding_vertical": 48,
+        "box_padding_horizontal": 40,
+        "box_padding_mobile": 20,
+        "customize_mobile_box_bottom_padding": true,
+        "box_padding_bottom_mobile": 28,
+        "color_scheme": "scheme-2",
+        "padding_top": 80,
+        "padding_bottom": 80,
+        "customize_mobile_padding": true,
+        "padding_top_mobile": 56,
+        "padding_bottom_mobile": 56
+      }
     }
   },
   "order": [
