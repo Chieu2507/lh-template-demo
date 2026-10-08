@@ -251,8 +251,6 @@
   .swiper-pagination.swiper-pagination-bullets
 ) .swiper-pagination-bullet-active {
   opacity: var(--swiper-pagination-bullet-opacity, 1);
-  width: var(--swiper-pagination-bullet-active-hit-width, 48px);
-  min-width: var(--swiper-pagination-bullet-active-hit-width, 48px);
 }
 
 .swiper > :is(
