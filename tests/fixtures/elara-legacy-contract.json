@@ -1,0 +1,301 @@
+[
+  {
+    "file": "blocks/marquee.liquid",
+    "cssLength": 3222,
+    "cssHash": "b20434721cad73371bcf0c621cf51146754936561b22b1594f643b9025a709d1",
+    "jsLength": 8199,
+    "jsHash": "5ddc87a86caf9dacb1f3df49292ec602d6202a297ea1034e44094ff4795bfadb",
+    "fixtures": [
+      {
+        "settings": {
+          "animation_direction": "backward",
+          "animation_speed": 1,
+          "gap_desktop": 48,
+          "gap_mobile": 32,
+          "padding_top": 24,
+          "padding_bottom": 24,
+          "padding_left": 0,
+          "padding_right": 0,
+          "customize_mobile_padding": false,
+          "padding_top_mobile": 24,
+          "padding_bottom_mobile": 24,
+          "padding_left_mobile": 0,
+          "padding_right_mobile": 0
+        },
+        "html": "<div class=\"section-spacing marquee marquee--block marquee--backward section-color-scope\" data-shopify-editor-block=\"qa\" style=\"--marquee-duration: 28s;\" > <div class=\"container full-width marquee__container\"> <div class=\"marquee__viewport\" role=\"region\" aria-label=\"Marquee\"> <div class=\"marquee__track\"> <div>Saved content</div> </div> </div> </div> </div>"
+      },
+      {
+        "settings": {
+          "animation_direction": "backward",
+          "animation_speed": 1,
+          "gap_desktop": 48,
+          "gap_mobile": 48,
+          "padding_top": 0,
+          "padding_bottom": 0,
+          "padding_left": 0,
+          "padding_right": 0,
+          "customize_mobile_padding": false,
+          "padding_top_mobile": 24,
+          "padding_bottom_mobile": 24,
+          "padding_left_mobile": 0,
+          "padding_right_mobile": 0,
+          "background_color": ""
+        },
+        "html": "<div class=\"section-spacing marquee marquee--block marquee--backward section-color-scope\" data-shopify-editor-block=\"qa\" style=\"--marquee-duration: 28s; --marquee-padding-top: 0px; --marquee-padding-bottom: 0px; --marquee-gap-mobile: 48px;\" > <div class=\"container full-width marquee__container\"> <div class=\"marquee__viewport\" role=\"region\" aria-label=\"Marquee\"> <div class=\"marquee__track\"> <div>Saved content</div> </div> </div> </div> </div>"
+      },
+      {
+        "settings": {
+          "animation_direction": "backward",
+          "animation_speed": 1,
+          "gap_desktop": 12,
+          "gap_mobile": 12,
+          "padding_top": 0,
+          "padding_bottom": 0,
+          "padding_left": 0,
+          "padding_right": 0,
+          "customize_mobile_padding": false,
+          "padding_top_mobile": 24,
+          "padding_bottom_mobile": 24,
+          "padding_left_mobile": 0,
+          "padding_right_mobile": 0,
+          "background_color": ""
+        },
+        "html": "<div class=\"section-spacing marquee marquee--block marquee--backward section-color-scope\" data-shopify-editor-block=\"qa\" style=\"--marquee-duration: 28s; --marquee-padding-top: 0px; --marquee-padding-bottom: 0px; --marquee-gap: 12px; --marquee-gap-mobile: 12px;\" > <div class=\"container full-width marquee__container\"> <div class=\"marquee__viewport\" role=\"region\" aria-label=\"Marquee\"> <div class=\"marquee__track\"> <div>Saved content</div> </div> </div> </div> </div>"
+      },
+      {
+        "settings": {
+          "animation_direction": "backward",
+          "animation_speed": 1,
+          "gap_desktop": 16,
+          "gap_mobile": 12,
+          "padding_top": 0,
+          "padding_bottom": 0,
+          "padding_left": 0,
+          "padding_right": 0,
+          "customize_mobile_padding": false,
+          "padding_top_mobile": 24,
+          "padding_bottom_mobile": 24,
+          "padding_left_mobile": 0,
+          "padding_right_mobile": 0
+        },
+        "html": "<div class=\"section-spacing marquee marquee--block marquee--backward section-color-scope\" data-shopify-editor-block=\"qa\" style=\"--marquee-duration: 28s; --marquee-padding-top: 0px; --marquee-padding-bottom: 0px; --marquee-gap: 16px; --marquee-gap-mobile: 12px;\" > <div class=\"container full-width marquee__container\"> <div class=\"marquee__viewport\" role=\"region\" aria-label=\"Marquee\"> <div class=\"marquee__track\"> <div>Saved content</div> </div> </div> </div> </div>"
+      },
+      {
+        "settings": {
+          "animation_direction": "backward",
+          "animation_speed": 0,
+          "gap_desktop": 0,
+          "gap_mobile": 0,
+          "padding_top": 0,
+          "padding_bottom": 0,
+          "padding_left": 0,
+          "padding_right": 0,
+          "customize_mobile_padding": true,
+          "padding_top_mobile": 0,
+          "padding_bottom_mobile": 0,
+          "padding_left_mobile": 0,
+          "padding_right_mobile": 0
+        },
+        "html": "<div class=\"section-spacing marquee marquee--block marquee--backward section-color-scope marquee--static\" data-shopify-editor-block=\"qa\" style=\"--marquee-duration: 28s; --marquee-padding-top: 0px; --marquee-padding-bottom: 0px; --marquee-gap: 0px; --marquee-gap-mobile: 0px; --marquee-padding-top-mobile: 0px; --marquee-padding-bottom-mobile: 0px; --marquee-padding-left-mobile: 0px; --marquee-padding-right-mobile: 0px;\" > <div class=\"container full-width marquee__container\"> <div class=\"marquee__viewport\" role=\"region\" aria-label=\"Marquee\"> <div class=\"marquee__track\"> <div>Saved content</div> </div> </div> </div> </div>"
+      }
+    ]
+  },
+  {
+    "file": "blocks/faq_accordion.liquid",
+    "cssLength": 3112,
+    "cssHash": "b7dcee697e04829a81827184c4202b4cb3c501c1943903c4d9a4452c34bd2c04",
+    "jsLength": 0,
+    "jsHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "fixtures": [
+      {
+        "settings": {
+          "style": "simple",
+          "icon": "chevron",
+          "dividers": true,
+          "question_font_size": "xs",
+          "answer_font_size": "md",
+          "customize_mobile_font_size": false,
+          "question_font_size_mobile": "xs",
+          "answer_font_size_mobile": "md",
+          "gap_desktop": 16,
+          "gap_mobile": 16,
+          "width": "fill",
+          "custom_width": 100,
+          "limit_width": false,
+          "max_width": 1100,
+          "border_thickness": 1,
+          "shadow": "none",
+          "padding": "medium",
+          "padding_top": 16,
+          "padding_right": 20,
+          "padding_bottom": 16,
+          "padding_left": 20,
+          "color_scheme": "scheme-2"
+        },
+        "html": "<div class=\"faq-accordion size-style faq-accordion--width-fill faq-accordion--style-simple faq-accordion--icon-chevron faq-accordion--dividers\" style=\"--size-style-width: 100%; --size-style-max-width: ; --faq-item-gap: 16px; --faq-item-gap-mobile: 16px; --faq-item-border-width: 1px; --faq-item-padding-top: 16px; --faq-item-padding-right: 20px; --faq-item-padding-bottom: 16px; --faq-item-padding-left: 20px; --faq-item-shadow: none; --faq-item-question-line-height: var(--font-heading-xs-line-height); --faq-item-question-text-transform: var(--font-heading-xs-text-transform); --faq-item-question-size: var(--font-heading-xs); --faq-item-answer-size: var(--font-body-md);\" data-shopify-editor-block=\"qa\"> <div class=\"faq-accordion__items\"> <div>Saved content</div> </div> </div>"
+      },
+      {
+        "settings": {
+          "style": "simple",
+          "icon": "chevron",
+          "dividers": true,
+          "question_font_size": "xs",
+          "answer_font_size": "md",
+          "customize_mobile_font_size": false,
+          "question_font_size_mobile": "xs",
+          "answer_font_size_mobile": "md",
+          "gap_desktop": 0,
+          "gap_mobile": 0,
+          "width": "fill",
+          "custom_width": 100,
+          "limit_width": false,
+          "max_width": 1100,
+          "border_thickness": 1,
+          "shadow": "none",
+          "padding": "medium",
+          "padding_top": 0,
+          "padding_right": 20,
+          "padding_bottom": 0,
+          "padding_left": 20,
+          "color_scheme": "scheme-2",
+          "animation_speed": 0,
+          "customize_mobile_padding": true,
+          "padding_top_mobile": 0,
+          "padding_bottom_mobile": 0
+        },
+        "html": "<div class=\"faq-accordion size-style faq-accordion--width-fill faq-accordion--style-simple faq-accordion--icon-chevron faq-accordion--dividers\" style=\"--size-style-width: 100%; --size-style-max-width: ; --faq-item-gap: 0px; --faq-item-gap-mobile: 0px; --faq-item-border-width: 1px; --faq-item-padding-top: 16px; --faq-item-padding-right: 20px; --faq-item-padding-bottom: 16px; --faq-item-padding-left: 20px; --faq-item-shadow: none; --faq-item-question-line-height: var(--font-heading-xs-line-height); --faq-item-question-text-transform: var(--font-heading-xs-text-transform); --faq-item-question-size: var(--font-heading-xs); --faq-item-answer-size: var(--font-body-md);\" data-shopify-editor-block=\"qa\"> <div class=\"faq-accordion__items\"> <div>Saved content</div> </div> </div>"
+      }
+    ]
+  },
+  {
+    "file": "blocks/faq_item.liquid",
+    "cssLength": 1713,
+    "cssHash": "6327be0e98357ba543b6c34635e3bf0f569caa44020775e315e6776b3380db01",
+    "jsLength": 0,
+    "jsHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "fixtures": [
+      {
+        "settings": {
+          "question": "Frequently asked question",
+          "show_question_icon": false,
+          "question_icon": "check",
+          "question_icon_gap": 8,
+          "question_icon_size": 20,
+          "initially_open": false
+        },
+        "html": "<details class=\"accordion-details faq-item\" data-accordion-details data-accordion-state=\"closed\" id=\"faq-qa\" data-shopify-editor-block=\"qa\" > <summary class=\"accordion-details__summary faq-item__summary\" aria-controls=\"faq-qa-content\" > <span class=\"faq-item__question-wrap\" style=\"--faq-question-icon-gap: 8px;\"> <span class=\"faq-item__question heading-text\">Frequently asked question</span> </span> <span class=\"faq-item__expand-icon\" aria-hidden=\"true\"> <svg width=\"20\" height=\"20\" viewBox=\"0 0 20 20\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\"> <path d=\"M5 7.5L10 12.5L15 7.5\" stroke=\"currentColor\" stroke-width=\"var(--icon-stroke-width)\" stroke-linecap=\"round\" stroke-linejoin=\"round\"></path> </svg> </span> </summary> <div class=\"accordion-details__content faq-item__content\" id=\"faq-qa-content\" > <div class=\"faq-item__content-inner\"><div>Saved content</div></div> </div> </details>"
+      },
+      {
+        "settings": {
+          "question": "Frequently asked question",
+          "show_question_icon": false,
+          "question_icon": "check",
+          "question_icon_gap": 8,
+          "question_icon_size": 20,
+          "initially_open": false,
+          "animation_speed": 0,
+          "gap_desktop": 0,
+          "gap_mobile": 0,
+          "padding_top": 0,
+          "padding_bottom": 0,
+          "customize_mobile_padding": true,
+          "padding_top_mobile": 0,
+          "padding_bottom_mobile": 0
+        },
+        "html": "<details class=\"accordion-details faq-item\" data-accordion-details data-accordion-state=\"closed\" id=\"faq-qa\" data-shopify-editor-block=\"qa\" > <summary class=\"accordion-details__summary faq-item__summary\" aria-controls=\"faq-qa-content\" > <span class=\"faq-item__question-wrap\" style=\"--faq-question-icon-gap: 8px;\"> <span class=\"faq-item__question heading-text\">Frequently asked question</span> </span> <span class=\"faq-item__expand-icon\" aria-hidden=\"true\"> <svg width=\"20\" height=\"20\" viewBox=\"0 0 20 20\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\"> <path d=\"M5 7.5L10 12.5L15 7.5\" stroke=\"currentColor\" stroke-width=\"var(--icon-stroke-width)\" stroke-linecap=\"round\" stroke-linejoin=\"round\"></path> </svg> </span> </summary> <div class=\"accordion-details__content faq-item__content\" id=\"faq-qa-content\" > <div class=\"faq-item__content-inner\"><div>Saved content</div></div> </div> </details>"
+      }
+    ]
+  },
+  {
+    "file": "sections/text-marquee-custom.liquid",
+    "cssLength": 4000,
+    "cssHash": "a8891de3ad05aaeb17d50d9c9b507d46f7b5c08bb8e9e8a61be826bf3291289f",
+    "jsLength": 0,
+    "jsHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "fixtures": [
+      {
+        "settings": {
+          "section_width": "full_width",
+          "direction": "vertical",
+          "position": "top",
+          "position_vertical": "left",
+          "alignment": "left",
+          "customize_mobile_alignment": true,
+          "alignment_mobile": "left",
+          "gap_desktop": 16,
+          "gap_mobile": 12,
+          "color_scheme": "scheme-1",
+          "padding_top": 0,
+          "padding_bottom": 0,
+          "customize_mobile_padding": false,
+          "padding_top_mobile": 0,
+          "padding_bottom_mobile": 0
+        },
+        "html": "<div class=\"text-marquee-custom color-scheme scheme-1 text-marquee-custom--vertical text-marquee-custom--align-left text-marquee-custom--position-top\" style=\"--text-marquee-custom-gap: 16px; --text-marquee-custom-gap-mobile: 12px;\" > <div class=\"container full-width text-marquee-custom__container\"> <div class=\"text-marquee-custom__content\"> <div>Saved content</div> </div> </div> </div>"
+      },
+      {
+        "settings": {
+          "section_width": "page_width",
+          "direction": "vertical",
+          "position": "top",
+          "position_vertical": "center",
+          "alignment": "center",
+          "customize_mobile_alignment": false,
+          "alignment_mobile": "left",
+          "gap_desktop": 40,
+          "gap_mobile": 36,
+          "color_scheme": "scheme-1",
+          "padding_top": 80,
+          "padding_bottom": 80,
+          "customize_mobile_padding": true,
+          "padding_top_mobile": 56,
+          "padding_bottom_mobile": 56,
+          "background_color": ""
+        },
+        "html": "<div class=\"text-marquee-custom color-scheme scheme-1 text-marquee-custom--vertical text-marquee-custom--align-center text-marquee-custom--position-top\" style=\"--text-marquee-custom-gap: 40px; --text-marquee-custom-gap-mobile: 36px; --text-marquee-custom-padding-top: 80px; --text-marquee-custom-padding-bottom: 80px; --text-marquee-custom-padding-top-mobile: 56px; --text-marquee-custom-padding-bottom-mobile: 56px;\" > <div class=\"container page-width text-marquee-custom__container\"> <div class=\"text-marquee-custom__content\"> <div>Saved content</div> </div> </div> </div>"
+      },
+      {
+        "settings": {
+          "section_width": "full_width_no_padding",
+          "direction": "vertical",
+          "position": "top",
+          "position_vertical": "left",
+          "alignment": "left",
+          "customize_mobile_alignment": true,
+          "alignment_mobile": "left",
+          "gap_desktop": 0,
+          "gap_mobile": 0,
+          "color_scheme": "scheme-5",
+          "padding_top": 24,
+          "padding_bottom": 24,
+          "customize_mobile_padding": true,
+          "padding_top_mobile": 20,
+          "padding_bottom_mobile": 20,
+          "background_color": ""
+        },
+        "html": "<div class=\"text-marquee-custom color-scheme scheme-5 text-marquee-custom--vertical text-marquee-custom--align-left text-marquee-custom--position-top\" style=\"--text-marquee-custom-gap: 0px; --text-marquee-custom-gap-mobile: 0px; --text-marquee-custom-padding-top: 24px; --text-marquee-custom-padding-bottom: 24px; --text-marquee-custom-padding-top-mobile: 20px; --text-marquee-custom-padding-bottom-mobile: 20px;\" > <div class=\"container full-width full-width--no-padding text-marquee-custom__container\"> <div class=\"text-marquee-custom__content\"> <div>Saved content</div> </div> </div> </div>"
+      },
+      {
+        "settings": {
+          "section_width": "full_width",
+          "direction": "vertical",
+          "position": "top",
+          "position_vertical": "left",
+          "alignment": "left",
+          "customize_mobile_alignment": true,
+          "alignment_mobile": "left",
+          "gap_desktop": 0,
+          "gap_mobile": 0,
+          "color_scheme": "scheme-1",
+          "padding_top": 0,
+          "padding_bottom": 0,
+          "customize_mobile_padding": true,
+          "padding_top_mobile": 0,
+          "padding_bottom_mobile": 0,
+          "animation_speed": 0
+        },
+        "html": "<div class=\"text-marquee-custom color-scheme scheme-1 text-marquee-custom--vertical text-marquee-custom--align-left text-marquee-custom--position-top\" style=\"--text-marquee-custom-gap: 0px; --text-marquee-custom-gap-mobile: 0px; --text-marquee-custom-padding-top-mobile: 0px; --text-marquee-custom-padding-bottom-mobile: 0px;\" > <div class=\"container full-width text-marquee-custom__container\"> <div class=\"text-marquee-custom__content\"> <div>Saved content</div> </div> </div> </div>"
+      }
+    ]
+  }
+]
