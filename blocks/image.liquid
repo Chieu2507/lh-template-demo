@@ -47,7 +47,7 @@
       assign image_width_desktop_value = 100
     endif
     assign image_width_desktop = image_width_desktop_value | append: '%'
-    assign image_size_desktop = image_width_desktop
+    assign image_size_desktop = image_width_desktop_value | append: 'vw'
   endif
 
   assign image_width_mobile_setting = block.settings.width_mobile | default: 'fit'
@@ -64,7 +64,7 @@
       assign image_width_mobile_value = 100
     endif
     assign image_width_mobile = image_width_mobile_value | append: '%'
-    assign image_size_mobile = image_width_mobile
+    assign image_size_mobile = image_width_mobile_value | append: 'vw'
   endif
 
   if image_width_desktop_setting == 'fixed'
@@ -95,6 +95,28 @@
   endif
   if block.settings.limit_width_mobile and max_width_mobile > 0
     assign image_max_width_mobile = max_width_mobile | append: 'px'
+  endif
+  comment
+    Responsive candidates must respect the same max-width as the image box.
+    Percentage sizes are invalid in HTML; use viewport units as the upper bound.
+  endcomment
+  if block.settings.limit_width_desktop and max_width_desktop > 0
+    capture image_size_desktop
+      echo 'min('
+      echo image_size_desktop
+      echo ', '
+      echo max_width_desktop
+      echo 'px)'
+    endcapture
+  endif
+  if block.settings.limit_width_mobile and max_width_mobile > 0
+    capture image_size_mobile
+      echo 'min('
+      echo image_size_mobile
+      echo ', '
+      echo max_width_mobile
+      echo 'px)'
+    endcapture
   endif
 
   assign image_corner_radius = block.settings.corner_radius | default: 'square'

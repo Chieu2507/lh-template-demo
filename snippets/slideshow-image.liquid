@@ -13,8 +13,6 @@
   @param {string} [loading] - eager for the first visible slide, otherwise lazy
   @param {string} [fetchpriority] - high only for the first visible slide
   @param {boolean} [preload] - Output hints instead of the picture
-  @param {number} [narrow_crop_left] - Source pixels trimmed from left on narrow phones
-  @param {number} [narrow_crop_width] - Source region width; caller preserves its displayed scale
 {% enddoc %}
 {% liquid
   assign mobile_artwork = mobile_image | default: image
@@ -29,27 +27,6 @@
     endif
   endif
   assign desktop_media = '(min-width: 768px)'
-  assign narrow_region = false
-  if narrow_crop_width > 0 and narrow_crop_left >= 0
-    assign narrow_region = true
-    assign narrow_region_sizes = narrow_crop_width | times: 620 | times: 1.0312 | divided_by: image.height | ceil | append: 'px'
-    capture narrow_region_srcset
-      assign candidate_widths = '400,650,1000,1500' | split: ','
-      for candidate in candidate_widths
-        assign candidate_width = candidate | plus: 0 | at_most: narrow_crop_width
-        unless forloop.first
-          echo ', '
-        endunless
-        echo image | image_url: crop: 'region', crop_left: narrow_crop_left, crop_top: 0, crop_width: narrow_crop_width, crop_height: image.height, width: candidate_width
-        echo ' '
-        echo candidate_width
-        echo 'w'
-        if candidate_width == narrow_crop_width
-          break
-        endif
-      endfor
-    endcapture
-  endif
   capture desktop_srcset
     echo image | image_url: width: 750
     echo ' 750w, '
@@ -125,21 +102,15 @@
   endunless
 %}
 {% if preload %}
-  {% if narrow_region %}
-    <link rel="preload" as="image" imagesrcset="{{ narrow_region_srcset | strip | escape }}" imagesizes="{{ narrow_region_sizes }}" media="(min-width: 320px) and (max-width: 479.98px)" fetchpriority="high">
-  {% endif %}
   {% if crop_mobile_panorama %}
     <link rel="preload" as="image" imagesrcset="{{ narrow_srcset | strip | escape }}" media="(max-width: 479.98px)" fetchpriority="high">
     <link rel="preload" as="image" imagesrcset="{{ mobile_srcset | strip | escape }}" media="(min-width: 480px) and (max-width: 767.98px)" fetchpriority="high">
   {% else %}
-    <link rel="preload" as="image" imagesrcset="{{ mobile_srcset | strip | escape }}" imagesizes="{{ mobile_sizes | strip | escape }}" media="{% if narrow_region %}(max-width: 319.98px), (min-width: 480px) and (max-width: 767.98px){% else %}(max-width: 767.98px){% endif %}" fetchpriority="high">
+    <link rel="preload" as="image" imagesrcset="{{ mobile_srcset | strip | escape }}" imagesizes="{{ mobile_sizes | strip | escape }}" media="(max-width: 767.98px)" fetchpriority="high">
   {% endif %}
   <link rel="preload" as="image" imagesrcset="{{ desktop_srcset | strip | escape }}" imagesizes="{{ image_sizes | escape }}" media="{{ desktop_media }}" fetchpriority="high">
 {% else %}
   <picture>
-    {% if narrow_region %}
-      <source media="(min-width: 320px) and (max-width: 479.98px)" srcset="{{ narrow_region_srcset | strip | escape }}" sizes="{{ narrow_region_sizes }}">
-    {% endif %}
     {% if crop_mobile_panorama %}
       <source media="(max-width: 479.98px)" srcset="{{ narrow_srcset | strip | escape }}">
       <source media="(max-width: 767.98px)" srcset="{{ mobile_srcset | strip | escape }}">
