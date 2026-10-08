@@ -4030,7 +4030,7 @@
         "tab_3_4"
       ],
       "custom_css": [
-        ".tab-layout__navigation{column-gap:28px;flex-wrap:nowrap;overflow:auto}.product-card{--product-card-alignment:center;--product-card-content-alignment:center}@media(max-width:1149.98px){.collection-tabs__controls-group{display:flex!important;flex-direction:column!important;gap:24px!important}}@media(min-width:768px) and (max-width:1149.98px){.collection-tabs__spacing{padding:64px 0}.collection-tab__products{gap:20px!important}.tab-layout__navigation{justify-content:center!important}}"
+        ".collection-tabs__controls{display:contents!important}.tab-layout__navigation{column-gap:28px;flex-wrap:nowrap;overflow:auto}.product-card{--product-card-alignment:center;--product-card-content-alignment:center}@media(max-width:1149.98px){.collection-tabs__controls-group{display:flex!important;flex-direction:column!important;gap:24px!important}}@media(min-width:768px) and (max-width:1149.98px){.collection-tabs__spacing{padding:64px 0}.collection-tab__products{gap:20px!important}}"
       ],
       "name": "Shop new arrivals — Age tabs",
       "settings": {
