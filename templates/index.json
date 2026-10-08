@@ -5353,12 +5353,17 @@
           "type": "image",
           "settings": {
             "image": "shopify://shop_images/perky-tinker.jpg",
+            "show_image_first_mobile": true,
             "alt_text": "Child exploring creative play with toys",
-            "image_ratio_desktop": "ratio_7_6",
+            "image_ratio_desktop": "custom",
+            "image_ratio_custom_width_desktop": 6,
+            "image_ratio_custom_height_desktop": 5,
             "width_desktop": "fill",
-            "image_ratio_mobile": "ratio_7_6",
+            "image_ratio_mobile": "custom",
+            "image_ratio_custom_width_mobile": 4,
+            "image_ratio_custom_height_mobile": 5,
             "width_mobile": "fill",
-            "corner_radius": "radius_24"
+            "corner_radius": "square"
           }
         },
         "content": {
@@ -5368,74 +5373,175 @@
             "position": "center",
             "alignment": "center",
             "alignment_mobile": "center",
-            "gap_desktop": 16,
-            "gap_mobile": 12,
+            "gap_desktop": 48,
+            "gap_mobile": 24,
             "width": "fill",
             "height": "fill",
             "width_mobile": "fill",
             "appearance_type": "scheme",
-            "color_scheme": "scheme-3",
-            "corner_radius": "radius_24",
-            "padding_top": 64,
-            "padding_bottom": 64,
-            "padding_left": 64,
-            "padding_right": 64,
+            "color_scheme": "scheme-4",
+            "corner_radius": "square",
+            "padding_top": 80,
+            "padding_bottom": 80,
+            "padding_left": 80,
+            "padding_right": 80,
             "customize_mobile_padding": true,
-            "padding_top_mobile": 36,
-            "padding_bottom_mobile": 36,
+            "padding_top_mobile": 40,
+            "padding_bottom_mobile": 40,
             "padding_left_mobile": 20,
             "padding_right_mobile": 20
           },
           "blocks": {
-            "bulb": {
-              "type": "image",
+            "body": {
+              "type": "group",
               "settings": {
-                "image": "shopify://shop_images/perky-lightbulb.svg",
-                "alt_text": "",
-                "image_fit": "contain",
-                "image_ratio_desktop": "auto",
-                "width_desktop": "fit",
-                "limit_width_desktop": true,
-                "max_width_desktop": 48,
-                "image_ratio_mobile": "auto",
-                "width_mobile": "fit",
-                "limit_width_mobile": true,
-                "max_width_mobile": 48
-              }
-            },
-            "heading": {
-              "type": "heading",
-              "settings": {
-                "text": "<p>Tinker. Create. Innovate.</p>",
-                "heading_size": "lg",
-                "html_tag": "h2",
+                "direction": "vertical",
+                "position": "center",
+                "position_horizontal": "center",
+                "horizontal_alignment": "center",
+                "customize_mobile_alignment": true,
+                "alignment": "center",
+                "alignment_mobile": "center",
+                "gap_desktop": 32,
+                "gap_mobile": 12,
+                "device": "desktop",
                 "width": "fill",
-                "animation_type": "slide-bottom",
-                "animation_delay": 150,
-                "padding_bottom": 4,
-                "customize_mobile_padding": true,
-                "padding_bottom_mobile": 0
-              }
-            },
-            "text": {
-              "type": "text",
-              "settings": {
-                "text": "<p>Inspire children to think beyond boundaries, explore their curiosity, and transform simple ideas into amazing creations. With every play, they learn to imagine, design, and innovate — building confidence, creativity, and a lifelong love for discovery.</p>",
-                "text_size": "md",
-                "width": "fill",
-                "animation_type": "fade",
-                "animation_delay": 300,
-                "padding_bottom": 16,
-                "customize_mobile_padding": true,
-                "padding_bottom_mobile": 12
-              }
+                "width_custom": 100,
+                "limit_width": false,
+                "max_width": 640,
+                "height": "fit",
+                "width_mobile": "fill",
+                "width_custom_mobile": 100,
+                "limit_width_mobile": false,
+                "max_width_mobile": 480,
+                "appearance_type": "inherit",
+                "color_scheme": "",
+                "background_color": "",
+                "border_type": "none",
+                "border_color": "",
+                "corner_radius": "square",
+                "shadow": "none",
+                "overlay_color": "",
+                "backdrop_blur": 0,
+                "animation_type": "none",
+                "animation_delay": 0,
+                "padding_top": 0,
+                "padding_bottom": 0,
+                "padding_left": 0,
+                "padding_right": 0,
+                "customize_mobile_padding": false,
+                "padding_top_mobile": 0,
+                "padding_bottom_mobile": 0,
+                "padding_left_mobile": 0,
+                "padding_right_mobile": 0
+              },
+              "blocks": {
+                "bulb": {
+                  "type": "image",
+                  "settings": {
+                    "image": "shopify://shop_images/perky-lightbulb.svg",
+                    "alt_text": "",
+                    "image_fit": "contain",
+                    "image_ratio_desktop": "auto",
+                    "width_desktop": "fit",
+                    "limit_width_desktop": true,
+                    "max_width_desktop": 64,
+                    "image_ratio_mobile": "auto",
+                    "width_mobile": "fit",
+                    "limit_width_mobile": true,
+                    "max_width_mobile": 64,
+                    "corner_radius": "square"
+                  }
+                },
+                "header": {
+                  "type": "group",
+                  "settings": {
+                    "direction": "vertical",
+                    "position": "center",
+                    "position_horizontal": "center",
+                    "horizontal_alignment": "center",
+                    "customize_mobile_alignment": true,
+                    "alignment": "center",
+                    "alignment_mobile": "center",
+                    "gap_desktop": 16,
+                    "gap_mobile": 12,
+                    "device": "desktop",
+                    "width": "fill",
+                    "width_custom": 100,
+                    "limit_width": false,
+                    "max_width": 640,
+                    "height": "fit",
+                    "width_mobile": "fill",
+                    "width_custom_mobile": 100,
+                    "limit_width_mobile": false,
+                    "max_width_mobile": 480,
+                    "appearance_type": "inherit",
+                    "color_scheme": "",
+                    "background_color": "",
+                    "border_type": "none",
+                    "border_color": "",
+                    "corner_radius": "square",
+                    "shadow": "none",
+                    "overlay_color": "",
+                    "backdrop_blur": 0,
+                    "animation_type": "none",
+                    "animation_delay": 0,
+                    "padding_top": 0,
+                    "padding_bottom": 0,
+                    "padding_left": 0,
+                    "padding_right": 0,
+                    "customize_mobile_padding": false,
+                    "padding_top_mobile": 0,
+                    "padding_bottom_mobile": 0,
+                    "padding_left_mobile": 0,
+                    "padding_right_mobile": 0
+                  },
+                  "blocks": {
+                    "heading": {
+                      "type": "heading",
+                      "settings": {
+                        "text": "<p>Find the perfect gift</p>",
+                        "heading_size": "display",
+                        "html_tag": "h2",
+                        "width": "fill",
+                        "animation_type": "slide-bottom",
+                        "animation_delay": 150,
+                        "padding_bottom": 0,
+                        "customize_mobile_padding": true,
+                        "padding_bottom_mobile": 0
+                      }
+                    },
+                    "text": {
+                      "type": "text",
+                      "settings": {
+                        "text": "<p>Inspire children to think beyond boundaries, explore their curiosity, and transform simple ideas into amazing creations. With every play, they learn to imagine, design, and innovate — building confidence, creativity, and a lifelong love for discovery.</p>",
+                        "text_size": "md",
+                        "width": "fill",
+                        "animation_type": "fade",
+                        "animation_delay": 300,
+                        "padding_bottom": 0,
+                        "customize_mobile_padding": true,
+                        "padding_bottom_mobile": 0
+                      }
+                    }
+                  },
+                  "block_order": [
+                    "heading",
+                    "text"
+                  ]
+                }
+              },
+              "block_order": [
+                "bulb",
+                "header"
+              ]
             },
             "button": {
               "type": "button",
               "settings": {
                 "button_label": "Shop now",
                 "button_link": "shopify://collections/art-crafts-perky",
-                "button_style": "primary",
+                "button_style": "secondary",
                 "width": "fit",
                 "width_mobile": "fit",
                 "animation_type": "slide-bottom",
@@ -5444,20 +5550,21 @@
             }
           },
           "block_order": [
-            "bulb",
-            "heading",
-            "text",
+            "body",
             "button"
           ]
         }
       },
       "block_order": [
-        "image",
-        "content"
+        "content",
+        "image"
+      ],
+      "custom_css": [
+        ".split-banner__content>.group{padding-inline:128px}.split-banner__content>.image-block{align-self:stretch}@media(min-width:768px) and (max-width:1149px){.split-banner__content>.group{padding:40px 20px}.image-block__media,.image-block__media img{height:100%;aspect-ratio:auto}}@media(max-width:767px){.split-banner__content>.group{padding:40px 20px}}"
       ],
       "name": "Image with text — Tinker",
       "settings": {
-        "section_width": "page_width",
+        "section_width": "full_width_no_padding",
         "height": "auto",
         "enable_boxed_layout": false,
         "direction": "horizontal",
@@ -5466,16 +5573,16 @@
         "customize_mobile_alignment": true,
         "alignment": "left",
         "alignment_mobile": "left",
-        "gap_desktop": 28,
-        "gap_mobile": 16,
-        "color_scheme": "scheme-1",
+        "gap_desktop": 0,
+        "gap_mobile": 0,
+        "color_scheme": "scheme-4",
         "background_media": "none",
         "padding_unit": "pixel",
-        "padding_top": 10,
-        "padding_bottom": 80,
+        "padding_top": 0,
+        "padding_bottom": 0,
         "customize_mobile_padding": true,
-        "padding_top_mobile": 10,
-        "padding_bottom_mobile": 56
+        "padding_top_mobile": 0,
+        "padding_bottom_mobile": 0
       }
     },
     "perky_testimonials": {
@@ -7000,9 +7107,9 @@
     "featured_collection",
     "perky_hotspot",
     "perky_age_collections",
+    "perky_tinker",
     "perky_playsets_banner",
     "perky_logos",
-    "perky_tinker",
     "perky_testimonials",
     "collections_image_list",
     "scroll_reading_text",
