@@ -158,6 +158,7 @@
   .icon-text-cards__navigation--bottom { position: absolute; inset: auto 0 0 auto; display: flex; justify-content: space-between; width: 76px; gap: 28px; transform: translateY(50%); }
   .icon-text-cards__navigation--bottom .swiper-nav-button { --swiper-nav-size: 24px; --swiper-nav-icon-size: 24px; flex: 0 0 24px; }
   @media (min-width: 768px) {
+    .icon-text-cards__carousel:has(> .icon-text-cards__navigation--bottom):not(:has(.icon-text-cards__pagination)) { padding-bottom: 50px; }
     .icon-text-cards__carousel:has(> .icon-text-cards__navigation--bottom) .icon-text-cards__pagination { max-width: calc(100% - 116px); margin-inline: 0; }
   }
   @media (max-width: 767.98px) {
