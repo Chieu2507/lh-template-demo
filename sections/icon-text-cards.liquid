@@ -72,31 +72,47 @@
       {% if section.settings.layout == 'carousel' %}
         <div class="icon-text-cards__carousel swiper-carousel__container" hidden
           data-icon-cards-carousel
+          data-navigation-position="{{ section.settings.navigation_position | default: 'inside' }}"
+          style="--swiper-pagination-spacing: {{ section.settings.pagination_top_padding_desktop | default: 50 }}px; --swiper-pagination-spacing-mobile: {{ section.settings.pagination_top_padding_mobile | default: 24 }}px;{% if section.settings.pagination_thickness == 'thin' %} --swiper-pagination-progressbar-size: 2px;{% endif %}{% if section.settings.pagination_type == 'progress_bar' and section.settings.pagination_limit_width %} --swiper-pagination-width: min(100%, {{ section.settings.pagination_max_width | default: 260 }}px);{% endif %}"
           data-columns-desktop="{{ section.settings.columns_desktop | default: 4 }}"
           data-columns-tablet="{{ section.settings.columns_tablet | default: 2 }}"
           data-columns-mobile="{{ section.settings.columns_mobile | default: 1 }}"
           data-gap-desktop="{{ section.settings.grid_gap_desktop | default: 32 }}"
           data-gap-tablet="{{ section.settings.grid_gap_tablet | default: 20 }}"
           data-gap-mobile="{{ section.settings.grid_gap_mobile | default: 16 }}"
-          data-pagination-type="{{ section.settings.pagination_type | default: 'bullets' }}"
+          data-pagination-type="{{ section.settings.pagination_type | default: 'progress_bar' }}"
           data-pagination-label="{{ 'carousel.go_to_slide' | t: index: '[index]' | escape }}"
         >
           {% capture icon_cards_pagination %}
-            {% if section.settings.show_pagination_on_desktop or section.settings.show_pagination_on_mobile %}
+            {% if section.settings.show_pagination_on_desktop %}
               <div class="swiper-pagination swiper-pagination--below icon-text-cards__pagination"
                 data-icon-cards-pagination
-                data-pagination-type="{{ section.settings.pagination_type | default: 'bullets' }}"
-                data-visible-desktop="{{ section.settings.show_pagination_on_desktop }}"
-                data-visible-mobile="{{ section.settings.show_pagination_on_mobile }}"
+                data-pagination-type="{{ section.settings.pagination_type | default: 'progress_bar' }}"
               ></div>
             {% endif %}
           {% endcapture %}
           {% assign icon_cards_id = 'IconCards-' | append: section.id %}
           {% assign icon_cards_label = 'general.icon_text_cards' | t %}
           {% render 'swiper-carousel', id: icon_cards_id, root_class: 'icon-text-cards__viewport', aria_label: icon_cards_label, pagination: icon_cards_pagination %}
-          {% if section.settings.show_navigation_on_desktop or section.settings.show_navigation_on_mobile %}
-            {% capture icon_cards_navigation_attributes %}data-icon-cards-navigation data-visible-desktop="{{ section.settings.show_navigation_on_desktop }}" data-visible-mobile="{{ section.settings.show_navigation_on_mobile }}"{% endcapture %}
-            {% render 'swiper-navigation', behavior: 'always', centered: false, wrapper_class: 'icon-text-cards__navigation', wrapper_attributes: icon_cards_navigation_attributes %}
+          {% if section.settings.show_navigation_on_desktop %}
+            {% liquid
+              assign navigation_position = section.settings.navigation_position | default: 'inside'
+              assign navigation_centered = true
+              assign navigation_behavior = section.settings.navigation_behavior | default: 'show_on_hover'
+              if navigation_position == 'top'
+                assign navigation_centered = false
+                assign navigation_behavior = 'always'
+              elsif navigation_position == 'bottom'
+                assign navigation_centered = false
+              endif
+              assign navigation_class = 'icon-text-cards__navigation icon-text-cards__navigation--' | append: navigation_position
+              assign pagination_size = 'var(--swiper-pagination-progressbar-size, 4px)'
+              if section.settings.pagination_type == 'bullets'
+                assign pagination_size = 'var(--swiper-pagination-bullet-size, 0.5rem)'
+              endif
+            %}
+            {% capture navigation_center_style %}{% if navigation_centered and section.settings.show_pagination_on_desktop %}--swiper-navigation-center-offset: calc(({{ section.settings.pagination_top_padding_desktop | default: 50 }}px + {{ pagination_size }}) / 2);{% endif %}{% endcapture %}
+            {% render 'swiper-navigation', position: navigation_position, style: section.settings.navigation_style, icon: section.settings.navigation_icon, behavior: navigation_behavior, centered: navigation_centered, wrapper_class: navigation_class, wrapper_attributes: 'data-icon-cards-navigation', center_style: navigation_center_style %}
           {% endif %}
         </div>
         <script type="application/json" data-theme-module="{{ 'icon-text-cards.js' | asset_url }}"></script>
@@ -129,18 +145,26 @@
     align-items: var(--icon-text-cards-align);
     gap: var(--icon-text-cards-gap);
   }
-  .icon-text-cards__carousel { min-width: 0; margin-top: var(--icon-text-cards-gap); }
+  .icon-text-cards__carousel { position: relative; min-width: 0; margin-top: var(--icon-text-cards-gap); }
   .icon-text-cards__content:not(:has(> *)) + .icon-text-cards__carousel { margin-top: 0; }
   .icon-text-cards__carousel[hidden] { display: none; }
   .icon-text-cards__carousel .swiper-slide { height: auto; }
-  .icon-text-cards__navigation { display: flex; justify-content: center; gap: 12px; margin-top: 24px; }
-  .icon-text-cards__pagination { --swiper-pagination-spacing: 24px; }
+  .icon-text-cards__navigation.swiper-carousel__navigation--centered { position: absolute; z-index: 1; inset-inline: 0; display: flex; justify-content: space-between; padding-inline: 0.5rem; pointer-events: none; transform: translateY(-50%); }
+  .icon-text-cards__navigation .swiper-nav-button { pointer-events: auto; }
+  .icon-text-cards__navigation--outside.swiper-carousel__navigation--centered { padding-inline: 0; }
+  .icon-text-cards__navigation--outside .swiper-nav-button--prev { margin-inline-start: calc(-1 * var(--swiper-nav-size) / 2); }
+  .icon-text-cards__navigation--outside .swiper-nav-button--next { margin-inline-end: calc(-1 * var(--swiper-nav-size) / 2); }
+  .icon-text-cards__navigation--top { display: flex; justify-content: flex-end; gap: 0.5rem; margin-bottom: 24px; }
+  .icon-text-cards__navigation--bottom { position: absolute; inset: auto 0 0 auto; display: flex; justify-content: space-between; width: 76px; gap: 28px; transform: translateY(50%); }
+  .icon-text-cards__navigation--bottom .swiper-nav-button { --swiper-nav-size: 24px; --swiper-nav-icon-size: 24px; flex: 0 0 24px; }
   @media (min-width: 768px) {
-    .icon-text-cards__carousel [data-visible-desktop='false'] { display: none; }
+    .icon-text-cards__carousel:has(> .icon-text-cards__navigation--bottom) .icon-text-cards__pagination { max-width: calc(100% - 116px); margin-inline: 0; }
+  }
+  @media (max-width: 767.98px) {
+    .icon-text-cards__navigation { display: none; }
   }
   @media (max-width: 767.98px) {
     .icon-text-cards__carousel { margin-top: var(--icon-text-cards-gap-mobile); }
-    .icon-text-cards__carousel [data-visible-mobile='false'] { display: none; }
   }
   .icon-text-cards__content > * { min-width: 0; max-width: 100%; }
   .icon-text-cards .carousel-slide-layout--vertical { flex-direction: column; }
@@ -422,11 +446,92 @@
       "visible_if": "{{ section.settings.layout == 'carousel' }}"
     },
     {
-      "type": "checkbox",
-      "id": "show_navigation_on_mobile",
-      "label": "t:labels.show_navigation_on_mobile",
-      "default": true,
-      "visible_if": "{{ section.settings.layout == 'carousel' }}"
+      "type": "select",
+      "id": "navigation_position",
+      "label": "t:labels.position",
+      "options": [
+        {
+          "value": "outside",
+          "label": "t:options.collection_navigation_position.outside"
+        },
+        {
+          "value": "inside",
+          "label": "t:options.collection_navigation_position.inside"
+        },
+        {
+          "value": "top",
+          "label": "t:options.position.top"
+        },
+        {
+          "value": "bottom",
+          "label": "t:options.position.bottom"
+        }
+      ],
+      "default": "inside",
+      "visible_if": "{{ section.settings.layout == 'carousel' and section.settings.show_navigation_on_desktop }}"
+    },
+    {
+      "type": "select",
+      "id": "navigation_style",
+      "label": "t:labels.style",
+      "options": [
+        {
+          "value": "primary",
+          "label": "t:options.button_variant.primary"
+        },
+        {
+          "value": "secondary",
+          "label": "t:options.button_variant.secondary"
+        },
+        {
+          "value": "outline",
+          "label": "t:options.button_variant.outline"
+        },
+        {
+          "value": "icon_only",
+          "label": "t:options.button_variant.icon_only"
+        }
+      ],
+      "default": "secondary",
+      "visible_if": "{{ section.settings.layout == 'carousel' and section.settings.show_navigation_on_desktop }}"
+    },
+    {
+      "type": "select",
+      "id": "navigation_icon",
+      "label": "t:labels.icon",
+      "options": [
+        {
+          "value": "chevron",
+          "label": "t:options.collection_navigation_icon.chevron"
+        },
+        {
+          "value": "arrow",
+          "label": "t:options.collection_navigation_icon.arrow"
+        },
+        {
+          "value": "long_arrow",
+          "label": "t:options.collection_navigation_icon.long_arrow"
+        }
+      ],
+      "default": "chevron",
+      "visible_if": "{{ section.settings.layout == 'carousel' and section.settings.show_navigation_on_desktop }}"
+    },
+    {
+      "type": "select",
+      "id": "navigation_behavior",
+      "label": "t:labels.behavior",
+      "options": [
+        {
+          "value": "show_on_hover",
+          "label": "t:options.collection_navigation_behavior.show_on_hover"
+        },
+        {
+          "value": "always",
+          "label": "t:options.collection_navigation_behavior.always"
+        }
+      ],
+      "default": "show_on_hover",
+      "visible_if": "{{ section.settings.layout == 'carousel' and section.settings.show_navigation_on_desktop and section.settings.navigation_position != 'top' }}"
     },
     {
       "type": "header",
@@ -434,35 +539,85 @@
       "visible_if": "{{ section.settings.layout == 'carousel' }}"
     },
     {
+      "type": "checkbox",
+      "id": "show_pagination_on_desktop",
+      "label": "t:labels.show_pagination",
+      "default": true,
+      "visible_if": "{{ section.settings.layout == 'carousel' }}"
+    },
+    {
       "type": "select",
       "id": "pagination_type",
-      "label": "t:labels.pagination_type",
+      "label": "t:labels.type",
       "options": [
-        {
-          "value": "bullets",
-          "label": "t:options.collection_pagination.bullets"
-        },
         {
           "value": "progress_bar",
           "label": "t:options.collection_pagination.progress_bar"
+        },
+        {
+          "value": "bullets",
+          "label": "t:options.collection_pagination.bullets"
         }
       ],
-      "default": "bullets",
-      "visible_if": "{{ section.settings.layout == 'carousel' }}"
+      "default": "progress_bar",
+      "visible_if": "{{ section.settings.layout == 'carousel' and section.settings.show_pagination_on_desktop }}"
+    },
+    {
+      "type": "select",
+      "id": "pagination_thickness",
+      "label": "Progress bar thickness",
+      "options": [
+        {
+          "value": "standard",
+          "label": "Standard"
+        },
+        {
+          "value": "thin",
+          "label": "Thin"
+        }
+      ],
+      "default": "standard",
+      "visible_if": "{{ section.settings.layout == 'carousel' and section.settings.show_pagination_on_desktop and section.settings.pagination_type == 'progress_bar' }}"
+    },
+    {
+      "type": "range",
+      "id": "pagination_top_padding_desktop",
+      "label": "t:labels.pagination_desktop_top_padding",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "default": 50,
+      "visible_if": "{{ section.settings.layout == 'carousel' and section.settings.show_pagination_on_desktop }}"
+    },
+    {
+      "type": "range",
+      "id": "pagination_top_padding_mobile",
+      "label": "t:labels.pagination_mobile_top_padding",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "default": 24,
+      "visible_if": "{{ section.settings.layout == 'carousel' and section.settings.show_pagination_on_desktop }}"
     },
     {
       "type": "checkbox",
-      "id": "show_pagination_on_desktop",
-      "label": "t:labels.show_pagination_on_desktop",
+      "id": "pagination_limit_width",
+      "label": "t:labels.limit_width",
       "default": true,
-      "visible_if": "{{ section.settings.layout == 'carousel' }}"
+      "visible_if": "{{ section.settings.layout == 'carousel' and section.settings.show_pagination_on_desktop and section.settings.pagination_type == 'progress_bar' }}"
     },
     {
-      "type": "checkbox",
-      "id": "show_pagination_on_mobile",
-      "label": "t:labels.show_pagination_on_mobile",
-      "default": true,
-      "visible_if": "{{ section.settings.layout == 'carousel' }}"
+      "type": "range",
+      "id": "pagination_max_width",
+      "label": "t:labels.max_width",
+      "min": 100,
+      "max": 600,
+      "step": 10,
+      "unit": "px",
+      "default": 260,
+      "visible_if": "{{ section.settings.layout == 'carousel' and section.settings.show_pagination_on_desktop and section.settings.pagination_type == 'progress_bar' and section.settings.pagination_limit_width }}"
     },
     {
       "type": "header",

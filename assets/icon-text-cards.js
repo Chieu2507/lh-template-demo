@@ -18,6 +18,8 @@ export const initializeThemeModule = (scope = document) => {
     const carousel = root.querySelector('[data-icon-cards-carousel]');
     const viewport = carousel.querySelector('[data-swiper-carousel]');
     const wrapper = viewport.querySelector('.swiper-wrapper');
+    const navigation = carousel.querySelector('[data-icon-cards-navigation]');
+    if (navigation && carousel.dataset.navigationPosition === 'top') carousel.prepend(navigation);
     const cards = [...source.children].filter((node) => node.classList.contains('group'));
     if (!cards.length) return;
     const moved = cards.map((card) => {
