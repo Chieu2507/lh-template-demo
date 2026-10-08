@@ -401,5 +401,9 @@
   },
   "general": {
     "icon_text_cards": "Icon text cards"
-  }
+  },
+  "marquee": {
+  "copied": "Coupon code copied",
+  "copy_failed": "Could not copy. Select and copy the code."
+}
 }

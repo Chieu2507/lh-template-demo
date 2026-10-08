@@ -12,10 +12,10 @@ function fixture({staticMode=false,reduced=false}={}) {
   track.children.push(item());
   const viewport={clientWidth:500,getBoundingClientRect:()=>({top:100,bottom:544})};
   const classes=new Set(staticMode?['marquee--static']:[]);
-  const marquee={querySelector:s=>s.includes('track')?track:viewport,closest:()=>null,matches:()=>true,querySelectorAll:()=>[],classList:{contains:k=>classes.has(k),add:k=>classes.add(k),remove:k=>classes.delete(k)}};
+  const marquee={querySelector:s=>s.includes('track')?track:viewport,closest:()=>null,matches:s=>!s.includes('elara-'),querySelectorAll:()=>[],classList:{contains:k=>classes.has(k),add:k=>classes.add(k),remove:k=>classes.delete(k)}};
   const media={matches:reduced,addEventListener(k,f){events.set('motion',f);}};
   const window={scrollY:0,innerHeight:1080,matchMedia:()=>media,addEventListener(k,f){callbacks.set(k,f);},removeEventListener(k,f){if(callbacks.get(k)===f)callbacks.delete(k);}};
-  const document={readyState:'complete',querySelectorAll:()=>[marquee],addEventListener(k,f){events.set(k,f);},createDocumentFragment:()=>({children:[],appendChild(x){this.children.push(x);}})};
+  const document={readyState:'complete',querySelectorAll:s=>s.includes('elara-')?[]:[marquee],addEventListener(k,f){const previous=events.get(k);events.set(k,previous?(event)=>{previous(event);f(event);}:f);},createDocumentFragment:()=>({children:[],appendChild(x){this.children.push(x);}})};
   class Observer {observe(){} disconnect(){}}
   vm.runInNewContext(source,{window,document,Node:{ELEMENT_NODE:1},MutationObserver:Observer,ResizeObserver:Observer,getComputedStyle:()=>({columnGap:'16px'}),requestAnimationFrame:f=>{frames.push(f);return frames.length;},cancelAnimationFrame(){}});
   return {callbacks,events,marquee,animation,window,flush(){while(frames.length)frames.shift()();}};
