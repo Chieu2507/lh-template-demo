@@ -17,7 +17,9 @@
     return !slide || slide.classList.contains('swiper-slide-active');
   };
   const inView = element => {
-    const r = element.getBoundingClientRect();
+    // A visible slideshow reveals its active slide as one story beat. Individual
+    // content blocks can sit below a short editor viewport and still must play.
+    const r = (element.closest('.slideshow') || element).getBoundingClientRect();
     return r.bottom > 0 && r.top < innerHeight && r.right > 0 && r.left < innerWidth;
   };
   const stop = state => {state.animations.forEach(a => a.cancel()); state.animations = [];};
@@ -70,12 +72,19 @@
       element.classList.remove('reveal-pending');
       return;
     }
-    if (nodes.has(element) || element.dataset.blockAnimation === 'none') return;
+    const previous = nodes.get(element);
+    const configuration = `${element.dataset.blockAnimation}:${element.dataset.animationDelay}`;
     // Explicitly animated parents own the entrance; avoid nested double transforms.
     const parent = element.parentElement?.closest('[data-block-animation]:not([data-block-animation="none"]),[data-component-reveal]');
-    if (parent && parent.dataset.blockAnimation !== 'none') return;
+    if (element.dataset.blockAnimation === 'none' || (parent && parent.dataset.blockAnimation !== 'none')) {
+      if (previous) {stop(previous);observer.unobserve(element);nodes.delete(element);}
+      element.classList.remove('reveal-pending');
+      return;
+    }
+    if (previous?.configuration === configuration) return;
+    if (previous) {stop(previous);observer.unobserve(element);nodes.delete(element);}
     if (element.dataset.blockAnimation === 'rotate-words') splitWords(element);
-    nodes.set(element,{played:false,animations:[]});
+    nodes.set(element,{played:false,animations:[],configuration});
     if (enabled()) element.classList.add('reveal-pending');
     observer.observe(element);
     if (!enabled() || (active(element) && inView(element))) show(element);
@@ -120,6 +129,10 @@
   const mutations = new MutationObserver(records => {
     records.forEach(record => {
       if (record.type === 'childList') record.addedNodes.forEach(node => {if (node instanceof Element) scan(node);});
+      else if (record.attributeName === 'data-block-animation' || record.attributeName === 'data-animation-delay') {
+        initialize(record.target);
+        record.target.querySelectorAll(selector).forEach(initialize);
+      }
       else if (record.target.matches?.(scopeSelector)) {
         // Deactivation arms this scope. Subsequent activation replays its own contents.
         if (!active(record.target)) resetScope(record.target);
@@ -129,7 +142,7 @@
     nodes.forEach((state, element) => {if (!element.isConnected) {stop(state);observer.unobserve(element);nodes.delete(element);}});
   });
   scan();
-  mutations.observe(document.body,{childList:true,subtree:true,attributes:true,attributeFilter:['hidden','aria-hidden','inert','class']});
+  mutations.observe(document.body,{childList:true,subtree:true,attributes:true,attributeFilter:['hidden','aria-hidden','inert','class','data-block-animation','data-animation-delay']});
   document.addEventListener('shopify:section:load',event => scan(event.target));
   // Reconcile after all Item accessibility and visibility changes are complete.
   document.addEventListener('multiple-images-text:change',event => {
