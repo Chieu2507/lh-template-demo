@@ -1111,7 +1111,7 @@
       ],
       "custom_css": [
         ".collection-thumbnail__title {display: none;}",
-        ".collection-thumbnails {--collection-thumbnail-image-width: 160px;}",
+        ".collection-thumbnails {--collection-thumbnail-image-width: 160px !important;}",
         "@media (min-width: 768px) and (max-width: 1149.98px) {.collection-thumbnails {padding-block: 64px;} .collection-thumbnail:not(:last-child) {padding-right: 4px;}}"
       ],
       "settings": {
