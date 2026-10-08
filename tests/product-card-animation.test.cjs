@@ -3,11 +3,11 @@ const assert = require('node:assert/strict');
 const fs = require('node:fs');
 const vm = require('node:vm');
 
-function fixture({ hidden = false, columns = 4, reduced = false, promoIndex = -1 } = {}) {
+function fixture({ hidden = false, columns = 4, reduced = false, promoIndex = -1, imageCards = false } = {}) {
   let changed;
   const events = {};
   const cards = [];
-  const selectCards = selector => cards.filter(card => !card.promo || selector.includes(".promo-card") || (selector.includes("[data-component-reveal]") && "componentReveal" in card.dataset));
+  const selectCards = selector => cards.filter(card => (!imageCards || selector.includes("article.image-card") || selector.includes("[data-block-animation]")) && (!card.promo || selector.includes(".promo-card") || (selector.includes("[data-component-reveal]") && "componentReveal" in card.dataset)));
   const panel = {
     hidden,
     isConnected: true,
@@ -26,7 +26,7 @@ function fixture({ hidden = false, columns = 4, reduced = false, promoIndex = -1
       dataset: {}, played, isConnected: true, promo: index === promoIndex,
       parentElement: { closest: () => null },
       classList: { add() {}, remove() {} },
-      matches: selector => selector.includes(index === promoIndex ? '.promo-card' : '.product-card'),
+      matches: selector => selector.includes(imageCards ? 'article.image-card' : index === promoIndex ? '.promo-card' : '.product-card'),
       closest(selector) {
         if (selector === '.product-collection-grid__item') return item;
         if (selector.includes('.product-collection-grid')) return list;
@@ -89,4 +89,12 @@ test('promo animation follows hidden tab activation and reduced motion', () => {
   assert.equal(h.cards[1].played[0].options.delay,320);
   const reduced = fixture({ reduced:true, promoIndex:1 });
   assert.equal(reduced.cards[1].played.length,0);
+});
+
+test('image cards animate the complete article with the same row stagger', () => {
+  const h = fixture({ imageCards: true });
+  assert.deepEqual(h.cards.map(card => card.played[0].options.delay), [180, 320, 460, 600]);
+  assert.ok(h.cards.every(card => card.dataset.blockAnimation === 'slide-bottom'));
+  const reduced = fixture({ imageCards: true, reduced: true });
+  assert.ok(reduced.cards.every(card => card.played.length === 0));
 });

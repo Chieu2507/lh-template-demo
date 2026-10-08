@@ -4348,7 +4348,9 @@
             "padding_top": 36,
             "padding_bottom": 36,
             "padding_left": 36,
-            "padding_right": 36
+            "padding_right": 36,
+            "animation_type": "slide-bottom",
+            "animation_delay": 150
           },
           "blocks": {
             "icon": {
@@ -4434,7 +4436,9 @@
             "padding_top": 36,
             "padding_bottom": 36,
             "padding_left": 36,
-            "padding_right": 36
+            "padding_right": 36,
+            "animation_type": "slide-bottom",
+            "animation_delay": 300
           },
           "blocks": {
             "icon": {
@@ -4520,7 +4524,9 @@
             "padding_top": 36,
             "padding_bottom": 36,
             "padding_left": 36,
-            "padding_right": 36
+            "padding_right": 36,
+            "animation_type": "slide-bottom",
+            "animation_delay": 450
           },
           "blocks": {
             "icon": {
@@ -4606,7 +4612,9 @@
             "padding_top": 36,
             "padding_bottom": 36,
             "padding_left": 36,
-            "padding_right": 36
+            "padding_right": 36,
+            "animation_type": "slide-bottom",
+            "animation_delay": 600
           },
           "blocks": {
             "icon": {
