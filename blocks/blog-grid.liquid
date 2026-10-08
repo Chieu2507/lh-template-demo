@@ -157,7 +157,14 @@
     }
 
     .blog-grid__items {
+      grid-auto-rows: auto;
+      align-items: start;
       gap: var(--blog-grid-gap-mobile, 16px);
+    }
+
+    .blog-grid__item > .blog-card {
+      height: auto;
+      align-self: start;
     }
 
     .blog-grid__layout--vertical .blog-grid__items {

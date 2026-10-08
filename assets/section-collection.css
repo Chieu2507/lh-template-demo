@@ -1270,7 +1270,7 @@
       max-height: 85dvh;
       margin: 0;
       overflow: visible;
-      border-radius: 14px 14px 0 0;
+      border-radius: var(--bottom-sheet-radius, var(--drawer-radius)) var(--bottom-sheet-radius, var(--drawer-radius)) 0 0;
       background: transparent;
       box-shadow: 0 -14px 42px rgb(0 0 0 / 12%);
       transform: translateY(100%);
