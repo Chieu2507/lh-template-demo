@@ -5,6 +5,7 @@
   choosing the correct semantic element and for supplying an accessible label.
 
   @param {string} label - Visible button label
+  @param {string} [label_suffix] - Visually hidden descriptive link text
   @param {string} [url] - Link destination. Omit for a button element
   @param {string} [type] - Button type when url is omitted
   @param {string} [class] - Additional classes
@@ -113,7 +114,7 @@
 {% capture button_content %}
   <span class="btn__label{% if button_icon_name != blank %} btn__label--icon{% endif %}">
     {% if button_icon_name != blank and button_icon_position == 'before' %}{{ button_icon_markup }}{% endif %}
-    <span class="btn__text{% if icon_only %} visually-hidden{% endif %}">{{ label | escape }}</span>
+    <span class="btn__text{% if icon_only %} visually-hidden{% endif %}">{{ label | escape }}{% if label_suffix != blank %}<span class="visually-hidden">: {{ label_suffix | escape }}</span>{% endif %}</span>
     {% if button_icon_name != blank and button_icon_position == 'after' %}{{ button_icon_markup }}{% endif %}
   </span>
 {% endcapture %}
