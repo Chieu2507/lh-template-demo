@@ -1000,7 +1000,7 @@
         "desktop_height": "large",
         "customize_tablet_height": false,
         "mobile_height": "large",
-        "autoplay": false,
+        "autoplay": true,
         "pause_on_hover": true,
         "autoplay_delay": 6,
         "show_navigation": false,

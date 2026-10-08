@@ -29,13 +29,35 @@
 .slideshow--peekoo .slideshow-slide:has(img[src*="561ad"]) .slideshow-slide__overlay {
   background: none;
 }
-.slideshow--peekoo .swiper-pagination-bullet-active::before {
-  background: url(https://cdn.shopify.com/s/files/1/1024/2192/2091/files/d93da.svg?v=1791425706) center/20px 20px no-repeat !important;
-  width: 20px !important;
-  height: 20px !important;
+/* Reuse Numbers' SVG ring and autoplay clock, with a dot as the label. */
+.slideshow--peekoo .slideshow__pagination--bullets .slideshow__pagination-number {
+  flex-basis: 24px;
+  width: 24px;
+  height: 24px;
+  opacity: 1;
 }
-.slideshow--peekoo .swiper-pagination-bullet-active::after {
-  opacity: 0 !important;
+.slideshow--peekoo .slideshow__pagination--bullets .slideshow__pagination-number svg {
+  width: 20px;
+  height: 20px;
+}
+.slideshow--peekoo .slideshow__pagination--bullets .slideshow__pagination-number circle {
+  stroke-opacity: 0;
+}
+.slideshow--peekoo .slideshow__pagination--bullets .slideshow__pagination-number[aria-current='true'] circle:first-child {
+  stroke-opacity: .3;
+}
+.slideshow--peekoo .slideshow__pagination--bullets .slideshow__pagination-number[aria-current='true'] circle:last-child {
+  stroke-opacity: 1;
+}
+.slideshow--peekoo .slideshow__pagination--bullets .slideshow__pagination-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: currentColor;
+  opacity: .6;
+}
+.slideshow--peekoo .slideshow__pagination--bullets .slideshow__pagination-number[aria-current='true'] .slideshow__pagination-dot {
+  opacity: 1;
 }
 @media (min-width: 768px) and (max-width: 1149.98px) {
   .slideshow--peekoo {
