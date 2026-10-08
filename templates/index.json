@@ -6961,11 +6961,18 @@
           },
           "blocks": {
             "icon": {
-              "type": "icon",
+              "type": "image",
               "settings": {
-                "source": "library",
-                "icon": "cube",
-                "icon_width": 64
+                "image": "shopify://shop_images/peekoo-blocks.svg",
+                "alt_text": "",
+                "image_fit": "contain",
+                "width_desktop": "fixed",
+                "width_fixed_desktop": 64,
+                "width_mobile": "fixed",
+                "width_fixed_mobile": 64,
+                "image_ratio_desktop": "square",
+                "image_ratio_mobile": "square",
+                "corner_radius": "square"
               }
             },
             "content": {
@@ -7040,11 +7047,18 @@
           },
           "blocks": {
             "icon": {
-              "type": "icon",
+              "type": "image",
               "settings": {
-                "source": "library",
-                "icon": "tag",
-                "icon_width": 64
+                "image": "shopify://shop_images/peekoo-numbers.svg",
+                "alt_text": "",
+                "image_fit": "contain",
+                "width_desktop": "fixed",
+                "width_fixed_desktop": 64,
+                "width_mobile": "fixed",
+                "width_fixed_mobile": 64,
+                "image_ratio_desktop": "square",
+                "image_ratio_mobile": "square",
+                "corner_radius": "square"
               }
             },
             "content": {
@@ -7119,11 +7133,18 @@
           },
           "blocks": {
             "icon": {
-              "type": "icon",
+              "type": "image",
               "settings": {
-                "source": "library",
-                "icon": "shopping-bag",
-                "icon_width": 64
+                "image": "shopify://shop_images/peekoo-toys.svg",
+                "alt_text": "",
+                "image_fit": "contain",
+                "width_desktop": "fixed",
+                "width_fixed_desktop": 64,
+                "width_mobile": "fixed",
+                "width_fixed_mobile": 64,
+                "image_ratio_desktop": "square",
+                "image_ratio_mobile": "square",
+                "corner_radius": "square"
               }
             },
             "content": {
@@ -7200,13 +7221,15 @@
             "icon": {
               "type": "image",
               "settings": {
-                "image": "shopify://shop_images/perky-lightbulb.svg",
-                "image_ratio_desktop": "square",
+                "image": "shopify://shop_images/peekoo-lightbulb.svg",
+                "alt_text": "",
+                "image_fit": "contain",
                 "width_desktop": "fixed",
                 "width_fixed_desktop": 64,
-                "image_ratio_mobile": "square",
                 "width_mobile": "fixed",
                 "width_fixed_mobile": 64,
+                "image_ratio_desktop": "square",
+                "image_ratio_mobile": "square",
                 "corner_radius": "square"
               }
             },
