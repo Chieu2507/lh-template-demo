@@ -215,6 +215,12 @@
     {{ block.shopify_attributes }}
 >
   {% capture image_sizes %}(min-width: 768px) {{ image_size_desktop }}, {{ image_size_mobile }}{% endcapture %}
+  {% liquid
+    assign image_auto_sizes = true
+    if block.settings.limit_width_desktop and block.settings.limit_width_mobile
+      assign image_auto_sizes = false
+    endif
+  %}
   {% render 'image',
     image: image_source,
     mobile_image: mobile_image_source,
@@ -224,7 +230,8 @@
     class: 'image-block__media media-hover-zoom__media',
     width: 2400,
     widths: '70, 140, 200, 400, 600, 800, 1200, 1600, 2400',
-    sizes: image_sizes
+    sizes: image_sizes,
+    auto_sizes: image_auto_sizes
   %}
 </div>
 

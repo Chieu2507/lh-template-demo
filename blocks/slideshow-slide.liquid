@@ -45,9 +45,27 @@
   assign slide_image_sizes = '100vw'
   assign slide_mobile_image_sizes = blank
   if section.settings.layout_preset == 'peekoo'
-    assign slide_mobile_height = 0
     assign slide_image_sizes = '(max-width: 1149.98px) 278vw, 107vw'
     assign slide_mobile_image_sizes = '440vw'
+    comment
+      The existing Peekoo artwork has an auto width determined by the fixed
+      mobile frame height, its aspect ratio and its media height scale.
+      A viewport multiplier overstates that width on larger mobile screens.
+    endcomment
+    if slide_mobile_height > 0
+      assign slide_mobile_artwork = block.settings.mobile_image | default: block.settings.image
+      assign slide_mobile_media_scale = 1
+      if slide_mobile_artwork.src contains '5282e'
+        assign slide_mobile_media_scale = 1.0312
+      elsif slide_mobile_artwork.src contains 'f9b22'
+        assign slide_mobile_media_scale = 1.0645
+      elsif slide_mobile_artwork.src contains '561ad'
+        assign slide_mobile_media_scale = 1.029
+      endif
+      assign slide_mobile_rendered_width = slide_mobile_height | times: slide_mobile_artwork.aspect_ratio | times: slide_mobile_media_scale | ceil
+      assign slide_mobile_image_sizes = slide_mobile_rendered_width | append: 'px'
+    endif
+    assign slide_mobile_height = 0
   endif
   if section.blocks.first != blank and section.blocks.first.id == block.id
     assign slide_image_loading = 'eager'
