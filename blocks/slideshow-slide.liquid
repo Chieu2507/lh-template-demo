@@ -87,7 +87,6 @@
 {% if slide_image_loading == 'eager' and section.index == 1 and slide_media_type == 'image' and block.settings.image != blank %}
   <!-- theme-lcp-preloads:start -->
   {% render 'slideshow-image', image: block.settings.image, mobile_image: block.settings.mobile_image, mobile_height: slide_mobile_height, sizes: slide_image_sizes, mobile_image_sizes: slide_mobile_image_sizes, preload: true %}
-  {% render 'slideshow-runtime-preloads' %}
   <!-- theme-lcp-preloads:end -->
 {% endif %}
 
