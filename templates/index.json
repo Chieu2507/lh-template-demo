@@ -3520,9 +3520,9 @@
                 "inventory": {
                   "type": "product-inventory",
                   "settings": {
-                    "display_mode": "status_and_count",
                     "low_stock_threshold": 20,
-                    "show_progress": true
+                    "show_low_stock_quantity": true,
+                    "show_progress_bar": true
                   }
                 }
               },

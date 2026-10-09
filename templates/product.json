@@ -105,9 +105,8 @@
             "inventory": {
               "type": "product-inventory",
               "settings": {
-                "display_mode": "status_and_count",
-                "urgent_stock_threshold": 10,
-                "low_stock_threshold": 20
+                "low_stock_threshold": 20,
+                "show_low_stock_quantity": true
               }
             },
             "buy-buttons": {

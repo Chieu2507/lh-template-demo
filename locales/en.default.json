@@ -263,6 +263,11 @@
     "inventory_in_stock": "In stock",
     "inventory_in_stock_count": "{{ count }} in stock",
     "inventory_low_stock": "Only {{ count }} left",
+    "inventory_low_stock_urgency_html": {
+      "one": "Hurry up, <span class=\"product-inventory__count\">only {{ count }} item</span> left in stock.",
+      "other": "Hurry up, <span class=\"product-inventory__count\">only {{ count }} items</span> left in stock."
+    },
+    "inventory_low_stock_urgency_short": "Hurry! Just a few left",
     "inventory_low_stock_short": "Low stock",
     "inventory_available_to_order": "Available to order",
     "media_gallery": "Media gallery for {{ product }}",
