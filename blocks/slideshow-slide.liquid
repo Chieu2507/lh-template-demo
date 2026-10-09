@@ -1,9 +1,9 @@
-{% capture effective_overlay %}{% render 'overlay-background', overlay_settings: block.settings, color_id: 'overlay_color', enabled_id: 'show_overlay', style_id: 'overlay_style' %}{% endcapture %}
-{% assign effective_overlay = effective_overlay | strip %}
 {% doc %}
   A merchant-configurable visual slide for the Slideshow section. It owns the
   slide media and local content placement; nested Theme Blocks supply content.
 {% enddoc %}
+{% capture effective_overlay %}{% render 'overlay-background', overlay_settings: block.settings, color_id: 'overlay_color', enabled_id: 'show_overlay', style_id: 'overlay_style' %}{% endcapture %}
+{% assign effective_overlay = effective_overlay | strip %}
 
 {% liquid
   assign slide_layout = block.settings.layout | default: 'classic'
@@ -83,7 +83,7 @@
   --slideshow-content-padding-bottom: {{ block.settings.content_padding_bottom | default: 70 }}px;
   --slideshow-content-padding-top-mobile: {{ block.settings.content_padding_top_mobile | default: 50 }}px;
   --slideshow-content-padding-bottom-mobile: {{ block.settings.content_padding_bottom_mobile | default: 50 }}px;
-  {% if effective_overlay != blank %}--slideshow-slide-overlay: {{ effective_overlay | default: 'transparent' | escape }};{% endif %}
+  {% if block.settings.show_overlay %}--slideshow-slide-overlay: {{ effective_overlay | default: 'transparent' | escape }};{% endif %}
   {% if block.settings.desktop_gap != 12 %}--slideshow-slide-gap: {{ block.settings.desktop_gap }}px;{% endif %}
   {% if block.settings.mobile_gap != 12 %}--slideshow-slide-gap-mobile: {{ block.settings.mobile_gap }}px;{% endif %}
   {% if slide_content_width == 'custom' %}--hero-content-max-width: {{ block.settings.content_max_width | default: 640 }}px;{% endif %}

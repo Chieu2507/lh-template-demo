@@ -1,5 +1,3 @@
-{% capture effective_overlay %}{% render 'overlay-background', overlay_settings: block.settings, color_id: 'overlay', enabled_id: 'show_overlay', style_id: 'overlay_style' %}{% endcapture %}
-{% assign effective_overlay = effective_overlay | strip %}
 {% doc %}
   Renders Product callout media, content, and nested product hotspots. Media,
   content layout, and height settings belong to this block. Below keeps the
@@ -10,6 +8,8 @@
   @example
   {% content_for 'block', type: 'product-callout', id: 'product-callout' %}
 {% enddoc %}
+{% capture effective_overlay %}{% render 'overlay-background', overlay_settings: block.settings, color_id: 'overlay', enabled_id: 'show_overlay', style_id: 'overlay_style' %}{% endcapture %}
+{% assign effective_overlay = effective_overlay | strip %}
 
 {% liquid
   assign product_callout_is_carousel = false
@@ -1175,7 +1175,8 @@
         "gap_desktop": 12,
         "gap_mobile": 8,
         "hotspot_icon_style": "plus",
-        "hotspot_behavior": "click"
+        "hotspot_behavior": "click",
+        "show_overlay": true
       },
       "blocks": [
         {

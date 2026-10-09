@@ -1,5 +1,3 @@
-{% capture effective_overlay %}{% render 'overlay-background', overlay_settings: block.settings, color_id: 'overlay_color', enabled_id: 'show_overlay', style_id: 'overlay_style' %}{% endcapture %}
-{% assign effective_overlay = effective_overlay | strip %}
 {% doc %}
   Renders a layout group that composes theme blocks in a horizontal or
   vertical flow. The group owns its local layout, surface, border, overlay,
@@ -8,6 +6,8 @@
   @example
   {% content_for 'block', type: 'group', id: 'group' %}
 {% enddoc %}
+{% capture effective_overlay %}{% render 'overlay-background', overlay_settings: block.settings, color_id: 'overlay_color', enabled_id: 'show_overlay', style_id: 'overlay_style' %}{% endcapture %}
+{% assign effective_overlay = effective_overlay | strip %}
 
 {% liquid
   assign group_direction = block.settings.direction | default: block.settings.layout_direction | default: 'vertical'
@@ -927,7 +927,8 @@
         "corner_radius": "square",
         "shadow": "none",
         "backdrop_blur": 0,
-        "customize_mobile_padding": false
+        "customize_mobile_padding": false,
+        "show_overlay": true
       },
       "blocks": [
         {

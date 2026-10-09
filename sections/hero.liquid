@@ -108,7 +108,7 @@
     {% if hero_page_content_padding != 64 %}--hero-content-padding: {{ hero_page_content_padding }}px;{% endif %}
     {% if hero_page_content_padding_mobile != 40 %}--hero-content-padding-mobile: {{ hero_page_content_padding_mobile }}px;{% endif %}
   {% endif %}
-  
+
 {% endcapture %}
 
 <div
@@ -1174,7 +1174,8 @@
       "name": "Hero",
       "category": "t:general.banners",
       "settings": {
-        "color_scheme": "scheme-1"
+        "color_scheme": "scheme-1",
+        "show_overlay": true
       },
       "blocks": [
         {
@@ -1270,7 +1271,8 @@
         "padding_bottom": 80,
         "customize_mobile_padding": true,
         "padding_top_mobile": 0,
-        "padding_bottom_mobile": 64
+        "padding_bottom_mobile": 64,
+        "show_overlay": true
       },
       "blocks": [
         {
@@ -1292,7 +1294,8 @@
             "padding_top_mobile": 40,
             "padding_bottom_mobile": 0,
             "padding_left_mobile": 0,
-            "padding_right_mobile": 0
+            "padding_right_mobile": 0,
+            "show_overlay": true
           },
           "blocks": [
             {
@@ -1307,7 +1310,8 @@
                 "alignment_mobile": "center",
                 "gap_desktop": 32,
                 "gap_mobile": 32,
-                "backdrop_blur": 0
+                "backdrop_blur": 0,
+                "show_overlay": true
               },
               "blocks": [
                 {
@@ -1322,7 +1326,8 @@
                     "alignment_mobile": "center",
                     "gap_desktop": 16,
                     "gap_mobile": 16,
-                    "backdrop_blur": 0
+                    "backdrop_blur": 0,
+                    "show_overlay": true
                   },
                   "blocks": [
                     {

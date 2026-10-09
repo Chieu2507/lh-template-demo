@@ -1,10 +1,10 @@
-{% capture effective_overlay %}{% render 'overlay-background', overlay_settings: block.settings, color_id: 'overlay', enabled_id: 'show_overlay', style_id: 'overlay_style' %}{% endcapture %}
-{% assign effective_overlay = effective_overlay | strip %}
 {% doc %}
   Decorative image slot for Featured collection: background (custom).
   Height/placement belong to this block; the section maps them to its spacer.
   Percent height uses the section's measured content height, never its own row.
 {% enddoc %}
+{% capture effective_overlay %}{% render 'overlay-background', overlay_settings: block.settings, color_id: 'overlay', enabled_id: 'show_overlay', style_id: 'overlay_style' %}{% endcapture %}
+{% assign effective_overlay = effective_overlay | strip %}
 {% capture background_height_desktop %}{% render 'collection-background-height', settings: block.settings, device: 'desktop' %}{% endcapture %}
 {% capture background_height_mobile %}{% render 'collection-background-height', settings: block.settings, device: 'mobile' %}{% endcapture %}
 {% style %}

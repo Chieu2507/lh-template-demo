@@ -1,11 +1,11 @@
-{% capture effective_overlay %}{% render 'overlay-background', overlay_settings: block.settings, color_id: 'overlay_color', enabled_id: 'show_overlay', style_id: 'overlay_style' %}{% endcapture %}
-{% assign effective_overlay = effective_overlay | strip %}
 {% doc %}
   Shared testimonial item renderer used by editorial items and review cards.
   @param {object} block - The owning Theme Block, including settings/editor attributes
   @param {string} content - Rendered child Theme Blocks in their configured order
   @param {boolean} [composition_card] - Card directly owns child flow, gap and padding
 {% enddoc %}
+{% capture effective_overlay %}{% render 'overlay-background', overlay_settings: block.settings, color_id: 'overlay_color', enabled_id: 'show_overlay', style_id: 'overlay_style' %}{% endcapture %}
+{% assign effective_overlay = effective_overlay | strip %}
 {% liquid
   assign testimonial_direction = block.settings.direction | default: 'horizontal'
   unless testimonial_direction == 'horizontal' or testimonial_direction == 'vertical'

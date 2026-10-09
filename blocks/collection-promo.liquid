@@ -1,10 +1,10 @@
-{% capture effective_overlay %}{% render 'overlay-background', overlay_settings: block.settings, color_id: 'overlay_color', enabled_id: 'show_overlay', style_id: 'overlay_style' %}{% endcapture %}
-{% assign effective_overlay = effective_overlay | strip %}
 {% doc %}
   Repeatable editorial card in the collection product grid.
   Content fields and media controls stay on this block so each promo card can be
   added, removed, reordered and edited independently in the Theme Editor.
 {% enddoc %}
+{% capture effective_overlay %}{% render 'overlay-background', overlay_settings: block.settings, color_id: 'overlay_color', enabled_id: 'show_overlay', style_id: 'overlay_style' %}{% endcapture %}
+{% assign effective_overlay = effective_overlay | strip %}
 {% liquid
   assign promo_scheme = block.settings.color_scheme.id | default: block.settings.color_scheme | default: 'scheme-1'
   assign promo_position = block.settings.position | default: 5 | plus: 0

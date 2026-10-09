@@ -13,7 +13,7 @@
   assign overlay_background = effective_overlay | default: 'transparent'
 %}
 
-<div class="gallery-strip-item gallery-strip-feature-item gallery-strip-feature-item--overlay-{{ show_overlay }}" style="--gallery-strip-feature-overlay-background: {{ overlay_background | escape }}; --gallery-strip-feature-overlay-opacity: 1;" {{ block.shopify_attributes }}>
+<div class="gallery-strip-item gallery-strip-feature-item gallery-strip-feature-item--overlay-{{ show_overlay }}" style="--gallery-strip-feature-overlay-background: {{ overlay_background | escape }};" {{ block.shopify_attributes }}>
   {% render 'image',
     image: image,
     mobile_image: mobile_image,

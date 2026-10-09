@@ -1,5 +1,3 @@
-{% capture effective_overlay %}{% render 'overlay-background', overlay_settings: block.settings, color_id: 'overlay_color', enabled_id: 'show_overlay', style_id: 'overlay_style' %}{% endcapture %}
-{% assign effective_overlay = effective_overlay | strip %}
 {% doc %}
   Renders one sticky scrolling card.
 
@@ -7,6 +5,8 @@
   content stays composable through the shared Group and Image blocks so the
   same child primitives can be reused by other sections.
 {% enddoc %}
+{% capture effective_overlay %}{% render 'overlay-background', overlay_settings: block.settings, color_id: 'overlay_color', enabled_id: 'show_overlay', style_id: 'overlay_style' %}{% endcapture %}
+{% assign effective_overlay = effective_overlay | strip %}
 
 {% liquid
   assign scrolling_card_direction = block.settings.direction | default: 'horizontal'
@@ -166,7 +166,7 @@
     --scrolling-card-padding-left-mobile: {{ scrolling_card_padding_left_mobile }}px;
     --scrolling-card-padding-right-mobile: {{ scrolling_card_padding_right_mobile }}px;
   {% endif %}
-  {% if block.settings.show_overlay and effective_overlay != blank %}
+  {% if block.settings.show_overlay %}
     --scrolling-card-overlay-color: {{ effective_overlay | default: 'transparent' | escape }};
   {% endif %}
   --scrolling-card-backdrop-blur: {{ scrolling_card_backdrop_blur }}px;
@@ -750,7 +750,8 @@
             "appearance_type": "inherit",
             "border_type": "none",
             "corner_radius": "square",
-            "shadow": "none"
+            "shadow": "none",
+            "show_overlay": true
           },
           "blocks": [
             {

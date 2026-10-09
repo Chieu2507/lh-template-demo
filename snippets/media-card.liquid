@@ -1,5 +1,3 @@
-{% capture effective_overlay %}{% render 'overlay-background', overlay_settings: media_card_block.settings, color_id: 'overlay_color', enabled_id: 'show_overlay', style_id: 'overlay_style' %}{% endcapture %}
-{% assign effective_overlay = effective_overlay | strip %}
 {% doc %}
   Shared media-card renderer for the Image card and Featured collection: Banner blocks.
 
@@ -9,6 +7,8 @@
   @param {boolean} [enable_sticky] - Whether the media card content sticks while scrolling
   @param {boolean} [use_image_ratio] - Whether the caller supplies responsive image ratio settings
 {% enddoc %}
+{% capture effective_overlay %}{% render 'overlay-background', overlay_settings: media_card_block.settings, color_id: 'overlay_color', enabled_id: 'show_overlay', style_id: 'overlay_style' %}{% endcapture %}
+{% assign effective_overlay = effective_overlay | strip %}
 
 {% liquid
   assign image_card_media_type = media_card_block.settings.background_type | default: 'image'
