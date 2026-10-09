@@ -1,0 +1,46 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "collection_page_links": {
+      "type": "collection-page-links",
+      "blocks": {
+        "card": {
+          "type": "collection_card",
+          "settings": {
+            "focal_point": "center",
+            "show_overlay": true,
+            "overlay_style": "solid",
+            "overlay_color": "#C8142866",
+            "overlay_gradient": "linear-gradient(90deg, rgba(255, 0, 0, 0.25) 0%, rgba(0, 0, 255, 0.75) 100%)"
+          }
+        }
+      },
+      "block_order": [
+        "card"
+      ],
+      "settings": {}
+    },
+    "collection_banner": {
+      "type": "collection-banner",
+      "settings": {
+        "layout": "background",
+        "show_overlay": true,
+        "overlay_style": "solid",
+        "overlay_color": "#C8142866",
+        "overlay_gradient": "linear-gradient(90deg, rgba(255, 0, 0, 0.25) 0%, rgba(0, 0, 255, 0.75) 100%)"
+      }
+    }
+  },
+  "order": [
+    "collection_page_links",
+    "collection_banner"
+  ]
+}
