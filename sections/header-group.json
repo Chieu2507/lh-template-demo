@@ -201,13 +201,15 @@
             "header-logo": {
               "type": "_header-logo",
               "settings": {
-                "position": "center"
+                "position": "left"
               },
               "blocks": {}
             },
             "header-menu-toggle": {
               "type": "_header-menu-toggle",
-              "settings": {},
+              "settings": {
+                "position": "left"
+              },
               "blocks": {}
             },
             "header-localization": {
@@ -266,8 +268,8 @@
           },
           "block_order": [
             "header-menu",
-            "header-logo",
             "header-menu-toggle",
+            "header-logo",
             "header-localization",
             "header-divider",
             "header-search",

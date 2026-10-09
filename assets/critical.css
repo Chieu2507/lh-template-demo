@@ -212,6 +212,10 @@ body {
     margin-inline-end: 0;
   }
 
+  .header-top:not([data-layout-ready='true']):has(.header-logo--left) .header__blocks > .header-menu-toggle[data-menu-toggle-position='left'] {
+    order: -3;
+  }
+
   .header-top:not([data-layout-ready='true']) .header__blocks > .header-menu-toggle[data-menu-toggle-position='center'] {
     position: absolute;
     inset-inline-start: 50%;
