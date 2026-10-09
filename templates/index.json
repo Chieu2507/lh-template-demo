@@ -4058,8 +4058,8 @@
         "header_gap_mobile": 16,
         "padding_top_mobile": 0,
         "padding_bottom_mobile": 80,
-        "overlap_desktop": 0,
-        "overlap_mobile": 0,
+        "overlap_desktop": 112,
+        "overlap_mobile": 112,
         "overlap_panel_padding": 24,
         "banner_max_width": "medium"
       },
