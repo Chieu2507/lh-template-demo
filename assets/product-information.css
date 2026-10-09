@@ -273,6 +273,52 @@
   overflow-wrap: anywhere;
 }
 
+.product-inventory__status--with-ring {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.product-inventory__copy {
+  min-width: 0;
+}
+
+.product-inventory__ring {
+  flex: 0 0 10px;
+  width: 10px;
+  height: 10px;
+  margin: 4px;
+  border-radius: 50%;
+  color: #26d943;
+  background: currentColor;
+  box-shadow: 0 0 0 4px color-mix(in srgb, currentColor 18%, transparent);
+  animation: inventory-stock-rings 2.4s ease-out infinite;
+}
+
+.product-inventory__status--low_stock .product-inventory__ring {
+  color: var(--product-inventory-low-ring-color, #cf2828);
+}
+
+@keyframes inventory-stock-rings {
+  0% {
+    box-shadow: 0 0 0 0 color-mix(in srgb, currentColor 30%, transparent),
+      0 0 0 3px color-mix(in srgb, currentColor 12%, transparent);
+  }
+  50% {
+    box-shadow: 0 0 0 3px color-mix(in srgb, currentColor 12%, transparent),
+      0 0 0 6px transparent;
+  }
+  100% {
+    box-shadow: 0 0 0 6px transparent, 0 0 0 9px transparent;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .product-inventory__ring {
+    animation: none;
+  }
+}
+
 .product-inventory--font-heading {
   --product-inventory-font-family: var(--font-heading-family);
   --product-inventory-font-style: var(--font-heading-style);

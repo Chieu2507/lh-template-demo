@@ -71,6 +71,7 @@
 
 {% capture inventory_style %}
   --product-inventory-low-color: {{ inventory_low_color }};
+  --product-inventory-low-ring-color: {{ block.settings.low_stock_custom_color | default: '#cf2828' }};
   {% if block.settings.progress_bar_color != blank %}--product-inventory-bar-color: {{ block.settings.progress_bar_color }};{% endif %}
   {% if block.settings.gap != blank and block.settings.gap != 16 %}--product-inventory-gap: {{ block.settings.gap | at_least: 0 | at_most: 100 }}px;{% endif %}
   {% if inventory_padding_top != 0 %}--product-inventory-padding-top: {{ inventory_padding_top }}px;{% endif %}
@@ -99,6 +100,7 @@
         variant: inventory_variant,
         low_stock_threshold: inventory_low_stock_threshold,
         show_low_stock_quantity: inventory_show_quantity,
+        show_inventory_ring: block.settings.show_inventory_ring,
         show_progress_bar: inventory_show_bar
       %}
     </div>
@@ -111,6 +113,7 @@
               variant: variant,
               low_stock_threshold: inventory_low_stock_threshold,
               show_low_stock_quantity: inventory_show_quantity,
+              show_inventory_ring: block.settings.show_inventory_ring,
               show_progress_bar: inventory_show_bar
             %}
           </template>
@@ -121,6 +124,7 @@
           variant: blank,
           low_stock_threshold: inventory_low_stock_threshold,
           show_low_stock_quantity: inventory_show_quantity,
+          show_inventory_ring: block.settings.show_inventory_ring,
           show_progress_bar: inventory_show_bar
         %}
       </template>
@@ -149,6 +153,12 @@
       "label": "Show low inventory quantity",
       "default": true,
       "visible_if": "{{ block.settings.low_stock_threshold > 0 }}"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_inventory_ring",
+      "label": "Show inventory ring",
+      "default": true
     },
     {
       "type": "checkbox",
