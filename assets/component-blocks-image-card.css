@@ -117,7 +117,6 @@
 
   .image-card__overlay {
     z-index: 1;
-    background: linear-gradient(180deg, rgb(0 0 0 / 0.08), rgb(0 0 0 / 0.52));
     pointer-events: none;
   }
 
