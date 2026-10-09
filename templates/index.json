@@ -3752,11 +3752,67 @@
         "padding_top_mobile": 56,
         "padding_bottom_mobile": 56
       }
+    },
+    "wofyn_rich_text": {
+      "type": "rich-text",
+      "blocks": {
+        "eyebrow": {
+          "type": "eyebrow",
+          "static": true,
+          "disabled": true,
+          "settings": {
+            "text": ""
+          }
+        },
+        "heading": {
+          "type": "heading",
+          "static": true,
+          "disabled": true,
+          "settings": {
+            "text": ""
+          }
+        },
+        "text": {
+          "type": "text",
+          "static": true,
+          "disabled": true,
+          "settings": {
+            "text": ""
+          }
+        },
+        "editorial": {
+          "type": "editorial-text",
+          "settings": {
+            "text": "<p>Pets are part of our lives. We design thoughtful essentials that make every moment together simpler, softer, and happier.</p>",
+            "size": "xl",
+            "width": "custom",
+            "max_width": 900,
+            "customize_mobile_size": true,
+            "width_mobile": "fill",
+            "enable_scroll_reveal": false
+          }
+        }
+      },
+      "block_order": [
+        "editorial"
+      ],
+      "settings": {
+        "section_width": "page_width",
+        "alignment": "center",
+        "customize_mobile_alignment": false,
+        "color_scheme": "scheme-1",
+        "padding_top": 100,
+        "padding_bottom": 56,
+        "customize_mobile_padding": true,
+        "padding_top_mobile": 80,
+        "padding_bottom_mobile": 56
+      }
     }
   },
   "order": [
     "slideshow",
     "peekoo_icon_text",
+    "wofyn_rich_text",
     "perky_age_collections",
     "peekoo_featured_07",
     "countdown_timer",
