@@ -11,6 +11,10 @@
 {% enddoc %}
 
 {% liquid
+  assign inventory_text_size = inventory_settings.text_size | default: 'sm'
+  unless inventory_text_size == 'xs' or inventory_text_size == 'sm' or inventory_text_size == 'md' or inventory_text_size == 'lg' or inventory_text_size == 'xl' or inventory_text_size == 'xxl'
+    assign inventory_text_size = 'sm'
+  endunless
   assign inventory_state = 'unavailable'
   assign inventory_message = 'products.unavailable' | t
   assign inventory_quantity = blank
@@ -84,10 +88,10 @@
     assign inventory_message = inventory_message | remove: '[count]'
   endif
 %}
-<div class="product-inventory__message{% if show_progress %} product-inventory__message--progress{% endif %}"
+<div class="product-inventory__message"
   style="--inventory-text-color: {{ text_color }}; --inventory-count-color: {{ count_color }}; --inventory-count-weight: {{ count_weight }}; --inventory-bar-color: {{ bar_color }};"
 >
-  <span class="product-inventory__status product-inventory__status--{{ inventory_state }} body-sm">
+  <span class="product-inventory__status product-inventory__status--{{ inventory_state }} body-{{ inventory_text_size }}">
     <span class="product-inventory__copy">{{ inventory_message }}</span>
   </span>
   {% if show_progress and variant.available and inventory_has_count and total_quantity > 0 %}
