@@ -501,17 +501,28 @@ const destroyWithin = (root) => {
   root.querySelectorAll?.(selector).forEach(destroy);
 };
 
-document.addEventListener('shopify:section:load', (event) => initWithin(event.target));
+// Cached module imports must initialize newly rendered editor markup too.
+export { initWithin as initializeThemeModule };
+
+document.addEventListener('shopify:section:load', (event) => {
+  destroyWithin(event.target);
+  initWithin(event.target);
+});
 document.addEventListener('shopify:section:unload', (event) => destroyWithin(event.target));
 document.addEventListener('shopify:block:select', (event) => {
   const root = event.target.closest?.(selector);
+  if (root) init(root);
   const state = root && states.get(root);
   const slide = event.target.closest?.('[data-slideshow-slide]');
   // The page-width loop adds inert clones to the wrapper. Keep editor
   // selection mapped to its logical source slides.
   const slides = state?.carousel.querySelectorAll('.swiper-wrapper > [data-slideshow-slide]');
   const index = slides ? [...slides].indexOf(slide) : -1;
-  if (state && slide && index >= 0) state.swiper.slideTo(state.manualLoop?.originalIndex(index) ?? index);
+  if (!state || !slide || index < 0) return;
+  // Editor selection must not wait on a transition on markup being replaced.
+  if (state.manualLoop) state.swiper.slideTo(state.manualLoop.originalIndex(index), 0);
+  else if (state.swiper.params.loop) state.swiper.slideToLoop(Number(slide.dataset.swiperSlideIndex ?? index), 0);
+  else state.swiper.slideTo(index, 0);
 });
 
 if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', () => initWithin(), { once: true });
