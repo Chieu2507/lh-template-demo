@@ -27,6 +27,21 @@
       assign collection_card_radius = 'var(--radius-rounded)'
   endcase
 
+  assign collection_card_media_radius = 'var(--media-radius, var(--radius-square))'
+  case block.settings.media_corner_radius
+    when 'radius_2', 'radius_4', 'radius_6', 'radius_8', 'radius_12', 'radius_16', 'radius_24', 'radius_32'
+      assign collection_card_media_radius_size = block.settings.media_corner_radius | remove: 'radius_'
+      assign collection_card_media_radius = 'var(--radius-' | append: collection_card_media_radius_size | append: ', ' | append: collection_card_media_radius_size | append: 'px)'
+    when 'square'
+      assign collection_card_media_radius = 'var(--radius-square)'
+    when 'rounded'
+      assign collection_card_media_radius = 'var(--radius-rounded)'
+    when 'full'
+      assign collection_card_media_radius = 'var(--radius-pill)'
+    when 'custom'
+      assign collection_card_media_radius = block.settings.custom_media_corner_radius | default: 0 | at_least: 0 | at_most: 40 | append: 'px'
+  endcase
+
   assign collection_card_shadow = 'none'
   case block.settings.shadow
     when 'small'
@@ -111,6 +126,7 @@
 %}
 
 {% capture collection_card_padding_style %}
+  {% if block.settings.media_corner_radius != blank %}--collection-card-media-radius: {{ collection_card_media_radius }};{% endif %}
   {% if collection_card_gap_desktop != 4 %}--card-content-gap: {{ collection_card_gap_desktop }}px;{% endif %}
   {% if collection_card_gap_mobile != collection_card_gap_desktop %}--card-content-gap-mobile: {{ collection_card_gap_mobile }}px;{% endif %}
   {% if collection_card_padding_top != 16 %}--card-padding-top: {{ collection_card_padding_top }}px;{% endif %}
@@ -187,6 +203,7 @@
     z-index: 0;
     overflow: hidden;
     aspect-ratio: var(--collection-card-ratio, auto);
+    border-radius: var(--collection-card-media-radius, 0px);
   }
 
   .collection-card-kernel__media img,
@@ -287,8 +304,14 @@
           "value": "landscape",
           "label": "t:options.image_ratio.landscape"
         },
-        { "value": "ratio_6_7", "label": "Portrait (6:7)" },
-        { "value": "ratio_7_6", "label": "t:options.image_ratio.ratio_7_6" },
+        {
+          "value": "ratio_6_7",
+          "label": "Portrait (6:7)"
+        },
+        {
+          "value": "ratio_7_6",
+          "label": "t:options.image_ratio.ratio_7_6"
+        },
         {
           "value": "wide",
           "label": "t:options.image_ratio.wide"
@@ -309,6 +332,77 @@
       "step": 0.1,
       "default": 1,
       "visible_if": "{{ block.settings.ratio == 'custom' }}"
+    },
+    {
+      "type": "select",
+      "id": "media_corner_radius",
+      "label": "t:labels.media_corner_radius",
+      "options": [
+        {
+          "value": "inherit",
+          "label": "t:options.radius_preset.inherit"
+        },
+        {
+          "value": "square",
+          "label": "t:options.radius_preset.square"
+        },
+        {
+          "value": "radius_2",
+          "label": "t:options.radius_preset.size_2"
+        },
+        {
+          "value": "radius_4",
+          "label": "t:options.radius_preset.size_4"
+        },
+        {
+          "value": "radius_6",
+          "label": "t:options.radius_preset.size_6"
+        },
+        {
+          "value": "rounded",
+          "label": "t:options.radius_preset.rounded"
+        },
+        {
+          "value": "radius_8",
+          "label": "t:options.radius_preset.size_8"
+        },
+        {
+          "value": "radius_12",
+          "label": "t:options.radius_preset.size_12"
+        },
+        {
+          "value": "radius_16",
+          "label": "t:options.radius_preset.size_16"
+        },
+        {
+          "value": "radius_24",
+          "label": "t:options.radius_preset.size_24"
+        },
+        {
+          "value": "radius_32",
+          "label": "t:options.radius_preset.size_32"
+        },
+        {
+          "value": "full",
+          "label": "t:options.radius_preset.full"
+        },
+        {
+          "value": "custom",
+          "label": "t:options.radius_preset.custom"
+        }
+      ],
+      "default": "square"
+    },
+    {
+      "type": "range",
+      "id": "custom_media_corner_radius",
+      "label": "t:labels.custom_corner_radius",
+      "min": 0,
+      "max": 40,
+      "step": 1,
+      "unit": "px",
+      "default": 0,
+      "visible_if": "{{ block.settings.media_corner_radius == 'custom' }}"
     },
     {
       "type": "header",
