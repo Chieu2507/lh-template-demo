@@ -24,11 +24,14 @@
   assign inventory_font = block.settings.font | default: 'body'
   assign inventory_size = block.settings.font_size | default: 'md'
   assign inventory_tracking = block.settings.letter_spacing | default: 'normal'
+  assign inventory_in_stock_color = 'var(--heading-color)'
   assign inventory_low_color = 'var(--heading-color)'
   case block.settings.low_stock_color
     when 'text'
+      assign inventory_in_stock_color = 'var(--body-color)'
       assign inventory_low_color = 'var(--body-color)'
     when 'custom', nil
+      assign inventory_in_stock_color = block.settings.in_stock_custom_color | default: '#15803d'
       assign inventory_low_color = block.settings.low_stock_custom_color | default: '#cf2828'
   endcase
 
@@ -70,9 +73,9 @@
 %}
 
 {% capture inventory_style %}
-  --product-inventory-in-stock-color: {{ block.settings.in_stock_custom_color | default: '#15803d' }};
+  --product-inventory-in-stock-color: {{ inventory_in_stock_color }};
   --product-inventory-low-color: {{ inventory_low_color }};
-  --product-inventory-low-ring-color: {{ block.settings.low_stock_custom_color | default: '#cf2828' }};
+  --product-inventory-low-ring-color: {{ inventory_low_color }};
   {% if block.settings.progress_bar_color != blank %}--product-inventory-bar-color: {{ block.settings.progress_bar_color }};{% endif %}
   {% if block.settings.gap != blank and block.settings.gap != 16 %}--product-inventory-gap: {{ block.settings.gap | at_least: 0 | at_most: 100 }}px;{% endif %}
   {% if inventory_padding_top != 0 %}--product-inventory-padding-top: {{ inventory_padding_top }}px;{% endif %}
@@ -280,15 +283,9 @@
       "content": "Color"
     },
     {
-      "type": "color",
-      "id": "in_stock_custom_color",
-      "label": "Custom in stock inventory text color",
-      "default": "#15803d"
-    },
-    {
       "type": "select",
       "id": "low_stock_color",
-      "label": "Low inventory text color",
+      "label": "Inventory text color",
       "options": [
         {
           "value": "heading",
@@ -303,8 +300,14 @@
           "label": "Custom"
         }
       ],
-      "default": "custom",
-      "visible_if": "{{ block.settings.low_stock_threshold > 0 }}"
+      "default": "custom"
+    },
+    {
+      "type": "color",
+      "id": "in_stock_custom_color",
+      "label": "Custom in stock inventory text color",
+      "default": "#15803d",
+      "visible_if": "{{ block.settings.low_stock_color == 'custom' }}"
     },
     {
       "type": "color",
