@@ -747,10 +747,14 @@
     "top_padding_label": "Top padding",
     "bottom_padding_label": "Bottom padding",
     "mobile_top_padding_label": "Mobile top padding",
-    "mobile_bottom_padding_label": "Mobile bottom padding"
+    "mobile_bottom_padding_label": "Mobile bottom padding",
+    "media_inset": "Media inset"
   },
   "options": {
-    "blog_meta_display": {"content": "In content", "badge": "Badge on image"},
+    "blog_meta_display": {
+      "content": "In content",
+      "badge": "Badge on image"
+    },
     "product_quantity_style": {
       "default": "Default",
       "custom": "Custom"

@@ -659,6 +659,18 @@
       assign product_card_title_line_limit = settings.product_card_title_line_limit
   endcase
 
+  assign product_card_media_inset = settings.product_card_media_inset | default: 0 | at_least: 0 | at_most: 32
+  assign product_card_media_radius = media_container_radius
+  case settings.product_card_media_corner_radius
+    when 'radius_2', 'radius_4', 'radius_6', 'radius_8', 'radius_12', 'radius_16', 'radius_24', 'radius_32'
+      assign product_card_media_radius = settings.product_card_media_corner_radius | replace: 'radius_', 'var(--radius-' | append: ')'
+    when 'square'
+      assign product_card_media_radius = 'var(--radius-square)'
+    when 'rounded'
+      assign product_card_media_radius = 'var(--radius-rounded)'
+    when 'full'
+      assign product_card_media_radius = 'var(--radius-pill)'
+  endcase
   assign product_card_content_spacing_desktop = settings.product_card_content_spacing_desktop
   if product_card_content_spacing_desktop == blank
     assign product_card_content_spacing_desktop = 20
@@ -1157,6 +1169,8 @@
     --product-card-alignment: {{ product_card_alignment }};
     --product-card-content-alignment: {{ product_card_content_alignment }};
     --product-card-title-line-limit: {{ product_card_title_line_limit }};
+    --product-card-media-inset: {{ product_card_media_inset }}px;
+    --product-card-media-radius: {{ product_card_media_radius }};
     --product-card-content-spacing: {{ product_card_content_spacing_desktop }}px;
     --product-card-content-spacing-mobile: {{ product_card_content_spacing_mobile }}px;
     --product-card-content-gap: {{ product_card_content_gap_desktop }}px;
