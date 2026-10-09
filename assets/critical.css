@@ -2443,6 +2443,11 @@ legend {
 
 .variant-picker__option > .variant-picker__label {
   color: var(--accent-color);
+  font-family: var(--variant-label-font-family, var(--font-body-family));
+  font-style: var(--variant-label-font-style, var(--font-body-style));
+  font-weight: var(--variant-label-font-weight, var(--font-body-weight));
+  font-size: var(--variant-label-font-size, var(--font-body-sm));
+  letter-spacing: var(--variant-label-letter-spacing, normal);
 }
 
 .variant-picker__option > .variant-picker__controls,
