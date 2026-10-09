@@ -150,6 +150,8 @@
   endif
   assign product_list_autoplay_delay = product_list_autoplay_speed | times: 1000
 
+  assign product_list_pagination_visibility = block.settings.pagination_visibility | default: 'both'
+
   assign product_list_pagination_class = 'swiper-pagination--below product-list__pagination product-list__pagination--' | append: product_list_pagination_type
 %}
 
@@ -189,7 +191,7 @@
 {% assign product_list_pagination_style = product_list_pagination_style | strip %}
 
 {% capture product_list_navigation_center_style %}
-  {% if product_list_layout == 'carousel' and product_list_show_pagination and product_list_navigation_position != 'top' and product_list_navigation_position != 'bottom' %}--swiper-navigation-center-offset: calc(({{ product_list_pagination_top_padding_desktop }}px + {{ product_list_pagination_size }}) / 2);{% endif %}
+  {% if product_list_layout == 'carousel' and product_list_show_pagination and product_list_pagination_visibility != 'mobile' and product_list_navigation_position != 'top' and product_list_navigation_position != 'bottom' %}--swiper-navigation-center-offset: calc(({{ product_list_pagination_top_padding_desktop }}px + {{ product_list_pagination_size }}) / 2);{% endif %}
 {% endcapture %}
 {% assign product_list_navigation_center_style = product_list_navigation_center_style | strip %}
 
@@ -236,6 +238,7 @@
   data-resource-limit="{{ product_list_max_products }}"
   data-layout="{{ product_list_layout }}"
   data-navigation-position="{{ product_list_navigation_position }}"
+  data-pagination-visibility="{{ product_list_pagination_visibility }}"
   data-collection-url="{{ product_list_collection.url | escape }}"
   {{ block.shopify_attributes }}
 >
@@ -275,7 +278,7 @@
       items_content: product_list_items_content
     %}
 
-    {% if product_list_navigation_position != blank %}{{ product_list_navigation_markup }}{% endif %}
+    {% if product_list_navigation_position != blank and product_list_navigation_position != 'top' %}{{ product_list_navigation_markup }}{% endif %}
   </div>
 </div>
 
@@ -286,6 +289,13 @@
   }
 
 
+
+  @media (min-width: 768px) {
+    .product-list[data-pagination-visibility='mobile'] .product-list__pagination { display: none; }
+  }
+  @media (max-width: 767.98px) {
+    .product-list[data-pagination-visibility='desktop'] .product-list__pagination { display: none; }
+  }
 
   .product-list__carousel {
     position: relative;
@@ -659,6 +669,27 @@
       "label": "t:labels.show_pagination",
       "default": true,
       "visible_if": "{{ block.settings.layout_type == 'carousel' }}"
+    },
+    {
+      "type": "select",
+      "id": "pagination_visibility",
+      "label": "Show on",
+      "options": [
+        {
+          "value": "both",
+          "label": "Desktop and mobile"
+        },
+        {
+          "value": "desktop",
+          "label": "Desktop"
+        },
+        {
+          "value": "mobile",
+          "label": "Mobile"
+        }
+      ],
+      "default": "both",
+      "visible_if": "{{ block.settings.layout_type == 'carousel' and block.settings.show_pagination_on_desktop }}"
     },
     {
       "type": "select",
