@@ -148,6 +148,13 @@
       "visible_if": "{{ block.settings.show_overlay and block.settings.overlay_style == 'solid' }}"
     },
     {
+      "type": "color_background",
+      "id": "overlay_gradient",
+      "label": "Overlay gradient",
+      "default": "linear-gradient(180deg, rgba(0, 0, 0, 0.08), rgba(0, 0, 0, 0.52))",
+      "visible_if": "{{ block.settings.show_overlay and block.settings.overlay_style == 'gradient' }}"
+    },
+    {
       "type": "header",
       "content": "t:general.size"
     },

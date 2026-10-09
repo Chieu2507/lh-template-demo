@@ -234,7 +234,13 @@
   </div>
 
   {% if block.settings.show_overlay %}
-    <span class="image-card__overlay" {% if block.settings.overlay_style == 'solid' %}style="background:{{ block.settings.overlay_color | default: '#00000033' | escape }};"{% endif %} aria-hidden="true"></span>
+    {% liquid
+      assign image_card_overlay_background = block.settings.overlay_gradient | default: 'linear-gradient(180deg, rgba(0, 0, 0, 0.08), rgba(0, 0, 0, 0.52))'
+      if block.settings.overlay_style == 'solid'
+        assign image_card_overlay_background = block.settings.overlay_color | default: '#00000033'
+      endif
+    %}
+    <span class="image-card__overlay" style="background:{{ image_card_overlay_background | escape }};" aria-hidden="true"></span>
   {% endif %}
 
   {% if image_card_has_link %}
