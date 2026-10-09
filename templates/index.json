@@ -1910,7 +1910,7 @@
         "image",
         "content"
       ],
-      "name": "Flash Sale — Countdown",
+      "name": "Flash Sale \u2014 Countdown",
       "settings": {
         "section_width": "page_width",
         "height": "auto",
@@ -2138,7 +2138,7 @@
                 "quote": {
                   "type": "heading",
                   "settings": {
-                    "text": "<p>We’ve tried many toys, but these are the ones my always come back to. Durable, creative, and so much fun. Even the grandparents love playing with.</p>",
+                    "text": "<p>We\u2019ve tried many toys, but these are the ones my always come back to. Durable, creative, and so much fun. Even the grandparents love playing with.</p>",
                     "heading_size": "lg",
                     "html_tag": "div",
                     "width": "fill",
@@ -3156,7 +3156,7 @@
           "block_order": []
         }
       },
-      "name": "Featured collection — Top Picks",
+      "name": "Featured collection \u2014 Top Picks",
       "settings": {
         "section_width": "page_width",
         "desktop_alignment": "left",
@@ -3345,7 +3345,7 @@
           }
         }
       },
-      "name": "Blog posts — Peekoo",
+      "name": "Blog posts \u2014 Peekoo",
       "settings": {
         "section_width": "page_width",
         "desktop_alignment": "center",
@@ -3693,27 +3693,63 @@
           "settings": {
             "columns_wide": 2,
             "rows_tall": 1,
-            "position_desktop": "top_left",
+            "position_desktop": "center_left",
             "position_mobile": "top_left",
             "corner_radius": "rounded",
             "color_scheme": "scheme-1",
             "padding_top": 32,
             "padding_bottom": 32,
             "padding_left": 32,
-            "padding_right": 32
+            "padding_right": 32,
+            "image": "shopify://shop_images/wofyn-promo-toys.jpg",
+            "gap_desktop": 12,
+            "gap_mobile": 12,
+            "show_overlay": false,
+            "zoom_on_hover": true,
+            "link": "/collections/all",
+            "customize_mobile_padding": true,
+            "padding_top_mobile": 24,
+            "padding_bottom_mobile": 24,
+            "padding_left_mobile": 24,
+            "padding_right_mobile": 24
           },
           "blocks": {
+            "eyebrow": {
+              "type": "eyebrow",
+              "settings": {
+                "text": "<p>DOG ESSENTIALS</p>",
+                "show_icon": false,
+                "show_background": false
+              }
+            },
             "heading": {
               "type": "heading",
               "settings": {
-                "text": "<p>Collection 1</p>",
-                "heading_size": "md",
-                "html_tag": "h3"
+                "text": "<p>Toys That Last.<br>Play That's Safe.</p>",
+                "heading_size": "xl",
+                "html_tag": "h3",
+                "width": "custom",
+                "max_width": 360,
+                "customize_mobile_size": true,
+                "width_mobile": "custom",
+                "max_width_mobile": 260
+              }
+            },
+            "button": {
+              "type": "button",
+              "settings": {
+                "button_label": "Shop Now",
+                "button_link": "/collections/all",
+                "button_style": "primary",
+                "show_icon": false,
+                "padding_top": 16
               }
             }
           },
           "block_order": [
-            "heading"
+            "eyebrow",
+            "heading",
+            "button"
           ]
         },
         "banner_2": {
@@ -3721,26 +3757,51 @@
           "settings": {
             "columns_wide": 1,
             "rows_tall": 1,
-            "position_desktop": "top_left",
-            "position_mobile": "top_left",
+            "position_desktop": "top_center",
+            "position_mobile": "top_center",
             "corner_radius": "rounded",
             "color_scheme": "scheme-1",
             "padding_top": 32,
             "padding_bottom": 32,
             "padding_left": 32,
-            "padding_right": 32
+            "padding_right": 32,
+            "image": "shopify://shop_images/wofyn-promo-pet-joy.jpg",
+            "gap_desktop": 12,
+            "gap_mobile": 12,
+            "show_overlay": false,
+            "zoom_on_hover": true,
+            "link": "/collections/all",
+            "customize_mobile_padding": true,
+            "padding_top_mobile": 24,
+            "padding_bottom_mobile": 24,
+            "padding_left_mobile": 24,
+            "padding_right_mobile": 24
           },
           "blocks": {
+            "eyebrow": {
+              "type": "eyebrow",
+              "settings": {
+                "text": "<p>HUMAN-GRADE</p>",
+                "show_icon": false,
+                "show_background": false
+              }
+            },
             "heading": {
               "type": "heading",
               "settings": {
-                "text": "<p>Collection 2</p>",
-                "heading_size": "md",
-                "html_tag": "h3"
+                "text": "<p>Pure Pet Joy</p>",
+                "heading_size": "xl",
+                "html_tag": "h3",
+                "width": "custom",
+                "max_width": 400,
+                "customize_mobile_size": true,
+                "width_mobile": "custom",
+                "max_width_mobile": 400
               }
             }
           },
           "block_order": [
+            "eyebrow",
             "heading"
           ]
         },
@@ -3749,26 +3810,51 @@
           "settings": {
             "columns_wide": 1,
             "rows_tall": 1,
-            "position_desktop": "top_left",
-            "position_mobile": "top_left",
+            "position_desktop": "center_left",
+            "position_mobile": "center_left",
             "corner_radius": "rounded",
             "color_scheme": "scheme-1",
             "padding_top": 32,
             "padding_bottom": 32,
             "padding_left": 32,
-            "padding_right": 32
+            "padding_right": 32,
+            "image": "shopify://shop_images/wofyn-promo-harnesses.jpg",
+            "gap_desktop": 12,
+            "gap_mobile": 12,
+            "show_overlay": false,
+            "zoom_on_hover": true,
+            "link": "/collections/all",
+            "customize_mobile_padding": true,
+            "padding_top_mobile": 24,
+            "padding_bottom_mobile": 24,
+            "padding_left_mobile": 24,
+            "padding_right_mobile": 24
           },
           "blocks": {
+            "eyebrow": {
+              "type": "eyebrow",
+              "settings": {
+                "text": "<p>ELEVATED STYLE</p>",
+                "show_icon": false,
+                "show_background": false
+              }
+            },
             "heading": {
               "type": "heading",
               "settings": {
-                "text": "<p>Collection 3</p>",
-                "heading_size": "md",
-                "html_tag": "h3"
+                "text": "<p>Harnesses,<br>Leashes</p>",
+                "heading_size": "lg",
+                "html_tag": "h3",
+                "width": "custom",
+                "max_width": 320,
+                "customize_mobile_size": true,
+                "width_mobile": "custom",
+                "max_width_mobile": 240
               }
             }
           },
           "block_order": [
+            "eyebrow",
             "heading"
           ]
         },
@@ -3777,26 +3863,51 @@
           "settings": {
             "columns_wide": 1,
             "rows_tall": 1,
-            "position_desktop": "top_left",
-            "position_mobile": "top_left",
+            "position_desktop": "center_left",
+            "position_mobile": "center_left",
             "corner_radius": "rounded",
             "color_scheme": "scheme-1",
             "padding_top": 32,
             "padding_bottom": 32,
             "padding_left": 32,
-            "padding_right": 32
+            "padding_right": 32,
+            "image": "shopify://shop_images/wofyn-promo-dinner.jpg",
+            "gap_desktop": 12,
+            "gap_mobile": 12,
+            "show_overlay": false,
+            "zoom_on_hover": true,
+            "link": "/collections/all",
+            "customize_mobile_padding": true,
+            "padding_top_mobile": 24,
+            "padding_bottom_mobile": 24,
+            "padding_left_mobile": 24,
+            "padding_right_mobile": 24
           },
           "blocks": {
+            "eyebrow": {
+              "type": "eyebrow",
+              "settings": {
+                "text": "<p>APPROVED</p>",
+                "show_icon": false,
+                "show_background": false
+              }
+            },
             "heading": {
               "type": "heading",
               "settings": {
-                "text": "<p>Collection 4</p>",
-                "heading_size": "md",
-                "html_tag": "h3"
+                "text": "<p>Dinner is<br>Served</p>",
+                "heading_size": "lg",
+                "html_tag": "h3",
+                "width": "custom",
+                "max_width": 320,
+                "customize_mobile_size": true,
+                "width_mobile": "custom",
+                "max_width_mobile": 240
               }
             }
           },
           "block_order": [
+            "eyebrow",
             "heading"
           ]
         },
@@ -3805,26 +3916,51 @@
           "settings": {
             "columns_wide": 1,
             "rows_tall": 1,
-            "position_desktop": "top_left",
-            "position_mobile": "top_left",
+            "position_desktop": "center_left",
+            "position_mobile": "center_left",
             "corner_radius": "rounded",
             "color_scheme": "scheme-1",
             "padding_top": 32,
             "padding_bottom": 32,
             "padding_left": 32,
-            "padding_right": 32
+            "padding_right": 32,
+            "image": "shopify://shop_images/wofyn-promo-enrichment.jpg",
+            "gap_desktop": 12,
+            "gap_mobile": 12,
+            "show_overlay": false,
+            "zoom_on_hover": true,
+            "link": "/collections/all",
+            "customize_mobile_padding": true,
+            "padding_top_mobile": 24,
+            "padding_bottom_mobile": 24,
+            "padding_left_mobile": 24,
+            "padding_right_mobile": 24
           },
           "blocks": {
+            "eyebrow": {
+              "type": "eyebrow",
+              "settings": {
+                "text": "<p>ENRICHMENT</p>",
+                "show_icon": false,
+                "show_background": false
+              }
+            },
             "heading": {
               "type": "heading",
               "settings": {
-                "text": "<p>Collection 5</p>",
-                "heading_size": "md",
-                "html_tag": "h3"
+                "text": "<p>Play<br>Smarter,<br>Not Harder</p>",
+                "heading_size": "lg",
+                "html_tag": "h3",
+                "width": "custom",
+                "max_width": 320,
+                "customize_mobile_size": true,
+                "width_mobile": "custom",
+                "max_width_mobile": 240
               }
             }
           },
           "block_order": [
+            "eyebrow",
             "heading"
           ]
         }
