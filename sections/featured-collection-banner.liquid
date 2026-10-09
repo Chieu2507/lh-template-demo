@@ -114,7 +114,7 @@
           data-banner-height="{{ section.settings.banner_height | default: 'ratio' }}"
           data-overlap-desktop="{% if banner_overlap_desktop > 0 %}true{% else %}false{% endif %}"
           data-overlap-mobile="{% if banner_overlap_mobile > 0 %}true{% else %}false{% endif %}">
-          <div class="featured-collection-banner__banner">{{ banner_media }}</div>
+          <div class="featured-collection-banner__banner{% if section.settings.mobile_banner_full_width %} featured-collection-banner__banner--full-width-mobile{% endif %}">{{ banner_media }}</div>
           <div class="featured-collection-banner__panel">
             {% if section.settings.header_position == 'products' %}{{ banner_header }}{% endif %}
             <div class="featured-collection-banner__products">{{ banner_products }}</div>
@@ -125,7 +125,7 @@
       <div class="featured-collection-banner__content{% if section.settings.header_position == 'products' %} featured-collection-banner__content--header-products{% endif %}">
         {{ banner_header }}
         <div class="featured-collection-banner__layout" data-banner-size="{{ featured_collection_banner_size }}" data-banner-position="{{ featured_collection_banner_position }}" data-banner-height="{{ section.settings.banner_height | default: 'ratio' }}">
-          <div class="featured-collection-banner__banner">{{ banner_media }}</div>
+          <div class="featured-collection-banner__banner{% if section.settings.mobile_banner_full_width %} featured-collection-banner__banner--full-width-mobile{% endif %}">{{ banner_media }}</div>
           <div class="featured-collection-banner__products">{{ banner_products }}</div>
         </div>
       </div>
@@ -287,6 +287,11 @@
   }
 
   @media (max-width: 767.98px) {
+    .featured-collection-banner__banner--full-width-mobile {
+      width: 100vw;
+      max-width: none;
+      margin-inline: calc(50% - 50vw);
+    }
     .featured-collection-banner__content--header-products .featured-collection-banner__banner {
       margin-bottom: calc(var(--featured-collection-banner-gap-mobile, 20px) - var(--featured-collection-banner-header-gap-mobile, 20px));
     }
@@ -468,6 +473,13 @@
         }
       ],
       "default": "ratio"
+    },
+    {
+      "type": "checkbox",
+      "id": "mobile_banner_full_width",
+      "label": "Full width banner on mobile",
+      "info": "Extend the banner to the screen edges while keeping the header and products inside the container.",
+      "default": false
     },
     {
       "type": "checkbox",
