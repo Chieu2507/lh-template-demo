@@ -5305,12 +5305,13 @@
                       "static": true,
                       "settings": {
                         "show_price": false,
-                        "style": "secondary"
+                        "style": "primary"
                       }
                     },
                     "accelerated-checkout": {
                       "type": "product-buy-accelerated-checkout",
                       "static": true,
+                      "disabled": true,
                       "settings": {
                         "style": "primary"
                       }
