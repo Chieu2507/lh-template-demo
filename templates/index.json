@@ -4202,7 +4202,6 @@
             "inventory": {
               "type": "product-inventory",
               "settings": {
-                "display_mode": "status_and_count",
                 "low_stock_threshold": 5,
                 "padding_top": 0,
                 "padding_bottom": 0,
@@ -4212,7 +4211,9 @@
                 "padding_top_mobile": 0,
                 "padding_bottom_mobile": 0,
                 "padding_left_mobile": 0,
-                "padding_right_mobile": 0
+                "padding_right_mobile": 0,
+                "show_low_stock_quantity": true,
+                "show_progress_bar": false
               },
               "blocks": {}
             },
