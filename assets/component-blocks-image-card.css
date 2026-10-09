@@ -230,6 +230,12 @@
     }
 
     .image-card--position-mobile-top_left .image-card__content,
+    .image-card--position-mobile-top_center .image-card__content,
+    .image-card--position-mobile-top_right .image-card__content {
+      --image-card-content-justify: flex-start;
+    }
+
+    .image-card--position-mobile-top_left .image-card__content,
     .image-card--position-mobile-center_left .image-card__content,
     .image-card--position-mobile-bottom_left .image-card__content {
       --flex-align-mobile: start;
