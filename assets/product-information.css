@@ -289,6 +289,8 @@
 }
 
 .product-inventory__ring {
+  position: relative;
+  display: block;
   flex: 0 0 10px;
   width: 10px;
   height: 10px;
@@ -296,30 +298,45 @@
   border-radius: 50%;
   color: inherit;
   background: currentColor;
-  box-shadow: 0 0 0 4px color-mix(in srgb, currentColor 18%, transparent);
-  animation: inventory-stock-rings 2.4s ease-out infinite;
 }
 
 .product-inventory__status--low_stock .product-inventory__ring {
   color: var(--product-inventory-low-ring-color, #cf2828);
 }
 
-@keyframes inventory-stock-rings {
+.product-inventory__ring::before,
+.product-inventory__ring::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  box-sizing: border-box;
+  border: 1px solid currentColor;
+  border-radius: inherit;
+  pointer-events: none;
+  opacity: 0;
+  transform: scale(1);
+  animation: inventory-ring-ripple 2s ease-out infinite;
+}
+
+.product-inventory__ring::after {
+  animation-delay: -1s;
+}
+
+@keyframes inventory-ring-ripple {
   0% {
-    box-shadow: 0 0 0 0 color-mix(in srgb, currentColor 30%, transparent),
-      0 0 0 3px color-mix(in srgb, currentColor 12%, transparent);
+    transform: scale(1);
+    opacity: 0.6;
   }
-  50% {
-    box-shadow: 0 0 0 3px color-mix(in srgb, currentColor 12%, transparent),
-      0 0 0 6px transparent;
-  }
+  80%,
   100% {
-    box-shadow: 0 0 0 6px transparent, 0 0 0 9px transparent;
+    transform: scale(2.8);
+    opacity: 0;
   }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .product-inventory__ring {
+  .product-inventory__ring::before,
+  .product-inventory__ring::after {
     animation: none;
   }
 }
