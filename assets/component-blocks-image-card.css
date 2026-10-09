@@ -229,33 +229,33 @@
       --image-card-content-justify: flex-start;
     }
 
-    .image-card--position-mobile-top_left .image-card__content,
-    .image-card--position-mobile-top_center .image-card__content,
-    .image-card--position-mobile-top_right .image-card__content {
+    .image-card.image-card--position-mobile-top_left .image-card__content,
+    .image-card.image-card--position-mobile-top_center .image-card__content,
+    .image-card.image-card--position-mobile-top_right .image-card__content {
       --image-card-content-justify: flex-start;
     }
 
-    .image-card--position-mobile-top_left .image-card__content,
-    .image-card--position-mobile-center_left .image-card__content,
-    .image-card--position-mobile-bottom_left .image-card__content {
+    .image-card.image-card--position-mobile-top_left .image-card__content,
+    .image-card.image-card--position-mobile-center_left .image-card__content,
+    .image-card.image-card--position-mobile-bottom_left .image-card__content {
       --flex-align-mobile: start;
     }
 
-    .image-card--position-mobile-top_right .image-card__content,
-    .image-card--position-mobile-center_right .image-card__content,
-    .image-card--position-mobile-bottom_right .image-card__content {
+    .image-card.image-card--position-mobile-top_right .image-card__content,
+    .image-card.image-card--position-mobile-center_right .image-card__content,
+    .image-card.image-card--position-mobile-bottom_right .image-card__content {
       --flex-align-mobile: end;
     }
 
-    .image-card--position-mobile-center_left .image-card__content,
-    .image-card--position-mobile-center_center .image-card__content,
-    .image-card--position-mobile-center_right .image-card__content {
+    .image-card.image-card--position-mobile-center_left .image-card__content,
+    .image-card.image-card--position-mobile-center_center .image-card__content,
+    .image-card.image-card--position-mobile-center_right .image-card__content {
       --image-card-content-justify: center;
     }
 
-    .image-card--position-mobile-bottom_left .image-card__content,
-    .image-card--position-mobile-bottom_center .image-card__content,
-    .image-card--position-mobile-bottom_right .image-card__content {
+    .image-card.image-card--position-mobile-bottom_left .image-card__content,
+    .image-card.image-card--position-mobile-bottom_center .image-card__content,
+    .image-card.image-card--position-mobile-bottom_right .image-card__content {
       --image-card-content-justify: flex-end;
     }
   }
