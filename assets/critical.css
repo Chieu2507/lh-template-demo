@@ -537,6 +537,9 @@ svg {
   max-width: 100%;
   height: auto;
   color: inherit;
+}
+
+.icon:not(.icon-renderer--custom) svg {
   stroke: currentcolor;
 }
 
