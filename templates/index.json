@@ -3658,7 +3658,7 @@
         "customize_mobile_padding": true,
         "padding_top_mobile": 64,
         "padding_bottom_mobile": 64,
-        "carousel_mobile": true
+        "carousel_mobile": false
       },
       "blocks": {
         "banner_1": {
@@ -3673,7 +3673,7 @@
             "padding_right": 32,
             "corner_radius": "rounded",
             "columns_wide": 2,
-            "rows_tall": 2
+            "rows_tall": 1
           },
           "blocks": {
             "heading": {

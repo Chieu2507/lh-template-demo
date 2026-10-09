@@ -200,7 +200,20 @@
 {% endcapture %}
 {% assign image_card_content_style = image_card_content_style | strip %}
 
-{% capture image_card_sizes %}(min-width: 768px) {{ image_card_size_desktop }}, {{ image_card_size_mobile }}{% endcapture %}
+{% if promo_card %}
+  {% liquid
+    assign span = block.settings.columns_wide | default: 1 | at_least: 1 | at_most: 4
+    assign desktop_columns = section.settings.columns_desktop | plus: 0 | at_least: 1
+    assign tablet_columns = section.settings.columns_tablet | plus: 0 | at_least: 1
+    assign mobile_columns = section.settings.columns_mobile | plus: 0 | at_least: 1
+    assign desktop_fraction = span | at_most: desktop_columns | times: 100.0 | divided_by: desktop_columns
+    assign tablet_fraction = span | at_most: tablet_columns | times: 100.0 | divided_by: tablet_columns
+    assign mobile_fraction = 100.0 | divided_by: mobile_columns
+    assign image_card_size_desktop = desktop_fraction | append: 'vw'
+    assign image_card_size_mobile = mobile_fraction | append: 'vw'
+  %}
+{% endif %}
+{% capture image_card_sizes %}{% if promo_card %}(min-width: 1150px) {{ image_card_size_desktop }}, (min-width: 768px) {{ tablet_fraction }}vw{% else %}(min-width: 768px) {{ image_card_size_desktop }}{% endif %}, {{ image_card_size_mobile }}{% endcapture %}
 
 <article
   class="{{ image_card_class }}"
