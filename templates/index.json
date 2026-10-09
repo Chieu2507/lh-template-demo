@@ -3749,7 +3749,9 @@
             "max_width": 900,
             "customize_mobile_size": true,
             "width_mobile": "fill",
-            "enable_scroll_reveal": false
+            "enable_scroll_reveal": true,
+            "scroll_speed": "medium",
+            "start_opacity": 30
           }
         }
       },
