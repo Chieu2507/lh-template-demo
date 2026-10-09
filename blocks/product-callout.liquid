@@ -8,6 +8,9 @@
   @example
   {% content_for 'block', type: 'product-callout', id: 'product-callout' %}
 {% enddoc %}
+{% capture effective_overlay %}{% render 'overlay-background', overlay_settings: block.settings, color_id: 'overlay', enabled_id: 'show_overlay', style_id: 'overlay_style' %}{% endcapture %}
+{% assign effective_overlay = effective_overlay | strip %}
+
 
 {% liquid
   assign product_callout_is_carousel = false
@@ -109,7 +112,7 @@
     endunless
   endif
 
-  assign product_callout_overlay = block.settings.overlay
+  assign product_callout_overlay = effective_overlay
   if product_callout_is_carousel
     assign product_callout_overlay = blank
   endif
@@ -234,7 +237,7 @@
   --product-callout-ratio-mobile: {{ product_callout_mobile_ratio }};
   --product-callout-image-position: {{ product_callout_image_position_desktop | escape }};
   --product-callout-image-position-mobile: {{ product_callout_image_position_mobile | escape }};
-  {% if product_callout_overlay != blank %}--product-callout-overlay-color: {% if block.settings.overlay_style == 'gradient' %}linear-gradient(205.7deg, transparent 60.983%, {{ product_callout_overlay | escape }} 80.048%){% else %}{{ product_callout_overlay | escape }}{% endif %};{% endif %}
+  {% if product_callout_overlay != blank %}--product-callout-overlay-color: {{ product_callout_overlay | escape }};{% endif %}
   --product-callout-content-gap: {{ product_callout_gap_desktop }}px;
   --product-callout-content-gap-mobile: {{ product_callout_gap_mobile }}px;
   --product-callout-content-panel-width: {{ product_callout_content_panel_width }}%;
@@ -430,7 +433,52 @@
       "type": "select",
       "id": "corner_radius",
       "label": "t:labels.corner_radius",
-      "options": [{"value": "square", "label": "t:options.radius_preset.square"}, {"value": "radius_2", "label": "t:options.radius_preset.size_2"}, {"value": "radius_4", "label": "t:options.radius_preset.size_4"}, {"value": "radius_6", "label": "t:options.radius_preset.size_6"}, {"value": "rounded", "label": "t:options.radius_preset.rounded"}, {"value": "radius_8", "label": "t:options.radius_preset.size_8"}, {"value": "radius_12", "label": "t:options.radius_preset.size_12"}, {"value": "radius_16", "label": "t:options.radius_preset.size_16"}, {"value": "radius_24", "label": "t:options.radius_preset.size_24"}, {"value": "radius_32", "label": "t:options.radius_preset.size_32"}, {"value": "custom", "label": "t:options.radius_preset.custom"}],
+      "options": [
+        {
+          "value": "square",
+          "label": "t:options.radius_preset.square"
+        },
+        {
+          "value": "radius_2",
+          "label": "t:options.radius_preset.size_2"
+        },
+        {
+          "value": "radius_4",
+          "label": "t:options.radius_preset.size_4"
+        },
+        {
+          "value": "radius_6",
+          "label": "t:options.radius_preset.size_6"
+        },
+        {
+          "value": "rounded",
+          "label": "t:options.radius_preset.rounded"
+        },
+        {
+          "value": "radius_8",
+          "label": "t:options.radius_preset.size_8"
+        },
+        {
+          "value": "radius_12",
+          "label": "t:options.radius_preset.size_12"
+        },
+        {
+          "value": "radius_16",
+          "label": "t:options.radius_preset.size_16"
+        },
+        {
+          "value": "radius_24",
+          "label": "t:options.radius_preset.size_24"
+        },
+        {
+          "value": "radius_32",
+          "label": "t:options.radius_preset.size_32"
+        },
+        {
+          "value": "custom",
+          "label": "t:options.radius_preset.custom"
+        }
+      ],
       "default": "square"
     },
     {
@@ -534,27 +582,42 @@
       "visible_if": "{{ block.settings.mobile_image != blank }}"
     },
     {
+      "type": "checkbox",
+      "id": "show_overlay",
+      "default": true,
+      "label": "t:labels.show_overlay"
+    },
+    {
       "type": "select",
       "id": "overlay_style",
-      "label": "Overlay style",
+      "label": "t:labels.overlay_style",
       "options": [
         {
           "value": "solid",
-          "label": "Solid"
+          "label": "t:options.overlay_style.solid"
         },
         {
           "value": "gradient",
-          "label": "Gradient"
+          "label": "t:options.overlay_style.gradient"
         }
       ],
-      "default": "solid"
+      "default": "solid",
+      "visible_if": "{{ block.settings.show_overlay }}"
     },
     {
       "type": "color",
       "id": "overlay",
-      "label": "t:labels.overlay",
+      "label": "t:labels.overlay_color",
       "alpha": true,
-      "default": "#00000033"
+      "default": "#00000033",
+      "visible_if": "{{ block.settings.show_overlay and block.settings.overlay_style == 'solid' }}"
+    },
+    {
+      "type": "color_background",
+      "id": "overlay_gradient",
+      "default": "linear-gradient(180deg, rgba(0, 0, 0, 0.08), rgba(0, 0, 0, 0.52))",
+      "label": "t:labels.overlay_gradient",
+      "visible_if": "{{ block.settings.show_overlay and block.settings.overlay_style == 'gradient' }}"
     },
     {
       "type": "header",
@@ -1113,7 +1176,8 @@
         "gap_desktop": 12,
         "gap_mobile": 8,
         "hotspot_icon_style": "plus",
-        "hotspot_behavior": "click"
+        "hotspot_behavior": "click",
+        "show_overlay": true
       },
       "blocks": [
         {

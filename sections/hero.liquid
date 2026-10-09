@@ -1,3 +1,5 @@
+{% capture effective_overlay %}{% render 'overlay-background', overlay_settings: section.settings, color_id: 'overlay', enabled_id: 'show_overlay', style_id: 'overlay_style' %}{% endcapture %}
+{% assign effective_overlay = effective_overlay | strip %}
 {% liquid
   assign hero_section_scheme = section.settings.color_scheme | default: 'scheme-1'
   if section.settings.color_scheme.id != blank
@@ -103,7 +105,7 @@
     {% if hero_page_content_padding != 64 %}--hero-content-padding: {{ hero_page_content_padding }}px;{% endif %}
     {% if hero_page_content_padding_mobile != 40 %}--hero-content-padding-mobile: {{ hero_page_content_padding_mobile }}px;{% endif %}
   {% endif %}
-  {% if section.settings.overlay != blank %}--overlay-color: {{ section.settings.overlay }};{% endif %}
+  {% if effective_overlay != blank %}--overlay-color: {{ effective_overlay | default: 'transparent' | escape }};{% endif %}
 {% endcapture %}
 
 <div
@@ -133,7 +135,7 @@
         {{ 'lifestyle-1' | placeholder_svg_tag: 'hero__placeholder' }}
       {% endif %}
       </div>
-      {% if section.settings.overlay != blank %}<div class="overlay" aria-hidden="true"></div>{% endif %}
+      {% if effective_overlay != blank %}<div class="overlay" aria-hidden="true"></div>{% endif %}
       {% if hero_layout == 'stack' and section.settings.link != blank %}<a class="hero__link" href="{{ section.settings.link | escape }}"{% if section.settings.open_in_new_tab %} target="_blank" rel="noopener noreferrer"{% endif %} aria-label="Hero"></a>{% endif %}
     </div>
 
@@ -647,12 +649,30 @@
       "label": "t:labels.media_aspect_ratio",
       "default": "landscape",
       "options": [
-        { "value": "auto", "label": "t:options.image_ratio.auto" },
-        { "value": "square", "label": "t:options.image_ratio.square" },
-        { "value": "portrait", "label": "t:options.image_ratio.portrait" },
-        { "value": "landscape", "label": "t:options.image_ratio.landscape" },
-        { "value": "ratio_7_6", "label": "t:options.image_ratio.ratio_7_6" },
-        { "value": "wide", "label": "t:options.image_ratio.wide" }
+        {
+          "value": "auto",
+          "label": "t:options.image_ratio.auto"
+        },
+        {
+          "value": "square",
+          "label": "t:options.image_ratio.square"
+        },
+        {
+          "value": "portrait",
+          "label": "t:options.image_ratio.portrait"
+        },
+        {
+          "value": "landscape",
+          "label": "t:options.image_ratio.landscape"
+        },
+        {
+          "value": "ratio_7_6",
+          "label": "t:options.image_ratio.ratio_7_6"
+        },
+        {
+          "value": "wide",
+          "label": "t:options.image_ratio.wide"
+        }
       ],
       "info": "t:info.hero_media_aspect_ratio",
       "visible_if": "{{ section.settings.layout == 'stack' }}"
@@ -662,7 +682,52 @@
       "id": "media_corner_radius",
       "label": "t:labels.media_corner_radius",
       "default": "square",
-      "options": [{"value": "square", "label": "t:options.radius_preset.square"}, {"value": "radius_2", "label": "t:options.radius_preset.size_2"}, {"value": "slightly_rounded", "label": "t:options.radius_preset.slightly_rounded"}, {"value": "radius_4", "label": "t:options.radius_preset.size_4"}, {"value": "radius_6", "label": "t:options.radius_preset.size_6"}, {"value": "rounded", "label": "t:options.radius_preset.rounded"}, {"value": "radius_8", "label": "t:options.radius_preset.size_8"}, {"value": "radius_12", "label": "t:options.radius_preset.size_12"}, {"value": "radius_16", "label": "t:options.radius_preset.size_16"}, {"value": "radius_24", "label": "t:options.radius_preset.size_24"}, {"value": "radius_32", "label": "t:options.radius_preset.size_32"}],
+      "options": [
+        {
+          "value": "square",
+          "label": "t:options.radius_preset.square"
+        },
+        {
+          "value": "radius_2",
+          "label": "t:options.radius_preset.size_2"
+        },
+        {
+          "value": "slightly_rounded",
+          "label": "t:options.radius_preset.slightly_rounded"
+        },
+        {
+          "value": "radius_4",
+          "label": "t:options.radius_preset.size_4"
+        },
+        {
+          "value": "radius_6",
+          "label": "t:options.radius_preset.size_6"
+        },
+        {
+          "value": "rounded",
+          "label": "t:options.radius_preset.rounded"
+        },
+        {
+          "value": "radius_8",
+          "label": "t:options.radius_preset.size_8"
+        },
+        {
+          "value": "radius_12",
+          "label": "t:options.radius_preset.size_12"
+        },
+        {
+          "value": "radius_16",
+          "label": "t:options.radius_preset.size_16"
+        },
+        {
+          "value": "radius_24",
+          "label": "t:options.radius_preset.size_24"
+        },
+        {
+          "value": "radius_32",
+          "label": "t:options.radius_preset.size_32"
+        }
+      ],
       "visible_if": "{{ section.settings.layout == 'stack' }}"
     },
     {
@@ -685,11 +750,42 @@
       "visible_if": "{{ section.settings.media_type == 'video' }}"
     },
     {
+      "type": "checkbox",
+      "id": "show_overlay",
+      "default": true,
+      "label": "t:labels.show_overlay"
+    },
+    {
+      "type": "select",
+      "id": "overlay_style",
+      "label": "t:labels.overlay_style",
+      "options": [
+        {
+          "value": "solid",
+          "label": "t:options.overlay_style.solid"
+        },
+        {
+          "value": "gradient",
+          "label": "t:options.overlay_style.gradient"
+        }
+      ],
+      "default": "solid",
+      "visible_if": "{{ section.settings.show_overlay }}"
+    },
+    {
       "type": "color",
       "id": "overlay",
-      "label": "t:labels.overlay",
+      "label": "t:labels.overlay_color",
       "alpha": true,
-      "default": "#0000001A"
+      "default": "#0000001A",
+      "visible_if": "{{ section.settings.show_overlay and section.settings.overlay_style == 'solid' }}"
+    },
+    {
+      "type": "color_background",
+      "id": "overlay_gradient",
+      "default": "linear-gradient(180deg, rgba(0, 0, 0, 0.08), rgba(0, 0, 0, 0.52))",
+      "label": "t:labels.overlay_gradient",
+      "visible_if": "{{ section.settings.show_overlay and section.settings.overlay_style == 'gradient' }}"
     },
     {
       "type": "select",
@@ -1042,7 +1138,8 @@
       "name": "Hero",
       "category": "t:general.banners",
       "settings": {
-        "color_scheme": "scheme-1"
+        "color_scheme": "scheme-1",
+        "show_overlay": true
       },
       "blocks": [
         {
@@ -1138,7 +1235,8 @@
         "padding_bottom": 80,
         "customize_mobile_padding": true,
         "padding_top_mobile": 0,
-        "padding_bottom_mobile": 64
+        "padding_bottom_mobile": 64,
+        "show_overlay": true
       },
       "blocks": [
         {
@@ -1160,7 +1258,8 @@
             "padding_top_mobile": 40,
             "padding_bottom_mobile": 0,
             "padding_left_mobile": 0,
-            "padding_right_mobile": 0
+            "padding_right_mobile": 0,
+            "show_overlay": false
           },
           "blocks": [
             {
@@ -1175,7 +1274,8 @@
                 "alignment_mobile": "center",
                 "gap_desktop": 32,
                 "gap_mobile": 32,
-                "backdrop_blur": 0
+                "backdrop_blur": 0,
+                "show_overlay": false
               },
               "blocks": [
                 {
@@ -1190,7 +1290,8 @@
                     "alignment_mobile": "center",
                     "gap_desktop": 16,
                     "gap_mobile": 16,
-                    "backdrop_blur": 0
+                    "backdrop_blur": 0,
+                    "show_overlay": false
                   },
                   "blocks": [
                     {

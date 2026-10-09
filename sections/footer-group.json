@@ -28,7 +28,8 @@
             "alignment_mobile": "left",
             "gap_desktop": 100,
             "gap_mobile": 40,
-            "appearance_type": "inherit"
+            "appearance_type": "inherit",
+            "show_overlay": false
           },
           "blocks": {
             "footer-brand": {
@@ -48,7 +49,8 @@
                 "appearance_type": "inherit",
                 "width_custom": 37,
                 "limit_width": true,
-                "max_width": 520
+                "max_width": 520,
+                "show_overlay": false
               },
               "blocks": {
                 "footer-logo": {
@@ -70,7 +72,8 @@
                     "height": "fit",
                     "gap_desktop": 8,
                     "gap_mobile": 8,
-                    "alignment": "left"
+                    "alignment": "left",
+                    "show_overlay": false
                   },
                   "blocks": {
                     "footer-description": {
@@ -98,7 +101,8 @@
                         "gap_mobile": 12,
                         "appearance_type": "inherit",
                         "padding_top": 6,
-                        "padding_bottom": 6
+                        "padding_bottom": 6,
+                        "show_overlay": false
                       },
                       "blocks": {
                         "footer-mail": {
@@ -115,7 +119,8 @@
                             "alignment_mobile": "left",
                             "gap_desktop": 12,
                             "gap_mobile": 12,
-                            "appearance_type": "inherit"
+                            "appearance_type": "inherit",
+                            "show_overlay": false
                           },
                           "blocks": {
                             "mail-icon": {
@@ -156,7 +161,8 @@
                             "alignment_mobile": "left",
                             "gap_desktop": 12,
                             "gap_mobile": 12,
-                            "appearance_type": "inherit"
+                            "appearance_type": "inherit",
+                            "show_overlay": false
                           },
                           "blocks": {
                             "phone-icon": {
@@ -209,7 +215,8 @@
                     "alignment_mobile": "left",
                     "gap_desktop": 16,
                     "gap_mobile": 16,
-                    "appearance_type": "inherit"
+                    "appearance_type": "inherit",
+                    "show_overlay": false
                   },
                   "blocks": {
                     "share-label": {
@@ -236,7 +243,8 @@
                         "alignment_mobile": "left",
                         "gap_desktop": 6,
                         "gap_mobile": 6,
-                        "appearance_type": "inherit"
+                        "appearance_type": "inherit",
+                        "show_overlay": false
                       },
                       "blocks": {
                         "instagram": {
@@ -260,7 +268,8 @@
                             "padding_bottom": 8,
                             "padding_left": 8,
                             "padding_right": 8,
-                            "color_scheme": "scheme-2"
+                            "color_scheme": "scheme-2",
+                            "show_overlay": false
                           },
                           "blocks": {
                             "instagram-icon": {
@@ -299,7 +308,8 @@
                             "padding_bottom": 8,
                             "padding_left": 8,
                             "padding_right": 8,
-                            "color_scheme": "scheme-2"
+                            "color_scheme": "scheme-2",
+                            "show_overlay": false
                           },
                           "blocks": {
                             "pinterest-icon": {
@@ -338,7 +348,8 @@
                             "padding_bottom": 8,
                             "padding_left": 8,
                             "padding_right": 8,
-                            "color_scheme": "scheme-2"
+                            "color_scheme": "scheme-2",
+                            "show_overlay": false
                           },
                           "blocks": {
                             "twitter-icon": {
@@ -377,7 +388,8 @@
                             "padding_bottom": 8,
                             "padding_left": 8,
                             "padding_right": 8,
-                            "color_scheme": "scheme-2"
+                            "color_scheme": "scheme-2",
+                            "show_overlay": false
                           },
                           "blocks": {
                             "facebook-icon": {
@@ -433,7 +445,8 @@
                 "appearance_type": "inherit",
                 "padding_left": 28,
                 "customize_mobile_padding": true,
-                "padding_left_mobile": 0
+                "padding_left_mobile": 0,
+                "show_overlay": false
               },
               "blocks": {
                 "shop": {
@@ -450,7 +463,8 @@
                     "alignment_mobile": "left",
                     "gap_desktop": 0,
                     "gap_mobile": 16,
-                    "appearance_type": "inherit"
+                    "appearance_type": "inherit",
+                    "show_overlay": false
                   },
                   "blocks": {
                     "shop-menu": {
@@ -524,7 +538,8 @@
                     "alignment_mobile": "left",
                     "gap_desktop": 0,
                     "gap_mobile": 16,
-                    "appearance_type": "inherit"
+                    "appearance_type": "inherit",
+                    "show_overlay": false
                   },
                   "blocks": {
                     "information-menu": {
@@ -598,7 +613,8 @@
                     "alignment_mobile": "left",
                     "gap_desktop": 0,
                     "gap_mobile": 16,
-                    "appearance_type": "inherit"
+                    "appearance_type": "inherit",
+                    "show_overlay": false
                   },
                   "blocks": {
                     "service-menu": {
@@ -685,7 +701,8 @@
             "alignment_mobile": "left",
             "gap_desktop": 16,
             "gap_mobile": 16,
-            "appearance_type": "inherit"
+            "appearance_type": "inherit",
+            "show_overlay": false
           },
           "blocks": {
             "footer-divider": {
@@ -712,7 +729,8 @@
                 "alignment_mobile": "left",
                 "gap_desktop": 24,
                 "gap_mobile": 24,
-                "appearance_type": "inherit"
+                "appearance_type": "inherit",
+                "show_overlay": false
               },
               "blocks": {
                 "credits-left": {
@@ -729,7 +747,8 @@
                     "alignment_mobile": "left",
                     "gap_desktop": 32,
                     "gap_mobile": 16,
-                    "appearance_type": "inherit"
+                    "appearance_type": "inherit",
+                    "show_overlay": false
                   },
                   "blocks": {
                     "copyright": {
@@ -770,7 +789,8 @@
                     "alignment_mobile": "left",
                     "gap_desktop": 24,
                     "gap_mobile": 16,
-                    "appearance_type": "inherit"
+                    "appearance_type": "inherit",
+                    "show_overlay": false
                   },
                   "blocks": {
                     "policies": {
@@ -787,7 +807,8 @@
                         "alignment_mobile": "left",
                         "gap_desktop": 16,
                         "gap_mobile": 12,
-                        "appearance_type": "inherit"
+                        "appearance_type": "inherit",
+                        "show_overlay": false
                       },
                       "blocks": {
                         "privacy": {

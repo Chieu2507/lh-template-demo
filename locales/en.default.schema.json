@@ -1092,7 +1092,7 @@
       "size_16": "Extra rounded",
       "size_24": "Highly rounded",
       "size_32": "Ultra rounded"
-},
+    },
     "countdown_style": {
       "with_labels": "With labels",
       "numbers_only": "Numbers only",
