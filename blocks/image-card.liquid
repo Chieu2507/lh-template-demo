@@ -2,22 +2,20 @@
   Renders a media-led card with a responsive background and controlled content blocks.
 
   The block owns its media, link, size, content position, gap, appearance and
-  padding. Parent article mode reads media and URL from `closest.article`.
+  padding.
   Child blocks own their content and inherit alignment from the card.
 
   @example
   {% content_for 'block', type: 'image-card', id: 'image-card' %}
 {% enddoc %}
+{% capture effective_overlay %}{% render 'overlay-background', overlay_settings: block.settings, color_id: 'overlay_color', enabled_id: 'show_overlay', style_id: 'overlay_style' %}{% endcapture %}
+{% assign effective_overlay = effective_overlay | strip %}
+
 
 {% liquid
   assign image_card_media_type = block.settings.background_type | default: 'image'
   assign image_card_image = block.settings.image
   assign image_card_link = block.settings.link
-  if block.settings.media_source == 'article'
-    assign image_card_image = closest.article.image
-    assign image_card_link = closest.article.url
-    assign image_card_media_type = 'image'
-  endif
 
   assign image_card_width_desktop_mode = block.settings.width_desktop | default: 'fill'
   assign image_card_width_desktop = '100%'
@@ -125,9 +123,6 @@
 
   assign image_card_media_alt = image_card_image.alt | default: block.settings.mobile_image.alt | default: block.settings.video.preview_image.alt | default: block.settings.mobile_video.preview_image.alt
 
-  if block.settings.media_source == 'article'
-    assign image_card_media_alt = closest.article.title | default: image_card_media_alt
-  endif
 
   assign image_card_link_label = 'accessibility.image_card_link' | t
   if image_card_media_alt != blank
@@ -142,9 +137,6 @@
   assign image_card_class = 'image-card'
   if block.settings.zoom_on_hover
     assign image_card_class = image_card_class | append: ' image-card--zoom'
-  endif
-  if section.settings.card_layout == 'carousel'
-    assign image_card_class = image_card_class | append: ' swiper-slide'
   endif
   if image_card_has_link
     assign image_card_class = image_card_class | append: ' image-card--linked'
@@ -226,7 +218,7 @@
   </div>
 
   {% if block.settings.show_overlay %}
-    <span class="image-card__overlay" {% if block.settings.overlay_style == 'solid' %}style="background:rgb(0 0 0 / {{ block.settings.overlay_opacity | divided_by: 100.0 }});"{% endif %} aria-hidden="true"></span>
+    <span class="image-card__overlay" style="background:{{ effective_overlay | default: 'transparent' | escape }};" aria-hidden="true"></span>
   {% endif %}
 
   {% if image_card_has_link %}
@@ -289,30 +281,13 @@
   ],
   "settings": [
     {
-      "type": "select",
-      "id": "media_source",
-      "label": "Media source",
-      "options": [
-        {
-          "value": "manual",
-          "label": "Selected media"
-        },
-        {
-          "value": "article",
-          "label": "Parent article"
-        }
-      ],
-      "default": "manual"
-    },
-    {
       "type": "header",
       "content": "t:general.content"
     },
     {
       "type": "url",
       "id": "link",
-      "label": "t:labels.link",
-      "visible_if": "{{ block.settings.media_source == 'manual' }}"
+      "label": "t:labels.link"
     },
     {
       "type": "checkbox",
@@ -338,32 +313,31 @@
           "label": "t:general.video"
         }
       ],
-      "default": "image",
-      "visible_if": "{{ block.settings.media_source == 'manual' }}"
+      "default": "image"
     },
     {
       "type": "image_picker",
       "id": "image",
       "label": "t:labels.image",
-      "visible_if": "{{ block.settings.media_source == 'manual' and block.settings.background_type == 'image' }}"
+      "visible_if": "{{ block.settings.background_type == 'image' }}"
     },
     {
       "type": "image_picker",
       "id": "mobile_image",
       "label": "t:labels.mobile_image",
-      "visible_if": "{{ block.settings.media_source == 'manual' and block.settings.background_type == 'image' }}"
+      "visible_if": "{{ block.settings.background_type == 'image' }}"
     },
     {
       "type": "video",
       "id": "video",
       "label": "t:labels.video",
-      "visible_if": "{{ block.settings.media_source == 'manual' and block.settings.background_type == 'video' }}"
+      "visible_if": "{{ block.settings.background_type == 'video' }}"
     },
     {
       "type": "video",
       "id": "mobile_video",
       "label": "t:labels.mobile_video",
-      "visible_if": "{{ block.settings.media_source == 'manual' and block.settings.background_type == 'video' }}"
+      "visible_if": "{{ block.settings.background_type == 'video' }}"
     },
     {
       "type": "checkbox",
@@ -380,30 +354,34 @@
     {
       "type": "select",
       "id": "overlay_style",
-      "label": "Overlay style",
+      "label": "t:labels.overlay_style",
       "options": [
         {
-          "value": "gradient",
-          "label": "Gradient"
+          "value": "solid",
+          "label": "t:options.overlay_style.solid"
         },
         {
-          "value": "solid",
-          "label": "Solid"
+          "value": "gradient",
+          "label": "t:options.overlay_style.gradient"
         }
       ],
       "default": "gradient",
       "visible_if": "{{ block.settings.show_overlay }}"
     },
     {
-      "type": "range",
-      "id": "overlay_opacity",
-      "label": "Overlay opacity",
-      "min": 0,
-      "max": 100,
-      "step": 1,
-      "unit": "%",
-      "default": 20,
+      "type": "color",
+      "id": "overlay_color",
+      "default": "#0000000A",
+      "alpha": true,
+      "label": "t:labels.overlay_color",
       "visible_if": "{{ block.settings.show_overlay and block.settings.overlay_style == 'solid' }}"
+    },
+    {
+      "type": "color_background",
+      "id": "overlay_gradient",
+      "default": "linear-gradient(180deg, rgba(0, 0, 0, 0.08), rgba(0, 0, 0, 0.52))",
+      "label": "t:labels.overlay_gradient",
+      "visible_if": "{{ block.settings.show_overlay and block.settings.overlay_style == 'gradient' }}"
     },
     {
       "type": "header",
@@ -741,7 +719,56 @@
       "type": "select",
       "id": "corner_radius",
       "label": "t:labels.corner_radius",
-      "options": [{"value": "square", "label": "t:options.radius_preset.square"}, {"value": "radius_2", "label": "t:options.radius_preset.size_2"}, {"value": "slightly_rounded", "label": "t:options.radius_preset.slightly_rounded"}, {"value": "radius_4", "label": "t:options.radius_preset.size_4"}, {"value": "radius_6", "label": "t:options.radius_preset.size_6"}, {"value": "rounded", "label": "t:options.radius_preset.rounded"}, {"value": "radius_8", "label": "t:options.radius_preset.size_8"}, {"value": "radius_12", "label": "t:options.radius_preset.size_12"}, {"value": "radius_16", "label": "t:options.radius_preset.size_16"}, {"value": "radius_24", "label": "t:options.radius_preset.size_24"}, {"value": "radius_32", "label": "t:options.radius_preset.size_32"}, {"value": "pill", "label": "t:options.radius_preset.pill"}],
+      "options": [
+        {
+          "value": "square",
+          "label": "t:options.radius_preset.square"
+        },
+        {
+          "value": "radius_2",
+          "label": "t:options.radius_preset.size_2"
+        },
+        {
+          "value": "slightly_rounded",
+          "label": "t:options.radius_preset.slightly_rounded"
+        },
+        {
+          "value": "radius_4",
+          "label": "t:options.radius_preset.size_4"
+        },
+        {
+          "value": "radius_6",
+          "label": "t:options.radius_preset.size_6"
+        },
+        {
+          "value": "rounded",
+          "label": "t:options.radius_preset.rounded"
+        },
+        {
+          "value": "radius_8",
+          "label": "t:options.radius_preset.size_8"
+        },
+        {
+          "value": "radius_12",
+          "label": "t:options.radius_preset.size_12"
+        },
+        {
+          "value": "radius_16",
+          "label": "t:options.radius_preset.size_16"
+        },
+        {
+          "value": "radius_24",
+          "label": "t:options.radius_preset.size_24"
+        },
+        {
+          "value": "radius_32",
+          "label": "t:options.radius_preset.size_32"
+        },
+        {
+          "value": "pill",
+          "label": "t:options.radius_preset.pill"
+        }
+      ],
       "default": "square"
     },
     {
@@ -857,7 +884,8 @@
         "padding_top": 32,
         "padding_bottom": 32,
         "padding_left": 32,
-        "padding_right": 32
+        "padding_right": 32,
+        "overlay_color": "#0000000A"
       },
       "blocks": [
         {
