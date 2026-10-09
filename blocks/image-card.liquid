@@ -2,7 +2,7 @@
   Renders a media-led card with a responsive background and controlled content blocks.
 
   The block owns its media, link, size, content position, gap, appearance and
-  padding.
+  padding. Parent article mode reads media and URL from `closest.article`.
   Child blocks own their content and inherit alignment from the card.
 
   @example
@@ -13,6 +13,11 @@
   assign image_card_media_type = block.settings.background_type | default: 'image'
   assign image_card_image = block.settings.image
   assign image_card_link = block.settings.link
+  if block.settings.media_source == 'article'
+    assign image_card_image = closest.article.image
+    assign image_card_link = closest.article.url
+    assign image_card_media_type = 'image'
+  endif
 
   assign image_card_width_desktop_mode = block.settings.width_desktop | default: 'fill'
   assign image_card_width_desktop = '100%'
@@ -120,6 +125,10 @@
 
   assign image_card_media_alt = image_card_image.alt | default: block.settings.mobile_image.alt | default: block.settings.video.preview_image.alt | default: block.settings.mobile_video.preview_image.alt
 
+  if block.settings.media_source == 'article'
+    assign image_card_media_alt = closest.article.title | default: image_card_media_alt
+  endif
+
   assign image_card_link_label = 'accessibility.image_card_link' | t
   if image_card_media_alt != blank
     assign image_card_link_label = image_card_media_alt
@@ -200,7 +209,20 @@
 {% endcapture %}
 {% assign image_card_content_style = image_card_content_style | strip %}
 
-{% capture image_card_sizes %}(min-width: 768px) {{ image_card_size_desktop }}, {{ image_card_size_mobile }}{% endcapture %}
+{% if section.settings.columns_desktop != blank and section.settings.height_desktop != blank %}
+  {% liquid
+    assign promo_span = block.settings.columns_wide | default: 1 | at_least: 1 | at_most: 4
+    assign promo_desktop_columns = section.settings.columns_desktop | plus: 0 | at_least: 1
+    assign promo_tablet_columns = section.settings.columns_tablet | plus: 0 | at_least: 1
+    assign promo_mobile_columns = section.settings.columns_mobile | plus: 0 | at_least: 1
+    assign promo_desktop_fraction = promo_span | at_most: promo_desktop_columns | times: 100.0 | divided_by: promo_desktop_columns
+    assign promo_tablet_fraction = promo_span | at_most: promo_tablet_columns | times: 100.0 | divided_by: promo_tablet_columns
+    assign promo_mobile_fraction = 100.0 | divided_by: promo_mobile_columns
+    assign image_card_size_desktop = promo_desktop_fraction | append: 'vw'
+    assign image_card_size_mobile = promo_mobile_fraction | append: 'vw'
+  %}
+{% endif %}
+{% capture image_card_sizes %}{% if promo_tablet_fraction %}(min-width: 1150px) {{ image_card_size_desktop }}, (min-width: 768px) {{ promo_tablet_fraction }}vw{% else %}(min-width: 768px) {{ image_card_size_desktop }}{% endif %}, {{ image_card_size_mobile }}{% endcapture %}
 
 <article
   class="{{ image_card_class }}"
