@@ -1,3 +1,5 @@
+{% capture effective_overlay %}{% render 'overlay-background', overlay_settings: section.settings, color_id: 'overlay_color', enabled_id: 'show_overlay', style_id: 'overlay_style' %}{% endcapture %}
+{% assign effective_overlay = effective_overlay | strip %}
 {% liquid
   assign split_section_width = section.settings.section_width | default: 'full_width'
   unless split_section_width == 'page_width' or split_section_width == 'full_width' or split_section_width == 'full_width_no_padding'
@@ -150,7 +152,7 @@
   --split-banner-padding-top: {{ split_section_padding_top }}px;
   --split-height: {% case section.settings.height %}{% when 'full_screen' %}100svh{% when 'custom' %}{{ section.settings.custom_height | default: 100 }}svh{% else %}auto{% endcase %};
   {% if section.settings.background_color != blank %}--split-background: {{ section.settings.background_color }};{% endif %}
-  {% if section.settings.overlay_color != blank %}--split-overlay: {{ section.settings.overlay_color }};{% endif %}
+  {% if effective_overlay != blank %}--split-overlay: {{ effective_overlay | default: 'transparent' | escape }};{% endif %}
   --split-banner-padding-bottom: {{ split_section_padding_bottom }}px;
   {% if section.settings.customize_mobile_padding %}
     --split-banner-padding-top-mobile: {{ split_section_padding_top_mobile }}px;
@@ -195,7 +197,7 @@
 >
   {% if section.settings.background_media != 'none' and section.settings.background_media != blank %}
     {% render 'media-background', media_type: section.settings.background_media, image: section.settings.background_image, mobile_image: section.settings.mobile_background_image, video: section.settings.background_video, mobile_video: section.settings.mobile_background_video, aria_hidden: true, sizes: '100vw' %}
-    {% if section.settings.overlay_color != blank %}<div class="split-banner__overlay" aria-hidden="true"></div>{% endif %}
+    {% if effective_overlay != blank %}<div class="split-banner__overlay" aria-hidden="true"></div>{% endif %}
   {% endif %}
   <div class="container {{ split_section_container_width }} split-banner__container">
     <div
@@ -622,11 +624,42 @@
       "visible_if": "{{ section.settings.background_media == 'video' }}"
     },
     {
+      "type": "checkbox",
+      "id": "show_overlay",
+      "label": "t:labels.show_overlay",
+      "default": true,
+      "visible_if": "{{ section.settings.background_media != 'none' }}"
+    },
+    {
+      "type": "select",
+      "id": "overlay_style",
+      "label": "t:labels.overlay_style",
+      "options": [
+        {
+          "value": "solid",
+          "label": "t:options.overlay_style.solid"
+        },
+        {
+          "value": "gradient",
+          "label": "t:options.overlay_style.gradient"
+        }
+      ],
+      "default": "solid",
+      "visible_if": "{{ section.settings.background_media != 'none' and section.settings.show_overlay }}"
+    },
+    {
       "type": "color",
       "alpha": true,
       "id": "overlay_color",
       "label": "t:labels.overlay_color",
-      "visible_if": "{{ section.settings.background_media != 'none' }}"
+      "visible_if": "{{ section.settings.background_media != 'none' and section.settings.show_overlay and section.settings.overlay_style == 'solid' }}"
+    },
+    {
+      "type": "color_background",
+      "id": "overlay_gradient",
+      "default": "linear-gradient(180deg, rgba(0, 0, 0, 0.08), rgba(0, 0, 0, 0.52))",
+      "label": "t:labels.overlay_gradient",
+      "visible_if": "{{ section.settings.background_media != 'none' and section.settings.show_overlay and section.settings.overlay_style == 'gradient' }}"
     },
     {
       "type": "range",

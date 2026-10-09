@@ -1,3 +1,5 @@
+{% capture effective_overlay %}{% render 'overlay-background', overlay_settings: block.settings, color_id: 'overlay', enabled_id: 'show_overlay', style_id: 'overlay_style' %}{% endcapture %}
+{% assign effective_overlay = effective_overlay | strip %}
 {% doc %}
   Decorative image slot for Featured collection: background (custom).
   Height/placement belong to this block; the section maps them to its spacer.
@@ -13,7 +15,7 @@
     --collection-background-overlap-mobile: {% if block.settings.placement_mobile == 'below' %}{{ block.settings.overlap_mobile | default: 0 }}{% else %}0{% endif %}px;
   }
 {% endstyle %}
-<div class="collection-background" aria-hidden="true"{% if block.settings.overlay != blank %} style="--collection-background-overlay: {{ block.settings.overlay }};"{% endif %} {{ block.shopify_attributes }}>
+<div class="collection-background" aria-hidden="true"{% if effective_overlay != blank %} style="--collection-background-overlay: {{ effective_overlay | default: 'transparent' | escape }};"{% endif %} {{ block.shopify_attributes }}>
   {% render 'image', image: block.settings.image, mobile_image: block.settings.mobile_image, class: 'collection-background__image', width: 2400, widths: '750, 1100, 1500, 2000, 2400', sizes: '100vw', placeholder: 'lifestyle-1' %}
 </div>
 {% stylesheet %}
@@ -257,11 +259,42 @@
       "content": "t:general.appearance"
     },
     {
+      "type": "checkbox",
+      "id": "show_overlay",
+      "label": "t:labels.show_overlay",
+      "default": true
+    },
+    {
+      "type": "select",
+      "id": "overlay_style",
+      "label": "t:labels.overlay_style",
+      "options": [
+        {
+          "value": "solid",
+          "label": "t:options.overlay_style.solid"
+        },
+        {
+          "value": "gradient",
+          "label": "t:options.overlay_style.gradient"
+        }
+      ],
+      "default": "solid",
+      "visible_if": "{{ block.settings.show_overlay }}"
+    },
+    {
       "type": "color",
       "id": "overlay",
-      "label": "t:labels.overlay",
+      "label": "t:labels.overlay_color",
       "alpha": true,
-      "default": "#00000033"
+      "default": "#00000033",
+      "visible_if": "{{ block.settings.show_overlay and block.settings.overlay_style == 'solid' }}"
+    },
+    {
+      "type": "color_background",
+      "id": "overlay_gradient",
+      "default": "linear-gradient(180deg, rgba(0, 0, 0, 0.08), rgba(0, 0, 0, 0.52))",
+      "label": "t:labels.overlay_gradient",
+      "visible_if": "{{ block.settings.show_overlay and block.settings.overlay_style == 'gradient' }}"
     }
   ]
 }

@@ -1,3 +1,5 @@
+{% capture effective_overlay %}{% render 'overlay-background', overlay_settings: media_card_block.settings, color_id: 'overlay_color', enabled_id: 'show_overlay', style_id: 'overlay_style' %}{% endcapture %}
+{% assign effective_overlay = effective_overlay | strip %}
 {% doc %}
   Shared media-card renderer for the Image card and Featured collection: Banner blocks.
 
@@ -298,7 +300,7 @@
   </div>
 
   {% if media_card_block.settings.show_overlay %}
-    <span class="image-card__overlay" aria-hidden="true"></span>
+    <span class="image-card__overlay" style="background:{{ effective_overlay | default: 'transparent' | escape }};" aria-hidden="true"></span>
   {% endif %}
 
   {% if image_card_has_link %}
@@ -440,7 +442,6 @@
 
   .image-card__overlay {
     z-index: 1;
-    background: linear-gradient(180deg, rgb(0 0 0 / 0.08), rgb(0 0 0 / 0.52));
     pointer-events: none;
   }
 
