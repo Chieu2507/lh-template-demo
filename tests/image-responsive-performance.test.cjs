@@ -82,3 +82,16 @@ test('optional card thumbnail preserves variant-specific images and the original
     if(selected===main) assert.match(html,/\|hover\.webp/);
   }
 });
+
+test('auto image height fills only the requested device and fixed ratios ignore saved Fill', async () => {
+  for (const [desktopRatio, mobileRatio, expectedDesktop, expectedMobile] of [
+    ['auto','auto',true,false], ['square','auto',false,false], ['auto','custom',true,false]
+  ]) {
+    const html = await engine.parseAndRender(source, {section:{index:5},block:{settings:{image,image_ratio_desktop:desktopRatio,image_ratio_mobile:mobileRatio,height_desktop:'fill',height_mobile:'auto'}}});
+    assert.equal(/image-block--height-fill(?:\s|\")/.test(html), expectedDesktop);
+    assert.equal(html.includes('image-block--height-fill-mobile'), expectedMobile);
+  }
+  const mobile = await engine.parseAndRender(source, {section:{index:5},block:{settings:{image,image_ratio_desktop:'auto',image_ratio_mobile:'auto',height_desktop:'auto',height_mobile:'fill'}}});
+  assert.match(mobile,/image-block--height-fill-mobile/);
+  assert.match(mobile,/--image-block-image-height: auto/);
+});
