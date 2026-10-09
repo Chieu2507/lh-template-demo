@@ -23,8 +23,9 @@
     {% if section.settings.carousel_mobile %}
       {% capture attributes %}data-product-carousel data-layout="carousel" data-swiper-mobile-only="true" data-swiper-columns-mobile="{{ section.settings.columns_mobile }}" data-swiper-gap-mobile="{{ section.settings.gap_mobile }}"{% endcapture %}
       {% capture pagination_style %}
-        --swiper-pagination-spacing-mobile:{{ section.settings.pagination_padding_mobile | default: 40 }}px;
-        {% if section.settings.pagination_type == 'progress_bar' and section.settings.pagination_limit_width %}--swiper-pagination-width:{{ section.settings.pagination_max_width | default: 260 }}px;{% endif %}
+        {% if section.settings.pagination_thickness == 'thin' %}--swiper-pagination-progressbar-size:2px;{% endif %}
+        --swiper-pagination-spacing-mobile:{{ section.settings.pagination_padding_mobile | default: 24 }}px;
+        {% if section.settings.pagination_type == 'progress_bar' and section.settings.pagination_limit_width %}--swiper-pagination-width:min(100%, {{ section.settings.pagination_max_width | default: 260 }}px);{% endif %}
       {% endcapture %}
       {% capture pagination %}{% render 'swiper-pagination', show: section.settings.show_pagination_on_mobile, type: section.settings.pagination_type, style: pagination_style %}{% endcapture %}
       {% render 'swiper-carousel', content: cards, root_class: 'promo-grid__carousel', wrapper_class: 'promo-grid__items', root_attributes: attributes, pagination: pagination, show_next_slide_preview_on_mobile: section.settings.show_next_slide_preview_on_mobile %}
@@ -152,59 +153,6 @@
       "visible_if": "{{ section.settings.carousel_mobile }}"
     },
     {
-      "type": "checkbox",
-      "id": "show_pagination_on_mobile",
-      "label": "t:labels.show_pagination_on_mobile",
-      "default": true,
-      "visible_if": "{{ section.settings.carousel_mobile }}"
-    },
-    {
-      "type": "select",
-      "id": "pagination_type",
-      "label": "t:labels.pagination_type",
-      "options": [
-        {
-          "value": "progress_bar",
-          "label": "t:options.collection_pagination.progress_bar"
-        },
-        {
-          "value": "bullets",
-          "label": "t:options.collection_pagination.bullets"
-        }
-      ],
-      "default": "progress_bar",
-      "visible_if": "{{ section.settings.carousel_mobile and section.settings.show_pagination_on_mobile }}"
-    },
-    {
-      "type": "range",
-      "id": "pagination_padding_mobile",
-      "label": "t:labels.pagination_mobile_top_padding",
-      "min": 0,
-      "max": 100,
-      "step": 1,
-      "unit": "px",
-      "default": 40,
-      "visible_if": "{{ section.settings.carousel_mobile and section.settings.show_pagination_on_mobile }}"
-    },
-    {
-      "type": "checkbox",
-      "id": "pagination_limit_width",
-      "label": "t:labels.limit_pagination_width",
-      "default": false,
-      "visible_if": "{{ section.settings.carousel_mobile and section.settings.show_pagination_on_mobile and section.settings.pagination_type == 'progress_bar' }}"
-    },
-    {
-      "type": "range",
-      "id": "pagination_max_width",
-      "label": "t:labels.pagination_max_width",
-      "min": 100,
-      "max": 500,
-      "step": 10,
-      "unit": "px",
-      "default": 260,
-      "visible_if": "{{ section.settings.carousel_mobile and section.settings.show_pagination_on_mobile and section.settings.pagination_type == 'progress_bar' and section.settings.pagination_limit_width }}"
-    },
-    {
       "type": "select",
       "id": "height_desktop",
       "label": "Height desktop",
@@ -269,6 +217,81 @@
       "step": 1,
       "unit": "px",
       "default": 8
+    },
+    {
+      "type": "header",
+      "content": "t:general.pagination",
+      "visible_if": "{{ section.settings.carousel_mobile }}"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_pagination_on_mobile",
+      "label": "t:labels.show_pagination",
+      "default": true,
+      "visible_if": "{{ section.settings.carousel_mobile }}"
+    },
+    {
+      "type": "select",
+      "id": "pagination_type",
+      "label": "t:labels.type",
+      "options": [
+        {
+          "value": "progress_bar",
+          "label": "t:options.collection_pagination.progress_bar"
+        },
+        {
+          "value": "bullets",
+          "label": "t:options.collection_pagination.bullets"
+        }
+      ],
+      "default": "progress_bar",
+      "visible_if": "{{ section.settings.carousel_mobile and section.settings.show_pagination_on_mobile }}"
+    },
+    {
+      "type": "select",
+      "id": "pagination_thickness",
+      "label": "Progress bar thickness",
+      "options": [
+        {
+          "value": "standard",
+          "label": "Standard"
+        },
+        {
+          "value": "thin",
+          "label": "Thin"
+        }
+      ],
+      "default": "standard",
+      "visible_if": "{{ section.settings.carousel_mobile and section.settings.show_pagination_on_mobile and section.settings.pagination_type == 'progress_bar' }}"
+    },
+    {
+      "type": "range",
+      "id": "pagination_padding_mobile",
+      "label": "t:labels.pagination_mobile_top_padding",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "default": 24,
+      "visible_if": "{{ section.settings.carousel_mobile and section.settings.show_pagination_on_mobile }}"
+    },
+    {
+      "type": "checkbox",
+      "id": "pagination_limit_width",
+      "label": "t:labels.limit_width",
+      "default": false,
+      "visible_if": "{{ section.settings.carousel_mobile and section.settings.show_pagination_on_mobile and section.settings.pagination_type == 'progress_bar' }}"
+    },
+    {
+      "type": "range",
+      "id": "pagination_max_width",
+      "label": "t:labels.max_width",
+      "min": 100,
+      "max": 600,
+      "step": 10,
+      "unit": "px",
+      "default": 260,
+      "visible_if": "{{ section.settings.carousel_mobile and section.settings.show_pagination_on_mobile and section.settings.pagination_type == 'progress_bar' and section.settings.pagination_limit_width }}"
     },
     {
       "type": "header",
