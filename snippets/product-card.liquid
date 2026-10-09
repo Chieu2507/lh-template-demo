@@ -196,6 +196,10 @@
         endfor
       endif
     endif
+    assign card_thumbnail = product.metafields.custom.card_thumbnail.value.preview_image
+    if card_thumbnail != blank and card_image.id == product.featured_image.id
+      assign card_image = card_thumbnail
+    endif
     if card_image
       assign product_card_image_placeholder = false
     endif

@@ -57,3 +57,28 @@ test('product primary and hover images both expose a full set of smaller candida
   assert.equal(imgs.length,2);
   for (const img of imgs) assert.match(img, /widths="160, 240, 320, 400, 480, 640, 800"/);
 });
+
+test('mobile srcset ends at the actual source width and never declares upscaled candidates', async () => {
+  const shared = stripShopifyMetadata(fs.readFileSync('snippets/image.liquid','utf8'));
+  for (const width of [480, 120]) {
+    const html = await engine.parseAndRender(shared, {section:{index:5},image,mobile_image:{src:'optimized.webp',width},widths:'200,400,600,800',sizes:'100vw'});
+    const srcset = html.match(/<source[^>]*srcset="([^"]+)"/)[1];
+    const candidates = [...srcset.matchAll(/width=(\d+)\s+(\d+)w/g)];
+    assert.ok(candidates.length);
+    assert.ok(candidates.every(m => +m[1] === +m[2] && +m[1] <= width));
+    assert.equal(+candidates.at(-1)[1], width);
+    assert.doesNotMatch(srcset.trim(), /,$/);
+  }
+});
+
+test('optional card thumbnail preserves variant-specific images and the original hover image', async () => {
+  const card = fs.readFileSync('snippets/product-card.liquid','utf8');
+  const kernel = card.match(/{% liquid[\s\S]*?%}/)[0] + '{{ card_image.src }}|{{ secondary_image.src }}';
+  const main = {id:1,src:'full.webp'}, hover = {id:2,src:'hover.webp'}, other = {id:3,src:'other-color.webp'};
+  for (const [selected, thumbnail, expected] of [[main,{src:'small.webp'},'small.webp'],[main,null,'full.webp'],[other,{src:'small.webp'},'other-color.webp']]) {
+    const product = {featured_image:main,selected_or_first_available_variant:{id:11,featured_image:selected},images:[main,hover],metafields:{custom:{card_thumbnail:{value:{preview_image:thumbnail}}}}};
+    const html = await engine.parseAndRender(kernel,{product,settings:{}});
+    assert.match(html,new RegExp(expected.replace('.','\\.')));
+    if(selected===main) assert.match(html,/\|hover\.webp/);
+  }
+});

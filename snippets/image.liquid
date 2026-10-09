@@ -94,8 +94,14 @@
       {% capture mobile_srcset %}
         {% assign responsive_widths = image_widths | default: '400, 600, 800, 1200, 1600, 2400' | split: ',' %}
         {% for responsive_width in responsive_widths %}
-          {% assign responsive_width = responsive_width | strip %}
-          {{ mobile_image | image_url: width: responsive_width }} {{ responsive_width }}w{% unless forloop.last %}, {% endunless %}
+          {% assign candidate_width = responsive_width | strip | plus: 0 %}
+          {% assign mobile_source_width = mobile_image.width | plus: 0 %}
+          {% if mobile_source_width > 0 and candidate_width >= mobile_source_width %}
+            {{ mobile_image | image_url: width: mobile_source_width }} {{ mobile_source_width }}w
+            {% break %}
+          {% else %}
+            {{ mobile_image | image_url: width: candidate_width }} {{ candidate_width }}w{% unless forloop.last %}, {% endunless %}
+          {% endif %}
         {% endfor %}
       {% endcapture %}
       <picture>

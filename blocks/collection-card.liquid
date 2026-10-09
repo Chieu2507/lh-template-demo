@@ -12,7 +12,8 @@
 
 {% liquid
   assign collection_card_collection = closest.collection
-  assign collection_card_image = collection_card_collection.featured_image | default: collection_card_collection.image
+  assign card_thumbnail = collection_card_collection.metafields.custom.card_thumbnail.value.preview_image
+  assign collection_card_image = card_thumbnail | default: collection_card_collection.featured_image | default: collection_card_collection.image
   assign collection_card_scheme = block.settings.color_scheme | default: 'scheme-1'
   if block.settings.color_scheme.id != blank
     assign collection_card_scheme = block.settings.color_scheme.id
