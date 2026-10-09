@@ -377,7 +377,8 @@
             "padding_top_mobile": 0,
             "padding_bottom_mobile": 0,
             "padding_left_mobile": 0,
-            "padding_right_mobile": 0
+            "padding_right_mobile": 0,
+            "show_overlay": false
           },
           "blocks": {
             "footer-utility-content-group": {
@@ -419,7 +420,8 @@
                 "padding_top_mobile": 0,
                 "padding_bottom_mobile": 0,
                 "padding_left_mobile": 0,
-                "padding_right_mobile": 0
+                "padding_right_mobile": 0,
+                "show_overlay": false
               },
               "blocks": {
                 "footer-utility-copyright": {
@@ -502,7 +504,8 @@
                 "padding_top_mobile": 0,
                 "padding_bottom_mobile": 0,
                 "padding_left_mobile": 0,
-                "padding_right_mobile": 0
+                "padding_right_mobile": 0,
+                "show_overlay": false
               },
               "blocks": {
                 "footer-payment-icons": {

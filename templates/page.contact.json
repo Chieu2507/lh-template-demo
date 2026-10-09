@@ -78,7 +78,8 @@
             "padding_top_mobile": 0,
             "padding_bottom_mobile": 0,
             "padding_left_mobile": 0,
-            "padding_right_mobile": 0
+            "padding_right_mobile": 0,
+            "show_overlay": false
           },
           "blocks": {
             "header_Gd7tXP": {
@@ -220,7 +221,8 @@
         "padding_bottom": 80,
         "customize_mobile_padding": true,
         "padding_top_mobile": 56,
-        "padding_bottom_mobile": 56
+        "padding_bottom_mobile": 56,
+        "show_overlay": true
       }
     },
     "contact_information_KUYa6j": {
@@ -260,7 +262,8 @@
             "padding_top_mobile": 0,
             "padding_bottom_mobile": 0,
             "padding_left_mobile": 0,
-            "padding_right_mobile": 0
+            "padding_right_mobile": 0,
+            "show_overlay": false
           },
           "blocks": {
             "icon_j6GLVU": {
@@ -376,7 +379,8 @@
             "padding_top_mobile": 0,
             "padding_bottom_mobile": 0,
             "padding_left_mobile": 0,
-            "padding_right_mobile": 0
+            "padding_right_mobile": 0,
+            "show_overlay": false
           },
           "blocks": {
             "icon_aneedn": {
@@ -492,7 +496,8 @@
             "padding_top_mobile": 0,
             "padding_bottom_mobile": 0,
             "padding_left_mobile": 0,
-            "padding_right_mobile": 0
+            "padding_right_mobile": 0,
+            "show_overlay": false
           },
           "blocks": {
             "icon_kdbzHB": {
@@ -608,7 +613,8 @@
             "padding_top_mobile": 0,
             "padding_bottom_mobile": 0,
             "padding_left_mobile": 0,
-            "padding_right_mobile": 0
+            "padding_right_mobile": 0,
+            "show_overlay": false
           },
           "blocks": {
             "icon_EagCHG": {

@@ -54,7 +54,8 @@
                 "padding_bottom": 0,
                 "padding_left": 0,
                 "padding_right": 0,
-                "backdrop_blur": 0
+                "backdrop_blur": 0,
+                "show_overlay": false
               },
               "blocks": {
                 "content": {
@@ -73,7 +74,8 @@
                     "padding_bottom": 0,
                     "padding_left": 0,
                     "padding_right": 0,
-                    "backdrop_blur": 0
+                    "backdrop_blur": 0,
+                    "show_overlay": false
                   },
                   "blocks": {
                     "eyebrow": {
@@ -215,7 +217,8 @@
                 "padding_bottom": 0,
                 "padding_left": 0,
                 "padding_right": 0,
-                "backdrop_blur": 0
+                "backdrop_blur": 0,
+                "show_overlay": false
               },
               "blocks": {
                 "content-slide-apparel": {
@@ -234,7 +237,8 @@
                     "padding_bottom": 0,
                     "padding_left": 0,
                     "padding_right": 0,
-                    "backdrop_blur": 0
+                    "backdrop_blur": 0,
+                    "show_overlay": false
                   },
                   "blocks": {
                     "eyebrow-slide-apparel": {
@@ -376,7 +380,8 @@
                 "padding_bottom": 0,
                 "padding_left": 0,
                 "padding_right": 0,
-                "backdrop_blur": 0
+                "backdrop_blur": 0,
+                "show_overlay": false
               },
               "blocks": {
                 "content-slide-equipment": {
@@ -395,7 +400,8 @@
                     "padding_bottom": 0,
                     "padding_left": 0,
                     "padding_right": 0,
-                    "backdrop_blur": 0
+                    "backdrop_blur": 0,
+                    "show_overlay": false
                   },
                   "blocks": {
                     "eyebrow-slide-equipment": {
@@ -595,7 +601,8 @@
                     "padding_bottom": 16,
                     "padding_left": 16,
                     "padding_right": 16,
-                    "width_mobile": "fill"
+                    "width_mobile": "fill",
+                    "show_overlay": false
                   },
                   "blocks": {
                     "wrapper": {
@@ -620,7 +627,8 @@
                         "padding_bottom": 10,
                         "padding_left": 10,
                         "padding_right": 10,
-                        "width_mobile": "fill"
+                        "width_mobile": "fill",
+                        "show_overlay": false
                       },
                       "blocks": {
                         "title": {
@@ -740,7 +748,8 @@
         "customize_mobile_padding": true,
         "padding_top_mobile": 0,
         "padding_bottom_mobile": 64,
-        "banner_image": "shopify://shop_images/image_coutndowntimmer.jpg"
+        "banner_image": "shopify://shop_images/image_coutndowntimmer.jpg",
+        "show_overlay": true
       },
       "blocks": {
         "content-area": {
@@ -764,7 +773,8 @@
             "padding_bottom_mobile": 0,
             "padding_left_mobile": 0,
             "padding_right_mobile": 0,
-            "padding_tablet": 40
+            "padding_tablet": 40,
+            "show_overlay": false
           },
           "blocks": {
             "wrapper": {
@@ -779,7 +789,8 @@
                 "alignment_mobile": "center",
                 "gap_desktop": 32,
                 "gap_mobile": 32,
-                "backdrop_blur": 0
+                "backdrop_blur": 0,
+                "show_overlay": false
               },
               "blocks": {
                 "content": {
@@ -794,7 +805,8 @@
                     "alignment_mobile": "center",
                     "gap_desktop": 16,
                     "gap_mobile": 16,
-                    "backdrop_blur": 0
+                    "backdrop_blur": 0,
+                    "show_overlay": false
                   },
                   "blocks": {
                     "heading": {
@@ -1047,7 +1059,8 @@
                 "gap_mobile": 0,
                 "padding_left": 24,
                 "padding_right": 24,
-                "backdrop_blur": 0
+                "backdrop_blur": 0,
+                "show_overlay": false
               },
               "blocks": {
                 "heading-1": {
@@ -1078,7 +1091,8 @@
                 "gap_mobile": 0,
                 "padding_left": 24,
                 "padding_right": 24,
-                "backdrop_blur": 0
+                "backdrop_blur": 0,
+                "show_overlay": false
               },
               "blocks": {
                 "heading-2": {
@@ -1151,7 +1165,8 @@
                 "width_mobile": "fill",
                 "gap_desktop": 16,
                 "gap_mobile": 16,
-                "appearance_type": "inherit"
+                "appearance_type": "inherit",
+                "show_overlay": false
               },
               "blocks": {
                 "heading": {
@@ -1207,7 +1222,8 @@
         "item_1": {
           "type": "parallax-item",
           "settings": {
-            "position": "left"
+            "position": "left",
+            "overlay_color": "#0000004C"
           },
           "blocks": {
             "image": {
@@ -1229,7 +1245,8 @@
         "item_2": {
           "type": "parallax-item",
           "settings": {
-            "position": "center"
+            "position": "center",
+            "overlay_color": "#0000004C"
           },
           "blocks": {
             "image": {
@@ -1251,7 +1268,8 @@
         "item_3": {
           "type": "parallax-item",
           "settings": {
-            "position": "right"
+            "position": "right",
+            "overlay_color": "#0000004C"
           },
           "blocks": {
             "image": {
@@ -1273,7 +1291,8 @@
         "item_4": {
           "type": "parallax-item",
           "settings": {
-            "position": "left"
+            "position": "left",
+            "overlay_color": "#0000004C"
           },
           "blocks": {
             "image": {
@@ -1295,7 +1314,8 @@
         "item_5": {
           "type": "parallax-item",
           "settings": {
-            "position": "center"
+            "position": "center",
+            "overlay_color": "#0000004C"
           },
           "blocks": {
             "image": {
@@ -1317,7 +1337,8 @@
         "item_6": {
           "type": "parallax-item",
           "settings": {
-            "position": "right"
+            "position": "right",
+            "overlay_color": "#0000004C"
           },
           "blocks": {
             "image": {
@@ -1371,7 +1392,8 @@
             "placement_mobile": "stack",
             "image": "shopify://shop_images/background-desktop-1920.png",
             "mobile_image": "shopify://shop_images/background-mobile-750.png",
-            "overlay": "#00000000"
+            "overlay": "#00000000",
+            "show_overlay": true
           },
           "static": true
         },
@@ -1542,7 +1564,8 @@
                 "position": "center",
                 "gap_desktop": 16,
                 "gap_mobile": 12,
-                "backdrop_blur": 0
+                "backdrop_blur": 0,
+                "show_overlay": false
               },
               "blocks": {
                 "heading": {
@@ -1658,7 +1681,8 @@
             "hotspot_color_scheme": "scheme-1",
             "content_color_scheme": "scheme-1",
             "image": "shopify://shop_images/stroken-hotspot-desktop.jpg",
-            "mobile_image": "shopify://shop_images/stroken-hotspot-mobile.jpg"
+            "mobile_image": "shopify://shop_images/stroken-hotspot-mobile.jpg",
+            "show_overlay": true
           },
           "blocks": {
             "racket": {
@@ -1794,7 +1818,8 @@
                 "alignment": "left",
                 "alignment_mobile": "left",
                 "gap_desktop": 16,
-                "gap_mobile": 16
+                "gap_mobile": 16,
+                "show_overlay": false
               },
               "blocks": {
                 "stars": {
@@ -1813,7 +1838,8 @@
                     "alignment": "left",
                     "alignment_mobile": "left",
                     "gap_desktop": 12,
-                    "gap_mobile": 12
+                    "gap_mobile": 12,
+                    "show_overlay": false
                   },
                   "blocks": {
                     "quote": {
@@ -1887,7 +1913,8 @@
                 "alignment": "left",
                 "alignment_mobile": "left",
                 "gap_desktop": 16,
-                "gap_mobile": 16
+                "gap_mobile": 16,
+                "show_overlay": false
               },
               "blocks": {
                 "stars": {
@@ -1906,7 +1933,8 @@
                     "alignment": "left",
                     "alignment_mobile": "left",
                     "gap_desktop": 12,
-                    "gap_mobile": 12
+                    "gap_mobile": 12,
+                    "show_overlay": false
                   },
                   "blocks": {
                     "quote": {
@@ -1980,7 +2008,8 @@
                 "alignment": "left",
                 "alignment_mobile": "left",
                 "gap_desktop": 16,
-                "gap_mobile": 16
+                "gap_mobile": 16,
+                "show_overlay": false
               },
               "blocks": {
                 "stars": {
@@ -1999,7 +2028,8 @@
                     "alignment": "left",
                     "alignment_mobile": "left",
                     "gap_desktop": 12,
-                    "gap_mobile": 12
+                    "gap_mobile": 12,
+                    "show_overlay": false
                   },
                   "blocks": {
                     "quote": {
@@ -2087,7 +2117,8 @@
             "width": "fill",
             "width_mobile": "fill",
             "gap_desktop": 16,
-            "gap_mobile": 16
+            "gap_mobile": 16,
+            "show_overlay": false
           },
           "blocks": {
             "heading": {
