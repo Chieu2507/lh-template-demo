@@ -719,6 +719,7 @@
     "stack_on_tablet": "Stack on tablet",
     "media_aspect_ratio": "Media aspect ratio",
     "media_corner_radius": "Media corner radius",
+    "media_inset": "Media inset",
     "unit_layout": "Unit layout",
     "hover_zoom": "Hover zoom",
     "collection_tabs_header_layout": "Header layout",
@@ -747,14 +748,10 @@
     "top_padding_label": "Top padding",
     "bottom_padding_label": "Bottom padding",
     "mobile_top_padding_label": "Mobile top padding",
-    "mobile_bottom_padding_label": "Mobile bottom padding",
-    "media_inset": "Media inset"
+    "mobile_bottom_padding_label": "Mobile bottom padding"
   },
   "options": {
-    "blog_meta_display": {
-      "content": "In content",
-      "badge": "Badge on image"
-    },
+    "blog_meta_display": {"content": "In content", "badge": "Badge on image"},
     "product_quantity_style": {
       "default": "Default",
       "custom": "Custom"
