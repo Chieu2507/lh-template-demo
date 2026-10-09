@@ -84,6 +84,12 @@
 {% capture banner_products %}{% content_for 'block', type: 'product-list', id: 'carousel-product-list' %}{% endcapture %}
 {% capture featured_collection_banner_style %}
   {% if featured_collection_banner_size == 'custom' %}--featured-collection-banner-custom-width: {{ section.settings.banner_custom_max_width | default: 672 }}px;{% endif %}
+  {% if section.settings.customize_tablet_layout %}
+    --featured-collection-banner-width-tablet: {{ section.settings.banner_width_tablet | default: 320 }}px;
+    --featured-collection-banner-overlap-tablet: {{ section.settings.overlap_tablet | default: 56 }}px;
+    --featured-collection-banner-header-gap-tablet: {{ section.settings.header_gap_tablet | default: 20 }}px;
+    --featured-collection-banner-padding-bottom-tablet: {{ section.settings.padding_bottom_tablet | default: 96 }}px;
+  {% endif %}
   {% if banner_overlap_enabled %}
     --featured-collection-banner-overlap-desktop: {{ banner_overlap_desktop }}px;
     --featured-collection-banner-overlap-mobile: {{ banner_overlap_mobile }}px;
@@ -106,6 +112,7 @@
 {% assign featured_collection_banner_style = featured_collection_banner_style | strip %}
 
 <div
+  data-customize-tablet="{{ section.settings.customize_tablet_layout | default: false }}"
   class="section-spacing featured-collection-banner__spacing color-scheme section-color-scope {{ featured_collection_banner_scheme }}"
   {% if featured_collection_banner_style != blank %}style="{{ featured_collection_banner_style }}"{% endif %}
 >
@@ -388,8 +395,32 @@
     .featured-collection-banner__layout--overlap[data-overlap-desktop='true'] .featured-collection-banner__panel:has(> .featured-collection-banner__header) .product-list > .product-list__navigation--top {
       bottom: calc(100% + var(--featured-collection-banner-header-gap-desktop, 30px) + var(--featured-collection-banner-panel-padding));
     }
-    .featured-collection-banner__header:has(+ .featured-collection-banner__products),
-    .featured-collection-banner__content--header-products > .featured-collection-banner__header { padding-inline-end: 104px; }
+    .featured-collection-banner__header:has(+ .featured-collection-banner__products .product-list__navigation--top),
+    .featured-collection-banner__content--header-products:has(.product-list__navigation--top) > .featured-collection-banner__header { padding-inline-end: 104px; }
+  }
+
+  @media (min-width: 768px) and (max-width: 1149.98px) {
+    .featured-collection-banner__spacing[data-customize-tablet='true'] {
+      --featured-collection-banner-overlap-desktop: var(--featured-collection-banner-overlap-tablet);
+      --featured-collection-banner-header-gap-desktop: var(--featured-collection-banner-header-gap-tablet);
+      padding-bottom: var(--featured-collection-banner-padding-bottom-tablet);
+    }
+    .featured-collection-banner__spacing[data-customize-tablet='true'] .featured-collection-banner__layout {
+      --featured-collection-banner-max-width: var(--featured-collection-banner-width-tablet);
+    }
+    .featured-collection-banner__spacing[data-customize-tablet='true'] .featured-collection-banner__header {
+      padding-inline-end: 0;
+    }
+    .featured-collection-banner__spacing[data-customize-tablet='true'] .featured-collection-banner__header .block-header {
+      padding-left: var(--header-padding-left-mobile, var(--header-padding-left, 0px));
+      padding-right: var(--header-padding-right-mobile, var(--header-padding-right, 0px));
+    }
+    .featured-collection-banner__spacing[data-customize-tablet='true'] .product-list__navigation--top {
+      display: none;
+    }
+    .featured-collection-banner__spacing[data-customize-tablet='true'] .product-list__pagination {
+      padding-top: var(--product-list-pagination-top-padding-mobile, 16px);
+    }
   }
 {% endstylesheet %}
 
@@ -528,6 +559,61 @@
       "label": "Full width banner on mobile",
       "info": "Extend the banner to the screen edges while keeping the header and products inside the container.",
       "default": false
+    },
+    {
+      "type": "header",
+      "content": "Tablet layout"
+    },
+    {
+      "type": "checkbox",
+      "id": "customize_tablet_layout",
+      "label": "Customize tablet layout",
+      "info": "Use tablet banner width, overlap and spacing. Top navigation is hidden and Header uses its mobile horizontal padding.",
+      "default": false
+    },
+    {
+      "type": "range",
+      "id": "banner_width_tablet",
+      "label": "Banner maximum width",
+      "min": 200,
+      "max": 600,
+      "step": 4,
+      "unit": "px",
+      "default": 320,
+      "visible_if": "{{ section.settings.customize_tablet_layout }}"
+    },
+    {
+      "type": "range",
+      "id": "overlap_tablet",
+      "label": "Overlap",
+      "min": 0,
+      "max": 200,
+      "step": 2,
+      "unit": "px",
+      "default": 56,
+      "visible_if": "{{ section.settings.customize_tablet_layout }}"
+    },
+    {
+      "type": "range",
+      "id": "header_gap_tablet",
+      "label": "Header gap",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "default": 20,
+      "visible_if": "{{ section.settings.customize_tablet_layout }}"
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_tablet",
+      "label": "Bottom padding",
+      "min": 0,
+      "max": 160,
+      "step": 2,
+      "unit": "px",
+      "default": 96,
+      "visible_if": "{{ section.settings.customize_tablet_layout }}"
     },
     {
       "type": "checkbox",
