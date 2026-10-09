@@ -86,6 +86,8 @@
   {% if banner_overlap_enabled %}
     --featured-collection-banner-overlap-desktop: {{ banner_overlap_desktop }}px;
     --featured-collection-banner-overlap-mobile: {{ banner_overlap_mobile }}px;
+    --featured-collection-banner-panel-max-width-mobile: {% if section.settings.overlap_panel_max_width_mobile > 0 %}{{ section.settings.overlap_panel_max_width_mobile }}px{% else %}100%{% endif %};
+    --featured-collection-banner-panel-padding-horizontal: {{ section.settings.overlap_panel_padding_horizontal | default: 24 }}px;
     --featured-collection-banner-panel-padding: {{ section.settings.overlap_panel_padding | default: 24 }}px;
   {% endif %}
   {% if featured_collection_banner_header_gap_desktop != 30 %}--featured-collection-banner-header-gap-desktop: {{ featured_collection_banner_header_gap_desktop }}px;{% endif %}
@@ -336,7 +338,7 @@
       margin-inline-end: calc(-1 * min(var(--featured-collection-banner-overlap-desktop), 40vw));
     }
     .featured-collection-banner__layout--overlap[data-overlap-desktop='true'] .featured-collection-banner__products {
-      padding: var(--featured-collection-banner-panel-padding);
+      padding: var(--featured-collection-banner-panel-padding) var(--featured-collection-banner-panel-padding-horizontal);
       background: var(--background-color);
       border-radius: var(--radius-rounded);
     }
@@ -351,8 +353,11 @@
   @media (max-width: 767.98px) {
     .featured-collection-banner__layout--overlap[data-overlap-mobile='true'] { row-gap: 0; }
     .featured-collection-banner__layout--overlap[data-overlap-mobile='true'] .featured-collection-banner__panel {
+      width: 100%;
+      max-width: var(--featured-collection-banner-panel-max-width-mobile);
+      justify-self: center;
       margin-block-start: calc(-1 * min(var(--featured-collection-banner-overlap-mobile), 40vw));
-      padding: var(--featured-collection-banner-panel-padding);
+      padding: var(--featured-collection-banner-panel-padding) var(--featured-collection-banner-panel-padding-horizontal);
       background: var(--background-color);
       border-radius: var(--radius-rounded);
     }
@@ -360,6 +365,21 @@
       margin-block-start: 0;
       margin-block-end: calc(-1 * min(var(--featured-collection-banner-overlap-mobile), 40vw));
     }
+  }
+  @media (min-width: 768px) {
+    .featured-collection-banner__content--header-products .product-list,
+    .featured-collection-banner__panel:has(> .featured-collection-banner__header) .product-list { position: relative; }
+    .featured-collection-banner__content--header-products .product-list > .product-list__navigation--top,
+    .featured-collection-banner__panel:has(> .featured-collection-banner__header) .product-list > .product-list__navigation--top {
+      position: absolute;
+      inset: auto 0 calc(100% + var(--featured-collection-banner-header-gap-desktop, 30px)) auto;
+      gap: 12px;
+    }
+    .featured-collection-banner__layout--overlap[data-overlap-desktop='true'] .featured-collection-banner__panel:has(> .featured-collection-banner__header) .product-list > .product-list__navigation--top {
+      bottom: calc(100% + var(--featured-collection-banner-header-gap-desktop, 30px) + var(--featured-collection-banner-panel-padding));
+    }
+    .featured-collection-banner__header:has(+ .featured-collection-banner__products),
+    .featured-collection-banner__content--header-products > .featured-collection-banner__header { padding-inline-end: 104px; }
   }
 {% endstylesheet %}
 
@@ -527,6 +547,29 @@
       "step": 1,
       "unit": "px",
       "default": 24,
+      "visible_if": "{{ section.settings.enable_overlap }}"
+    },
+    {
+      "type": "range",
+      "id": "overlap_panel_padding_horizontal",
+      "label": "Panel horizontal padding",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "default": 24,
+      "visible_if": "{{ section.settings.enable_overlap }}"
+    },
+    {
+      "type": "range",
+      "id": "overlap_panel_max_width_mobile",
+      "label": "Mobile panel maximum width",
+      "info": "Set to 0 to use the container width.",
+      "min": 0,
+      "max": 600,
+      "step": 10,
+      "unit": "px",
+      "default": 0,
       "visible_if": "{{ section.settings.enable_overlap }}"
     },
     {

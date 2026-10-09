@@ -4143,6 +4143,7 @@
             "navigation_icon": "chevron",
             "navigation_behavior": "always",
             "show_pagination_on_desktop": true,
+            "pagination_visibility": "mobile",
             "pagination_type": "progress_bar",
             "pagination_thickness": "thin",
             "pagination_top_padding_desktop": 36,
