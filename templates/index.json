@@ -2466,9 +2466,6 @@
         "holiday"
       ],
       "settings": {
-        "show_header": false,
-        "header_gap": 40,
-        "card_layout": "flow",
         "section_width": "full_width",
         "height": "auto",
         "direction": "horizontal",

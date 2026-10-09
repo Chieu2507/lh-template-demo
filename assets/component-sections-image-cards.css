@@ -1,8 +1,4 @@
 
-  .image-cards-section__carousel {width:100%;min-width:0;overflow:clip;}
-  .image-cards-section__carousel > .swiper-wrapper {align-items:stretch;}
-  .image-cards-section__carousel > .swiper-wrapper > .image-card {flex-shrink:0;height:auto;}
-  .image-cards-section__carousel .swiper-pagination-lock {display:none;}
   .image-cards-section {
     position: relative;
     overflow: clip;

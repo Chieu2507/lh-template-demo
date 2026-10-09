@@ -134,7 +134,7 @@
   if block.settings.zoom_on_hover
     assign image_card_class = image_card_class | append: ' image-card--zoom'
   endif
-  if section.settings.card_layout == 'carousel' or promo_card and section.settings.carousel_mobile
+  if promo_card and section.settings.carousel_mobile
     assign image_card_class = image_card_class | append: ' swiper-slide'
   endif
   if image_card_has_link
