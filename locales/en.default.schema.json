@@ -638,6 +638,8 @@
     "outline_width": "Outline width",
     "elevation": "Elevation",
     "container_inset": "Container inset",
+    "overlay_style": "Overlay style",
+    "overlay_gradient": "Overlay gradient",
     "overlay_color": "Overlay color",
     "position": "Position",
     "swatch_type": "Swatch type",
@@ -751,6 +753,10 @@
     "mobile_bottom_padding_label": "Mobile bottom padding"
   },
   "options": {
+    "overlay_style": {
+      "solid": "Solid",
+      "gradient": "Gradient"
+    },
     "blog_meta_display": {"content": "In content", "badge": "Badge on image"},
     "product_quantity_style": {
       "default": "Default",
