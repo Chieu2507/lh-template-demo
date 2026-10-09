@@ -14,30 +14,25 @@
     "announcement-bar": {
       "type": "announcement-bar",
       "blocks": {
-        "announcement-text": {
-          "type": "announcement-text",
+        "wofyn-shipping": {
+          "type": "discount-code",
           "settings": {
-            "text": "🌟 Limited Time Offer: Enjoy 20% Off Orders!",
-            "text_color": "",
-            "width": "fill",
-            "max_width": 640
-          },
-          "blocks": {}
-        },
-        "announcement-text-2": {
-          "type": "announcement-text",
-          "settings": {
-            "text": "✨ Discover Your New Favorites Today!",
-            "text_color": "",
-            "width": "fill",
-            "max_width": 640
+            "gap_desktop": 0,
+            "gap_mobile": 0,
+            "message": "<p>Free shipping on orders over $100. <a href=\"/collections/all\" title=\"Shop all products\">Shop Now</a></p>",
+            "message_color": "",
+            "discount_code": "",
+            "button_label": "",
+            "button_link": "",
+            "button_open_in_new_tab": false,
+            "button_style": "tertiary",
+            "show_icon": false
           },
           "blocks": {}
         }
       },
       "block_order": [
-        "announcement-text",
-        "announcement-text-2"
+        "wofyn-shipping"
       ],
       "settings": {
         "bottom_separator": false,
@@ -46,20 +41,20 @@
         "direction": "left",
         "autoplay": 5,
         "pause_on_hover": true,
-        "navigation_behavior": "show_on_hover",
+        "navigation_behavior": "always",
         "navigation_icon": "rounded_chevron",
-        "font_size": "md",
-        "font_weight": "700",
+        "font_size": "sm",
+        "font_weight": "400",
         "background_type": "none",
         "overlay": false,
         "overlay_color": "#00000033",
-        "gap": 64,
+        "gap": 0,
         "color_scheme": "scheme-3",
         "padding_top": 10,
         "padding_right": 0,
         "padding_bottom": 10,
         "padding_left": 0,
-        "text_style": "heading"
+        "text_style": "body"
       }
     },
     "header": {
