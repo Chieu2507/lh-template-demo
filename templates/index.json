@@ -54,7 +54,8 @@
                 "padding_top": 0,
                 "padding_bottom": 0,
                 "padding_left": 0,
-                "padding_right": 0
+                "padding_right": 0,
+                "show_overlay": false
               },
               "blocks": {
                 "content": {
@@ -73,7 +74,8 @@
                     "padding_top": 0,
                     "padding_bottom": 0,
                     "padding_left": 0,
-                    "padding_right": 0
+                    "padding_right": 0,
+                    "show_overlay": false
                   },
                   "blocks": {
                     "heading": {
@@ -147,7 +149,8 @@
                     "padding_top": 0,
                     "padding_bottom": 0,
                     "padding_left": 0,
-                    "padding_right": 0
+                    "padding_right": 0,
+                    "show_overlay": false
                   },
                   "blocks": {
                     "shop-men": {
@@ -265,7 +268,8 @@
                 "padding_top": 0,
                 "padding_bottom": 0,
                 "padding_left": 0,
-                "padding_right": 0
+                "padding_right": 0,
+                "show_overlay": false
               },
               "blocks": {
                 "content": {
@@ -284,7 +288,8 @@
                     "padding_top": 0,
                     "padding_bottom": 0,
                     "padding_left": 0,
-                    "padding_right": 0
+                    "padding_right": 0,
+                    "show_overlay": false
                   },
                   "blocks": {
                     "heading": {
@@ -358,7 +363,8 @@
                     "padding_top": 0,
                     "padding_bottom": 0,
                     "padding_left": 0,
-                    "padding_right": 0
+                    "padding_right": 0,
+                    "show_overlay": false
                   },
                   "blocks": {
                     "shop-men": {
@@ -476,7 +482,8 @@
                 "padding_top": 0,
                 "padding_bottom": 0,
                 "padding_left": 0,
-                "padding_right": 0
+                "padding_right": 0,
+                "show_overlay": false
               },
               "blocks": {
                 "content": {
@@ -495,7 +502,8 @@
                     "padding_top": 0,
                     "padding_bottom": 0,
                     "padding_left": 0,
-                    "padding_right": 0
+                    "padding_right": 0,
+                    "show_overlay": false
                   },
                   "blocks": {
                     "heading": {
@@ -569,7 +577,8 @@
                     "padding_top": 0,
                     "padding_bottom": 0,
                     "padding_left": 0,
-                    "padding_right": 0
+                    "padding_right": 0,
+                    "show_overlay": false
                   },
                   "blocks": {
                     "shop-men": {
@@ -807,7 +816,8 @@
                     "padding_top_mobile": 16,
                     "padding_bottom_mobile": 16,
                     "padding_left_mobile": 16,
-                    "padding_right_mobile": 16
+                    "padding_right_mobile": 16,
+                    "show_overlay": false
                   },
                   "blocks": {
                     "text": {
@@ -824,7 +834,8 @@
                         "padding_top": 0,
                         "padding_bottom": 0,
                         "padding_left": 0,
-                        "padding_right": 0
+                        "padding_right": 0,
+                        "show_overlay": false
                       },
                       "blocks": {
                         "title": {
@@ -948,7 +959,8 @@
         "padding_bottom": 96,
         "customize_mobile_padding": true,
         "padding_top_mobile": 20,
-        "padding_bottom_mobile": 64
+        "padding_bottom_mobile": 64,
+        "show_overlay": true
       }
     },
     "featured_collection": {
@@ -1356,7 +1368,8 @@
                 "gap_desktop": 24,
                 "gap_mobile": 16,
                 "width": "fill",
-                "width_mobile": "fill"
+                "width_mobile": "fill",
+                "show_overlay": false
               },
               "blocks": {
                 "heading": {
@@ -1425,7 +1438,8 @@
                 "gap_desktop": 24,
                 "gap_mobile": 16,
                 "width": "fill",
-                "width_mobile": "fill"
+                "width_mobile": "fill",
+                "show_overlay": false
               },
               "blocks": {
                 "heading": {
@@ -1494,7 +1508,8 @@
                 "gap_desktop": 24,
                 "gap_mobile": 16,
                 "width": "fill",
-                "width_mobile": "fill"
+                "width_mobile": "fill",
+                "show_overlay": false
               },
               "blocks": {
                 "heading": {
@@ -1774,7 +1789,8 @@
                 "padding_top": 0,
                 "padding_bottom": 0,
                 "padding_left": 0,
-                "padding_right": 0
+                "padding_right": 0,
+                "show_overlay": false
               },
               "blocks": {
                 "image": {
@@ -1804,7 +1820,8 @@
                 "padding_top": 0,
                 "padding_bottom": 0,
                 "padding_left": 0,
-                "padding_right": 0
+                "padding_right": 0,
+                "show_overlay": false
               },
               "blocks": {
                 "image": {
@@ -1834,7 +1851,8 @@
                 "padding_top": 0,
                 "padding_bottom": 0,
                 "padding_left": 0,
-                "padding_right": 0
+                "padding_right": 0,
+                "show_overlay": false
               },
               "blocks": {
                 "image": {
@@ -1864,7 +1882,8 @@
                 "padding_top": 0,
                 "padding_bottom": 0,
                 "padding_left": 0,
-                "padding_right": 0
+                "padding_right": 0,
+                "show_overlay": false
               },
               "blocks": {
                 "image": {
@@ -1894,7 +1913,8 @@
                 "padding_top": 0,
                 "padding_bottom": 0,
                 "padding_left": 0,
-                "padding_right": 0
+                "padding_right": 0,
+                "show_overlay": false
               },
               "blocks": {
                 "image": {
@@ -1924,7 +1944,8 @@
                 "padding_top": 0,
                 "padding_bottom": 0,
                 "padding_left": 0,
-                "padding_right": 0
+                "padding_right": 0,
+                "show_overlay": false
               },
               "blocks": {
                 "image": {
