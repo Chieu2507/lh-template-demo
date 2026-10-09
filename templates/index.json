@@ -79,7 +79,8 @@
                 "padding_top_mobile": 0,
                 "padding_bottom_mobile": 0,
                 "padding_left_mobile": 0,
-                "padding_right_mobile": 0
+                "padding_right_mobile": 0,
+                "show_overlay": false
               },
               "blocks": {
                 "heading": {
@@ -216,7 +217,8 @@
                 "padding_top_mobile": 0,
                 "padding_bottom_mobile": 0,
                 "padding_left_mobile": 0,
-                "padding_right_mobile": 0
+                "padding_right_mobile": 0,
+                "show_overlay": false
               },
               "blocks": {
                 "heading": {
@@ -353,7 +355,8 @@
                 "padding_top_mobile": 0,
                 "padding_bottom_mobile": 0,
                 "padding_left_mobile": 0,
-                "padding_right_mobile": 0
+                "padding_right_mobile": 0,
+                "show_overlay": false
               },
               "blocks": {
                 "heading": {
@@ -661,7 +664,8 @@
                     "padding_top": 20,
                     "padding_bottom": 20,
                     "padding_left": 24,
-                    "padding_right": 24
+                    "padding_right": 24,
+                    "show_overlay": false
                   },
                   "blocks": {
                     "title": {
@@ -795,7 +799,8 @@
                 "padding_top_mobile": 0,
                 "padding_bottom_mobile": 0,
                 "padding_left_mobile": 0,
-                "padding_right_mobile": 0
+                "padding_right_mobile": 0,
+                "show_overlay": false
               },
               "blocks": {
                 "image": {
@@ -868,7 +873,8 @@
                 "padding_top_mobile": 0,
                 "padding_bottom_mobile": 0,
                 "padding_left_mobile": 0,
-                "padding_right_mobile": 0
+                "padding_right_mobile": 0,
+                "show_overlay": false
               },
               "blocks": {
                 "image": {
@@ -941,7 +947,8 @@
                 "padding_top_mobile": 0,
                 "padding_bottom_mobile": 0,
                 "padding_left_mobile": 0,
-                "padding_right_mobile": 0
+                "padding_right_mobile": 0,
+                "show_overlay": false
               },
               "blocks": {
                 "image": {
@@ -1014,7 +1021,8 @@
                 "padding_top_mobile": 0,
                 "padding_bottom_mobile": 0,
                 "padding_left_mobile": 0,
-                "padding_right_mobile": 0
+                "padding_right_mobile": 0,
+                "show_overlay": false
               },
               "blocks": {
                 "image": {
@@ -1087,7 +1095,8 @@
                 "padding_top_mobile": 0,
                 "padding_bottom_mobile": 0,
                 "padding_left_mobile": 0,
-                "padding_right_mobile": 0
+                "padding_right_mobile": 0,
+                "show_overlay": false
               },
               "blocks": {
                 "image": {
@@ -1160,7 +1169,8 @@
                 "padding_top_mobile": 0,
                 "padding_bottom_mobile": 0,
                 "padding_left_mobile": 0,
-                "padding_right_mobile": 0
+                "padding_right_mobile": 0,
+                "show_overlay": false
               },
               "blocks": {
                 "image": {
@@ -1289,7 +1299,8 @@
                 "padding_top_mobile": 0,
                 "padding_bottom_mobile": 0,
                 "padding_left_mobile": 0,
-                "padding_right_mobile": 0
+                "padding_right_mobile": 0,
+                "show_overlay": false
               },
               "blocks": {
                 "text": {
@@ -1331,7 +1342,8 @@
                 "padding_top_mobile": 0,
                 "padding_bottom_mobile": 0,
                 "padding_left_mobile": 0,
-                "padding_right_mobile": 0
+                "padding_right_mobile": 0,
+                "show_overlay": false
               },
               "blocks": {
                 "icon": {
@@ -1375,7 +1387,8 @@
                 "padding_top_mobile": 0,
                 "padding_bottom_mobile": 0,
                 "padding_left_mobile": 0,
-                "padding_right_mobile": 0
+                "padding_right_mobile": 0,
+                "show_overlay": false
               },
               "blocks": {
                 "text": {
@@ -1417,7 +1430,8 @@
                 "padding_top_mobile": 0,
                 "padding_bottom_mobile": 0,
                 "padding_left_mobile": 0,
-                "padding_right_mobile": 0
+                "padding_right_mobile": 0,
+                "show_overlay": false
               },
               "blocks": {
                 "icon": {
@@ -1461,7 +1475,8 @@
                 "padding_top_mobile": 0,
                 "padding_bottom_mobile": 0,
                 "padding_left_mobile": 0,
-                "padding_right_mobile": 0
+                "padding_right_mobile": 0,
+                "show_overlay": false
               },
               "blocks": {
                 "text": {
@@ -1503,7 +1518,8 @@
                 "padding_top_mobile": 0,
                 "padding_bottom_mobile": 0,
                 "padding_left_mobile": 0,
-                "padding_right_mobile": 0
+                "padding_right_mobile": 0,
+                "show_overlay": false
               },
               "blocks": {
                 "icon": {
@@ -1547,7 +1563,8 @@
                 "padding_top_mobile": 0,
                 "padding_bottom_mobile": 0,
                 "padding_left_mobile": 0,
-                "padding_right_mobile": 0
+                "padding_right_mobile": 0,
+                "show_overlay": false
               },
               "blocks": {
                 "text": {
@@ -1589,7 +1606,8 @@
                 "padding_top_mobile": 0,
                 "padding_bottom_mobile": 0,
                 "padding_left_mobile": 0,
-                "padding_right_mobile": 0
+                "padding_right_mobile": 0,
+                "show_overlay": false
               },
               "blocks": {
                 "icon": {
@@ -1633,7 +1651,8 @@
                 "padding_top_mobile": 0,
                 "padding_bottom_mobile": 0,
                 "padding_left_mobile": 0,
-                "padding_right_mobile": 0
+                "padding_right_mobile": 0,
+                "show_overlay": false
               },
               "blocks": {
                 "text": {
@@ -1675,7 +1694,8 @@
                 "padding_top_mobile": 0,
                 "padding_bottom_mobile": 0,
                 "padding_left_mobile": 0,
-                "padding_right_mobile": 0
+                "padding_right_mobile": 0,
+                "show_overlay": false
               },
               "blocks": {
                 "icon": {
@@ -1773,7 +1793,8 @@
             "padding_top_mobile": 40,
             "padding_bottom_mobile": 40,
             "padding_left_mobile": 32,
-            "padding_right_mobile": 32
+            "padding_right_mobile": 32,
+            "show_overlay": false
           },
           "blocks": {
             "header": {
@@ -1788,7 +1809,8 @@
                 "width": "fill",
                 "height": "fit",
                 "width_mobile": "fill",
-                "appearance_type": "inherit"
+                "appearance_type": "inherit",
+                "show_overlay": false
               },
               "blocks": {
                 "heading": {
@@ -1888,7 +1910,7 @@
         "image",
         "content"
       ],
-      "name": "Flash Sale \u2014 Countdown",
+      "name": "Flash Sale — Countdown",
       "settings": {
         "section_width": "page_width",
         "height": "auto",
@@ -1907,7 +1929,8 @@
         "padding_bottom": 96,
         "customize_mobile_padding": true,
         "padding_top_mobile": 64,
-        "padding_bottom_mobile": 64
+        "padding_bottom_mobile": 64,
+        "show_overlay": true
       }
     },
     "perky_testimonials": {
@@ -1954,7 +1977,8 @@
             "padding_bottom": 0,
             "padding_left": 0,
             "padding_right": 0,
-            "customize_mobile_padding": false
+            "customize_mobile_padding": false,
+            "show_overlay": false
           },
           "blocks": {
             "content": {
@@ -1969,7 +1993,8 @@
                 "limit_width": true,
                 "max_width": 1020,
                 "height": "fit",
-                "width_mobile": "fill"
+                "width_mobile": "fill",
+                "show_overlay": false
               },
               "blocks": {
                 "quote": {
@@ -2021,7 +2046,8 @@
             "padding_bottom": 0,
             "padding_left": 0,
             "padding_right": 0,
-            "customize_mobile_padding": false
+            "customize_mobile_padding": false,
+            "show_overlay": false
           },
           "blocks": {
             "content": {
@@ -2036,7 +2062,8 @@
                 "limit_width": true,
                 "max_width": 1020,
                 "height": "fit",
-                "width_mobile": "fill"
+                "width_mobile": "fill",
+                "show_overlay": false
               },
               "blocks": {
                 "quote": {
@@ -2088,7 +2115,8 @@
             "padding_bottom": 0,
             "padding_left": 0,
             "padding_right": 0,
-            "customize_mobile_padding": false
+            "customize_mobile_padding": false,
+            "show_overlay": false
           },
           "blocks": {
             "content": {
@@ -2103,13 +2131,14 @@
                 "limit_width": true,
                 "max_width": 1020,
                 "height": "fit",
-                "width_mobile": "fill"
+                "width_mobile": "fill",
+                "show_overlay": false
               },
               "blocks": {
                 "quote": {
                   "type": "heading",
                   "settings": {
-                    "text": "<p>We\u2019ve tried many toys, but these are the ones my always come back to. Durable, creative, and so much fun. Even the grandparents love playing with.</p>",
+                    "text": "<p>We’ve tried many toys, but these are the ones my always come back to. Durable, creative, and so much fun. Even the grandparents love playing with.</p>",
                     "heading_size": "lg",
                     "html_tag": "div",
                     "width": "fill",
@@ -2504,7 +2533,8 @@
             "padding_top": 0,
             "padding_bottom": 0,
             "padding_left": 0,
-            "padding_right": 0
+            "padding_right": 0,
+            "show_overlay": false
           },
           "blocks": {
             "icon": {
@@ -2525,7 +2555,8 @@
                 "padding_top": 16,
                 "padding_bottom": 16,
                 "padding_left": 16,
-                "padding_right": 16
+                "padding_right": 16,
+                "show_overlay": false
               },
               "blocks": {
                 "svg": {
@@ -2558,7 +2589,8 @@
                 "gap_mobile": 6,
                 "width": "fill",
                 "height": "fit",
-                "width_mobile": "fill"
+                "width_mobile": "fill",
+                "show_overlay": false
               },
               "blocks": {
                 "heading": {
@@ -2622,7 +2654,8 @@
             "padding_top": 0,
             "padding_bottom": 0,
             "padding_left": 0,
-            "padding_right": 0
+            "padding_right": 0,
+            "show_overlay": false
           },
           "blocks": {
             "icon": {
@@ -2643,7 +2676,8 @@
                 "padding_top": 16,
                 "padding_bottom": 16,
                 "padding_left": 16,
-                "padding_right": 16
+                "padding_right": 16,
+                "show_overlay": false
               },
               "blocks": {
                 "svg": {
@@ -2676,7 +2710,8 @@
                 "gap_mobile": 6,
                 "width": "fill",
                 "height": "fit",
-                "width_mobile": "fill"
+                "width_mobile": "fill",
+                "show_overlay": false
               },
               "blocks": {
                 "heading": {
@@ -2740,7 +2775,8 @@
             "padding_top": 0,
             "padding_bottom": 0,
             "padding_left": 0,
-            "padding_right": 0
+            "padding_right": 0,
+            "show_overlay": false
           },
           "blocks": {
             "icon": {
@@ -2761,7 +2797,8 @@
                 "padding_top": 16,
                 "padding_bottom": 16,
                 "padding_left": 16,
-                "padding_right": 16
+                "padding_right": 16,
+                "show_overlay": false
               },
               "blocks": {
                 "svg": {
@@ -2794,7 +2831,8 @@
                 "gap_mobile": 6,
                 "width": "fill",
                 "height": "fit",
-                "width_mobile": "fill"
+                "width_mobile": "fill",
+                "show_overlay": false
               },
               "blocks": {
                 "heading": {
@@ -2858,7 +2896,8 @@
             "padding_top": 0,
             "padding_bottom": 0,
             "padding_left": 0,
-            "padding_right": 0
+            "padding_right": 0,
+            "show_overlay": false
           },
           "blocks": {
             "icon": {
@@ -2879,7 +2918,8 @@
                 "padding_top": 16,
                 "padding_bottom": 16,
                 "padding_left": 16,
-                "padding_right": 16
+                "padding_right": 16,
+                "show_overlay": false
               },
               "blocks": {
                 "svg": {
@@ -2912,7 +2952,8 @@
                 "gap_mobile": 6,
                 "width": "fill",
                 "height": "fit",
-                "width_mobile": "fill"
+                "width_mobile": "fill",
+                "show_overlay": false
               },
               "blocks": {
                 "heading": {
@@ -3115,7 +3156,7 @@
           "block_order": []
         }
       },
-      "name": "Featured collection \u2014 Top Picks",
+      "name": "Featured collection — Top Picks",
       "settings": {
         "section_width": "page_width",
         "desktop_alignment": "left",
@@ -3256,7 +3297,8 @@
                     "gap_desktop": 6,
                     "gap_mobile": 6,
                     "width": "fill",
-                    "width_mobile": "fill"
+                    "width_mobile": "fill",
+                    "show_overlay": false
                   },
                   "blocks": {
                     "title": {
@@ -3303,7 +3345,7 @@
           }
         }
       },
-      "name": "Blog posts \u2014 Peekoo",
+      "name": "Blog posts — Peekoo",
       "settings": {
         "section_width": "page_width",
         "desktop_alignment": "center",
@@ -3397,7 +3439,8 @@
                 "alignment": "left",
                 "gap_desktop": 24,
                 "gap_mobile": 24,
-                "width": "fill"
+                "width": "fill",
+                "show_overlay": false
               },
               "blocks": {
                 "name": {
@@ -3407,7 +3450,8 @@
                     "alignment": "left",
                     "gap_desktop": 8,
                     "gap_mobile": 8,
-                    "width": "fill"
+                    "width": "fill",
+                    "show_overlay": false
                   },
                   "blocks": {
                     "rating_title": {
@@ -3417,7 +3461,8 @@
                         "alignment": "left",
                         "gap_desktop": 6,
                         "gap_mobile": 6,
-                        "width": "fill"
+                        "width": "fill",
+                        "show_overlay": false
                       },
                       "blocks": {
                         "rating": {
@@ -3484,7 +3529,8 @@
                 "alignment": "left",
                 "gap_desktop": 20,
                 "gap_mobile": 20,
-                "width": "fill"
+                "width": "fill",
+                "show_overlay": false
               },
               "blocks": {
                 "buy": {

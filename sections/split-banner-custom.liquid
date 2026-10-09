@@ -627,7 +627,7 @@
       "type": "checkbox",
       "id": "show_overlay",
       "label": "t:labels.show_overlay",
-      "default": true,
+      "default": false,
       "visible_if": "{{ section.settings.background_media != 'none' }}"
     },
     {
@@ -794,7 +794,8 @@
             "padding_top_mobile": 40,
             "padding_bottom_mobile": 40,
             "padding_left_mobile": 24,
-            "padding_right_mobile": 24
+            "padding_right_mobile": 24,
+            "show_overlay": true
           },
           "blocks": [
             {
@@ -827,7 +828,8 @@
         "position": "center",
         "horizontal_alignment": "left",
         "customize_mobile_alignment": true,
-        "alignment_mobile": "left"
+        "alignment_mobile": "left",
+        "show_overlay": true
       }
     }
   ],

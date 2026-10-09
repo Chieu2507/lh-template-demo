@@ -22,7 +22,8 @@
             "button_label": "",
             "content_position": "bottom",
             "focal_point": "center center",
-            "color_scheme": "scheme-3"
+            "color_scheme": "scheme-3",
+            "show_overlay": true
           }
         },
         "collection_card_cmVa8G": {
@@ -35,7 +36,8 @@
             "button_label": "",
             "content_position": "bottom",
             "focal_point": "center center",
-            "color_scheme": "scheme-3"
+            "color_scheme": "scheme-3",
+            "show_overlay": true
           }
         },
         "collection_card_TXYgm4": {
@@ -48,7 +50,8 @@
             "button_label": "",
             "content_position": "bottom",
             "focal_point": "center center",
-            "color_scheme": "scheme-3"
+            "color_scheme": "scheme-3",
+            "show_overlay": true
           }
         },
         "collection_card_hFAJVc": {
@@ -61,7 +64,8 @@
             "button_label": "",
             "content_position": "bottom",
             "focal_point": "center center",
-            "color_scheme": "scheme-3"
+            "color_scheme": "scheme-3",
+            "show_overlay": true
           }
         }
       },
