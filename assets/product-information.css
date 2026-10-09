@@ -273,6 +273,11 @@
   overflow-wrap: anywhere;
 }
 
+/* The in-stock message and ring share the merchant-selected color. */
+.product-inventory__status--in_stock {
+  color: var(--product-inventory-in-stock-color, #15803d);
+}
+
 .product-inventory__status--with-ring {
   display: inline-flex;
   align-items: center;
@@ -289,7 +294,7 @@
   height: 10px;
   margin: 4px;
   border-radius: 50%;
-  color: #26d943;
+  color: inherit;
   background: currentColor;
   box-shadow: 0 0 0 4px color-mix(in srgb, currentColor 18%, transparent);
   animation: inventory-stock-rings 2.4s ease-out infinite;

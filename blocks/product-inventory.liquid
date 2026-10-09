@@ -70,6 +70,7 @@
 %}
 
 {% capture inventory_style %}
+  --product-inventory-in-stock-color: {{ block.settings.in_stock_custom_color | default: '#15803d' }};
   --product-inventory-low-color: {{ inventory_low_color }};
   --product-inventory-low-ring-color: {{ block.settings.low_stock_custom_color | default: '#cf2828' }};
   {% if block.settings.progress_bar_color != blank %}--product-inventory-bar-color: {{ block.settings.progress_bar_color }};{% endif %}
@@ -276,8 +277,13 @@
     },
     {
       "type": "header",
-      "content": "Color",
-      "visible_if": "{{ block.settings.low_stock_threshold > 0 }}"
+      "content": "Color"
+    },
+    {
+      "type": "color",
+      "id": "in_stock_custom_color",
+      "label": "Custom in stock inventory text color",
+      "default": "#15803d"
     },
     {
       "type": "select",
