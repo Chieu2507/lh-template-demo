@@ -1,5 +1,5 @@
-import { EffectFade, Pagination, Thumbs } from './swiper-loader.js';
-import { createSwiperCarousel, destroySwiperCarousel } from './swiper-carousel.js';
+import { EffectFade, Pagination, Thumbs } from './swiper-runtime-12.2.0.js';
+import { createSwiperCarousel, destroySwiperCarousel } from './swiper-runtime-12.2.0.js';
 
 // Zoom relative to the fitted image, capped by source resolution and display size.
 const LIGHTBOX_ZOOM_SCALE = 3;

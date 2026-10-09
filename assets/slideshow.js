@@ -1,5 +1,5 @@
-import { EffectFade, Pagination } from './swiper-loader.js';
-import { createSwiperCarousel, destroySwiperCarousel } from './swiper-carousel.js';
+import { EffectFade, Pagination } from './swiper-runtime-12.2.0.js';
+import { createSwiperCarousel, destroySwiperCarousel } from './swiper-runtime-12.2.0.js';
 
 const states = new WeakMap();
 const selector = '[data-slideshow]';

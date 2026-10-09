@@ -61,7 +61,7 @@
 <noscript>{{ 'swiper-12.2.0-effect-fade.min.css' | asset_url | stylesheet_tag }}</noscript>
 <script type="module" src="{{ 'slideshow.js' | asset_url }}" data-theme-module="{{ 'slideshow.js' | asset_url }}"></script>
 {% if section.settings.layout_preset == 'peekoo' %}
-  {{ 'peekoo-slideshow.css' | asset_url | stylesheet_tag }}
+  <style>{{ 'peekoo-slideshow.css' | inline_asset_content }}</style>
 {% endif %}
 
 <div

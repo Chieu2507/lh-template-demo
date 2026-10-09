@@ -1,5 +1,5 @@
-import * as swiperCarousel from './swiper-carousel.js';
-import { EffectFade } from './swiper-loader.js';
+import * as swiperCarousel from './swiper-runtime-12.2.0.js';
+import { EffectFade } from './swiper-runtime-12.2.0.js';
 
 const { createSwiperCarousel, destroySwiperCarousel } = swiperCarousel;
 const instances = new WeakMap();

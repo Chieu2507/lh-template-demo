@@ -20,7 +20,7 @@
             "open_in_new_tab": false,
             "media_type": "image",
             "image": "shopify://shop_images/5282e-peekoo-optimized.webp",
-            "mobile_image": "",
+            "mobile_image": "shopify://shop_images/peekoo-hero-mobile-750-q55.webp",
             "media_2_type": "image",
             "show_overlay": true,
             "overlay_color": "#00000033",
@@ -344,7 +344,7 @@
             "link": "",
             "open_in_new_tab": false,
             "media_type": "image",
-            "image": "shopify://shop_images/f9b22.jpg",
+            "image": "shopify://shop_images/peekoo-f9b22-webp-v2.webp",
             "mobile_image": "",
             "media_2_type": "image",
             "show_overlay": true,
@@ -669,7 +669,7 @@
             "link": "",
             "open_in_new_tab": false,
             "media_type": "image",
-            "image": "shopify://shop_images/561ad.jpg",
+            "image": "shopify://shop_images/peekoo-561ad-webp-v2.webp",
             "mobile_image": "",
             "media_2_type": "image",
             "show_overlay": true,
@@ -2971,7 +2971,7 @@
         "image": {
           "type": "image",
           "settings": {
-            "image": "shopify://shop_images/peekoo-banner-split.webp",
+            "image": "shopify://shop_images/peekoo-peekoo-banner-split-webp-v2.webp",
             "show_image_first_mobile": true,
             "alt_text": "Child stacking wooden rainbow blocks with colorful playful illustrations",
             "image_ratio_desktop": "custom",
@@ -3810,7 +3810,7 @@
                 "image": {
                   "type": "gallery-image",
                   "settings": {
-                    "image": "shopify://shop_images/74231.jpg",
+                    "image": "shopify://shop_images/peekoo-74231-webp-v2.webp",
                     "alt_text": "Child cuddling a baby",
                     "corner_radius": "radius_12",
                     "overlay_style": "minimal",
@@ -3844,7 +3844,7 @@
                 "image": {
                   "type": "gallery-image",
                   "settings": {
-                    "image": "shopify://shop_images/7c8f9.jpg",
+                    "image": "shopify://shop_images/peekoo-7c8f9-webp-v2.webp",
                     "alt_text": "Wooden animal toys and trees",
                     "corner_radius": "radius_12",
                     "overlay_style": "minimal",
@@ -3878,7 +3878,7 @@
                 "image": {
                   "type": "gallery-image",
                   "settings": {
-                    "image": "shopify://shop_images/39c2a.jpg",
+                    "image": "shopify://shop_images/peekoo-39c2a-webp-v2.webp",
                     "alt_text": "Child stacking wooden rainbows",
                     "corner_radius": "radius_12",
                     "overlay_style": "minimal",
@@ -3912,7 +3912,7 @@
                 "image": {
                   "type": "gallery-image",
                   "settings": {
-                    "image": "shopify://shop_images/4a2cb.jpg",
+                    "image": "shopify://shop_images/peekoo-4a2cb-webp-v2.webp",
                     "alt_text": "Colorful wooden shapes",
                     "corner_radius": "radius_12",
                     "overlay_style": "minimal",
@@ -3946,7 +3946,7 @@
                 "image": {
                   "type": "gallery-image",
                   "settings": {
-                    "image": "shopify://shop_images/9056b.jpg",
+                    "image": "shopify://shop_images/peekoo-9056b-webp-v2.webp",
                     "alt_text": "Child playing with a backpack",
                     "corner_radius": "radius_12",
                     "overlay_style": "minimal",
@@ -4008,7 +4008,7 @@
             "link": "",
             "open_in_new_tab": false,
             "background_type": "image",
-            "image": "shopify://shop_images/peekoo-image-card-1.webp",
+            "image": "shopify://shop_images/peekoo-peekoo-image-card-1-webp-v2.webp",
             "mobile_image": "",
             "zoom_on_hover": false,
             "show_overlay": true,
@@ -4154,7 +4154,7 @@
             "link": "",
             "open_in_new_tab": false,
             "background_type": "image",
-            "image": "shopify://shop_images/peekoo-image-card-2.webp",
+            "image": "shopify://shop_images/peekoo-peekoo-image-card-2-webp-v2.webp",
             "mobile_image": "",
             "zoom_on_hover": false,
             "show_overlay": true,

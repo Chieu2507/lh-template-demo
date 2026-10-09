@@ -1,4 +1,4 @@
-import { createSwiperCarousel, destroySwiperCarousel } from './swiper-carousel.js';
+import { createSwiperCarousel, destroySwiperCarousel } from './swiper-runtime-12.2.0.js';
 
 const instances = new WeakMap();
 const mobileQuery = window.matchMedia('(max-width: 767.98px)');

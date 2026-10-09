@@ -1,5 +1,5 @@
-import { Pagination } from './swiper-loader.js';
-import { createSwiperCarousel, destroySwiperCarousel } from './swiper-carousel.js';
+import { Pagination } from './swiper-runtime-12.2.0.js';
+import { createSwiperCarousel, destroySwiperCarousel } from './swiper-runtime-12.2.0.js';
 
 const instances = new WeakMap();
 const rootsWithin = (root) => [

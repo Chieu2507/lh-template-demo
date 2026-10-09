@@ -3,6 +3,26 @@
 The theme exposes a reusable Swiper rendering and lifecycle contract for
 slideshow, featured collection, content list, and product media surfaces.
 
+## Library bundle
+
+`assets/swiper-runtime-12.2.0.js` is a generated, self-contained ES module.
+It exposes the shared library and carousel helper exports, removing recursive
+network requests for vendor modules and helpers. Components share one runtime.
+The versioned filename also avoids stale unversioned dependency URLs on the CDN.
+Bump the runtime filename and consumer imports when changing this generated
+runtime after deployment.
+
+Edit the source in `assets/swiper-loader.js`, `assets/swiper-carousel.js`, or the
+versioned vendor files, then rebuild:
+
+```sh
+npx --yes esbuild@0.28.1 scripts/swiper-runtime.entry.js --bundle --format=esm --target=es2020 --minify --legal-comments=inline --banner:js='/* Generated from scripts/swiper-runtime.entry.js; see docs/swiper-carousel.md. Swiper 12.2.0 (MIT). */' --outfile=assets/swiper-runtime-12.2.0.js
+node --test tests/swiper-library.test.cjs tests/slideshow-editor.test.cjs tests/slideshow-autoplay-performance.test.cjs
+```
+
+Keep the source files and `swiper-12.2.0-LICENSE.txt` in the repository. The bundle
+does not change carousel lifecycle, accessibility, controls or autoplay behavior.
+
 ## Liquid markup
 
 Capture direct `.swiper-slide` items and render the shared viewport:

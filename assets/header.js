@@ -10,6 +10,7 @@
   const megaMenuBackdropControls = new WeakSet();
   const backdropCursorBindings = new WeakMap();
   const accountElements = new WeakSet();
+  const deferredAccounts = new WeakSet();
   const localizationSheetDetails = new WeakSet();
   const footerLocalizationStates = new WeakMap();
   const openAccountSheets = new WeakSet();
@@ -932,6 +933,33 @@
   };
 
   const initializeAccountSheets = (header) => {
+    header.querySelectorAll('[data-deferred-account]').forEach((link) => {
+      if (deferredAccounts.has(link)) return;
+      deferredAccounts.add(link);
+      link.addEventListener('click', (event) => {
+        if (event.button || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+        const template = link.querySelector('[data-deferred-account-template]');
+        const account = template?.content.firstElementChild?.cloneNode(true);
+        if (!account || !window.customElements?.get('shopify-account')) return;
+        event.preventDefault();
+        event.stopPropagation();
+        for (const attribute of link.attributes) {
+          if (attribute.name.startsWith('data-shopify-editor')) account.setAttribute(attribute.name, attribute.value);
+        }
+        link.replaceWith(account);
+        initializeAccountSheets(header);
+        // Shopify renders its slotted trigger asynchronously after connection.
+        const started = performance.now();
+        const openWhenReady = () => {
+          if (!account.isConnected) return;
+          const trigger = account.shadowRoot?.querySelector('button[part="signed-out-avatar"]');
+          if (trigger) { trigger.focus(); trigger.click(); return; }
+          if (performance.now() - started < 3000) requestAnimationFrame(openWhenReady);
+          else window.location.assign(link.href);
+        };
+        requestAnimationFrame(openWhenReady);
+      });
+    });
     header.querySelectorAll('shopify-account').forEach((account) => {
       if (accountElements.has(account)) return;
       accountElements.add(account);

@@ -92,3 +92,23 @@ test('Peekoo mobile image hints follow frame height and each artwork scale', asy
     assert.match(html, new RegExp(`<source[^>]*sizes="${expected}"`));
   }
 });
+
+test('Peekoo dedicated mobile artwork fills the viewport and matches its preload', async () => {
+  const html = await render('large', { mobile_image: { ...image, name: 'mobile.webp', aspect_ratio: 824 / 1240 } }, { layout_preset: 'peekoo' });
+  assert.ok(html.includes('slideshow-slide--mobile-artwork'));
+  assert.match(html, /<source[^>]*mobile\.webp[^>]*sizes="100vw"/);
+  assert.ok(html.includes('imagesizes="100vw"'));
+  assert.ok(!html.includes('crop=center'));
+});
+
+test('precompressed small mobile WebP uses its native source once and preserves desktop art', async () => {
+  const mobile = { name: 'compressed-mobile.webp', src: 'compressed-mobile.webp', width: 750, height: 1129, aspect_ratio: 750 / 1129 };
+  const html = await render('large', { mobile_image: mobile }, { layout_preset: 'peekoo' });
+  const picture = html.match(/<picture>[\s\S]*?<\/picture>/)[0];
+  const mobileSource = picture.match(/<source[^>]*srcset="([^"]+)" sizes="([^"]+)"/);
+  assert.equal(mobileSource[1], '/compressed-mobile.webp?width=750 750w');
+  assert.equal(mobileSource[2], '100vw');
+  assert.ok(html.includes(`imagesrcset="${mobileSource[1]}" imagesizes="100vw"`));
+  assert.match(picture, /<img src="\/desktop.jpg\?width=2400"/);
+  assert.ok(!picture.includes('/compressed-mobile.webp?width=550'));
+});

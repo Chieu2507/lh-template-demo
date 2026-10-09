@@ -4,10 +4,8 @@
     {% # Establish the viewport before evaluating responsive image hints. %}
     {% render 'meta-tags' %}
 
-    {% comment %}Shopify account, cart synchronization and accelerated checkout
-      share this origin. Establish their connection before the platform scripts
-      discover their module dependencies.{% endcomment %}
-    <link rel="preconnect" href="https://cdn.shopify.com" crossorigin>
+    {% comment %}Shopify supplies CDN preconnects through its response headers
+      and content_for_header. Avoid opening duplicate connections here.{% endcomment %}
 
     {% comment %}The owning section supplies matching art-directed hints; discover
       its LCP source before fonts, styles and header/overlay markup are parsed.{% endcomment %}
@@ -20,12 +18,15 @@
 
     {% comment %}
       Font preloading:
-      1. Preconnect to font CDN for faster connection
+      1. Preconnect only when the resolved font URL uses the external font CDN
       2. Preload only the critical font variant (base weight)
       3. Additional variants load on-demand via @font-face
     {% endcomment %}
     {% unless settings.type_primary_font.system? %}
-      <link rel="preconnect" href="https://fonts.shopifycdn.com" crossorigin>
+      {% assign primary_font_url = settings.type_primary_font | font_url %}
+      {% if primary_font_url contains '//fonts.shopifycdn.com/' %}
+        <link rel="preconnect" href="https://fonts.shopifycdn.com" crossorigin>
+      {% endif %}
 
       {% comment %} Preload the base font variant for initial page render {% endcomment %}
       {{ settings.type_primary_font | font_url | preload_tag: as: 'font', crossorigin: 'anonymous' }}
