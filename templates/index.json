@@ -3808,10 +3808,10 @@
         "padding_bottom_mobile": 64,
         "show_next_slide_preview_on_mobile": true,
         "show_pagination_on_mobile": true,
-        "pagination_type": "bullets",
-        "pagination_padding_mobile": 24,
-        "pagination_limit_width": false,
-        "pagination_max_width": 260
+        "pagination_type": "progress_bar",
+        "pagination_padding_mobile": 0,
+        "pagination_limit_width": true,
+        "pagination_max_width": 200
       }
     }
   },
