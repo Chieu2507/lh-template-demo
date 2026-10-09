@@ -2,7 +2,7 @@
   Renders a media-led card with a responsive background and controlled content blocks.
 
   The block owns its media, link, size, content position, gap, appearance and
-  padding. Parent article mode reads media and URL from `closest.article`.
+  padding.
   Child blocks own their content and inherit alignment from the card.
 
   @example
@@ -52,30 +52,13 @@
   ],
   "settings": [
     {
-      "type": "select",
-      "id": "media_source",
-      "label": "Media source",
-      "options": [
-        {
-          "value": "manual",
-          "label": "Selected media"
-        },
-        {
-          "value": "article",
-          "label": "Parent article"
-        }
-      ],
-      "default": "manual"
-    },
-    {
       "type": "header",
       "content": "t:general.content"
     },
     {
       "type": "url",
       "id": "link",
-      "label": "t:labels.link",
-      "visible_if": "{{ block.settings.media_source == 'manual' }}"
+      "label": "t:labels.link"
     },
     {
       "type": "checkbox",
@@ -101,32 +84,31 @@
           "label": "t:general.video"
         }
       ],
-      "default": "image",
-      "visible_if": "{{ block.settings.media_source == 'manual' }}"
+      "default": "image"
     },
     {
       "type": "image_picker",
       "id": "image",
       "label": "t:labels.image",
-      "visible_if": "{{ block.settings.media_source == 'manual' and block.settings.background_type == 'image' }}"
+      "visible_if": "{{ block.settings.background_type == 'image' }}"
     },
     {
       "type": "image_picker",
       "id": "mobile_image",
       "label": "t:labels.mobile_image",
-      "visible_if": "{{ block.settings.media_source == 'manual' and block.settings.background_type == 'image' }}"
+      "visible_if": "{{ block.settings.background_type == 'image' }}"
     },
     {
       "type": "video",
       "id": "video",
       "label": "t:labels.video",
-      "visible_if": "{{ block.settings.media_source == 'manual' and block.settings.background_type == 'video' }}"
+      "visible_if": "{{ block.settings.background_type == 'video' }}"
     },
     {
       "type": "video",
       "id": "mobile_video",
       "label": "t:labels.mobile_video",
-      "visible_if": "{{ block.settings.media_source == 'manual' and block.settings.background_type == 'video' }}"
+      "visible_if": "{{ block.settings.background_type == 'video' }}"
     },
     {
       "type": "checkbox",
