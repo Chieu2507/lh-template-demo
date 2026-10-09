@@ -1888,7 +1888,7 @@
         "image",
         "content"
       ],
-      "name": "Flash Sale — Countdown",
+      "name": "Flash Sale \u2014 Countdown",
       "settings": {
         "section_width": "page_width",
         "height": "auto",
@@ -2109,7 +2109,7 @@
                 "quote": {
                   "type": "heading",
                   "settings": {
-                    "text": "<p>We’ve tried many toys, but these are the ones my always come back to. Durable, creative, and so much fun. Even the grandparents love playing with.</p>",
+                    "text": "<p>We\u2019ve tried many toys, but these are the ones my always come back to. Durable, creative, and so much fun. Even the grandparents love playing with.</p>",
                     "heading_size": "lg",
                     "html_tag": "div",
                     "width": "fill",
@@ -3115,7 +3115,7 @@
           "block_order": []
         }
       },
-      "name": "Featured collection — Top Picks",
+      "name": "Featured collection \u2014 Top Picks",
       "settings": {
         "section_width": "page_width",
         "desktop_alignment": "left",
@@ -3303,7 +3303,7 @@
           }
         }
       },
-      "name": "Blog posts — Peekoo",
+      "name": "Blog posts \u2014 Peekoo",
       "settings": {
         "section_width": "page_width",
         "desktop_alignment": "center",
@@ -3794,7 +3794,7 @@
         "section_width": "page_width",
         "columns_desktop": "3",
         "columns_tablet": "2",
-        "carousel_mobile": false,
+        "carousel_mobile": true,
         "columns_mobile": "1",
         "height_desktop": "medium",
         "height_mobile": "medium",
@@ -3805,7 +3805,13 @@
         "padding_bottom": 112,
         "customize_mobile_padding": true,
         "padding_top_mobile": 64,
-        "padding_bottom_mobile": 64
+        "padding_bottom_mobile": 64,
+        "show_next_slide_preview_on_mobile": true,
+        "show_pagination_on_mobile": true,
+        "pagination_type": "bullets",
+        "pagination_padding_mobile": 24,
+        "pagination_limit_width": false,
+        "pagination_max_width": 260
       }
     }
   },
