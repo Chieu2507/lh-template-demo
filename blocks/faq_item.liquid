@@ -2,6 +2,9 @@
   Elara compatibility: saved instances retain their original rendering and
   responsive contract. New presets explicitly opt into the rebuilt layout.
 {% endcomment %}
+{% capture faq_item_child_blocks %}
+  {% content_for 'blocks' %}
+{% endcapture %}
 {% if block.settings.use_elara_layout %}
 {% liquid
   assign faq_item_id = 'faq-' | append: block.id
@@ -18,7 +21,7 @@
   endif
 %}
 
-{% capture faq_nested_answer %}{% content_for 'blocks' %}{% endcapture %}
+{% capture faq_nested_answer %}{{ faq_item_child_blocks }}{% endcapture %}
 {% assign faq_nested_answer = faq_nested_answer | strip %}
 {% capture faq_answer %}
   {% if faq_nested_answer != blank %}
@@ -66,7 +69,7 @@
   endif
 %}
 
-{% capture faq_answer %}{% content_for 'blocks' %}{% endcapture %}
+{% capture faq_answer %}{{ faq_item_child_blocks }}{% endcapture %}
 {% assign faq_answer = faq_answer | strip %}
 {% if faq_answer == blank %}
   {% capture faq_answer %}

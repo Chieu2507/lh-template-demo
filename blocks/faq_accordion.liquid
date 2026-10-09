@@ -2,6 +2,9 @@
   Elara compatibility: saved instances retain their original rendering and
   responsive contract. New presets explicitly opt into the rebuilt layout.
 {% endcomment %}
+{% capture faq_accordion_child_blocks %}
+  {% content_for 'blocks' %}
+{% endcapture %}
 {% if block.settings.use_elara_layout %}
 {% liquid
   assign faq_accordion_style = block.settings.style | default: 'simple'
@@ -149,7 +152,7 @@
 
 <div class="faq-accordion elara-faq-accordion size-style elara-faq-accordion--width-{{ faq_accordion_width }} elara-faq-accordion--style-{{ faq_accordion_style }} elara-faq-accordion--icon-{{ faq_accordion_icon }}{% if block.settings.dividers %} elara-faq-accordion--dividers{% endif %}{% if faq_accordion_mobile_size_enabled %} elara-faq-accordion--mobile-size{% endif %}{% if block.settings.padding == 'custom' %} elara-faq-accordion--custom-padding{% endif %}{% if faq_accordion_style == 'boxed' and faq_accordion_color_type == 'color_scheme' %} color-scheme {{ faq_accordion_scheme }}{% endif %}" style="{{ faq_accordion_style_attribute | strip }}" {{ block.shopify_attributes }}>
   <div class="elara-faq-accordion__items">
-    {% content_for 'blocks' %}
+    {{ faq_accordion_child_blocks }}
   </div>
 </div>
 {% else %}
@@ -254,7 +257,7 @@
 
 <div class="faq-accordion size-style faq-accordion--width-{{ faq_accordion_width }} faq-accordion--style-{{ faq_accordion_style }} faq-accordion--icon-{{ faq_accordion_icon }}{% if block.settings.dividers %} faq-accordion--dividers{% endif %}{% if faq_accordion_style == 'boxed' %} color-scheme {{ faq_accordion_scheme }}{% endif %}" style="{{ faq_accordion_style_attribute | strip }}" {{ block.shopify_attributes }}>
   <div class="faq-accordion__items">
-    {% content_for 'blocks' %}
+    {{ faq_accordion_child_blocks }}
   </div>
 </div>
 {% endif %}

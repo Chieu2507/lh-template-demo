@@ -2,6 +2,9 @@
   Elara compatibility: saved instances retain their original rendering and
   responsive contract. New presets explicitly opt into the rebuilt layout.
 {% endcomment %}
+{% capture text_marquee_child_blocks %}
+  {% content_for 'blocks' %}
+{% endcapture %}
 {% if section.settings.use_elara_layout %}
 {% liquid
   assign section_container_width = 'page-width'
@@ -150,7 +153,7 @@
   {% endif %}
   <div class="container {{ section_container_width }} elara-text-marquee-custom__container">
     <div class="elara-text-marquee-custom__content layout-flow layout-flow--responsive layout-flow--{{ section_direction }}{% if section_vertical_on_mobile %} layout-flow--mobile-vertical{% endif %}" style="{{ section_content_style }}">
-      {% content_for 'blocks' %}
+      {{ text_marquee_child_blocks }}
     </div>
   </div>
 </div>
@@ -238,7 +241,7 @@
   {% endif %}
   <div class="container {{ section_container_width }} text-marquee-custom__container">
     <div class="text-marquee-custom__content">
-      {% content_for 'blocks' %}
+      {{ text_marquee_child_blocks }}
     </div>
   </div>
 </div>

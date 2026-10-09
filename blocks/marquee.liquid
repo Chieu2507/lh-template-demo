@@ -2,6 +2,9 @@
   Elara compatibility: saved instances retain their original rendering and
   responsive contract. New presets explicitly opt into the rebuilt layout.
 {% endcomment %}
+{% capture marquee_child_blocks %}
+  {% content_for 'blocks' %}
+{% endcapture %}
 {% if block.settings.use_elara_layout %}
 {% liquid
   assign marquee_direction = block.settings.animation_direction | default: 'backward'
@@ -82,7 +85,7 @@
   <div class="elara-marquee__container">
     <div class="elara-marquee__viewport" role="region" aria-label="Marquee">
       <div class="elara-marquee__track">
-        {% content_for 'blocks' %}
+        {{ marquee_child_blocks }}
       </div>
     </div>
   </div>
@@ -183,7 +186,7 @@
   <div class="container full-width marquee__container">
     <div class="marquee__viewport" role="region" aria-label="Marquee">
       <div class="marquee__track">
-        {% content_for 'blocks' %}
+        {{ marquee_child_blocks }}
       </div>
     </div>
   </div>
