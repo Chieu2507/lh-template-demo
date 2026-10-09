@@ -57,14 +57,14 @@
 
 {% style %}
   #shopify-section-{{ section.id }} {
-    background-color: {{ section.settings.background_color | default: section.settings.color_scheme.settings.background | default: '#ffffff' }};
+    background-color: {{ section.settings.background_color | default: 'var(--background-color)' }};
   }
 {% endstyle %}
 
 <div class="icon-text-cards icon-text-cards--{{ section_width }}"{% if section.settings.layout == 'carousel' %} data-icon-text-cards-carousel{% endif %}>
   <div
     class="section-spacing icon-text-cards__spacing color-scheme section-color-scope {{ color_scheme | handleize }}"
-    style="--icon-text-cards-text-align: {{ alignment }}; --icon-text-cards-text-align-mobile: {{ mobile_alignment }}; --icon-text-cards-align: {{ flex_align }}; --icon-text-cards-align-mobile: {{ mobile_flex_align }}; --icon-text-cards-gap: {{ content_gap }}px; --icon-text-cards-gap-mobile: {{ content_gap_mobile }}px; --icon-text-cards-padding-top: {{ padding_top }}px; --icon-text-cards-padding-bottom: {{ padding_bottom }}px; --icon-text-cards-padding-top-mobile: {{ padding_top_mobile }}px; --icon-text-cards-padding-bottom-mobile: {{ padding_bottom_mobile }}px;{% if section.settings.background_color != blank %} --icon-text-cards-background: {{ section.settings.background_color | escape }};{% endif %}"
+    style="--icon-text-cards-text-align: {{ alignment }}; --icon-text-cards-text-align-mobile: {{ mobile_alignment }}; --icon-text-cards-align: {{ flex_align }}; --icon-text-cards-align-mobile: {{ mobile_flex_align }}; --icon-text-cards-gap: {{ content_gap }}px; --icon-text-cards-gap-mobile: {{ content_gap_mobile }}px; --icon-text-cards-padding-top: {{ padding_top }}px; --icon-text-cards-padding-bottom: {{ padding_bottom }}px; --icon-text-cards-padding-top-mobile: {{ padding_top_mobile }}px; --icon-text-cards-padding-bottom-mobile: {{ padding_bottom_mobile }}px;"
   >
     {% if section.settings.background_image != blank %}
       <div class="media-background-surface icon-text-cards__background" aria-hidden="true">
