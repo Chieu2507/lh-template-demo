@@ -1250,8 +1250,8 @@
           "settings": {
             "animation_speed": 1,
             "animation_direction": "backward",
-            "gap_desktop": 16,
-            "gap_mobile": 10,
+            "gap_desktop": 40,
+            "gap_mobile": 40,
             "padding_top": 0,
             "padding_bottom": 0,
             "customize_mobile_padding": false,
@@ -1292,37 +1292,62 @@
                 "padding_right_mobile": 0
               },
               "blocks": {
-                "heading-1": {
-                  "type": "heading",
+                "text": {
+                  "type": "text",
                   "settings": {
-                    "text": "<p>Enjoy saving 20% ☀️</p>",
-                    "heading_size": "lg",
-                    "custom_heading_size": 24,
-                    "html_tag": "div",
-                    "text_color": "",
-                    "outline_text": false,
+                    "text": "<p>PAWVERA REPEAT EVERYTHING YOUR PET NEEDS</p>",
+                    "text_size": "sm",
                     "width": "fit",
-                    "max_width": 640,
-                    "customize_mobile_size": false,
-                    "width_mobile": "fit",
-                    "max_width_mobile": 480,
-                    "animation_type": "none",
-                    "animation_delay": 0,
-                    "padding_top": 0,
-                    "padding_bottom": 0,
-                    "padding_left": 0,
-                    "padding_right": 0,
-                    "customize_mobile_padding": false,
-                    "padding_top_mobile": 0,
-                    "padding_bottom_mobile": 0,
-                    "padding_left_mobile": 0,
-                    "padding_right_mobile": 0
-                  },
-                  "blocks": {}
+                    "animation_type": "none"
+                  }
                 }
               },
               "block_order": [
-                "heading-1"
+                "text"
+              ]
+            },
+            "heart-1": {
+              "type": "marquee-item",
+              "settings": {
+                "direction": "horizontal",
+                "position": "center",
+                "horizontal_alignment": "left",
+                "customize_mobile_alignment": false,
+                "alignment_mobile": "left",
+                "alignment": "left",
+                "gap_desktop": 0,
+                "gap_mobile": 0,
+                "border_type": "none",
+                "border_color": "",
+                "corner_radius": "square",
+                "shadow": "none",
+                "overlay_color": "",
+                "backdrop_blur": 0,
+                "padding_top": 0,
+                "padding_bottom": 0,
+                "padding_left": 0,
+                "padding_right": 0,
+                "customize_mobile_padding": false,
+                "padding_top_mobile": 0,
+                "padding_bottom_mobile": 0,
+                "padding_left_mobile": 0,
+                "padding_right_mobile": 0
+              },
+              "blocks": {
+                "icon": {
+                  "type": "icon",
+                  "settings": {
+                    "source": "custom",
+                    "custom_icon": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"20\" height=\"20\" viewBox=\"0 0 20 20\" fill=\"none\">\n<path d=\"M10.0001 4.58379L9.54977 5.0172C9.66756 5.13962 9.8302 5.20879 10.0001 5.20879C10.17 5.20879 10.3326 5.13962 10.4504 5.0172L10.0001 4.58379ZM7.85513 15.2682C6.59208 14.2725 5.21098 13.3002 4.11533 12.0664C3.0411 10.8568 2.29175 9.44534 2.29175 7.6142H1.04175C1.04175 9.83541 1.96717 11.53 3.18068 12.8964C4.37278 14.2388 5.89239 15.3126 7.08127 16.2498L7.85513 15.2682ZM2.29175 7.6142C2.29175 5.82179 3.30456 4.31869 4.68705 3.68675C6.03014 3.07283 7.83477 3.23541 9.54977 5.0172L10.4504 4.15037C8.41548 2.03619 6.05349 1.68775 4.16738 2.54989C2.32068 3.39403 1.04175 5.35412 1.04175 7.6142H2.29175ZM7.08127 16.2498C7.50813 16.5863 7.96634 16.9452 8.43077 17.2165C8.89498 17.4878 9.42477 17.7083 10.0001 17.7083V16.4583C9.74205 16.4583 9.43848 16.3577 9.06141 16.1373C8.68448 15.917 8.29348 15.6138 7.85513 15.2682L7.08127 16.2498ZM12.9189 16.2498C14.1078 15.3126 15.6274 14.2388 16.8195 12.8964C18.033 11.53 18.9584 9.83541 18.9584 7.6142H17.7084C17.7084 9.44534 16.9591 10.8568 15.8848 12.0664C14.7892 13.3002 13.4081 14.2725 12.1451 15.2682L12.9189 16.2498ZM18.9584 7.6142C18.9584 5.35412 17.6795 3.39403 15.8328 2.54989C13.9467 1.68775 11.5847 2.03619 9.54977 4.15037L10.4504 5.0172C12.1653 3.23541 13.97 3.07283 15.3131 3.68675C16.6956 4.31869 17.7084 5.82179 17.7084 7.6142H18.9584ZM12.1451 15.2682C11.7067 15.6138 11.3157 15.917 10.9388 16.1373C10.5617 16.3577 10.2581 16.4583 10.0001 16.4583V17.7083C10.5754 17.7083 11.1052 17.4878 11.5694 17.2165C12.0338 16.9452 12.492 16.5863 12.9189 16.2498L12.1451 15.2682Z\" fill=\"currentColor\"/>\n</svg>",
+                    "icon_width": 20,
+                    "icon_padding": 0,
+                    "custom_mobile": false,
+                    "accessible_label": ""
+                  }
+                }
+              },
+              "block_order": [
+                "icon"
               ]
             },
             "text-2": {
@@ -1353,37 +1378,62 @@
                 "padding_right_mobile": 0
               },
               "blocks": {
-                "heading-2": {
-                  "type": "heading",
+                "text": {
+                  "type": "text",
                   "settings": {
-                    "text": "<p>Imagination begins with play 🧩</p>",
-                    "heading_size": "lg",
-                    "custom_heading_size": 24,
-                    "html_tag": "div",
-                    "text_color": "",
-                    "outline_text": false,
+                    "text": "<p>PAWVERA REPEAT EVERYTHING YOUR PET NEEDS</p>",
+                    "text_size": "sm",
                     "width": "fit",
-                    "max_width": 640,
-                    "customize_mobile_size": false,
-                    "width_mobile": "fit",
-                    "max_width_mobile": 480,
-                    "animation_type": "none",
-                    "animation_delay": 0,
-                    "padding_top": 0,
-                    "padding_bottom": 0,
-                    "padding_left": 0,
-                    "padding_right": 0,
-                    "customize_mobile_padding": false,
-                    "padding_top_mobile": 0,
-                    "padding_bottom_mobile": 0,
-                    "padding_left_mobile": 0,
-                    "padding_right_mobile": 0
-                  },
-                  "blocks": {}
+                    "animation_type": "none"
+                  }
                 }
               },
               "block_order": [
-                "heading-2"
+                "text"
+              ]
+            },
+            "heart-2": {
+              "type": "marquee-item",
+              "settings": {
+                "direction": "horizontal",
+                "position": "center",
+                "horizontal_alignment": "left",
+                "customize_mobile_alignment": false,
+                "alignment_mobile": "left",
+                "alignment": "left",
+                "gap_desktop": 0,
+                "gap_mobile": 0,
+                "border_type": "none",
+                "border_color": "",
+                "corner_radius": "square",
+                "shadow": "none",
+                "overlay_color": "",
+                "backdrop_blur": 0,
+                "padding_top": 0,
+                "padding_bottom": 0,
+                "padding_left": 0,
+                "padding_right": 0,
+                "customize_mobile_padding": false,
+                "padding_top_mobile": 0,
+                "padding_bottom_mobile": 0,
+                "padding_left_mobile": 0,
+                "padding_right_mobile": 0
+              },
+              "blocks": {
+                "icon": {
+                  "type": "icon",
+                  "settings": {
+                    "source": "custom",
+                    "custom_icon": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"20\" height=\"20\" viewBox=\"0 0 20 20\" fill=\"none\">\n<path d=\"M10.0001 4.58379L9.54977 5.0172C9.66756 5.13962 9.8302 5.20879 10.0001 5.20879C10.17 5.20879 10.3326 5.13962 10.4504 5.0172L10.0001 4.58379ZM7.85513 15.2682C6.59208 14.2725 5.21098 13.3002 4.11533 12.0664C3.0411 10.8568 2.29175 9.44534 2.29175 7.6142H1.04175C1.04175 9.83541 1.96717 11.53 3.18068 12.8964C4.37278 14.2388 5.89239 15.3126 7.08127 16.2498L7.85513 15.2682ZM2.29175 7.6142C2.29175 5.82179 3.30456 4.31869 4.68705 3.68675C6.03014 3.07283 7.83477 3.23541 9.54977 5.0172L10.4504 4.15037C8.41548 2.03619 6.05349 1.68775 4.16738 2.54989C2.32068 3.39403 1.04175 5.35412 1.04175 7.6142H2.29175ZM7.08127 16.2498C7.50813 16.5863 7.96634 16.9452 8.43077 17.2165C8.89498 17.4878 9.42477 17.7083 10.0001 17.7083V16.4583C9.74205 16.4583 9.43848 16.3577 9.06141 16.1373C8.68448 15.917 8.29348 15.6138 7.85513 15.2682L7.08127 16.2498ZM12.9189 16.2498C14.1078 15.3126 15.6274 14.2388 16.8195 12.8964C18.033 11.53 18.9584 9.83541 18.9584 7.6142H17.7084C17.7084 9.44534 16.9591 10.8568 15.8848 12.0664C14.7892 13.3002 13.4081 14.2725 12.1451 15.2682L12.9189 16.2498ZM18.9584 7.6142C18.9584 5.35412 17.6795 3.39403 15.8328 2.54989C13.9467 1.68775 11.5847 2.03619 9.54977 4.15037L10.4504 5.0172C12.1653 3.23541 13.97 3.07283 15.3131 3.68675C16.6956 4.31869 17.7084 5.82179 17.7084 7.6142H18.9584ZM12.1451 15.2682C11.7067 15.6138 11.3157 15.917 10.9388 16.1373C10.5617 16.3577 10.2581 16.4583 10.0001 16.4583V17.7083C10.5754 17.7083 11.1052 17.4878 11.5694 17.2165C12.0338 16.9452 12.492 16.5863 12.9189 16.2498L12.1451 15.2682Z\" fill=\"currentColor\"/>\n</svg>",
+                    "icon_width": 20,
+                    "icon_padding": 0,
+                    "custom_mobile": false,
+                    "accessible_label": ""
+                  }
+                }
+              },
+              "block_order": [
+                "icon"
               ]
             },
             "text-3": {
@@ -1414,37 +1464,62 @@
                 "padding_right_mobile": 0
               },
               "blocks": {
-                "heading-3": {
-                  "type": "heading",
+                "text": {
+                  "type": "text",
                   "settings": {
-                    "text": "<p>Enjoy saving 20% ☀️</p>",
-                    "heading_size": "lg",
-                    "custom_heading_size": 24,
-                    "html_tag": "div",
-                    "text_color": "",
-                    "outline_text": false,
+                    "text": "<p>PAWVERA REPEAT EVERYTHING YOUR PET NEEDS</p>",
+                    "text_size": "sm",
                     "width": "fit",
-                    "max_width": 640,
-                    "customize_mobile_size": false,
-                    "width_mobile": "fit",
-                    "max_width_mobile": 480,
-                    "animation_type": "none",
-                    "animation_delay": 0,
-                    "padding_top": 0,
-                    "padding_bottom": 0,
-                    "padding_left": 0,
-                    "padding_right": 0,
-                    "customize_mobile_padding": false,
-                    "padding_top_mobile": 0,
-                    "padding_bottom_mobile": 0,
-                    "padding_left_mobile": 0,
-                    "padding_right_mobile": 0
-                  },
-                  "blocks": {}
+                    "animation_type": "none"
+                  }
                 }
               },
               "block_order": [
-                "heading-3"
+                "text"
+              ]
+            },
+            "heart-3": {
+              "type": "marquee-item",
+              "settings": {
+                "direction": "horizontal",
+                "position": "center",
+                "horizontal_alignment": "left",
+                "customize_mobile_alignment": false,
+                "alignment_mobile": "left",
+                "alignment": "left",
+                "gap_desktop": 0,
+                "gap_mobile": 0,
+                "border_type": "none",
+                "border_color": "",
+                "corner_radius": "square",
+                "shadow": "none",
+                "overlay_color": "",
+                "backdrop_blur": 0,
+                "padding_top": 0,
+                "padding_bottom": 0,
+                "padding_left": 0,
+                "padding_right": 0,
+                "customize_mobile_padding": false,
+                "padding_top_mobile": 0,
+                "padding_bottom_mobile": 0,
+                "padding_left_mobile": 0,
+                "padding_right_mobile": 0
+              },
+              "blocks": {
+                "icon": {
+                  "type": "icon",
+                  "settings": {
+                    "source": "custom",
+                    "custom_icon": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"20\" height=\"20\" viewBox=\"0 0 20 20\" fill=\"none\">\n<path d=\"M10.0001 4.58379L9.54977 5.0172C9.66756 5.13962 9.8302 5.20879 10.0001 5.20879C10.17 5.20879 10.3326 5.13962 10.4504 5.0172L10.0001 4.58379ZM7.85513 15.2682C6.59208 14.2725 5.21098 13.3002 4.11533 12.0664C3.0411 10.8568 2.29175 9.44534 2.29175 7.6142H1.04175C1.04175 9.83541 1.96717 11.53 3.18068 12.8964C4.37278 14.2388 5.89239 15.3126 7.08127 16.2498L7.85513 15.2682ZM2.29175 7.6142C2.29175 5.82179 3.30456 4.31869 4.68705 3.68675C6.03014 3.07283 7.83477 3.23541 9.54977 5.0172L10.4504 4.15037C8.41548 2.03619 6.05349 1.68775 4.16738 2.54989C2.32068 3.39403 1.04175 5.35412 1.04175 7.6142H2.29175ZM7.08127 16.2498C7.50813 16.5863 7.96634 16.9452 8.43077 17.2165C8.89498 17.4878 9.42477 17.7083 10.0001 17.7083V16.4583C9.74205 16.4583 9.43848 16.3577 9.06141 16.1373C8.68448 15.917 8.29348 15.6138 7.85513 15.2682L7.08127 16.2498ZM12.9189 16.2498C14.1078 15.3126 15.6274 14.2388 16.8195 12.8964C18.033 11.53 18.9584 9.83541 18.9584 7.6142H17.7084C17.7084 9.44534 16.9591 10.8568 15.8848 12.0664C14.7892 13.3002 13.4081 14.2725 12.1451 15.2682L12.9189 16.2498ZM18.9584 7.6142C18.9584 5.35412 17.6795 3.39403 15.8328 2.54989C13.9467 1.68775 11.5847 2.03619 9.54977 4.15037L10.4504 5.0172C12.1653 3.23541 13.97 3.07283 15.3131 3.68675C16.6956 4.31869 17.7084 5.82179 17.7084 7.6142H18.9584ZM12.1451 15.2682C11.7067 15.6138 11.3157 15.917 10.9388 16.1373C10.5617 16.3577 10.2581 16.4583 10.0001 16.4583V17.7083C10.5754 17.7083 11.1052 17.4878 11.5694 17.2165C12.0338 16.9452 12.492 16.5863 12.9189 16.2498L12.1451 15.2682Z\" fill=\"currentColor\"/>\n</svg>",
+                    "icon_width": 20,
+                    "icon_padding": 0,
+                    "custom_mobile": false,
+                    "accessible_label": ""
+                  }
+                }
+              },
+              "block_order": [
+                "icon"
               ]
             },
             "text-4": {
@@ -1475,37 +1550,62 @@
                 "padding_right_mobile": 0
               },
               "blocks": {
-                "heading-4": {
-                  "type": "heading",
+                "text": {
+                  "type": "text",
                   "settings": {
-                    "text": "<p>Imagination begins with play 🧩</p>",
-                    "heading_size": "lg",
-                    "custom_heading_size": 24,
-                    "html_tag": "div",
-                    "text_color": "",
-                    "outline_text": false,
+                    "text": "<p>PAWVERA REPEAT EVERYTHING YOUR PET NEEDS</p>",
+                    "text_size": "sm",
                     "width": "fit",
-                    "max_width": 640,
-                    "customize_mobile_size": false,
-                    "width_mobile": "fit",
-                    "max_width_mobile": 480,
-                    "animation_type": "none",
-                    "animation_delay": 0,
-                    "padding_top": 0,
-                    "padding_bottom": 0,
-                    "padding_left": 0,
-                    "padding_right": 0,
-                    "customize_mobile_padding": false,
-                    "padding_top_mobile": 0,
-                    "padding_bottom_mobile": 0,
-                    "padding_left_mobile": 0,
-                    "padding_right_mobile": 0
-                  },
-                  "blocks": {}
+                    "animation_type": "none"
+                  }
                 }
               },
               "block_order": [
-                "heading-4"
+                "text"
+              ]
+            },
+            "heart-4": {
+              "type": "marquee-item",
+              "settings": {
+                "direction": "horizontal",
+                "position": "center",
+                "horizontal_alignment": "left",
+                "customize_mobile_alignment": false,
+                "alignment_mobile": "left",
+                "alignment": "left",
+                "gap_desktop": 0,
+                "gap_mobile": 0,
+                "border_type": "none",
+                "border_color": "",
+                "corner_radius": "square",
+                "shadow": "none",
+                "overlay_color": "",
+                "backdrop_blur": 0,
+                "padding_top": 0,
+                "padding_bottom": 0,
+                "padding_left": 0,
+                "padding_right": 0,
+                "customize_mobile_padding": false,
+                "padding_top_mobile": 0,
+                "padding_bottom_mobile": 0,
+                "padding_left_mobile": 0,
+                "padding_right_mobile": 0
+              },
+              "blocks": {
+                "icon": {
+                  "type": "icon",
+                  "settings": {
+                    "source": "custom",
+                    "custom_icon": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"20\" height=\"20\" viewBox=\"0 0 20 20\" fill=\"none\">\n<path d=\"M10.0001 4.58379L9.54977 5.0172C9.66756 5.13962 9.8302 5.20879 10.0001 5.20879C10.17 5.20879 10.3326 5.13962 10.4504 5.0172L10.0001 4.58379ZM7.85513 15.2682C6.59208 14.2725 5.21098 13.3002 4.11533 12.0664C3.0411 10.8568 2.29175 9.44534 2.29175 7.6142H1.04175C1.04175 9.83541 1.96717 11.53 3.18068 12.8964C4.37278 14.2388 5.89239 15.3126 7.08127 16.2498L7.85513 15.2682ZM2.29175 7.6142C2.29175 5.82179 3.30456 4.31869 4.68705 3.68675C6.03014 3.07283 7.83477 3.23541 9.54977 5.0172L10.4504 4.15037C8.41548 2.03619 6.05349 1.68775 4.16738 2.54989C2.32068 3.39403 1.04175 5.35412 1.04175 7.6142H2.29175ZM7.08127 16.2498C7.50813 16.5863 7.96634 16.9452 8.43077 17.2165C8.89498 17.4878 9.42477 17.7083 10.0001 17.7083V16.4583C9.74205 16.4583 9.43848 16.3577 9.06141 16.1373C8.68448 15.917 8.29348 15.6138 7.85513 15.2682L7.08127 16.2498ZM12.9189 16.2498C14.1078 15.3126 15.6274 14.2388 16.8195 12.8964C18.033 11.53 18.9584 9.83541 18.9584 7.6142H17.7084C17.7084 9.44534 16.9591 10.8568 15.8848 12.0664C14.7892 13.3002 13.4081 14.2725 12.1451 15.2682L12.9189 16.2498ZM18.9584 7.6142C18.9584 5.35412 17.6795 3.39403 15.8328 2.54989C13.9467 1.68775 11.5847 2.03619 9.54977 4.15037L10.4504 5.0172C12.1653 3.23541 13.97 3.07283 15.3131 3.68675C16.6956 4.31869 17.7084 5.82179 17.7084 7.6142H18.9584ZM12.1451 15.2682C11.7067 15.6138 11.3157 15.917 10.9388 16.1373C10.5617 16.3577 10.2581 16.4583 10.0001 16.4583V17.7083C10.5754 17.7083 11.1052 17.4878 11.5694 17.2165C12.0338 16.9452 12.492 16.5863 12.9189 16.2498L12.1451 15.2682Z\" fill=\"currentColor\"/>\n</svg>",
+                    "icon_width": 20,
+                    "icon_padding": 0,
+                    "custom_mobile": false,
+                    "accessible_label": ""
+                  }
+                }
+              },
+              "block_order": [
+                "icon"
               ]
             },
             "text-5": {
@@ -1536,40 +1636,21 @@
                 "padding_right_mobile": 0
               },
               "blocks": {
-                "heading-5": {
-                  "type": "heading",
+                "text": {
+                  "type": "text",
                   "settings": {
-                    "text": "<p>Enjoy saving up to 15% ⭐️</p>",
-                    "heading_size": "lg",
-                    "custom_heading_size": 24,
-                    "html_tag": "div",
-                    "text_color": "",
-                    "outline_text": false,
+                    "text": "<p>PAWVERA REPEAT EVERYTHING YOUR PET NEEDS</p>",
+                    "text_size": "sm",
                     "width": "fit",
-                    "max_width": 640,
-                    "customize_mobile_size": false,
-                    "width_mobile": "fit",
-                    "max_width_mobile": 480,
-                    "animation_type": "none",
-                    "animation_delay": 0,
-                    "padding_top": 0,
-                    "padding_bottom": 0,
-                    "padding_left": 0,
-                    "padding_right": 0,
-                    "customize_mobile_padding": false,
-                    "padding_top_mobile": 0,
-                    "padding_bottom_mobile": 0,
-                    "padding_left_mobile": 0,
-                    "padding_right_mobile": 0
-                  },
-                  "blocks": {}
+                    "animation_type": "none"
+                  }
                 }
               },
               "block_order": [
-                "heading-5"
+                "text"
               ]
             },
-            "text-6": {
+            "heart-5": {
               "type": "marquee-item",
               "settings": {
                 "direction": "horizontal",
@@ -1588,8 +1669,8 @@
                 "backdrop_blur": 0,
                 "padding_top": 0,
                 "padding_bottom": 0,
-                "padding_left": 16,
-                "padding_right": 16,
+                "padding_left": 0,
+                "padding_right": 0,
                 "customize_mobile_padding": false,
                 "padding_top_mobile": 0,
                 "padding_bottom_mobile": 0,
@@ -1597,47 +1678,34 @@
                 "padding_right_mobile": 0
               },
               "blocks": {
-                "heading-6": {
-                  "type": "heading",
+                "icon": {
+                  "type": "icon",
                   "settings": {
-                    "text": "<p>Imagination begins with play 🧩</p>",
-                    "heading_size": "lg",
-                    "custom_heading_size": 24,
-                    "html_tag": "div",
-                    "text_color": "",
-                    "outline_text": false,
-                    "width": "fit",
-                    "max_width": 640,
-                    "customize_mobile_size": false,
-                    "width_mobile": "fit",
-                    "max_width_mobile": 480,
-                    "animation_type": "none",
-                    "animation_delay": 0,
-                    "padding_top": 0,
-                    "padding_bottom": 0,
-                    "padding_left": 0,
-                    "padding_right": 0,
-                    "customize_mobile_padding": false,
-                    "padding_top_mobile": 0,
-                    "padding_bottom_mobile": 0,
-                    "padding_left_mobile": 0,
-                    "padding_right_mobile": 0
-                  },
-                  "blocks": {}
+                    "source": "custom",
+                    "custom_icon": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"20\" height=\"20\" viewBox=\"0 0 20 20\" fill=\"none\">\n<path d=\"M10.0001 4.58379L9.54977 5.0172C9.66756 5.13962 9.8302 5.20879 10.0001 5.20879C10.17 5.20879 10.3326 5.13962 10.4504 5.0172L10.0001 4.58379ZM7.85513 15.2682C6.59208 14.2725 5.21098 13.3002 4.11533 12.0664C3.0411 10.8568 2.29175 9.44534 2.29175 7.6142H1.04175C1.04175 9.83541 1.96717 11.53 3.18068 12.8964C4.37278 14.2388 5.89239 15.3126 7.08127 16.2498L7.85513 15.2682ZM2.29175 7.6142C2.29175 5.82179 3.30456 4.31869 4.68705 3.68675C6.03014 3.07283 7.83477 3.23541 9.54977 5.0172L10.4504 4.15037C8.41548 2.03619 6.05349 1.68775 4.16738 2.54989C2.32068 3.39403 1.04175 5.35412 1.04175 7.6142H2.29175ZM7.08127 16.2498C7.50813 16.5863 7.96634 16.9452 8.43077 17.2165C8.89498 17.4878 9.42477 17.7083 10.0001 17.7083V16.4583C9.74205 16.4583 9.43848 16.3577 9.06141 16.1373C8.68448 15.917 8.29348 15.6138 7.85513 15.2682L7.08127 16.2498ZM12.9189 16.2498C14.1078 15.3126 15.6274 14.2388 16.8195 12.8964C18.033 11.53 18.9584 9.83541 18.9584 7.6142H17.7084C17.7084 9.44534 16.9591 10.8568 15.8848 12.0664C14.7892 13.3002 13.4081 14.2725 12.1451 15.2682L12.9189 16.2498ZM18.9584 7.6142C18.9584 5.35412 17.6795 3.39403 15.8328 2.54989C13.9467 1.68775 11.5847 2.03619 9.54977 4.15037L10.4504 5.0172C12.1653 3.23541 13.97 3.07283 15.3131 3.68675C16.6956 4.31869 17.7084 5.82179 17.7084 7.6142H18.9584ZM12.1451 15.2682C11.7067 15.6138 11.3157 15.917 10.9388 16.1373C10.5617 16.3577 10.2581 16.4583 10.0001 16.4583V17.7083C10.5754 17.7083 11.1052 17.4878 11.5694 17.2165C12.0338 16.9452 12.492 16.5863 12.9189 16.2498L12.1451 15.2682Z\" fill=\"currentColor\"/>\n</svg>",
+                    "icon_width": 20,
+                    "icon_padding": 0,
+                    "custom_mobile": false,
+                    "accessible_label": ""
+                  }
                 }
               },
               "block_order": [
-                "heading-6"
+                "icon"
               ]
             }
           },
           "block_order": [
             "text-1",
+            "heart-1",
             "text-2",
+            "heart-2",
             "text-3",
+            "heart-3",
             "text-4",
+            "heart-4",
             "text-5",
-            "text-6"
+            "heart-5"
           ]
         }
       },
@@ -1653,13 +1721,13 @@
         "alignment_mobile": "left",
         "gap_desktop": 0,
         "gap_mobile": 0,
-        "color_scheme": "scheme-4",
+        "color_scheme": "scheme-3",
         "background_color": "",
-        "padding_top": 28,
-        "padding_bottom": 28,
+        "padding_top": 16,
+        "padding_bottom": 16,
         "customize_mobile_padding": true,
-        "padding_top_mobile": 20,
-        "padding_bottom_mobile": 20,
+        "padding_top_mobile": 16,
+        "padding_bottom_mobile": 16,
         "position": "top",
         "position_vertical": "left"
       }
