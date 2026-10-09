@@ -67,6 +67,7 @@
 <div
   class="swiper-slide slideshow-slide slideshow-slide--{{ slide_layout }} hero hero--width-full hero--classic hero--content-{{ slide_content_width }} hero--desktop-adapt hero--mobile-adapt color-scheme section-color-scope {{ slide_scheme }}"
   data-slideshow-slide
+  data-image-zoom="{{ settings.motion_image_zoom }}"
   data-slideshow-color-scheme="{{ slide_scheme | escape }}"
   data-parallax="{{ block.settings.parallax_effect | default: 'none' }}"
   {% if slide_style != blank %}style="{{ slide_style | strip }}"{% endif %}
@@ -114,6 +115,27 @@
 </div>
 
 {% stylesheet %}
+  .slideshow-slide__media :is(img, .hero__placeholder) {
+    border-radius: 0;
+    scale: 1;
+    clip-path: none;
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    .slideshow__swiper[data-swiper-ready='true'] .slideshow-slide[data-image-zoom='true'].swiper-slide-active .slideshow-slide__media :is(img, .hero__placeholder) {
+      animation: slideshow-image-zoom-out .6s ease-out both;
+    }
+
+    .slideshow__swiper[data-swiper-ready='true'] .slideshow-slide[data-image-zoom='true'].slideshow-slide--loop-reset .slideshow-slide__media :is(img, .hero__placeholder) {
+      animation: none;
+    }
+  }
+
+  @keyframes slideshow-image-zoom-out {
+    from { transform: scale(1.1); }
+    to { transform: scale(1); }
+  }
+
   .slideshow-slide__media {
     --media-radius: 0px;
   }
