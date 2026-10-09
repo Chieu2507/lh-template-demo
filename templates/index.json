@@ -450,7 +450,7 @@
         "navigation_behavior": "show_on_hover",
         "show_pagination": true,
         "pagination_type": "bullets",
-        "pagination_bullet_style": "circular",
+        "pagination_bullet_style": "standard",
         "pagination_position_desktop": "center",
         "pagination_position_mobile": "center",
         "aria_label": "Wofyn slideshow",
