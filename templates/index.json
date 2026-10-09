@@ -639,7 +639,8 @@
                 "padding_bottom_mobile": 20,
                 "padding_left_mobile": 16,
                 "padding_right_mobile": 16,
-                "hover_zoom": true
+                "hover_zoom": true,
+                "media_corner_radius": "square"
               },
               "blocks": {
                 "content": {
