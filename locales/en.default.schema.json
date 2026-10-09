@@ -1546,7 +1546,7 @@
     "hero_media_aspect_ratio": "Used for Adapt height in Stack layout.",
     "show_image_text_card_settings": "These controls apply only to Image text card items. Slide headings and text are configured in their own blocks.",
     "inventory_urgent_threshold": "Shows Hurry up below this quantity. Capped at the low-stock threshold. Set to 0 to disable.",
-    "inventory_progress_total": "Bar percentage = selected variant stock / total positive tracked stock across all variants. Updates when the selected variant changes.",
+    "inventory_progress_total": "Bar percentage = selected variant stock / Low-stock threshold, up to 100%. A threshold of 0 hides the bar. Updates when the selected variant changes.",
     "inventory_count_text": "Use [count] to insert the stock quantity. Its color and weight are configured separately."
   },
   "timeline": {

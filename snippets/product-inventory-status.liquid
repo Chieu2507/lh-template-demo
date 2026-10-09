@@ -2,9 +2,8 @@
   Renders a variant's inventory message, independently styled count and stock bar.
 
   @param {variant} variant - Selected variant; blank means unavailable
-  @param {number} low_stock_threshold - Exclusive upper bound for low stock
+  @param {number} low_stock_threshold - Exclusive upper bound for low stock and full inventory bar quantity
   @param {number} urgent_stock_threshold - Exclusive upper bound for Hurry up
-  @param {number} total_quantity - Sum of positive tracked inventory across variants
   @param {object} inventory_settings - Owning block's copy, color and weight settings
   @param {boolean} [show_progress] - Show a bar for tracked available stock
   @param {string} display_mode - Either `status` or `status_and_count`
@@ -94,8 +93,8 @@
   <span class="product-inventory__status product-inventory__status--{{ inventory_state }} body-{{ inventory_text_size }}">
     <span class="product-inventory__copy">{{ inventory_message }}</span>
   </span>
-  {% if show_progress and variant.available and inventory_has_count and total_quantity > 0 %}
-    {% assign inventory_progress = inventory_quantity | times: 100.0 | divided_by: total_quantity | at_least: 0 | at_most: 100 %}
+  {% if show_progress and variant.available and inventory_has_count and low_stock_threshold > 0 %}
+    {% assign inventory_progress = inventory_quantity | times: 100.0 | divided_by: low_stock_threshold | at_least: 0 | at_most: 100 %}
     <div class="product-inventory__progress" aria-hidden="true"><span class="product-inventory__progress-fill" style="--inventory-progress: {{ inventory_progress }}%;"></span></div>
   {% endif %}
 </div>

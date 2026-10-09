@@ -16,13 +16,6 @@
 
   assign inventory_low_stock_threshold = block.settings.low_stock_threshold | default: 20 | plus: 0
   assign inventory_urgent_stock_threshold = block.settings.urgent_stock_threshold | default: 10 | plus: 0 | at_most: inventory_low_stock_threshold
-  assign inventory_total_quantity = 0
-  for stock_variant in inventory_product.variants
-    if stock_variant.inventory_management != blank
-      assign stock_quantity = stock_variant.inventory_quantity | at_least: 0
-      assign inventory_total_quantity = inventory_total_quantity | plus: stock_quantity
-    endif
-  endfor
 
   assign inventory_padding_top = block.settings.padding_top | default: 0 | plus: 0
   assign inventory_padding_bottom = block.settings.padding_bottom | default: 0 | plus: 0
@@ -89,7 +82,6 @@
         low_stock_threshold: inventory_low_stock_threshold,
         display_mode: inventory_display_mode,
         show_progress: block.settings.show_progress,
-        total_quantity: inventory_total_quantity,
         urgent_stock_threshold: inventory_urgent_stock_threshold,
         inventory_settings: block.settings
       %}
@@ -104,7 +96,6 @@
               low_stock_threshold: inventory_low_stock_threshold,
               display_mode: inventory_display_mode,
               show_progress: block.settings.show_progress,
-              total_quantity: inventory_total_quantity,
               urgent_stock_threshold: inventory_urgent_stock_threshold,
               inventory_settings: block.settings
             %}
@@ -117,7 +108,6 @@
           low_stock_threshold: inventory_low_stock_threshold,
           display_mode: inventory_display_mode,
           show_progress: block.settings.show_progress,
-          total_quantity: inventory_total_quantity,
           urgent_stock_threshold: inventory_urgent_stock_threshold,
           inventory_settings: block.settings
         %}
