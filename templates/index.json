@@ -4197,7 +4197,8 @@
         "padding_bottom": 112,
         "customize_mobile_padding": true,
         "padding_top_mobile": 0,
-        "padding_bottom_mobile": 80
+        "padding_bottom_mobile": 80,
+        "banner_ratio_tablet": "portrait"
       }
     }
   },
