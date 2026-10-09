@@ -2919,7 +2919,9 @@
         "padding_bottom": 48,
         "customize_mobile_padding": false,
         "padding_top_mobile": 56,
-        "padding_bottom_mobile": 56
+        "padding_bottom_mobile": 56,
+        "auto_rotate": true,
+        "autoplay_speed": 4
       }
     },
     "peekoo_featured_07": {
