@@ -2522,6 +2522,15 @@ legend {
   text-transform: none;
 }
 
+.product-variant-picker .variant-picker__button,
+.product-variant-picker .variant-picker__control--select {
+  font-family: var(--variant-input-font-family, var(--font-body-family));
+  font-style: var(--variant-input-font-style, var(--font-body-style));
+  font-weight: var(--variant-input-font-weight, var(--font-body-weight));
+  font-size: var(--variant-input-font-size, var(--font-body-md));
+  letter-spacing: var(--variant-input-letter-spacing, normal);
+}
+
 .variant-picker__button {
   gap: 0.5rem;
   max-width: 100%;
