@@ -137,8 +137,9 @@
   }
   .slideshow__pagination { --swiper-pagination-inline-padding: var(--slideshow-content-inline-padding); }
   .slideshow[data-autoplay='true'] .slideshow__swiper > .slideshow__pagination[data-pagination-type='bullets'] .swiper-pagination-bullet-active {
-    width: 32px;
-    min-width: 32px;
+    /* Preserve the same side padding as the inactive dots' touch targets. */
+    width: calc(32px + var(--swiper-pagination-bullet-hit-width, 24px) - var(--swiper-pagination-bullet-width, var(--swiper-pagination-bullet-size, 8px)));
+    min-width: calc(32px + var(--swiper-pagination-bullet-hit-width, 24px) - var(--swiper-pagination-bullet-width, var(--swiper-pagination-bullet-size, 8px)));
   }
   .slideshow[data-autoplay='true'] .slideshow__swiper > .slideshow__pagination[data-pagination-type='bullets'] .swiper-pagination-bullet-active::before,
   .slideshow[data-autoplay='true'] .slideshow__swiper > .slideshow__pagination[data-pagination-type='bullets'] .swiper-pagination-bullet-active::after {
