@@ -701,7 +701,9 @@
     "description": "Description",
     "question": "Question",
     "answer": "Answer",
-    "initially_open": "Open by default"
+    "initially_open": "Open by default",
+    "overlay_style": "Overlay style",
+    "overlay_gradient": "Overlay gradient"
   },
   "options": {
     "product_quantity_style": {
@@ -1390,6 +1392,10 @@
       "body": "Body",
       "heading": "Heading",
       "accent": "Accent"
+    },
+    "overlay_style": {
+      "solid": "Solid",
+      "gradient": "Gradient"
     }
   },
   "info": {
