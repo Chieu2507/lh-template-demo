@@ -1710,7 +1710,8 @@
             "inventory": {
               "type": "product-inventory",
               "settings": {
-                "display_mode": "status_and_count"
+                "show_low_stock_quantity": true,
+                "show_progress_bar": false
               }
             },
             "view-details": {
