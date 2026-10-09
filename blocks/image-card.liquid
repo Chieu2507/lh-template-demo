@@ -2,7 +2,7 @@
   Renders a media-led card with a responsive background and controlled content blocks.
 
   The block owns its media, link, size, content position, gap, appearance and
-  padding. Parent article mode reads media and URL from `closest.article`.
+  padding.
   Child blocks own their content and inherit alignment from the card.
 
   @example
@@ -13,11 +13,6 @@
   assign image_card_media_type = block.settings.background_type | default: 'image'
   assign image_card_image = block.settings.image
   assign image_card_link = block.settings.link
-  if block.settings.media_source == 'article'
-    assign image_card_image = closest.article.image
-    assign image_card_link = closest.article.url
-    assign image_card_media_type = 'image'
-  endif
 
   assign image_card_width_desktop_mode = block.settings.width_desktop | default: 'fill'
   assign image_card_width_desktop = '100%'
@@ -125,9 +120,6 @@
 
   assign image_card_media_alt = image_card_image.alt | default: block.settings.mobile_image.alt | default: block.settings.video.preview_image.alt | default: block.settings.mobile_video.preview_image.alt
 
-  if block.settings.media_source == 'article'
-    assign image_card_media_alt = closest.article.title | default: image_card_media_alt
-  endif
 
   assign image_card_link_label = 'accessibility.image_card_link' | t
   if image_card_media_alt != blank
@@ -306,30 +298,13 @@
   ],
   "settings": [
     {
-      "type": "select",
-      "id": "media_source",
-      "label": "Media source",
-      "options": [
-        {
-          "value": "manual",
-          "label": "Selected media"
-        },
-        {
-          "value": "article",
-          "label": "Parent article"
-        }
-      ],
-      "default": "manual"
-    },
-    {
       "type": "header",
       "content": "t:general.content"
     },
     {
       "type": "url",
       "id": "link",
-      "label": "t:labels.link",
-      "visible_if": "{{ block.settings.media_source == 'manual' }}"
+      "label": "t:labels.link"
     },
     {
       "type": "checkbox",
@@ -355,32 +330,31 @@
           "label": "t:general.video"
         }
       ],
-      "default": "image",
-      "visible_if": "{{ block.settings.media_source == 'manual' }}"
+      "default": "image"
     },
     {
       "type": "image_picker",
       "id": "image",
       "label": "t:labels.image",
-      "visible_if": "{{ block.settings.media_source == 'manual' and block.settings.background_type == 'image' }}"
+      "visible_if": "{{ block.settings.background_type == 'image' }}"
     },
     {
       "type": "image_picker",
       "id": "mobile_image",
       "label": "t:labels.mobile_image",
-      "visible_if": "{{ block.settings.media_source == 'manual' and block.settings.background_type == 'image' }}"
+      "visible_if": "{{ block.settings.background_type == 'image' }}"
     },
     {
       "type": "video",
       "id": "video",
       "label": "t:labels.video",
-      "visible_if": "{{ block.settings.media_source == 'manual' and block.settings.background_type == 'video' }}"
+      "visible_if": "{{ block.settings.background_type == 'video' }}"
     },
     {
       "type": "video",
       "id": "mobile_video",
       "label": "t:labels.mobile_video",
-      "visible_if": "{{ block.settings.media_source == 'manual' and block.settings.background_type == 'video' }}"
+      "visible_if": "{{ block.settings.background_type == 'video' }}"
     },
     {
       "type": "checkbox",
