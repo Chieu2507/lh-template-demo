@@ -238,7 +238,11 @@
     "tag_badges": "Tag-based badges",
     "accordion_options": "Accordion options",
     "image_text_card_settings": "Image text cards",
-    "section_padding_label": "Section padding"
+    "section_padding_label": "Section padding",
+    "inventory_urgent_stock": "Hurry up",
+    "inventory_low_stock": "Low stock",
+    "inventory_in_stock": "In stock",
+    "inventory_sold_out": "Out of stock"
   },
   "labels": {
     "hide_view_all_on_mobile": "Hide View all on mobile",
@@ -750,7 +754,14 @@
     "top_padding_label": "Top padding",
     "bottom_padding_label": "Bottom padding",
     "mobile_top_padding_label": "Mobile top padding",
-    "mobile_bottom_padding_label": "Mobile bottom padding"
+    "mobile_bottom_padding_label": "Mobile bottom padding",
+    "inventory_show_progress": "Show inventory bar",
+    "inventory_urgent_threshold": "Hurry-up threshold",
+    "inventory_status_text": "Status text",
+    "inventory_count_text": "Text with count",
+    "inventory_count_color": "Count color",
+    "inventory_count_weight": "Count weight",
+    "inventory_bar_color": "Inventory bar color"
   },
   "options": {
     "overlay_style": {
@@ -1474,7 +1485,9 @@
     "icon_text_layout": {
       "stacked": "Stacked content",
       "grid": "Card grid"
-    }
+    },
+    "inventory_count_normal": "Normal",
+    "inventory_count_bold": "Bold"
   },
   "info": {
     "blog_meta_badge_placement": "Badge on image places a direct Meta child at the top of a stacked Blog card. Nested Meta and horizontal cards keep badges in the content.",
@@ -1518,7 +1531,7 @@
     "details_elevation": "Controls the shadow behind the Details block, from flat to strongly raised.",
     "product_quantity_rules": "Quantity limits and increments follow the selected variant's purchase rules.",
     "product_inventory": "Reads the selected variant's inventory and selling policy from Shopify. Counts appear only for tracked inventory; tracking is managed per variant in the product admin.",
-    "low_stock_threshold": "Shows the low-stock state when a tracked variant reaches this quantity or less. Set to 0 to disable it.",
+    "low_stock_threshold": "Shows low stock below this quantity. Set to 0 to disable both stock warnings.",
     "size_guide_option": "The guide link appears beside the matching product option name. Matching is case-insensitive.",
     "size_guide_page": "Choose a page or connect a product page metafield as the guide source.",
     "size_guide_width": "Used for the desktop popup or drawer. Mobile layouts use the available viewport width.",
@@ -1534,7 +1547,10 @@
     "back_in_stock_alert": "Collect customer emails to notify them when a product is back in stock.",
     "back_in_stock_alert_manual_notifications": "Note: Email notifications will not be sent automatically when the product becomes available — you will need to send them yourself.",
     "hero_media_aspect_ratio": "Used for Adapt height in Stack layout.",
-    "show_image_text_card_settings": "These controls apply only to Image text card items. Slide headings and text are configured in their own blocks."
+    "show_image_text_card_settings": "These controls apply only to Image text card items. Slide headings and text are configured in their own blocks.",
+    "inventory_urgent_threshold": "Shows Hurry up below this quantity. Capped at the low-stock threshold. Set to 0 to disable.",
+    "inventory_progress_total": "Bar percentage = selected variant stock / total positive tracked stock across all variants. Updates when the selected variant changes.",
+    "inventory_count_text": "Use [count] to insert the stock quantity. Its color and weight are configured separately."
   },
   "timeline": {
     "year": "Year or date label",

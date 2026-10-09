@@ -285,7 +285,11 @@
     "rating_value": "{{ rating }} out of {{ max }} stars",
     "rating_count": "{{ count }} ratings",
     "rating_empty": "Reviews appear when this product has review data.",
-    "share_on": "Share on {{ platform }}"
+    "share_on": "Share on {{ platform }}",
+    "inventory_urgent_stock_short": "🔥 Hurry up!",
+    "inventory_urgent_stock": "🔥 Hurry up! Only {{ count }} items left in stock.",
+    "inventory_low_stock_message": "Low stock: Only {{ count }} items left in stock.",
+    "inventory_out_of_stock": "Out of stock"
   },
   "collection": {
     "apply_filters": "Apply ({{ count }})",
@@ -403,7 +407,7 @@
     "icon_text_cards": "Icon text cards"
   },
   "marquee": {
-  "copied": "Coupon code copied",
-  "copy_failed": "Could not copy. Select and copy the code."
-}
+    "copied": "Coupon code copied",
+    "copy_failed": "Could not copy. Select and copy the code."
+  }
 }
