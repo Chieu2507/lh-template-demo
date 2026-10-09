@@ -54,7 +54,8 @@
                 "padding_top": 0,
                 "padding_bottom": 0,
                 "padding_left": 0,
-                "padding_right": 0
+                "padding_right": 0,
+                "show_overlay": false
               },
               "blocks": {
                 "content": {
@@ -73,7 +74,8 @@
                     "padding_top": 0,
                     "padding_bottom": 0,
                     "padding_left": 0,
-                    "padding_right": 0
+                    "padding_right": 0,
+                    "show_overlay": false
                   },
                   "blocks": {
                     "heading": {
@@ -147,7 +149,8 @@
                     "padding_top": 0,
                     "padding_bottom": 0,
                     "padding_left": 0,
-                    "padding_right": 0
+                    "padding_right": 0,
+                    "show_overlay": false
                   },
                   "blocks": {
                     "shop-men": {
@@ -265,7 +268,8 @@
                 "padding_top": 0,
                 "padding_bottom": 0,
                 "padding_left": 0,
-                "padding_right": 0
+                "padding_right": 0,
+                "show_overlay": false
               },
               "blocks": {
                 "content": {
@@ -284,7 +288,8 @@
                     "padding_top": 0,
                     "padding_bottom": 0,
                     "padding_left": 0,
-                    "padding_right": 0
+                    "padding_right": 0,
+                    "show_overlay": false
                   },
                   "blocks": {
                     "heading": {
@@ -358,7 +363,8 @@
                     "padding_top": 0,
                     "padding_bottom": 0,
                     "padding_left": 0,
-                    "padding_right": 0
+                    "padding_right": 0,
+                    "show_overlay": false
                   },
                   "blocks": {
                     "shop-men": {
@@ -476,7 +482,8 @@
                 "padding_top": 0,
                 "padding_bottom": 0,
                 "padding_left": 0,
-                "padding_right": 0
+                "padding_right": 0,
+                "show_overlay": false
               },
               "blocks": {
                 "content": {
@@ -495,7 +502,8 @@
                     "padding_top": 0,
                     "padding_bottom": 0,
                     "padding_left": 0,
-                    "padding_right": 0
+                    "padding_right": 0,
+                    "show_overlay": false
                   },
                   "blocks": {
                     "heading": {
@@ -569,7 +577,8 @@
                     "padding_top": 0,
                     "padding_bottom": 0,
                     "padding_left": 0,
-                    "padding_right": 0
+                    "padding_right": 0,
+                    "show_overlay": false
                   },
                   "blocks": {
                     "shop-men": {
@@ -793,7 +802,8 @@
                     "padding_top": 20,
                     "padding_bottom": 20,
                     "padding_left": 24,
-                    "padding_right": 24
+                    "padding_right": 24,
+                    "show_overlay": false
                   },
                   "blocks": {
                     "text": {
@@ -810,7 +820,8 @@
                         "padding_top": 0,
                         "padding_bottom": 0,
                         "padding_left": 0,
-                        "padding_right": 0
+                        "padding_right": 0,
+                        "show_overlay": false
                       },
                       "blocks": {
                         "title": {
@@ -892,7 +903,8 @@
             "backdrop_blur": 0,
             "position": "space-between",
             "gap_desktop": 64,
-            "gap_mobile": 40
+            "gap_mobile": 40,
+            "show_overlay": false
           },
           "blocks": {
             "content": {
@@ -909,7 +921,8 @@
                 "gap_desktop": 40,
                 "gap_mobile": 32,
                 "limit_width": true,
-                "max_width": 580
+                "max_width": 580,
+                "show_overlay": false
               },
               "blocks": {
                 "heading-content": {
@@ -924,7 +937,8 @@
                     "height": "fit",
                     "backdrop_blur": 0,
                     "gap_desktop": 16,
-                    "gap_mobile": 16
+                    "gap_mobile": 16,
+                    "show_overlay": false
                   },
                   "blocks": {
                     "heading": {
@@ -988,7 +1002,8 @@
                 "color_scheme": "scheme-4",
                 "corner_radius": "slightly_rounded",
                 "gap_desktop": 0,
-                "gap_mobile": 0
+                "gap_mobile": 0,
+                "show_overlay": false
               },
               "blocks": {
                 "timer": {
@@ -1052,7 +1067,8 @@
         "customize_mobile_padding": true,
         "padding_top_mobile": 0,
         "padding_bottom_mobile": 0,
-        "mobile_banner_image": "shopify://shop_images/strideo-countdown-1-figma.jpg"
+        "mobile_banner_image": "shopify://shop_images/strideo-countdown-1-figma.jpg",
+        "show_overlay": true
       },
       "custom_css": [
         ".hero {--ct-h:750px;--ct-p:80px}",
@@ -1184,7 +1200,8 @@
                 "padding_left": 24,
                 "padding_right": 24,
                 "padding_top": 0,
-                "padding_bottom": 0
+                "padding_bottom": 0,
+                "show_overlay": false
               },
               "blocks": {
                 "heading-1": {
@@ -1217,7 +1234,8 @@
                 "padding_left": 24,
                 "padding_right": 24,
                 "padding_top": 0,
-                "padding_bottom": 0
+                "padding_bottom": 0,
+                "show_overlay": false
               },
               "blocks": {
                 "heading-2": {
@@ -1389,8 +1407,7 @@
         "mobile_gap": 40,
         "color_scheme": "scheme-3",
         "overlay": true,
-        "overlay_color": "#000000",
-        "overlay_opacity": 10,
+        "overlay_color": "#0000001A",
         "padding_top": 80,
         "padding_bottom": 80,
         "padding_left": 0,
@@ -1615,7 +1632,8 @@
                 "alignment": "left",
                 "width": "fill",
                 "gap_desktop": 8,
-                "gap_mobile": 8
+                "gap_mobile": 8,
+                "show_overlay": false
               },
               "blocks": {
                 "product-title-1": {
@@ -1787,7 +1805,8 @@
                 "alignment_mobile": "center",
                 "gap_desktop": 40,
                 "gap_mobile": 40,
-                "backdrop_blur": 0
+                "backdrop_blur": 0,
+                "show_overlay": false
               },
               "blocks": {
                 "group-0": {
@@ -1801,7 +1820,8 @@
                     "alignment_mobile": "center",
                     "gap_desktop": 16,
                     "gap_mobile": 16,
-                    "backdrop_blur": 0
+                    "backdrop_blur": 0,
+                    "show_overlay": false
                   },
                   "blocks": {
                     "heading-0": {
@@ -1890,7 +1910,8 @@
                 "alignment_mobile": "center",
                 "gap_desktop": 40,
                 "gap_mobile": 40,
-                "backdrop_blur": 0
+                "backdrop_blur": 0,
+                "show_overlay": false
               },
               "blocks": {
                 "group-0": {
@@ -1904,7 +1925,8 @@
                     "alignment_mobile": "center",
                     "gap_desktop": 16,
                     "gap_mobile": 16,
-                    "backdrop_blur": 0
+                    "backdrop_blur": 0,
+                    "show_overlay": false
                   },
                   "blocks": {
                     "heading-0": {
@@ -1993,7 +2015,8 @@
                 "alignment_mobile": "center",
                 "gap_desktop": 40,
                 "gap_mobile": 40,
-                "backdrop_blur": 0
+                "backdrop_blur": 0,
+                "show_overlay": false
               },
               "blocks": {
                 "group-0": {
@@ -2007,7 +2030,8 @@
                     "alignment_mobile": "center",
                     "gap_desktop": 16,
                     "gap_mobile": 16,
-                    "backdrop_blur": 0
+                    "backdrop_blur": 0,
+                    "show_overlay": false
                   },
                   "blocks": {
                     "heading-0": {
@@ -2074,13 +2098,6 @@
       "settings": {
         "section_width": "page_width",
         "height": "auto",
-        "card_layout": "carousel",
-        "show_header": true,
-        "header_gap": 40,
-        "columns_desktop": "4",
-        "columns_tablet": "2",
-        "columns_mobile": "1",
-        "show_pagination": true,
         "gap_desktop": 20,
         "gap_mobile": 16,
         "color_scheme": "scheme-1",
@@ -2091,34 +2108,6 @@
         "padding_bottom_mobile": 64
       },
       "blocks": {
-        "header": {
-          "type": "header",
-          "static": true,
-          "settings": {
-            "width": "fill",
-            "inherit_alignment": false,
-            "alignment": "left",
-            "customize_mobile_alignment": true,
-            "alignment_mobile": "left"
-          },
-          "blocks": {
-            "title": {
-              "type": "heading",
-              "settings": {
-                "text": "<p>Every stride has a story</p>",
-                "heading_size": "xl",
-                "html_tag": "h2",
-                "width": "fill",
-                "width_mobile": "fill",
-                "animation_type": "slide-bottom",
-                "animation_delay": 150
-              }
-            }
-          },
-          "block_order": [
-            "title"
-          ]
-        },
         "card_1": {
           "type": "image-card",
           "settings": {
@@ -2132,7 +2121,6 @@
             "color_scheme": "scheme-3",
             "show_overlay": true,
             "overlay_style": "solid",
-            "overlay_opacity": 20,
             "padding_top": 0,
             "padding_bottom": 0,
             "padding_left": 0,
@@ -2140,7 +2128,8 @@
             "enable_sticky": false,
             "zoom_on_hover": true,
             "image": "shopify://shop_images/strideo-cards-1-figma.jpg",
-            "mobile_image": "shopify://shop_images/strideo-cards-1-figma.jpg"
+            "mobile_image": "shopify://shop_images/strideo-cards-1-figma.jpg",
+            "overlay_color": "#0000000A"
           },
           "blocks": {
             "content": {
@@ -2155,7 +2144,8 @@
                 "padding_top": 24,
                 "padding_bottom": 24,
                 "padding_left": 24,
-                "padding_right": 24
+                "padding_right": 24,
+                "show_overlay": false
               },
               "blocks": {
                 "title": {
@@ -2193,7 +2183,6 @@
             "color_scheme": "scheme-3",
             "show_overlay": true,
             "overlay_style": "solid",
-            "overlay_opacity": 20,
             "padding_top": 0,
             "padding_bottom": 0,
             "padding_left": 0,
@@ -2201,7 +2190,8 @@
             "enable_sticky": false,
             "zoom_on_hover": true,
             "image": "shopify://shop_images/strideo-cards-3-figma.jpg",
-            "mobile_image": "shopify://shop_images/strideo-cards-3-figma.jpg"
+            "mobile_image": "shopify://shop_images/strideo-cards-3-figma.jpg",
+            "overlay_color": "#0000000A"
           },
           "blocks": {
             "content": {
@@ -2216,7 +2206,8 @@
                 "padding_top": 24,
                 "padding_bottom": 24,
                 "padding_left": 24,
-                "padding_right": 24
+                "padding_right": 24,
+                "show_overlay": false
               },
               "blocks": {
                 "title": {
@@ -2254,7 +2245,6 @@
             "color_scheme": "scheme-3",
             "show_overlay": true,
             "overlay_style": "solid",
-            "overlay_opacity": 20,
             "padding_top": 0,
             "padding_bottom": 0,
             "padding_left": 0,
@@ -2262,7 +2252,8 @@
             "enable_sticky": false,
             "zoom_on_hover": true,
             "image": "shopify://shop_images/strideo-cards-5-figma.jpg",
-            "mobile_image": "shopify://shop_images/strideo-cards-5-figma.jpg"
+            "mobile_image": "shopify://shop_images/strideo-cards-5-figma.jpg",
+            "overlay_color": "#0000000A"
           },
           "blocks": {
             "content": {
@@ -2277,7 +2268,8 @@
                 "padding_top": 24,
                 "padding_bottom": 24,
                 "padding_left": 24,
-                "padding_right": 24
+                "padding_right": 24,
+                "show_overlay": false
               },
               "blocks": {
                 "title": {
@@ -2315,7 +2307,6 @@
             "color_scheme": "scheme-3",
             "show_overlay": true,
             "overlay_style": "solid",
-            "overlay_opacity": 10,
             "padding_top": 0,
             "padding_bottom": 0,
             "padding_left": 0,
@@ -2323,7 +2314,8 @@
             "enable_sticky": false,
             "zoom_on_hover": true,
             "image": "shopify://shop_images/strideo-cards-6-figma.jpg",
-            "mobile_image": "shopify://shop_images/strideo-cards-6-figma.jpg"
+            "mobile_image": "shopify://shop_images/strideo-cards-6-figma.jpg",
+            "overlay_color": "#00000005"
           },
           "blocks": {
             "content": {
@@ -2338,7 +2330,8 @@
                 "padding_top": 24,
                 "padding_bottom": 24,
                 "padding_left": 24,
-                "padding_right": 24
+                "padding_right": 24,
+                "show_overlay": false
               },
               "blocks": {
                 "title": {
