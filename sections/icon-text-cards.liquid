@@ -18,6 +18,12 @@
     assign color_scheme = section.settings.color_scheme.id
   endif
 
+  assign section_background = section.settings.background_color
+  if section_background == blank
+    assign section_background = section.settings.color_scheme.settings.background
+  endif
+  assign section_background = section_background | default: 'var(--background-color)'
+
   assign alignment = section.settings.alignment | default: 'center'
   assign flex_align = 'flex-start'
   if alignment == 'center'
@@ -57,7 +63,7 @@
 
 {% style %}
   #shopify-section-{{ section.id }} {
-    background-color: {{ section.settings.background_color | default: 'var(--background-color)' }};
+    background-color: {{ section_background }};
   }
 {% endstyle %}
 
