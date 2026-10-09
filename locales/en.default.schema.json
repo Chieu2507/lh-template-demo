@@ -634,6 +634,8 @@
     "outline_width": "Outline width",
     "elevation": "Elevation",
     "container_inset": "Container inset",
+    "overlay_style": "Overlay style",
+    "overlay_gradient": "Overlay gradient",
     "overlay_color": "Overlay color",
     "position": "Position",
     "swatch_type": "Swatch type",
@@ -724,6 +726,10 @@
     "text_line_height_px": "Line height (px)"
   },
   "options": {
+    "overlay_style": {
+      "solid": "Solid",
+      "gradient": "Gradient"
+    },
     "product_quantity_style": {
       "default": "Default",
       "custom": "Custom"
