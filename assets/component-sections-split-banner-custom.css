@@ -64,7 +64,3 @@
     .split-banner__content--mobile-vertical > :is(.group, .image-block) { flex: 0 1 auto; }
     .split-banner--sticky .split-banner__content > .group { position: static; }
   }
-
-@media (min-width: 768px) {
-  .split-banner__content--direction-horizontal > .image-block--height-fill { height: auto; align-self: stretch; }
-}

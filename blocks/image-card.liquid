@@ -8,9 +8,6 @@
   @example
   {% content_for 'block', type: 'image-card', id: 'image-card' %}
 {% enddoc %}
-{% capture effective_overlay %}{% render 'overlay-background', overlay_settings: block.settings, color_id: 'overlay_color', enabled_id: 'show_overlay', style_id: 'overlay_style' %}{% endcapture %}
-{% assign effective_overlay = effective_overlay | strip %}
-
 
 {% capture card_content %}{% content_for 'blocks' %}{% endcapture %}
 {% render 'image-card-content', block: block, content: card_content %}

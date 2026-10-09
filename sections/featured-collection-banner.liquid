@@ -71,7 +71,23 @@
   endif
 %}
 
+{% liquid
+  assign banner_overlap_desktop = section.settings.overlap_desktop | default: 0 | at_least: 0 | at_most: 200
+  assign banner_overlap_mobile = section.settings.overlap_mobile | default: 0 | at_least: 0 | at_most: 200
+  assign banner_overlap_enabled = false
+  if banner_overlap_desktop > 0 or banner_overlap_mobile > 0
+    assign banner_overlap_enabled = true
+  endif
+%}
+{% capture banner_header %}<div class="featured-collection-banner__header">{% content_for 'block', type: 'header', id: 'header' %}</div>{% endcapture %}
+{% capture banner_media %}{% content_for 'block', type: 'banner', id: 'banner' %}{% endcapture %}
+{% capture banner_products %}{% content_for 'block', type: 'product-list', id: 'carousel-product-list' %}{% endcapture %}
 {% capture featured_collection_banner_style %}
+  {% if banner_overlap_enabled %}
+    --featured-collection-banner-overlap-desktop: {{ banner_overlap_desktop }}px;
+    --featured-collection-banner-overlap-mobile: {{ banner_overlap_mobile }}px;
+    --featured-collection-banner-panel-padding: {{ section.settings.overlap_panel_padding | default: 24 }}px;
+  {% endif %}
   {% if featured_collection_banner_header_gap_desktop != 30 %}--featured-collection-banner-header-gap-desktop: {{ featured_collection_banner_header_gap_desktop }}px;{% endif %}
   {% if featured_collection_banner_header_gap_mobile != 20 %}--featured-collection-banner-header-gap-mobile: {{ featured_collection_banner_header_gap_mobile }}px;{% endif %}
   {% if featured_collection_banner_gap_desktop != 30 %}--featured-collection-banner-gap-desktop: {{ featured_collection_banner_gap_desktop }}px;{% endif %}
@@ -90,19 +106,30 @@
   {% if featured_collection_banner_style != blank %}style="{{ featured_collection_banner_style }}"{% endif %}
 >
   <div class="container {{ featured_collection_banner_container_width }} featured-collection-banner__container{% if featured_collection_banner_no_padding %} featured-collection-banner__container--no-padding{% endif %}">
-    <div class="featured-collection-banner__content{% if section.settings.header_position == 'products' %} featured-collection-banner__content--header-products{% endif %}">
-      <div class="featured-collection-banner__header">
-        {% content_for 'block', type: 'header', id: 'header' %}
-      </div>
-      <div class="featured-collection-banner__layout" data-banner-size="{{ featured_collection_banner_size }}" data-banner-position="{{ featured_collection_banner_position }}" data-banner-height="{{ section.settings.banner_height | default: 'ratio' }}">
-        <div class="featured-collection-banner__banner">
-          {% content_for 'block', type: 'banner', id: 'banner' %}
+    {% if banner_overlap_enabled %}
+      <div class="featured-collection-banner__content featured-collection-banner__content--overlap">
+        {% if section.settings.header_position != 'products' %}{{ banner_header }}{% endif %}
+        <div class="featured-collection-banner__layout featured-collection-banner__layout--overlap"
+          data-banner-size="{{ featured_collection_banner_size }}" data-banner-position="{{ featured_collection_banner_position }}"
+          data-banner-height="{{ section.settings.banner_height | default: 'ratio' }}"
+          data-overlap-desktop="{% if banner_overlap_desktop > 0 %}true{% else %}false{% endif %}"
+          data-overlap-mobile="{% if banner_overlap_mobile > 0 %}true{% else %}false{% endif %}">
+          <div class="featured-collection-banner__banner">{{ banner_media }}</div>
+          <div class="featured-collection-banner__panel">
+            {% if section.settings.header_position == 'products' %}{{ banner_header }}{% endif %}
+            <div class="featured-collection-banner__products">{{ banner_products }}</div>
+          </div>
         </div>
-        <div class="featured-collection-banner__products">
-          {% content_for 'block', type: 'product-list', id: 'carousel-product-list' %}
+      </div>
+    {% else %}
+      <div class="featured-collection-banner__content{% if section.settings.header_position == 'products' %} featured-collection-banner__content--header-products{% endif %}">
+        {{ banner_header }}
+        <div class="featured-collection-banner__layout" data-banner-size="{{ featured_collection_banner_size }}" data-banner-position="{{ featured_collection_banner_position }}" data-banner-height="{{ section.settings.banner_height | default: 'ratio' }}">
+          <div class="featured-collection-banner__banner">{{ banner_media }}</div>
+          <div class="featured-collection-banner__products">{{ banner_products }}</div>
         </div>
       </div>
-    </div>
+    {% endif %}
   </div>
 </div>
 
@@ -271,6 +298,60 @@
       padding-bottom: var(--featured-collection-banner-padding-bottom-mobile, var(--featured-collection-banner-padding-bottom, 50px));
     }
   }
+
+  /* Overlap remains section-owned; Swiper keeps its own transforms and clipping. */
+  .featured-collection-banner__panel {
+    grid-area: products;
+    min-width: 0;
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    gap: var(--featured-collection-banner-header-gap-mobile, 20px);
+  }
+  .featured-collection-banner__panel .featured-collection-banner__products {
+    position: relative;
+    top: auto;
+    align-self: stretch;
+  }
+  @media (min-width: 768px) {
+    .featured-collection-banner__layout--overlap { align-items: center; }
+    .featured-collection-banner__panel { gap: var(--featured-collection-banner-header-gap-desktop, 30px); }
+    .featured-collection-banner__layout--overlap .featured-collection-banner__banner { position: relative; top: auto; }
+    .featured-collection-banner__layout--overlap[data-overlap-desktop='true'] { column-gap: 0; }
+    .featured-collection-banner__layout--overlap[data-overlap-desktop='true'] .featured-collection-banner__panel {
+      margin-inline-start: calc(-1 * min(var(--featured-collection-banner-overlap-desktop), 40vw));
+    }
+    .featured-collection-banner__layout--overlap[data-overlap-desktop='true'][data-banner-position='after'] .featured-collection-banner__panel {
+      margin-inline-start: 0;
+      margin-inline-end: calc(-1 * min(var(--featured-collection-banner-overlap-desktop), 40vw));
+    }
+    .featured-collection-banner__layout--overlap[data-overlap-desktop='true'] .featured-collection-banner__products {
+      padding: var(--featured-collection-banner-panel-padding);
+      background: var(--background-color);
+      border-radius: var(--radius-rounded);
+    }
+    .featured-collection-banner__layout--overlap[data-overlap-desktop='true'] .featured-collection-banner__panel > .featured-collection-banner__header {
+      padding-inline-start: calc(var(--featured-collection-banner-overlap-desktop) + var(--featured-collection-banner-panel-padding));
+    }
+    .featured-collection-banner__layout--overlap[data-overlap-desktop='true'][data-banner-position='after'] .featured-collection-banner__panel > .featured-collection-banner__header {
+      padding-inline-start: 0;
+      padding-inline-end: calc(var(--featured-collection-banner-overlap-desktop) + var(--featured-collection-banner-panel-padding));
+    }
+  }
+  @media (max-width: 767.98px) {
+    .featured-collection-banner__layout--overlap[data-overlap-mobile='true'] { row-gap: 0; }
+    .featured-collection-banner__layout--overlap[data-overlap-mobile='true'] .featured-collection-banner__panel {
+      margin-block-start: calc(-1 * min(var(--featured-collection-banner-overlap-mobile), 40vw));
+      padding: var(--featured-collection-banner-panel-padding);
+      background: var(--background-color);
+      border-radius: var(--radius-rounded);
+    }
+    .featured-collection-banner__layout--overlap[data-overlap-mobile='true'][data-banner-position='after'] .featured-collection-banner__panel {
+      margin-block-start: 0;
+      margin-block-end: calc(-1 * min(var(--featured-collection-banner-overlap-mobile), 40vw));
+    }
+  }
 {% endstylesheet %}
 
 {% schema %}
@@ -386,6 +467,42 @@
         }
       ],
       "default": "ratio"
+    },
+    {
+      "type": "header",
+      "content": "Overlap",
+      "info": "Products overlap the banner horizontally on desktop/tablet and vertically on mobile. Set to 0 to keep the gap."
+    },
+    {
+      "type": "range",
+      "id": "overlap_desktop",
+      "label": "t:options.device.desktop",
+      "min": 0,
+      "max": 200,
+      "step": 2,
+      "unit": "px",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "overlap_mobile",
+      "label": "t:options.device.mobile",
+      "min": 0,
+      "max": 200,
+      "step": 2,
+      "unit": "px",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "overlap_panel_padding",
+      "label": "Panel padding",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "default": 24,
+      "visible_if": "{{ section.settings.overlap_desktop > 0 or section.settings.overlap_mobile > 0 }}"
     },
     {
       "type": "header",

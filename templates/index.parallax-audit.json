@@ -1,0 +1,345 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "parallax": {
+      "type": "parallax",
+      "settings": {
+        "section_width": "full_width",
+        "gap_desktop": 160,
+        "gap_mobile": 20,
+        "content_gap_desktop": 180,
+        "content_gap_mobile": 40,
+        "background_media": "image",
+        "color_scheme": "scheme-2",
+        "padding_top": 120,
+        "padding_bottom": 80,
+        "customize_mobile_padding": true,
+        "padding_top_mobile": 20,
+        "padding_bottom_mobile": 30
+      },
+      "blocks": {
+        "header": {
+          "type": "header",
+          "static": true,
+          "settings": {
+            "width": "custom",
+            "max_width": 750,
+            "alignment": "center",
+            "gap_desktop": 12,
+            "gap_mobile": 8
+          },
+          "blocks": {
+            "text": {
+              "type": "editorial-text",
+              "settings": {
+                "text": "<p>Use this text to share information about your brand with customers, describe products, or highlight announcements.</p>",
+                "width": "fill",
+                "size": "xl"
+              }
+            }
+          },
+          "block_order": [
+            "text"
+          ]
+        },
+        "item_1": {
+          "type": "parallax-item",
+          "settings": {
+            "position": "left",
+            "alignment": "left",
+            "gap_desktop": 14,
+            "gap_mobile": 10,
+            "border_width": 2,
+            "corner_radius": "custom",
+            "custom_corner_radius": 24,
+            "shadow": "extra_small",
+            "appearance_type": "scheme",
+            "color_scheme": "scheme-4",
+            "show_overlay": true,
+            "overlay_color": "#12345666",
+            "link": "/collections/all",
+            "open_in_new_tab": true,
+            "padding_top": 12,
+            "padding_right": 14,
+            "padding_bottom": 16,
+            "padding_left": 18,
+            "customize_mobile_padding": true,
+            "padding_top_mobile": 2,
+            "padding_right_mobile": 4,
+            "padding_bottom_mobile": 6,
+            "padding_left_mobile": 8
+          },
+          "blocks": {
+            "image": {
+              "type": "image",
+              "settings": {
+                "image_ratio_desktop": "portrait",
+                "image_ratio_mobile": "portrait",
+                "width_desktop": "fill",
+                "width_mobile": "fill",
+                "corner_radius": "square"
+              }
+            },
+            "title": {
+              "type": "heading",
+              "settings": {
+                "text": "<p>Item 1 QA</p>",
+                "heading_size": "sm",
+                "html_tag": "h3",
+                "width": "fit"
+              }
+            }
+          },
+          "block_order": [
+            "title",
+            "image"
+          ]
+        },
+        "item_2": {
+          "type": "parallax-item",
+          "settings": {
+            "position": "right",
+            "alignment": "center",
+            "gap_desktop": 20,
+            "gap_mobile": 12,
+            "border_width": 4,
+            "corner_radius": "rounded",
+            "shadow": "small",
+            "appearance_type": "scheme",
+            "color_scheme": "scheme-3",
+            "background_media": "image",
+            "padding_top": 6,
+            "padding_right": 10,
+            "padding_bottom": 14,
+            "padding_left": 18,
+            "overlay_color": "#0000004C"
+          },
+          "blocks": {
+            "image": {
+              "type": "image",
+              "settings": {
+                "image_ratio_desktop": "portrait",
+                "image_ratio_mobile": "portrait",
+                "width_desktop": "fill",
+                "width_mobile": "fill",
+                "corner_radius": "square"
+              }
+            },
+            "title": {
+              "type": "heading",
+              "settings": {
+                "text": "<p>Item 2 QA</p>",
+                "heading_size": "sm",
+                "html_tag": "h3",
+                "width": "fit"
+              }
+            }
+          },
+          "block_order": [
+            "title",
+            "image"
+          ]
+        },
+        "item_3": {
+          "type": "parallax-item",
+          "settings": {
+            "position": "right",
+            "alignment": "right",
+            "gap_desktop": 12,
+            "gap_mobile": 8,
+            "border_width": 1,
+            "corner_radius": "square",
+            "shadow": "none",
+            "appearance_type": "inherit",
+            "background_media": "video",
+            "show_overlay": false,
+            "overlay_color": "#0000004C"
+          },
+          "blocks": {
+            "image": {
+              "type": "image",
+              "settings": {
+                "image_ratio_desktop": "portrait",
+                "image_ratio_mobile": "portrait",
+                "width_desktop": "fill",
+                "width_mobile": "fill",
+                "corner_radius": "square"
+              }
+            },
+            "title": {
+              "type": "heading",
+              "settings": {
+                "text": "<p>Item 3 QA</p>",
+                "heading_size": "sm",
+                "html_tag": "h3",
+                "width": "fit"
+              }
+            }
+          },
+          "block_order": [
+            "title",
+            "image"
+          ]
+        },
+        "item_4": {
+          "type": "parallax-item",
+          "settings": {
+            "position": "left",
+            "alignment": "left",
+            "gap_desktop": 16,
+            "gap_mobile": 8,
+            "corner_radius": "inherit",
+            "appearance_type": "inherit",
+            "show_overlay": false,
+            "overlay_color": "#0000004C"
+          },
+          "blocks": {
+            "group": {
+              "type": "group",
+              "settings": {
+                "width": "fill",
+                "width_mobile": "fill",
+                "height": "fit",
+                "direction": "vertical",
+                "alignment": "center",
+                "gap_desktop": 12,
+                "gap_mobile": 6,
+                "padding_top": 8,
+                "padding_bottom": 8,
+                "show_overlay": false
+              },
+              "blocks": {
+                "image": {
+                  "type": "image",
+                  "settings": {
+                    "image_ratio_desktop": "portrait",
+                    "image_ratio_mobile": "portrait",
+                    "width_desktop": "fill",
+                    "width_mobile": "fill",
+                    "corner_radius": "square"
+                  }
+                },
+                "title": {
+                  "type": "heading",
+                  "settings": {
+                    "text": "<p>Item 4 QA</p>",
+                    "heading_size": "sm",
+                    "html_tag": "h3",
+                    "width": "fit"
+                  }
+                }
+              },
+              "block_order": [
+                "title",
+                "image"
+              ]
+            }
+          },
+          "block_order": [
+            "group"
+          ]
+        },
+        "item_5": {
+          "type": "parallax-item",
+          "settings": {
+            "position": "left",
+            "alignment": "center",
+            "gap_desktop": 22,
+            "gap_mobile": 10,
+            "corner_radius": "square",
+            "shadow": "none",
+            "padding_top": 20,
+            "padding_right": 22,
+            "padding_bottom": 24,
+            "padding_left": 26,
+            "customize_mobile_padding": false,
+            "overlay_color": "#0000004C"
+          },
+          "blocks": {
+            "image": {
+              "type": "image",
+              "settings": {
+                "image_ratio_desktop": "portrait",
+                "image_ratio_mobile": "portrait",
+                "width_desktop": "fill",
+                "width_mobile": "fill",
+                "corner_radius": "square"
+              }
+            },
+            "title": {
+              "type": "heading",
+              "settings": {
+                "text": "<p>Item 5 QA</p>",
+                "heading_size": "sm",
+                "html_tag": "h3",
+                "width": "fit"
+              }
+            }
+          },
+          "block_order": [
+            "title",
+            "image"
+          ]
+        },
+        "item_6": {
+          "type": "parallax-item",
+          "settings": {
+            "position": "right",
+            "alignment": "right",
+            "gap_desktop": 18,
+            "gap_mobile": 6,
+            "corner_radius": "rounded",
+            "shadow": "small",
+            "link": "/collections/all",
+            "open_in_new_tab": false,
+            "overlay_color": "#0000004C"
+          },
+          "blocks": {
+            "image": {
+              "type": "image",
+              "settings": {
+                "image_ratio_desktop": "portrait",
+                "image_ratio_mobile": "portrait",
+                "width_desktop": "fill",
+                "width_mobile": "fill",
+                "corner_radius": "square"
+              }
+            },
+            "title": {
+              "type": "heading",
+              "settings": {
+                "text": "<p>Item 6 QA</p>",
+                "heading_size": "sm",
+                "html_tag": "h3",
+                "width": "fit"
+              }
+            }
+          },
+          "block_order": [
+            "title",
+            "image"
+          ]
+        }
+      },
+      "block_order": [
+        "item_1",
+        "item_2",
+        "item_3",
+        "item_4",
+        "item_5",
+        "item_6"
+      ]
+    }
+  },
+  "order": [
+    "parallax"
+  ]
+}

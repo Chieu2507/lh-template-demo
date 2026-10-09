@@ -1910,7 +1910,7 @@
         "image",
         "content"
       ],
-      "name": "Flash Sale \u2014 Countdown",
+      "name": "Flash Sale — Countdown",
       "settings": {
         "section_width": "page_width",
         "height": "auto",
@@ -2138,7 +2138,7 @@
                 "quote": {
                   "type": "heading",
                   "settings": {
-                    "text": "<p>We\u2019ve tried many toys, but these are the ones my always come back to. Durable, creative, and so much fun. Even the grandparents love playing with.</p>",
+                    "text": "<p>We’ve tried many toys, but these are the ones my always come back to. Durable, creative, and so much fun. Even the grandparents love playing with.</p>",
                     "heading_size": "lg",
                     "html_tag": "div",
                     "width": "fill",
@@ -3156,7 +3156,7 @@
           "block_order": []
         }
       },
-      "name": "Featured collection \u2014 Top Picks",
+      "name": "Featured collection — Top Picks",
       "settings": {
         "section_width": "page_width",
         "desktop_alignment": "left",
@@ -3345,7 +3345,7 @@
           }
         }
       },
-      "name": "Blog posts \u2014 Peekoo",
+      "name": "Blog posts — Peekoo",
       "settings": {
         "section_width": "page_width",
         "desktop_alignment": "center",
@@ -3387,7 +3387,8 @@
           },
           "block_order": [
             "heading"
-          ]
+          ],
+          "disabled": true
         },
         "product-media": {
           "type": "_product-media",
@@ -3403,7 +3404,8 @@
             "autoplay": false,
             "loop_video": false,
             "gap": 16,
-            "gap_mobile": 16
+            "gap_mobile": 16,
+            "mobile_show_pagination": false
           }
         },
         "product-details": {
@@ -3411,10 +3413,10 @@
           "static": true,
           "settings": {
             "alignment": "left",
-            "limit_width": false,
-            "max_width": 500,
-            "container_position": "center",
-            "gap_desktop": 36,
+            "limit_width": true,
+            "max_width": 580,
+            "container_position": "left",
+            "gap_desktop": 24,
             "gap_mobile": 24,
             "border_thickness": 0,
             "corner_radius": "square",
@@ -3437,8 +3439,8 @@
               "settings": {
                 "direction": "vertical",
                 "alignment": "left",
-                "gap_desktop": 24,
-                "gap_mobile": 24,
+                "gap_desktop": 20,
+                "gap_mobile": 20,
                 "width": "fill",
                 "show_overlay": false
               },
@@ -3459,8 +3461,8 @@
                       "settings": {
                         "direction": "vertical",
                         "alignment": "left",
-                        "gap_desktop": 6,
-                        "gap_mobile": 6,
+                        "gap_desktop": 8,
+                        "gap_mobile": 8,
                         "width": "fill",
                         "show_overlay": false
                       },
@@ -3472,28 +3474,37 @@
                         "title": {
                           "type": "product-title",
                           "settings": {
-                            "heading_size": "lg",
-                            "html_tag": "h3",
-                            "text_case": "capitalize"
+                            "heading_size": "xl",
+                            "html_tag": "h2",
+                            "text_case": "original"
                           }
                         }
                       },
                       "block_order": [
-                        "rating",
-                        "title"
+                        "title",
+                        "rating"
                       ]
                     },
                     "price": {
                       "type": "product-price",
                       "settings": {
-                        "font": "heading",
+                        "font": "body",
                         "font_size": "lg",
                         "show_sale_badge": false,
                         "show_tax_shipping_notice": false
                       }
+                    },
+                    "badges": {
+                      "type": "product-badges",
+                      "settings": {
+                        "show_sale_badge": false,
+                        "show_sold_out_badge": false,
+                        "show_manual_badges": true
+                      }
                     }
                   },
                   "block_order": [
+                    "badges",
                     "rating_title",
                     "price"
                   ]
@@ -3503,7 +3514,7 @@
                   "settings": {
                     "show_summary": true,
                     "height_limit": "none",
-                    "text_size": "md"
+                    "text_size": "sm"
                   }
                 },
                 "inventory": {
@@ -3512,14 +3523,14 @@
                     "display_mode": "status_and_count",
                     "low_stock_threshold": 20,
                     "show_progress": true,
-                    "progress_capacity": 34
+                    "progress_capacity": 40
                   }
                 }
               },
               "block_order": [
                 "name",
-                "description",
-                "inventory"
+                "inventory",
+                "description"
               ]
             },
             "purchase": {
@@ -3547,8 +3558,8 @@
                       "static": true,
                       "settings": {
                         "show_label": true,
-                        "width": 170,
-                        "style": "custom",
+                        "width": 133,
+                        "style": "default",
                         "background_color": "#ffffff",
                         "text_color": "#181818",
                         "border_color": "#e6e6e6",
@@ -3561,7 +3572,7 @@
                       "static": true,
                       "settings": {
                         "show_price": false,
-                        "style": "primary"
+                        "style": "secondary"
                       }
                     },
                     "accelerated-checkout": {
@@ -3575,23 +3586,57 @@
                   },
                   "block_order": []
                 },
-                "payments": {
-                  "type": "payment-icons",
+                "variants": {
+                  "type": "product-variant-picker",
                   "settings": {
-                    "icon_width": 38,
-                    "gap_desktop": 8,
-                    "gap_mobile": 8
+                    "show_option_names": true,
+                    "color_option_display": "text"
                   }
+                },
+                "payments": {
+                  "type": "group",
+                  "settings": {
+                    "direction": "vertical",
+                    "alignment": "left",
+                    "width": "fill",
+                    "gap_desktop": 12,
+                    "gap_mobile": 12,
+                    "show_overlay": false
+                  },
+                  "blocks": {
+                    "label": {
+                      "type": "text",
+                      "settings": {
+                        "text": "<p>Secure Payment:</p>",
+                        "text_size": "sm",
+                        "width": "fit"
+                      }
+                    },
+                    "icons": {
+                      "type": "payment-icons",
+                      "settings": {
+                        "icon_width": 38,
+                        "gap_desktop": 10,
+                        "gap_mobile": 10
+                      }
+                    }
+                  },
+                  "block_order": [
+                    "label",
+                    "icons"
+                  ]
                 }
               },
               "block_order": [
+                "variants",
                 "buy",
                 "payments"
               ]
             },
             "share": {
               "type": "product-share",
-              "settings": {}
+              "settings": {},
+              "disabled": true
             }
           },
           "block_order": [
@@ -3603,16 +3648,16 @@
       },
       "settings": {
         "product": "perky-stacking-tree-with-bird",
-        "show_header": true,
+        "show_header": false,
         "header_gap": 48,
         "customize_mobile_header_gap": true,
         "header_gap_mobile": 36,
         "sticky_content": false,
         "width": "page",
-        "media_width": "equal",
-        "gap": 64,
-        "gap_mobile": 48,
-        "boxed": true,
+        "media_width": "medium",
+        "gap": 80,
+        "gap_mobile": 40,
+        "boxed": false,
         "box_color_scheme": "scheme-1",
         "box_corner_radius": "radius_24",
         "box_padding_vertical": 48,
@@ -3620,12 +3665,12 @@
         "box_padding_mobile": 20,
         "customize_mobile_box_bottom_padding": true,
         "box_padding_bottom_mobile": 28,
-        "color_scheme": "scheme-2",
-        "padding_top": 80,
-        "padding_bottom": 80,
+        "color_scheme": "scheme-1",
+        "padding_top": 0,
+        "padding_bottom": 96,
         "customize_mobile_padding": true,
-        "padding_top_mobile": 56,
-        "padding_bottom_mobile": 56
+        "padding_top_mobile": 0,
+        "padding_bottom_mobile": 64
       }
     },
     "wofyn_rich_text": {
@@ -3995,6 +4040,154 @@
         "pagination_limit_width": false,
         "pagination_max_width": 260
       }
+    },
+    "wofyn_kibble_banner": {
+      "type": "featured-collection-banner",
+      "name": "Featured collection — Premium Dog Kibble",
+      "settings": {
+        "section_width": "page_width",
+        "banner_position": "before",
+        "gap_desktop": 0,
+        "gap_mobile": 0,
+        "color_scheme": "scheme-1",
+        "padding_top": 0,
+        "padding_bottom": 100,
+        "customize_mobile_padding": true,
+        "header_position": "products",
+        "header_gap_desktop": 40,
+        "header_gap_mobile": 16,
+        "padding_top_mobile": 0,
+        "padding_bottom_mobile": 80,
+        "overlap_desktop": 112,
+        "overlap_mobile": 112,
+        "overlap_panel_padding": 24,
+        "banner_max_width": "medium"
+      },
+      "blocks": {
+        "header": {
+          "type": "header",
+          "static": true,
+          "settings": {
+            "width": "fill",
+            "max_width": 760,
+            "customize_mobile_size": false,
+            "width_mobile": "fit",
+            "max_width_mobile": 480,
+            "inherit_alignment": true,
+            "alignment": "left",
+            "customize_mobile_alignment": true,
+            "alignment_mobile": "center",
+            "gap_desktop": 16,
+            "gap_mobile": 12,
+            "padding_top": 0,
+            "padding_bottom": 0,
+            "padding_left": 0,
+            "padding_right": 0,
+            "customize_mobile_padding": false,
+            "padding_top_mobile": 0,
+            "padding_bottom_mobile": 0,
+            "padding_left_mobile": 0,
+            "padding_right_mobile": 0
+          },
+          "blocks": {
+            "heading": {
+              "type": "heading",
+              "settings": {
+                "text": "<p>Premium Dog Kibble</p>",
+                "heading_size": "xl",
+                "custom_heading_size": 24,
+                "html_tag": "h2",
+                "text_color": "",
+                "outline_text": false,
+                "width": "fill",
+                "max_width": 640,
+                "customize_mobile_size": false,
+                "width_mobile": "fit",
+                "max_width_mobile": 480,
+                "animation_type": "none",
+                "animation_delay": 150,
+                "padding_top": 0,
+                "padding_bottom": 0,
+                "padding_left": 0,
+                "padding_right": 0,
+                "customize_mobile_padding": false,
+                "padding_top_mobile": 0,
+                "padding_bottom_mobile": 0,
+                "padding_left_mobile": 0,
+                "padding_right_mobile": 0
+              },
+              "blocks": {}
+            }
+          },
+          "block_order": [
+            "heading"
+          ]
+        },
+        "banner": {
+          "type": "banner",
+          "static": true,
+          "settings": {
+            "background_type": "image",
+            "show_overlay": false,
+            "image_ratio_desktop": "custom",
+            "image_ratio_custom_width_desktop": 6,
+            "image_ratio_custom_height_desktop": 7,
+            "image_ratio_mobile": "custom",
+            "image_ratio_custom_width_mobile": 6,
+            "image_ratio_custom_height_mobile": 7,
+            "corner_radius": "rounded",
+            "image": "shopify://shop_images/wofyn-kibble-banner.png"
+          },
+          "blocks": {}
+        },
+        "carousel-product-list": {
+          "type": "product-list",
+          "static": true,
+          "settings": {
+            "collection": "",
+            "max_products": 6,
+            "layout_type": "carousel",
+            "columns_desktop": "4",
+            "columns_tablet": "2",
+            "columns_mobile": "1",
+            "show_next_slide_preview_on_desktop": false,
+            "show_next_slide_preview_on_mobile": false,
+            "product_gap_desktop": 20,
+            "product_gap_mobile": 20,
+            "mobile_promo_gap": 16,
+            "mobile_promo_height": 400,
+            "customize_mobile_row_gap": false,
+            "product_row_gap_mobile": 24,
+            "show_navigation_on_desktop": false,
+            "navigation_position": "top",
+            "navigation_style": "primary",
+            "navigation_icon": "arrow",
+            "navigation_behavior": "always",
+            "show_pagination_on_desktop": true,
+            "pagination_type": "progress_bar",
+            "pagination_thickness": "thin",
+            "pagination_top_padding_desktop": 36,
+            "pagination_top_padding_mobile": 16,
+            "pagination_limit_width": false,
+            "pagination_max_width": 260,
+            "autoplay": false,
+            "autoplay_pause_on_hover": true,
+            "autoplay_speed": 4
+          },
+          "blocks": {
+            "product-card": {
+              "type": "product-card",
+              "static": true,
+              "settings": {
+                "color_type": "color_scheme",
+                "color_scheme": "scheme-1"
+              },
+              "blocks": {}
+            }
+          },
+          "block_order": []
+        }
+      }
     }
   },
   "order": [
@@ -4006,6 +4199,7 @@
     "countdown_timer",
     "scrolling_text",
     "wofyn_promo_grid",
+    "wofyn_kibble_banner",
     "peekoo_featured_product",
     "peekoo_image_cards",
     "perky_logos",
