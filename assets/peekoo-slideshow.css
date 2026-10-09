@@ -2,7 +2,7 @@
 .slideshow--peekoo .slideshow-slide .hero__container {
   max-width: 1496px;
 }
-.slideshow--peekoo .slideshow__swiper > .slideshow__pagination {
+:is(.slideshow--peekoo, .slideshow--circular-pagination) .slideshow__swiper > .slideshow__pagination {
   --swiper-pagination-bullet-size: 10px;
   --swiper-pagination-bullet-gap: 2px;
   --swiper-pagination-bullet-active-hit-width: 24px;
@@ -30,40 +30,40 @@
   background: none;
 }
 /* Reuse Numbers' SVG ring and autoplay clock, with a dot as the label. */
-.slideshow--peekoo .slideshow__pagination--bullets .slideshow__pagination-number {
+:is(.slideshow--peekoo, .slideshow--circular-pagination) .slideshow__pagination--bullets .slideshow__pagination-number {
   flex-basis: 24px;
   width: 24px;
   height: 24px;
   opacity: 1;
 }
-.slideshow--peekoo .slideshow__pagination--bullets .slideshow__pagination-number svg {
+:is(.slideshow--peekoo, .slideshow--circular-pagination) .slideshow__pagination--bullets .slideshow__pagination-number svg {
   width: 20px;
   height: 20px;
 }
-.slideshow--peekoo .slideshow__pagination--bullets .slideshow__pagination-number circle {
+:is(.slideshow--peekoo, .slideshow--circular-pagination) .slideshow__pagination--bullets .slideshow__pagination-number circle {
   stroke-opacity: 0;
 }
-.slideshow--peekoo .slideshow__pagination--bullets .slideshow__pagination-number[aria-current='true'] circle:first-child {
+:is(.slideshow--peekoo, .slideshow--circular-pagination) .slideshow__pagination--bullets .slideshow__pagination-number[aria-current='true'] circle:first-child {
   stroke-opacity: .3;
 }
-.slideshow--peekoo .slideshow__pagination--bullets .slideshow__pagination-number[aria-current='true'] circle:last-child {
+:is(.slideshow--peekoo, .slideshow--circular-pagination) .slideshow__pagination--bullets .slideshow__pagination-number[aria-current='true'] circle:last-child {
   stroke-opacity: 1;
 }
-.slideshow--peekoo .slideshow__pagination--bullets .slideshow__pagination-dot {
+:is(.slideshow--peekoo, .slideshow--circular-pagination) .slideshow__pagination--bullets .slideshow__pagination-dot {
   width: 10px;
   height: 10px;
   border-radius: 50%;
   background: currentColor;
   opacity: .6;
 }
-.slideshow--peekoo .slideshow__pagination--bullets .slideshow__pagination-number[aria-current='true'] .slideshow__pagination-dot {
+:is(.slideshow--peekoo, .slideshow--circular-pagination) .slideshow__pagination--bullets .slideshow__pagination-number[aria-current='true'] .slideshow__pagination-dot {
   opacity: 1;
 }
 @media (max-width: 767.98px) {
   .slideshow--peekoo .slideshow-slide__overlay {
     background: #0003 !important;
   }
-  .slideshow--peekoo .slideshow__swiper > .slideshow__pagination {
+  :is(.slideshow--peekoo, .slideshow--circular-pagination) .slideshow__swiper > .slideshow__pagination {
     padding-bottom: 17px !important;
   }
 }

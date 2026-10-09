@@ -60,12 +60,12 @@
 <link rel="stylesheet" href="{{ 'swiper-12.2.0-effect-fade.min.css' | asset_url }}" media="print" onload="this.media='all'">
 <noscript>{{ 'swiper-12.2.0-effect-fade.min.css' | asset_url | stylesheet_tag }}</noscript>
 <script type="module" src="{{ 'slideshow.js' | asset_url }}" data-theme-module="{{ 'slideshow.js' | asset_url }}"></script>
-{% if section.settings.layout_preset == 'peekoo' %}
+{% if section.settings.layout_preset == 'peekoo' or section.settings.pagination_bullet_style == 'circular' %}
   <style>{{ 'peekoo-slideshow.css' | inline_asset_content }}</style>
 {% endif %}
 
 <div
-  class="slideshow{% if section.settings.layout_preset == 'peekoo' %} slideshow--peekoo{% endif %} slideshow--width-{{ slideshow_width }} slideshow--desktop-{{ slideshow_desktop_height }} slideshow--mobile-{{ slideshow_mobile_height }} color-scheme section-color-scope {{ slideshow_scheme }}"
+  class="slideshow{% if section.settings.layout_preset == 'peekoo' %} slideshow--peekoo{% endif %}{% if section.settings.pagination_type == 'bullets' and section.settings.pagination_bullet_style == 'circular' %} slideshow--circular-pagination{% endif %} slideshow--width-{{ slideshow_width }} slideshow--desktop-{{ slideshow_desktop_height }} slideshow--mobile-{{ slideshow_mobile_height }} color-scheme section-color-scope {{ slideshow_scheme }}"
   data-slideshow
   data-transition="{{ slideshow_transition }}"
   data-show-next-slide-preview-on-desktop="{{ slideshow_show_next_slide_preview_on_desktop }}"
@@ -249,6 +249,7 @@
     { "type": "header", "content": "Pagination" },
     { "type": "checkbox", "id": "show_pagination", "label": "Show pagination", "default": true },
     { "type": "select", "id": "pagination_type", "label": "Type", "options": [{ "value": "progress_bar", "label": "Progress bar" }, { "value": "bullets", "label": "Bullets" }, { "value": "numbers", "label": "Numbers" }], "default": "bullets", "visible_if": "{{ section.settings.show_pagination }}" },
+    { "type": "select", "id": "pagination_bullet_style", "label": "Bullet style", "options": [{ "value": "standard", "label": "Standard" }, { "value": "circular", "label": "Circular progress" }], "default": "standard", "visible_if": "{{ section.settings.show_pagination and section.settings.pagination_type == 'bullets' }}" },
     { "type": "select", "id": "pagination_position_desktop", "label": "Desktop position", "options": [{ "value": "left", "label": "Left" }, { "value": "center", "label": "Center" }, { "value": "right", "label": "Right" }], "default": "left", "visible_if": "{{ section.settings.show_pagination }}" },
     { "type": "select", "id": "pagination_position_mobile", "label": "Mobile position", "options": [{ "value": "left", "label": "Left" }, { "value": "center", "label": "Center" }, { "value": "right", "label": "Right" }], "default": "center", "visible_if": "{{ section.settings.show_pagination }}" },
     { "type": "text", "id": "aria_label", "label": "Accessible label", "default": "Slideshow" },

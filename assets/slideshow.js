@@ -85,7 +85,7 @@ const updateParallax = (root) => {
 };
 
 const usesCircularPagination = (root, type) => type === 'numbers' ||
-  (type === 'bullets' && root.classList.contains('slideshow--peekoo'));
+  (type === 'bullets' && (root.classList.contains('slideshow--peekoo') || root.classList.contains('slideshow--circular-pagination')));
 
 const paginationOptions = (root) => {
   const element = root.querySelector('[data-slideshow-pagination]');
