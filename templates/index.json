@@ -1910,7 +1910,7 @@
         "image",
         "content"
       ],
-      "name": "Flash Sale \u2014 Countdown",
+      "name": "Flash Sale — Countdown",
       "settings": {
         "section_width": "page_width",
         "height": "auto",
@@ -2138,7 +2138,7 @@
                 "quote": {
                   "type": "heading",
                   "settings": {
-                    "text": "<p>We\u2019ve tried many toys, but these are the ones my always come back to. Durable, creative, and so much fun. Even the grandparents love playing with.</p>",
+                    "text": "<p>We’ve tried many toys, but these are the ones my always come back to. Durable, creative, and so much fun. Even the grandparents love playing with.</p>",
                     "heading_size": "lg",
                     "html_tag": "div",
                     "width": "fill",
@@ -3156,7 +3156,7 @@
           "block_order": []
         }
       },
-      "name": "Featured collection \u2014 Top Picks",
+      "name": "Featured collection — Top Picks",
       "settings": {
         "section_width": "page_width",
         "desktop_alignment": "left",
@@ -3345,7 +3345,7 @@
           }
         }
       },
-      "name": "Blog posts \u2014 Peekoo",
+      "name": "Blog posts — Peekoo",
       "settings": {
         "section_width": "page_width",
         "desktop_alignment": "center",
@@ -4143,6 +4143,7 @@
             "navigation_icon": "chevron",
             "navigation_behavior": "always",
             "show_pagination_on_desktop": true,
+            "pagination_visibility": "tablet_mobile",
             "pagination_type": "progress_bar",
             "pagination_thickness": "thin",
             "pagination_top_padding_desktop": 36,
@@ -4151,8 +4152,7 @@
             "pagination_max_width": 260,
             "autoplay": false,
             "autoplay_pause_on_hover": true,
-            "autoplay_speed": 4,
-            "pagination_visibility": "mobile"
+            "autoplay_speed": 4
           },
           "blocks": {
             "product-card": {
@@ -4168,16 +4168,26 @@
           "block_order": []
         }
       },
-      "name": "Featured collection \u2014 Premium Dog Kibble",
+      "name": "Featured collection — Premium Dog Kibble",
       "settings": {
         "section_width": "page_width",
         "header_position": "products",
         "banner_position": "before",
         "banner_max_width": "custom",
+        "banner_custom_max_width": 672,
+        "mobile_banner_full_width": true,
+        "customize_tablet_layout": true,
+        "banner_width_tablet": 320,
+        "overlap_tablet": 56,
+        "header_gap_tablet": 20,
+        "padding_bottom_tablet": 96,
         "enable_overlap": true,
         "overlap_desktop": 112,
         "overlap_mobile": 112,
         "overlap_panel_padding": 24,
+        "overlap_panel_padding_horizontal": 20,
+        "overlap_panel_max_width_mobile": 320,
+        "overlap_panel_radius": "radius_16",
         "gap_desktop": 24,
         "gap_mobile": 20,
         "header_gap_desktop": 40,
@@ -4187,12 +4197,7 @@
         "padding_bottom": 112,
         "customize_mobile_padding": true,
         "padding_top_mobile": 0,
-        "padding_bottom_mobile": 80,
-        "mobile_banner_full_width": true,
-        "overlap_panel_max_width_mobile": 320,
-        "overlap_panel_padding_horizontal": 20,
-        "banner_custom_max_width": 672,
-        "overlap_panel_radius": "radius_16"
+        "padding_bottom_mobile": 80
       }
     }
   },
