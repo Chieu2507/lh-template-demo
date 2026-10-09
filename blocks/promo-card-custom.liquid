@@ -1,30 +1,14 @@
 {% doc %}
-  Renders a media-led card with a responsive background and controlled content blocks.
-
-  The block owns its media, link, size, content position, gap, appearance and
-  padding. Parent article mode reads media and URL from `closest.article`.
-  Child blocks own their content and inherit alignment from the card.
-
-  @example
-  {% content_for 'block', type: 'image-card', id: 'image-card' %}
+  Editable banner for Promo grid (custom). Owns grid spans, media/link and content.
+  Parent section owns responsive dimensions and carousel. Child kernels own copy.
 {% enddoc %}
-
 {% capture card_content %}{% content_for 'blocks' %}{% endcapture %}
-{% render 'image-card-content', block: block, content: card_content %}
+{% render 'image-card-content', block: block, content: card_content, promo_card: true %}
 {% schema %}
 {
-  "name": "t:general.image_card",
+  "name": "Promo card",
   "tag": null,
   "blocks": [
-    {
-      "type": "blog-card-title"
-    },
-    {
-      "type": "blog-card-meta"
-    },
-    {
-      "type": "blog-card-button"
-    },
     {
       "type": "eyebrow"
     },
@@ -52,20 +36,27 @@
   ],
   "settings": [
     {
-      "type": "select",
-      "id": "media_source",
-      "label": "Media source",
-      "options": [
-        {
-          "value": "manual",
-          "label": "Selected media"
-        },
-        {
-          "value": "article",
-          "label": "Parent article"
-        }
-      ],
-      "default": "manual"
+      "type": "header",
+      "content": "Layout",
+      "info": "Desktop/tablet spans clamp to the section column count. Mobile uses the section columns and card height."
+    },
+    {
+      "type": "range",
+      "id": "columns_wide",
+      "label": "Number of columns wide",
+      "min": 1,
+      "max": 4,
+      "step": 1,
+      "default": 1
+    },
+    {
+      "type": "range",
+      "id": "rows_tall",
+      "label": "Number of rows tall",
+      "min": 1,
+      "max": 4,
+      "step": 1,
+      "default": 1
     },
     {
       "type": "header",
@@ -74,8 +65,7 @@
     {
       "type": "url",
       "id": "link",
-      "label": "t:labels.link",
-      "visible_if": "{{ block.settings.media_source == 'manual' }}"
+      "label": "t:labels.link"
     },
     {
       "type": "checkbox",
@@ -101,32 +91,31 @@
           "label": "t:general.video"
         }
       ],
-      "default": "image",
-      "visible_if": "{{ block.settings.media_source == 'manual' }}"
+      "default": "image"
     },
     {
       "type": "image_picker",
       "id": "image",
       "label": "t:labels.image",
-      "visible_if": "{{ block.settings.media_source == 'manual' and block.settings.background_type == 'image' }}"
+      "visible_if": "{{ block.settings.background_type == 'image' }}"
     },
     {
       "type": "image_picker",
       "id": "mobile_image",
       "label": "t:labels.mobile_image",
-      "visible_if": "{{ block.settings.media_source == 'manual' and block.settings.background_type == 'image' }}"
+      "visible_if": "{{ block.settings.background_type == 'image' }}"
     },
     {
       "type": "video",
       "id": "video",
       "label": "t:labels.video",
-      "visible_if": "{{ block.settings.media_source == 'manual' and block.settings.background_type == 'video' }}"
+      "visible_if": "{{ block.settings.background_type == 'video' }}"
     },
     {
       "type": "video",
       "id": "mobile_video",
       "label": "t:labels.mobile_video",
-      "visible_if": "{{ block.settings.media_source == 'manual' and block.settings.background_type == 'video' }}"
+      "visible_if": "{{ block.settings.background_type == 'video' }}"
     },
     {
       "type": "checkbox",
@@ -170,223 +159,7 @@
     },
     {
       "type": "header",
-      "content": "t:general.size"
-    },
-    {
-      "type": "select",
-      "id": "device",
-      "label": "t:labels.device",
-      "options": [
-        {
-          "value": "desktop",
-          "label": "t:options.device.desktop"
-        },
-        {
-          "value": "mobile",
-          "label": "t:options.device.mobile"
-        }
-      ],
-      "default": "desktop"
-    },
-    {
-      "type": "select",
-      "id": "width_desktop",
-      "label": "t:labels.width",
-      "options": [
-        {
-          "value": "fill",
-          "label": "t:options.width.fill"
-        },
-        {
-          "value": "custom",
-          "label": "t:options.width.custom"
-        }
-      ],
-      "default": "fill",
-      "visible_if": "{{ block.settings.device == 'desktop' }}"
-    },
-    {
-      "type": "range",
-      "id": "width_custom_desktop",
-      "label": "t:labels.desktop_custom_width",
-      "min": 10,
-      "max": 100,
-      "step": 1,
-      "unit": "%",
-      "default": 100,
-      "visible_if": "{{ block.settings.device == 'desktop' and block.settings.width_desktop == 'custom' }}"
-    },
-    {
-      "type": "checkbox",
-      "id": "limit_width_desktop",
-      "label": "t:labels.limit_width",
-      "default": false,
-      "visible_if": "{{ block.settings.device == 'desktop' }}"
-    },
-    {
-      "type": "range",
-      "id": "max_width_desktop",
-      "label": "t:labels.max_width",
-      "min": 0,
-      "max": 1600,
-      "step": 16,
-      "unit": "px",
-      "default": 1600,
-      "visible_if": "{{ block.settings.device == 'desktop' and block.settings.limit_width_desktop }}"
-    },
-    {
-      "type": "select",
-      "id": "height_desktop",
-      "label": "t:labels.height",
-      "options": [
-        {
-          "value": "fill",
-          "label": "t:options.width.fill"
-        },
-        {
-          "value": "ratio_1_1",
-          "label": "t:options.image_card_height.ratio_1_1"
-        },
-        {
-          "value": "ratio_6_7",
-          "label": "6:7"
-        },
-        {
-          "value": "ratio_4_5",
-          "label": "t:options.image_card_height.ratio_4_5"
-        },
-        {
-          "value": "ratio_3_2",
-          "label": "t:options.image_card_height.ratio_3_2"
-        },
-        {
-          "value": "ratio_4_3",
-          "label": "t:options.image_card_height.ratio_4_3"
-        },
-        {
-          "value": "ratio_16_9",
-          "label": "t:options.image_card_height.ratio_16_9"
-        },
-        {
-          "value": "ratio_2_3",
-          "label": "t:options.image_card_height.ratio_2_3"
-        },
-        {
-          "value": "ratio_3_4",
-          "label": "t:options.image_card_height.ratio_3_4"
-        },
-        {
-          "value": "ratio_9_16",
-          "label": "t:options.image_card_height.ratio_9_16"
-        }
-      ],
-      "default": "ratio_1_1",
-      "visible_if": "{{ block.settings.device == 'desktop' }}"
-    },
-    {
-      "type": "select",
-      "id": "width_mobile",
-      "label": "t:labels.width",
-      "options": [
-        {
-          "value": "fill",
-          "label": "t:options.width.fill"
-        },
-        {
-          "value": "custom",
-          "label": "t:options.width.custom"
-        }
-      ],
-      "default": "fill",
-      "visible_if": "{{ block.settings.device == 'mobile' }}"
-    },
-    {
-      "type": "range",
-      "id": "width_custom_mobile",
-      "label": "t:labels.mobile_custom_width",
-      "min": 10,
-      "max": 100,
-      "step": 1,
-      "unit": "%",
-      "default": 100,
-      "visible_if": "{{ block.settings.device == 'mobile' and block.settings.width_mobile == 'custom' }}"
-    },
-    {
-      "type": "checkbox",
-      "id": "limit_width_mobile",
-      "label": "t:labels.limit_width",
-      "default": false,
-      "visible_if": "{{ block.settings.device == 'mobile' }}"
-    },
-    {
-      "type": "range",
-      "id": "max_width_mobile",
-      "label": "t:labels.max_width",
-      "min": 0,
-      "max": 1600,
-      "step": 16,
-      "unit": "px",
-      "default": 1600,
-      "visible_if": "{{ block.settings.device == 'mobile' and block.settings.limit_width_mobile }}"
-    },
-    {
-      "type": "select",
-      "id": "height_mobile",
-      "label": "t:labels.height",
-      "options": [
-        {
-          "value": "fill",
-          "label": "t:options.width.fill"
-        },
-        {
-          "value": "ratio_1_1",
-          "label": "t:options.image_card_height.ratio_1_1"
-        },
-        {
-          "value": "ratio_6_7",
-          "label": "6:7"
-        },
-        {
-          "value": "ratio_4_5",
-          "label": "t:options.image_card_height.ratio_4_5"
-        },
-        {
-          "value": "ratio_3_2",
-          "label": "t:options.image_card_height.ratio_3_2"
-        },
-        {
-          "value": "ratio_4_3",
-          "label": "t:options.image_card_height.ratio_4_3"
-        },
-        {
-          "value": "ratio_16_9",
-          "label": "t:options.image_card_height.ratio_16_9"
-        },
-        {
-          "value": "ratio_2_3",
-          "label": "t:options.image_card_height.ratio_2_3"
-        },
-        {
-          "value": "ratio_3_4",
-          "label": "t:options.image_card_height.ratio_3_4"
-        },
-        {
-          "value": "ratio_9_16",
-          "label": "t:options.image_card_height.ratio_9_16"
-        }
-      ],
-      "default": "ratio_1_1",
-      "visible_if": "{{ block.settings.device == 'mobile' }}"
-    },
-    {
-      "type": "header",
       "content": "t:general.content"
-    },
-    {
-      "type": "checkbox",
-      "id": "enable_sticky",
-      "label": "t:labels.enable_sticky",
-      "default": true
     },
     {
       "type": "select",
@@ -504,7 +277,56 @@
       "type": "select",
       "id": "corner_radius",
       "label": "t:labels.corner_radius",
-      "options": [{"value": "square", "label": "t:options.radius_preset.square"}, {"value": "radius_2", "label": "t:options.radius_preset.size_2"}, {"value": "slightly_rounded", "label": "t:options.radius_preset.slightly_rounded"}, {"value": "radius_4", "label": "t:options.radius_preset.size_4"}, {"value": "radius_6", "label": "t:options.radius_preset.size_6"}, {"value": "rounded", "label": "t:options.radius_preset.rounded"}, {"value": "radius_8", "label": "t:options.radius_preset.size_8"}, {"value": "radius_12", "label": "t:options.radius_preset.size_12"}, {"value": "radius_16", "label": "t:options.radius_preset.size_16"}, {"value": "radius_24", "label": "t:options.radius_preset.size_24"}, {"value": "radius_32", "label": "t:options.radius_preset.size_32"}, {"value": "pill", "label": "t:options.radius_preset.pill"}],
+      "options": [
+        {
+          "value": "square",
+          "label": "t:options.radius_preset.square"
+        },
+        {
+          "value": "radius_2",
+          "label": "t:options.radius_preset.size_2"
+        },
+        {
+          "value": "slightly_rounded",
+          "label": "t:options.radius_preset.slightly_rounded"
+        },
+        {
+          "value": "radius_4",
+          "label": "t:options.radius_preset.size_4"
+        },
+        {
+          "value": "radius_6",
+          "label": "t:options.radius_preset.size_6"
+        },
+        {
+          "value": "rounded",
+          "label": "t:options.radius_preset.rounded"
+        },
+        {
+          "value": "radius_8",
+          "label": "t:options.radius_preset.size_8"
+        },
+        {
+          "value": "radius_12",
+          "label": "t:options.radius_preset.size_12"
+        },
+        {
+          "value": "radius_16",
+          "label": "t:options.radius_preset.size_16"
+        },
+        {
+          "value": "radius_24",
+          "label": "t:options.radius_preset.size_24"
+        },
+        {
+          "value": "radius_32",
+          "label": "t:options.radius_preset.size_32"
+        },
+        {
+          "value": "pill",
+          "label": "t:options.radius_preset.pill"
+        }
+      ],
       "default": "square"
     },
     {
@@ -614,7 +436,7 @@
   ],
   "presets": [
     {
-      "name": "t:general.image_card",
+      "name": "Promo card",
       "category": "t:general.cards",
       "settings": {
         "padding_top": 32,
