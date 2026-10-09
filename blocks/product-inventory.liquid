@@ -14,10 +14,15 @@
     assign inventory_display_mode = 'status'
   endunless
 
-  assign inventory_low_stock_threshold = block.settings.low_stock_threshold | plus: 0
-  if block.settings.low_stock_threshold == blank or inventory_low_stock_threshold < 0 or inventory_low_stock_threshold > 20
-    assign inventory_low_stock_threshold = 5
-  endif
+  assign inventory_low_stock_threshold = block.settings.low_stock_threshold | default: 20 | plus: 0
+  assign inventory_urgent_stock_threshold = block.settings.urgent_stock_threshold | default: 10 | plus: 0 | at_most: inventory_low_stock_threshold
+  assign inventory_total_quantity = 0
+  for stock_variant in inventory_product.variants
+    if stock_variant.inventory_management != blank
+      assign stock_quantity = stock_variant.inventory_quantity | at_least: 0
+      assign inventory_total_quantity = inventory_total_quantity | plus: stock_quantity
+    endif
+  endfor
 
   assign inventory_padding_top = block.settings.padding_top | default: 0 | plus: 0
   assign inventory_padding_bottom = block.settings.padding_bottom | default: 0 | plus: 0
@@ -84,7 +89,9 @@
         low_stock_threshold: inventory_low_stock_threshold,
         display_mode: inventory_display_mode,
         show_progress: block.settings.show_progress,
-        progress_capacity: block.settings.progress_capacity
+        total_quantity: inventory_total_quantity,
+        urgent_stock_threshold: inventory_urgent_stock_threshold,
+        inventory_settings: block.settings
       %}
     </div>
 
@@ -97,7 +104,9 @@
               low_stock_threshold: inventory_low_stock_threshold,
               display_mode: inventory_display_mode,
               show_progress: block.settings.show_progress,
-              progress_capacity: block.settings.progress_capacity
+              total_quantity: inventory_total_quantity,
+        urgent_stock_threshold: inventory_urgent_stock_threshold,
+        inventory_settings: block.settings
             %}
           </template>
         {% endfor %}
@@ -108,7 +117,9 @@
           low_stock_threshold: inventory_low_stock_threshold,
           display_mode: inventory_display_mode,
           show_progress: block.settings.show_progress,
-          progress_capacity: block.settings.progress_capacity
+          total_quantity: inventory_total_quantity,
+        urgent_stock_threshold: inventory_urgent_stock_threshold,
+        inventory_settings: block.settings
         %}
       </template>
     </div>
@@ -118,7 +129,10 @@
 {% stylesheet %}
 .product-inventory { width: 100%; }
 .product-inventory__progress { height: 5px; margin-block-start: 16px; border-radius: var(--radius-pill); background: var(--background-bar-color, var(--border-color)); overflow: hidden; }
-.product-inventory__progress-fill { display: block; height: 100%; width: var(--inventory-progress, 0%); border-radius: inherit; background: var(--sale-price-color, var(--accent-color)); }
+.product-inventory__progress-fill { display: block; height: 100%; width: var(--inventory-progress, 0%); border-radius: inherit; background: var(--inventory-bar-color, var(--accent-color)); }
+.product-inventory .product-inventory__status { color: var(--inventory-text-color, var(--body-color)); }
+.product-inventory__copy { white-space: normal; }
+.product-inventory__count { color: var(--inventory-count-color, inherit); font-weight: var(--inventory-count-weight, 400); }
 .product-inventory__message--progress .product-inventory__status::before { content: none; }
 {% endstylesheet %}
 
@@ -149,7 +163,18 @@
           "label": "t:options.product_inventory_display.status_and_count"
         }
       ],
-      "default": "status"
+      "default": "status_and_count"
+    },
+    {
+      "type": "range",
+      "id": "urgent_stock_threshold",
+      "label": "t:labels.inventory_urgent_threshold",
+      "info": "t:info.inventory_urgent_threshold",
+      "min": 0,
+      "max": 20,
+      "step": 1,
+      "unit": "pcs",
+      "default": 10
     },
     {
       "type": "range",
@@ -160,23 +185,195 @@
       "max": 20,
       "step": 1,
       "unit": "pcs",
-      "default": 5
+      "default": 20
     },
     {
       "type": "checkbox",
       "id": "show_progress",
-      "label": "Show inventory bar",
-      "default": false
+      "label": "t:labels.inventory_show_progress",
+      "default": false,
+      "info": "t:info.inventory_progress_total"
     },
     {
-      "type": "range",
-      "id": "progress_capacity",
-      "label": "Inventory bar capacity",
-      "min": 10,
-      "max": 200,
-      "step": 2,
-      "default": 40,
+      "type": "header",
+      "content": "t:general.inventory_urgent_stock"
+    },
+    {
+      "type": "text",
+      "id": "urgent_stock_text",
+      "label": "t:labels.inventory_status_text",
+      "default": "🔥 Hurry up!"
+    },
+    {
+      "type": "text",
+      "id": "urgent_stock_count_text",
+      "label": "t:labels.inventory_count_text",
+      "info": "t:info.inventory_count_text",
+      "default": "🔥 Hurry up! Only [count] items left in stock.",
+      "visible_if": "{{ block.settings.display_mode == 'status_and_count' }}"
+    },
+    {
+      "type": "color",
+      "id": "urgent_stock_text_color",
+      "label": "t:labels.text_color",
+      "default": "#D92D20"
+    },
+    {
+      "type": "color",
+      "id": "urgent_stock_count_color",
+      "label": "t:labels.inventory_count_color",
+      "default": "#D92D20",
+      "visible_if": "{{ block.settings.display_mode == 'status_and_count' }}"
+    },
+    {
+      "type": "select",
+      "id": "urgent_stock_count_weight",
+      "label": "t:labels.inventory_count_weight",
+      "options": [
+        {
+          "value": "400",
+          "label": "t:options.inventory_count_normal"
+        },
+        {
+          "value": "700",
+          "label": "t:options.inventory_count_bold"
+        }
+      ],
+      "default": "700",
+      "visible_if": "{{ block.settings.display_mode == 'status_and_count' }}"
+    },
+    {
+      "type": "color",
+      "id": "urgent_stock_bar_color",
+      "label": "t:labels.inventory_bar_color",
+      "default": "#D92D20",
       "visible_if": "{{ block.settings.show_progress }}"
+    },
+    {
+      "type": "header",
+      "content": "t:general.inventory_low_stock"
+    },
+    {
+      "type": "text",
+      "id": "low_stock_text",
+      "label": "t:labels.inventory_status_text",
+      "default": "Low stock"
+    },
+    {
+      "type": "text",
+      "id": "low_stock_count_text",
+      "label": "t:labels.inventory_count_text",
+      "info": "t:info.inventory_count_text",
+      "default": "Low stock: Only [count] items left in stock.",
+      "visible_if": "{{ block.settings.display_mode == 'status_and_count' }}"
+    },
+    {
+      "type": "color",
+      "id": "low_stock_text_color",
+      "label": "t:labels.text_color",
+      "default": "#D97706"
+    },
+    {
+      "type": "color",
+      "id": "low_stock_count_color",
+      "label": "t:labels.inventory_count_color",
+      "default": "#D97706",
+      "visible_if": "{{ block.settings.display_mode == 'status_and_count' }}"
+    },
+    {
+      "type": "select",
+      "id": "low_stock_count_weight",
+      "label": "t:labels.inventory_count_weight",
+      "options": [
+        {
+          "value": "400",
+          "label": "t:options.inventory_count_normal"
+        },
+        {
+          "value": "700",
+          "label": "t:options.inventory_count_bold"
+        }
+      ],
+      "default": "400",
+      "visible_if": "{{ block.settings.display_mode == 'status_and_count' }}"
+    },
+    {
+      "type": "color",
+      "id": "low_stock_bar_color",
+      "label": "t:labels.inventory_bar_color",
+      "default": "#D97706",
+      "visible_if": "{{ block.settings.show_progress }}"
+    },
+    {
+      "type": "header",
+      "content": "t:general.inventory_in_stock"
+    },
+    {
+      "type": "text",
+      "id": "in_stock_text",
+      "label": "t:labels.inventory_status_text",
+      "default": "In stock"
+    },
+    {
+      "type": "text",
+      "id": "in_stock_count_text",
+      "label": "t:labels.inventory_count_text",
+      "info": "t:info.inventory_count_text",
+      "default": "[count] items in stock.",
+      "visible_if": "{{ block.settings.display_mode == 'status_and_count' }}"
+    },
+    {
+      "type": "color",
+      "id": "in_stock_text_color",
+      "label": "t:labels.text_color",
+      "default": "#15803D"
+    },
+    {
+      "type": "color",
+      "id": "in_stock_count_color",
+      "label": "t:labels.inventory_count_color",
+      "default": "#15803D",
+      "visible_if": "{{ block.settings.display_mode == 'status_and_count' }}"
+    },
+    {
+      "type": "select",
+      "id": "in_stock_count_weight",
+      "label": "t:labels.inventory_count_weight",
+      "options": [
+        {
+          "value": "400",
+          "label": "t:options.inventory_count_normal"
+        },
+        {
+          "value": "700",
+          "label": "t:options.inventory_count_bold"
+        }
+      ],
+      "default": "400",
+      "visible_if": "{{ block.settings.display_mode == 'status_and_count' }}"
+    },
+    {
+      "type": "color",
+      "id": "in_stock_bar_color",
+      "label": "t:labels.inventory_bar_color",
+      "default": "#15803D",
+      "visible_if": "{{ block.settings.show_progress }}"
+    },
+    {
+      "type": "header",
+      "content": "t:general.inventory_sold_out"
+    },
+    {
+      "type": "text",
+      "id": "sold_out_text",
+      "label": "t:labels.inventory_status_text",
+      "default": "Out of stock"
+    },
+    {
+      "type": "color",
+      "id": "sold_out_text_color",
+      "label": "t:labels.text_color",
+      "default": "#D92D20"
     },
     {
       "type": "header",
