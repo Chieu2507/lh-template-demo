@@ -3794,7 +3794,7 @@
         "section_width": "page_width",
         "columns_desktop": "3",
         "columns_tablet": "2",
-        "carousel_mobile": true,
+        "carousel_mobile": false,
         "columns_mobile": "1",
         "height_desktop": "medium",
         "height_mobile": "medium",
@@ -3806,12 +3806,12 @@
         "customize_mobile_padding": true,
         "padding_top_mobile": 64,
         "padding_bottom_mobile": 64,
-        "show_next_slide_preview_on_mobile": true,
+        "show_next_slide_preview_on_mobile": false,
         "show_pagination_on_mobile": true,
         "pagination_type": "progress_bar",
-        "pagination_padding_mobile": 0,
-        "pagination_limit_width": true,
-        "pagination_max_width": 200
+        "pagination_padding_mobile": 24,
+        "pagination_limit_width": false,
+        "pagination_max_width": 260
       }
     }
   },
