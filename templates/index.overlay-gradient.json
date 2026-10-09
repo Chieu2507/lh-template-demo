@@ -216,7 +216,17 @@
         "overlay_style": "gradient",
         "overlay": "#C8142866",
         "overlay_gradient": "linear-gradient(90deg, rgba(255, 0, 0, 0.25) 0%, rgba(0, 0, 255, 0.75) 100%)"
-      }
+      },
+      "blocks": {
+        "review": {
+          "type": "testimonial-item",
+          "settings": {},
+          "blocks": {}
+        }
+      },
+      "block_order": [
+        "review"
+      ]
     },
     "split_banner_custom": {
       "type": "split-banner-custom",
