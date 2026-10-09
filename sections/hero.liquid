@@ -105,7 +105,7 @@
     {% if hero_page_content_padding != 64 %}--hero-content-padding: {{ hero_page_content_padding }}px;{% endif %}
     {% if hero_page_content_padding_mobile != 40 %}--hero-content-padding-mobile: {{ hero_page_content_padding_mobile }}px;{% endif %}
   {% endif %}
-  {% if effective_overlay != blank %}--overlay-color: {{ effective_overlay | default: 'transparent' | escape }};{% endif %}
+  --hero-overlay-background: {{ effective_overlay | default: 'transparent' | escape }};
 {% endcapture %}
 
 <div
@@ -150,6 +150,7 @@
 </div>
 
 {% stylesheet %}
+  .hero .overlay { background: var(--hero-overlay-background, transparent); }
 
   .hero--stack > .hero__surface > .media {
     border-radius: var(--hero-media-radius, var(--radius-square));
