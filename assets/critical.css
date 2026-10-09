@@ -211,6 +211,18 @@ body {
   .header-top:not([data-layout-ready='true']):has(.header-logo--left) .header__blocks > .header-menu-toggle {
     margin-inline-end: 0;
   }
+
+  .header-top:not([data-layout-ready='true']) .header__blocks > .header-menu-toggle[data-menu-toggle-position='center'] {
+    position: absolute;
+    inset-inline-start: 50%;
+    transform: translateX(-50%);
+    margin-inline: 0;
+  }
+
+  .header-top:not([data-layout-ready='true']) .header__blocks > .header-menu-toggle[data-menu-toggle-position='right'] {
+    order: 1;
+    margin-inline: 0;
+  }
 }
 
 /*

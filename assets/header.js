@@ -435,7 +435,9 @@
       } else if (item.matches('.header-menu')) {
         (logoPosition === 'left' ? centerColumn : leftColumn).append(item);
       } else if (item.matches('.header-menu-toggle')) {
-        leftColumn.append(item);
+        const position = item.dataset.menuTogglePosition;
+        const column = position === 'right' ? rightColumn : position === 'center' ? centerColumn : leftColumn;
+        column.append(item);
       } else if (item.matches('.header__mobile-drawer')) {
         headerTop.append(item);
       } else {

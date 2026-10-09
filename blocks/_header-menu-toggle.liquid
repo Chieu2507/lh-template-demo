@@ -1,28 +1,22 @@
 {% liquid
-  assign menu_toggle_icon = block.settings.icon | default: 'bars-3'
-  unless menu_toggle_icon == 'bars-3' or menu_toggle_icon == 'menu' or menu_toggle_icon == 'grip-vertical'
-    assign menu_toggle_icon = 'bars-3'
+  assign menu_toggle_position = block.settings.position | default: 'left'
+  unless menu_toggle_position == 'left' or menu_toggle_position == 'center' or menu_toggle_position == 'right'
+    assign menu_toggle_position = 'left'
   endunless
-
-  assign menu_toggle_icon_size = block.settings.icon_size | plus: 0
-  assign menu_toggle_has_custom_icon_size = false
-  if block.settings.icon_size != blank and menu_toggle_icon_size >= 8 and menu_toggle_icon_size <= 48
-    assign menu_toggle_has_custom_icon_size = true
-  endif
 %}
 
 <button
   class="header-menu-toggle btn btn--unstyled"
+  data-menu-toggle-position="{{ menu_toggle_position }}"
   type="button"
   aria-expanded="false"
   aria-controls="HeaderMobileDrawer-{{ section.id }}"
   aria-label="Open menu"
-  {% if menu_toggle_has_custom_icon_size %}style="--header-menu-toggle-icon-size: {{ menu_toggle_icon_size }}px;"{% endif %}
   data-header-menu-toggle
   {{ block.shopify_attributes }}
 >
   <span class="icon header-menu-toggle__open-icon" aria-hidden="true">
-    {% render 'icon', icon: menu_toggle_icon, bare: true %}
+    {% render 'icon', icon: 'bars-3', bare: true %}
   </span>
   <span class="icon header-menu-toggle__close-icon" aria-hidden="true">
     {% render 'icon', icon: 'x-mark', bare: true %}
@@ -44,8 +38,8 @@
 
   .header-menu-toggle .icon {
     display: inline-flex;
-    width: var(--header-menu-toggle-icon-size, var(--header-icon-size, var(--icon-size-medium)));
-    height: var(--header-menu-toggle-icon-size, var(--header-icon-size, var(--icon-size-medium)));
+    width: var(--header-icon-size, var(--icon-size-medium));
+    height: var(--header-icon-size, var(--icon-size-medium));
   }
 
   .header-menu-toggle .icon svg {
@@ -83,25 +77,28 @@
   "tag": null,
   "settings": [
     {
-      "type": "select",
-      "id": "icon",
-      "label": "Choose icon",
-      "options": [
-        { "value": "bars-3", "label": "Menu" },
-        { "value": "menu", "label": "Alternative menu" },
-        { "value": "grip-vertical", "label": "Grip" }
-      ],
-      "default": "bars-3"
+      "type": "paragraph",
+      "content": "Configure the mobile menu in the Header menu block."
     },
     {
-      "type": "range",
-      "id": "icon_size",
-      "label": "Icon size",
-      "min": 8,
-      "max": 48,
-      "step": 1,
-      "unit": "px",
-      "default": 20
+      "type": "select",
+      "id": "position",
+      "label": "t:labels.position",
+      "options": [
+        {
+          "value": "left",
+          "label": "t:options.alignment.left"
+        },
+        {
+          "value": "center",
+          "label": "t:options.alignment.center"
+        },
+        {
+          "value": "right",
+          "label": "t:options.alignment.right"
+        }
+      ],
+      "default": "left"
     }
   ],
   "presets": [
