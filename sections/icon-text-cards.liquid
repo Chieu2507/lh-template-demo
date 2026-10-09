@@ -57,7 +57,7 @@
 
 {% style %}
   #shopify-section-{{ section.id }} {
-    background-color: {{ section.settings.background_color | default: section.settings.color_scheme.settings.background | default: '#ffffff' }};
+    background-color: {{ section.settings.background_color | default: 'var(--background-color)' }};
   }
 {% endstyle %}
 
