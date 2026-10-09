@@ -1675,10 +1675,10 @@
             "image_ratio_desktop": "ratio_7_6",
             "width_desktop": "fill",
             "image_ratio_mobile": "custom",
-            "width_mobile": "fill",
-            "corner_radius": "radius_16",
             "image_ratio_custom_width_mobile": 6,
-            "image_ratio_custom_height_mobile": 7
+            "image_ratio_custom_height_mobile": 7,
+            "width_mobile": "fill",
+            "corner_radius": "radius_16"
           }
         },
         "content": {
