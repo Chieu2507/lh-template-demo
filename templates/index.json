@@ -1888,7 +1888,7 @@
         "image",
         "content"
       ],
-      "name": "Flash Sale — Countdown",
+      "name": "Flash Sale \u2014 Countdown",
       "settings": {
         "section_width": "page_width",
         "height": "auto",
@@ -2109,7 +2109,7 @@
                 "quote": {
                   "type": "heading",
                   "settings": {
-                    "text": "<p>We’ve tried many toys, but these are the ones my always come back to. Durable, creative, and so much fun. Even the grandparents love playing with.</p>",
+                    "text": "<p>We\u2019ve tried many toys, but these are the ones my always come back to. Durable, creative, and so much fun. Even the grandparents love playing with.</p>",
                     "heading_size": "lg",
                     "html_tag": "div",
                     "width": "fill",
@@ -3120,7 +3120,7 @@
           "block_order": []
         }
       },
-      "name": "Featured collection — Top Picks",
+      "name": "Featured collection \u2014 Top Picks",
       "settings": {
         "section_width": "page_width",
         "desktop_alignment": "left",
@@ -3308,7 +3308,7 @@
           }
         }
       },
-      "name": "Blog posts — Peekoo",
+      "name": "Blog posts \u2014 Peekoo",
       "settings": {
         "section_width": "page_width",
         "desktop_alignment": "center",
@@ -3643,6 +3643,175 @@
         "padding_top_mobile": 80,
         "padding_bottom_mobile": 56
       }
+    },
+    "wofyn_promo_grid": {
+      "type": "promo-grid-custom",
+      "settings": {
+        "columns_desktop": "3",
+        "columns_tablet": "2",
+        "columns_mobile": "1",
+        "padding_top": 96,
+        "padding_bottom": 112,
+        "gap_desktop": 24,
+        "gap_mobile": 16,
+        "section_width": "page_width",
+        "height_desktop": "medium",
+        "height_mobile": "medium",
+        "color_scheme": "scheme-1",
+        "customize_mobile_padding": true,
+        "padding_top_mobile": 64,
+        "padding_bottom_mobile": 64,
+        "carousel_mobile": false
+      },
+      "blocks": {
+        "banner_1": {
+          "type": "promo-card-custom",
+          "settings": {
+            "color_scheme": "scheme-1",
+            "position_desktop": "top_left",
+            "position_mobile": "top_left",
+            "padding_top": 32,
+            "padding_bottom": 32,
+            "padding_left": 32,
+            "padding_right": 32,
+            "corner_radius": "rounded",
+            "columns_wide": 2,
+            "rows_tall": 1
+          },
+          "blocks": {
+            "heading": {
+              "type": "heading",
+              "settings": {
+                "text": "<p>Collection 1</p>",
+                "heading_size": "md",
+                "html_tag": "h3"
+              }
+            }
+          },
+          "block_order": [
+            "heading"
+          ]
+        },
+        "banner_2": {
+          "type": "promo-card-custom",
+          "settings": {
+            "color_scheme": "scheme-1",
+            "position_desktop": "top_left",
+            "position_mobile": "top_left",
+            "padding_top": 32,
+            "padding_bottom": 32,
+            "padding_left": 32,
+            "padding_right": 32,
+            "corner_radius": "rounded",
+            "columns_wide": 1,
+            "rows_tall": 1
+          },
+          "blocks": {
+            "heading": {
+              "type": "heading",
+              "settings": {
+                "text": "<p>Collection 2</p>",
+                "heading_size": "md",
+                "html_tag": "h3"
+              }
+            }
+          },
+          "block_order": [
+            "heading"
+          ]
+        },
+        "banner_3": {
+          "type": "promo-card-custom",
+          "settings": {
+            "color_scheme": "scheme-1",
+            "position_desktop": "top_left",
+            "position_mobile": "top_left",
+            "padding_top": 32,
+            "padding_bottom": 32,
+            "padding_left": 32,
+            "padding_right": 32,
+            "corner_radius": "rounded",
+            "columns_wide": 1,
+            "rows_tall": 1
+          },
+          "blocks": {
+            "heading": {
+              "type": "heading",
+              "settings": {
+                "text": "<p>Collection 3</p>",
+                "heading_size": "md",
+                "html_tag": "h3"
+              }
+            }
+          },
+          "block_order": [
+            "heading"
+          ]
+        },
+        "banner_4": {
+          "type": "promo-card-custom",
+          "settings": {
+            "color_scheme": "scheme-1",
+            "position_desktop": "top_left",
+            "position_mobile": "top_left",
+            "padding_top": 32,
+            "padding_bottom": 32,
+            "padding_left": 32,
+            "padding_right": 32,
+            "corner_radius": "rounded",
+            "columns_wide": 1,
+            "rows_tall": 1
+          },
+          "blocks": {
+            "heading": {
+              "type": "heading",
+              "settings": {
+                "text": "<p>Collection 4</p>",
+                "heading_size": "md",
+                "html_tag": "h3"
+              }
+            }
+          },
+          "block_order": [
+            "heading"
+          ]
+        },
+        "banner_5": {
+          "type": "promo-card-custom",
+          "settings": {
+            "color_scheme": "scheme-1",
+            "position_desktop": "top_left",
+            "position_mobile": "top_left",
+            "padding_top": 32,
+            "padding_bottom": 32,
+            "padding_left": 32,
+            "padding_right": 32,
+            "corner_radius": "rounded",
+            "columns_wide": 1,
+            "rows_tall": 1
+          },
+          "blocks": {
+            "heading": {
+              "type": "heading",
+              "settings": {
+                "text": "<p>Collection 5</p>",
+                "heading_size": "md",
+                "html_tag": "h3"
+              }
+            }
+          },
+          "block_order": [
+            "heading"
+          ]
+        }
+      },
+      "block_order": [
+        "banner_1",
+        "banner_2",
+        "banner_3",
+        "banner_4",
+        "banner_5"
+      ]
     }
   },
   "order": [
@@ -3653,6 +3822,7 @@
     "peekoo_featured_07",
     "countdown_timer",
     "scrolling_text",
+    "wofyn_promo_grid",
     "peekoo_featured_product",
     "peekoo_image_cards",
     "perky_logos",
