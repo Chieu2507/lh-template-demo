@@ -75,7 +75,7 @@
   assign banner_overlap_desktop = section.settings.overlap_desktop | default: 0 | at_least: 0 | at_most: 200
   assign banner_overlap_mobile = section.settings.overlap_mobile | default: 0 | at_least: 0 | at_most: 200
   assign banner_overlap_enabled = false
-  if banner_overlap_desktop > 0 or banner_overlap_mobile > 0
+  if section.settings.enable_overlap
     assign banner_overlap_enabled = true
   endif
 %}
@@ -471,7 +471,13 @@
     {
       "type": "header",
       "content": "Overlap",
-      "info": "Products overlap the banner horizontally on desktop/tablet and vertically on mobile. Set to 0 to keep the gap."
+      "info": "Products overlap the banner horizontally on desktop/tablet and vertically on mobile."
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_overlap",
+      "label": "Enable overlap",
+      "default": false
     },
     {
       "type": "range",
@@ -481,7 +487,8 @@
       "max": 200,
       "step": 2,
       "unit": "px",
-      "default": 0
+      "default": 112,
+      "visible_if": "{{ section.settings.enable_overlap }}"
     },
     {
       "type": "range",
@@ -491,7 +498,8 @@
       "max": 200,
       "step": 2,
       "unit": "px",
-      "default": 0
+      "default": 112,
+      "visible_if": "{{ section.settings.enable_overlap }}"
     },
     {
       "type": "range",
@@ -502,7 +510,7 @@
       "step": 1,
       "unit": "px",
       "default": 24,
-      "visible_if": "{{ section.settings.overlap_desktop > 0 or section.settings.overlap_mobile > 0 }}"
+      "visible_if": "{{ section.settings.enable_overlap }}"
     },
     {
       "type": "header",
