@@ -534,7 +534,7 @@
         "gap_mobile": 20,
         "card_layout": "vertical",
         "card_gap": 10,
-        "image_width_desktop": 111,
+        "image_width_desktop": 112,
         "image_width_mobile": 84,
         "image_ratio": "auto",
         "image_corner_radius": "full",
