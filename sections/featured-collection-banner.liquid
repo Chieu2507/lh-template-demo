@@ -22,7 +22,7 @@
     when '800', '1000'
       assign featured_collection_banner_size = 'large'
   endcase
-  unless featured_collection_banner_size == 'small' or featured_collection_banner_size == 'medium' or featured_collection_banner_size == 'large'
+  unless featured_collection_banner_size == 'small' or featured_collection_banner_size == 'medium' or featured_collection_banner_size == 'large' or featured_collection_banner_size == 'custom'
     assign featured_collection_banner_size = 'medium'
   endunless
   assign featured_collection_banner_header_gap_desktop = section.settings.header_gap_desktop | default: 30
@@ -56,7 +56,7 @@
   if featured_collection_banner_padding_top < 0 or featured_collection_banner_padding_top > 100
     assign featured_collection_banner_padding_top = 50
   endif
-  if featured_collection_banner_padding_bottom < 0 or featured_collection_banner_padding_bottom > 100
+  if featured_collection_banner_padding_bottom < 0 or featured_collection_banner_padding_bottom > 160
     assign featured_collection_banner_padding_bottom = 50
   endif
   if section.settings.customize_mobile_padding
@@ -83,11 +83,13 @@
 {% capture banner_media %}{% content_for 'block', type: 'banner', id: 'banner' %}{% endcapture %}
 {% capture banner_products %}{% content_for 'block', type: 'product-list', id: 'carousel-product-list' %}{% endcapture %}
 {% capture featured_collection_banner_style %}
+  {% if featured_collection_banner_size == 'custom' %}--featured-collection-banner-custom-width: {{ section.settings.banner_custom_max_width | default: 672 }}px;{% endif %}
   {% if banner_overlap_enabled %}
     --featured-collection-banner-overlap-desktop: {{ banner_overlap_desktop }}px;
     --featured-collection-banner-overlap-mobile: {{ banner_overlap_mobile }}px;
     --featured-collection-banner-panel-max-width-mobile: {% if section.settings.overlap_panel_max_width_mobile > 0 %}{{ section.settings.overlap_panel_max_width_mobile }}px{% else %}100%{% endif %};
     --featured-collection-banner-panel-padding-horizontal: {{ section.settings.overlap_panel_padding_horizontal | default: 24 }}px;
+    --featured-collection-banner-panel-radius: {% case section.settings.overlap_panel_radius %}{% when 'square' %}0px{% when 'radius_16' %}var(--radius-16){% else %}var(--radius-rounded){% endcase %};
     --featured-collection-banner-panel-padding: {{ section.settings.overlap_panel_padding | default: 24 }}px;
   {% endif %}
   {% if featured_collection_banner_header_gap_desktop != 30 %}--featured-collection-banner-header-gap-desktop: {{ featured_collection_banner_header_gap_desktop }}px;{% endif %}
@@ -175,6 +177,10 @@
     --featured-collection-banner-max-width: 450px;
   }
 
+  .featured-collection-banner__layout[data-banner-size='custom'] {
+    --featured-collection-banner-max-width: var(--featured-collection-banner-custom-width, 672px);
+  }
+
   .featured-collection-banner__layout[data-banner-size='large'] {
     --featured-collection-banner-max-width: 800px;
   }
@@ -254,6 +260,10 @@
 
   .featured-collection-banner__content--header-products:has([data-banner-size='small']) {
     --featured-collection-banner-max-width: 450px;
+  }
+
+  .featured-collection-banner__content--header-products:has([data-banner-size='custom']) {
+    --featured-collection-banner-max-width: var(--featured-collection-banner-custom-width, 672px);
   }
 
   .featured-collection-banner__content--header-products:has([data-banner-size='large']) {
@@ -340,7 +350,7 @@
     .featured-collection-banner__layout--overlap[data-overlap-desktop='true'] .featured-collection-banner__products {
       padding: var(--featured-collection-banner-panel-padding) var(--featured-collection-banner-panel-padding-horizontal);
       background: var(--background-color);
-      border-radius: var(--radius-rounded);
+      border-radius: var(--featured-collection-banner-panel-radius, var(--radius-rounded));
     }
     .featured-collection-banner__layout--overlap[data-overlap-desktop='true'] .featured-collection-banner__panel > .featured-collection-banner__header {
       padding-inline-start: calc(var(--featured-collection-banner-overlap-desktop) + var(--featured-collection-banner-panel-padding));
@@ -359,7 +369,7 @@
       margin-block-start: calc(-1 * min(var(--featured-collection-banner-overlap-mobile), 40vw));
       padding: var(--featured-collection-banner-panel-padding) var(--featured-collection-banner-panel-padding-horizontal);
       background: var(--background-color);
-      border-radius: var(--radius-rounded);
+      border-radius: var(--featured-collection-banner-panel-radius, var(--radius-rounded));
     }
     .featured-collection-banner__layout--overlap[data-overlap-mobile='true'][data-banner-position='after'] .featured-collection-banner__panel {
       margin-block-start: 0;
@@ -477,9 +487,24 @@
         {
           "value": "large",
           "label": "Large"
+        },
+        {
+          "value": "custom",
+          "label": "Custom"
         }
       ],
       "default": "medium"
+    },
+    {
+      "type": "range",
+      "id": "banner_custom_max_width",
+      "label": "Custom banner maximum width",
+      "min": 400,
+      "max": 800,
+      "step": 4,
+      "unit": "px",
+      "default": 672,
+      "visible_if": "{{ section.settings.banner_max_width == 'custom' }}"
     },
     {
       "type": "select",
@@ -573,6 +598,27 @@
       "visible_if": "{{ section.settings.enable_overlap }}"
     },
     {
+      "type": "select",
+      "id": "overlap_panel_radius",
+      "label": "Panel corner radius",
+      "options": [
+        {
+          "value": "square",
+          "label": "t:options.radius_preset.square"
+        },
+        {
+          "value": "rounded",
+          "label": "t:options.radius_preset.rounded"
+        },
+        {
+          "value": "radius_16",
+          "label": "t:options.radius_preset.size_16"
+        }
+      ],
+      "default": "rounded",
+      "visible_if": "{{ section.settings.enable_overlap }}"
+    },
+    {
       "type": "header",
       "content": "t:general.gap"
     },
@@ -645,8 +691,8 @@
       "id": "padding_bottom",
       "label": "t:labels.bottom_padding",
       "min": 0,
-      "max": 100,
-      "step": 1,
+      "max": 160,
+      "step": 2,
       "unit": "px",
       "default": 50
     },
