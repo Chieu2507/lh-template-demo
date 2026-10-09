@@ -2590,63 +2590,82 @@
     "peekoo_icon_text": {
       "type": "icon-text-cards",
       "blocks": {
-        "header": {
-          "type": "heading",
-          "settings": {
-            "text": "<p>Play Comes First</p>",
-            "heading_size": "xl",
-            "html_tag": "h2",
-            "width": "fill",
-            "customize_mobile_size": true,
-            "width_mobile": "fill"
-          }
-        },
         "card_1": {
           "type": "group",
           "settings": {
-            "direction": "vertical",
-            "alignment": "center",
-            "alignment_mobile": "center",
-            "gap_desktop": 24,
-            "gap_mobile": 24,
+            "direction": "horizontal",
+            "alignment": "left",
+            "alignment_mobile": "left",
+            "gap_desktop": 16,
+            "gap_mobile": 16,
             "width": "fill",
             "height": "fit",
             "width_mobile": "fill",
-            "appearance_type": "scheme",
-            "color_scheme": "scheme-1",
-            "background_color": "#f8fafa",
-            "corner_radius": "radius_24",
-            "padding_top": 36,
-            "padding_bottom": 36,
-            "padding_left": 36,
-            "padding_right": 36,
-            "animation_type": "slide-bottom",
-            "animation_delay": 150
+            "appearance_type": "inherit",
+            "color_scheme": "",
+            "background_color": "",
+            "corner_radius": "square",
+            "padding_top": 0,
+            "padding_bottom": 0,
+            "padding_left": 0,
+            "padding_right": 0,
+            "animation_type": "none",
+            "animation_delay": 0,
+            "position_horizontal": "center",
+            "horizontal_alignment": "left",
+            "customize_mobile_alignment": false
           },
           "blocks": {
             "icon": {
-              "type": "image",
-              "settings": {
-                "image": "shopify://shop_images/peekoo-blocks.svg",
-                "alt_text": "",
-                "image_fit": "contain",
-                "image_ratio_desktop": "square",
-                "width_desktop": "fixed",
-                "width_fixed_desktop": 64,
-                "image_ratio_mobile": "square",
-                "width_mobile": "fixed",
-                "width_fixed_mobile": 64,
-                "corner_radius": "square"
-              }
-            },
-            "content": {
               "type": "group",
               "settings": {
                 "direction": "vertical",
                 "alignment": "center",
                 "alignment_mobile": "center",
-                "gap_desktop": 12,
-                "gap_mobile": 12,
+                "width": "fit",
+                "width_mobile": "fit",
+                "height": "fit",
+                "gap_desktop": 0,
+                "gap_mobile": 0,
+                "appearance_type": "scheme",
+                "color_scheme": "scheme-4",
+                "background_color": "#d2e5fa",
+                "corner_radius": "radius_8",
+                "padding_top": 16,
+                "padding_bottom": 16,
+                "padding_left": 16,
+                "padding_right": 16
+              },
+              "blocks": {
+                "image": {
+                  "type": "image",
+                  "settings": {
+                    "image": "shopify://shop_images/wofyn-human-grade.svg",
+                    "alt_text": "",
+                    "image_fit": "contain",
+                    "image_ratio_desktop": "square",
+                    "width_desktop": "fixed",
+                    "width_fixed_desktop": 24,
+                    "image_ratio_mobile": "square",
+                    "width_mobile": "fixed",
+                    "width_fixed_mobile": 24,
+                    "corner_radius": "square",
+                    "animation_type": "none"
+                  }
+                }
+              },
+              "block_order": [
+                "image"
+              ]
+            },
+            "content": {
+              "type": "group",
+              "settings": {
+                "direction": "vertical",
+                "alignment": "left",
+                "alignment_mobile": "left",
+                "gap_desktop": 6,
+                "gap_mobile": 6,
                 "width": "fill",
                 "height": "fit",
                 "width_mobile": "fill"
@@ -2655,25 +2674,26 @@
                 "heading": {
                   "type": "heading",
                   "settings": {
-                    "text": "<p>Play With Purpose</p>",
-                    "heading_size": "custom",
+                    "text": "<p>100% Human-Grade</p>",
+                    "heading_size": "sm",
                     "custom_heading_size": 20,
                     "html_tag": "h3",
                     "width": "fill",
-                    "customize_mobile_size": true,
-                    "width_mobile": "fill"
+                    "customize_mobile_size": false,
+                    "width_mobile": "fill",
+                    "text_color": ""
                   }
                 },
                 "text": {
                   "type": "text",
                   "settings": {
-                    "text": "<p>Our Play Experts blend fun with fundamentals, guiding you to toys and gifts that do more than.</p>",
-                    "text_size": "md",
-                    "customize_line_height": true,
+                    "text": "<p>Fresh food made from meat, fruits.</p>",
+                    "text_size": "sm",
+                    "customize_line_height": false,
                     "line_height": 24,
-                    "text_color": "#626262",
+                    "text_color": "",
                     "width": "fill",
-                    "customize_mobile_size": true,
+                    "customize_mobile_size": false,
                     "width_mobile": "fill"
                   }
                 }
@@ -2692,49 +2712,79 @@
         "card_2": {
           "type": "group",
           "settings": {
-            "direction": "vertical",
-            "alignment": "center",
-            "alignment_mobile": "center",
-            "gap_desktop": 24,
-            "gap_mobile": 24,
+            "direction": "horizontal",
+            "alignment": "left",
+            "alignment_mobile": "left",
+            "gap_desktop": 16,
+            "gap_mobile": 16,
             "width": "fill",
             "height": "fit",
             "width_mobile": "fill",
-            "appearance_type": "scheme",
-            "color_scheme": "scheme-1",
-            "background_color": "#f8fafa",
-            "corner_radius": "radius_24",
-            "padding_top": 36,
-            "padding_bottom": 36,
-            "padding_left": 36,
-            "padding_right": 36,
-            "animation_type": "slide-bottom",
-            "animation_delay": 300
+            "appearance_type": "inherit",
+            "color_scheme": "",
+            "background_color": "",
+            "corner_radius": "square",
+            "padding_top": 0,
+            "padding_bottom": 0,
+            "padding_left": 0,
+            "padding_right": 0,
+            "animation_type": "none",
+            "animation_delay": 0,
+            "position_horizontal": "center",
+            "horizontal_alignment": "left",
+            "customize_mobile_alignment": false
           },
           "blocks": {
             "icon": {
-              "type": "image",
-              "settings": {
-                "image": "shopify://shop_images/peekoo-numbers.svg",
-                "alt_text": "",
-                "image_fit": "contain",
-                "image_ratio_desktop": "square",
-                "width_desktop": "fixed",
-                "width_fixed_desktop": 64,
-                "image_ratio_mobile": "square",
-                "width_mobile": "fixed",
-                "width_fixed_mobile": 64,
-                "corner_radius": "square"
-              }
-            },
-            "content": {
               "type": "group",
               "settings": {
                 "direction": "vertical",
                 "alignment": "center",
                 "alignment_mobile": "center",
-                "gap_desktop": 12,
-                "gap_mobile": 12,
+                "width": "fit",
+                "width_mobile": "fit",
+                "height": "fit",
+                "gap_desktop": 0,
+                "gap_mobile": 0,
+                "appearance_type": "scheme",
+                "color_scheme": "scheme-4",
+                "background_color": "#f9dcb4",
+                "corner_radius": "radius_8",
+                "padding_top": 16,
+                "padding_bottom": 16,
+                "padding_left": 16,
+                "padding_right": 16
+              },
+              "blocks": {
+                "image": {
+                  "type": "image",
+                  "settings": {
+                    "image": "shopify://shop_images/wofyn-easy-feed.svg",
+                    "alt_text": "",
+                    "image_fit": "contain",
+                    "image_ratio_desktop": "square",
+                    "width_desktop": "fixed",
+                    "width_fixed_desktop": 24,
+                    "image_ratio_mobile": "square",
+                    "width_mobile": "fixed",
+                    "width_fixed_mobile": 24,
+                    "corner_radius": "square",
+                    "animation_type": "none"
+                  }
+                }
+              },
+              "block_order": [
+                "image"
+              ]
+            },
+            "content": {
+              "type": "group",
+              "settings": {
+                "direction": "vertical",
+                "alignment": "left",
+                "alignment_mobile": "left",
+                "gap_desktop": 6,
+                "gap_mobile": 6,
                 "width": "fill",
                 "height": "fit",
                 "width_mobile": "fill"
@@ -2743,25 +2793,26 @@
                 "heading": {
                   "type": "heading",
                   "settings": {
-                    "text": "<p>Play Comes First</p>",
-                    "heading_size": "custom",
+                    "text": "<p>Easy to Feed</p>",
+                    "heading_size": "sm",
                     "custom_heading_size": 20,
                     "html_tag": "h3",
                     "width": "fill",
-                    "customize_mobile_size": true,
-                    "width_mobile": "fill"
+                    "customize_mobile_size": false,
+                    "width_mobile": "fill",
+                    "text_color": ""
                   }
                 },
                 "text": {
                   "type": "text",
                   "settings": {
-                    "text": "<p>Mastermind has a magical selection of games, and activities– the latest and the ones kids.</p>",
-                    "text_size": "md",
-                    "customize_line_height": true,
+                    "text": "<p>Everything you need to scoop.</p>",
+                    "text_size": "sm",
+                    "customize_line_height": false,
                     "line_height": 24,
-                    "text_color": "#626262",
+                    "text_color": "",
                     "width": "fill",
-                    "customize_mobile_size": true,
+                    "customize_mobile_size": false,
                     "width_mobile": "fill"
                   }
                 }
@@ -2780,49 +2831,79 @@
         "card_3": {
           "type": "group",
           "settings": {
-            "direction": "vertical",
-            "alignment": "center",
-            "alignment_mobile": "center",
-            "gap_desktop": 24,
-            "gap_mobile": 24,
+            "direction": "horizontal",
+            "alignment": "left",
+            "alignment_mobile": "left",
+            "gap_desktop": 16,
+            "gap_mobile": 16,
             "width": "fill",
             "height": "fit",
             "width_mobile": "fill",
-            "appearance_type": "scheme",
-            "color_scheme": "scheme-1",
-            "background_color": "#f8fafa",
-            "corner_radius": "radius_24",
-            "padding_top": 36,
-            "padding_bottom": 36,
-            "padding_left": 36,
-            "padding_right": 36,
-            "animation_type": "slide-bottom",
-            "animation_delay": 450
+            "appearance_type": "inherit",
+            "color_scheme": "",
+            "background_color": "",
+            "corner_radius": "square",
+            "padding_top": 0,
+            "padding_bottom": 0,
+            "padding_left": 0,
+            "padding_right": 0,
+            "animation_type": "none",
+            "animation_delay": 0,
+            "position_horizontal": "center",
+            "horizontal_alignment": "left",
+            "customize_mobile_alignment": false
           },
           "blocks": {
             "icon": {
-              "type": "image",
-              "settings": {
-                "image": "shopify://shop_images/peekoo-toys.svg",
-                "alt_text": "",
-                "image_fit": "contain",
-                "image_ratio_desktop": "square",
-                "width_desktop": "fixed",
-                "width_fixed_desktop": 64,
-                "image_ratio_mobile": "square",
-                "width_mobile": "fixed",
-                "width_fixed_mobile": 64,
-                "corner_radius": "square"
-              }
-            },
-            "content": {
               "type": "group",
               "settings": {
                 "direction": "vertical",
                 "alignment": "center",
                 "alignment_mobile": "center",
-                "gap_desktop": 12,
-                "gap_mobile": 12,
+                "width": "fit",
+                "width_mobile": "fit",
+                "height": "fit",
+                "gap_desktop": 0,
+                "gap_mobile": 0,
+                "appearance_type": "scheme",
+                "color_scheme": "scheme-4",
+                "background_color": "#ffd1d2",
+                "corner_radius": "radius_8",
+                "padding_top": 16,
+                "padding_bottom": 16,
+                "padding_left": 16,
+                "padding_right": 16
+              },
+              "blocks": {
+                "image": {
+                  "type": "image",
+                  "settings": {
+                    "image": "shopify://shop_images/wofyn-digestion.svg",
+                    "alt_text": "",
+                    "image_fit": "contain",
+                    "image_ratio_desktop": "square",
+                    "width_desktop": "fixed",
+                    "width_fixed_desktop": 24,
+                    "image_ratio_mobile": "square",
+                    "width_mobile": "fixed",
+                    "width_fixed_mobile": 24,
+                    "corner_radius": "square",
+                    "animation_type": "none"
+                  }
+                }
+              },
+              "block_order": [
+                "image"
+              ]
+            },
+            "content": {
+              "type": "group",
+              "settings": {
+                "direction": "vertical",
+                "alignment": "left",
+                "alignment_mobile": "left",
+                "gap_desktop": 6,
+                "gap_mobile": 6,
                 "width": "fill",
                 "height": "fit",
                 "width_mobile": "fill"
@@ -2831,25 +2912,26 @@
                 "heading": {
                   "type": "heading",
                   "settings": {
-                    "text": "<p>Wrapped in Delight</p>",
-                    "heading_size": "custom",
+                    "text": "<p>Improved Digestion</p>",
+                    "heading_size": "sm",
                     "custom_heading_size": 20,
                     "html_tag": "h3",
                     "width": "fill",
-                    "customize_mobile_size": true,
-                    "width_mobile": "fill"
+                    "customize_mobile_size": false,
+                    "width_mobile": "fill",
+                    "text_color": ""
                   }
                 },
                 "text": {
                   "type": "text",
                   "settings": {
-                    "text": "<p>Getting a gift from Mastermind we bring a smile to anyone’s face. Stop by our stores and we’ll.</p>",
-                    "text_size": "md",
-                    "customize_line_height": true,
+                    "text": "<p>Better digestion and poos.</p>",
+                    "text_size": "sm",
+                    "customize_line_height": false,
                     "line_height": 24,
-                    "text_color": "#626262",
+                    "text_color": "",
                     "width": "fill",
-                    "customize_mobile_size": true,
+                    "customize_mobile_size": false,
                     "width_mobile": "fill"
                   }
                 }
@@ -2868,49 +2950,79 @@
         "card_4": {
           "type": "group",
           "settings": {
-            "direction": "vertical",
-            "alignment": "center",
-            "alignment_mobile": "center",
-            "gap_desktop": 24,
-            "gap_mobile": 24,
+            "direction": "horizontal",
+            "alignment": "left",
+            "alignment_mobile": "left",
+            "gap_desktop": 16,
+            "gap_mobile": 16,
             "width": "fill",
             "height": "fit",
             "width_mobile": "fill",
-            "appearance_type": "scheme",
-            "color_scheme": "scheme-1",
-            "background_color": "#f8fafa",
-            "corner_radius": "radius_24",
-            "padding_top": 36,
-            "padding_bottom": 36,
-            "padding_left": 36,
-            "padding_right": 36,
-            "animation_type": "slide-bottom",
-            "animation_delay": 600
+            "appearance_type": "inherit",
+            "color_scheme": "",
+            "background_color": "",
+            "corner_radius": "square",
+            "padding_top": 0,
+            "padding_bottom": 0,
+            "padding_left": 0,
+            "padding_right": 0,
+            "animation_type": "none",
+            "animation_delay": 0,
+            "position_horizontal": "center",
+            "horizontal_alignment": "left",
+            "customize_mobile_alignment": false
           },
           "blocks": {
             "icon": {
-              "type": "image",
-              "settings": {
-                "image": "shopify://shop_images/peekoo-lightbulb.svg",
-                "alt_text": "",
-                "image_fit": "contain",
-                "image_ratio_desktop": "square",
-                "width_desktop": "fixed",
-                "width_fixed_desktop": 64,
-                "image_ratio_mobile": "square",
-                "width_mobile": "fixed",
-                "width_fixed_mobile": 64,
-                "corner_radius": "square"
-              }
-            },
-            "content": {
               "type": "group",
               "settings": {
                 "direction": "vertical",
                 "alignment": "center",
                 "alignment_mobile": "center",
-                "gap_desktop": 12,
-                "gap_mobile": 12,
+                "width": "fit",
+                "width_mobile": "fit",
+                "height": "fit",
+                "gap_desktop": 0,
+                "gap_mobile": 0,
+                "appearance_type": "scheme",
+                "color_scheme": "scheme-4",
+                "background_color": "#def7bf",
+                "corner_radius": "radius_8",
+                "padding_top": 16,
+                "padding_bottom": 16,
+                "padding_left": 16,
+                "padding_right": 16
+              },
+              "blocks": {
+                "image": {
+                  "type": "image",
+                  "settings": {
+                    "image": "shopify://shop_images/wofyn-transition.svg",
+                    "alt_text": "",
+                    "image_fit": "contain",
+                    "image_ratio_desktop": "square",
+                    "width_desktop": "fixed",
+                    "width_fixed_desktop": 24,
+                    "image_ratio_mobile": "square",
+                    "width_mobile": "fixed",
+                    "width_fixed_mobile": 24,
+                    "corner_radius": "square",
+                    "animation_type": "none"
+                  }
+                }
+              },
+              "block_order": [
+                "image"
+              ]
+            },
+            "content": {
+              "type": "group",
+              "settings": {
+                "direction": "vertical",
+                "alignment": "left",
+                "alignment_mobile": "left",
+                "gap_desktop": 6,
+                "gap_mobile": 6,
                 "width": "fill",
                 "height": "fit",
                 "width_mobile": "fill"
@@ -2919,25 +3031,26 @@
                 "heading": {
                   "type": "heading",
                   "settings": {
-                    "text": "<p>Right to your Door</p>",
-                    "heading_size": "custom",
+                    "text": "<p>Easy Transition</p>",
+                    "heading_size": "sm",
                     "custom_heading_size": 20,
                     "html_tag": "h3",
                     "width": "fill",
-                    "customize_mobile_size": true,
-                    "width_mobile": "fill"
+                    "customize_mobile_size": false,
+                    "width_mobile": "fill",
+                    "text_color": ""
                   }
                 },
                 "text": {
                   "type": "text",
                   "settings": {
-                    "text": "<p>Ordering from us is joyful too. We easy checkout and speedy delivery across Canada, fun is always.</p>",
-                    "text_size": "md",
-                    "customize_line_height": true,
+                    "text": "<p>The usual taste for your pets.</p>",
+                    "text_size": "sm",
+                    "customize_line_height": false,
                     "line_height": 24,
-                    "text_color": "#626262",
+                    "text_color": "",
                     "width": "fill",
-                    "customize_mobile_size": true,
+                    "customize_mobile_size": false,
                     "width_mobile": "fill"
                   }
                 }
@@ -2955,7 +3068,6 @@
         }
       },
       "block_order": [
-        "header",
         "card_1",
         "card_2",
         "card_3",
@@ -2963,23 +3075,25 @@
       ],
       "settings": {
         "section_width": "page_width",
-        "alignment": "center",
-        "content_gap": 48,
-        "customize_mobile_gap": true,
+        "alignment": "left",
+        "content_gap": 0,
+        "customize_mobile_gap": false,
         "content_gap_mobile": 36,
-        "layout": "grid",
+        "layout": "carousel",
         "columns_desktop": "4",
         "columns_tablet": "2",
         "columns_mobile": "1",
-        "grid_gap_desktop": 32,
-        "grid_gap_tablet": 20,
-        "grid_gap_mobile": 16,
-        "color_scheme": "scheme-1",
-        "padding_top": 80,
-        "padding_bottom": 80,
-        "customize_mobile_padding": true,
+        "grid_gap_desktop": 40,
+        "grid_gap_tablet": 48,
+        "grid_gap_mobile": 48,
+        "color_scheme": "scheme-4",
+        "padding_top": 48,
+        "padding_bottom": 48,
+        "customize_mobile_padding": false,
         "padding_top_mobile": 56,
-        "padding_bottom_mobile": 56
+        "padding_bottom_mobile": 56,
+        "show_navigation_on_desktop": false,
+        "show_pagination_on_desktop": false
       }
     },
     "peekoo_featured_07": {
