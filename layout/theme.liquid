@@ -53,6 +53,14 @@
       <script type="module" src="{{ 'timeline-list.js' | asset_url }}"></script>
     {% endif %}
 
+    {% comment %}Discover the single non-critical home bundle early without
+      blocking first paint. Component markers avoid duplicate card-loop links.{% endcomment %}
+    {% unless request.design_mode %}
+      {% if request.page_type == 'index' and content_for_layout contains '<!-- deferred-template-components -->' %}
+        {% render 'deferred-stylesheet', filename: 'deferred-template-components.css' %}
+      {% endif %}
+    {% endunless %}
+
     {{ content_for_header }}
   </head>
 

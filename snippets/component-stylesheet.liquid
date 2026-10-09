@@ -1,0 +1,14 @@
+{% doc %}
+  Loads component CSS synchronously near the start of a template and in the
+  Theme Editor. Later template sections use the shared non-blocking loader.
+  Unknown placement (section groups, static sections) stays synchronous.
+  @param {string} filename - Component CSS asset
+  @param {number} [section_index] - Owning section's template position
+{% enddoc %}
+{% if request.design_mode or section_index == nil or section_index <= 2 %}
+  {{ filename | asset_url | stylesheet_tag }}
+{% elsif request.page_type == 'index' %}
+  <!-- deferred-template-components -->
+{% else %}
+  {% render 'deferred-stylesheet', filename: filename %}
+{% endif %}

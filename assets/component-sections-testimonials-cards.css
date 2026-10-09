@@ -1,0 +1,22 @@
+
+.testimonials-cards { padding-block: var(--testimonials-padding-top, 80px) var(--testimonials-padding-bottom, 80px); }
+.testimonials-cards__content { display: flex; flex-direction: column; gap: var(--testimonials-header-gap, 56px); }
+.testimonials-cards__header { --flex-align: center; --flex-align-mobile: center; width: 100%; max-width: 768px; margin-inline: auto; }
+.testimonials-cards__carousel { --swiper-carousel-grid-columns: var(--testimonials-columns-desktop, 3); --swiper-carousel-grid-gap: var(--testimonials-gap-desktop, 28px); min-width: 0; --swiper-pagination-spacing: var(--testimonials-pagination-gap, 36px); --swiper-pagination-spacing-mobile: var(--testimonials-pagination-gap-mobile, 28px); }
+.testimonials-cards__carousel.carousel-block--locked .swiper-pagination { display: none; }
+.testimonials-cards__carousel .swiper-wrapper { align-items: stretch; }
+/* Stretch fills the auto-sized Swiper row without a fixed pixel height. */
+.testimonials-cards--height-fill .testimonials-cards__carousel .testimonial-item { align-self: stretch; height: auto; }
+.testimonials-cards--height-auto .testimonials-cards__carousel .testimonial-item { align-self: center; height: auto; }
+.testimonials-cards .image-block { --motion-image-zoom: 1; }
+.testimonials-cards .image-block__media img { object-position: center bottom; }
+@media (min-width: 768px) and (max-width: 1149.98px) {
+ .testimonials-cards__header { max-width: 576px; }
+ .testimonials-cards__carousel { --swiper-carousel-grid-columns: var(--testimonials-columns-tablet, 2); }
+}
+@media (max-width: 767.98px) {
+ .testimonials-cards { padding-block: var(--testimonials-padding-top-mobile, var(--testimonials-padding-top, 80px)) var(--testimonials-padding-bottom-mobile, var(--testimonials-padding-bottom, 80px)); }
+ .testimonials-cards__content { gap: var(--testimonials-header-gap-mobile, 32px); }
+ .testimonials-cards__header { max-width: 448px; }
+ .testimonials-cards__carousel { --swiper-carousel-grid-columns: var(--testimonials-columns-mobile, 1); --swiper-carousel-grid-gap: var(--testimonials-gap-mobile, 16px); }
+}
