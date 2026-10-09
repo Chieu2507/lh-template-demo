@@ -387,8 +387,14 @@
       "id": "image_fit",
       "label": "Image fit",
       "options": [
-        { "value": "cover", "label": "Cover" },
-        { "value": "contain", "label": "Contain" }
+        {
+          "value": "cover",
+          "label": "Cover"
+        },
+        {
+          "value": "contain",
+          "label": "Contain"
+        }
       ],
       "default": "cover"
     },
@@ -448,7 +454,10 @@
       "id": "width_desktop",
       "label": "t:labels.width",
       "options": [
-        { "value": "fixed", "label": "Fixed" },
+        {
+          "value": "fixed",
+          "label": "Fixed"
+        },
         {
           "value": "fit",
           "label": "t:options.width.fit"
@@ -465,7 +474,17 @@
       "default": "fit",
       "visible_if": "{{ block.settings.device == 'desktop' }}"
     },
-    { "type": "range", "id": "width_fixed_desktop", "label": "Fixed width", "min": 20, "max": 200, "step": 2, "unit": "px", "default": 70, "visible_if": "{{ block.settings.device == 'desktop' and block.settings.width_desktop == 'fixed' }}" },
+    {
+      "type": "range",
+      "id": "width_fixed_desktop",
+      "label": "Fixed width",
+      "min": 20,
+      "max": 200,
+      "step": 2,
+      "unit": "px",
+      "default": 70,
+      "visible_if": "{{ block.settings.device == 'desktop' and block.settings.width_desktop == 'fixed' }}"
+    },
     {
       "type": "range",
       "id": "width_custom_desktop",
@@ -551,7 +570,10 @@
       "id": "width_mobile",
       "label": "t:labels.width_mobile",
       "options": [
-        { "value": "fixed", "label": "Fixed" },
+        {
+          "value": "fixed",
+          "label": "Fixed"
+        },
         {
           "value": "fit",
           "label": "t:options.width.fit"
@@ -568,7 +590,17 @@
       "default": "fit",
       "visible_if": "{{ block.settings.device == 'mobile' }}"
     },
-    { "type": "range", "id": "width_fixed_mobile", "label": "Mobile fixed width", "min": 20, "max": 200, "step": 2, "unit": "px", "default": 70, "visible_if": "{{ block.settings.device == 'mobile' and block.settings.width_mobile == 'fixed' }}" },
+    {
+      "type": "range",
+      "id": "width_fixed_mobile",
+      "label": "Mobile fixed width",
+      "min": 20,
+      "max": 200,
+      "step": 2,
+      "unit": "px",
+      "default": 70,
+      "visible_if": "{{ block.settings.device == 'mobile' and block.settings.width_mobile == 'fixed' }}"
+    },
     {
       "type": "range",
       "id": "width_custom_mobile",
@@ -602,12 +634,69 @@
       "type": "header",
       "content": "t:general.border"
     },
-    { "type": "color", "id": "background_color", "label": "Background color" },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background color"
+    },
     {
       "type": "select",
       "id": "corner_radius",
       "label": "t:labels.corner_radius",
-      "options": [{"value": "inherit", "label": "t:options.radius_preset.inherit"}, {"value": "square", "label": "t:options.radius_preset.square"}, {"value": "radius_2", "label": "t:options.radius_preset.size_2"}, {"value": "radius_4", "label": "t:options.radius_preset.size_4"}, {"value": "radius_6", "label": "t:options.radius_preset.size_6"}, {"value": "rounded", "label": "t:options.radius_preset.rounded"}, {"value": "radius_8", "label": "t:options.radius_preset.size_8"}, {"value": "radius_12", "label": "t:options.radius_preset.size_12"}, {"value": "radius_16", "label": "t:options.radius_preset.size_16"}, {"value": "radius_24", "label": "t:options.radius_preset.size_24"}, {"value": "radius_32", "label": "t:options.radius_preset.size_32"}, {"value": "full", "label": "t:options.radius_preset.full"}, {"value": "custom", "label": "t:options.radius_preset.custom"}],
+      "options": [
+        {
+          "value": "inherit",
+          "label": "t:options.radius_preset.inherit"
+        },
+        {
+          "value": "square",
+          "label": "t:options.radius_preset.square"
+        },
+        {
+          "value": "radius_2",
+          "label": "t:options.radius_preset.size_2"
+        },
+        {
+          "value": "radius_4",
+          "label": "t:options.radius_preset.size_4"
+        },
+        {
+          "value": "radius_6",
+          "label": "t:options.radius_preset.size_6"
+        },
+        {
+          "value": "rounded",
+          "label": "t:options.radius_preset.rounded"
+        },
+        {
+          "value": "radius_8",
+          "label": "t:options.radius_preset.size_8"
+        },
+        {
+          "value": "radius_12",
+          "label": "t:options.radius_preset.size_12"
+        },
+        {
+          "value": "radius_16",
+          "label": "t:options.radius_preset.size_16"
+        },
+        {
+          "value": "radius_24",
+          "label": "t:options.radius_preset.size_24"
+        },
+        {
+          "value": "radius_32",
+          "label": "t:options.radius_preset.size_32"
+        },
+        {
+          "value": "full",
+          "label": "t:options.radius_preset.full"
+        },
+        {
+          "value": "custom",
+          "label": "t:options.radius_preset.custom"
+        }
+      ],
       "default": "square"
     },
     {

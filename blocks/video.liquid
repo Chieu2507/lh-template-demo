@@ -329,8 +329,14 @@
       "id": "video_source",
       "label": "t:labels.source",
       "options": [
-        { "value": "uploaded", "label": "t:options.video_source.uploaded" },
-        { "value": "external_url", "label": "t:options.video_source.external_url" }
+        {
+          "value": "uploaded",
+          "label": "t:options.video_source.uploaded"
+        },
+        {
+          "value": "external_url",
+          "label": "t:options.video_source.external_url"
+        }
       ],
       "default": "uploaded"
     },
@@ -344,7 +350,10 @@
       "type": "video_url",
       "id": "external_video_url",
       "label": "t:labels.external_video_url",
-      "accept": ["youtube", "vimeo"],
+      "accept": [
+        "youtube",
+        "vimeo"
+      ],
       "visible_if": "{{ block.settings.video_source == 'external_url' }}"
     },
     {
@@ -422,12 +431,30 @@
       "id": "aspect_ratio_desktop",
       "label": "t:labels.desktop_aspect_ratio",
       "options": [
-        { "value": "original", "label": "t:options.aspect_ratio.original" },
-        { "value": "square", "label": "t:options.aspect_ratio.square" },
-        { "value": "portrait", "label": "t:options.aspect_ratio.portrait" },
-        { "value": "landscape", "label": "t:options.aspect_ratio.landscape" },
-        { "value": "wide", "label": "t:options.aspect_ratio.wide" },
-        { "value": "custom", "label": "t:options.aspect_ratio.custom" }
+        {
+          "value": "original",
+          "label": "t:options.aspect_ratio.original"
+        },
+        {
+          "value": "square",
+          "label": "t:options.aspect_ratio.square"
+        },
+        {
+          "value": "portrait",
+          "label": "t:options.aspect_ratio.portrait"
+        },
+        {
+          "value": "landscape",
+          "label": "t:options.aspect_ratio.landscape"
+        },
+        {
+          "value": "wide",
+          "label": "t:options.aspect_ratio.wide"
+        },
+        {
+          "value": "custom",
+          "label": "t:options.aspect_ratio.custom"
+        }
       ],
       "default": "original"
     },
@@ -446,9 +473,18 @@
       "id": "width_desktop",
       "label": "t:labels.desktop_width",
       "options": [
-        { "value": "fit", "label": "t:options.width.fit" },
-        { "value": "fill", "label": "t:options.width.fill" },
-        { "value": "custom", "label": "t:options.width.custom" }
+        {
+          "value": "fit",
+          "label": "t:options.width.fit"
+        },
+        {
+          "value": "fill",
+          "label": "t:options.width.fill"
+        },
+        {
+          "value": "custom",
+          "label": "t:options.width.custom"
+        }
       ],
       "default": "fit"
     },
@@ -485,12 +521,30 @@
       "id": "aspect_ratio_mobile",
       "label": "t:labels.mobile_aspect_ratio",
       "options": [
-        { "value": "original", "label": "t:options.aspect_ratio.original" },
-        { "value": "square", "label": "t:options.aspect_ratio.square" },
-        { "value": "portrait", "label": "t:options.aspect_ratio.portrait" },
-        { "value": "landscape", "label": "t:options.aspect_ratio.landscape" },
-        { "value": "wide", "label": "t:options.aspect_ratio.wide" },
-        { "value": "custom", "label": "t:options.aspect_ratio.custom" }
+        {
+          "value": "original",
+          "label": "t:options.aspect_ratio.original"
+        },
+        {
+          "value": "square",
+          "label": "t:options.aspect_ratio.square"
+        },
+        {
+          "value": "portrait",
+          "label": "t:options.aspect_ratio.portrait"
+        },
+        {
+          "value": "landscape",
+          "label": "t:options.aspect_ratio.landscape"
+        },
+        {
+          "value": "wide",
+          "label": "t:options.aspect_ratio.wide"
+        },
+        {
+          "value": "custom",
+          "label": "t:options.aspect_ratio.custom"
+        }
       ],
       "default": "original"
     },
@@ -509,9 +563,18 @@
       "id": "width_mobile",
       "label": "t:labels.mobile_width",
       "options": [
-        { "value": "fit", "label": "t:options.width.fit" },
-        { "value": "fill", "label": "t:options.width.fill" },
-        { "value": "custom", "label": "t:options.width.custom" }
+        {
+          "value": "fit",
+          "label": "t:options.width.fit"
+        },
+        {
+          "value": "fill",
+          "label": "t:options.width.fill"
+        },
+        {
+          "value": "custom",
+          "label": "t:options.width.custom"
+        }
       ],
       "default": "fit"
     },
@@ -551,7 +614,64 @@
       "type": "select",
       "id": "corner_radius",
       "label": "t:labels.corner_radius",
-      "options": [{"value": "inherit", "label": "t:options.radius_video.inherit"}, {"value": "none", "label": "t:options.radius_video.none"}, {"value": "radius_2", "label": "t:options.radius_preset.size_2"}, {"value": "small", "label": "t:options.radius_video.small"}, {"value": "radius_4", "label": "t:options.radius_preset.size_4"}, {"value": "radius_6", "label": "t:options.radius_preset.size_6"}, {"value": "medium", "label": "t:options.radius_video.medium"}, {"value": "radius_8", "label": "t:options.radius_preset.size_8"}, {"value": "radius_12", "label": "t:options.radius_preset.size_12"}, {"value": "large", "label": "t:options.radius_video.large"}, {"value": "radius_16", "label": "t:options.radius_preset.size_16"}, {"value": "radius_24", "label": "t:options.radius_preset.size_24"}, {"value": "radius_32", "label": "t:options.radius_preset.size_32"}, {"value": "full", "label": "t:options.radius_video.full"}],
+      "options": [
+        {
+          "value": "inherit",
+          "label": "t:options.radius_video.inherit"
+        },
+        {
+          "value": "none",
+          "label": "t:options.radius_video.none"
+        },
+        {
+          "value": "radius_2",
+          "label": "t:options.radius_preset.size_2"
+        },
+        {
+          "value": "small",
+          "label": "t:options.radius_video.small"
+        },
+        {
+          "value": "radius_4",
+          "label": "t:options.radius_preset.size_4"
+        },
+        {
+          "value": "radius_6",
+          "label": "t:options.radius_preset.size_6"
+        },
+        {
+          "value": "medium",
+          "label": "t:options.radius_video.medium"
+        },
+        {
+          "value": "radius_8",
+          "label": "t:options.radius_preset.size_8"
+        },
+        {
+          "value": "radius_12",
+          "label": "t:options.radius_preset.size_12"
+        },
+        {
+          "value": "large",
+          "label": "t:options.radius_video.large"
+        },
+        {
+          "value": "radius_16",
+          "label": "t:options.radius_preset.size_16"
+        },
+        {
+          "value": "radius_24",
+          "label": "t:options.radius_preset.size_24"
+        },
+        {
+          "value": "radius_32",
+          "label": "t:options.radius_preset.size_32"
+        },
+        {
+          "value": "full",
+          "label": "t:options.radius_video.full"
+        }
+      ],
       "default": "inherit"
     },
     {

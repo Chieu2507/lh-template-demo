@@ -132,15 +132,15 @@
     {
       "type": "select",
       "id": "overlay_style",
-      "label": "Overlay style",
+      "label": "t:labels.overlay_style",
       "options": [
         {
-          "value": "gradient",
-          "label": "Gradient"
+          "value": "solid",
+          "label": "t:options.overlay_style.solid"
         },
         {
-          "value": "solid",
-          "label": "Solid"
+          "value": "gradient",
+          "label": "t:options.overlay_style.gradient"
         }
       ],
       "default": "gradient",
@@ -157,7 +157,7 @@
     {
       "type": "color_background",
       "id": "overlay_gradient",
-      "label": "Overlay gradient",
+      "label": "t:labels.overlay_gradient",
       "default": "linear-gradient(180deg, rgba(0, 0, 0, 0.08), rgba(0, 0, 0, 0.52))",
       "visible_if": "{{ block.settings.show_overlay and block.settings.overlay_style == 'gradient' }}"
     },

@@ -757,7 +757,10 @@
       "solid": "Solid",
       "gradient": "Gradient"
     },
-    "blog_meta_display": {"content": "In content", "badge": "Badge on image"},
+    "blog_meta_display": {
+      "content": "In content",
+      "badge": "Badge on image"
+    },
     "product_quantity_style": {
       "default": "Default",
       "custom": "Custom"
