@@ -4173,7 +4173,7 @@
         "header_position": "products",
         "banner_position": "before",
         "banner_max_width": "medium",
-        "enable_overlap": false,
+        "enable_overlap": true,
         "overlap_desktop": 112,
         "overlap_mobile": 112,
         "overlap_panel_padding": 24,
