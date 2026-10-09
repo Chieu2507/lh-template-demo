@@ -6,7 +6,7 @@
     width: 100%;
     padding-top: var(--icon-text-cards-padding-top);
     padding-bottom: var(--icon-text-cards-padding-bottom);
-    background-color: transparent;
+    background-color: var(--icon-text-cards-background, var(--background-color));
   }
   .icon-text-cards__background { position: absolute; z-index: 0; inset: 0; pointer-events: none; }
   .icon-text-cards__background img { display: block; width: 100%; height: 100%; object-fit: cover; }
