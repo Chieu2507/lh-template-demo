@@ -15,7 +15,6 @@
 {% endcapture %}
 {% assign effective_overlay = effective_overlay | strip %}
 
-
 {% liquid
   assign image_source = block.settings.image
   assign mobile_image_source = block.settings.mobile_image
@@ -624,6 +623,47 @@
     },
     {
       "type": "header",
+      "content": "t:general.overlay"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_overlay",
+      "label": "t:labels.show_overlay",
+      "default": false
+    },
+    {
+      "type": "select",
+      "id": "overlay_style",
+      "label": "t:labels.overlay_style",
+      "options": [
+        {
+          "value": "solid",
+          "label": "t:options.overlay_style.solid"
+        },
+        {
+          "value": "gradient",
+          "label": "t:options.overlay_style.gradient"
+        }
+      ],
+      "default": "solid",
+      "visible_if": "{{ block.settings.show_overlay }}"
+    },
+    {
+      "type": "color",
+      "id": "overlay_color",
+      "label": "t:labels.overlay_color",
+      "alpha": true,
+      "visible_if": "{{ block.settings.show_overlay and block.settings.overlay_style == 'solid' }}"
+    },
+    {
+      "type": "color_background",
+      "id": "overlay_gradient",
+      "default": "linear-gradient(180deg, rgba(0, 0, 0, 0.08), rgba(0, 0, 0, 0.52))",
+      "label": "t:labels.overlay_gradient",
+      "visible_if": "{{ block.settings.show_overlay and block.settings.overlay_style == 'gradient' }}"
+    },
+    {
+      "type": "header",
       "content": "Animation"
     },
     {
@@ -669,47 +709,6 @@
       "default": 0,
       "visible_if": "{{ block.settings.animation_type != 'none' }}"
     },
-      {
-        "type": "header",
-        "content": "t:general.overlay"
-      },
-      {
-        "type": "checkbox",
-        "id": "show_overlay",
-        "label": "t:labels.show_overlay",
-        "default": false
-      },
-      {
-        "type": "select",
-        "id": "overlay_style",
-        "label": "t:labels.overlay_style",
-        "options": [
-          {
-            "value": "solid",
-            "label": "t:options.overlay_style.solid"
-          },
-          {
-            "value": "gradient",
-            "label": "t:options.overlay_style.gradient"
-          }
-        ],
-        "default": "solid",
-        "visible_if": "{{ block.settings.show_overlay }}"
-      },
-      {
-        "type": "color",
-        "id": "overlay_color",
-        "label": "t:labels.overlay_color",
-        "alpha": true,
-        "visible_if": "{{ block.settings.show_overlay and block.settings.overlay_style == 'solid' }}"
-      },
-      {
-        "type": "color_background",
-        "id": "overlay_gradient",
-        "default": "linear-gradient(180deg, rgba(0, 0, 0, 0.08), rgba(0, 0, 0, 0.52))",
-        "label": "t:labels.overlay_gradient",
-        "visible_if": "{{ block.settings.show_overlay and block.settings.overlay_style == 'gradient' }}"
-      },
     {
       "type": "header",
       "content": "t:general.padding"
