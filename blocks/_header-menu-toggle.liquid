@@ -1,34 +1,33 @@
 {% liquid
-  assign menu_toggle_type = block.settings.type | default: 'icon'
-  unless menu_toggle_type == 'icon' or menu_toggle_type == 'text' or menu_toggle_type == 'icon_with_text'
-    assign menu_toggle_type = 'icon'
+  assign menu_toggle_icon = block.settings.icon | default: 'bars-3'
+  unless menu_toggle_icon == 'bars-3' or menu_toggle_icon == 'menu' or menu_toggle_icon == 'grip-vertical'
+    assign menu_toggle_icon = 'bars-3'
   endunless
-  assign menu_toggle_label = block.settings.label
-  if menu_toggle_label == blank
-    assign menu_toggle_label = 'accessibility.menu' | t
+
+  assign menu_toggle_icon_size = block.settings.icon_size | plus: 0
+  assign menu_toggle_has_custom_icon_size = false
+  if block.settings.icon_size != blank and menu_toggle_icon_size >= 8 and menu_toggle_icon_size <= 48
+    assign menu_toggle_has_custom_icon_size = true
   endif
 %}
 
 <button
-  class="header-menu-toggle header-menu-toggle--type-{{ menu_toggle_type }} btn btn--unstyled body-text body-md font-accent tracking-normal text-case-original"
+  class="header-menu-toggle btn btn--unstyled"
   type="button"
   aria-expanded="false"
   aria-controls="HeaderMobileDrawer-{{ section.id }}"
   aria-label="Open menu"
+  {% if menu_toggle_has_custom_icon_size %}style="--header-menu-toggle-icon-size: {{ menu_toggle_icon_size }}px;"{% endif %}
   data-header-menu-toggle
   {{ block.shopify_attributes }}
 >
-  {% unless menu_toggle_type == 'text' %}
   <span class="icon header-menu-toggle__open-icon" aria-hidden="true">
-    {% render 'icon', icon: 'bars-3', bare: true %}
+    {% render 'icon', icon: menu_toggle_icon, bare: true %}
   </span>
   <span class="icon header-menu-toggle__close-icon" aria-hidden="true">
     {% render 'icon', icon: 'x-mark', bare: true %}
   </span>
-  {% endunless %}
-  {% unless menu_toggle_type == 'icon' %}
-    <span class="header-action__label">{{ menu_toggle_label | escape }}</span>
-  {% endunless %}
+  <span class="visually-hidden">Menu</span>
 </button>
 
 {% stylesheet %}
@@ -37,7 +36,6 @@
     flex: 0 0 auto;
     align-items: center;
     justify-content: center;
-    gap: 0.35rem;
     width: var(--button-height);
     min-width: var(--button-height);
     min-height: var(--button-height);
@@ -46,9 +44,8 @@
 
   .header-menu-toggle .icon {
     display: inline-flex;
-    width: var(--header-icon-size, var(--icon-size-medium));
-    height: var(--header-icon-size, var(--icon-size-medium));
-    flex: 0 0 auto;
+    width: var(--header-menu-toggle-icon-size, var(--header-icon-size, var(--icon-size-medium)));
+    height: var(--header-menu-toggle-icon-size, var(--header-icon-size, var(--icon-size-medium)));
   }
 
   .header-menu-toggle .icon svg {
@@ -78,11 +75,6 @@
       min-height: 24px;
     }
   }
-
-  .header-menu-toggle.btn:not(.header-menu-toggle--type-icon) {
-    width: auto;
-    height: auto;
-  }
 {% endstylesheet %}
 
 {% schema %}
@@ -92,21 +84,24 @@
   "settings": [
     {
       "type": "select",
-      "id": "type",
-      "label": "Type",
+      "id": "icon",
+      "label": "Choose icon",
       "options": [
-        { "value": "icon", "label": "Icon" },
-        { "value": "text", "label": "Text" },
-        { "value": "icon_with_text", "label": "Icon with text" }
+        { "value": "bars-3", "label": "Menu" },
+        { "value": "menu", "label": "Alternative menu" },
+        { "value": "grip-vertical", "label": "Grip" }
       ],
-      "default": "icon"
+      "default": "bars-3"
     },
     {
-      "type": "text",
-      "id": "label",
-      "label": "Label",
-      "default": "Menu",
-      "visible_if": "{{ block.settings.type != 'icon' }}"
+      "type": "range",
+      "id": "icon_size",
+      "label": "Icon size",
+      "min": 8,
+      "max": 48,
+      "step": 1,
+      "unit": "px",
+      "default": 20
     }
   ],
   "presets": [
