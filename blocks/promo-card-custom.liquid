@@ -147,14 +147,11 @@
       "visible_if": "{{ block.settings.show_overlay }}"
     },
     {
-      "type": "range",
-      "id": "overlay_opacity",
-      "label": "Overlay opacity",
-      "min": 0,
-      "max": 100,
-      "step": 1,
-      "unit": "%",
-      "default": 20,
+      "type": "color",
+      "id": "overlay_color",
+      "label": "t:labels.overlay_color",
+      "alpha": true,
+      "default": "#00000033",
       "visible_if": "{{ block.settings.show_overlay and block.settings.overlay_style == 'solid' }}"
     },
     {

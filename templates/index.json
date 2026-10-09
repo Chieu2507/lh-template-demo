@@ -1339,10 +1339,10 @@
                   "settings": {
                     "source": "custom",
                     "custom_icon": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"20\" height=\"20\" viewBox=\"0 0 20 20\" fill=\"none\">\n<path d=\"M10.0001 4.58379L9.54977 5.0172C9.66756 5.13962 9.8302 5.20879 10.0001 5.20879C10.17 5.20879 10.3326 5.13962 10.4504 5.0172L10.0001 4.58379ZM7.85513 15.2682C6.59208 14.2725 5.21098 13.3002 4.11533 12.0664C3.0411 10.8568 2.29175 9.44534 2.29175 7.6142H1.04175C1.04175 9.83541 1.96717 11.53 3.18068 12.8964C4.37278 14.2388 5.89239 15.3126 7.08127 16.2498L7.85513 15.2682ZM2.29175 7.6142C2.29175 5.82179 3.30456 4.31869 4.68705 3.68675C6.03014 3.07283 7.83477 3.23541 9.54977 5.0172L10.4504 4.15037C8.41548 2.03619 6.05349 1.68775 4.16738 2.54989C2.32068 3.39403 1.04175 5.35412 1.04175 7.6142H2.29175ZM7.08127 16.2498C7.50813 16.5863 7.96634 16.9452 8.43077 17.2165C8.89498 17.4878 9.42477 17.7083 10.0001 17.7083V16.4583C9.74205 16.4583 9.43848 16.3577 9.06141 16.1373C8.68448 15.917 8.29348 15.6138 7.85513 15.2682L7.08127 16.2498ZM12.9189 16.2498C14.1078 15.3126 15.6274 14.2388 16.8195 12.8964C18.033 11.53 18.9584 9.83541 18.9584 7.6142H17.7084C17.7084 9.44534 16.9591 10.8568 15.8848 12.0664C14.7892 13.3002 13.4081 14.2725 12.1451 15.2682L12.9189 16.2498ZM18.9584 7.6142C18.9584 5.35412 17.6795 3.39403 15.8328 2.54989C13.9467 1.68775 11.5847 2.03619 9.54977 4.15037L10.4504 5.0172C12.1653 3.23541 13.97 3.07283 15.3131 3.68675C16.6956 4.31869 17.7084 5.82179 17.7084 7.6142H18.9584ZM12.1451 15.2682C11.7067 15.6138 11.3157 15.917 10.9388 16.1373C10.5617 16.3577 10.2581 16.4583 10.0001 16.4583V17.7083C10.5754 17.7083 11.1052 17.4878 11.5694 17.2165C12.0338 16.9452 12.492 16.5863 12.9189 16.2498L12.1451 15.2682Z\" fill=\"currentColor\"/>\n</svg>",
+                    "accessible_label": "",
                     "icon_width": 20,
                     "icon_padding": 0,
-                    "custom_mobile": false,
-                    "accessible_label": ""
+                    "custom_mobile": false
                   }
                 }
               },
@@ -1425,10 +1425,10 @@
                   "settings": {
                     "source": "custom",
                     "custom_icon": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"20\" height=\"20\" viewBox=\"0 0 20 20\" fill=\"none\">\n<path d=\"M10.0001 4.58379L9.54977 5.0172C9.66756 5.13962 9.8302 5.20879 10.0001 5.20879C10.17 5.20879 10.3326 5.13962 10.4504 5.0172L10.0001 4.58379ZM7.85513 15.2682C6.59208 14.2725 5.21098 13.3002 4.11533 12.0664C3.0411 10.8568 2.29175 9.44534 2.29175 7.6142H1.04175C1.04175 9.83541 1.96717 11.53 3.18068 12.8964C4.37278 14.2388 5.89239 15.3126 7.08127 16.2498L7.85513 15.2682ZM2.29175 7.6142C2.29175 5.82179 3.30456 4.31869 4.68705 3.68675C6.03014 3.07283 7.83477 3.23541 9.54977 5.0172L10.4504 4.15037C8.41548 2.03619 6.05349 1.68775 4.16738 2.54989C2.32068 3.39403 1.04175 5.35412 1.04175 7.6142H2.29175ZM7.08127 16.2498C7.50813 16.5863 7.96634 16.9452 8.43077 17.2165C8.89498 17.4878 9.42477 17.7083 10.0001 17.7083V16.4583C9.74205 16.4583 9.43848 16.3577 9.06141 16.1373C8.68448 15.917 8.29348 15.6138 7.85513 15.2682L7.08127 16.2498ZM12.9189 16.2498C14.1078 15.3126 15.6274 14.2388 16.8195 12.8964C18.033 11.53 18.9584 9.83541 18.9584 7.6142H17.7084C17.7084 9.44534 16.9591 10.8568 15.8848 12.0664C14.7892 13.3002 13.4081 14.2725 12.1451 15.2682L12.9189 16.2498ZM18.9584 7.6142C18.9584 5.35412 17.6795 3.39403 15.8328 2.54989C13.9467 1.68775 11.5847 2.03619 9.54977 4.15037L10.4504 5.0172C12.1653 3.23541 13.97 3.07283 15.3131 3.68675C16.6956 4.31869 17.7084 5.82179 17.7084 7.6142H18.9584ZM12.1451 15.2682C11.7067 15.6138 11.3157 15.917 10.9388 16.1373C10.5617 16.3577 10.2581 16.4583 10.0001 16.4583V17.7083C10.5754 17.7083 11.1052 17.4878 11.5694 17.2165C12.0338 16.9452 12.492 16.5863 12.9189 16.2498L12.1451 15.2682Z\" fill=\"currentColor\"/>\n</svg>",
+                    "accessible_label": "",
                     "icon_width": 20,
                     "icon_padding": 0,
-                    "custom_mobile": false,
-                    "accessible_label": ""
+                    "custom_mobile": false
                   }
                 }
               },
@@ -1511,10 +1511,10 @@
                   "settings": {
                     "source": "custom",
                     "custom_icon": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"20\" height=\"20\" viewBox=\"0 0 20 20\" fill=\"none\">\n<path d=\"M10.0001 4.58379L9.54977 5.0172C9.66756 5.13962 9.8302 5.20879 10.0001 5.20879C10.17 5.20879 10.3326 5.13962 10.4504 5.0172L10.0001 4.58379ZM7.85513 15.2682C6.59208 14.2725 5.21098 13.3002 4.11533 12.0664C3.0411 10.8568 2.29175 9.44534 2.29175 7.6142H1.04175C1.04175 9.83541 1.96717 11.53 3.18068 12.8964C4.37278 14.2388 5.89239 15.3126 7.08127 16.2498L7.85513 15.2682ZM2.29175 7.6142C2.29175 5.82179 3.30456 4.31869 4.68705 3.68675C6.03014 3.07283 7.83477 3.23541 9.54977 5.0172L10.4504 4.15037C8.41548 2.03619 6.05349 1.68775 4.16738 2.54989C2.32068 3.39403 1.04175 5.35412 1.04175 7.6142H2.29175ZM7.08127 16.2498C7.50813 16.5863 7.96634 16.9452 8.43077 17.2165C8.89498 17.4878 9.42477 17.7083 10.0001 17.7083V16.4583C9.74205 16.4583 9.43848 16.3577 9.06141 16.1373C8.68448 15.917 8.29348 15.6138 7.85513 15.2682L7.08127 16.2498ZM12.9189 16.2498C14.1078 15.3126 15.6274 14.2388 16.8195 12.8964C18.033 11.53 18.9584 9.83541 18.9584 7.6142H17.7084C17.7084 9.44534 16.9591 10.8568 15.8848 12.0664C14.7892 13.3002 13.4081 14.2725 12.1451 15.2682L12.9189 16.2498ZM18.9584 7.6142C18.9584 5.35412 17.6795 3.39403 15.8328 2.54989C13.9467 1.68775 11.5847 2.03619 9.54977 4.15037L10.4504 5.0172C12.1653 3.23541 13.97 3.07283 15.3131 3.68675C16.6956 4.31869 17.7084 5.82179 17.7084 7.6142H18.9584ZM12.1451 15.2682C11.7067 15.6138 11.3157 15.917 10.9388 16.1373C10.5617 16.3577 10.2581 16.4583 10.0001 16.4583V17.7083C10.5754 17.7083 11.1052 17.4878 11.5694 17.2165C12.0338 16.9452 12.492 16.5863 12.9189 16.2498L12.1451 15.2682Z\" fill=\"currentColor\"/>\n</svg>",
+                    "accessible_label": "",
                     "icon_width": 20,
                     "icon_padding": 0,
-                    "custom_mobile": false,
-                    "accessible_label": ""
+                    "custom_mobile": false
                   }
                 }
               },
@@ -1597,10 +1597,10 @@
                   "settings": {
                     "source": "custom",
                     "custom_icon": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"20\" height=\"20\" viewBox=\"0 0 20 20\" fill=\"none\">\n<path d=\"M10.0001 4.58379L9.54977 5.0172C9.66756 5.13962 9.8302 5.20879 10.0001 5.20879C10.17 5.20879 10.3326 5.13962 10.4504 5.0172L10.0001 4.58379ZM7.85513 15.2682C6.59208 14.2725 5.21098 13.3002 4.11533 12.0664C3.0411 10.8568 2.29175 9.44534 2.29175 7.6142H1.04175C1.04175 9.83541 1.96717 11.53 3.18068 12.8964C4.37278 14.2388 5.89239 15.3126 7.08127 16.2498L7.85513 15.2682ZM2.29175 7.6142C2.29175 5.82179 3.30456 4.31869 4.68705 3.68675C6.03014 3.07283 7.83477 3.23541 9.54977 5.0172L10.4504 4.15037C8.41548 2.03619 6.05349 1.68775 4.16738 2.54989C2.32068 3.39403 1.04175 5.35412 1.04175 7.6142H2.29175ZM7.08127 16.2498C7.50813 16.5863 7.96634 16.9452 8.43077 17.2165C8.89498 17.4878 9.42477 17.7083 10.0001 17.7083V16.4583C9.74205 16.4583 9.43848 16.3577 9.06141 16.1373C8.68448 15.917 8.29348 15.6138 7.85513 15.2682L7.08127 16.2498ZM12.9189 16.2498C14.1078 15.3126 15.6274 14.2388 16.8195 12.8964C18.033 11.53 18.9584 9.83541 18.9584 7.6142H17.7084C17.7084 9.44534 16.9591 10.8568 15.8848 12.0664C14.7892 13.3002 13.4081 14.2725 12.1451 15.2682L12.9189 16.2498ZM18.9584 7.6142C18.9584 5.35412 17.6795 3.39403 15.8328 2.54989C13.9467 1.68775 11.5847 2.03619 9.54977 4.15037L10.4504 5.0172C12.1653 3.23541 13.97 3.07283 15.3131 3.68675C16.6956 4.31869 17.7084 5.82179 17.7084 7.6142H18.9584ZM12.1451 15.2682C11.7067 15.6138 11.3157 15.917 10.9388 16.1373C10.5617 16.3577 10.2581 16.4583 10.0001 16.4583V17.7083C10.5754 17.7083 11.1052 17.4878 11.5694 17.2165C12.0338 16.9452 12.492 16.5863 12.9189 16.2498L12.1451 15.2682Z\" fill=\"currentColor\"/>\n</svg>",
+                    "accessible_label": "",
                     "icon_width": 20,
                     "icon_padding": 0,
-                    "custom_mobile": false,
-                    "accessible_label": ""
+                    "custom_mobile": false
                   }
                 }
               },
@@ -1683,10 +1683,10 @@
                   "settings": {
                     "source": "custom",
                     "custom_icon": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"20\" height=\"20\" viewBox=\"0 0 20 20\" fill=\"none\">\n<path d=\"M10.0001 4.58379L9.54977 5.0172C9.66756 5.13962 9.8302 5.20879 10.0001 5.20879C10.17 5.20879 10.3326 5.13962 10.4504 5.0172L10.0001 4.58379ZM7.85513 15.2682C6.59208 14.2725 5.21098 13.3002 4.11533 12.0664C3.0411 10.8568 2.29175 9.44534 2.29175 7.6142H1.04175C1.04175 9.83541 1.96717 11.53 3.18068 12.8964C4.37278 14.2388 5.89239 15.3126 7.08127 16.2498L7.85513 15.2682ZM2.29175 7.6142C2.29175 5.82179 3.30456 4.31869 4.68705 3.68675C6.03014 3.07283 7.83477 3.23541 9.54977 5.0172L10.4504 4.15037C8.41548 2.03619 6.05349 1.68775 4.16738 2.54989C2.32068 3.39403 1.04175 5.35412 1.04175 7.6142H2.29175ZM7.08127 16.2498C7.50813 16.5863 7.96634 16.9452 8.43077 17.2165C8.89498 17.4878 9.42477 17.7083 10.0001 17.7083V16.4583C9.74205 16.4583 9.43848 16.3577 9.06141 16.1373C8.68448 15.917 8.29348 15.6138 7.85513 15.2682L7.08127 16.2498ZM12.9189 16.2498C14.1078 15.3126 15.6274 14.2388 16.8195 12.8964C18.033 11.53 18.9584 9.83541 18.9584 7.6142H17.7084C17.7084 9.44534 16.9591 10.8568 15.8848 12.0664C14.7892 13.3002 13.4081 14.2725 12.1451 15.2682L12.9189 16.2498ZM18.9584 7.6142C18.9584 5.35412 17.6795 3.39403 15.8328 2.54989C13.9467 1.68775 11.5847 2.03619 9.54977 4.15037L10.4504 5.0172C12.1653 3.23541 13.97 3.07283 15.3131 3.68675C16.6956 4.31869 17.7084 5.82179 17.7084 7.6142H18.9584ZM12.1451 15.2682C11.7067 15.6138 11.3157 15.917 10.9388 16.1373C10.5617 16.3577 10.2581 16.4583 10.0001 16.4583V17.7083C10.5754 17.7083 11.1052 17.4878 11.5694 17.2165C12.0338 16.9452 12.492 16.5863 12.9189 16.2498L12.1451 15.2682Z\" fill=\"currentColor\"/>\n</svg>",
+                    "accessible_label": "",
                     "icon_width": 20,
                     "icon_padding": 0,
-                    "custom_mobile": false,
-                    "accessible_label": ""
+                    "custom_mobile": false
                   }
                 }
               },
@@ -1888,7 +1888,7 @@
         "image",
         "content"
       ],
-      "name": "Flash Sale \u2014 Countdown",
+      "name": "Flash Sale — Countdown",
       "settings": {
         "section_width": "page_width",
         "height": "auto",
@@ -2109,7 +2109,7 @@
                 "quote": {
                   "type": "heading",
                   "settings": {
-                    "text": "<p>We\u2019ve tried many toys, but these are the ones my always come back to. Durable, creative, and so much fun. Even the grandparents love playing with.</p>",
+                    "text": "<p>We’ve tried many toys, but these are the ones my always come back to. Durable, creative, and so much fun. Even the grandparents love playing with.</p>",
                     "heading_size": "lg",
                     "html_tag": "div",
                     "width": "fill",
@@ -2181,7 +2181,6 @@
             "zoom_on_hover": false,
             "show_overlay": true,
             "overlay_style": "solid",
-            "overlay_opacity": 10,
             "device": "desktop",
             "width_desktop": "fill",
             "width_custom_desktop": 100,
@@ -2326,7 +2325,6 @@
             "zoom_on_hover": false,
             "show_overlay": true,
             "overlay_style": "solid",
-            "overlay_opacity": 10,
             "device": "desktop",
             "width_desktop": "fill",
             "width_custom_desktop": 100,
@@ -2975,6 +2973,8 @@
         "grid_gap_desktop": 40,
         "grid_gap_tablet": 48,
         "grid_gap_mobile": 48,
+        "auto_rotate": true,
+        "autoplay_speed": 4,
         "show_navigation_on_desktop": false,
         "show_pagination_on_desktop": false,
         "color_scheme": "scheme-4",
@@ -2982,9 +2982,7 @@
         "padding_bottom": 48,
         "customize_mobile_padding": false,
         "padding_top_mobile": 56,
-        "padding_bottom_mobile": 56,
-        "auto_rotate": true,
-        "autoplay_speed": 4
+        "padding_bottom_mobile": 56
       }
     },
     "peekoo_featured_07": {
@@ -3117,7 +3115,7 @@
           "block_order": []
         }
       },
-      "name": "Featured collection \u2014 Top Picks",
+      "name": "Featured collection — Top Picks",
       "settings": {
         "section_width": "page_width",
         "desktop_alignment": "left",
@@ -3305,7 +3303,7 @@
           }
         }
       },
-      "name": "Blog posts \u2014 Peekoo",
+      "name": "Blog posts — Peekoo",
       "settings": {
         "section_width": "page_width",
         "desktop_alignment": "center",
@@ -3643,37 +3641,20 @@
     },
     "wofyn_promo_grid": {
       "type": "promo-grid-custom",
-      "settings": {
-        "columns_desktop": "3",
-        "columns_tablet": "2",
-        "columns_mobile": "1",
-        "padding_top": 96,
-        "padding_bottom": 112,
-        "gap_desktop": 24,
-        "gap_mobile": 16,
-        "section_width": "page_width",
-        "height_desktop": "medium",
-        "height_mobile": "medium",
-        "color_scheme": "scheme-1",
-        "customize_mobile_padding": true,
-        "padding_top_mobile": 64,
-        "padding_bottom_mobile": 64,
-        "carousel_mobile": false
-      },
       "blocks": {
         "banner_1": {
           "type": "promo-card-custom",
           "settings": {
-            "color_scheme": "scheme-1",
+            "columns_wide": 2,
+            "rows_tall": 1,
             "position_desktop": "top_left",
             "position_mobile": "top_left",
+            "corner_radius": "rounded",
+            "color_scheme": "scheme-1",
             "padding_top": 32,
             "padding_bottom": 32,
             "padding_left": 32,
-            "padding_right": 32,
-            "corner_radius": "rounded",
-            "columns_wide": 2,
-            "rows_tall": 1
+            "padding_right": 32
           },
           "blocks": {
             "heading": {
@@ -3692,16 +3673,16 @@
         "banner_2": {
           "type": "promo-card-custom",
           "settings": {
-            "color_scheme": "scheme-1",
+            "columns_wide": 1,
+            "rows_tall": 1,
             "position_desktop": "top_left",
             "position_mobile": "top_left",
+            "corner_radius": "rounded",
+            "color_scheme": "scheme-1",
             "padding_top": 32,
             "padding_bottom": 32,
             "padding_left": 32,
-            "padding_right": 32,
-            "corner_radius": "rounded",
-            "columns_wide": 1,
-            "rows_tall": 1
+            "padding_right": 32
           },
           "blocks": {
             "heading": {
@@ -3720,16 +3701,16 @@
         "banner_3": {
           "type": "promo-card-custom",
           "settings": {
-            "color_scheme": "scheme-1",
+            "columns_wide": 1,
+            "rows_tall": 1,
             "position_desktop": "top_left",
             "position_mobile": "top_left",
+            "corner_radius": "rounded",
+            "color_scheme": "scheme-1",
             "padding_top": 32,
             "padding_bottom": 32,
             "padding_left": 32,
-            "padding_right": 32,
-            "corner_radius": "rounded",
-            "columns_wide": 1,
-            "rows_tall": 1
+            "padding_right": 32
           },
           "blocks": {
             "heading": {
@@ -3748,16 +3729,16 @@
         "banner_4": {
           "type": "promo-card-custom",
           "settings": {
-            "color_scheme": "scheme-1",
+            "columns_wide": 1,
+            "rows_tall": 1,
             "position_desktop": "top_left",
             "position_mobile": "top_left",
+            "corner_radius": "rounded",
+            "color_scheme": "scheme-1",
             "padding_top": 32,
             "padding_bottom": 32,
             "padding_left": 32,
-            "padding_right": 32,
-            "corner_radius": "rounded",
-            "columns_wide": 1,
-            "rows_tall": 1
+            "padding_right": 32
           },
           "blocks": {
             "heading": {
@@ -3776,16 +3757,16 @@
         "banner_5": {
           "type": "promo-card-custom",
           "settings": {
-            "color_scheme": "scheme-1",
+            "columns_wide": 1,
+            "rows_tall": 1,
             "position_desktop": "top_left",
             "position_mobile": "top_left",
+            "corner_radius": "rounded",
+            "color_scheme": "scheme-1",
             "padding_top": 32,
             "padding_bottom": 32,
             "padding_left": 32,
-            "padding_right": 32,
-            "corner_radius": "rounded",
-            "columns_wide": 1,
-            "rows_tall": 1
+            "padding_right": 32
           },
           "blocks": {
             "heading": {
@@ -3808,7 +3789,24 @@
         "banner_3",
         "banner_4",
         "banner_5"
-      ]
+      ],
+      "settings": {
+        "section_width": "page_width",
+        "columns_desktop": "3",
+        "columns_tablet": "2",
+        "carousel_mobile": false,
+        "columns_mobile": "1",
+        "height_desktop": "medium",
+        "height_mobile": "medium",
+        "gap_desktop": 24,
+        "gap_mobile": 16,
+        "color_scheme": "scheme-1",
+        "padding_top": 96,
+        "padding_bottom": 112,
+        "customize_mobile_padding": true,
+        "padding_top_mobile": 64,
+        "padding_bottom_mobile": 64
+      }
     }
   },
   "order": [
