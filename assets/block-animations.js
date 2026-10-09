@@ -7,8 +7,8 @@
   const reduced = matchMedia('(prefers-reduced-motion: reduce)');
   const enabled = () => document.body.dataset.blockAnimations !== 'false' && !reduced.matches;
   const selector = '[data-block-animation], [data-component-reveal]';
-  const cardSelector = 'article.testimonial-item, .product-card, .collection-card, .collection-card-kernel, .blog-card, .blog-first-card, .blog-grid article.image-card, .collection-thumbnail__link, .image-card > .image-card__media:not(.blog-grid .image-card__media)';
-  const listSelector = '[data-product-carousel], .collection-card-list__grid, .product-list__grid, [data-product-list], .image-cards-section__grid, .blog-grid, .collection-thumbnails__grid, .collection-thumbnails__carousel, .testimonial-carousel, .testimonials-cards__carousel';
+  const cardSelector = 'article.testimonial-item, .product-card, .promo-card, .collection-card, .collection-card-kernel, .blog-card, .blog-first-card, .blog-grid article.image-card, .collection-thumbnail__link, .image-card > .image-card__media:not(.blog-grid .image-card__media)';
+  const listSelector = '[data-product-list-mobile-promos], [data-product-carousel], .product-collection-grid, .collection-card-list__grid, .product-list__grid, [data-product-list], .image-cards-section__grid, .blog-grid, .collection-thumbnails__grid, .collection-thumbnails__carousel, .testimonial-carousel, .testimonials-cards__carousel';
   const scopeSelector = '[role="tabpanel"], .slideshow__swiper .swiper-slide';
   const active = element => {
     if (!element.isConnected || !element.getClientRects().length) return false;
@@ -17,7 +17,9 @@
     return !slide || slide.classList.contains('swiper-slide-active');
   };
   const inView = element => {
-    const r = element.getBoundingClientRect();
+    // A visible slideshow reveals its active slide as one story beat. Individual
+    // content blocks can sit below a short editor viewport and still must play.
+    const r = (element.closest('.slideshow') || element).getBoundingClientRect();
     return r.bottom > 0 && r.top < innerHeight && r.right > 0 && r.left < innerWidth;
   };
   const stop = state => {state.animations.forEach(a => a.cancel()); state.animations = [];};
@@ -70,12 +72,19 @@
       element.classList.remove('reveal-pending');
       return;
     }
-    if (nodes.has(element) || element.dataset.blockAnimation === 'none') return;
+    const previous = nodes.get(element);
+    const configuration = `${element.dataset.blockAnimation}:${element.dataset.animationDelay}`;
     // Explicitly animated parents own the entrance; avoid nested double transforms.
     const parent = element.parentElement?.closest('[data-block-animation]:not([data-block-animation="none"]),[data-component-reveal]');
-    if (parent && parent.dataset.blockAnimation !== 'none') return;
+    if (element.dataset.blockAnimation === 'none' || (parent && parent.dataset.blockAnimation !== 'none')) {
+      if (previous) {stop(previous);observer.unobserve(element);nodes.delete(element);}
+      element.classList.remove('reveal-pending');
+      return;
+    }
+    if (previous?.configuration === configuration) return;
+    if (previous) {stop(previous);observer.unobserve(element);nodes.delete(element);}
     if (element.dataset.blockAnimation === 'rotate-words') splitWords(element);
-    nodes.set(element,{played:false,animations:[]});
+    nodes.set(element,{played:false,animations:[],configuration});
     if (enabled()) element.classList.add('reveal-pending');
     observer.observe(element);
     if (!enabled() || (active(element) && inView(element))) show(element);
@@ -90,8 +99,9 @@
       if (list) {
         const siblings = [...list.querySelectorAll(cardSelector)].filter(e => e.closest(listSelector) === list);
         // Stagger within the visible row; later rows must not inherit a long list-wide wait.
-        const top = card.getBoundingClientRect().top;
-        const row = siblings.filter(sibling => Math.abs(sibling.getBoundingClientRect().top - top) < 8);
+        const rowTop = element => (element.closest('.product-collection-grid__item') || element).getBoundingClientRect().top;
+        const top = rowTop(card);
+        const row = siblings.filter(sibling => Math.abs(rowTop(sibling) - top) < 8);
         card.dataset.animationDelay = String(Math.min(600, 180 + Math.max(0, row.indexOf(card)) * 140));
       }
     });
@@ -120,16 +130,23 @@
   const mutations = new MutationObserver(records => {
     records.forEach(record => {
       if (record.type === 'childList') record.addedNodes.forEach(node => {if (node instanceof Element) scan(node);});
+      else if (record.attributeName === 'data-block-animation' || record.attributeName === 'data-animation-delay') {
+        initialize(record.target);
+        record.target.querySelectorAll(selector).forEach(initialize);
+      }
       else if (record.target.matches?.(scopeSelector)) {
         // Deactivation arms this scope. Subsequent activation replays its own contents.
         if (!active(record.target)) resetScope(record.target);
-        else nodes.forEach((state, element) => {if (record.target.contains(element) && !state.played && inView(element)) show(element);});
+        else {
+          if (record.target.matches('[role="tabpanel"]')) scan(record.target);
+          nodes.forEach((state, element) => {if (record.target.contains(element) && !state.played && inView(element)) show(element);});
+        }
       }
     });
     nodes.forEach((state, element) => {if (!element.isConnected) {stop(state);observer.unobserve(element);nodes.delete(element);}});
   });
   scan();
-  mutations.observe(document.body,{childList:true,subtree:true,attributes:true,attributeFilter:['hidden','aria-hidden','inert','class']});
+  mutations.observe(document.body,{childList:true,subtree:true,attributes:true,attributeFilter:['hidden','aria-hidden','inert','class','data-block-animation','data-animation-delay']});
   document.addEventListener('shopify:section:load',event => scan(event.target));
   // Reconcile after all Item accessibility and visibility changes are complete.
   document.addEventListener('multiple-images-text:change',event => {

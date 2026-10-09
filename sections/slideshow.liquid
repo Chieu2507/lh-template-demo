@@ -59,7 +59,7 @@
 
 <link rel="stylesheet" href="{{ 'swiper-12.2.0-effect-fade.min.css' | asset_url }}" media="print" onload="this.media='all'">
 <noscript>{{ 'swiper-12.2.0-effect-fade.min.css' | asset_url | stylesheet_tag }}</noscript>
-<script type="module" src="{{ 'slideshow.js' | asset_url }}"></script>
+<script type="module" src="{{ 'slideshow.js' | asset_url }}" data-theme-module="{{ 'slideshow.js' | asset_url }}"></script>
 
 <div
   class="slideshow slideshow--width-{{ slideshow_width }} slideshow--desktop-{{ slideshow_desktop_height }} slideshow--mobile-{{ slideshow_mobile_height }} color-scheme section-color-scope {{ slideshow_scheme }}"
