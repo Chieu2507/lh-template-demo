@@ -1,0 +1,299 @@
+{
+  "generationTool": "built-in image_gen",
+  "products": [
+    "magic-link",
+    "chicken-ancient-grains-recipe",
+    "bowl",
+    "beef-training-treats",
+    "freeze-dried-chicken-topper"
+  ],
+  "assets": [
+    {
+      "slug": "magic-link",
+      "kind": "lifestyle",
+      "source": "/Users/chieutrinh/.codex/generated_images/01a12409-54cf-70a3-b705-f1b954a7bcac/exec-b009317d-52cb-467b-9253-2ae9649410ec.png",
+      "prompt": "Use case: photorealistic-natural. Asset: ecommerce product lifestyle. Input image: exact product reference, preserve identity. Make one square 1:1 photograph. An adult walking a medium dog on a quiet park path; exact leash's locking carabiner visibly clipped to the dog's collar D-ring, leash extending continuously into adult hand, slack natural curve, clear gray rope and black hardware. Product: slate gray round coated rope leash, black metal locking carabiner on dog end, black rings and dark embossed fable slider matching reference. Preserve exact recognizable product construction and colors; natural proportions and feasible interaction. Clear product, authentic daylight, no collage, no added logos or text.",
+      "sourceReference": "/private/tmp/wofyn-catalog/wofyn-magic-link.webp",
+      "finalPath": "/Users/chieutrinh/Documents/GitHub/lh-template-demo/output/wofyn-product-media/wofyn-magic-link-lifestyle.webp",
+      "copiedSourcePath": "/Users/chieutrinh/Documents/GitHub/lh-template-demo/output/wofyn-product-media/wofyn-magic-link-lifestyle-source.png",
+      "qa": {
+        "status": "passed",
+        "notes": "Dog visibly using product with feasible physical contact; product identity and color match source.",
+        "limitations": "Hardware shape and color visually consistent; generated lifestyle is illustrative."
+      },
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "bytes": 388168
+    },
+    {
+      "slug": "magic-link",
+      "kind": "angle-left",
+      "source": "/Users/chieutrinh/.codex/generated_images/01a12409-54cf-70a3-b705-f1b954a7bcac/exec-f9bc6bb9-ccb0-4d34-8f9e-425aaf25d3af.png",
+      "prompt": "Use case: product-mockup. One square 1:1 ecommerce photograph of exact reference product: slate gray round coated rope leash, black metal locking carabiner on dog end, black rings and dark embossed fable slider matching reference. Camera front-left elevated oblique at 20 degrees, showing known visible front surfaces and product thickness. Clean white seamless background, centered full product, soft natural shadow. Preserve exact colors, scale, recognizable construction, hardware and visible labels. Do not invent unseen rear details. No dog or human, no collage.",
+      "sourceReference": "/private/tmp/wofyn-catalog/wofyn-magic-link.webp",
+      "finalPath": "/Users/chieutrinh/Documents/GitHub/lh-template-demo/output/wofyn-product-media/wofyn-magic-link-angle-left.webp",
+      "copiedSourcePath": "/Users/chieutrinh/Documents/GitHub/lh-template-demo/output/wofyn-product-media/wofyn-magic-link-angle-left-source.png",
+      "qa": {
+        "status": "passed",
+        "notes": "White catalog background; modest oblique view preserves known front appearance; no rear packaging shown.",
+        "limitations": "Hardware shape and color visually consistent; generated lifestyle is illustrative."
+      },
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "bytes": 54012
+    },
+    {
+      "slug": "magic-link",
+      "kind": "angle-right",
+      "source": "/Users/chieutrinh/.codex/generated_images/01a12409-54cf-70a3-b705-f1b954a7bcac/exec-07b877b5-33e4-47a5-9c75-7ddfa0bfc27d.png",
+      "prompt": "Use case: product-mockup. One square 1:1 ecommerce photograph of exact reference product: slate gray round coated rope leash, black metal locking carabiner on dog end, black rings and dark embossed fable slider matching reference. Camera front-right elevated oblique at 25 degrees, show known front and visible side surfaces only. Clean white seamless background, centered full product, soft shadow. Preserve precise colors, proportions, construction, hardware and front label typography. Do not invent rear details or unknown side labels. No people, no collage.",
+      "sourceReference": "/private/tmp/wofyn-catalog/wofyn-magic-link.webp",
+      "finalPath": "/Users/chieutrinh/Documents/GitHub/lh-template-demo/output/wofyn-product-media/wofyn-magic-link-angle-right.webp",
+      "copiedSourcePath": "/Users/chieutrinh/Documents/GitHub/lh-template-demo/output/wofyn-product-media/wofyn-magic-link-angle-right-source.png",
+      "qa": {
+        "status": "passed",
+        "notes": "White catalog background; modest oblique view preserves known front appearance; no rear packaging shown.",
+        "limitations": "Hardware shape and color visually consistent; generated lifestyle is illustrative."
+      },
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "bytes": 56914
+    },
+    {
+      "slug": "chicken-ancient-grains-recipe",
+      "kind": "lifestyle",
+      "source": "/Users/chieutrinh/.codex/generated_images/01a12409-54cf-70a3-b705-f1b954a7bcac/exec-e3f22d86-db7c-49fb-b1b6-16ca6fd15c03.png",
+      "prompt": "Use case: photorealistic-natural. One square 1:1 ecommerce lifestyle photograph. Input reference is exact product: tan upright dog-food bag with bright yellow right gusset, large black WOOF lettering pattern, black BARK IN THE belly logo, yellow Chicken & Ancient Grains Recipe label exactly as reference. A medium dog visibly eating kibble from a plain bowl on a kitchen floor while the exact tan/yellow food bag stands beside it with front fully readable; bowl and dog's mouth in contact. Preserve exact product identity, color, front lettering and graphic arrangement. Natural feasible dog interaction and daylight, product clearly recognizable, no collage or added text.",
+      "originalGeneratedSource": "/Users/chieutrinh/.codex/generated_images/01a12409-54cf-70a3-b705-f1b954a7bcac/exec-72b9706a-ef65-4101-a608-ff66f3fc5d74.png",
+      "repairPrompt": "Precise object edit. Image 1 is lifestyle target, image 2 is exact original packaging reference. Change only the bottom weight text on the food bag in lifestyle photograph to match original: NET WT. 28 lb (12.7 kg). The target currently incorrectly reads 20 lb. Keep dog eating from bowl, composition, colors, all other product details and background unchanged. Preserve 1:1 frame.",
+      "sourceReference": "/private/tmp/wofyn-catalog/wofyn-chicken-ancient-grains-recipe.webp",
+      "finalPath": "/Users/chieutrinh/Documents/GitHub/lh-template-demo/output/wofyn-product-media/wofyn-chicken-ancient-grains-recipe-lifestyle.webp",
+      "copiedSourcePath": "/Users/chieutrinh/Documents/GitHub/lh-template-demo/output/wofyn-product-media/wofyn-chicken-ancient-grains-recipe-lifestyle-source.png",
+      "qa": {
+        "status": "passed",
+        "notes": "Dog visibly using product with feasible physical contact; product identity and color match source.",
+        "limitations": "Fine packaging lettering may vary in generated imagery; main brand/product text and color retained."
+      },
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "bytes": 215114
+    },
+    {
+      "slug": "chicken-ancient-grains-recipe",
+      "kind": "angle-left",
+      "source": "/Users/chieutrinh/.codex/generated_images/01a12409-54cf-70a3-b705-f1b954a7bcac/exec-a3e756f5-3b07-4dce-8798-7cdd9eff2658.png",
+      "prompt": "Use case: product-mockup. One square 1:1 ecommerce photograph of exact reference product: tan upright dog-food bag with bright yellow right gusset, large black WOOF lettering pattern, black BARK IN THE belly logo, yellow Chicken & Ancient Grains Recipe label exactly as reference. Camera front-left slightly elevated oblique at 12 degrees, maintain front surface without exposing unknown side printing. Clean white seamless background, centered full product, soft shadow. Preserve precise colors, proportions, construction, hardware and front label typography. Do not invent rear details or unknown side labels. No people, no collage.",
+      "sourceReference": "/private/tmp/wofyn-catalog/wofyn-chicken-ancient-grains-recipe.webp",
+      "finalPath": "/Users/chieutrinh/Documents/GitHub/lh-template-demo/output/wofyn-product-media/wofyn-chicken-ancient-grains-recipe-angle-left.webp",
+      "copiedSourcePath": "/Users/chieutrinh/Documents/GitHub/lh-template-demo/output/wofyn-product-media/wofyn-chicken-ancient-grains-recipe-angle-left-source.png",
+      "qa": {
+        "status": "passed",
+        "notes": "White catalog background; modest oblique view preserves known front appearance; no rear packaging shown.",
+        "limitations": "Fine packaging lettering may vary in generated imagery; main brand/product text and color retained."
+      },
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "bytes": 79368
+    },
+    {
+      "slug": "chicken-ancient-grains-recipe",
+      "kind": "angle-right",
+      "source": "/Users/chieutrinh/.codex/generated_images/01a12409-54cf-70a3-b705-f1b954a7bcac/exec-41b59e0c-d810-4d69-bc18-b08900718766.png",
+      "prompt": "Use case: product-mockup. One square 1:1 ecommerce photograph of exact reference product: tan upright dog-food bag with bright yellow right gusset, large black WOOF lettering pattern, black BARK IN THE belly logo, yellow Chicken & Ancient Grains Recipe label exactly as reference. Camera front-right elevated oblique at 25 degrees, show known front and visible side surfaces only. Clean white seamless background, centered full product, soft shadow. Preserve precise colors, proportions, construction, hardware and front label typography. Do not invent rear details or unknown side labels. No people, no collage.",
+      "sourceReference": "/private/tmp/wofyn-catalog/wofyn-chicken-ancient-grains-recipe.webp",
+      "finalPath": "/Users/chieutrinh/Documents/GitHub/lh-template-demo/output/wofyn-product-media/wofyn-chicken-ancient-grains-recipe-angle-right.webp",
+      "copiedSourcePath": "/Users/chieutrinh/Documents/GitHub/lh-template-demo/output/wofyn-product-media/wofyn-chicken-ancient-grains-recipe-angle-right-source.png",
+      "qa": {
+        "status": "passed",
+        "notes": "White catalog background; modest oblique view preserves known front appearance; no rear packaging shown.",
+        "limitations": "Fine packaging lettering may vary in generated imagery; main brand/product text and color retained."
+      },
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "bytes": 85246
+    },
+    {
+      "slug": "bowl",
+      "kind": "lifestyle",
+      "source": "/Users/chieutrinh/.codex/generated_images/01a12409-54cf-70a3-b705-f1b954a7bcac/exec-9ffebad4-2a18-4464-a11d-331dd7fc76cb.png",
+      "prompt": "Use case: photorealistic-natural. One portrait 4:5 ecommerce lifestyle photograph. Input reference is exact product: ivory cream low cylindrical round bowl with vertical smooth wall, rounded lower edge, subtle lowercase fable embossed near lower front; preserve rim and proportions exactly. A medium dog bending down and visibly eating kibble from the exact ivory cream fable bowl on a clean kitchen floor; bowl front and subtle fable mark visible, muzzle naturally contacts food inside. Preserve exact product identity, color, front lettering and graphic arrangement. Natural feasible dog interaction and daylight, product clearly recognizable, no collage or added text.",
+      "sourceReference": "/private/tmp/wofyn-catalog/wofyn-bowl.webp",
+      "finalPath": "/Users/chieutrinh/Documents/GitHub/lh-template-demo/output/wofyn-product-media/wofyn-bowl-lifestyle.webp",
+      "copiedSourcePath": "/Users/chieutrinh/Documents/GitHub/lh-template-demo/output/wofyn-product-media/wofyn-bowl-lifestyle-source.png",
+      "qa": {
+        "status": "passed",
+        "notes": "Dog visibly using product with feasible physical contact; product identity and color match source.",
+        "limitations": "Embossed logo is more legible than source, same front placement and cream cylindrical form."
+      },
+      "dimensions": [
+        1122,
+        1402
+      ],
+      "bytes": 181784
+    },
+    {
+      "slug": "bowl",
+      "kind": "angle-left",
+      "source": "/Users/chieutrinh/.codex/generated_images/01a12409-54cf-70a3-b705-f1b954a7bcac/exec-c75b9056-4f7b-4eb4-8cf1-2c01ad01c031.png",
+      "prompt": "Use case: product-mockup. One portrait 4:5 ecommerce photograph of exact reference product: ivory cream low cylindrical round bowl with vertical smooth wall, rounded lower edge, subtle lowercase fable embossed near lower front; preserve rim and proportions exactly. Camera front-left slightly elevated oblique at 12 degrees, maintain front surface without exposing unknown side printing. Clean white seamless background, centered full product, soft shadow. Preserve precise colors, proportions, construction, hardware and front label typography. Do not invent rear details or unknown side labels. No people, no collage.",
+      "sourceReference": "/private/tmp/wofyn-catalog/wofyn-bowl.webp",
+      "finalPath": "/Users/chieutrinh/Documents/GitHub/lh-template-demo/output/wofyn-product-media/wofyn-bowl-angle-left.webp",
+      "copiedSourcePath": "/Users/chieutrinh/Documents/GitHub/lh-template-demo/output/wofyn-product-media/wofyn-bowl-angle-left-source.png",
+      "qa": {
+        "status": "passed",
+        "notes": "White catalog background; modest oblique view preserves known front appearance; no rear packaging shown.",
+        "limitations": "Embossed logo is more legible than source, same front placement and cream cylindrical form."
+      },
+      "dimensions": [
+        1122,
+        1402
+      ],
+      "bytes": 15874
+    },
+    {
+      "slug": "bowl",
+      "kind": "angle-right",
+      "source": "/Users/chieutrinh/.codex/generated_images/01a12409-54cf-70a3-b705-f1b954a7bcac/exec-e8ab5f70-66ea-4fcc-9478-529092fc16ea.png",
+      "prompt": "Use case: product-mockup. One portrait 4:5 ecommerce photograph of exact reference product: ivory cream low cylindrical round bowl with vertical smooth wall, rounded lower edge, subtle lowercase fable embossed near lower front; preserve rim and proportions exactly. Camera front-right elevated oblique at 25 degrees, show known front and visible side surfaces only. Clean white seamless background, centered full product, soft shadow. Preserve precise colors, proportions, construction, hardware and front label typography. Do not invent rear details or unknown side labels. No people, no collage.",
+      "sourceReference": "/private/tmp/wofyn-catalog/wofyn-bowl.webp",
+      "finalPath": "/Users/chieutrinh/Documents/GitHub/lh-template-demo/output/wofyn-product-media/wofyn-bowl-angle-right.webp",
+      "copiedSourcePath": "/Users/chieutrinh/Documents/GitHub/lh-template-demo/output/wofyn-product-media/wofyn-bowl-angle-right-source.png",
+      "qa": {
+        "status": "passed",
+        "notes": "White catalog background; modest oblique view preserves known front appearance; no rear packaging shown.",
+        "limitations": "Embossed logo is more legible than source, same front placement and cream cylindrical form."
+      },
+      "dimensions": [
+        1122,
+        1402
+      ],
+      "bytes": 18212
+    },
+    {
+      "slug": "beef-training-treats",
+      "kind": "lifestyle",
+      "source": "/Users/chieutrinh/.codex/generated_images/01a12409-54cf-70a3-b705-f1b954a7bcac/exec-8299852a-bd04-48e8-b805-ba4786782e7e.png",
+      "prompt": "Use case: photorealistic-natural. One square 1:1 ecommerce lifestyle photograph. Input reference is exact product: cream and red-orange Jinx Tiny Treats Beef & Banana Recipe stand-up pouch, green jinx logo, red TINY TREATS, star-shaped brown treats and large star graphic, exactly matching front label. An adult kneeling and feeding a single tiny brown star treat from their fingers to a sitting medium dog during a training reward; dog's mouth naturally taking treat, exact Jinx pouch standing clearly beside knee, front label readable. Preserve exact product identity, color, front lettering and graphic arrangement. Natural feasible dog interaction and daylight, product clearly recognizable, no collage or added text.",
+      "sourceReference": "/private/tmp/wofyn-catalog/wofyn-beef-training-treats.webp",
+      "finalPath": "/Users/chieutrinh/Documents/GitHub/lh-template-demo/output/wofyn-product-media/wofyn-beef-training-treats-lifestyle.webp",
+      "copiedSourcePath": "/Users/chieutrinh/Documents/GitHub/lh-template-demo/output/wofyn-product-media/wofyn-beef-training-treats-lifestyle-source.png",
+      "qa": {
+        "status": "passed",
+        "notes": "Dog visibly using product with feasible physical contact; product identity and color match source.",
+        "limitations": "Fine packaging lettering may vary in generated imagery; main brand/product text and color retained."
+      },
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "bytes": 329402
+    },
+    {
+      "slug": "beef-training-treats",
+      "kind": "angle-left",
+      "source": "/Users/chieutrinh/.codex/generated_images/01a12409-54cf-70a3-b705-f1b954a7bcac/exec-bf74ed49-6df9-459c-ae7d-12d80324aaa1.png",
+      "prompt": "Use case: product-mockup. One square 1:1 ecommerce photograph of exact reference product: cream and red-orange Jinx Tiny Treats Beef & Banana Recipe stand-up pouch, green jinx logo, red TINY TREATS, star-shaped brown treats and large star graphic, exactly matching front label. Camera front-left slightly elevated oblique at 12 degrees, maintain front surface without exposing unknown side printing. Clean white seamless background, centered full product, soft shadow. Preserve precise colors, proportions, construction, hardware and front label typography. Do not invent rear details or unknown side labels. No people, no collage.",
+      "sourceReference": "/private/tmp/wofyn-catalog/wofyn-beef-training-treats.webp",
+      "finalPath": "/Users/chieutrinh/Documents/GitHub/lh-template-demo/output/wofyn-product-media/wofyn-beef-training-treats-angle-left.webp",
+      "copiedSourcePath": "/Users/chieutrinh/Documents/GitHub/lh-template-demo/output/wofyn-product-media/wofyn-beef-training-treats-angle-left-source.png",
+      "qa": {
+        "status": "passed",
+        "notes": "White catalog background; modest oblique view preserves known front appearance; no rear packaging shown.",
+        "limitations": "Fine packaging lettering may vary in generated imagery; main brand/product text and color retained."
+      },
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "bytes": 107722
+    },
+    {
+      "slug": "beef-training-treats",
+      "kind": "angle-right",
+      "source": "/Users/chieutrinh/.codex/generated_images/01a12409-54cf-70a3-b705-f1b954a7bcac/exec-ad385b00-505a-494e-8157-653bba958041.png",
+      "prompt": "Use case: product-mockup. One square 1:1 ecommerce photograph of exact reference product: cream and red-orange Jinx Tiny Treats Beef & Banana Recipe stand-up pouch, green jinx logo, red TINY TREATS, star-shaped brown treats and large star graphic, exactly matching front label. Camera front-right elevated oblique at 25 degrees, show known front and visible side surfaces only. Clean white seamless background, centered full product, soft shadow. Preserve precise colors, proportions, construction, hardware and front label typography. Do not invent rear details or unknown side labels. No people, no collage.",
+      "sourceReference": "/private/tmp/wofyn-catalog/wofyn-beef-training-treats.webp",
+      "finalPath": "/Users/chieutrinh/Documents/GitHub/lh-template-demo/output/wofyn-product-media/wofyn-beef-training-treats-angle-right.webp",
+      "copiedSourcePath": "/Users/chieutrinh/Documents/GitHub/lh-template-demo/output/wofyn-product-media/wofyn-beef-training-treats-angle-right-source.png",
+      "qa": {
+        "status": "passed",
+        "notes": "White catalog background; modest oblique view preserves known front appearance; no rear packaging shown.",
+        "limitations": "Fine packaging lettering may vary in generated imagery; main brand/product text and color retained."
+      },
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "bytes": 112310
+    },
+    {
+      "slug": "freeze-dried-chicken-topper",
+      "kind": "lifestyle",
+      "source": "/Users/chieutrinh/.codex/generated_images/01a12409-54cf-70a3-b705-f1b954a7bcac/exec-ab15c462-1700-43d0-8be9-f0ab79d3c3a2.png",
+      "prompt": "Use case: photorealistic-natural. One square 1:1 ecommerce lifestyle photograph. Input reference is exact product: pale tan Jinx CHICKEN ON TOP pouch, teal green jinx and CHICKEN ON TOP text, yellow bone and chicken motif, hanging hole and front label exactly as reference. A dog visibly eating a meal of kibble with a modest sprinkle of pale freeze-dried chicken pieces in a simple bowl; an adult's hand holding exact Jinx pouch upright beside bowl with front clearly visible; dog muzzle naturally in food. Preserve exact product identity, color, front lettering and graphic arrangement. Natural feasible dog interaction and daylight, product clearly recognizable, no collage or added text.",
+      "sourceReference": "/private/tmp/wofyn-catalog/wofyn-freeze-dried-chicken-topper.webp",
+      "finalPath": "/Users/chieutrinh/Documents/GitHub/lh-template-demo/output/wofyn-product-media/wofyn-freeze-dried-chicken-topper-lifestyle.webp",
+      "copiedSourcePath": "/Users/chieutrinh/Documents/GitHub/lh-template-demo/output/wofyn-product-media/wofyn-freeze-dried-chicken-topper-lifestyle-source.png",
+      "qa": {
+        "status": "passed",
+        "notes": "Dog visibly using product with feasible physical contact; product identity and color match source.",
+        "limitations": "Fine packaging lettering may vary in generated imagery; main brand/product text and color retained."
+      },
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "bytes": 275982
+    },
+    {
+      "slug": "freeze-dried-chicken-topper",
+      "kind": "angle-left",
+      "source": "/Users/chieutrinh/.codex/generated_images/01a12409-54cf-70a3-b705-f1b954a7bcac/exec-eaecbe31-82e4-4d86-ba1a-cb99ffddf152.png",
+      "prompt": "Use case: product-mockup. One square 1:1 ecommerce photograph of exact reference product: pale tan Jinx CHICKEN ON TOP pouch, teal green jinx and CHICKEN ON TOP text, yellow bone and chicken motif, hanging hole and front label exactly as reference. Camera front-left slightly elevated oblique at 12 degrees, maintain front surface without exposing unknown side printing. Clean white seamless background, centered full product, soft shadow. Preserve precise colors, proportions, construction, hardware and front label typography. Do not invent rear details or unknown side labels. No people, no collage.",
+      "sourceReference": "/private/tmp/wofyn-catalog/wofyn-freeze-dried-chicken-topper.webp",
+      "finalPath": "/Users/chieutrinh/Documents/GitHub/lh-template-demo/output/wofyn-product-media/wofyn-freeze-dried-chicken-topper-angle-left.webp",
+      "copiedSourcePath": "/Users/chieutrinh/Documents/GitHub/lh-template-demo/output/wofyn-product-media/wofyn-freeze-dried-chicken-topper-angle-left-source.png",
+      "qa": {
+        "status": "passed",
+        "notes": "White catalog background; modest oblique view preserves known front appearance; no rear packaging shown.",
+        "limitations": "Fine packaging lettering may vary in generated imagery; main brand/product text and color retained."
+      },
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "bytes": 55730
+    },
+    {
+      "slug": "freeze-dried-chicken-topper",
+      "kind": "angle-right",
+      "source": "/Users/chieutrinh/.codex/generated_images/01a12409-54cf-70a3-b705-f1b954a7bcac/exec-8df6b93a-570e-475b-a502-76bb720e333e.png",
+      "prompt": "Use case: product-mockup. One square 1:1 ecommerce photograph of exact reference product: pale tan Jinx CHICKEN ON TOP pouch, teal green jinx and CHICKEN ON TOP text, yellow bone and chicken motif, hanging hole and front label exactly as reference. Camera front-right elevated oblique at 25 degrees, show known front and visible side surfaces only. Clean white seamless background, centered full product, soft shadow. Preserve precise colors, proportions, construction, hardware and front label typography. Do not invent rear details or unknown side labels. No people, no collage.",
+      "sourceReference": "/private/tmp/wofyn-catalog/wofyn-freeze-dried-chicken-topper.webp",
+      "finalPath": "/Users/chieutrinh/Documents/GitHub/lh-template-demo/output/wofyn-product-media/wofyn-freeze-dried-chicken-topper-angle-right.webp",
+      "copiedSourcePath": "/Users/chieutrinh/Documents/GitHub/lh-template-demo/output/wofyn-product-media/wofyn-freeze-dried-chicken-topper-angle-right-source.png",
+      "qa": {
+        "status": "passed",
+        "notes": "White catalog background; modest oblique view preserves known front appearance; no rear packaging shown.",
+        "limitations": "Fine packaging lettering may vary in generated imagery; main brand/product text and color retained."
+      },
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "bytes": 58194
+    }
+  ]
+}

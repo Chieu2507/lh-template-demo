@@ -20,3 +20,13 @@
  .testimonials-cards__header { max-width: 448px; }
  .testimonials-cards__carousel { --swiper-carousel-grid-columns: var(--testimonials-columns-mobile, 1); --swiper-carousel-grid-gap: var(--testimonials-gap-mobile, 16px); }
 }
+
+.testimonials-cards__carousel { display: flex; flex-direction: column; gap: var(--testimonials-header-gap, 56px); }
+.testimonials-cards__carousel > .swiper { width: 100%; }
+.testimonials-cards__header-row { display: flex; align-items: center; gap: 24px; }
+.testimonials-cards--header-navigation .testimonials-cards__header { max-width: none; margin-inline: 0; flex: 1; min-width: 0; }
+.testimonials-cards__navigation { display: flex; gap: 12px; flex-shrink: 0; }
+@media (max-width: 767.98px) {
+  .testimonials-cards__carousel { gap: var(--testimonials-header-gap-mobile, 32px); }
+  .testimonials-cards__navigation { display: none; }
+}

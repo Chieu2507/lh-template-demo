@@ -310,7 +310,9 @@
           "button_tertiary_hover_text": "#201d47"
         }
       }
-    }
+    },
+    "product_card_media_inset": 16,
+    "product_card_media_corner_radius": "radius_12"
   },
   "presets": {
     "Perky": {

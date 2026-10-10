@@ -1,5 +1,5 @@
 import { Pagination } from './swiper-runtime-12.2.0.js';
-import { createSwiperCarousel, destroySwiperCarousel } from './swiper-runtime-12.2.0.js';
+import { bindSwiperAutoplay, createSwiperCarousel, destroySwiperCarousel } from './swiper-runtime-12.2.0.js';
 
 const instances = new WeakMap();
 const rootsWithin = (root) => [
@@ -39,6 +39,7 @@ export const initializeThemeModule = (scope = document) => {
       slidesPerView: value(carousel, 'columnsMobile', 1),
       spaceBetween: value(carousel, 'gapMobile', 16),
       speed: matchMedia('(prefers-reduced-motion: reduce)').matches ? 0 : 400,
+      rewind: carousel.dataset.autoRotate === 'true',
       breakpoints: {
         768: { slidesPerView: value(carousel, 'columnsTablet', 2), spaceBetween: value(carousel, 'gapTablet', 20) },
         1150: { slidesPerView: value(carousel, 'columnsDesktop', 4), spaceBetween: value(carousel, 'gapDesktop', 32) },
@@ -51,7 +52,25 @@ export const initializeThemeModule = (scope = document) => {
         renderBullet: (index, className) => `<button type="button" class="${className}" aria-label="${carousel.dataset.paginationLabel.replace('[index]', index + 1).replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/</g, '&lt;')}"></button>`,
       } } : {}),
     });
-    instances.set(root, { swiper, viewport, source, carousel, moved });
+    const mobile = matchMedia('(max-width: 767.98px)');
+    const motion = matchMedia('(prefers-reduced-motion: reduce)');
+    const state = { swiper, viewport, source, carousel, moved, selected: false, autoplayCleanup: () => {} };
+    const syncAutoplay = () => {
+      state.autoplayCleanup();
+      state.autoplayCleanup = mobile.matches && !motion.matches && !state.selected && carousel.dataset.autoRotate === 'true'
+        ? bindSwiperAutoplay(swiper, { scope: root, delay: value(carousel, 'rotateInterval', 4) * 1000 })
+        : () => {};
+    };
+    mobile.addEventListener('change', syncAutoplay);
+    motion.addEventListener('change', syncAutoplay);
+    state.syncAutoplay = syncAutoplay;
+    state.cleanup = () => {
+      state.autoplayCleanup();
+      mobile.removeEventListener('change', syncAutoplay);
+      motion.removeEventListener('change', syncAutoplay);
+    };
+    instances.set(root, state);
+    syncAutoplay();
   });
 };
 
@@ -59,6 +78,7 @@ document.addEventListener('shopify:section:unload', (event) => {
   rootsWithin(event.target).forEach((root) => {
     const state = instances.get(root);
     if (!state) return;
+    state.cleanup();
     destroySwiperCarousel(state.viewport);
     state.moved.forEach(({ card, anchor, slide }) => { anchor.replaceWith(card); slide.remove(); });
     state.source.classList.add('icon-text-cards__content--grid');
@@ -72,9 +92,20 @@ document.addEventListener('shopify:block:select', (event) => {
   if (!root) return;
   initializeThemeModule(root);
   const state = instances.get(root);
+  if (state) {
+    state.selected = true;
+    state.syncAutoplay();
+  }
   const slide = target.closest('.swiper-slide');
   if (state?.swiper && slide) {
     const index = [...state.swiper.slides].indexOf(slide);
     if (index >= 0) state.swiper.slideTo(index, 0);
   }
+});
+
+document.addEventListener('shopify:block:deselect', (event) => {
+  const state = instances.get(event.target.closest?.('[data-icon-text-cards-carousel]'));
+  if (!state) return;
+  state.selected = false;
+  state.syncAutoplay();
 });

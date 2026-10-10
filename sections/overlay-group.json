@@ -144,8 +144,8 @@
             "inventory": {
               "type": "product-inventory",
               "settings": {
-                "display_mode": "status_and_count",
-                "low_stock_threshold": 5
+                "low_stock_threshold": 5,
+                "show_low_stock_quantity": true
               }
             },
             "buy-buttons": {
@@ -288,8 +288,8 @@
             "inventory": {
               "type": "product-inventory",
               "settings": {
-                "display_mode": "status_and_count",
-                "low_stock_threshold": 5
+                "low_stock_threshold": 5,
+                "show_low_stock_quantity": true
               }
             },
             "buy-buttons": {

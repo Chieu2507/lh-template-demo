@@ -7,10 +7,18 @@
   unless card_height == 'auto' or card_height == 'fill'
     assign card_height = 'fill'
   endunless
+  assign pagination_type = section.settings.pagination_type | default: 'bullets'
+  assign pagination_desktop = section.settings.show_pagination
+  assign pagination_mobile = section.settings.show_pagination
+  if section.settings.pagination_visibility == 'mobile'
+    assign pagination_desktop = false
+  elsif section.settings.pagination_visibility == 'desktop'
+    assign pagination_mobile = false
+  endif
 %}
 {% capture pagination %}
   {% if layout_type == 'carousel' and section.settings.show_pagination %}
-    <div class="swiper-pagination swiper-pagination--below" data-carousel-pagination data-pagination-type="bullets" data-pagination-visible-desktop="true" data-pagination-visible-mobile="true"></div>
+    <div class="swiper-pagination swiper-pagination--below" data-carousel-pagination data-pagination-type="{{ pagination_type }}" data-pagination-visible-desktop="{{ pagination_desktop }}" data-pagination-visible-mobile="{{ pagination_mobile }}"></div>
   {% endif %}
 {% endcapture %}
 {% assign carousel_label = 'accessibility.testimonials' | t %}
@@ -18,11 +26,16 @@
 {% if section.settings.background_color != blank %}
   {% style %}#shopify-section-{{ section.id }} { background-color: {{ section.settings.background_color }}; }{% endstyle %}
 {% endif %}
-<div class="section-spacing testimonials-cards testimonials-cards--height-{{ card_height }} color-scheme section-color-scope {{ section.settings.color_scheme }}" style="--testimonials-padding-top: {{ section.settings.padding_top }}px; --testimonials-padding-bottom: {{ section.settings.padding_bottom }}px; --testimonials-header-gap: {{ section.settings.header_gap }}px; --testimonials-header-gap-mobile: {{ section.settings.header_gap_mobile }}px; --testimonials-pagination-gap: {{ section.settings.pagination_top_padding_desktop | default: 36 }}px; --testimonials-pagination-gap-mobile: {{ section.settings.pagination_top_padding_mobile | default: 28 }}px;{% if section.settings.customize_mobile_padding %} --testimonials-padding-top-mobile: {{ section.settings.padding_top_mobile }}px; --testimonials-padding-bottom-mobile: {{ section.settings.padding_bottom_mobile }}px;{% endif %}{% if section.settings.background_color != blank %} background-color: {{ section.settings.background_color }};{% endif %}">
+<div class="section-spacing testimonials-cards testimonials-cards--height-{{ card_height }}{% if section.settings.show_navigation %} testimonials-cards--header-navigation{% endif %} color-scheme section-color-scope {{ section.settings.color_scheme }}" style="--testimonials-padding-top: {{ section.settings.padding_top }}px; --testimonials-padding-bottom: {{ section.settings.padding_bottom }}px; --testimonials-header-gap: {{ section.settings.header_gap }}px; --testimonials-header-gap-mobile: {{ section.settings.header_gap_mobile }}px; --testimonials-pagination-gap: {{ section.settings.pagination_top_padding_desktop | default: 36 }}px; --testimonials-pagination-gap-mobile: {{ section.settings.pagination_top_padding_mobile | default: 28 }}px;{% if section.settings.customize_mobile_padding %} --testimonials-padding-top-mobile: {{ section.settings.padding_top_mobile }}px; --testimonials-padding-bottom-mobile: {{ section.settings.padding_bottom_mobile }}px;{% endif %}{% if section.settings.background_color != blank %} background-color: {{ section.settings.background_color }};{% endif %}">
   <div class="container {% if section.settings.section_width == 'full_width' %}full-width{% else %}page-width{% endif %} testimonials-cards__content">
-    <div class="testimonials-cards__header align-content">{% content_for 'block', type: 'header', id: 'header' %}</div>
     {% capture slides %}{% content_for 'blocks' %}{% endcapture %}
-    <div class="testimonials-cards__carousel testimonials-cards__carousel--{{ layout_type }}" style="--testimonials-columns-desktop: {{ section.settings.columns_desktop | default: 3 }}; --testimonials-columns-tablet: {{ section.settings.columns_tablet | default: 2 }}; --testimonials-columns-mobile: {{ section.settings.columns_mobile | default: 1 }}; --testimonials-gap-desktop: {{ section.settings.gap_desktop | default: 28 }}px; --testimonials-gap-mobile: {{ section.settings.gap_mobile | default: 16 }}px;"{% if layout_type == 'carousel' %} data-carousel-block{% endif %} data-swiper-columns-desktop="{{ section.settings.columns_desktop }}" data-swiper-columns-tablet="{{ section.settings.columns_tablet }}" data-swiper-columns-mobile="{{ section.settings.columns_mobile }}" data-swiper-gap-desktop="{{ section.settings.gap_desktop }}" data-swiper-gap-mobile="{{ section.settings.gap_mobile }}" data-swiper-pagination-type="bullets" data-swiper-pagination-desktop="{{ section.settings.show_pagination }}" data-swiper-pagination-mobile="{{ section.settings.show_pagination }}" data-carousel-loop="false">
+    <div class="testimonials-cards__carousel testimonials-cards__carousel--{{ layout_type }}" style="{% if section.settings.pagination_thickness == 'thin' %}--swiper-pagination-progressbar-size: 2px;{% endif %}--testimonials-columns-desktop: {{ section.settings.columns_desktop | default: 3 }}; --testimonials-columns-tablet: {{ section.settings.columns_tablet | default: 2 }}; --testimonials-columns-mobile: {{ section.settings.columns_mobile | default: 1 }}; --testimonials-gap-desktop: {{ section.settings.gap_desktop | default: 28 }}px; --testimonials-gap-mobile: {{ section.settings.gap_mobile | default: 16 }}px;"{% if layout_type == 'carousel' %} data-carousel-block{% endif %} data-swiper-columns-desktop="{{ section.settings.columns_desktop }}" data-swiper-columns-tablet="{{ section.settings.columns_tablet }}" data-swiper-columns-mobile="{{ section.settings.columns_mobile }}" data-swiper-gap-desktop="{{ section.settings.gap_desktop }}" data-swiper-gap-mobile="{{ section.settings.gap_mobile }}" data-swiper-pagination-type="{{ pagination_type }}" data-swiper-pagination-desktop="{{ pagination_desktop }}" data-swiper-pagination-mobile="{{ pagination_mobile }}" data-carousel-loop="false">
+      <div class="testimonials-cards__header-row">
+        <div class="testimonials-cards__header align-content">{% content_for 'block', type: 'header', id: 'header' %}</div>
+        {% if layout_type == 'carousel' %}
+          {% render 'swiper-navigation', show: section.settings.show_navigation, centered: false, style: 'outline', icon: 'chevron', behavior: 'always', wrapper_class: 'testimonials-cards__navigation', previous_attribute: 'data-carousel-previous', next_attribute: 'data-carousel-next' %}
+        {% endif %}
+      </div>
       {% render 'swiper-carousel', id: carousel_id, content: slides, layout: layout_type, pagination: pagination, aria_label: carousel_label %}
     </div>
   </div>
@@ -209,7 +222,18 @@
     },
     {
       "type": "header",
-      "content": "t:general.carousel"
+      "content": "t:general.navigation"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_navigation",
+      "label": "t:labels.show_navigation_on_desktop",
+      "default": false,
+      "visible_if": "{{ section.settings.layout_type == 'carousel' }}"
+    },
+    {
+      "type": "header",
+      "content": "t:general.pagination"
     },
     {
       "type": "checkbox",
@@ -217,6 +241,61 @@
       "label": "t:labels.show_pagination",
       "default": true,
       "visible_if": "{{ section.settings.layout_type == 'carousel' }}"
+    },
+    {
+      "type": "select",
+      "id": "pagination_visibility",
+      "label": "Show on",
+      "options": [
+        {
+          "value": "both",
+          "label": "All devices"
+        },
+        {
+          "value": "desktop",
+          "label": "Desktop"
+        },
+        {
+          "value": "mobile",
+          "label": "Mobile"
+        }
+      ],
+      "default": "both",
+      "visible_if": "{{ section.settings.layout_type == 'carousel' and section.settings.show_pagination }}"
+    },
+    {
+      "type": "select",
+      "id": "pagination_type",
+      "label": "t:labels.type",
+      "options": [
+        {
+          "value": "progress_bar",
+          "label": "t:options.collection_pagination.progress_bar"
+        },
+        {
+          "value": "bullets",
+          "label": "t:options.collection_pagination.bullets"
+        }
+      ],
+      "default": "bullets",
+      "visible_if": "{{ section.settings.layout_type == 'carousel' and section.settings.show_pagination }}"
+    },
+    {
+      "type": "select",
+      "id": "pagination_thickness",
+      "label": "Progress bar thickness",
+      "options": [
+        {
+          "value": "standard",
+          "label": "Standard"
+        },
+        {
+          "value": "thin",
+          "label": "Thin"
+        }
+      ],
+      "default": "standard",
+      "visible_if": "{{ section.settings.layout_type == 'carousel' and section.settings.show_pagination and section.settings.pagination_type == 'progress_bar' }}"
     },
     {
       "type": "range",
@@ -366,8 +445,13 @@
               },
               "blocks": {
                 "rating": {
-                  "type": "testimonial-rating",
-                  "settings": {}
+                  "type": "icon",
+                  "settings": {
+                    "source": "library",
+                    "icon": "five-stars",
+                    "icon_width": 100,
+                    "custom_mobile": false
+                  }
                 },
                 "copy": {
                   "type": "group",
@@ -393,7 +477,7 @@
                     "quote": {
                       "type": "text",
                       "settings": {
-                        "text": "<p>The toys are made from safe materials and the bright colors really capture my son's attention. It’s been a joy watching him explore and play independently.</p>",
+                        "text": "<p>The toys are made from safe materials and the bright colors really capture my son's attention. It\u2019s been a joy watching him explore and play independently.</p>",
                         "text_size": "md",
                         "width": "fill",
                         "customize_letter_spacing": true,
@@ -490,8 +574,13 @@
               },
               "blocks": {
                 "rating": {
-                  "type": "testimonial-rating",
-                  "settings": {}
+                  "type": "icon",
+                  "settings": {
+                    "source": "library",
+                    "icon": "five-stars",
+                    "icon_width": 100,
+                    "custom_mobile": false
+                  }
                 },
                 "copy": {
                   "type": "group",
@@ -614,8 +703,13 @@
               },
               "blocks": {
                 "rating": {
-                  "type": "testimonial-rating",
-                  "settings": {}
+                  "type": "icon",
+                  "settings": {
+                    "source": "library",
+                    "icon": "five-stars",
+                    "icon_width": 100,
+                    "custom_mobile": false
+                  }
                 },
                 "copy": {
                   "type": "group",
@@ -641,7 +735,7 @@
                     "quote": {
                       "type": "text",
                       "settings": {
-                        "text": "<p>We’ve tried many toys, but these are the ones my always come back to. Durable, creative, and so much fun. Even the grandparents love playing with.</p>",
+                        "text": "<p>We\u2019ve tried many toys, but these are the ones my always come back to. Durable, creative, and so much fun. Even the grandparents love playing with.</p>",
                         "text_size": "md",
                         "width": "fill",
                         "customize_letter_spacing": true,

@@ -1,3 +1,5 @@
+{% capture effective_overlay %}{% render 'overlay-background', overlay_settings: section.settings, color_id: 'overlay', enabled_id: 'show_overlay', style_id: 'overlay_style' %}{% endcapture %}
+{% assign effective_overlay = effective_overlay | strip %}
 {% liquid
   assign hero_section_scheme = section.settings.color_scheme | default: 'scheme-1'
   if section.settings.color_scheme.id != blank
@@ -87,7 +89,7 @@
 {% capture hero_style %}
   {% if hero_desktop_height == 'custom' %}--hero-height-custom: {{ section.settings.desktop_height_custom | default: 720 | at_least: 200 | at_most: 1200 }}px;{% endif %}
   {% if hero_mobile_height == 'custom' %}--hero-height-custom-mobile: {{ section.settings.mobile_height_custom | default: 400 | at_least: 200 | at_most: 1200 }}px;{% endif %}
-  {% if section.settings.overlay_gradient != blank %}--hero-overlay-background: {{ section.settings.overlay_gradient }};{% endif %}
+  --hero-overlay-background: {{ effective_overlay | default: 'transparent' | escape }};
   --hero-media-ratio: {{ hero_media_ratio }};
   --hero-media-radius: {% case hero_media_radius %}{% when 'radius_2', 'radius_4', 'radius_6', 'radius_8', 'radius_12', 'radius_16', 'radius_24', 'radius_32' %}var(--radius-{{ hero_media_radius | remove: 'radius_' }}){% when 'rounded' %}var(--radius-rounded){% when 'slightly_rounded' %}var(--radius-slight){% else %}var(--radius-square){% endcase %};
   {% if hero_desktop_gap != 12 %}--hero-content-gap: {{ hero_desktop_gap }}px;{% endif %}
@@ -106,7 +108,7 @@
     {% if hero_page_content_padding != 64 %}--hero-content-padding: {{ hero_page_content_padding }}px;{% endif %}
     {% if hero_page_content_padding_mobile != 40 %}--hero-content-padding-mobile: {{ hero_page_content_padding_mobile }}px;{% endif %}
   {% endif %}
-  {% if section.settings.overlay != blank %}--overlay-color: {{ section.settings.overlay }};{% endif %}
+
 {% endcapture %}
 
 <div
@@ -136,7 +138,7 @@
         {{ 'lifestyle-1' | placeholder_svg_tag: 'hero__placeholder' }}
       {% endif %}
       </div>
-      {% if section.settings.overlay != blank or section.settings.overlay_gradient != blank %}<div class="overlay" aria-hidden="true"></div>{% endif %}
+      {% if effective_overlay != blank %}<div class="overlay" aria-hidden="true"></div>{% endif %}
       {% if hero_layout == 'stack' and section.settings.link != blank %}<a class="hero__link" href="{{ section.settings.link | escape }}"{% if section.settings.open_in_new_tab %} target="_blank" rel="noopener noreferrer"{% endif %} aria-label="Hero"></a>{% endif %}
     </div>
 
@@ -755,17 +757,41 @@
       "visible_if": "{{ section.settings.media_type == 'video' }}"
     },
     {
+      "type": "checkbox",
+      "id": "show_overlay",
+      "label": "t:labels.show_overlay",
+      "default": true
+    },
+    {
+      "type": "select",
+      "id": "overlay_style",
+      "label": "t:labels.overlay_style",
+      "options": [
+        {
+          "value": "solid",
+          "label": "t:options.overlay_style.solid"
+        },
+        {
+          "value": "gradient",
+          "label": "t:options.overlay_style.gradient"
+        }
+      ],
+      "default": "solid",
+      "visible_if": "{{ section.settings.show_overlay }}"
+    },
+    {
       "type": "color",
       "id": "overlay",
-      "label": "t:labels.overlay",
+      "label": "t:labels.overlay_color",
       "alpha": true,
-      "default": "#0000001A"
+      "default": "#0000001A",
+      "visible_if": "{{ section.settings.show_overlay and section.settings.overlay_style == 'solid' }}"
     },
     {
       "type": "color_background",
       "id": "overlay_gradient",
-      "label": "Overlay gradient",
-      "info": "Optional gradient replaces the solid overlay."
+      "label": "t:labels.overlay_gradient",
+      "visible_if": "{{ section.settings.show_overlay and section.settings.overlay_style == 'gradient' }}"
     },
     {
       "type": "select",
@@ -1148,7 +1174,8 @@
       "name": "Hero",
       "category": "t:general.banners",
       "settings": {
-        "color_scheme": "scheme-1"
+        "color_scheme": "scheme-1",
+        "show_overlay": true
       },
       "blocks": [
         {
@@ -1244,7 +1271,8 @@
         "padding_bottom": 80,
         "customize_mobile_padding": true,
         "padding_top_mobile": 0,
-        "padding_bottom_mobile": 64
+        "padding_bottom_mobile": 64,
+        "show_overlay": true
       },
       "blocks": [
         {
@@ -1266,7 +1294,8 @@
             "padding_top_mobile": 40,
             "padding_bottom_mobile": 0,
             "padding_left_mobile": 0,
-            "padding_right_mobile": 0
+            "padding_right_mobile": 0,
+            "show_overlay": true
           },
           "blocks": [
             {
@@ -1281,7 +1310,8 @@
                 "alignment_mobile": "center",
                 "gap_desktop": 32,
                 "gap_mobile": 32,
-                "backdrop_blur": 0
+                "backdrop_blur": 0,
+                "show_overlay": true
               },
               "blocks": [
                 {
@@ -1296,7 +1326,8 @@
                     "alignment_mobile": "center",
                     "gap_desktop": 16,
                     "gap_mobile": 16,
-                    "backdrop_blur": 0
+                    "backdrop_blur": 0,
+                    "show_overlay": true
                   },
                   "blocks": [
                     {

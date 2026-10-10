@@ -1,0 +1,337 @@
+{% liquid
+  assign container_class = 'page-width'
+  if section.settings.section_width == 'full_width'
+    assign container_class = 'full-width'
+  endif
+  assign scheme = section.settings.color_scheme | default: 'scheme-1'
+  if section.settings.color_scheme.id != blank
+    assign scheme = section.settings.color_scheme.id
+  endif
+%}
+{% if section.settings.background_color != blank %}
+  {% style %}#shopify-section-{{ section.id }} { background: {{ section.settings.background_color }}; }{% endstyle %}
+{% endif %}
+<div class="section-spacing image-with-text-custom color-scheme section-color-scope {{ scheme }}"
+  style="--iwt-max-width: {{ section.settings.content_max_width | default: 1400 }}px; --iwt-gap: {{ section.settings.gap_desktop | default: 64 }}px; --iwt-gap-mobile: {{ section.settings.gap_mobile | default: 48 }}px; --iwt-top: {{ section.settings.padding_top | default: 64 }}px; --iwt-bottom: {{ section.settings.padding_bottom | default: 64 }}px;{% if section.settings.customize_mobile_padding %} --iwt-top-mobile: {{ section.settings.padding_top_mobile | default: 56 }}px; --iwt-bottom-mobile: {{ section.settings.padding_bottom_mobile | default: 56 }}px;{% endif %}{% if section.settings.background_color != blank %} --iwt-background: {{ section.settings.background_color }};{% endif %}">
+  <div class="container {{ container_class }}">
+    <div class="image-with-text-custom__layout" data-image-position="{{ section.settings.image_position | default: 'after' }}" data-mobile-image-position="{{ section.settings.image_position_mobile | default: 'before' }}">
+      <div class="image-with-text-custom__content align-content">{% content_for 'block', type: 'group', id: 'content' %}</div>
+      <div class="image-with-text-custom__images">{% content_for 'block', type: 'images', id: 'images' %}</div>
+    </div>
+  </div>
+</div>
+{% stylesheet %}
+  .image-with-text-custom { padding-block: var(--iwt-top, 64px) var(--iwt-bottom, 64px); background: var(--iwt-background, var(--background-color)); }
+  .image-with-text-custom__layout { max-width: var(--iwt-max-width, 1400px); margin-inline: auto; display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); grid-template-areas: 'content images'; align-items: center; gap: var(--iwt-gap, 64px); }
+  .image-with-text-custom__layout[data-image-position='before'] { grid-template-areas: 'images content'; }
+  .image-with-text-custom__content { grid-area: content; min-width: 0; --flex-align: center; --text-align: center; }
+  .image-with-text-custom__images { grid-area: images; min-width: 0; }
+  @media (max-width: 767.98px) {
+    .image-with-text-custom { padding-block: var(--iwt-top-mobile, var(--iwt-top, 64px)) var(--iwt-bottom-mobile, var(--iwt-bottom, 64px)); }
+    .image-with-text-custom__layout { grid-template-columns: minmax(0, 1fr); grid-template-areas: 'images' 'content'; gap: var(--iwt-gap-mobile, var(--iwt-gap, 64px)); }
+    .image-with-text-custom__layout[data-mobile-image-position='after'] { grid-template-areas: 'content' 'images'; }
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "Image with text (custom)",
+  "class": "section-image-with-text-custom",
+  "enabled_on": {
+    "templates": [
+      "index",
+      "page",
+      "product",
+      "collection"
+    ]
+  },
+  "settings": [
+    {
+      "type": "header",
+      "content": "t:general.layout"
+    },
+    {
+      "type": "select",
+      "id": "section_width",
+      "label": "t:labels.section_width",
+      "options": [
+        {
+          "value": "page_width",
+          "label": "t:options.section_width.page_width"
+        },
+        {
+          "value": "full_width",
+          "label": "t:options.section_width.full_width"
+        }
+      ],
+      "default": "page_width"
+    },
+    {
+      "type": "range",
+      "id": "content_max_width",
+      "label": "Content maximum width",
+      "min": 600,
+      "max": 1600,
+      "step": 10,
+      "default": 1400,
+      "unit": "px"
+    },
+    {
+      "type": "select",
+      "id": "image_position",
+      "label": "Image position",
+      "options": [
+        {
+          "value": "before",
+          "label": "Before content"
+        },
+        {
+          "value": "after",
+          "label": "After content"
+        }
+      ],
+      "default": "after"
+    },
+    {
+      "type": "select",
+      "id": "image_position_mobile",
+      "label": "Mobile image position",
+      "options": [
+        {
+          "value": "before",
+          "label": "Before content"
+        },
+        {
+          "value": "after",
+          "label": "After content"
+        }
+      ],
+      "default": "before"
+    },
+    {
+      "type": "range",
+      "id": "gap_desktop",
+      "label": "Desktop gap",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "default": 64,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "gap_mobile",
+      "label": "Mobile gap",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "default": 48,
+      "unit": "px"
+    },
+    {
+      "type": "header",
+      "content": "t:general.appearance"
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "t:labels.color_scheme",
+      "default": "scheme-1"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background color"
+    },
+    {
+      "type": "header",
+      "content": "t:general.padding"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "label": "t:labels.top_padding",
+      "min": 0,
+      "max": 200,
+      "step": 2,
+      "default": 64,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "label": "t:labels.bottom_padding",
+      "min": 0,
+      "max": 200,
+      "step": 2,
+      "default": 64,
+      "unit": "px"
+    },
+    {
+      "type": "checkbox",
+      "id": "customize_mobile_padding",
+      "label": "t:labels.customize_mobile_padding",
+      "default": true
+    },
+    {
+      "type": "range",
+      "id": "padding_top_mobile",
+      "label": "t:labels.mobile_top_padding",
+      "min": 0,
+      "max": 200,
+      "step": 2,
+      "default": 56,
+      "unit": "px",
+      "visible_if": "{{ section.settings.customize_mobile_padding }}"
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_mobile",
+      "label": "t:labels.mobile_bottom_padding",
+      "min": 0,
+      "max": 200,
+      "step": 2,
+      "default": 56,
+      "unit": "px",
+      "visible_if": "{{ section.settings.customize_mobile_padding }}"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Image with text (custom)",
+      "blocks": [
+        {
+          "type": "group",
+          "id": "content",
+          "static": true,
+          "settings": {
+            "width": "fill",
+            "direction": "vertical",
+            "alignment": "center",
+            "gap_desktop": 36,
+            "gap_mobile": 36,
+            "padding_left": 40,
+            "padding_right": 40,
+            "customize_mobile_padding": true,
+            "padding_left_mobile": 0,
+            "padding_right_mobile": 0,
+            "customize_mobile_alignment": false,
+            "alignment_mobile": "center"
+          },
+          "blocks": [
+            {
+              "type": "header",
+              "settings": {
+                "width": "fill",
+                "inherit_alignment": true,
+                "gap_desktop": 16,
+                "gap_mobile": 16,
+                "alignment_mobile": "center"
+              },
+              "blocks": [
+                {
+                  "type": "heading",
+                  "settings": {
+                    "text": "<p>Unleashing Happiness for Pets</p>",
+                    "heading_size": "xl",
+                    "html_tag": "h2"
+                  }
+                },
+                {
+                  "type": "text",
+                  "settings": {
+                    "text": "<p>From human-grade nutrition to indestructible toys, we provide everything they need for a lifetime of joy and vibrant health.</p>",
+                    "text_size": "sm"
+                  }
+                }
+              ]
+            },
+            {
+              "type": "button",
+              "settings": {
+                "button_label": "Shop Now",
+                "button_link": "shopify://collections/all",
+                "button_style": "primary",
+                "show_icon": false
+              }
+            }
+          ]
+        },
+        {
+          "type": "images",
+          "id": "images",
+          "static": true,
+          "settings": {
+            "front_image": "second",
+            "height": "custom",
+            "height_desktop": 640,
+            "reference_width": 668,
+            "customize_mobile": false,
+            "width_desktop": "fill",
+            "first_width_desktop": 62,
+            "first_left_desktop": 9,
+            "first_top_desktop": 8,
+            "first_anchor_desktop": "top",
+            "first_customize_mobile": false,
+            "second_width_desktop": 56,
+            "second_left_desktop": 40,
+            "second_top_desktop": 33,
+            "second_anchor_desktop": "top",
+            "second_customize_mobile": false,
+            "first_rotate_desktop": -14.5,
+            "first_show_frame": true,
+            "second_rotate_desktop": 0,
+            "second_show_frame": true
+          },
+          "blocks": [
+            {
+              "type": "image",
+              "static": true,
+              "settings": {
+                "alt_text": "Dog enjoying a treat",
+                "image_ratio_desktop": "custom",
+                "image_ratio_custom_width_desktop": 7,
+                "image_ratio_custom_height_desktop": 6,
+                "image_ratio_mobile": "custom",
+                "image_ratio_custom_width_mobile": 7,
+                "image_ratio_custom_height_mobile": 6,
+                "width_desktop": "fill",
+                "width_mobile": "fill",
+                "corner_radius": "radius_12",
+                "background_color": "#ffffff",
+                "padding_top": 16,
+                "padding_bottom": 16,
+                "padding_left": 16,
+                "padding_right": 16
+              },
+              "id": "first"
+            },
+            {
+              "type": "image",
+              "static": true,
+              "settings": {
+                "alt_text": "Dog resting on a soft pet bed",
+                "image_ratio_desktop": "custom",
+                "image_ratio_custom_width_desktop": 6,
+                "image_ratio_custom_height_desktop": 7,
+                "image_ratio_mobile": "custom",
+                "image_ratio_custom_width_mobile": 6,
+                "image_ratio_custom_height_mobile": 7,
+                "width_desktop": "fill",
+                "width_mobile": "fill",
+                "corner_radius": "radius_12",
+                "background_color": "#ffffff",
+                "padding_top": 16,
+                "padding_bottom": 16,
+                "padding_left": 16,
+                "padding_right": 16
+              },
+              "id": "second"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

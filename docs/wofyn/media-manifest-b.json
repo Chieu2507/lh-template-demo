@@ -1,0 +1,241 @@
+{
+  "generator": "Built-in image_gen; one call per image",
+  "agentConfiguration": "gpt-6.1-sol low (requested by workflow)",
+  "conversion": {
+    "format": "WebP",
+    "quality": 92,
+    "maxEdge": 1600
+  },
+  "assets": [
+    {
+      "slug": "cage-free-chicken-dog-food",
+      "kind": "lifestyle",
+      "prompt": "Use case: photorealistic-natural. Create ONE square realistic lifestyle product photo. Reference is exact product identity: Yellow Jinx 4lb bag with brown and white dog portrait, CAGE-FREE CHICKEN BROWN RICE & SWEET POTATO RECIPE label. A dog eating dry kibble from a low bowl while seated owner adds food using scoop; exact yellow source bag upright beside bowl, front label visible. Warm daylight home kitchen, realistic canine anatomy and owner hands, plausible bag scale. Product front remains identical to reference including Jinx logo, portrait and recipe panel. No redesign, no added text, no collage. Clearly show actual eating and owner handling feeding.",
+      "source": "/Users/chieutrinh/Documents/GitHub/lh-template-demo/output/wofyn-product-media/wofyn-cage-free-chicken-dog-food-lifestyle-source.png",
+      "reference": "/private/tmp/wofyn-catalog/wofyn-cage-free-chicken-dog-food.webp",
+      "generatedSource": "/Users/chieutrinh/.codex/generated_images/01a12409-8b43-78a0-8771-3935b5f7d853/exec-db55c61c-7b8d-4d19-9996-f5216b932017.png",
+      "final": "/Users/chieutrinh/Documents/GitHub/lh-template-demo/output/wofyn-product-media/wofyn-cage-free-chicken-dog-food-lifestyle.webp",
+      "visualQA": {
+        "status": "passed",
+        "inspectedAgainstReference": true,
+        "notes": "Actual dog use visible; owner supervises or handles feeding; identity, color, recognizable structure and contact checked."
+      },
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "bytes": 292188
+    },
+    {
+      "slug": "cage-free-chicken-dog-food",
+      "kind": "angle-left",
+      "prompt": "Use case: product-mockup. ONE square catalog photograph of exact reference product: Yellow Jinx 4lb bag with brown and white dog portrait, CAGE-FREE CHICKEN BROWN RICE & SWEET POTATO RECIPE label. White seamless background, soft natural studio shadow. Change camera to front-left three-quarter view about 15 degrees left with slight elevation; retain clearly visible entire front. Preserve exact proportions, color, portrait, branding, every visible label and all source features. Do not invent unseen side/back text, show narrow plain color side only. Single product centered with margin, no props, no collage, no design changes.",
+      "source": "/Users/chieutrinh/Documents/GitHub/lh-template-demo/output/wofyn-product-media/wofyn-cage-free-chicken-dog-food-angle-left-source.png",
+      "reference": "/private/tmp/wofyn-catalog/wofyn-cage-free-chicken-dog-food.webp",
+      "generatedSource": "/Users/chieutrinh/.codex/generated_images/01a12409-8b43-78a0-8771-3935b5f7d853/exec-f3640d46-fee3-469d-b8d0-5b7a6ed80dec.png",
+      "final": "/Users/chieutrinh/Documents/GitHub/lh-template-demo/output/wofyn-product-media/wofyn-cage-free-chicken-dog-food-angle-left.webp",
+      "visualQA": {
+        "status": "passed",
+        "inspectedAgainstReference": true,
+        "notes": "White background; source identity, color and front details retained; alternate visible angle inspected."
+      },
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "bytes": 106166
+    },
+    {
+      "slug": "cage-free-chicken-dog-food",
+      "kind": "angle-right",
+      "prompt": "Use case: product-mockup. ONE square catalog photograph exact reference product: Yellow Jinx 4lb bag with brown and white dog portrait, CAGE-FREE CHICKEN BROWN RICE & SWEET POTATO RECIPE label. White seamless background, soft grounded shadow. Camera elevated front-right 25 degrees above and 20 degrees to right. Bag side MUST appear on image RIGHT, front label faces slightly LEFT, distinct from left-side view. Show whole bag with exact front label, original portrait, yellow color and proportions, narrow right side plain yellow without invented hidden text. No props, no collage, no redesign.",
+      "source": "/Users/chieutrinh/Documents/GitHub/lh-template-demo/output/wofyn-product-media/wofyn-cage-free-chicken-dog-food-angle-right-source.png",
+      "discardedSource": "/Users/chieutrinh/.codex/generated_images/01a12409-8b43-78a0-8771-3935b5f7d853/exec-394b3dbc-6f9d-4f75-83bc-f56ccc4236a9.png",
+      "repair": "First render showed same side as left; regenerated distinct right-side view.",
+      "reference": "/private/tmp/wofyn-catalog/wofyn-cage-free-chicken-dog-food.webp",
+      "generatedSource": "/Users/chieutrinh/.codex/generated_images/01a12409-8b43-78a0-8771-3935b5f7d853/exec-682efe18-7c09-4f5d-bb67-c70b9349fc01.png",
+      "final": "/Users/chieutrinh/Documents/GitHub/lh-template-demo/output/wofyn-product-media/wofyn-cage-free-chicken-dog-food-angle-right.webp",
+      "visualQA": {
+        "status": "passed",
+        "inspectedAgainstReference": true,
+        "notes": "White background; source identity, color and front details retained; alternate visible angle inspected."
+      },
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "bytes": 113548
+    },
+    {
+      "slug": "atlantic-salmon-dog-food",
+      "kind": "lifestyle",
+      "prompt": "Use case: photorealistic-natural. ONE square realistic product photograph. Exact reference identity: Coral salmon Jinx 4lb bag with husky portrait, ATLANTIC SALMON BROWN RICE & SWEET POTATO RECIPE label. A husky eating dry kibble from low bowl while owner kneels nearby holding feeding scoop; exact coral source bag upright beside bowl with front label visible. Warm daylight home, realistic dog and owner anatomy, practical scale and contact. Product remains clearly recognizable, preserve exact colors, form, logo and labels. No redesign, no added text, no collage.",
+      "source": "/Users/chieutrinh/Documents/GitHub/lh-template-demo/output/wofyn-product-media/wofyn-atlantic-salmon-dog-food-lifestyle-source.png",
+      "reference": "/private/tmp/wofyn-catalog/wofyn-atlantic-salmon-dog-food.webp",
+      "generatedSource": "/Users/chieutrinh/.codex/generated_images/01a12409-8b43-78a0-8771-3935b5f7d853/exec-832169b4-13a3-4a52-9d49-db73c1c20c42.png",
+      "final": "/Users/chieutrinh/Documents/GitHub/lh-template-demo/output/wofyn-product-media/wofyn-atlantic-salmon-dog-food-lifestyle.webp",
+      "visualQA": {
+        "status": "passed",
+        "inspectedAgainstReference": true,
+        "notes": "Actual dog use visible; owner supervises or handles feeding; identity, color, recognizable structure and contact checked."
+      },
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "bytes": 271348
+    },
+    {
+      "slug": "atlantic-salmon-dog-food",
+      "kind": "angle-left",
+      "prompt": "Use case: product-mockup. ONE square realistic catalog photograph. Exact reference identity: Coral salmon Jinx 4lb bag with husky portrait, ATLANTIC SALMON BROWN RICE & SWEET POTATO RECIPE label. White seamless studio background, soft grounded shadow. Camera front-left eye-level view 20 degrees, visible narrow side to image LEFT, showing whole recognizable front and narrow plain-colored side. Preserve exact shape, label, color and proportions. No hidden side/back label invention; narrow side plain coral. Center product with margin. No props, no redesign, no added text, no collage.",
+      "source": "/Users/chieutrinh/Documents/GitHub/lh-template-demo/output/wofyn-product-media/wofyn-atlantic-salmon-dog-food-angle-left-source.png",
+      "reference": "/private/tmp/wofyn-catalog/wofyn-atlantic-salmon-dog-food.webp",
+      "generatedSource": "/Users/chieutrinh/.codex/generated_images/01a12409-8b43-78a0-8771-3935b5f7d853/exec-608e6971-c5a0-40ed-84e0-28b23e2a6409.png",
+      "final": "/Users/chieutrinh/Documents/GitHub/lh-template-demo/output/wofyn-product-media/wofyn-atlantic-salmon-dog-food-angle-left.webp",
+      "visualQA": {
+        "status": "passed",
+        "inspectedAgainstReference": true,
+        "notes": "White background; source identity, color and front details retained; alternate visible angle inspected."
+      },
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "bytes": 107220
+    },
+    {
+      "slug": "atlantic-salmon-dog-food",
+      "kind": "angle-right",
+      "prompt": "Use case: product-mockup. ONE square realistic catalog photograph. Exact reference identity: Coral salmon Jinx 4lb bag with husky portrait, ATLANTIC SALMON BROWN RICE & SWEET POTATO RECIPE label. White seamless background, soft grounded shadow. Camera elevated front-right 30 degrees above and 20 degrees around to right; bag side MUST appear on image RIGHT, the front label faces slightly LEFT. Show whole bag, recognizable source front and narrow plain coral-colored right side. Preserve exact front label, portrait, shape, color, proportions. Do not invent side or back details. Center with margin, no props, no redesign, no collage.",
+      "source": "/Users/chieutrinh/Documents/GitHub/lh-template-demo/output/wofyn-product-media/wofyn-atlantic-salmon-dog-food-angle-right-source.png",
+      "reference": "/private/tmp/wofyn-catalog/wofyn-atlantic-salmon-dog-food.webp",
+      "generatedSource": "/Users/chieutrinh/.codex/generated_images/01a12409-8b43-78a0-8771-3935b5f7d853/exec-e700d42c-ecc4-4b61-bd56-cbe9a05fc6e3.png",
+      "final": "/Users/chieutrinh/Documents/GitHub/lh-template-demo/output/wofyn-product-media/wofyn-atlantic-salmon-dog-food-angle-right.webp",
+      "visualQA": {
+        "status": "passed",
+        "inspectedAgainstReference": true,
+        "notes": "White background; source identity, color and front details retained; alternate visible angle inspected."
+      },
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "bytes": 113284
+    },
+    {
+      "slug": "the-puffin-game",
+      "kind": "lifestyle",
+      "prompt": "Use case: photorealistic-natural. ONE square realistic lifestyle photograph. Exact reference toy identity: Exact pink upper shell and purple rounded weighted base egg-shaped source toy, circular black front dispensing opening, three curved slots across top. Dog actively noses and sniffs exact pink-purple toy standing upright on living room floor, a few kibble pieces nearby, seated adult owner visibly supervising. Product approx small grapefruit size relative to medium dog, not enormous. Warm daylight living room. Dog muzzle makes gentle contact beside front opening while toy remains identifiable and upright; visible pink top slots and purple rounded base, exact proportions. Adult supervisor nearby. No added toy features, no invented branding, no collage.",
+      "source": "/Users/chieutrinh/Documents/GitHub/lh-template-demo/output/wofyn-product-media/wofyn-the-puffin-game-lifestyle-source.png",
+      "reference": "/private/tmp/wofyn-catalog/wofyn-the-puffin-game.webp",
+      "generatedSource": "/Users/chieutrinh/.codex/generated_images/01a12409-8b43-78a0-8771-3935b5f7d853/exec-ceb4e485-ee5d-4851-995e-27ce583074f3.png",
+      "final": "/Users/chieutrinh/Documents/GitHub/lh-template-demo/output/wofyn-product-media/wofyn-the-puffin-game-lifestyle.webp",
+      "visualQA": {
+        "status": "passed",
+        "inspectedAgainstReference": true,
+        "notes": "Actual dog use visible; owner supervises or handles feeding; identity, color, recognizable structure and contact checked."
+      },
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "bytes": 252912
+    },
+    {
+      "slug": "the-puffin-game",
+      "kind": "angle-left",
+      "prompt": "Use case: product-mockup. ONE square realistic catalog photograph. Exact reference identity: Exact pink upper shell and purple rounded weighted base egg-shaped source toy, circular black front dispensing opening, three curved slots across top. White seamless studio background, soft shadow. Camera front-left 20 degrees eye level showing entire toy including its front round hole and exactly source curved top slots. Preserve source egg silhouette, pink upper and purple lower proportion; no additional holes or features, do not invent unseen detail. Center product with margin, no props, no redesign, no added text, no collage.",
+      "source": "/Users/chieutrinh/Documents/GitHub/lh-template-demo/output/wofyn-product-media/wofyn-the-puffin-game-angle-left-source.png",
+      "reference": "/private/tmp/wofyn-catalog/wofyn-the-puffin-game.webp",
+      "generatedSource": "/Users/chieutrinh/.codex/generated_images/01a12409-8b43-78a0-8771-3935b5f7d853/exec-1dde2a1c-6d5d-43ef-b283-028ee74942f9.png",
+      "final": "/Users/chieutrinh/Documents/GitHub/lh-template-demo/output/wofyn-product-media/wofyn-the-puffin-game-angle-left.webp",
+      "visualQA": {
+        "status": "passed",
+        "inspectedAgainstReference": true,
+        "notes": "White background; source identity, color and front details retained; alternate visible angle inspected."
+      },
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "bytes": 33540
+    },
+    {
+      "slug": "the-puffin-game",
+      "kind": "angle-right",
+      "prompt": "Use case: product-mockup. ONE square realistic catalog photograph. Exact reference identity: Exact pink upper shell and purple rounded weighted base egg-shaped source toy, circular black front dispensing opening, three curved slots across top. White seamless studio background, soft shadow. Camera front-right 20 degrees and elevated 30 degrees, move visible front round opening toward image RIGHT compared with left view. Show entire toy including front opening and exactly source curved top slots. Preserve source egg silhouette, pink upper and purple lower proportion; no extra holes or features, no unseen detail invented. Center product with margin, no props, no redesign, no added text, no collage.",
+      "source": "/Users/chieutrinh/Documents/GitHub/lh-template-demo/output/wofyn-product-media/wofyn-the-puffin-game-angle-right-source.png",
+      "reference": "/private/tmp/wofyn-catalog/wofyn-the-puffin-game.webp",
+      "generatedSource": "/Users/chieutrinh/.codex/generated_images/01a12409-8b43-78a0-8771-3935b5f7d853/exec-05a4360e-fc0b-4d22-b56c-22d2f303fd17.png",
+      "final": "/Users/chieutrinh/Documents/GitHub/lh-template-demo/output/wofyn-product-media/wofyn-the-puffin-game-angle-right.webp",
+      "visualQA": {
+        "status": "passed",
+        "inspectedAgainstReference": true,
+        "notes": "White background; source identity, color and front details retained; alternate visible angle inspected."
+      },
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "bytes": 33400
+    },
+    {
+      "slug": "armadillo",
+      "kind": "lifestyle",
+      "prompt": "Use case: photorealistic-natural. ONE square realistic lifestyle photograph. Exact source toy: Exact blue fable toy: two rounded capsule lobes stacked vertically around a broad central horizontal disk, embossed fable on both front lobes. Dog actively noses exact blue toy upright on floor and touches central disk with muzzle, owner sitting close visibly supervising. Blue toy approximately dog's muzzle size, medium dog gently touching center disc with nose, both lobes and embossed fable remain visible. Do NOT deform or turn toy into a bone, keep stacked capsule/disc/capsule geometry exact. Warm naturally lit home, owner nearby supervising, realistic anatomy and physical floor contact. No invented features, no collage.",
+      "source": "/Users/chieutrinh/Documents/GitHub/lh-template-demo/output/wofyn-product-media/wofyn-armadillo-lifestyle-source.png",
+      "reference": "/private/tmp/wofyn-catalog/wofyn-armadillo.webp",
+      "generatedSource": "/Users/chieutrinh/.codex/generated_images/01a12409-8b43-78a0-8771-3935b5f7d853/exec-f38720b9-76d0-4456-83fc-1da9f2911e9c.png",
+      "final": "/Users/chieutrinh/Documents/GitHub/lh-template-demo/output/wofyn-product-media/wofyn-armadillo-lifestyle.webp",
+      "visualQA": {
+        "status": "passed",
+        "inspectedAgainstReference": true,
+        "notes": "Actual dog use visible; owner supervises or handles feeding; identity, color, recognizable structure and contact checked."
+      },
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "bytes": 265798
+    },
+    {
+      "slug": "armadillo",
+      "kind": "angle-left",
+      "prompt": "Use case: product-mockup. ONE square realistic catalog photograph of exact source: Exact blue fable toy: two rounded capsule lobes stacked vertically around a broad central horizontal disk, embossed fable on both front lobes. White seamless background, soft grounded shadow. Camera front-left 20 degrees at eye level, show left curvature and front embossed fable on both lobes. Preserve blue color, exact vertically stacked two capsule lobes and thick central disc, same proportions and texture. No new holes, no additional features, no unseen detail invention, no bone reshaping. Center entire toy with margin; no props, no collage.",
+      "source": "/Users/chieutrinh/Documents/GitHub/lh-template-demo/output/wofyn-product-media/wofyn-armadillo-angle-left-source.png",
+      "reference": "/private/tmp/wofyn-catalog/wofyn-armadillo.webp",
+      "generatedSource": "/Users/chieutrinh/.codex/generated_images/01a12409-8b43-78a0-8771-3935b5f7d853/exec-eadb6ce1-7e2b-4ad6-a8f2-6f30a8a61c5f.png",
+      "final": "/Users/chieutrinh/Documents/GitHub/lh-template-demo/output/wofyn-product-media/wofyn-armadillo-angle-left.webp",
+      "visualQA": {
+        "status": "passed",
+        "inspectedAgainstReference": true,
+        "notes": "White background; source identity, color and front details retained; alternate visible angle inspected."
+      },
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "bytes": 65210
+    },
+    {
+      "slug": "armadillo",
+      "kind": "angle-right",
+      "prompt": "Use case: product-mockup. ONE square realistic catalog photograph of exact source: Exact blue fable toy: two rounded capsule lobes stacked vertically around a broad central horizontal disk, embossed fable on both front lobes. White seamless background, soft grounded shadow. Camera clearly elevated 40 degrees from front-right, show broad top surface of upper capsule lobe and central disk top; retain front fable embossing visible on both lobes. Distinct view from eye-level source. Preserve blue color, exactly vertically stacked capsule/disc/capsule construction and proportions. No new holes/features, no unseen detail invention, no bone reshaping. Center entire toy with margin; no props, no collage.",
+      "source": "/Users/chieutrinh/Documents/GitHub/lh-template-demo/output/wofyn-product-media/wofyn-armadillo-angle-right-source.png",
+      "reference": "/private/tmp/wofyn-catalog/wofyn-armadillo.webp",
+      "generatedSource": "/Users/chieutrinh/.codex/generated_images/01a12409-8b43-78a0-8771-3935b5f7d853/exec-bc32d212-f9b0-4fe7-824e-34142c3bf0b5.png",
+      "final": "/Users/chieutrinh/Documents/GitHub/lh-template-demo/output/wofyn-product-media/wofyn-armadillo-angle-right.webp",
+      "visualQA": {
+        "status": "passed",
+        "inspectedAgainstReference": true,
+        "notes": "White background; source identity, color and front details retained; alternate visible angle inspected."
+      },
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "bytes": 65924
+    }
+  ]
+}

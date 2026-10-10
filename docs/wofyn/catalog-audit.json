@@ -1,0 +1,2656 @@
+{
+  "date": "2026-10-10",
+  "source": {
+    "fileKey": "G7y5fdxzoVS9pDqslTl1Pp",
+    "nodeId": "47614:18265"
+  },
+  "store": "layouthub-template-v2.myshopify.com",
+  "theme": {
+    "id": "192149684523",
+    "name": "Wofyn template (Chieutt)",
+    "role": "UNPUBLISHED"
+  },
+  "branch": "Wofyn-template",
+  "counts": {
+    "products": 14,
+    "variants": 22,
+    "collections": 9,
+    "blogs": 1,
+    "articles": 3,
+    "productImages": 57,
+    "generatedSupplementaryImages": 39
+  },
+  "priceDecision": "User explicitly requested Figma price without discount for 12 products with one source price. Crate $768/$808, Twin Falcon $24/$39.",
+  "inventory": {
+    "locationId": "gid://shopify/Location/117337850155",
+    "defaultPerVariant": 20,
+    "cratePerVariant": 12
+  },
+  "proposedDemoData": [
+    "Full product descriptions beyond the source introduction",
+    "Blog bodies beyond source titles and excerpts",
+    "Brand author Wofyn; source has no identified author",
+    "New tag for demo products with no design bestseller badge"
+  ],
+  "exceptions": [
+    "Crate source labels gate styles under Color. Retained Acrylic Gate / White Gate / No Gate and S / M / L. No color-pattern linkage because these are gate styles rather than distinct colors.",
+    "Source crate gallery is shared across gate/size variants; no sourced media specific to every gate configuration.",
+    "Current featured-product summary renderer uses first description paragraph; existing custom.summary populated to match.",
+    "Generated packaging images are illustrative. Fine packaging typography can differ from reference.",
+    "Existing unrelated unsaved Theme Editor session was not restored."
+  ],
+  "verification": {
+    "productsActiveAndPublished": true,
+    "allMediaReady": true,
+    "allProductsAtLeast4Images": true,
+    "allVariantsCatalogAndSecondary": true,
+    "allVariantsStockMatches": true,
+    "collectionsImagesAndMembership": true,
+    "articlesBlogRelationAndSeo": true,
+    "homepageDesktop": true,
+    "homepageMobile": true,
+    "crateVariantSwitchWhiteGateM": true,
+    "articleAndCollectionNavigation": true,
+    "thumbnailRadiusDesktop": "media/image 0px; outer card 16px for all five",
+    "themeCheckErrors": 0,
+    "themeCheckOffenses": 104,
+    "gitDiffCheck": "passed",
+    "thumbnailRadiusMobile": "Visually confirmed Square in final Theme Editor mobile preview",
+    "resourcePagesJewelryClaimsRemoved": true,
+    "cardRadiusCorrection": "User clarified: retain card rounding; only media should be Square."
+  },
+  "bindings": [
+    {
+      "file": "templates/index.json",
+      "path": [
+        "sections",
+        "perky_age_collections",
+        "blocks",
+        "collection-list",
+        "settings",
+        "collections"
+      ],
+      "value": [
+        "walks-wofyn",
+        "bowls-wofyn",
+        "beds-wofyn",
+        "toys-wofyn",
+        "foods-wofyn"
+      ]
+    },
+    {
+      "file": "templates/index.json",
+      "path": [
+        "sections",
+        "peekoo_featured_07",
+        "blocks",
+        "product-list",
+        "settings",
+        "collection"
+      ],
+      "value": "top-picks-wofyn"
+    },
+    {
+      "file": "templates/index.json",
+      "path": [
+        "sections",
+        "wofyn_kibble_banner",
+        "blocks",
+        "carousel-product-list",
+        "settings",
+        "collection"
+      ],
+      "value": "premium-dog-kibble-wofyn"
+    },
+    {
+      "file": "templates/index.json",
+      "path": [
+        "sections",
+        "wofyn_toys_banner",
+        "blocks",
+        "carousel-product-list",
+        "settings",
+        "collection"
+      ],
+      "value": "toys-wofyn"
+    },
+    {
+      "file": "templates/index.json",
+      "path": [
+        "sections",
+        "peekoo_featured_product",
+        "settings",
+        "product"
+      ],
+      "value": "wofyn-fable-modern-dog-crate"
+    },
+    {
+      "file": "templates/index.json",
+      "path": [
+        "sections",
+        "peekoo_blog_posts",
+        "blocks",
+        "blog-list",
+        "settings",
+        "blog"
+      ],
+      "value": "wofyn"
+    },
+    {
+      "file": "templates/index.json",
+      "path": [
+        "sections",
+        "slideshow",
+        "blocks",
+        "slide-primary",
+        "blocks",
+        "column",
+        "blocks",
+        "discover-now",
+        "settings",
+        "button_link"
+      ],
+      "value": "/collections/all-wofyn"
+    },
+    {
+      "file": "templates/index.json",
+      "path": [
+        "sections",
+        "countdown_timer",
+        "blocks",
+        "content",
+        "blocks",
+        "button",
+        "settings",
+        "button_link"
+      ],
+      "value": "shopify://collections/sale-wofyn"
+    },
+    {
+      "file": "templates/index.json",
+      "path": [
+        "sections",
+        "wofyn_promo_grid",
+        "blocks",
+        "banner_1",
+        "settings",
+        "link"
+      ],
+      "value": "/collections/toys-wofyn"
+    },
+    {
+      "file": "templates/index.json",
+      "path": [
+        "sections",
+        "wofyn_promo_grid",
+        "blocks",
+        "banner_2",
+        "settings",
+        "link"
+      ],
+      "value": "/collections/all-wofyn"
+    },
+    {
+      "file": "templates/index.json",
+      "path": [
+        "sections",
+        "wofyn_promo_grid",
+        "blocks",
+        "banner_3",
+        "settings",
+        "link"
+      ],
+      "value": "/collections/walks-wofyn"
+    },
+    {
+      "file": "templates/index.json",
+      "path": [
+        "sections",
+        "wofyn_promo_grid",
+        "blocks",
+        "banner_4",
+        "settings",
+        "link"
+      ],
+      "value": "/collections/bowls-wofyn"
+    },
+    {
+      "file": "templates/index.json",
+      "path": [
+        "sections",
+        "wofyn_promo_grid",
+        "blocks",
+        "banner_5",
+        "settings",
+        "link"
+      ],
+      "value": "/collections/toys-wofyn"
+    },
+    {
+      "file": "templates/index.json",
+      "path": [
+        "sections",
+        "peekoo_image_cards",
+        "blocks",
+        "imagination",
+        "blocks",
+        "button",
+        "settings",
+        "button_link"
+      ],
+      "value": "shopify://collections/sale-wofyn"
+    },
+    {
+      "file": "templates/index.json",
+      "path": [
+        "sections",
+        "peekoo_image_cards",
+        "blocks",
+        "holiday",
+        "blocks",
+        "button",
+        "settings",
+        "button_link"
+      ],
+      "value": "shopify://collections/sale-wofyn"
+    },
+    {
+      "file": "templates/index.json",
+      "path": [
+        "sections",
+        "wofyn_image_with_text",
+        "blocks",
+        "content",
+        "blocks",
+        "button",
+        "settings",
+        "button_link"
+      ],
+      "value": "shopify://collections/all-wofyn"
+    },
+    {
+      "file": "templates/index.json",
+      "path": [
+        "sections",
+        "wofyn_toys_banner",
+        "blocks",
+        "banner",
+        "blocks",
+        "button",
+        "settings",
+        "button_link"
+      ],
+      "value": "shopify://collections/toys-wofyn"
+    },
+    {
+      "file": "sections/header-group.json",
+      "path": [
+        "sections",
+        "header",
+        "blocks",
+        "header-top",
+        "blocks",
+        "header-menu",
+        "settings",
+        "menu"
+      ],
+      "value": "wofyn-main-menu"
+    },
+    {
+      "file": "sections/header-group.json",
+      "path": [
+        "sections",
+        "header",
+        "blocks",
+        "header-top",
+        "blocks",
+        "header-menu",
+        "blocks",
+        "mega-menu-banners",
+        "settings",
+        "collections"
+      ],
+      "value": [
+        "walks-wofyn",
+        "bowls-wofyn",
+        "beds-wofyn",
+        "toys-wofyn",
+        "foods-wofyn"
+      ]
+    },
+    {
+      "file": "sections/footer-group.json",
+      "path": [
+        "sections",
+        "footer",
+        "blocks",
+        "footer-content",
+        "blocks",
+        "footer-links",
+        "blocks",
+        "shop",
+        "blocks",
+        "shop-menu",
+        "blocks",
+        "shop-2",
+        "settings",
+        "link"
+      ],
+      "value": "/blogs/wofyn"
+    },
+    {
+      "file": "sections/footer-group.json",
+      "path": [
+        "sections",
+        "footer",
+        "blocks",
+        "footer-content",
+        "blocks",
+        "footer-links",
+        "blocks",
+        "shop",
+        "blocks",
+        "shop-menu",
+        "blocks",
+        "shop-3",
+        "settings",
+        "link"
+      ],
+      "value": "/collections/all-wofyn"
+    },
+    {
+      "file": "templates/index.json",
+      "path": [
+        "sections",
+        "perky_age_collections",
+        "blocks",
+        "collection-list",
+        "blocks",
+        "collection-card",
+        "settings",
+        "corner_radius"
+      ],
+      "value": "radius_16"
+    },
+    {
+      "file": "templates/index.json",
+      "path": [
+        "sections",
+        "wofyn_promo_grid",
+        "blocks",
+        "banner_1",
+        "blocks",
+        "button",
+        "settings",
+        "button_link"
+      ],
+      "value": "/collections/toys-wofyn"
+    }
+  ],
+  "shopify": {
+    "products": {
+      "nodes": [
+        {
+          "id": "gid://shopify/Product/15415751049515",
+          "title": "Fable Modern Dog Crate",
+          "handle": "wofyn-fable-modern-dog-crate",
+          "status": "ACTIVE",
+          "descriptionHtml": "<p>After a long day of play and exploration, there is no better place for your canine to rest and recover than the award-winning Fable Crate and Bed.</p><h2>About this product</h2><p>A furniture-style resting space with a slotted silhouette.</p><p>Choose Acrylic Gate, White Gate or No Gate, with S, M and L options.</p><h2>Everyday use and care</h2><p>Introduce the crate gradually in a calm area of your home. Choose an appropriate size for your dog and follow the supplied setup and care instructions.</p>",
+          "category": {
+            "id": "gid://shopify/TaxonomyCategory/ap-2-3-6-3",
+            "fullName": "Animals & Pet Supplies > Pet Supplies > Dog Supplies > Dog Kennels & Runs > Indoor Dog Kennels"
+          },
+          "tags": [
+            "New",
+            "wofyn",
+            "wofyn-beds",
+            "wofyn-top-picks"
+          ],
+          "seo": {
+            "title": "Fable Modern Dog Crate | Wofyn",
+            "description": "After a long day of play and exploration, there is no better place for your canine to rest and recover than the award-winning Fable Crate and Bed."
+          },
+          "summary": {
+            "type": "multi_line_text_field",
+            "value": "After a long day of play and exploration, there is no better place for your canine to rest and recover than the award-winning Fable Crate and Bed."
+          },
+          "publishedOnPublication": true,
+          "media": {
+            "nodes": [
+              {
+                "id": "gid://shopify/MediaImage/46523499381035",
+                "alt": "Fable Modern Dog Crate",
+                "status": "READY",
+                "image": {
+                  "url": "https://cdn.shopify.com/s/files/1/1024/2192/2091/files/wofyn-fable-modern-dog-crate.webp?v=1791605341"
+                }
+              },
+              {
+                "id": "gid://shopify/MediaImage/46523719287083",
+                "alt": "Fable Modern Dog Crate — 2",
+                "status": "READY",
+                "image": {
+                  "url": "https://cdn.shopify.com/s/files/1/1024/2192/2091/files/wofyn-fable-crate-gallery-2.webp?v=1791605815"
+                }
+              },
+              {
+                "id": "gid://shopify/MediaImage/46523723055403",
+                "alt": "Fable Modern Dog Crate — 3",
+                "status": "READY",
+                "image": {
+                  "url": "https://cdn.shopify.com/s/files/1/1024/2192/2091/files/wofyn-fable-crate-gallery-3.webp?v=1791605824"
+                }
+              },
+              {
+                "id": "gid://shopify/MediaImage/46523726758187",
+                "alt": "Fable Modern Dog Crate — 4",
+                "status": "READY",
+                "image": {
+                  "url": "https://cdn.shopify.com/s/files/1/1024/2192/2091/files/wofyn-fable-crate-gallery-4.webp?v=1791605832"
+                }
+              },
+              {
+                "id": "gid://shopify/MediaImage/46523730755883",
+                "alt": "Fable Modern Dog Crate — 5",
+                "status": "READY",
+                "image": {
+                  "url": "https://cdn.shopify.com/s/files/1/1024/2192/2091/files/wofyn-fable-crate-gallery-5.webp?v=1791605840"
+                }
+              }
+            ],
+            "pageInfo": {
+              "hasNextPage": false,
+              "endCursor": "eyJsYXN0X2lkIjo0NjUyMzczMDc1NTg4MywibGFzdF92YWx1ZSI6IjUifQ=="
+            }
+          },
+          "variants": {
+            "nodes": [
+              {
+                "id": "gid://shopify/ProductVariant/67702080176427",
+                "title": "Acrylic Gate / S",
+                "price": "768.00",
+                "compareAtPrice": "808.00",
+                "inventoryQuantity": 12,
+                "media": {
+                  "nodes": [
+                    {
+                      "id": "gid://shopify/MediaImage/46523499381035"
+                    }
+                  ],
+                  "pageInfo": {
+                    "hasNextPage": false,
+                    "endCursor": "eyJsYXN0X2lkIjo0NjUyMzQ5OTM4MTAzNSwibGFzdF92YWx1ZSI6NDY1MjM0OTkzODEwMzV9"
+                  }
+                },
+                "secondary": {
+                  "type": "file_reference",
+                  "value": "gid://shopify/MediaImage/46523719287083"
+                }
+              },
+              {
+                "id": "gid://shopify/ProductVariant/67702080209195",
+                "title": "Acrylic Gate / M",
+                "price": "768.00",
+                "compareAtPrice": "808.00",
+                "inventoryQuantity": 12,
+                "media": {
+                  "nodes": [
+                    {
+                      "id": "gid://shopify/MediaImage/46523499381035"
+                    }
+                  ],
+                  "pageInfo": {
+                    "hasNextPage": false,
+                    "endCursor": "eyJsYXN0X2lkIjo0NjUyMzQ5OTM4MTAzNSwibGFzdF92YWx1ZSI6NDY1MjM0OTkzODEwMzV9"
+                  }
+                },
+                "secondary": {
+                  "type": "file_reference",
+                  "value": "gid://shopify/MediaImage/46523719287083"
+                }
+              },
+              {
+                "id": "gid://shopify/ProductVariant/67702080241963",
+                "title": "Acrylic Gate / L",
+                "price": "768.00",
+                "compareAtPrice": "808.00",
+                "inventoryQuantity": 12,
+                "media": {
+                  "nodes": [
+                    {
+                      "id": "gid://shopify/MediaImage/46523499381035"
+                    }
+                  ],
+                  "pageInfo": {
+                    "hasNextPage": false,
+                    "endCursor": "eyJsYXN0X2lkIjo0NjUyMzQ5OTM4MTAzNSwibGFzdF92YWx1ZSI6NDY1MjM0OTkzODEwMzV9"
+                  }
+                },
+                "secondary": {
+                  "type": "file_reference",
+                  "value": "gid://shopify/MediaImage/46523719287083"
+                }
+              },
+              {
+                "id": "gid://shopify/ProductVariant/67702080274731",
+                "title": "White Gate / S",
+                "price": "768.00",
+                "compareAtPrice": "808.00",
+                "inventoryQuantity": 12,
+                "media": {
+                  "nodes": [
+                    {
+                      "id": "gid://shopify/MediaImage/46523499381035"
+                    }
+                  ],
+                  "pageInfo": {
+                    "hasNextPage": false,
+                    "endCursor": "eyJsYXN0X2lkIjo0NjUyMzQ5OTM4MTAzNSwibGFzdF92YWx1ZSI6NDY1MjM0OTkzODEwMzV9"
+                  }
+                },
+                "secondary": {
+                  "type": "file_reference",
+                  "value": "gid://shopify/MediaImage/46523719287083"
+                }
+              },
+              {
+                "id": "gid://shopify/ProductVariant/67702080307499",
+                "title": "White Gate / M",
+                "price": "768.00",
+                "compareAtPrice": "808.00",
+                "inventoryQuantity": 12,
+                "media": {
+                  "nodes": [
+                    {
+                      "id": "gid://shopify/MediaImage/46523499381035"
+                    }
+                  ],
+                  "pageInfo": {
+                    "hasNextPage": false,
+                    "endCursor": "eyJsYXN0X2lkIjo0NjUyMzQ5OTM4MTAzNSwibGFzdF92YWx1ZSI6NDY1MjM0OTkzODEwMzV9"
+                  }
+                },
+                "secondary": {
+                  "type": "file_reference",
+                  "value": "gid://shopify/MediaImage/46523719287083"
+                }
+              },
+              {
+                "id": "gid://shopify/ProductVariant/67702080340267",
+                "title": "White Gate / L",
+                "price": "768.00",
+                "compareAtPrice": "808.00",
+                "inventoryQuantity": 12,
+                "media": {
+                  "nodes": [
+                    {
+                      "id": "gid://shopify/MediaImage/46523499381035"
+                    }
+                  ],
+                  "pageInfo": {
+                    "hasNextPage": false,
+                    "endCursor": "eyJsYXN0X2lkIjo0NjUyMzQ5OTM4MTAzNSwibGFzdF92YWx1ZSI6NDY1MjM0OTkzODEwMzV9"
+                  }
+                },
+                "secondary": {
+                  "type": "file_reference",
+                  "value": "gid://shopify/MediaImage/46523719287083"
+                }
+              },
+              {
+                "id": "gid://shopify/ProductVariant/67702080373035",
+                "title": "No Gate / S",
+                "price": "768.00",
+                "compareAtPrice": "808.00",
+                "inventoryQuantity": 12,
+                "media": {
+                  "nodes": [
+                    {
+                      "id": "gid://shopify/MediaImage/46523499381035"
+                    }
+                  ],
+                  "pageInfo": {
+                    "hasNextPage": false,
+                    "endCursor": "eyJsYXN0X2lkIjo0NjUyMzQ5OTM4MTAzNSwibGFzdF92YWx1ZSI6NDY1MjM0OTkzODEwMzV9"
+                  }
+                },
+                "secondary": {
+                  "type": "file_reference",
+                  "value": "gid://shopify/MediaImage/46523719287083"
+                }
+              },
+              {
+                "id": "gid://shopify/ProductVariant/67702080405803",
+                "title": "No Gate / M",
+                "price": "768.00",
+                "compareAtPrice": "808.00",
+                "inventoryQuantity": 12,
+                "media": {
+                  "nodes": [
+                    {
+                      "id": "gid://shopify/MediaImage/46523499381035"
+                    }
+                  ],
+                  "pageInfo": {
+                    "hasNextPage": false,
+                    "endCursor": "eyJsYXN0X2lkIjo0NjUyMzQ5OTM4MTAzNSwibGFzdF92YWx1ZSI6NDY1MjM0OTkzODEwMzV9"
+                  }
+                },
+                "secondary": {
+                  "type": "file_reference",
+                  "value": "gid://shopify/MediaImage/46523719287083"
+                }
+              },
+              {
+                "id": "gid://shopify/ProductVariant/67702080438571",
+                "title": "No Gate / L",
+                "price": "768.00",
+                "compareAtPrice": "808.00",
+                "inventoryQuantity": 12,
+                "media": {
+                  "nodes": [
+                    {
+                      "id": "gid://shopify/MediaImage/46523499381035"
+                    }
+                  ],
+                  "pageInfo": {
+                    "hasNextPage": false,
+                    "endCursor": "eyJsYXN0X2lkIjo0NjUyMzQ5OTM4MTAzNSwibGFzdF92YWx1ZSI6NDY1MjM0OTkzODEwMzV9"
+                  }
+                },
+                "secondary": {
+                  "type": "file_reference",
+                  "value": "gid://shopify/MediaImage/46523719287083"
+                }
+              }
+            ],
+            "pageInfo": {
+              "hasNextPage": false,
+              "endCursor": "eyJsYXN0X2lkIjo2NzcwMjA4MDQzODU3MSwibGFzdF92YWx1ZSI6OX0="
+            }
+          }
+        },
+        {
+          "id": "gid://shopify/Product/15415751344427",
+          "title": "Magic Link",
+          "handle": "wofyn-magic-link",
+          "status": "ACTIVE",
+          "descriptionHtml": "<p>A versatile leash for everyday walks and time together outdoors.</p><h2>About this product</h2><p>A grey leash with a loop, adjustment detail and clip.</p><p>An everyday walking essential in the Walks collection.</p><h2>Everyday use and care</h2><p>Check the clip and leash before every walk, attach it securely to an appropriate collar or harness, and keep your dog supervised.</p>",
+          "category": {
+            "id": "gid://shopify/TaxonomyCategory/ap-2-31",
+            "fullName": "Animals & Pet Supplies > Pet Supplies > Pet Leashes"
+          },
+          "tags": [
+            "New",
+            "wofyn",
+            "wofyn-top-picks",
+            "wofyn-walks"
+          ],
+          "seo": {
+            "title": "Magic Link | Wofyn",
+            "description": "A versatile leash for everyday walks and time together outdoors."
+          },
+          "summary": {
+            "type": "multi_line_text_field",
+            "value": "A versatile leash for everyday walks and time together outdoors."
+          },
+          "publishedOnPublication": true,
+          "media": {
+            "nodes": [
+              {
+                "id": "gid://shopify/MediaImage/46523533820203",
+                "alt": "Magic Link",
+                "status": "READY",
+                "image": {
+                  "url": "https://cdn.shopify.com/s/files/1/1024/2192/2091/files/wofyn-magic-link.webp?v=1791605420"
+                }
+              },
+              {
+                "id": "gid://shopify/MediaImage/46524010758443",
+                "alt": "Magic Link — dog using the product",
+                "status": "READY",
+                "image": {
+                  "url": "https://cdn.shopify.com/s/files/1/1024/2192/2091/files/wofyn-magic-link-lifestyle.webp?v=1791606609"
+                }
+              },
+              {
+                "id": "gid://shopify/MediaImage/46524012462379",
+                "alt": "Magic Link — angle left catalog view",
+                "status": "READY",
+                "image": {
+                  "url": "https://cdn.shopify.com/s/files/1/1024/2192/2091/files/wofyn-magic-link-angle-left.webp?v=1791606617"
+                }
+              },
+              {
+                "id": "gid://shopify/MediaImage/46524015739179",
+                "alt": "Magic Link — angle right catalog view",
+                "status": "READY",
+                "image": {
+                  "url": "https://cdn.shopify.com/s/files/1/1024/2192/2091/files/wofyn-magic-link-angle-right.webp?v=1791606627"
+                }
+              }
+            ],
+            "pageInfo": {
+              "hasNextPage": false,
+              "endCursor": "eyJsYXN0X2lkIjo0NjUyNDAxNTczOTE3OSwibGFzdF92YWx1ZSI6IjQifQ=="
+            }
+          },
+          "variants": {
+            "nodes": [
+              {
+                "id": "gid://shopify/ProductVariant/67702082240811",
+                "title": "Default Title",
+                "price": "79.00",
+                "compareAtPrice": null,
+                "inventoryQuantity": 20,
+                "media": {
+                  "nodes": [
+                    {
+                      "id": "gid://shopify/MediaImage/46523533820203"
+                    }
+                  ],
+                  "pageInfo": {
+                    "hasNextPage": false,
+                    "endCursor": "eyJsYXN0X2lkIjo0NjUyMzUzMzgyMDIwMywibGFzdF92YWx1ZSI6NDY1MjM1MzM4MjAyMDN9"
+                  }
+                },
+                "secondary": {
+                  "type": "file_reference",
+                  "value": "gid://shopify/MediaImage/46524010758443"
+                }
+              }
+            ],
+            "pageInfo": {
+              "hasNextPage": false,
+              "endCursor": "eyJsYXN0X2lkIjo2NzcwMjA4MjI0MDgxMSwibGFzdF92YWx1ZSI6MX0="
+            }
+          }
+        },
+        {
+          "id": "gid://shopify/Product/15415751639339",
+          "title": "Chicken & Ancient Grains Recipe",
+          "handle": "wofyn-chicken-ancient-grains-recipe",
+          "status": "ACTIVE",
+          "descriptionHtml": "<p>A chicken and ancient grains recipe for your dog's daily mealtime.</p><h2>About this product</h2><p>A packaged chicken and ancient grains recipe for everyday meals.</p><p>Part of the Foods collection and Wofyn Top Picks.</p><h2>Everyday use and care</h2><p>Follow the package feeding and storage instructions. Choose portions appropriate to your dog and keep fresh water available.</p>",
+          "category": {
+            "id": "gid://shopify/TaxonomyCategory/ap-2-3-3-1",
+            "fullName": "Animals & Pet Supplies > Pet Supplies > Dog Supplies > Dog Food > Non-Prescription Dog Food"
+          },
+          "tags": [
+            "badge:Best Seller",
+            "Bestseller",
+            "wofyn",
+            "wofyn-foods",
+            "wofyn-top-picks"
+          ],
+          "seo": {
+            "title": "Chicken & Ancient Grains Recipe | Wofyn",
+            "description": "A chicken and ancient grains recipe for your dog's daily mealtime."
+          },
+          "summary": {
+            "type": "multi_line_text_field",
+            "value": "A chicken and ancient grains recipe for your dog's daily mealtime."
+          },
+          "publishedOnPublication": true,
+          "media": {
+            "nodes": [
+              {
+                "id": "gid://shopify/MediaImage/46523536834859",
+                "alt": "Chicken & Ancient Grains Recipe",
+                "status": "READY",
+                "image": {
+                  "url": "https://cdn.shopify.com/s/files/1/1024/2192/2091/files/wofyn-chicken-ancient-grains-recipe.webp?v=1791605428"
+                }
+              },
+              {
+                "id": "gid://shopify/MediaImage/46524018458923",
+                "alt": "Chicken & Ancient Grains Recipe — dog using the product",
+                "status": "READY",
+                "image": {
+                  "url": "https://cdn.shopify.com/s/files/1/1024/2192/2091/files/wofyn-chicken-ancient-grains-recipe-lifestyle.webp?v=1791606635"
+                }
+              },
+              {
+                "id": "gid://shopify/MediaImage/46524020359467",
+                "alt": "Chicken & Ancient Grains Recipe — angle left catalog view",
+                "status": "READY",
+                "image": {
+                  "url": "https://cdn.shopify.com/s/files/1/1024/2192/2091/files/wofyn-chicken-ancient-grains-recipe-angle-left.webp?v=1791606643"
+                }
+              },
+              {
+                "id": "gid://shopify/MediaImage/46524023079211",
+                "alt": "Chicken & Ancient Grains Recipe — angle right catalog view",
+                "status": "READY",
+                "image": {
+                  "url": "https://cdn.shopify.com/s/files/1/1024/2192/2091/files/wofyn-chicken-ancient-grains-recipe-angle-right.webp?v=1791606652"
+                }
+              }
+            ],
+            "pageInfo": {
+              "hasNextPage": false,
+              "endCursor": "eyJsYXN0X2lkIjo0NjUyNDAyMzA3OTIxMSwibGFzdF92YWx1ZSI6IjQifQ=="
+            }
+          },
+          "variants": {
+            "nodes": [
+              {
+                "id": "gid://shopify/ProductVariant/67702083780907",
+                "title": "Default Title",
+                "price": "13.50",
+                "compareAtPrice": null,
+                "inventoryQuantity": 20,
+                "media": {
+                  "nodes": [
+                    {
+                      "id": "gid://shopify/MediaImage/46523536834859"
+                    }
+                  ],
+                  "pageInfo": {
+                    "hasNextPage": false,
+                    "endCursor": "eyJsYXN0X2lkIjo0NjUyMzUzNjgzNDg1OSwibGFzdF92YWx1ZSI6NDY1MjM1MzY4MzQ4NTl9"
+                  }
+                },
+                "secondary": {
+                  "type": "file_reference",
+                  "value": "gid://shopify/MediaImage/46524018458923"
+                }
+              }
+            ],
+            "pageInfo": {
+              "hasNextPage": false,
+              "endCursor": "eyJsYXN0X2lkIjo2NzcwMjA4Mzc4MDkwNywibGFzdF92YWx1ZSI6MX0="
+            }
+          }
+        },
+        {
+          "id": "gid://shopify/Product/15415751934251",
+          "title": "Bowl",
+          "handle": "wofyn-bowl",
+          "status": "ACTIVE",
+          "descriptionHtml": "<p>A simple, modern bowl for your pet's food and water.</p><h2>About this product</h2><p>A pale, round bowl with straight sides.</p><p>An uncluttered feeding essential for the Bowls collection.</p><h2>Everyday use and care</h2><p>Place the bowl on a stable surface. Wash it regularly and keep fresh drinking water available.</p>",
+          "category": {
+            "id": "gid://shopify/TaxonomyCategory/ap-2-14",
+            "fullName": "Animals & Pet Supplies > Pet Supplies > Pet Bowls, Feeders & Waterers"
+          },
+          "tags": [
+            "New",
+            "wofyn",
+            "wofyn-bowls",
+            "wofyn-top-picks"
+          ],
+          "seo": {
+            "title": "Bowl | Wofyn",
+            "description": "A simple, modern bowl for your pet's food and water."
+          },
+          "summary": {
+            "type": "multi_line_text_field",
+            "value": "A simple, modern bowl for your pet's food and water."
+          },
+          "publishedOnPublication": true,
+          "media": {
+            "nodes": [
+              {
+                "id": "gid://shopify/MediaImage/46523539816747",
+                "alt": "Bowl",
+                "status": "READY",
+                "image": {
+                  "url": "https://cdn.shopify.com/s/files/1/1024/2192/2091/files/wofyn-bowl.webp?v=1791605437"
+                }
+              },
+              {
+                "id": "gid://shopify/MediaImage/46524026814763",
+                "alt": "Bowl — dog using the product",
+                "status": "READY",
+                "image": {
+                  "url": "https://cdn.shopify.com/s/files/1/1024/2192/2091/files/wofyn-bowl-lifestyle.webp?v=1791606666"
+                }
+              },
+              {
+                "id": "gid://shopify/MediaImage/46524028813611",
+                "alt": "Bowl — angle left catalog view",
+                "status": "READY",
+                "image": {
+                  "url": "https://cdn.shopify.com/s/files/1/1024/2192/2091/files/wofyn-bowl-angle-left.webp?v=1791606675"
+                }
+              },
+              {
+                "id": "gid://shopify/MediaImage/46524030812459",
+                "alt": "Bowl — angle right catalog view",
+                "status": "READY",
+                "image": {
+                  "url": "https://cdn.shopify.com/s/files/1/1024/2192/2091/files/wofyn-bowl-angle-right.webp?v=1791606683"
+                }
+              }
+            ],
+            "pageInfo": {
+              "hasNextPage": false,
+              "endCursor": "eyJsYXN0X2lkIjo0NjUyNDAzMDgxMjQ1OSwibGFzdF92YWx1ZSI6IjQifQ=="
+            }
+          },
+          "variants": {
+            "nodes": [
+              {
+                "id": "gid://shopify/ProductVariant/67702085157163",
+                "title": "Default Title",
+                "price": "49.00",
+                "compareAtPrice": null,
+                "inventoryQuantity": 20,
+                "media": {
+                  "nodes": [
+                    {
+                      "id": "gid://shopify/MediaImage/46523539816747"
+                    }
+                  ],
+                  "pageInfo": {
+                    "hasNextPage": false,
+                    "endCursor": "eyJsYXN0X2lkIjo0NjUyMzUzOTgxNjc0NywibGFzdF92YWx1ZSI6NDY1MjM1Mzk4MTY3NDd9"
+                  }
+                },
+                "secondary": {
+                  "type": "file_reference",
+                  "value": "gid://shopify/MediaImage/46524026814763"
+                }
+              }
+            ],
+            "pageInfo": {
+              "hasNextPage": false,
+              "endCursor": "eyJsYXN0X2lkIjo2NzcwMjA4NTE1NzE2MywibGFzdF92YWx1ZSI6MX0="
+            }
+          }
+        },
+        {
+          "id": "gid://shopify/Product/15415752687915",
+          "title": "Beef Training Treats",
+          "handle": "wofyn-beef-training-treats",
+          "status": "ACTIVE",
+          "descriptionHtml": "<p>Bite-sized beef treats for rewarding your dog during training.</p><h2>About this product</h2><p>Small beef training treats in the Jinx Tiny Treats pack.</p><p>For rewarding everyday training moments.</p><h2>Everyday use and care</h2><p>Follow the package serving directions. Offer as treats rather than a replacement for your dog's usual meals, and store according to the label.</p>",
+          "category": {
+            "id": "gid://shopify/TaxonomyCategory/ap-2-3-9",
+            "fullName": "Animals & Pet Supplies > Pet Supplies > Dog Supplies > Dog Treats"
+          },
+          "tags": [
+            "New",
+            "wofyn",
+            "wofyn-foods",
+            "wofyn-kibble"
+          ],
+          "seo": {
+            "title": "Beef Training Treats | Wofyn",
+            "description": "Bite-sized beef treats for rewarding your dog during training."
+          },
+          "summary": {
+            "type": "multi_line_text_field",
+            "value": "Bite-sized beef treats for rewarding your dog during training."
+          },
+          "publishedOnPublication": true,
+          "media": {
+            "nodes": [
+              {
+                "id": "gid://shopify/MediaImage/46523543650603",
+                "alt": "Beef Training Treats",
+                "status": "READY",
+                "image": {
+                  "url": "https://cdn.shopify.com/s/files/1/1024/2192/2091/files/wofyn-beef-training-treats.webp?v=1791605447"
+                }
+              },
+              {
+                "id": "gid://shopify/MediaImage/46524033728811",
+                "alt": "Beef Training Treats — dog using the product",
+                "status": "READY",
+                "image": {
+                  "url": "https://cdn.shopify.com/s/files/1/1024/2192/2091/files/wofyn-beef-training-treats-lifestyle.webp?v=1791606692"
+                }
+              },
+              {
+                "id": "gid://shopify/MediaImage/46524035891499",
+                "alt": "Beef Training Treats — angle left catalog view",
+                "status": "READY",
+                "image": {
+                  "url": "https://cdn.shopify.com/s/files/1/1024/2192/2091/files/wofyn-beef-training-treats-angle-left.webp?v=1791606700"
+                }
+              },
+              {
+                "id": "gid://shopify/MediaImage/46524037300523",
+                "alt": "Beef Training Treats — angle right catalog view",
+                "status": "READY",
+                "image": {
+                  "url": "https://cdn.shopify.com/s/files/1/1024/2192/2091/files/wofyn-beef-training-treats-angle-right.webp?v=1791606709"
+                }
+              }
+            ],
+            "pageInfo": {
+              "hasNextPage": false,
+              "endCursor": "eyJsYXN0X2lkIjo0NjUyNDAzNzMwMDUyMywibGFzdF92YWx1ZSI6IjQifQ=="
+            }
+          },
+          "variants": {
+            "nodes": [
+              {
+                "id": "gid://shopify/ProductVariant/67702087811371",
+                "title": "Default Title",
+                "price": "6.00",
+                "compareAtPrice": null,
+                "inventoryQuantity": 20,
+                "media": {
+                  "nodes": [
+                    {
+                      "id": "gid://shopify/MediaImage/46523543650603"
+                    }
+                  ],
+                  "pageInfo": {
+                    "hasNextPage": false,
+                    "endCursor": "eyJsYXN0X2lkIjo0NjUyMzU0MzY1MDYwMywibGFzdF92YWx1ZSI6NDY1MjM1NDM2NTA2MDN9"
+                  }
+                },
+                "secondary": {
+                  "type": "file_reference",
+                  "value": "gid://shopify/MediaImage/46524033728811"
+                }
+              }
+            ],
+            "pageInfo": {
+              "hasNextPage": false,
+              "endCursor": "eyJsYXN0X2lkIjo2NzcwMjA4NzgxMTM3MSwibGFzdF92YWx1ZSI6MX0="
+            }
+          }
+        },
+        {
+          "id": "gid://shopify/Product/15415753015595",
+          "title": "Freeze-Dried Chicken Topper",
+          "handle": "wofyn-freeze-dried-chicken-topper",
+          "status": "ACTIVE",
+          "descriptionHtml": "<p>Add a chicken topper to your dog's bowl for a little mealtime variety.</p><h2>About this product</h2><p>A chicken topper in Jinx Chicken on Top packaging.</p><p>An addition to an existing feeding routine.</p><h2>Everyday use and care</h2><p>Use according to the package directions alongside your dog's usual food. Keep the packaging closed and follow its storage instructions.</p>",
+          "category": {
+            "id": "gid://shopify/TaxonomyCategory/ap-2-3-3-1",
+            "fullName": "Animals & Pet Supplies > Pet Supplies > Dog Supplies > Dog Food > Non-Prescription Dog Food"
+          },
+          "tags": [
+            "New",
+            "wofyn",
+            "wofyn-foods",
+            "wofyn-kibble"
+          ],
+          "seo": {
+            "title": "Freeze-Dried Chicken Topper | Wofyn",
+            "description": "Add a chicken topper to your dog's bowl for a little mealtime variety."
+          },
+          "summary": {
+            "type": "multi_line_text_field",
+            "value": "Add a chicken topper to your dog's bowl for a little mealtime variety."
+          },
+          "publishedOnPublication": true,
+          "media": {
+            "nodes": [
+              {
+                "id": "gid://shopify/MediaImage/46523546829099",
+                "alt": "Freeze-Dried Chicken Topper",
+                "status": "READY",
+                "image": {
+                  "url": "https://cdn.shopify.com/s/files/1/1024/2192/2091/files/wofyn-freeze-dried-chicken-topper.webp?v=1791605455"
+                }
+              },
+              {
+                "id": "gid://shopify/MediaImage/46524043034923",
+                "alt": "Freeze-Dried Chicken Topper — dog using the product",
+                "status": "READY",
+                "image": {
+                  "url": "https://cdn.shopify.com/s/files/1/1024/2192/2091/files/wofyn-freeze-dried-chicken-topper-lifestyle.webp?v=1791606724"
+                }
+              },
+              {
+                "id": "gid://shopify/MediaImage/46524044968235",
+                "alt": "Freeze-Dried Chicken Topper — angle left catalog view",
+                "status": "READY",
+                "image": {
+                  "url": "https://cdn.shopify.com/s/files/1/1024/2192/2091/files/wofyn-freeze-dried-chicken-topper-angle-left.webp?v=1791606732"
+                }
+              },
+              {
+                "id": "gid://shopify/MediaImage/46524046868779",
+                "alt": "Freeze-Dried Chicken Topper — angle right catalog view",
+                "status": "READY",
+                "image": {
+                  "url": "https://cdn.shopify.com/s/files/1/1024/2192/2091/files/wofyn-freeze-dried-chicken-topper-angle-right.webp?v=1791606739"
+                }
+              }
+            ],
+            "pageInfo": {
+              "hasNextPage": false,
+              "endCursor": "eyJsYXN0X2lkIjo0NjUyNDA0Njg2ODc3OSwibGFzdF92YWx1ZSI6IjQifQ=="
+            }
+          },
+          "variants": {
+            "nodes": [
+              {
+                "id": "gid://shopify/ProductVariant/67702089548075",
+                "title": "Default Title",
+                "price": "10.00",
+                "compareAtPrice": null,
+                "inventoryQuantity": 20,
+                "media": {
+                  "nodes": [
+                    {
+                      "id": "gid://shopify/MediaImage/46523546829099"
+                    }
+                  ],
+                  "pageInfo": {
+                    "hasNextPage": false,
+                    "endCursor": "eyJsYXN0X2lkIjo0NjUyMzU0NjgyOTA5OSwibGFzdF92YWx1ZSI6NDY1MjM1NDY4MjkwOTl9"
+                  }
+                },
+                "secondary": {
+                  "type": "file_reference",
+                  "value": "gid://shopify/MediaImage/46524043034923"
+                }
+              }
+            ],
+            "pageInfo": {
+              "hasNextPage": false,
+              "endCursor": "eyJsYXN0X2lkIjo2NzcwMjA4OTU0ODA3NSwibGFzdF92YWx1ZSI6MX0="
+            }
+          }
+        },
+        {
+          "id": "gid://shopify/Product/15415753343275",
+          "title": "Cage-Free Chicken Dog Food",
+          "handle": "wofyn-cage-free-chicken-dog-food",
+          "status": "ACTIVE",
+          "descriptionHtml": "<p>Chicken dog food for everyday mealtimes.</p><h2>About this product</h2><p>A packaged Cage-Free Chicken &amp; Sweet Potato Recipe.</p><p>An everyday recipe in the Wofyn Foods selection.</p><h2>Everyday use and care</h2><p>Use the serving guidance printed on the package, keep fresh water nearby, and store food as directed on the label.</p>",
+          "category": {
+            "id": "gid://shopify/TaxonomyCategory/ap-2-3-3-1",
+            "fullName": "Animals & Pet Supplies > Pet Supplies > Dog Supplies > Dog Food > Non-Prescription Dog Food"
+          },
+          "tags": [
+            "New",
+            "wofyn",
+            "wofyn-foods",
+            "wofyn-kibble"
+          ],
+          "seo": {
+            "title": "Cage-Free Chicken Dog Food | Wofyn",
+            "description": "Chicken dog food for everyday mealtimes."
+          },
+          "summary": {
+            "type": "multi_line_text_field",
+            "value": "Chicken dog food for everyday mealtimes."
+          },
+          "publishedOnPublication": true,
+          "media": {
+            "nodes": [
+              {
+                "id": "gid://shopify/MediaImage/46523561574699",
+                "alt": "Cage-Free Chicken Dog Food",
+                "status": "READY",
+                "image": {
+                  "url": "https://cdn.shopify.com/s/files/1/1024/2192/2091/files/wofyn-cage-free-chicken-dog-food.webp?v=1791605480"
+                }
+              },
+              {
+                "id": "gid://shopify/MediaImage/46524087140651",
+                "alt": "Cage-Free Chicken Dog Food — dog using the product",
+                "status": "READY",
+                "image": {
+                  "url": "https://cdn.shopify.com/s/files/1/1024/2192/2091/files/wofyn-cage-free-chicken-dog-food-lifestyle.webp?v=1791606879"
+                }
+              },
+              {
+                "id": "gid://shopify/MediaImage/46524089532715",
+                "alt": "Cage-Free Chicken Dog Food — angle left catalog view",
+                "status": "READY",
+                "image": {
+                  "url": "https://cdn.shopify.com/s/files/1/1024/2192/2091/files/wofyn-cage-free-chicken-dog-food-angle-left.webp?v=1791606887"
+                }
+              },
+              {
+                "id": "gid://shopify/MediaImage/46524092252459",
+                "alt": "Cage-Free Chicken Dog Food — angle right catalog view",
+                "status": "READY",
+                "image": {
+                  "url": "https://cdn.shopify.com/s/files/1/1024/2192/2091/files/wofyn-cage-free-chicken-dog-food-angle-right.webp?v=1791606898"
+                }
+              }
+            ],
+            "pageInfo": {
+              "hasNextPage": false,
+              "endCursor": "eyJsYXN0X2lkIjo0NjUyNDA5MjI1MjQ1OSwibGFzdF92YWx1ZSI6IjQifQ=="
+            }
+          },
+          "variants": {
+            "nodes": [
+              {
+                "id": "gid://shopify/ProductVariant/67702099083563",
+                "title": "Default Title",
+                "price": "18.00",
+                "compareAtPrice": null,
+                "inventoryQuantity": 20,
+                "media": {
+                  "nodes": [
+                    {
+                      "id": "gid://shopify/MediaImage/46523561574699"
+                    }
+                  ],
+                  "pageInfo": {
+                    "hasNextPage": false,
+                    "endCursor": "eyJsYXN0X2lkIjo0NjUyMzU2MTU3NDY5OSwibGFzdF92YWx1ZSI6NDY1MjM1NjE1NzQ2OTl9"
+                  }
+                },
+                "secondary": {
+                  "type": "file_reference",
+                  "value": "gid://shopify/MediaImage/46524087140651"
+                }
+              }
+            ],
+            "pageInfo": {
+              "hasNextPage": false,
+              "endCursor": "eyJsYXN0X2lkIjo2NzcwMjA5OTA4MzU2MywibGFzdF92YWx1ZSI6MX0="
+            }
+          }
+        },
+        {
+          "id": "gid://shopify/Product/15415753539883",
+          "title": "Atlantic Salmon Dog Food",
+          "handle": "wofyn-atlantic-salmon-dog-food",
+          "status": "ACTIVE",
+          "descriptionHtml": "<p>A salmon recipe to bring variety to your dog's daily bowl.</p><h2>About this product</h2><p>A packaged Atlantic Salmon &amp; Sweet Potato Recipe.</p><p>An everyday recipe in the Wofyn Foods selection.</p><h2>Everyday use and care</h2><p>Follow the feeding and storage guidance on the package. Choose portions suited to your dog and keep fresh water available.</p>",
+          "category": {
+            "id": "gid://shopify/TaxonomyCategory/ap-2-3-3-1",
+            "fullName": "Animals & Pet Supplies > Pet Supplies > Dog Supplies > Dog Food > Non-Prescription Dog Food"
+          },
+          "tags": [
+            "New",
+            "wofyn",
+            "wofyn-foods",
+            "wofyn-kibble"
+          ],
+          "seo": {
+            "title": "Atlantic Salmon Dog Food | Wofyn",
+            "description": "A salmon recipe to bring variety to your dog's daily bowl."
+          },
+          "summary": {
+            "type": "multi_line_text_field",
+            "value": "A salmon recipe to bring variety to your dog's daily bowl."
+          },
+          "publishedOnPublication": true,
+          "media": {
+            "nodes": [
+              {
+                "id": "gid://shopify/MediaImage/46523565932843",
+                "alt": "Atlantic Salmon Dog Food",
+                "status": "READY",
+                "image": {
+                  "url": "https://cdn.shopify.com/s/files/1/1024/2192/2091/files/wofyn-atlantic-salmon-dog-food.webp?v=1791605489"
+                }
+              },
+              {
+                "id": "gid://shopify/MediaImage/46524097462571",
+                "alt": "Atlantic Salmon Dog Food — dog using the product",
+                "status": "READY",
+                "image": {
+                  "url": "https://cdn.shopify.com/s/files/1/1024/2192/2091/files/wofyn-atlantic-salmon-dog-food-lifestyle.webp?v=1791606916"
+                }
+              },
+              {
+                "id": "gid://shopify/MediaImage/46524134162731",
+                "alt": "Atlantic Salmon Dog Food — left catalog view",
+                "status": "READY",
+                "image": {
+                  "url": "https://cdn.shopify.com/s/files/1/1024/2192/2091/files/wofyn-atlantic-salmon-dog-food-angle-left.webp?v=1791607038"
+                }
+              },
+              {
+                "id": "gid://shopify/MediaImage/46524156608811",
+                "alt": "Atlantic Salmon Dog Food — angle right catalog view",
+                "status": "READY",
+                "image": {
+                  "url": "https://cdn.shopify.com/s/files/1/1024/2192/2091/files/wofyn-atlantic-salmon-dog-food-angle-right.webp?v=1791607102"
+                }
+              }
+            ],
+            "pageInfo": {
+              "hasNextPage": false,
+              "endCursor": "eyJsYXN0X2lkIjo0NjUyNDE1NjYwODgxMSwibGFzdF92YWx1ZSI6IjQifQ=="
+            }
+          },
+          "variants": {
+            "nodes": [
+              {
+                "id": "gid://shopify/ProductVariant/67702100099371",
+                "title": "Default Title",
+                "price": "18.00",
+                "compareAtPrice": null,
+                "inventoryQuantity": 20,
+                "media": {
+                  "nodes": [
+                    {
+                      "id": "gid://shopify/MediaImage/46523565932843"
+                    }
+                  ],
+                  "pageInfo": {
+                    "hasNextPage": false,
+                    "endCursor": "eyJsYXN0X2lkIjo0NjUyMzU2NTkzMjg0MywibGFzdF92YWx1ZSI6NDY1MjM1NjU5MzI4NDN9"
+                  }
+                },
+                "secondary": {
+                  "type": "file_reference",
+                  "value": "gid://shopify/MediaImage/46524097462571"
+                }
+              }
+            ],
+            "pageInfo": {
+              "hasNextPage": false,
+              "endCursor": "eyJsYXN0X2lkIjo2NzcwMjEwMDA5OTM3MSwibGFzdF92YWx1ZSI6MX0="
+            }
+          }
+        },
+        {
+          "id": "gid://shopify/Product/15415753867563",
+          "title": "The Puffin Game",
+          "handle": "wofyn-the-puffin-game",
+          "status": "ACTIVE",
+          "descriptionHtml": "<p>A playful enrichment toy for interactive time with your dog.</p><h2>About this product</h2><p>A pink and purple enrichment toy with an opening for interactive play.</p><p>Explore it together during supervised playtime.</p><h2>Everyday use and care</h2><p>Use under supervision and follow the product instructions for filling, cleaning and play. Remove the toy if it becomes damaged.</p>",
+          "category": {
+            "id": "gid://shopify/TaxonomyCategory/ap-2-3-7",
+            "fullName": "Animals & Pet Supplies > Pet Supplies > Dog Supplies > Dog Toys"
+          },
+          "tags": [
+            "New",
+            "wofyn",
+            "wofyn-toys"
+          ],
+          "seo": {
+            "title": "The Puffin Game | Wofyn",
+            "description": "A playful enrichment toy for interactive time with your dog."
+          },
+          "summary": {
+            "type": "multi_line_text_field",
+            "value": "A playful enrichment toy for interactive time with your dog."
+          },
+          "publishedOnPublication": true,
+          "media": {
+            "nodes": [
+              {
+                "id": "gid://shopify/MediaImage/46523569373483",
+                "alt": "The Puffin Game",
+                "status": "READY",
+                "image": {
+                  "url": "https://cdn.shopify.com/s/files/1/1024/2192/2091/files/wofyn-the-puffin-game.webp?v=1791605496"
+                }
+              },
+              {
+                "id": "gid://shopify/MediaImage/46524271067435",
+                "alt": "The Puffin Game — dog using the product",
+                "status": "READY",
+                "image": {
+                  "url": "https://cdn.shopify.com/s/files/1/1024/2192/2091/files/wofyn-the-puffin-game-lifestyle.webp?v=1791607437"
+                }
+              },
+              {
+                "id": "gid://shopify/MediaImage/46524274442539",
+                "alt": "The Puffin Game — angle left catalog view",
+                "status": "READY",
+                "image": {
+                  "url": "https://cdn.shopify.com/s/files/1/1024/2192/2091/files/wofyn-the-puffin-game-angle-left.webp?v=1791607447"
+                }
+              },
+              {
+                "id": "gid://shopify/MediaImage/46524278735147",
+                "alt": "The Puffin Game — angle right catalog view",
+                "status": "READY",
+                "image": {
+                  "url": "https://cdn.shopify.com/s/files/1/1024/2192/2091/files/wofyn-the-puffin-game-angle-right.webp?v=1791607457"
+                }
+              }
+            ],
+            "pageInfo": {
+              "hasNextPage": false,
+              "endCursor": "eyJsYXN0X2lkIjo0NjUyNDI3ODczNTE0NywibGFzdF92YWx1ZSI6IjQifQ=="
+            }
+          },
+          "variants": {
+            "nodes": [
+              {
+                "id": "gid://shopify/ProductVariant/67702101934379",
+                "title": "Default Title",
+                "price": "79.00",
+                "compareAtPrice": null,
+                "inventoryQuantity": 20,
+                "media": {
+                  "nodes": [
+                    {
+                      "id": "gid://shopify/MediaImage/46523569373483"
+                    }
+                  ],
+                  "pageInfo": {
+                    "hasNextPage": false,
+                    "endCursor": "eyJsYXN0X2lkIjo0NjUyMzU2OTM3MzQ4MywibGFzdF92YWx1ZSI6NDY1MjM1NjkzNzM0ODN9"
+                  }
+                },
+                "secondary": {
+                  "type": "file_reference",
+                  "value": "gid://shopify/MediaImage/46524271067435"
+                }
+              }
+            ],
+            "pageInfo": {
+              "hasNextPage": false,
+              "endCursor": "eyJsYXN0X2lkIjo2NzcwMjEwMTkzNDM3OSwibGFzdF92YWx1ZSI6MX0="
+            }
+          }
+        },
+        {
+          "id": "gid://shopify/Product/15415754555691",
+          "title": "Armadillo",
+          "handle": "wofyn-armadillo",
+          "status": "ACTIVE",
+          "descriptionHtml": "<p>A rounded play companion for your dog's everyday toy collection.</p><h2>About this product</h2><p>A blue toy with a rounded, stacked silhouette and dark central band.</p><p>A distinctive addition to the Wofyn Toys collection.</p><h2>Everyday use and care</h2><p>Select a toy appropriate to your dog's size and play style. Supervise play, check for wear and remove damaged toys.</p>",
+          "category": {
+            "id": "gid://shopify/TaxonomyCategory/ap-2-3-7",
+            "fullName": "Animals & Pet Supplies > Pet Supplies > Dog Supplies > Dog Toys"
+          },
+          "tags": [
+            "New",
+            "wofyn",
+            "wofyn-toys"
+          ],
+          "seo": {
+            "title": "Armadillo | Wofyn",
+            "description": "A rounded play companion for your dog's everyday toy collection."
+          },
+          "summary": {
+            "type": "multi_line_text_field",
+            "value": "A rounded play companion for your dog's everyday toy collection."
+          },
+          "publishedOnPublication": true,
+          "media": {
+            "nodes": [
+              {
+                "id": "gid://shopify/MediaImage/46523573731627",
+                "alt": "Armadillo",
+                "status": "READY",
+                "image": {
+                  "url": "https://cdn.shopify.com/s/files/1/1024/2192/2091/files/wofyn-armadillo.webp?v=1791605503"
+                }
+              },
+              {
+                "id": "gid://shopify/MediaImage/46524283388203",
+                "alt": "Armadillo — dog using the product",
+                "status": "READY",
+                "image": {
+                  "url": "https://cdn.shopify.com/s/files/1/1024/2192/2091/files/wofyn-armadillo-lifestyle.webp?v=1791607468"
+                }
+              },
+              {
+                "id": "gid://shopify/MediaImage/46524295545131",
+                "alt": "Armadillo — angle left catalog view",
+                "status": "READY",
+                "image": {
+                  "url": "https://cdn.shopify.com/s/files/1/1024/2192/2091/files/wofyn-armadillo-angle-left.webp?v=1791607496"
+                }
+              },
+              {
+                "id": "gid://shopify/MediaImage/46524298002731",
+                "alt": "Armadillo — angle right catalog view",
+                "status": "READY",
+                "image": {
+                  "url": "https://cdn.shopify.com/s/files/1/1024/2192/2091/files/wofyn-armadillo-angle-right.webp?v=1791607502"
+                }
+              }
+            ],
+            "pageInfo": {
+              "hasNextPage": false,
+              "endCursor": "eyJsYXN0X2lkIjo0NjUyNDI5ODAwMjczMSwibGFzdF92YWx1ZSI6IjQifQ=="
+            }
+          },
+          "variants": {
+            "nodes": [
+              {
+                "id": "gid://shopify/ProductVariant/67702105342251",
+                "title": "Default Title",
+                "price": "39.00",
+                "compareAtPrice": null,
+                "inventoryQuantity": 20,
+                "media": {
+                  "nodes": [
+                    {
+                      "id": "gid://shopify/MediaImage/46523573731627"
+                    }
+                  ],
+                  "pageInfo": {
+                    "hasNextPage": false,
+                    "endCursor": "eyJsYXN0X2lkIjo0NjUyMzU3MzczMTYyNywibGFzdF92YWx1ZSI6NDY1MjM1NzM3MzE2Mjd9"
+                  }
+                },
+                "secondary": {
+                  "type": "file_reference",
+                  "value": "gid://shopify/MediaImage/46524283388203"
+                }
+              }
+            ],
+            "pageInfo": {
+              "hasNextPage": false,
+              "endCursor": "eyJsYXN0X2lkIjo2NzcwMjEwNTM0MjI1MSwibGFzdF92YWx1ZSI6MX0="
+            }
+          }
+        },
+        {
+          "id": "gid://shopify/Product/15415755014443",
+          "title": "Chew Chain",
+          "handle": "wofyn-chew-chain",
+          "status": "ACTIVE",
+          "descriptionHtml": "<p>A linked chew toy for supervised play.</p><h2>About this product</h2><p>Three connected lavender links with contrasting surface textures.</p><p>A linked toy for interactive moments together.</p><h2>Everyday use and care</h2><p>Supervise chewing and play. Inspect the links regularly and put the toy away if a link or surface becomes damaged.</p>",
+          "category": {
+            "id": "gid://shopify/TaxonomyCategory/ap-2-3-7",
+            "fullName": "Animals & Pet Supplies > Pet Supplies > Dog Supplies > Dog Toys"
+          },
+          "tags": [
+            "badge:New",
+            "New",
+            "wofyn",
+            "wofyn-toys"
+          ],
+          "seo": {
+            "title": "Chew Chain | Wofyn",
+            "description": "A linked chew toy for supervised play."
+          },
+          "summary": {
+            "type": "multi_line_text_field",
+            "value": "A linked chew toy for supervised play."
+          },
+          "publishedOnPublication": true,
+          "media": {
+            "nodes": [
+              {
+                "id": "gid://shopify/MediaImage/46523576713515",
+                "alt": "Chew Chain",
+                "status": "READY",
+                "image": {
+                  "url": "https://cdn.shopify.com/s/files/1/1024/2192/2091/files/wofyn-chew-chain.webp?v=1791605511"
+                }
+              },
+              {
+                "id": "gid://shopify/MediaImage/46524049064235",
+                "alt": "Chew Chain — dog using the product",
+                "status": "READY",
+                "image": {
+                  "url": "https://cdn.shopify.com/s/files/1/1024/2192/2091/files/wofyn-chew-chain-lifestyle.webp?v=1791606747"
+                }
+              },
+              {
+                "id": "gid://shopify/MediaImage/46524051390763",
+                "alt": "Chew Chain — angle left catalog view",
+                "status": "READY",
+                "image": {
+                  "url": "https://cdn.shopify.com/s/files/1/1024/2192/2091/files/wofyn-chew-chain-angle-left.webp?v=1791606756"
+                }
+              },
+              {
+                "id": "gid://shopify/MediaImage/46524054765867",
+                "alt": "Chew Chain — angle right catalog view",
+                "status": "READY",
+                "image": {
+                  "url": "https://cdn.shopify.com/s/files/1/1024/2192/2091/files/wofyn-chew-chain-angle-right.webp?v=1791606766"
+                }
+              }
+            ],
+            "pageInfo": {
+              "hasNextPage": false,
+              "endCursor": "eyJsYXN0X2lkIjo0NjUyNDA1NDc2NTg2NywibGFzdF92YWx1ZSI6IjQifQ=="
+            }
+          },
+          "variants": {
+            "nodes": [
+              {
+                "id": "gid://shopify/ProductVariant/67702107865387",
+                "title": "Default Title",
+                "price": "15.00",
+                "compareAtPrice": null,
+                "inventoryQuantity": 20,
+                "media": {
+                  "nodes": [
+                    {
+                      "id": "gid://shopify/MediaImage/46523576713515"
+                    }
+                  ],
+                  "pageInfo": {
+                    "hasNextPage": false,
+                    "endCursor": "eyJsYXN0X2lkIjo0NjUyMzU3NjcxMzUxNSwibGFzdF92YWx1ZSI6NDY1MjM1NzY3MTM1MTV9"
+                  }
+                },
+                "secondary": {
+                  "type": "file_reference",
+                  "value": "gid://shopify/MediaImage/46524049064235"
+                }
+              }
+            ],
+            "pageInfo": {
+              "hasNextPage": false,
+              "endCursor": "eyJsYXN0X2lkIjo2NzcwMjEwNzg2NTM4NywibGFzdF92YWx1ZSI6MX0="
+            }
+          }
+        },
+        {
+          "id": "gid://shopify/Product/15415755342123",
+          "title": "Twin Falcon Toy",
+          "handle": "wofyn-twin-falcon-toy",
+          "status": "ACTIVE",
+          "descriptionHtml": "<p>An easy-to-hold toy for interactive, supervised play.</p><h2>About this product</h2><p>A dark green toy with two joined loop shapes.</p><p>An easy-to-hold shape for interactive play.</p><h2>Everyday use and care</h2><p>Play under supervision, choose a toy suited to your dog, and check the loops for wear before each session.</p>",
+          "category": {
+            "id": "gid://shopify/TaxonomyCategory/ap-2-3-7",
+            "fullName": "Animals & Pet Supplies > Pet Supplies > Dog Supplies > Dog Toys"
+          },
+          "tags": [
+            "New",
+            "wofyn",
+            "wofyn-toys"
+          ],
+          "seo": {
+            "title": "Twin Falcon Toy | Wofyn",
+            "description": "An easy-to-hold toy for interactive, supervised play."
+          },
+          "summary": {
+            "type": "multi_line_text_field",
+            "value": "An easy-to-hold toy for interactive, supervised play."
+          },
+          "publishedOnPublication": true,
+          "media": {
+            "nodes": [
+              {
+                "id": "gid://shopify/MediaImage/46523581792555",
+                "alt": "Twin Falcon Toy",
+                "status": "READY",
+                "image": {
+                  "url": "https://cdn.shopify.com/s/files/1/1024/2192/2091/files/wofyn-twin-falcon-toy.webp?v=1791605526"
+                }
+              },
+              {
+                "id": "gid://shopify/MediaImage/46524061155627",
+                "alt": "Twin Falcon Toy — dog using the product",
+                "status": "READY",
+                "image": {
+                  "url": "https://cdn.shopify.com/s/files/1/1024/2192/2091/files/wofyn-twin-falcon-toy-lifestyle.webp?v=1791606790"
+                }
+              },
+              {
+                "id": "gid://shopify/MediaImage/46524062892331",
+                "alt": "Twin Falcon Toy — angle left catalog view",
+                "status": "READY",
+                "image": {
+                  "url": "https://cdn.shopify.com/s/files/1/1024/2192/2091/files/wofyn-twin-falcon-toy-angle-left.webp?v=1791606798"
+                }
+              },
+              {
+                "id": "gid://shopify/MediaImage/46524066398507",
+                "alt": "Twin Falcon Toy — angle right catalog view",
+                "status": "READY",
+                "image": {
+                  "url": "https://cdn.shopify.com/s/files/1/1024/2192/2091/files/wofyn-twin-falcon-toy-angle-right.webp?v=1791606807"
+                }
+              }
+            ],
+            "pageInfo": {
+              "hasNextPage": false,
+              "endCursor": "eyJsYXN0X2lkIjo0NjUyNDA2NjM5ODUwNywibGFzdF92YWx1ZSI6IjQifQ=="
+            }
+          },
+          "variants": {
+            "nodes": [
+              {
+                "id": "gid://shopify/ProductVariant/67702109438251",
+                "title": "Default Title",
+                "price": "24.00",
+                "compareAtPrice": "39.00",
+                "inventoryQuantity": 20,
+                "media": {
+                  "nodes": [
+                    {
+                      "id": "gid://shopify/MediaImage/46523581792555"
+                    }
+                  ],
+                  "pageInfo": {
+                    "hasNextPage": false,
+                    "endCursor": "eyJsYXN0X2lkIjo0NjUyMzU4MTc5MjU1NSwibGFzdF92YWx1ZSI6NDY1MjM1ODE3OTI1NTV9"
+                  }
+                },
+                "secondary": {
+                  "type": "file_reference",
+                  "value": "gid://shopify/MediaImage/46524061155627"
+                }
+              }
+            ],
+            "pageInfo": {
+              "hasNextPage": false,
+              "endCursor": "eyJsYXN0X2lkIjo2NzcwMjEwOTQzODI1MSwibGFzdF92YWx1ZSI6MX0="
+            }
+          }
+        },
+        {
+          "id": "gid://shopify/Product/15415755571499",
+          "title": "Hard-Baked Sugrrrr Cookie",
+          "handle": "wofyn-hard-baked-sugrrrr-cookie",
+          "status": "ACTIVE",
+          "descriptionHtml": "<p>A cookie-shaped toy to brighten your dog's playtime.</p><h2>About this product</h2><p>A green and tan tree-shaped cookie-style toy.</p><p>A playful novelty shape in the Wofyn Toys collection. This is a toy, not an edible treat.</p><h2>Everyday use and care</h2><p>Supervise play and inspect the toy for damage. Follow the product care instructions and remove worn toys.</p>",
+          "category": {
+            "id": "gid://shopify/TaxonomyCategory/ap-2-3-7",
+            "fullName": "Animals & Pet Supplies > Pet Supplies > Dog Supplies > Dog Toys"
+          },
+          "tags": [
+            "New",
+            "wofyn",
+            "wofyn-toys"
+          ],
+          "seo": {
+            "title": "Hard-Baked Sugrrrr Cookie | Wofyn",
+            "description": "A cookie-shaped toy to brighten your dog's playtime."
+          },
+          "summary": {
+            "type": "multi_line_text_field",
+            "value": "A cookie-shaped toy to brighten your dog's playtime."
+          },
+          "publishedOnPublication": true,
+          "media": {
+            "nodes": [
+              {
+                "id": "gid://shopify/MediaImage/46523584839979",
+                "alt": "Hard-Baked Sugrrrr Cookie",
+                "status": "READY",
+                "image": {
+                  "url": "https://cdn.shopify.com/s/files/1/1024/2192/2091/files/wofyn-hard-baked-sugrrrr-cookie.webp?v=1791605534"
+                }
+              },
+              {
+                "id": "gid://shopify/MediaImage/46524069937451",
+                "alt": "Hard-Baked Sugrrrr Cookie — dog using the product",
+                "status": "READY",
+                "image": {
+                  "url": "https://cdn.shopify.com/s/files/1/1024/2192/2091/files/wofyn-hard-baked-sugrrrr-cookie-lifestyle.webp?v=1791606815"
+                }
+              },
+              {
+                "id": "gid://shopify/MediaImage/46524072067371",
+                "alt": "Hard-Baked Sugrrrr Cookie — angle left catalog view",
+                "status": "READY",
+                "image": {
+                  "url": "https://cdn.shopify.com/s/files/1/1024/2192/2091/files/wofyn-hard-baked-sugrrrr-cookie-angle-left.webp?v=1791606824"
+                }
+              },
+              {
+                "id": "gid://shopify/MediaImage/46524074787115",
+                "alt": "Hard-Baked Sugrrrr Cookie — angle right catalog view",
+                "status": "READY",
+                "image": {
+                  "url": "https://cdn.shopify.com/s/files/1/1024/2192/2091/files/wofyn-hard-baked-sugrrrr-cookie-angle-right.webp?v=1791606832"
+                }
+              }
+            ],
+            "pageInfo": {
+              "hasNextPage": false,
+              "endCursor": "eyJsYXN0X2lkIjo0NjUyNDA3NDc4NzExNSwibGFzdF92YWx1ZSI6IjQifQ=="
+            }
+          },
+          "variants": {
+            "nodes": [
+              {
+                "id": "gid://shopify/ProductVariant/67702110781739",
+                "title": "Default Title",
+                "price": "10.00",
+                "compareAtPrice": null,
+                "inventoryQuantity": 20,
+                "media": {
+                  "nodes": [
+                    {
+                      "id": "gid://shopify/MediaImage/46523584839979"
+                    }
+                  ],
+                  "pageInfo": {
+                    "hasNextPage": false,
+                    "endCursor": "eyJsYXN0X2lkIjo0NjUyMzU4NDgzOTk3OSwibGFzdF92YWx1ZSI6NDY1MjM1ODQ4Mzk5Nzl9"
+                  }
+                },
+                "secondary": {
+                  "type": "file_reference",
+                  "value": "gid://shopify/MediaImage/46524069937451"
+                }
+              }
+            ],
+            "pageInfo": {
+              "hasNextPage": false,
+              "endCursor": "eyJsYXN0X2lkIjo2NzcwMjExMDc4MTczOSwibGFzdF92YWx1ZSI6MX0="
+            }
+          }
+        },
+        {
+          "id": "gid://shopify/Product/15415755964715",
+          "title": "Playful Plush",
+          "handle": "wofyn-playful-plush",
+          "status": "ACTIVE",
+          "descriptionHtml": "<p>A cheerful plush companion for supervised playtime.</p><h2>About this product</h2><p>A yellow plush toy with a cheerful smiling face.</p><p>An addition to your dog's supervised play routine.</p><h2>Everyday use and care</h2><p>Keep play supervised, check the seams and surface regularly, and remove the toy when damaged.</p>",
+          "category": {
+            "id": "gid://shopify/TaxonomyCategory/ap-2-3-7",
+            "fullName": "Animals & Pet Supplies > Pet Supplies > Dog Supplies > Dog Toys"
+          },
+          "tags": [
+            "badge:Best Seller",
+            "Bestseller",
+            "wofyn",
+            "wofyn-toys"
+          ],
+          "seo": {
+            "title": "Playful Plush | Wofyn",
+            "description": "A cheerful plush companion for supervised playtime."
+          },
+          "summary": {
+            "type": "multi_line_text_field",
+            "value": "A cheerful plush companion for supervised playtime."
+          },
+          "publishedOnPublication": true,
+          "media": {
+            "nodes": [
+              {
+                "id": "gid://shopify/MediaImage/46523588182315",
+                "alt": "Playful Plush",
+                "status": "READY",
+                "image": {
+                  "url": "https://cdn.shopify.com/s/files/1/1024/2192/2091/files/wofyn-playful-plush.webp?v=1791605543"
+                }
+              },
+              {
+                "id": "gid://shopify/MediaImage/46524080259371",
+                "alt": "Playful Plush — dog using the product",
+                "status": "READY",
+                "image": {
+                  "url": "https://cdn.shopify.com/s/files/1/1024/2192/2091/files/wofyn-playful-plush-lifestyle.webp?v=1791606852"
+                }
+              },
+              {
+                "id": "gid://shopify/MediaImage/46524083405099",
+                "alt": "Playful Plush — angle left catalog view",
+                "status": "READY",
+                "image": {
+                  "url": "https://cdn.shopify.com/s/files/1/1024/2192/2091/files/wofyn-playful-plush-angle-left.webp?v=1791606862"
+                }
+              },
+              {
+                "id": "gid://shopify/MediaImage/46524084879659",
+                "alt": "Playful Plush — angle right catalog view",
+                "status": "READY",
+                "image": {
+                  "url": "https://cdn.shopify.com/s/files/1/1024/2192/2091/files/wofyn-playful-plush-angle-right.webp?v=1791606870"
+                }
+              }
+            ],
+            "pageInfo": {
+              "hasNextPage": false,
+              "endCursor": "eyJsYXN0X2lkIjo0NjUyNDA4NDg3OTY1OSwibGFzdF92YWx1ZSI6IjQifQ=="
+            }
+          },
+          "variants": {
+            "nodes": [
+              {
+                "id": "gid://shopify/ProductVariant/67702112715051",
+                "title": "Default Title",
+                "price": "15.00",
+                "compareAtPrice": null,
+                "inventoryQuantity": 20,
+                "media": {
+                  "nodes": [
+                    {
+                      "id": "gid://shopify/MediaImage/46523588182315"
+                    }
+                  ],
+                  "pageInfo": {
+                    "hasNextPage": false,
+                    "endCursor": "eyJsYXN0X2lkIjo0NjUyMzU4ODE4MjMxNSwibGFzdF92YWx1ZSI6NDY1MjM1ODgxODIzMTV9"
+                  }
+                },
+                "secondary": {
+                  "type": "file_reference",
+                  "value": "gid://shopify/MediaImage/46524080259371"
+                }
+              }
+            ],
+            "pageInfo": {
+              "hasNextPage": false,
+              "endCursor": "eyJsYXN0X2lkIjo2NzcwMjExMjcxNTA1MSwibGFzdF92YWx1ZSI6MX0="
+            }
+          }
+        }
+      ],
+      "pageInfo": {
+        "hasNextPage": false,
+        "endCursor": "eyJsYXN0X2lkIjoxNTQxNTc1NTk2NDcxNSwibGFzdF92YWx1ZSI6MTU0MTU3NTU5NjQ3MTV9"
+      }
+    },
+    "collections": {
+      "nodes": [
+        {
+          "id": "gid://shopify/Collection/534959849771",
+          "title": "Walks Wofyn",
+          "handle": "walks-wofyn",
+          "image": {
+            "url": "https://cdn.shopify.com/s/files/1/1024/2192/2091/collections/wofyn-collection-walks.webp?v=1791605361",
+            "altText": "Walks — Wofyn"
+          },
+          "publishedOnPublication": true,
+          "products": {
+            "nodes": [
+              {
+                "id": "gid://shopify/Product/15415751344427",
+                "handle": "wofyn-magic-link"
+              }
+            ],
+            "pageInfo": {
+              "hasNextPage": false,
+              "endCursor": "eyJsYXN0X2lkIjoxNTQxNTc1MTM0NDQyNywibGFzdF92YWx1ZSI6IjAwMDRueW04ZXF1In0="
+            }
+          }
+        },
+        {
+          "id": "gid://shopify/Collection/534959882539",
+          "title": "Bowls Wofyn",
+          "handle": "bowls-wofyn",
+          "image": {
+            "url": "https://cdn.shopify.com/s/files/1/1024/2192/2091/collections/wofyn-bowls.webp?v=1791605368",
+            "altText": "Bowls — Wofyn"
+          },
+          "publishedOnPublication": true,
+          "products": {
+            "nodes": [
+              {
+                "id": "gid://shopify/Product/15415751934251",
+                "handle": "wofyn-bowl"
+              }
+            ],
+            "pageInfo": {
+              "hasNextPage": false,
+              "endCursor": "eyJsYXN0X2lkIjoxNTQxNTc1MTkzNDI1MSwibGFzdF92YWx1ZSI6IjAwMDRueW04ZXF1In0="
+            }
+          }
+        },
+        {
+          "id": "gid://shopify/Collection/534959915307",
+          "title": "Beds Wofyn",
+          "handle": "beds-wofyn",
+          "image": {
+            "url": "https://cdn.shopify.com/s/files/1/1024/2192/2091/collections/wofyn-beds.webp?v=1791605374",
+            "altText": "Beds — Wofyn"
+          },
+          "publishedOnPublication": true,
+          "products": {
+            "nodes": [
+              {
+                "id": "gid://shopify/Product/15415751049515",
+                "handle": "wofyn-fable-modern-dog-crate"
+              }
+            ],
+            "pageInfo": {
+              "hasNextPage": false,
+              "endCursor": "eyJsYXN0X2lkIjoxNTQxNTc1MTA0OTUxNSwibGFzdF92YWx1ZSI6IjAwMDRueW04ZXF1In0="
+            }
+          }
+        },
+        {
+          "id": "gid://shopify/Collection/534959948075",
+          "title": "Toys Wofyn",
+          "handle": "toys-wofyn",
+          "image": {
+            "url": "https://cdn.shopify.com/s/files/1/1024/2192/2091/collections/wofyn-toys.webp?v=1791605380",
+            "altText": "Toys — Wofyn"
+          },
+          "publishedOnPublication": true,
+          "products": {
+            "nodes": [
+              {
+                "id": "gid://shopify/Product/15415753867563",
+                "handle": "wofyn-the-puffin-game"
+              },
+              {
+                "id": "gid://shopify/Product/15415754555691",
+                "handle": "wofyn-armadillo"
+              },
+              {
+                "id": "gid://shopify/Product/15415755014443",
+                "handle": "wofyn-chew-chain"
+              },
+              {
+                "id": "gid://shopify/Product/15415755342123",
+                "handle": "wofyn-twin-falcon-toy"
+              },
+              {
+                "id": "gid://shopify/Product/15415755571499",
+                "handle": "wofyn-hard-baked-sugrrrr-cookie"
+              },
+              {
+                "id": "gid://shopify/Product/15415755964715",
+                "handle": "wofyn-playful-plush"
+              }
+            ],
+            "pageInfo": {
+              "hasNextPage": false,
+              "endCursor": "eyJsYXN0X2lkIjoxNTQxNTc1NTk2NDcxNSwibGFzdF92YWx1ZSI6IjAwMHJ6cnBlZ2gwIn0="
+            }
+          }
+        },
+        {
+          "id": "gid://shopify/Collection/534959980843",
+          "title": "Foods Wofyn",
+          "handle": "foods-wofyn",
+          "image": {
+            "url": "https://cdn.shopify.com/s/files/1/1024/2192/2091/collections/wofyn-foods.webp?v=1791605386",
+            "altText": "Foods — Wofyn"
+          },
+          "publishedOnPublication": true,
+          "products": {
+            "nodes": [
+              {
+                "id": "gid://shopify/Product/15415751639339",
+                "handle": "wofyn-chicken-ancient-grains-recipe"
+              },
+              {
+                "id": "gid://shopify/Product/15415752687915",
+                "handle": "wofyn-beef-training-treats"
+              },
+              {
+                "id": "gid://shopify/Product/15415753015595",
+                "handle": "wofyn-freeze-dried-chicken-topper"
+              },
+              {
+                "id": "gid://shopify/Product/15415753343275",
+                "handle": "wofyn-cage-free-chicken-dog-food"
+              },
+              {
+                "id": "gid://shopify/Product/15415753539883",
+                "handle": "wofyn-atlantic-salmon-dog-food"
+              }
+            ],
+            "pageInfo": {
+              "hasNextPage": false,
+              "endCursor": "eyJsYXN0X2lkIjoxNTQxNTc1MzUzOTg4MywibGFzdF92YWx1ZSI6IjAwMG5idDM2MXE2In0="
+            }
+          }
+        },
+        {
+          "id": "gid://shopify/Collection/534960079147",
+          "title": "Top Picks Wofyn",
+          "handle": "top-picks-wofyn",
+          "image": {
+            "url": "https://cdn.shopify.com/s/files/1/1024/2192/2091/collections/wofyn-fable-modern-dog-crate.webp?v=1791605763",
+            "altText": "Top Picks"
+          },
+          "publishedOnPublication": true,
+          "products": {
+            "nodes": [
+              {
+                "id": "gid://shopify/Product/15415751049515",
+                "handle": "wofyn-fable-modern-dog-crate"
+              },
+              {
+                "id": "gid://shopify/Product/15415751344427",
+                "handle": "wofyn-magic-link"
+              },
+              {
+                "id": "gid://shopify/Product/15415751639339",
+                "handle": "wofyn-chicken-ancient-grains-recipe"
+              },
+              {
+                "id": "gid://shopify/Product/15415751934251",
+                "handle": "wofyn-bowl"
+              }
+            ],
+            "pageInfo": {
+              "hasNextPage": false,
+              "endCursor": "eyJsYXN0X2lkIjoxNTQxNTc1MTkzNDI1MSwibGFzdF92YWx1ZSI6IjAwMGludWd4bXpjIn0="
+            }
+          }
+        },
+        {
+          "id": "gid://shopify/Collection/534960111915",
+          "title": "Premium Dog Kibble Wofyn",
+          "handle": "premium-dog-kibble-wofyn",
+          "image": {
+            "url": "https://cdn.shopify.com/s/files/1/1024/2192/2091/collections/wofyn-foods_5af9d66d-5c5e-4e4a-9b51-4e0b33be20e6.webp?v=1791605770",
+            "altText": "Premium Dog Kibble"
+          },
+          "publishedOnPublication": true,
+          "products": {
+            "nodes": [
+              {
+                "id": "gid://shopify/Product/15415752687915",
+                "handle": "wofyn-beef-training-treats"
+              },
+              {
+                "id": "gid://shopify/Product/15415753015595",
+                "handle": "wofyn-freeze-dried-chicken-topper"
+              },
+              {
+                "id": "gid://shopify/Product/15415753343275",
+                "handle": "wofyn-cage-free-chicken-dog-food"
+              },
+              {
+                "id": "gid://shopify/Product/15415753539883",
+                "handle": "wofyn-atlantic-salmon-dog-food"
+              }
+            ],
+            "pageInfo": {
+              "hasNextPage": false,
+              "endCursor": "eyJsYXN0X2lkIjoxNTQxNTc1MzUzOTg4MywibGFzdF92YWx1ZSI6IjAwMGludWd4bXpjIn0="
+            }
+          }
+        },
+        {
+          "id": "gid://shopify/Collection/534960144683",
+          "title": "Shop All Wofyn",
+          "handle": "all-wofyn",
+          "image": {
+            "url": "https://cdn.shopify.com/s/files/1/1024/2192/2091/collections/wofyn-collection-walks_8bd8b4ed-98f9-4a2d-9125-5b272561ddfc.webp?v=1791605799",
+            "altText": "Wofyn"
+          },
+          "publishedOnPublication": true,
+          "products": {
+            "nodes": [
+              {
+                "id": "gid://shopify/Product/15415751049515",
+                "handle": "wofyn-fable-modern-dog-crate"
+              },
+              {
+                "id": "gid://shopify/Product/15415751344427",
+                "handle": "wofyn-magic-link"
+              },
+              {
+                "id": "gid://shopify/Product/15415751639339",
+                "handle": "wofyn-chicken-ancient-grains-recipe"
+              },
+              {
+                "id": "gid://shopify/Product/15415751934251",
+                "handle": "wofyn-bowl"
+              },
+              {
+                "id": "gid://shopify/Product/15415752687915",
+                "handle": "wofyn-beef-training-treats"
+              },
+              {
+                "id": "gid://shopify/Product/15415753015595",
+                "handle": "wofyn-freeze-dried-chicken-topper"
+              },
+              {
+                "id": "gid://shopify/Product/15415753343275",
+                "handle": "wofyn-cage-free-chicken-dog-food"
+              },
+              {
+                "id": "gid://shopify/Product/15415753539883",
+                "handle": "wofyn-atlantic-salmon-dog-food"
+              },
+              {
+                "id": "gid://shopify/Product/15415753867563",
+                "handle": "wofyn-the-puffin-game"
+              },
+              {
+                "id": "gid://shopify/Product/15415754555691",
+                "handle": "wofyn-armadillo"
+              },
+              {
+                "id": "gid://shopify/Product/15415755014443",
+                "handle": "wofyn-chew-chain"
+              },
+              {
+                "id": "gid://shopify/Product/15415755342123",
+                "handle": "wofyn-twin-falcon-toy"
+              },
+              {
+                "id": "gid://shopify/Product/15415755571499",
+                "handle": "wofyn-hard-baked-sugrrrr-cookie"
+              },
+              {
+                "id": "gid://shopify/Product/15415755964715",
+                "handle": "wofyn-playful-plush"
+              }
+            ],
+            "pageInfo": {
+              "hasNextPage": false,
+              "endCursor": "eyJsYXN0X2lkIjoxNTQxNTc1NTk2NDcxNSwibGFzdF92YWx1ZSI6IjAwMXRiZ245cWZvIn0="
+            }
+          }
+        },
+        {
+          "id": "gid://shopify/Collection/534960177451",
+          "title": "Sale Wofyn",
+          "handle": "sale-wofyn",
+          "image": {
+            "url": "https://cdn.shopify.com/s/files/1/1024/2192/2091/collections/wofyn-fable-modern-dog-crate_c31cf80d-7e74-4c63-bf51-33244eb80272.webp?v=1791605807",
+            "altText": "Wofyn Sale"
+          },
+          "publishedOnPublication": true,
+          "products": {
+            "nodes": [
+              {
+                "id": "gid://shopify/Product/15415751049515",
+                "handle": "wofyn-fable-modern-dog-crate"
+              },
+              {
+                "id": "gid://shopify/Product/15415755342123",
+                "handle": "wofyn-twin-falcon-toy"
+              }
+            ],
+            "pageInfo": {
+              "hasNextPage": false,
+              "endCursor": "eyJsYXN0X2lkIjoxNTQxNTc1NTM0MjEyMywibGFzdF92YWx1ZSI6IjAwMDlieDhndGhvIn0="
+            }
+          }
+        }
+      ]
+    },
+    "blogs": {
+      "nodes": [
+        {
+          "id": "gid://shopify/Blog/125840523563",
+          "title": "Wofyn",
+          "handle": "wofyn",
+          "articles": {
+            "nodes": [
+              {
+                "id": "gid://shopify/Article/633739182379",
+                "title": "Smart Nutrition, Simple Living",
+                "handle": "wofyn-smart-nutrition-simple-living",
+                "blog": {
+                  "id": "gid://shopify/Blog/125840523563",
+                  "title": "Wofyn",
+                  "handle": "wofyn"
+                },
+                "body": "<p>Because feeding your pet well should be as easy as it is healthy.</p><h2>Keep the routine simple</h2><p>Store food according to the label, use a dedicated scoop, and keep feeding essentials in one convenient place. A regular routine makes it easier to prepare each meal and keep track of what your dog enjoys.</p><h2>Add a little variety</h2><p>Explore a Freeze-Dried Chicken Topper or Beef Training Treats alongside your dog's usual meal routine. Read the label for serving guidance and keep treats within your dog's overall daily food allowance.</p><h2>Thoughtful essentials, less fuss</h2><p>Browse <a href=\"/collections/foods-wofyn\">Wofyn Foods</a> and <a href=\"/collections/bowls-wofyn\">Wofyn Bowls</a> for the essentials that fit your everyday life together.</p>",
+                "summary": "<p>Because feeding your pet well should be as easy as it is healthy.</p>",
+                "image": {
+                  "url": "https://cdn.shopify.com/s/files/1/1024/2192/2091/articles/wofyn-smart-nutrition-simple-living.webp?v=1791605715",
+                  "altText": "Smart Nutrition, Simple Living"
+                },
+                "isPublished": true,
+                "publishedAt": "2025-10-29T12:00:00Z",
+                "seoTitle": {
+                  "value": "Smart Nutrition, Simple Living | Wofyn"
+                },
+                "seoDescription": {
+                  "value": "Because feeding your pet well should be as easy as it is healthy."
+                }
+              },
+              {
+                "id": "gid://shopify/Article/633739215147",
+                "title": "Nourishment They Deserve",
+                "handle": "wofyn-nourishment-they-deserve",
+                "blog": {
+                  "id": "gid://shopify/Blog/125840523563",
+                  "title": "Wofyn",
+                  "handle": "wofyn"
+                },
+                "body": "<p>Every bowl is filled with real, wholesome ingredients — crafted to support your pet’s health, happiness, and everyday energy.</p><h2>Make mealtime a moment together</h2><p>A calm place to eat, a familiar bowl, and a steady daily routine help make feeding time feel simple. Keep fresh water nearby and clean food and water bowls regularly.</p><h2>Explore their everyday essentials</h2><p>Discover the Chicken &amp; Ancient Grains Recipe, Cage-Free Chicken Dog Food and Atlantic Salmon Dog Food in <a href=\"/collections/foods-wofyn\">Wofyn Foods</a>. Follow each product's feeding directions and choose food appropriate to your dog's age and needs.</p><h2>A bowl for every routine</h2><p>Complete the setup with an everyday bowl from <a href=\"/collections/bowls-wofyn\">Wofyn Bowls</a>. Keep the feeding area easy to reach and comfortable for your pet.</p>",
+                "summary": "<p>Every bowl is filled with real, wholesome ingredients — crafted to support your pet’s health, happiness, and everyday energy.</p>",
+                "image": {
+                  "url": "https://cdn.shopify.com/s/files/1/1024/2192/2091/articles/wofyn-nourishment-they-deserve.webp?v=1791605720",
+                  "altText": "Nourishment They Deserve"
+                },
+                "isPublished": true,
+                "publishedAt": "2025-10-29T12:00:00Z",
+                "seoTitle": {
+                  "value": "Nourishment They Deserve | Wofyn"
+                },
+                "seoDescription": {
+                  "value": "Every bowl is filled with real, wholesome ingredients — crafted to support your pet’s health, happiness, and everyday energy."
+                }
+              },
+              {
+                "id": "gid://shopify/Article/633739247915",
+                "title": "Play Time, All the Time",
+                "handle": "wofyn-play-time-all-the-time",
+                "blog": {
+                  "id": "gid://shopify/Blog/125840523563",
+                  "title": "Wofyn",
+                  "handle": "wofyn"
+                },
+                "body": "<p>Keep tails wagging with durable toys made for fun, exercise, and endless happy moments together.</p><h2>Make room for everyday play</h2><p>A few moments of play can turn an ordinary day into time well spent together. Alternate a gentle game of fetch with a toy your dog can explore at their own pace.</p><h2>A little variety goes a long way</h2><p>Keep a small rotation of toys so there is always something interesting to discover. Choose a size and style suited to your dog, supervise each session, and put away toys that become damaged.</p><h2>Find their next favourite</h2><p>Explore <a href=\"/collections/toys-wofyn\">Wofyn Toys</a>, from the Puffin Game and Armadillo to Chew Chain and Playful Plush.</p>",
+                "summary": "<p>Keep tails wagging with durable toys made for fun, exercise, and endless happy moments together.</p>",
+                "image": {
+                  "url": "https://cdn.shopify.com/s/files/1/1024/2192/2091/articles/wofyn-play-time-all-the-time.webp?v=1791605727",
+                  "altText": "Play Time, All the Time"
+                },
+                "isPublished": true,
+                "publishedAt": "2025-10-29T12:00:00Z",
+                "seoTitle": {
+                  "value": "Play Time, All the Time | Wofyn"
+                },
+                "seoDescription": {
+                  "value": "Keep tails wagging with durable toys made for fun, exercise, and endless happy moments together."
+                }
+              }
+            ],
+            "pageInfo": {
+              "hasNextPage": false,
+              "endCursor": "eyJsYXN0X2lkIjo2MzM3MzkyNDc5MTUsImxhc3RfdmFsdWUiOiI2MzM3MzkyNDc5MTUifQ=="
+            }
+          }
+        }
+      ],
+      "pageInfo": {
+        "hasNextPage": false,
+        "endCursor": "eyJsYXN0X2lkIjoxMjU4NDA1MjM1NjMsImxhc3RfdmFsdWUiOiIxMjU4NDA1MjM1NjMifQ=="
+      }
+    }
+  },
+  "mediaUploads": {
+    "magic-link-lifestyle": {
+      "url": "https://cdn.shopify.com/s/files/1/1024/2192/2091/files/wofyn-magic-link-lifestyle.webp?v=1791606609",
+      "fileId": "gid://shopify/MediaImage/46524010758443",
+      "filename": "wofyn-magic-link-lifestyle.webp",
+      "alt": "Magic Link — dog using the product"
+    },
+    "magic-link-angle-left": {
+      "url": "https://cdn.shopify.com/s/files/1/1024/2192/2091/files/wofyn-magic-link-angle-left.webp?v=1791606617",
+      "fileId": "gid://shopify/MediaImage/46524012462379",
+      "filename": "wofyn-magic-link-angle-left.webp",
+      "alt": "Magic Link — angle left catalog view"
+    },
+    "magic-link-angle-right": {
+      "url": "https://cdn.shopify.com/s/files/1/1024/2192/2091/files/wofyn-magic-link-angle-right.webp?v=1791606627",
+      "fileId": "gid://shopify/MediaImage/46524015739179",
+      "filename": "wofyn-magic-link-angle-right.webp",
+      "alt": "Magic Link — angle right catalog view"
+    },
+    "chicken-ancient-grains-recipe-lifestyle": {
+      "url": "https://cdn.shopify.com/s/files/1/1024/2192/2091/files/wofyn-chicken-ancient-grains-recipe-lifestyle.webp?v=1791606635",
+      "fileId": "gid://shopify/MediaImage/46524018458923",
+      "filename": "wofyn-chicken-ancient-grains-recipe-lifestyle.webp",
+      "alt": "Chicken & Ancient Grains Recipe — dog using the product"
+    },
+    "chicken-ancient-grains-recipe-angle-left": {
+      "url": "https://cdn.shopify.com/s/files/1/1024/2192/2091/files/wofyn-chicken-ancient-grains-recipe-angle-left.webp?v=1791606643",
+      "fileId": "gid://shopify/MediaImage/46524020359467",
+      "filename": "wofyn-chicken-ancient-grains-recipe-angle-left.webp",
+      "alt": "Chicken & Ancient Grains Recipe — angle left catalog view"
+    },
+    "chicken-ancient-grains-recipe-angle-right": {
+      "url": "https://cdn.shopify.com/s/files/1/1024/2192/2091/files/wofyn-chicken-ancient-grains-recipe-angle-right.webp?v=1791606652",
+      "fileId": "gid://shopify/MediaImage/46524023079211",
+      "filename": "wofyn-chicken-ancient-grains-recipe-angle-right.webp",
+      "alt": "Chicken & Ancient Grains Recipe — angle right catalog view"
+    },
+    "bowl-lifestyle": {
+      "url": "https://cdn.shopify.com/s/files/1/1024/2192/2091/files/wofyn-bowl-lifestyle.webp?v=1791606666",
+      "fileId": "gid://shopify/MediaImage/46524026814763",
+      "filename": "wofyn-bowl-lifestyle.webp",
+      "alt": "Bowl — dog using the product"
+    },
+    "bowl-angle-left": {
+      "url": "https://cdn.shopify.com/s/files/1/1024/2192/2091/files/wofyn-bowl-angle-left.webp?v=1791606675",
+      "fileId": "gid://shopify/MediaImage/46524028813611",
+      "filename": "wofyn-bowl-angle-left.webp",
+      "alt": "Bowl — angle left catalog view"
+    },
+    "bowl-angle-right": {
+      "url": "https://cdn.shopify.com/s/files/1/1024/2192/2091/files/wofyn-bowl-angle-right.webp?v=1791606683",
+      "fileId": "gid://shopify/MediaImage/46524030812459",
+      "filename": "wofyn-bowl-angle-right.webp",
+      "alt": "Bowl — angle right catalog view"
+    },
+    "beef-training-treats-lifestyle": {
+      "url": "https://cdn.shopify.com/s/files/1/1024/2192/2091/files/wofyn-beef-training-treats-lifestyle.webp?v=1791606692",
+      "fileId": "gid://shopify/MediaImage/46524033728811",
+      "filename": "wofyn-beef-training-treats-lifestyle.webp",
+      "alt": "Beef Training Treats — dog using the product"
+    },
+    "beef-training-treats-angle-left": {
+      "url": "https://cdn.shopify.com/s/files/1/1024/2192/2091/files/wofyn-beef-training-treats-angle-left.webp?v=1791606700",
+      "fileId": "gid://shopify/MediaImage/46524035891499",
+      "filename": "wofyn-beef-training-treats-angle-left.webp",
+      "alt": "Beef Training Treats — angle left catalog view"
+    },
+    "beef-training-treats-angle-right": {
+      "url": "https://cdn.shopify.com/s/files/1/1024/2192/2091/files/wofyn-beef-training-treats-angle-right.webp?v=1791606709",
+      "fileId": "gid://shopify/MediaImage/46524037300523",
+      "filename": "wofyn-beef-training-treats-angle-right.webp",
+      "alt": "Beef Training Treats — angle right catalog view"
+    },
+    "freeze-dried-chicken-topper-lifestyle": {
+      "url": "https://cdn.shopify.com/s/files/1/1024/2192/2091/files/wofyn-freeze-dried-chicken-topper-lifestyle.webp?v=1791606724",
+      "fileId": "gid://shopify/MediaImage/46524043034923",
+      "filename": "wofyn-freeze-dried-chicken-topper-lifestyle.webp",
+      "alt": "Freeze-Dried Chicken Topper — dog using the product"
+    },
+    "freeze-dried-chicken-topper-angle-left": {
+      "url": "https://cdn.shopify.com/s/files/1/1024/2192/2091/files/wofyn-freeze-dried-chicken-topper-angle-left.webp?v=1791606732",
+      "fileId": "gid://shopify/MediaImage/46524044968235",
+      "filename": "wofyn-freeze-dried-chicken-topper-angle-left.webp",
+      "alt": "Freeze-Dried Chicken Topper — angle left catalog view"
+    },
+    "freeze-dried-chicken-topper-angle-right": {
+      "url": "https://cdn.shopify.com/s/files/1/1024/2192/2091/files/wofyn-freeze-dried-chicken-topper-angle-right.webp?v=1791606739",
+      "fileId": "gid://shopify/MediaImage/46524046868779",
+      "filename": "wofyn-freeze-dried-chicken-topper-angle-right.webp",
+      "alt": "Freeze-Dried Chicken Topper — angle right catalog view"
+    },
+    "chew-chain-lifestyle": {
+      "url": "https://cdn.shopify.com/s/files/1/1024/2192/2091/files/wofyn-chew-chain-lifestyle.webp?v=1791606747",
+      "fileId": "gid://shopify/MediaImage/46524049064235",
+      "filename": "wofyn-chew-chain-lifestyle.webp",
+      "alt": "Chew Chain — dog using the product"
+    },
+    "chew-chain-angle-left": {
+      "url": "https://cdn.shopify.com/s/files/1/1024/2192/2091/files/wofyn-chew-chain-angle-left.webp?v=1791606756",
+      "fileId": "gid://shopify/MediaImage/46524051390763",
+      "filename": "wofyn-chew-chain-angle-left.webp",
+      "alt": "Chew Chain — angle left catalog view"
+    },
+    "chew-chain-angle-right": {
+      "url": "https://cdn.shopify.com/s/files/1/1024/2192/2091/files/wofyn-chew-chain-angle-right.webp?v=1791606766",
+      "fileId": "gid://shopify/MediaImage/46524054765867",
+      "filename": "wofyn-chew-chain-angle-right.webp",
+      "alt": "Chew Chain — angle right catalog view"
+    },
+    "twin-falcon-toy-lifestyle": {
+      "url": "https://cdn.shopify.com/s/files/1/1024/2192/2091/files/wofyn-twin-falcon-toy-lifestyle.webp?v=1791606790",
+      "fileId": "gid://shopify/MediaImage/46524061155627",
+      "filename": "wofyn-twin-falcon-toy-lifestyle.webp",
+      "alt": "Twin Falcon Toy — dog using the product"
+    },
+    "twin-falcon-toy-angle-left": {
+      "url": "https://cdn.shopify.com/s/files/1/1024/2192/2091/files/wofyn-twin-falcon-toy-angle-left.webp?v=1791606798",
+      "fileId": "gid://shopify/MediaImage/46524062892331",
+      "filename": "wofyn-twin-falcon-toy-angle-left.webp",
+      "alt": "Twin Falcon Toy — angle left catalog view"
+    },
+    "twin-falcon-toy-angle-right": {
+      "url": "https://cdn.shopify.com/s/files/1/1024/2192/2091/files/wofyn-twin-falcon-toy-angle-right.webp?v=1791606807",
+      "fileId": "gid://shopify/MediaImage/46524066398507",
+      "filename": "wofyn-twin-falcon-toy-angle-right.webp",
+      "alt": "Twin Falcon Toy — angle right catalog view"
+    },
+    "hard-baked-sugrrrr-cookie-lifestyle": {
+      "url": "https://cdn.shopify.com/s/files/1/1024/2192/2091/files/wofyn-hard-baked-sugrrrr-cookie-lifestyle.webp?v=1791606815",
+      "fileId": "gid://shopify/MediaImage/46524069937451",
+      "filename": "wofyn-hard-baked-sugrrrr-cookie-lifestyle.webp",
+      "alt": "Hard-Baked Sugrrrr Cookie — dog using the product"
+    },
+    "hard-baked-sugrrrr-cookie-angle-left": {
+      "url": "https://cdn.shopify.com/s/files/1/1024/2192/2091/files/wofyn-hard-baked-sugrrrr-cookie-angle-left.webp?v=1791606824",
+      "fileId": "gid://shopify/MediaImage/46524072067371",
+      "filename": "wofyn-hard-baked-sugrrrr-cookie-angle-left.webp",
+      "alt": "Hard-Baked Sugrrrr Cookie — angle left catalog view"
+    },
+    "hard-baked-sugrrrr-cookie-angle-right": {
+      "url": "https://cdn.shopify.com/s/files/1/1024/2192/2091/files/wofyn-hard-baked-sugrrrr-cookie-angle-right.webp?v=1791606832",
+      "fileId": "gid://shopify/MediaImage/46524074787115",
+      "filename": "wofyn-hard-baked-sugrrrr-cookie-angle-right.webp",
+      "alt": "Hard-Baked Sugrrrr Cookie — angle right catalog view"
+    },
+    "playful-plush-lifestyle": {
+      "url": "https://cdn.shopify.com/s/files/1/1024/2192/2091/files/wofyn-playful-plush-lifestyle.webp?v=1791606852",
+      "fileId": "gid://shopify/MediaImage/46524080259371",
+      "filename": "wofyn-playful-plush-lifestyle.webp",
+      "alt": "Playful Plush — dog using the product"
+    },
+    "playful-plush-angle-left": {
+      "url": "https://cdn.shopify.com/s/files/1/1024/2192/2091/files/wofyn-playful-plush-angle-left.webp?v=1791606862",
+      "fileId": "gid://shopify/MediaImage/46524083405099",
+      "filename": "wofyn-playful-plush-angle-left.webp",
+      "alt": "Playful Plush — angle left catalog view"
+    },
+    "playful-plush-angle-right": {
+      "url": "https://cdn.shopify.com/s/files/1/1024/2192/2091/files/wofyn-playful-plush-angle-right.webp?v=1791606870",
+      "fileId": "gid://shopify/MediaImage/46524084879659",
+      "filename": "wofyn-playful-plush-angle-right.webp",
+      "alt": "Playful Plush — angle right catalog view"
+    },
+    "cage-free-chicken-dog-food-lifestyle": {
+      "url": "https://cdn.shopify.com/s/files/1/1024/2192/2091/files/wofyn-cage-free-chicken-dog-food-lifestyle.webp?v=1791606879",
+      "fileId": "gid://shopify/MediaImage/46524087140651",
+      "filename": "wofyn-cage-free-chicken-dog-food-lifestyle.webp",
+      "alt": "Cage-Free Chicken Dog Food — dog using the product"
+    },
+    "cage-free-chicken-dog-food-angle-left": {
+      "url": "https://cdn.shopify.com/s/files/1/1024/2192/2091/files/wofyn-cage-free-chicken-dog-food-angle-left.webp?v=1791606887",
+      "fileId": "gid://shopify/MediaImage/46524089532715",
+      "filename": "wofyn-cage-free-chicken-dog-food-angle-left.webp",
+      "alt": "Cage-Free Chicken Dog Food — angle left catalog view"
+    },
+    "cage-free-chicken-dog-food-angle-right": {
+      "url": "https://cdn.shopify.com/s/files/1/1024/2192/2091/files/wofyn-cage-free-chicken-dog-food-angle-right.webp?v=1791606898",
+      "fileId": "gid://shopify/MediaImage/46524092252459",
+      "filename": "wofyn-cage-free-chicken-dog-food-angle-right.webp",
+      "alt": "Cage-Free Chicken Dog Food — angle right catalog view"
+    },
+    "atlantic-salmon-dog-food-lifestyle": {
+      "url": "https://cdn.shopify.com/s/files/1/1024/2192/2091/files/wofyn-atlantic-salmon-dog-food-lifestyle.webp?v=1791606916",
+      "fileId": "gid://shopify/MediaImage/46524097462571",
+      "filename": "wofyn-atlantic-salmon-dog-food-lifestyle.webp",
+      "alt": "Atlantic Salmon Dog Food — dog using the product"
+    },
+    "atlantic-salmon-dog-food-angle-left": {
+      "url": "https://cdn.shopify.com/s/files/1/1024/2192/2091/files/wofyn-atlantic-salmon-dog-food-angle-left.webp?v=1791607038",
+      "fileId": "gid://shopify/MediaImage/46524134162731",
+      "filename": "wofyn-atlantic-salmon-dog-food-angle-left.webp",
+      "alt": "Atlantic Salmon Dog Food — left catalog view"
+    },
+    "atlantic-salmon-dog-food-angle-right": {
+      "url": "https://cdn.shopify.com/s/files/1/1024/2192/2091/files/wofyn-atlantic-salmon-dog-food-angle-right.webp?v=1791607102",
+      "fileId": "gid://shopify/MediaImage/46524156608811",
+      "filename": "wofyn-atlantic-salmon-dog-food-angle-right.webp",
+      "alt": "Atlantic Salmon Dog Food — angle right catalog view"
+    },
+    "the-puffin-game-lifestyle": {
+      "url": "https://cdn.shopify.com/s/files/1/1024/2192/2091/files/wofyn-the-puffin-game-lifestyle.webp?v=1791607437",
+      "fileId": "gid://shopify/MediaImage/46524271067435",
+      "filename": "wofyn-the-puffin-game-lifestyle.webp",
+      "alt": "The Puffin Game — dog using the product"
+    },
+    "the-puffin-game-angle-left": {
+      "url": "https://cdn.shopify.com/s/files/1/1024/2192/2091/files/wofyn-the-puffin-game-angle-left.webp?v=1791607447",
+      "fileId": "gid://shopify/MediaImage/46524274442539",
+      "filename": "wofyn-the-puffin-game-angle-left.webp",
+      "alt": "The Puffin Game — angle left catalog view"
+    },
+    "the-puffin-game-angle-right": {
+      "url": "https://cdn.shopify.com/s/files/1/1024/2192/2091/files/wofyn-the-puffin-game-angle-right.webp?v=1791607457",
+      "fileId": "gid://shopify/MediaImage/46524278735147",
+      "filename": "wofyn-the-puffin-game-angle-right.webp",
+      "alt": "The Puffin Game — angle right catalog view"
+    },
+    "armadillo-lifestyle": {
+      "url": "https://cdn.shopify.com/s/files/1/1024/2192/2091/files/wofyn-armadillo-lifestyle.webp?v=1791607468",
+      "fileId": "gid://shopify/MediaImage/46524283388203",
+      "filename": "wofyn-armadillo-lifestyle.webp",
+      "alt": "Armadillo — dog using the product"
+    },
+    "armadillo-angle-left": {
+      "url": "https://cdn.shopify.com/s/files/1/1024/2192/2091/files/wofyn-armadillo-angle-left.webp?v=1791607496",
+      "fileId": "gid://shopify/MediaImage/46524295545131",
+      "filename": "wofyn-armadillo-angle-left.webp",
+      "alt": "Armadillo — angle left catalog view"
+    },
+    "armadillo-angle-right": {
+      "url": "https://cdn.shopify.com/s/files/1/1024/2192/2091/files/wofyn-armadillo-angle-right.webp?v=1791607502",
+      "fileId": "gid://shopify/MediaImage/46524298002731",
+      "filename": "wofyn-armadillo-angle-right.webp",
+      "alt": "Armadillo — angle right catalog view"
+    }
+  },
+  "resourceTemplateCleanup": [
+    {
+      "file": "templates/collection.json",
+      "path": [
+        "sections",
+        "main",
+        "blocks",
+        "products",
+        "blocks",
+        "reference_promo",
+        "disabled"
+      ],
+      "value": true
+    },
+    {
+      "file": "templates/collection.json",
+      "path": [
+        "sections",
+        "press",
+        "disabled"
+      ],
+      "value": true
+    },
+    {
+      "file": "templates/collection.json",
+      "path": [
+        "sections",
+        "image_cards",
+        "disabled"
+      ],
+      "value": true
+    },
+    {
+      "file": "templates/collection.json",
+      "path": [
+        "sections",
+        "featured",
+        "blocks",
+        "product-list",
+        "settings",
+        "collection"
+      ],
+      "value": "all-wofyn"
+    },
+    {
+      "file": "templates/product.json",
+      "path": [
+        "sections",
+        "main",
+        "blocks",
+        "product-details",
+        "blocks",
+        "benefits",
+        "disabled"
+      ],
+      "value": true
+    },
+    {
+      "file": "templates/product.json",
+      "path": [
+        "sections",
+        "main",
+        "blocks",
+        "product-details",
+        "blocks",
+        "testimonial",
+        "disabled"
+      ],
+      "value": true
+    },
+    {
+      "file": "templates/product.json",
+      "path": [
+        "sections",
+        "main",
+        "blocks",
+        "product-details",
+        "blocks",
+        "contact-callout",
+        "disabled"
+      ],
+      "value": true
+    }
+  ]
+}

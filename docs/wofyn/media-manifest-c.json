@@ -1,0 +1,279 @@
+{
+  "status": "complete",
+  "tool": "built-in image_gen",
+  "agentModel": "gpt-6.1-sol",
+  "reasoningEffort": "low",
+  "conversion": {
+    "format": "WebP",
+    "quality": 92,
+    "maxEdge": 1600
+  },
+  "generatedCount": 12,
+  "sourceCatalogCount": 4,
+  "assets": [
+    {
+      "slug": "chew-chain",
+      "kind": "lifestyle",
+      "prompt": "Use case: photorealistic-natural. Create one square lifestyle product photograph referencing this EXACT dog toy: lavender three interlinked soft plush rounded links: left ribbed fabric oval ring, middle boucl\u00e9 fleece link with small matching fabric tab, right furry oval ring; preserve exactly three links and their textures. A medium terrier lies on a cream rug gently gripping only the right plush ring at its outer edge, while an adult owner's visible hand loosely holds the left ring for supervised gentle interaction. Most of all three links fully visible between mouth and hand, natural feasible contact and realistic toy proportions. Warm daylight living room. Preserve exact color construction shape and materials, no extra links, no floating objects, no text overlay, no collage.",
+      "generatedPath": "/Users/chieutrinh/.codex/generated_images/01a12409-b55b-7090-a189-5eed139dc114/exec-c858e1aa-9a1e-4bbf-9e1b-329a4f0b79eb.png",
+      "sourceReference": "/private/tmp/wofyn-catalog/wofyn-chew-chain.webp",
+      "catalogPath": "/Users/chieutrinh/Documents/GitHub/lh-template-demo/output/wofyn-product-media/wofyn-chew-chain-catalog.webp",
+      "savedGeneratedSource": "/Users/chieutrinh/Documents/GitHub/lh-template-demo/output/wofyn-product-media/wofyn-chew-chain-lifestyle-source.png",
+      "path": "/Users/chieutrinh/Documents/GitHub/lh-template-demo/output/wofyn-product-media/wofyn-chew-chain-lifestyle.webp",
+      "qa": {
+        "status": "pass",
+        "visuallyInspected": true,
+        "identity": "Source shape, color, proportions and visible materials retained; modest alternate front views avoid invented backside features.",
+        "interaction": "Dog visibly grips/mouths toy with plausible contact; adult hand visible for supervision; toy remains recognizable.",
+        "repairsRequired": false
+      },
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "bytes": 283816
+    },
+    {
+      "slug": "chew-chain",
+      "kind": "angle-left",
+      "prompt": "Use case: product-mockup. One square professional catalog photo of the EXACT reference dog toy: lavender three interlinked soft plush rounded links: left ribbed fabric oval ring, middle boucl\u00e9 fleece link with small matching fabric tab, right furry oval ring; preserve exactly three links and their textures. Input image is identity reference. Show a modest front-left elevated three-quarter perspective differing from source, product fills 65% square frame, fully visible on pure white seamless background and soft realistic contact shadow. Keep original arrangement, exact shape color materials proportions and visible detailing. Only reveal source-verifiable surfaces; no invented backside, no extra parts, no collage, no overlay.",
+      "generatedPath": "/Users/chieutrinh/.codex/generated_images/01a12409-b55b-7090-a189-5eed139dc114/exec-e9aa2b46-e6a0-4627-b81e-58302565baa5.png",
+      "sourceReference": "/private/tmp/wofyn-catalog/wofyn-chew-chain.webp",
+      "catalogPath": "/Users/chieutrinh/Documents/GitHub/lh-template-demo/output/wofyn-product-media/wofyn-chew-chain-catalog.webp",
+      "savedGeneratedSource": "/Users/chieutrinh/Documents/GitHub/lh-template-demo/output/wofyn-product-media/wofyn-chew-chain-angle-left-source.png",
+      "path": "/Users/chieutrinh/Documents/GitHub/lh-template-demo/output/wofyn-product-media/wofyn-chew-chain-angle-left.webp",
+      "qa": {
+        "status": "pass",
+        "visuallyInspected": true,
+        "identity": "Source shape, color, proportions and visible materials retained; modest alternate front views avoid invented backside features.",
+        "interaction": "Catalog angle differs from source and other supplementary view; white background, square frame, full toy visible.",
+        "repairsRequired": false
+      },
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "bytes": 157548
+    },
+    {
+      "slug": "chew-chain",
+      "kind": "angle-right",
+      "prompt": "Use case: product-mockup. One square professional catalog photograph of EXACT reference dog toy: lavender three interlinked soft plush rounded links: left ribbed fabric oval ring, middle boucl\u00e9 fleece link with small matching fabric tab, right furry oval ring; preserve exactly three links and their textures. Show modest elevated front-RIGHT view, camera about 30 degrees above surface and 20 degrees right of source perspective; left ribbed link slightly recedes and right furry link is nearer, central link still visible. Full object on pure white seamless background soft shadow. Preserve original link arrangement, proportions, color, materials. No new details on hidden surfaces, no collage or overlay.",
+      "generatedPath": "/Users/chieutrinh/.codex/generated_images/01a12409-b55b-7090-a189-5eed139dc114/exec-30436f26-0d65-4273-8888-19987b9de4a8.png",
+      "sourceReference": "/private/tmp/wofyn-catalog/wofyn-chew-chain.webp",
+      "catalogPath": "/Users/chieutrinh/Documents/GitHub/lh-template-demo/output/wofyn-product-media/wofyn-chew-chain-catalog.webp",
+      "savedGeneratedSource": "/Users/chieutrinh/Documents/GitHub/lh-template-demo/output/wofyn-product-media/wofyn-chew-chain-angle-right-source.png",
+      "path": "/Users/chieutrinh/Documents/GitHub/lh-template-demo/output/wofyn-product-media/wofyn-chew-chain-angle-right.webp",
+      "qa": {
+        "status": "pass",
+        "visuallyInspected": true,
+        "identity": "Source shape, color, proportions and visible materials retained; modest alternate front views avoid invented backside features.",
+        "interaction": "Catalog angle differs from source and other supplementary view; white background, square frame, full toy visible.",
+        "repairsRequired": false
+      },
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "bytes": 126484
+    },
+    {
+      "slug": "twin-falcon-toy",
+      "kind": "lifestyle",
+      "prompt": "Use case: photorealistic-natural. Square product lifestyle photo. EXACT reference dog toy: deep muted green rubber double open circular rings joined by a short chunky central bridge marked small fable lettering, each ring has one narrow opening; exact source smooth rounded form. A relaxed medium dog lies on cream rug gently holding the outer arc of one green ring between its teeth, while an adult hand supports the opposite ring loosely for supervised play. Keep both open rings visible, central bridge visible, original openings unchanged. Toy realistically spans about two dog-muzzle widths. Natural physical mouth contact only on one ring, no chewing through, no deformation, no added ring or rope. Warm daylight, attractive living room, no overlay or collage.",
+      "generatedPath": "/Users/chieutrinh/.codex/generated_images/01a12409-b55b-7090-a189-5eed139dc114/exec-4092eeff-fcff-4db1-900a-3ce0b1c24386.png",
+      "sourceReference": "/private/tmp/wofyn-catalog/wofyn-twin-falcon-toy.webp",
+      "catalogPath": "/Users/chieutrinh/Documents/GitHub/lh-template-demo/output/wofyn-product-media/wofyn-twin-falcon-toy-catalog.webp",
+      "savedGeneratedSource": "/Users/chieutrinh/Documents/GitHub/lh-template-demo/output/wofyn-product-media/wofyn-twin-falcon-toy-lifestyle-source.png",
+      "path": "/Users/chieutrinh/Documents/GitHub/lh-template-demo/output/wofyn-product-media/wofyn-twin-falcon-toy-lifestyle.webp",
+      "qa": {
+        "status": "pass",
+        "visuallyInspected": true,
+        "identity": "Source shape, color, proportions and visible materials retained; modest alternate front views avoid invented backside features.",
+        "interaction": "Dog visibly grips/mouths toy with plausible contact; adult hand visible for supervision; toy remains recognizable.",
+        "repairsRequired": false
+      },
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "bytes": 243278
+    },
+    {
+      "slug": "twin-falcon-toy",
+      "kind": "angle-left",
+      "prompt": "Use case: product-mockup. Square single catalog product photo of EXACT source: deep muted green rubber double open circular rings joined by a short chunky central bridge marked small fable lettering, each ring has one narrow opening; exact source smooth rounded form. Show modest front-left elevated three-quarter view, preserving BOTH narrow openings, green smooth rubber, short central bridge and fable lettering. Full object centered on pure white seamless background soft shadow, 65% frame. Camera shifted 25 degrees left from reference; no backside invented, no ropes, no closed rings, no collage or overlay.",
+      "generatedPath": "/Users/chieutrinh/.codex/generated_images/01a12409-b55b-7090-a189-5eed139dc114/exec-f6577254-3fd4-488d-aef4-6d749c975381.png",
+      "sourceReference": "/private/tmp/wofyn-catalog/wofyn-twin-falcon-toy.webp",
+      "catalogPath": "/Users/chieutrinh/Documents/GitHub/lh-template-demo/output/wofyn-product-media/wofyn-twin-falcon-toy-catalog.webp",
+      "savedGeneratedSource": "/Users/chieutrinh/Documents/GitHub/lh-template-demo/output/wofyn-product-media/wofyn-twin-falcon-toy-angle-left-source.png",
+      "path": "/Users/chieutrinh/Documents/GitHub/lh-template-demo/output/wofyn-product-media/wofyn-twin-falcon-toy-angle-left.webp",
+      "qa": {
+        "status": "pass",
+        "visuallyInspected": true,
+        "identity": "Source shape, color, proportions and visible materials retained; modest alternate front views avoid invented backside features.",
+        "interaction": "Catalog angle differs from source and other supplementary view; white background, square frame, full toy visible.",
+        "repairsRequired": false
+      },
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "bytes": 29038
+    },
+    {
+      "slug": "twin-falcon-toy",
+      "kind": "angle-right",
+      "prompt": "Use case: product-mockup. Square single catalog photograph EXACT reference dog toy: deep muted green rubber double open circular rings joined by a short chunky central bridge marked small fable lettering, each ring has one narrow opening; exact source smooth rounded form. Modest front-right elevated three-quarter view: shift camera 25 degrees right, upper-right ring nearer in frame and left ring receding, top source surfaces visible. Both narrow ring openings remain, exactly original fable mark, proportions rubber color and shape. Full toy centered white seamless background soft shadow. Do not invent back features, no added parts no collage.",
+      "generatedPath": "/Users/chieutrinh/.codex/generated_images/01a12409-b55b-7090-a189-5eed139dc114/exec-5a90046b-b3a3-4db5-bee0-c355661b2658.png",
+      "sourceReference": "/private/tmp/wofyn-catalog/wofyn-twin-falcon-toy.webp",
+      "catalogPath": "/Users/chieutrinh/Documents/GitHub/lh-template-demo/output/wofyn-product-media/wofyn-twin-falcon-toy-catalog.webp",
+      "savedGeneratedSource": "/Users/chieutrinh/Documents/GitHub/lh-template-demo/output/wofyn-product-media/wofyn-twin-falcon-toy-angle-right-source.png",
+      "path": "/Users/chieutrinh/Documents/GitHub/lh-template-demo/output/wofyn-product-media/wofyn-twin-falcon-toy-angle-right.webp",
+      "qa": {
+        "status": "pass",
+        "visuallyInspected": true,
+        "identity": "Source shape, color, proportions and visible materials retained; modest alternate front views avoid invented backside features.",
+        "interaction": "Catalog angle differs from source and other supplementary view; white background, square frame, full toy visible.",
+        "repairsRequired": false
+      },
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "bytes": 29240
+    },
+    {
+      "slug": "hard-baked-sugrrrr-cookie",
+      "kind": "lifestyle",
+      "prompt": "Use case: photorealistic-natural. Square single product lifestyle photo of EXACT reference flat Christmas-tree-shaped DOG TOY, mustard golden tan border around glossy vivid green inset embossed with small holiday shapes including stars candy canes gingerbread figures and dots; not edible, no crumbs. This is a non-edible chew dog TOY shaped like a Christmas tree cookie. A medium beagle lies on a soft cream rug gently mouthing ONE upper side edge of the toy while its front paws loosely stabilize lower edge; adult owner's hand resting nearby supervises. Most bright green embossed FRONT and golden tan TREE outline visible facing camera. Toy roughly palm-sized relative to dog muzzle, plausible teeth touching edge, intact toy, no crumbs no food no swallowing. Warm daylight home. Preserve exact three-level tree silhouette flat construction holiday motifs and colors. No collage or overlays.",
+      "generatedPath": "/Users/chieutrinh/.codex/generated_images/01a12409-b55b-7090-a189-5eed139dc114/exec-47351e7a-6954-48a7-8cab-b13951581570.png",
+      "sourceReference": "/private/tmp/wofyn-catalog/wofyn-hard-baked-sugrrrr-cookie.webp",
+      "catalogPath": "/Users/chieutrinh/Documents/GitHub/lh-template-demo/output/wofyn-product-media/wofyn-hard-baked-sugrrrr-cookie-catalog.webp",
+      "savedGeneratedSource": "/Users/chieutrinh/Documents/GitHub/lh-template-demo/output/wofyn-product-media/wofyn-hard-baked-sugrrrr-cookie-lifestyle-source.png",
+      "path": "/Users/chieutrinh/Documents/GitHub/lh-template-demo/output/wofyn-product-media/wofyn-hard-baked-sugrrrr-cookie-lifestyle.webp",
+      "qa": {
+        "status": "pass",
+        "visuallyInspected": true,
+        "identity": "Source shape, color, proportions and visible materials retained; modest alternate front views avoid invented backside features.",
+        "interaction": "Dog visibly grips/mouths toy with plausible contact; adult hand visible for supervision; toy remains recognizable.",
+        "repairsRequired": false
+      },
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "bytes": 240772
+    },
+    {
+      "slug": "hard-baked-sugrrrr-cookie",
+      "kind": "angle-left",
+      "prompt": "Use case: product-mockup. Square single studio photograph of EXACT reference flat Christmas-tree-shaped DOG TOY, mustard golden tan border around glossy vivid green inset embossed with small holiday shapes including stars candy canes gingerbread figures and dots; not edible, no crumbs. Show front-left modest elevated oblique view of toy lying on white seamless surface, tree tip toward upper frame, embossed green front faces camera and tan border remains exact tree silhouette. Camera angle about 65 degrees above ground, shifted left 20 degrees. Useful perspective reveals near left edge thickness already implied by source without showing back. Preserve exact holiday pattern arrangement, tree outline materials and color, no edible biscuit texture no crumbs. Full toy centered soft shadow. No collage overlay extra objects.",
+      "generatedPath": "/Users/chieutrinh/.codex/generated_images/01a12409-b55b-7090-a189-5eed139dc114/exec-13aac226-1e08-44aa-85d6-a447d3c5bf13.png",
+      "sourceReference": "/private/tmp/wofyn-catalog/wofyn-hard-baked-sugrrrr-cookie.webp",
+      "catalogPath": "/Users/chieutrinh/Documents/GitHub/lh-template-demo/output/wofyn-product-media/wofyn-hard-baked-sugrrrr-cookie-catalog.webp",
+      "savedGeneratedSource": "/Users/chieutrinh/Documents/GitHub/lh-template-demo/output/wofyn-product-media/wofyn-hard-baked-sugrrrr-cookie-angle-left-source.png",
+      "path": "/Users/chieutrinh/Documents/GitHub/lh-template-demo/output/wofyn-product-media/wofyn-hard-baked-sugrrrr-cookie-angle-left.webp",
+      "qa": {
+        "status": "pass",
+        "visuallyInspected": true,
+        "identity": "Source shape, color, proportions and visible materials retained; modest alternate front views avoid invented backside features.",
+        "interaction": "Catalog angle differs from source and other supplementary view; white background, square frame, full toy visible.",
+        "repairsRequired": false
+      },
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "bytes": 76674
+    },
+    {
+      "slug": "hard-baked-sugrrrr-cookie",
+      "kind": "angle-right",
+      "prompt": "Use case: product-mockup. Square single studio photograph EXACT reference flat Christmas-tree-shaped DOG TOY, mustard golden tan border around glossy vivid green inset embossed with small holiday shapes including stars candy canes gingerbread figures and dots; not edible, no crumbs. Modest FRONT-RIGHT elevated three-quarter view of tree toy lying on pure white seamless surface. Camera about 55 degrees above ground, shifted 25 degrees right. Green embossed front visible; tree tip recedes toward upper-left, tan right edge is nearer. Preserve reference exact tree silhouette, tan border, front pattern arrangement, glossy molded material. Show only front and already implied edge, do not invent back or extra details. Full toy soft contact shadow, no edible crumbs no food styling, no collage or overlay.",
+      "generatedPath": "/Users/chieutrinh/.codex/generated_images/01a12409-b55b-7090-a189-5eed139dc114/exec-08d61ee8-ce19-4efd-9d07-730c03787136.png",
+      "sourceReference": "/private/tmp/wofyn-catalog/wofyn-hard-baked-sugrrrr-cookie.webp",
+      "catalogPath": "/Users/chieutrinh/Documents/GitHub/lh-template-demo/output/wofyn-product-media/wofyn-hard-baked-sugrrrr-cookie-catalog.webp",
+      "savedGeneratedSource": "/Users/chieutrinh/Documents/GitHub/lh-template-demo/output/wofyn-product-media/wofyn-hard-baked-sugrrrr-cookie-angle-right-source.png",
+      "path": "/Users/chieutrinh/Documents/GitHub/lh-template-demo/output/wofyn-product-media/wofyn-hard-baked-sugrrrr-cookie-angle-right.webp",
+      "qa": {
+        "status": "pass",
+        "visuallyInspected": true,
+        "identity": "Source shape, color, proportions and visible materials retained; modest alternate front views avoid invented backside features.",
+        "interaction": "Catalog angle differs from source and other supplementary view; white background, square frame, full toy visible.",
+        "repairsRequired": false
+      },
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "bytes": 64766
+    },
+    {
+      "slug": "playful-plush",
+      "kind": "lifestyle",
+      "prompt": "Use case: photorealistic-natural. Square single lifestyle photograph EXACT reference dog toy: round yellow furry plush smiley disc, orange embroidered oval eyes and broad curved orange embroidered smiling mouth; exact source proportions. Relaxed adult spaniel lying on cream rug gently gripping just upper outer rim of yellow plush disc in its mouth; an adult owner's hand loosely holds lower rim, supervised gentle play. Orange embroidered smiling FRONT toward camera, both eyes and broad smile visible, disc about same width as dog's muzzle, naturally compress fabric only at bite, no facial redesign. Warm daylight home, plausible mouth and hand contacts, recognizable full toy texture. No extra eyes, no rope, no eating, no collage or overlay.",
+      "generatedPath": "/Users/chieutrinh/.codex/generated_images/01a12409-b55b-7090-a189-5eed139dc114/exec-0116395c-4a1e-4684-9735-e1f1e596b376.png",
+      "sourceReference": "/private/tmp/wofyn-catalog/wofyn-playful-plush.webp",
+      "catalogPath": "/Users/chieutrinh/Documents/GitHub/lh-template-demo/output/wofyn-product-media/wofyn-playful-plush-catalog.webp",
+      "savedGeneratedSource": "/Users/chieutrinh/Documents/GitHub/lh-template-demo/output/wofyn-product-media/wofyn-playful-plush-lifestyle-source.png",
+      "path": "/Users/chieutrinh/Documents/GitHub/lh-template-demo/output/wofyn-product-media/wofyn-playful-plush-lifestyle.webp",
+      "qa": {
+        "status": "pass",
+        "visuallyInspected": true,
+        "identity": "Source shape, color, proportions and visible materials retained; modest alternate front views avoid invented backside features.",
+        "interaction": "Dog visibly grips/mouths toy with plausible contact; adult hand visible for supervision; toy remains recognizable.",
+        "repairsRequired": false
+      },
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "bytes": 301416
+    },
+    {
+      "slug": "playful-plush",
+      "kind": "angle-left",
+      "prompt": "Use case: product-mockup. Square single catalog photograph EXACT reference dog toy: round yellow furry plush smiley disc, orange embroidered oval eyes and broad curved orange embroidered smiling mouth; exact source proportions. Modest FRONT-LEFT three-quarter elevated angle, front smiling face fully recognizable, left edge nearer and right edge receding. Plush disc lightly rests tilted on a white seamless studio surface, natural soft contact shadow, entire object centered. Preserve yellow shaggy fabric, exact orange embroidery shapes and original padded disc proportions, only reveal source-implied side edge, no invented back detailing. No added limbs no extra eyes no collage or text.",
+      "generatedPath": "/Users/chieutrinh/.codex/generated_images/01a12409-b55b-7090-a189-5eed139dc114/exec-dd3baaa1-731d-4f3e-9a78-7fbfaeb9c32c.png",
+      "sourceReference": "/private/tmp/wofyn-catalog/wofyn-playful-plush.webp",
+      "catalogPath": "/Users/chieutrinh/Documents/GitHub/lh-template-demo/output/wofyn-product-media/wofyn-playful-plush-catalog.webp",
+      "savedGeneratedSource": "/Users/chieutrinh/Documents/GitHub/lh-template-demo/output/wofyn-product-media/wofyn-playful-plush-angle-left-source.png",
+      "path": "/Users/chieutrinh/Documents/GitHub/lh-template-demo/output/wofyn-product-media/wofyn-playful-plush-angle-left.webp",
+      "qa": {
+        "status": "pass",
+        "visuallyInspected": true,
+        "identity": "Source shape, color, proportions and visible materials retained; modest alternate front views avoid invented backside features.",
+        "interaction": "Catalog angle differs from source and other supplementary view; white background, square frame, full toy visible.",
+        "repairsRequired": false
+      },
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "bytes": 121998
+    },
+    {
+      "slug": "playful-plush",
+      "kind": "angle-right",
+      "prompt": "Use case: product-mockup. Square single studio catalog photo of EXACT source round yellow furry plush smiley disc, orange embroidered oval eyes and broad curved orange embroidered smiling mouth; exact source proportions. Modest elevated FRONT-RIGHT three-quarter perspective: right edge nearer, left edge recedes, face tilts backward slightly; full orange smiling face visible. Toy naturally rests on white seamless ground, soft contact shadow. Preserve original yellow furry padded disc thickness and orange embroidered smile and two oval eyes; source-verifiable front and thin side rim only, no invented backside, no added seam details, no limbs or extra features. Distinct useful angle rather than same straight view. No collage overlay text.",
+      "generatedPath": "/Users/chieutrinh/.codex/generated_images/01a12409-b55b-7090-a189-5eed139dc114/exec-b87550a0-37f8-42fe-bf48-2a53f5faf7d6.png",
+      "sourceReference": "/private/tmp/wofyn-catalog/wofyn-playful-plush.webp",
+      "catalogPath": "/Users/chieutrinh/Documents/GitHub/lh-template-demo/output/wofyn-product-media/wofyn-playful-plush-catalog.webp",
+      "savedGeneratedSource": "/Users/chieutrinh/Documents/GitHub/lh-template-demo/output/wofyn-product-media/wofyn-playful-plush-angle-right-source.png",
+      "path": "/Users/chieutrinh/Documents/GitHub/lh-template-demo/output/wofyn-product-media/wofyn-playful-plush-angle-right.webp",
+      "qa": {
+        "status": "pass",
+        "visuallyInspected": true,
+        "identity": "Source shape, color, proportions and visible materials retained; modest alternate front views avoid invented backside features.",
+        "interaction": "Catalog angle differs from source and other supplementary view; white background, square frame, full toy visible.",
+        "repairsRequired": false
+      },
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "bytes": 117768
+    }
+  ]
+}

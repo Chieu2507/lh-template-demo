@@ -79,6 +79,12 @@
     --shopify-account-radius-input: var(--input-radius);
   }
 
+  /* Keep the deferred Account trigger sized like its original header link. */
+  shopify-account.header-account::part(signed-out-avatar) {
+    min-width: 0;
+    font: inherit;
+  }
+
   .header-account {
     display: inline-flex;
     flex: 0 1 auto;

@@ -20,15 +20,6 @@
   height: 20px;
   background: url(https://cdn.shopify.com/s/files/1/1024/2192/2091/files/786e6.svg?v=1791425634) center/14.7682px 19.9856px no-repeat;
 }
-.slideshow--peekoo .slideshow-slide:has(img[src*="5282e"]) .slideshow-slide__overlay {
-  background: linear-gradient(90deg,#0000 50%,#0003 68.88%);
-}
-.slideshow--peekoo .slideshow-slide:has(img[src*="f9b22"]) .slideshow-slide__overlay {
-  background: linear-gradient(#0000 87.5%,#0003);
-}
-.slideshow--peekoo .slideshow-slide:has(img[src*="561ad"]) .slideshow-slide__overlay {
-  background: none;
-}
 /* Reuse Numbers' SVG ring and autoplay clock, with a dot as the label. */
 :is(.slideshow--peekoo, .slideshow--circular-pagination) .slideshow__pagination--bullets .slideshow__pagination-number {
   flex-basis: 24px;
@@ -60,9 +51,6 @@
   opacity: 1;
 }
 @media (max-width: 767.98px) {
-  .slideshow--peekoo .slideshow-slide__overlay {
-    background: #0003 !important;
-  }
   :is(.slideshow--peekoo, .slideshow--circular-pagination) .slideshow__swiper > .slideshow__pagination {
     padding-bottom: 17px !important;
   }

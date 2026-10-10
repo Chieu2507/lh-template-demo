@@ -4,6 +4,8 @@
   @param {string} content - Rendered child Theme Blocks in their configured order
   @param {boolean} [composition_card] - Card directly owns child flow, gap and padding
 {% enddoc %}
+{% capture effective_overlay %}{% render 'overlay-background', overlay_settings: block.settings, color_id: 'overlay_color', enabled_id: 'show_overlay', style_id: 'overlay_style' %}{% endcapture %}
+{% assign effective_overlay = effective_overlay | strip %}
 {% liquid
   assign testimonial_direction = block.settings.direction | default: 'horizontal'
   unless testimonial_direction == 'horizontal' or testimonial_direction == 'vertical'
@@ -127,14 +129,14 @@
   --testimonial-border-width: {{ testimonial_border_thickness }}px;
   {% if block.settings.background_color != blank %}--testimonial-background-color: {{ block.settings.background_color | escape }};{% endif %}
   {% if block.settings.background_image != blank %}--testimonial-background-image: url('{{ block.settings.background_image | image_url: width: 2400 }}');{% endif %}
-  {% if block.settings.overlay_color != blank %}--testimonial-overlay-color: {{ block.settings.overlay_color | escape }};{% endif %}
+  {% if effective_overlay != blank %}--testimonial-overlay-color: {{ effective_overlay | escape }};{% endif %}
   {% if testimonial_radius == 'custom' %}--testimonial-radius: {{ block.settings.custom_corner_radius | default: 24 | at_least: 0 | at_most: 100 }}px;{% endif %}
   --testimonial-overlay-opacity: 1;
   --testimonial-mobile-justify: {{ testimonial_alignment_mobile_value }};
 {% endcapture %}
 
 <article
-  class="testimonial-item{% if composition_card %} testimonial-item--review-card layout-flow layout-flow--responsive{% endif %} testimonial-item--{{ testimonial_direction }} testimonial-item--position-{{ testimonial_position }} testimonial-item--align-{{ testimonial_alignment }} testimonial-item--radius-{{ testimonial_radius }} testimonial-item--shadow-{{ testimonial_shadow }}{% if block.settings.vertical_on_mobile and testimonial_direction == 'horizontal' %} testimonial-item--vertical-mobile{% endif %}{% if block.settings.overlay_color != blank %} testimonial-item--has-overlay{% endif %} swiper-slide"
+  class="testimonial-item{% if composition_card %} testimonial-item--review-card layout-flow layout-flow--responsive{% endif %} testimonial-item--{{ testimonial_direction }} testimonial-item--position-{{ testimonial_position }} testimonial-item--align-{{ testimonial_alignment }} testimonial-item--radius-{{ testimonial_radius }} testimonial-item--shadow-{{ testimonial_shadow }}{% if block.settings.vertical_on_mobile and testimonial_direction == 'horizontal' %} testimonial-item--vertical-mobile{% endif %}{% if effective_overlay != blank %} testimonial-item--has-overlay{% endif %} swiper-slide"
   style="{{ testimonial_style | strip }}"
   {{ block.shopify_attributes }}
 >
