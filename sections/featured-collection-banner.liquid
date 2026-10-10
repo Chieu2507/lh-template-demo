@@ -83,6 +83,7 @@
 {% capture banner_media %}{% content_for 'block', type: 'banner', id: 'banner' %}{% endcapture %}
 {% capture banner_products %}{% content_for 'block', type: 'product-list', id: 'carousel-product-list' %}{% endcapture %}
 {% capture featured_collection_banner_style %}
+  {% if section.settings.enable_media_offset == false %}--product-card-media-inset: 0px;{% endif %}
   {% if featured_collection_banner_size == 'custom' %}--featured-collection-banner-custom-width: {{ section.settings.banner_custom_max_width | default: 672 }}px;{% endif %}
   {% if section.settings.customize_tablet_layout %}
     --featured-collection-banner-width-tablet: {{ section.settings.banner_width_tablet | default: 320 }}px;
@@ -772,6 +773,13 @@
     {
       "type": "header",
       "content": "t:general.appearance"
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_media_offset",
+      "label": "t:labels.enable_media_offset",
+      "info": "t:info.media_offset_theme_settings",
+      "default": true
     },
     {
       "type": "color_scheme",

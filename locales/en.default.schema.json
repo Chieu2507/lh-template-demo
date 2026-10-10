@@ -726,6 +726,7 @@
     "media_aspect_ratio": "Media aspect ratio",
     "media_corner_radius": "Media corner radius",
     "media_inset": "Media inset",
+    "enable_media_offset": "Enable media offset",
     "unit_layout": "Unit layout",
     "hover_zoom": "Hover zoom",
     "collection_tabs_header_layout": "Header layout",
@@ -1487,6 +1488,7 @@
     "inventory_count_bold": "Bold"
   },
   "info": {
+    "media_offset_theme_settings": "Use the media inset from Theme settings → Product cards. Turn off to remove the media inset in this section.",
     "blog_meta_badge_placement": "Badge on image places a direct Meta child at the top of a stacked Blog card. Nested Meta and horizontal cards keep badges in the content.",
     "collection_filter_search_discovery": "Customize filters with the [Search & Discovery app](https://admin.shopify.com/store/spinel-theme/apps/search-and-discovery).",
     "hotspot_gallery_sticky_header": "Keeps the header in view while scrolling through the gallery on tablet and desktop.",
