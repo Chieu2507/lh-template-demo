@@ -1,0 +1,699 @@
+{% doc %}
+  Composes two fixed Image children into an adjustable overlapping canvas.
+  Images owns canvas geometry; Image owns media, ratios, links, radius and padding.
+  First is rendered before second in the reading and keyboard order.
+{% enddoc %}
+
+{% liquid
+  assign canvas_height = 540
+  if block.settings.height != 'fill'
+    assign canvas_height = block.settings.height_desktop | default: 540 | at_least: 100 | at_most: 2000
+  endif
+  assign canvas_height_mobile = canvas_height
+  assign canvas_reference_width_mobile = 780
+  if block.settings.customize_mobile
+    assign canvas_height_mobile = block.settings.height_mobile | default: 300 | at_least: 100 | at_most: 1000
+    assign canvas_reference_width_mobile = 343
+  endif
+  assign canvas_width = '100%'
+  if block.settings.width_desktop == 'custom'
+    assign canvas_width = block.settings.width_custom_desktop | default: 100 | at_least: 10 | at_most: 100 | append: '%'
+  elsif block.settings.width_desktop == 'fit'
+    assign canvas_width = 'min(100%, 780px)'
+  endif
+  assign canvas_width_mobile = canvas_width
+  if block.settings.customize_mobile
+    assign canvas_width_mobile = '100%'
+    if block.settings.width_mobile == 'custom'
+      assign canvas_width_mobile = block.settings.width_custom_mobile | default: 100 | at_least: 10 | at_most: 100 | append: '%'
+    elsif block.settings.width_mobile == 'fit'
+      assign canvas_width_mobile = 'min(100%, 343px)'
+    endif
+  endif
+  assign canvas_max_width = '100%'
+  if block.settings.limit_width_desktop
+    assign canvas_max_width = block.settings.max_width_desktop | default: 1600 | at_least: 1 | at_most: 1600 | append: 'px'
+  endif
+  assign canvas_max_width_mobile = canvas_max_width
+  if block.settings.customize_mobile
+    assign canvas_max_width_mobile = '100%'
+    if block.settings.limit_width_mobile
+      assign canvas_max_width_mobile = block.settings.max_width_mobile | default: 1600 | at_least: 1 | at_most: 1600 | append: 'px'
+    endif
+  endif
+%}
+{% capture canvas_style %}
+  {% render 'size-style', width: canvas_width, width_mobile: canvas_width_mobile, max_width: canvas_max_width, max_width_mobile: canvas_max_width_mobile %}
+  --images-ratio: 780 / {{ canvas_height }};
+  --images-ratio-mobile: {{ canvas_reference_width_mobile }} / {{ canvas_height_mobile }};
+  {% for side in (1..4) %}
+    {% liquid
+      case side
+        when 1
+          assign edge = 'top'
+        when 2
+          assign edge = 'right'
+        when 3
+          assign edge = 'bottom'
+        when 4
+          assign edge = 'left'
+      endcase
+      assign padding_key = 'padding_' | append: edge
+      assign padding_value = block.settings[padding_key] | default: 0 | at_least: 0 | at_most: 100
+    %}
+    {% if padding_value != 0 %}--images-padding-{{ edge }}: {{ padding_value }}px;{% endif %}
+    {% if block.settings.customize_mobile_padding %}
+      {% assign mobile_padding_key = padding_key | append: '_mobile' %}
+      --images-padding-{{ edge }}-mobile: {{ block.settings[mobile_padding_key] | default: 0 | at_least: 0 | at_most: 100 }}px;
+    {% endif %}
+  {% endfor %}
+{% endcapture %}
+<div class="images-block size-style{% if block.settings.height == 'fill' %} images-block--height-fill{% endif %}{% if block.settings.customize_mobile %} images-block--mobile-custom-size{% endif %} images-block--front-{{ block.settings.front_image | default: 'first' }}" style="{{ canvas_style | strip }}" {{ block.shopify_attributes }}>
+  <div class="images-block__canvas">
+    {% for index in (1..2) %}
+      {% liquid
+        assign slot = 'first'
+        if index == 2
+          assign slot = 'second'
+        endif
+        assign mobile_toggle_key = slot | append: '_customize_mobile'
+        assign slot_customize_mobile = block.settings[mobile_toggle_key]
+        if slot_customize_mobile == nil
+          assign slot_customize_mobile = block.settings.customize_mobile
+        endif
+      %}
+      {% capture slot_style %}
+        {% for device_index in (1..2) %}
+          {% liquid
+            assign device = 'desktop'
+            if device_index == 2 and slot_customize_mobile
+              assign device = 'mobile'
+            endif
+            assign key = slot | append: '_width_' | append: device
+            assign slot_width = block.settings[key] | default: 50 | at_least: 10 | at_most: 100
+            assign key = slot | append: '_left_' | append: device
+            assign slot_left = block.settings[key] | default: 0 | at_least: 0 | at_most: 100
+            assign key = slot | append: '_top_' | append: device
+            assign slot_top = block.settings[key] | default: 0 | at_least: 0 | at_most: 100
+            assign key = slot | append: '_anchor_' | append: device
+            assign slot_translate = '0%'
+            if block.settings[key] == 'center'
+              assign slot_translate = '-50%'
+            elsif block.settings[key] == 'bottom'
+              assign slot_translate = '-100%'
+            endif
+          %}
+          --slot-width-{{ device_index }}: {{ slot_width }}%;
+          --slot-left-{{ device_index }}: {{ slot_left }}%;
+          --slot-top-{{ device_index }}: {{ slot_top }}%;
+          --slot-translate-{{ device_index }}: {{ slot_translate }};
+        {% endfor %}
+      {% endcapture %}
+      <div class="images-block__slot images-block__slot--{{ slot }}" style="{{ slot_style | strip }}">
+        {% if index == 1 %}
+          {% content_for 'block', type: 'image', id: 'first' %}
+        {% else %}
+          {% content_for 'block', type: 'image', id: 'second' %}
+        {% endif %}
+      </div>
+    {% endfor %}
+  </div>
+</div>
+
+{% stylesheet %}
+  .images-block {
+    min-width: 0;
+    padding: min(var(--images-padding-top, 0px), 25%) min(var(--images-padding-right, 0px), 25%) min(var(--images-padding-bottom, 0px), 25%) min(var(--images-padding-left, 0px), 25%);
+  }
+  .images-block__canvas {
+    position: relative;
+    isolation: isolate;
+    width: 100%;
+    height: auto;
+    aspect-ratio: var(--images-ratio, 780 / 540);
+    overflow: clip;
+    overflow-clip-margin: 4px;
+  }
+  .images-block__slot {
+    position: absolute;
+    width: var(--slot-width-1, 50%);
+    left: min(var(--slot-left-1, 0%), calc(100% - var(--slot-width-1, 50%)));
+    top: var(--slot-top-1, 0%);
+    transform: translateY(var(--slot-translate-1, 0%));
+  }
+  .images-block--front-first .images-block__slot--first,
+  .images-block--front-second .images-block__slot--second { z-index: 1; }
+  .images-block__slot:focus-within { z-index: 2; }
+  .images-block__slot > .image-block { max-width: 100%; }
+  @media (min-width: 768px) {
+    .images-block--height-fill { display: flex; flex-direction: column; align-self: stretch; }
+    .images-block--height-fill > .images-block__canvas { flex: 1 1 auto; min-height: 0; }
+    .images-block__slot:has(> .image-block--ratio-desktop-fill_height) { height: 100%; }
+  }
+  @media (max-width: 767.98px) {
+    .images-block--height-fill:not(.images-block--mobile-custom-size) { display: flex; flex-direction: column; align-self: stretch; }
+    .images-block--height-fill:not(.images-block--mobile-custom-size) > .images-block__canvas { flex: 1 1 auto; min-height: 0; }
+    .images-block__slot:has(> .image-block--ratio-mobile-fill_height) { height: 100%; }
+    .images-block { padding: min(var(--images-padding-top-mobile, var(--images-padding-top, 0px)), 25%) min(var(--images-padding-right-mobile, var(--images-padding-right, 0px)), 25%) min(var(--images-padding-bottom-mobile, var(--images-padding-bottom, 0px)), 25%) min(var(--images-padding-left-mobile, var(--images-padding-left, 0px)), 25%); }
+    .images-block__canvas { aspect-ratio: var(--images-ratio-mobile, var(--images-ratio, 780 / 540)); }
+    .images-block__slot {
+      width: var(--slot-width-2, var(--slot-width-1, 50%));
+      left: min(var(--slot-left-2, var(--slot-left-1, 0%)), calc(100% - var(--slot-width-2, var(--slot-width-1, 50%))));
+      top: var(--slot-top-2, var(--slot-top-1, 0%));
+      transform: translateY(var(--slot-translate-2, var(--slot-translate-1, 0%)));
+    }
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "Images",
+  "tag": null,
+  "blocks": [
+    {
+      "type": "image"
+    }
+  ],
+  "settings": [
+    {
+      "type": "select",
+      "id": "front_image",
+      "label": "Image on top",
+      "options": [
+        {
+          "value": "first",
+          "label": "First image"
+        },
+        {
+          "value": "second",
+          "label": "Second image"
+        }
+      ],
+      "default": "first"
+    },
+    {
+      "type": "header",
+      "content": "t:general.size"
+    },
+    {
+      "type": "select",
+      "id": "width_desktop",
+      "label": "t:labels.width",
+      "options": [
+        {
+          "value": "fit",
+          "label": "t:options.width.fit"
+        },
+        {
+          "value": "fill",
+          "label": "t:options.width.fill"
+        },
+        {
+          "value": "custom",
+          "label": "t:options.width.custom"
+        }
+      ],
+      "default": "fill"
+    },
+    {
+      "type": "range",
+      "id": "width_custom_desktop",
+      "label": "t:labels.custom_width",
+      "min": 10,
+      "max": 100,
+      "step": 1,
+      "unit": "%",
+      "default": 100,
+      "visible_if": "{{ block.settings.width_desktop == 'custom' }}"
+    },
+    {
+      "type": "checkbox",
+      "id": "limit_width_desktop",
+      "label": "t:labels.limit_width",
+      "default": false
+    },
+    {
+      "type": "range",
+      "id": "max_width_desktop",
+      "label": "t:labels.max_width",
+      "min": 0,
+      "max": 1600,
+      "step": 16,
+      "unit": "px",
+      "default": 1600,
+      "visible_if": "{{ block.settings.limit_width_desktop }}"
+    },
+    {
+      "type": "select",
+      "id": "height",
+      "label": "Height",
+      "options": [
+        {
+          "value": "fill",
+          "label": "Fill"
+        },
+        {
+          "value": "custom",
+          "label": "Custom"
+        }
+      ],
+      "default": "custom"
+    },
+    {
+      "type": "range",
+      "id": "height_desktop",
+      "label": "Custom height",
+      "min": 100,
+      "max": 2000,
+      "step": 20,
+      "unit": "px",
+      "default": 540,
+      "visible_if": "{{ block.settings.height == 'custom' }}"
+    },
+    {
+      "type": "checkbox",
+      "id": "customize_mobile",
+      "label": "Customize for mobile",
+      "default": true
+    },
+    {
+      "type": "select",
+      "id": "width_mobile",
+      "label": "t:labels.width_mobile",
+      "options": [
+        {
+          "value": "fit",
+          "label": "t:options.width.fit"
+        },
+        {
+          "value": "fill",
+          "label": "t:options.width.fill"
+        },
+        {
+          "value": "custom",
+          "label": "t:options.width.custom"
+        }
+      ],
+      "default": "fill",
+      "visible_if": "{{ block.settings.customize_mobile }}"
+    },
+    {
+      "type": "range",
+      "id": "width_custom_mobile",
+      "label": "t:labels.custom_width_mobile",
+      "min": 10,
+      "max": 100,
+      "step": 1,
+      "unit": "%",
+      "default": 100,
+      "visible_if": "{{ block.settings.customize_mobile and block.settings.width_mobile == 'custom' }}"
+    },
+    {
+      "type": "checkbox",
+      "id": "limit_width_mobile",
+      "label": "t:labels.limit_width_mobile",
+      "default": false,
+      "visible_if": "{{ block.settings.customize_mobile }}"
+    },
+    {
+      "type": "range",
+      "id": "max_width_mobile",
+      "label": "t:labels.max_width_mobile",
+      "min": 0,
+      "max": 1600,
+      "step": 16,
+      "unit": "px",
+      "default": 1600,
+      "visible_if": "{{ block.settings.customize_mobile and block.settings.limit_width_mobile }}"
+    },
+    {
+      "type": "range",
+      "id": "height_mobile",
+      "label": "Mobile height",
+      "min": 100,
+      "max": 1000,
+      "step": 10,
+      "unit": "px",
+      "default": 300,
+      "visible_if": "{{ block.settings.customize_mobile }}"
+    },
+    {
+      "type": "header",
+      "content": "First image position"
+    },
+    {
+      "type": "range",
+      "id": "first_width_desktop",
+      "label": "Desktop width",
+      "default": 45,
+      "min": 10,
+      "max": 100,
+      "step": 1,
+      "unit": "%"
+    },
+    {
+      "type": "range",
+      "id": "first_left_desktop",
+      "label": "Desktop left offset",
+      "default": 10,
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "%"
+    },
+    {
+      "type": "range",
+      "id": "first_top_desktop",
+      "label": "Desktop vertical position",
+      "default": 50,
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "%"
+    },
+    {
+      "type": "select",
+      "id": "first_anchor_desktop",
+      "label": "Desktop vertical anchor",
+      "options": [
+        {
+          "value": "top",
+          "label": "Top"
+        },
+        {
+          "value": "center",
+          "label": "Center"
+        },
+        {
+          "value": "bottom",
+          "label": "Bottom"
+        }
+      ],
+      "default": "center"
+    },
+    {
+      "type": "checkbox",
+      "id": "first_customize_mobile",
+      "label": "Customize for mobile",
+      "default": true
+    },
+    {
+      "type": "range",
+      "id": "first_width_mobile",
+      "label": "Mobile width",
+      "default": 47,
+      "visible_if": "{{ block.settings.first_customize_mobile }}",
+      "min": 10,
+      "max": 100,
+      "step": 1,
+      "unit": "%"
+    },
+    {
+      "type": "range",
+      "id": "first_left_mobile",
+      "label": "Mobile left offset",
+      "default": 7,
+      "visible_if": "{{ block.settings.first_customize_mobile }}",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "%"
+    },
+    {
+      "type": "range",
+      "id": "first_top_mobile",
+      "label": "Mobile vertical position",
+      "default": 50,
+      "visible_if": "{{ block.settings.first_customize_mobile }}",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "%"
+    },
+    {
+      "type": "select",
+      "id": "first_anchor_mobile",
+      "label": "Mobile vertical anchor",
+      "options": [
+        {
+          "value": "top",
+          "label": "Top"
+        },
+        {
+          "value": "center",
+          "label": "Center"
+        },
+        {
+          "value": "bottom",
+          "label": "Bottom"
+        }
+      ],
+      "default": "center",
+      "visible_if": "{{ block.settings.first_customize_mobile }}"
+    },
+    {
+      "type": "header",
+      "content": "Second image position"
+    },
+    {
+      "type": "range",
+      "id": "second_width_desktop",
+      "label": "Desktop width",
+      "default": 46,
+      "min": 10,
+      "max": 100,
+      "step": 1,
+      "unit": "%"
+    },
+    {
+      "type": "range",
+      "id": "second_left_desktop",
+      "label": "Desktop left offset",
+      "default": 44,
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "%"
+    },
+    {
+      "type": "range",
+      "id": "second_top_desktop",
+      "label": "Desktop vertical position",
+      "default": 0,
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "%"
+    },
+    {
+      "type": "select",
+      "id": "second_anchor_desktop",
+      "label": "Desktop vertical anchor",
+      "options": [
+        {
+          "value": "top",
+          "label": "Top"
+        },
+        {
+          "value": "center",
+          "label": "Center"
+        },
+        {
+          "value": "bottom",
+          "label": "Bottom"
+        }
+      ],
+      "default": "top"
+    },
+    {
+      "type": "checkbox",
+      "id": "second_customize_mobile",
+      "label": "Customize for mobile",
+      "default": true
+    },
+    {
+      "type": "range",
+      "id": "second_width_mobile",
+      "label": "Mobile width",
+      "default": 58,
+      "visible_if": "{{ block.settings.second_customize_mobile }}",
+      "min": 10,
+      "max": 100,
+      "step": 1,
+      "unit": "%"
+    },
+    {
+      "type": "range",
+      "id": "second_left_mobile",
+      "label": "Mobile left offset",
+      "default": 35,
+      "visible_if": "{{ block.settings.second_customize_mobile }}",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "%"
+    },
+    {
+      "type": "range",
+      "id": "second_top_mobile",
+      "label": "Mobile vertical position",
+      "default": 0,
+      "visible_if": "{{ block.settings.second_customize_mobile }}",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "%"
+    },
+    {
+      "type": "select",
+      "id": "second_anchor_mobile",
+      "label": "Mobile vertical anchor",
+      "options": [
+        {
+          "value": "top",
+          "label": "Top"
+        },
+        {
+          "value": "center",
+          "label": "Center"
+        },
+        {
+          "value": "bottom",
+          "label": "Bottom"
+        }
+      ],
+      "default": "top",
+      "visible_if": "{{ block.settings.second_customize_mobile }}"
+    },
+    {
+      "type": "header",
+      "content": "t:general.padding"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "label": "t:labels.top_padding",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "label": "t:labels.bottom_padding",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "padding_left",
+      "label": "t:labels.left_padding",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "padding_right",
+      "label": "t:labels.right_padding",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "default": 0
+    },
+    {
+      "type": "checkbox",
+      "id": "customize_mobile_padding",
+      "label": "t:labels.customize_mobile_padding",
+      "default": false
+    },
+    {
+      "type": "range",
+      "id": "padding_top_mobile",
+      "label": "t:labels.mobile_top_padding",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "default": 0,
+      "visible_if": "{{ block.settings.customize_mobile_padding }}"
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_mobile",
+      "label": "t:labels.mobile_bottom_padding",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "default": 0,
+      "visible_if": "{{ block.settings.customize_mobile_padding }}"
+    },
+    {
+      "type": "range",
+      "id": "padding_left_mobile",
+      "label": "t:labels.mobile_left_padding",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "default": 0,
+      "visible_if": "{{ block.settings.customize_mobile_padding }}"
+    },
+    {
+      "type": "range",
+      "id": "padding_right_mobile",
+      "label": "t:labels.mobile_right_padding",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "default": 0,
+      "visible_if": "{{ block.settings.customize_mobile_padding }}"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Images",
+      "blocks": [
+        {
+          "type": "image",
+          "id": "first",
+          "static": true,
+          "settings": {
+            "image_ratio_desktop": "square",
+            "image_ratio_mobile": "square",
+            "width_desktop": "fill",
+            "width_mobile": "fill",
+            "corner_radius": "square"
+          }
+        },
+        {
+          "type": "image",
+          "id": "second",
+          "static": true,
+          "settings": {
+            "image_ratio_desktop": "custom",
+            "image_ratio_mobile": "custom",
+            "width_desktop": "fill",
+            "width_mobile": "fill",
+            "corner_radius": "square",
+            "image_ratio_custom_width_desktop": 2,
+            "image_ratio_custom_height_desktop": 3,
+            "image_ratio_custom_width_mobile": 2,
+            "image_ratio_custom_height_mobile": 3
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
