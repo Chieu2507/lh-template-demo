@@ -4372,7 +4372,9 @@
         "padding_bottom": 96,
         "customize_mobile_padding": true,
         "padding_top_mobile": 64,
-        "padding_bottom_mobile": 64
+        "padding_bottom_mobile": 64,
+        "header_gap_desktop": 0,
+        "header_gap_mobile": 0
       },
       "blocks": {
         "header": {
@@ -4409,7 +4411,7 @@
             "heading": {
               "type": "heading",
               "settings": {
-                "text": "<p>Your Care, Their Comfort</p>",
+                "text": "<p>Your Care, Their<br>Comfort</p>",
                 "heading_size": "lg",
                 "html_tag": "h2",
                 "width": "fill",
