@@ -2013,11 +2013,12 @@
                   },
                   "blocks": {
                     "rating": {
-                      "type": "testimonial-rating",
+                      "type": "icon",
                       "settings": {
-                        "rating": 5,
-                        "star_color": "#201d47",
-                        "star_gap": 0
+                        "source": "library",
+                        "icon": "five-stars",
+                        "icon_width": 90,
+                        "custom_mobile": false
                       }
                     },
                     "title": {
@@ -2198,11 +2199,12 @@
                   },
                   "blocks": {
                     "rating": {
-                      "type": "testimonial-rating",
+                      "type": "icon",
                       "settings": {
-                        "rating": 5,
-                        "star_color": "#201d47",
-                        "star_gap": 0
+                        "source": "library",
+                        "icon": "five-stars",
+                        "icon_width": 90,
+                        "custom_mobile": false
                       }
                     },
                     "title": {
