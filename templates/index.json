@@ -156,8 +156,8 @@
             "link": "",
             "open_in_new_tab": false,
             "media_type": "image",
-            "image": "",
-            "mobile_image": "",
+            "image": "shopify://shop_images/wofyn-slide-2-desktop-v1.webp",
+            "mobile_image": "shopify://shop_images/wofyn-slide-2-mobile-v1.webp",
             "media_2_type": "image",
             "show_overlay": true,
             "overlay_color": "#0000001a",
@@ -222,7 +222,7 @@
                 "heading": {
                   "type": "heading",
                   "settings": {
-                    "text": "<p>Where Happy Pets Begin Every Day</p>",
+                    "text": "<p>Make Every Day a Play Day</p>",
                     "heading_size": "display",
                     "custom_heading_size": 24,
                     "html_tag": "h2",
@@ -250,8 +250,8 @@
                 "discover-now": {
                   "type": "button",
                   "settings": {
-                    "button_label": "Discover Now",
-                    "button_link": "/collections/all",
+                    "button_label": "Shop Toys",
+                    "button_link": "/collections/toys-wofyn",
                     "button_open_in_new_tab": false,
                     "button_style": "primary",
                     "show_icon": false,
@@ -293,8 +293,8 @@
             "link": "",
             "open_in_new_tab": false,
             "media_type": "image",
-            "image": "",
-            "mobile_image": "",
+            "image": "shopify://shop_images/wofyn-slide-3-desktop-v1.webp",
+            "mobile_image": "shopify://shop_images/wofyn-slide-3-mobile-v1.webp",
             "media_2_type": "image",
             "show_overlay": true,
             "overlay_color": "#0000001a",
@@ -359,7 +359,7 @@
                 "heading": {
                   "type": "heading",
                   "settings": {
-                    "text": "<p>Where Happy Pets Begin Every Day</p>",
+                    "text": "<p>Cozy Beds for Sweet Dreams</p>",
                     "heading_size": "display",
                     "custom_heading_size": 24,
                     "html_tag": "h2",
@@ -387,8 +387,8 @@
                 "discover-now": {
                   "type": "button",
                   "settings": {
-                    "button_label": "Discover Now",
-                    "button_link": "/collections/all",
+                    "button_label": "Shop Beds",
+                    "button_link": "/collections/beds-wofyn",
                     "button_open_in_new_tab": false,
                     "button_style": "primary",
                     "show_icon": false,

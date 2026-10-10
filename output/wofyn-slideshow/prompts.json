@@ -1,0 +1,26 @@
+{
+  "mode": "built-in image_gen",
+  "prompts": [
+    [
+      "slide-2-desktop",
+      "A happy golden retriever with a small mustard-yellow rope toy on a soft muted green lawn in a cozy garden",
+      "wide landscape 1920x750 ratio. Dog fully visible in the rightmost third; entire left 55 percent is softly blurred dark olive garden foliage, unobstructed negative space for white headline"
+    ],
+    [
+      "slide-2-mobile",
+      "A happy golden retriever with a small mustard-yellow rope toy on a soft muted green lawn in a cozy garden",
+      "portrait 750x1500 ratio. Dog fully visible in bottom third, facing camera; upper 65 percent is softly blurred dark olive garden foliage, calm dark negative space for white headline at vertical middle. Deliberately composed portrait, not cropped landscape"
+    ],
+    [
+      "slide-3-desktop",
+      "A relaxed cream and ginger domestic cat curled in a warm oatmeal-colored plush pet bed in a cozy home, subtle moss green accents",
+      "wide landscape 1920x750 ratio. Cat and complete bed in the rightmost third; entire left 55 percent is softly blurred dark olive cozy interior, unobstructed dark negative space for white headline"
+    ],
+    [
+      "slide-3-mobile",
+      "A relaxed cream and ginger domestic cat curled in a warm oatmeal-colored plush pet bed in a cozy home, subtle moss green accents",
+      "portrait 750x1500 ratio. Cat face and bed fully visible in bottom third; upper 65 percent softly blurred dark olive cozy interior, unobstructed dark negative space for white headline at vertical middle. Deliberately composed portrait, not cropped landscape"
+    ]
+  ],
+  "shared": "Use case: photorealistic-natural. Asset type: premium Wofyn pet-store homepage slideshow photograph. Natural soft warm daylight, realistic fur and anatomy, elegant editorial photography, warm friendly atmosphere, restrained earthy colors. Edge-to-edge scene. No text, no logos, no watermarks, no collage, no frames. Generate one single image."
+}
