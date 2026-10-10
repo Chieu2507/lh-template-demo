@@ -247,7 +247,8 @@
                 "padding_left_mobile": 16,
                 "padding_right_mobile": 16
               },
-              "blocks": {}
+              "blocks": {},
+              "disabled": true
             }
           },
           "block_order": [
@@ -598,7 +599,8 @@
         "customize_mobile_padding": true,
         "padding_top_mobile": 32,
         "padding_bottom_mobile": 32
-      }
+      },
+      "disabled": true
     },
     "image_cards": {
       "type": "image-cards",
@@ -857,7 +859,8 @@
         "customize_mobile_padding": false,
         "padding_top_mobile": 0,
         "padding_bottom_mobile": 0
-      }
+      },
+      "disabled": true
     },
     "featured": {
       "type": "featured-collection",
@@ -940,7 +943,7 @@
           "type": "product-list",
           "static": true,
           "settings": {
-            "collection": "",
+            "collection": "all-wofyn",
             "max_products": 6,
             "layout_type": "carousel",
             "columns_desktop": "4",

@@ -291,7 +291,8 @@
               "block_order": [
                 "row-1",
                 "row-2"
-              ]
+              ],
+              "disabled": true
             },
             "testimonial": {
               "type": "group",
@@ -356,7 +357,8 @@
               "block_order": [
                 "header",
                 "quote"
-              ]
+              ],
+              "disabled": true
             },
             "contact-callout": {
               "type": "group",
@@ -440,7 +442,8 @@
                 "icon",
                 "text",
                 "popup"
-              ]
+              ],
+              "disabled": true
             },
             "pickup-availability": {
               "type": "product-pickup-availability",
