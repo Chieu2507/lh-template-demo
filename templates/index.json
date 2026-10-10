@@ -635,7 +635,7 @@
                 "gap_desktop": 0,
                 "gap_mobile": 0,
                 "border_thickness": 0,
-                "corner_radius": "square",
+                "corner_radius": "radius_16",
                 "custom_corner_radius": 24,
                 "shadow": "none",
                 "color_type": "inherit",
