@@ -4622,6 +4622,185 @@
           "block_order": []
         }
       }
+    },
+    "wofyn_gallery": {
+      "type": "gallery-carousel",
+      "name": "Gallery — Wofyn pets",
+      "settings": {
+        "section_width": "full_width_no_padding",
+        "marquee_full_bleed": true,
+        "direction": "vertical",
+        "position": "center",
+        "horizontal_alignment": "left",
+        "alignment": "left",
+        "customize_mobile_alignment": true,
+        "alignment_mobile": "left",
+        "content_gap": 0,
+        "customize_mobile_gap": true,
+        "content_gap_mobile": 0,
+        "color_scheme": "scheme-1",
+        "padding_top": 100,
+        "padding_bottom": 100,
+        "customize_mobile_padding": true,
+        "padding_top_mobile": 80,
+        "padding_bottom_mobile": 80
+      },
+      "blocks": {
+        "pet_photos": {
+          "type": "marquee",
+          "name": "Pet photo strip",
+          "settings": {
+            "use_elara_layout": false,
+            "show_top_divider": false,
+            "show_bottom_divider": false,
+            "show_blurred_edges": false,
+            "enable_parallax": false,
+            "alignment": "center",
+            "animation_speed": 0.6,
+            "animation_direction": "forward",
+            "gap_desktop": 64,
+            "gap_mobile": 48,
+            "width": "fill",
+            "color_type": "inherit",
+            "padding_top": 12,
+            "padding_bottom": 12,
+            "padding_left": 0,
+            "padding_right": 0,
+            "customize_mobile_padding": true,
+            "padding_top_mobile": 0,
+            "padding_bottom_mobile": 0,
+            "padding_left_mobile": 0,
+            "padding_right_mobile": 0
+          },
+          "blocks": {
+            "gallery_photo_1": {
+              "type": "_marquee-image",
+              "name": "Pet photo 1",
+              "settings": {
+                "image": "shopify://shop_images/wofyn-gallery-1.webp",
+                "image_ratio": "ratio_1_1",
+                "image_link": "",
+                "open_in_new_tab": false,
+                "width_custom_desktop": 160,
+                "width_custom_mobile": 120,
+                "corner_radius": "custom",
+                "custom_corner_radius": 12
+              }
+            },
+            "gallery_photo_2": {
+              "type": "_marquee-image",
+              "name": "Pet photo 2",
+              "settings": {
+                "image": "shopify://shop_images/wofyn-gallery-2.webp",
+                "image_ratio": "ratio_1_1",
+                "image_link": "",
+                "open_in_new_tab": false,
+                "width_custom_desktop": 160,
+                "width_custom_mobile": 120,
+                "corner_radius": "custom",
+                "custom_corner_radius": 12
+              }
+            },
+            "gallery_photo_3": {
+              "type": "_marquee-image",
+              "name": "Pet photo 3",
+              "settings": {
+                "image": "shopify://shop_images/wofyn-gallery-3.webp",
+                "image_ratio": "ratio_1_1",
+                "image_link": "",
+                "open_in_new_tab": false,
+                "width_custom_desktop": 160,
+                "width_custom_mobile": 120,
+                "corner_radius": "custom",
+                "custom_corner_radius": 12
+              }
+            },
+            "gallery_photo_4": {
+              "type": "_marquee-image",
+              "name": "Pet photo 4",
+              "settings": {
+                "image": "shopify://shop_images/wofyn-gallery-4.webp",
+                "image_ratio": "ratio_1_1",
+                "image_link": "",
+                "open_in_new_tab": false,
+                "width_custom_desktop": 160,
+                "width_custom_mobile": 120,
+                "corner_radius": "custom",
+                "custom_corner_radius": 12
+              }
+            },
+            "gallery_photo_5": {
+              "type": "_marquee-image",
+              "name": "Pet photo 5",
+              "settings": {
+                "image": "shopify://shop_images/wofyn-gallery-5.webp",
+                "image_ratio": "ratio_1_1",
+                "image_link": "",
+                "open_in_new_tab": false,
+                "width_custom_desktop": 160,
+                "width_custom_mobile": 120,
+                "corner_radius": "custom",
+                "custom_corner_radius": 12
+              }
+            },
+            "gallery_photo_6": {
+              "type": "_marquee-image",
+              "name": "Pet photo 6",
+              "settings": {
+                "image": "shopify://shop_images/wofyn-gallery-6.webp",
+                "image_ratio": "ratio_1_1",
+                "image_link": "",
+                "open_in_new_tab": false,
+                "width_custom_desktop": 160,
+                "width_custom_mobile": 120,
+                "corner_radius": "custom",
+                "custom_corner_radius": 12
+              }
+            },
+            "gallery_photo_7": {
+              "type": "_marquee-image",
+              "name": "Pet photo 7",
+              "settings": {
+                "image": "shopify://shop_images/wofyn-gallery-1.webp",
+                "image_ratio": "ratio_1_1",
+                "image_link": "",
+                "open_in_new_tab": false,
+                "width_custom_desktop": 160,
+                "width_custom_mobile": 120,
+                "corner_radius": "custom",
+                "custom_corner_radius": 12
+              }
+            },
+            "gallery_photo_8": {
+              "type": "_marquee-image",
+              "name": "Pet photo 8",
+              "settings": {
+                "image": "shopify://shop_images/wofyn-gallery-2.webp",
+                "image_ratio": "ratio_1_1",
+                "image_link": "",
+                "open_in_new_tab": false,
+                "width_custom_desktop": 160,
+                "width_custom_mobile": 120,
+                "corner_radius": "custom",
+                "custom_corner_radius": 12
+              }
+            }
+          },
+          "block_order": [
+            "gallery_photo_1",
+            "gallery_photo_2",
+            "gallery_photo_3",
+            "gallery_photo_4",
+            "gallery_photo_5",
+            "gallery_photo_6",
+            "gallery_photo_7",
+            "gallery_photo_8"
+          ]
+        }
+      },
+      "block_order": [
+        "pet_photos"
+      ]
     }
   },
   "order": [
@@ -4640,6 +4819,7 @@
     "peekoo_image_cards",
     "perky_logos",
     "perky_testimonials",
+    "wofyn_gallery",
     "peekoo_blog_posts"
   ]
 }
