@@ -34,4 +34,4 @@ Theme: `192149684523`, Wofyn template (Chieutt), draft.
 - Current featured-product renderer reads the first description paragraph; `custom.summary` is populated with matching text.
 - Generated packaging images are illustrative; fine packaging typography can differ from source.
 
-All IDs, handles, final API read-back, upload URLs and setting paths are in `catalog-audit.json`. No theme publication or Git commit/push was performed.
+All IDs, handles, final API read-back, upload URLs and setting paths are in `catalog-audit.json`. No theme publication was performed. Subsequent Git review and synchronization are documented in `branch-review.md`.

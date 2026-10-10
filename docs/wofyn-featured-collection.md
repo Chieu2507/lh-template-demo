@@ -25,4 +25,3 @@
 - View all links to the current collection and appears after the carousel on mobile.
 - Proof: /private/tmp/wofyn-featured-desktop.jpg and /private/tmp/wofyn-featured-mobile.jpg.
 - Product-card content spacing controls currently affect standard style only, so card style retains base compact information area. Soft shadow is very faint with the current shadow color token.
-
