@@ -1910,7 +1910,7 @@
         "image",
         "content"
       ],
-      "name": "Flash Sale — Countdown",
+      "name": "Flash Sale \u2014 Countdown",
       "settings": {
         "section_width": "page_width",
         "height": "auto",
@@ -2032,7 +2032,7 @@
                     "quote": {
                       "type": "text",
                       "settings": {
-                        "text": "<p>“I ordered two of these for my mini Aussies and am obsessed with how they look in my new house. The dogs love them and the quality is very good.”</p>",
+                        "text": "<p>\u201cI ordered two of these for my mini Aussies and am obsessed with how they look in my new house. The dogs love them and the quality is very good.\u201d</p>",
                         "text_size": "sm",
                         "width": "fill"
                       }
@@ -2217,7 +2217,7 @@
                     "quote": {
                       "type": "text",
                       "settings": {
-                        "text": "<p>“My 6-month-old Golden Doodle is absolutely obsessed with the Puffin Game! At first, I wasn't sure if she'd be able to get the hang of it, but she caught on so quickly.”</p>",
+                        "text": "<p>\u201cMy 6-month-old Golden Doodle is absolutely obsessed with the Puffin Game! At first, I wasn't sure if she'd be able to get the hang of it, but she caught on so quickly.\u201d</p>",
                         "text_size": "sm",
                         "width": "fill"
                       }
@@ -2362,7 +2362,7 @@
         "pagination_visibility": "mobile",
         "pagination_thickness": "thin"
       },
-      "name": "Testimonials — Loved by Customers"
+      "name": "Testimonials \u2014 Loved by Customers"
     },
     "peekoo_image_cards": {
       "type": "image-cards",
@@ -2576,7 +2576,7 @@
                 "heading": {
                   "type": "heading",
                   "settings": {
-                    "text": "<p>Prices Won’t<br>Get Lower</p>",
+                    "text": "<p>Prices Won\u2019t<br>Get Lower</p>",
                     "heading_size": "xl",
                     "custom_heading_size": 24,
                     "html_tag": "h2",
@@ -2660,7 +2660,7 @@
         "padding_top_mobile": 0,
         "padding_bottom_mobile": 64
       },
-      "name": "Image cards — Shop Deals"
+      "name": "Image cards \u2014 Shop Deals"
     },
     "peekoo_icon_text": {
       "type": "icon-text-cards",
@@ -3311,7 +3311,7 @@
           "block_order": []
         }
       },
-      "name": "Featured collection — Top Picks",
+      "name": "Featured collection \u2014 Top Picks",
       "settings": {
         "section_width": "page_width",
         "desktop_alignment": "left",
@@ -3500,7 +3500,7 @@
           }
         }
       },
-      "name": "Blog posts — Peekoo",
+      "name": "Blog posts \u2014 Peekoo",
       "settings": {
         "section_width": "page_width",
         "desktop_alignment": "center",
@@ -4323,7 +4323,7 @@
           "block_order": []
         }
       },
-      "name": "Featured collection — Premium Dog Kibble",
+      "name": "Featured collection \u2014 Premium Dog Kibble",
       "settings": {
         "section_width": "full_width",
         "header_position": "products",
@@ -4510,7 +4510,7 @@
     },
     "wofyn_toys_banner": {
       "type": "featured-collection-banner",
-      "name": "Featured collection — Shop Toys",
+      "name": "Featured collection \u2014 Shop Toys",
       "settings": {
         "section_width": "page_width",
         "header_position": "above",
@@ -4624,23 +4624,14 @@
       }
     },
     "wofyn_gallery": {
-      "type": "gallery-carousel",
-      "name": "Gallery — Wofyn pets",
+      "type": "gallery-custom",
+      "name": "Gallery (custom)",
       "settings": {
         "section_width": "full_width_no_padding",
         "marquee_full_bleed": true,
-        "direction": "vertical",
-        "position": "center",
-        "horizontal_alignment": "left",
-        "alignment": "left",
-        "customize_mobile_alignment": true,
-        "alignment_mobile": "left",
-        "content_gap": 0,
-        "customize_mobile_gap": true,
-        "content_gap_mobile": 0,
         "color_scheme": "scheme-1",
-        "padding_top": 100,
-        "padding_bottom": 100,
+        "padding_top": 112,
+        "padding_bottom": 112,
         "customize_mobile_padding": true,
         "padding_top_mobile": 80,
         "padding_bottom_mobile": 80
@@ -4662,8 +4653,8 @@
             "gap_mobile": 48,
             "width": "fill",
             "color_type": "inherit",
-            "padding_top": 12,
-            "padding_bottom": 12,
+            "padding_top": 0,
+            "padding_bottom": 0,
             "padding_left": 0,
             "padding_right": 0,
             "customize_mobile_padding": true,
@@ -4684,7 +4675,8 @@
                 "width_custom_desktop": 160,
                 "width_custom_mobile": 120,
                 "corner_radius": "custom",
-                "custom_corner_radius": 12
+                "custom_corner_radius": 12,
+                "rotate": 10
               }
             },
             "gallery_photo_2": {
@@ -4698,7 +4690,8 @@
                 "width_custom_desktop": 160,
                 "width_custom_mobile": 120,
                 "corner_radius": "custom",
-                "custom_corner_radius": 12
+                "custom_corner_radius": 12,
+                "rotate": -10
               }
             },
             "gallery_photo_3": {
@@ -4712,7 +4705,8 @@
                 "width_custom_desktop": 160,
                 "width_custom_mobile": 120,
                 "corner_radius": "custom",
-                "custom_corner_radius": 12
+                "custom_corner_radius": 12,
+                "rotate": 10
               }
             },
             "gallery_photo_4": {
@@ -4726,7 +4720,8 @@
                 "width_custom_desktop": 160,
                 "width_custom_mobile": 120,
                 "corner_radius": "custom",
-                "custom_corner_radius": 12
+                "custom_corner_radius": 12,
+                "rotate": -10
               }
             },
             "gallery_photo_5": {
@@ -4740,7 +4735,8 @@
                 "width_custom_desktop": 160,
                 "width_custom_mobile": 120,
                 "corner_radius": "custom",
-                "custom_corner_radius": 12
+                "custom_corner_radius": 12,
+                "rotate": 10
               }
             },
             "gallery_photo_6": {
@@ -4754,7 +4750,8 @@
                 "width_custom_desktop": 160,
                 "width_custom_mobile": 120,
                 "corner_radius": "custom",
-                "custom_corner_radius": 12
+                "custom_corner_radius": 12,
+                "rotate": -10
               }
             },
             "gallery_photo_7": {
@@ -4768,7 +4765,8 @@
                 "width_custom_desktop": 160,
                 "width_custom_mobile": 120,
                 "corner_radius": "custom",
-                "custom_corner_radius": 12
+                "custom_corner_radius": 12,
+                "rotate": 10
               }
             },
             "gallery_photo_8": {
@@ -4782,7 +4780,8 @@
                 "width_custom_desktop": 160,
                 "width_custom_mobile": 120,
                 "corner_radius": "custom",
-                "custom_corner_radius": 12
+                "custom_corner_radius": 12,
+                "rotate": -10
               }
             }
           },
