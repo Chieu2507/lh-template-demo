@@ -76,7 +76,7 @@
             "header-menu": {
               "type": "_header-menu",
               "settings": {
-                "menu": "main-menu",
+                "menu": "wofyn-main-menu",
                 "gap": 32,
                 "show_dropdown_icon": true,
                 "dropdown_trigger": "hover",
@@ -103,7 +103,13 @@
                     "submenu_columns": "4",
                     "limit_width": true,
                     "max_width": 850,
-                    "collections": [],
+                    "collections": [
+                      "walks-wofyn",
+                      "bowls-wofyn",
+                      "beds-wofyn",
+                      "toys-wofyn",
+                      "foods-wofyn"
+                    ],
                     "font": "accent",
                     "font_size": "xl",
                     "letter_spacing": "normal"
@@ -118,7 +124,7 @@
                         "limit_width": false,
                         "max_width": 700,
                         "overlay": false,
-                        "overlay_color": "#000000",
+                        "overlay_color": "#00000073",
                         "subheading": "",
                         "heading": "Curate Your Set",
                         "text": "<p>Choose your favorites and save up to 20%.</p>",
@@ -157,7 +163,7 @@
                         "limit_width": false,
                         "max_width": 700,
                         "overlay": false,
-                        "overlay_color": "#000000",
+                        "overlay_color": "#00000073",
                         "subheading": "",
                         "heading": "Curate Your Set",
                         "text": "<p>Choose your favorites and save up to 20%.</p>",

@@ -501,14 +501,14 @@
                           "type": "_menu-link",
                           "settings": {
                             "label": "Blogs",
-                            "link": "/blogs/news"
+                            "link": "/blogs/wofyn"
                           }
                         },
                         "shop-3": {
                           "type": "_menu-link",
                           "settings": {
                             "label": "All Collections",
-                            "link": "/collections"
+                            "link": "/collections/all-wofyn"
                           }
                         }
                       },

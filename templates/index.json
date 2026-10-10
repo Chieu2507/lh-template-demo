@@ -115,7 +115,7 @@
                   "type": "button",
                   "settings": {
                     "button_label": "Discover Now",
-                    "button_link": "/collections/all",
+                    "button_link": "/collections/all-wofyn",
                     "button_open_in_new_tab": false,
                     "button_style": "primary",
                     "show_icon": false,
@@ -583,7 +583,13 @@
           "type": "collection-list-items",
           "static": true,
           "settings": {
-            "collections": [],
+            "collections": [
+              "walks-wofyn",
+              "bowls-wofyn",
+              "beds-wofyn",
+              "toys-wofyn",
+              "foods-wofyn"
+            ],
             "layout": "carousel",
             "columns_desktop": "5",
             "columns_tablet": "2",
@@ -1890,7 +1896,7 @@
               "type": "button",
               "settings": {
                 "button_label": "Shop The Sale",
-                "button_link": "shopify://collections/sale-perky",
+                "button_link": "shopify://collections/sale-wofyn",
                 "button_style": "primary",
                 "width": "fit",
                 "width_mobile": "fit",
@@ -2476,7 +2482,7 @@
               "type": "button",
               "settings": {
                 "button_label": "Shop Deals",
-                "button_link": "shopify://collections",
+                "button_link": "shopify://collections/sale-wofyn",
                 "button_open_in_new_tab": false,
                 "button_style": "primary",
                 "show_icon": false,
@@ -2613,7 +2619,7 @@
               "type": "button",
               "settings": {
                 "button_label": "Shop Deals",
-                "button_link": "shopify://collections",
+                "button_link": "shopify://collections/sale-wofyn",
                 "button_open_in_new_tab": false,
                 "button_style": "primary",
                 "show_icon": false,
@@ -3269,7 +3275,7 @@
           "type": "product-list",
           "static": true,
           "settings": {
-            "collection": "new-arrivals-perky",
+            "collection": "top-picks-wofyn",
             "max_products": 4,
             "layout_type": "carousel",
             "columns_desktop": "4",
@@ -3380,7 +3386,7 @@
           "type": "blog-list",
           "static": true,
           "settings": {
-            "blog": "perky",
+            "blog": "wofyn",
             "max_posts": 3,
             "layout_type": "grid",
             "columns_desktop": "3",
@@ -3797,7 +3803,7 @@
         }
       },
       "settings": {
-        "product": "perky-stacking-tree-with-bird",
+        "product": "wofyn-fable-modern-dog-crate",
         "show_header": false,
         "header_gap": 48,
         "customize_mobile_header_gap": true,
@@ -3888,7 +3894,7 @@
           "settings": {
             "columns_wide": 2,
             "rows_tall": 1,
-            "link": "/collections/all",
+            "link": "/collections/toys-wofyn",
             "image": "shopify://shop_images/wofyn-promo-toys.jpg",
             "zoom_on_hover": true,
             "show_overlay": false,
@@ -3952,7 +3958,7 @@
           "settings": {
             "columns_wide": 1,
             "rows_tall": 1,
-            "link": "/collections/all",
+            "link": "/collections/all-wofyn",
             "image": "shopify://shop_images/wofyn-promo-pet-joy.jpg",
             "zoom_on_hover": true,
             "show_overlay": false,
@@ -4005,7 +4011,7 @@
           "settings": {
             "columns_wide": 1,
             "rows_tall": 1,
-            "link": "/collections/all",
+            "link": "/collections/walks-wofyn",
             "image": "shopify://shop_images/wofyn-promo-harnesses.jpg",
             "zoom_on_hover": true,
             "show_overlay": false,
@@ -4058,7 +4064,7 @@
           "settings": {
             "columns_wide": 1,
             "rows_tall": 1,
-            "link": "/collections/all",
+            "link": "/collections/bowls-wofyn",
             "image": "shopify://shop_images/wofyn-promo-dinner.jpg",
             "zoom_on_hover": true,
             "show_overlay": false,
@@ -4111,7 +4117,7 @@
           "settings": {
             "columns_wide": 1,
             "rows_tall": 1,
-            "link": "/collections/all",
+            "link": "/collections/toys-wofyn",
             "image": "shopify://shop_images/wofyn-promo-enrichment.jpg",
             "zoom_on_hover": true,
             "show_overlay": false,
@@ -4274,7 +4280,7 @@
           "type": "product-list",
           "static": true,
           "settings": {
-            "collection": "",
+            "collection": "premium-dog-kibble-wofyn",
             "max_products": 6,
             "layout_type": "carousel",
             "columns_desktop": "4",
@@ -4409,7 +4415,7 @@
               "type": "button",
               "settings": {
                 "button_label": "Shop Now",
-                "button_link": "shopify://collections/all",
+                "button_link": "shopify://collections/all-wofyn",
                 "button_style": "primary",
                 "show_icon": false
               }
@@ -4552,7 +4558,7 @@
               "type": "button",
               "settings": {
                 "button_label": "Shop Toys",
-                "button_link": "shopify://collections",
+                "button_link": "shopify://collections/toys-wofyn",
                 "button_style": "primary",
                 "show_icon": false
               }
@@ -4567,7 +4573,7 @@
           "type": "product-list",
           "static": true,
           "settings": {
-            "collection": "",
+            "collection": "toys-wofyn",
             "max_products": 6,
             "layout_type": "grid",
             "columns_desktop": "3",
