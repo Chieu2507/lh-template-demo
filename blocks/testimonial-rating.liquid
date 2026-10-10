@@ -3,21 +3,28 @@
   The parent Group owns alignment and spacing; this block owns only the score.
 {% enddoc %}
 {% assign rating = block.settings.rating | default: 5 | at_least: 1 | at_most: 5 %}
-<div class="testimonial-rating" role="img" aria-label="{{ 'accessibility.testimonial_rating' | t: rating: rating }}" {{ block.shopify_attributes }}>
+<div class="testimonial-rating" style="--testimonial-star-gap: {{ block.settings.star_gap | default: 4 }}px;{% if block.settings.star_color != blank %} --testimonial-star-color: {{ block.settings.star_color }}; --testimonial-star-mask: url({{ 'testimonial-rating-star.svg' | asset_url }});{% endif %}" role="img" aria-label="{{ 'accessibility.testimonial_rating' | t: rating: rating }}" {{ block.shopify_attributes }}>
   {% for star in (1..rating) %}
+    {% if block.settings.star_color != blank %}
+      <span class="testimonial-rating__star" aria-hidden="true"></span>
+    {% else %}
     <img src="{{ 'perky-testimonial-star.svg' | asset_url }}" alt="" width="18" height="18" loading="lazy">
+    {% endif %}
   {% endfor %}
 </div>
 {% stylesheet %}
-.testimonial-rating { display: flex; gap: 4px; align-items: center; }
+.testimonial-rating { display: flex; gap: var(--testimonial-star-gap, 4px); align-items: center; }
 .testimonial-rating img { display: block; flex: 0 0 auto; }
+.testimonial-rating__star { display: block; flex: 0 0 18px; width: 18px; height: 18px; background: var(--testimonial-star-color); mask: var(--testimonial-star-mask) center / contain no-repeat; }
 {% endstylesheet %}
 {% schema %}
 {
   "name": "Star rating",
   "tag": null,
   "settings": [
-    { "type": "range", "id": "rating", "label": "Rating", "min": 1, "max": 5, "step": 1, "default": 5 }
+    { "type": "range", "id": "rating", "label": "Rating", "min": 1, "max": 5, "step": 1, "default": 5 },
+    { "type": "color", "id": "star_color", "label": "Star color" },
+    { "type": "range", "id": "star_gap", "label": "Star gap", "min": 0, "max": 12, "step": 1, "unit": "px", "default": 4 }
   ],
   "presets": [{ "name": "Star rating", "category": "Trust & social proof" }]
 }
