@@ -224,7 +224,7 @@
                 "heading": {
                   "type": "heading",
                   "settings": {
-                    "text": "<p>Where Happy Pets Begin Every Day</p>",
+                    "text": "<p>Make Every Day a Play Day</p>",
                     "heading_size": "display",
                     "custom_heading_size": 24,
                     "html_tag": "h2",
@@ -252,8 +252,8 @@
                 "discover-now": {
                   "type": "button",
                   "settings": {
-                    "button_label": "Discover Now",
-                    "button_link": "/collections/all",
+                    "button_label": "Shop Toys",
+                    "button_link": "/collections/toys-wofyn",
                     "button_open_in_new_tab": false,
                     "button_style": "primary",
                     "show_icon": false,
@@ -362,7 +362,7 @@
                 "heading": {
                   "type": "heading",
                   "settings": {
-                    "text": "<p>Where Happy Pets Begin Every Day</p>",
+                    "text": "<p>Cozy Beds for Sweet Dreams</p>",
                     "heading_size": "display",
                     "custom_heading_size": 24,
                     "html_tag": "h2",
@@ -390,8 +390,8 @@
                 "discover-now": {
                   "type": "button",
                   "settings": {
-                    "button_label": "Discover Now",
-                    "button_link": "/collections/all",
+                    "button_label": "Shop Beds",
+                    "button_link": "/collections/beds-wofyn",
                     "button_open_in_new_tab": false,
                     "button_style": "primary",
                     "show_icon": false,

@@ -57,7 +57,7 @@
                   "type": "logo",
                   "settings": {
                     "style": "transparent",
-                    "fallback_text": "Perky",
+                    "fallback_text": "Wofyn",
                     "width": "custom",
                     "width_desktop": 110,
                     "width_mobile": 112
@@ -79,7 +79,7 @@
                     "footer-description": {
                       "type": "text",
                       "settings": {
-                        "text": "<p>Our mission at Perky is to consistently offer our customers the latest educational toys and games at unbeatable prices, ensuring a fun and easy shopping experience for all.</p>",
+                        "text": "<p>Pets are part of our lives. We design thoughtful essentials that make every moment together simpler, softer, and happier.</p>",
                         "text_size": "sm",
                         "width": "fill",
                         "padding_top": 0
