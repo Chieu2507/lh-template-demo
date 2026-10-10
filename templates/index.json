@@ -4185,7 +4185,8 @@
         "padding_bottom": 112,
         "customize_mobile_padding": true,
         "padding_top_mobile": 0,
-        "padding_bottom_mobile": 80
+        "padding_bottom_mobile": 80,
+        "enable_media_offset": false
       }
     },
     "wofyn_image_with_text": {
@@ -4361,7 +4362,8 @@
         "padding_top_mobile": 64,
         "padding_bottom_mobile": 64,
         "header_gap_desktop": 0,
-        "header_gap_mobile": 0
+        "header_gap_mobile": 0,
+        "enable_media_offset": true
       },
       "blocks": {
         "header": {
