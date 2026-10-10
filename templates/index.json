@@ -4200,6 +4200,154 @@
         "padding_bottom_mobile": 80,
         "banner_ratio_tablet": "portrait"
       }
+    },
+    "wofyn_image_with_text": {
+      "type": "image-with-text-custom",
+      "settings": {
+        "section_width": "full_width",
+        "content_max_width": 1400,
+        "color_scheme": "scheme-1",
+        "padding_top": 64,
+        "padding_bottom": 64,
+        "customize_mobile_padding": true,
+        "padding_top_mobile": 56,
+        "padding_bottom_mobile": 56
+      },
+      "blocks": {
+        "content": {
+          "type": "group",
+          "static": true,
+          "settings": {
+            "width": "fill",
+            "direction": "vertical",
+            "alignment": "center",
+            "gap_desktop": 36,
+            "gap_mobile": 36,
+            "padding_left": 40,
+            "padding_right": 40,
+            "customize_mobile_padding": true,
+            "padding_left_mobile": 0,
+            "padding_right_mobile": 0
+          },
+          "blocks": {
+            "header": {
+              "type": "header",
+              "settings": {
+                "width": "fill",
+                "inherit_alignment": true,
+                "gap_desktop": 16,
+                "gap_mobile": 16
+              },
+              "blocks": {
+                "heading": {
+                  "type": "heading",
+                  "settings": {
+                    "text": "<p>Unleashing Happiness for Pets</p>",
+                    "heading_size": "xl",
+                    "html_tag": "h2"
+                  }
+                },
+                "text": {
+                  "type": "text",
+                  "settings": {
+                    "text": "<p>From human-grade nutrition to indestructible toys, we provide everything they need for a lifetime of joy and vibrant health.</p>",
+                    "text_size": "sm"
+                  }
+                }
+              },
+              "block_order": [
+                "heading",
+                "text"
+              ]
+            },
+            "button": {
+              "type": "button",
+              "settings": {
+                "button_label": "Shop Now",
+                "button_link": "shopify://collections/all",
+                "button_style": "primary",
+                "show_icon": false
+              }
+            }
+          },
+          "block_order": [
+            "header",
+            "button"
+          ]
+        },
+        "images": {
+          "type": "images",
+          "static": true,
+          "settings": {
+            "front_image": "second",
+            "height": "custom",
+            "height_desktop": 640,
+            "reference_width": 668,
+            "customize_mobile": false,
+            "width_desktop": "fill",
+            "first_width_desktop": 62,
+            "first_left_desktop": 9,
+            "first_top_desktop": 8,
+            "first_anchor_desktop": "top",
+            "first_customize_mobile": false,
+            "second_width_desktop": 56,
+            "second_left_desktop": 40,
+            "second_top_desktop": 33,
+            "second_anchor_desktop": "top",
+            "second_customize_mobile": false
+          },
+          "blocks": {
+            "first": {
+              "type": "image",
+              "static": true,
+              "settings": {
+                "image": "shopify://shop_images/wofyn-happiness-first.webp",
+                "alt_text": "Dog enjoying a treat",
+                "image_ratio_desktop": "custom",
+                "image_ratio_custom_width_desktop": 7,
+                "image_ratio_custom_height_desktop": 6,
+                "image_ratio_mobile": "custom",
+                "image_ratio_custom_width_mobile": 7,
+                "image_ratio_custom_height_mobile": 6,
+                "width_desktop": "fill",
+                "width_mobile": "fill",
+                "corner_radius": "radius_12",
+                "show_frame": true,
+                "background_color": "#ffffff",
+                "rotate": -14.5,
+                "padding_top": 16,
+                "padding_bottom": 16,
+                "padding_left": 16,
+                "padding_right": 16
+              }
+            },
+            "second": {
+              "type": "image",
+              "static": true,
+              "settings": {
+                "image": "shopify://shop_images/wofyn-happiness-second.webp",
+                "alt_text": "Dog resting on a soft pet bed",
+                "image_ratio_desktop": "custom",
+                "image_ratio_custom_width_desktop": 6,
+                "image_ratio_custom_height_desktop": 7,
+                "image_ratio_mobile": "custom",
+                "image_ratio_custom_width_mobile": 6,
+                "image_ratio_custom_height_mobile": 7,
+                "width_desktop": "fill",
+                "width_mobile": "fill",
+                "corner_radius": "radius_12",
+                "show_frame": true,
+                "background_color": "#ffffff",
+                "rotate": 0,
+                "padding_top": 16,
+                "padding_bottom": 16,
+                "padding_left": 16,
+                "padding_right": 16
+              }
+            }
+          }
+        }
+      }
     }
   },
   "order": [
@@ -4213,6 +4361,7 @@
     "wofyn_promo_grid",
     "wofyn_kibble_banner",
     "peekoo_featured_product",
+    "wofyn_image_with_text",
     "peekoo_image_cards",
     "perky_logos",
     "perky_testimonials",
