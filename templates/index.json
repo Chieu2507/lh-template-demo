@@ -1910,7 +1910,7 @@
         "image",
         "content"
       ],
-      "name": "Flash Sale \u2014 Countdown",
+      "name": "Flash Sale — Countdown",
       "settings": {
         "section_width": "page_width",
         "height": "auto",
@@ -2033,7 +2033,7 @@
                     "quote": {
                       "type": "text",
                       "settings": {
-                        "text": "<p>\u201cI ordered two of these for my mini Aussies and am obsessed with how they look in my new house. The dogs love them and the quality is very good.\u201d</p>",
+                        "text": "<p>“I ordered two of these for my mini Aussies and am obsessed with how they look in my new house. The dogs love them and the quality is very good.”</p>",
                         "text_size": "sm",
                         "width": "fill"
                       }
@@ -2219,7 +2219,7 @@
                     "quote": {
                       "type": "text",
                       "settings": {
-                        "text": "<p>\u201cMy 6-month-old Golden Doodle is absolutely obsessed with the Puffin Game! At first, I wasn't sure if she'd be able to get the hang of it, but she caught on so quickly.\u201d</p>",
+                        "text": "<p>“My 6-month-old Golden Doodle is absolutely obsessed with the Puffin Game! At first, I wasn't sure if she'd be able to get the hang of it, but she caught on so quickly.”</p>",
                         "text_size": "sm",
                         "width": "fill"
                       }
@@ -2364,7 +2364,7 @@
         "pagination_visibility": "mobile",
         "pagination_thickness": "thin"
       },
-      "name": "Testimonials \u2014 Loved by Customers"
+      "name": "Testimonials — Loved by Customers"
     },
     "peekoo_image_cards": {
       "type": "image-cards",
@@ -2578,7 +2578,7 @@
                 "heading": {
                   "type": "heading",
                   "settings": {
-                    "text": "<p>Prices Won\u2019t<br>Get Lower</p>",
+                    "text": "<p>Prices Won’t<br>Get Lower</p>",
                     "heading_size": "xl",
                     "custom_heading_size": 24,
                     "html_tag": "h2",
@@ -2662,7 +2662,7 @@
         "padding_top_mobile": 0,
         "padding_bottom_mobile": 64
       },
-      "name": "Image cards \u2014 Shop Deals"
+      "name": "Image cards — Shop Deals"
     },
     "peekoo_icon_text": {
       "type": "icon-text-cards",
@@ -3313,7 +3313,7 @@
           "block_order": []
         }
       },
-      "name": "Featured collection \u2014 Top Picks",
+      "name": "Featured collection — Top Picks",
       "settings": {
         "section_width": "page_width",
         "desktop_alignment": "left",
@@ -3336,19 +3336,22 @@
           "static": true,
           "settings": {
             "width": "custom",
-            "max_width": 570,
+            "max_width": 770,
             "inherit_alignment": false,
             "alignment": "center",
             "customize_mobile_alignment": false,
             "alignment_mobile": "center",
             "gap_desktop": 8,
-            "gap_mobile": 8
+            "gap_mobile": 8,
+            "customize_mobile_size": true,
+            "width_mobile": "custom",
+            "max_width_mobile": 440
           },
           "blocks": {
             "heading": {
               "type": "heading",
               "settings": {
-                "text": "<p>Blog posts</p>",
+                "text": "<p>Latest Tips and Stories for Pet Lovers</p>",
                 "heading_size": "xl",
                 "html_tag": "h2",
                 "width": "fill"
@@ -3382,11 +3385,11 @@
             "layout_type": "grid",
             "columns_desktop": "3",
             "columns_mobile": "1",
-            "mobile_layout": "scroll",
+            "mobile_layout": "inherit",
             "mobile_card_width": 288,
             "show_next_slide_preview_on_desktop": false,
-            "gap_desktop": 32,
-            "gap_mobile": 16,
+            "gap_desktop": 28,
+            "gap_mobile": 32,
             "show_navigation_on_desktop": false,
             "navigation_position": "top",
             "navigation_style": "secondary",
@@ -3407,18 +3410,18 @@
               "type": "blog-card",
               "static": true,
               "settings": {
-                "ratio": "square",
+                "ratio": "landscape",
                 "media_layout": "stacked",
                 "alignment": "left",
                 "position": "flex-start",
-                "desktop_gap": 12,
-                "mobile_gap": 12,
+                "desktop_gap": 0,
+                "mobile_gap": 0,
                 "border_thickness": 0,
-                "corner_radius": "square",
+                "corner_radius": "radius_16",
                 "shadow": "none",
                 "color_type": "inherit",
                 "color_scheme": "scheme-1",
-                "padding_top": 24,
+                "padding_top": 20,
                 "padding_bottom": 0,
                 "padding_left": 0,
                 "padding_right": 0,
@@ -3438,9 +3441,9 @@
                     "show_author": false,
                     "show_comment_count": false,
                     "show_date_icon": false,
-                    "date_format": "long",
+                    "date_format": "medium",
                     "separator_icon": "none",
-                    "size": "sm",
+                    "size": "xs",
                     "gap": 0,
                     "padding_top": 0,
                     "padding_bottom": 0
@@ -3451,8 +3454,8 @@
                   "settings": {
                     "direction": "vertical",
                     "alignment": "left",
-                    "gap_desktop": 6,
-                    "gap_mobile": 6,
+                    "gap_desktop": 8,
+                    "gap_mobile": 8,
                     "width": "fill",
                     "width_mobile": "fill",
                     "show_overlay": false
@@ -3462,7 +3465,7 @@
                       "type": "blog-card-title",
                       "settings": {
                         "line_limit": "no_limit",
-                        "heading_size": "md",
+                        "heading_size": "sm",
                         "html_tag": "h3",
                         "padding_top": 0,
                         "padding_bottom": 0
@@ -3472,7 +3475,7 @@
                       "type": "blog-card-description",
                       "settings": {
                         "text_limit": "two",
-                        "size": "md",
+                        "size": "sm",
                         "padding_top": 0,
                         "padding_bottom": 0
                       }
@@ -3482,27 +3485,17 @@
                     "title",
                     "description"
                   ]
-                },
-                "button": {
-                  "type": "blog-card-button",
-                  "settings": {
-                    "style": "tertiary",
-                    "show_icon": false,
-                    "padding_top": 0,
-                    "padding_bottom": 0
-                  }
                 }
               },
               "block_order": [
                 "meta",
-                "copy",
-                "button"
+                "copy"
               ]
             }
           }
         }
       },
-      "name": "Blog posts \u2014 Peekoo",
+      "name": "Blog posts — Wofyn",
       "settings": {
         "section_width": "page_width",
         "desktop_alignment": "center",
@@ -3510,11 +3503,11 @@
         "gap_desktop": 40,
         "gap_mobile": 36,
         "color_scheme": "scheme-1",
-        "padding_top": 80,
-        "padding_bottom": 80,
+        "padding_top": 0,
+        "padding_bottom": 96,
         "customize_mobile_padding": true,
-        "padding_top_mobile": 56,
-        "padding_bottom_mobile": 56
+        "padding_top_mobile": 0,
+        "padding_bottom_mobile": 64
       }
     },
     "peekoo_featured_product": {
@@ -4325,7 +4318,7 @@
           "block_order": []
         }
       },
-      "name": "Featured collection \u2014 Premium Dog Kibble",
+      "name": "Featured collection — Premium Dog Kibble",
       "settings": {
         "section_width": "full_width",
         "header_position": "products",
@@ -4512,7 +4505,7 @@
     },
     "wofyn_toys_banner": {
       "type": "featured-collection-banner",
-      "name": "Featured collection \u2014 Shop Toys",
+      "name": "Featured collection — Shop Toys",
       "settings": {
         "section_width": "page_width",
         "header_position": "above",
@@ -4802,6 +4795,380 @@
       "block_order": [
         "pet_photos"
       ]
+    },
+    "wofyn_services": {
+      "type": "icon-text-cards",
+      "blocks": {
+        "service_1": {
+          "type": "group",
+          "settings": {
+            "direction": "vertical",
+            "alignment": "center",
+            "alignment_mobile": "left",
+            "width": "fill",
+            "width_mobile": "fill",
+            "height": "fit",
+            "gap_desktop": 0,
+            "gap_mobile": 0,
+            "show_overlay": false
+          },
+          "blocks": {
+            "row": {
+              "type": "group",
+              "settings": {
+                "direction": "horizontal",
+                "position_horizontal": "top",
+                "horizontal_alignment": "left",
+                "customize_mobile_alignment": false,
+                "alignment": "left",
+                "alignment_mobile": "left",
+                "gap_desktop": 16,
+                "gap_mobile": 16,
+                "width": "fit",
+                "height": "fit",
+                "width_mobile": "fit",
+                "appearance_type": "inherit",
+                "color_scheme": "",
+                "background_color": "",
+                "corner_radius": "square",
+                "show_overlay": false,
+                "animation_type": "none",
+                "animation_delay": 0,
+                "padding_top": 0,
+                "padding_bottom": 0,
+                "padding_left": 0,
+                "padding_right": 0
+              },
+              "blocks": {
+                "icon": {
+                  "type": "icon",
+                  "settings": {
+                    "source": "custom",
+                    "custom_icon": "<svg preserveAspectRatio=\"none\" overflow=\"visible\" style=\"display: block;\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\">\n<g id=\"box\">\n<g id=\"Group\">\n<g id=\"Group_2\">\n<path id=\"Vector\" d=\"M3.17021 7.43956L12.0002 12.5495L20.7702 7.46953\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke=\"#201D47\"/>\n<path id=\"Vector_2\" d=\"M12.0001 21.6098V12.5398\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke=\"#201D47\"/>\n</g>\n<path id=\"Vector_3\" d=\"M9.93007 2.48019L4.59007 5.45022C3.38007 6.12022 2.39009 7.8002 2.39009 9.1802V14.8302C2.39009 16.2102 3.38007 17.8902 4.59007 18.5602L9.93007 21.5302C11.0701 22.1602 12.9401 22.1602 14.0801 21.5302L19.4201 18.5602C20.6301 17.8902 21.6201 16.2102 21.6201 14.8302V9.1802C21.6201 7.8002 20.6301 6.12022 19.4201 5.45022L14.0801 2.48019C12.9301 1.84019 11.0701 1.84019 9.93007 2.48019Z\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke=\"#201D47\"/>\n</g>\n<path id=\"Vector_4\" d=\"M17 13.2399V9.57993L7.51004 4.09989\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke=\"#201D47\"/>\n<g id=\"Vector_5\" opacity=\"0\">\n</g>\n</g>\n</svg>\n",
+                    "icon_width": 24,
+                    "icon_padding": 0,
+                    "custom_mobile": false,
+                    "padding_top": 2,
+                    "padding_bottom": 0,
+                    "padding_left": 0,
+                    "padding_right": 0,
+                    "customize_mobile_padding": false
+                  }
+                },
+                "content": {
+                  "type": "group",
+                  "settings": {
+                    "direction": "vertical",
+                    "alignment": "left",
+                    "alignment_mobile": "left",
+                    "gap_desktop": 6,
+                    "gap_mobile": 6,
+                    "width": "fit",
+                    "height": "fit",
+                    "width_mobile": "fit",
+                    "show_overlay": false
+                  },
+                  "blocks": {
+                    "heading": {
+                      "type": "heading",
+                      "settings": {
+                        "text": "<p>Free Shipping</p>",
+                        "heading_size": "sm",
+                        "custom_heading_size": 20,
+                        "html_tag": "h3",
+                        "text_color": "",
+                        "width": "fill",
+                        "customize_mobile_size": false,
+                        "width_mobile": "fill"
+                      }
+                    },
+                    "text": {
+                      "type": "text",
+                      "settings": {
+                        "text": "<p>Free Shipping for orders over $100</p>",
+                        "text_size": "sm",
+                        "customize_line_height": false,
+                        "line_height": 24,
+                        "text_color": "",
+                        "width": "fill",
+                        "customize_mobile_size": false,
+                        "width_mobile": "fill"
+                      }
+                    }
+                  },
+                  "block_order": [
+                    "heading",
+                    "text"
+                  ]
+                }
+              },
+              "block_order": [
+                "icon",
+                "content"
+              ]
+            }
+          },
+          "block_order": [
+            "row"
+          ]
+        },
+        "service_2": {
+          "type": "group",
+          "settings": {
+            "direction": "vertical",
+            "alignment": "center",
+            "alignment_mobile": "left",
+            "width": "fill",
+            "width_mobile": "fill",
+            "height": "fit",
+            "gap_desktop": 0,
+            "gap_mobile": 0,
+            "show_overlay": false
+          },
+          "blocks": {
+            "row": {
+              "type": "group",
+              "settings": {
+                "direction": "horizontal",
+                "position_horizontal": "top",
+                "horizontal_alignment": "left",
+                "customize_mobile_alignment": false,
+                "alignment": "left",
+                "alignment_mobile": "left",
+                "gap_desktop": 16,
+                "gap_mobile": 16,
+                "width": "fit",
+                "height": "fit",
+                "width_mobile": "fit",
+                "appearance_type": "inherit",
+                "color_scheme": "",
+                "background_color": "",
+                "corner_radius": "square",
+                "show_overlay": false,
+                "animation_type": "none",
+                "animation_delay": 0,
+                "padding_top": 0,
+                "padding_bottom": 0,
+                "padding_left": 0,
+                "padding_right": 0
+              },
+              "blocks": {
+                "icon": {
+                  "type": "icon",
+                  "settings": {
+                    "source": "custom",
+                    "custom_icon": "<svg preserveAspectRatio=\"none\" overflow=\"visible\" style=\"display: block;\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\">\n<g id=\"message-notif\">\n<path id=\"Vector\" d=\"M22 10V13C22 17 20 19 16 19H15.5C15.19 19 14.89 19.15 14.7 19.4L13.2 21.4C12.54 22.28 11.46 22.28 10.8 21.4L9.3 19.4C9.14 19.18 8.77 19 8.5 19H8C4 19 2 18 2 13V8C2 4 4 2 8 2H14\" stroke-width=\"2\" stroke-miterlimit=\"10\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke=\"#201D47\"/>\n<path id=\"Vector_2\" d=\"M22 4.5C22 5.88071 20.8807 7 19.5 7C18.1193 7 17 5.88071 17 4.5C17 3.11929 18.1193 2 19.5 2C20.8807 2 22 3.11929 22 4.5Z\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke=\"#201D47\"/>\n<path id=\"Vector_3\" d=\"M15.9965 11H16.0054\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke=\"#201D47\"/>\n<path id=\"Vector_4\" d=\"M11.9955 11H12.0045\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke=\"#201D47\"/>\n<path id=\"Vector_5\" d=\"M7.99451 11H8.00349\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke=\"#201D47\"/>\n<g id=\"Vector_6\" opacity=\"0\">\n</g>\n</g>\n</svg>\n",
+                    "icon_width": 24,
+                    "icon_padding": 0,
+                    "custom_mobile": false,
+                    "padding_top": 2,
+                    "padding_bottom": 0,
+                    "padding_left": 0,
+                    "padding_right": 0,
+                    "customize_mobile_padding": false
+                  }
+                },
+                "content": {
+                  "type": "group",
+                  "settings": {
+                    "direction": "vertical",
+                    "alignment": "left",
+                    "alignment_mobile": "left",
+                    "gap_desktop": 6,
+                    "gap_mobile": 6,
+                    "width": "fit",
+                    "height": "fit",
+                    "width_mobile": "fit",
+                    "show_overlay": false
+                  },
+                  "blocks": {
+                    "heading": {
+                      "type": "heading",
+                      "settings": {
+                        "text": "<p>Online Support</p>",
+                        "heading_size": "sm",
+                        "custom_heading_size": 20,
+                        "html_tag": "h3",
+                        "text_color": "",
+                        "width": "fill",
+                        "customize_mobile_size": false,
+                        "width_mobile": "fill"
+                      }
+                    },
+                    "text": {
+                      "type": "text",
+                      "settings": {
+                        "text": "<p>24 hours a day, 7 days a week</p>",
+                        "text_size": "sm",
+                        "customize_line_height": false,
+                        "line_height": 24,
+                        "text_color": "",
+                        "width": "fill",
+                        "customize_mobile_size": false,
+                        "width_mobile": "fill"
+                      }
+                    }
+                  },
+                  "block_order": [
+                    "heading",
+                    "text"
+                  ]
+                }
+              },
+              "block_order": [
+                "icon",
+                "content"
+              ]
+            }
+          },
+          "block_order": [
+            "row"
+          ]
+        },
+        "service_3": {
+          "type": "group",
+          "settings": {
+            "direction": "vertical",
+            "alignment": "center",
+            "alignment_mobile": "left",
+            "width": "fill",
+            "width_mobile": "fill",
+            "height": "fit",
+            "gap_desktop": 0,
+            "gap_mobile": 0,
+            "show_overlay": false
+          },
+          "blocks": {
+            "row": {
+              "type": "group",
+              "settings": {
+                "direction": "horizontal",
+                "position_horizontal": "top",
+                "horizontal_alignment": "left",
+                "customize_mobile_alignment": false,
+                "alignment": "left",
+                "alignment_mobile": "left",
+                "gap_desktop": 16,
+                "gap_mobile": 16,
+                "width": "fit",
+                "height": "fit",
+                "width_mobile": "fit",
+                "appearance_type": "inherit",
+                "color_scheme": "",
+                "background_color": "",
+                "corner_radius": "square",
+                "show_overlay": false,
+                "animation_type": "none",
+                "animation_delay": 0,
+                "padding_top": 0,
+                "padding_bottom": 0,
+                "padding_left": 0,
+                "padding_right": 0
+              },
+              "blocks": {
+                "icon": {
+                  "type": "icon",
+                  "settings": {
+                    "source": "custom",
+                    "custom_icon": "<svg preserveAspectRatio=\"none\" overflow=\"visible\" style=\"display: block;\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\">\n<g id=\"wallet-add\">\n<path id=\"Vector\" d=\"M14.2617 15.4385H9.26172\" stroke-width=\"2\" stroke-miterlimit=\"10\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke=\"#201D47\"/>\n<path id=\"Vector_2\" d=\"M11.7617 12.998V17.998\" stroke-width=\"2\" stroke-miterlimit=\"10\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke=\"#201D47\"/>\n<path id=\"Vector_3\" d=\"M12.66 2.51814L12.63 2.58814L9.72999 9.31813H6.87999C6.19999 9.31813 5.54999 9.45814 4.95999 9.70814L6.70999 5.52814L6.74999 5.42814L6.81999 5.26814C6.83999 5.20814 6.85999 5.14814 6.88999 5.09814C8.19999 2.06814 9.67999 1.37814 12.66 2.51814Z\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke=\"#201D47\"/>\n<path id=\"Vector_4\" d=\"M18.05 9.51815C17.6 9.37815 17.12 9.31815 16.64 9.31815H9.73L12.63 2.58815L12.66 2.51815C12.81 2.56815 12.95 2.63815 13.1 2.69815L15.31 3.62815C16.54 4.13815 17.4 4.66815 17.92 5.30815C18.02 5.42815 18.1 5.53815 18.17 5.66815C18.26 5.80815 18.33 5.94815 18.37 6.09815C18.41 6.18815 18.44 6.27815 18.46 6.35815C18.73 7.19815 18.57 8.22815 18.05 9.51815Z\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke=\"#201D47\"/>\n<path id=\"Vector_5\" d=\"M21.5217 14.1984V16.1484C21.5217 16.3484 21.5117 16.5484 21.5017 16.7484C21.3117 20.2384 19.3617 21.9984 15.6617 21.9984H7.86172C7.62172 21.9984 7.38172 21.9784 7.15172 21.9484C3.97172 21.7384 2.27172 20.0384 2.06172 16.8584C2.03172 16.6284 2.01172 16.3884 2.01172 16.1484V14.1984C2.01172 12.1884 3.23172 10.4584 4.97172 9.70836C5.57172 9.45836 6.21172 9.31836 6.89172 9.31836H16.6517C17.1417 9.31836 17.6217 9.38836 18.0617 9.51836C20.0517 10.1284 21.5217 11.9884 21.5217 14.1984Z\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke=\"#201D47\"/>\n<path id=\"Vector_6\" d=\"M6.71 5.52812L4.96 9.70812C3.22 10.4581 2 12.1881 2 14.1981V11.2681C2 8.42812 4.02 6.05812 6.71 5.52812Z\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke=\"#201D47\"/>\n<path id=\"Vector_7\" d=\"M21.5186 11.2677V14.1977C21.5186 11.9977 20.0586 10.1277 18.0586 9.52766C18.5786 8.22766 18.7286 7.20766 18.4786 6.35766C18.4586 6.26766 18.4286 6.17766 18.3886 6.09766C20.2486 7.05766 21.5186 9.02766 21.5186 11.2677Z\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke=\"#201D47\"/>\n<g id=\"Vector_8\" opacity=\"0\">\n</g>\n</g>\n</svg>\n",
+                    "icon_width": 24,
+                    "icon_padding": 0,
+                    "custom_mobile": false,
+                    "padding_top": 2,
+                    "padding_bottom": 0,
+                    "padding_left": 0,
+                    "padding_right": 0,
+                    "customize_mobile_padding": false
+                  }
+                },
+                "content": {
+                  "type": "group",
+                  "settings": {
+                    "direction": "vertical",
+                    "alignment": "left",
+                    "alignment_mobile": "left",
+                    "gap_desktop": 6,
+                    "gap_mobile": 6,
+                    "width": "fit",
+                    "height": "fit",
+                    "width_mobile": "fit",
+                    "show_overlay": false
+                  },
+                  "blocks": {
+                    "heading": {
+                      "type": "heading",
+                      "settings": {
+                        "text": "<p>Flexible Payment</p>",
+                        "heading_size": "sm",
+                        "custom_heading_size": 20,
+                        "html_tag": "h3",
+                        "text_color": "",
+                        "width": "fill",
+                        "customize_mobile_size": false,
+                        "width_mobile": "fill"
+                      }
+                    },
+                    "text": {
+                      "type": "text",
+                      "settings": {
+                        "text": "<p>Pay with multiple Credit Cards</p>",
+                        "text_size": "sm",
+                        "customize_line_height": false,
+                        "line_height": 24,
+                        "text_color": "",
+                        "width": "fill",
+                        "customize_mobile_size": false,
+                        "width_mobile": "fill"
+                      }
+                    }
+                  },
+                  "block_order": [
+                    "heading",
+                    "text"
+                  ]
+                }
+              },
+              "block_order": [
+                "icon",
+                "content"
+              ]
+            }
+          },
+          "block_order": [
+            "row"
+          ]
+        }
+      },
+      "block_order": [
+        "service_1",
+        "service_2",
+        "service_3"
+      ],
+      "settings": {
+        "section_width": "page_width",
+        "alignment": "left",
+        "content_gap": 0,
+        "customize_mobile_gap": false,
+        "content_gap_mobile": 36,
+        "layout": "grid",
+        "columns_desktop": "3",
+        "columns_tablet": "3",
+        "columns_mobile": "1",
+        "grid_gap_desktop": 32,
+        "grid_gap_tablet": 32,
+        "grid_gap_mobile": 32,
+        "auto_rotate": false,
+        "autoplay_speed": 4,
+        "show_navigation_on_desktop": false,
+        "show_pagination_on_desktop": false,
+        "color_scheme": "scheme-4",
+        "padding_top": 40,
+        "padding_bottom": 40,
+        "customize_mobile_padding": false,
+        "padding_top_mobile": 56,
+        "padding_bottom_mobile": 56
+      },
+      "name": "Icon with text — Services"
     }
   },
   "order": [
@@ -4821,6 +5188,7 @@
     "perky_logos",
     "perky_testimonials",
     "wofyn_gallery",
-    "peekoo_blog_posts"
+    "peekoo_blog_posts",
+    "wofyn_services"
   ]
 }
