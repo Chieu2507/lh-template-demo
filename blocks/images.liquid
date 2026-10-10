@@ -96,6 +96,8 @@
             assign slot_left = block.settings[key] | default: 0 | at_least: 0 | at_most: 100
             assign key = slot | append: '_top_' | append: device
             assign slot_top = block.settings[key] | default: 0 | at_least: 0 | at_most: 100
+            assign key = slot | append: '_rotate_' | append: device
+            assign slot_rotate = block.settings[key] | default: 0 | at_least: -25 | at_most: 25
             assign key = slot | append: '_anchor_' | append: device
             assign slot_translate = '0%'
             if block.settings[key] == 'center'
@@ -108,9 +110,11 @@
           --slot-left-{{ device_index }}: {{ slot_left }}%;
           --slot-top-{{ device_index }}: {{ slot_top }}%;
           --slot-translate-{{ device_index }}: {{ slot_translate }};
+          --slot-rotate-{{ device_index }}: {{ slot_rotate }}deg;
         {% endfor %}
       {% endcapture %}
-      <div class="images-block__slot images-block__slot--{{ slot }}" style="{{ slot_style | strip }}">
+      {% assign frame_key = slot | append: '_show_frame' %}
+      <div class="images-block__slot images-block__slot--{{ slot }}{% if block.settings[frame_key] %} images-block__slot--frame{% endif %}" style="{{ slot_style | strip }}">
         {% if index == 1 %}
           {% content_for 'block', type: 'image', id: 'first' %}
         {% else %}
@@ -141,11 +145,17 @@
     left: min(var(--slot-left-1, 0%), calc(100% - var(--slot-width-1, 50%)));
     top: var(--slot-top-1, 0%);
     transform: translateY(var(--slot-translate-1, 0%));
+    rotate: var(--slot-rotate-1, 0deg);
   }
   .images-block--front-first .images-block__slot--first,
   .images-block--front-second .images-block__slot--second { z-index: 1; }
   .images-block__slot:focus-within { z-index: 2; }
   .images-block__slot > .image-block { max-width: 100%; }
+  .images-block__slot--frame > .image-block {
+    background: var(--image-block-background, var(--background-color));
+    border-radius: var(--radius-16);
+    box-shadow: 0 0.25rem 0.75rem color-mix(in srgb, var(--shadow-color) 12%, transparent);
+  }
   @media (min-width: 768px) {
     .images-block--height-fill { display: flex; flex-direction: column; align-self: stretch; }
     .images-block--height-fill > .images-block__canvas { flex: 1 1 auto; min-height: 0; }
@@ -162,6 +172,7 @@
       left: min(var(--slot-left-2, var(--slot-left-1, 0%)), calc(100% - var(--slot-width-2, var(--slot-width-1, 50%))));
       top: var(--slot-top-2, var(--slot-top-1, 0%));
       transform: translateY(var(--slot-translate-2, var(--slot-translate-1, 0%)));
+      rotate: var(--slot-rotate-2, var(--slot-rotate-1, 0deg));
     }
   }
 {% endstylesheet %}
@@ -400,6 +411,22 @@
       "default": "center"
     },
     {
+      "type": "range",
+      "id": "first_rotate_desktop",
+      "label": "Desktop rotate",
+      "min": -25,
+      "max": 25,
+      "step": 0.5,
+      "unit": "deg",
+      "default": 0
+    },
+    {
+      "type": "checkbox",
+      "id": "first_show_frame",
+      "label": "Show image frame",
+      "default": false
+    },
+    {
       "type": "checkbox",
       "id": "first_customize_mobile",
       "label": "Customize for mobile",
@@ -460,6 +487,17 @@
       "visible_if": "{{ block.settings.first_customize_mobile }}"
     },
     {
+      "type": "range",
+      "id": "first_rotate_mobile",
+      "label": "Mobile rotate",
+      "min": -25,
+      "max": 25,
+      "step": 0.5,
+      "unit": "deg",
+      "default": 0,
+      "visible_if": "{{ block.settings.first_customize_mobile }}"
+    },
+    {
       "type": "header",
       "content": "Second image position"
     },
@@ -512,6 +550,22 @@
         }
       ],
       "default": "top"
+    },
+    {
+      "type": "range",
+      "id": "second_rotate_desktop",
+      "label": "Desktop rotate",
+      "min": -25,
+      "max": 25,
+      "step": 0.5,
+      "unit": "deg",
+      "default": 0
+    },
+    {
+      "type": "checkbox",
+      "id": "second_show_frame",
+      "label": "Show image frame",
+      "default": false
     },
     {
       "type": "checkbox",
@@ -571,6 +625,17 @@
         }
       ],
       "default": "top",
+      "visible_if": "{{ block.settings.second_customize_mobile }}"
+    },
+    {
+      "type": "range",
+      "id": "second_rotate_mobile",
+      "label": "Mobile rotate",
+      "min": -25,
+      "max": 25,
+      "step": 0.5,
+      "unit": "deg",
+      "default": 0,
       "visible_if": "{{ block.settings.second_customize_mobile }}"
     },
     {

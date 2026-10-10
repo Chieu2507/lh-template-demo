@@ -172,17 +172,12 @@
   if block.settings.image_fit == 'contain' and block.settings.limit_width_desktop and image_width_desktop_setting == 'fit'
     assign image_class = image_class | append: ' image-block--contained-frame'
   endif
-  if block.settings.show_frame
-    assign image_class = image_class | append: ' image-block--frame'
-  endif
   if block.settings.show_image_first_mobile
     assign image_class = image_class | append: ' image-block--first-mobile'
   endif
 %}
 
 {% capture image_style %}
-  {% if block.settings.rotate != 0 and block.settings.rotate != blank %}--image-block-rotate: {{ block.settings.rotate | at_least: -25 | at_most: 25 }}deg;{% endif %}
-  {% if block.settings.customize_mobile_rotate %}--image-block-rotate-mobile: {{ block.settings.rotate_mobile | default: 0 | at_least: -25 | at_most: 25 }}deg;{% endif %}
   {% liquid
     if block.settings.image_fit == 'contain'
       if block.settings.limit_width_desktop and image_width_desktop_setting == 'fit'
@@ -250,18 +245,11 @@
 {% stylesheet %}
   .image-block {
     display: block;
-    rotate: var(--image-block-rotate, 0deg);
     min-width: 0;
     padding-top: var(--image-block-padding-top, 0px);
     padding-right: var(--image-block-padding-right, 0px);
     padding-bottom: var(--image-block-padding-bottom, 0px);
     padding-left: var(--image-block-padding-left, 0px);
-  }
-
-  .image-block--frame {
-    background: var(--image-block-background, var(--background-color));
-    border-radius: var(--radius-16);
-    box-shadow: 0 0.25rem 0.75rem color-mix(in srgb, var(--shadow-color) 12%, transparent);
   }
 
   .image-block__media::after {
@@ -314,7 +302,6 @@
     }
 
     .image-block {
-      rotate: var(--image-block-rotate-mobile, var(--image-block-rotate, 0deg));
       padding-top: var(--image-block-padding-top-mobile, var(--image-block-padding-top, 0px));
       padding-right: var(--image-block-padding-right-mobile, var(--image-block-padding-right, 0px));
       padding-bottom: var(--image-block-padding-bottom-mobile, var(--image-block-padding-bottom, 0px));
@@ -352,33 +339,6 @@
       "type": "image_picker",
       "id": "mobile_image",
       "label": "t:labels.mobile_image"
-    },
-    {
-      "type": "range",
-      "id": "rotate",
-      "label": "Rotate",
-      "min": -25,
-      "max": 25,
-      "step": 0.5,
-      "unit": "deg",
-      "default": 0
-    },
-    {
-      "type": "checkbox",
-      "id": "customize_mobile_rotate",
-      "label": "Customize rotation for mobile",
-      "default": false
-    },
-    {
-      "type": "range",
-      "id": "rotate_mobile",
-      "label": "Mobile rotate",
-      "min": -25,
-      "max": 25,
-      "step": 0.5,
-      "unit": "deg",
-      "default": 0,
-      "visible_if": "{{ block.settings.customize_mobile_rotate }}"
     },
     {
       "type": "checkbox",
@@ -673,13 +633,6 @@
     {
       "type": "header",
       "content": "t:general.border"
-    },
-    {
-      "type": "checkbox",
-      "id": "show_frame",
-      "label": "Show image frame",
-      "info": "Use image padding and background as a rounded frame with a soft shadow.",
-      "default": false
     },
     {
       "type": "color",
