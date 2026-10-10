@@ -2015,7 +2015,9 @@
                     "rating": {
                       "type": "testimonial-rating",
                       "settings": {
-                        "rating": 5
+                        "rating": 5,
+                        "star_color": "#201d47",
+                        "star_gap": 0
                       }
                     },
                     "title": {
@@ -2198,7 +2200,9 @@
                     "rating": {
                       "type": "testimonial-rating",
                       "settings": {
-                        "rating": 5
+                        "rating": 5,
+                        "star_color": "#201d47",
+                        "star_gap": 0
                       }
                     },
                     "title": {
@@ -2343,16 +2347,20 @@
         "gap_mobile": 20,
         "header_gap": 40,
         "header_gap_mobile": 36,
-        "show_pagination": false,
-        "pagination_top_padding_desktop": 32,
-        "pagination_top_padding_mobile": 32,
+        "show_pagination": true,
+        "pagination_top_padding_desktop": 36,
+        "pagination_top_padding_mobile": 36,
         "color_scheme": "scheme-2",
         "padding_top": 96,
         "padding_bottom": 96,
         "customize_mobile_padding": true,
         "padding_top_mobile": 64,
         "padding_bottom_mobile": 64,
-        "layout_type": "carousel"
+        "layout_type": "carousel",
+        "show_navigation": true,
+        "pagination_type": "progress_bar",
+        "pagination_visibility": "mobile",
+        "pagination_thickness": "thin"
       },
       "name": "Testimonials — Loved by Customers"
     },
