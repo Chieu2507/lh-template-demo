@@ -2254,7 +2254,7 @@
                 "height": "fit",
                 "width_mobile": "fill",
                 "limit_width_mobile": true,
-                "max_width_mobile": 200
+                "max_width_mobile": 240
               },
               "blocks": {
                 "eyebrow": {
