@@ -5,7 +5,7 @@
     render 'image-ratio-value', setting: block.settings.image_ratio
   endcapture
   assign ratio = ratio | strip
-  assign rotation = block.settings.rotate | default: 0 | plus: 0
+  assign rotation = block.settings.rotate | default: 0 | at_least: -25 | at_most: 25
   assign rotation_abs = rotation | abs
   assign numeric_ratio = block.settings.image.aspect_ratio | default: 1
   if ratio contains '/'
@@ -141,6 +141,10 @@
       "step": 5,
       "default": 50,
       "unit": "px"
+    },
+    {
+      "type": "header",
+      "content": "Transform"
     },
     {
       "type": "range",
