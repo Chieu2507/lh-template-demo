@@ -10,7 +10,8 @@
     assign canvas_height = block.settings.height_desktop | default: 540 | at_least: 100 | at_most: 2000
   endif
   assign canvas_height_mobile = canvas_height
-  assign canvas_reference_width_mobile = 780
+  assign canvas_reference_width = block.settings.reference_width | default: 780 | at_least: 100 | at_most: 2000
+  assign canvas_reference_width_mobile = canvas_reference_width
   if block.settings.customize_mobile
     assign canvas_height_mobile = block.settings.height_mobile | default: 300 | at_least: 100 | at_most: 1000
     assign canvas_reference_width_mobile = 343
@@ -44,7 +45,7 @@
 %}
 {% capture canvas_style %}
   {% render 'size-style', width: canvas_width, width_mobile: canvas_width_mobile, max_width: canvas_max_width, max_width_mobile: canvas_max_width_mobile %}
-  --images-ratio: 780 / {{ canvas_height }};
+  --images-ratio: {{ canvas_reference_width }} / {{ canvas_height }};
   --images-ratio-mobile: {{ canvas_reference_width_mobile }} / {{ canvas_height_mobile }};
   {% for side in (1..4) %}
     {% liquid
@@ -269,6 +270,13 @@
       "unit": "px",
       "default": 540,
       "visible_if": "{{ block.settings.height == 'custom' }}"
+    },
+    {
+      "type": "number",
+      "id": "reference_width",
+      "label": "Canvas reference width",
+      "info": "Width used with Custom height to set the canvas proportions.",
+      "default": 780
     },
     {
       "type": "checkbox",
