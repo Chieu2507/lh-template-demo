@@ -5,6 +5,15 @@
     render 'image-ratio-value', setting: block.settings.image_ratio
   endcapture
   assign ratio = ratio | strip
+  assign rotation = block.settings.rotate | default: 0 | plus: 0
+  assign rotation_abs = rotation | abs
+  assign numeric_ratio = block.settings.image.aspect_ratio | default: 1
+  if ratio contains '/'
+    assign ratio_parts = ratio | split: '/'
+    assign numerator = ratio_parts.first | plus: 0.0
+    assign denominator = ratio_parts.last | plus: 0.0
+    assign numeric_ratio = numerator | divided_by: denominator
+  endif
   assign radius = 'var(--media-radius, 0px)'
   case block.settings.corner_radius
     when 'square'
@@ -24,11 +33,28 @@
     echo 'px'
   endcapture
 %}
-<div class="marquee-image-block" style="--mq-image-width:{{ width }}px;--mq-image-width-mobile:{{ mobile_width }}px;--mq-image-ratio:{{ ratio }};--mq-image-radius:{{ radius }};" {{ block.shopify_attributes }}>
- {% render 'image', image: block.settings.image, url: block.settings.image_link, open_in_new_tab: block.settings.open_in_new_tab, width: 800, widths: '50,100,200,300,400,600,800', sizes: sizes %}
+<div class="marquee-image-block{% if rotation != 0 %} marquee-image-block--rotated{% endif %}" style="--mq-image-width:{{ width }}px;--mq-image-width-mobile:{{ mobile_width }}px;--mq-image-ratio:{{ ratio }};--mq-image-radius:{{ radius }};{% if rotation != 0 %}--mq-image-rotation:{{ rotation }}deg;--mq-image-rotation-abs:{{ rotation_abs }}deg;--mq-image-aspect:{{ numeric_ratio }};{% endif %}" {{ block.shopify_attributes }}>
+  {% if rotation != 0 %}<div class="marquee-image-block__media">{% endif %}
+    {% render 'image', image: block.settings.image, url: block.settings.image_link, open_in_new_tab: block.settings.open_in_new_tab, width: 800, widths: '50,100,200,300,400,600,800', sizes: sizes %}
+  {% if rotation != 0 %}</div>{% endif %}
 </div>
 {% stylesheet %}
-.marquee-image-block{flex:0 0 auto;width:var(--mq-image-width);border-radius:var(--mq-image-radius);overflow:hidden;} .marquee-image-block .image{aspect-ratio:var(--mq-image-ratio);} .marquee-image-block .image>img,.marquee-image-block .image>svg{width:100%;height:100%;object-fit:cover;} @media(max-width:767.98px){.marquee-image-block{width:var(--mq-image-width-mobile);}}
+  .marquee-image-block { flex: 0 0 auto; --mq-image-active-width: var(--mq-image-width); width: var(--mq-image-active-width); border-radius: var(--mq-image-radius); overflow: hidden; }
+  .marquee-image-block .image { aspect-ratio: var(--mq-image-ratio); }
+  .marquee-image-block .image > img,
+  .marquee-image-block .image > svg { width: 100%; height: 100%; object-fit: cover; }
+  /* Reserve the rotated media's bounds so the marquee gap and loop stay accurate. */
+  .marquee-image-block--rotated {
+    display: grid;
+    place-items: center;
+    width: calc(var(--mq-image-active-width) * cos(var(--mq-image-rotation-abs)) + var(--mq-image-active-width) / var(--mq-image-aspect) * sin(var(--mq-image-rotation-abs)));
+    height: calc(var(--mq-image-active-width) / var(--mq-image-aspect) * cos(var(--mq-image-rotation-abs)) + var(--mq-image-active-width) * sin(var(--mq-image-rotation-abs)));
+    border-radius: 0;
+    overflow: visible;
+  }
+  .marquee-image-block__media { grid-area: 1 / 1; width: var(--mq-image-active-width); aspect-ratio: var(--mq-image-aspect); transform: rotate(var(--mq-image-rotation)); border-radius: var(--mq-image-radius); overflow: hidden; }
+  .marquee-image-block__media .image { width: 100%; height: 100%; }
+  @media (max-width: 767.98px) { .marquee-image-block { --mq-image-active-width: var(--mq-image-width-mobile); } }
 {% endstylesheet %}
 
 {% schema %}
@@ -115,6 +141,16 @@
       "step": 5,
       "default": 50,
       "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "rotate",
+      "label": "Rotate",
+      "min": -25,
+      "max": 25,
+      "step": 1,
+      "default": 0,
+      "unit": "\u00b0"
     },
     {
       "type": "header",
