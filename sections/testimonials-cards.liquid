@@ -36,7 +36,7 @@
           {% render 'swiper-navigation', show: section.settings.show_navigation, centered: false, style: 'outline', icon: 'chevron', behavior: 'always', wrapper_class: 'testimonials-cards__navigation', previous_attribute: 'data-carousel-previous', next_attribute: 'data-carousel-next' %}
         {% endif %}
       </div>
-      {% render 'swiper-carousel' , id: carousel_id, content: slides, layout: layout_type, pagination: pagination, aria_label: carousel_label %}
+      {% render 'swiper-carousel', id: carousel_id, content: slides, layout: layout_type, pagination: pagination, aria_label: carousel_label %}
     </div>
   </div>
 </div>
@@ -222,14 +222,18 @@
     },
     {
       "type": "header",
-      "content": "t:general.pagination"
+      "content": "t:general.navigation"
     },
     {
       "type": "checkbox",
       "id": "show_navigation",
-      "label": "Show navigation on desktop",
+      "label": "t:labels.show_navigation_on_desktop",
       "default": false,
       "visible_if": "{{ section.settings.layout_type == 'carousel' }}"
+    },
+    {
+      "type": "header",
+      "content": "t:general.pagination"
     },
     {
       "type": "checkbox",
