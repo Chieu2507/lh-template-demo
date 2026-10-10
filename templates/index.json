@@ -1938,6 +1938,7 @@
       "blocks": {
         "header": {
           "type": "header",
+          "static": true,
           "settings": {
             "width": "fill",
             "inherit_alignment": false,
@@ -1959,8 +1960,7 @@
           },
           "block_order": [
             "heading"
-          ],
-          "static": true
+          ]
         },
         "jason": {
           "type": "_testimonial-review-card",
@@ -1987,14 +1987,14 @@
               "settings": {
                 "direction": "vertical",
                 "position": "center",
+                "customize_mobile_alignment": false,
                 "alignment": "center",
                 "alignment_mobile": "center",
-                "customize_mobile_alignment": false,
+                "gap_desktop": 32,
+                "gap_mobile": 24,
                 "width": "fill",
                 "height": "fit",
-                "width_mobile": "fill",
-                "gap_desktop": 32,
-                "gap_mobile": 24
+                "width_mobile": "fill"
               },
               "blocks": {
                 "say": {
@@ -2002,14 +2002,14 @@
                   "settings": {
                     "direction": "vertical",
                     "position": "center",
+                    "customize_mobile_alignment": false,
                     "alignment": "center",
                     "alignment_mobile": "center",
-                    "customize_mobile_alignment": false,
+                    "gap_desktop": 16,
+                    "gap_mobile": 16,
                     "width": "fill",
                     "height": "fit",
-                    "width_mobile": "fill",
-                    "gap_desktop": 16,
-                    "gap_mobile": 16
+                    "width_mobile": "fill"
                   },
                   "blocks": {
                     "rating": {
@@ -2050,16 +2050,16 @@
                   "settings": {
                     "direction": "horizontal",
                     "position": "center",
-                    "alignment": "center",
-                    "alignment_mobile": "center",
-                    "customize_mobile_alignment": false,
-                    "width": "fit",
-                    "height": "fit",
-                    "width_mobile": "fit",
                     "position_horizontal": "center",
                     "horizontal_alignment": "left",
+                    "customize_mobile_alignment": false,
+                    "alignment": "center",
+                    "alignment_mobile": "center",
                     "gap_desktop": 16,
-                    "gap_mobile": 16
+                    "gap_mobile": 16,
+                    "width": "fit",
+                    "height": "fit",
+                    "width_mobile": "fit"
                   },
                   "blocks": {
                     "avatar": {
@@ -2067,14 +2067,14 @@
                       "settings": {
                         "image": "shopify://shop_images/wofyn-eleanor.webp",
                         "alt_text": "Eleanor",
-                        "image_ratio_desktop": "square",
-                        "image_ratio_mobile": "square",
                         "image_fit": "cover",
-                        "corner_radius": "full",
+                        "image_ratio_desktop": "square",
                         "width_desktop": "fixed",
-                        "width_mobile": "fixed",
                         "width_fixed_desktop": 64,
-                        "width_fixed_mobile": 64
+                        "image_ratio_mobile": "square",
+                        "width_mobile": "fixed",
+                        "width_fixed_mobile": 64,
+                        "corner_radius": "full"
                       }
                     },
                     "name": {
@@ -2082,14 +2082,14 @@
                       "settings": {
                         "direction": "vertical",
                         "position": "center",
+                        "customize_mobile_alignment": false,
                         "alignment": "left",
                         "alignment_mobile": "left",
-                        "customize_mobile_alignment": false,
+                        "gap_desktop": 4,
+                        "gap_mobile": 4,
                         "width": "fit",
                         "height": "fit",
-                        "width_mobile": "fit",
-                        "gap_desktop": 4,
-                        "gap_mobile": 4
+                        "width_mobile": "fit"
                       },
                       "blocks": {
                         "name": {
@@ -2131,15 +2131,15 @@
               "type": "image",
               "settings": {
                 "image": "shopify://shop_images/wofyn-review-corgi.webp",
+                "show_image_first_mobile": true,
                 "alt_text": "Review Corgi",
-                "image_ratio_desktop": "square",
-                "image_ratio_mobile": "square",
                 "image_fit": "cover",
-                "corner_radius": "radius_12",
+                "image_ratio_desktop": "square",
                 "width_desktop": "custom",
-                "width_mobile": "fill",
                 "width_custom_desktop": 50,
-                "show_image_first_mobile": true
+                "image_ratio_mobile": "square",
+                "width_mobile": "fill",
+                "corner_radius": "radius_12"
               }
             }
           },
@@ -2173,14 +2173,14 @@
               "settings": {
                 "direction": "vertical",
                 "position": "center",
+                "customize_mobile_alignment": false,
                 "alignment": "center",
                 "alignment_mobile": "center",
-                "customize_mobile_alignment": false,
+                "gap_desktop": 32,
+                "gap_mobile": 24,
                 "width": "fill",
                 "height": "fit",
-                "width_mobile": "fill",
-                "gap_desktop": 32,
-                "gap_mobile": 24
+                "width_mobile": "fill"
               },
               "blocks": {
                 "say": {
@@ -2188,14 +2188,14 @@
                   "settings": {
                     "direction": "vertical",
                     "position": "center",
+                    "customize_mobile_alignment": false,
                     "alignment": "center",
                     "alignment_mobile": "center",
-                    "customize_mobile_alignment": false,
+                    "gap_desktop": 16,
+                    "gap_mobile": 16,
                     "width": "fill",
                     "height": "fit",
-                    "width_mobile": "fill",
-                    "gap_desktop": 16,
-                    "gap_mobile": 16
+                    "width_mobile": "fill"
                   },
                   "blocks": {
                     "rating": {
@@ -2236,16 +2236,16 @@
                   "settings": {
                     "direction": "horizontal",
                     "position": "center",
-                    "alignment": "center",
-                    "alignment_mobile": "center",
-                    "customize_mobile_alignment": false,
-                    "width": "fit",
-                    "height": "fit",
-                    "width_mobile": "fit",
                     "position_horizontal": "center",
                     "horizontal_alignment": "left",
+                    "customize_mobile_alignment": false,
+                    "alignment": "center",
+                    "alignment_mobile": "center",
                     "gap_desktop": 16,
-                    "gap_mobile": 16
+                    "gap_mobile": 16,
+                    "width": "fit",
+                    "height": "fit",
+                    "width_mobile": "fit"
                   },
                   "blocks": {
                     "avatar": {
@@ -2253,14 +2253,14 @@
                       "settings": {
                         "image": "shopify://shop_images/wofyn-jerome.webp",
                         "alt_text": "Jerome",
-                        "image_ratio_desktop": "square",
-                        "image_ratio_mobile": "square",
                         "image_fit": "cover",
-                        "corner_radius": "full",
+                        "image_ratio_desktop": "square",
                         "width_desktop": "fixed",
-                        "width_mobile": "fixed",
                         "width_fixed_desktop": 64,
-                        "width_fixed_mobile": 64
+                        "image_ratio_mobile": "square",
+                        "width_mobile": "fixed",
+                        "width_fixed_mobile": 64,
+                        "corner_radius": "full"
                       }
                     },
                     "name": {
@@ -2268,14 +2268,14 @@
                       "settings": {
                         "direction": "vertical",
                         "position": "center",
+                        "customize_mobile_alignment": false,
                         "alignment": "left",
                         "alignment_mobile": "left",
-                        "customize_mobile_alignment": false,
+                        "gap_desktop": 4,
+                        "gap_mobile": 4,
                         "width": "fit",
                         "height": "fit",
-                        "width_mobile": "fit",
-                        "gap_desktop": 4,
-                        "gap_mobile": 4
+                        "width_mobile": "fit"
                       },
                       "blocks": {
                         "name": {
@@ -2317,15 +2317,15 @@
               "type": "image",
               "settings": {
                 "image": "shopify://shop_images/wofyn-review-dog.webp",
+                "show_image_first_mobile": true,
                 "alt_text": "Review Dog",
-                "image_ratio_desktop": "square",
-                "image_ratio_mobile": "square",
                 "image_fit": "cover",
-                "corner_radius": "radius_12",
+                "image_ratio_desktop": "square",
                 "width_desktop": "custom",
-                "width_mobile": "fill",
                 "width_custom_desktop": 50,
-                "show_image_first_mobile": true
+                "image_ratio_mobile": "square",
+                "width_mobile": "fill",
+                "corner_radius": "radius_12"
               }
             }
           },
@@ -2339,8 +2339,10 @@
         "jason",
         "sarah"
       ],
+      "name": "Testimonials — Loved by Customers",
       "settings": {
         "section_width": "page_width",
+        "layout_type": "carousel",
         "columns_desktop": "2",
         "columns_tablet": "1",
         "columns_mobile": "1",
@@ -2349,7 +2351,11 @@
         "gap_mobile": 20,
         "header_gap": 40,
         "header_gap_mobile": 36,
+        "show_navigation": true,
         "show_pagination": true,
+        "pagination_visibility": "mobile",
+        "pagination_type": "progress_bar",
+        "pagination_thickness": "thin",
         "pagination_top_padding_desktop": 36,
         "pagination_top_padding_mobile": 36,
         "color_scheme": "scheme-2",
@@ -2357,14 +2363,8 @@
         "padding_bottom": 96,
         "customize_mobile_padding": true,
         "padding_top_mobile": 64,
-        "padding_bottom_mobile": 64,
-        "layout_type": "carousel",
-        "show_navigation": true,
-        "pagination_type": "progress_bar",
-        "pagination_visibility": "mobile",
-        "pagination_thickness": "thin"
-      },
-      "name": "Testimonials — Loved by Customers"
+        "padding_bottom_mobile": 64
+      }
     },
     "peekoo_image_cards": {
       "type": "image-cards",
@@ -2414,9 +2414,9 @@
               "settings": {
                 "direction": "vertical",
                 "position": "center",
+                "customize_mobile_alignment": false,
                 "alignment": "left",
                 "alignment_mobile": "left",
-                "customize_mobile_alignment": false,
                 "gap_desktop": 12,
                 "gap_mobile": 12,
                 "width": "fit",
@@ -2551,9 +2551,9 @@
               "settings": {
                 "direction": "vertical",
                 "position": "center",
+                "customize_mobile_alignment": false,
                 "alignment": "left",
                 "alignment_mobile": "left",
-                "customize_mobile_alignment": false,
                 "gap_desktop": 12,
                 "gap_mobile": 12,
                 "width": "fit",
@@ -2648,6 +2648,7 @@
         "imagination",
         "holiday"
       ],
+      "name": "Image cards — Shop Deals",
       "settings": {
         "section_width": "page_width",
         "height": "auto",
@@ -2661,8 +2662,7 @@
         "customize_mobile_padding": true,
         "padding_top_mobile": 0,
         "padding_bottom_mobile": 64
-      },
-      "name": "Image cards — Shop Deals"
+      }
     },
     "peekoo_icon_text": {
       "type": "icon-text-cards",
@@ -3337,15 +3337,15 @@
           "settings": {
             "width": "custom",
             "max_width": 770,
+            "customize_mobile_size": true,
+            "width_mobile": "custom",
+            "max_width_mobile": 440,
             "inherit_alignment": false,
             "alignment": "center",
             "customize_mobile_alignment": false,
             "alignment_mobile": "center",
             "gap_desktop": 8,
-            "gap_mobile": 8,
-            "customize_mobile_size": true,
-            "width_mobile": "custom",
-            "max_width_mobile": 440
+            "gap_mobile": 8
           },
           "blocks": {
             "heading": {
@@ -4343,13 +4343,13 @@
         "gap_mobile": 20,
         "header_gap_desktop": 40,
         "header_gap_mobile": 16,
+        "enable_media_offset": false,
         "color_scheme": "scheme-1",
         "padding_top": 0,
         "padding_bottom": 112,
         "customize_mobile_padding": true,
         "padding_top_mobile": 0,
-        "padding_bottom_mobile": 80,
-        "enable_media_offset": false
+        "padding_bottom_mobile": 80
       }
     },
     "wofyn_image_with_text": {
@@ -4433,16 +4433,16 @@
             "first_left_desktop": 9,
             "first_top_desktop": 8,
             "first_anchor_desktop": "top",
+            "first_rotate_desktop": -14.5,
+            "first_show_frame": true,
             "first_customize_mobile": false,
             "second_width_desktop": 56,
             "second_left_desktop": 40,
             "second_top_desktop": 33,
             "second_anchor_desktop": "top",
-            "second_customize_mobile": false,
-            "first_rotate_desktop": -14.5,
             "second_rotate_desktop": 0,
-            "first_show_frame": true,
-            "second_show_frame": true
+            "second_show_frame": true,
+            "second_customize_mobile": false
           },
           "blocks": {
             "first": {
@@ -4505,34 +4505,11 @@
     },
     "wofyn_toys_banner": {
       "type": "featured-collection-banner",
-      "name": "Featured collection — Shop Toys",
-      "settings": {
-        "section_width": "page_width",
-        "header_position": "above",
-        "banner_position": "before",
-        "banner_max_width": "custom",
-        "banner_custom_max_width": 448,
-        "banner_height": "ratio",
-        "mobile_banner_full_width": false,
-        "customize_tablet_layout": false,
-        "enable_overlap": false,
-        "gap_desktop": 32,
-        "gap_mobile": 32,
-        "color_scheme": "scheme-1",
-        "padding_top": 96,
-        "padding_bottom": 96,
-        "customize_mobile_padding": true,
-        "padding_top_mobile": 64,
-        "padding_bottom_mobile": 64,
-        "header_gap_desktop": 0,
-        "header_gap_mobile": 0,
-        "enable_media_offset": false
-      },
       "blocks": {
         "header": {
           "type": "header",
-          "static": true,
           "disabled": true,
+          "static": true,
           "settings": {},
           "blocks": {}
         },
@@ -4595,12 +4572,12 @@
             "columns_desktop": "3",
             "columns_tablet": "2",
             "columns_mobile": "2",
+            "show_next_slide_preview_on_desktop": false,
+            "show_next_slide_preview_on_mobile": false,
             "product_gap_desktop": 20,
             "product_gap_mobile": 12,
             "show_navigation_on_desktop": false,
             "show_pagination_on_desktop": false,
-            "show_next_slide_preview_on_desktop": false,
-            "show_next_slide_preview_on_mobile": false,
             "autoplay": false
           },
           "blocks": {
@@ -4616,21 +4593,33 @@
           },
           "block_order": []
         }
+      },
+      "name": "Featured collection — Shop Toys",
+      "settings": {
+        "section_width": "page_width",
+        "header_position": "above",
+        "banner_position": "before",
+        "banner_max_width": "custom",
+        "banner_custom_max_width": 448,
+        "banner_height": "ratio",
+        "mobile_banner_full_width": false,
+        "customize_tablet_layout": false,
+        "enable_overlap": false,
+        "gap_desktop": 32,
+        "gap_mobile": 32,
+        "header_gap_desktop": 0,
+        "header_gap_mobile": 0,
+        "enable_media_offset": false,
+        "color_scheme": "scheme-1",
+        "padding_top": 96,
+        "padding_bottom": 96,
+        "customize_mobile_padding": true,
+        "padding_top_mobile": 64,
+        "padding_bottom_mobile": 64
       }
     },
     "wofyn_gallery": {
       "type": "gallery-custom",
-      "name": "Gallery (custom)",
-      "settings": {
-        "section_width": "full_width_no_padding",
-        "marquee_full_bleed": true,
-        "color_scheme": "scheme-1",
-        "padding_top": 112,
-        "padding_bottom": 112,
-        "customize_mobile_padding": true,
-        "padding_top_mobile": 80,
-        "padding_bottom_mobile": 80
-      },
       "blocks": {
         "pet_photos": {
           "type": "marquee",
@@ -4650,11 +4639,11 @@
             "color_type": "inherit",
             "padding_top": 0,
             "padding_bottom": 0,
-            "padding_left": 0,
-            "padding_right": 0,
             "customize_mobile_padding": true,
             "padding_top_mobile": 0,
             "padding_bottom_mobile": 0,
+            "padding_left": 0,
+            "padding_right": 0,
             "padding_left_mobile": 0,
             "padding_right_mobile": 0
           },
@@ -4669,9 +4658,9 @@
                 "open_in_new_tab": false,
                 "width_custom_desktop": 160,
                 "width_custom_mobile": 120,
+                "rotate": 10,
                 "corner_radius": "custom",
-                "custom_corner_radius": 12,
-                "rotate": 10
+                "custom_corner_radius": 12
               }
             },
             "gallery_photo_2": {
@@ -4684,9 +4673,9 @@
                 "open_in_new_tab": false,
                 "width_custom_desktop": 160,
                 "width_custom_mobile": 120,
+                "rotate": -10,
                 "corner_radius": "custom",
-                "custom_corner_radius": 12,
-                "rotate": -10
+                "custom_corner_radius": 12
               }
             },
             "gallery_photo_3": {
@@ -4699,9 +4688,9 @@
                 "open_in_new_tab": false,
                 "width_custom_desktop": 160,
                 "width_custom_mobile": 120,
+                "rotate": 10,
                 "corner_radius": "custom",
-                "custom_corner_radius": 12,
-                "rotate": 10
+                "custom_corner_radius": 12
               }
             },
             "gallery_photo_4": {
@@ -4714,9 +4703,9 @@
                 "open_in_new_tab": false,
                 "width_custom_desktop": 160,
                 "width_custom_mobile": 120,
+                "rotate": -10,
                 "corner_radius": "custom",
-                "custom_corner_radius": 12,
-                "rotate": -10
+                "custom_corner_radius": 12
               }
             },
             "gallery_photo_5": {
@@ -4729,9 +4718,9 @@
                 "open_in_new_tab": false,
                 "width_custom_desktop": 160,
                 "width_custom_mobile": 120,
+                "rotate": 10,
                 "corner_radius": "custom",
-                "custom_corner_radius": 12,
-                "rotate": 10
+                "custom_corner_radius": 12
               }
             },
             "gallery_photo_6": {
@@ -4744,9 +4733,9 @@
                 "open_in_new_tab": false,
                 "width_custom_desktop": 160,
                 "width_custom_mobile": 120,
+                "rotate": -10,
                 "corner_radius": "custom",
-                "custom_corner_radius": 12,
-                "rotate": -10
+                "custom_corner_radius": 12
               }
             },
             "gallery_photo_7": {
@@ -4759,9 +4748,9 @@
                 "open_in_new_tab": false,
                 "width_custom_desktop": 160,
                 "width_custom_mobile": 120,
+                "rotate": 10,
                 "corner_radius": "custom",
-                "custom_corner_radius": 12,
-                "rotate": 10
+                "custom_corner_radius": 12
               }
             },
             "gallery_photo_8": {
@@ -4774,9 +4763,9 @@
                 "open_in_new_tab": false,
                 "width_custom_desktop": 160,
                 "width_custom_mobile": 120,
+                "rotate": -10,
                 "corner_radius": "custom",
-                "custom_corner_radius": 12,
-                "rotate": -10
+                "custom_corner_radius": 12
               }
             }
           },
@@ -4794,7 +4783,18 @@
       },
       "block_order": [
         "pet_photos"
-      ]
+      ],
+      "name": "Gallery (custom)",
+      "settings": {
+        "section_width": "full_width_no_padding",
+        "marquee_full_bleed": true,
+        "color_scheme": "scheme-1",
+        "padding_top": 112,
+        "padding_bottom": 112,
+        "customize_mobile_padding": true,
+        "padding_top_mobile": 80,
+        "padding_bottom_mobile": 80
+      }
     },
     "wofyn_services": {
       "type": "icon-text-cards",
@@ -4805,11 +4805,11 @@
             "direction": "vertical",
             "alignment": "center",
             "alignment_mobile": "left",
-            "width": "fill",
-            "width_mobile": "fill",
-            "height": "fit",
             "gap_desktop": 0,
             "gap_mobile": 0,
+            "width": "fill",
+            "height": "fit",
+            "width_mobile": "fill",
             "show_overlay": false
           },
           "blocks": {
@@ -4918,11 +4918,11 @@
             "direction": "vertical",
             "alignment": "center",
             "alignment_mobile": "left",
-            "width": "fill",
-            "width_mobile": "fill",
-            "height": "fit",
             "gap_desktop": 0,
             "gap_mobile": 0,
+            "width": "fill",
+            "height": "fit",
+            "width_mobile": "fill",
             "show_overlay": false
           },
           "blocks": {
@@ -5031,11 +5031,11 @@
             "direction": "vertical",
             "alignment": "center",
             "alignment_mobile": "left",
-            "width": "fill",
-            "width_mobile": "fill",
-            "height": "fit",
             "gap_desktop": 0,
             "gap_mobile": 0,
+            "width": "fill",
+            "height": "fit",
+            "width_mobile": "fill",
             "show_overlay": false
           },
           "blocks": {
@@ -5144,6 +5144,7 @@
         "service_2",
         "service_3"
       ],
+      "name": "Icon with text — Services",
       "settings": {
         "section_width": "page_width",
         "alignment": "left",
@@ -5167,8 +5168,7 @@
         "customize_mobile_padding": false,
         "padding_top_mobile": 56,
         "padding_bottom_mobile": 56
-      },
-      "name": "Icon with text — Services"
+      }
     }
   },
   "order": [
