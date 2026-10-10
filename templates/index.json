@@ -1938,46 +1938,47 @@
       "blocks": {
         "header": {
           "type": "header",
-          "static": true,
           "settings": {
             "width": "fill",
-            "inherit_alignment": true,
+            "inherit_alignment": false,
+            "alignment": "left",
+            "customize_mobile_alignment": false,
             "gap_desktop": 0,
             "gap_mobile": 0
           },
           "blocks": {
-            "quote_icon": {
-              "type": "icon",
+            "heading": {
+              "type": "heading",
               "settings": {
-                "source": "custom",
-                "custom_icon": "<svg width='80' height='80' viewBox='0 0 80 80' fill='none' xmlns='http://www.w3.org/2000/svg'><path d='M0 45.7134H17.1428L5.71419 68.5704H22.857L34.2857 45.7134V11.4277H0V45.7134ZM45.7143 11.4277V45.7134H62.8572L51.4285 68.5704H68.5714L80 45.7134V11.4277H45.7143Z' fill='#5F8265'></path></svg>",
-                "icon_width": 56,
-                "icon_padding": 0,
-                "custom_mobile": false,
-                "padding_bottom": 0
+                "text": "<p>Loved by Customers</p>",
+                "heading_size": "xl",
+                "html_tag": "h2",
+                "width": "fill"
               }
             }
           },
           "block_order": [
-            "quote_icon"
-          ]
+            "heading"
+          ],
+          "static": true
         },
         "jason": {
           "type": "_testimonial-review-card",
           "settings": {
-            "direction": "vertical",
-            "position": "top",
+            "direction": "horizontal",
+            "position": "center",
             "alignment": "center",
+            "vertical_on_mobile": true,
             "alignment_mobile": "center",
-            "gap_desktop": 24,
+            "gap_desktop": 16,
             "gap_mobile": 24,
-            "corner_radius": "square",
+            "corner_radius": "radius_16",
+            "shadow": "small",
             "background_color": "#ffffff",
-            "show_overlay": false,
-            "padding_top": 0,
-            "padding_bottom": 0,
-            "padding_left": 0,
-            "padding_right": 0,
+            "padding_top": 16,
+            "padding_bottom": 16,
+            "padding_left": 16,
+            "padding_right": 16,
             "customize_mobile_padding": false
           },
           "blocks": {
@@ -1985,68 +1986,182 @@
               "type": "group",
               "settings": {
                 "direction": "vertical",
+                "position": "center",
                 "alignment": "center",
                 "alignment_mobile": "center",
-                "gap_desktop": 24,
-                "gap_mobile": 24,
+                "customize_mobile_alignment": false,
                 "width": "fill",
-                "limit_width": true,
-                "max_width": 1020,
                 "height": "fit",
                 "width_mobile": "fill",
-                "show_overlay": false
+                "gap_desktop": 32,
+                "gap_mobile": 24
               },
               "blocks": {
-                "quote": {
-                  "type": "heading",
+                "say": {
+                  "type": "group",
                   "settings": {
-                    "text": "<p>The brightness of colors and quality of materials and genius designs make me use the company for my friends as well. Customer service is great too so I am customer. Another parent adds: Since I discovered fat brain toys it has become my 'go to' company for well made, educational toys!</p>",
-                    "heading_size": "lg",
-                    "html_tag": "div",
+                    "direction": "vertical",
+                    "position": "center",
+                    "alignment": "center",
+                    "alignment_mobile": "center",
+                    "customize_mobile_alignment": false,
                     "width": "fill",
-                    "animation_type": "none"
-                  }
+                    "height": "fit",
+                    "width_mobile": "fill",
+                    "gap_desktop": 16,
+                    "gap_mobile": 16
+                  },
+                  "blocks": {
+                    "rating": {
+                      "type": "testimonial-rating",
+                      "settings": {
+                        "rating": 5
+                      }
+                    },
+                    "title": {
+                      "type": "heading",
+                      "settings": {
+                        "text": "<p>Best Crate Hands Down!</p>",
+                        "heading_size": "sm",
+                        "html_tag": "h3",
+                        "width": "fill"
+                      }
+                    },
+                    "quote": {
+                      "type": "text",
+                      "settings": {
+                        "text": "<p>“I ordered two of these for my mini Aussies and am obsessed with how they look in my new house. The dogs love them and the quality is very good.”</p>",
+                        "text_size": "sm",
+                        "width": "fill"
+                      }
+                    }
+                  },
+                  "block_order": [
+                    "rating",
+                    "title",
+                    "quote"
+                  ]
                 },
-                "name": {
-                  "type": "text",
+                "author": {
+                  "type": "group",
                   "settings": {
-                    "text": "<p>MICHALE - USA</p>",
-                    "text_size": "lg",
-                    "customize_letter_spacing": true,
-                    "letter_spacing": 0,
-                    "customize_line_height": true,
-                    "line_height": 27,
-                    "text_color": "#181818",
-                    "width": "fill"
-                  }
+                    "direction": "horizontal",
+                    "position": "center",
+                    "alignment": "center",
+                    "alignment_mobile": "center",
+                    "customize_mobile_alignment": false,
+                    "width": "fit",
+                    "height": "fit",
+                    "width_mobile": "fit",
+                    "position_horizontal": "center",
+                    "horizontal_alignment": "left",
+                    "gap_desktop": 16,
+                    "gap_mobile": 16
+                  },
+                  "blocks": {
+                    "avatar": {
+                      "type": "image",
+                      "settings": {
+                        "image": "shopify://shop_images/wofyn-eleanor.webp",
+                        "alt_text": "Eleanor",
+                        "image_ratio_desktop": "square",
+                        "image_ratio_mobile": "square",
+                        "image_fit": "cover",
+                        "corner_radius": "full",
+                        "width_desktop": "fixed",
+                        "width_mobile": "fixed",
+                        "width_fixed_desktop": 64,
+                        "width_fixed_mobile": 64
+                      }
+                    },
+                    "name": {
+                      "type": "group",
+                      "settings": {
+                        "direction": "vertical",
+                        "position": "center",
+                        "alignment": "left",
+                        "alignment_mobile": "left",
+                        "customize_mobile_alignment": false,
+                        "width": "fit",
+                        "height": "fit",
+                        "width_mobile": "fit",
+                        "gap_desktop": 4,
+                        "gap_mobile": 4
+                      },
+                      "blocks": {
+                        "name": {
+                          "type": "text",
+                          "settings": {
+                            "text": "<p><strong>Eleanor Pena</strong></p>",
+                            "text_size": "md",
+                            "width": "fit"
+                          }
+                        },
+                        "location": {
+                          "type": "text",
+                          "settings": {
+                            "text": "<p>Kiribati</p>",
+                            "text_size": "sm",
+                            "text_color": "#bcbac8",
+                            "width": "fit"
+                          }
+                        }
+                      },
+                      "block_order": [
+                        "name",
+                        "location"
+                      ]
+                    }
+                  },
+                  "block_order": [
+                    "avatar",
+                    "name"
+                  ]
                 }
               },
               "block_order": [
-                "quote",
-                "name"
+                "say",
+                "author"
               ]
+            },
+            "photo": {
+              "type": "image",
+              "settings": {
+                "image": "shopify://shop_images/wofyn-review-corgi.webp",
+                "alt_text": "Review Corgi",
+                "image_ratio_desktop": "square",
+                "image_ratio_mobile": "square",
+                "image_fit": "cover",
+                "corner_radius": "radius_12",
+                "width_desktop": "custom",
+                "width_mobile": "fill",
+                "width_custom_desktop": 50,
+                "show_image_first_mobile": true
+              }
             }
           },
           "block_order": [
-            "content"
+            "content",
+            "photo"
           ]
         },
         "sarah": {
           "type": "_testimonial-review-card",
           "settings": {
-            "direction": "vertical",
-            "position": "top",
+            "direction": "horizontal",
+            "position": "center",
             "alignment": "center",
+            "vertical_on_mobile": true,
             "alignment_mobile": "center",
-            "gap_desktop": 24,
+            "gap_desktop": 16,
             "gap_mobile": 24,
-            "corner_radius": "square",
+            "corner_radius": "radius_16",
+            "shadow": "small",
             "background_color": "#ffffff",
-            "show_overlay": false,
-            "padding_top": 0,
-            "padding_bottom": 0,
-            "padding_left": 0,
-            "padding_right": 0,
+            "padding_top": 16,
+            "padding_bottom": 16,
+            "padding_left": 16,
+            "padding_right": 16,
             "customize_mobile_padding": false
           },
           "blocks": {
@@ -2054,147 +2169,192 @@
               "type": "group",
               "settings": {
                 "direction": "vertical",
+                "position": "center",
                 "alignment": "center",
                 "alignment_mobile": "center",
-                "gap_desktop": 24,
-                "gap_mobile": 24,
+                "customize_mobile_alignment": false,
                 "width": "fill",
-                "limit_width": true,
-                "max_width": 1020,
                 "height": "fit",
                 "width_mobile": "fill",
-                "show_overlay": false
+                "gap_desktop": 32,
+                "gap_mobile": 24
               },
               "blocks": {
-                "quote": {
-                  "type": "heading",
+                "say": {
+                  "type": "group",
                   "settings": {
-                    "text": "<p>My daughter absolutely loves these toys. Not they keep her entertained, but I can also see how much she's learning through play.</p>",
-                    "heading_size": "lg",
-                    "html_tag": "div",
+                    "direction": "vertical",
+                    "position": "center",
+                    "alignment": "center",
+                    "alignment_mobile": "center",
+                    "customize_mobile_alignment": false,
                     "width": "fill",
-                    "animation_type": "none"
-                  }
+                    "height": "fit",
+                    "width_mobile": "fill",
+                    "gap_desktop": 16,
+                    "gap_mobile": 16
+                  },
+                  "blocks": {
+                    "rating": {
+                      "type": "testimonial-rating",
+                      "settings": {
+                        "rating": 5
+                      }
+                    },
+                    "title": {
+                      "type": "heading",
+                      "settings": {
+                        "text": "<p>The Best Mealtime Game!</p>",
+                        "heading_size": "sm",
+                        "html_tag": "h3",
+                        "width": "fill"
+                      }
+                    },
+                    "quote": {
+                      "type": "text",
+                      "settings": {
+                        "text": "<p>“My 6-month-old Golden Doodle is absolutely obsessed with the Puffin Game! At first, I wasn't sure if she'd be able to get the hang of it, but she caught on so quickly.”</p>",
+                        "text_size": "sm",
+                        "width": "fill"
+                      }
+                    }
+                  },
+                  "block_order": [
+                    "rating",
+                    "title",
+                    "quote"
+                  ]
                 },
-                "name": {
-                  "type": "text",
+                "author": {
+                  "type": "group",
                   "settings": {
-                    "text": "<p>Sarah L</p>",
-                    "text_size": "lg",
-                    "customize_letter_spacing": true,
-                    "letter_spacing": 0,
-                    "customize_line_height": true,
-                    "line_height": 27,
-                    "text_color": "#181818",
-                    "width": "fill"
-                  }
+                    "direction": "horizontal",
+                    "position": "center",
+                    "alignment": "center",
+                    "alignment_mobile": "center",
+                    "customize_mobile_alignment": false,
+                    "width": "fit",
+                    "height": "fit",
+                    "width_mobile": "fit",
+                    "position_horizontal": "center",
+                    "horizontal_alignment": "left",
+                    "gap_desktop": 16,
+                    "gap_mobile": 16
+                  },
+                  "blocks": {
+                    "avatar": {
+                      "type": "image",
+                      "settings": {
+                        "image": "shopify://shop_images/wofyn-jerome.webp",
+                        "alt_text": "Jerome",
+                        "image_ratio_desktop": "square",
+                        "image_ratio_mobile": "square",
+                        "image_fit": "cover",
+                        "corner_radius": "full",
+                        "width_desktop": "fixed",
+                        "width_mobile": "fixed",
+                        "width_fixed_desktop": 64,
+                        "width_fixed_mobile": 64
+                      }
+                    },
+                    "name": {
+                      "type": "group",
+                      "settings": {
+                        "direction": "vertical",
+                        "position": "center",
+                        "alignment": "left",
+                        "alignment_mobile": "left",
+                        "customize_mobile_alignment": false,
+                        "width": "fit",
+                        "height": "fit",
+                        "width_mobile": "fit",
+                        "gap_desktop": 4,
+                        "gap_mobile": 4
+                      },
+                      "blocks": {
+                        "name": {
+                          "type": "text",
+                          "settings": {
+                            "text": "<p><strong>Jerome Bell</strong></p>",
+                            "text_size": "md",
+                            "width": "fit"
+                          }
+                        },
+                        "location": {
+                          "type": "text",
+                          "settings": {
+                            "text": "<p>Algeria</p>",
+                            "text_size": "sm",
+                            "text_color": "#bcbac8",
+                            "width": "fit"
+                          }
+                        }
+                      },
+                      "block_order": [
+                        "name",
+                        "location"
+                      ]
+                    }
+                  },
+                  "block_order": [
+                    "avatar",
+                    "name"
+                  ]
                 }
               },
               "block_order": [
-                "quote",
-                "name"
+                "say",
+                "author"
               ]
-            }
-          },
-          "block_order": [
-            "content"
-          ]
-        },
-        "emily": {
-          "type": "_testimonial-review-card",
-          "settings": {
-            "direction": "vertical",
-            "position": "top",
-            "alignment": "center",
-            "alignment_mobile": "center",
-            "gap_desktop": 24,
-            "gap_mobile": 24,
-            "corner_radius": "square",
-            "background_color": "#ffffff",
-            "show_overlay": false,
-            "padding_top": 0,
-            "padding_bottom": 0,
-            "padding_left": 0,
-            "padding_right": 0,
-            "customize_mobile_padding": false
-          },
-          "blocks": {
-            "content": {
-              "type": "group",
+            },
+            "photo": {
+              "type": "image",
               "settings": {
-                "direction": "vertical",
-                "alignment": "center",
-                "alignment_mobile": "center",
-                "gap_desktop": 24,
-                "gap_mobile": 24,
-                "width": "fill",
-                "limit_width": true,
-                "max_width": 1020,
-                "height": "fit",
+                "image": "shopify://shop_images/wofyn-review-dog.webp",
+                "alt_text": "Review Dog",
+                "image_ratio_desktop": "square",
+                "image_ratio_mobile": "square",
+                "image_fit": "cover",
+                "corner_radius": "radius_12",
+                "width_desktop": "custom",
                 "width_mobile": "fill",
-                "show_overlay": false
-              },
-              "blocks": {
-                "quote": {
-                  "type": "heading",
-                  "settings": {
-                    "text": "<p>We’ve tried many toys, but these are the ones my always come back to. Durable, creative, and so much fun. Even the grandparents love playing with.</p>",
-                    "heading_size": "lg",
-                    "html_tag": "div",
-                    "width": "fill",
-                    "animation_type": "none"
-                  }
-                },
-                "name": {
-                  "type": "text",
-                  "settings": {
-                    "text": "<p>Emily R.</p>",
-                    "text_size": "lg",
-                    "customize_letter_spacing": true,
-                    "letter_spacing": 0,
-                    "customize_line_height": true,
-                    "line_height": 27,
-                    "text_color": "#181818",
-                    "width": "fill"
-                  }
-                }
-              },
-              "block_order": [
-                "quote",
-                "name"
-              ]
+                "width_custom_desktop": 50,
+                "show_image_first_mobile": true
+              }
             }
           },
           "block_order": [
-            "content"
+            "content",
+            "photo"
           ]
         }
       },
       "block_order": [
         "jason",
-        "sarah",
-        "emily"
+        "sarah"
       ],
       "settings": {
         "section_width": "page_width",
-        "columns_desktop": "1",
+        "columns_desktop": "2",
         "columns_tablet": "1",
         "columns_mobile": "1",
-        "card_height": "auto",
-        "gap_desktop": 0,
-        "gap_mobile": 0,
-        "header_gap": 24,
-        "header_gap_mobile": 24,
-        "show_pagination": true,
+        "card_height": "fill",
+        "gap_desktop": 28,
+        "gap_mobile": 20,
+        "header_gap": 40,
+        "header_gap_mobile": 36,
+        "show_pagination": false,
         "pagination_top_padding_desktop": 32,
         "pagination_top_padding_mobile": 32,
-        "color_scheme": "scheme-1",
-        "padding_top": 80,
-        "padding_bottom": 80,
+        "color_scheme": "scheme-2",
+        "padding_top": 96,
+        "padding_bottom": 96,
         "customize_mobile_padding": true,
-        "padding_top_mobile": 56,
-        "padding_bottom_mobile": 56
-      }
+        "padding_top_mobile": 64,
+        "padding_bottom_mobile": 64,
+        "layout_type": "carousel"
+      },
+      "name": "Testimonials — Loved by Customers"
     },
     "peekoo_image_cards": {
       "type": "image-cards",
