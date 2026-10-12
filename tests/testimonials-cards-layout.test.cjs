@@ -2,24 +2,13 @@ const { test } = require('node:test');
 const assert = require('node:assert/strict');
 const fs = require('node:fs');
 const path = require('node:path');
-const { loadLiquid, stripShopifyMetadata } = require('./helpers/liquid-engine.cjs');
-const Liquid = loadLiquid();
+const { createLiquidEngine, stripShopifyMetadata } = require('./helpers/liquid-engine.cjs');
 const section = fs.readFileSync(path.join(__dirname, '../sections/testimonials-cards.liquid'), 'utf8');
-const snippet = stripShopifyMetadata(fs.readFileSync(path.join(__dirname, '../snippets/swiper-carousel.liquid'), 'utf8'));
 const schema = JSON.parse(section.match(/{% schema %}([\s\S]*?){% endschema %}/)[1]);
 const source = stripShopifyMetadata(section)
   .replace(/{% content_for 'block',[^%]*%}/g, '<h2>Reviews</h2>')
   .replace(/{% content_for 'blocks' %}/g, '<article class="swiper-slide testimonial-item">First review</article><article class="swiper-slide testimonial-item">Second review</article>');
-const engine = new Liquid({
-  partials: ['snippets'], extname: '.liquid',
-  fs: {
-    resolve: (root, file, ext) => file + (file.endsWith(ext) ? '' : ext),
-    exists: async file => file === 'swiper-carousel.liquid',
-    readFile: async () => snippet,
-    existsSync: file => file === 'swiper-carousel.liquid',
-    readFileSync: () => snippet,
-  },
-});
+const engine = createLiquidEngine();
 engine.registerFilter('t', value => value);
 engine.registerFilter('asset_url', value => value);
 engine.registerTag('style', { parse(token, remain) {

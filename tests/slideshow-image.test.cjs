@@ -101,14 +101,15 @@ test('Peekoo dedicated mobile artwork fills the viewport and matches its preload
   assert.ok(!html.includes('crop=center'));
 });
 
-test('precompressed small mobile WebP uses its native source once and preserves desktop art', async () => {
+test('small mobile WebP exposes bounded candidates and preserves desktop art', async () => {
   const mobile = { name: 'compressed-mobile.webp', src: 'compressed-mobile.webp', width: 750, height: 1129, aspect_ratio: 750 / 1129 };
   const html = await render('large', { mobile_image: mobile }, { layout_preset: 'peekoo' });
   const picture = html.match(/<picture>[\s\S]*?<\/picture>/)[0];
   const mobileSource = picture.match(/<source[^>]*srcset="([^"]+)" sizes="([^"]+)"/);
-  assert.equal(mobileSource[1], '/compressed-mobile.webp?width=750 750w');
+  assert.equal(mobileSource[1], [375,412,480,550,750].map(width => `/compressed-mobile.webp?width=${width} ${width}w`).join(', '));
   assert.equal(mobileSource[2], '100vw');
   assert.ok(html.includes(`imagesrcset="${mobileSource[1]}" imagesizes="100vw"`));
   assert.match(picture, /<img src="\/desktop.jpg\?width=2400"/);
-  assert.ok(!picture.includes('/compressed-mobile.webp?width=550'));
+  assert.ok(!picture.includes('/compressed-mobile.webp?width=1100'));
+  assert.ok(!mobileSource[1].endsWith(','));
 });

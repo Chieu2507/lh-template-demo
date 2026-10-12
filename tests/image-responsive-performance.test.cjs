@@ -82,3 +82,15 @@ test('optional card thumbnail preserves variant-specific images and the original
     if(selected===main) assert.match(html,/\|hover\.webp/);
   }
 });
+
+test('marquee images use fixed responsive sizes rather than automatic intrinsic sizing', async () => {
+  const marquee = stripShopifyMetadata(fs.readFileSync('blocks/_marquee-image.liquid', 'utf8'));
+  for (const [desktop, mobile, nativeWidth, expectedRequest] of [[160,120,800,480], [400,120,800,800], [160,200,1000,600]]) {
+    const html = await engine.parseAndRender(marquee, { section:{index:16}, block:{settings:{image:{...image,width:nativeWidth},width_custom_desktop:desktop,width_custom_mobile:mobile,rotate:10}} });
+    assert.match(html, new RegExp(`sizes="\\(max-width: 767\\.98px\\) ${mobile}px, ${desktop}px"`));
+    assert.doesNotMatch(html, /sizes="auto,/);
+    assert.match(html, new RegExp(`src="/logo.png\\?width=${expectedRequest}"`));
+    assert.match(html, /loading="lazy"/);
+    assert.match(html, /widths="[^"]*120,160,[^"]*240,[^"]*320/);
+  }
+});

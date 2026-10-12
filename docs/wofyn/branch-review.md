@@ -23,3 +23,14 @@ Fetched and merged the Shopify synchronization history from `origin/Wofyn-templa
 - Theme Check still flags existing scoped CSS/complexity and schemas with more than its recommended 40 settings. New overlay/composition controls add advisory setting-count warnings; schema JSON is valid and Theme Check reports no errors.
 - This review samples saved desktop/mobile storefront behavior and uses prior Wofyn Theme Editor checks documented in section receipts. It does not claim exhaustive testing of every setting, editor event, reduced-motion mode or viewport.
 - Catalog content and uploaded images are Shopify data. Their receipts and bindings are committed; Git does not itself export the store database. The theme remains a draft.
+
+## Test fixes — 2026-10-12
+
+Resolved all 13 previously failing tests without changing storefront files:
+
+- Shared Liquid test engine now loads real theme snippets/blocks with both synchronous and asynchronous file lookup. Collections, blog spacing and testimonials tests use it instead of incomplete mock snippet inventories.
+- Thumbnail tests render the actual static title block with its parent section context, retaining assertions for visual heading sizes, legacy aliases, HTML tags, custom pixel sizes and radius presets.
+- Color-scheme assertions accept the current selector list while still checking normalized CSS tokens.
+- Footer test discovers editable social blocks recursively instead of assuming obsolete instance IDs. Both social-links and social-library icon compositions are supported; shared global-URL renderer checks remain.
+
+Validation: `node --test tests/*.test.cjs` outside the filesystem/network sandbox passed **173/173**, zero failures and zero skipped tests. Running inside the sandbox passes 172 tests; the TCP preview test requires permission to bind localhost. `git diff --check` passed. Changes were reviewed locally and are included in the subsequent user-requested Wofyn commit/push.

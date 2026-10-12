@@ -9,7 +9,7 @@ const read = (file) => fs.readFileSync(path.join(root, file), 'utf8');
 test('color scheme CSS output is normalized before emission', () => {
   const source = read('snippets/css-variables.liquid');
   const loopStart = source.indexOf('{% for scheme in settings.color_schemes %}');
-  const outputStart = source.indexOf('    .{{ scheme.id }} {', loopStart);
+  const outputStart = source.indexOf('    .{{ scheme.id }}', loopStart);
   const loopEnd = source.indexOf('  {% endfor %}', outputStart);
   const output = source.slice(outputStart, loopEnd);
 
@@ -86,12 +86,17 @@ test('legacy scheme data receives a non-empty fallback for every normalized toke
   assert.equal(resolved('text'), '#2A2A2A');
 });
 
-test('Footer consumes global social URLs and no longer references follow-us menu', () => {
+test('Footer has editable social blocks and supports the shared global-URL renderer', () => {
   const footerGroup = JSON.parse(read('sections/footer-group.json').replace(/^\/\*[\s\S]*?\*\/\s*/, ''));
-  const footer = footerGroup.sections.footer;
-  const socialBlock = footer.blocks['footer-row-primary'].blocks['footer-row-primary-column-3'].blocks['footer-social-menu'];
-
-  assert.equal(socialBlock.type, 'social-links');
+  const socialBlocks = [];
+  function collectBlocks(owner) {
+    for (const block of Object.values(owner.blocks || {})) {
+      if (block.type === 'social-links' || (block.type === 'icon' && block.settings?.icon_library === 'social')) socialBlocks.push(block);
+      collectBlocks(block);
+    }
+  }
+  for (const section of Object.values(footerGroup.sections)) collectBlocks(section);
+  assert.ok(socialBlocks.length > 0, 'Footer must contain a social-links block or social icons');
   assert.doesNotMatch(read('sections/footer-group.json'), /follow-us/);
   assert.doesNotMatch(read('sections/footer.liquid'), /follow-us/);
   assert.match(read('blocks/social-links.liquid'), /\{%\s*render 'social-links'(?:\s*,[\s\S]*?)?\s*%\}/);

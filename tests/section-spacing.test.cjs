@@ -1,9 +1,8 @@
 const {test}=require('node:test');
 const assert=require('node:assert/strict');
 const fs=require('node:fs');
-const {loadLiquid,stripShopifyMetadata}=require('./helpers/liquid-engine.cjs');
-const Liquid=loadLiquid();
-const engine=new Liquid();
+const {createLiquidEngine,stripShopifyMetadata}=require('./helpers/liquid-engine.cjs');
+const engine=createLiquidEngine();
 const blog=stripShopifyMetadata(fs.readFileSync('sections/blog-posts.liquid','utf8'))
  .replace(/{% content_for 'block', type: 'view-all-button',[\s\S]*?%}/g,'{{ action_markup }}')
  .replace(/{% content_for[\s\S]*?%}/g,'<div>Content</div>');

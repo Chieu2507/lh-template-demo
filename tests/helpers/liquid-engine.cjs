@@ -33,4 +33,29 @@ function loadLiquid() {
 function stripShopifyMetadata(source) {
   return source.replace(/{%\s*(doc|schema|stylesheet)\s*%}[\s\S]*?{%\s*end\1\s*%}/g, '');
 }
-module.exports = { loadLiquid, stripShopifyMetadata };
+// Load actual theme partials rather than a fixed list of mocked snippets.
+function createLiquidEngine() {
+  const root = path.resolve(__dirname, '../..');
+  const resolve = (_root, name) => {
+    const filename = name.endsWith('.liquid') ? name : name + '.liquid';
+    const snippet = path.join(root, 'snippets', filename);
+    return fs.existsSync(snippet) ? snippet : path.join(root, 'blocks', filename);
+  };
+  return new (loadLiquid())({ fs: {
+    resolve,
+    exists: async file => fs.existsSync(file),
+    existsSync: file => fs.existsSync(file),
+    readFile: async file => stripShopifyMetadata(fs.readFileSync(file, 'utf8')),
+    readFileSync: file => stripShopifyMetadata(fs.readFileSync(file, 'utf8')),
+  } });
+}
+
+// This static child has no settings; render its real source with the parent's
+// resolved title. Other content_for tags remain unsupported rather than hidden.
+function prepareCollectionThumbnail(source) {
+  return stripShopifyMetadata(source).replace(
+    /{% content_for 'block', type: '_collection-thumbnail-title', id: 'title', thumbnail_title: title %}/g,
+    "{% render '_collection-thumbnail-title', thumbnail_title: title, section: section, block: block %}"
+  );
+}
+module.exports = { loadLiquid, stripShopifyMetadata, createLiquidEngine, prepareCollectionThumbnail };

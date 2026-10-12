@@ -2,7 +2,7 @@ const test = require('node:test');
 const assert = require('node:assert/strict');
 const fs = require('node:fs');
 const vm = require('node:vm');
-const { loadLiquid, stripShopifyMetadata } = require('./helpers/liquid-engine.cjs');
+const { createLiquidEngine, stripShopifyMetadata } = require('./helpers/liquid-engine.cjs');
 
 function fixture(boxedLayout = true) {
   const node = (dataset = {}, classes = []) => ({
@@ -62,8 +62,7 @@ test('keyboard activation uses the same color path and selects matching panel', 
   assert.deepEqual([...root.classList.values], ['scheme-1']);
 });
 test('Liquid accepts color scheme objects and strings and ignores saved scheme when inheriting', () => {
-  const Liquid = loadLiquid();
-  const engine = new Liquid({ strictFilters: false });
+  const engine = createLiquidEngine();
   engine.registerFilter('handleize', (value) => String(value).toLowerCase().replace(/[^a-z0-9_-]/g, '-'));
   engine.registerFilter('placeholder_svg_tag', () => '<svg></svg>');
   const source = stripShopifyMetadata(fs.readFileSync('blocks/collections-with-tabs-item.liquid', 'utf8'));
