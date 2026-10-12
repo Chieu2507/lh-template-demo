@@ -4,8 +4,8 @@
   preserving the existing centered cover composition at both mobile bands.
   Images with a merchant focal point retain their original source/crop.
   Crop density is capped by source resolution so CDN requests never upscale.
-  Dedicated WebP artwork up to 750px uses its native compressed source unless
-  the frame requires a panoramic crop; preload and picture share that URL.
+  Mobile candidates are bounded by native source width; preload and picture
+  share the same responsive candidates and sizing.
 
   @param {image} image - Desktop artwork
   @param {image} [mobile_image] - Mobile artwork; falls back to desktop
@@ -18,14 +18,6 @@
 {% enddoc %}
 {% liquid
   assign mobile_artwork = mobile_image | default: image
-  assign native_mobile_artwork = false
-  if mobile_image != blank and mobile_artwork.width <= 750 and mobile_artwork.src contains '.webp'
-    comment
-      Small dedicated mobile uploads are already encoded for this viewport.
-      Preserve their compressed native file instead of CDN recompression.
-    endcomment
-    assign native_mobile_artwork = true
-  endif
   assign image_sizes = sizes | default: '100vw'
   assign frame_height = mobile_height | default: 0 | plus: 0
   assign mobile_cover_width = frame_height | times: mobile_artwork.aspect_ratio
@@ -87,26 +79,26 @@
           break
         endif
       endfor
-    elsif native_mobile_artwork
-      echo mobile_artwork | image_url: width: mobile_artwork.width
-      echo ' '
-      echo mobile_artwork.width
-      echo 'w'
     else
-      echo mobile_artwork | image_url: width: 375
-      echo ' 375w, '
-      echo mobile_artwork | image_url: width: 550
-      echo ' 550w, '
-      echo mobile_artwork | image_url: width: 750
-      echo ' 750w, '
-      echo mobile_artwork | image_url: width: 1100
-      echo ' 1100w, '
-      echo mobile_artwork | image_url: width: 1500
-      echo ' 1500w, '
-      echo mobile_artwork | image_url: width: 2000
-      echo ' 2000w, '
-      echo mobile_artwork | image_url: width: 2400
-      echo ' 2400w'
+      assign mobile_source_width = mobile_artwork.width | plus: 0
+      assign mobile_candidates = '375,412,480,550,750,1100,1500,2000,2400' | split: ','
+      for candidate in mobile_candidates
+        assign candidate_width = candidate | plus: 0
+        if mobile_source_width > 0 and candidate_width >= mobile_source_width
+          echo mobile_artwork | image_url: width: mobile_source_width
+          echo ' '
+          echo mobile_source_width
+          echo 'w'
+          break
+        endif
+        echo mobile_artwork | image_url: width: candidate_width
+        echo ' '
+        echo candidate_width
+        echo 'w'
+        unless forloop.last
+          echo ', '
+        endunless
+      endfor
     endif
   endcapture
   assign mobile_sizes = mobile_image_sizes | default: '100vw'

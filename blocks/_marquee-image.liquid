@@ -1,6 +1,8 @@
 {% liquid
   assign width = block.settings.width_custom_desktop | default: 300
   assign mobile_width = block.settings.width_custom_mobile | default: 50
+  assign source_width = block.settings.image.width | default: 1200 | plus: 0
+  assign request_width = width | at_least: mobile_width | times: 3 | at_most: source_width
   capture ratio
     render 'image-ratio-value', setting: block.settings.image_ratio
   endcapture
@@ -48,7 +50,7 @@
   endcase
 
   capture sizes
-    echo '(max-width:767px) '
+    echo '(max-width: 767.98px) '
     echo mobile_width
     echo 'px, '
     echo width
@@ -57,7 +59,7 @@
 %}
 <div class="marquee-image-block{% if rotation != 0 %} marquee-image-block--rotated{% endif %}" style="--mq-image-width:{{ width }}px;--mq-image-width-mobile:{{ mobile_width }}px;--mq-image-ratio:{{ ratio }};--mq-image-radius:{{ radius }};{% if rotation != 0 %}--mq-image-rotation:{{ rotation }}deg;--mq-image-rotation-abs:{{ rotation_abs }}deg;--mq-image-aspect:{{ numeric_ratio }};{% endif %}" {{ block.shopify_attributes }}>
   {% if rotation != 0 %}<div class="marquee-image-block__media">{% endif %}
-    {% render 'image', image: block.settings.image, url: block.settings.image_link, open_in_new_tab: block.settings.open_in_new_tab, width: 800, widths: '50,100,200,300,400,600,800', sizes: sizes %}
+    {% render 'image', image: block.settings.image, url: block.settings.image_link, open_in_new_tab: block.settings.open_in_new_tab, width: request_width, widths: '50,100,120,160,200,240,300,320,400,480,600,800,1200', sizes: sizes, auto_sizes: false, loading: 'lazy' %}
   {% if rotation != 0 %}</div>{% endif %}
 </div>
 {% stylesheet %}
