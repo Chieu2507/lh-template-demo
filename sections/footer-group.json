@@ -392,8 +392,7 @@
                 "limit_width_mobile": false,
                 "background_color": "rgba(0,0,0,0)",
                 "input_style": "outline",
-                "color_scheme": "scheme-3",
-                    "corner_radius": "radius_8"
+                "color_scheme": "scheme-3"
                   }
                 },
                 "newsletter-socials": {
