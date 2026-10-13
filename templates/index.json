@@ -201,7 +201,7 @@
                   "type": "button",
                   "settings": {
                     "button_label": "Shop Smartphone",
-                    "button_link": "/collections/all",
+                    "button_link": "/collections/smartphone-torvex",
                     "button_open_in_new_tab": false,
                     "button_style": "primary",
                     "show_icon": false,
@@ -344,7 +344,7 @@
                   "type": "button",
                   "settings": {
                     "button_label": "Shop Audio",
-                    "button_link": "/collections/all",
+                    "button_link": "/collections/audio-torvex",
                     "button_open_in_new_tab": false,
                     "button_style": "tertiary",
                     "show_icon": true,
@@ -487,7 +487,7 @@
                   "type": "button",
                   "settings": {
                     "button_label": "Shop Smartwatch",
-                    "button_link": "/collections/all",
+                    "button_link": "/collections/smartwatch-torvex",
                     "button_open_in_new_tab": false,
                     "button_style": "tertiary",
                     "show_icon": true,
@@ -636,8 +636,9 @@
         "category_0": {
           "type": "collection-thumbnail",
           "settings": {
+            "collection": "smartphone-torvex",
             "custom_title": "Smartphone",
-            "custom_link": "/collections/all",
+            "custom_link": "/collections/smartphone-torvex",
             "image": "shopify://shop_images/torvex-category-0.webp"
           },
           "blocks": {
@@ -652,8 +653,9 @@
         "category_1": {
           "type": "collection-thumbnail",
           "settings": {
+            "collection": "tablet-torvex",
             "custom_title": "Tablet",
-            "custom_link": "/collections/all",
+            "custom_link": "/collections/tablet-torvex",
             "image": "shopify://shop_images/torvex-category-1.webp"
           },
           "blocks": {
@@ -668,8 +670,9 @@
         "category_2": {
           "type": "collection-thumbnail",
           "settings": {
+            "collection": "smartwatch-torvex",
             "custom_title": "Smartwatch",
-            "custom_link": "/collections/all",
+            "custom_link": "/collections/smartwatch-torvex",
             "image": "shopify://shop_images/torvex-category-2.webp"
           },
           "blocks": {
@@ -684,8 +687,9 @@
         "category_3": {
           "type": "collection-thumbnail",
           "settings": {
+            "collection": "laptop-torvex",
             "custom_title": "Laptop",
-            "custom_link": "/collections/all",
+            "custom_link": "/collections/laptop-torvex",
             "image": "shopify://shop_images/torvex-category-3.webp"
           },
           "blocks": {
@@ -700,8 +704,9 @@
         "category_4": {
           "type": "collection-thumbnail",
           "settings": {
+            "collection": "audio-torvex",
             "custom_title": "Audio",
-            "custom_link": "/collections/all",
+            "custom_link": "/collections/audio-torvex",
             "image": "shopify://shop_images/torvex-category-4.webp"
           },
           "blocks": {
@@ -716,8 +721,9 @@
         "category_5": {
           "type": "collection-thumbnail",
           "settings": {
+            "collection": "smart-home-torvex",
             "custom_title": "Smart home",
-            "custom_link": "/collections/all",
+            "custom_link": "/collections/smart-home-torvex",
             "image": "shopify://shop_images/torvex-category-5.webp"
           },
           "blocks": {
@@ -732,8 +738,9 @@
         "category_6": {
           "type": "collection-thumbnail",
           "settings": {
+            "collection": "gaming-torvex",
             "custom_title": "Gaming",
-            "custom_link": "/collections/all",
+            "custom_link": "/collections/gaming-torvex",
             "image": "shopify://shop_images/torvex-category-6.webp"
           },
           "blocks": {
@@ -748,8 +755,9 @@
         "category_7": {
           "type": "collection-thumbnail",
           "settings": {
+            "collection": "accessories-torvex",
             "custom_title": "Accessories",
-            "custom_link": "/collections/all",
+            "custom_link": "/collections/accessories-torvex",
             "image": "shopify://shop_images/torvex-category-7.webp"
           },
           "blocks": {
@@ -895,7 +903,7 @@
           "type": "product-list",
           "static": true,
           "settings": {
-            "collection": "road-running-strideo",
+            "collection": "new-arrivals-torvex",
             "max_products": 5,
             "layout_type": "carousel",
             "columns_desktop": "5",
@@ -4606,7 +4614,7 @@
                   "type": "button",
                   "settings": {
                     "button_label": "Shop now",
-                    "button_link": "/collections/all",
+                    "button_link": "/collections/smartphone-torvex",
                     "button_open_in_new_tab": false,
                     "button_style": "tertiary",
                     "show_icon": true,
@@ -4831,7 +4839,7 @@
                   "type": "button",
                   "settings": {
                     "button_label": "Shop now",
-                    "button_link": "/collections/all",
+                    "button_link": "/collections/audio-torvex",
                     "button_open_in_new_tab": false,
                     "button_style": "tertiary",
                     "show_icon": true,
@@ -5056,7 +5064,7 @@
                   "type": "button",
                   "settings": {
                     "button_label": "Shop now",
-                    "button_link": "/collections/all",
+                    "button_link": "/collections/smartwatch-torvex",
                     "button_open_in_new_tab": false,
                     "button_style": "tertiary",
                     "show_icon": true,
@@ -5282,7 +5290,7 @@
                   "type": "button",
                   "settings": {
                     "button_label": "Shop now",
-                    "button_link": "/collections/all",
+                    "button_link": "/collections/vr-torvex",
                     "button_open_in_new_tab": false,
                     "button_style": "tertiary",
                     "show_icon": true,
@@ -5485,7 +5493,7 @@
           "type": "collection-tab",
           "settings": {
             "label": "Smartphone",
-            "collection": "road-running-strideo"
+            "collection": "smartphone-torvex"
           },
           "blocks": {
             "product-card": {
@@ -5521,7 +5529,7 @@
           "type": "collection-tab",
           "settings": {
             "label": "Tablet",
-            "collection": "running-strideo"
+            "collection": "tablet-torvex"
           },
           "blocks": {
             "product-card": {
@@ -5557,7 +5565,7 @@
           "type": "collection-tab",
           "settings": {
             "label": "Smartwatch",
-            "collection": "cloud-strideo"
+            "collection": "smartwatch-torvex"
           },
           "blocks": {
             "product-card": {
@@ -5593,7 +5601,7 @@
           "type": "collection-tab",
           "settings": {
             "label": "Audio",
-            "collection": "the-roger-strideo"
+            "collection": "audio-torvex"
           },
           "blocks": {
             "product-card": {
@@ -5811,7 +5819,7 @@
                   "type": "button",
                   "settings": {
                     "button_label": "Shop now",
-                    "button_link": "/collections/all",
+                    "button_link": "/collections/all-products-torvex",
                     "button_open_in_new_tab": false,
                     "button_style": "primary",
                     "show_icon": false,
@@ -5967,7 +5975,7 @@
                   "type": "button",
                   "settings": {
                     "button_label": "Shop now",
-                    "button_link": "/collections/all",
+                    "button_link": "/collections/all-products-torvex",
                     "button_open_in_new_tab": false,
                     "button_style": "primary",
                     "show_icon": false,
@@ -6137,7 +6145,7 @@
           "type": "product-list-inline",
           "static": true,
           "settings": {
-            "collection": "road-running-strideo",
+            "collection": "complete-your-setup-torvex",
             "products_to_show": 8,
             "show_quick_add": false,
             "show_quick_add_mobile": false,
@@ -6276,7 +6284,7 @@
                   "settings": {
                     "image": "shopify://shop_images/torvex-section-47076-16890.webp",
                     "show_image_first_mobile": false,
-                    "image_link": "/collections/all",
+                    "image_link": "/collections/smartphone-torvex",
                     "open_in_new_tab": false,
                     "alt_text": "Smartphone",
                     "device": "desktop",
@@ -6402,7 +6410,7 @@
                   "settings": {
                     "image": "shopify://shop_images/torvex-section-47076-16895.webp",
                     "show_image_first_mobile": false,
-                    "image_link": "/collections/all",
+                    "image_link": "/collections/smartwatch-torvex",
                     "open_in_new_tab": false,
                     "alt_text": "Smartwatch",
                     "device": "desktop",
@@ -6528,7 +6536,7 @@
                   "settings": {
                     "image": "shopify://shop_images/torvex-section-47076-16898.webp",
                     "show_image_first_mobile": false,
-                    "image_link": "/collections/all",
+                    "image_link": "/collections/audio-torvex",
                     "open_in_new_tab": false,
                     "alt_text": "Audio",
                     "device": "desktop",
@@ -6607,7 +6615,7 @@
               "static": true,
               "settings": {
                 "button_label": "Shop Phones & Wearables",
-                "button_link": "/collections/all",
+                "button_link": "/collections/phones-and-wearables-torvex",
                 "button_open_in_new_tab": false,
                 "button_style": "tertiary",
                 "show_icon": true,
@@ -6801,7 +6809,7 @@
                       "type": "button",
                       "settings": {
                         "button_label": "Shop now",
-                        "button_link": "/collections/all",
+                        "button_link": "/collections/all-products-torvex",
                         "button_open_in_new_tab": false,
                         "button_style": "tertiary",
                         "show_icon": true,
@@ -6937,7 +6945,7 @@
                   "settings": {
                     "image": "shopify://shop_images/torvex-section-47076-16947.webp",
                     "show_image_first_mobile": false,
-                    "image_link": "/collections/all",
+                    "image_link": "/collections/laptop-torvex",
                     "open_in_new_tab": false,
                     "alt_text": "Laptop",
                     "device": "desktop",
@@ -7063,7 +7071,7 @@
                   "settings": {
                     "image": "shopify://shop_images/torvex-section-47076-16940.webp",
                     "show_image_first_mobile": false,
-                    "image_link": "/collections/all",
+                    "image_link": "/collections/accessories-torvex",
                     "open_in_new_tab": false,
                     "alt_text": "Accessories",
                     "device": "desktop",
@@ -7189,7 +7197,7 @@
                   "settings": {
                     "image": "shopify://shop_images/torvex-section-47076-16943.webp",
                     "show_image_first_mobile": false,
-                    "image_link": "/collections/all",
+                    "image_link": "/collections/audio-torvex",
                     "open_in_new_tab": false,
                     "alt_text": "Audio",
                     "device": "desktop",
@@ -7268,7 +7276,7 @@
               "static": true,
               "settings": {
                 "button_label": "Shop Laptop & Accessories",
-                "button_link": "/collections/all",
+                "button_link": "/collections/laptop-and-accessories-torvex",
                 "button_open_in_new_tab": false,
                 "button_style": "tertiary",
                 "show_icon": true,
@@ -7522,7 +7530,7 @@
                   "type": "button",
                   "settings": {
                     "button_label": "Shop now",
-                    "button_link": "/collections/all",
+                    "button_link": "/collections/all-products-torvex",
                     "button_open_in_new_tab": false,
                     "button_style": "primary",
                     "show_icon": false,
@@ -7754,7 +7762,7 @@
                   "type": "button",
                   "settings": {
                     "button_label": "Shop now",
-                    "button_link": "/collections/all",
+                    "button_link": "/collections/stay-on-trend-torvex",
                     "button_open_in_new_tab": false,
                     "button_style": "tertiary",
                     "show_icon": true,
@@ -7792,7 +7800,7 @@
           "type": "product-list",
           "static": true,
           "settings": {
-            "collection": "cloud-strideo",
+            "collection": "stay-on-trend-torvex",
             "max_products": 6,
             "layout_type": "carousel",
             "columns_desktop": "3",
@@ -8027,7 +8035,7 @@
                   "settings": {
                     "image": "shopify://shop_images/torvex-section-47004-20953.webp",
                     "image_ratio": "ratio_2_1",
-                    "image_link": "/collections/all",
+                    "image_link": "/collections/all-products-torvex",
                     "open_in_new_tab": false,
                     "size_desktop": "208",
                     "width_custom_desktop": 300,
@@ -8074,7 +8082,7 @@
                   "settings": {
                     "image": "shopify://shop_images/torvex-section-47049-12679.webp",
                     "image_ratio": "ratio_2_1",
-                    "image_link": "/collections/all",
+                    "image_link": "/collections/all-products-torvex",
                     "open_in_new_tab": false,
                     "size_desktop": "208",
                     "width_custom_desktop": 300,
@@ -8121,7 +8129,7 @@
                   "settings": {
                     "image": "shopify://shop_images/torvex-section-47004-20957.webp",
                     "image_ratio": "ratio_2_1",
-                    "image_link": "/collections/all",
+                    "image_link": "/collections/all-products-torvex",
                     "open_in_new_tab": false,
                     "size_desktop": "208",
                     "width_custom_desktop": 300,
@@ -8168,7 +8176,7 @@
                   "settings": {
                     "image": "shopify://shop_images/torvex-section-47004-20955.webp",
                     "image_ratio": "ratio_2_1",
-                    "image_link": "/collections/all",
+                    "image_link": "/collections/all-products-torvex",
                     "open_in_new_tab": false,
                     "size_desktop": "208",
                     "width_custom_desktop": 300,
@@ -8215,7 +8223,7 @@
                   "settings": {
                     "image": "shopify://shop_images/torvex-section-47004-20959.webp",
                     "image_ratio": "ratio_2_1",
-                    "image_link": "/collections/all",
+                    "image_link": "/collections/all-products-torvex",
                     "open_in_new_tab": false,
                     "size_desktop": "208",
                     "width_custom_desktop": 300,
@@ -8262,7 +8270,7 @@
                   "settings": {
                     "image": "shopify://shop_images/torvex-section-47049-12676.webp",
                     "image_ratio": "ratio_2_1",
-                    "image_link": "/collections/all",
+                    "image_link": "/collections/all-products-torvex",
                     "open_in_new_tab": false,
                     "size_desktop": "208",
                     "width_custom_desktop": 300,
@@ -8309,7 +8317,7 @@
                   "settings": {
                     "image": "shopify://shop_images/torvex-section-47004-20961.webp",
                     "image_ratio": "ratio_2_1",
-                    "image_link": "/collections/all",
+                    "image_link": "/collections/all-products-torvex",
                     "open_in_new_tab": false,
                     "size_desktop": "208",
                     "width_custom_desktop": 300,
@@ -8356,7 +8364,7 @@
                   "settings": {
                     "image": "shopify://shop_images/torvex-section-47004-20963.webp",
                     "image_ratio": "ratio_2_1",
-                    "image_link": "/collections/all",
+                    "image_link": "/collections/all-products-torvex",
                     "open_in_new_tab": false,
                     "size_desktop": "208",
                     "width_custom_desktop": 300,
