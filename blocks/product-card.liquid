@@ -40,18 +40,18 @@
 {% capture product_card_inventory %}
   {% if card_product != blank and block.settings.show_inventory %}{% content_for 'block', type: '_product-card-inventory', id: 'inventory', closest.product: card_product %}{% endif %}
 {% endcapture %}
-{% capture product_card_rating %}
+{% capture product_card_extensions %}
   {{ product_card_inventory }}
-  {% if card_product != blank and block.settings.show_rating %}
-    {% content_for 'block', type: 'product-rating', id: 'rating', closest.product: card_product %}
+  {% if card_product != blank %}
+    {% content_for 'blocks', closest.product: card_product %}
   {% endif %}
 {% endcapture %}
-{% assign product_card_rating = product_card_rating | strip %}
+{% assign product_card_extensions = product_card_extensions | strip %}
 
 {% if card_product != blank %}
   {% render 'product-card',
     product: card_product,
-    rating_content: product_card_rating,
+    rating_content: product_card_extensions,
     card_style: block.settings.card_style,
     media_corner_radius: block.settings.media_corner_radius,
     card_corner_radius: block.settings.card_corner_radius,
@@ -183,12 +183,6 @@
       "default": "inherit"
     },
     {
-      "type": "checkbox",
-      "id": "show_rating",
-      "label": "t:labels.show_rating",
-      "default": false
-    },
-    {
       "type": "header",
       "content": "t:general.appearance"
     },
@@ -269,7 +263,7 @@
   ],
   "blocks": [
     {
-      "type": "product-rating"
+      "type": "@app"
     },
     {
       "type": "_product-card-inventory"

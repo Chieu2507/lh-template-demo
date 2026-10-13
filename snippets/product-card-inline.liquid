@@ -1,8 +1,8 @@
 {% doc %}
   Horizontal product card composed from shared media, title, price and cart actions.
-  The parent supplies the resource and optional rendered Product rating block.
+  The parent supplies the resource and optional rendered review app content.
   @param {product} [product] - Shopify product; blank renders a product placeholder
-  @param {string} [rating_content] - Rendered shared Product rating block
+  @param {string} [rating_content] - Rendered review app content
   @param {boolean} [show_quick_add] - Show the shared cart action
   @param {string} [media_sizes] - Parent-owned responsive media dimensions
   @param {number} [placeholder_index] - Ordered placeholder variant
@@ -73,10 +73,6 @@
   .product-card-inline__content { flex: 1; display: flex; flex-direction: column; gap: 4px; min-width: 0; }
   .product-card-inline .product-card__title { display: block; margin: 0; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; font-size:var(--inline-title-size,16px); line-height: 1.5; text-align: start; }
   .product-card-inline .product-card__price { margin: 0; justify-content: flex-start; text-align: start; font-size:var(--inline-price-size,15px);font-weight:var(--inline-price-weight,var(--price-font-weight)); line-height: 1.5; }
-  .product-card-inline .product-rating { gap: 4px; flex-wrap: nowrap; font-size: 14px; line-height: 1.5; }
-  .product-card-inline .product-rating__stars { width: 90px; flex-basis: 90px; }
-  .product-card-inline .product-rating__track,
-  .product-card-inline .product-rating__fill { gap: 0; }
   .product-card-inline__action { flex: 0 0 auto; --button-padding-inline-desktop: 0px; --button-padding-inline-mobile: 0px; }
   .product-card-inline__action .product-card__quick-add { position: static; }
 @media(max-width:767.98px){.product-card-inline{gap:var(--inline-content-gap-mobile,var(--inline-content-gap,12px));}.product-card-inline__media{flex-basis:var(--inline-image-width-mobile,112px);width:var(--inline-image-width-mobile,112px);height:var(--inline-image-width-mobile,112px);}}
