@@ -225,9 +225,12 @@
   const updateHeaderHeight = (header, stickyType) => {
     const height = `${getHeaderLayoutTarget(header).offsetHeight}px`;
     header.style.setProperty('--header-layout-height', height);
+    const state = headerStates.get(header);
     const bottom = header.querySelector('[data-header-bottom-collapse]');
-    const fullHeight = getHeaderLayoutTarget(header).offsetHeight + (bottom ? bottom.querySelector('[data-header-bottom]').offsetHeight - bottom.offsetHeight : 0);
-    header.style.setProperty('--header-hide-height', `${fullHeight}px`);
+    if (state?.bottomSpacer && bottom) {
+      state.bottomSpacer.style.height = window.innerWidth >= 992 ? `${bottom.offsetHeight}px` : '0px';
+    }
+    header.style.setProperty('--header-hide-height', height);
     if (stickyType === 'none') {
       document.documentElement.style.removeProperty('--header-height');
     } else {
@@ -259,7 +262,10 @@
 
   const updateStickyHeaderHeight = (header, stickyType = header.dataset.stickyType || 'none') => {
     const isHidden = stickyType === 'scroll_up' && header.classList.contains('header--is-hidden');
-    const stickyHeight = stickyType === 'none' || isHidden ? 0 : getStickyTarget(header, stickyType).offsetHeight;
+    const target = getStickyTarget(header, stickyType);
+    const bottom = header.querySelector('[data-header-bottom-collapse]');
+    const expandedBottom = headerStates.get(header)?.bottomSpacer && bottom && !bottom.hasAttribute('data-collapsed') && window.innerWidth >= 992 ? bottom.offsetHeight : 0;
+    const stickyHeight = stickyType === 'none' || isHidden ? 0 : target.offsetHeight + expandedBottom;
     const height = `${stickyHeight}px`;
 
     header.style.setProperty('--header-sticky-height', height);
@@ -396,15 +402,13 @@
     const collapsed = isPinned && window.innerWidth >= 992 && !interacting;
     if (!headerBottomTransitions.has(bottom)) {
       bottom.addEventListener('transitionend', (event) => {
-        if (event.target === bottom && event.propertyName === 'grid-template-rows') {
+        if (event.target === bottom && event.propertyName === 'transform') {
           bottom.removeAttribute('data-transitioning');
         }
       });
       headerBottomTransitions.add(bottom);
     }
     if (bottom.hasAttribute('data-collapsed') !== collapsed) {
-      // Scroll anchoring otherwise moves the page as the row shrinks, which
-      // reverses sticky detection at the threshold even after scrolling stops.
       bottom.toggleAttribute('data-transitioning', !reducedMotion.matches);
       bottom.toggleAttribute('data-collapsed', collapsed);
     }
@@ -586,7 +590,18 @@
     stickyAnchor.setAttribute('aria-hidden', 'true');
     stickyAnchor.style.cssText = 'height:0;pointer-events:none;overflow-anchor:none';
     header.before(stickyAnchor);
-    headerStates.set(header, { header, stickyType, stickyAnchor, isPinned: false });
+    const bottom = header.querySelector('.header-top--two-rows > [data-header-bottom-collapse]');
+    let bottomSpacer = null;
+    if (bottom) {
+      bottomSpacer = document.createElement('div');
+      bottomSpacer.setAttribute('aria-hidden', 'true');
+      bottomSpacer.style.cssText = `height:${window.innerWidth >= 992 ? bottom.offsetHeight : 0}px;pointer-events:none;overflow-anchor:none`;
+      header.after(bottomSpacer);
+      bottom.parentElement.setAttribute('data-bottom-transform', '');
+      headerResizeObservers.get(header)?.observe(bottom);
+    }
+    headerStates.set(header, { header, stickyType, stickyAnchor, bottomSpacer, isPinned: false });
+    updateHeaderHeight(header, stickyType);
     initializeMenuToggles(header);
     initializeHeaderSubmenus(header);
     initializeMegaMenuBackdrops(header);
@@ -1086,6 +1101,8 @@
         backdropCursorBindings.delete(drawer);
       });
       headerStates.get(header)?.stickyAnchor.remove();
+      headerStates.get(header)?.bottomSpacer?.remove();
+      header.querySelector('[data-bottom-transform]')?.removeAttribute('data-bottom-transform');
       headerStates.delete(header);
       headerResizeObservers.get(header)?.disconnect();
       headerResizeObservers.delete(header);

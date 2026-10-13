@@ -17,17 +17,26 @@
 </div>
 {% stylesheet %}
   .header-bottom-collapse {
-    display: grid;
-    grid-template-rows: 1fr;
     transform: translateY(0);
     opacity: 1;
     transition: all ease 0.3s;
   }
-  html:has(.header-bottom-collapse[data-transitioning]) { overflow-anchor: none; }
-  .header-bottom-collapse__clip { min-height: 0; }
-  .header-bottom-collapse[data-transitioning] > .header-bottom-collapse__clip { overflow: clip; }
-  .header-bottom-collapse[data-collapsed] { grid-template-rows: 0fr; transform: translateY(-12px); opacity: 0; pointer-events: none; }
-  .header-bottom-collapse[data-collapsed] > .header-bottom-collapse__clip { overflow: clip; }
+  .header-bottom-collapse[data-collapsed] { transform: translateY(-100%); opacity: 0; pointer-events: none; }
+  @media (min-width: 992px) {
+    .header-top--two-rows[data-bottom-transform] { position: relative; }
+    .header-top--two-rows[data-bottom-transform] > .header-bottom-collapse {
+      position: absolute;
+      top: 100%;
+      inset-inline: 0;
+      z-index: 1;
+      background: var(--background-color);
+    }
+    .header-top--two-rows[data-bottom-transform] > .header-two-row__grid {
+      position: relative;
+      z-index: 2;
+      background: var(--background-color);
+    }
+  }
   @media (prefers-reduced-motion: reduce) {
     .header-bottom-collapse { transition: none; }
   }
