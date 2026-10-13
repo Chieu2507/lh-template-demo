@@ -384,6 +384,16 @@
     });
   };
 
+  const synchronizeHeaderBottom = (header, isScrolled) => {
+    const bottom = header.querySelector('[data-header-bottom-collapse]');
+    if (!bottom) return;
+    // Keep an active menu or keyboard interaction available until it closes.
+    const interacting = bottom.contains(document.activeElement) || Boolean(bottom.querySelector('details[open], [data-editor-selected="true"]'));
+    const collapsed = isScrolled && window.innerWidth >= 992 && !interacting;
+    bottom.toggleAttribute('data-collapsed', collapsed);
+    bottom.inert = collapsed;
+  };
+
   const updateHeaderState = (forceShow = false) => {
     const scrollY = Math.max(window.scrollY, 0);
     const scrollDelta = scrollY - lastScrollY;
@@ -409,6 +419,7 @@
         setHeaderMenuState(header, false, { restoreFocus: false });
       }
       header.classList.toggle('header--is-scrolled', isScrolled);
+      synchronizeHeaderBottom(header, isScrolled);
       header.classList.toggle('header--submenu-open', isSubmenuOpen);
       header.classList.toggle('header--mega-menu-open', isMegaMenuOpen);
       header.querySelectorAll('[data-header-mega-menu-backdrop]').forEach((backdrop) => {
