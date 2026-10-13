@@ -265,6 +265,8 @@
         data-swiper-autoplay-delay="{{ collection_tab_autoplay_delay }}"
       >
         {% render 'product-collection-grid',
+          mobile_card_sizing: section.settings.mobile_card_sizing,
+          mobile_card_width: section.settings.mobile_card_width,
           collection: collection_tab_collection,
           max_products: collection_tab_max_products,
           layout_type: collection_tab_layout,
@@ -427,6 +429,7 @@
     }
   }
 
+@media(max-width:767.98px){.collection-tab [data-swiper-card-width-mobile] .swiper-slide{width:min(100%,var(--product-list-card-width-mobile));}}
 {% endstylesheet %}
 
 {% schema %}

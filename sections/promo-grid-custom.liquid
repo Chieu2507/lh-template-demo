@@ -176,6 +176,10 @@
         {
           "value": "ratio_16_9",
           "label": "Landscape (16:9) per row"
+        },
+        {
+          "value": "ratio_7_5",
+          "label": "Landscape (7:5) per row"
         }
       ],
       "default": "medium",
@@ -191,7 +195,7 @@
       "step": 8,
       "default": 0,
       "unit": "px",
-      "visible_if": "{{ section.settings.height_desktop == 'ratio_16_9' }}"
+      "visible_if": "{{ section.settings.height_desktop == 'ratio_16_9' or section.settings.height_desktop == 'ratio_7_5' }}"
     },
     {
       "type": "select",
