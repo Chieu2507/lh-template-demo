@@ -6724,13 +6724,14 @@
         "autoplay": false,
         "autoplay_pause_on_hover": true,
         "autoplay_speed": 4,
+        "action_position": "below",
+        "action_alignment": "center",
         "color_scheme": "scheme-2",
         "padding_top": 80,
         "padding_bottom": 80,
         "customize_mobile_padding": true,
         "padding_top_mobile": 48,
-        "padding_bottom_mobile": 48,
-        "action_alignment": "center"
+        "padding_bottom_mobile": 48
       }
     },
     "torvex_service_banners": {

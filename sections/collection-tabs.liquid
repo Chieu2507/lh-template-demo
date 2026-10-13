@@ -116,6 +116,7 @@
       data-collection-tabs-ready="false"
       data-layout-direction="{{ collection_tabs_layout_direction }}"
       data-header-layout="{{ collection_tabs_header_layout }}"
+      data-action-position="{{ section.settings.action_position | default: 'inherit' }}"
       data-tab-position="{{ collection_tabs_tab_position }}"
       data-controls-alignment="{{ collection_tabs_controls_alignment }}"
       data-layout-type="{{ collection_tabs_layout_type }}"
@@ -765,6 +766,46 @@
       "visible_if": "{{ section.settings.layout_type == 'carousel' and section.settings.autoplay }}"
     },
     {
+      "type": "select",
+      "id": "action_position",
+      "label": "View all position",
+      "default": "inherit",
+      "options": [
+        {
+          "value": "inherit",
+          "label": "Inherit layout"
+        },
+        {
+          "value": "below",
+          "label": "Below products"
+        }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "action_alignment",
+      "label": "View all alignment",
+      "default": "inherit",
+      "options": [
+        {
+          "value": "inherit",
+          "label": "Inherit layout"
+        },
+        {
+          "value": "flex-start",
+          "label": "Left"
+        },
+        {
+          "value": "center",
+          "label": "Center"
+        },
+        {
+          "value": "flex-end",
+          "label": "Right"
+        }
+      ]
+    },
+    {
       "type": "header",
       "content": "t:general.appearance"
     },
@@ -825,30 +866,6 @@
       "unit": "px",
       "default": 24,
       "visible_if": "{{ section.settings.customize_mobile_padding }}"
-    },
-    {
-      "type": "select",
-      "id": "action_alignment",
-      "label": "View all alignment",
-      "default": "inherit",
-      "options": [
-        {
-          "value": "inherit",
-          "label": "Inherit layout"
-        },
-        {
-          "value": "flex-start",
-          "label": "Left"
-        },
-        {
-          "value": "center",
-          "label": "Center"
-        },
-        {
-          "value": "flex-end",
-          "label": "Right"
-        }
-      ]
     }
   ],
   "presets": [
