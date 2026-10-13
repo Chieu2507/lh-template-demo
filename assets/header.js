@@ -226,7 +226,7 @@
     const height = `${getHeaderLayoutTarget(header).offsetHeight}px`;
     header.style.setProperty('--header-layout-height', height);
     const bottom = header.querySelector('[data-header-bottom-collapse]');
-    const fullHeight = getHeaderLayoutTarget(header).offsetHeight + (bottom ? bottom.scrollHeight - bottom.offsetHeight : 0);
+    const fullHeight = getHeaderLayoutTarget(header).offsetHeight + (bottom ? bottom.querySelector('[data-header-bottom]').offsetHeight - bottom.offsetHeight : 0);
     header.style.setProperty('--header-hide-height', `${fullHeight}px`);
     if (stickyType === 'none') {
       document.documentElement.style.removeProperty('--header-height');
