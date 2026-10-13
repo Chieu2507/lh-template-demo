@@ -17,12 +17,11 @@
 </div>
 {% stylesheet %}
   .header-bottom-collapse {
-    --header-bottom-collapse-duration: 350ms;
     display: grid;
     grid-template-rows: 1fr;
     transform: translateY(0);
     opacity: 1;
-    transition: grid-template-rows var(--header-bottom-collapse-duration) cubic-bezier(0.22, 1, 0.36, 1), transform var(--header-bottom-collapse-duration) cubic-bezier(0.22, 1, 0.36, 1), opacity var(--header-bottom-collapse-duration) ease;
+    transition: all ease 0.3s;
   }
   html:has(.header-bottom-collapse[data-transitioning]) { overflow-anchor: none; }
   .header-bottom-collapse__clip { min-height: 0; }
