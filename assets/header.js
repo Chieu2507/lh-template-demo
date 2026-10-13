@@ -2,7 +2,6 @@
   const HEADER_SELECTOR = '.header-top[data-header-root]';
   const headerStates = new Map();
   const headerResizeObservers = new Map();
-  const headerBottomTransitions = new WeakSet();
   const submenuCloseTimers = new WeakMap();
   const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
   const isMobileMenuViewport = () => window.matchMedia('(max-width: 991.98px)').matches;
@@ -359,7 +358,10 @@
 
     // Read all geometry before writing CSS variables. Interleaving reads and
     // writes here forces the browser to recalculate layout for every submenu.
-    const headerRect = headerTop.getBoundingClientRect();
+    const surfaceRect = headerTop.getBoundingClientRect();
+    const bottom = header.querySelector('[data-header-bottom-collapse]');
+    const bottomHeight = headerStates.get(header)?.bottomSpacer && bottom && !bottom.hasAttribute('data-collapsed') && window.innerWidth >= 992 ? bottom.offsetHeight : 0;
+    const headerRect = { top: surfaceRect.top, left: surfaceRect.left, right: surfaceRect.right, width: surfaceRect.width, height: surfaceRect.height + bottomHeight, bottom: surfaceRect.bottom + bottomHeight };
     const submenuRects = Array.from(
       header.querySelectorAll('.header-localization__details, .header-menu__details'),
       (details) => ({ details, rect: details.getBoundingClientRect() }),
@@ -400,18 +402,7 @@
     // Keep an active menu or keyboard interaction available until it closes.
     const interacting = bottom.contains(document.activeElement) || Boolean(bottom.querySelector('details[open], [data-editor-selected="true"]'));
     const collapsed = isPinned && window.innerWidth >= 992 && !interacting;
-    if (!headerBottomTransitions.has(bottom)) {
-      bottom.addEventListener('transitionend', (event) => {
-        if (event.target === bottom && event.propertyName === 'transform') {
-          bottom.removeAttribute('data-transitioning');
-        }
-      });
-      headerBottomTransitions.add(bottom);
-    }
-    if (bottom.hasAttribute('data-collapsed') !== collapsed) {
-      bottom.toggleAttribute('data-transitioning', !reducedMotion.matches);
-      bottom.toggleAttribute('data-collapsed', collapsed);
-    }
+    bottom.toggleAttribute('data-collapsed', collapsed);
     bottom.inert = collapsed;
   };
 
@@ -459,7 +450,8 @@
         return;
       }
 
-      const revealThreshold = Math.max(parseFloat(header.style.getPropertyValue('--header-hide-height')) || getHeaderLayoutTarget(header).offsetHeight, 64);
+      const bottomHeight = headerState.bottomSpacer && window.innerWidth >= 992 ? header.querySelector('[data-header-bottom-collapse]').offsetHeight : 0;
+      const revealThreshold = Math.max(getHeaderLayoutTarget(header).offsetHeight + bottomHeight, 64);
       const shouldReveal =
         forceShow ||
         scrollY <= 8 ||
