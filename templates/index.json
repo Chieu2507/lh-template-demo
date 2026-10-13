@@ -9,6 +9,965 @@
  */
 {
   "sections": {
+    "torvex_promo_grid": {
+      "type": "promo-grid-custom",
+      "blocks": {
+        "promo_1": {
+          "type": "promo-card-custom",
+          "settings": {
+            "columns_wide": 2,
+            "rows_tall": 2,
+            "open_in_new_tab": false,
+            "background_type": "image",
+            "image": "shopify://shop_images/torvex-promo-1.webp",
+            "mobile_image": "shopify://shop_images/torvex-promo-mobile-1.webp",
+            "zoom_on_hover": false,
+            "show_overlay": false,
+            "overlay_style": "gradient",
+            "overlay_color": "#00000033",
+            "overlay_gradient": "linear-gradient(180deg, rgba(0, 0, 0, 0.08), rgba(0, 0, 0, 0.52))",
+            "position_desktop": "center_left",
+            "position_mobile": "bottom_left",
+            "gap_desktop": 20,
+            "gap_mobile": 16,
+            "corner_radius": "radius_24",
+            "corner_radius_mobile": "radius_16",
+            "aspect_ratio_mobile": "6/7",
+            "color_scheme": "scheme-1",
+            "padding_top": 64,
+            "padding_bottom": 64,
+            "padding_left": 64,
+            "padding_right": 64,
+            "customize_mobile_padding": true,
+            "padding_top_mobile": 32,
+            "padding_bottom_mobile": 32,
+            "padding_left_mobile": 24,
+            "padding_right_mobile": 24
+          },
+          "blocks": {
+            "content": {
+              "type": "group",
+              "settings": {
+                "mobile_order": 0,
+                "direction": "vertical",
+                "position": "center",
+                "position_horizontal": "center",
+                "horizontal_alignment": "left",
+                "customize_mobile_alignment": false,
+                "alignment": "left",
+                "alignment_mobile": "left",
+                "gap_desktop": 32,
+                "gap_mobile": 16,
+                "device": "desktop",
+                "width": "fill",
+                "width_custom": 100,
+                "limit_width": true,
+                "max_width": 440,
+                "height": "fit",
+                "height_mobile": "inherit",
+                "width_mobile": "fill",
+                "width_custom_mobile": 100,
+                "limit_width_mobile": true,
+                "max_width_mobile": 180,
+                "appearance_type": "inherit",
+                "color_scheme": "scheme-1",
+                "border_type": "none",
+                "corner_radius": "square",
+                "shadow": "none",
+                "show_overlay": false,
+                "overlay_style": "solid",
+                "overlay_gradient": "linear-gradient(180deg, rgba(0, 0, 0, 0.08), rgba(0, 0, 0, 0.52))",
+                "backdrop_blur": 0,
+                "animation_type": "none",
+                "animation_delay": 0,
+                "padding_top": 0,
+                "padding_bottom": 0,
+                "padding_left": 0,
+                "padding_right": 0,
+                "customize_mobile_padding": false,
+                "padding_top_mobile": 0,
+                "padding_bottom_mobile": 0,
+                "padding_left_mobile": 0,
+                "padding_right_mobile": 0
+              },
+              "blocks": {
+                "copy": {
+                  "type": "group",
+                  "settings": {
+                    "mobile_order": 0,
+                    "direction": "vertical",
+                    "position": "center",
+                    "position_horizontal": "center",
+                    "horizontal_alignment": "left",
+                    "customize_mobile_alignment": false,
+                    "alignment": "left",
+                    "alignment_mobile": "left",
+                    "gap_desktop": 12,
+                    "gap_mobile": 8,
+                    "device": "desktop",
+                    "width": "fill",
+                    "width_custom": 100,
+                    "limit_width": false,
+                    "max_width": 640,
+                    "height": "fit",
+                    "height_mobile": "inherit",
+                    "width_mobile": "fill",
+                    "width_custom_mobile": 100,
+                    "limit_width_mobile": false,
+                    "max_width_mobile": 480,
+                    "appearance_type": "inherit",
+                    "color_scheme": "scheme-1",
+                    "border_type": "none",
+                    "corner_radius": "square",
+                    "shadow": "none",
+                    "show_overlay": false,
+                    "overlay_style": "solid",
+                    "overlay_gradient": "linear-gradient(180deg, rgba(0, 0, 0, 0.08), rgba(0, 0, 0, 0.52))",
+                    "backdrop_blur": 0,
+                    "animation_type": "none",
+                    "animation_delay": 0,
+                    "padding_top": 0,
+                    "padding_bottom": 0,
+                    "padding_left": 0,
+                    "padding_right": 0,
+                    "customize_mobile_padding": false,
+                    "padding_top_mobile": 0,
+                    "padding_bottom_mobile": 0,
+                    "padding_left_mobile": 0,
+                    "padding_right_mobile": 0
+                  },
+                  "blocks": {
+                    "heading": {
+                      "type": "heading",
+                      "settings": {
+                        "text": "<p>New Flagship Phones.</p>",
+                        "heading_size": "display",
+                        "custom_heading_size": 24,
+                        "html_tag": "h1",
+                        "outline_text": false,
+                        "width": "fill",
+                        "max_width": 640,
+                        "customize_mobile_size": false,
+                        "width_mobile": "fit",
+                        "max_width_mobile": 480,
+                        "animation_type": "none",
+                        "animation_delay": 0,
+                        "padding_top": 0,
+                        "padding_bottom": 0,
+                        "padding_left": 0,
+                        "padding_right": 0,
+                        "customize_mobile_padding": false,
+                        "padding_top_mobile": 0,
+                        "padding_bottom_mobile": 0,
+                        "padding_left_mobile": 0,
+                        "padding_right_mobile": 0
+                      }
+                    },
+                    "text": {
+                      "type": "text",
+                      "settings": {
+                        "text": "<p>Blazing 5G and pro-grade cameras</p>",
+                        "text_size": "md",
+                        "customize_letter_spacing": false,
+                        "letter_spacing": 0,
+                        "customize_line_height": false,
+                        "line_height": 26,
+                        "height_limit": "none",
+                        "width": "fit",
+                        "max_width": 640,
+                        "customize_mobile_size": false,
+                        "width_mobile": "fit",
+                        "max_width_mobile": 480,
+                        "animation_type": "none",
+                        "animation_delay": 0,
+                        "padding_top": 0,
+                        "padding_bottom": 0,
+                        "padding_left": 0,
+                        "padding_right": 0,
+                        "customize_mobile_padding": false,
+                        "padding_top_mobile": 0,
+                        "padding_bottom_mobile": 0,
+                        "padding_left_mobile": 0,
+                        "padding_right_mobile": 0
+                      }
+                    }
+                  },
+                  "block_order": [
+                    "heading",
+                    "text"
+                  ]
+                },
+                "button": {
+                  "type": "button",
+                  "settings": {
+                    "button_label": "Shop Smartphone",
+                    "button_link": "/collections/all",
+                    "button_open_in_new_tab": false,
+                    "button_style": "primary",
+                    "show_icon": false,
+                    "icon": "arrow_up_right",
+                    "icon_position": "after",
+                    "icon_size": "custom",
+                    "icon_width": 16,
+                    "width": "fit",
+                    "width_mobile": "fit",
+                    "animation_type": "none",
+                    "animation_delay": 0,
+                    "padding_top": 0,
+                    "padding_bottom": 0,
+                    "padding_left": 0,
+                    "padding_right": 0,
+                    "customize_mobile_padding": false,
+                    "padding_top_mobile": 0,
+                    "padding_bottom_mobile": 0,
+                    "padding_left_mobile": 0,
+                    "padding_right_mobile": 0
+                  }
+                }
+              },
+              "block_order": [
+                "copy",
+                "button"
+              ]
+            }
+          },
+          "block_order": [
+            "content"
+          ]
+        },
+        "promo_2": {
+          "type": "promo-card-custom",
+          "settings": {
+            "columns_wide": 1,
+            "rows_tall": 1,
+            "open_in_new_tab": false,
+            "background_type": "image",
+            "image": "shopify://shop_images/torvex-promo-2.webp",
+            "mobile_image": "shopify://shop_images/torvex-promo-mobile-2.webp",
+            "zoom_on_hover": false,
+            "show_overlay": false,
+            "overlay_style": "gradient",
+            "overlay_color": "#00000033",
+            "overlay_gradient": "linear-gradient(180deg, rgba(0, 0, 0, 0.08), rgba(0, 0, 0, 0.52))",
+            "position_desktop": "bottom_left",
+            "position_mobile": "bottom_left",
+            "gap_desktop": 20,
+            "gap_mobile": 16,
+            "corner_radius": "radius_24",
+            "corner_radius_mobile": "radius_16",
+            "aspect_ratio_mobile": "3/2",
+            "color_scheme": "scheme-1",
+            "padding_top": 32,
+            "padding_bottom": 32,
+            "padding_left": 32,
+            "padding_right": 32,
+            "customize_mobile_padding": true,
+            "padding_top_mobile": 32,
+            "padding_bottom_mobile": 32,
+            "padding_left_mobile": 24,
+            "padding_right_mobile": 24
+          },
+          "blocks": {
+            "content": {
+              "type": "group",
+              "settings": {
+                "mobile_order": 0,
+                "direction": "vertical",
+                "position": "space-between",
+                "position_horizontal": "center",
+                "horizontal_alignment": "left",
+                "customize_mobile_alignment": false,
+                "alignment": "left",
+                "alignment_mobile": "left",
+                "gap_desktop": 24,
+                "gap_mobile": 16,
+                "device": "desktop",
+                "width": "fill",
+                "width_custom": 100,
+                "limit_width": true,
+                "max_width": 240,
+                "height": "fill",
+                "height_mobile": "fit",
+                "width_mobile": "fill",
+                "width_custom_mobile": 100,
+                "limit_width_mobile": true,
+                "max_width_mobile": 180,
+                "appearance_type": "inherit",
+                "color_scheme": "scheme-1",
+                "border_type": "none",
+                "corner_radius": "square",
+                "shadow": "none",
+                "show_overlay": false,
+                "overlay_style": "solid",
+                "overlay_gradient": "linear-gradient(180deg, rgba(0, 0, 0, 0.08), rgba(0, 0, 0, 0.52))",
+                "backdrop_blur": 0,
+                "animation_type": "none",
+                "animation_delay": 0,
+                "padding_top": 0,
+                "padding_bottom": 0,
+                "padding_left": 0,
+                "padding_right": 0,
+                "customize_mobile_padding": false,
+                "padding_top_mobile": 0,
+                "padding_bottom_mobile": 0,
+                "padding_left_mobile": 0,
+                "padding_right_mobile": 0
+              },
+              "blocks": {
+                "heading": {
+                  "type": "heading",
+                  "settings": {
+                    "text": "<p>The ultimate noise cancelling headphones.</p>",
+                    "heading_size": "lg",
+                    "custom_heading_size": 24,
+                    "html_tag": "h3",
+                    "outline_text": false,
+                    "width": "fill",
+                    "max_width": 640,
+                    "customize_mobile_size": false,
+                    "width_mobile": "fit",
+                    "max_width_mobile": 480,
+                    "animation_type": "none",
+                    "animation_delay": 0,
+                    "padding_top": 0,
+                    "padding_bottom": 0,
+                    "padding_left": 0,
+                    "padding_right": 0,
+                    "customize_mobile_padding": false,
+                    "padding_top_mobile": 0,
+                    "padding_bottom_mobile": 0,
+                    "padding_left_mobile": 0,
+                    "padding_right_mobile": 0
+                  }
+                },
+                "button": {
+                  "type": "button",
+                  "settings": {
+                    "button_label": "Shop Audio",
+                    "button_link": "/collections/all",
+                    "button_open_in_new_tab": false,
+                    "button_style": "tertiary",
+                    "show_icon": true,
+                    "icon": "arrow_up_right",
+                    "icon_position": "after",
+                    "icon_size": "custom",
+                    "icon_width": 16,
+                    "width": "fit",
+                    "width_mobile": "fit",
+                    "animation_type": "none",
+                    "animation_delay": 0,
+                    "padding_top": 0,
+                    "padding_bottom": 0,
+                    "padding_left": 0,
+                    "padding_right": 0,
+                    "customize_mobile_padding": false,
+                    "padding_top_mobile": 0,
+                    "padding_bottom_mobile": 0,
+                    "padding_left_mobile": 0,
+                    "padding_right_mobile": 0
+                  }
+                }
+              },
+              "block_order": [
+                "heading",
+                "button"
+              ]
+            }
+          },
+          "block_order": [
+            "content"
+          ]
+        },
+        "promo_3": {
+          "type": "promo-card-custom",
+          "settings": {
+            "columns_wide": 1,
+            "rows_tall": 1,
+            "open_in_new_tab": false,
+            "background_type": "image",
+            "image": "shopify://shop_images/torvex-promo-3.webp",
+            "mobile_image": "shopify://shop_images/torvex-promo-mobile-3.webp",
+            "zoom_on_hover": false,
+            "show_overlay": false,
+            "overlay_style": "gradient",
+            "overlay_color": "#00000033",
+            "overlay_gradient": "linear-gradient(180deg, rgba(0, 0, 0, 0.08), rgba(0, 0, 0, 0.52))",
+            "position_desktop": "bottom_left",
+            "position_mobile": "bottom_left",
+            "gap_desktop": 20,
+            "gap_mobile": 16,
+            "corner_radius": "radius_24",
+            "corner_radius_mobile": "radius_16",
+            "aspect_ratio_mobile": "3/2",
+            "color_scheme": "scheme-1",
+            "padding_top": 32,
+            "padding_bottom": 32,
+            "padding_left": 32,
+            "padding_right": 32,
+            "customize_mobile_padding": true,
+            "padding_top_mobile": 32,
+            "padding_bottom_mobile": 32,
+            "padding_left_mobile": 24,
+            "padding_right_mobile": 24
+          },
+          "blocks": {
+            "content": {
+              "type": "group",
+              "settings": {
+                "mobile_order": 0,
+                "direction": "vertical",
+                "position": "space-between",
+                "position_horizontal": "center",
+                "horizontal_alignment": "left",
+                "customize_mobile_alignment": false,
+                "alignment": "left",
+                "alignment_mobile": "left",
+                "gap_desktop": 24,
+                "gap_mobile": 16,
+                "device": "desktop",
+                "width": "fill",
+                "width_custom": 100,
+                "limit_width": true,
+                "max_width": 240,
+                "height": "fill",
+                "height_mobile": "fit",
+                "width_mobile": "fill",
+                "width_custom_mobile": 100,
+                "limit_width_mobile": true,
+                "max_width_mobile": 180,
+                "appearance_type": "inherit",
+                "color_scheme": "scheme-1",
+                "border_type": "none",
+                "corner_radius": "square",
+                "shadow": "none",
+                "show_overlay": false,
+                "overlay_style": "solid",
+                "overlay_gradient": "linear-gradient(180deg, rgba(0, 0, 0, 0.08), rgba(0, 0, 0, 0.52))",
+                "backdrop_blur": 0,
+                "animation_type": "none",
+                "animation_delay": 0,
+                "padding_top": 0,
+                "padding_bottom": 0,
+                "padding_left": 0,
+                "padding_right": 0,
+                "customize_mobile_padding": false,
+                "padding_top_mobile": 0,
+                "padding_bottom_mobile": 0,
+                "padding_left_mobile": 0,
+                "padding_right_mobile": 0
+              },
+              "blocks": {
+                "heading": {
+                  "type": "heading",
+                  "settings": {
+                    "text": "<p>Smarter Health, Longer Battery.</p>",
+                    "heading_size": "lg",
+                    "custom_heading_size": 24,
+                    "html_tag": "h3",
+                    "outline_text": false,
+                    "width": "fill",
+                    "max_width": 640,
+                    "customize_mobile_size": false,
+                    "width_mobile": "fit",
+                    "max_width_mobile": 480,
+                    "animation_type": "none",
+                    "animation_delay": 0,
+                    "padding_top": 0,
+                    "padding_bottom": 0,
+                    "padding_left": 0,
+                    "padding_right": 0,
+                    "customize_mobile_padding": false,
+                    "padding_top_mobile": 0,
+                    "padding_bottom_mobile": 0,
+                    "padding_left_mobile": 0,
+                    "padding_right_mobile": 0
+                  }
+                },
+                "button": {
+                  "type": "button",
+                  "settings": {
+                    "button_label": "Shop Smartwatch",
+                    "button_link": "/collections/all",
+                    "button_open_in_new_tab": false,
+                    "button_style": "tertiary",
+                    "show_icon": true,
+                    "icon": "arrow_up_right",
+                    "icon_position": "after",
+                    "icon_size": "custom",
+                    "icon_width": 16,
+                    "width": "fit",
+                    "width_mobile": "fit",
+                    "animation_type": "none",
+                    "animation_delay": 0,
+                    "padding_top": 0,
+                    "padding_bottom": 0,
+                    "padding_left": 0,
+                    "padding_right": 0,
+                    "customize_mobile_padding": false,
+                    "padding_top_mobile": 0,
+                    "padding_bottom_mobile": 0,
+                    "padding_left_mobile": 0,
+                    "padding_right_mobile": 0
+                  }
+                }
+              },
+              "block_order": [
+                "heading",
+                "button"
+              ]
+            }
+          },
+          "block_order": [
+            "content"
+          ]
+        }
+      },
+      "block_order": [
+        "promo_1",
+        "promo_2",
+        "promo_3"
+      ],
+      "name": "Torvex — Promo grid",
+      "settings": {
+        "section_width": "page_width",
+        "columns_desktop": "3",
+        "columns_tablet": "2",
+        "carousel_mobile": false,
+        "columns_mobile": "1",
+        "show_next_slide_preview_on_mobile": false,
+        "height_desktop": "ratio_16_9",
+        "height_mobile": "medium",
+        "gap_desktop": 16,
+        "gap_mobile": 12,
+        "show_pagination_on_mobile": true,
+        "pagination_type": "progress_bar",
+        "pagination_thickness": "standard",
+        "pagination_padding_mobile": 24,
+        "pagination_limit_width": false,
+        "pagination_max_width": 260,
+        "color_scheme": "scheme-1",
+        "padding_top": 40,
+        "padding_bottom": 40,
+        "customize_mobile_padding": true,
+        "padding_top_mobile": 24,
+        "padding_bottom_mobile": 24
+      }
+    },
+    "torvex_categories": {
+      "type": "collection-list-thumbnails",
+      "blocks": {
+        "header": {
+          "type": "header",
+          "static": true,
+          "settings": {
+            "width": "fill",
+            "max_width": 750,
+            "customize_mobile_size": false,
+            "width_mobile": "fit",
+            "max_width_mobile": 480,
+            "inherit_alignment": true,
+            "alignment": "left",
+            "customize_mobile_alignment": false,
+            "alignment_mobile": "left",
+            "gap_desktop": 12,
+            "gap_mobile": 8,
+            "padding_top": 0,
+            "padding_bottom": 0,
+            "padding_left": 0,
+            "padding_right": 0,
+            "customize_mobile_padding": false,
+            "padding_top_mobile": 0,
+            "padding_bottom_mobile": 0,
+            "padding_left_mobile": 0,
+            "padding_right_mobile": 0
+          },
+          "blocks": {
+            "heading": {
+              "type": "heading",
+              "settings": {
+                "text": "<p>Explore Popular Categories.</p>",
+                "heading_size": "xl",
+                "custom_heading_size": 24,
+                "html_tag": "h2",
+                "outline_text": false,
+                "width": "fill",
+                "max_width": 640,
+                "customize_mobile_size": false,
+                "width_mobile": "fit",
+                "max_width_mobile": 480,
+                "animation_type": "none",
+                "animation_delay": 0,
+                "padding_top": 0,
+                "padding_bottom": 0,
+                "padding_left": 0,
+                "padding_right": 0,
+                "customize_mobile_padding": false,
+                "padding_top_mobile": 0,
+                "padding_bottom_mobile": 0,
+                "padding_left_mobile": 0,
+                "padding_right_mobile": 0
+              }
+            }
+          },
+          "block_order": [
+            "heading"
+          ]
+        },
+        "view-all": {
+          "type": "view-all-button",
+          "static": true,
+          "settings": {
+            "button_label": "Explore Categories",
+            "button_open_in_new_tab": false,
+            "button_style": "tertiary",
+            "show_icon": true,
+            "icon": "arrow_up_right",
+            "icon_position": "after",
+            "icon_size": "custom",
+            "icon_width": 16,
+            "hide_view_all_mobile": false,
+            "button_style_mobile": "tertiary",
+            "button_height_mobile": "inherit",
+            "full_width_mobile": false,
+            "show_icon_mobile": true
+          }
+        },
+        "category_0": {
+          "type": "collection-thumbnail",
+          "settings": {
+            "custom_title": "Smartphone",
+            "custom_link": "/collections/all",
+            "image": "shopify://shop_images/torvex-category-0.webp"
+          },
+          "blocks": {
+            "title": {
+              "type": "_collection-thumbnail-title",
+              "static": true,
+              "settings": {}
+            }
+          },
+          "block_order": []
+        },
+        "category_1": {
+          "type": "collection-thumbnail",
+          "settings": {
+            "custom_title": "Tablet",
+            "custom_link": "/collections/all",
+            "image": "shopify://shop_images/torvex-category-1.webp"
+          },
+          "blocks": {
+            "title": {
+              "type": "_collection-thumbnail-title",
+              "static": true,
+              "settings": {}
+            }
+          },
+          "block_order": []
+        },
+        "category_2": {
+          "type": "collection-thumbnail",
+          "settings": {
+            "custom_title": "Smartwatch",
+            "custom_link": "/collections/all",
+            "image": "shopify://shop_images/torvex-category-2.webp"
+          },
+          "blocks": {
+            "title": {
+              "type": "_collection-thumbnail-title",
+              "static": true,
+              "settings": {}
+            }
+          },
+          "block_order": []
+        },
+        "category_3": {
+          "type": "collection-thumbnail",
+          "settings": {
+            "custom_title": "Laptop",
+            "custom_link": "/collections/all",
+            "image": "shopify://shop_images/torvex-category-3.webp"
+          },
+          "blocks": {
+            "title": {
+              "type": "_collection-thumbnail-title",
+              "static": true,
+              "settings": {}
+            }
+          },
+          "block_order": []
+        },
+        "category_4": {
+          "type": "collection-thumbnail",
+          "settings": {
+            "custom_title": "Audio",
+            "custom_link": "/collections/all",
+            "image": "shopify://shop_images/torvex-category-4.webp"
+          },
+          "blocks": {
+            "title": {
+              "type": "_collection-thumbnail-title",
+              "static": true,
+              "settings": {}
+            }
+          },
+          "block_order": []
+        },
+        "category_5": {
+          "type": "collection-thumbnail",
+          "settings": {
+            "custom_title": "Smart home",
+            "custom_link": "/collections/all",
+            "image": "shopify://shop_images/torvex-category-5.webp"
+          },
+          "blocks": {
+            "title": {
+              "type": "_collection-thumbnail-title",
+              "static": true,
+              "settings": {}
+            }
+          },
+          "block_order": []
+        },
+        "category_6": {
+          "type": "collection-thumbnail",
+          "settings": {
+            "custom_title": "Gaming",
+            "custom_link": "/collections/all",
+            "image": "shopify://shop_images/torvex-category-6.webp"
+          },
+          "blocks": {
+            "title": {
+              "type": "_collection-thumbnail-title",
+              "static": true,
+              "settings": {}
+            }
+          },
+          "block_order": []
+        },
+        "category_7": {
+          "type": "collection-thumbnail",
+          "settings": {
+            "custom_title": "Accessories",
+            "custom_link": "/collections/all",
+            "image": "shopify://shop_images/torvex-category-7.webp"
+          },
+          "blocks": {
+            "title": {
+              "type": "_collection-thumbnail-title",
+              "static": true,
+              "settings": {}
+            }
+          },
+          "block_order": []
+        }
+      },
+      "block_order": [
+        "category_0",
+        "category_1",
+        "category_2",
+        "category_3",
+        "category_4",
+        "category_5",
+        "category_6",
+        "category_7"
+      ],
+      "name": "Torvex — Popular categories",
+      "settings": {
+        "section_width": "page_width",
+        "alignment": "left",
+        "show_view_all": true,
+        "view_all_link": "/collections",
+        "layout": "carousel",
+        "gap_desktop": 40,
+        "gap_mobile": 24,
+        "content_gap_desktop": 32,
+        "content_gap_mobile": 24,
+        "card_layout": "vertical",
+        "card_gap": 24,
+        "image_width_desktop": 164,
+        "image_width_mobile": 112,
+        "image_ratio": "square",
+        "image_corner_radius": "full",
+        "image_corner_radius_custom": 0,
+        "title_font": "heading",
+        "html_tag": "h3",
+        "heading_size": "custom",
+        "custom_heading_size": 18,
+        "navigation_style": "primary",
+        "navigation_icon": "chevron",
+        "navigation_behavior": "show_on_hover",
+        "show_pagination_on_desktop": false,
+        "pagination_type": "progress_bar",
+        "pagination_top_padding_desktop": 50,
+        "pagination_top_padding_mobile": 24,
+        "pagination_limit_width": true,
+        "pagination_max_width": 260,
+        "background_media": "none",
+        "color_scheme": "scheme-1",
+        "padding_top": 40,
+        "padding_bottom": 40,
+        "customize_mobile_padding": true,
+        "padding_top_mobile": 24,
+        "padding_bottom_mobile": 24
+      }
+    },
+    "torvex_new_arrivals": {
+      "type": "featured-collection",
+      "blocks": {
+        "header": {
+          "type": "header",
+          "static": true,
+          "settings": {
+            "width": "fill",
+            "max_width": 750,
+            "customize_mobile_size": false,
+            "width_mobile": "fit",
+            "max_width_mobile": 480,
+            "inherit_alignment": true,
+            "alignment": "left",
+            "customize_mobile_alignment": false,
+            "alignment_mobile": "left",
+            "gap_desktop": 12,
+            "gap_mobile": 8,
+            "padding_top": 0,
+            "padding_bottom": 0,
+            "padding_left": 0,
+            "padding_right": 0,
+            "customize_mobile_padding": false,
+            "padding_top_mobile": 0,
+            "padding_bottom_mobile": 0,
+            "padding_left_mobile": 0,
+            "padding_right_mobile": 0
+          },
+          "blocks": {
+            "heading": {
+              "type": "heading",
+              "settings": {
+                "text": "<p>New Arrivals.</p>",
+                "heading_size": "xl",
+                "custom_heading_size": 24,
+                "html_tag": "h2",
+                "outline_text": false,
+                "width": "fill",
+                "max_width": 640,
+                "customize_mobile_size": false,
+                "width_mobile": "fit",
+                "max_width_mobile": 480,
+                "animation_type": "none",
+                "animation_delay": 0,
+                "padding_top": 0,
+                "padding_bottom": 0,
+                "padding_left": 0,
+                "padding_right": 0,
+                "customize_mobile_padding": false,
+                "padding_top_mobile": 0,
+                "padding_bottom_mobile": 0,
+                "padding_left_mobile": 0,
+                "padding_right_mobile": 0
+              }
+            }
+          },
+          "block_order": [
+            "heading"
+          ]
+        },
+        "featured-collection-view-all": {
+          "type": "view-all-button",
+          "static": true,
+          "settings": {
+            "button_label": "Shop New",
+            "button_open_in_new_tab": false,
+            "button_style": "tertiary",
+            "show_icon": true,
+            "icon": "arrow_up_right",
+            "icon_position": "after",
+            "icon_size": "custom",
+            "icon_width": 16,
+            "hide_view_all_mobile": false,
+            "button_style_mobile": "tertiary",
+            "button_height_mobile": "inherit",
+            "full_width_mobile": false,
+            "show_icon_mobile": true
+          }
+        },
+        "product-list": {
+          "type": "product-list",
+          "static": true,
+          "settings": {
+            "collection": "road-running-strideo",
+            "max_products": 5,
+            "layout_type": "carousel",
+            "columns_desktop": "5",
+            "columns_tablet": "3",
+            "columns_mobile": "1",
+            "mobile_card_sizing": "fixed",
+            "mobile_card_width": 212,
+            "show_next_slide_preview_on_desktop": false,
+            "show_next_slide_preview_on_mobile": true,
+            "product_gap_desktop": 12,
+            "product_gap_mobile": 12,
+            "mobile_promo_gap": 24,
+            "mobile_promo_height": 360,
+            "customize_mobile_row_gap": false,
+            "product_row_gap_mobile": 12,
+            "show_navigation_on_desktop": true,
+            "navigation_position": "inside",
+            "navigation_button_size": 0,
+            "navigation_gap": 8,
+            "navigation_style": "secondary",
+            "navigation_icon": "chevron",
+            "navigation_behavior": "show_on_hover",
+            "show_pagination_on_desktop": false,
+            "pagination_visibility": "both",
+            "pagination_type": "progress_bar",
+            "pagination_thickness": "standard",
+            "pagination_top_padding_desktop": 50,
+            "pagination_top_padding_mobile": 24,
+            "pagination_limit_width": true,
+            "pagination_max_width": 260,
+            "autoplay": false,
+            "autoplay_pause_on_hover": true,
+            "autoplay_speed": 4
+          },
+          "blocks": {
+            "product-card": {
+              "type": "product-card",
+              "static": true,
+              "settings": {
+                "card_style": "standard",
+                "media_corner_radius": "radius_16",
+                "show_rating": true,
+                "color_type": "inherit",
+                "color_scheme": "scheme-1"
+              },
+              "blocks": {
+                "rating": {
+                  "type": "product-rating",
+                  "static": true,
+                  "settings": {}
+                }
+              },
+              "block_order": []
+            }
+          },
+          "block_order": []
+        }
+      },
+      "name": "Torvex — New arrivals",
+      "settings": {
+        "section_width": "page_width",
+        "desktop_alignment": "left",
+        "mobile_alignment": "left",
+        "gap_desktop": 32,
+        "gap_mobile": 24,
+        "color_scheme": "scheme-1",
+        "padding_top": 40,
+        "padding_bottom": 40,
+        "customize_mobile_padding": true,
+        "padding_top_mobile": 24,
+        "padding_bottom_mobile": 24
+      }
+    },
     "perky_age_collections": {
       "type": "collection-list",
       "blocks": {
@@ -257,6 +1216,7 @@
           "block_order": []
         }
       },
+      "disabled": true,
       "name": "Collection list — Pawvera categories",
       "settings": {
         "section_width": "page_width",
@@ -844,6 +1804,7 @@
       "block_order": [
         "logos"
       ],
+      "disabled": true,
       "name": "Brands — Pawvera",
       "settings": {
         "section_width": "page_width",
@@ -1344,6 +2305,7 @@
       "block_order": [
         "marquee"
       ],
+      "disabled": true,
       "name": "Scrolling text",
       "settings": {
         "section_width": "full_width_no_padding",
@@ -1540,6 +2502,7 @@
       "block_order": [
         "banner"
       ],
+      "disabled": true,
       "name": "Countdown timer — Pawvera",
       "settings": {
         "section_width": "page_width",
@@ -2105,6 +3068,7 @@
         "jason",
         "sarah"
       ],
+      "disabled": true,
       "name": "Testimonials — Real Pet Parents Say",
       "settings": {
         "section_width": "page_width",
@@ -2394,6 +3358,7 @@
         "imagination",
         "holiday"
       ],
+      "disabled": true,
       "name": "Image cards — Shop Deals",
       "settings": {
         "section_width": "page_width",
@@ -2562,6 +3527,7 @@
         "new",
         "sale"
       ],
+      "disabled": true,
       "name": "Collection tabs — Featured Products",
       "settings": {
         "section_width": "page_width",
@@ -2783,6 +3749,7 @@
           }
         }
       },
+      "disabled": true,
       "name": "Blog posts — Wofyn",
       "settings": {
         "section_width": "page_width",
@@ -3137,6 +4104,7 @@
           ]
         }
       },
+      "disabled": true,
       "settings": {
         "product": "wofyn-fable-modern-dog-crate",
         "show_header": false,
@@ -3301,6 +4269,7 @@
         "content",
         "right"
       ],
+      "disabled": true,
       "name": "Image cards (three columns)",
       "settings": {
         "section_width": "page_width",
@@ -3462,6 +4431,7 @@
           "block_order": []
         }
       },
+      "disabled": true,
       "name": "Featured collection — Pawvera carousel",
       "settings": {
         "section_width": "page_width",
@@ -3957,6 +4927,7 @@
       "block_order": [
         "marquee"
       ],
+      "disabled": true,
       "name": "Scrolling text — Before footer",
       "settings": {
         "section_width": "full_width_no_padding",
@@ -4100,6 +5071,7 @@
           "block_order": []
         }
       },
+      "disabled": true,
       "name": "Product banner — Inline cards",
       "settings": {
         "section_width": "page_width",
@@ -4284,6 +5256,7 @@
           ]
         }
       },
+      "disabled": true,
       "name": "Hotspot grid — Everyday Pet Essentials",
       "settings": {
         "section_width": "page_width",
@@ -4305,6 +5278,9 @@
     }
   },
   "order": [
+    "torvex_promo_grid",
+    "torvex_categories",
+    "torvex_new_arrivals",
     "pawvera_hero",
     "perky_logos",
     "peekoo_featured_07",
