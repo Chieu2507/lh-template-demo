@@ -2,6 +2,7 @@
   const HEADER_SELECTOR = '.header-top[data-header-root]';
   const headerStates = new Map();
   const headerResizeObservers = new Map();
+  const headerBottomTransitions = new WeakSet();
   const submenuCloseTimers = new WeakMap();
   const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
   const isMobileMenuViewport = () => window.matchMedia('(max-width: 991.98px)').matches;
@@ -384,6 +385,29 @@
     });
   };
 
+  const synchronizeHeaderBottom = (header, isPinned) => {
+    const bottom = header.querySelector('[data-header-bottom-collapse]');
+    if (!bottom) return;
+    // Keep an active menu or keyboard interaction available until it closes.
+    const interacting = bottom.contains(document.activeElement) || Boolean(bottom.querySelector('details[open], [data-editor-selected="true"]'));
+    const collapsed = isPinned && window.innerWidth >= 992 && !interacting;
+    if (!headerBottomTransitions.has(bottom)) {
+      bottom.addEventListener('transitionend', (event) => {
+        if (event.target === bottom && event.propertyName === 'grid-template-rows') {
+          bottom.removeAttribute('data-transitioning');
+        }
+      });
+      headerBottomTransitions.add(bottom);
+    }
+    if (bottom.hasAttribute('data-collapsed') !== collapsed) {
+      // Scroll anchoring otherwise moves the page as the row shrinks, which
+      // reverses sticky detection at the threshold even after scrolling stops.
+      bottom.toggleAttribute('data-transitioning', !reducedMotion.matches);
+      bottom.toggleAttribute('data-collapsed', collapsed);
+    }
+    bottom.inert = collapsed;
+  };
+
   const updateHeaderState = (forceShow = false) => {
     const scrollY = Math.max(window.scrollY, 0);
     const scrollDelta = scrollY - lastScrollY;
@@ -409,6 +433,9 @@
         setHeaderMenuState(header, false, { restoreFocus: false });
       }
       header.classList.toggle('header--is-scrolled', isScrolled);
+      // Scroll alone does not mean sticky: the announcement row must clear first.
+      const isPinned = isSticky && scrollY > 0 && getStickyTarget(header, stickyType).getBoundingClientRect().top <= 0.5;
+      synchronizeHeaderBottom(header, isPinned);
       header.classList.toggle('header--submenu-open', isSubmenuOpen);
       header.classList.toggle('header--mega-menu-open', isMegaMenuOpen);
       header.querySelectorAll('[data-header-mega-menu-backdrop]').forEach((backdrop) => {

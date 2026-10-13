@@ -8,10 +8,33 @@
     assign container_width = 'full-width'
   endif
 %}
+<div class="header-bottom-collapse" data-header-bottom-collapse>
+  <div class="header-bottom-collapse__clip">
 <div class="header-bottom header-bottom--separator-{{ block.settings.separator }}" data-header-region="bottom" data-header-bottom style="--header-bottom-gap: {{ block.settings.gap }}px; --header-bottom-top: {{ block.settings.padding_top }}px; --header-bottom-bottom: {{ block.settings.padding_bottom }}px;" {{ block.shopify_attributes }}>
   <div class="container {{ container_width }} header-bottom__content">{% content_for 'blocks' %}</div>
 </div>
+  </div>
+</div>
 {% stylesheet %}
+  .header-bottom-collapse {
+    --header-bottom-collapse-duration: 350ms;
+    display: grid;
+    grid-template-rows: 1fr;
+    transition: grid-template-rows var(--header-bottom-collapse-duration) cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  html:has(.header-bottom-collapse[data-transitioning]) { overflow-anchor: none; }
+  .header-bottom-collapse__clip { min-height: 0; }
+  .header-bottom-collapse[data-transitioning] > .header-bottom-collapse__clip { overflow: clip; }
+  .header-bottom-collapse .header-bottom {
+    transition: transform var(--header-bottom-collapse-duration) cubic-bezier(0.4, 0, 0.2, 1), opacity var(--header-bottom-collapse-duration) ease;
+  }
+  .header-bottom-collapse[data-collapsed] { grid-template-rows: 0fr; }
+  .header-bottom-collapse[data-collapsed] > .header-bottom-collapse__clip { overflow: clip; }
+  .header-bottom-collapse[data-collapsed] .header-bottom { transform: translateY(-100%); opacity: 0; pointer-events: none; }
+  @media (prefers-reduced-motion: reduce) {
+    .header-bottom-collapse, .header-bottom-collapse .header-bottom { transition: none; }
+  }
+
   .header-bottom { padding-block: var(--header-bottom-top,12px) var(--header-bottom-bottom,24px); }
   .header-bottom--separator-line { border-bottom: 1px solid var(--border-color); }
   .header-bottom--separator-shadow { box-shadow: 0 4px 8px color-mix(in srgb,var(--shadow-color) 12%,transparent); }
