@@ -392,6 +392,13 @@
             }
           }
         }
+        if (panel.classList.contains('header-menu__submenu')) {
+          const bridgeLeft = Math.min(rect.left, left);
+          const bridgeRight = Math.max(rect.right, left + width);
+          details.style.setProperty('--header-menu-bridge-top', `${rect.bottom - fixedOrigin.top}px`);
+          details.style.setProperty('--header-menu-bridge-left', `${bridgeLeft - fixedOrigin.left}px`);
+          details.style.setProperty('--header-menu-bridge-width', `${bridgeRight - bridgeLeft}px`);
+        }
         details.style.setProperty('--header-popup-left', `${left - fixedOrigin.left}px`);
         details.style.setProperty('--header-popup-top', `${Math.min(headerRect.bottom, window.innerHeight - 80) - fixedOrigin.top}px`);
         details.style.setProperty('--header-popup-height', `${Math.max(64, window.innerHeight - Math.min(headerRect.bottom, window.innerHeight - 80) - 8)}px`);
