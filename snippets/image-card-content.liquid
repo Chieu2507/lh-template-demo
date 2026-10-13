@@ -6,8 +6,13 @@
 {% enddoc %}
 {% liquid
   assign image_card_fetchpriority = blank
+  assign image_card_loading = blank
+  if promo_card
+    assign image_card_loading = 'lazy'
+  endif
   if section.index == 1 and section.blocks.first.id == block.id
     assign image_card_fetchpriority = 'high'
+    assign image_card_loading = 'eager'
   endif
   assign image_card_media_type = block.settings.background_type | default: 'image'
   assign image_card_image = block.settings.image
@@ -237,7 +242,30 @@
   {% capture image_card_size_desktop %}(min-width: 1150px) calc((min(100vw, {{ settings.max_page_width | default: 1400 }}px) - {{ image_card_grid_margin }}px) / 3), (min-width: 768px) calc((min(100vw, {{ settings.max_page_width | default: 1400 }}px) - {{ image_card_grid_margin_tablet }}px) / 3){% endcapture %}
   {% capture image_card_size_mobile %}calc((100vw - {{ image_card_grid_margin_mobile }}px) / 2){% endcapture %}
 {% endif %}
-{% capture image_card_sizes %}{% if promo_card %}(min-width: 1150px) {{ image_card_size_desktop }}, (min-width: 768px) {{ tablet_fraction }}vw{% elsif section.settings.layout == 'three_columns' %}{{ image_card_size_desktop }}{% else %}(min-width: 768px) {{ image_card_size_desktop }}{% endif %}, {{ image_card_size_mobile }}{% endcapture %}
+{% if promo_card %}
+  {% liquid
+    assign page_cap = settings.max_page_width | default: 1680 | remove: 'px' | plus: 0
+    assign desktop_margin = settings.layout_desktop_margin | default: 40 | times: 2
+    assign tablet_margin = settings.layout_tablet_margin | default: 30 | times: 2
+    assign mobile_margin = settings.layout_mobile_margin | default: 16 | times: 2
+    if section.settings.section_width == 'full_width_no_padding'
+      assign desktop_margin = 0
+      assign tablet_margin = 0
+      assign mobile_margin = 0
+    endif
+    assign desktop_span = span | at_most: desktop_columns
+    assign tablet_span = span | at_most: tablet_columns
+    assign desktop_gaps = desktop_columns | minus: 1 | times: section.settings.gap_desktop | plus: desktop_margin
+    assign tablet_gaps = tablet_columns | minus: 1 | times: section.settings.gap_desktop | plus: tablet_margin
+    assign mobile_gaps = mobile_columns | minus: 1 | times: section.settings.gap_mobile | plus: mobile_margin
+    assign desktop_span_gap = desktop_span | minus: 1 | times: section.settings.gap_desktop
+    assign tablet_span_gap = tablet_span | minus: 1 | times: section.settings.gap_desktop
+  %}
+  {% capture promo_container_size %}{% if section.settings.section_width == 'page_width' %}min(100vw, {{ page_cap }}px){% else %}100vw{% endif %}{% endcapture %}
+  {% capture image_card_sizes %}(min-width: 1150px) calc(({{ promo_container_size }} - {{ desktop_gaps }}px) / {{ desktop_columns }} * {{ desktop_span }} + {{ desktop_span_gap }}px), (min-width: 768px) calc(({{ promo_container_size }} - {{ tablet_gaps }}px) / {{ tablet_columns }} * {{ tablet_span }} + {{ tablet_span_gap }}px), calc((100vw - {{ mobile_gaps }}px) / {{ mobile_columns }}){% endcapture %}
+{% else %}
+  {% capture image_card_sizes %}{% if section.settings.layout == 'three_columns' %}{{ image_card_size_desktop }}{% else %}(min-width: 768px) {{ image_card_size_desktop }}{% endif %}, {{ image_card_size_mobile }}{% endcapture %}
+{% endif %}
 
 <article
   class="{{ image_card_class }}"
@@ -263,6 +291,7 @@
       alt: image_card_media_alt,
       sizes: image_card_sizes,
       fetchpriority: image_card_fetchpriority,
+      loading: image_card_loading,
       aria_hidden: image_card_media_aria_hidden
     %}
   </div>
