@@ -4417,6 +4417,7 @@
         "promo_0": {
           "type": "promo-card-custom",
           "settings": {
+            "enable_sticky": true,
             "columns_wide": 1,
             "rows_tall": 2,
             "row_start_desktop": "1",
@@ -5092,6 +5093,7 @@
         "promo_3": {
           "type": "promo-card-custom",
           "settings": {
+            "enable_sticky": true,
             "columns_wide": 1,
             "rows_tall": 2,
             "row_start_desktop": "1",
