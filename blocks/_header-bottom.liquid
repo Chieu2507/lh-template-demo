@@ -24,14 +24,14 @@
   .header-bottom-collapse[data-collapsed] { transform: translateY(-100%); opacity: 0; pointer-events: none; }
   @media (min-width: 992px) {
     .header-top--two-rows[data-bottom-transform] { position: relative; }
-    .header-top--two-rows[data-bottom-transform] > .header-bottom-collapse {
+    .header-top--two-rows[data-bottom-transform] .header-bottom-collapse {
       position: absolute;
       top: 100%;
       inset-inline: 0;
       z-index: 1;
       background: var(--background-color);
     }
-    .header-top--two-rows[data-bottom-transform] > .header-two-row__grid {
+    .header-top--two-rows[data-bottom-transform] .header-two-row__grid {
       position: relative;
       z-index: 2;
       background: var(--background-color);

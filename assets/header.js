@@ -590,14 +590,14 @@
     stickyAnchor.setAttribute('aria-hidden', 'true');
     stickyAnchor.style.cssText = 'height:0;pointer-events:none;overflow-anchor:none';
     header.before(stickyAnchor);
-    const bottom = header.querySelector('.header-top--two-rows > [data-header-bottom-collapse]');
+    const bottom = header.querySelector('.header-top--two-rows [data-header-bottom-collapse]');
     let bottomSpacer = null;
     if (bottom) {
       bottomSpacer = document.createElement('div');
       bottomSpacer.setAttribute('aria-hidden', 'true');
       bottomSpacer.style.cssText = `height:${window.innerWidth >= 992 ? bottom.offsetHeight : 0}px;pointer-events:none;overflow-anchor:none`;
       header.after(bottomSpacer);
-      bottom.parentElement.setAttribute('data-bottom-transform', '');
+      bottom.closest('.header-top--two-rows').setAttribute('data-bottom-transform', '');
       headerResizeObservers.get(header)?.observe(bottom);
     }
     headerStates.set(header, { header, stickyType, stickyAnchor, bottomSpacer, isPinned: false });
