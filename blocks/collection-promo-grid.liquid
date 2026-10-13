@@ -1,0 +1,278 @@
+{% doc %}
+  Composes an editable collection promo panel from Heading, Group/Image and Button kernels.
+  The owning section provides columns/width. This block owns the two-column mosaic,
+  tall-card side, surface and padding. Static children remain editable/hideable.
+{% enddoc %}
+{% liquid
+  assign scheme = block.settings.color_scheme.id | default: block.settings.color_scheme | default: 'scheme-1'
+  assign top = block.settings.padding_vertical
+  assign side = block.settings.padding_horizontal
+  assign top_mobile = top
+  assign side_mobile = side
+  if block.settings.customize_mobile_padding
+    assign top_mobile = block.settings.padding_vertical_mobile
+    assign side_mobile = block.settings.padding_horizontal_mobile
+  endif
+%}
+<div class="collection-promo-panel color-scheme section-color-scope {{ scheme | handleize }}" data-tall-side="{{ block.settings.tall_side }}" style="--promo-panel-order-mobile:{{ block.settings.mobile_order }};--panel-gap:{{ block.settings.content_gap }}px;--panel-gap-mobile:{{ block.settings.content_gap_mobile }}px;--panel-grid-gap:{{ block.settings.grid_gap }}px;--panel-row-gap:{{ block.settings.row_gap }}px;--panel-pad-y:{{ top }}px;--panel-pad-x:{{ side }}px;--panel-pad-y-mobile:{{ top_mobile }}px;--panel-pad-x-mobile:{{ side_mobile }}px;--panel-radius:var(--radius-{{ block.settings.corner_radius | replace: 'radius_', '' | replace: 'square', 'square' }});{% if block.settings.background_color != blank %}--panel-background:{{ block.settings.background_color | escape }};{% endif %}" {{ block.shopify_attributes }}>
+  {% content_for 'block', type: 'heading', id: 'heading' %}
+  <div class="collection-promo-panel__grid">
+    <div class="collection-promo-panel__tall">{% content_for 'block', type: 'group', id: 'tall' %}</div>
+    <div class="collection-promo-panel__top">{% content_for 'block', type: 'group', id: 'top' %}</div>
+    <div class="collection-promo-panel__bottom">{% content_for 'block', type: 'group', id: 'bottom' %}</div>
+  </div>
+  {% content_for 'block', type: 'button', id: 'button' %}
+</div>
+{% stylesheet %}
+.collection-promo-panel{display:flex;flex-direction:column;gap:var(--panel-gap,24px);padding:var(--panel-pad-y,32px) var(--panel-pad-x,24px);border-radius:var(--panel-radius,var(--radius-24));background:var(--panel-background,var(--background-color));min-width:0;}
+.collection-promo-panel__grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));column-gap:var(--panel-grid-gap,12px);row-gap:var(--panel-row-gap,24px);min-width:0;}
+.collection-promo-panel__grid>*{min-width:0;}
+.collection-promo-panel__tall{grid-column:1;grid-row:1 / span 2;}
+.collection-promo-panel__top{grid-column:2;grid-row:1;}
+.collection-promo-panel__bottom{grid-column:2;grid-row:2;}
+.collection-promo-panel[data-tall-side='right'] .collection-promo-panel__tall{grid-column:2;}
+.collection-promo-panel[data-tall-side='right'] :is(.collection-promo-panel__top,.collection-promo-panel__bottom){grid-column:1;}
+.collection-promo-panel__tall>.group{height:100%;}
+.collection-promo-panel__tall>.group>.image-block{flex:1 1 0;min-height:0;}
+.collection-promo-panel__tall .image-block__media,.collection-promo-panel__tall .image-block__media :is(.image,picture,img){height:100%;aspect-ratio:auto;}
+@media(max-width:767.98px){.collection-promo-panel{gap:var(--panel-gap-mobile,var(--panel-gap));padding:var(--panel-pad-y-mobile,var(--panel-pad-y)) var(--panel-pad-x-mobile,var(--panel-pad-x));}}
+{% endstylesheet %}
+{% schema %}
+{
+  "name": "Promo grid",
+  "tag": null,
+  "settings": [
+    {
+      "type": "header",
+      "content": "t:general.layout"
+    },
+    {
+      "type": "select",
+      "id": "tall_side",
+      "label": "Tall card side",
+      "default": "left",
+      "options": [
+        {
+          "value": "left",
+          "label": "Left"
+        },
+        {
+          "value": "right",
+          "label": "Right"
+        }
+      ]
+    },
+    {
+      "type": "range",
+      "id": "mobile_order",
+      "label": "Mobile order",
+      "min": 0,
+      "max": 10,
+      "step": 1,
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "content_gap",
+      "label": "Desktop content gap",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "default": 24
+    },
+    {
+      "type": "range",
+      "id": "content_gap_mobile",
+      "label": "Mobile content gap",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "default": 20
+    },
+    {
+      "type": "range",
+      "id": "grid_gap",
+      "label": "Column gap",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "default": 12
+    },
+    {
+      "type": "range",
+      "id": "row_gap",
+      "label": "Row gap",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "default": 24
+    },
+    {
+      "type": "header",
+      "content": "t:general.appearance"
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "t:labels.color_scheme",
+      "default": "scheme-1"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background color"
+    },
+    {
+      "type": "select",
+      "id": "corner_radius",
+      "label": "Corner radius",
+      "default": "radius_24",
+      "options": [
+        {
+          "value": "square",
+          "label": "Square"
+        },
+        {
+          "value": "radius_16",
+          "label": "Rounded"
+        },
+        {
+          "value": "radius_24",
+          "label": "Extra rounded"
+        }
+      ]
+    },
+    {
+      "type": "header",
+      "content": "t:general.padding"
+    },
+    {
+      "type": "range",
+      "id": "padding_vertical",
+      "label": "Vertical padding",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "default": 32
+    },
+    {
+      "type": "range",
+      "id": "padding_horizontal",
+      "label": "Horizontal padding",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "default": 24
+    },
+    {
+      "type": "checkbox",
+      "id": "customize_mobile_padding",
+      "label": "Customize for mobile",
+      "default": false
+    },
+    {
+      "type": "range",
+      "id": "padding_vertical_mobile",
+      "label": "Mobile vertical padding",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "default": 24,
+      "visible_if": "{{ block.settings.customize_mobile_padding }}"
+    },
+    {
+      "type": "range",
+      "id": "padding_horizontal_mobile",
+      "label": "Mobile horizontal padding",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "default": 24,
+      "visible_if": "{{ block.settings.customize_mobile_padding }}"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "heading"
+    },
+    {
+      "type": "group"
+    },
+    {
+      "type": "button"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Promo grid",
+      "blocks": [
+        {
+          "type": "heading",
+          "id": "heading",
+          "static": true,
+          "settings": {
+            "text": "<p>Shop collections</p>",
+            "heading_size": "lg"
+          }
+        },
+        {
+          "type": "group",
+          "id": "tall",
+          "static": true,
+          "blocks": [
+            {
+              "type": "image"
+            },
+            {
+              "type": "text"
+            }
+          ]
+        },
+        {
+          "type": "group",
+          "id": "top",
+          "static": true,
+          "blocks": [
+            {
+              "type": "image"
+            },
+            {
+              "type": "text"
+            }
+          ]
+        },
+        {
+          "type": "group",
+          "id": "bottom",
+          "static": true,
+          "blocks": [
+            {
+              "type": "image"
+            },
+            {
+              "type": "text"
+            }
+          ]
+        },
+        {
+          "type": "button",
+          "id": "button",
+          "static": true,
+          "settings": {
+            "button_label": "Shop collections",
+            "button_style": "tertiary"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

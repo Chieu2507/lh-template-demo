@@ -2,7 +2,6 @@
   const HEADER_SELECTOR = '.header-top[data-header-root]';
   const headerStates = new Map();
   const headerResizeObservers = new Map();
-  const headerBottomTransitions = new WeakSet();
   const submenuCloseTimers = new WeakMap();
   const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
   const isMobileMenuViewport = () => window.matchMedia('(max-width: 991.98px)').matches;
@@ -11,13 +10,25 @@
   const megaMenuBackdropControls = new WeakSet();
   const backdropCursorBindings = new WeakMap();
   const accountElements = new WeakSet();
-  const deferredAccounts = new WeakSet();
   const localizationSheetDetails = new WeakSet();
   const footerLocalizationStates = new WeakMap();
   const openAccountSheets = new WeakSet();
   const mobileMegaMenuOrigins = new Map();
   let lastScrollY = window.scrollY;
   let frameId = null;
+  const stickyHeightStyle = document.createElement('style');
+  stickyHeightStyle.dataset.headerStickyOffset = '';
+  document.head.append(stickyHeightStyle);
+  let publishedStickyHeight = null;
+  const publishStickyHeight = (height) => {
+    const root = document.documentElement;
+    root.classList.toggle('header-sticky', height > 0);
+    if (height > 0 && height !== publishedStickyHeight) {
+      stickyHeightStyle.textContent = `html.header-sticky { --header-height: ${height}px; }`;
+      publishedStickyHeight = height;
+    }
+  };
+
 
   const getHeaderRoot = (headerTop) => headerTop.closest('.shopify-section') || headerTop;
 
@@ -225,11 +236,12 @@
   const updateHeaderHeight = (header, stickyType) => {
     const height = `${getHeaderLayoutTarget(header).offsetHeight}px`;
     header.style.setProperty('--header-layout-height', height);
-    if (stickyType === 'none') {
-      document.documentElement.style.removeProperty('--header-height');
-    } else {
-      document.documentElement.style.setProperty('--header-height', height);
+    const state = headerStates.get(header);
+    const bottom = header.querySelector('[data-header-bottom-collapse]');
+    if (state?.bottomSpacer && bottom) {
+      state.bottomSpacer.style.height = window.innerWidth >= 992 ? `${bottom.offsetHeight}px` : '0px';
     }
+    header.style.setProperty('--header-hide-height', height);
     updateStickyHeaderHeight(header, stickyType);
   };
 
@@ -256,11 +268,12 @@
 
   const updateStickyHeaderHeight = (header, stickyType = header.dataset.stickyType || 'none') => {
     const isHidden = stickyType === 'scroll_up' && header.classList.contains('header--is-hidden');
-    const stickyHeight = stickyType === 'none' || isHidden ? 0 : getStickyTarget(header, stickyType).offsetHeight;
-    const height = `${stickyHeight}px`;
-
-    header.style.setProperty('--header-sticky-height', height);
-    document.documentElement.style.setProperty('--header-sticky-height', height);
+    const target = getStickyTarget(header, stickyType);
+    const bottom = header.querySelector('[data-header-bottom-collapse]');
+    const expandedBottom = headerStates.get(header)?.bottomSpacer && bottom && !bottom.hasAttribute('data-collapsed') && window.innerWidth >= 992 ? bottom.offsetHeight : 0;
+    const isPinned = headerStates.get(header)?.isPinned === true;
+    const stickyHeight = stickyType === 'none' || isHidden || !isPinned ? 0 : target.offsetHeight + expandedBottom;
+    publishStickyHeight(stickyHeight);
   };
 
   const synchronizeStickyType = (header, headerState) => {
@@ -350,7 +363,10 @@
 
     // Read all geometry before writing CSS variables. Interleaving reads and
     // writes here forces the browser to recalculate layout for every submenu.
-    const headerRect = headerTop.getBoundingClientRect();
+    const surfaceRect = headerTop.getBoundingClientRect();
+    const bottom = header.querySelector('[data-header-bottom-collapse]');
+    const bottomHeight = headerStates.get(header)?.bottomSpacer && bottom && !bottom.hasAttribute('data-collapsed') && window.innerWidth >= 992 ? bottom.offsetHeight : 0;
+    const headerRect = { top: surfaceRect.top, left: surfaceRect.left, right: surfaceRect.right, width: surfaceRect.width, height: surfaceRect.height + bottomHeight, bottom: surfaceRect.bottom + bottomHeight };
     const submenuRects = Array.from(
       header.querySelectorAll('.header-localization__details, .header-menu__details'),
       (details) => ({ details, rect: details.getBoundingClientRect() }),
@@ -369,9 +385,25 @@
         const left = Math.max(8, Math.min(rect.left, window.innerWidth - width - 8));
         details.style.setProperty('--header-popup-shift', `${left - rect.left}px`);
         details.style.setProperty('--header-popup-left', `${left}px`);
-        const headerStyle = getComputedStyle(header);
-        const hasFixedContainer = headerStyle.transform !== 'none' || headerStyle.willChange.includes('transform');
-        const fixedOrigin = details.closest('[data-header-bottom]') && hasFixedContainer ? header.getBoundingClientRect() : { top: 0, left: 0 };
+        let fixedOrigin = { top: 0, left: 0 };
+        if (details.closest('[data-header-bottom]')) {
+          // The animated bottom wrapper becomes the fixed panel's containing block.
+          // Use the nearest actual containing block, rather than the header root.
+          for (let ancestor = panel.parentElement; ancestor; ancestor = ancestor.parentElement) {
+            const style = getComputedStyle(ancestor);
+            if (style.transform !== 'none' || style.perspective !== 'none' || style.filter !== 'none' || style.willChange.includes('transform')) {
+              fixedOrigin = ancestor.getBoundingClientRect();
+              break;
+            }
+          }
+        }
+        if (panel.classList.contains('header-menu__submenu')) {
+          const bridgeLeft = Math.min(rect.left, left);
+          const bridgeRight = Math.max(rect.right, left + width);
+          details.style.setProperty('--header-menu-bridge-top', `${rect.bottom - fixedOrigin.top}px`);
+          details.style.setProperty('--header-menu-bridge-left', `${bridgeLeft - fixedOrigin.left}px`);
+          details.style.setProperty('--header-menu-bridge-width', `${bridgeRight - bridgeLeft}px`);
+        }
         details.style.setProperty('--header-popup-left', `${left - fixedOrigin.left}px`);
         details.style.setProperty('--header-popup-top', `${Math.min(headerRect.bottom, window.innerHeight - 80) - fixedOrigin.top}px`);
         details.style.setProperty('--header-popup-height', `${Math.max(64, window.innerHeight - Math.min(headerRect.bottom, window.innerHeight - 80) - 8)}px`);
@@ -391,20 +423,7 @@
     // Keep an active menu or keyboard interaction available until it closes.
     const interacting = bottom.contains(document.activeElement) || Boolean(bottom.querySelector('details[open], [data-editor-selected="true"]'));
     const collapsed = isPinned && window.innerWidth >= 992 && !interacting;
-    if (!headerBottomTransitions.has(bottom)) {
-      bottom.addEventListener('transitionend', (event) => {
-        if (event.target === bottom && event.propertyName === 'grid-template-rows') {
-          bottom.removeAttribute('data-transitioning');
-        }
-      });
-      headerBottomTransitions.add(bottom);
-    }
-    if (bottom.hasAttribute('data-collapsed') !== collapsed) {
-      // Scroll anchoring otherwise moves the page as the row shrinks, which
-      // reverses sticky detection at the threshold even after scrolling stops.
-      bottom.toggleAttribute('data-transitioning', !reducedMotion.matches);
-      bottom.toggleAttribute('data-collapsed', collapsed);
-    }
+    bottom.toggleAttribute('data-collapsed', collapsed);
     bottom.inert = collapsed;
   };
 
@@ -434,7 +453,9 @@
       }
       header.classList.toggle('header--is-scrolled', isScrolled);
       // Scroll alone does not mean sticky: the announcement row must clear first.
-      const isPinned = isSticky && scrollY > 0 && getStickyTarget(header, stickyType).getBoundingClientRect().top <= 0.5;
+      const pinOffset = headerState.stickyAnchor.getBoundingClientRect().top;
+      const isPinned = isSticky && scrollY > 0 && pinOffset <= (headerState.isPinned ? 2 : -2);
+      headerState.isPinned = isPinned;
       synchronizeHeaderBottom(header, isPinned);
       header.classList.toggle('header--submenu-open', isSubmenuOpen);
       header.classList.toggle('header--mega-menu-open', isMegaMenuOpen);
@@ -450,7 +471,8 @@
         return;
       }
 
-      const revealThreshold = Math.max(getHeaderLayoutTarget(header).offsetHeight, 64);
+      const bottomHeight = headerState.bottomSpacer && window.innerWidth >= 992 ? header.querySelector('[data-header-bottom-collapse]').offsetHeight : 0;
+      const revealThreshold = Math.max(getHeaderLayoutTarget(header).offsetHeight + bottomHeight, 64);
       const shouldReveal =
         forceShow ||
         scrollY <= 8 ||
@@ -576,7 +598,23 @@
       headerResizeObservers.set(header, observer);
     }
 
-    headerStates.set(header, { header, stickyType });
+    // A normal-flow anchor stays independent of sticky transforms and row collapse.
+    const stickyAnchor = document.createElement('div');
+    stickyAnchor.setAttribute('aria-hidden', 'true');
+    stickyAnchor.style.cssText = 'height:0;pointer-events:none;overflow-anchor:none';
+    header.before(stickyAnchor);
+    const bottom = header.querySelector('.header-top--two-rows [data-header-bottom-collapse]');
+    let bottomSpacer = null;
+    if (bottom) {
+      bottomSpacer = document.createElement('div');
+      bottomSpacer.setAttribute('aria-hidden', 'true');
+      bottomSpacer.style.cssText = `height:${window.innerWidth >= 992 ? bottom.offsetHeight : 0}px;pointer-events:none;overflow-anchor:none`;
+      header.after(bottomSpacer);
+      bottom.closest('.header-top--two-rows').setAttribute('data-bottom-transform', '');
+      headerResizeObservers.get(header)?.observe(bottom);
+    }
+    headerStates.set(header, { header, stickyType, stickyAnchor, bottomSpacer, isPinned: false });
+    updateHeaderHeight(header, stickyType);
     initializeMenuToggles(header);
     initializeHeaderSubmenus(header);
     initializeMegaMenuBackdrops(header);
@@ -1002,33 +1040,6 @@
   };
 
   const initializeAccountSheets = (header) => {
-    header.querySelectorAll('[data-deferred-account]').forEach((link) => {
-      if (deferredAccounts.has(link)) return;
-      deferredAccounts.add(link);
-      link.addEventListener('click', (event) => {
-        if (event.button || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
-        const template = link.querySelector('[data-deferred-account-template]');
-        const account = template?.content.firstElementChild?.cloneNode(true);
-        if (!account || !window.customElements?.get('shopify-account')) return;
-        event.preventDefault();
-        event.stopPropagation();
-        for (const attribute of link.attributes) {
-          if (attribute.name.startsWith('data-shopify-editor')) account.setAttribute(attribute.name, attribute.value);
-        }
-        link.replaceWith(account);
-        initializeAccountSheets(header);
-        // Shopify renders its slotted trigger asynchronously after connection.
-        const started = performance.now();
-        const openWhenReady = () => {
-          if (!account.isConnected) return;
-          const trigger = account.shadowRoot?.querySelector('button[part="signed-out-avatar"]');
-          if (trigger) { trigger.focus(); trigger.click(); return; }
-          if (performance.now() - started < 3000) requestAnimationFrame(openWhenReady);
-          else window.location.assign(link.href);
-        };
-        requestAnimationFrame(openWhenReady);
-      });
-    });
     header.querySelectorAll('shopify-account').forEach((account) => {
       if (accountElements.has(account)) return;
       accountElements.add(account);
@@ -1075,14 +1086,16 @@
         backdropCursorBindings.get(drawer)?.destroy();
         backdropCursorBindings.delete(drawer);
       });
+      headerStates.get(header)?.stickyAnchor.remove();
+      headerStates.get(header)?.bottomSpacer?.remove();
+      header.querySelector('[data-bottom-transform]')?.removeAttribute('data-bottom-transform');
       headerStates.delete(header);
       headerResizeObservers.get(header)?.disconnect();
       headerResizeObservers.delete(header);
       const remainingStickyHeader = Array.from(headerStates.values()).find(({ stickyType }) => stickyType !== 'none');
       if (remainingStickyHeader) updateHeaderHeight(remainingStickyHeader.header, remainingStickyHeader.stickyType);
       else {
-        document.documentElement.style.removeProperty('--header-height');
-        document.documentElement.style.setProperty('--header-sticky-height', '0px');
+        publishStickyHeight(0);
       }
     });
   };

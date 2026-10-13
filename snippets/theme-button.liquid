@@ -84,6 +84,9 @@
   if button_variant == 'tertiary'
     assign button_class = button_class | append: ' link-underline'
     assign button_underline_attribute = 'data-underline="persistent" data-underline-target="text"'
+    if settings.button_tertiary_show_underline == false
+      assign button_underline_attribute = 'data-underline="hover" data-underline-target="text"'
+    endif
   endif
   if loading
     assign button_class = button_class | append: ' btn--loading'

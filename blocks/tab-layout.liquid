@@ -159,6 +159,7 @@
 %}
 
 {% capture tab_layout_style_attribute %}
+  {% if block.settings.button_height > 0 %}--tab-layout-button-height:{{ block.settings.button_height | at_most: 60 }}px;{% endif %}
   --tab-layout-inline-alignment: {{ tab_layout_inline_alignment }};
   --tab-layout-gap-desktop: {{ tab_layout_gap_desktop }}px;
   --tab-layout-gap-mobile: {{ tab_layout_gap_mobile }}px;
@@ -867,6 +868,18 @@
       "unit": "px",
       "default": 24,
       "visible_if": "{{ block.settings.heading_size == 'custom' }}"
+    },
+    {
+      "type": "range",
+      "id": "button_height",
+      "label": "Button height",
+      "default": 0,
+      "min": 0,
+      "max": 60,
+      "step": 2,
+      "unit": "px",
+      "info": "Set to 0 to inherit Theme Settings.",
+      "visible_if": "{{ block.settings.style == 'button' }}"
     }
   ],
   "presets": [

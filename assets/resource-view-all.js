@@ -5,7 +5,7 @@
       const viewAllButtons = Array.from(featuredCollection.querySelectorAll('[data-view-all-button]'));
       if (!viewAllButtons.length) return;
 
-      const resource = featuredCollection.querySelector('[data-product-list]') || featuredCollection.querySelector('[data-blog-url]');
+      const resource = featuredCollection.querySelector('[data-product-list], [data-product-list-inline]') || featuredCollection.querySelector('[data-blog-url]');
       const collectionUrl = resource?.dataset.collectionUrl?.trim() || resource?.dataset.blogUrl?.trim() || '';
       const hasMoreItems = Boolean(collectionUrl) && Number(resource?.dataset.resourceCount) > Number(resource?.dataset.resourceLimit);
       const conditionalWrappers = Array.from(featuredCollection.querySelectorAll('[data-resource-view-all]'));

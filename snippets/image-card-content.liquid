@@ -6,7 +6,7 @@
 {% enddoc %}
 {% liquid
   assign image_card_fetchpriority = blank
-  if section.settings.layout == 'three_columns' and section.index == 1 and section.blocks.first.id == block.id
+  if section.index == 1 and section.blocks.first.id == block.id
     assign image_card_fetchpriority = 'high'
   endif
   assign image_card_media_type = block.settings.background_type | default: 'image'
@@ -168,7 +168,14 @@
 %}
 
 {% capture image_card_style %}
+  {% if image_card_height_desktop == 'custom' %}--image-card-custom-height:{{ block.settings.height_custom_desktop | default: 260 | at_least: 120 | at_most: 520 }}px;{% endif %}
+  {% if image_card_height_mobile == 'custom' %}--image-card-custom-height-mobile:{{ block.settings.height_custom_mobile | default: 200 | at_least: 120 | at_most: 520 }}px;{% endif %}
+  {% if block.settings.corner_radius_mobile != blank and block.settings.corner_radius_mobile != 'inherit' %}--promo-card-mobile-radius:var(--radius-{{ block.settings.corner_radius_mobile | replace: 'radius_', '' | replace: 'slightly_rounded', 'slight' }});{% endif %}
   {% if promo_card %}
+    {% if block.settings.aspect_ratio_mobile != blank and block.settings.aspect_ratio_mobile != 'inherit' %}--promo-card-mobile-ratio:{{ block.settings.aspect_ratio_mobile }};{% endif %}
+    {% if block.settings.corner_radius_mobile != blank and block.settings.corner_radius_mobile != 'inherit' %}--promo-card-mobile-radius:var(--radius-{{ block.settings.corner_radius_mobile | replace: 'radius_', '' | replace: 'square', 'square' | replace: 'slightly_rounded', 'slight' }});{% endif %}
+    {% if block.settings.column_start_desktop != blank and block.settings.column_start_desktop != 'auto' %}--promo-card-column-start:{{ block.settings.column_start_desktop | at_least: 1 | at_most: 4 }};{% endif %}
+    {% if block.settings.row_start_desktop != blank and block.settings.row_start_desktop != 'auto' %}--promo-card-row-start:{{ block.settings.row_start_desktop | at_least: 1 | at_most: 4 }};{% endif %}
     --promo-card-columns:{{ block.settings.columns_wide | default: 1 | at_least: 1 | at_most: 4 }};
     --promo-card-rows:{{ block.settings.rows_tall | default: 1 | at_least: 1 | at_most: 4 }};
   {% endif %}
@@ -234,6 +241,8 @@
 
 <article
   class="{{ image_card_class }}"
+  {% if promo_card and block.settings.aspect_ratio_mobile != blank and block.settings.aspect_ratio_mobile != 'inherit' %}data-mobile-aspect-ratio{% endif %}
+  {% if block.settings.corner_radius_mobile != blank and block.settings.corner_radius_mobile != 'inherit' %}data-mobile-radius{% endif %}
   {% if image_card_style != blank %}style="{{ image_card_style }}"{% endif %}
   {% if block.settings.animation_type != nil %}
     {% render 'block-animation-attributes', settings: block.settings %}

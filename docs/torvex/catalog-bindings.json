@@ -1,0 +1,304 @@
+{
+  "themeId": "192249102635",
+  "store": "layouthub-template-v2.myshopify.com",
+  "changes": [
+    {
+      "path": "torvex_new_arrivals/product-list/collection",
+      "before": "road-running-strideo",
+      "after": "new-arrivals-torvex"
+    },
+    {
+      "path": "torvex_setup_inline/products/collection",
+      "before": "road-running-strideo",
+      "after": "complete-your-setup-torvex"
+    },
+    {
+      "path": "torvex_trend_banner/carousel-product-list/collection",
+      "before": "cloud-strideo",
+      "after": "stay-on-trend-torvex"
+    },
+    {
+      "path": "torvex_deal_tabs/tab_0/collection",
+      "before": "road-running-strideo",
+      "after": "smartphone-torvex"
+    },
+    {
+      "path": "torvex_deal_tabs/tab_1/collection",
+      "before": "running-strideo",
+      "after": "tablet-torvex"
+    },
+    {
+      "path": "torvex_deal_tabs/tab_2/collection",
+      "before": "cloud-strideo",
+      "after": "smartwatch-torvex"
+    },
+    {
+      "path": "torvex_deal_tabs/tab_3/collection",
+      "before": "the-roger-strideo",
+      "after": "audio-torvex"
+    },
+    {
+      "path": "torvex_categories/category_0/collection",
+      "before": null,
+      "after": "smartphone-torvex"
+    },
+    {
+      "path": "torvex_categories/category_0/custom_link",
+      "before": "/collections/all",
+      "after": "/collections/smartphone-torvex"
+    },
+    {
+      "path": "torvex_categories/category_1/collection",
+      "before": null,
+      "after": "tablet-torvex"
+    },
+    {
+      "path": "torvex_categories/category_1/custom_link",
+      "before": "/collections/all",
+      "after": "/collections/tablet-torvex"
+    },
+    {
+      "path": "torvex_categories/category_2/collection",
+      "before": null,
+      "after": "smartwatch-torvex"
+    },
+    {
+      "path": "torvex_categories/category_2/custom_link",
+      "before": "/collections/all",
+      "after": "/collections/smartwatch-torvex"
+    },
+    {
+      "path": "torvex_categories/category_3/collection",
+      "before": null,
+      "after": "laptop-torvex"
+    },
+    {
+      "path": "torvex_categories/category_3/custom_link",
+      "before": "/collections/all",
+      "after": "/collections/laptop-torvex"
+    },
+    {
+      "path": "torvex_categories/category_4/collection",
+      "before": null,
+      "after": "audio-torvex"
+    },
+    {
+      "path": "torvex_categories/category_4/custom_link",
+      "before": "/collections/all",
+      "after": "/collections/audio-torvex"
+    },
+    {
+      "path": "torvex_categories/category_5/collection",
+      "before": null,
+      "after": "smart-home-torvex"
+    },
+    {
+      "path": "torvex_categories/category_5/custom_link",
+      "before": "/collections/all",
+      "after": "/collections/smart-home-torvex"
+    },
+    {
+      "path": "torvex_categories/category_6/collection",
+      "before": null,
+      "after": "gaming-torvex"
+    },
+    {
+      "path": "torvex_categories/category_6/custom_link",
+      "before": "/collections/all",
+      "after": "/collections/gaming-torvex"
+    },
+    {
+      "path": "torvex_categories/category_7/collection",
+      "before": null,
+      "after": "accessories-torvex"
+    },
+    {
+      "path": "torvex_categories/category_7/custom_link",
+      "before": "/collections/all",
+      "after": "/collections/accessories-torvex"
+    },
+    {
+      "path": "torvex_promo_grid/promo_1/content/button/button_link",
+      "before": "/collections/all",
+      "after": "/collections/smartphone-torvex"
+    },
+    {
+      "path": "torvex_promo_grid/promo_2/content/button/button_link",
+      "before": "/collections/all",
+      "after": "/collections/audio-torvex"
+    },
+    {
+      "path": "torvex_promo_grid/promo_3/content/button/button_link",
+      "before": "/collections/all",
+      "after": "/collections/smartwatch-torvex"
+    },
+    {
+      "path": "torvex_category_promos/promo_0/content/button/button_link",
+      "before": "/collections/all",
+      "after": "/collections/smartphone-torvex"
+    },
+    {
+      "path": "torvex_category_promos/promo_1/content/button/button_link",
+      "before": "/collections/all",
+      "after": "/collections/audio-torvex"
+    },
+    {
+      "path": "torvex_category_promos/promo_2/content/button/button_link",
+      "before": "/collections/all",
+      "after": "/collections/smartwatch-torvex"
+    },
+    {
+      "path": "torvex_category_promos/promo_3/content/button/button_link",
+      "before": "/collections/all",
+      "after": "/collections/vr-torvex"
+    },
+    {
+      "path": "torvex_service_banners/banner_0/content/button/button_link",
+      "before": "/collections/all",
+      "after": "/collections/all-products-torvex"
+    },
+    {
+      "path": "torvex_service_banners/banner_1/content/button/button_link",
+      "before": "/collections/all",
+      "after": "/collections/all-products-torvex"
+    },
+    {
+      "path": "torvex_rewards_banner/banner/copy/button/button_link",
+      "before": "/collections/all",
+      "after": "/collections/all-products-torvex"
+    },
+    {
+      "path": "torvex_trend_banner/banner/copy/button/button_link",
+      "before": "/collections/all",
+      "after": "/collections/stay-on-trend-torvex"
+    },
+    {
+      "path": "torvex_collection_mix/phones/button/button_link",
+      "before": "/collections/all",
+      "after": "/collections/phones-and-wearables-torvex"
+    },
+    {
+      "path": "torvex_collection_mix/phones/tall/image/image_link",
+      "before": "/collections/all",
+      "after": "/collections/smartphone-torvex"
+    },
+    {
+      "path": "torvex_collection_mix/phones/top/image/image_link",
+      "before": "/collections/all",
+      "after": "/collections/smartwatch-torvex"
+    },
+    {
+      "path": "torvex_collection_mix/phones/bottom/image/image_link",
+      "before": "/collections/all",
+      "after": "/collections/audio-torvex"
+    },
+    {
+      "path": "torvex_collection_mix/laptops/button/button_link",
+      "before": "/collections/all",
+      "after": "/collections/laptop-and-accessories-torvex"
+    },
+    {
+      "path": "torvex_collection_mix/laptops/tall/image/image_link",
+      "before": "/collections/all",
+      "after": "/collections/laptop-torvex"
+    },
+    {
+      "path": "torvex_collection_mix/laptops/top/image/image_link",
+      "before": "/collections/all",
+      "after": "/collections/accessories-torvex"
+    },
+    {
+      "path": "torvex_collection_mix/laptops/bottom/image/image_link",
+      "before": "/collections/all",
+      "after": "/collections/audio-torvex"
+    },
+    {
+      "path": "torvex_collection_mix/promo/banner/copy/button/button_link",
+      "before": "/collections/all",
+      "after": "/collections/all-products-torvex"
+    },
+    {
+      "path": "torvex_brands/logos/brand_0/image/image_link",
+      "before": "/collections/all",
+      "after": "/collections/all-products-torvex"
+    },
+    {
+      "path": "torvex_brands/logos/brand_1/image/image_link",
+      "before": "/collections/all",
+      "after": "/collections/all-products-torvex"
+    },
+    {
+      "path": "torvex_brands/logos/brand_2/image/image_link",
+      "before": "/collections/all",
+      "after": "/collections/all-products-torvex"
+    },
+    {
+      "path": "torvex_brands/logos/brand_3/image/image_link",
+      "before": "/collections/all",
+      "after": "/collections/all-products-torvex"
+    },
+    {
+      "path": "torvex_brands/logos/brand_4/image/image_link",
+      "before": "/collections/all",
+      "after": "/collections/all-products-torvex"
+    },
+    {
+      "path": "torvex_brands/logos/brand_5/image/image_link",
+      "before": "/collections/all",
+      "after": "/collections/all-products-torvex"
+    },
+    {
+      "path": "torvex_brands/logos/brand_6/image/image_link",
+      "before": "/collections/all",
+      "after": "/collections/all-products-torvex"
+    },
+    {
+      "path": "torvex_brands/logos/brand_7/image/image_link",
+      "before": "/collections/all",
+      "after": "/collections/all-products-torvex"
+    },
+    {
+      "path": "footer/shop-menu/link-0/link",
+      "before": "/collections/smartphone",
+      "after": "/collections/smartphone-torvex"
+    },
+    {
+      "path": "footer/shop-menu/link-1/link",
+      "before": "/collections/tablet",
+      "after": "/collections/tablet-torvex"
+    },
+    {
+      "path": "footer/shop-menu/link-2/link",
+      "before": "/collections/smartwatch",
+      "after": "/collections/smartwatch-torvex"
+    },
+    {
+      "path": "footer/shop-menu/link-3/link",
+      "before": "/collections/laptop",
+      "after": "/collections/laptop-torvex"
+    },
+    {
+      "path": "footer/shop-menu/link-4/link",
+      "before": "/collections/audio",
+      "after": "/collections/audio-torvex"
+    },
+    {
+      "path": "footer/information-menu/link-0/link",
+      "before": "/collections/all?sort_by=created-desc",
+      "after": "/collections/new-arrivals-torvex"
+    },
+    {
+      "path": "footer/information-menu/link-1/link",
+      "before": "/collections/all?sort_by=price-ascending",
+      "after": "/collections/tech-deals-torvex"
+    },
+    {
+      "path": "footer/information-menu/link-2/link",
+      "before": "/collections/all?sort_by=best-selling",
+      "after": "/collections/all-products-torvex?sort_by=best-selling"
+    }
+  ],
+  "localValidation": "JSON parsed; resource handles from created collection manifest",
+  "storefrontValidation": "Pending Online Store publication approval",
+  "remoteValidation": "PASS all 59 changed picker/link settings read back from draft theme; Shopify removes empty block_order arrays"
+}

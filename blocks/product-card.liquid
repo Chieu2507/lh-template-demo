@@ -37,19 +37,26 @@
   endif
 %}
 
-{% capture product_card_rating %}
-  {% if card_product != blank and block.settings.show_rating %}
-    {% content_for 'block', type: 'product-rating', id: 'rating', closest.product: card_product %}
+{% capture product_card_inventory %}
+  {% if card_product != blank and block.settings.show_inventory %}{% content_for 'block', type: '_product-card-inventory', id: 'inventory', closest.product: card_product %}{% endif %}
+{% endcapture %}
+{% capture product_card_extensions %}
+  {{ product_card_inventory }}
+  {% if block.settings.show_rating %}{% content_for 'block', type: 'product-rating', id: 'rating', closest.product: card_product %}{% endif %}
+  {% if card_product != blank %}
+    {% content_for 'blocks', closest.product: card_product %}
   {% endif %}
 {% endcapture %}
-{% assign product_card_rating = product_card_rating | strip %}
+{% assign product_card_extensions = product_card_extensions | strip %}
 
 {% if card_product != blank %}
   {% render 'product-card',
     product: card_product,
-    rating_content: product_card_rating,
+    rating_content: product_card_extensions,
     card_style: block.settings.card_style,
     media_corner_radius: block.settings.media_corner_radius,
+    card_corner_radius: block.settings.card_corner_radius,
+    content_padding: block.settings.card_content_padding,
     color_type: product_card_color_type,
     color_scheme: product_card_color_scheme,
     attributes: product_card_editor_attributes
@@ -59,8 +66,11 @@
     product: blank,
     placeholder: true,
     placeholder_index: placeholder_index,
+    rating_content: product_card_extensions,
     card_style: block.settings.card_style,
     media_corner_radius: block.settings.media_corner_radius,
+    card_corner_radius: block.settings.card_corner_radius,
+    content_padding: block.settings.card_content_padding,
     color_type: product_card_color_type,
     color_scheme: product_card_color_scheme,
     attributes: product_card_editor_attributes
@@ -206,6 +216,47 @@
       "label": "t:labels.color_scheme",
       "default": "scheme-1",
       "visible_if": "{{ block.settings.color_type == 'color_scheme' }}"
+    },
+    {
+      "type": "select",
+      "id": "card_corner_radius",
+      "label": "Card corner radius",
+      "default": "inherit",
+      "options": [
+        {
+          "value": "inherit",
+          "label": "Inherit"
+        },
+        {
+          "value": "square",
+          "label": "Square"
+        },
+        {
+          "value": "radius_16",
+          "label": "Extra rounded"
+        },
+        {
+          "value": "radius_24",
+          "label": "Highly rounded"
+        }
+      ]
+    },
+    {
+      "type": "range",
+      "id": "card_content_padding",
+      "label": "Card content padding",
+      "default": 0,
+      "min": 0,
+      "max": 40,
+      "step": 2,
+      "unit": "px",
+      "info": "Set to 0 to inherit Theme Settings."
+    },
+    {
+      "type": "checkbox",
+      "id": "show_inventory",
+      "label": "Show availability",
+      "default": false
     }
   ],
   "presets": [
@@ -219,6 +270,12 @@
     }
   ],
   "blocks": [
+    {
+      "type": "@app"
+    },
+    {
+      "type": "_product-card-inventory"
+    },
     {
       "type": "product-rating"
     }

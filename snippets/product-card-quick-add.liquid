@@ -41,7 +41,7 @@
   endif
 %}
 
-<div class="{{ quick_add_class }}{% if color_scheme != blank %} {{ color_scheme }}{% endif %}" data-product-card-quick-add-wrapper>
+<div class="{{ quick_add_class }}{% if color_scheme != blank %} {{ color_scheme }}{% endif %}" data-product-card-quick-add-wrapper data-quick-add-style="{{ quick_add_style }}">
   <form action="{{ routes.cart_add_url }}" method="post" data-product-card-quick-add>
     <input type="hidden" name="id" value="{{ variant_id }}">
     {% if quick_add_style == 'icon' %}
@@ -63,7 +63,7 @@
         type: 'submit',
         variant: 'primary',
         icon: 'cart',
-        loading_dots: true,
+          loading_dots: true,
         motion_speed: quick_add_motion_speed,
         class: 'product-card__quick-add-button product-card__quick-add-button--text'
       %}

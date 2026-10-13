@@ -122,7 +122,7 @@
     assign group_limit_width = true
   endif
   assign group_max_width = block.settings.max_width | default: 640 | plus: 0
-  if group_max_width < 320 or group_max_width > 1200
+  if group_max_width < 200 or group_max_width > 1200
     assign group_max_width = 640
   endif
   assign group_size_max_width = blank
@@ -239,6 +239,9 @@
   assign group_class = group_class | append: ' group--align-' | append: group_alignment
   assign group_class = group_class | append: ' group--width-' | append: group_width_mode
   assign group_class = group_class | append: ' group--height-' | append: group_height_mode
+  if block.settings.height_mobile == 'fit' or block.settings.height_mobile == 'fill'
+    assign group_class = group_class | append: ' group--height-mobile-' | append: block.settings.height_mobile
+  endif
   assign group_class = group_class | append: ' group--radius-' | append: group_radius
   assign group_class = group_class | append: ' group--shadow-' | append: group_shadow
   assign group_class = group_class | append: ' group--border-' | append: group_border_type
@@ -468,6 +471,10 @@
     }
   }
   @media (max-width: 767.98px) { .group { order: var(--group-order-mobile, 0); } }
+@media(max-width:767.98px){
+  .group.group--height-mobile-fit { --group-height: fit-content; }
+  .group.group--height-mobile-fill { --group-height: 100%; }
+}
 {% endstylesheet %}
 
 {% schema %}
@@ -507,7 +514,15 @@
     }
   ],
   "settings": [
-    { "type": "range", "id": "mobile_order", "label": "Mobile order", "min": 0, "max": 10, "step": 1, "default": 0 },
+    {
+      "type": "range",
+      "id": "mobile_order",
+      "label": "Mobile order",
+      "min": 0,
+      "max": 10,
+      "step": 1,
+      "default": 0
+    },
     {
       "type": "header",
       "content": "t:general.layout"
@@ -735,7 +750,7 @@
       "type": "range",
       "id": "max_width",
       "label": "t:labels.max_width",
-      "min": 320,
+      "min": 200,
       "max": 1200,
       "step": 10,
       "unit": "px",
@@ -758,6 +773,26 @@
       ],
       "default": "fill",
       "visible_if": "{{ block.settings.device == 'desktop' }}"
+    },
+    {
+      "type": "select",
+      "id": "height_mobile",
+      "label": "Height (mobile)",
+      "default": "inherit",
+      "options": [
+        {
+          "value": "inherit",
+          "label": "Inherit desktop"
+        },
+        {
+          "value": "fit",
+          "label": "Fit content"
+        },
+        {
+          "value": "fill",
+          "label": "Fill"
+        }
+      ]
     },
     {
       "type": "select",

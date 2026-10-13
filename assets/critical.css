@@ -1865,6 +1865,7 @@ legend {
 }
 
 .product-card--card .product-card__media {
+  background: var(--background-color);
   margin: var(--product-card-media-inset, 0px) var(--product-card-media-inset, 0px) 0;
   border-radius: var(--product-card-media-radius, var(--media-radius));
 }
@@ -2069,7 +2070,7 @@ legend {
 
 .product-card__quick-add form {
   display: flex;
-  justify-content: flex-end;
+  justify-content: flex-start;
 }
 
 .product-card__quick-add--full .product-card__quick-add-button {
@@ -3098,10 +3099,10 @@ legend {
   }
 
   .product-card--quick-add-mobile .product-card__quick-add {
-    right: 12px;
+    right: auto;
     bottom: 12px;
-    left: auto;
-    width: 36px;
+    left: 12px;
+    width: auto;
     opacity: 1;
     pointer-events: auto;
     transform: none;
@@ -3116,9 +3117,11 @@ legend {
     padding: 0;
   }
 
-  .product-card--quick-add-mobile .product-card__quick-add-button--text .btn__text {
-    display: none;
-  }
+  .product-card--quick-add-mobile .product-card__quick-add { width: 36px; }
+
+
+  .product-card--quick-add-mobile .product-card__quick-add-button--text .btn__text { display: none; }
+  .product-card--quick-add-mobile .product-card__quick-add-button--text .btn__icon { display: inline-flex; }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -3518,3 +3521,10 @@ body[data-block-animations] .motion-block {animation:none;}
 @media (prefers-reduced-motion:reduce) {
   .reveal-pending {opacity:1!important;}
 }
+
+/* Tertiary buttons without an idle underline retain the common link hover. */
+.btn.link-underline[data-underline='hover'][data-underline-target='text']::after{display:none;}
+.btn.link-underline[data-underline='hover'][data-underline-target='text'] .btn__text{position:relative;}
+.btn.link-underline[data-underline='hover'][data-underline-target='text'] .btn__text::after{content:'';position:absolute;inset-inline:0;inset-block-end:calc(var(--button-tertiary-underline-offset) * -1);height:var(--link-underline-thickness,1px);background:currentColor;transform:scaleX(0);transform-origin:left center;transition:transform var(--link-underline-duration,var(--motion-duration-fast)) var(--link-underline-ease,var(--motion-ease-standard));}
+.btn.link-underline[data-underline='hover'][data-underline-target='text']:is(:hover,:focus-visible) .btn__text::after{transform:scaleX(1);}
+.btn.link-underline[data-underline='hover']:is(:disabled,[aria-disabled='true']) .btn__text::after{display:none;}

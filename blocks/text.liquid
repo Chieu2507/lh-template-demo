@@ -103,7 +103,7 @@
 
 {% if block.settings.text != blank or request.design_mode %}
   <div
-    class="{{ text_class }}"
+    class="{{ text_class }}" data-mobile-visible="{{ block.settings.show_on_mobile }}"
     {% if text_style != blank %}style="{{ text_style }}"{% endif %}
     {% render 'block-animation-attributes', settings: block.settings %}
     {{ block.shopify_attributes }}
@@ -135,6 +135,7 @@
 {% endif %}
 
 {% stylesheet %}
+@media(max-width:767.98px){.text-block[data-mobile-visible='false']{display:none;}}
   .text-block__collapse { display: block; min-width: 0; }
   .text-block__collapse[data-description-state='collapsed'] .text-block__collapse-content { max-height: var(--product-description-collapsed-height); overflow: hidden; }
   .text-block__collapse-toggle { margin-top: 16px; }
@@ -180,6 +181,12 @@
       "content": "t:general.content"
     },
     {
+      "type": "checkbox",
+      "id": "show_on_mobile",
+      "label": "Show on mobile",
+      "default": true
+    },
+    {
       "type": "richtext",
       "id": "text",
       "label": "t:labels.text"
@@ -216,8 +223,23 @@
       ],
       "default": "md"
     },
-    { "type": "checkbox", "id": "customize_letter_spacing", "label": "Customize letter spacing", "default": false },
-    { "type": "range", "id": "letter_spacing", "label": "Letter spacing", "min": 0, "max": 3, "step": 0.1, "unit": "px", "default": 0, "visible_if": "{{ block.settings.customize_letter_spacing }}" },
+    {
+      "type": "checkbox",
+      "id": "customize_letter_spacing",
+      "label": "Customize letter spacing",
+      "default": false
+    },
+    {
+      "type": "range",
+      "id": "letter_spacing",
+      "label": "Letter spacing",
+      "min": 0,
+      "max": 3,
+      "step": 0.1,
+      "unit": "px",
+      "default": 0,
+      "visible_if": "{{ block.settings.customize_letter_spacing }}"
+    },
     {
       "type": "checkbox",
       "id": "customize_line_height",

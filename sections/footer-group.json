@@ -72,35 +72,35 @@
                       "type": "_menu-link",
                       "settings": {
                         "label": "Smartphone",
-                        "link": "/collections/smartphone"
+                        "link": "/collections/smartphone-torvex"
                       }
                     },
                     "link-1": {
                       "type": "_menu-link",
                       "settings": {
                         "label": "Tablet",
-                        "link": "/collections/tablet"
+                        "link": "/collections/tablet-torvex"
                       }
                     },
                     "link-2": {
                       "type": "_menu-link",
                       "settings": {
                         "label": "Smartwatch",
-                        "link": "/collections/smartwatch"
+                        "link": "/collections/smartwatch-torvex"
                       }
                     },
                     "link-3": {
                       "type": "_menu-link",
                       "settings": {
                         "label": "Laptop",
-                        "link": "/collections/laptop"
+                        "link": "/collections/laptop-torvex"
                       }
                     },
                     "link-4": {
                       "type": "_menu-link",
                       "settings": {
                         "label": "Audio",
-                        "link": "/collections/audio"
+                        "link": "/collections/audio-torvex"
                       }
                     }
                   },
@@ -125,7 +125,7 @@
                     "html_tag": "h2",
                     "menu_size": "sm",
                     "menu_color": "#ffffff",
-                    "open_on_mobile": true,
+                    "open_on_mobile": false,
                     "compact_on_mobile": true
                   },
                   "blocks": {
@@ -133,21 +133,21 @@
                       "type": "_menu-link",
                       "settings": {
                         "label": "New Arrivals",
-                        "link": "/collections/all?sort_by=created-desc"
+                        "link": "/collections/new-arrivals-torvex"
                       }
                     },
                     "link-1": {
                       "type": "_menu-link",
                       "settings": {
                         "label": "Top Deals",
-                        "link": "/collections/all?sort_by=price-ascending"
+                        "link": "/collections/tech-deals-torvex"
                       }
                     },
                     "link-2": {
                       "type": "_menu-link",
                       "settings": {
                         "label": "Best Sellers",
-                        "link": "/collections/all?sort_by=best-selling"
+                        "link": "/collections/all-products-torvex?sort_by=best-selling"
                       }
                     }
                   },
@@ -522,7 +522,7 @@
             "copyright": {
               "type": "text",
               "settings": {
-                "text": "<p>\u00a9 2025 LayoutHub. Powered by Shopify.</p>",
+                "text": "<p>© 2025 LayoutHub. Powered by Shopify.</p>",
                 "text_size": "sm",
                 "width": "fit",
                 "text_color": "#ffffff"

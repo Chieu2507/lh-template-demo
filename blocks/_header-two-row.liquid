@@ -14,7 +14,7 @@
     <div class="header-two-row__actions">{% content_for 'block', type: '_header-link', id: 'header-location' %}{% content_for 'block', type: '_header-account', id: 'header-account' %}{% content_for 'block', type: '_header-cart', id: 'header-cart' %}</div>
   </div>
 {% stylesheet %}
-  .header-top--two-rows { padding: 0; border-bottom: 0; box-shadow: inset 0 -.5px 0 var(--border-color); }
+  .header-top--two-rows { padding: 0; border-bottom: 0; box-shadow: none; }
   .header-two-row__grid { display: grid; grid-template-columns: auto minmax(0,1fr) minmax(0,1fr); grid-template-areas: 'brand search actions'; padding-block: var(--header-grid-top,24px) var(--header-grid-bottom,12px); align-items: center; column-gap: var(--header-main-gap,40px); row-gap: var(--header-row-gap,24px); }
   .header-two-row__brand { grid-area: brand; display: flex; align-items: center; gap: 12px; min-width: 0; }
   .header-two-row__grid > .header-search { grid-area: search; }

@@ -86,6 +86,7 @@
 %}
 
 {% capture collection_tabs_style %}
+  {% if section.settings.action_alignment != blank and section.settings.action_alignment != 'inherit' %}--collection-tabs-action-alignment:{{ section.settings.action_alignment }};{% endif %}
   {% if section.settings.customize_header_gap_desktop %}--collection-tabs-header-gap-desktop: {{ section.settings.header_gap_desktop }}px;{% endif %}
   {% if section.settings.customize_header_gap_mobile %}--collection-tabs-header-gap-mobile: {{ section.settings.header_gap_mobile }}px;{% endif %}
   {% if section.settings.customize_action_gap %}--collection-tabs-action-gap: {{ section.settings.action_gap }}px;{% endif %}
@@ -115,6 +116,7 @@
       data-collection-tabs-ready="false"
       data-layout-direction="{{ collection_tabs_layout_direction }}"
       data-header-layout="{{ collection_tabs_header_layout }}"
+      data-action-position="{{ section.settings.action_position | default: 'inherit' }}"
       data-tab-position="{{ collection_tabs_tab_position }}"
       data-controls-alignment="{{ collection_tabs_controls_alignment }}"
       data-layout-type="{{ collection_tabs_layout_type }}"
@@ -487,6 +489,33 @@
       "default": "1"
     },
     {
+      "type": "select",
+      "id": "mobile_card_sizing",
+      "label": "Card sizing (mobile)",
+      "default": "columns",
+      "options": [
+        {
+          "value": "columns",
+          "label": "Columns"
+        },
+        {
+          "value": "fixed",
+          "label": "Fixed width"
+        }
+      ]
+    },
+    {
+      "type": "range",
+      "id": "mobile_card_width",
+      "label": "Card width (mobile)",
+      "default": 212,
+      "min": 160,
+      "max": 360,
+      "step": 4,
+      "unit": "px",
+      "visible_if": "{{ section.settings.layout_type == 'carousel' and section.settings.mobile_card_sizing == 'fixed' }}"
+    },
+    {
       "type": "checkbox",
       "id": "show_next_slide_preview_on_desktop",
       "label": "t:labels.show_next_slide_preview_on_desktop",
@@ -735,6 +764,46 @@
       "unit": "s",
       "default": 4,
       "visible_if": "{{ section.settings.layout_type == 'carousel' and section.settings.autoplay }}"
+    },
+    {
+      "type": "select",
+      "id": "action_position",
+      "label": "View all position",
+      "default": "inherit",
+      "options": [
+        {
+          "value": "inherit",
+          "label": "Inherit layout"
+        },
+        {
+          "value": "below",
+          "label": "Below products"
+        }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "action_alignment",
+      "label": "View all alignment",
+      "default": "inherit",
+      "options": [
+        {
+          "value": "inherit",
+          "label": "Inherit layout"
+        },
+        {
+          "value": "flex-start",
+          "label": "Left"
+        },
+        {
+          "value": "center",
+          "label": "Center"
+        },
+        {
+          "value": "flex-end",
+          "label": "Right"
+        }
+      ]
     },
     {
       "type": "header",

@@ -151,11 +151,19 @@
   {% if section.settings.background_image != blank %}
     <div class="elara-text-marquee-custom__background" aria-hidden="true"></div>
   {% endif %}
+  {% if section.settings.show_header %}
+  <div class="container page-width marquee-section-layout{% if section.settings.full_bleed_marquee %} marquee-section-layout--bleed{% endif %}" style="--marquee-section-gap:{{ section.settings.gap_desktop }}px;--marquee-section-gap-mobile:{{ section.settings.gap_mobile }}px;">
+    <div class="marquee-section-layout__header">{% content_for 'block', type: 'header', id: 'marquee-header' %}</div>
+    <div class="marquee-section-layout__action">{% content_for 'block', type: 'button', id: 'marquee-action' %}</div>
+    <div class="marquee-section-layout__track">{{ text_marquee_child_blocks }}</div>
+  </div>
+  {% else %}
   <div class="container {{ section_container_width }} elara-text-marquee-custom__container">
     <div class="elara-text-marquee-custom__content layout-flow layout-flow--responsive layout-flow--{{ section_direction }}{% if section_vertical_on_mobile %} layout-flow--mobile-vertical{% endif %}" style="{{ section_content_style }}">
       {{ text_marquee_child_blocks }}
     </div>
   </div>
+  {% endif %}
 </div>
 {% else %}
 {% liquid
@@ -248,6 +256,13 @@
 {% endif %}
 
 {% stylesheet %}
+  .marquee-section-layout{display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:center;gap:var(--marquee-section-gap,32px);}
+  .marquee-section-layout__header{min-width:0;}
+  .marquee-section-layout__action{justify-self:end;}
+  .marquee-section-layout__track{grid-column:1 / -1;min-width:0;width:100%;}
+  .marquee-section-layout--bleed .marquee-section-layout__track{width:100vw;margin-inline:calc((100% - 100vw) / 2);}
+  @media(max-width:767.98px){.marquee-section-layout{grid-template-columns:minmax(0,1fr);gap:var(--marquee-section-gap-mobile,var(--marquee-section-gap));}.marquee-section-layout__action{order:3;justify-self:start;}.marquee-section-layout__track{order:2;}}
+
   .text-marquee-custom {
     position: relative;
     display: flex;
@@ -484,6 +499,20 @@
       "label": "Use Elara layout",
       "default": false,
       "info": "Enable the rebuilt layout. Existing content keeps its original appearance until enabled."
+    },
+    {
+      "type": "checkbox",
+      "id": "show_header",
+      "label": "Show header and action",
+      "default": false,
+      "visible_if": "{{ section.settings.use_elara_layout }}"
+    },
+    {
+      "type": "checkbox",
+      "id": "full_bleed_marquee",
+      "label": "Extend marquee to screen edges",
+      "default": false,
+      "visible_if": "{{ section.settings.use_elara_layout and section.settings.show_header }}"
     },
     {
       "type": "header",

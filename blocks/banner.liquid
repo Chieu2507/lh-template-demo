@@ -16,6 +16,7 @@
   media_card_block: block,
   children: banner_children,
   sizes: media_sizes,
+  enable_sticky: block.settings.enable_sticky,
   class_modifier: 'image-card--featured-collection-banner',
   use_image_ratio: true
 %}
@@ -51,6 +52,12 @@
     }
   ],
   "settings": [
+    {
+      "type": "checkbox",
+      "id": "enable_sticky",
+      "label": "Sticky content",
+      "default": false
+    },
     {
       "type": "header",
       "content": "t:general.content"
@@ -445,6 +452,34 @@
         }
       ],
       "default": "square"
+    },
+    {
+      "type": "select",
+      "id": "corner_radius_mobile",
+      "label": "Mobile corner radius",
+      "default": "inherit",
+      "options": [
+        {
+          "value": "inherit",
+          "label": "Inherit desktop"
+        },
+        {
+          "value": "square",
+          "label": "Square"
+        },
+        {
+          "value": "radius_16",
+          "label": "Rounded"
+        },
+        {
+          "value": "radius_24",
+          "label": "Extra rounded"
+        },
+        {
+          "value": "radius_32",
+          "label": "Highly rounded"
+        }
+      ]
     },
     {
       "type": "range",

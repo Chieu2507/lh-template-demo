@@ -51,7 +51,7 @@
   assign quick_add_trigger_attributes = quick_add_trigger_attributes | strip_newlines | strip
 %}
 
-<div class="{{ quick_add_class }}{% if color_scheme != blank %} {{ color_scheme }}{% endif %}" data-product-card-quick-add-overlay-wrapper>
+<div class="{{ quick_add_class }}{% if color_scheme != blank %} {{ color_scheme }}{% endif %}" data-product-card-quick-add-overlay-wrapper data-quick-add-style="{{ quick_add_style }}">
   {% if quick_add_style == 'icon' %}
     {% render 'theme-button',
       label: label,
@@ -70,8 +70,8 @@
       label: label,
       url: url,
       variant: 'primary',
-      aria_label: quick_add_accessible_label,
       icon: 'cart',
+      aria_label: quick_add_accessible_label,
       loading_dots: true,
       motion_speed: quick_add_motion_speed,
       attributes: quick_add_trigger_attributes,

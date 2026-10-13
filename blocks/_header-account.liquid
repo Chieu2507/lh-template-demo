@@ -28,7 +28,6 @@
 %}
 
 {% if shop.customer_accounts_enabled %}
-  {% if customer %}
   <shopify-account class="{{ account_class }}" menu="customer-account-main-menu" {{ block.shopify_attributes }}>
     <span slot="signed-out-avatar" class="header-account__avatar" aria-label="{{ account_label | escape }}">
       {% unless account_type == 'text' %}<span class="icon" aria-hidden="true">
@@ -38,28 +37,6 @@
       <span class="header-account__mobile-label">{{ 'customers.login.submit' | t }}</span>
     </span>
   </shopify-account>
-  {% else %}
-    <a class="{{ account_class }}" href="{{ routes.account_login_url }}" aria-label="{{ account_label | escape }}" data-deferred-account {{ block.shopify_attributes }}>
-    <span slot="signed-out-avatar" class="header-account__avatar" aria-label="{{ account_label | escape }}">
-      {% unless account_type == 'text' %}<span class="icon" aria-hidden="true">
-        {% render 'header-icon', icon: 'user' %}
-      </span>{% endunless %}
-      {% unless account_type == 'icon' %}<span class="header-action__label {{ account_typography_class }}">{{ account_label | escape }}</span>{% endunless %}
-      <span class="header-account__mobile-label">{{ 'customers.login.submit' | t }}</span>
-    </span>
-      <template data-deferred-account-template>
-  <shopify-account class="{{ account_class }}" menu="customer-account-main-menu" >
-    <span slot="signed-out-avatar" class="header-account__avatar" aria-label="{{ account_label | escape }}">
-      {% unless account_type == 'text' %}<span class="icon" aria-hidden="true">
-        {% render 'header-icon', icon: 'user' %}
-      </span>{% endunless %}
-      {% unless account_type == 'icon' %}<span class="header-action__label {{ account_typography_class }}">{{ account_label | escape }}</span>{% endunless %}
-      <span class="header-account__mobile-label">{{ 'customers.login.submit' | t }}</span>
-    </span>
-  </shopify-account>
-      </template>
-    </a>
-  {% endif %}
 {% else %}
   <a class="{{ account_class }}" href="{{ routes.account_login_url }}" aria-label="{{ account_label | escape }}" {{ block.shopify_attributes }}>
     {% unless account_type == 'text' %}<span class="icon" aria-hidden="true">
@@ -79,7 +56,7 @@
     --shopify-account-radius-input: var(--input-radius);
   }
 
-  /* Keep the deferred Account trigger sized like its original header link. */
+  /* Keep the native Account trigger aligned with the header actions. */
   shopify-account.header-account::part(signed-out-avatar) {
     min-width: 0;
     font: inherit;
