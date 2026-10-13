@@ -297,7 +297,8 @@
     "inventory_urgent_stock_short": "🔥 Hurry up!",
     "inventory_urgent_stock": "🔥 Hurry up! Only {{ count }} items left in stock.",
     "inventory_low_stock_message": "Low stock: Only {{ count }} items left in stock.",
-    "inventory_out_of_stock": "Out of stock"
+    "inventory_out_of_stock": "Out of stock",
+    "inventory_available_quantity": "Available: {{ count }}"
   },
   "collection": {
     "apply_filters": "Apply ({{ count }})",
@@ -415,7 +416,7 @@
     "icon_text_cards": "Icon text cards"
   },
   "marquee": {
-  "copied": "Coupon code copied",
-  "copy_failed": "Could not copy. Select and copy the code."
-}
+    "copied": "Coupon code copied",
+    "copy_failed": "Could not copy. Select and copy the code."
+  }
 }

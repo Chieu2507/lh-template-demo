@@ -1,0 +1,49 @@
+{% doc %}
+  Collection card inventory, supplied by its parent product context. Untracked
+  variants show a status only; tracked quantities use the actual Shopify stock.
+{% enddoc %}
+{% assign stock_variant = closest.product.selected_or_first_available_variant %}
+{% if stock_variant != blank %}
+  <div class="product-card-stock" style="{% if block.settings.bar_color != blank %}--card-stock-color:{{ block.settings.bar_color }};{% endif %}{% if block.settings.bar_background != blank %}--card-stock-background:{{ block.settings.bar_background }};{% endif %}" {{ block.shopify_attributes }}>
+    {% render 'product-inventory-status', variant: stock_variant, display_mode: 'available_count', low_stock_threshold: block.settings.stock_capacity, show_progress_bar: block.settings.show_progress_bar %}
+  </div>
+{% endif %}
+{% stylesheet %}
+.product-card-stock{font-size:var(--font-body-xs);line-height:1.5;margin-block-end:10px;}
+.product-card-stock .product-inventory__status{display:block;}
+.product-card-stock .product-inventory__bar{height:4px;border-radius:var(--radius-pill);background:var(--card-stock-background,var(--background-component-color));margin-block-start:4px;overflow:hidden;}
+.product-card-stock .product-inventory__bar-fill{display:block;height:100%;border-radius:inherit;background:var(--card-stock-color,var(--accent-color));}
+{% endstylesheet %}
+{% schema %}
+{
+  "name": "Product availability",
+  "tag": null,
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "show_progress_bar",
+      "label": "Show stock bar",
+      "default": true
+    },
+    {
+      "type": "range",
+      "id": "stock_capacity",
+      "label": "Stock bar capacity",
+      "min": 10,
+      "max": 200,
+      "step": 2,
+      "default": 100
+    },
+    {
+      "type": "color",
+      "id": "bar_color",
+      "label": "Bar color"
+    },
+    {
+      "type": "color",
+      "id": "bar_background",
+      "label": "Bar background"
+    }
+  ]
+}
+{% endschema %}

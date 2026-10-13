@@ -5,6 +5,8 @@
 
   @param {product} product - Product to render
   @param {string} [card_style] - Optional local Standard/Card style; blank inherits Theme Settings
+  @param {string} [card_corner_radius] - Local card-container radius
+  @param {number} [content_padding] - Card content padding; 0 inherits
   @param {string} [media_corner_radius] - Optional local radius preset; inherit uses Theme Settings
   @param {string} [class] - Additional classes
   @param {string} [color_type] - Inherit or override the card color scheme
@@ -216,6 +218,11 @@
 %}
 
 {% capture product_card_local_style %}
+  {% case card_corner_radius %}
+    {% when 'radius_16', 'radius_24' %}--card-radius:var(--radius-{{ card_corner_radius | remove: 'radius_' }});
+    {% when 'square' %}--card-radius:var(--radius-square);
+  {% endcase %}
+  {% if content_padding > 0 and content_padding <= 40 %}--product-card-content-spacing:{{ content_padding }}px;{% endif %}
   {% case media_corner_radius %}
     {% when 'radius_2', 'radius_4', 'radius_6', 'radius_8', 'radius_12', 'radius_16', 'radius_24', 'radius_32' %}
       --product-card-media-radius: var(--radius-{{ media_corner_radius | remove: 'radius_' }});
