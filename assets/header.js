@@ -16,6 +16,19 @@
   const mobileMegaMenuOrigins = new Map();
   let lastScrollY = window.scrollY;
   let frameId = null;
+  const stickyHeightStyle = document.createElement('style');
+  stickyHeightStyle.dataset.headerStickyOffset = '';
+  document.head.append(stickyHeightStyle);
+  let publishedStickyHeight = null;
+  const publishStickyHeight = (height) => {
+    const root = document.documentElement;
+    root.classList.toggle('header-sticky', height > 0);
+    if (height > 0 && height !== publishedStickyHeight) {
+      stickyHeightStyle.textContent = `html.header-sticky { --header-height: ${height}px; }`;
+      publishedStickyHeight = height;
+    }
+  };
+
 
   const getHeaderRoot = (headerTop) => headerTop.closest('.shopify-section') || headerTop;
 
@@ -229,11 +242,6 @@
       state.bottomSpacer.style.height = window.innerWidth >= 992 ? `${bottom.offsetHeight}px` : '0px';
     }
     header.style.setProperty('--header-hide-height', height);
-    if (stickyType === 'none') {
-      document.documentElement.style.removeProperty('--header-height');
-    } else {
-      document.documentElement.style.setProperty('--header-height', height);
-    }
     updateStickyHeaderHeight(header, stickyType);
   };
 
@@ -265,10 +273,7 @@
     const expandedBottom = headerStates.get(header)?.bottomSpacer && bottom && !bottom.hasAttribute('data-collapsed') && window.innerWidth >= 992 ? bottom.offsetHeight : 0;
     const isPinned = headerStates.get(header)?.isPinned === true;
     const stickyHeight = stickyType === 'none' || isHidden || !isPinned ? 0 : target.offsetHeight + expandedBottom;
-    const height = `${stickyHeight}px`;
-
-    header.style.setProperty('--header-sticky-height', height);
-    document.documentElement.style.setProperty('--header-sticky-height', height);
+    publishStickyHeight(stickyHeight);
   };
 
   const synchronizeStickyType = (header, headerState) => {
@@ -1090,8 +1095,7 @@
       const remainingStickyHeader = Array.from(headerStates.values()).find(({ stickyType }) => stickyType !== 'none');
       if (remainingStickyHeader) updateHeaderHeight(remainingStickyHeader.header, remainingStickyHeader.stickyType);
       else {
-        document.documentElement.style.removeProperty('--header-height');
-        document.documentElement.style.setProperty('--header-sticky-height', '0px');
+        publishStickyHeight(0);
       }
     });
   };

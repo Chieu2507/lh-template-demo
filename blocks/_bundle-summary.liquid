@@ -841,7 +841,7 @@
     }
 
     .bundle-summary[data-mobile-sticky='true'][data-mobile-expanded='true'] .bundle-summary__surface {
-      height: min(var(--bundle-summary-expanded-height, 100dvh), calc(100dvh - max(var(--header-sticky-height, 0px), 56px)));
+      height: min(var(--bundle-summary-expanded-height, 100dvh), calc(100dvh - max(var(--header-height, 0px), 56px)));
     }
 
     .bundle-summary[data-mobile-sticky='true'][data-mobile-expanded='true'] .bundle-summary__inner {
@@ -961,12 +961,12 @@
 
   @media (min-width: 768px) {
     .bundle-summary__surface {
-      max-height: calc(100vh - var(--header-sticky-height, 0px) - var(--sticky-offset-spacing, 16px) - var(--sticky-offset-spacing, 16px));
+      max-height: calc(100vh - var(--header-height, 0px) - var(--sticky-offset-spacing, 16px) - var(--sticky-offset-spacing, 16px));
     }
 
     @supports (height: 100svh) {
       .bundle-summary__surface {
-        max-height: calc(100svh - var(--header-sticky-height, 0px) - var(--sticky-offset-spacing, 16px) - var(--sticky-offset-spacing, 16px));
+        max-height: calc(100svh - var(--header-height, 0px) - var(--sticky-offset-spacing, 16px) - var(--sticky-offset-spacing, 16px));
       }
     }
   }

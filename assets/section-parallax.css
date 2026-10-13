@@ -80,7 +80,7 @@
   }
   .parallax-section__inner > .block-header {
     position: sticky;
-    top: calc(var(--header-sticky-height, 0px) + 2.4rem);
+    top: calc(var(--header-height, 0px) + 2.4rem);
   }
   .parallax-section__grid {
     --parallax-columns: 3;

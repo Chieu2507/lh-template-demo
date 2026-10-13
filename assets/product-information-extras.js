@@ -113,9 +113,8 @@ class ProductStickyLayout extends HTMLElement {
     const delta = window.scrollY - this.scrollY;
     this.scrollY = window.scrollY;
     const enabled = this.desktop.matches && this.hasAttribute('data-sticky-enabled');
-    // --header-height is the measured height, even while scroll-up headers are hidden.
-    const headerVisible = Boolean(this.header?.isConnected && this.header.dataset.stickyType !== 'none' &&
-      !this.header.classList.contains('header--is-hidden'));
+    // The shared offset only exists while the header is pinned and visible.
+    const headerVisible = document.documentElement.classList.contains('header-sticky');
     const headerHeight = headerVisible
       ? parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--header-height')) || 0
       : 0;
