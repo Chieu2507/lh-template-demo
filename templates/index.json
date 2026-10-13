@@ -937,18 +937,10 @@
               "settings": {
                 "card_style": "standard",
                 "media_corner_radius": "radius_16",
-                "show_rating": true,
                 "color_type": "inherit",
                 "color_scheme": "scheme-1"
               },
-              "blocks": {
-                "rating": {
-                  "type": "product-rating",
-                  "static": true,
-                  "settings": {}
-                }
-              },
-              "block_order": []
+              "blocks": {}
             }
           },
           "block_order": []
@@ -4416,17 +4408,10 @@
               "settings": {
                 "card_style": "standard",
                 "media_corner_radius": "radius_16",
-                "show_rating": true,
                 "color_type": "inherit",
                 "color_scheme": "scheme-1"
               },
-              "blocks": {
-                "rating": {
-                  "type": "product-rating",
-                  "static": true,
-                  "settings": {}
-                }
-              }
+              "blocks": {}
             }
           },
           "block_order": []
@@ -5057,19 +5042,10 @@
           "settings": {
             "collection": "premium-dog-kibble-pawvera",
             "products_to_show": 6,
-            "show_rating": true,
             "show_quick_add": true,
             "show_quick_add_mobile": false
           },
-          "blocks": {
-            "rating": {
-              "type": "product-rating",
-              "static": true,
-              "settings": {},
-              "blocks": {}
-            }
-          },
-          "block_order": []
+          "blocks": {}
         }
       },
       "disabled": true,
@@ -6518,7 +6494,6 @@
               "settings": {
                 "card_style": "card",
                 "media_corner_radius": "square",
-                "show_rating": true,
                 "color_type": "color_scheme",
                 "color_scheme": "scheme-1",
                 "card_corner_radius": "radius_24",
@@ -6526,11 +6501,6 @@
                 "show_inventory": true
               },
               "blocks": {
-                "rating": {
-                  "type": "product-rating",
-                  "static": true,
-                  "settings": {}
-                },
                 "inventory": {
                   "type": "_product-card-inventory",
                   "static": true,
@@ -6560,7 +6530,6 @@
               "settings": {
                 "card_style": "card",
                 "media_corner_radius": "square",
-                "show_rating": true,
                 "color_type": "color_scheme",
                 "color_scheme": "scheme-1",
                 "card_corner_radius": "radius_24",
@@ -6568,11 +6537,6 @@
                 "show_inventory": true
               },
               "blocks": {
-                "rating": {
-                  "type": "product-rating",
-                  "static": true,
-                  "settings": {}
-                },
                 "inventory": {
                   "type": "_product-card-inventory",
                   "static": true,
@@ -6602,7 +6566,6 @@
               "settings": {
                 "card_style": "card",
                 "media_corner_radius": "square",
-                "show_rating": true,
                 "color_type": "color_scheme",
                 "color_scheme": "scheme-1",
                 "card_corner_radius": "radius_24",
@@ -6610,11 +6573,6 @@
                 "show_inventory": true
               },
               "blocks": {
-                "rating": {
-                  "type": "product-rating",
-                  "static": true,
-                  "settings": {}
-                },
                 "inventory": {
                   "type": "_product-card-inventory",
                   "static": true,
@@ -6644,7 +6602,6 @@
               "settings": {
                 "card_style": "card",
                 "media_corner_radius": "square",
-                "show_rating": true,
                 "color_type": "color_scheme",
                 "color_scheme": "scheme-1",
                 "card_corner_radius": "radius_24",
@@ -6652,11 +6609,6 @@
                 "show_inventory": true
               },
               "blocks": {
-                "rating": {
-                  "type": "product-rating",
-                  "static": true,
-                  "settings": {}
-                },
                 "inventory": {
                   "type": "_product-card-inventory",
                   "static": true,
@@ -7187,7 +7139,6 @@
           "settings": {
             "collection": "road-running-strideo",
             "products_to_show": 8,
-            "show_rating": false,
             "show_quick_add": false,
             "show_quick_add_mobile": false,
             "card_style": "standard",
@@ -7207,14 +7158,7 @@
             "price_weight": "700",
             "media_corner_radius": "radius_16"
           },
-          "blocks": {
-            "rating": {
-              "type": "product-rating",
-              "static": true,
-              "settings": {}
-            }
-          },
-          "block_order": []
+          "blocks": {}
         }
       },
       "name": "Torvex — Complete your setup",
