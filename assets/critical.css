@@ -2069,7 +2069,7 @@ legend {
 
 .product-card__quick-add form {
   display: flex;
-  justify-content: flex-end;
+  justify-content: flex-start;
 }
 
 .product-card__quick-add--full .product-card__quick-add-button {
@@ -3098,9 +3098,9 @@ legend {
   }
 
   .product-card--quick-add-mobile .product-card__quick-add {
-    right: 12px;
+    right: auto;
     bottom: 12px;
-    left: auto;
+    left: 12px;
     width: auto;
     opacity: 1;
     pointer-events: auto;
@@ -3118,7 +3118,7 @@ legend {
 
   .product-card--quick-add-mobile .product-card__quick-add[data-quick-add-style="icon"] { width: 36px; }
 
-  .product-card--quick-add-mobile .product-card__quick-add--full[data-quick-add-style="text"] { left: 12px; }
+  .product-card--quick-add-mobile .product-card__quick-add--full[data-quick-add-style="text"] { right: 12px; }
 
   .product-card--quick-add-mobile .product-card__quick-add-button--text {
     min-height: 36px;
