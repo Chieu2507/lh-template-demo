@@ -5,12 +5,7 @@
 <article class="testimonial-product-card swiper-slide color-scheme {{ block.settings.color_scheme }}" style="--review-padding: {{ block.settings.padding }}px; --review-gap: {{ block.settings.gap }}px;" {{ block.shopify_attributes }}>
   {% content_for 'blocks' %}
 </article>
-{% stylesheet %}
-.testimonial-product-card { display: flex; flex-direction: column; align-items: stretch; gap: var(--review-gap, 20px); padding: var(--review-padding, 24px); min-width: 0; height: auto; border-radius: 8px; background: var(--background-color); --flex-align: start; --flex-align-mobile: start; --text-align: left; }
-.testimonial-product-card > * { min-width: 0; }
-.testimonial-product-card .text-block { font-weight: 500; }
-.testimonial-product-card .icon-block { color: #ff9623; }
-{% endstylesheet %}
+{% render 'runtime-stylesheet', filename: 'component-runtime-blocks-testimonial-product-card.css', section_index: section.index %}
 
 {% schema %}
 {

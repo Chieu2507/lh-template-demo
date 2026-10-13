@@ -1,0 +1,4 @@
+.product-share { display: flex; flex-wrap: wrap; align-items: center; gap: 16px; color: var(--heading-color); }
+.product-share__links { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; }
+.product-share .product-share__action { display: inline-flex; align-items: center; justify-content: center; width: 32px; height: 32px; min-width: 32px; min-height: 32px; padding: 8px; border: 0; border-radius: var(--button-radius); }
+.product-share__action img { display: block; flex: 0 0 auto; }

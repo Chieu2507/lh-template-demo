@@ -38,22 +38,7 @@
   <div class="scroll-to-block scroll-to-block--empty" {{ block.shopify_attributes }}></div>
 {% endif %}
 
-{% stylesheet %}
-  .scroll-to-block {
-    display: block;
-    width: fit-content;
-    max-width: 100%;
-  }
-
-  .scroll-to-block--width-fill,
-  .scroll-to-block--width-fill .scroll-to-block__button {
-    width: 100%;
-  }
-
-  .scroll-to-block--empty {
-    min-height: 1px;
-  }
-{% endstylesheet %}
+{% render 'runtime-stylesheet', filename: 'component-runtime-blocks-scroll-to.css', section_index: section.index %}
 
 {% schema %}
 {

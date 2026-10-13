@@ -13,21 +13,7 @@
   {% content_for 'blocks' %}
 </div>
 
-{% stylesheet %}
-  .location-list-block {
-    display: flex;
-    width: 100%;
-    min-width: 0;
-    flex-direction: column;
-    gap: var(--location-list-block-gap, 0px);
-  }
-
-  @media (max-width: 767.98px) {
-    .location-list-block {
-      gap: var(--location-list-block-gap-mobile, var(--location-list-block-gap, 0px));
-    }
-  }
-{% endstylesheet %}
+{% render 'runtime-stylesheet', filename: 'component-runtime-blocks-location-list.css', section_index: section.index %}
 
 {% schema %}
 {

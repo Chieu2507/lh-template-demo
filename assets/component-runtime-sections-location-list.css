@@ -1,0 +1,81 @@
+.location-list {
+    width: 100%;
+    min-width: 0;
+  }
+
+  .location-list__spacing {
+    width: 100%;
+    padding-top: var(--location-list-padding-top);
+    padding-right: var(--location-list-padding-right);
+    padding-bottom: var(--location-list-padding-bottom);
+    padding-left: var(--location-list-padding-left);
+  }
+
+  .location-list__container,
+  .location-list__content,
+  .location-list__stores,
+  .location-list__media {
+    min-width: 0;
+  }
+
+  .location-list__container--no-padding,
+  .container.full-width.location-list__container--no-padding {
+    padding-inline: 0;
+  }
+
+  .location-list__content {
+    display: grid;
+    grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+    gap: var(--location-list-gap);
+    align-items: stretch;
+  }
+
+  .location-list__content > .group { grid-column: 1 / -1; min-width: 0; }
+  .location-list__content > .location-list-block { grid-column: 1; }
+  .location-list__content > .location-list__media { grid-column: 2; }
+
+  .location-list__media {
+    aspect-ratio: 3 / 2;
+    overflow: hidden;
+    background: color-mix(in srgb, var(--background-color) 82%, var(--body-color));
+  }
+
+  .location-list__media img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    animation: location-list-image-active 360ms ease both;
+  }
+
+  @keyframes location-list-image-active {
+    from {
+      opacity: 0;
+      transform: scale(1.02);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+
+  @media (max-width: 767.98px) {
+    .location-list__content > .location-list__media { grid-column: 1; }
+    .location-list__spacing {
+      padding-top: var(--location-list-padding-top-mobile, var(--location-list-padding-top));
+      padding-right: var(--location-list-padding-right-mobile, var(--location-list-padding-right));
+      padding-bottom: var(--location-list-padding-bottom-mobile, var(--location-list-padding-bottom));
+      padding-left: var(--location-list-padding-left-mobile, var(--location-list-padding-left));
+    }
+
+    .location-list__content {
+      grid-template-columns: minmax(0, 1fr);
+      gap: var(--location-list-gap-mobile, var(--location-list-gap));
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .location-list__media img {
+      animation: none;
+    }
+  }

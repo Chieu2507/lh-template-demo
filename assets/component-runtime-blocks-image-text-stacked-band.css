@@ -1,0 +1,91 @@
+.images-with-text-scroll__item {
+    display: contents;
+  }
+
+  .images-with-text-scroll__item:not(:first-child) > .images-with-text-scroll__image {
+    opacity: 0;
+  }
+
+  .images-with-text-scroll__image {
+    grid-area: 1 / 1;
+    align-self: center;
+    width: var(--image-width, min(56vw, 27.5rem));
+    max-width: var(--images-with-text-scroll-image-max-width, 100%);
+    height: var(--image-height, auto);
+    object-fit: contain;
+    object-position: center;
+    position: sticky;
+    inset-block-start: calc(var(--content-padding, 0px) + var(--sticky-area-height, 0px));
+    opacity: 0;
+    transition: opacity 300ms ease;
+  }
+
+  .images-with-text-scroll__item.is-selected > .images-with-text-scroll__image {
+    opacity: 1;
+  }
+
+  .images-with-text-scroll__text {
+    grid-area: auto / 2;
+    align-self: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--images-with-text-scroll-gap, 16px);
+    width: 100%;
+    min-width: 0;
+    max-width: 375px;
+    margin-inline: auto;
+    text-align: center;
+    color: var(--images-with-text-scroll-text-color, inherit);
+  }
+
+  .images-with-text-scroll__tag,
+  .images-with-text-scroll__description {
+    color: var(--images-with-text-scroll-text-color, inherit);
+  }
+
+  .images-with-text-scroll__heading {
+    width: 100%;
+    margin: 0;
+    color: var(--images-with-text-scroll-heading-color, inherit);
+  }
+
+  .images-with-text-scroll__description p,
+  .images-with-text-scroll__tag p {
+    margin: 0;
+  }
+
+  @media (max-width: 999px) {
+    .images-with-text-scroll__heading {
+      font-size: var(--images-with-text-scroll-heading-size-mobile, inherit);
+    }
+
+    .images-with-text-scroll__tag,
+    .images-with-text-scroll__description {
+      font-size: var(--images-with-text-scroll-text-size-mobile, inherit);
+    }
+
+    .images-with-text-scroll__image {
+      position: relative;
+      inset-block-start: auto;
+      justify-self: center;
+      width: var(--image-width, min(100%, 27.5rem));
+      max-width: var(--images-with-text-scroll-mobile-image-max-width, 100%);
+      height: auto;
+      aspect-ratio: var(--images-with-text-scroll-mobile-image-ratio, var(--images-with-text-scroll-master-image-ratio, 1));
+      opacity: 1 !important;
+    }
+
+    .images-with-text-scroll__text {
+      grid-area: auto;
+      min-width: 0;
+      gap: var(--images-with-text-scroll-gap-mobile, var(--images-with-text-scroll-gap, 16px));
+      padding-block: 2rem;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .images-with-text-scroll__image {
+      transition: none;
+    }
+  }

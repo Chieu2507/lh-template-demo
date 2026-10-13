@@ -1,0 +1,2 @@
+.marquee-divider{flex:0 0 auto;width:var(--mq-rule-length);min-width:24px;max-width:100%;} .marquee-divider hr{margin:0;border:0;border-top:var(--mq-rule-thickness) solid var(--mq-rule-color,var(--border-color));}.marquee-divider{padding-top:var(--mq-pad-top,0px);padding-bottom:var(--mq-pad-bottom,0px);}
+@media(max-width:767.98px){.marquee-divider{padding-top:var(--mq-pad-top-mobile,var(--mq-pad-top,0px));padding-bottom:var(--mq-pad-bottom-mobile,var(--mq-pad-bottom,0px));}}

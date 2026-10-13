@@ -1,0 +1,190 @@
+.marquee-item-layout {
+    /* Keep layout overrides local when groups are nested inside other groups. */
+    --group-height: initial;
+    --group-gap-desktop: initial;
+    --group-gap-mobile: initial;
+    --group-padding-top: initial;
+    --group-padding-right: initial;
+    --group-padding-bottom: initial;
+    --group-padding-left: initial;
+    --group-padding-top-mobile: initial;
+    --group-padding-right-mobile: initial;
+    --group-padding-bottom-mobile: initial;
+    --group-padding-left-mobile: initial;
+    --group-background-color: initial;
+    --group-background-image: initial;
+    --group-border-color: var(--border-color);
+    --group-overlay-color: transparent;
+    --backdrop-blur: 0px;
+    --group-align: start;
+    --group-align-mobile: var(--group-align);
+    --group-justify: flex-start;
+    --group-justify-mobile: var(--group-justify);
+    --group-position: flex-start;
+    --flex-align: var(--group-align);
+    --flex-align-mobile: var(--group-align-mobile);
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    align-items: var(--group-align);
+    justify-content: var(--group-position);
+    gap: var(--group-gap-desktop, 16px);
+    height: var(--group-height, fit-content);
+    min-width: 0;
+    padding-top: var(--group-padding-top, 0px);
+    padding-right: var(--group-padding-right, 0px);
+    padding-bottom: var(--group-padding-bottom, 0px);
+    padding-left: var(--group-padding-left, 0px);
+    border: 0 solid var(--group-border-color, var(--border-color));
+    border-radius: var(--group-radius, var(--radius-square));
+    background-color: var(--group-background-color, var(--background-color));
+    background-image:
+      var(--group-overlay-background, linear-gradient(transparent, transparent)),
+      var(--group-background-image, none);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    color: var(--body-color);
+    text-align: var(--group-align);
+    box-shadow: none;
+    position: relative;
+    isolation: isolate;
+  }
+
+  .marquee-item-layout.backdrop-blur {
+    isolation: auto;
+  }
+
+  .marquee-item-layout--horizontal {
+    flex-direction: row;
+    align-items: var(--group-position);
+    justify-content: var(--group-justify);
+  }
+
+  .marquee-item-layout--horizontal > .marquee-item-layout--width-fill {
+    flex: 1 1 0%;
+  }
+
+  .marquee-item-layout--align-start {
+    --group-align: start;
+    --group-justify: flex-start;
+  }
+
+  .marquee-item-layout--align-center {
+    --group-align: center;
+    --group-justify: center;
+  }
+
+  .marquee-item-layout--align-end {
+    --group-align: end;
+    --group-justify: flex-end;
+  }
+
+  .marquee-item-layout--position-top {
+    --group-position: flex-start;
+  }
+
+  .marquee-item-layout--position-center {
+    --group-position: center;
+  }
+
+  .marquee-item-layout--position-bottom {
+    --group-position: flex-end;
+  }
+
+  .marquee-item-layout--height-fill {
+    --group-height: 100%;
+  }
+
+  .marquee-item-layout--radius-square {
+    --group-radius: var(--radius-square);
+  }
+
+  .marquee-item-layout--radius-slightly_rounded {
+    --group-radius: var(--radius-slight);
+  }
+
+  .marquee-item-layout--radius-rounded {
+    --group-radius: var(--radius-rounded);
+  }
+  .marquee-item-layout--radius-radius_2 { --group-radius: var(--radius-2); }
+  .marquee-item-layout--radius-radius_4 { --group-radius: var(--radius-4); }
+  .marquee-item-layout--radius-radius_6 { --group-radius: var(--radius-6); }
+  .marquee-item-layout--radius-radius_8 { --group-radius: var(--radius-8); }
+  .marquee-item-layout--radius-radius_12 { --group-radius: var(--radius-12); }
+  .marquee-item-layout--radius-radius_16 { --group-radius: var(--radius-16); }
+  .marquee-item-layout--radius-radius_24 { --group-radius: var(--radius-24); }
+  .marquee-item-layout--radius-radius_32 { --group-radius: var(--radius-32); }
+
+  .marquee-item-layout--radius-pill {
+    --group-radius: var(--radius-pill);
+  }
+
+  .marquee-item-layout--border-solid,
+  .marquee-item-layout--border-dashed,
+  .marquee-item-layout--border-dotted,
+  .marquee-item-layout--border-double {
+    border-width: var(--shape-border-width, 1px);
+  }
+
+  .marquee-item-layout--border-solid {
+    border-style: solid;
+  }
+
+  .marquee-item-layout--border-dashed {
+    border-style: dashed;
+  }
+
+  .marquee-item-layout--border-dotted {
+    border-style: dotted;
+  }
+
+  .marquee-item-layout--border-double {
+    border-style: double;
+  }
+
+  .marquee-item-layout--shadow-small {
+    box-shadow: 0 0.25rem 0.75rem color-mix(in srgb, var(--shadow-color) 12%, transparent);
+  }
+
+  .marquee-item-layout--shadow-medium {
+    box-shadow: 0 0.5rem 1.25rem color-mix(in srgb, var(--shadow-color) 18%, transparent);
+  }
+
+  .marquee-item-layout--shadow-large {
+    box-shadow: 0 1rem 2rem color-mix(in srgb, var(--shadow-color) 24%, transparent);
+  }
+
+  .marquee-item-layout > * {
+    min-width: 0;
+  }
+
+  @media (max-width: 767.98px) {
+    .marquee-item-layout {
+      --flex-align: var(--group-align-mobile, var(--group-align));
+      gap: var(--group-gap-mobile, 12px);
+      padding-top: var(--group-padding-top-mobile, var(--group-padding-top, 0px));
+      padding-right: var(--group-padding-right-mobile, var(--group-padding-right, 0px));
+      padding-bottom: var(--group-padding-bottom-mobile, var(--group-padding-bottom, 0px));
+      padding-left: var(--group-padding-left-mobile, var(--group-padding-left, 0px));
+    }
+
+    .marquee-item-layout--vertical {
+      align-items: var(--group-align-mobile, var(--group-align));
+      justify-content: var(--group-position, flex-start);
+      text-align: var(--group-align-mobile, var(--group-align));
+    }
+
+    .marquee-item-layout--horizontal {
+      align-items: var(--group-position, flex-start);
+      justify-content: var(--group-justify-mobile, var(--group-justify));
+      text-align: var(--group-align-mobile, var(--group-align));
+    }
+
+    .marquee-item-layout--horizontal.marquee-item-layout--mobile-vertical {
+      flex-direction: column;
+      align-items: var(--group-align-mobile, var(--group-align));
+      justify-content: var(--group-justify-mobile, flex-start);
+      text-align: var(--group-align-mobile, var(--group-align));
+    }
+  }

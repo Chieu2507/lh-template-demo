@@ -1,0 +1,28 @@
+.image-comparison-custom {
+    width: 100%;
+    min-width: 0;
+  }
+
+  .image-comparison-custom__spacing {
+    width: 100%;
+    min-width: 0;
+  }
+
+  .image-comparison-custom__container,
+  .image-comparison-custom__content,
+  .image-comparison-custom__content > * {
+    min-width: 0;
+  }
+
+  .image-comparison-custom__container {
+    position: relative;
+  }
+
+  .image-comparison-custom__spacing--no-padding,
+  .image-comparison-custom__spacing .container.image-comparison-custom__container--no-padding {
+    padding-inline: 0;
+  }
+
+  .image-comparison-custom__content--direction-horizontal > * {
+    max-width: 100%;
+  }
