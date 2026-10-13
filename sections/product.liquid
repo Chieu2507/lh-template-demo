@@ -117,56 +117,7 @@
 
 <script type="module" src="{{ 'variant-picker.js' | asset_url }}"></script>
 
-{% stylesheet %}
-  .product {
-    display: grid;
-    grid-template-columns: minmax(0, 1fr);
-    gap: var(--layout-grid-gap);
-  }
-
-  .product-images {
-    display: grid;
-    gap: var(--layout-grid-gap);
-  }
-  .product-image {
-    min-width: 0;
-    overflow: hidden;
-  }
-  .product-image__image,
-  .product-image__placeholder {
-    width: 100%;
-  }
-  .product-info,
-  .product-form {
-    display: grid;
-    gap: 1rem;
-  }
-  .product-form .form__fields {
-    display: grid;
-    gap: 1rem;
-  }
-  .product-form {
-    align-content: start;
-  }
-  .product-form .shopify-payment-button {
-    margin-block-start: 0.5rem;
-  }
-  @media (min-width: 768px) {
-    .product {
-      grid-template-columns: minmax(0, 1.2fr) minmax(18rem, 0.8fr);
-      align-items: start;
-    }
-
-    .product-images {
-      grid-column: 1;
-      grid-row: 1 / span 2;
-    }
-    .product-info,
-    .product-form {
-      grid-column: 2;
-    }
-  }
-{% endstylesheet %}
+{% render 'runtime-stylesheet', filename: 'component-runtime-sections-product.css', section_index: section.index %}
 
 {% schema %}
 {

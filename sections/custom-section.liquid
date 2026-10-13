@@ -89,47 +89,7 @@
   </div>
 </div>
 
-{% stylesheet %}
-  .custom-section {
-    width: 100%;
-    min-width: 0;
-  }
-  .custom-section__spacing {
-    position: relative;
-    overflow: clip;
-    width: 100%;
-    padding-top: var(--custom-section-padding-top, 0px);
-    padding-bottom: var(--custom-section-padding-bottom, 0px);
-    background-color: var(--custom-section-background-color, var(--background-color));
-  }
-  .custom-section__container {
-    position: relative;
-    z-index: 1;
-  }
-  .custom-section__background {
-    position: absolute;
-    inset: 0;
-    z-index: 0;
-    overflow: hidden;
-    pointer-events: none;
-  }
-  .custom-section__background img {
-    display: block;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-  }
-  .custom-section__content {
-    min-width: 0;
-  }
-
-  @media (max-width: 767.98px) {
-    .custom-section__spacing {
-      padding-top: var(--custom-section-padding-top-mobile, var(--custom-section-padding-top, 0px));
-      padding-bottom: var(--custom-section-padding-bottom-mobile, var(--custom-section-padding-bottom, 0px));
-    }
-  }
-{% endstylesheet %}
+{% render 'runtime-stylesheet', filename: 'component-runtime-sections-custom-section.css', section_index: section.index %}
 
 {% schema %}
 {

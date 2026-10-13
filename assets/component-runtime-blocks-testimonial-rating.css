@@ -1,0 +1,3 @@
+.testimonial-rating { display: flex; gap: var(--testimonial-star-gap, 4px); align-items: center; }
+.testimonial-rating img { display: block; flex: 0 0 auto; }
+.testimonial-rating__star { display: block; flex: 0 0 18px; width: 18px; height: 18px; background: var(--testimonial-star-color); mask: var(--testimonial-star-mask) center / contain no-repeat; }

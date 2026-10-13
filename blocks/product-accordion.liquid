@@ -143,9 +143,7 @@
   </details>
 {% endif %}
 
-{% stylesheet %}
-  .product-accordion__summary .heading-text.heading-custom { font-size: var(--product-accordion-custom-heading-size, var(--font-heading-custom)); }
-{% endstylesheet %}
+{% render 'runtime-stylesheet', filename: 'component-runtime-blocks-product-accordion.css', section_index: section.index %}
 
 {% schema %}
 {

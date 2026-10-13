@@ -1,0 +1,20 @@
+.image-compare-block {
+    display: block;
+    min-width: 0;
+    padding-top: var(--image-compare-padding-top, 0px);
+    padding-bottom: var(--image-compare-padding-bottom, 0px);
+  }
+
+  @media (max-width: 767.98px) {
+    .image-compare-block--first-mobile {
+      order: -1;
+    }
+
+    .image-compare-block {
+      width: 100%;
+      max-width: 100%;
+      padding-top: var(--image-compare-padding-top-mobile, var(--image-compare-padding-top, 0px));
+      padding-bottom: var(--image-compare-padding-bottom-mobile, var(--image-compare-padding-bottom, 0px));
+    }
+
+  }

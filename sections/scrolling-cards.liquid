@@ -85,64 +85,7 @@
   </div>
 </div>
 
-{% stylesheet %}
-  .scrolling-cards-section {
-    width: 100%;
-    min-width: 0;
-  }
-
-  .scrolling-cards-section--custom .scrolling-cards-section__container {
-    max-width: var(--scrolling-cards-custom-width, 1200px);
-  }
-
-  .scrolling-cards-section__container {
-    position: relative;
-    z-index: 1;
-  }
-
-  .scrolling-cards {
-    display: flex;
-    flex-direction: column;
-    align-items: stretch;
-    width: 100%;
-    min-width: 0;
-    gap: var(--scrolling-cards-header-gap);
-  }
-
-  .scrolling-cards__header {
-    display: flex;
-    justify-content: center;
-    width: 100%;
-    min-width: 0;
-    text-align: center;
-  }
-
-  .scrolling-cards__header > .header-block {
-    margin-inline: auto;
-  }
-
-  .scrolling-cards__items {
-    display: flex;
-    flex-direction: column;
-    gap: var(--scrolling-cards-stack-gap, 150px);
-    width: 100%;
-    min-width: 0;
-  }
-
-  .scrolling-cards__items > .scrolling-card:not(:first-child) {
-    --scrolling-card-offset-top: -1px;
-  }
-
-  @media (max-width: 767.98px) {
-    .scrolling-cards {
-      gap: var(--scrolling-cards-header-gap-mobile, var(--scrolling-cards-header-gap, 60px));
-    }
-
-    .scrolling-cards__items {
-      gap: var(--scrolling-cards-stack-gap-mobile, 120px);
-    }
-  }
-{% endstylesheet %}
+{% render 'runtime-stylesheet', filename: 'component-runtime-sections-scrolling-cards.css', section_index: section.index %}
 
 {% schema %}
 {

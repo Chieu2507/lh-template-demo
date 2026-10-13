@@ -12,11 +12,7 @@
 {% endif %}
 {% # theme-check-enable UndefinedObject %}
 
-{% stylesheet %}
-  .blog-pagination { display: flex; justify-content: center; padding-top: var(--blog-pagination-padding-top, 0px); padding-right: var(--blog-pagination-padding-right, 0px); padding-bottom: var(--blog-pagination-padding-bottom, 0px); padding-left: var(--blog-pagination-padding-left, 0px); }
-  .blog-pagination a, .blog-pagination span { display: inline-flex; align-items: center; justify-content: center; min-width: 2.5rem; min-height: 2.5rem; padding-inline: 0.75rem; color: inherit; }
-  .blog-pagination--empty { opacity: 0.65; font-size: 0.875rem; }
-{% endstylesheet %}
+{% render 'runtime-stylesheet', filename: 'component-runtime-blocks-pagination.css', section_index: section.index %}
 
 {% schema %}
 {

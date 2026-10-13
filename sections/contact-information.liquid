@@ -54,68 +54,7 @@
   </div>
 </div>
 
-{% stylesheet %}
-  .contact-information {
-    width: 100%;
-  }
-
-  .contact-information__spacing {
-    position: relative;
-    overflow: hidden;
-    width: 100%;
-    padding-top: var(--contact-information-padding-top, 0px);
-    padding-bottom: var(--contact-information-padding-bottom, 0px);
-    background-color: var(--contact-information-background-color, var(--background-color));
-  }
-
-  .contact-information__container {
-    position: relative;
-    z-index: 1;
-  }
-
-  .contact-information__background {
-    position: absolute;
-    inset: 0;
-    z-index: 0;
-    overflow: hidden;
-    pointer-events: none;
-  }
-
-  .contact-information__background img {
-    display: block;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-  }
-
-  .contact-information__grid {
-    display: grid;
-    grid-template-columns: repeat(var(--contact-information-columns, 4), minmax(0, 1fr));
-    align-items: stretch;
-    gap: var(--contact-information-gap, 0px);
-  }
-
-  .contact-information__grid > .group {
-    min-width: 0;
-    min-height: 170px;
-  }
-
-  @media (max-width: 767.98px) {
-    .contact-information__spacing {
-      padding-top: var(--contact-information-padding-top-mobile, var(--contact-information-padding-top, 0px));
-      padding-bottom: var(--contact-information-padding-bottom-mobile, var(--contact-information-padding-bottom, 0px));
-    }
-
-    .contact-information__grid {
-      grid-template-columns: 1fr;
-    }
-
-    .contact-information__grid > .group {
-      min-height: 150px;
-    }
-
-  }
-{% endstylesheet %}
+{% render 'runtime-stylesheet', filename: 'component-runtime-sections-contact-information.css', section_index: section.index %}
 
 {% schema %}
 {

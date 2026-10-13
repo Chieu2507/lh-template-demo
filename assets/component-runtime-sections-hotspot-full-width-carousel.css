@@ -1,0 +1,274 @@
+.hotspot-full-width-carousel {
+    position: relative;
+    isolation: isolate;
+    width: 100%;
+    min-width: 0;
+    overflow: clip;
+    padding-block: var(--hotspot-carousel-padding-top, 0px) var(--hotspot-carousel-padding-bottom, 0px);
+    background: var(--hotspot-carousel-background, var(--background-color));
+    --page-margin-current: var(--page-margin-desktop);
+  }
+
+  .hotspot-full-width-carousel__background {
+    z-index: -1;
+    pointer-events: none;
+  }
+
+  .hotspot-full-width-carousel__container {
+    position: relative;
+    min-width: 0;
+  }
+
+  .hotspot-full-width-carousel__header {
+    min-width: 0;
+  }
+
+  .hotspot-full-width-carousel__header > .block-header {
+    width: 100%;
+  }
+
+  .hotspot-full-width-carousel--width-page .hotspot-full-width-carousel__container {
+    max-width: var(--page-width);
+    padding-inline: var(--page-margin-current);
+    margin-inline: auto;
+  }
+
+  .hotspot-full-width-carousel--width-full .hotspot-full-width-carousel__container {
+    width: calc(100% - (var(--page-margin-desktop) * 2));
+    margin-inline: auto;
+  }
+
+  .hotspot-full-width-carousel__viewport {
+    position: relative;
+    width: 100%;
+    height: var(--hotspot-carousel-height, auto);
+    overflow: hidden;
+  }
+
+  .hotspot-full-width-carousel--desktop-adapt {
+    --hotspot-carousel-height: auto;
+  }
+
+  .hotspot-full-width-carousel--desktop-extra_small {
+    --hotspot-carousel-height: 42rem;
+  }
+
+  .hotspot-full-width-carousel--desktop-small {
+    --hotspot-carousel-height: 56rem;
+  }
+
+  .hotspot-full-width-carousel--desktop-medium {
+    --hotspot-carousel-height: 64rem;
+  }
+
+  .hotspot-full-width-carousel--desktop-large {
+    --hotspot-carousel-height: 90rem;
+  }
+
+  .hotspot-full-width-carousel--desktop-extra_large {
+    --hotspot-carousel-height: 108rem;
+  }
+
+  .hotspot-full-width-carousel--desktop-full_screen {
+    --hotspot-carousel-height: 100svh;
+  }
+
+  .hotspot-full-width-carousel__viewport > .swiper-wrapper {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    align-items: stretch;
+  }
+
+  .hotspot-full-width-carousel__viewport > .swiper-wrapper > .swiper-slide {
+    flex: 0 0 100%;
+    width: 100%;
+    min-width: 0;
+    height: 100%;
+  }
+
+  .hotspot-full-width-carousel--desktop-adapt .hotspot-full-width-carousel__viewport > .swiper-wrapper,
+  .hotspot-full-width-carousel--desktop-adapt .hotspot-full-width-carousel__viewport > .swiper-wrapper > .swiper-slide {
+    height: auto;
+  }
+
+  .hotspot-full-width-carousel__navigation {
+    position: absolute;
+    z-index: 5;
+    inset-inline: 0;
+    top: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-inline: 1.6rem;
+    pointer-events: none;
+    color: var(--heading-color);
+    transform: translateY(-50%);
+  }
+
+  .hotspot-full-width-carousel__navigation .swiper-nav-button {
+    pointer-events: auto;
+  }
+
+  .hotspot-full-width-carousel__navigation.swiper-carousel__navigation--show_on_hover {
+    transition: opacity var(--motion-duration-standard) var(--motion-ease-standard);
+  }
+
+  /* Page-width content has an outer padding box; keep overlay controls inside the viewport. */
+  .hotspot-full-width-carousel--width-page .hotspot-full-width-carousel__navigation,
+  .hotspot-full-width-carousel--width-page .hotspot-full-width-carousel__fraction-controls {
+    inset-inline: var(--page-margin-current, var(--page-margin-desktop));
+  }
+
+  .hotspot-full-width-carousel__fraction-controls {
+    position: absolute;
+    z-index: 4;
+    inset-block-end: 0;
+    inset-inline: 0;
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 2.4rem var(--page-margin-current);
+    color: var(--heading-color);
+  }
+
+  .hotspot-full-width-carousel__fraction-controls--desktop-left {
+    justify-content: flex-start;
+  }
+
+  .hotspot-full-width-carousel__fraction-controls--desktop-center {
+    justify-content: center;
+  }
+
+  .hotspot-full-width-carousel__fraction-controls--desktop-right {
+    justify-content: flex-end;
+  }
+
+  .hotspot-full-width-carousel__fraction-button {
+    --swiper-nav-size: 2.4rem;
+    width: 2.4rem;
+    min-width: 2.4rem;
+    height: 2.4rem;
+    padding: 0;
+  }
+
+  .hotspot-full-width-carousel__fraction-button svg {
+    width: 2.4rem;
+    height: 2.4rem;
+  }
+
+  .hotspot-full-width-carousel__fraction {
+    min-width: 2.5rem;
+    font-size: 1.6rem;
+    line-height: 2.4rem;
+    text-align: center;
+  }
+
+  .hotspot-full-width-carousel__pagination {
+    --swiper-pagination-inline-padding: var(--page-margin-current);
+  }
+
+  .hotspot-full-width-carousel.carousel-block--locked .hotspot-full-width-carousel__navigation,
+  .hotspot-full-width-carousel.carousel-block--locked .hotspot-full-width-carousel__viewport > .hotspot-full-width-carousel__pagination,
+  .hotspot-full-width-carousel.carousel-block--locked .hotspot-full-width-carousel__fraction-controls {
+    display: none;
+  }
+
+  .hotspot-full-width-carousel__empty-state {
+    display: grid;
+    min-height: min(28rem, 60vw);
+    place-items: center;
+    padding: 3rem;
+    border: 1px dashed currentColor;
+    color: var(--body-color);
+    text-align: center;
+  }
+
+  .hotspot-full-width-carousel__empty-state p {
+    margin: 0;
+  }
+
+  @media (min-width: 768px) and (max-width: 1149.98px) {
+    .hotspot-full-width-carousel {
+      --page-margin-current: var(--page-margin-tablet);
+    }
+
+    .hotspot-full-width-carousel--width-full .hotspot-full-width-carousel__container {
+      width: calc(100% - (var(--page-margin-tablet) * 2));
+    }
+
+  }
+
+  @media (max-width: 767.98px) {
+    .hotspot-full-width-carousel {
+      --page-margin-current: var(--page-margin-mobile);
+      padding-block: var(--hotspot-carousel-padding-top-mobile, var(--hotspot-carousel-padding-top, 0px)) var(--hotspot-carousel-padding-bottom-mobile, var(--hotspot-carousel-padding-bottom, 0px));
+    }
+
+    .hotspot-full-width-carousel--width-full .hotspot-full-width-carousel__container {
+      width: calc(100% - (var(--page-margin-mobile) * 2));
+    }
+
+    .hotspot-full-width-carousel--mobile-adapt {
+      --hotspot-carousel-height: auto;
+    }
+
+    .hotspot-full-width-carousel--mobile-extra_small {
+      --hotspot-carousel-height: 32rem;
+    }
+
+    .hotspot-full-width-carousel--mobile-small {
+      --hotspot-carousel-height: 44rem;
+    }
+
+    .hotspot-full-width-carousel--mobile-medium {
+      --hotspot-carousel-height: 56rem;
+    }
+
+    .hotspot-full-width-carousel--mobile-large {
+      --hotspot-carousel-height: 68rem;
+    }
+
+    .hotspot-full-width-carousel--mobile-extra_large {
+      --hotspot-carousel-height: 82rem;
+    }
+
+    .hotspot-full-width-carousel--mobile-full_screen {
+      --hotspot-carousel-height: 100svh;
+    }
+
+    /* Product callout slides use the same mobile flow as the static hotspot:
+       the media keeps the selected height and the content follows it. */
+    .hotspot-full-width-carousel__viewport {
+      height: auto;
+    }
+
+    .hotspot-full-width-carousel__viewport > .swiper-wrapper,
+    .hotspot-full-width-carousel__viewport > .swiper-wrapper > .swiper-slide {
+      height: auto;
+    }
+
+    .hotspot-full-width-carousel__navigation {
+      display: none;
+    }
+
+
+    .hotspot-full-width-carousel__fraction-controls {
+      padding-block: 1.6rem;
+    }
+
+    .hotspot-full-width-carousel__fraction-controls--mobile-left {
+      justify-content: flex-start;
+    }
+
+    .hotspot-full-width-carousel__fraction-controls--mobile-center {
+      justify-content: center;
+    }
+
+    .hotspot-full-width-carousel__fraction-controls--mobile-right {
+      justify-content: flex-end;
+    }
+
+
+  }

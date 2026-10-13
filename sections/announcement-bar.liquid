@@ -98,39 +98,7 @@
   </div>
 </div>
 
-{% stylesheet %}
-  .announcement-bar--heading { font-family: var(--font-heading-family); font-size: var(--font-heading-sm); line-height: var(--font-heading-sm-line-height); letter-spacing: var(--font-heading-sm-letter-spacing); text-transform: var(--font-heading-sm-text-transform); color: var(--heading-color); }
-  .announcement-bar--heading .announcement-text-block { color: var(--text-block-color, var(--heading-color)); font-family: inherit; font-size: inherit; line-height: inherit; letter-spacing: inherit; text-transform: inherit; }
-  .announcement-bar--heading .announcement-bar__inner { min-height: 0; max-width: var(--page-width); gap: var(--announcement-bar-gap); padding-inline: var(--page-margin-current); }
-  .announcement-bar--heading .announcement-bar__viewport { max-width: calc(100% - 32px - 2 * var(--announcement-bar-gap)); }
-  .announcement-bar--heading .announcement-bar__control { position: relative; width: 16px; min-width: 16px; height: 24px; padding: 0; font-size: inherit; }
-  .announcement-bar--heading .announcement-bar__control::before { content: ''; position: absolute; width: 44px; height: 44px; left: 50%; top: 50%; transform: translate(-50%, -50%); }
-  .announcement-bar__control img { display: block; }
-  .announcement-bar__control:disabled { cursor: default; opacity: 1; }
-  @media (max-width: 1149.98px) {
-    .announcement-bar--heading .announcement-bar__inner { gap: min(var(--announcement-bar-gap), 24px); }
-    .announcement-bar--heading .announcement-bar__viewport { max-width: calc(100% - 80px); }
-  }
-
-  .announcement-bar--slider .announcement-bar__viewport { transition: height var(--motion-duration-standard) var(--motion-ease-standard); }
-  .announcement-bar--slider .announcement-bar__slides { transition: transform 420ms var(--motion-ease-standard); will-change: transform; }
-  .announcement-bar--slider .announcement-bar__slides.announcement-bar--slider-reset { transition: none; }
-  .announcement-bar--slider .announcement-bar__slides > .text-block { transition: opacity 360ms var(--motion-ease-standard); }
-  .announcement-bar--slider.announcement-bar--slider-moving .announcement-bar__slides > .text-block[data-announcement-state='exit'] { opacity: 0; }
-  .announcement-bar--scrolling .announcement-bar__slides { will-change: transform; }
-  .announcement-bar--scrolling.announcement-bar--ready .announcement-bar__slides { animation: announcement-scroll-left calc(28s / var(--announcement-bar-speed, 1)) linear infinite; }
-  .announcement-bar--scrolling.announcement-bar--direction-right.announcement-bar--ready .announcement-bar__slides { animation-name: announcement-scroll-right; }
-  .announcement-bar--scrolling.announcement-bar--static .announcement-bar__slides { animation: none; }
-  .announcement-bar__control:hover { opacity: 0.7; }
-  .announcement-bar__control:focus-visible { outline: 2px solid currentColor; outline-offset: 2px; }
-  .announcement-bar--slider.announcement-bar--navigation-show_on_hover .announcement-bar__inner > .announcement-bar__control { transition: opacity var(--motion-duration-standard) var(--motion-ease-standard); }
-  .announcement-bar--slider.announcement-bar--navigation-show_on_hover:is(:hover, :focus-within) .announcement-bar__inner > .announcement-bar__control { opacity: 1; }
-  .announcement-bar--scrolling:hover .announcement-bar__slides, .announcement-bar--scrolling:focus-within .announcement-bar__slides { animation-play-state: paused; }
-  @keyframes announcement-scroll-left { from { transform: translate3d(0, 0, 0); } to { transform: translate3d(calc(-1 * var(--announcement-bar-loop-distance)), 0, 0); } }
-  @keyframes announcement-scroll-right { from { transform: translate3d(calc(-1 * var(--announcement-bar-loop-distance)), 0, 0); } to { transform: translate3d(0, 0, 0); } }
-  @media (prefers-reduced-motion: reduce) { .announcement-bar__slides, .announcement-bar__viewport, .announcement-bar__slides > .text-block { transition-duration: 0.01ms; } .announcement-bar--scrolling .announcement-bar__slides { animation: none; transform: none; } }
-  @media (max-width: 767.98px) { .announcement-bar { padding-top: var(--announcement-bar-padding-top-mobile, var(--announcement-bar-padding-top, 8px)); padding-bottom: var(--announcement-bar-padding-bottom-mobile, var(--announcement-bar-padding-bottom, 8px)); } }
-{% endstylesheet %}
+{% render 'runtime-stylesheet', filename: 'component-runtime-sections-announcement-bar.css', section_index: section.index %}
 
 {% schema %}
 {

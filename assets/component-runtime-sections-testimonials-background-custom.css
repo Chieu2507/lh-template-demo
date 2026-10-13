@@ -1,0 +1,138 @@
+.testimonials-background-custom {
+    width: 100%;
+    min-width: 0;
+    --testimonials-background-custom-media-radius: var(--media-radius, var(--radius-square));
+  }
+
+  .testimonials-background-custom__spacing {
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
+    width: 100%;
+    padding-top: var(--section-padding-top, 0px);
+    padding-bottom: var(--section-padding-bottom, 0px);
+    background-color: var(--background-color);
+  }
+
+  .testimonials-background-custom__spacing--no-padding,
+  .testimonials-background-custom__spacing .container.testimonials-background-custom__container--no-padding {
+    padding-inline: 0;
+  }
+
+  .testimonials-background-custom__media {
+    position: absolute;
+    z-index: 0;
+    inset: 0;
+    pointer-events: none;
+  }
+
+  .testimonials-background-custom__media-inner {
+    z-index: 0;
+    will-change: transform;
+  }
+
+  .testimonials-background-custom__media-inner :is(img, video, svg, picture > img) {
+    object-fit: cover;
+  }
+
+  .testimonials-background-custom__placeholder {
+    background-color: transparent;
+    color: var(--heading-color);
+  }
+
+  .testimonials-background-custom__overlay {
+    z-index: 1;
+  }
+
+  .testimonials-background-custom__video--mobile {
+    display: none;
+  }
+
+  .testimonials-background-custom__container {
+    position: relative;
+    z-index: 2;
+  }
+
+  .testimonials-background-custom__content,
+  .testimonials-background-custom__content > * {
+    min-width: 0;
+  }
+
+  .testimonials-background-custom .carousel-block {
+    max-width: 100%;
+  }
+
+  .testimonials-background-custom .carousel-slide-layout:not(.color-scheme) {
+    background-color: transparent;
+    background-image: none;
+  }
+
+  .testimonials-background-custom .carousel-slide-layout.color-scheme {
+    --group-background-color: var(--background-color);
+    --group-background-image: none;
+    background-color: var(--group-background-color);
+    background-image: var(--group-background-image);
+    color: var(--body-color);
+  }
+
+  /* Use the global Theme Settings radius for all media surfaces in this section. */
+  .testimonials-background-custom .image-block__media,
+  .testimonials-background-custom .video-block__media,
+  .testimonials-background-custom .image-compare__viewport,
+  .testimonials-background-custom .image-card,
+  .testimonials-background-custom .promo-card,
+  .testimonials-background-custom .scrolling-card,
+  .testimonials-background-custom .press-quotes__pagination-media,
+  .testimonials-background-custom .collection-background-item__media,
+  .testimonials-background-custom .collection-thumbnail__media,
+  .testimonials-background-custom .collections-with-tabs__media {
+    border-radius: var(--testimonials-background-custom-media-radius);
+  }
+
+  .testimonials-background-custom .group--radius-square,
+  .testimonials-background-custom .carousel-slide-layout--radius-square,
+  .testimonials-background-custom .marquee-item--radius-square {
+    --group-radius: var(--testimonials-background-custom-media-radius);
+  }
+
+  .testimonials-background-custom .testimonial-item--radius-square {
+    --testimonial-radius: var(--testimonials-background-custom-media-radius);
+  }
+
+  .testimonials-background-custom[data-hero-parallax='fixed'] {
+    clip-path: inset(0);
+  }
+
+  .testimonials-background-custom[data-hero-parallax='fixed'] .testimonials-background-custom__media-inner {
+    position: fixed;
+    inset-block-start: 0;
+    inset-inline-start: 0;
+    width: 100vw;
+    height: 100lvh;
+    will-change: auto;
+  }
+
+  @media (max-width: 767.98px) {
+    .testimonials-background-custom__spacing {
+      padding-top: var(--section-padding-top-mobile, var(--section-padding-top, 0px));
+      padding-bottom: var(--section-padding-bottom-mobile, var(--section-padding-bottom, 0px));
+    }
+
+    .testimonials-background-custom__video--desktop:has(+ .testimonials-background-custom__video--mobile) {
+      display: none;
+    }
+
+    .testimonials-background-custom__video--mobile {
+      display: block;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .testimonials-background-custom__media-inner {
+      transform: none !important;
+    }
+  }
+
+  .shopify-section:has(.testimonials-background-custom[data-hero-parallax='fixed']) {
+    clip-path: inset(0);
+  }

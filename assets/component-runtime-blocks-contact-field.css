@@ -1,0 +1,4 @@
+.contact-field__choice-group { gap: 0.5rem; border: 0; padding: 0; margin: 0; }
+  .contact-field__choice-group legend { margin-bottom: 0.25rem; font-size: inherit; }
+  .contact-field__choice { display: flex; align-items: center; gap: 0.5rem; cursor: pointer; }
+  .contact-field__choice input { flex: 0 0 auto; }

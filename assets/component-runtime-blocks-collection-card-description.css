@@ -1,0 +1,30 @@
+.collection-card-description {
+    display: block;
+    padding-top: var(--collection-card-description-padding-top, 0px);
+    padding-right: var(--collection-card-description-padding-right, 0px);
+    padding-bottom: var(--collection-card-description-padding-bottom, 0px);
+    padding-left: var(--collection-card-description-padding-left, 0px);
+    color: color-mix(in srgb, currentColor 72%, transparent);
+    overflow-wrap: anywhere;
+  }
+
+  .collection-card-description--limit-one,
+  .collection-card-description--limit-two,
+  .collection-card-description--limit-three {
+    display: -webkit-box;
+    overflow: hidden;
+    -webkit-box-orient: vertical;
+  }
+
+  .collection-card-description--limit-one { -webkit-line-clamp: 1; }
+  .collection-card-description--limit-two { -webkit-line-clamp: 2; }
+  .collection-card-description--limit-three { -webkit-line-clamp: 3; }
+
+  @media (max-width: 767.98px) {
+    .collection-card-description {
+      padding-top: var(--collection-card-description-padding-top-mobile, var(--collection-card-description-padding-top, 0px));
+      padding-right: var(--collection-card-description-padding-right-mobile, var(--collection-card-description-padding-right, 0px));
+      padding-bottom: var(--collection-card-description-padding-bottom-mobile, var(--collection-card-description-padding-bottom, 0px));
+      padding-left: var(--collection-card-description-padding-left-mobile, var(--collection-card-description-padding-left, 0px));
+    }
+  }

@@ -1,0 +1,11 @@
+{% doc %}
+  Loads owner-specific CSS only when its section, block or snippet renders.
+  First template sections, unknown placement and editor re-renders stay synchronous.
+  @param {string} filename - Component asset extracted from its stylesheet tag
+  @param {number} [section_index] - Template position of the owning section
+{% enddoc %}
+{% if request.design_mode or section_index == nil or section_index <= 2 %}
+  {{ filename | asset_url | stylesheet_tag }}
+{% else %}
+  {% render 'deferred-stylesheet', filename: filename %}
+{% endif %}

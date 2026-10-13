@@ -128,67 +128,7 @@
   </div>
 </div>
 
-{% stylesheet %}
-  .email-signup-single-image__spacing {
-    width: 100%;
-    min-width: 0;
-    padding-top: var(--email-signup-single-image-padding-top, 0px);
-    padding-bottom: var(--email-signup-single-image-padding-bottom, 0px);
-  }
-
-  .email-signup-single-image__container {
-    min-width: 0;
-  }
-
-  .container.full-width.email-signup-single-image__container--no-padding {
-    padding-inline: 0;
-  }
-
-  .email-signup-single-image__grid {
-    display: grid;
-    grid-template-columns: minmax(0, 1fr);
-    align-items: var(--email-signup-single-image-align-items, start);
-    justify-content: var(--email-signup-single-image-justify-content, start);
-    gap: var(--email-signup-single-image-gap-desktop, 64px);
-    min-width: 0;
-  }
-
-  .email-signup-single-image--direction-horizontal .email-signup-single-image__grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-
-  .email-signup-single-image__grid > .image-block,
-  .email-signup-single-image__grid > .group {
-    width: 100%;
-    max-width: 100%;
-    min-width: 0;
-  }
-
-  .email-signup-single-image__grid > .group {
-    height: fit-content;
-  }
-
-  @media (max-width: 767.98px) {
-    .email-signup-single-image__spacing {
-      padding-top: var(--email-signup-single-image-padding-top-mobile, var(--email-signup-single-image-padding-top, 0px));
-      padding-bottom: var(--email-signup-single-image-padding-bottom-mobile, var(--email-signup-single-image-padding-bottom, 0px));
-    }
-
-    .email-signup-single-image__grid {
-      gap: var(--email-signup-single-image-gap-mobile, var(--email-signup-single-image-gap-desktop, 64px));
-    }
-
-    .email-signup-single-image--vertical-mobile .email-signup-single-image__grid {
-      grid-template-columns: minmax(0, 1fr);
-      align-items: var(--email-signup-single-image-align-items-mobile, var(--email-signup-single-image-align-items, start));
-      justify-content: var(--email-signup-single-image-justify-content, start);
-    }
-
-    .email-signup-single-image--vertical-mobile .email-signup-single-image__grid > * {
-      width: 100%;
-    }
-  }
-{% endstylesheet %}
+{% render 'runtime-stylesheet', filename: 'component-runtime-sections-email-signup-single-image.css', section_index: section.index %}
 
 {% schema %}
 {

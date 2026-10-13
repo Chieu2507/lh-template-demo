@@ -1,0 +1,10 @@
+.faq-answer-text {
+    display: block;
+    width: 100%;
+    color: var(--body-color);
+    text-align: var(--text-align-default, inherit);
+    overflow-wrap: anywhere;
+  }
+
+  .faq-answer-text a { color: inherit; }
+  .faq-answer-text :where(ul, ol) { padding-inline-start: 1.5em; }

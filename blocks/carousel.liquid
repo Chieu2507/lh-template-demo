@@ -322,45 +322,7 @@
   </div>
 </div>
 
-{% stylesheet %}
-  .carousel-block { width: var(--carousel-width, 100%); min-width: 0; padding-block: var(--carousel-padding-top) var(--carousel-padding-bottom); }
-  .carousel-block__container { position: relative; min-width: 0; }
-  .carousel-block__viewport { width: 100%; }
-  .carousel-block__viewport > .swiper-wrapper { column-gap: 0; }
-  .carousel-block__navigation { position: absolute; z-index: 2; inset: 50% 0 auto; display: flex; justify-content: space-between; padding-inline: 0.5rem; transform: translateY(-50%); pointer-events: none; }
-  .carousel-block__navigation.swiper-carousel__navigation--outside { padding-inline: 0; }
-  .carousel-block__navigation.swiper-carousel__navigation--outside .swiper-nav-button--prev { margin-inline-start: calc(-1 * var(--swiper-nav-size) / 2); }
-  .carousel-block__navigation.swiper-carousel__navigation--outside .swiper-nav-button--next { margin-inline-end: calc(-1 * var(--swiper-nav-size) / 2); }
-  .carousel-block__navigation .swiper-nav-button { pointer-events: auto; }
-  .carousel-block__navigation .swiper-nav-button.swiper-button-disabled { pointer-events: none; }
-  .carousel-block__fraction-controls { display: flex; align-items: center; gap: 1rem; margin-top: 1rem; }
-  .carousel-block__fraction-controls--left { justify-content: flex-start; }
-  .carousel-block__fraction-controls--center { justify-content: center; }
-  .carousel-block__fraction-controls--right { justify-content: flex-end; }
-  @media (max-width: 767.98px) {
-    .carousel-block__fraction-controls--mobile-left { justify-content: flex-start; }
-    .carousel-block__fraction-controls--mobile-center { justify-content: center; }
-    .carousel-block__fraction-controls--mobile-right { justify-content: flex-end; }
-  }
-  .carousel-block__fraction-button { --swiper-nav-size: 24px; width: 24px; min-width: 24px; height: 24px; padding: 0; }
-  .carousel-block__fraction-button svg { width: 24px; height: 24px; }
-  .carousel-block__fraction { min-width: 2.5rem; font-size: 16px; line-height: 24px; text-align: center; }
-  .carousel-block--locked .carousel-block__navigation,
-  .carousel-block--locked .carousel-block__fraction-controls,
-  .carousel-block--locked .carousel-block__viewport > .swiper-pagination { display: none !important; }
-  .carousel-block__navigation--show_on_hover { opacity: 1; }
-  .carousel-block__viewport > .swiper-pagination { width: var(--carousel-pagination-width, 100%); margin-block: var(--carousel-pagination-padding-desktop, 0px) 0; margin-inline: auto; padding-top: 0; }
-  .carousel-block__viewport > .carousel-block__pagination--limited { width: min(100%, var(--carousel-pagination-max-width, 100%)); }
-  .carousel-block__viewport > .carousel-block__pagination--progress_bar { --swiper-pagination-progressbar-size: 2px; }
-  .carousel-block__viewport > .swiper-pagination:not([data-pagination-visible-desktop='true']) { display: none; }
-  @media (max-width: 767.98px) {
-    .carousel-block { padding-block: var(--carousel-padding-top-mobile, var(--carousel-padding-top)) var(--carousel-padding-bottom-mobile, var(--carousel-padding-bottom)); }
-    .carousel-block__navigation { display: none; }
-    .carousel-block__fraction-controls { margin-top: 1rem; }
-    .carousel-block__viewport > .swiper-pagination { margin-block-start: var(--carousel-pagination-padding-mobile, 0px); }
-    .carousel-block__viewport > .swiper-pagination:not([data-pagination-visible-mobile='true']) { display: none; }
-  }
-{% endstylesheet %}
+{% render 'runtime-stylesheet', filename: 'component-runtime-blocks-carousel.css', section_index: section.index %}
 
 {% schema %}
 {

@@ -81,61 +81,7 @@
   </div>
 </div>
 
-{% stylesheet %}
-  .rich-text__spacing {
-    position: relative;
-    overflow: hidden;
-    width: 100%;
-    padding-top: var(--rich-text-padding-top, 0px);
-    padding-bottom: var(--rich-text-padding-bottom, 0px);
-    background-color: var(--rich-text-background-color, var(--background-color));
-  }
-
-  .rich-text__background {
-    position: absolute;
-    inset: 0;
-    z-index: 0;
-    overflow: hidden;
-    pointer-events: none;
-  }
-
-  .rich-text__background img {
-    display: block;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-  }
-
-  .rich-text__container {
-    position: relative;
-    z-index: 1;
-  }
-
-  .rich-text__content {
-    min-width: 0;
-    color: var(--body-color);
-    overflow-wrap: anywhere;
-  }
-
-  .rich-text__content :where(ul, ol) {
-    padding-inline-start: 1.5em;
-  }
-
-  .rich-text__content :where(img, video, iframe) {
-    max-width: 100%;
-  }
-
-  .rich-text__content a {
-    color: inherit;
-  }
-
-  @media (max-width: 767.98px) {
-    .rich-text__spacing {
-      padding-top: var(--rich-text-padding-top-mobile, var(--rich-text-padding-top, 0px));
-      padding-bottom: var(--rich-text-padding-bottom-mobile, var(--rich-text-padding-bottom, 0px));
-    }
-  }
-{% endstylesheet %}
+{% render 'runtime-stylesheet', filename: 'component-runtime-sections-rich-text.css', section_index: section.index %}
 
 {% schema %}
 {

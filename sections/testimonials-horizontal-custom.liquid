@@ -97,72 +97,7 @@
   </div>
 {% endif %}
 
-{% stylesheet %}
-  .testimonials-horizontal-custom {
-    width: 100%;
-    min-width: 0;
-    --testimonials-horizontal-custom-media-radius: var(--media-radius, var(--radius-square));
-  }
-
-  .testimonials-horizontal-custom__spacing {
-    position: relative;
-    overflow: hidden;
-    width: 100%;
-    padding-top: var(--section-padding-top, 0px);
-    padding-bottom: var(--section-padding-bottom, 0px);
-    background-color: var(--background-color);
-  }
-
-  .testimonials-horizontal-custom__spacing--no-padding,
-  .testimonials-horizontal-custom__spacing .container.testimonials-horizontal-custom__container--no-padding {
-    padding-inline: 0;
-  }
-
-  .testimonials-horizontal-custom__container {
-    position: relative;
-    z-index: 1;
-  }
-
-  .testimonials-horizontal-custom__content,
-  .testimonials-horizontal-custom__content > * {
-    min-width: 0;
-  }
-
-  .testimonials-horizontal-custom .carousel-block {
-    max-width: 100%;
-  }
-
-  /* Use the global Theme Settings radius for all media surfaces in this section. */
-  .testimonials-horizontal-custom .image-block__media,
-  .testimonials-horizontal-custom .video-block__media,
-  .testimonials-horizontal-custom .image-compare__viewport,
-  .testimonials-horizontal-custom .image-card,
-  .testimonials-horizontal-custom .promo-card,
-  .testimonials-horizontal-custom .scrolling-card,
-  .testimonials-horizontal-custom .press-quotes__pagination-media,
-  .testimonials-horizontal-custom .collection-background-item__media,
-  .testimonials-horizontal-custom .collection-thumbnail__media,
-  .testimonials-horizontal-custom .collections-with-tabs__media {
-    border-radius: var(--testimonials-horizontal-custom-media-radius);
-  }
-
-  .testimonials-horizontal-custom .group--radius-square,
-  .testimonials-horizontal-custom .carousel-slide-layout--radius-square,
-  .testimonials-horizontal-custom .marquee-item--radius-square {
-    --group-radius: var(--testimonials-horizontal-custom-media-radius);
-  }
-
-  .testimonials-horizontal-custom .testimonial-item--radius-square {
-    --testimonial-radius: var(--testimonials-horizontal-custom-media-radius);
-  }
-
-  @media (max-width: 767.98px) {
-    .testimonials-horizontal-custom__spacing {
-      padding-top: var(--section-padding-top-mobile, var(--section-padding-top, 0px));
-      padding-bottom: var(--section-padding-bottom-mobile, var(--section-padding-bottom, 0px));
-    }
-  }
-{% endstylesheet %}
+{% render 'runtime-stylesheet', filename: 'component-runtime-sections-testimonials-horizontal-custom.css', section_index: section.index %}
 
 {% schema %}
 {

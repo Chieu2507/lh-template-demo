@@ -1,0 +1,10 @@
+.article-posts {
+    padding-top: var(--article-posts-padding-top, 100px);
+    padding-bottom: var(--article-posts-padding-bottom, 120px);
+  }
+  .article-posts__container { max-width: var(--article-posts-max-width, 1280px); margin-inline: auto; }
+  .article-posts__blocks { min-width: 0; }
+  @media (max-width: 767.98px) {
+    .article-posts { padding-top: var(--article-posts-padding-top-mobile, var(--article-posts-padding-top, 100px)); padding-bottom: var(--article-posts-padding-bottom-mobile, var(--article-posts-padding-bottom, 120px)); }
+    .article-posts__container { max-width: 100%; }
+  }

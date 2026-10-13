@@ -33,70 +33,7 @@
   </template>
 </div>
 
-{% stylesheet %}
-  .location-item {
-    width: 100%;
-    min-width: 0;
-  }
-
-  .location-item__trigger {
-    width: 100%;
-    padding-top: var(--location-item-padding-top, 16px);
-    padding-right: var(--location-item-padding-right, 32px);
-    padding-bottom: var(--location-item-padding-bottom, 16px);
-    padding-left: var(--location-item-padding-left, 32px);
-    border-left: 1px solid transparent;
-    cursor: pointer;
-    transition: background-color 220ms ease, border-color 220ms ease;
-  }
-
-  .location-item__trigger[aria-pressed='true'] {
-    border-left-color: var(--location-list-active-border, #000);
-    background: var(--location-list-active-background, #f7efed);
-  }
-
-  .location-item__trigger:focus-visible {
-    outline: 2px solid currentColor;
-    outline-offset: -2px;
-  }
-
-  .location-item__content {
-    display: flex;
-    min-width: 0;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: var(--location-item-gap, 8px);
-  }
-
-  .location-item__trigger[aria-pressed='true'] .location-item__content {
-    animation: location-item-active 300ms ease both;
-  }
-
-  @keyframes location-item-active {
-    from {
-      opacity: 0.45;
-      transform: translateY(4px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
-
-  @media (max-width: 767.98px) {
-    .location-item__content {
-      gap: var(--location-item-gap-mobile, var(--location-item-gap, 8px));
-    }
-  }
-
-  @media (prefers-reduced-motion: reduce) {
-    .location-item__trigger,
-    .location-item__trigger[aria-pressed='true'] .location-item__content {
-      animation: none;
-      transition: none;
-    }
-  }
-{% endstylesheet %}
+{% render 'runtime-stylesheet', filename: 'component-runtime-blocks-location-item.css', section_index: section.index %}
 
 {% schema %}
 {

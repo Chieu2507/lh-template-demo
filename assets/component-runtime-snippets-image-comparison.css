@@ -1,0 +1,377 @@
+.image-compare-shell {
+    display: block;
+    width: 100%;
+    min-width: 0;
+    --image-compare-handle-size: 64px;
+    --image-compare-handle-icon-size: 24px;
+  }
+
+  .image-compare__root {
+    display: block;
+    width: 100%;
+    min-width: 0;
+  }
+
+  .image-compare__viewport {
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
+    width: 100%;
+    height: auto;
+    min-height: 0;
+    aspect-ratio: var(--image-compare-ratio, 1.7778);
+    border-radius: var(--image-compare-radius, var(--media-radius, var(--radius-square)));
+    background: var(--image-compare-before-background, var(--background-color));
+  }
+
+  .image-compare__layer {
+    position: absolute;
+    inset: 0;
+    min-width: 0;
+    overflow: hidden;
+  }
+
+  .image-compare__layer--before {
+    z-index: 1;
+  }
+
+  .image-compare__layer--after {
+    z-index: 2;
+    clip-path: inset(0 0 0 var(--image-compare-position, 50%));
+  }
+
+  .image-compare__media,
+  .image-compare__media > picture,
+  .image-compare__media > img,
+  .image-compare__media > picture > img,
+  .image-compare__media > .image__placeholder {
+    display: block;
+    width: 100%;
+    max-width: none;
+  }
+
+  .image-compare__layer > .image-compare__media {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    aspect-ratio: auto;
+  }
+
+  .image-compare__layer > .image-compare__media > picture,
+  .image-compare__layer > .image-compare__media > img,
+  .image-compare__layer > .image-compare__media > picture > img,
+  .image-compare__layer > .image-compare__media > .image__placeholder {
+    height: 100%;
+  }
+
+  .image-compare__media > img,
+  .image-compare__media > picture > img {
+    object-fit: cover;
+  }
+
+  .image-compare__layer--before .image-compare__media.placeholder-image > .image__placeholder {
+    background-color: var(--placeholder-background-color);
+  }
+
+  .image-compare__layer--after .image-compare__media.placeholder-image > .image__placeholder {
+    background-color: var(--placeholder-background-color);
+  }
+
+  .image-compare__label {
+    position: absolute;
+    z-index: 3;
+    bottom: 1.6rem;
+    max-width: calc(50% - 2rem);
+    padding: 0.55rem 1.1rem;
+    border-radius: var(--radius-pill);
+    color: var(--image-compare-label-color, #fff);
+    font-family: var(--image-compare-label-font-family, var(--font-body-family));
+    font-size: var(--image-compare-label-font-size, var(--font-body-md));
+    font-style: var(--image-compare-label-font-style, var(--font-body-style));
+    font-weight: var(--image-compare-label-font-weight, var(--font-body-weight));
+    letter-spacing: var(--image-compare-label-letter-spacing, 0em);
+    line-height: var(--font-body-line-height);
+    overflow-wrap: anywhere;
+    text-transform: var(--image-compare-label-text-transform, var(--font-body-text-transform));
+  }
+
+  .image-compare__label p {
+    margin: 0;
+  }
+
+  .image-compare-shell--label-background .image-compare__label {
+    background: var(--image-compare-label-background, #000);
+  }
+
+  .image-compare-shell--no-label-background .image-compare__label {
+    background: transparent;
+  }
+
+  .image-compare__label--before {
+    left: 1.6rem;
+  }
+
+  .image-compare__label--after {
+    right: 1.6rem;
+    text-align: right;
+  }
+
+  .image-compare__range {
+    position: absolute;
+    inset: 0;
+    z-index: 5;
+    display: block;
+    width: 100%;
+    height: 100%;
+    min-height: 0;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    border-radius: 0;
+    background: transparent;
+    cursor: ew-resize;
+    opacity: 0;
+    touch-action: none;
+    appearance: none;
+  }
+
+  .image-compare__range::-webkit-slider-runnable-track {
+    width: 100%;
+    height: 100%;
+    border: 0;
+    background: transparent;
+  }
+
+  .image-compare__range::-webkit-slider-thumb {
+    width: var(--image-compare-handle-size, 64px);
+    height: 100%;
+    border: 0;
+    border-radius: 0;
+    background: transparent;
+    cursor: inherit;
+    appearance: none;
+  }
+
+  .image-compare__range::-moz-range-track {
+    width: 100%;
+    height: 100%;
+    border: 0;
+    background: transparent;
+  }
+
+  .image-compare__range::-moz-range-thumb {
+    width: var(--image-compare-handle-size, 64px);
+    height: 100%;
+    border: 0;
+    border-radius: 0;
+    background: transparent;
+    cursor: inherit;
+  }
+
+  .image-compare__divider {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: var(--image-compare-position, 50%);
+    z-index: 4;
+    display: block;
+    width: var(--image-compare-divider-width, 2px);
+    background: var(--image-compare-handle-background, #fff);
+    pointer-events: none;
+    transform: translateX(-50%);
+  }
+
+  .image-compare__handle {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    display: grid;
+    width: var(--image-compare-handle-size, 64px);
+    min-width: var(--image-compare-handle-size, 64px);
+    height: var(--image-compare-handle-size, 64px);
+    min-height: var(--image-compare-handle-size, 64px);
+    place-items: center;
+    border-radius: 50%;
+    background: var(--image-compare-handle-background, #fff);
+    color: var(--image-compare-handle-color, #262626);
+    box-shadow: 0 0.1rem 0.6rem rgb(0 0 0 / 15%);
+    transform: translate(-50%, -50%);
+  }
+
+  .image-compare__handle-icon {
+    display: block;
+    width: var(--image-compare-handle-icon-size, 24px);
+    height: var(--image-compare-handle-icon-size, 24px);
+  }
+
+  .image-compare__handle-icon--compare {
+    display: inline-flex;
+    width: calc(var(--image-compare-handle-icon-size, 24px) * 2);
+    align-items: center;
+    justify-content: center;
+  }
+
+  .image-compare__handle-icon--compare > svg {
+    display: block;
+    flex: 0 0 var(--image-compare-handle-icon-size, 24px);
+    width: var(--image-compare-handle-icon-size, 24px);
+    height: var(--image-compare-handle-icon-size, 24px);
+  }
+
+  .image-compare-shell--direction-vertical .image-compare__handle-icon {
+    transform: rotate(90deg);
+  }
+
+  .image-compare__range:focus-visible + .image-compare__divider .image-compare__handle {
+    outline: 2px solid var(--input-focus-color, currentcolor);
+    outline-offset: 4px;
+  }
+
+  .image-compare-shell--direction-vertical .image-compare__range {
+    cursor: ns-resize;
+  }
+
+  .image-compare-shell--direction-vertical .image-compare__layer--after {
+    clip-path: inset(var(--image-compare-position, 50%) 0 0);
+  }
+
+  .image-compare-shell--direction-vertical .image-compare__divider {
+    top: var(--image-compare-position, 50%);
+    right: 0;
+    bottom: auto;
+    left: 0;
+    width: auto;
+    height: var(--image-compare-divider-width, 2px);
+    background: var(--image-compare-handle-background, #fff);
+    transform: translateY(-50%);
+  }
+
+  .image-compare-shell--direction-vertical .image-compare__label--before {
+    top: 1.6rem;
+    bottom: auto;
+  }
+
+  .image-compare-shell--direction-vertical .image-compare__label--after {
+    top: auto;
+    right: auto;
+    bottom: 1.6rem;
+    left: 1.6rem;
+    text-align: left;
+  }
+
+  .image-compare-shell--variant-side-by-side .image-compare__viewport {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-auto-rows: auto;
+    gap: var(--image-compare-split-gap, 0px);
+    overflow: hidden;
+    aspect-ratio: auto;
+  }
+
+  .image-compare-shell--variant-side-by-side .image-compare__layer {
+    position: relative;
+    inset: auto;
+    min-width: 0;
+    min-height: 0;
+    aspect-ratio: var(--image-compare-ratio, 1.7778);
+    clip-path: none;
+  }
+
+  .image-compare-shell--variant-side-by-side .image-compare__layer--after {
+    order: 2;
+  }
+
+  .image-compare-shell--variant-side-by-side .image-compare__layer--before {
+    order: 1;
+  }
+
+  .image-compare-shell--variant-side-by-side.image-compare-shell--separate-images .image-compare__viewport {
+    gap: 1.6rem;
+    overflow: visible;
+  }
+
+  .image-compare-shell--variant-side-by-side.image-compare-shell--separate-images .image-compare__layer {
+    border-radius: var(--image-compare-radius, var(--media-radius, var(--radius-square)));
+  }
+
+  .image-compare-shell--variant-side-by-side.image-compare-shell--direction-vertical .image-compare__viewport {
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-rows: repeat(2, auto);
+  }
+
+  .image-compare-shell--variant-side-by-side.image-compare-shell--mobile-before-first .image-compare__layer--before {
+    order: 1;
+  }
+
+  @media (max-width: 767.98px) {
+    .image-compare-shell {
+      --image-compare-handle-size: 48px;
+      --image-compare-handle-icon-size: 20px;
+    }
+
+    .image-compare__viewport {
+      aspect-ratio: var(--image-compare-ratio-mobile, var(--image-compare-ratio, 1.7778));
+    }
+
+    .image-compare__label {
+      bottom: 1.2rem;
+      max-width: calc(50% - 1.6rem);
+      padding: 0.45rem 0.9rem;
+    }
+
+    .image-compare__label--before {
+      left: 1.2rem;
+    }
+
+    .image-compare__label--after {
+      right: 1.2rem;
+      text-align: right;
+    }
+
+    .image-compare-shell--direction-vertical .image-compare__label--before {
+      top: 1.2rem;
+      bottom: auto;
+    }
+
+    .image-compare-shell--direction-vertical .image-compare__label--after {
+      top: auto;
+      right: auto;
+      bottom: 1.2rem;
+      left: 1.2rem;
+      text-align: left;
+    }
+
+    .image-compare-shell--variant-side-by-side .image-compare__viewport {
+      grid-template-columns: minmax(0, 1fr);
+      grid-template-rows: repeat(2, auto);
+    }
+
+    .image-compare-shell--variant-side-by-side.image-compare-shell--separate-images .image-compare__viewport {
+      gap: 1.2rem;
+    }
+
+    .image-compare-shell--variant-side-by-side .image-compare__layer--after {
+      order: 1;
+    }
+
+    .image-compare-shell--variant-side-by-side .image-compare__layer--before {
+      order: 2;
+    }
+
+    .image-compare-shell--variant-side-by-side.image-compare-shell--mobile-before-first .image-compare__layer--before {
+      order: 1;
+    }
+
+    .image-compare-shell--variant-side-by-side.image-compare-shell--mobile-before-first .image-compare__layer--after {
+      order: 2;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .image-compare__range,
+    .image-compare__divider,
+    .image-compare__handle {
+      transition: none;
+    }
+  }

@@ -1,0 +1,122 @@
+.contact-form-custom {
+    width: 100%;
+    min-width: 0;
+  }
+  .contact-form-custom__spacing {
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    padding-top: var(--contact-form-custom-padding-top, 0px);
+    padding-bottom: var(--contact-form-custom-padding-bottom, 0px);
+    background-color: var(--contact-form-custom-background-color, var(--background-color));
+  }
+  .contact-form-custom__container {
+    position: relative;
+    z-index: 2;
+  }
+  .contact-form-custom__background {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    overflow: hidden;
+    pointer-events: none;
+    width: 100%;
+    height: 100%;
+  }
+  .contact-form-custom__background img {
+    position: absolute;
+    inset: 0;
+    display: block;
+    width: 100%;
+    height: 100%;
+    max-width: none;
+    object-fit: cover;
+    object-position: center;
+  }
+  .contact-form-custom__background-image--mobile {
+    display: none;
+  }
+  .contact-form-custom__overlay {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    background: var(--contact-form-custom-overlay-color, #000);
+    pointer-events: none;
+  }
+  .contact-form-custom__grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: var(--contact-form-custom-gap-desktop, 80px);
+    align-items: var(--contact-form-custom-align-items, start);
+  }
+  .contact-form-custom__grid > .image-block,
+  .contact-form-custom__grid > .group {
+    min-width: 0;
+  }
+  .contact-form-custom__grid > .image-block {
+    grid-column: 1;
+    grid-row: 1;
+    width: 100%;
+    max-width: none;
+    height: 100%;
+  }
+  .contact-form-custom__grid > .group {
+    grid-column: 2;
+    justify-self: var(--contact-form-custom-align, start);
+  }
+  .contact-form-custom--vertical .contact-form-custom__grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .contact-form-custom--vertical .contact-form-custom__grid > .group {
+    grid-column: 1;
+    grid-row: auto;
+  }
+  .contact-form-custom__grid > .image-block .image-block__media,
+  .contact-form-custom__grid > .image-block .image-block__media > picture,
+  .contact-form-custom__grid > .image-block .image-block__media > img,
+  .contact-form-custom__grid > .image-block .image-block__media > picture > img,
+  .contact-form-custom__grid > .image-block .image-block__media .image__placeholder {
+    width: 100%;
+    height: 100%;
+  }
+  .contact-form-custom__grid > .image-block .image-block__media > img,
+  .contact-form-custom__grid > .image-block .image-block__media > picture > img,
+  .contact-form-custom__grid > .image-block .image-block__media .image__placeholder {
+    object-fit: cover;
+    object-position: center;
+  }
+  @media (max-width: 767.98px) {
+    .contact-form-custom__background--has-mobile .contact-form-custom__background-image--desktop {
+      display: none;
+    }
+    .contact-form-custom__background--has-mobile .contact-form-custom__background-image--mobile {
+      display: block;
+    }
+    .contact-form-custom__grid {
+      grid-template-columns: minmax(0, 1fr);
+      gap: var(--contact-form-custom-gap-mobile, 40px);
+      align-items: stretch;
+    }
+    .contact-form-custom__grid > .image-block,
+    .contact-form-custom__grid > .group {
+      grid-column: 1;
+      justify-self: var(--contact-form-custom-align-mobile, var(--contact-form-custom-align, start));
+    }
+    .contact-form-custom__grid > .image-block {
+      grid-row: auto;
+      height: auto;
+      min-height: 0;
+    }
+    .contact-form-custom__grid > .image-block .image-block__media,
+    .contact-form-custom__grid > .image-block .image-block__media > picture,
+    .contact-form-custom__grid > .image-block .image-block__media > img,
+    .contact-form-custom__grid > .image-block .image-block__media > picture > img,
+    .contact-form-custom__grid > .image-block .image-block__media .image__placeholder {
+      height: auto;
+      min-height: 0;
+    }
+    .contact-form-custom__spacing {
+      padding-top: var(--contact-form-custom-padding-top-mobile, var(--contact-form-custom-padding-top, 0px));
+      padding-bottom: var(--contact-form-custom-padding-bottom-mobile, var(--contact-form-custom-padding-bottom, 0px));
+    }
+  }

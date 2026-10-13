@@ -20,16 +20,7 @@
   </nav>
 </div>
 
-{% stylesheet %}
-  .collection-page-breadcrumb { background: var(--background-color); color: var(--body-color); }
-  .collection-page-breadcrumb__nav { display: flex; align-items: center; justify-content: var(--collection-page-breadcrumb-align, flex-start); flex-wrap: wrap; gap: var(--collection-page-breadcrumb-gap, 8px); padding: var(--collection-page-breadcrumb-top, 20px) var(--page-margin) var(--collection-page-breadcrumb-bottom, 20px); font-size: var(--font-body-sm); }
-  .collection-page-breadcrumb__nav a { color: inherit; text-decoration: none; }
-  .collection-page-breadcrumb__nav a:hover { text-decoration: underline; }
-  .collection-page-breadcrumb__nav a:focus-visible { outline: 2px solid currentcolor; outline-offset: 3px; }
-  .collection-page-breadcrumb__nav svg { width: 12px; height: 12px; }
-  .collection-page-breadcrumb--uppercase { text-transform: uppercase; }
-  @media (max-width: 767.98px) { .collection-page-breadcrumb__nav { padding-block: var(--collection-page-breadcrumb-top-mobile, var(--collection-page-breadcrumb-top)) var(--collection-page-breadcrumb-bottom-mobile, var(--collection-page-breadcrumb-bottom)); } }
-{% endstylesheet %}
+{% render 'runtime-stylesheet', filename: 'component-runtime-sections-collection-page-breadcrumb.css', section_index: section.index %}
 
 {% schema %}
 {

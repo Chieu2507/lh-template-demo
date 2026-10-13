@@ -1,0 +1,30 @@
+.policy-links-block {
+    display: block;
+    width: fit-content;
+    max-width: 100%;
+    min-width: 0;
+    color: var(--policy-links-text-color, var(--body-color));
+  }
+
+  .policy-links-block__list {
+    max-width: 100%;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .policy-links-block__item {
+    min-width: 0;
+  }
+
+  .policy-links-block__link {
+    display: inline-block;
+    max-width: 100%;
+    color: inherit;
+    overflow-wrap: anywhere;
+  }
+
+  .policy-links-block__empty {
+    margin: 0;
+    color: inherit;
+  }

@@ -1,0 +1,49 @@
+.images-block {
+    min-width: 0;
+    padding: min(var(--images-padding-top, 0px), 25%) min(var(--images-padding-right, 0px), 25%) min(var(--images-padding-bottom, 0px), 25%) min(var(--images-padding-left, 0px), 25%);
+  }
+  .images-block__canvas {
+    position: relative;
+    isolation: isolate;
+    width: 100%;
+    height: auto;
+    aspect-ratio: var(--images-ratio, 780 / 540);
+    overflow: clip;
+    overflow-clip-margin: 4px;
+  }
+  .images-block__slot {
+    position: absolute;
+    width: var(--slot-width-1, 50%);
+    left: min(var(--slot-left-1, 0%), calc(100% - var(--slot-width-1, 50%)));
+    top: var(--slot-top-1, 0%);
+    transform: translateY(var(--slot-translate-1, 0%));
+    rotate: var(--slot-rotate-1, 0deg);
+  }
+  .images-block--front-first .images-block__slot--first,
+  .images-block--front-second .images-block__slot--second { z-index: 1; }
+  .images-block__slot:focus-within { z-index: 2; }
+  .images-block__slot > .image-block { max-width: 100%; }
+  .images-block__slot--frame > .image-block {
+    background: var(--image-block-background, var(--background-color));
+    border-radius: var(--radius-16);
+    box-shadow: 0 0.25rem 0.75rem color-mix(in srgb, var(--shadow-color) 12%, transparent);
+  }
+  @media (min-width: 768px) {
+    .images-block--height-fill { display: flex; flex-direction: column; align-self: stretch; }
+    .images-block--height-fill > .images-block__canvas { flex: 1 1 auto; min-height: 0; }
+    .images-block__slot:has(> .image-block--ratio-desktop-fill_height) { height: 100%; }
+  }
+  @media (max-width: 767.98px) {
+    .images-block--height-fill:not(.images-block--mobile-custom-size) { display: flex; flex-direction: column; align-self: stretch; }
+    .images-block--height-fill:not(.images-block--mobile-custom-size) > .images-block__canvas { flex: 1 1 auto; min-height: 0; }
+    .images-block__slot:has(> .image-block--ratio-mobile-fill_height) { height: 100%; }
+    .images-block { padding: min(var(--images-padding-top-mobile, var(--images-padding-top, 0px)), 25%) min(var(--images-padding-right-mobile, var(--images-padding-right, 0px)), 25%) min(var(--images-padding-bottom-mobile, var(--images-padding-bottom, 0px)), 25%) min(var(--images-padding-left-mobile, var(--images-padding-left, 0px)), 25%); }
+    .images-block__canvas { aspect-ratio: var(--images-ratio-mobile, var(--images-ratio, 780 / 540)); }
+    .images-block__slot {
+      width: var(--slot-width-2, var(--slot-width-1, 50%));
+      left: min(var(--slot-left-2, var(--slot-left-1, 0%)), calc(100% - var(--slot-width-2, var(--slot-width-1, 50%))));
+      top: var(--slot-top-2, var(--slot-top-1, 0%));
+      transform: translateY(var(--slot-translate-2, var(--slot-translate-1, 0%)));
+      rotate: var(--slot-rotate-2, var(--slot-rotate-1, 0deg));
+    }
+  }

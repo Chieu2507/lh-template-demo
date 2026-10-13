@@ -1,0 +1,97 @@
+.icon-text-inline {
+    width: 100%;
+    min-width: 0;
+  }
+
+  .icon-text-inline__spacing {
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    padding-top: var(--icon-text-inline-padding-top);
+    padding-bottom: var(--icon-text-inline-padding-bottom);
+    background-color: var(--icon-text-inline-background, var(--background-color));
+  }
+
+  .icon-text-inline__background {
+    position: absolute;
+    z-index: 0;
+    inset: 0;
+    pointer-events: none;
+  }
+
+  .icon-text-inline__background img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .icon-text-inline__container {
+    position: relative;
+    z-index: 1;
+    min-width: 0;
+  }
+
+  .container.full-width.icon-text-inline__container--no-padding {
+    padding-inline: 0;
+  }
+
+  .icon-text-inline__content {
+    display: flex;
+    min-width: 0;
+    flex-direction: column;
+    align-items: var(--icon-text-inline-align);
+    gap: var(--icon-text-inline-gap);
+    text-align: var(--text-align, left);
+  }
+
+  .icon-text-inline__content > * {
+    max-width: 100%;
+    min-width: 0;
+  }
+
+  .icon-text-inline .carousel-slide-layout--horizontal > * {
+    flex: 0 1 auto;
+  }
+
+  .icon-text-inline .carousel-slide.swiper-slide > .carousel-slide-layout > .group {
+    display: grid;
+    flex: 0 0 56px;
+    width: 56px;
+    height: 56px;
+    place-items: center;
+    border-radius: 50%;
+  }
+
+  .icon-text-inline .carousel-slide.swiper-slide > .carousel-slide-layout > .group .icon-block {
+    width: 24px;
+    height: 24px;
+    padding: 0;
+  }
+
+  .icon-text-inline .carousel-slide-layout--vertical {
+    flex-direction: column;
+  }
+
+  .icon-text-inline .carousel-slide-layout--vertical > * {
+    flex: 0 1 auto;
+  }
+
+  .icon-text-inline .carousel-slide.swiper-slide > .carousel-slide-layout > .group .icon-block__icon {
+    width: 24px;
+    height: 24px;
+    --icon-width: 24px;
+    --icon-padding: 0px;
+  }
+
+  @media (max-width: 767.98px) {
+    .icon-text-inline__spacing {
+      padding-top: var(--icon-text-inline-padding-top-mobile);
+      padding-bottom: var(--icon-text-inline-padding-bottom-mobile);
+    }
+
+    .icon-text-inline__content {
+      align-items: var(--icon-text-inline-align-mobile);
+      gap: var(--icon-text-inline-gap-mobile, var(--icon-text-inline-gap));
+    }
+  }

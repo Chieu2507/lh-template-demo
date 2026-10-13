@@ -1,0 +1,30 @@
+.comparison-table-custom__spacing,
+  .comparison-table-custom__container,
+  .comparison-table-custom__content {
+    width: 100%;
+    min-width: 0;
+  }
+
+  .comparison-table-custom__content > * {
+    min-width: 0;
+  }
+
+  .comparison-table-custom__content {
+    display: flex;
+    text-align: var(--flex-align, start);
+  }
+
+  .comparison-table-custom__content--direction-horizontal > * {
+    max-width: 100%;
+  }
+
+  .comparison-table-custom__spacing--no-padding,
+  .comparison-table-custom__spacing .container.comparison-table-custom__container--no-padding {
+    padding-inline: 0;
+  }
+
+  @media (max-width: 767.98px) {
+    .comparison-table-custom__content {
+      text-align: var(--flex-align-mobile, var(--flex-align, start));
+    }
+  }

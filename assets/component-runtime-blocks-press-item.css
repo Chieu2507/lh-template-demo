@@ -1,0 +1,21 @@
+.press-item {
+    display: flex;
+    flex-direction: column;
+    align-items: var(--flex-align, start);
+    width: 100%;
+    min-width: 0;
+    height: auto;
+    color: var(--body-color);
+    text-align: var(--text-align, inherit);
+  }
+
+  .press-item__content {
+    align-self: stretch;
+    width: 100%;
+    min-width: 0;
+    gap: var(--layout-grid-gap, 1rem);
+  }
+
+  .press-item__content:empty {
+    display: none;
+  }

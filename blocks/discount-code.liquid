@@ -56,24 +56,7 @@
   <span class="announcement-discount-code-block__status visually-hidden" data-discount-code-status aria-live="polite"></span>
 </div>
 
-{% stylesheet %}
-  .text-block.announcement-discount-code-block { display: flex !important; flex-wrap: nowrap; align-items: center; justify-content: center; gap: var(--announcement-discount-gap, 16px); width: 100%; max-width: none; color: var(--announcement-message-color, inherit); }
-  .announcement-discount-code-block__message { display: inline-flex; flex: 0 1 auto; align-items: center; min-width: 0; white-space: nowrap; }
-  .announcement-discount-code-block__message > :where(p, h1, h2, h3, h4, h5, h6, ul, ol) { display: inline !important; margin: 0 !important; }
-  .announcement-discount-code-block__code { display: inline-flex; flex: 0 0 auto; align-items: center; min-height: unset; gap: var(--button-gap, .8rem); padding: .6rem 1.2rem; border: none; border-radius: 0; color: var(--body-color); background-color: color-mix(in srgb, var(--body-color) 10%, var(--background-color)); cursor: pointer; font: inherit; text-transform: none; text-align: center; transition: none; }
-  .announcement-discount-code-block__code:hover { background-color: color-mix(in srgb, var(--body-color) 16%, var(--background-color)); }
-  .announcement-discount-code-block__code:focus-visible { outline: 2px solid var(--input-focus-color, currentColor); outline-offset: 2px; }
-  .announcement-discount-code-block__copy-icon { display: inline-flex; width: 1.4rem; height: 1.4rem; }
-  .announcement-discount-code-block__copy-icon svg { display: inline-flex; width: 100%; height: 100%; }
-  .announcement-discount-code-block__copy-icon [data-copy-icon-copy] { display: inline-flex !important; }
-  .announcement-discount-code-block__copy-icon [data-copy-icon-check] { display: none !important; }
-  .announcement-discount-code-block__code[data-copied='true'] .announcement-discount-code-block__copy-icon [data-copy-icon-copy] { display: none !important; }
-  .announcement-discount-code-block__code[data-copied='true'] .announcement-discount-code-block__copy-icon [data-copy-icon-check] { display: inline-flex !important; }
-  .announcement-discount-code-block__copy-icon [hidden] { display: none !important; }
-  .announcement-discount-code-block__button { flex: 0 0 auto; }
-  .announcement-discount-code-block__status { position: absolute; }
-  @media (max-width: 767.98px) { .text-block.announcement-discount-code-block { gap: var(--announcement-discount-gap-mobile, var(--announcement-discount-gap, 16px)); } }
-{% endstylesheet %}
+{% render 'runtime-stylesheet', filename: 'component-runtime-blocks-discount-code.css', section_index: section.index %}
 
 {% schema %}
 {

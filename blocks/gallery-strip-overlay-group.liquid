@@ -17,56 +17,7 @@
   {% content_for 'blocks' %}
 </div>
 
-{% stylesheet %}
-  .group.gallery-strip-overlay-group {
-    --layout-flow-direction: column;
-    --layout-flow-align-items: var(--gallery-strip-overlay-align, center);
-    --layout-flow-justify-content: center;
-    --layout-flow-gap: 0.75rem;
-    --group-background-color: transparent;
-    --group-overlay-color: transparent;
-    width: 100%;
-    max-width: none;
-    box-sizing: border-box;
-    padding-top: var(--gallery-strip-overlay-padding-top, 20px);
-    padding-right: var(--gallery-strip-overlay-padding-right, 20px);
-    padding-bottom: var(--gallery-strip-overlay-padding-bottom, 20px);
-    padding-left: var(--gallery-strip-overlay-padding-left, 20px);
-    background-color: transparent;
-    background-image: none;
-    color: var(--gallery-strip-overlay-content-color, inherit);
-    text-align: var(--gallery-strip-overlay-text-align, center);
-  }
-
-  .gallery-strip-overlay-group .heading-block,
-  .gallery-strip-overlay-group .button-block {
-    color: var(--gallery-strip-overlay-content-color, inherit);
-    text-align: var(--gallery-strip-overlay-text-align, center);
-  }
-
-  .gallery-strip-overlay-group .heading-block {
-    --heading-block-color: var(--gallery-strip-overlay-content-color, inherit);
-  }
-
-  .gallery-strip-overlay-group .button-block {
-    --button-foreground: var(--gallery-strip-overlay-content-color, inherit);
-    --button-hover-foreground: var(--gallery-strip-overlay-content-color, inherit);
-  }
-
-  .gallery-strip-overlay-group .btn,
-  .gallery-strip-overlay-group .btn:hover,
-  .gallery-strip-overlay-group .btn__label,
-  .gallery-strip-overlay-group .btn__text,
-  .gallery-strip-overlay-group .btn__icon {
-    color: var(--gallery-strip-overlay-content-color, inherit);
-  }
-
-  @media (max-width: 767.98px) {
-    .group.gallery-strip-overlay-group {
-      --layout-flow-gap: 0.5rem;
-    }
-  }
-{% endstylesheet %}
+{% render 'runtime-stylesheet', filename: 'component-runtime-blocks-gallery-strip-overlay-group.css', section_index: section.index %}
 
 {% schema %}
 {

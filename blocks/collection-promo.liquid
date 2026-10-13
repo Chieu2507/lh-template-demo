@@ -174,64 +174,7 @@
   </div>
 </li>
 
-{% stylesheet %}
-  .main-collection__promotion-subheading,
-  .main-collection__promotion-heading,
-  .main-collection__promotion-text {
-    width: 100%;
-    margin: 0;
-  }
-
-  .main-collection__promotion-subheading :where(p),
-  .main-collection__promotion-heading :where(p),
-  .main-collection__promotion-text :where(p) {
-    margin: 0;
-  }
-
-  .main-collection__promotion-cta {
-    position: relative;
-    z-index: 3;
-    width: fit-content;
-    max-width: 100%;
-    margin-top: var(--promo-button-spacing, 24px);
-    pointer-events: auto;
-  }
-
-  .main-collection__promotion-cta .main-collection__promotion-button {
-    min-height: var(--promo-button-height, var(--button-height));
-  }
-
-  .main-collection__promotion-cta--full-width {
-    width: 100%;
-  }
-
-  .main-collection__promotion-cta--full-width .main-collection__promotion-button {
-    width: 100%;
-  }
-
-  .main-collection__promotion-button--outline {
-    --button-background: transparent;
-    --button-foreground: var(--button-secondary-text);
-    --button-border: var(--button-secondary-border);
-  }
-
-  .main-collection__promotion-button--subtle {
-    --button-background: color-mix(in srgb, var(--button-secondary-background) 40%, transparent);
-    --button-foreground: var(--button-secondary-text);
-    --button-border: transparent;
-    --button-hover-background: var(--button-secondary-background);
-  }
-
-  @media (max-width: 767.98px) {
-    .main-collection__promotion-cta {
-      margin-top: var(--promo-button-spacing, 16px);
-    }
-
-    .main-collection__promotion-cta .main-collection__promotion-button {
-      min-height: var(--promo-button-height-mobile, var(--button-height-mobile));
-    }
-  }
-{% endstylesheet %}
+{% render 'runtime-stylesheet', filename: 'component-runtime-blocks-collection-promo.css', section_index: section.index %}
 
 {% schema %}
 {

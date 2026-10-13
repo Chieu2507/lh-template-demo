@@ -75,20 +75,7 @@
     </div>
   </div>
 
-{% stylesheet %}
-  .shop-the-look-product {
-    width: 100%;
-    min-width: 0;
-  }
-
-  .shop-the-look-product__card {
-    width: 100%;
-  }
-
-  .shop-the-look-product__hotspot-source {
-    display: none;
-  }
-{% endstylesheet %}
+{% render 'runtime-stylesheet', filename: 'component-runtime-blocks-shop-the-look-product.css', section_index: section.index %}
 
 {% schema %}
 {

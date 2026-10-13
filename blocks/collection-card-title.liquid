@@ -162,49 +162,7 @@
   {% endif %}
 </div>
 
-{% stylesheet %}
-  .collection-card-title {
-    display: flex;
-    flex-direction: column;
-    align-items: var(--collection-card-title-align, inherit);
-    gap: var(--collection-card-title-gap, 0.2rem);
-    padding-top: var(--collection-card-title-padding-top, 0px);
-    padding-right: var(--collection-card-title-padding-right, 0px);
-    padding-bottom: var(--collection-card-title-padding-bottom, 0px);
-    padding-left: var(--collection-card-title-padding-left, 0px);
-    text-align: inherit;
-  }
-
-  .collection-card-title__heading {
-    margin: 0;
-    min-width: 0;
-    overflow-wrap: anywhere;
-  }
-
-  .collection-card-title__heading.heading-custom { font-size: var(--collection-card-title-custom-size, var(--font-heading-custom)); }
-
-  .collection-card-title__count {
-    display: inline-block;
-    white-space: nowrap;
-    vertical-align: top;
-    padding-inline-start: 6px;
-    color: color-mix(in srgb, currentColor 70%, transparent);
-  }
-
-  .collection-card-title--count-below { gap: var(--collection-card-title-gap, 2px); }
-  .collection-card-title--count-below .collection-card-title__count { padding: 0; color: var(--body-color); }
-  .collection-card-title--uppercase .collection-card-title__heading { text-transform: uppercase; }
-  .collection-card-title--truncate .collection-card-title__heading { overflow: hidden; white-space: nowrap; text-overflow: ellipsis; }
-
-  @media (max-width: 767.98px) {
-    .collection-card-title {
-      padding-top: var(--collection-card-title-padding-top-mobile, var(--collection-card-title-padding-top, 0px));
-      padding-right: var(--collection-card-title-padding-right-mobile, var(--collection-card-title-padding-right, 0px));
-      padding-bottom: var(--collection-card-title-padding-bottom-mobile, var(--collection-card-title-padding-bottom, 0px));
-      padding-left: var(--collection-card-title-padding-left-mobile, var(--collection-card-title-padding-left, 0px));
-    }
-  }
-{% endstylesheet %}
+{% render 'runtime-stylesheet', filename: 'component-runtime-blocks-collection-card-title.css', section_index: section.index %}
 
 {% schema %}
 {

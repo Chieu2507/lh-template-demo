@@ -114,60 +114,7 @@
   </div>
 </div>
 
-{% stylesheet %}
-  .collection-banner { position: relative; isolation: isolate; }
-  .collection-banner--limit-description .collection-banner__content > .text-block { width: 100%; max-width: min(100%, var(--banner-description-max-width)); }
-  .collection-banner--divider-top { border-top: 1px solid var(--border-color); }
-  .collection-banner--divider-bottom { border-bottom: 1px solid var(--border-color); }
-  .collection-banner__surface { position: relative; display: grid; min-width: 0; overflow: hidden; }
-  .collection-banner__media { position: relative; min-width: 0; min-height: 0; }
-  .collection-banner__media picture { display: contents; }
-  .collection-banner__image { display: block; width: 100%; height: 100%; object-fit: cover; }
-  .collection-banner__media--placeholder { background: color-mix(in srgb, var(--heading-color) 8%, var(--background-color)); }
-  .collection-banner__content {
-    position: relative; z-index: 1; display: flex; min-width: 0;
-    flex-direction: column; align-items: var(--banner-position-x); justify-content: var(--banner-position-y);
-    gap: var(--banner-gap, 16px); text-align: var(--text-align-default); overflow-wrap: anywhere;
-  }
-  .collection-banner:not(.collection-banner--classic) .collection-banner__content { padding: 50px; }
-  .collection-banner--background .collection-banner__surface { min-height: var(--banner-height); }
-  .collection-banner--background .collection-banner__media { position: absolute; inset: 0; }
-  .collection-banner--background.collection-banner--overlay .collection-banner__media::after {
-    position: absolute; inset: 0; background: var(--banner-overlay-color); content: ''; pointer-events: none;
-  }
-  .collection-banner--split .collection-banner__content--contained { padding-inline: max(50px, calc((100vw - var(--page-width)) / 2)); }
-  .collection-banner--background .collection-banner__content--contained { width: 100%; max-width: var(--page-width); margin-inline: auto; }
-  .collection-banner--background.collection-banner--adapt .collection-banner__surface { min-height: 0; aspect-ratio: var(--banner-ratio); }
-  .collection-banner--split .collection-banner__surface { grid-template-columns: repeat(2, minmax(0, 1fr)); min-height: var(--banner-height); }
-  .collection-banner--split .collection-banner__media { grid-column: 1; grid-row: 1; }
-  .collection-banner--split .collection-banner__image { position: absolute; inset: 0; }
-  .collection-banner--split .collection-banner__content { grid-column: 2; grid-row: 1; }
-  .collection-banner--split.collection-banner--image-right .collection-banner__media { grid-column: 2; }
-  .collection-banner--split.collection-banner--image-right .collection-banner__content { grid-column: 1; }
-  .collection-banner--split.collection-banner--adapt .collection-banner__surface { min-height: 0; }
-  .collection-banner--split.collection-banner--adapt .collection-banner__media { aspect-ratio: var(--banner-ratio); }
-  .collection-banner__breadcrumb { display: flex; align-items: center; flex-wrap: wrap; gap: 8px; color: var(--body-color); text-align: inherit; padding-block: var(--breadcrumb-padding-top, 0px) var(--breadcrumb-padding-bottom, 0px); }
-  .collection-banner__breadcrumb a { color: inherit; text-decoration: none; }
-  .collection-banner__breadcrumb a:hover { text-decoration: underline; }
-  @media (min-width: 768px) and (max-width: 1149.98px) {
-    .collection-banner:not(.collection-banner--classic) .collection-banner__content { padding: 38px; }
-  }
-  @media (max-width: 767.98px) {
-    .collection-banner.section-spacing { padding-block: var(--section-padding-top-mobile, var(--section-padding-top, 0px)) var(--section-padding-bottom-mobile, var(--section-padding-bottom, 0px)); }
-    .collection-banner__content { gap: var(--banner-gap-mobile, var(--banner-gap, 16px)); }
-    .collection-banner:not(.collection-banner--classic) .collection-banner__content { padding: 32px 16px; }
-    .collection-banner--background .collection-banner__surface,
-    .collection-banner--background.collection-banner--adapt .collection-banner__surface { min-height: var(--banner-height-mobile); aspect-ratio: auto; }
-    .collection-banner--background.collection-banner--adapt-mobile .collection-banner__surface { min-height: 0; aspect-ratio: var(--banner-ratio-mobile); }
-    .collection-banner--split .collection-banner__surface { grid-template-columns: minmax(0, 1fr); min-height: 0; }
-    .collection-banner--split .collection-banner__media,
-    .collection-banner--split.collection-banner--image-right .collection-banner__media { grid-column: 1; grid-row: 1; height: var(--banner-height-mobile); aspect-ratio: auto; }
-    .collection-banner--split .collection-banner__content,
-    .collection-banner--split.collection-banner--image-right .collection-banner__content { grid-column: 1; grid-row: 2; }
-    .collection-banner--split.collection-banner--adapt-mobile .collection-banner__media { height: auto; aspect-ratio: var(--banner-ratio-mobile); }
-    .collection-banner__breadcrumb--custom-mobile-padding { padding-block: var(--breadcrumb-padding-top-mobile, var(--breadcrumb-padding-top, 0px)) var(--breadcrumb-padding-bottom-mobile, var(--breadcrumb-padding-bottom, 0px)); }
-  }
-{% endstylesheet %}
+{% render 'runtime-stylesheet', filename: 'component-runtime-sections-collection-banner.css', section_index: section.index %}
 
 {% schema %}
 {

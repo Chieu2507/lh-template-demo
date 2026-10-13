@@ -1,0 +1,23 @@
+.product-list__promo-item { display:flex; align-self:stretch; min-height:300px; }
+  .product-list__promo-item > .promo-card { width:100%; }
+  .product-list__mobile-promos:empty { display:none; }
+  .product-list__mobile-promos { display:grid; gap:16px; margin-bottom:var(--product-list-mobile-promo-gap,24px); }
+  .product-list__mobile-promos .product-list__promo-item { width:100%; min-height:var(--product-list-mobile-promo-height,360px); }
+  .promo-card { position: relative; isolation: isolate; display: flex; min-width: 0; min-height: 100%; overflow: hidden; border-radius: var(--product-card-media-radius, var(--radius-16)); background: var(--background-color); }
+  .promo-card__overlay { position: absolute; inset: 0; background: var(--promo-overlay, transparent); pointer-events: none; }
+  .promo-card__link { position: absolute; inset: 0; z-index: 1; }
+  .promo-card__link:focus-visible { outline: 2px solid currentColor; outline-offset: -4px; }
+  .promo-card__content { position: relative; display: flex; flex-direction: column; justify-content: flex-end; align-items: flex-start; width: 100%; padding: var(--promo-padding-vertical,32px) var(--promo-padding-horizontal,28px); text-align: left; pointer-events: none; }
+  .promo-card[data-position='top'] .promo-card__content { justify-content: flex-start; }
+  .promo-card[data-position='center'] .promo-card__content { justify-content: center; }
+  .promo-card[data-alignment='center'] .promo-card__content { align-items: center; text-align: center; }
+  .promo-card[data-alignment='right'] .promo-card__content { align-items: flex-end; text-align: right; }
+  .promo-card__text { display: flex; flex-direction: column; gap: var(--promo-content-gap,4px); width: 100%; overflow-wrap: anywhere; }
+  .promo-card__text > *, .promo-card__text p { margin: 0; }
+  .promo-card__text a { position: relative; z-index: 2; pointer-events: auto; }
+  .promo-card__button { z-index: 2; max-width: 100%; margin-top: var(--promo-button-spacing,16px); pointer-events: auto; }
+  .promo-card__button--full, .promo-card__button--full .btn { width: 100%; }
+  .promo-card__button[data-height='small'] { --button-height:40px; --button-height-mobile:40px; }
+  .promo-card__button[data-height='medium'] { --button-height:48px; --button-height-mobile:48px; }
+  .promo-card__button[data-height='large'] { --button-height:56px; --button-height-mobile:56px; }
+  @media (max-width:767.98px) { .promo-card__content { padding:var(--promo-padding-vertical-mobile,32px) var(--promo-padding-horizontal-mobile,28px); } }

@@ -9,12 +9,7 @@
   {% if blog.next_article %}<a class="article-pagination__item article-pagination__item--next" href="{{ blog.next_article.url }}">Next Post</a>{% endif %}
 </nav>
 
-{% stylesheet %}
-  .article-pagination { display: flex; align-items: flex-end; justify-content: space-between; width: 100%; min-height: 22px; gap: 2px; padding-top: var(--article-pagination-padding-top, 0px); padding-bottom: var(--article-pagination-padding-bottom, 0px); box-sizing: border-box; }
-  .article-pagination__item { display: flex; align-items: center; justify-content: center; min-height: 22px; padding: 0 0 1px; color: inherit; font-size: var(--article-pagination-title-size, var(--font-body-sm)); line-height: var(--article-pagination-title-line-height, 1); text-decoration: none; text-transform: uppercase; border-bottom: 1px solid var(--border-color); }
-  .article-pagination__item--next { text-align: right; }
-  @media (max-width: 767.98px) { .article-pagination { padding-top: var(--article-pagination-padding-top-mobile, var(--article-pagination-padding-top, 0px)); padding-bottom: var(--article-pagination-padding-bottom-mobile, var(--article-pagination-padding-bottom, 0px)); } }
-{% endstylesheet %}
+{% render 'runtime-stylesheet', filename: 'component-runtime-blocks-previous-and-next-posts.css', section_index: section.index %}
 
 {% schema %}
 {

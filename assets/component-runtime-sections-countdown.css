@@ -1,0 +1,42 @@
+.countdown-section {
+    width: 100%;
+    padding-top: var(--countdown-section-padding-top, 16px);
+    padding-bottom: var(--countdown-section-padding-bottom, 16px);
+  }
+
+  .countdown-section__container {
+    min-width: 0;
+  }
+
+  .countdown-section__box {
+    width: 100%;
+    min-width: 0;
+  }
+
+  .countdown-section__box--boxed {
+    padding-block: var(--countdown-boxed-padding-block, 70px);
+    padding-inline: var(--countdown-boxed-padding-inline, 50px);
+  }
+
+  .countdown-section__content {
+    min-width: 0;
+  }
+
+  .countdown-section__content > .group,
+  .countdown-section__content > countdown-timer,
+  .countdown-section__content > .button-block {
+    min-width: 0;
+  }
+
+  @media (max-width: 767.98px) {
+    .countdown-section {
+      padding-top: var(--countdown-section-padding-top-mobile, var(--countdown-section-padding-top, 16px));
+      padding-bottom: var(--countdown-section-padding-bottom-mobile, var(--countdown-section-padding-bottom, 16px));
+    }
+
+    .countdown-section__box--boxed {
+      padding-block: var(--countdown-boxed-padding-block-mobile, 40px);
+      padding-inline: var(--countdown-boxed-padding-inline-mobile, 30px);
+    }
+
+  }

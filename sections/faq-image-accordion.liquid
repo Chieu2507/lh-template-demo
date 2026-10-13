@@ -54,47 +54,7 @@
   </div>
 </div>
 
-{% stylesheet %}
-  .faq-section { width: 100%; min-width: 0; }
-  .faq-section .section-spacing { background: var(--faq-section-background, var(--background-color)); }
-  .faq-section .container.full-width--no-padding { padding-inline: 0; }
-  .faq-section__container, .faq-section__content { min-width: 0; }
-  .faq-section__content {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: var(--faq-section-gap, 80px);
-    padding-top: var(--faq-section-padding-top, 0px);
-    padding-bottom: var(--faq-section-padding-bottom, 0px);
-  }
-  .faq-section--horizontal .faq-section__content { flex-direction: row; }
-  .faq-section--horizontal.faq-section--position-center .faq-section__content { align-items: center; }
-  .faq-section--horizontal.faq-section--position-bottom .faq-section__content { align-items: flex-end; }
-  .faq-section--vertical .faq-section__content { flex-direction: column; }
-  .faq-section--vertical.faq-section--align-left .faq-section__content { align-items: flex-start; text-align: left; }
-  .faq-section--vertical.faq-section--align-center .faq-section__content { align-items: center; text-align: center; }
-  .faq-section--vertical.faq-section--align-right .faq-section__content { align-items: flex-end; text-align: right; }
-  .faq-section--horizontal.faq-section--align-left .faq-section__content { justify-content: flex-start; }
-  .faq-section--horizontal.faq-section--align-center .faq-section__content { justify-content: center; }
-  .faq-section--horizontal.faq-section--align-right .faq-section__content { justify-content: flex-end; }
-  .faq-section--horizontal.faq-section--align-space-between .faq-section__content { justify-content: space-between; }
-  .faq-section__content > * { flex: 1 1 0; min-width: 0; width: auto; }
-  .faq-section--vertical .faq-section__content > * { flex: 0 1 auto; width: 100%; }
-  @media (max-width: 767.98px) {
-    .faq-section__content { padding-top: var(--faq-section-padding-top-mobile, var(--faq-section-padding-top, 0px)); padding-bottom: var(--faq-section-padding-bottom-mobile, var(--faq-section-padding-bottom, 0px)); }
-    .faq-section__content { gap: var(--faq-section-gap-mobile, 40px); }
-    .faq-section--vertical-mobile .faq-section__content { flex-direction: column; }
-    .faq-section--horizontal.faq-section--vertical-mobile .faq-section__content > * { flex: 0 1 auto; width: 100%; }
-    .faq-section--horizontal.faq-section--vertical-mobile.faq-section--mobile-align-center .faq-section__content { align-items: center; text-align: center; }
-    .faq-section--horizontal.faq-section--vertical-mobile.faq-section--mobile-align-right .faq-section__content { align-items: flex-end; text-align: right; }
-    .faq-section--horizontal.faq-section--vertical-mobile.faq-section--mobile-align-left .faq-section__content { align-items: flex-start; text-align: left; }
-  }
-  .faq-section__content > .faq-accordion--width-custom { flex: 0 1 var(--size-style-width); width: var(--size-style-width); }
-  .faq-section--vertical .faq-section__content > .faq-accordion--width-custom { flex-basis: auto; }
-  @media (max-width: 767.98px) {
-    .faq-section--horizontal.faq-section--vertical-mobile .faq-section__content > .faq-accordion--width-custom { flex-basis: auto; }
-  }
-{% endstylesheet %}
+{% render 'runtime-stylesheet', filename: 'component-runtime-sections-faq-image-accordion.css', section_index: section.index %}
 
 {% schema %}
 {

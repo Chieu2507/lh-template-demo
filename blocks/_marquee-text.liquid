@@ -5,9 +5,7 @@
   assign plain_text = block.settings.text | strip_html | strip
 %}
 <div class="marquee-text-block body-text body-{{ size }}" style="--mq-font:var(--font-{{ font_role }}-family);--mq-font-style:var(--font-{{ font_role }}-style);--mq-font-weight:var(--font-{{ font_role }}-weight);--mq-color:var(--{% if role == 'heading' %}heading{% else %}body{% endif %}-color);{% render 'marquee-letter-spacing', value: block.settings.letter_spacing %}" {% if plain_text == blank %}data-content-empty{% endif %} {{ block.shopify_attributes }}>{{ block.settings.text }}</div>
-{% stylesheet %}
-.marquee-text-block{flex:0 0 auto;width:max-content;max-width:none;margin:0;overflow-wrap:normal;font-family:var(--mq-font);font-style:var(--mq-font-style);font-weight:var(--mq-font-weight);color:var(--mq-color);letter-spacing:var(--mq-tracking,0em);} .marquee-text-block p{margin:0;} .marquee-text-block a{color:inherit;}
-{% endstylesheet %}
+{% render 'runtime-stylesheet', filename: 'component-runtime-blocks-marquee-text.css', section_index: section.index %}
 
 {% schema %}
 {

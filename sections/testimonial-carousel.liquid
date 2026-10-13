@@ -84,50 +84,7 @@
   </div>
 </div>
 
-{% stylesheet %}
-  .testimonial-carousel { width: 100%; min-width: 0; }
-  .testimonial-carousel__spacing {
-    position: relative;
-    overflow: clip;
-    width: 100%;
-    padding-top: var(--testimonial-carousel-padding-top, 0px);
-    padding-bottom: var(--testimonial-carousel-padding-bottom, 0px);
-    background-color: var(--testimonial-carousel-background-color, var(--background-color));
-  }
-  .testimonial-carousel__container { position: relative; z-index: 1; }
-  .testimonial-carousel__container.full-width--no-padding { padding-inline: 0; }
-  .testimonial-carousel__background { position: absolute; inset: 0; z-index: 0; overflow: hidden; pointer-events: none; }
-  .testimonial-carousel__background img { display: block; width: 100%; height: 100%; object-fit: cover; }
-  .testimonial-carousel__content { min-width: 0; }
-  .testimonial-carousel .carousel-block__container { position: relative; }
-  .testimonial-carousel .carousel-block__fraction-controls {
-    position: absolute;
-    left: calc(50% + var(--testimonial-controls-gap-half, 40px));
-    right: auto;
-    bottom: 0;
-    z-index: 3;
-    width: calc(50% - var(--testimonial-controls-gap-half, 40px));
-    margin-top: 0;
-    padding-inline: 0;
-  }
-  @media (min-width: 768px) {
-    .testimonial-carousel .testimonial-item--horizontal.testimonial-item--position-bottom > .group {
-      padding-bottom: 56px !important;
-    }
-  }
-  @media (max-width: 767.98px) {
-    .testimonial-carousel__spacing {
-      padding-top: var(--testimonial-carousel-padding-top-mobile, var(--testimonial-carousel-padding-top, 0px));
-      padding-bottom: var(--testimonial-carousel-padding-bottom-mobile, var(--testimonial-carousel-padding-bottom, 0px));
-    }
-    .testimonial-carousel .carousel-block__fraction-controls {
-      position: static;
-      width: 100%;
-      margin-top: 1rem;
-      padding-inline: 0;
-    }
-  }
-{% endstylesheet %}
+{% render 'runtime-stylesheet', filename: 'component-runtime-sections-testimonial-carousel.css', section_index: section.index %}
 
 {% schema %}
 {

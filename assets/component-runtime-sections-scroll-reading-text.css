@@ -1,0 +1,45 @@
+.scroll-reading-text__track[data-reading-sticky] { min-height: calc(var(--reading-panel-height, 0px) + var(--reading-scroll-distance, 0px)); }
+  .scroll-reading-text__track[data-reading-sticky] > .scroll-reading-text { position: sticky; top: var(--reading-sticky-top, 0px); min-height: 100dvh; }
+  @media (prefers-reduced-motion: reduce) {
+    .scroll-reading-text__track[data-reading-sticky] { min-height: 0; }
+    .scroll-reading-text__track[data-reading-sticky] > .scroll-reading-text { position: relative; top: auto; min-height: var(--reading-height, auto); }
+  }
+  .scroll-reading-text {
+    position: relative;
+    overflow: clip;
+    display: flex;
+    align-items: center;
+    min-height: var(--reading-height, auto);
+    padding-left: var(--reading-padding-left, 0px);
+    padding-right: var(--reading-padding-right, 0px);
+    background-color: var(--reading-background, var(--background-color));
+  }
+  .scroll-reading-text--desktop-small { --reading-height: 560px; }
+  .scroll-reading-text--desktop-medium { --reading-height: 720px; }
+  .scroll-reading-text--desktop-large { --reading-height: 900px; }
+  .scroll-reading-text--desktop-full_screen { --reading-height: 100svh; }
+  .scroll-reading-text__overlay { position: absolute; inset: 0; background: var(--reading-overlay-color, #000); pointer-events: none; }
+  .scroll-reading-text .value-proposition-01__container { position: relative; z-index: 1; }
+  .scroll-reading-text .full-width--no-padding { width: 100%; max-width: none; }
+  .scroll-reading-text .value-proposition-01__content { width: 100%; gap: var(--reading-gap, 12px); margin-inline: auto; }
+  .scroll-reading-text__content--small { max-width: 450px; }
+  .scroll-reading-text__content--medium { max-width: 672px; }
+  .scroll-reading-text__content--large { max-width: 900px; }
+  @media (min-width: 768px) and (max-width: 1149.98px) {
+    .scroll-reading-text--desktop-small { --reading-height: 480px; }
+    .scroll-reading-text--desktop-medium { --reading-height: 640px; }
+    .scroll-reading-text--desktop-large { --reading-height: 800px; }
+  }
+  @media (max-width: 767.98px) {
+    .scroll-reading-text {
+      padding-block: var(--section-padding-top-mobile, var(--section-padding-top, 0px)) var(--section-padding-bottom-mobile, var(--section-padding-bottom, 0px));
+      padding-left: var(--reading-padding-left-mobile, var(--reading-padding-left, 0px));
+      padding-right: var(--reading-padding-right-mobile, var(--reading-padding-right, 0px));
+    }
+    .scroll-reading-text--mobile-adapt { --reading-height: auto; }
+    .scroll-reading-text--mobile-small { --reading-height: 420px; }
+    .scroll-reading-text--mobile-medium { --reading-height: 560px; }
+    .scroll-reading-text--mobile-large { --reading-height: 640px; }
+    .scroll-reading-text--mobile-full_screen { --reading-height: 100svh; }
+    .scroll-reading-text .value-proposition-01__content { gap: var(--reading-gap-mobile, var(--reading-gap, 12px)); }
+  }

@@ -31,47 +31,7 @@
   </div>
 </div>
 
-{% stylesheet %}
-  .gallery-strip-feature-item .gallery-strip-item__content {
-    position: absolute;
-    inset: 0;
-    z-index: 2;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 0;
-    color: var(--gallery-strip-overlay-color, #fff);
-    pointer-events: none;
-  }
-
-  .gallery-strip-feature-item .gallery-strip-item__content > * {
-    pointer-events: auto;
-  }
-
-  .gallery-strip-feature-item__overlay {
-    position: absolute;
-    inset: 0;
-    z-index: 1;
-    background: var(--gallery-strip-feature-overlay-background, transparent);
-    opacity: 1;
-    transition: opacity 280ms ease;
-  }
-
-  .gallery-strip-feature-item--overlay-hover .gallery-strip-feature-item__overlay {
-    opacity: 0;
-  }
-
-  .gallery-strip-feature-item--overlay-hover:hover .gallery-strip-feature-item__overlay,
-  .gallery-strip-feature-item--overlay-hover:focus-within .gallery-strip-feature-item__overlay {
-    opacity: 1;
-  }
-
-  @media (prefers-reduced-motion: reduce) {
-    .gallery-strip-feature-item__overlay {
-      transition: none;
-    }
-  }
-{% endstylesheet %}
+{% render 'runtime-stylesheet', filename: 'component-runtime-blocks-gallery-strip-feature-item.css', section_index: section.index %}
 
 {% schema %}
 {

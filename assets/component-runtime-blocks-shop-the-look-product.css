@@ -1,0 +1,12 @@
+.shop-the-look-product {
+    width: 100%;
+    min-width: 0;
+  }
+
+  .shop-the-look-product__card {
+    width: 100%;
+  }
+
+  .shop-the-look-product__hotspot-source {
+    display: none;
+  }

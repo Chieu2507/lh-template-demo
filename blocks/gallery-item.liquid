@@ -34,20 +34,7 @@
   </div>
 </article>
 
-{% stylesheet %}
-  .gallery-item { display: flex !important; flex-direction: column; min-width: 0; overflow: hidden; border: 1px solid var(--border-color); background: var(--background-color); }
-  .gallery-item__media, .gallery-item__image, .gallery-item__image > picture, .gallery-item__image > img, .gallery-item__image .image__placeholder { display: block; width: 100%; height: 100%; }
-  .gallery-item__media { aspect-ratio: 1; overflow: hidden; }
-  .gallery-item__media img, .gallery-item__media .image__placeholder { height: 100%; object-fit: cover; }
-  .gallery-item__footer { display: flex; align-items: center; justify-content: space-between; gap: 1rem; padding: 16px; }
-  .gallery-item__identity { display: flex; align-items: center; min-width: 0; gap: 8px; }
-  .gallery-item__avatar { flex: 0 0 48px; width: 48px; height: 48px; overflow: hidden; border-radius: 50%; background: var(--color-foreground-alpha-10, rgb(0 0 0 / 0.08)); }
-  .gallery-item__avatar-image, .gallery-item__avatar-image > img, .gallery-item__avatar-image .image__placeholder { display: block; width: 100%; height: 100%; }
-  .gallery-item__avatar-image img, .gallery-item__avatar-image .image__placeholder { object-fit: cover; }
-  .gallery-item__text { min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-size: var(--font-body-sm); line-height: 1.2; }
-  .gallery-item__social { display: inline-flex; flex: 0 0 calc(var(--gallery-item-icon-size, 24px) + 32px); align-items: center; justify-content: center; width: calc(var(--gallery-item-icon-size, 24px) + 32px); height: calc(var(--gallery-item-icon-size, 24px) + 32px); padding: 16px; color: currentColor; background: var(--gallery-item-social-background, #F0E5E2); border-radius: 50%; text-decoration: none; }
-  .gallery-item__social svg { display: block; width: var(--gallery-item-icon-size, 24px); height: var(--gallery-item-icon-size, 24px); }
-{% endstylesheet %}
+{% render 'runtime-stylesheet', filename: 'component-runtime-blocks-gallery-item.css', section_index: section.index %}
 
 {% schema %}
 {

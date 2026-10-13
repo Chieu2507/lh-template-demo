@@ -1,0 +1,61 @@
+.contact-form-block__form { display: grid; gap: var(--contact-form-gap-desktop, 16px); }
+  .contact-form-block__fields { gap: var(--contact-form-gap-desktop, 16px); }
+  .contact-form-block__identity { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--contact-form-gap-desktop, 16px); }
+  .contact-form-block__submit {
+    display: flex;
+    justify-content: var(--flex-align, start);
+  }
+  .contact-form-block .form__control--input {
+    padding: 0 var(--input-padding-inline);
+  }
+  .contact-form-block .form__control--textarea {
+    min-height: 100px;
+    padding-block: var(--input-padding-inline);
+  }
+  .contact-form-block__success {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin: 0;
+    padding: 0.75rem 0.875rem;
+    background: inherit;
+    color: var(--body-color);
+    font-size: var(--form-helper-font-size);
+  }
+  .contact-form-block__success-icon {
+    display: inline-flex;
+    flex: 0 0 1.25rem;
+    align-items: center;
+    justify-content: center;
+    width: 1.25rem;
+    height: 1.25rem;
+    border-radius: 50%;
+    background: #3f9848;
+    color: #fff;
+  }
+  .contact-form-block__success-icon > svg {
+    width: 0.875rem;
+    height: 0.875rem;
+  }
+  .contact-form-block__button {
+    width: fit-content;
+    height: var(--contact-form-field-height-desktop, auto);
+    min-height: var(--contact-form-field-height-desktop, var(--button-height));
+  }
+  .contact-form-block .form__field .form__control:not(.form__control--textarea) {
+    height: var(--contact-form-field-height-desktop, auto);
+    min-height: var(--contact-form-field-height-desktop, var(--input-height));
+  }
+  @media (max-width: 991.98px) {
+    .contact-form-block__form, .contact-form-block__fields { gap: var(--contact-form-gap-mobile, 16px); }
+    .contact-form-block__identity { grid-template-columns: 1fr; gap: var(--contact-form-gap-mobile, 16px); }
+    .contact-form-block__submit { justify-content: var(--flex-align-mobile, var(--flex-align, start)); }
+    .contact-form-block .form__field .form__control:not(.form__control--textarea) {
+      height: var(--contact-form-field-height-mobile, auto);
+      min-height: var(--contact-form-field-height-mobile, var(--input-height-mobile));
+    }
+    .contact-form-block__button {
+      height: var(--contact-form-field-height-mobile, auto);
+      min-height: var(--contact-form-field-height-mobile, var(--button-height-mobile));
+    }
+  }
