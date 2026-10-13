@@ -86,6 +86,7 @@
 %}
 
 {% capture collection_tabs_style %}
+  {% if section.settings.action_alignment != blank and section.settings.action_alignment != 'inherit' %}--collection-tabs-action-alignment:{{ section.settings.action_alignment }};{% endif %}
   {% if section.settings.customize_header_gap_desktop %}--collection-tabs-header-gap-desktop: {{ section.settings.header_gap_desktop }}px;{% endif %}
   {% if section.settings.customize_header_gap_mobile %}--collection-tabs-header-gap-mobile: {{ section.settings.header_gap_mobile }}px;{% endif %}
   {% if section.settings.customize_action_gap %}--collection-tabs-action-gap: {{ section.settings.action_gap }}px;{% endif %}
@@ -824,6 +825,30 @@
       "unit": "px",
       "default": 24,
       "visible_if": "{{ section.settings.customize_mobile_padding }}"
+    },
+    {
+      "type": "select",
+      "id": "action_alignment",
+      "label": "View all alignment",
+      "default": "inherit",
+      "options": [
+        {
+          "value": "inherit",
+          "label": "Inherit layout"
+        },
+        {
+          "value": "flex-start",
+          "label": "Left"
+        },
+        {
+          "value": "center",
+          "label": "Center"
+        },
+        {
+          "value": "flex-end",
+          "label": "Right"
+        }
+      ]
     }
   ],
   "presets": [

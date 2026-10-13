@@ -3518,3 +3518,10 @@ body[data-block-animations] .motion-block {animation:none;}
 @media (prefers-reduced-motion:reduce) {
   .reveal-pending {opacity:1!important;}
 }
+
+/* Tertiary buttons without an idle underline retain the common link hover. */
+.btn.link-underline[data-underline='hover'][data-underline-target='text']::after{display:none;}
+.btn.link-underline[data-underline='hover'][data-underline-target='text'] .btn__text{position:relative;}
+.btn.link-underline[data-underline='hover'][data-underline-target='text'] .btn__text::after{content:'';position:absolute;inset-inline:0;inset-block-end:calc(var(--button-tertiary-underline-offset) * -1);height:var(--link-underline-thickness,1px);background:currentColor;transform:scaleX(0);transform-origin:left center;transition:transform var(--link-underline-duration,var(--motion-duration-fast)) var(--link-underline-ease,var(--motion-ease-standard));}
+.btn.link-underline[data-underline='hover'][data-underline-target='text']:is(:hover,:focus-visible) .btn__text::after{transform:scaleX(1);}
+.btn.link-underline[data-underline='hover']:is(:disabled,[aria-disabled='true']) .btn__text::after{display:none;}
