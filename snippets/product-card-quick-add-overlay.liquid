@@ -51,7 +51,7 @@
   assign quick_add_trigger_attributes = quick_add_trigger_attributes | strip_newlines | strip
 %}
 
-<div class="{{ quick_add_class }}{% if color_scheme != blank %} {{ color_scheme }}{% endif %}" data-product-card-quick-add-overlay-wrapper>
+<div class="{{ quick_add_class }}{% if color_scheme != blank %} {{ color_scheme }}{% endif %}" data-product-card-quick-add-overlay-wrapper data-quick-add-style="{{ quick_add_style }}">
   {% if quick_add_style == 'icon' %}
     {% render 'theme-button',
       label: label,
