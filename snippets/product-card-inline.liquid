@@ -4,6 +4,7 @@
   @param {product} [product] - Shopify product; blank renders a product placeholder
   @param {string} [rating_content] - Rendered shared Product rating block
   @param {boolean} [show_quick_add] - Show the shared cart action
+  @param {string} [media_sizes] - Parent-owned responsive media dimensions
   @param {number} [placeholder_index] - Ordered placeholder variant
 {% enddoc %}
 {% liquid
@@ -19,7 +20,7 @@
 <article class="product-card-inline" {% if product != blank %}data-product-card{% endif %}>
   <div class="product-card-inline__media">
     {% render 'image', image: inline_image, url: product.url, alt: product.title,
-      width: 336, widths: '112,224,336', sizes: '(max-width: 767px) 96px, 120px', loading: 'lazy', auto_sizes: false,
+      width: 336, widths: '112,224,336', sizes: media_sizes, loading: 'lazy', auto_sizes: false,
       placeholder: inline_placeholder_name
     %}
   </div>

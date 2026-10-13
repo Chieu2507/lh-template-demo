@@ -1,6 +1,7 @@
 {% doc %}
   Renders the inventory status for one product variant.
 
+  @param {string} [display_mode] - Status or available_count presentation
   @param {variant} variant - Variant whose inventory should be described
   @param {number} low_stock_threshold - Quantity at or below which the low-stock state is used
   @param {boolean} show_low_stock_quantity - Show the tracked low-stock count
@@ -50,6 +51,18 @@
       assign inventory_message = 'products.sold_out' | t
     endif
   endif
+  if display_mode == 'available_count' and variant.inventory_management != blank
+    assign available_quantity = inventory_quantity | at_least: 0
+    assign inventory_message = 'products.inventory_available_quantity' | t: count: available_quantity
+  endif
+  assign inventory_show_bar = false
+  if show_progress_bar and low_stock_threshold > 0
+    if display_mode == 'available_count' and variant.inventory_management != blank
+      assign inventory_show_bar = true
+    elsif inventory_state == 'low_stock' and inventory_quantity > 0
+      assign inventory_show_bar = true
+    endif
+  endif
   assign inventory_has_ring = false
   if show_inventory_ring
     if inventory_state == 'in_stock' or inventory_state == 'low_stock'
@@ -61,7 +74,7 @@
 <span class="product-inventory__status product-inventory__status--{{ inventory_state }}{% if inventory_has_ring %} product-inventory__status--with-ring{% endif %}">
   {% if inventory_has_ring %}<span class="product-inventory__ring" aria-hidden="true"></span>{% endif %}
   <span class="product-inventory__copy">
-  {% if inventory_state == 'low_stock' and inventory_quantity > 0 %}
+  {% if inventory_state == 'low_stock' and inventory_quantity > 0 and display_mode != 'available_count' %}
     {% if show_low_stock_quantity %}
       {{ 'products.inventory_low_stock_urgency_html' | t: count: inventory_quantity }}
     {% else %}
@@ -72,8 +85,8 @@
   {% endif %}
   </span>
 </span>
-{% if show_progress_bar and inventory_state == 'low_stock' and inventory_quantity > 0 and low_stock_threshold > 0 %}
+{% if inventory_show_bar %}
   <div class="product-inventory__bar" aria-hidden="true">
-    <span class="product-inventory__bar-fill" style="width: {{ inventory_quantity | times: 100.0 | divided_by: low_stock_threshold | at_most: 100 }}%;"></span>
+    <span class="product-inventory__bar-fill" style="width: {{ inventory_quantity | at_least: 0 | times: 100.0 | divided_by: low_stock_threshold | at_most: 100 }}%;"></span>
   </div>
 {% endif %}

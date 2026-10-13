@@ -1,6 +1,12 @@
 {% liquid
   assign width = block.settings.width_custom_desktop | default: 300
   assign mobile_width = block.settings.width_custom_mobile | default: 50
+  if block.settings.size_desktop == '96' or block.settings.size_desktop == '128' or block.settings.size_desktop == '160'
+    assign width = block.settings.size_desktop | plus: 0
+  endif
+  if block.settings.size_mobile == '96' or block.settings.size_mobile == '128' or block.settings.size_mobile == '160'
+    assign mobile_width = block.settings.size_mobile | plus: 0
+  endif
   capture ratio
     render 'image-ratio-value', setting: block.settings.image_ratio
   endcapture
@@ -145,6 +151,30 @@
       "content": "Width"
     },
     {
+      "type": "select",
+      "id": "size_desktop",
+      "label": "Image size (desktop)",
+      "default": "custom",
+      "options": [
+        {
+          "value": "custom",
+          "label": "Custom"
+        },
+        {
+          "value": "96",
+          "label": "Small (96px)"
+        },
+        {
+          "value": "128",
+          "label": "Medium (128px)"
+        },
+        {
+          "value": "160",
+          "label": "Large (160px)"
+        }
+      ]
+    },
+    {
       "type": "range",
       "id": "width_custom_desktop",
       "label": "Desktop",
@@ -152,7 +182,32 @@
       "max": 400,
       "step": 5,
       "default": 300,
-      "unit": "px"
+      "unit": "px",
+      "visible_if": "{{ block.settings.size_desktop == 'custom' }}"
+    },
+    {
+      "type": "select",
+      "id": "size_mobile",
+      "label": "Image size (mobile)",
+      "default": "custom",
+      "options": [
+        {
+          "value": "custom",
+          "label": "Custom"
+        },
+        {
+          "value": "96",
+          "label": "Small (96px)"
+        },
+        {
+          "value": "128",
+          "label": "Medium (128px)"
+        },
+        {
+          "value": "160",
+          "label": "Large (160px)"
+        }
+      ]
     },
     {
       "type": "range",
@@ -162,7 +217,8 @@
       "max": 400,
       "step": 5,
       "default": 50,
-      "unit": "px"
+      "unit": "px",
+      "visible_if": "{{ block.settings.size_mobile == 'custom' }}"
     },
     {
       "type": "header",
@@ -176,7 +232,7 @@
       "max": 25,
       "step": 1,
       "default": 0,
-      "unit": "\u00b0"
+      "unit": "°"
     },
     {
       "type": "header",
