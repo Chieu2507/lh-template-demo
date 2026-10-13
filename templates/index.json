@@ -6517,7 +6517,7 @@
               "static": true,
               "settings": {
                 "card_style": "card",
-                "media_corner_radius": "radius_16",
+                "media_corner_radius": "square",
                 "show_rating": true,
                 "color_type": "color_scheme",
                 "color_scheme": "scheme-1",
@@ -6559,7 +6559,7 @@
               "static": true,
               "settings": {
                 "card_style": "card",
-                "media_corner_radius": "radius_16",
+                "media_corner_radius": "square",
                 "show_rating": true,
                 "color_type": "color_scheme",
                 "color_scheme": "scheme-1",
@@ -6601,7 +6601,7 @@
               "static": true,
               "settings": {
                 "card_style": "card",
-                "media_corner_radius": "radius_16",
+                "media_corner_radius": "square",
                 "show_rating": true,
                 "color_type": "color_scheme",
                 "color_scheme": "scheme-1",
@@ -6643,7 +6643,7 @@
               "static": true,
               "settings": {
                 "card_style": "card",
-                "media_corner_radius": "radius_16",
+                "media_corner_radius": "square",
                 "show_rating": true,
                 "color_type": "color_scheme",
                 "color_scheme": "scheme-1",
