@@ -74,7 +74,9 @@
 <span class="product-inventory__status product-inventory__status--{{ inventory_state }}{% if inventory_has_ring %} product-inventory__status--with-ring{% endif %}">
   {% if inventory_has_ring %}<span class="product-inventory__ring" aria-hidden="true"></span>{% endif %}
   <span class="product-inventory__copy">
-  {% if inventory_state == 'low_stock' and inventory_quantity > 0 and display_mode != 'available_count' %}
+  {% if display_mode == 'available_count' and variant.inventory_management != blank %}
+    {{ 'products.inventory_available_quantity_html' | t: count: available_quantity }}
+  {% elsif inventory_state == 'low_stock' and inventory_quantity > 0 %}
     {% if show_low_stock_quantity %}
       {{ 'products.inventory_low_stock_urgency_html' | t: count: inventory_quantity }}
     {% else %}

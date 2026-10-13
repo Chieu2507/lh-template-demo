@@ -10,7 +10,8 @@
 {% endif %}
 {% stylesheet %}
 .product-card-stock{font-size:var(--font-body-xs);line-height:1.5;margin-block-end:10px;}
-.product-card-stock .product-inventory__status{display:block;}
+.product-card-stock .product-inventory__status{display:block;color:var(--body-color);}
+.product-card-stock .product-inventory__available-quantity{color:var(--heading-color);}
 .product-card-stock .product-inventory__bar{height:4px;border-radius:var(--radius-pill);background:var(--card-stock-background,var(--background-component-color));margin-block-start:4px;overflow:hidden;}
 .product-card-stock .product-inventory__bar-fill{display:block;height:100%;border-radius:inherit;background:var(--card-stock-color,var(--accent-color));}
 {% endstylesheet %}
