@@ -7641,6 +7641,7 @@
           "type": "banner",
           "static": true,
           "settings": {
+            "enable_sticky": true,
             "open_in_new_tab": false,
             "background_type": "image",
             "image": "shopify://shop_images/torvex-section-47083-24545.webp",

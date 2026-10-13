@@ -16,6 +16,7 @@
   media_card_block: block,
   children: banner_children,
   sizes: media_sizes,
+  enable_sticky: block.settings.enable_sticky,
   class_modifier: 'image-card--featured-collection-banner',
   use_image_ratio: true
 %}
@@ -51,6 +52,12 @@
     }
   ],
   "settings": [
+    {
+      "type": "checkbox",
+      "id": "enable_sticky",
+      "label": "Sticky content",
+      "default": false
+    },
     {
       "type": "header",
       "content": "t:general.content"
