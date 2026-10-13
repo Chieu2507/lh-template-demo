@@ -263,7 +263,8 @@
     const target = getStickyTarget(header, stickyType);
     const bottom = header.querySelector('[data-header-bottom-collapse]');
     const expandedBottom = headerStates.get(header)?.bottomSpacer && bottom && !bottom.hasAttribute('data-collapsed') && window.innerWidth >= 992 ? bottom.offsetHeight : 0;
-    const stickyHeight = stickyType === 'none' || isHidden ? 0 : target.offsetHeight + expandedBottom;
+    const isPinned = headerStates.get(header)?.isPinned === true;
+    const stickyHeight = stickyType === 'none' || isHidden || !isPinned ? 0 : target.offsetHeight + expandedBottom;
     const height = `${stickyHeight}px`;
 
     header.style.setProperty('--header-sticky-height', height);

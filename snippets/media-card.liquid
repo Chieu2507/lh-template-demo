@@ -481,7 +481,8 @@
   .image-card__content--sticky {
     position: sticky;
     inset: auto;
-    top: calc(var(--header-height, 0px) + 2rem);
+    top: calc(var(--header-sticky-height, 0px) + 2rem);
+    transition: top 0.3s ease;
     align-self: flex-start;
     justify-content: flex-start;
     overflow: visible;
@@ -590,4 +591,5 @@
       height: 100vh;
     }
   }
+  @media (prefers-reduced-motion: reduce) { .image-card__content--sticky { transition: none; } }
 {% endstylesheet %}
