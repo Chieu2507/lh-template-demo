@@ -536,6 +536,7 @@
         "columns_mobile": "1",
         "show_next_slide_preview_on_mobile": false,
         "height_desktop": "ratio_16_9",
+        "minimum_row_height": 240,
         "height_mobile": "medium",
         "gap_desktop": 16,
         "gap_mobile": 12,

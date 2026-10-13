@@ -48,7 +48,7 @@
 @media (min-width: 768px) {
   .promo-grid[data-height-desktop='ratio_16_9'] > .container { container-type: inline-size; }
   .promo-grid[data-height-desktop='ratio_16_9'] .promo-grid__items {
-    --promo-row-height: calc((100cqw - (var(--promo-columns-current) - 1) * var(--promo-gap)) / var(--promo-columns-current) * 9 / 16);
+    --promo-row-height: max(var(--promo-min-row-height, 0px), calc((100cqw - (var(--promo-columns-current) - 1) * var(--promo-gap)) / var(--promo-columns-current) * 9 / 16));
   }
 }
 @media (max-width: 767.98px) {
