@@ -2,6 +2,7 @@
   const HEADER_SELECTOR = '.header-top[data-header-root]';
   const headerStates = new Map();
   const headerResizeObservers = new Map();
+  const headerBottomTransitions = new WeakSet();
   const submenuCloseTimers = new WeakMap();
   const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
   const isMobileMenuViewport = () => window.matchMedia('(max-width: 991.98px)').matches;
@@ -390,7 +391,20 @@
     // Keep an active menu or keyboard interaction available until it closes.
     const interacting = bottom.contains(document.activeElement) || Boolean(bottom.querySelector('details[open], [data-editor-selected="true"]'));
     const collapsed = isPinned && window.innerWidth >= 992 && !interacting;
-    bottom.toggleAttribute('data-collapsed', collapsed);
+    if (!headerBottomTransitions.has(bottom)) {
+      bottom.addEventListener('transitionend', (event) => {
+        if (event.target === bottom && event.propertyName === 'grid-template-rows') {
+          bottom.removeAttribute('data-transitioning');
+        }
+      });
+      headerBottomTransitions.add(bottom);
+    }
+    if (bottom.hasAttribute('data-collapsed') !== collapsed) {
+      // Scroll anchoring otherwise moves the page as the row shrinks, which
+      // reverses sticky detection at the threshold even after scrolling stops.
+      bottom.toggleAttribute('data-transitioning', !reducedMotion.matches);
+      bottom.toggleAttribute('data-collapsed', collapsed);
+    }
     bottom.inert = collapsed;
   };
 

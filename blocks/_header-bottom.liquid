@@ -17,12 +17,14 @@
 </div>
 {% stylesheet %}
   .header-bottom-collapse {
-    --header-bottom-collapse-duration: calc(var(--motion-duration-slow, 420ms) * 1.4);
+    --header-bottom-collapse-duration: 350ms;
     display: grid;
     grid-template-rows: 1fr;
     transition: grid-template-rows var(--header-bottom-collapse-duration) cubic-bezier(0.4, 0, 0.2, 1);
   }
+  html:has(.header-bottom-collapse[data-transitioning]) { overflow-anchor: none; }
   .header-bottom-collapse__clip { min-height: 0; }
+  .header-bottom-collapse[data-transitioning] > .header-bottom-collapse__clip { overflow: clip; }
   .header-bottom-collapse .header-bottom {
     transition: transform var(--header-bottom-collapse-duration) cubic-bezier(0.4, 0, 0.2, 1), opacity var(--header-bottom-collapse-duration) ease;
   }
