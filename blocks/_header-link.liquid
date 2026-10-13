@@ -1,16 +1,77 @@
-{% doc %}An editable header utility URL. The owning header controls action size and spacing.{% enddoc %}
+{% doc %}An editable header Location link. Reuses header action type and typography; the parent owns icon size and spacing.{% enddoc %}
+{% liquid
+  assign location_type = block.settings.type | default: 'icon'
+  unless location_type == 'icon' or location_type == 'text' or location_type == 'icon_with_text'
+    assign location_type = 'icon_with_text'
+  endunless
+
+  assign location_label = block.settings.label | default: 'Find a store'
+  assign location_font = block.settings.font | default: 'accent'
+  unless location_font == 'body' or location_font == 'heading' or location_font == 'accent'
+    assign location_font = 'accent'
+  endunless
+
+  assign location_font_size = block.settings.font_size | default: 'md'
+  unless location_font_size == 'sm' or location_font_size == 'md' or location_font_size == 'lg' or location_font_size == 'xl' or location_font_size == 'xxl'
+    assign location_font_size = 'md'
+  endunless
+
+  assign location_letter_spacing = block.settings.letter_spacing | default: 'normal'
+  unless location_letter_spacing == 'tight' or location_letter_spacing == 'normal' or location_letter_spacing == 'relaxed'
+    assign location_letter_spacing = 'normal'
+  endunless
+
+  assign location_typography_class = 'body-text body-' | append: location_font_size | append: ' font-' | append: location_font | append: ' tracking-' | append: location_letter_spacing | append: ' text-case-original'
+  assign location_class = 'header-link header-link--type-' | append: location_type | append: ' ' | append: location_typography_class
+  if location_type == 'icon'
+    assign location_class = location_class | append: ' header-action--type-icon'
+  endif
+%}
+
 {% if block.settings.link != blank or request.design_mode %}
-<a class="header-link header-action--type-icon" href="{{ block.settings.link | default: routes.root_url }}" aria-label="{{ block.settings.label | escape }}" {% if block.settings.open_in_new_tab %}target="_blank" rel="noopener"{% endif %} {{ block.shopify_attributes }}><span class="icon" aria-hidden="true">{% render 'header-icon', icon: 'location' %}</span></a>
+  <a class="{{ location_class }}" href="{{ block.settings.link | default: routes.root_url | escape }}" aria-label="{{ location_label | escape }}"{% if block.settings.open_in_new_tab %} target="_blank" rel="noopener noreferrer"{% endif %} {{ block.shopify_attributes }}>
+    {% unless location_type == 'text' %}<span class="icon" aria-hidden="true">{% render 'header-icon', icon: 'location' %}</span>{% endunless %}
+    {% unless location_type == 'icon' %}<span class="header-action__label {{ location_typography_class }}">{{ location_label | escape }}</span>{% endunless %}
+  </a>
 {% endif %}
+{% stylesheet %}
+  .header-link { display: inline-flex; align-items: center; justify-content: center; gap: .35rem; min-width: 0; color: var(--body-color); text-decoration: none; }
+  .header-link .icon { display: inline-flex; flex: 0 0 auto; width: var(--header-icon-size,var(--icon-size-medium)); height: var(--header-icon-size,var(--icon-size-medium)); }
+  .header-link .icon :is(img,svg) { display: block; width: 100%; height: 100%; }
+{% endstylesheet %}
 {% schema %}
 {
   "name": "Location link",
   "tag": null,
   "settings": [
     {
+      "type": "header",
+      "content": "Layout"
+    },
+    {
+      "type": "select",
+      "id": "type",
+      "label": "Type",
+      "options": [
+        {
+          "value": "icon",
+          "label": "Icon"
+        },
+        {
+          "value": "text",
+          "label": "Text"
+        },
+        {
+          "value": "icon_with_text",
+          "label": "Icon with text"
+        }
+      ],
+      "default": "icon"
+    },
+    {
       "type": "text",
       "id": "label",
-      "label": "t:labels.label",
+      "label": "Label",
       "default": "Find a store"
     },
     {
@@ -23,6 +84,78 @@
       "id": "open_in_new_tab",
       "label": "Open link in new tab",
       "default": false
+    },
+    {
+      "type": "header",
+      "content": "Typography"
+    },
+    {
+      "type": "select",
+      "id": "font",
+      "label": "Font",
+      "options": [
+        {
+          "value": "body",
+          "label": "Body"
+        },
+        {
+          "value": "heading",
+          "label": "Heading"
+        },
+        {
+          "value": "accent",
+          "label": "Accent"
+        }
+      ],
+      "default": "accent"
+    },
+    {
+      "type": "select",
+      "id": "font_size",
+      "label": "Font size",
+      "options": [
+        {
+          "value": "sm",
+          "label": "Small"
+        },
+        {
+          "value": "md",
+          "label": "Medium"
+        },
+        {
+          "value": "lg",
+          "label": "Large"
+        },
+        {
+          "value": "xl",
+          "label": "Extra large"
+        },
+        {
+          "value": "xxl",
+          "label": "Double extra large"
+        }
+      ],
+      "default": "md"
+    },
+    {
+      "type": "select",
+      "id": "letter_spacing",
+      "label": "t:labels.letter_spacing",
+      "options": [
+        {
+          "value": "tight",
+          "label": "t:options.letter_spacing.tight"
+        },
+        {
+          "value": "normal",
+          "label": "t:options.letter_spacing.normal"
+        },
+        {
+          "value": "relaxed",
+          "label": "t:options.letter_spacing.relaxed"
+        }
+      ],
+      "default": "normal"
     }
   ]
 }
