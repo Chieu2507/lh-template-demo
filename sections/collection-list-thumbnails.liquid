@@ -65,6 +65,10 @@
   <div class="container {{ section_width }} collection-thumbnails__container">
     {% capture header %}{% content_for 'block', type: 'header', id: 'header' %}{% endcapture %}
     {% if header != blank %}<div class="collection-thumbnails__header align-content">{{ header }}</div>{% endif %}
+    {% if section.settings.show_view_all %}
+      {% assign thumbnails_view_all_url = section.settings.view_all_link | default: routes.collections_url %}
+      <div class="collection-thumbnails__actions">{% content_for 'block', type: 'view-all-button', id: 'view-all', fallback_url: thumbnails_view_all_url %}</div>
+    {% endif %}
     {% capture items %}{% content_for 'blocks' %}{% endcapture %}
     {% if layout == 'carousel' %}
       <div class="collection-thumbnails__carousel-wrap" data-collection-thumbnails>
@@ -95,6 +99,9 @@
     },
     {
       "type": "header"
+    },
+    {
+      "type": "view-all-button"
     }
   ],
   "settings": [
@@ -123,6 +130,18 @@
       "id": "alignment",
       "label": "t:labels.alignment",
       "default": "left"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_view_all",
+      "label": "Show View all button",
+      "default": false
+    },
+    {
+      "type": "url",
+      "id": "view_all_link",
+      "label": "View all link",
+      "visible_if": "{{ section.settings.show_view_all }}"
     },
     {
       "type": "select",
