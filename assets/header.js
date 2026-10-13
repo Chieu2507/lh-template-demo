@@ -225,6 +225,9 @@
   const updateHeaderHeight = (header, stickyType) => {
     const height = `${getHeaderLayoutTarget(header).offsetHeight}px`;
     header.style.setProperty('--header-layout-height', height);
+    const bottom = header.querySelector('[data-header-bottom-collapse]');
+    const fullHeight = getHeaderLayoutTarget(header).offsetHeight + (bottom ? bottom.scrollHeight - bottom.offsetHeight : 0);
+    header.style.setProperty('--header-hide-height', `${fullHeight}px`);
     if (stickyType === 'none') {
       document.documentElement.style.removeProperty('--header-height');
     } else {
@@ -434,7 +437,9 @@
       }
       header.classList.toggle('header--is-scrolled', isScrolled);
       // Scroll alone does not mean sticky: the announcement row must clear first.
-      const isPinned = isSticky && scrollY > 0 && getStickyTarget(header, stickyType).getBoundingClientRect().top <= 0.5;
+      const pinOffset = headerState.stickyAnchor.getBoundingClientRect().top;
+      const isPinned = isSticky && scrollY > 0 && pinOffset <= (headerState.isPinned ? 2 : -2);
+      headerState.isPinned = isPinned;
       synchronizeHeaderBottom(header, isPinned);
       header.classList.toggle('header--submenu-open', isSubmenuOpen);
       header.classList.toggle('header--mega-menu-open', isMegaMenuOpen);
@@ -450,7 +455,7 @@
         return;
       }
 
-      const revealThreshold = Math.max(getHeaderLayoutTarget(header).offsetHeight, 64);
+      const revealThreshold = Math.max(parseFloat(header.style.getPropertyValue('--header-hide-height')) || getHeaderLayoutTarget(header).offsetHeight, 64);
       const shouldReveal =
         forceShow ||
         scrollY <= 8 ||
@@ -576,7 +581,12 @@
       headerResizeObservers.set(header, observer);
     }
 
-    headerStates.set(header, { header, stickyType });
+    // A normal-flow anchor stays independent of sticky transforms and row collapse.
+    const stickyAnchor = document.createElement('div');
+    stickyAnchor.setAttribute('aria-hidden', 'true');
+    stickyAnchor.style.cssText = 'height:0;pointer-events:none;overflow-anchor:none';
+    header.before(stickyAnchor);
+    headerStates.set(header, { header, stickyType, stickyAnchor, isPinned: false });
     initializeMenuToggles(header);
     initializeHeaderSubmenus(header);
     initializeMegaMenuBackdrops(header);
@@ -1075,6 +1085,7 @@
         backdropCursorBindings.get(drawer)?.destroy();
         backdropCursorBindings.delete(drawer);
       });
+      headerStates.get(header)?.stickyAnchor.remove();
       headerStates.delete(header);
       headerResizeObservers.get(header)?.disconnect();
       headerResizeObservers.delete(header);

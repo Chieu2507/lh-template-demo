@@ -46,7 +46,7 @@
   }
 
   .header[data-sticky-type='scroll_up'].header--is-hidden {
-    transform: translateY(calc(-1 * var(--header-layout-height, 100%)));
+    transform: translateY(calc(-1 * var(--header-hide-height, var(--header-layout-height, 100%))));
   }
 
   /* Keep the fixed drawer viewport-relative through its entire overlay
