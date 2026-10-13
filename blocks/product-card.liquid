@@ -42,6 +42,7 @@
 {% endcapture %}
 {% capture product_card_extensions %}
   {{ product_card_inventory }}
+  {% if block.settings.show_rating %}{% content_for 'block', type: 'product-rating', id: 'rating', closest.product: card_product %}{% endif %}
   {% if card_product != blank %}
     {% content_for 'blocks', closest.product: card_product %}
   {% endif %}
@@ -65,6 +66,7 @@
     product: blank,
     placeholder: true,
     placeholder_index: placeholder_index,
+    rating_content: product_card_extensions,
     card_style: block.settings.card_style,
     media_corner_radius: block.settings.media_corner_radius,
     card_corner_radius: block.settings.card_corner_radius,
@@ -183,6 +185,12 @@
       "default": "inherit"
     },
     {
+      "type": "checkbox",
+      "id": "show_rating",
+      "label": "t:labels.show_rating",
+      "default": false
+    },
+    {
       "type": "header",
       "content": "t:general.appearance"
     },
@@ -267,6 +275,9 @@
     },
     {
       "type": "_product-card-inventory"
+    },
+    {
+      "type": "product-rating"
     }
   ]
 }

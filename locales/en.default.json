@@ -299,7 +299,12 @@
     "inventory_low_stock_message": "Low stock: Only {{ count }} items left in stock.",
     "inventory_out_of_stock": "Out of stock",
     "inventory_available_quantity": "Available: {{ count }}",
-    "inventory_available_quantity_html": "Available: <span class=\"product-inventory__available-quantity\">{{ count }}</span>"
+    "inventory_available_quantity_html": "Available: <span class=\"product-inventory__available-quantity\">{{ count }}</span>",
+    "review_count_zero": "0 review",
+    "review_count": {
+      "one": "{{ count }} review",
+      "other": "{{ count }} reviews"
+    }
   },
   "collection": {
     "apply_filters": "Apply ({{ count }})",
