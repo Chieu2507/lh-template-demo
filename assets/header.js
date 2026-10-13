@@ -380,9 +380,18 @@
         const left = Math.max(8, Math.min(rect.left, window.innerWidth - width - 8));
         details.style.setProperty('--header-popup-shift', `${left - rect.left}px`);
         details.style.setProperty('--header-popup-left', `${left}px`);
-        const headerStyle = getComputedStyle(header);
-        const hasFixedContainer = headerStyle.transform !== 'none' || headerStyle.willChange.includes('transform');
-        const fixedOrigin = details.closest('[data-header-bottom]') && hasFixedContainer ? header.getBoundingClientRect() : { top: 0, left: 0 };
+        let fixedOrigin = { top: 0, left: 0 };
+        if (details.closest('[data-header-bottom]')) {
+          // The animated bottom wrapper becomes the fixed panel's containing block.
+          // Use the nearest actual containing block, rather than the header root.
+          for (let ancestor = panel.parentElement; ancestor; ancestor = ancestor.parentElement) {
+            const style = getComputedStyle(ancestor);
+            if (style.transform !== 'none' || style.perspective !== 'none' || style.filter !== 'none' || style.willChange.includes('transform')) {
+              fixedOrigin = ancestor.getBoundingClientRect();
+              break;
+            }
+          }
+        }
         details.style.setProperty('--header-popup-left', `${left - fixedOrigin.left}px`);
         details.style.setProperty('--header-popup-top', `${Math.min(headerRect.bottom, window.innerHeight - 80) - fixedOrigin.top}px`);
         details.style.setProperty('--header-popup-height', `${Math.max(64, window.innerHeight - Math.min(headerRect.bottom, window.innerHeight - 80) - 8)}px`);
