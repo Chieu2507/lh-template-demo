@@ -9,7 +9,7 @@ const read = (file) => fs.readFileSync(path.join(root, file), 'utf8');
 test('color scheme CSS output is normalized before emission', () => {
   const source = read('snippets/css-variables.liquid');
   const loopStart = source.indexOf('{% for scheme in settings.color_schemes %}');
-  const outputStart = source.indexOf('    .{{ scheme.id }} {', loopStart);
+  const outputStart = source.indexOf('    .{{ scheme.id }},', loopStart);
   const loopEnd = source.indexOf('  {% endfor %}', outputStart);
   const output = source.slice(outputStart, loopEnd);
 
@@ -89,7 +89,10 @@ test('legacy scheme data receives a non-empty fallback for every normalized toke
 test('Footer consumes global social URLs and no longer references follow-us menu', () => {
   const footerGroup = JSON.parse(read('sections/footer-group.json').replace(/^\/\*[\s\S]*?\*\/\s*/, ''));
   const footer = footerGroup.sections.footer;
-  const socialBlock = footer.blocks['footer-row-primary'].blocks['footer-row-primary-column-3'].blocks['footer-social-menu'];
+  const allBlocks = [];
+  const visit = (blocks) => { for (const block of Object.values(blocks || {})) { allBlocks.push(block); visit(block.blocks); } };
+  visit(footer.blocks);
+  const socialBlock = allBlocks.find(block => block.type === 'social-links');
 
   assert.equal(socialBlock.type, 'social-links');
   assert.doesNotMatch(read('sections/footer-group.json'), /follow-us/);

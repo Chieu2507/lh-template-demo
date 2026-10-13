@@ -50,7 +50,7 @@ Generated/100 (#e6e6e6), Generated/300 (#b3b3b3) and Generated/500 (#808080) are
 Figma nodes inspected: header 47251:2370, footer desktop 47251:2696, footer mobile 47251:4289, input atom 34187:1932, textarea atom 34187:1936. Reference screenshots were reviewed together with high-fidelity design context.
 
 - Inputs/selects and textarea: 6px radius. Form height 48px desktop/tablet and 44px mobile, shared horizontal padding 16px. Header search retains its design-specific 20px outer spacing.
-- Footer newsletter: inherit the shared 6px input radius; solid #4d4d4d background as Figma, medium height preset (48/44px). Existing footer composition remains a Pawvera starting point; the desktop Subscribe/mobile icon-button composition has not yet been rebuilt for Torvex.
+- Footer newsletter: inherit the shared 6px input radius; solid #4d4d4d background as Figma, medium height preset (48/44px). The Torvex footer composition is now rebuilt; see the footer implementation audit below.
 - Popup/modal/popover and account dialogs already consume the shared drawer radius. Retain the existing 8px numeric radius; no separate popup design was present in the supplied Torvex page, so this is a consistency choice, not a measured popup Figma value.
 - Mobile drawers: removed duplicate forced-zero overrides from critical.css and component-overlay.css. The inner edge uses 8px; the screen-attached edge remains square when the global mobile inset option is off.
 - Bottom sheets: two top corners 8px, bottom corners square.
@@ -60,3 +60,21 @@ Figma nodes inspected: header 47251:2370, footer desktop 47251:2696, footer mobi
 - Article comments: input and textarea follow shared radii, border and horizontal spacing; input height now follows the desktop/mobile settings.
 
 Validation: 28 radius/overlay controller tests PASS; schema constraints PASS; git diff --check PASS; Theme Check 0 errors / 40 warnings. Browser checks use a local CSS fixture with the current compiled Liquid tokens and actual repository styles, not a deployed Shopify store. Verified computed radii at 375, 767, 768, 1149 and 1150px: input 6px, popup 8px, mobile inner drawer corners 8px, bottom sheet top corners 8px. Input height changes from 44px to 48px at 768px. Live Theme Editor and complete storefront visual QA remain NOT TESTED. The temporary browser tab and local QA server were closed.
+
+
+## Newsletter control ownership correction
+
+The newsletter `corner_radius` control now affects its primary/secondary button, including icon-only buttons. Inherit reads the global Button radius. The email input reads the global Forms radius independently. Removed the separate 8px dropdown entry; legacy radius_8 values still normalize to Rounded for rendering compatibility. Validated rendered Liquid mappings for Inherit/Square/Rounded/Pill; Theme Check has 0 errors. This correction is local and the running 9293 watcher synchronizes it to the Torvex draft.
+
+
+## Footer implementation audit
+
+Rebuilt footer-group using editable Group, Menu, Logo, Text, Email signup, Payment icons, Localization and Social links blocks. Sources: desktop 47251:2696 and mobile 47251:4289. Main background #181818; copyright background #333333. White logo is the Figma asset uploaded as transparent WebP.
+
+Desktop uses three menu columns and a 32% newsletter column, 144px top-row gap at the 1600px content width. Mobile puts newsletter first, opens Collections initially, and uses compact plus/minus accordion menus. Newsletter has a desktop text submit and mobile accessible 44px icon submit; email field retains global Forms radius independently of Button radius. Bottom mobile spacing is 16px padding and 8px row gap.
+
+Reusable contracts extended: mobile Group ordering, footer background override, Menu horizontal direction/weight/heading visibility/initial open/compact mobile spacing, and newsletter mobile icon presentation/input background. No Torvex selectors or template custom CSS. Shopify payment artwork and localization data remain native store data.
+
+Social URLs are blank in the store settings: their block is configured but icons remain hidden until real Torvex URLs are supplied. Navigation resource handles follow the requested labels and need merchant mapping to the final catalog/pages; no catalog resources were created. Cookies Settings currently links to the privacy-policy cookies anchor, not a consent preferences dialog.
+
+Preview synchronized to unpublished theme 192249102635 on port 9293. Radius/theme tests: 8 PASS. Theme Check: 0 errors / 40 warnings. Preview checked at 375, 767, 768, 1149, 1150 and 1920px without horizontal overflow; mobile accordion interaction PASS. Desktop bottom height 65px and mobile 86px; Theme Editor add/remove/reorder lifecycle was not exercised.
