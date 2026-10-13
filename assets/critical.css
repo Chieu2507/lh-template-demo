@@ -1865,6 +1865,7 @@ legend {
 }
 
 .product-card--card .product-card__media {
+  background: var(--background-color);
   margin: var(--product-card-media-inset, 0px) var(--product-card-media-inset, 0px) 0;
   border-radius: var(--product-card-media-radius, var(--media-radius));
 }
