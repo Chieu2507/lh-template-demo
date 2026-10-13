@@ -34,7 +34,7 @@
     {% else %}<div class="promo-grid__items">{{ cards }}</div>{% endif %}
   </div>
 </div>
-{% if request.design_mode %}{{ 'component-sections-promo-grid.css' | asset_url | stylesheet_tag }}{% else %}{% render 'deferred-stylesheet', filename: 'component-sections-promo-grid.css' %}{% endif %}
+{% render 'component-stylesheet', filename: 'component-sections-promo-grid.css', section_index: section.index %}
 
 {% schema %}
 {
