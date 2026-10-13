@@ -143,6 +143,7 @@
   {% endstyle %}
 {% endif %}
 <div
+  data-mobile-banner-position="{{ section.settings.mobile_banner_position | default: 'inherit' }}"
   data-banner-sticky="{% if section.settings.enable_sticky == false %}false{% else %}true{% endif %}"
   data-customize-tablet="{{ section.settings.customize_tablet_layout | default: false }}"
   class="section-spacing featured-collection-banner__spacing{% if banner_inline_layout %} featured-collection-banner--inline{% endif %} color-scheme section-color-scope {{ featured_collection_banner_scheme }}"
@@ -490,3 +491,10 @@
     .featured-collection-banner--inline .product-card-inline__action { display: none; }
   }
 {% endstylesheet %}
+
+{% style %}
+@media(max-width:767.98px){
+ .featured-collection-banner__spacing[data-mobile-banner-position='before'] .featured-collection-banner__layout{grid-template-areas:'banner' 'products';}
+ .featured-collection-banner__spacing[data-mobile-banner-position='after'] .featured-collection-banner__layout{grid-template-areas:'products' 'banner';}
+}
+{% endstyle %}
