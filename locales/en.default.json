@@ -183,7 +183,9 @@
     "no_policies": "Add store policies in Shopify admin to show policy links."
   },
   "carousel": {
-    "go_to_slide": "Go to slide {{ index }}"
+    "go_to_slide": "Go to slide {{ index }}",
+    "previous": "Previous slide",
+    "next": "Next slide"
   },
   "collection_tabs": {
     "load_error": "Unable to load these products. Please try again.",

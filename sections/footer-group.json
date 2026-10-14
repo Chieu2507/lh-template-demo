@@ -259,7 +259,7 @@
                       "type": "logo",
                       "settings": {
                         "style": "transparent",
-                        "fallback_text": "TORVEX",
+                        "fallback_text": "KYVEX",
                         "width": "custom",
                         "width_desktop": 90,
                         "width_mobile": 88

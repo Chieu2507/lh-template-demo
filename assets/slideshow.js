@@ -85,7 +85,7 @@ const updateParallax = (root) => {
 };
 
 const usesCircularPagination = (root, type) => type === 'numbers' ||
-  (type === 'bullets' && (root.classList.contains('slideshow--peekoo') || root.classList.contains('slideshow--circular-pagination')));
+  (type === 'bullets' && root.classList.contains('slideshow--circular-pagination'));
 
 const paginationOptions = (root) => {
   const element = root.querySelector('[data-slideshow-pagination]');
@@ -351,6 +351,7 @@ const startAutoplay = (root, swiper, loop) => {
   const visibilityChange = () => { previous = null; };
   const tick = (now) => {
     const paused = document.hidden || !visible || reducedMotion() ||
+      Boolean(root.hasAttribute?.('data-slideshow-editor-selected')) ||
       (pauseOnHover && root.matches(':hover')) ||
       Boolean(root.querySelector(':focus-visible')) || touching || swiper.isLocked || swiper.animating;
     if (paused) previous = null;
@@ -530,6 +531,7 @@ document.addEventListener('shopify:section:load', (event) => {
 document.addEventListener('shopify:section:unload', (event) => destroyWithin(event.target));
 document.addEventListener('shopify:block:select', (event) => {
   const root = event.target.closest?.(selector);
+  root?.setAttribute?.('data-slideshow-editor-selected', '');
   if (root) init(root);
   const state = root && states.get(root);
   const slide = event.target.closest?.('[data-slideshow-slide]');
@@ -542,6 +544,10 @@ document.addEventListener('shopify:block:select', (event) => {
   if (state.manualLoop) state.swiper.slideTo(state.manualLoop.originalIndex(index), 0);
   else if (state.swiper.params.loop) state.swiper.slideToLoop(Number(slide.dataset.swiperSlideIndex ?? index), 0);
   else state.swiper.slideTo(index, 0);
+});
+
+document.addEventListener('shopify:block:deselect', (event) => {
+  event.target.closest?.(selector)?.removeAttribute?.('data-slideshow-editor-selected');
 });
 
 if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', () => initWithin(), { once: true });

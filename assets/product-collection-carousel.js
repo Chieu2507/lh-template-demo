@@ -30,7 +30,7 @@ const getMobileSlidesPerView = (carousel) => {
   const columns = getSlidesPerView(carousel.dataset.swiperColumnsMobile);
 
   if (carousel.dataset.swiperNextSlidePreviewMobile === 'true') {
-    return columns + 0.2;
+    return columns + (columns === 1 ? 0.4 : 0.1);
   }
 
   return columns;

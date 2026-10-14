@@ -565,6 +565,7 @@ const initialize = (root) => {
   // that require centered-slide runtime must opt in explicitly on their root.
   const useCenteredSlidePreview = root.dataset.showNextSlidePreviewOnDesktop === 'true';
   const mobilePreview = viewport.dataset.swiperNextSlidePreviewMobile === 'true';
+  const mobileColumns = number(root.dataset.swiperColumnsMobile, 1);
   const transition = root.dataset.transition === 'fade' ? 'fade' : 'slide';
   const fade = transition === 'fade' && !useCenteredSlidePreview && !mobilePreview;
   const manualLoop = manualLoopRequested && loop ? createManualLoop(viewport) : null;
@@ -577,7 +578,7 @@ const initialize = (root) => {
     ...(fade ? { fadeEffect: { crossFade: true } } : {}),
     preventInteractionOnTransition: true,
     speed: prefersReducedMotion() ? 0 : 600,
-    slidesPerView: number(root.dataset.swiperColumnsMobile, 1) + (mobilePreview ? 0.2 : 0),
+    slidesPerView: mobileColumns + (mobilePreview ? (mobileColumns === 1 ? 0.4 : 0.1) : 0),
     spaceBetween: number(root.dataset.swiperGapMobile, 12),
     breakpoints: {
       ...(hasTabletColumns ? { 768: {

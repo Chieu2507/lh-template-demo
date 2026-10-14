@@ -9,7 +9,7 @@ function setup(url, resource, count = 7, limit = 6, designMode = false) {
   const button = { setAttribute: (k, v) => attributes.set(k, v), removeAttribute: k => attributes.delete(k) };
   const section = {
     querySelectorAll: selector => selector === '[data-view-all-button]' ? [button] : selector === '[data-resource-view-all]' ? [wrapper] : [],
-    querySelector: selector => selector === resource ? { dataset: resource === '[data-product-list]' ? { collectionUrl: url, resourceCount: count, resourceLimit: limit } : { blogUrl: url, resourceCount: count, resourceLimit: limit } } : null,
+    querySelector: selector => selector.split(',').map(value => value.trim()).includes(resource) ? { dataset: resource === '[data-product-list]' ? { collectionUrl: url, resourceCount: count, resourceLimit: limit } : { blogUrl: url, resourceCount: count, resourceLimit: limit } } : null,
   };
   const events = {};
   const document = { readyState: 'complete', querySelectorAll: () => [section], addEventListener: (name, handler) => events[name] = handler };

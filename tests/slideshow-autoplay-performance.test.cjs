@@ -6,13 +6,14 @@ const vm = require('node:vm');
 function fixture() {
   const source = fs.readFileSync('assets/slideshow.js', 'utf8');
   const clock = source.slice(source.indexOf('const startAutoplay ='), source.indexOf('const bindNavigation ='));
-  let frame, observer, reads = 0, moves = 0, disconnected = false;
+  let frame, observer, reads = 0, moves = 0, disconnected = false, editorSelected = false;
   const properties = new Map();
   const style = { setProperty: (key, value) => properties.set(key, value), removeProperty: key => properties.delete(key) };
   const svg = { style: { setProperty() {} } };
   const number = { querySelector: () => svg, getAttribute: () => 'true' };
   const pagination = { style, querySelectorAll: () => [number] };
   const root = { dataset: { autoplay: 'true', autoplayDelay: '3000' },
+    hasAttribute: name => name === 'data-slideshow-editor-selected' && editorSelected,
     querySelector: selector => selector === '[data-slideshow-pagination]' ? pagination : null,
     matches: () => false, style: { setProperty() { throw new Error('Clock must not invalidate the entire section'); } } };
   const swiper = { realIndex: 0, on() {}, off() {}, slideNext() { moves++; } };
@@ -24,6 +25,7 @@ function fixture() {
   const start = vm.runInContext(clock + '\nstartAutoplay;', context);
   const controller = start(root, swiper, null);
   return { tick: time => frame(time), observe: visible => observer([{ isIntersecting: visible }]),
+    select: selected => { editorSelected = selected; },
     controller, properties, reads: () => reads, moves: () => moves, disconnected: () => disconnected };
 }
 
@@ -34,6 +36,16 @@ test('autoplay paints only controls without repeated layout reads, and still adv
   assert.equal(f.reads(), 1);
   assert.equal(f.moves(), 1);
   assert.ok(f.properties.has('--slideshow-autoplay-progress'));
+});
+
+test('selecting an editor block pauses autoplay and deselecting resumes the remaining time', () => {
+  const f = fixture();
+  f.tick(0); f.tick(1000);
+  f.select(true); f.tick(2000); f.tick(12000);
+  assert.equal(f.moves(), 0);
+  f.select(false); f.tick(13000); f.tick(15000);
+  assert.equal(f.moves(), 1);
+  f.controller.destroy();
 });
 
 test('offscreen slideshow pauses its clock and unload disconnects the observer', () => {

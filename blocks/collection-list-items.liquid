@@ -238,7 +238,6 @@
       data-layout="carousel"
       data-swiper-columns-desktop="{{ collection_list_desktop_columns }}"
       data-swiper-columns-mobile="{{ collection_list_mobile_columns }}"
-      {% if block.settings.mobile_card_sizing == 'fixed' %}data-swiper-card-width-mobile="{{ block.settings.mobile_card_width | default: 256 }}" style="--collection-list-card-width-mobile: {{ block.settings.mobile_card_width | default: 256 }}px;"{% endif %}
       data-swiper-columns-tablet="{{ collection_list_tablet_columns }}"
       data-swiper-gap-desktop="{{ collection_list_gap_desktop }}"
       data-swiper-gap-tablet="{{ collection_list_gap_tablet }}"
@@ -385,34 +384,6 @@
         }
       ],
       "default": "1"
-    },
-    {
-      "type": "select",
-      "id": "mobile_card_sizing",
-      "label": "Mobile card sizing",
-      "options": [
-        {
-          "value": "columns",
-          "label": "Columns"
-        },
-        {
-          "value": "fixed",
-          "label": "Fixed width"
-        }
-      ],
-      "default": "columns",
-      "visible_if": "{{ block.settings.layout == 'carousel' }}"
-    },
-    {
-      "type": "range",
-      "id": "mobile_card_width",
-      "label": "Mobile card width",
-      "min": 160,
-      "max": 400,
-      "step": 4,
-      "unit": "px",
-      "default": 256,
-      "visible_if": "{{ block.settings.layout == 'carousel' and block.settings.mobile_card_sizing == 'fixed' }}"
     },
     {
       "type": "checkbox",

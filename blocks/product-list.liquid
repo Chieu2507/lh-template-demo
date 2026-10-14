@@ -8,6 +8,10 @@
 {% enddoc %}
 
 {% liquid
+  assign product_list_row_gap_desktop = block.settings.product_gap_desktop | default: 4
+  if block.settings.layout_type == 'grid' and block.settings.customize_desktop_row_gap
+    assign product_list_row_gap_desktop = block.settings.product_row_gap_desktop | default: product_list_row_gap_desktop
+  endif
   assign product_list_row_gap_mobile = block.settings.product_gap_mobile | default: 8
   if block.settings.customize_mobile_row_gap
     assign product_list_row_gap_mobile = block.settings.product_row_gap_mobile | default: product_list_row_gap_mobile
@@ -254,10 +258,8 @@
       columns_desktop: block.settings.columns_desktop,
       columns_mobile: block.settings.columns_mobile,
       columns_tablet: block.settings.columns_tablet,
-      mobile_card_width: block.settings.mobile_card_width,
-      mobile_card_sizing: block.settings.mobile_card_sizing,
       gap_horizontal: product_list_gap_desktop,
-      gap_vertical: product_list_gap_desktop,
+      gap_vertical: product_list_row_gap_desktop,
       gap_horizontal_mobile: product_list_gap_mobile,
       gap_vertical_mobile: product_list_row_gap_mobile,
       show_placeholders: true,
@@ -379,9 +381,6 @@
       margin-inline: 0;
     }
   }
-@media(max-width:767.98px){
-  .product-list__items[data-swiper-card-width-mobile] .product-list__item { width:min(100%,var(--product-list-card-width-mobile)); }
-}
 {% endstylesheet %}
 
 {% schema %}
@@ -493,33 +492,6 @@
       "default": "1"
     },
     {
-      "type": "select",
-      "id": "mobile_card_sizing",
-      "label": "Card sizing (mobile)",
-      "default": "columns",
-      "options": [
-        {
-          "value": "columns",
-          "label": "Columns"
-        },
-        {
-          "value": "fixed",
-          "label": "Fixed width"
-        }
-      ]
-    },
-    {
-      "type": "range",
-      "id": "mobile_card_width",
-      "label": "Card width (mobile)",
-      "min": 160,
-      "max": 360,
-      "step": 4,
-      "default": 212,
-      "unit": "px",
-      "visible_if": "{{ block.settings.layout_type == 'carousel' and block.settings.mobile_card_sizing == 'fixed' }}"
-    },
-    {
       "type": "checkbox",
       "id": "show_next_slide_preview_on_desktop",
       "label": "t:labels.show_next_slide_preview_on_desktop",
@@ -576,6 +548,24 @@
       "step": 4,
       "unit": "px",
       "default": 360
+    },
+    {
+      "type": "checkbox",
+      "id": "customize_desktop_row_gap",
+      "label": "Customize desktop row gap",
+      "default": false,
+      "visible_if": "{{ block.settings.layout_type == 'grid' }}"
+    },
+    {
+      "type": "range",
+      "id": "product_row_gap_desktop",
+      "label": "Desktop row gap",
+      "min": 0,
+      "max": 40,
+      "step": 1,
+      "unit": "px",
+      "default": 32,
+      "visible_if": "{{ block.settings.layout_type == 'grid' and block.settings.customize_desktop_row_gap }}"
     },
     {
       "type": "checkbox",

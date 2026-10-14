@@ -1,4 +1,4 @@
-.swiper > .swiper-wrapper > .swiper-slide {
+:is(.swiper, .swiper-controls) > .swiper-wrapper > .swiper-slide {
   /* Swiper sets the computed slide width inline for multi-column layouts. */
   flex-basis: auto;
 }
@@ -58,15 +58,9 @@
     clip-path: inset(0 calc(-1 * var(--swiper-carousel-preview-size)) 0 calc(-1 * var(--swiper-carousel-preview-size)));
   }
 
-  .swiper[data-product-carousel][data-swiper-next-slide-preview-mobile='true'],
-  [data-carousel-block] .swiper[data-swiper-next-slide-preview-mobile='true'] {
-    /* Fractional slides per view already include the next-card preview. */
-    overflow: hidden;
-    clip-path: none;
-  }
 }
 
-.swiper > .swiper-pagination--below {
+:is(.swiper, .swiper-controls) > .swiper-pagination--below {
   position: relative;
   inset: auto;
   width: var(--swiper-pagination-width, 100%);
@@ -76,18 +70,18 @@
 }
 
 @media (max-width: 767.98px) {
-  .swiper > .swiper-pagination--below {
+  :is(.swiper, .swiper-controls) > .swiper-pagination--below {
     margin-block-start: var(--swiper-pagination-spacing-mobile, var(--swiper-pagination-spacing, 0px));
   }
 }
 
-.swiper > .swiper-pagination--below[data-pagination-type='progress_bar'] {
+:is(.swiper, .swiper-controls) > .swiper-pagination--below[data-pagination-type='progress_bar'] {
   --swiper-pagination-progressbar-bg-color: var(--background-bar-color, color-mix(in srgb, var(--body-color) 20%, transparent));
   --swiper-pagination-color: var(--body-color);
 }
 
 /* Slideshow and hotspot controls share overlay geometry; sections own inset tokens. */
-.swiper > .swiper-pagination.swiper-pagination--overlay {
+:is(.swiper, .swiper-controls) > .swiper-pagination.swiper-pagination--overlay {
   --swiper-pagination-color: var(--heading-color);
   --swiper-pagination-progressbar-bg-color: color-mix(in srgb, var(--heading-color) 30%, transparent);
   --swiper-pagination-bullet-inactive-color: color-mix(in srgb, var(--heading-color) 30%, transparent);
@@ -131,7 +125,7 @@
 }
 
 /* Progress bars span the same content inset regardless of bullet alignment. */
-.swiper > .swiper-pagination.swiper-pagination--overlay[data-pagination-type='progress_bar'] {
+:is(.swiper, .swiper-controls) > .swiper-pagination.swiper-pagination--overlay[data-pagination-type='progress_bar'] {
   inset-block-end: var(--swiper-pagination-overlay-padding, 2.4rem);
   inset-inline: var(--swiper-pagination-inline-padding, var(--page-margin-current));
   min-height: 2px;
@@ -140,7 +134,7 @@
 }
 
 @media (max-width: 767.98px) {
-  .swiper > .swiper-pagination.swiper-pagination--overlay {
+  :is(.swiper, .swiper-controls) > .swiper-pagination.swiper-pagination--overlay {
     --swiper-pagination-overlay-padding: 1.6rem;
   }
 
@@ -163,7 +157,7 @@
   }
 }
 
-.swiper > :is(
+:is(.swiper, .swiper-controls) > :is(
   .swiper-pagination[data-pagination-type='bullets'],
   .swiper-pagination.swiper-pagination-bullets
 ) {
@@ -176,7 +170,7 @@
   gap: 0px;
 }
 
-.swiper > :is(
+:is(.swiper, .swiper-controls) > :is(
   .swiper-pagination[data-pagination-type='bullets'],
   .swiper-pagination.swiper-pagination-bullets
 ) .swiper-pagination-bullet {
@@ -199,17 +193,17 @@
 }
 
 /* State classes must win over the bullet layout, including before init. */
-.swiper > .swiper-pagination:is(.swiper-pagination-lock, .swiper-pagination-disabled),
+:is(.swiper, .swiper-controls) > .swiper-pagination:is(.swiper-pagination-lock, .swiper-pagination-disabled),
 .swiper.swiper-pagination-disabled > .swiper-pagination,
 .swiper.swiper-carousel--grid > .swiper-pagination {
   display: none;
 }
 
-.swiper > :is(
+:is(.swiper, .swiper-controls) > :is(
   .swiper-pagination[data-pagination-type='bullets'],
   .swiper-pagination.swiper-pagination-bullets
 ) .swiper-pagination-bullet::before,
-.swiper > :is(
+:is(.swiper, .swiper-controls) > :is(
   .swiper-pagination[data-pagination-type='bullets'],
   .swiper-pagination.swiper-pagination-bullets
 ) .swiper-pagination-bullet::after {
@@ -229,14 +223,14 @@
     height var(--motion-duration-standard) var(--motion-ease-standard);
 }
 
-.swiper > :is(
+:is(.swiper, .swiper-controls) > :is(
   .swiper-pagination[data-pagination-type='bullets'],
   .swiper-pagination.swiper-pagination-bullets
 ) .swiper-pagination-bullet::before {
   background: var(--swiper-pagination-bullet-inactive-color, color-mix(in srgb, var(--body-color) 30%, transparent));
 }
 
-.swiper > :is(
+:is(.swiper, .swiper-controls) > :is(
   .swiper-pagination[data-pagination-type='bullets'],
   .swiper-pagination.swiper-pagination-bullets
 ) .swiper-pagination-bullet::after {
@@ -246,32 +240,32 @@
   transform-origin: left center;
 }
 
-.swiper > :is(
+:is(.swiper, .swiper-controls) > :is(
   .swiper-pagination[data-pagination-type='bullets'],
   .swiper-pagination.swiper-pagination-bullets
 ) .swiper-pagination-bullet-active {
   opacity: var(--swiper-pagination-bullet-opacity, 1);
 }
 
-.swiper > :is(
+:is(.swiper, .swiper-controls) > :is(
   .swiper-pagination[data-pagination-type='bullets'],
   .swiper-pagination.swiper-pagination-bullets
 ) .swiper-pagination-bullet-active::before,
-.swiper > :is(
+:is(.swiper, .swiper-controls) > :is(
   .swiper-pagination[data-pagination-type='bullets'],
   .swiper-pagination.swiper-pagination-bullets
 ) .swiper-pagination-bullet-active::after {
   height: var(--swiper-pagination-bullet-active-height, var(--swiper-pagination-bullet-height, 8px));
 }
 
-.swiper > :is(
+:is(.swiper, .swiper-controls) > :is(
   .swiper-pagination[data-pagination-type='bullets'],
   .swiper-pagination.swiper-pagination-bullets
 ) .swiper-pagination-bullet-active::before {
   background: color-mix(in srgb, var(--swiper-pagination-color, var(--body-color)) 24%, transparent);
 }
 
-.swiper > :is(
+:is(.swiper, .swiper-controls) > :is(
   .swiper-pagination[data-pagination-type='bullets'],
   .swiper-pagination.swiper-pagination-bullets
 ) .swiper-pagination-bullet-active::after {
@@ -305,11 +299,11 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .swiper > :is(
+  :is(.swiper, .swiper-controls) > :is(
     .swiper-pagination[data-pagination-type='bullets'],
     .swiper-pagination.swiper-pagination-bullets
   ) .swiper-pagination-bullet::before,
-  .swiper > :is(
+  :is(.swiper, .swiper-controls) > :is(
     .swiper-pagination[data-pagination-type='bullets'],
     .swiper-pagination.swiper-pagination-bullets
   ) .swiper-pagination-bullet::after {

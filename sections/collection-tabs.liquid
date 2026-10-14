@@ -489,33 +489,6 @@
       "default": "1"
     },
     {
-      "type": "select",
-      "id": "mobile_card_sizing",
-      "label": "Card sizing (mobile)",
-      "default": "columns",
-      "options": [
-        {
-          "value": "columns",
-          "label": "Columns"
-        },
-        {
-          "value": "fixed",
-          "label": "Fixed width"
-        }
-      ]
-    },
-    {
-      "type": "range",
-      "id": "mobile_card_width",
-      "label": "Card width (mobile)",
-      "default": 212,
-      "min": 160,
-      "max": 360,
-      "step": 4,
-      "unit": "px",
-      "visible_if": "{{ section.settings.layout_type == 'carousel' and section.settings.mobile_card_sizing == 'fixed' }}"
-    },
-    {
       "type": "checkbox",
       "id": "show_next_slide_preview_on_desktop",
       "label": "t:labels.show_next_slide_preview_on_desktop",

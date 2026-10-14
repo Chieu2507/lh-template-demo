@@ -2081,7 +2081,7 @@ legend {
   max-width: 100%;
 }
 
-@media (min-width: 768px) {
+@media (min-width: 1150px) {
   .product-card__quick-add-button--text .btn__icon {
     display: none;
   }
@@ -3097,11 +3097,13 @@ legend {
   .product-card:not(.product-card--quick-view-mobile) .product-card__quick-view {
     display: none;
   }
+}
 
+@media (max-width: 1149.98px) {
   .product-card--quick-add-mobile .product-card__quick-add {
-    right: auto;
+    right: 12px;
     bottom: 12px;
-    left: 12px;
+    left: auto;
     width: auto;
     opacity: 1;
     pointer-events: auto;

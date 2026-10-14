@@ -10,8 +10,6 @@
   @param {string} [layout_type] - Grid or carousel presentation
   @param {string} [columns_desktop] - Desktop column setting
   @param {string} [columns_tablet] - Optional tablet columns
-  @param {number} [mobile_card_width] - Fixed mobile carousel card width
-  @param {string} [mobile_card_sizing] - Columns or fixed width
   @param {string} [columns_mobile] - Mobile column setting
   @param {boolean} [enable_swipe_mobile] - Whether to enable mobile swipe
   @param {boolean} [mobile_carousel] - Whether a grid should use Swiper on mobile only
@@ -25,7 +23,7 @@
   @param {string} [grid_class] - Additional class for the grid root
   @param {string} [item_class] - Additional class for each grid item
   @param {string} [items_data_attributes] - Additional grid data attributes
-  @param {boolean} [next_slide_preview_mobile] - Whether mobile shows configured columns plus 0.2
+  @param {boolean} [next_slide_preview_mobile] - Whether mobile shows 1.4 or 2.1 cards for one or two configured columns
   @param {boolean} [next_slide_preview] - Whether to reveal the next slide on desktop
   @param {string} [carousel_id] - Stable ID for the carousel root
   @param {string} [aria_label] - Accessible name for the carousel
@@ -204,7 +202,6 @@
 %}
 
 {% capture product_collection_grid_style %}
-  {% if mobile_card_sizing == 'fixed' and product_collection_grid_layout == 'carousel' %}--product-list-card-width-mobile:{{ mobile_card_width | default: 212 | at_least: 160 | at_most: 360 }}px;{% endif %}
   {% if product_collection_grid_layout == 'grid' %}
     --product-collection-grid-columns-desktop: {{ product_collection_grid_columns_desktop }};
     --product-collection-grid-columns-tablet: {{ product_collection_grid_columns_tablet }};
@@ -252,7 +249,6 @@
       data-product-collection-grid
       data-layout="carousel"
       data-product-carousel
-      {% if mobile_card_sizing == 'fixed' %}data-swiper-card-width-mobile="{{ mobile_card_width | default: 212 | at_least: 160 | at_most: 360 }}"{% endif %}
       data-swiper-columns-desktop="{{ product_collection_grid_columns_desktop }}"
       data-swiper-columns-tablet="{{ product_collection_grid_columns_tablet }}"
       data-swiper-columns-mobile="{{ product_collection_grid_columns_mobile }}"

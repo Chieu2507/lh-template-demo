@@ -9,7 +9,7 @@
  */
 {
   "current": {
-    "logo": "shopify://shop_images/torvex-logo-white.webp",
+    "logo": "shopify://shop_images/kyvex-logo-white.webp",
     "logo_width": 88,
     "logo_width_mobile": 88,
     "default_color_scheme": "scheme-1",
@@ -60,7 +60,7 @@
     "type_eyebrow_case": "original",
     "motion_image_zoom": true,
     "motion_block_animations": true,
-    "radius_badges_subheadings": "pill",
+    "radius_badges_subheadings": "radius_4",
     "radius_variant_pickers": "slightly_rounded",
     "radius_swatches": "slightly_rounded",
     "radius_navigation": "pill",
@@ -114,10 +114,10 @@
     "product_card_title_line_limit": "2",
     "product_card_ratio": "square",
     "product_card_gap_device": "desktop",
-    "product_card_content_spacing_desktop": 20,
+    "product_card_content_spacing_desktop": 16,
     "product_card_content_gap_desktop": 6,
     "product_card_info_gap_desktop": 6,
-    "product_card_content_spacing_mobile": 20,
+    "product_card_content_spacing_mobile": 16,
     "product_card_content_gap_mobile": 6,
     "product_card_info_gap_mobile": 6,
     "product_card_quick_add_enabled": true,
@@ -153,17 +153,17 @@
     "swatch_width_mobile": 64,
     "swatch_height_ratio": "1_1",
     "swatch_selected_style": "underline",
-    "badge_font": "instrument_sans_n6",
+    "badge_font": "outfit_n6",
     "badge_font_size": 12,
-    "badge_padding_vertical": 4,
-    "badge_padding_horizontal": 12,
+    "badge_padding_vertical": 2,
+    "badge_padding_horizontal": 8,
     "badge_letter_spacing": "normal",
     "badge_sale_price_color": "#D82727",
     "badge_sale_background_color": "#D82727",
     "badge_sale_text_color": "#FFFFFF",
     "badge_sold_out_background_color": "#ADADAD",
     "badge_sold_out_text_color": "#FFFFFF",
-    "badge_sale_type": "text",
+    "badge_sale_type": "percentage_only",
     "badge_new_background_color": "#4EACA3",
     "badge_new_text_color": "#FFFFFF",
     "badge_best_seller_background_color": "#B1C8F9",
@@ -313,7 +313,7 @@
     },
     "product_card_media_inset": 0,
     "product_card_media_corner_radius": "radius_16",
-    "logo_transparent": "shopify://shop_images/torvex-logo-white.webp"
+    "logo_transparent": "shopify://shop_images/kyvex-logo-white.webp"
   },
   "presets": {
     "Perky": {

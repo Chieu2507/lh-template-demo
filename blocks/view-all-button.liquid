@@ -60,7 +60,7 @@
   <div
     class="collection-list-view-all{% if block.settings.hide_view_all_mobile %} collection-list-view-all--hide-mobile{% endif %}{% if block.settings.full_width_mobile %} collection-list-view-all--full-width-mobile{% endif %}"
     {% if collection_list_view_all_style_attribute != blank %}style="{{ collection_list_view_all_style_attribute }}"{% endif %}
-    {% if require_more_items %}data-resource-view-all data-design-mode="{{ request.design_mode }}"{% unless request.design_mode %} hidden{% endunless %}{% endif %}
+    {% if require_more_items and block.settings.hide_when_all_products_shown != false %}data-resource-view-all data-design-mode="{{ request.design_mode }}"{% unless request.design_mode %} hidden{% endunless %}{% endif %}
     {{ block.shopify_attributes }}
   >
     {% render 'view-all-button',
@@ -134,6 +134,12 @@
   "name": "t:general.view_all_button",
   "tag": null,
   "settings": [
+    {
+      "type": "checkbox",
+      "id": "hide_when_all_products_shown",
+      "label": "Hide when all products are shown",
+      "default": true
+    },
     {
       "type": "header",
       "content": "t:general.content"

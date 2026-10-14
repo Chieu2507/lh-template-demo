@@ -17,7 +17,8 @@ test('fixed-width collection cards use measured slide widths only on mobile', ()
   assert.equal(result.breakpoints[1150].slidesPerView, 4);
   assert.equal(result.breakpoints[1150].spaceBetween, 28);
 });
-test('existing column-based product carousels retain their fractional preview', () => {
-  assert.equal(options({ swiperColumnsMobile: '2', swiperNextSlidePreviewMobile: 'true' }).slidesPerView, 2.2);
+test('column-based product carousels show the configured mobile preview', () => {
+  assert.equal(options({ swiperColumnsMobile: '1', swiperNextSlidePreviewMobile: 'true' }).slidesPerView, 1.4);
+  assert.equal(options({ swiperColumnsMobile: '2', swiperNextSlidePreviewMobile: 'true' }).slidesPerView, 2.1);
   assert.equal(options({ swiperColumnsMobile: '2', swiperCardWidthMobile: '0' }).slidesPerView, 2);
 });
