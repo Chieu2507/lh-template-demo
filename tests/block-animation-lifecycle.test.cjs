@@ -3,7 +3,25 @@ const assert = require('node:assert/strict');
 const fs = require('node:fs');
 const vm = require('node:vm');
 
-function fixture({delay = 150, type = 'slide-bottom', preserveOpacity = false, switching = false, rowDelay = 0, motionDuration = 500, motionDistance = 50} = {}) {
+test('simultaneously visible blocks reveal by visual row and then left to right', () => {
+  const source = fs.readFileSync('assets/block-animations.js', 'utf8');
+  const make = (name, top, left, visible = true) => ({name,visible,matches:()=>false,getBoundingClientRect:()=>({top,left})});
+  const elements = [make('bottom',250,10),make('right',104,500),make('hidden',0,0,false),make('left',100,10)];
+  const nodes = new Map(elements.map(element=>[element,{played:false}]));
+  const calls = [];
+  const context = {nodes,cardSelector:'',active:element=>element.visible,inView:()=>true,show:element=>{
+    const state=nodes.get(element);
+    if (!state.played) {calls.push([element.name,state.entranceDelay]);state.played=true;}
+  }};
+  vm.runInNewContext(source.slice(source.indexOf('  const revealVisible ='),source.indexOf('  const observer ='))+'\nrevealVisible();',context);
+  assert.deepEqual(calls,[['left',0],['right',120],['bottom',240]]);
+  const later=make('later',400,20);
+  nodes.set(later,{played:false});
+  vm.runInNewContext('revealVisible();',context);
+  assert.deepEqual(calls[3],['later',0]);
+});
+
+function fixture({delay = 150, type = 'slide-bottom', parentType, preserveOpacity = false, switching = false, rowDelay = 0, motionDuration = 500, motionDistance = 50} = {}) {
   let changed;
   let motionChanged;
   const classes = new Set();
@@ -14,7 +32,9 @@ function fixture({delay = 150, type = 'slide-bottom', preserveOpacity = false, s
   const viewport = { getBoundingClientRect: () => ({ top: 100, bottom: 920, left: 0, right: 1920 }) };
   const block = {
     dataset: { blockAnimation: type, animationDelay: String(delay), animationPreserveOpacity: String(preserveOpacity), animationStagger:switching ? '150' : '0', animationRowDelay:String(rowDelay), animationTabDelay:String(rowDelay) }, isConnected: true,
-    parentElement: { closest: () => null }, querySelectorAll: () => [],
+    parentElement: { closest: () => parentType ? {dataset: {blockAnimation: parentType}} : null },
+    querySelector: () => type === 'rotate-words' ? {} : null,
+    querySelectorAll: selector => selector === '.reveal-word' ? [{animate: (...args) => block.animate(...args)}] : [],
     classList: { add: c => classes.add(c), remove: c => classes.delete(c) },
     closest: s => s === '[data-collection-tab-panel]' && switching ? viewport : s === '.slideshow' ? viewport : s === '.slideshow__swiper .swiper-slide' ? slide : null,
     matches: () => true,
@@ -43,6 +63,13 @@ test('changing reduced-motion preference cancels entrances and leaves content vi
   assert.equal(h.played[0].animation.cancelled, true);
   assert.equal(h.classes.has('reveal-pending'), false);
   assert.equal(h.played.length, 1);
+});
+
+test('word rotation remains active inside a sliding card without nesting another card slide', () => {
+  const words = fixture({type:'rotate-words',parentType:'slide-bottom'});
+  assert.equal(words.played.length, 1);
+  assert.match(words.played[0].frames[0].transform, /rotateX/);
+  assert.equal(fixture({type:'slide-bottom',parentType:'slide-bottom'}).played.length, 0);
 });
 
 test('all active slideshow contents reveal even below the editor viewport', () => {

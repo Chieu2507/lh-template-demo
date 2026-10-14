@@ -4,10 +4,11 @@
   if (window[key]) return;
   window[key] = true;
   const nodes = new Map();
+  let scanning = false;
   const reduced = matchMedia('(prefers-reduced-motion: reduce)');
   const enabled = () => document.body.dataset.blockAnimations !== 'false' && !reduced.matches;
   const selector = '[data-block-animation], [data-component-reveal]';
-  const cardSelector = 'article.testimonial-item, .product-card, .promo-card, .collection-card, .collection-card-kernel, .blog-card, .blog-first-card, article.image-card, .collection-thumbnail__link, .icon-text-cards__content > .group, .icon-text-cards__viewport > .swiper-wrapper > .swiper-slide > .group';
+  const cardSelector = 'article.testimonial-item, .product-card, .promo-card, .collection-card, .collection-card-kernel, .blog-card, .blog-first-card, article.image-card, .collection-thumbnail__link, .marquee-group, .icon-text-cards__content > .group, .icon-text-cards__viewport > .swiper-wrapper > .swiper-slide > .group';
   const listSelector = '[data-product-list-mobile-promos], [data-product-carousel], .product-collection-grid, .collection-card-list__grid, .product-list__grid, [data-product-list], .image-cards-section__grid, [data-blog-list], .blog-grid, .collection-thumbnails__grid, .collection-thumbnails__carousel, .testimonial-carousel, .testimonials-cards__carousel, .icon-text-cards__content, .icon-text-cards__viewport > .swiper-wrapper';
   const scopeSelector = '[role="tabpanel"], .slideshow__swiper .swiper-slide';
   // Shopify's CSS compiler can shorten 500ms to .5s. Web Animations
@@ -45,11 +46,11 @@
     if (!enabled()) return;
     const tokens = getComputedStyle(element);
     const tabMotion = element.closest('[data-collection-tab-panel]') && element.matches(cardSelector);
-    const stagger = Number(element.dataset.animationStagger) || 0;
+    const stagger = state.entranceDelay ?? (Number(element.dataset.animationStagger) || 0);
     const delay = Math.min(1500, Math.max(0, (Number(element.dataset.animationDelay) || 0) +
       (tabMotion ? Number(element.dataset.animationTabDelay) || 0 : stagger)));
     const duration = tabMotion ? durationMilliseconds(tokens.getPropertyValue('--tab-card-duration'), 500) :
-      Math.max(700, durationMilliseconds(tokens.getPropertyValue('--motion-duration-slow'), 700));
+      Math.max(900, durationMilliseconds(tokens.getPropertyValue('--motion-duration-slow'), 900));
     const distance = tabMotion ? parseFloat(tokens.getPropertyValue('--tab-card-distance')) || 50 : 32;
     const options = {duration, delay, easing:tabMotion ? 'ease' : tokens.getPropertyValue('--motion-ease-standard').trim() || 'cubic-bezier(.22,1,.36,1)', fill:'backwards'};
     const type = element.dataset.blockAnimation || 'slide-bottom';
@@ -60,7 +61,7 @@
     if (type === 'slide-bottom') from.transform = `translateY(${distance}px)`;
     if (type === 'rotate-words') {
       element.querySelectorAll('.reveal-word').forEach((word, index) => {
-        state.animations.push(word.animate([{opacity:0,transform:'translateY(.7em) rotateX(45deg)'},{opacity:1,transform:'none'}], {...options,delay:delay + index * 35}));
+        state.animations.push(word.animate([{opacity:0,transform:'translateY(.7em) rotateX(45deg)'},{opacity:1,transform:'none'}], {...options,delay:delay + index * 45}));
       });
     } else {
       // Opacity-only cards must not write a transform onto a Swiper-owned slide.
@@ -71,7 +72,26 @@
     // No forwards fill: release the opacity/transform layer, especially for backdrop blur.
     state.animations.forEach(animation => animation.finished.then(() => animation.cancel()).catch(() => {}));
   };
+  const revealVisible = () => {
+    const pending = [...nodes].filter(([element,state]) => !state.played && active(element) && inView(element));
+    const spatial = pending.filter(([element]) => !(element.matches(cardSelector) && element.closest('[data-collection-tab-panel]')))
+      .map(([element,state]) => ({element,state,rect:element.getBoundingClientRect()}))
+      .sort((a,b) => a.rect.top - b.rect.top);
+    const rows = [];
+    spatial.forEach(item => {
+      let row = rows[rows.length - 1];
+      if (!row || item.rect.top - row.top > 24) rows.push(row = {top:item.rect.top,items:[]});
+      row.items.push(item);
+    });
+    let index = 0;
+    rows.forEach(row => row.items.sort((a,b) => a.rect.left - b.rect.left).forEach(({element,state}) => {
+      state.entranceDelay = Math.min(960, index++ * 120);
+      show(element);
+    }));
+    pending.forEach(([element]) => show(element));
+  };
   const observer = new IntersectionObserver(entries => {
+    revealVisible();
     entries.forEach(entry => {
       if (!entry.isIntersecting) return;
       const panel = entry.target.matches(cardSelector) && entry.target.closest('[data-collection-tab-panel]');
@@ -106,9 +126,10 @@
     }
     const previous = nodes.get(element);
     const configuration = `${element.dataset.blockAnimation}:${element.dataset.animationDelay}`;
-    // Explicitly animated parents own the entrance; avoid nested double transforms.
+    // Parents own the slide entrance; word rotation can run inside a sliding card.
     const parent = element.parentElement?.closest('[data-block-animation]:not([data-block-animation="none"]),[data-component-reveal]');
-    if (element.dataset.blockAnimation === 'none' || (parent && parent.dataset.blockAnimation !== 'none')) {
+    const wordEntranceWithinCard = element.dataset.blockAnimation === 'rotate-words' && parent?.dataset.blockAnimation === 'slide-bottom';
+    if (element.dataset.blockAnimation === 'none' || (parent && parent.dataset.blockAnimation !== 'none' && !wordEntranceWithinCard)) {
       if (previous) {stop(previous);observer.unobserve(element);nodes.delete(element);}
       element.classList.remove('reveal-pending');
       return;
@@ -119,9 +140,14 @@
     nodes.set(element,{played:false,animations:[],configuration});
     if (enabled()) element.classList.add('reveal-pending');
     observer.observe(element);
-    if (!enabled() || (active(element) && inView(element))) show(element);
+    if (!enabled() || (!scanning && active(element) && inView(element))) show(element);
   };
   const scan = (root = document) => {
+    scanning = true;
+    root.querySelectorAll?.('.footer .menu-block, .footer .logo-block').forEach(element => {
+      element.dataset.componentReveal = '';
+      element.dataset.blockAnimation = 'slide-bottom';
+    });
     const cards = root.querySelectorAll?.(cardSelector) || [];
     cards.forEach(card => {
       if (card.closest('.slideshow, .announcement-bar, dialog')) return;
@@ -155,7 +181,7 @@
     root.querySelectorAll?.('.collection-list-view-all, .email-signup-block, .product-callout__content').forEach(element => {
       if (element.closest('dialog, .announcement-bar')) return;
       element.dataset.componentReveal = '';
-      if (!element.dataset.blockAnimation || element.dataset.blockAnimation === 'none') element.dataset.blockAnimation = 'fade';
+      if (!element.dataset.blockAnimation || element.dataset.blockAnimation === 'none') element.dataset.blockAnimation = 'slide-bottom';
       const section = element.closest('.shopify-section');
       const preceding = section ? [...section.querySelectorAll('[data-block-animation]:not([data-block-animation="none"])')].filter(other =>
         other !== element && !other.closest(cardSelector) && (other.compareDocumentPosition(element) & Node.DOCUMENT_POSITION_FOLLOWING)
@@ -164,14 +190,16 @@
     });
     if (root.matches?.(selector)) initialize(root);
     root.querySelectorAll?.(selector).forEach(initialize);
+    scanning = false;
+    revealVisible();
   };
   const resetScope = root => {
     nodes.forEach((state, element) => {
       if (!root.contains(element)) return;
       stop(state);state.played = false;
       if (enabled()) element.classList.add('reveal-pending');
-      if (active(element) && inView(element)) show(element);
     });
+    revealVisible();
   };
   const mutations = new MutationObserver(records => {
     records.forEach(record => {
@@ -186,7 +214,7 @@
         else {
           // Hidden tab panels have no row geometry until activation.
           if (record.target.matches('[role="tabpanel"]')) scan(record.target);
-          nodes.forEach((state, element) => {if (record.target.contains(element) && !state.played && inView(element)) show(element);});
+          revealVisible();
         }
       }
     });

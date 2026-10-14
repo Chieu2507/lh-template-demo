@@ -271,7 +271,9 @@
                         "text": "<p>Join our newsletter to stay up to date on features and releases.</p>",
                         "text_size": "md",
                         "width": "fill",
-                        "text_color": "#ffffff"
+                        "text_color": "#ffffff",
+                        "animation_type": "rotate-words",
+                        "animation_delay": 0
                       }
                     }
                   },
@@ -329,7 +331,9 @@
                         "text": "<p>By subscribing you agree to with our <a href=\"/policies/privacy-policy\">Privacy Policy</a> and provide consent to receive updates from our company.</p>",
                         "text_size": "xs",
                         "width": "fill",
-                        "text_color": "#ffffff"
+                        "text_color": "#ffffff",
+                        "animation_type": "rotate-words",
+                        "animation_delay": 0
                       }
                     }
                   },
@@ -402,7 +406,9 @@
                     "gap_mobile": 0,
                     "appearance_type": "inherit",
                     "show_overlay": false,
-                    "mobile_order": 2
+                    "mobile_order": 2,
+                    "animation_type": "slide-bottom",
+                    "animation_delay": 0
                   },
                   "blocks": {
                     "payment-icons": {
@@ -434,7 +440,9 @@
                     "gap_mobile": 0,
                     "appearance_type": "inherit",
                     "show_overlay": false,
-                    "mobile_order": 1
+                    "mobile_order": 1,
+                    "animation_type": "slide-bottom",
+                    "animation_delay": 0
                   },
                   "blocks": {
                     "selector": {
@@ -525,7 +533,9 @@
                 "text": "<p>© 2025 LayoutHub. Powered by Shopify.</p>",
                 "text_size": "sm",
                 "width": "fit",
-                "text_color": "#ffffff"
+                "text_color": "#ffffff",
+                "animation_type": "rotate-words",
+                "animation_delay": 0
               }
             },
             "policies": {
