@@ -15,10 +15,11 @@
   #shopify-section-{{ section.id }} { background: {{ section.settings.background_color | default: section.settings.color_scheme.settings.background }}; }
 {% endstyle %}
 <div class="section-spacing promo-grid color-scheme section-color-scope {{ scheme | handleize }}"
-  style="--promo-columns:{{ section.settings.columns_desktop | default: 3 }};--promo-columns-tablet:{{ section.settings.columns_tablet | default: 2 }};--promo-columns-mobile:{{ section.settings.columns_mobile | default: 1 }};--promo-gap:{{ section.settings.gap_desktop }}px;--promo-gap-mobile:{{ section.settings.gap_mobile }}px;--promo-min-row-height:{{ section.settings.minimum_row_height | default: 0 }}px;--promo-top:{{ section.settings.padding_top }}px;--promo-bottom:{{ section.settings.padding_bottom }}px;--promo-top-mobile:{{ top_mobile }}px;--promo-bottom-mobile:{{ bottom_mobile }}px;{% if section.settings.background_color != blank %}--promo-background:{{ section.settings.background_color | escape }};{% endif %}"
+  style="{% if section.settings.height_desktop == 'custom' %}--promo-custom-row-height:{{ section.settings.custom_row_height | default: 600 }}px;{% endif %}--promo-columns:{{ section.settings.columns_desktop | default: 3 }};--promo-columns-tablet:{{ section.settings.columns_tablet | default: 2 }};--promo-columns-mobile:{{ section.settings.columns_mobile | default: 1 }};--promo-gap:{{ section.settings.gap_desktop }}px;--promo-gap-mobile:{{ section.settings.gap_mobile }}px;--promo-min-row-height:{{ section.settings.minimum_row_height | default: 0 }}px;--promo-top:{{ section.settings.padding_top }}px;--promo-bottom:{{ section.settings.padding_bottom }}px;--promo-top-mobile:{{ top_mobile }}px;--promo-bottom-mobile:{{ bottom_mobile }}px;{% if section.settings.background_color != blank %}--promo-background:{{ section.settings.background_color | escape }};{% endif %}"
   data-height-desktop="{{ section.settings.height_desktop }}" data-height-mobile="{{ section.settings.height_mobile }}">
   {% if section.settings.background_image != blank %}<div class="media-background-surface" aria-hidden="true">{{ section.settings.background_image | image_url: width: 2400 | image_tag: loading: 'lazy' }}</div>{% endif %}
   <div class="container {{ container_width }}{% if section.settings.section_width == 'full_width_no_padding' %} promo-grid__no-padding{% endif %}">
+    {% if section.settings.show_header %}{% content_for 'block', type: 'header', id: 'header' %}{% endif %}
     {% capture cards %}{% content_for 'blocks' %}{% endcapture %}
     {% if section.settings.carousel_mobile %}
       {% capture attributes %}data-product-carousel data-layout="carousel" data-swiper-mobile-only="true" data-swiper-columns-mobile="{{ section.settings.columns_mobile }}" data-swiper-gap-mobile="{{ section.settings.gap_mobile }}"{% endcapture %}
@@ -54,6 +55,12 @@
     {
       "type": "header",
       "content": "t:general.layout"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_header",
+      "label": "Show header",
+      "default": false
     },
     {
       "type": "select",
@@ -180,10 +187,25 @@
         {
           "value": "ratio_7_5",
           "label": "Landscape (7:5) per row"
+        },
+        {
+          "value": "custom",
+          "label": "Custom"
         }
       ],
       "default": "medium",
       "info": "Height of one grid row."
+    },
+    {
+      "type": "range",
+      "id": "custom_row_height",
+      "label": "Row height",
+      "min": 200,
+      "max": 800,
+      "step": 10,
+      "unit": "px",
+      "default": 600,
+      "visible_if": "{{ section.settings.height_desktop == 'custom' }}"
     },
     {
       "type": "range",

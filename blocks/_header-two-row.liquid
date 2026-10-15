@@ -8,13 +8,26 @@
     assign container_width = 'full-width'
   endif
 %}
-  <div class="container {{ container_width }} header-two-row__grid" style="--header-icon-size: {{ section.settings.icon_size | default: 24 }}px; --header-icon-mobile: {{ section.settings.icon_size_mobile | default: 20 }}px; --header-main-gap: {{ block.settings.gap | default: 40 }}px; --header-actions-gap: {{ block.settings.actions_gap | default: 8 }}px; --header-grid-top: {{ block.settings.padding_top | default: 24 }}px; --header-grid-bottom: {{ block.settings.padding_bottom | default: 24 }}px; --header-row-gap: {{ block.settings.row_gap | default: 24 }}px; --header-row-gap-mobile: {{ block.settings.row_gap_mobile | default: 8 }}px; --header-actions-gap-mobile: {{ block.settings.actions_gap_mobile | default: 0 }}px;{% if block.settings.customize_compact_layout %} --header-compact-top: {{ block.settings.padding_top_compact }}px; --header-compact-bottom: {{ block.settings.padding_bottom_compact }}px; --header-compact-gap: {{ block.settings.row_gap_compact }}px;{% endif %}{% if block.settings.customize_mobile_padding %} --header-grid-top-mobile: {{ block.settings.padding_top_mobile }}px; --header-grid-bottom-mobile: {{ block.settings.padding_bottom_mobile }}px;{% endif %}" {{ block.shopify_attributes }}> 
+  <div class="container {{ container_width }} header-two-row__grid" data-bottom-separator="{{ block.settings.bottom_separator | default: 'none' }}" style="--header-icon-size: {{ section.settings.icon_size | default: 24 }}px; --header-icon-mobile: {{ section.settings.icon_size_mobile | default: 20 }}px; --header-main-gap: {{ block.settings.gap | default: 40 }}px; --header-actions-gap: {{ block.settings.actions_gap | default: 8 }}px; --header-grid-top: {{ block.settings.padding_top | default: 24 }}px; --header-grid-bottom: {{ block.settings.padding_bottom | default: 24 }}px; --header-row-gap: {{ block.settings.row_gap | default: 24 }}px; --header-row-gap-mobile: {{ block.settings.row_gap_mobile | default: 8 }}px; --header-actions-gap-mobile: {{ block.settings.actions_gap_mobile | default: 0 }}px;{% if block.settings.customize_mobile_padding %} --header-grid-top-mobile: {{ block.settings.padding_top_mobile }}px; --header-grid-bottom-mobile: {{ block.settings.padding_bottom_mobile }}px;{% endif %}" {{ block.shopify_attributes }}>
     <div class="header-two-row__brand">{% content_for 'block', type: '_header-menu-toggle', id: 'header-menu-toggle' %}{% content_for 'block', type: '_header-logo', id: 'header-logo' %}</div>
     {% content_for 'block', type: '_header-search', id: 'header-search' %}
     <div class="header-two-row__actions">{% content_for 'block', type: '_header-link', id: 'header-location' %}{% content_for 'block', type: '_header-account', id: 'header-account' %}{% content_for 'block', type: '_header-cart', id: 'header-cart' %}</div>
   </div>
 {% stylesheet %}
   .header-top--two-rows { padding: 0; border-bottom: 0; box-shadow: none; }
+  .header:not(.header--is-pinned) .header-top--two-rows:has(> .header-two-row__grid[data-bottom-separator='line'])::after,
+  .header--is-pinned .header-top--two-rows:has([data-header-bottom].header-bottom--separator-line)::after {
+    content: '';
+    position: absolute;
+    inset: auto 0 0;
+    z-index: 3;
+    border-bottom: 1px solid var(--border-color);
+    pointer-events: none;
+  }
+  .header:not(.header--is-pinned) .header-top--two-rows:has(> .header-two-row__grid[data-bottom-separator='shadow']),
+  .header--is-pinned .header-top--two-rows:has([data-header-bottom].header-bottom--separator-shadow) {
+    box-shadow: 0 0.4rem 1.2rem color-mix(in srgb, var(--shadow-color) 16%, transparent);
+  }
   .header-two-row__grid { display: grid; grid-template-columns: auto minmax(0,1fr) minmax(0,1fr); grid-template-areas: 'brand search actions'; padding-block: var(--header-grid-top,24px) var(--header-grid-bottom,12px); align-items: center; column-gap: var(--header-main-gap,40px); row-gap: var(--header-row-gap,24px); }
   .header-two-row__brand { grid-area: brand; display: flex; align-items: center; gap: 12px; min-width: 0; }
   .header-two-row__grid > .header-search { grid-area: search; }
@@ -33,8 +46,8 @@
   .header-top--two-rows .header-menu__summary,.header-top--two-rows .header-menu__link { padding-block: 2px; min-height: 0; }
   .header-top--two-rows .header-menu__dropdown-icon { width: 16px; height: 16px; }
   @media (max-width: 991.98px) {
-    .header-two-row__grid { padding-top: var(--header-compact-top,var(--header-grid-top,24px)); padding-bottom: var(--header-compact-bottom,var(--header-grid-bottom,24px)); }
-    .header-two-row__grid { grid-template-columns: minmax(0,1fr) auto; grid-template-areas: 'brand actions' 'search search'; row-gap: var(--header-compact-gap,var(--header-row-gap,24px)); column-gap: 16px; }
+    .header-two-row__grid { padding-top: var(--header-grid-top-mobile,var(--header-grid-top,24px)); padding-bottom: var(--header-grid-bottom-mobile,var(--header-grid-bottom,24px)); }
+    .header-two-row__grid { grid-template-columns: minmax(0,1fr) auto; grid-template-areas: 'brand actions' 'search search'; row-gap: var(--header-row-gap-mobile,8px); column-gap: 16px; }
     .header-two-row__grid > .header-search--type-search_bar:not(.header-search--persistent) { display: none; }
     .header-two-row__grid > .header-search--type-search_bar:not(.header-search--persistent) + .header-search--mobile-icon { display: inline-flex; justify-self: end; }
     .header-two-row__brand .header-menu-toggle { display: inline-flex; padding: 10px 10px 10px 0; width: auto; min-width: 0; min-height: 44px; }
@@ -43,9 +56,8 @@
     .header-top--two-rows .header-account__mobile-label { display: none; }
   }
   @media (max-width: 767.98px) {
-    .header-two-row__grid { --header-icon-size: var(--header-icon-mobile,20px); padding-top: var(--header-grid-top-mobile,var(--header-grid-top,24px)); padding-bottom: var(--header-grid-bottom-mobile,var(--header-grid-bottom,24px)); }
+    .header-two-row__grid { --header-icon-size: var(--header-icon-mobile,20px); }
     .header-top--two-rows :is(.header-link,.header-account,.header-cart,.header-menu-toggle) .icon { width: var(--header-icon-mobile,20px); height: var(--header-icon-mobile,20px); }
-    .header-two-row__grid { row-gap: var(--header-row-gap-mobile,8px); }
     .header-two-row__brand { gap: 4px; }
     .header-two-row__actions { gap: var(--header-actions-gap-mobile,0px); }
     .header-top--two-rows :is(.header-link,.header-account,.header-cart),.header-two-row__brand .header-menu-toggle { min-height: 40px; }
@@ -114,44 +126,29 @@
       "default": 0
     },
     {
-      "type": "checkbox",
-      "id": "customize_compact_layout",
-      "label": "Customize compact header layout",
-      "info": "Applies when the desktop menu becomes a drawer (below 992px).",
-      "default": false
+      "type": "header",
+      "content": "t:general.appearance"
     },
     {
-      "type": "range",
-      "id": "padding_top_compact",
-      "label": "Compact top padding",
-      "min": 0,
-      "max": 100,
-      "step": 1,
-      "unit": "px",
-      "default": 16,
-      "visible_if": "{{ block.settings.customize_compact_layout }}"
-    },
-    {
-      "type": "range",
-      "id": "padding_bottom_compact",
-      "label": "Compact bottom padding",
-      "min": 0,
-      "max": 100,
-      "step": 1,
-      "unit": "px",
-      "default": 16,
-      "visible_if": "{{ block.settings.customize_compact_layout }}"
-    },
-    {
-      "type": "range",
-      "id": "row_gap_compact",
-      "label": "Compact row gap",
-      "min": 0,
-      "max": 100,
-      "step": 1,
-      "unit": "px",
-      "default": 16,
-      "visible_if": "{{ block.settings.customize_compact_layout }}"
+      "type": "select",
+      "id": "bottom_separator",
+      "label": "t:labels.bottom_separator",
+      "info": "While sticky, inherits the Bottom row separator if that row exists.",
+      "options": [
+        {
+          "value": "none",
+          "label": "t:options.header_separator.none"
+        },
+        {
+          "value": "line",
+          "label": "t:options.header_separator.line"
+        },
+        {
+          "value": "shadow",
+          "label": "t:options.header_separator.shadow"
+        }
+      ],
+      "default": "none"
     },
     {
       "type": "header",

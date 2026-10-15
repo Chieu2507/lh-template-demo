@@ -23,11 +23,10 @@
     max-width: none;
   }
 
-  /* A fixed parallax layer is viewport-sized by design. When the Hero itself
-     uses the page container, clip that layer at the same page-width boundary
-     so uploaded media occupies exactly the SVG fallback's surface. */
-  .hero--width-page[data-hero-parallax='fixed'] {
-    clip-path: inset(0);
+  /* Fixed media stays viewport-sized; clip it to the inner page surface,
+     excluding the container's responsive padding and section spacing. */
+  .hero--width-page[data-hero-parallax='fixed'] > .hero__surface {
+    clip-path: inset(0 round var(--hero-media-radius, var(--radius-square)));
   }
 
   .hero--desktop-custom { --hero-min-height: var(--hero-height-custom, 72rem); }

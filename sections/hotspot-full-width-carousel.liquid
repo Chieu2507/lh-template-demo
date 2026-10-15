@@ -153,7 +153,7 @@
   endunless
 
   assign hotspot_carousel_navigation_style = section.settings.navigation_style | default: 'primary'
-  unless hotspot_carousel_navigation_style == 'primary' or hotspot_carousel_navigation_style == 'secondary'
+  unless hotspot_carousel_navigation_style == 'primary' or hotspot_carousel_navigation_style == 'secondary' or hotspot_carousel_navigation_style == 'outline'
     assign hotspot_carousel_navigation_style = 'primary'
   endunless
 
@@ -167,6 +167,11 @@
     assign hotspot_carousel_navigation_behavior = 'show_on_hover'
   endunless
 
+  assign hotspot_carousel_controls_below = false
+  if section.settings.navigation_position == 'bottom' and hotspot_carousel_use_fraction == false
+    assign hotspot_carousel_controls_below = true
+  endif
+
   assign hotspot_carousel_id = 'HotspotCarousel-' | append: section.id
   assign hotspot_carousel_previous_label = 'collection_tabs.previous' | t
   assign hotspot_carousel_next_label = 'collection_tabs.next' | t
@@ -178,6 +183,9 @@
   assign hotspot_carousel_controls_scheme_class = 'color-scheme ' | append: hotspot_carousel_content_scheme
   assign hotspot_carousel_navigation_class = 'hotspot-full-width-carousel__navigation ' | append: hotspot_carousel_controls_scheme_class
   assign hotspot_carousel_pagination_class = 'hotspot-full-width-carousel__pagination swiper-pagination--overlay swiper-pagination--desktop-' | append: hotspot_carousel_pagination_position_desktop | append: ' swiper-pagination--mobile-' | append: hotspot_carousel_pagination_position_mobile | append: ' ' | append: hotspot_carousel_controls_scheme_class
+  if hotspot_carousel_controls_below
+    assign hotspot_carousel_pagination_class = 'hotspot-full-width-carousel__pagination'
+  endif
 %}
 
 {% if hotspot_carousel_render %}
@@ -188,7 +196,7 @@
   <script data-theme-module="{{ 'carousel-block.js' | asset_url }}"></script>
 
   <div
-    class="hotspot-full-width-carousel hotspot-full-width-carousel--width-{{ hotspot_carousel_width }} hotspot-full-width-carousel--desktop-{{ hotspot_carousel_desktop_height }} hotspot-full-width-carousel--mobile-{{ hotspot_carousel_mobile_height }} section-color-scope color-scheme {{ hotspot_carousel_scheme }}"
+    class="hotspot-full-width-carousel {% if hotspot_carousel_controls_below %}hotspot-full-width-carousel--controls-below {% endif %}hotspot-full-width-carousel--width-{{ hotspot_carousel_width }} hotspot-full-width-carousel--desktop-{{ hotspot_carousel_desktop_height }} hotspot-full-width-carousel--mobile-{{ hotspot_carousel_mobile_height }} section-color-scope color-scheme {{ hotspot_carousel_scheme }}"
     style="
       --hotspot-carousel-padding-top: {{ hotspot_carousel_padding_top }}px;
       --hotspot-carousel-padding-bottom: {{ hotspot_carousel_padding_bottom }}px;
@@ -247,16 +255,50 @@
         {% endif %}
 
         {% if hotspot_carousel_product_callout_count > 0 %}
+          {% assign hotspot_carousel_overlay_pagination = hotspot_carousel_pagination %}
+          {% if hotspot_carousel_controls_below %}{% assign hotspot_carousel_overlay_pagination = '' %}{% endif %}
           {% render 'swiper-carousel',
             id: hotspot_carousel_id,
             content: hotspot_carousel_slides,
             root_class: 'hotspot-full-width-carousel__viewport',
             aria_label: hotspot_carousel_aria_label,
-            pagination: hotspot_carousel_pagination,
+            pagination: hotspot_carousel_overlay_pagination,
             show_next_slide_preview: hotspot_carousel_show_next_slide_preview
           %}
 
-          {% if hotspot_carousel_has_multiple_slides and hotspot_carousel_show_arrows and hotspot_carousel_use_fraction == false %}
+          {% if hotspot_carousel_has_multiple_slides and hotspot_carousel_controls_below %}
+            <div class="hotspot-full-width-carousel__below-controls hotspot-full-width-carousel__below-controls--{{ hotspot_carousel_pagination_type }} swiper-controls">
+              {% if hotspot_carousel_pagination_type == 'progress_bar' %}
+                {{ hotspot_carousel_pagination }}
+                {% render 'swiper-navigation',
+                  show: hotspot_carousel_show_arrows,
+                  style: hotspot_carousel_navigation_style,
+                  icon: hotspot_carousel_navigation_icon,
+                  behavior: 'always',
+                  centered: false,
+                  wrapper_class: 'hotspot-full-width-carousel__bottom-navigation',
+                  previous_attribute: 'data-carousel-previous',
+                  next_attribute: 'data-carousel-next',
+                  previous_label: hotspot_carousel_previous_label,
+                  next_label: hotspot_carousel_next_label
+                %}
+              {% else %}
+              {% if hotspot_carousel_show_arrows %}
+                <button class="btn btn--unstyled btn--icon swiper-nav-button hotspot-full-width-carousel__fraction-button" type="button" data-carousel-previous aria-label="{{ hotspot_carousel_previous_label | escape }}">
+                  {% render 'carousel-navigation-icon', icon: hotspot_carousel_navigation_icon, direction: 'previous' %}
+                </button>
+              {% endif %}
+              {{ hotspot_carousel_pagination }}
+              {% if hotspot_carousel_show_arrows %}
+                <button class="btn btn--unstyled btn--icon swiper-nav-button hotspot-full-width-carousel__fraction-button" type="button" data-carousel-next aria-label="{{ hotspot_carousel_next_label | escape }}">
+                  {% render 'carousel-navigation-icon', icon: hotspot_carousel_navigation_icon, direction: 'next' %}
+                </button>
+              {% endif %}
+              {% endif %}
+            </div>
+          {% endif %}
+
+          {% if hotspot_carousel_has_multiple_slides and hotspot_carousel_show_arrows and hotspot_carousel_use_fraction == false and hotspot_carousel_controls_below == false %}
             {% render 'swiper-navigation',
               show: true,
               style: hotspot_carousel_navigation_style,
@@ -307,11 +349,19 @@
 {
   "name": "t:general.hotspot_carousel",
   "class": "section-hotspot-full-width-carousel",
-  "enabled_on": { "templates": ["index"] },
+  "enabled_on": {
+    "templates": [
+      "index"
+    ]
+  },
   "max_blocks": 9,
   "blocks": [
-    { "type": "header" },
-    { "type": "product-callout" }
+    {
+      "type": "header"
+    },
+    {
+      "type": "product-callout"
+    }
   ],
   "settings": [
     {
@@ -323,9 +373,18 @@
       "id": "width",
       "label": "Section width",
       "options": [
-        { "value": "page", "label": "Page" },
-        { "value": "full", "label": "Full" },
-        { "value": "full_bleed", "label": "Full (no padding)" }
+        {
+          "value": "page",
+          "label": "Page"
+        },
+        {
+          "value": "full",
+          "label": "Full"
+        },
+        {
+          "value": "full_bleed",
+          "label": "Full (no padding)"
+        }
       ],
       "default": "full"
     },
@@ -341,8 +400,14 @@
       "id": "transition_style",
       "label": "Transition style",
       "options": [
-        { "value": "slide", "label": "Slide" },
-        { "value": "fade", "label": "Fade" }
+        {
+          "value": "slide",
+          "label": "Slide"
+        },
+        {
+          "value": "fade",
+          "label": "Fade"
+        }
       ],
       "default": "slide",
       "visible_if": "{{ section.settings.width != 'page' or section.settings.show_next_slide_preview_on_desktop == false }}"
@@ -356,13 +421,34 @@
       "id": "desktop_height",
       "label": "t:labels.desktop_height",
       "options": [
-        { "value": "adapt", "label": "t:options.hero_height.adapt" },
-        { "value": "extra_small", "label": "t:options.hero_height.extra_small" },
-        { "value": "small", "label": "t:options.hero_height.small" },
-        { "value": "medium", "label": "t:options.hero_height.medium" },
-        { "value": "large", "label": "t:options.hero_height.large" },
-        { "value": "extra_large", "label": "t:options.hero_height.extra_large" },
-        { "value": "full_screen", "label": "t:options.hero_height.full_screen" }
+        {
+          "value": "adapt",
+          "label": "t:options.hero_height.adapt"
+        },
+        {
+          "value": "extra_small",
+          "label": "t:options.hero_height.extra_small"
+        },
+        {
+          "value": "small",
+          "label": "t:options.hero_height.small"
+        },
+        {
+          "value": "medium",
+          "label": "t:options.hero_height.medium"
+        },
+        {
+          "value": "large",
+          "label": "t:options.hero_height.large"
+        },
+        {
+          "value": "extra_large",
+          "label": "t:options.hero_height.extra_large"
+        },
+        {
+          "value": "full_screen",
+          "label": "t:options.hero_height.full_screen"
+        }
       ],
       "default": "medium"
     },
@@ -371,13 +457,34 @@
       "id": "mobile_height",
       "label": "t:labels.mobile_height",
       "options": [
-        { "value": "adapt", "label": "t:options.hero_height.adapt" },
-        { "value": "extra_small", "label": "t:options.hero_height.extra_small" },
-        { "value": "small", "label": "t:options.hero_height.small" },
-        { "value": "medium", "label": "t:options.hero_height.medium" },
-        { "value": "large", "label": "t:options.hero_height.large" },
-        { "value": "extra_large", "label": "t:options.hero_height.extra_large" },
-        { "value": "full_screen", "label": "t:options.hero_height.full_screen" }
+        {
+          "value": "adapt",
+          "label": "t:options.hero_height.adapt"
+        },
+        {
+          "value": "extra_small",
+          "label": "t:options.hero_height.extra_small"
+        },
+        {
+          "value": "small",
+          "label": "t:options.hero_height.small"
+        },
+        {
+          "value": "medium",
+          "label": "t:options.hero_height.medium"
+        },
+        {
+          "value": "large",
+          "label": "t:options.hero_height.large"
+        },
+        {
+          "value": "extra_large",
+          "label": "t:options.hero_height.extra_large"
+        },
+        {
+          "value": "full_screen",
+          "label": "t:options.hero_height.full_screen"
+        }
       ],
       "default": "small"
     },
@@ -393,11 +500,37 @@
     },
     {
       "type": "select",
+      "id": "navigation_position",
+      "label": "t:labels.position",
+      "options": [
+        {
+          "value": "inside",
+          "label": "Inside"
+        },
+        {
+          "value": "bottom",
+          "label": "Bottom"
+        }
+      ],
+      "default": "inside"
+    },
+    {
+      "type": "select",
       "id": "navigation_style",
       "label": "t:labels.style",
       "options": [
-        { "value": "primary", "label": "t:options.button_variant.primary" },
-        { "value": "secondary", "label": "t:options.button_variant.secondary" }
+        {
+          "value": "primary",
+          "label": "t:options.button_variant.primary"
+        },
+        {
+          "value": "secondary",
+          "label": "t:options.button_variant.secondary"
+        },
+        {
+          "value": "outline",
+          "label": "t:options.button_variant.outline"
+        }
       ],
       "default": "primary",
       "visible_if": "{{ section.settings.show_arrows }}"
@@ -407,9 +540,18 @@
       "id": "navigation_icon",
       "label": "t:labels.icon",
       "options": [
-        { "value": "chevron", "label": "t:options.collection_navigation_icon.chevron" },
-        { "value": "arrow", "label": "t:options.collection_navigation_icon.arrow" },
-        { "value": "long_arrow", "label": "t:options.collection_navigation_icon.long_arrow" }
+        {
+          "value": "chevron",
+          "label": "t:options.collection_navigation_icon.chevron"
+        },
+        {
+          "value": "arrow",
+          "label": "t:options.collection_navigation_icon.arrow"
+        },
+        {
+          "value": "long_arrow",
+          "label": "t:options.collection_navigation_icon.long_arrow"
+        }
       ],
       "default": "arrow",
       "visible_if": "{{ section.settings.show_arrows }}"
@@ -419,8 +561,14 @@
       "id": "navigation_behavior",
       "label": "t:labels.behavior",
       "options": [
-        { "value": "show_on_hover", "label": "t:options.collection_navigation_behavior.show_on_hover" },
-        { "value": "always", "label": "t:options.collection_navigation_behavior.always" }
+        {
+          "value": "show_on_hover",
+          "label": "t:options.collection_navigation_behavior.show_on_hover"
+        },
+        {
+          "value": "always",
+          "label": "t:options.collection_navigation_behavior.always"
+        }
       ],
       "default": "show_on_hover",
       "visible_if": "{{ section.settings.show_arrows }}"
@@ -440,9 +588,18 @@
       "id": "pagination_type",
       "label": "t:labels.type",
       "options": [
-        { "value": "progress_bar", "label": "t:options.collection_pagination.progress_bar" },
-        { "value": "bullets", "label": "t:options.collection_pagination.bullets" },
-        { "value": "numbers", "label": "Numbers" }
+        {
+          "value": "progress_bar",
+          "label": "t:options.collection_pagination.progress_bar"
+        },
+        {
+          "value": "bullets",
+          "label": "t:options.collection_pagination.bullets"
+        },
+        {
+          "value": "numbers",
+          "label": "Numbers"
+        }
       ],
       "default": "bullets",
       "visible_if": "{{ section.settings.show_pagination }}"
@@ -452,9 +609,18 @@
       "id": "pagination_position_desktop",
       "label": "Desktop position",
       "options": [
-        { "value": "left", "label": "Left" },
-        { "value": "center", "label": "Center" },
-        { "value": "right", "label": "Right" }
+        {
+          "value": "left",
+          "label": "Left"
+        },
+        {
+          "value": "center",
+          "label": "Center"
+        },
+        {
+          "value": "right",
+          "label": "Right"
+        }
       ],
       "default": "left",
       "visible_if": "{{ section.settings.show_pagination }}"
@@ -464,9 +630,18 @@
       "id": "pagination_position_mobile",
       "label": "Mobile position",
       "options": [
-        { "value": "left", "label": "Left" },
-        { "value": "center", "label": "Center" },
-        { "value": "right", "label": "Right" }
+        {
+          "value": "left",
+          "label": "Left"
+        },
+        {
+          "value": "center",
+          "label": "Center"
+        },
+        {
+          "value": "right",
+          "label": "Right"
+        }
       ],
       "default": "center",
       "visible_if": "{{ section.settings.show_pagination }}"
@@ -515,9 +690,18 @@
       "id": "background_media",
       "label": "t:general.media",
       "options": [
-        { "value": "none", "label": "t:options.background_media.none" },
-        { "value": "image", "label": "t:general.image" },
-        { "value": "video", "label": "t:general.video" }
+        {
+          "value": "none",
+          "label": "t:options.background_media.none"
+        },
+        {
+          "value": "image",
+          "label": "t:general.image"
+        },
+        {
+          "value": "video",
+          "label": "t:general.video"
+        }
       ],
       "default": "none",
       "visible_if": "{{ section.settings.width != 'full_bleed' }}"

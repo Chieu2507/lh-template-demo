@@ -45,7 +45,7 @@
     <label class="visually-hidden" for="HeaderSearch-{{ section.id }}-{{ block.id }}">{{ search_label | escape }}</label>
     {% if block.settings.show_category_selector %}
       <input type="hidden" value="" data-header-search-category>
-      <button type="button" class="btn btn--unstyled header-search__category" data-header-category-open aria-haspopup="dialog" aria-controls="HeaderCategory-{{ section.id }}-{{ block.id }}" aria-label="{{ block.settings.category_label | escape }}">
+      <button type="button" class="btn btn--unstyled header-search__category" data-header-category-open popovertarget="HeaderCategory-{{ section.id }}-{{ block.id }}" aria-expanded="false" aria-haspopup="dialog" aria-controls="HeaderCategory-{{ section.id }}-{{ block.id }}" aria-label="{{ block.settings.category_label | escape }}">
         <span class="header-search__category-label header-search__category-label--desktop">{{ block.settings.category_label | default: 'All Categories' | escape }}</span>
         <span class="header-search__category-label header-search__category-label--mobile">{{ block.settings.category_label_mobile | default: 'All' | escape }}</span>
         <span class="header-search__category-chevron" aria-hidden="true">{% render 'header-icon', icon: 'category-chevron' %}</span>
@@ -87,9 +87,9 @@
         {% for link in block.settings.category_menu.links %}<button type="button" class="header-localization__language-option" data-header-category-value="{{ link.title | escape }}" aria-pressed="false">{{ link.title | escape }}</button>{% endfor %}
       </div>
     {% endcapture %}
-    {% assign category_id = 'HeaderCategory-' | append: section.id | append: '-' | append: block.id %}
-    {% capture category_attributes %}data-header-category-dialog data-owner-section="{{ section.id }}"{% endcapture %}
-    {% render 'component-overlay', id: category_id, label: block.settings.category_label, title: block.settings.category_label, content: category_content, append_to_body: true, desktop_layout: 'popup', mobile_layout: 'bottom_sheet', attributes: category_attributes, body_class: 'header-localization__overlay-body', width: 400 %}
+    <div id="HeaderCategory-{{ section.id }}-{{ block.id }}" class="header-search__category-popover header-localization__overlay-body body-text body-sm font-body color-scheme section-color-scope {{ settings.overlay_color_scheme.id | default: settings.overlay_color_scheme | default: 'scheme-1' }}" popover="auto" role="dialog" aria-label="{{ block.settings.category_label | escape }}" data-header-category-dialog data-owner-section="{{ section.id }}">
+      {{ category_content }}
+    </div>
   {% endif %}
 {% else %}
   <button
@@ -109,6 +109,24 @@
 {% endif %}
 
 {% stylesheet %}
+  .header-search__category-popover {
+    position: fixed;
+    inset: auto;
+    top: var(--header-category-top, 0px);
+    left: var(--header-category-left, 0px);
+    width: min(250px, calc(100vw - 24px));
+    max-height: var(--header-category-max-height, 320px);
+    margin: 0;
+    padding: 0.75rem;
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    border: 0;
+    border-radius: var(--drawer-radius, 8px);
+    background: var(--background-color);
+    color: var(--body-color);
+    box-shadow: 0 0.75rem 1.5rem color-mix(in srgb, var(--shadow-color) 15%, transparent);
+  }
+
   .header-search {
     display: inline-flex;
     flex: 0 1 auto;

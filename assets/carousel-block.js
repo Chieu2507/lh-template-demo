@@ -541,7 +541,7 @@ const initialize = (root) => {
   const wrapper = viewport?.querySelector('.swiper-wrapper');
   if (!viewport || !wrapper) return;
 
-  const pagination = viewport.querySelector('.swiper-pagination');
+  const pagination = viewport.querySelector('.swiper-pagination') || root.querySelector('.swiper-pagination');
   const showDesktop = root.dataset.swiperPaginationDesktop === 'true';
   const showMobile = root.dataset.swiperPaginationMobile === 'true';
   if (pagination) {
@@ -607,7 +607,7 @@ const initialize = (root) => {
     return;
   }
   let hotspotContentSchemeCleanup = null;
-  if (root.hasAttribute('data-hotspot-full-width-carousel')) {
+  if (root.hasAttribute('data-hotspot-full-width-carousel') && !root.classList.contains('hotspot-full-width-carousel--controls-below')) {
     const controls = root.querySelectorAll(
       '.hotspot-full-width-carousel__navigation, .hotspot-full-width-carousel__pagination, .hotspot-full-width-carousel__fraction-controls'
     );

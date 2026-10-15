@@ -1,12 +1,20 @@
 {% doc %}
-  Private compact product recommendation for testimonial cards. Product picker
-  owns the resource; image, title and market-aware price remain Shopify data.
+  Compact product recommendation for testimonial cards and editable Groups. Product picker
+  owns the resource; an empty picker uses the first product of closest.collection.
+  Image, title and market-aware price remain Shopify data.
 {% enddoc %}
-{% assign compact_product = block.settings.product %}
+{% liquid
+  assign compact_product = block.settings.product
+  if compact_product.id == blank and closest.collection != blank
+    for collection_product in closest.collection.products limit: 1
+      assign compact_product = collection_product
+    endfor
+  endif
+%}
 <div class="product-card-compact" {{ block.shopify_attributes }}>
-  {% if compact_product != blank %}
+  {% if compact_product.id != blank %}
     <a class="product-card-compact__link" href="{{ compact_product.url }}">
-      <span class="product-card-compact__media">
+      <span class="product-card-compact__media{% if compact_product.featured_image == blank %} placeholder-image{% endif %}">
         {% if compact_product.featured_image != blank %}
           {{ compact_product.featured_image | image_url: width: 192 | image_tag: widths: '64,128,192', sizes: '64px', loading: 'lazy', alt: compact_product.title }}
         {% else %}
@@ -20,7 +28,7 @@
     </a>
   {% else %}
     <div class="product-card-compact__link">
-      <span class="product-card-compact__media">{{ 'product-1' | placeholder_svg_tag: 'placeholder-svg' }}</span>
+      <span class="product-card-compact__media placeholder-image">{{ 'product-1' | placeholder_svg_tag: 'placeholder-svg' }}</span>
       <span class="product-card-compact__content">
         <span class="product-card-compact__title">{{ 'products.product_title' | t }}</span>
         {% if block.settings.show_price %}{% render 'price', amount: 1900, context: 'product-card' %}{% endif %}
@@ -46,7 +54,8 @@
     {
       "type": "product",
       "id": "product",
-      "label": "t:labels.product"
+      "label": "t:labels.product",
+      "info": "Leave blank to use the first product from the parent collection, when available."
     },
     {
       "type": "checkbox",

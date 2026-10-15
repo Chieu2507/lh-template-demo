@@ -1475,7 +1475,7 @@ input[type='submit'].btn.btn--tertiary:hover {
 .btn.swiper-nav-button--outline,
 button.btn.swiper-nav-button--outline {
   --button-border-width: max(1px, var(--button-tertiary-border-width, 1px));
-  --button-border: var(--button-tertiary-text, currentColor);
+  --button-border: var(--border-color, currentColor);
   --button-background: transparent;
   --button-foreground: var(--button-tertiary-text, currentColor);
   --button-hover-border: var(--button-tertiary-hover-text, var(--button-border));

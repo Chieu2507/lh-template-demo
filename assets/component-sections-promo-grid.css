@@ -26,6 +26,7 @@
   min-width: 0;
 }
 @media (min-width: 768px) {
+  .promo-grid[data-height-desktop="custom"] { --promo-row-height: var(--promo-custom-row-height, 600px); }
   .promo-grid__carousel > .promo-grid__items { transform: none; }
   .promo-grid__carousel > .swiper-pagination { display: none; }
 }

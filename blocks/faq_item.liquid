@@ -2,6 +2,7 @@
   Elara compatibility: saved instances retain their original rendering and
   responsive contract. New presets explicitly opt into the rebuilt layout.
 {% endcomment %}
+{% capture faq_item_attributes %}{{ block.shopify_attributes }} {% render 'block-animation-attributes', settings: block.settings %}{% endcapture %}
 {% capture faq_item_child_blocks %}
   {% content_for 'blocks' %}
 {% endcapture %}
@@ -52,7 +53,7 @@
   </span>
 {% endcapture %}
 
-{% render 'accordion-details', id: faq_item_id, content_id: faq_content_id, class: 'elara-faq-item', summary_class: 'elara-faq-item__summary', content_class: 'elara-faq-item__content', content_inner_class: 'elara-faq-item__content-inner', summary: faq_summary, content: faq_answer, initially_open: block.settings.initially_open, attributes: block.shopify_attributes %}
+{% render 'accordion-details', id: faq_item_id, content_id: faq_content_id, class: 'elara-faq-item', summary_class: 'elara-faq-item__summary', content_class: 'elara-faq-item__content', content_inner_class: 'elara-faq-item__content-inner', summary: faq_summary, content: faq_answer, initially_open: block.settings.initially_open, attributes: faq_item_attributes %}
 {% else %}
 {% liquid
   assign faq_item_id = 'faq-' | append: block.id
@@ -99,7 +100,7 @@
 {% endcapture %}
 
 {% if faq_answer != blank %}
-  {% render 'accordion-details', id: faq_item_id, content_id: faq_content_id, class: 'faq-item', summary_class: 'faq-item__summary', content_class: 'faq-item__content', content_inner_class: 'faq-item__content-inner', summary: faq_summary, content: faq_answer, initially_open: block.settings.initially_open, attributes: block.shopify_attributes %}
+  {% render 'accordion-details', id: faq_item_id, content_id: faq_content_id, class: 'faq-item', summary_class: 'faq-item__summary', content_class: 'faq-item__content', content_inner_class: 'faq-item__content-inner', summary: faq_summary, content: faq_answer, initially_open: block.settings.initially_open, attributes: faq_item_attributes %}
 {% endif %}
 {% endif %}
 
@@ -305,6 +306,57 @@
       "id": "initially_open",
       "label": "t:labels.initially_open",
       "default": false
+    },
+    {
+      "type": "header",
+      "content": "Animation"
+    },
+    {
+      "type": "select",
+      "id": "animation_type",
+      "label": "Type",
+      "options": [
+        {
+          "value": "none",
+          "label": "None"
+        },
+        {
+          "value": "fade",
+          "label": "Fade"
+        },
+        {
+          "value": "scale",
+          "label": "Scale"
+        },
+        {
+          "value": "slide-left",
+          "label": "Slide from left"
+        },
+        {
+          "value": "slide-right",
+          "label": "Slide from right"
+        },
+        {
+          "value": "slide-bottom",
+          "label": "Slide from bottom"
+        },
+        {
+          "value": "rotate-words",
+          "label": "Rotate words"
+        }
+      ],
+      "default": "none"
+    },
+    {
+      "type": "range",
+      "id": "animation_delay",
+      "label": "Delay",
+      "min": 0,
+      "max": 1000,
+      "step": 50,
+      "unit": "ms",
+      "default": 0,
+      "visible_if": "{{ block.settings.animation_type != 'none' }}"
     }
   ],
   "presets": [

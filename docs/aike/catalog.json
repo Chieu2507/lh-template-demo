@@ -1,0 +1,82 @@
+{
+  "data": {
+    "products": {
+      "nodes": [
+        {
+          "id": "gid://shopify/Product/15425956970795",
+          "title": "Cancun lounge sofa",
+          "handle": "cancun-lounge-sofa"
+        },
+        {
+          "id": "gid://shopify/Product/15425957134635",
+          "title": "Parasol bowl",
+          "handle": "parasol-bowl"
+        },
+        {
+          "id": "gid://shopify/Product/15425957265707",
+          "title": "Cancun lounge chair",
+          "handle": "cancun-lounge-chair"
+        },
+        {
+          "id": "gid://shopify/Product/15425957364011",
+          "title": "Float vase",
+          "handle": "float-vase"
+        },
+        {
+          "id": "gid://shopify/Product/15425957658923",
+          "title": "Cancun coffee table",
+          "handle": "cancun-coffee-table"
+        },
+        {
+          "id": "gid://shopify/Product/15425959395627",
+          "title": "Princeton chair",
+          "handle": "princeton-chair"
+        },
+        {
+          "id": "gid://shopify/Product/15425959592235",
+          "title": "Indivi 2,5 seater sofa",
+          "handle": "indivi-2-5-seater-sofa"
+        },
+        {
+          "id": "gid://shopify/Product/15425959788843",
+          "title": "Paddle pendant",
+          "handle": "paddle-pendant"
+        },
+        {
+          "id": "gid://shopify/Product/15425959952683",
+          "title": "Sideboard with drop-down section",
+          "handle": "sideboard-with-drop-down-section"
+        },
+        {
+          "id": "gid://shopify/Product/15425960247595",
+          "title": "Element bed-mounted headboard",
+          "handle": "element-bed-mounted-headboard"
+        },
+        {
+          "id": "gid://shopify/Product/15425964015915",
+          "title": "Desk lamp",
+          "handle": "desk-lamp"
+        },
+        {
+          "id": "gid://shopify/Product/15425964343595",
+          "title": "Wishbone recess chair",
+          "handle": "wishbone-recess-chair"
+        },
+        {
+          "id": "gid://shopify/Product/15425964540203",
+          "title": "Southampton sofa sleeper",
+          "handle": "southampton-sofa-sleeper"
+        },
+        {
+          "id": "gid://shopify/Product/15425964736811",
+          "title": "Seoul dining chair",
+          "handle": "seoul-dining-chair"
+        }
+      ],
+      "pageInfo": {
+        "hasNextPage": false,
+        "endCursor": "eyJsYXN0X2lkIjoxNTQyNTk2NDczNjgxMSwibGFzdF92YWx1ZSI6MTU0MjU5NjQ3MzY4MTF9"
+      }
+    }
+  }
+}

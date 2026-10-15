@@ -20,7 +20,7 @@
   .faq-accordion--icon-plus .faq-item__expand-icon::after { display: none; }
   .faq-accordion--icon-chevron .faq-item__expand-icon::before,
   .faq-accordion--icon-chevron .faq-item__expand-icon::after { display: none; }
-  .faq-accordion--icon-chevron .faq-item__expand-icon { display: grid; width: 20px; height: 20px; border: 0; place-items: center; }
+  .faq-accordion--icon-chevron .faq-item__expand-icon { display: grid; flex: 0 0 20px; width: 20px; height: 20px; border: 0; place-items: center; }
   .faq-accordion--icon-chevron .faq-item__expand-icon svg { display: block; transition: transform var(--motion-duration-standard) var(--motion-ease-standard); }
   .faq-accordion--icon-chevron .faq-item[open] .faq-item__expand-icon svg { transform: rotate(180deg); }
   @media (max-width: 767.98px) {

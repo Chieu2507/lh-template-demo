@@ -2,8 +2,16 @@
   Editable banner for Promo grid (custom). Owns grid spans, media/link and content.
   Parent section owns responsive dimensions and carousel. Child kernels own copy.
 {% enddoc %}
-{% capture card_content %}{% content_for 'blocks' %}{% endcapture %}
-{% render 'image-card-content', block: block, content: card_content, promo_card: true %}
+{% liquid
+  assign promo_collection = block.settings.collection
+  if promo_collection == blank and block.settings.link contains '/collections/'
+    assign promo_collection_handle = block.settings.link | split: '/collections/' | last | split: '/' | first | split: '?' | first | split: '#' | first
+    assign promo_collection = collections[promo_collection_handle]
+  endif
+  assign promo_link = promo_collection.url | default: block.settings.link
+%}
+{% capture card_content %}{% content_for 'blocks', closest.collection: promo_collection %}{% endcapture %}
+{% render 'image-card-content', block: block, content: card_content, promo_card: true, card_link: promo_link %}
 {% schema %}
 {
   "name": "Promo card",
@@ -32,6 +40,9 @@
     },
     {
       "type": "group"
+    },
+    {
+      "type": "collection-card-button"
     }
   ],
   "settings": [
@@ -125,9 +136,17 @@
       "content": "t:general.content"
     },
     {
+      "type": "collection",
+      "id": "collection",
+      "label": "Collection",
+      "info": "Provides the card destination and fallback product for nested content."
+    },
+    {
       "type": "url",
       "id": "link",
-      "label": "t:labels.link"
+      "label": "Fallback link",
+      "info": "Used for existing cards without a selected collection.",
+      "visible_if": "{{ block.settings.collection == blank }}"
     },
     {
       "type": "checkbox",

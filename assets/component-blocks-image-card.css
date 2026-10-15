@@ -160,6 +160,11 @@
     pointer-events: auto;
   }
 
+  /* Let Theme Editor hit-test child blocks instead of the stretched card link. */
+  .image-card--design-mode.image-card--linked .image-card__content > * {
+    pointer-events: auto;
+  }
+
   .image-card__content--sticky {
     position: sticky;
     inset: auto;

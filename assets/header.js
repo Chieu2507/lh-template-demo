@@ -456,6 +456,7 @@
       const pinOffset = headerState.stickyAnchor.getBoundingClientRect().top;
       const isPinned = isSticky && scrollY > 0 && pinOffset <= (headerState.isPinned ? 2 : -2);
       headerState.isPinned = isPinned;
+      header.classList.toggle('header--is-pinned', isPinned);
       synchronizeHeaderBottom(header, isPinned);
       header.classList.toggle('header--submenu-open', isSubmenuOpen);
       header.classList.toggle('header--mega-menu-open', isMegaMenuOpen);
@@ -1261,10 +1262,36 @@
 })();
 
 (() => {
+  const categoryTrigger = popover => document.getElementById(popover.querySelector('[data-category-form]')?.dataset.categoryForm)?.querySelector('[data-header-category-open]');
+  const positionCategory = (popover, trigger = categoryTrigger(popover)) => {
+    if (!trigger || !popover) return;
+    const rect = trigger.getBoundingClientRect();
+    const margin = 12;
+    const width = Math.min(250, window.innerWidth - margin * 2);
+    const below = window.innerHeight - rect.bottom - margin - 8;
+    const above = rect.top - margin - 8;
+    const useAbove = below < 180 && above > below;
+    const maxHeight = Math.max(0, Math.min(320, useAbove ? above : below));
+    popover.style.setProperty('--header-category-max-height', `${maxHeight}px`);
+    popover.style.setProperty('--header-category-left', `${Math.max(margin, Math.min(rect.left, window.innerWidth - width - margin))}px`);
+    popover.style.setProperty('--header-category-top', `${useAbove ? Math.max(margin, rect.top - Math.min(popover.scrollHeight, maxHeight) - 8) : rect.bottom + 8}px`);
+  };
+  const positionOpenCategories = () => document.querySelectorAll('[data-header-category-dialog]:popover-open').forEach(popover => positionCategory(popover));
+  document.addEventListener('toggle', event => {
+    const popover = event.target;
+    if (!popover.matches?.('[data-header-category-dialog]')) return;
+    const trigger = categoryTrigger(popover);
+    trigger?.setAttribute('aria-expanded', String(event.newState === 'open'));
+    if (event.newState === 'open') positionCategory(popover, trigger);
+  }, true);
+  document.addEventListener('scroll', positionOpenCategories, { capture: true, passive: true });
+  window.addEventListener('resize', positionOpenCategories, { passive: true });
   const updateCategoryLabels = () => document.querySelectorAll('[data-header-search-form]').forEach(form => {
     const option = form.querySelector('[data-header-search-category] option[value=""]');
     if (option) option.textContent = window.matchMedia('(max-width: 767.98px)').matches ? form.dataset.mobileCategoryLabel : form.dataset.desktopCategoryLabel;
     const category = form.querySelector('[data-header-search-category]');
+    const trigger = form.querySelector('[data-header-category-open]');
+    trigger?.setAttribute('aria-label', category?.value || form.dataset.desktopCategoryLabel);
     form.querySelectorAll('.header-search__category-label').forEach(label => {
       label.textContent = category?.value ? category.value : label.classList.contains('header-search__category-label--mobile') ? form.dataset.mobileCategoryLabel : form.dataset.desktopCategoryLabel;
     });
@@ -1286,7 +1313,7 @@
     const trigger = event.target.closest?.('[data-header-category-open]');
     if (trigger) {
       const dialog = document.getElementById(trigger.getAttribute('aria-controls'));
-      window.ThemeOverlay?.get(dialog)?.open({ opener: trigger });
+      positionCategory(dialog, trigger);
       return;
     }
     const option = event.target.closest?.('[data-header-category-value]');
@@ -1301,11 +1328,13 @@
       item.setAttribute('aria-pressed', String(item === option));
     });
     updateCategoryLabels();
-    window.ThemeOverlay?.get(option.closest('[data-header-category-dialog]'))?.close();
+    const popover = option.closest('[data-header-category-dialog]');
+    popover?.hidePopover();
+    categoryTrigger(popover)?.focus({ preventScroll: true });
   });
   document.addEventListener('shopify:section:unload', event => {
     document.querySelectorAll('[data-header-category-dialog]').forEach(dialog => {
-      if (event.target.id === `shopify-section-${dialog.dataset.ownerSection}`) window.ThemeOverlay?.get(dialog)?.destroy();
+      if (event.target.id === `shopify-section-${dialog.dataset.ownerSection}` && dialog.matches(':popover-open')) dialog.hidePopover();
     });
   });
   document.addEventListener('change', event => { if (event.target.matches('[data-header-search-category]')) updateCategoryLabels(); });

@@ -60,7 +60,7 @@
 <script type="module" src="{{ 'announcement-bar.js' | asset_url }}"></script>
 
 <div
-  class="announcement-bar announcement-bar--{{ announcement_type }} announcement-bar--direction-{{ announcement_direction }} announcement-bar--navigation-{{ announcement_navigation_behavior }}{% if section.settings.text_style == 'heading' %} announcement-bar--heading{% endif %} color-scheme section-color-scope body-text body-{{ announcement_font_size }} {{ announcement_color_scheme }}{% if announcement_type == 'slider' and section.blocks.size < 2 %} announcement-bar--single{% endif %}{% if announcement_speed == 0 %} announcement-bar--static{% endif %}{% if section.settings.bottom_separator %} announcement-bar--bottom-separator{% endif %}"
+  class="announcement-bar{% if section.settings.show_social_links %} announcement-bar--social{% endif %}{% if section.settings.show_localization %} announcement-bar--localization{% endif %} announcement-bar--{{ announcement_type }} announcement-bar--direction-{{ announcement_direction }} announcement-bar--navigation-{{ announcement_navigation_behavior }}{% if section.settings.text_style == 'heading' %} announcement-bar--heading{% endif %} color-scheme section-color-scope body-text body-{{ announcement_font_size }} {{ announcement_color_scheme }}{% if announcement_type == 'slider' and section.blocks.size < 2 %} announcement-bar--single{% endif %}{% if announcement_speed == 0 %} announcement-bar--static{% endif %}{% if section.settings.bottom_separator %} announcement-bar--bottom-separator{% endif %}"
   data-announcement-bar
   data-announcement-type="{{ announcement_type }}"
   data-announcement-speed="{{ announcement_speed }}"
@@ -95,8 +95,57 @@
       {% render 'carousel-navigation-icon', icon: announcement_navigation_icon, direction: 'next' %}
       {% endif %}
     </button>
+    {% if section.settings.show_social_links %}
+      <div class="announcement-bar__social">
+        {% content_for 'block', type: 'social-links', id: 'social-links' %}
+      </div>
+    {% endif %}
+    {% if section.settings.show_localization %}
+      <div class="announcement-bar__localization">
+        {% content_for 'block', type: 'localization', id: 'localization' %}
+      </div>
+    {% endif %}
   </div>
 </div>
+
+{% stylesheet %}
+  .announcement-bar__localization, .announcement-bar__social { display: none; }
+  @media (min-width: 768px) {
+    .announcement-bar--localization {
+      overflow: visible;
+      z-index: calc(var(--z-drawer, 200) + 1);
+    }
+    .announcement-bar__localization .localization-block .header-localization__panel {
+      inset-block-start: calc(100% + 0.75rem);
+      inset-block-end: auto;
+      inset-inline-start: auto;
+      inset-inline-end: 0;
+      max-height: min(320px, calc(100vh - 64px));
+      overflow-y: auto;
+    }
+    .announcement-bar.announcement-bar--social .announcement-bar__inner,
+    .announcement-bar.announcement-bar--localization .announcement-bar__inner {
+      max-width: var(--page-width);
+      margin-inline: auto;
+    }
+    .announcement-bar--social .announcement-bar__viewport,
+    .announcement-bar--localization .announcement-bar__viewport {
+      max-width: calc(100% - 420px);
+    }
+    .announcement-bar__social {
+      display: flex;
+      position: absolute;
+      inset-inline-start: var(--page-margin-current);
+      align-items: center;
+    }
+    .announcement-bar__localization {
+      display: flex;
+      position: absolute;
+      inset-inline-end: var(--page-margin-current);
+      align-items: center;
+    }
+  }
+{% endstylesheet %}
 
 {% render 'runtime-stylesheet', filename: 'component-runtime-sections-announcement-bar.css', section_index: section.index %}
 
@@ -124,6 +173,13 @@
     }
   ],
   "settings": [
+    { "type": "checkbox", "id": "show_social_links", "label": "Show social links on desktop and tablet", "default": false },
+    {
+      "type": "checkbox",
+      "id": "show_localization",
+      "label": "Show localization on desktop and tablet",
+      "default": false
+    },
     {
       "type": "header",
       "content": "Bottom separator"

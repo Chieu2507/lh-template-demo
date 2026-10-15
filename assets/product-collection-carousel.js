@@ -62,7 +62,8 @@ const getFirstDataValue = (elements, key) => {
 const buildOptions = (carousel, scope) => {
   const pagination =
     carousel.querySelector('[data-product-collection-pagination]') ||
-    carousel.querySelector('[data-swiper-pagination]');
+    carousel.querySelector('[data-swiper-pagination]') ||
+    scope.querySelector('.product-list__bottom-controls [data-swiper-pagination]');
   const paginationType = getPaginationType(pagination?.dataset.paginationType || carousel.dataset.swiperPaginationType);
   const options = {
     slidesPerView: getMobileSlidesPerView(carousel),

@@ -1934,6 +1934,10 @@
           {
             "value": "reference",
             "label": "Reference (0.01em)"
+          },
+          {
+            "value": "0.05em",
+            "label": "Wide (0.05em)"
           }
         ],
         "default": "normal"

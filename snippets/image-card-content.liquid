@@ -2,6 +2,7 @@
   Shared renderer for Image card and Promo card. Owns media/link/overlay/content.
   @param {object} block - Owning Theme Block with card settings/editor attributes
   @param {string} content - Rendered editable child blocks
+  @param {string} [card_link] - Parent-resolved card destination
   @param {boolean} [promo_card] - Enable section-owned grid dimensions and spans
 {% enddoc %}
 {% liquid
@@ -16,7 +17,7 @@
   endif
   assign image_card_media_type = block.settings.background_type | default: 'image'
   assign image_card_image = block.settings.image
-  assign image_card_link = block.settings.link
+  assign image_card_link = card_link | default: block.settings.link
 
   assign image_card_width_desktop_mode = block.settings.width_desktop | default: 'fill'
   assign image_card_width_desktop = '100%'
@@ -140,6 +141,9 @@
   endif
 
   assign image_card_class = 'image-card'
+  if request.design_mode
+    assign image_card_class = image_card_class | append: ' image-card--design-mode'
+  endif
   if image_card_media_type == 'none'
     assign image_card_class = image_card_class | append: ' image-card--no-media'
   endif
