@@ -21,7 +21,9 @@
     opacity: 1;
     transition: all ease 0.3s;
   }
-  .header-bottom-collapse[data-collapsed] { transform: translateY(-100%); opacity: 0; pointer-events: none; }
+  .header-bottom-collapse[data-collapsed],
+  .header--search-open .header-bottom-collapse { transform: translateY(-100%); opacity: 0; pointer-events: none; }
+  .header--search-open .header-bottom-collapse { visibility: hidden; }
   @media (min-width: 992px) {
     .header-top--two-rows[data-bottom-transform] { position: relative; }
     .header-top--two-rows[data-bottom-transform] .header-bottom-collapse {
